@@ -1,0 +1,43 @@
+./main/functions.pwn(6866) : ïðåäóïðåæäåíèå 208: ôóíêöèÿ ñ òèïîâûì ðåçóëüòàòîì èñïîëüçóåòñÿ ïåðåä îáúÿâëåíèåì, èíèöèèðîâàíà ïåðåîáðàáîòêà
+./main/functions.pwn(2084) : íåïðàâèëüíàÿ òàáóëÿöèÿ
+./main/functions.pwn(2108) : íåïðàâèëüíàÿ òàáóëÿöèÿ
+system/inventory/faction_command.pwn(6) : èäåíòèôèêàòîðó ïðèñâîåíî çíà÷åíèå, íî îí íå èñïîëüçóåòñÿ: "string"
+./system/character_td.pwn(7) : èäåíòèôèêàòîðó ïðèñâîåíî çíà÷åíèå, íî îí íå èñïîëüçóåòñÿ: "string"
+./main/command.pwn(8686) : íåïðàâèëüíàÿ òàáóëÿöèÿ
+./main/command.pwn(8695) : íåïðàâèëüíàÿ òàáóëÿöèÿ
+./main/command.pwn(8704) : íåïðàâèëüíàÿ òàáóëÿöèÿ
+./main/command.pwn(8718) : íåïðàâèëüíàÿ òàáóëÿöèÿ
+./main/command.pwn(8719) : íåïðàâèëüíàÿ òàáóëÿöèÿ
+./main/command.pwn(22219) : íåïðàâèëüíàÿ òàáóëÿöèÿ
+./main/command.pwn(42821) : íåïðàâèëüíàÿ òàáóëÿöèÿ
+./main/command.pwn(43823) : íåïðàâèëüíàÿ òàáóëÿöèÿ
+./main/command.pwn(43868) : íåïðàâèëüíàÿ òàáóëÿöèÿ
+./main/command.pwn(43901) : íåïðàâèëüíàÿ òàáóëÿöèÿ
+./main/command.pwn(43947) : íåïðàâèëüíàÿ òàáóëÿöèÿ
+./main/_funcs.pwn(146) : íåïðàâèëüíàÿ òàáóëÿöèÿ
+./main/_funcs.pwn(3602) : íåïðàâèëüíàÿ òàáóëÿöèÿ
+./main/_funcs.pwn(4052) : íåïðàâèëüíàÿ òàáóëÿöèÿ
+./main/_funcs.pwn(4150) : íåïðàâèëüíàÿ òàáóëÿöèÿ
+./main/_funcs.pwn(4785) : îøèáêà 017: íåîáúÿâëåííûé ñèìâîë "IsBoat"
+./main/_funcs.pwn(11260) : íåïðàâèëüíàÿ òàáóëÿöèÿ
+./main/_funcs.pwn(11261) : íåïðàâèëüíàÿ òàáóëÿöèÿ
+./main/_funcs.pwn(16964) : íåïðàâèëüíàÿ òàáóëÿöèÿ
+./main/_funcs.pwn(17026) : íåïðàâèëüíàÿ òàáóëÿöèÿ
+./main/_cmds.pwn(654) : íåïðàâèëüíàÿ òàáóëÿöèÿ
+./main/_cmds.pwn(924) : íåïðàâèëüíàÿ òàáóëÿöèÿ
+./main/_cmds.pwn(929) : íåïðàâèëüíàÿ òàáóëÿöèÿ
+./main/_cmds.pwn(1123) : íåïðàâèëüíàÿ òàáóëÿöèÿ
+./main/_cmds.pwn(1143) : íåïðàâèëüíàÿ òàáóëÿöèÿ
+./main/mysql.pwn(1623) : èäåíòèôèêàòîðó ïðèñâîåíî çíà÷åíèå, íî îí íå èñïîëüçóåòñÿ: "str"
+./system/trucking.pwn(140) : íåïðàâèëüíàÿ òàáóëÿöèÿ
+./system/trucking.pwn(244) : íåïðàâèëüíàÿ òàáóëÿöèÿ
+./system/bodydame/bodydamage.pwn(20) : èäåíòèôèêàòîð íå èñïîëüçóåòñÿ: "BiBanVao"
+./system/trucking.pwn(11) : èäåíòèôèêàòîð íå èñïîëüçóåòñÿ: "CheckThueXe"
+E:\VNRP\gamemodes\sf-pro.pwn(1615) : èäåíòèôèêàòîð íå èñïîëüçóåòñÿ: "GetXYBehindPlayer"
+./system/trucking.pwn(12) : èäåíòèôèêàòîð íå èñïîëüçóåòñÿ: "IDXeThue"
+./system/trucking.pwn(14) : èäåíòèôèêàòîð íå èñïîëüçóåòñÿ: "PlayerCheckpoint"
+./system/trucking.pwn(9) : èäåíòèôèêàòîð íå èñïîëüçóåòñÿ: "ThueXePizza"
+Pawn compiler 3.2.3664	 	 	Copyright (c) 1997-2016, ITB CompuPhase
+
+
+Îøèáîê:1.

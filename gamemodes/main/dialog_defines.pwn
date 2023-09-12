@@ -1,0 +1,70 @@
+enum 
+{
+
+	DIALOG_MAINTHUNG = 1151,
+	DIALOG_CATCA = 1152,
+	DIALOG_MAINDANHCA = 1153,
+	DIALOG_THAMGIA = 1154,
+	DIALOG_MUAMOI = 1155,
+	DIALOG_MUADAY = 1156,
+	DIALOG_DEFAULT = 1157,
+	DIALOG_A_LOGIN = 1158,
+	DIALOG_A_USERNAME = 1159,
+	USE_PLAYERINV = 1160,
+	DROP_PLAYERINV = 1161,
+	USE_CARINV = 1162,
+	ACTOR_JOB = 1163,
+	DIALOG_CATITEM = 1164,
+	DIALOG_CATAMOUNT = 1165,
+	REGNAME = 1166,
+	REGPASS = 1167,
+	REGMAIL = 1168,
+    // LOADING
+	LOAD_LOGIN = 1169,
+	LOAD_CHARACTERLOGIN = 1170,
+    LOAD_LAYGO = 1171,
+    LOAD_CHATGO = 1172,
+	// MENU
+	PIZZABOY_MENU = 1173,
+	TRUCKER_MENU = 1174,
+	BANK_MENU = 1175,
+	WOOD_MENU = 1176,
+	CUAHANGTIENDUNG_MENU = 1177,
+	QUANAN_MENU = 1178,
+	DIENTU_MENU = 1179,
+	VUKHI_MENU = 1180,
+   	GPS_SYSTEM  = 1181,   
+	TIMDUONG = 1182,
+};
+#define           DIALOG_TEST (1183)
+#define           DIALOG_INVENTORYCAR (1184)
+#define           DIALOG_TAKEAMOUNT (1185)
+#define           DIALOG_ITEM (1186)
+#define           DIALOG_GIVEITEMPLAYER (1187)
+#define           DIALOG_GIVEITEMAMOUNT 1188
+#define           DIALOG_NOITHAT  (1189)
+#define           DIALOG_EDITNOITHAT  (1190)
+#define           DIALOG_SELECTNT   (1191)
+#define           DIALOG_RUTTIEN (1192)
+#define           DIALOG_PHONEBOOK    (1193)
+#define           MAIN_PHONEBOOK    (1194)
+#define           NUMBERPHONEBOOK    (1195)
+#define           DELETE_PHONEBOOK    (1196)
+#define           ADD_PHONEBOOK    (1197)
+#define           NAME_PHONEBOOK  (1198)
+#define           SHOPSKINNAM (1199)
+#define           SELECT_PHONEBOOK (1200)
+#define           TRANGPHUCNAM (1201)
+#define           MUANOITHATD (1202)
+#define           INVENTORY_MOBILE (1203)
+#define           MOBILE_ITEM (1204)
+#define      LoadingDaoDa 5
+#define        DANGKYXE         (1206)
+#define        GIAYTOXE         (1205)
+#define        XEMGIAYTO        (1207)
+#define        XEMKHOXE        (1208)
+#define       XENGIAYXE          (1209)
+#define      LOAD_XITTHUOC            10
+#define      LOAD_TUOINUOC            11
+#define      LOAD_BATSAU             12
+#define       LOAD_BONPHAN          13

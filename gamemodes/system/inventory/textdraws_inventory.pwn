@@ -1,0 +1,586 @@
+
+stock LoadInventoryTD(playerid) 
+{
+invslot_main[playerid][0] = CreatePlayerTextDraw(playerid, 246.727752, 94.916664, "mdl-2014:main-bg");
+PlayerTextDrawLetterSize(playerid, invslot_main[playerid][0], 0.000000, 0.000000);
+PlayerTextDrawTextSize(playerid, invslot_main[playerid][0], 165.000000, 268.000000);
+PlayerTextDrawAlignment(playerid, invslot_main[playerid][0], 1);
+PlayerTextDrawColor(playerid, invslot_main[playerid][0], -1);
+PlayerTextDrawSetShadow(playerid, invslot_main[playerid][0], 0);
+PlayerTextDrawSetOutline(playerid, invslot_main[playerid][0], 0);
+PlayerTextDrawBackgroundColor(playerid, invslot_main[playerid][0], 255);
+PlayerTextDrawFont(playerid, invslot_main[playerid][0], 4);
+PlayerTextDrawSetProportional(playerid, invslot_main[playerid][0], 0);
+PlayerTextDrawSetShadow(playerid, invslot_main[playerid][0], 0);
+
+invslot_main[playerid][1] = CreatePlayerTextDraw(playerid, 331.472564, 331.833282, "Kho_do_cua_xe_PCJ(12)");
+PlayerTextDrawLetterSize(playerid, invslot_main[playerid][1], 0.228052, 1.395831);
+PlayerTextDrawAlignment(playerid, invslot_main[playerid][1], 2);
+PlayerTextDrawColor(playerid, invslot_main[playerid][1], -1);
+PlayerTextDrawSetShadow(playerid, invslot_main[playerid][1], 0);
+PlayerTextDrawSetOutline(playerid, invslot_main[playerid][1], 0);
+PlayerTextDrawBackgroundColor(playerid, invslot_main[playerid][1], 255);
+PlayerTextDrawFont(playerid, invslot_main[playerid][1], 1);
+PlayerTextDrawSetProportional(playerid, invslot_main[playerid][1], 1);
+PlayerTextDrawSetShadow(playerid, invslot_main[playerid][1], 0);
+
+
+invslot_empty[playerid][0] = CreatePlayerTextDraw(playerid, 261.283294, 110.083305, "mdl-2014:slot_trong");
+PlayerTextDrawLetterSize(playerid, invslot_empty[playerid][0], 0.000000, 0.000000);
+PlayerTextDrawTextSize(playerid, invslot_empty[playerid][0], 31.719993, 37.079986);
+PlayerTextDrawAlignment(playerid, invslot_empty[playerid][0], 1);
+PlayerTextDrawColor(playerid, invslot_empty[playerid][0], -1);
+PlayerTextDrawSetShadow(playerid, invslot_empty[playerid][0], 0);
+PlayerTextDrawSetOutline(playerid, invslot_empty[playerid][0], 0);
+PlayerTextDrawBackgroundColor(playerid, invslot_empty[playerid][0], 255);
+PlayerTextDrawFont(playerid, invslot_empty[playerid][0], 4);
+PlayerTextDrawSetProportional(playerid, invslot_empty[playerid][0], 0);
+PlayerTextDrawSetShadow(playerid, invslot_empty[playerid][0], 0);
+PlayerTextDrawSetSelectable(playerid, invslot_empty[playerid][0], true);
+
+invslot_empty[playerid][1] = CreatePlayerTextDraw(playerid, 296.896423, 109.499969, "mdl-2014:slot_trong");
+PlayerTextDrawLetterSize(playerid, invslot_empty[playerid][1], 0.000000, 0.000000);
+PlayerTextDrawTextSize(playerid, invslot_empty[playerid][1], 31.719993, 37.079986);
+PlayerTextDrawAlignment(playerid, invslot_empty[playerid][1], 1);
+PlayerTextDrawColor(playerid, invslot_empty[playerid][1], -1);
+PlayerTextDrawSetShadow(playerid, invslot_empty[playerid][1], 0);
+PlayerTextDrawSetOutline(playerid, invslot_empty[playerid][1], 0);
+PlayerTextDrawBackgroundColor(playerid, invslot_empty[playerid][1], 255);
+PlayerTextDrawFont(playerid, invslot_empty[playerid][1], 4);
+PlayerTextDrawSetProportional(playerid, invslot_empty[playerid][1], 0);
+PlayerTextDrawSetShadow(playerid, invslot_empty[playerid][1], 0);
+PlayerTextDrawSetSelectable(playerid, invslot_empty[playerid][1], true);
+
+invslot_empty[playerid][2] = CreatePlayerTextDraw(playerid, 332.167175, 109.899971, "mdl-2014:slot_trong");
+PlayerTextDrawLetterSize(playerid, invslot_empty[playerid][2], 0.000000, 0.000000);
+PlayerTextDrawTextSize(playerid, invslot_empty[playerid][2], 31.719993, 37.079986);
+PlayerTextDrawAlignment(playerid, invslot_empty[playerid][2], 1);
+PlayerTextDrawColor(playerid, invslot_empty[playerid][2], -1);
+PlayerTextDrawSetShadow(playerid, invslot_empty[playerid][2], 0);
+PlayerTextDrawSetOutline(playerid, invslot_empty[playerid][2], 0);
+PlayerTextDrawBackgroundColor(playerid, invslot_empty[playerid][2], 255);
+PlayerTextDrawFont(playerid, invslot_empty[playerid][2], 4);
+PlayerTextDrawSetProportional(playerid, invslot_empty[playerid][2], 0);
+PlayerTextDrawSetShadow(playerid, invslot_empty[playerid][2], 0);
+PlayerTextDrawSetSelectable(playerid, invslot_empty[playerid][2], true);
+
+invslot_empty[playerid][3] = CreatePlayerTextDraw(playerid, 367.600860, 109.866653, "mdl-2014:slot_trong");
+PlayerTextDrawLetterSize(playerid, invslot_empty[playerid][3], 0.000000, 0.000000);
+PlayerTextDrawTextSize(playerid, invslot_empty[playerid][3], 31.719993, 37.079986);
+PlayerTextDrawAlignment(playerid, invslot_empty[playerid][3], 1);
+PlayerTextDrawColor(playerid, invslot_empty[playerid][3], -1);
+PlayerTextDrawSetShadow(playerid, invslot_empty[playerid][3], 0);
+PlayerTextDrawSetOutline(playerid, invslot_empty[playerid][3], 0);
+PlayerTextDrawBackgroundColor(playerid, invslot_empty[playerid][3], 255);
+PlayerTextDrawFont(playerid, invslot_empty[playerid][3], 4);
+PlayerTextDrawSetProportional(playerid, invslot_empty[playerid][3], 0);
+PlayerTextDrawSetShadow(playerid, invslot_empty[playerid][3], 0);
+PlayerTextDrawSetSelectable(playerid, invslot_empty[playerid][3], true);
+
+invslot_empty[playerid][4] = CreatePlayerTextDraw(playerid, 261.109405, 153.016616, "mdl-2014:slot_trong");
+PlayerTextDrawLetterSize(playerid, invslot_empty[playerid][4], 0.000000, 0.000000);
+PlayerTextDrawTextSize(playerid, invslot_empty[playerid][4], 31.719993, 37.079986);
+PlayerTextDrawAlignment(playerid, invslot_empty[playerid][4], 1);
+PlayerTextDrawColor(playerid, invslot_empty[playerid][4], -1);
+PlayerTextDrawSetShadow(playerid, invslot_empty[playerid][4], 0);
+PlayerTextDrawSetOutline(playerid, invslot_empty[playerid][4], 0);
+PlayerTextDrawBackgroundColor(playerid, invslot_empty[playerid][4], 255);
+PlayerTextDrawFont(playerid, invslot_empty[playerid][4], 4);
+PlayerTextDrawSetProportional(playerid, invslot_empty[playerid][4], 0);
+PlayerTextDrawSetShadow(playerid, invslot_empty[playerid][4], 0);
+PlayerTextDrawSetSelectable(playerid, invslot_empty[playerid][4], true);
+
+invslot_empty[playerid][5] = CreatePlayerTextDraw(playerid, 296.954101, 152.733291, "mdl-2014:slot_trong");
+PlayerTextDrawLetterSize(playerid, invslot_empty[playerid][5], 0.000000, 0.000000);
+PlayerTextDrawTextSize(playerid, invslot_empty[playerid][5], 31.719993, 37.079986);
+PlayerTextDrawAlignment(playerid, invslot_empty[playerid][5], 1);
+PlayerTextDrawColor(playerid, invslot_empty[playerid][5], -1);
+PlayerTextDrawSetShadow(playerid, invslot_empty[playerid][5], 0);
+PlayerTextDrawSetOutline(playerid, invslot_empty[playerid][5], 0);
+PlayerTextDrawBackgroundColor(playerid, invslot_empty[playerid][5], 255);
+PlayerTextDrawFont(playerid, invslot_empty[playerid][5], 4);
+PlayerTextDrawSetProportional(playerid, invslot_empty[playerid][5], 0);
+PlayerTextDrawSetShadow(playerid, invslot_empty[playerid][5], 0);
+PlayerTextDrawSetSelectable(playerid, invslot_empty[playerid][5], true);
+
+invslot_empty[playerid][6] = CreatePlayerTextDraw(playerid, 332.230285, 152.483398, "mdl-2014:slot_trong");
+PlayerTextDrawLetterSize(playerid, invslot_empty[playerid][6], 0.000000, 0.000000);
+PlayerTextDrawTextSize(playerid, invslot_empty[playerid][6], 31.719993, 37.079986);
+PlayerTextDrawAlignment(playerid, invslot_empty[playerid][6], 1);
+PlayerTextDrawColor(playerid, invslot_empty[playerid][6], -1);
+PlayerTextDrawSetShadow(playerid, invslot_empty[playerid][6], 0);
+PlayerTextDrawSetOutline(playerid, invslot_empty[playerid][6], 0);
+PlayerTextDrawBackgroundColor(playerid, invslot_empty[playerid][6], 255);
+PlayerTextDrawFont(playerid, invslot_empty[playerid][6], 4);
+PlayerTextDrawSetProportional(playerid, invslot_empty[playerid][6], 0);
+PlayerTextDrawSetShadow(playerid, invslot_empty[playerid][6], 0);
+PlayerTextDrawSetSelectable(playerid, invslot_empty[playerid][6], true);
+
+invslot_empty[playerid][7] = CreatePlayerTextDraw(playerid, 367.532287, 152.883407, "mdl-2014:slot_trong");
+PlayerTextDrawLetterSize(playerid, invslot_empty[playerid][7], 0.000000, 0.000000);
+PlayerTextDrawTextSize(playerid, invslot_empty[playerid][7], 31.719993, 37.079986);
+PlayerTextDrawAlignment(playerid, invslot_empty[playerid][7], 1);
+PlayerTextDrawColor(playerid, invslot_empty[playerid][7], -1);
+PlayerTextDrawSetShadow(playerid, invslot_empty[playerid][7], 0);
+PlayerTextDrawSetOutline(playerid, invslot_empty[playerid][7], 0);
+PlayerTextDrawBackgroundColor(playerid, invslot_empty[playerid][7], 255);
+PlayerTextDrawFont(playerid, invslot_empty[playerid][7], 4);
+PlayerTextDrawSetProportional(playerid, invslot_empty[playerid][7], 0);
+PlayerTextDrawSetShadow(playerid, invslot_empty[playerid][7], 0);
+PlayerTextDrawSetSelectable(playerid, invslot_empty[playerid][7], true);
+
+invslot_empty[playerid][8] = CreatePlayerTextDraw(playerid, 260.872436, 195.466751, "mdl-2014:slot_trong");
+PlayerTextDrawLetterSize(playerid, invslot_empty[playerid][8], 0.000000, 0.000000);
+PlayerTextDrawTextSize(playerid, invslot_empty[playerid][8], 31.719993, 37.079986);
+PlayerTextDrawAlignment(playerid, invslot_empty[playerid][8], 1);
+PlayerTextDrawColor(playerid, invslot_empty[playerid][8], -1);
+PlayerTextDrawSetShadow(playerid, invslot_empty[playerid][8], 0);
+PlayerTextDrawSetOutline(playerid, invslot_empty[playerid][8], 0);
+PlayerTextDrawBackgroundColor(playerid, invslot_empty[playerid][8], 255);
+PlayerTextDrawFont(playerid, invslot_empty[playerid][8], 4);
+PlayerTextDrawSetProportional(playerid, invslot_empty[playerid][8], 0);
+PlayerTextDrawSetShadow(playerid, invslot_empty[playerid][8], 0);
+PlayerTextDrawSetSelectable(playerid, invslot_empty[playerid][8], true);
+
+invslot_empty[playerid][9] = CreatePlayerTextDraw(playerid, 296.517089, 195.233322, "mdl-2014:slot_trong");
+PlayerTextDrawLetterSize(playerid, invslot_empty[playerid][9], 0.000000, 0.000000);
+PlayerTextDrawTextSize(playerid, invslot_empty[playerid][9], 31.719993, 37.079986);
+PlayerTextDrawAlignment(playerid, invslot_empty[playerid][9], 1);
+PlayerTextDrawColor(playerid, invslot_empty[playerid][9], -1);
+PlayerTextDrawSetShadow(playerid, invslot_empty[playerid][9], 0);
+PlayerTextDrawSetOutline(playerid, invslot_empty[playerid][9], 0);
+PlayerTextDrawBackgroundColor(playerid, invslot_empty[playerid][9], 255);
+PlayerTextDrawFont(playerid, invslot_empty[playerid][9], 4);
+PlayerTextDrawSetProportional(playerid, invslot_empty[playerid][9], 0);
+PlayerTextDrawSetShadow(playerid, invslot_empty[playerid][9], 0);
+PlayerTextDrawSetSelectable(playerid, invslot_empty[playerid][9], true);
+
+invslot_empty[playerid][10] = CreatePlayerTextDraw(playerid, 331.867370, 196.166778, "mdl-2014:slot_trong");
+PlayerTextDrawLetterSize(playerid, invslot_empty[playerid][10], 0.000000, 0.000000);
+PlayerTextDrawTextSize(playerid, invslot_empty[playerid][10], 31.719993, 37.079986);
+PlayerTextDrawAlignment(playerid, invslot_empty[playerid][10], 1);
+PlayerTextDrawColor(playerid, invslot_empty[playerid][10], -1);
+PlayerTextDrawSetShadow(playerid, invslot_empty[playerid][10], 0);
+PlayerTextDrawSetOutline(playerid, invslot_empty[playerid][10], 0);
+PlayerTextDrawBackgroundColor(playerid, invslot_empty[playerid][10], 255);
+PlayerTextDrawFont(playerid, invslot_empty[playerid][10], 4);
+PlayerTextDrawSetProportional(playerid, invslot_empty[playerid][10], 0);
+PlayerTextDrawSetShadow(playerid, invslot_empty[playerid][10], 0);
+PlayerTextDrawSetSelectable(playerid, invslot_empty[playerid][10], true);
+
+invslot_empty[playerid][11] = CreatePlayerTextDraw(playerid, 367.527038, 195.816879, "mdl-2014:slot_trong");
+PlayerTextDrawLetterSize(playerid, invslot_empty[playerid][11], 0.000000, 0.000000);
+PlayerTextDrawTextSize(playerid, invslot_empty[playerid][11], 31.719993, 37.079986);
+PlayerTextDrawAlignment(playerid, invslot_empty[playerid][11], 1);
+PlayerTextDrawColor(playerid, invslot_empty[playerid][11], -1);
+PlayerTextDrawSetShadow(playerid, invslot_empty[playerid][11], 0);
+PlayerTextDrawSetOutline(playerid, invslot_empty[playerid][11], 0);
+PlayerTextDrawBackgroundColor(playerid, invslot_empty[playerid][11], 255);
+PlayerTextDrawFont(playerid, invslot_empty[playerid][11], 4);
+PlayerTextDrawSetProportional(playerid, invslot_empty[playerid][11], 0);
+PlayerTextDrawSetShadow(playerid, invslot_empty[playerid][11], 0);
+PlayerTextDrawSetSelectable(playerid, invslot_empty[playerid][11], true);
+
+invslot_empty[playerid][12] = CreatePlayerTextDraw(playerid, 260.935455, 238.833633, "mdl-2014:slot_trong");
+PlayerTextDrawLetterSize(playerid, invslot_empty[playerid][12], 0.000000, 0.000000);
+PlayerTextDrawTextSize(playerid, invslot_empty[playerid][12], 31.719993, 37.079986);
+PlayerTextDrawAlignment(playerid, invslot_empty[playerid][12], 1);
+PlayerTextDrawColor(playerid, invslot_empty[playerid][12], -1);
+PlayerTextDrawSetShadow(playerid, invslot_empty[playerid][12], 0);
+PlayerTextDrawSetOutline(playerid, invslot_empty[playerid][12], 0);
+PlayerTextDrawBackgroundColor(playerid, invslot_empty[playerid][12], 255);
+PlayerTextDrawFont(playerid, invslot_empty[playerid][12], 4);
+PlayerTextDrawSetProportional(playerid, invslot_empty[playerid][12], 0);
+PlayerTextDrawSetShadow(playerid, invslot_empty[playerid][12], 0);
+PlayerTextDrawSetSelectable(playerid, invslot_empty[playerid][12], true);
+
+invslot_empty[playerid][13] = CreatePlayerTextDraw(playerid, 296.306152, 238.867034, "mdl-2014:slot_trong");
+PlayerTextDrawLetterSize(playerid, invslot_empty[playerid][13], 0.000000, 0.000000);
+PlayerTextDrawTextSize(playerid, invslot_empty[playerid][13], 31.719993, 37.079986);
+PlayerTextDrawAlignment(playerid, invslot_empty[playerid][13], 1);
+PlayerTextDrawColor(playerid, invslot_empty[playerid][13], -1);
+PlayerTextDrawSetShadow(playerid, invslot_empty[playerid][13], 0);
+PlayerTextDrawSetOutline(playerid, invslot_empty[playerid][13], 0);
+PlayerTextDrawBackgroundColor(playerid, invslot_empty[playerid][13], 255);
+PlayerTextDrawFont(playerid, invslot_empty[playerid][13], 4);
+PlayerTextDrawSetProportional(playerid, invslot_empty[playerid][13], 0);
+PlayerTextDrawSetShadow(playerid, invslot_empty[playerid][13], 0);
+PlayerTextDrawSetSelectable(playerid, invslot_empty[playerid][13], true);
+
+invslot_empty[playerid][14] = CreatePlayerTextDraw(playerid, 332.130218, 238.283691, "mdl-2014:slot_trong");
+PlayerTextDrawLetterSize(playerid, invslot_empty[playerid][14], 0.000000, 0.000000);
+PlayerTextDrawTextSize(playerid, invslot_empty[playerid][14], 31.719993, 37.079986);
+PlayerTextDrawAlignment(playerid, invslot_empty[playerid][14], 1);
+PlayerTextDrawColor(playerid, invslot_empty[playerid][14], -1);
+PlayerTextDrawSetShadow(playerid, invslot_empty[playerid][14], 0);
+PlayerTextDrawSetOutline(playerid, invslot_empty[playerid][14], 0);
+PlayerTextDrawBackgroundColor(playerid, invslot_empty[playerid][14], 255);
+PlayerTextDrawFont(playerid, invslot_empty[playerid][14], 4);
+PlayerTextDrawSetProportional(playerid, invslot_empty[playerid][14], 0);
+PlayerTextDrawSetShadow(playerid, invslot_empty[playerid][14], 0);
+PlayerTextDrawSetSelectable(playerid, invslot_empty[playerid][14], true);
+
+invslot_empty[playerid][15] = CreatePlayerTextDraw(playerid, 367.606353, 238.967025, "mdl-2014:slot_trong");
+PlayerTextDrawLetterSize(playerid, invslot_empty[playerid][15], 0.000000, 0.000000);
+PlayerTextDrawTextSize(playerid, invslot_empty[playerid][15], 31.719993, 37.079986);
+PlayerTextDrawAlignment(playerid, invslot_empty[playerid][15], 1);
+PlayerTextDrawColor(playerid, invslot_empty[playerid][15], -1);
+PlayerTextDrawSetShadow(playerid, invslot_empty[playerid][15], 0);
+PlayerTextDrawSetOutline(playerid, invslot_empty[playerid][15], 0);
+PlayerTextDrawBackgroundColor(playerid, invslot_empty[playerid][15], 255);
+PlayerTextDrawFont(playerid, invslot_empty[playerid][15], 4);
+PlayerTextDrawSetProportional(playerid, invslot_empty[playerid][15], 0);
+PlayerTextDrawSetShadow(playerid, invslot_empty[playerid][15], 0);
+PlayerTextDrawSetSelectable(playerid, invslot_empty[playerid][15], true);
+
+invslot_empty[playerid][16] = CreatePlayerTextDraw(playerid, 261.120422, 281.383758, "mdl-2014:slot_trong");
+PlayerTextDrawLetterSize(playerid, invslot_empty[playerid][16], 0.000000, 0.000000);
+PlayerTextDrawTextSize(playerid, invslot_empty[playerid][16], 31.719993, 37.079986);
+PlayerTextDrawAlignment(playerid, invslot_empty[playerid][16], 1);
+PlayerTextDrawColor(playerid, invslot_empty[playerid][16], -1);
+PlayerTextDrawSetShadow(playerid, invslot_empty[playerid][16], 0);
+PlayerTextDrawSetOutline(playerid, invslot_empty[playerid][16], 0);
+PlayerTextDrawBackgroundColor(playerid, invslot_empty[playerid][16], 255);
+PlayerTextDrawFont(playerid, invslot_empty[playerid][16], 4);
+PlayerTextDrawSetProportional(playerid, invslot_empty[playerid][16], 0);
+PlayerTextDrawSetShadow(playerid, invslot_empty[playerid][16], 0);
+PlayerTextDrawSetSelectable(playerid, invslot_empty[playerid][16], true);
+
+invslot_empty[playerid][17] = CreatePlayerTextDraw(playerid, 296.222381, 282.017181, "mdl-2014:slot_trong");
+PlayerTextDrawLetterSize(playerid, invslot_empty[playerid][17], 0.000000, 0.000000);
+PlayerTextDrawTextSize(playerid, invslot_empty[playerid][17], 31.719993, 37.079986);
+PlayerTextDrawAlignment(playerid, invslot_empty[playerid][17], 1);
+PlayerTextDrawColor(playerid, invslot_empty[playerid][17], -1);
+PlayerTextDrawSetShadow(playerid, invslot_empty[playerid][17], 0);
+PlayerTextDrawSetOutline(playerid, invslot_empty[playerid][17], 0);
+PlayerTextDrawBackgroundColor(playerid, invslot_empty[playerid][17], 255);
+PlayerTextDrawFont(playerid, invslot_empty[playerid][17], 4);
+PlayerTextDrawSetProportional(playerid, invslot_empty[playerid][17], 0);
+PlayerTextDrawSetShadow(playerid, invslot_empty[playerid][17], 0);
+PlayerTextDrawSetSelectable(playerid, invslot_empty[playerid][17], true);
+
+invslot_empty[playerid][18] = CreatePlayerTextDraw(playerid, 332.698760, 281.517181, "mdl-2014:slot_trong");
+PlayerTextDrawLetterSize(playerid, invslot_empty[playerid][18], 0.000000, 0.000000);
+PlayerTextDrawTextSize(playerid, invslot_empty[playerid][18], 31.719993, 37.079986);
+PlayerTextDrawAlignment(playerid, invslot_empty[playerid][18], 1);
+PlayerTextDrawColor(playerid, invslot_empty[playerid][18], -1);
+PlayerTextDrawSetShadow(playerid, invslot_empty[playerid][18], 0);
+PlayerTextDrawSetOutline(playerid, invslot_empty[playerid][18], 0);
+PlayerTextDrawBackgroundColor(playerid, invslot_empty[playerid][18], 255);
+PlayerTextDrawFont(playerid, invslot_empty[playerid][18], 4);
+PlayerTextDrawSetProportional(playerid, invslot_empty[playerid][18], 0);
+PlayerTextDrawSetShadow(playerid, invslot_empty[playerid][18], 0);
+PlayerTextDrawSetSelectable(playerid, invslot_empty[playerid][18], true);
+
+invslot_empty[playerid][19] = CreatePlayerTextDraw(playerid, 367.811889, 281.250579, "mdl-2014:slot_trong");
+PlayerTextDrawLetterSize(playerid, invslot_empty[playerid][19], 0.000000, 0.000000);
+PlayerTextDrawTextSize(playerid, invslot_empty[playerid][19], 31.719993, 37.079986);
+PlayerTextDrawAlignment(playerid, invslot_empty[playerid][19], 1);
+PlayerTextDrawColor(playerid, invslot_empty[playerid][19], -1);
+PlayerTextDrawSetShadow(playerid, invslot_empty[playerid][19], 0);
+PlayerTextDrawSetOutline(playerid, invslot_empty[playerid][19], 0);
+PlayerTextDrawBackgroundColor(playerid, invslot_empty[playerid][19], 255);
+PlayerTextDrawFont(playerid, invslot_empty[playerid][19], 4);
+PlayerTextDrawSetProportional(playerid, invslot_empty[playerid][19], 0);
+PlayerTextDrawSetShadow(playerid, invslot_empty[playerid][19], 0);
+PlayerTextDrawSetSelectable(playerid, invslot_empty[playerid][19], true);
+
+
+
+invslot_amount[playerid][0] = CreatePlayerTextDraw(playerid, 290.594512, 135.166580, "1");
+PlayerTextDrawLetterSize(playerid, invslot_amount[playerid][0], 0.160116, 1.028333);
+PlayerTextDrawAlignment(playerid, invslot_amount[playerid][0], 3);
+PlayerTextDrawColor(playerid, invslot_amount[playerid][0], 252);
+PlayerTextDrawSetShadow(playerid, invslot_amount[playerid][0], 0);
+PlayerTextDrawSetOutline(playerid, invslot_amount[playerid][0], 0);
+PlayerTextDrawBackgroundColor(playerid, invslot_amount[playerid][0], 255);
+PlayerTextDrawFont(playerid, invslot_amount[playerid][0], 1);
+PlayerTextDrawSetProportional(playerid, invslot_amount[playerid][0], 0);
+PlayerTextDrawSetShadow(playerid, invslot_amount[playerid][0], 0);
+
+invslot_amount[playerid][1] = CreatePlayerTextDraw(playerid, 326.202301, 135.116439, "1");
+PlayerTextDrawLetterSize(playerid, invslot_amount[playerid][1], 0.160116, 1.028333);
+PlayerTextDrawAlignment(playerid, invslot_amount[playerid][1], 3);
+PlayerTextDrawColor(playerid, invslot_amount[playerid][1], 252);
+PlayerTextDrawSetShadow(playerid, invslot_amount[playerid][1], 0);
+PlayerTextDrawSetOutline(playerid, invslot_amount[playerid][1], 0);
+PlayerTextDrawBackgroundColor(playerid, invslot_amount[playerid][1], 255);
+PlayerTextDrawFont(playerid, invslot_amount[playerid][1], 1);
+PlayerTextDrawSetProportional(playerid, invslot_amount[playerid][1], 0);
+PlayerTextDrawSetShadow(playerid, invslot_amount[playerid][1], 0);
+
+invslot_amount[playerid][2] = CreatePlayerTextDraw(playerid, 361.804534, 135.999786, "1");
+PlayerTextDrawLetterSize(playerid, invslot_amount[playerid][2], 0.160116, 1.028333);
+PlayerTextDrawAlignment(playerid, invslot_amount[playerid][2], 3);
+PlayerTextDrawColor(playerid, invslot_amount[playerid][2], 252);
+PlayerTextDrawSetShadow(playerid, invslot_amount[playerid][2], 0);
+PlayerTextDrawSetOutline(playerid, invslot_amount[playerid][2], 0);
+PlayerTextDrawBackgroundColor(playerid, invslot_amount[playerid][2], 255);
+PlayerTextDrawFont(playerid, invslot_amount[playerid][2], 1);
+PlayerTextDrawSetProportional(playerid, invslot_amount[playerid][2], 0);
+PlayerTextDrawSetShadow(playerid, invslot_amount[playerid][2], 0);
+
+invslot_amount[playerid][3] = CreatePlayerTextDraw(playerid, 397.201324, 136.216491, "1");
+PlayerTextDrawLetterSize(playerid, invslot_amount[playerid][3], 0.160116, 1.028333);
+PlayerTextDrawAlignment(playerid, invslot_amount[playerid][3], 3);
+PlayerTextDrawColor(playerid, invslot_amount[playerid][3], 252);
+PlayerTextDrawSetShadow(playerid, invslot_amount[playerid][3], 0);
+PlayerTextDrawSetOutline(playerid, invslot_amount[playerid][3], 0);
+PlayerTextDrawBackgroundColor(playerid, invslot_amount[playerid][3], 255);
+PlayerTextDrawFont(playerid, invslot_amount[playerid][3], 1);
+PlayerTextDrawSetProportional(playerid, invslot_amount[playerid][3], 0);
+PlayerTextDrawSetShadow(playerid, invslot_amount[playerid][3], 0);
+
+invslot_amount[playerid][4] = CreatePlayerTextDraw(playerid, 290.672973, 178.433197, "1");
+PlayerTextDrawLetterSize(playerid, invslot_amount[playerid][4], 0.160116, 1.028333);
+PlayerTextDrawAlignment(playerid, invslot_amount[playerid][4], 3);
+PlayerTextDrawColor(playerid, invslot_amount[playerid][4], 252);
+PlayerTextDrawSetShadow(playerid, invslot_amount[playerid][4], 0);
+PlayerTextDrawSetOutline(playerid, invslot_amount[playerid][4], 0);
+PlayerTextDrawBackgroundColor(playerid, invslot_amount[playerid][4], 255);
+PlayerTextDrawFont(playerid, invslot_amount[playerid][4], 1);
+PlayerTextDrawSetProportional(playerid, invslot_amount[playerid][4], 0);
+PlayerTextDrawSetShadow(playerid, invslot_amount[playerid][4], 0);
+
+invslot_amount[playerid][5] = CreatePlayerTextDraw(playerid, 326.412078, 178.116683, "1");
+PlayerTextDrawLetterSize(playerid, invslot_amount[playerid][5], 0.160116, 1.028333);
+PlayerTextDrawAlignment(playerid, invslot_amount[playerid][5], 3);
+PlayerTextDrawColor(playerid, invslot_amount[playerid][5], 252);
+PlayerTextDrawSetShadow(playerid, invslot_amount[playerid][5], 0);
+PlayerTextDrawSetOutline(playerid, invslot_amount[playerid][5], 0);
+PlayerTextDrawBackgroundColor(playerid, invslot_amount[playerid][5], 255);
+PlayerTextDrawFont(playerid, invslot_amount[playerid][5], 1);
+PlayerTextDrawSetProportional(playerid, invslot_amount[playerid][5], 0);
+PlayerTextDrawSetShadow(playerid, invslot_amount[playerid][5], 0);
+
+invslot_amount[playerid][6] = CreatePlayerTextDraw(playerid, 361.625305, 178.699966, "1");
+PlayerTextDrawLetterSize(playerid, invslot_amount[playerid][6], 0.160116, 1.028333);
+PlayerTextDrawAlignment(playerid, invslot_amount[playerid][6], 3);
+PlayerTextDrawColor(playerid, invslot_amount[playerid][6], 252);
+PlayerTextDrawSetShadow(playerid, invslot_amount[playerid][6], 0);
+PlayerTextDrawSetOutline(playerid, invslot_amount[playerid][6], 0);
+PlayerTextDrawBackgroundColor(playerid, invslot_amount[playerid][6], 255);
+PlayerTextDrawFont(playerid, invslot_amount[playerid][6], 1);
+PlayerTextDrawSetProportional(playerid, invslot_amount[playerid][6], 0);
+PlayerTextDrawSetShadow(playerid, invslot_amount[playerid][6], 0);
+
+invslot_amount[playerid][7] = CreatePlayerTextDraw(playerid, 397.127471, 179.683242, "1");
+PlayerTextDrawLetterSize(playerid, invslot_amount[playerid][7], 0.160116, 1.028333);
+PlayerTextDrawAlignment(playerid, invslot_amount[playerid][7], 3);
+PlayerTextDrawColor(playerid, invslot_amount[playerid][7], 252);
+PlayerTextDrawSetShadow(playerid, invslot_amount[playerid][7], 0);
+PlayerTextDrawSetOutline(playerid, invslot_amount[playerid][7], 0);
+PlayerTextDrawBackgroundColor(playerid, invslot_amount[playerid][7], 255);
+PlayerTextDrawFont(playerid, invslot_amount[playerid][7], 1);
+PlayerTextDrawSetProportional(playerid, invslot_amount[playerid][7], 0);
+PlayerTextDrawSetShadow(playerid, invslot_amount[playerid][7], 0);
+
+invslot_amount[playerid][8] = CreatePlayerTextDraw(playerid, 290.051116, 219.966476, "1");
+PlayerTextDrawLetterSize(playerid, invslot_amount[playerid][8], 0.160116, 1.028333);
+PlayerTextDrawAlignment(playerid, invslot_amount[playerid][8], 3);
+PlayerTextDrawColor(playerid, invslot_amount[playerid][8], 252);
+PlayerTextDrawSetShadow(playerid, invslot_amount[playerid][8], 0);
+PlayerTextDrawSetOutline(playerid, invslot_amount[playerid][8], 0);
+PlayerTextDrawBackgroundColor(playerid, invslot_amount[playerid][8], 255);
+PlayerTextDrawFont(playerid, invslot_amount[playerid][8], 1);
+PlayerTextDrawSetProportional(playerid, invslot_amount[playerid][8], 0);
+PlayerTextDrawSetShadow(playerid, invslot_amount[playerid][8], 0);
+
+invslot_amount[playerid][9] = CreatePlayerTextDraw(playerid, 326.322082, 220.649780, "1");
+PlayerTextDrawLetterSize(playerid, invslot_amount[playerid][9], 0.160116, 1.028333);
+PlayerTextDrawAlignment(playerid, invslot_amount[playerid][9], 3);
+PlayerTextDrawColor(playerid, invslot_amount[playerid][9], 252);
+PlayerTextDrawSetShadow(playerid, invslot_amount[playerid][9], 0);
+PlayerTextDrawSetOutline(playerid, invslot_amount[playerid][9], 0);
+PlayerTextDrawBackgroundColor(playerid, invslot_amount[playerid][9], 255);
+PlayerTextDrawFont(playerid, invslot_amount[playerid][9], 1);
+PlayerTextDrawSetProportional(playerid, invslot_amount[playerid][9], 0);
+PlayerTextDrawSetShadow(playerid, invslot_amount[playerid][9], 0);
+
+invslot_amount[playerid][10] = CreatePlayerTextDraw(playerid, 361.429687, 221.116394, "1");
+PlayerTextDrawLetterSize(playerid, invslot_amount[playerid][10], 0.160116, 1.028333);
+PlayerTextDrawAlignment(playerid, invslot_amount[playerid][10], 3);
+PlayerTextDrawColor(playerid, invslot_amount[playerid][10], 252);
+PlayerTextDrawSetShadow(playerid, invslot_amount[playerid][10], 0);
+PlayerTextDrawSetOutline(playerid, invslot_amount[playerid][10], 0);
+PlayerTextDrawBackgroundColor(playerid, invslot_amount[playerid][10], 255);
+PlayerTextDrawFont(playerid, invslot_amount[playerid][10], 1);
+PlayerTextDrawSetProportional(playerid, invslot_amount[playerid][10], 0);
+PlayerTextDrawSetShadow(playerid, invslot_amount[playerid][10], 0);
+
+invslot_amount[playerid][11] = CreatePlayerTextDraw(playerid, 397.431854, 221.266281, "1");
+PlayerTextDrawLetterSize(playerid, invslot_amount[playerid][11], 0.160116, 1.028333);
+PlayerTextDrawAlignment(playerid, invslot_amount[playerid][11], 3);
+PlayerTextDrawColor(playerid, invslot_amount[playerid][11], 252);
+PlayerTextDrawSetShadow(playerid, invslot_amount[playerid][11], 0);
+PlayerTextDrawSetOutline(playerid, invslot_amount[playerid][11], 0);
+PlayerTextDrawBackgroundColor(playerid, invslot_amount[playerid][11], 255);
+PlayerTextDrawFont(playerid, invslot_amount[playerid][11], 1);
+PlayerTextDrawSetProportional(playerid, invslot_amount[playerid][11], 0);
+PlayerTextDrawSetShadow(playerid, invslot_amount[playerid][11], 0);
+
+invslot_amount[playerid][12] = CreatePlayerTextDraw(playerid, 290.745788, 264.499511, "1");
+PlayerTextDrawLetterSize(playerid, invslot_amount[playerid][12], 0.160116, 1.028333);
+PlayerTextDrawAlignment(playerid, invslot_amount[playerid][12], 3);
+PlayerTextDrawColor(playerid, invslot_amount[playerid][12], 252);
+PlayerTextDrawSetShadow(playerid, invslot_amount[playerid][12], 0);
+PlayerTextDrawSetOutline(playerid, invslot_amount[playerid][12], 0);
+PlayerTextDrawBackgroundColor(playerid, invslot_amount[playerid][12], 255);
+PlayerTextDrawFont(playerid, invslot_amount[playerid][12], 1);
+PlayerTextDrawSetProportional(playerid, invslot_amount[playerid][12], 0);
+PlayerTextDrawSetShadow(playerid, invslot_amount[playerid][12], 0);
+
+invslot_amount[playerid][13] = CreatePlayerTextDraw(playerid, 326.216430, 265.249450, "1");
+PlayerTextDrawLetterSize(playerid, invslot_amount[playerid][13], 0.160116, 1.028333);
+PlayerTextDrawAlignment(playerid, invslot_amount[playerid][13], 3);
+PlayerTextDrawColor(playerid, invslot_amount[playerid][13], 252);
+PlayerTextDrawSetShadow(playerid, invslot_amount[playerid][13], 0);
+PlayerTextDrawSetOutline(playerid, invslot_amount[playerid][13], 0);
+PlayerTextDrawBackgroundColor(playerid, invslot_amount[playerid][13], 255);
+PlayerTextDrawFont(playerid, invslot_amount[playerid][13], 1);
+PlayerTextDrawSetProportional(playerid, invslot_amount[playerid][13], 0);
+PlayerTextDrawSetShadow(playerid, invslot_amount[playerid][13], 0);
+
+invslot_amount[playerid][14] = CreatePlayerTextDraw(playerid, 362.118743, 265.249450, "1");
+PlayerTextDrawLetterSize(playerid, invslot_amount[playerid][14], 0.160116, 1.028333);
+PlayerTextDrawAlignment(playerid, invslot_amount[playerid][14], 3);
+PlayerTextDrawColor(playerid, invslot_amount[playerid][14], 252);
+PlayerTextDrawSetShadow(playerid, invslot_amount[playerid][14], 0);
+PlayerTextDrawSetOutline(playerid, invslot_amount[playerid][14], 0);
+PlayerTextDrawBackgroundColor(playerid, invslot_amount[playerid][14], 255);
+PlayerTextDrawFont(playerid, invslot_amount[playerid][14], 1);
+PlayerTextDrawSetProportional(playerid, invslot_amount[playerid][14], 0);
+PlayerTextDrawSetShadow(playerid, invslot_amount[playerid][14], 0);
+
+invslot_amount[playerid][15] = CreatePlayerTextDraw(playerid, 397.920898, 265.116058, "1");
+PlayerTextDrawLetterSize(playerid, invslot_amount[playerid][15], 0.160116, 1.028333);
+PlayerTextDrawAlignment(playerid, invslot_amount[playerid][15], 3);
+PlayerTextDrawColor(playerid, invslot_amount[playerid][15], 252);
+PlayerTextDrawSetShadow(playerid, invslot_amount[playerid][15], 0);
+PlayerTextDrawSetOutline(playerid, invslot_amount[playerid][15], 0);
+PlayerTextDrawBackgroundColor(playerid, invslot_amount[playerid][15], 255);
+PlayerTextDrawFont(playerid, invslot_amount[playerid][15], 1);
+PlayerTextDrawSetProportional(playerid, invslot_amount[playerid][15], 0);
+PlayerTextDrawSetShadow(playerid, invslot_amount[playerid][15], 0);
+
+invslot_amount[playerid][16] = CreatePlayerTextDraw(playerid, 290.661132, 307.182617, "1");
+PlayerTextDrawLetterSize(playerid, invslot_amount[playerid][16], 0.160116, 1.028333);
+PlayerTextDrawAlignment(playerid, invslot_amount[playerid][16], 3);
+PlayerTextDrawColor(playerid, invslot_amount[playerid][16], 252);
+PlayerTextDrawSetShadow(playerid, invslot_amount[playerid][16], 0);
+PlayerTextDrawSetOutline(playerid, invslot_amount[playerid][16], 0);
+PlayerTextDrawBackgroundColor(playerid, invslot_amount[playerid][16], 255);
+PlayerTextDrawFont(playerid, invslot_amount[playerid][16], 1);
+PlayerTextDrawSetProportional(playerid, invslot_amount[playerid][16], 0);
+PlayerTextDrawSetShadow(playerid, invslot_amount[playerid][16], 0);
+
+invslot_amount[playerid][17] = CreatePlayerTextDraw(playerid, 326.131958, 307.799346, "1");
+PlayerTextDrawLetterSize(playerid, invslot_amount[playerid][17], 0.160116, 1.028333);
+PlayerTextDrawAlignment(playerid, invslot_amount[playerid][17], 3);
+PlayerTextDrawColor(playerid, invslot_amount[playerid][17], 252);
+PlayerTextDrawSetShadow(playerid, invslot_amount[playerid][17], 0);
+PlayerTextDrawSetOutline(playerid, invslot_amount[playerid][17], 0);
+PlayerTextDrawBackgroundColor(playerid, invslot_amount[playerid][17], 255);
+PlayerTextDrawFont(playerid, invslot_amount[playerid][17], 1);
+PlayerTextDrawSetProportional(playerid, invslot_amount[playerid][17], 0);
+PlayerTextDrawSetShadow(playerid, invslot_amount[playerid][17], 0);
+
+invslot_amount[playerid][18] = CreatePlayerTextDraw(playerid, 362.076812, 308.066131, "1");
+PlayerTextDrawLetterSize(playerid, invslot_amount[playerid][18], 0.160116, 1.028333);
+PlayerTextDrawAlignment(playerid, invslot_amount[playerid][18], 3);
+PlayerTextDrawColor(playerid, invslot_amount[playerid][18], 252);
+PlayerTextDrawSetShadow(playerid, invslot_amount[playerid][18], 0);
+PlayerTextDrawSetOutline(playerid, invslot_amount[playerid][18], 0);
+PlayerTextDrawBackgroundColor(playerid, invslot_amount[playerid][18], 255);
+PlayerTextDrawFont(playerid, invslot_amount[playerid][18], 1);
+PlayerTextDrawSetProportional(playerid, invslot_amount[playerid][18], 0);
+PlayerTextDrawSetShadow(playerid, invslot_amount[playerid][18], 0);
+
+invslot_amount[playerid][19] = CreatePlayerTextDraw(playerid, 397.521636, 307.782806, "1");
+PlayerTextDrawLetterSize(playerid, invslot_amount[playerid][19], 0.160116, 1.028333);
+PlayerTextDrawAlignment(playerid, invslot_amount[playerid][19], 3);
+PlayerTextDrawColor(playerid, invslot_amount[playerid][19], 252);
+PlayerTextDrawSetShadow(playerid, invslot_amount[playerid][19], 0);
+PlayerTextDrawSetOutline(playerid, invslot_amount[playerid][19], 0);
+PlayerTextDrawBackgroundColor(playerid, invslot_amount[playerid][19], 255);
+PlayerTextDrawFont(playerid, invslot_amount[playerid][19], 1);
+PlayerTextDrawSetProportional(playerid, invslot_amount[playerid][19], 0);
+PlayerTextDrawSetShadow(playerid, invslot_amount[playerid][19], 0);
+
+
+
+invslot_main[playerid][2] = CreatePlayerTextDraw(playerid, 245.353561, 93.783432, "mdl-2014:select");
+PlayerTextDrawLetterSize(playerid, invslot_main[playerid][2], 0.000000, 0.000000);
+PlayerTextDrawTextSize(playerid, invslot_main[playerid][2], 168.000000, 277.000000);
+PlayerTextDrawAlignment(playerid, invslot_main[playerid][2], 1);
+PlayerTextDrawColor(playerid, invslot_main[playerid][2], -1);
+PlayerTextDrawSetShadow(playerid, invslot_main[playerid][2], 0);
+PlayerTextDrawSetOutline(playerid, invslot_main[playerid][2], 0);
+PlayerTextDrawBackgroundColor(playerid, invslot_main[playerid][2], 255);
+PlayerTextDrawFont(playerid, invslot_main[playerid][2], 4);
+PlayerTextDrawSetProportional(playerid, invslot_main[playerid][2], 0);
+PlayerTextDrawSetShadow(playerid, invslot_main[playerid][2], 0);
+
+invslot_main[playerid][3] = CreatePlayerTextDraw(playerid, 328.924041, 196.699981, "Tien_mat");
+PlayerTextDrawLetterSize(playerid, invslot_main[playerid][3], 0.222430, 1.144999);
+PlayerTextDrawAlignment(playerid, invslot_main[playerid][3], 2);
+PlayerTextDrawColor(playerid, invslot_main[playerid][3], 569115647);
+PlayerTextDrawSetShadow(playerid, invslot_main[playerid][3], 0);
+PlayerTextDrawSetOutline(playerid, invslot_main[playerid][3], 0);
+PlayerTextDrawBackgroundColor(playerid, invslot_main[playerid][3], 255);
+PlayerTextDrawFont(playerid, invslot_main[playerid][3], 1);
+PlayerTextDrawSetProportional(playerid, invslot_main[playerid][3], 1);
+PlayerTextDrawSetShadow(playerid, invslot_main[playerid][3], 0);
+
+invslot_main[playerid][4] = CreatePlayerTextDraw(playerid, 357.528533, 225.016464, "3400");
+PlayerTextDrawLetterSize(playerid, invslot_main[playerid][4], 0.145593, 1.244166);
+PlayerTextDrawAlignment(playerid, invslot_main[playerid][4], 2);
+PlayerTextDrawColor(playerid, invslot_main[playerid][4], 255);
+PlayerTextDrawSetShadow(playerid, invslot_main[playerid][4], 0);
+PlayerTextDrawSetOutline(playerid, invslot_main[playerid][4], 0);
+PlayerTextDrawBackgroundColor(playerid, invslot_main[playerid][4], 255);
+PlayerTextDrawFont(playerid, invslot_main[playerid][4], 2);
+PlayerTextDrawSetProportional(playerid, invslot_main[playerid][4], 1);
+PlayerTextDrawSetShadow(playerid, invslot_main[playerid][4], 0);
+
+invslot_main[playerid][5] = CreatePlayerTextDraw(playerid, 275.570526, 241.016677, "mdl-2014:dung");
+PlayerTextDrawLetterSize(playerid, invslot_main[playerid][5], 0.000000, 0.000000);
+PlayerTextDrawTextSize(playerid, invslot_main[playerid][5], 55.000000, 19.000000);
+PlayerTextDrawAlignment(playerid, invslot_main[playerid][5], 1);
+PlayerTextDrawColor(playerid, invslot_main[playerid][5], -1);
+PlayerTextDrawSetShadow(playerid, invslot_main[playerid][5], 0);
+PlayerTextDrawSetOutline(playerid, invslot_main[playerid][5], 0);
+PlayerTextDrawBackgroundColor(playerid, invslot_main[playerid][5], 255);
+PlayerTextDrawFont(playerid, invslot_main[playerid][5], 4);
+PlayerTextDrawSetProportional(playerid, invslot_main[playerid][5], 0);
+PlayerTextDrawSetShadow(playerid, invslot_main[playerid][5], 0);
+PlayerTextDrawSetSelectable(playerid, invslot_main[playerid][5], true);
+
+invslot_main[playerid][6] = CreatePlayerTextDraw(playerid, 330.861511, 240.466506, "mdl-2014:vut");
+PlayerTextDrawLetterSize(playerid, invslot_main[playerid][6], 0.000000, 0.000000);
+PlayerTextDrawTextSize(playerid, invslot_main[playerid][6], 55.000000, 20.000000);
+PlayerTextDrawAlignment(playerid, invslot_main[playerid][6], 1);
+PlayerTextDrawColor(playerid, invslot_main[playerid][6], -1);
+PlayerTextDrawSetShadow(playerid, invslot_main[playerid][6], 0);
+PlayerTextDrawSetOutline(playerid, invslot_main[playerid][6], 0);
+PlayerTextDrawBackgroundColor(playerid, invslot_main[playerid][6], 255);
+PlayerTextDrawFont(playerid, invslot_main[playerid][6], 4);
+PlayerTextDrawSetProportional(playerid, invslot_main[playerid][6], 0);
+PlayerTextDrawSetShadow(playerid, invslot_main[playerid][6], 0);
+PlayerTextDrawSetSelectable(playerid, invslot_main[playerid][6], true);
+
+invslot_main[playerid][7] = CreatePlayerTextDraw(playerid, 275.570526, 241.016677, "mdl-2014:lay");
+PlayerTextDrawLetterSize(playerid, invslot_main[playerid][7], 0.000000, 0.000000);
+PlayerTextDrawTextSize(playerid, invslot_main[playerid][7], 55.000000, 19.000000);
+PlayerTextDrawAlignment(playerid, invslot_main[playerid][7], 1);
+PlayerTextDrawColor(playerid, invslot_main[playerid][7], -1);
+PlayerTextDrawSetShadow(playerid, invslot_main[playerid][7], 0);
+PlayerTextDrawSetOutline(playerid, invslot_main[playerid][7], 0);
+PlayerTextDrawBackgroundColor(playerid, invslot_main[playerid][7], 255);
+PlayerTextDrawFont(playerid, invslot_main[playerid][7], 4);
+PlayerTextDrawSetProportional(playerid, invslot_main[playerid][7], 0);
+PlayerTextDrawSetShadow(playerid, invslot_main[playerid][7], 0);
+PlayerTextDrawSetSelectable(playerid, invslot_main[playerid][7], true);
+
+return 1;
+}

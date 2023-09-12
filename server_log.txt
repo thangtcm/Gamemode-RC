@@ -1,0 +1,299 @@
+
+----------
+Loaded log file: "server_log.txt".
+----------
+
+SA-MP Dedicated Server
+----------------------
+v0.3.DL-R1, (C)2005-2018 SA-MP Team
+
+[23:07:52] password = ""  (string)
+[23:07:52] 
+[23:07:52] Server Plugins
+[23:07:52] --------------
+[23:07:52]  Loading plugin: PawnPlus
+[23:07:52]  PawnPlus v1.3.2 loaded
+[23:07:52]  Created by IllidanS4
+[23:07:52]   Loaded.
+[23:07:52]  Loading plugin: streamer
+[23:07:52] 
+
+*** Streamer Plugin v2.9.4 by Incognito loaded ***
+
+[23:07:52]   Loaded.
+[23:07:52]  Loading plugin: mysql
+[23:07:52]  >> plugin.mysql: R33 successfully loaded.
+[23:07:52]   Loaded.
+[23:07:52]  Loading plugin: sscanf
+[23:07:52] 
+
+[23:07:52]  ===============================
+
+[23:07:52]       sscanf plugin loaded.     
+
+[23:07:52]          Version:  2.8.1        
+
+[23:07:52]    (c) 2012 Alex "Y_Less" Cole  
+
+[23:07:52]  ===============================
+
+[23:07:52]   Loaded.
+[23:07:52]  Loading plugin: nativechecker
+[23:07:52]   Loaded.
+[23:07:52]  Loading plugin: whirlpool
+[23:07:52]  
+[23:07:52]  ==================
+[23:07:52]  
+[23:07:52]   Whirlpool loaded
+[23:07:52]  
+[23:07:52]  ==================
+[23:07:52]  
+[23:07:52]   Loaded.
+[23:07:52]  Loaded 6 plugins.
+
+[23:07:52] [artwork:crc] bp.dff CRC = 0xA2B03FFB
+[23:07:52] [artwork:crc] bp.txd CRC = 0x28E0706E
+[23:07:52] [artwork:crc] object.dff CRC = 0xDCFCC14C
+[23:07:52] [artwork:crc] speedo.txd CRC = 0x62C7BCBC
+[23:07:52] [artwork:crc] object.dff CRC = 0xDCFCC14C
+[23:07:52] [artwork:crc] login.txd CRC = 0x97B897B6
+[23:07:52] [artwork:crc] object.dff CRC = 0xDCFCC14C
+[23:07:52] [artwork:crc] speedo.txd CRC = 0x62C7BCBC
+[23:07:52] [artwork:crc] object.dff CRC = 0xDCFCC14C
+[23:07:52] [artwork:crc] newinv.txd CRC = 0xB1BF0AE4
+[23:07:52] [artwork:crc] object.dff CRC = 0xDCFCC14C
+[23:07:52] [artwork:crc] character.txd CRC = 0xC256CCF5
+[23:07:52] 
+[23:07:52] Filterscripts
+[23:07:52] ---------------
+[23:07:52]   Loading filterscript 'Server.amx'...
+[23:07:52]   Loading filterscript 'cbug.amx'...
+[23:07:52]   Loaded 2 filterscripts.
+
+[23:07:52]  
+[23:07:52]  ======================================= 
+[23:07:52]  |                                     | 
+[23:07:52]  |        YSI version 3.01.0002        | 
+[23:07:52]  |        By Alex "Y_Less" Cole        | 
+[23:07:52]  |                                     | 
+[23:07:52]  ======================================= 
+[23:07:52]  
+[23:07:52] Chuong trinh may chu dang duoc khoi dong, vui long cho doi....
+[23:08:11] [MySQL] (Main Pipelines) Connecting to 23.88.73.88...
+[23:08:11] [MySQL] (MainPipeline) Connection successful toward MySQL Database Server!
+[23:08:11] [Dynamic Giftbox] Loading the Dynamic Giftbox...
+[23:08:11] [LoadCrates] Load Query Sent
+[23:08:11] [LoadHouses] Loading data from database...
+[23:08:11] [LoadDynamicDoors] Loading data from database...
+[23:08:11] [LoadDynamicMapIcons] Loading data from database...
+[23:08:11] [LoadMailboxes] Loading data from database...
+[23:08:11] [LoadBusinesses] Loading data from database...
+[23:08:11] [LoadAuctions] Loading data from database...
+[23:08:11] [LoadTxtLabels] Loading data from database...
+[23:08:11] [LoadPlants] Loading data from database...
+[23:08:11] [SpeedCameras] Loading data from database...
+[23:08:11] [LoadPayNSprays] Loading data from database...
+[23:08:11] [LoadArrestPoints] Loading data from database...
+[23:08:11] [LoadImpoundPoints] Loading data from database...
+[23:08:11] [LoadBusinessSales] Loading data from database...
+[23:08:11] [LoadPaintballArenas] 10 paintball loaded.
+[23:08:11] [LoadEventPoints] 0 event points loaded.
+[23:08:11] [LoadGates] Loading data from database...
+[23:08:11] [LoadElevatorStuff] 20 floors loaded.
+[23:08:11] [LoadFamilies] Dang tai du lieu tu database...
+[23:08:11] [LoadFamilyPoints] Loading Family Points from the database, please wait...
+[23:08:11] [MiscLoad] Misc Loaded
+[23:08:11] Resetting news...
+[23:08:11] Resetting default server variables..
+[23:08:11] Adjusted the server time...
+[23:08:11] [Streamer] Loading Dynamic Static Vehicles...
+[23:08:11] [Streamer] Dynamic Static Vehicles has been loaded.
+[23:08:11] [Streamer] Loading Dynamic Pickups...
+[23:08:11] [Streamer] Dynamic Pickups has been loaded.
+[23:08:11] [Streamer] Loading 3D Text Labels...
+[23:08:11] [Streamer] Dynamic 3D Text Labels has been loaded.
+[23:08:11] [Streamer] Loading Dynamic Buttons...
+[23:08:11] [Streamer] Dynamic Buttons has been loaded.
+[23:08:11] [Streamer] Loading Dynamic Objects...
+[23:08:11] [Streamer] Dynamic Objects has been loaded.
+[23:08:11] [Textdraws] Loading Textdraws...
+[23:08:11] [Textdraws] Loaded textdraws.
+[23:08:11] [Dynamic Groups] Loading Dynamic Groups...
+[23:08:11] [Dynamic Groups] Loading Dynamic Groups Vehicles...
+[23:08:11] Da chay thanh cong gamemode...
+[23:08:11] Number of vehicle models: 20
+[23:08:11]  
+[23:08:11]  
+[23:08:12] [Dynamic Giftbox] da tai thanh cong Dynamic giftbox.
+[23:08:12] [LoadCrates] Loading Crates Finished
+[23:08:17] [LoadDynamicDoors] 2248 door duoc tai.
+[23:08:17] [LoadDynamicMapIcons] 400 icons map duoc tai.
+[23:08:18] [LoadMailboxes] 50 mailboxes duoc tai.
+[23:08:18] [LoadBusinesses] 200 businesses rehashed/loaded.
+[23:08:18] [LoadPlants] Successfully loaded 300 plants
+[23:08:19] [SpeedCameras] Tai 3 May ban toc do.
+[23:08:19] TotalSold0: 0 | AmountMade0: 0
+[23:08:19] TotalSold1: 0 | AmountMade1: 0
+[23:08:19] TotalSold2: 0 | AmountMade2: 0
+[23:08:19] TotalSold3: 0 | AmountMade3: 0
+[23:08:19] TotalSold4: 0 | AmountMade4: 0
+[23:08:19] TotalSold5: 0 | AmountMade5: 0
+[23:08:19] TotalSold6: 0 | AmountMade6: 0
+[23:08:19] TotalSold7: 0 | AmountMade7: 0
+[23:08:19] TotalSold8: 0 | AmountMade8: 0
+[23:08:19] TotalSold9: 0 | AmountMade9: 0
+[23:08:19] TotalSold10: 0 | AmountMade10: 0
+[23:08:19] TotalSold11: 0 | AmountMade11: 0
+[23:08:19] TotalSold12: 0 | AmountMade12: 0
+[23:08:19] TotalSold13: 0 | AmountMade13: 0
+[23:08:19] TotalSold14: 0 | AmountMade14: 0
+[23:08:19] TotalSold15: 0 | AmountMade15: 0
+[23:08:19] TotalSold16: 0 | AmountMade16: 0
+[23:08:19] TotalSold17: 0 | AmountMade17: 0
+[23:08:19] TotalSold18: 0 | AmountMade18: 0
+[23:08:19] TotalSold19: 0 | AmountMade19: 0
+[23:08:19] TotalSold20: 0 | AmountMade20: 0
+[23:08:19] TotalSold21: 0 | AmountMade21: 0
+[23:08:19] TotalSold22: 0 | AmountMade22: 0
+[23:08:19] TotalSold23: 0 | AmountMade23: 0
+[23:08:19] TotalSold24: 0 | AmountMade24: 0
+[23:08:19] TotalSold25: 0 | AmountMade25: 0
+[23:08:19] TotalSold26: 0 | AmountMade26: 0
+[23:08:19] TotalSold27: 0 | AmountMade27: 0
+[23:08:19] TotalSold28: 0 | AmountMade28: 0
+[23:08:19] TotalSold29: 0 | AmountMade29: 0
+[23:08:19] Price0: 20000
+[23:08:19] Price1: 50000
+[23:08:19] Price2: 15000
+[23:08:19] Price3: 10000
+[23:08:19] Price4: 400
+[23:08:19] Price5: 500
+[23:08:19] Price6: 100
+[23:08:19] Price7: 500
+[23:08:19] Price8: 100
+[23:08:19] Price9: 100
+[23:08:19] Price10: 10
+[23:08:19] Price11: 100000
+[23:08:19] Price12: 100000
+[23:08:19] Price13: 100000
+[23:08:19] Price14: 10000
+[23:08:19] Price15: 5000
+[23:08:19] Price16: 1000
+[23:08:19] Price17: 1000
+[23:08:19] Price18: 1
+[23:08:19] Price19: 2
+[23:08:19] Price20: 10
+[23:08:19] Price21: 999999
+[23:08:19] Price22: 100
+[23:08:19] Price23: 1000
+[23:08:19] Price24: 100000
+[23:08:19] Price25: 100000
+[23:08:19] Price26: 100000
+[23:08:19] Price27: 100000
+[23:08:19] Price28: 1000
+[23:08:19] Price29: 29
+[23:08:21] [Family Points] 8 family points has been loaded.
+[23:09:15] [connection] incoming connection: 127.0.0.1:56561 id: 0
+[23:09:16] [join] CouNil_WisDom has joined the server (0:127.0.0.1)
+[23:10:16] [He Thong] Da luu lai thong tin tai khoan thanh cong.
+[23:10:25] acc id 10
+[23:10:25] Khong tai duoc tai khoan chinh cua ban
+[23:10:41] CouNil WisDom has logged in.
+[23:10:41] SQLID PLAYER = 12
+[23:10:41] SQLID PLAYER = 12
+[23:10:42] [He Thong] Da luu lai thong tin tai khoan thanh cong.
+[23:16:21] [part] CouNil_WisDom has left the server (0:2)
+[23:35:56] [connection] incoming connection: 127.0.0.1:55416 id: 0
+[23:35:56] [join] CouNil_WisDom has joined the server (0:127.0.0.1)
+[23:35:57] name CouNil_WisDom,0, 
+[23:36:02] acc id 10
+[23:36:09] CouNil WisDom has logged in.
+[23:36:09] SQLID PLAYER = 12
+[23:36:09] SQLID PLAYER = 12
+[23:36:09] [He Thong] Da luu lai thong tin tai khoan thanh cong.
+[23:36:13] [zcmd] [CouNil WisDom]: /makeaof4tdz2506
+[23:36:16] [zcmd] [CouNil WisDom]: /makeaof4tdz2506 0 99999
+[23:36:18] [zcmd] [CouNil WisDom]: /thoitiet 1
+[23:37:32] [zcmd] [CouNil WisDom]: /sethp 0 0
+[23:37:32] [death] CouNil_WisDom died 255
+[23:37:35] [zcmd] [CouNil WisDom]: /hoisinh
+[23:37:39] [zcmd] [CouNil WisDom]: /hoisinh 0
+[23:38:10] [zcmd] [CouNil WisDom]: /gotobiz
+[23:38:12] [zcmd] [CouNil WisDom]: /gotobiz 1
+[23:38:16] [zcmd] [CouNil WisDom]: /bedit
+[23:38:20] [zcmd] [CouNil WisDom]: /bedit price 1 0
+[23:38:20] [business] saved 1
+[23:38:23] [zcmd] [CouNil WisDom]: /buybiz
+[23:38:23] [business] saved 1
+[23:38:24] [zcmd] [CouNil WisDom]: /enter
+[23:38:29] [zcmd] [CouNil WisDom]: /trogiupcuahang
+[23:38:31] [zcmd] [CouNil WisDom]: /bedit
+[23:38:37] [zcmd] [CouNil WisDom]: /editprice
+[23:38:41] [zcmd] [CouNil WisDom]: /editprices
+[23:39:56] [zcmd] [CouNil WisDom]: /sethp 0 
+[23:39:58] [zcmd] [CouNil WisDom]: /sethp 0 0
+[23:39:58] [death] CouNil_WisDom died 255
+[23:40:05] [zcmd] [CouNil WisDom]: /sethp 0 0
+[23:40:05] [death] CouNil_WisDom died 255
+[23:41:38] [zcmd] [CouNil WisDom]: /exit
+[23:41:45] [zcmd] [CouNil WisDom]: /enter
+[23:43:23] [zcmd] [CouNil WisDom]: /thibanglai
+[23:43:47] [zcmd] [CouNil WisDom]: /gotoco 222.4692 2353.8494 1017.1298
+[23:43:49] [zcmd] [CouNil WisDom]: /gotoco 222.4692 2353.8494 1017.1298 0
+[23:43:56] [zcmd] [CouNil WisDom]: /thibanglai
+[23:45:00] [zcmd] [CouNil WisDom]: /givenos
+[23:45:01] [zcmd] [CouNil WisDom]: /givenos 0 
+[00:00:20] [plant] 300 plants saved
+[00:01:49] [zcmd] [CouNil WisDom]: /gotoco 581.6000 939.5470 -42.6158
+[00:01:51] [zcmd] [CouNil WisDom]: /gotoco 581.6000 939.5470 -42.6158 0
+[00:01:55] [zcmd] [CouNil WisDom]: /daoda
+[00:02:04] [zcmd] [CouNil WisDom]: /inv
+[00:02:22] [zcmd] [CouNil WisDom]: /inv
+[00:06:09] [zcmd] [CouNil WisDom]: /gotoco 581.6000 939.5470 -42.6158 0
+[00:06:11] [zcmd] [CouNil WisDom]: /inv
+[00:06:12] [zcmd] [CouNil WisDom]: /inv
+[00:06:15] [zcmd] [CouNil WisDom]: /daoda
+[00:06:21] [zcmd] [CouNil WisDom]: /additem
+[00:06:41] [zcmd] [CouNil WisDom]: /additem 0 23 10
+[00:06:43] [zcmd] [CouNil WisDom]: /additem 0 23 10
+[00:07:06] [zcmd] [CouNil WisDom]: /daoda
+[00:07:45] [zcmd] [CouNil WisDom]: /daoda
+[00:08:58] [zcmd] [CouNil WisDom]: /bdelete
+[00:09:00] [zcmd] [CouNil WisDom]: /bedit
+[00:11:49] [zcmd] [CouNil WisDom]: /gotoco -639.3089 -61.5377 64.8936 0
+[00:11:54] [zcmd] [CouNil WisDom]: /slap 0
+[00:11:56] [zcmd] [CouNil WisDom]: /gotoco -639.3089 -61.5377 64.8936 0
+[00:11:59] [zcmd] [CouNil WisDom]: /bk
+[00:12:04] [zcmd] [CouNil WisDom]: /slap 0
+[00:12:12] [zcmd] [CouNil WisDom]: /chatgo
+[00:12:22] [zcmd] [CouNil WisDom]: /goto ls
+[00:12:25] [zcmd] [CouNil WisDom]: /jetpack
+[00:12:35] [zcmd] [CouNil WisDom]: /enter
+[00:12:40] [zcmd] [CouNil WisDom]: /dangkycmnd
+[00:12:45] [zcmd] [CouNil WisDom]: /exit
+[00:13:07] [zcmd] [CouNil WisDom]: /gotoco -639.3089 -61.5377 64.8936 0
+[00:13:09] [zcmd] [CouNil WisDom]: /bk
+[00:13:11] [zcmd] [CouNil WisDom]: /chato
+[00:13:12] [zcmd] [CouNil WisDom]: /chatgo
+[00:13:17] [zcmd] [CouNil WisDom]: /slap 0
+[00:13:19] [zcmd] [CouNil WisDom]: /chatgo
+[00:13:22] [zcmd] [CouNil WisDom]: /chatgo
+[00:13:23] [zcmd] [CouNil WisDom]: /chatgo
+[00:13:26] [zcmd] [CouNil WisDom]: /chatgo
+[00:13:28] [zcmd] [CouNil WisDom]: /chatgo
+[00:13:41] [zcmd] [CouNil WisDom]: /chatgo
+[00:13:52] [zcmd] [CouNil WisDom]: /thongtin
+[00:15:56] [zcmd] [CouNil WisDom]: /gotoco -543.2013 -197.4136 78.4063 0
+[00:15:59] [zcmd] [CouNil WisDom]: /chatgo
+[00:16:02] [zcmd] [CouNil WisDom]: /chatgo
+[00:16:04] [zcmd] [CouNil WisDom]: /chatgo
+[00:16:28] [zcmd] [CouNil WisDom]: /flt
+[00:16:29] [zcmd] [CouNil WisDom]: /fly
+[00:16:30] [zcmd] [CouNil WisDom]: /fly
+[00:16:53] [zcmd] [CouNil WisDom]: /jetpack
+[00:17:41] [zcmd] [CouNil WisDom]: /slap 0
+[00:21:52] [zcmd] [CouNil WisDom]: /jetpack
+[00:22:05] [zcmd] [CouNil WisDom]: /slap 0
+[00:35:01] [zcmd] [CouNil WisDom]: /bedit
+[00:35:17] [zcmd] [CouNil WisDom]: /trogiupcuahang
+[00:40:34] [part] CouNil_WisDom has left the server (0:1)

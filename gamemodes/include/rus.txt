@@ -1,0 +1,6 @@
+E:\tich hop\VNRP\gamemodes\include\checkgame.pwn(9) : ïðåäóïðåæäåíèå 235: public-ôóíêöèÿ íóæäàåòñÿ â îïåðåæàþùåì îáúÿâëåíèè (èäåíòèôèêàòîð "OnPlayerConnect")
+E:\tich hop\VNRP\gamemodes\include\checkgame.pwn(22) : îøèáêà 017: íåîáúÿâëåííûé ñèìâîë "SetPVarInt"
+Pawn compiler 3.2.3664	 	 	Copyright (c) 1997-2016, ITB CompuPhase
+
+
+Îøèáîê:1.
