@@ -268,7 +268,6 @@ public OnPlayerSelectMenu(playerid,menuid,itemid,response) {
         	        if(PlayerInfo[playerid][pModel] != 16) SendErrorMessage(playerid," Ban chua mac do bao ho khong the bat dau.");	
         	        SendClientTextDraw(playerid," Ban da bat dau lam viec, hay chat cay va lay go vao kho");
         	        DeletePVar(playerid, "Chatcay_var");
-
            		}
         		case 4: {
         			if(PlayerInfo[playerid][pJob] != 30 && PlayerInfo[playerid][pJob2] != 30) return SendErrorMessage(playerid, " Ban chua phai Lam Tac."); 
@@ -318,7 +317,6 @@ public OnPlayerSelectMenu(playerid,menuid,itemid,response) {
        
         case PIZZABOY_MENU: {
         	if(!response) return HidePlayerMenu(playerid);
-        	if(GetPVarInt(playerid, "Chatcay_var") != 0) return SendErrorMessage(playerid, " Ban khong the lam viec nay."); 
         	switch(itemid) {
         		case 0: {
         			if(LamViec[playerid] == 0) {

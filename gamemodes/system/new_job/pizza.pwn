@@ -4,10 +4,11 @@
 
 new BanhPizzaInCar[MAX_PLAYERS];
 new BanhPizzaInFoot[MAX_PLAYERS];
-new PizzaCar[MAX_PLAYERS];
 new Text3D:PizzaTextInfo[MAX_PLAYERS];
 new zzstr[129];
 new TienLuongPizza[MAX_PLAYERS];
+new MonitorPizzaCar[MAX_PLAYERS];
+new TimeExitsPizzaCar[MAX_PLAYERS];
 
 new Float:pizza_postion[9][3] = {
 {1002.9375,-1418.3210,13.5831},
@@ -20,6 +21,9 @@ new Float:pizza_postion[9][3] = {
 {292.9550,-1428.6537,14.0000},
 {2332.1865,75.5173,26.6210}
 };
+
+forward MonitorPizzaCarPlayer(playerid);
+
 CMD:laybanh(playerid,params[]) {
 	if(IsPlayerInAnyVehicle(playerid)) return SendErrorMessage(playerid, " Ban khong the lam dieu nay khi o tren xe.");
 	if(BanhPizzaInFoot[playerid] == 1) return SendErrorMessage(playerid, " Ban da cam banh tren tay khong the lay them.");
@@ -62,12 +66,45 @@ stock GetNameDeliverPizza(iddeliver) {
 	}
 	return name;
 }
+
+hook OnPlayerConnect(playerid)
+{
+	PizzaCar[playerid] = INVALID_VEHICLE_ID;
+	TimeExitsPizzaCar[playerid] = 5*60; // 5 phut
+	return 1;
+}
+
+hook OnPlayerDisconnect(playerid, reason)
+{
+	DestroyVehicle(PizzaCar[playerid]);
+	PizzaCar[playerid] = INVALID_VEHICLE_ID;
+	return 1;
+}
+
+hook OnPlayerEnterVehicle(playerid, vehicleid, ispassenger)
+{
+	if(PizzaCar[playerid] == vehicleid)
+	{
+		KillTimer(MonitorPizzaCar[playerid]);
+		TimeExitsPizzaCar[playerid] = 5*60; // 5 phut
+	}
+	return 1;
+}
+
+hook OnPlayerExitVehicle(playerid, vehicleid)
+{
+	if(PizzaCar[playerid] == vehicleid)
+	{
+		MonitorPizzaCar[playerid] = SetTimerEx("MonitorPizzaCarPlayer", 1000, true, "d", playerid);
+	}
+	return 1;
+}
+
 hook OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 {
 	switch(dialogid) {
 			case PIZZABOY_MENU: {
         	if(!response) return 1;
-        	if(GetPVarInt(playerid, "Chatcay_var") != 0) return SendErrorMessage(playerid, " Ban khong the lam viec nay."); 
         	switch(listitem) {
         		case 0: {
         			if(!IsPlayerInRangeOfPoint(playerid, 5, 2098.5432,-1800.6925,13.3889)) return SendErrorMessage(playerid, " Ban khong dung gan noi lam viec Pizza."); 
@@ -151,13 +188,12 @@ hook OnPlayerEnterCheckpoint(playerid) {
         TienLuongPizza[playerid] += pizzamoney;
         format(zzstr, sizeof zzstr, "Ban da giao banh 'Pizza' thanh cong va nhan duoc '$%d' Dollar (Tien luong hien tai la: %d )", pizzamoney, TienLuongPizza[playerid]);     
         SendClientMessage(playerid,COLOR_WHITE,zzstr);
-        BanhPizzaInFoot[playerid] = 0;
         RemovePlayerAttachedObject(playerid,PIZZA_INDEX);
         SetPlayerSpecialAction(playerid, SPECIAL_ACTION_NONE);
         DeletePVar(playerid, "giaobanh_Pizza");
         DeletePVar(playerid, "postion_Pizza");
         DisablePlayerCheckpoint(playerid);	
-
+		BanhPizzaInFoot[playerid] = 0;
 		if(GetPVarInt(playerid, "giaobanh_Pizza") == 1) return 1;
 		if(LamViec[playerid] != 1) return 1;
 		new postrandom = random(9);
@@ -168,7 +204,6 @@ hook OnPlayerEnterCheckpoint(playerid) {
 		ShowPlayerDialog(playerid, DIALOG_NOTHING, DIALOG_STYLE_MSGBOX, "Thong tin cong viec - Dia diem giao banh", zzstr, "Dong", "");
 		SetPVarInt(playerid, "giaobanh_Pizza", 1);
 		SetPVarInt(playerid, "postion_Pizza", postrandom);
-
 	}
 	return 1;
 }
@@ -178,6 +213,7 @@ hook OnPlayerKeyStateChange(playerid, newkeys, oldkeys) {
     	if(newkeys == KEY_YES)
 	    { 
 	    	if(!IsPlayerInRangeOfVehicle(playerid, PizzaCar[playerid], 3)) return 1;
+			if(IsPlayerInAnyVehicle(playerid)) return 1;
             if(BanhPizzaInFoot[playerid] == 1) {
             	if(BanhPizzaInCar[playerid] >= 5)  return SendErrorMessage(playerid, " Banh Pizza tren xe da dat den gioi han (5/5).");
              	BanhPizzaInFoot[playerid] = 0;
@@ -205,4 +241,17 @@ hook OnPlayerKeyStateChange(playerid, newkeys, oldkeys) {
         }
     }
     return 1;
+}
+
+public MonitorPizzaCarPlayer(playerid)
+{
+	--TimeExitsPizzaCar[playerid];
+	if(TimeExitsPizzaCar[playerid] <= 0)
+	{
+		SendClientMessageEx(playerid, COLOR_YELLOW, "Xe Pizza cua ban da duoc thu hoi vi qua 10 phut khong su dung");
+		DestroyVehicle(PizzaCar[playerid]);
+		PizzaCar[playerid] = INVALID_VEHICLE_ID;
+		KillTimer(MonitorPizzaCar[playerid]);
+	}
+	return 1;
 }

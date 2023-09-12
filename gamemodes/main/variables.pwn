@@ -1436,7 +1436,7 @@ new bool:InfoMessage[MAX_PLAYERS] = true;
 new SafeZoneInfo[MAX_SZ][szPeace];
 new Loaded[MAX_PLAYERS];
 new npcvukhizz;
-
+new ChatGoActor;
 new HaiTraiCay;
 new ActorNV;
 new BodyguardActor;
@@ -2358,7 +2358,8 @@ new PlayerText:ShopNotice[MAX_PLAYERS];
 new ShopReminder = 1;
 
 new PlayerHoldingObject[MAX_PLAYERS][11];
-
+new PizzaCar[MAX_PLAYERS];
+new TruckerCar[MAX_PLAYERS];
 // Dynamic Gift Box Stuff
 // Note: dgGVIP = 7 Days | dgGVIPEx = 1 Month
 // Example: dgMoney[0] = Is it enabled? || dgMoney[1] = Quantity of gift available || dgMoney[2] = Quantity of money the player will receive || dgMoney[3] = Rarity Category of Item (Common, Less Common, Rare, Super Rare)

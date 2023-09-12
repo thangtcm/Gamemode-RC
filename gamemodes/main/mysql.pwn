@@ -4296,7 +4296,6 @@ public LoadTreasureInvent(playerid)
 forward GetHomeCount(playerid);
 public GetHomeCount(playerid)
 {
-	printf("SQLID PLAYER = %d", GetPlayerSQLId(playerid));
 	new string[128];
 	format(string, sizeof(string), "SELECT NULL FROM `houses` WHERE `OwnerID` = %d", GetPlayerSQLId(playerid));
 	return mysql_function_query(MainPipeline, string, true, "QueryGetCountFinish", "ii", playerid, 2);

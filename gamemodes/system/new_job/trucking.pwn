@@ -10,6 +10,10 @@
 
 
 new TruckVehicleID[MAX_PLAYERS];
+new TimeExitsTruckCar[MAX_PLAYERS];
+new MonitorTruckCar[MAX_PLAYERS];
+forward MonitorTruckCarPlayer(playerid);
+new TimeExitsTruckerCar[MAX_PLAYERS];
 new PlayerText:PizzaText[MAX_PLAYERS][3];
 new Float:PosOne[12][3] = {
 {1420.2244,1055.5012,10.8203}, // Kakagawa's Electronic Store , thiết bị điện tử
@@ -43,7 +47,6 @@ new Float:PosTwo[13][3] = {
 };
 new RandomPosTruck[MAX_PLAYERS];
 new LamViec[MAX_PLAYERS];
-new TruckerCar[MAX_PLAYERS];
 new Trailer[MAX_PLAYERS];
 /*hook OnPlayerKeyStateChange(playerid, newkeys, oldkeys) {
 	if ((newkeys & KEY_JUMP) && !(oldkeys & KEY_JUMP))
@@ -123,12 +126,45 @@ new Trailer[MAX_PLAYERS];
     }
     return 1;
 }*/
+hook OnPlayerConnect(playerid)
+{
+    LamViec[playerid] = 0;
+	TruckerCar[playerid] = INVALID_VEHICLE_ID;
+    TimeExitsTruckerCar[playerid] = 5*60; // 5 phut
+    return 1;
+}
+
+hook OnPlayerDisconnect(playerid, reason)
+{
+	DestroyVehicle(TruckerCar[playerid]);
+	TruckerCar[playerid] = INVALID_VEHICLE_ID;
+	return 1;
+}
+
+hook OnPlayerEnterVehicle(playerid, vehicleid, ispassenger)
+{
+	if(TruckerCar[playerid] == vehicleid)
+	{
+		KillTimer(MonitorTruckCar[playerid]);
+		TimeExitsTruckerCar[playerid] = 5*60; // 5 phut
+	}
+	return 1;
+}
+
+hook OnPlayerExitVehicle(playerid, vehicleid)
+{
+	if(TruckerCar[playerid] == vehicleid)
+	{
+		MonitorTruckCar[playerid] = SetTimerEx("MonitorTruckCarPlayer", 1000, true, "d", playerid);
+	}
+	return 1;
+}
+
 hook OnDialogResponse(playerid, dialogid, response, listitem, inputtext[]) 
 {
     switch(dialogid) { 
         case TRUCKER_MENU: {
             if(!response) return 1;
-            if(GetPVarInt(playerid, "Chatcay_var") != 0) return SendErrorMessage(playerid, " Ban khong the lam viec nay."); 
             switch(listitem) {
                 case 0: {
                     if(!IsPlayerInRangeOfPoint(playerid, 4,2507.7554,-2120.0732,13.5469)) return SendErrorMessage(playerid," Ban khong o gan noi lam viec truck.");
@@ -817,5 +853,18 @@ public CloseGiaoBanh(playerid)
 	TogglePlayerControllable(playerid, true);
 	ClearAnimations(playerid);
 	ApplyAnimation(playerid, "INT_HOUSE", "wash_up",4.1,0,0,0,0,0,1);
+	return 1;
+}
+
+public MonitorTruckCarPlayer(playerid)
+{
+	--TimeExitsTruckCar[playerid];
+	if(TimeExitsTruckCar[playerid] <= 0)
+	{
+		SendClientMessageEx(playerid, COLOR_YELLOW, "Xe Pizza cua ban da duoc thu hoi vi qua 10 phut khong su dung");
+		DestroyVehicle(TruckerCar[playerid]);
+		TruckerCar[playerid] = INVALID_VEHICLE_ID;
+		KillTimer(TruckerCar[playerid]);
+	}
 	return 1;
 }

@@ -45068,7 +45068,6 @@ CMD:quitjob(playerid, params[])
 			SendErrorMessage(playerid, " Co san: 1, 2 (VIP/Famed)");
 			return 1;
 		}
-
 		switch(jobid)
 		{
 		case 1:

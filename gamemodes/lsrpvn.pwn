@@ -75,7 +75,7 @@
 #include "./system/farmer.pwn"
 #include "./system/bodydame/bodydamage.pwn"
 #include "./system/vehicle/vehicle_info.pwn"
-//#include "./system/nametag.pwn"
+#include "./system/nametag.pwn"
 
 #include "./include/onplayerfishnishloading.pwn"
 #pragma disablerecursion

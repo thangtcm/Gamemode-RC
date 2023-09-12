@@ -1825,6 +1825,7 @@ public OnPlayerConnect(playerid) {
 	LoadCharacterTD(playerid);
 	HandCuff[playerid] = 0;
 	pLoopAnim[playerid] = 0;
+	PlayerInfo[playerid][pObjHop] = INVALID_OBJECT_ID;
 	for(new i = 0; i < MAX_PLAYERVEHICLES; i++) {
 		for(new m = 0; m < 20; m++)
 	    {
@@ -2282,8 +2283,8 @@ public OnPlayerConnect(playerid) {
 
 public OnPlayerDisconnect(playerid, reason)
 {
-	if(IsValidObject(PlayerInfo[playerid][pObjHop])) {
-		DestroyObject(PlayerInfo[playerid][pObjHop]);
+	if(IsValidDynamicObject(PlayerInfo[playerid][pObjHop])) {
+		DestroyDynamicObject(PlayerInfo[playerid][pObjHop]);
 	}
     Delete3DTextLabel(PlayerInfo[playerid][HopText]);
     PlayerInfo[playerid][pTraiCam] = 0;
@@ -3535,8 +3536,6 @@ public OnPlayerLeaveCheckpoint(playerid)
 
 public OnPlayerEnterCheckpoint(playerid)
 {
-
-
 	if(CP[playerid] == 252000)
  	{
 	 	CP[playerid] = 0;
@@ -8137,7 +8136,7 @@ public LoadStreamerDynamicObjects()
 	MechanicActor = CreateActor(8,1929.1703,-1767.7230,13.5469,274.9299);
     CraftActor = CreateActor(234,2200.3245,-1972.8851,13.5578,182.0481);
     npcvukhizz = CreateActor(21, -719.9512,1462.8923,-90.5046,186.2286);
-
+	ChatGoActor = CreateActor(16,-544.4698, -196.8952, 78.4063, 276.5303);
     DetectiveActor = CreateActor(249,1468.7361,-1772.3065,18.7958,359.9619);
     LuatSuActor = CreateActor(186,1493.3691,-1772.3108,18.7958,2.4686);
     ThuocPhien = CreateActor(6,2162.7639,-1676.5929,15.0859,221.5762);
@@ -8253,6 +8252,7 @@ CheckCharacterNameExist(playerid, name[])
     mysql_tquery(MainPipeline, query, "OnCheckCharacterExist", "ds", playerid, name);
 
 }
+
 forward OnCheckCharacterExist(playerid, name[]);
 public OnCheckCharacterExist(playerid, name[])
 {

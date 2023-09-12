@@ -1337,9 +1337,9 @@ CMD:datthung(playerid,params[]) {
     if(PlayerInfo[playerid][pJob] != 22 && PlayerInfo[playerid][pJob2] != 22) return SendErrorMessage(playerid," Ban khong phai la nguoi Hai Trai Cay.");
     new Float:Pos[3],string[129];
     GetPlayerPos(playerid,Pos[0],Pos[1],Pos[2]);
-    PlayerInfo[playerid][pObjHop] = CreateObject(19638, Pos[0],Pos[1],Pos[2]-1, 0,0,0,10); // tao ra hop
+    PlayerInfo[playerid][pObjHop] = CreateDynamicObject(19638, Pos[0],Pos[1],Pos[2]-1, 0,0,0,10); // tao ra hop
     format(string ,sizeof string, "Thung cam cua %s\nSo cam trong thung: %d/50\n(( Bam Y de bo cam vao thung ))", GetPlayerNameEx(playerid),PlayerInfo[playerid][pTraiCamHop]);
-    PlayerInfo[playerid][HopText] = Create3DTextLabel(string, 0xa5bbd0FF, Pos[0],Pos[1],Pos[2]-1, 10, 0, 0);
+    PlayerInfo[playerid][HopText] = CreateDynamic3DTextLabel(string, 0xa5bbd0FF, Pos[0],Pos[1],Pos[2]-1, 10, 0, 0);
     PlayerInfo[playerid][pPosHop][0] = Pos[0];
     PlayerInfo[playerid][pPosHop][1] = Pos[1];
     PlayerInfo[playerid][pPosHop][2] = Pos[2];
@@ -1352,8 +1352,8 @@ CMD:layhopz(playerid,params[]) return PlayerInfo[playerid][pHop] = 1;
 CMD:laythung(playerid,params[]) {
 	if(GetPVarInt(playerid,"CamHop") == 1) return  SendErrorMessage(playerid," Khong the thao tac.");
 	if(!IsPlayerInRangeOfPoint(playerid, 2, PlayerInfo[playerid][pPosHop][0],PlayerInfo[playerid][pPosHop][1],PlayerInfo[playerid][pPosHop][2])) return SendClientMessage(playerid, -1, "Ban khong o gan hop cam cua ban");
-    DestroyObject(PlayerInfo[playerid][pObjHop]);
-    Delete3DTextLabel(PlayerInfo[playerid][HopText]);
+    DestroyDynamicObject(PlayerInfo[playerid][pObjHop]);
+    DestroyDynamic3DTextLabel(PlayerInfo[playerid][HopText]);
     SetPlayerAttachedObject(playerid, 1, 19638, 4,0.339,  -0.421999,  0.145,  1.2,  -98.9,  82.5, 1,  1,  1);
     SetPlayerSpecialAction(playerid, SPECIAL_ACTION_CARRY);
     SetPVarInt(playerid,"CamHop",1);
@@ -1372,12 +1372,12 @@ CMD:haitraicay(playerid,params[]) {
     if(GetPVarInt(playerid, "DangHaiTr") == 1) return SendClientMessage(playerid, -1, "Ban dang hai trai cay roi");
     if(PlayerInfo[playerid][pTraiCam] == 1) return SendClientMessage(playerid, -1, "Ban khong the hai tiep nua");
     if(IsPlayerInRangeOfPoint(playerid, 10, 1937.7081,196.7023,33.2101)) {
-     //   TogglePlayerControllable(playerid, 0);
-        SetTimerEx("DangHaiTr", 15000, false,"d",playerid);
-      //  SetPVarInt(playerid, "IsFrozen", 1);
-        SetPVarInt(playerid, "DangHaiTr", 1);
-        GameTextForPlayer(playerid, "~w~Dang Hai Trai Cay", 10000, 3);
-        ApplyAnimation(playerid, "BD_FIRE", "wash_up",4.0,1,0,0,0,0,1);
+	TogglePlayerControllable(playerid, 0);
+	SetTimerEx("DangHaiTr", 10000, false,"d",playerid);
+	SetPVarInt(playerid, "IsFrozen", 1);
+	SetPVarInt(playerid, "DangHaiTr", 1);
+	GameTextForPlayer(playerid, "~w~Dang Hai Trai Cay", 10000, 3);
+	ApplyAnimation(playerid, "BD_FIRE", "wash_up",4.0,1,0,0,0,0,1);
     }
     return 1;
 }
@@ -1398,7 +1398,7 @@ CMD:adsadsbotraicay(playerid, params[]) {
     RemovePlayerAttachedObject(playerid, 1);
     format(string ,sizeof string, "Thung cam cua %s\nSo cam trong thung: %d/50\n(( Bam Y de bo cam vao thung ))", GetPlayerNameEx(playerid),PlayerInfo[playerid][pTraiCamHop]);
     ApplyAnimation(playerid,"BOMBER", "BOM_Plant",4.0,0,0,0,0,0,1);
-    Update3DTextLabelText( PlayerInfo[playerid][HopText], 0xa5bbd0FF, string);
+    UpdateDynamic3DTextLabelText( PlayerInfo[playerid][HopText], 0xa5bbd0FF, string);
     return 1;
 }
 forward DangHaiTr(playerid);
@@ -1407,8 +1407,8 @@ public DangHaiTr(playerid) {
     DeletePVar(playerid, "DangHaiTr");
     DeletePVar(playerid, "IsFrozen");
     TogglePlayerControllable(playerid, 1);
-   //   PlayerInfo[playerid][pTraiCam] += 1;
     SetPlayerAttachedObject(playerid, 1, 19574, 6,0.037,	0.063,	0.02,	0,	0,	0,	1,	1.247,	1.127);
+	SendClientMessageEx(playerid, COLOR_YELLOW, "Ban da hai trai cay xong.");
     return 1;
 }
 
@@ -1518,8 +1518,6 @@ CMD:xemthue(playerid, params[]) {
     ShowPlayerDialog(playerid, DIALOG_STYLE_LIST, DIALOG_STYLE_TABLIST_HEADERS, "Danh sach doanh nghiep no thue", str, "Chon", "Huy bo");
     return 1;
 }
-
-
 
 CMD:phone(playerid,params[]) return ShowPlayerDialog(playerid, DIALOG_PHONE, DIALOG_STYLE_LIST, "Phone - Main", "Goi dien\nNhan tin\nLog SMS\nDanh ba\nChuyen tien", "Chon", "Huy bo");
 CMD:dangkycmnd(playerid,params[]) {

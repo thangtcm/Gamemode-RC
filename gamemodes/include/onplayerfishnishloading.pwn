@@ -108,9 +108,9 @@ public OnLoadingFinish(playerid,loadingid) {
             PlayerInfo[playerid][pCash] += 2000;
             SetPlayerSpecialAction(playerid, SPECIAL_ACTION_NONE);
             RemovePlayerAttachedObject(playerid, PIZZA_INDEX);
+            ClearAnimations(playerid);
             DeletePVar(playerid, "Chatcay_var");
             DisablePlayerCheckpoint(playerid);
-            SetPVarInt(playerid, "Chatcay_var", 1);
             TogglePlayerControllable(playerid,1);
         }
         case LOAD_LAYGO: {
@@ -119,7 +119,7 @@ public OnLoadingFinish(playerid,loadingid) {
             WoodInfo[i][WoodInWoodxD] -= 1;
     
             SetPlayerSpecialAction(playerid, SPECIAL_ACTION_CARRY);
-            SetPVarInt(playerid, "Chatcay_var", 2);
+            SetPVarInt(playerid, "Chatcay_var", 1);
             SetPlayerCheckpoint(playerid, -745.2551,-115.5959,66.7408, 1);
             DeletePVar(playerid, "GoIDAAA");
             SetPlayerAttachedObject( playerid, PIZZA_INDEX, 19793, 1, 0.002953, 0.469660, -0.009797, 269.851104, 88.443557, 0.000000, 0.804894, 1.000000, 0.822361 );                      

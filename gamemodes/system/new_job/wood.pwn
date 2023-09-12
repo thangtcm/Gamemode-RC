@@ -1,6 +1,6 @@
 #include <a_samp>
 #include <YSI\y_hooks>
-
+#define JOB_WOOD 30
 #define MAX_WOOD 10
 enum Wood {
 	WoodObject,
@@ -30,77 +30,60 @@ CreateWood() {
     	WoodInfo[i][WoodObject] = CreateObject(655, WoodPostion[i][0],WoodPostion[i][1],WoodPostion[i][2]-1, 0,0,0);
     	WoodInfo[i][ObjectHealth] = 100;
     	WoodInfo[i][WoodStatus]  = 1;
-    	
     }
 }
-// case WOOD_MENU: {
-        	
-CMD:chatgo(playerid,params[]) {
-	if(CMND < 1) return SendErrorMessage(playerid,"Ban khong co CMND khong the xin viec.");
-	if(GetPVarInt(playerid, "Chatcay_var") == 0) {
-		ShowPlayerDialog(playerid, WOOD_MENU, DIALOG_STYLE_LIST, "Cong viec chat go", "Nhan viec chat go\nThay dong phuc\nBat dau lam viec\nNghi viec chat go", "Tuy chon", "Thoat");
-	}
-	else if(GetPVarInt(playerid, "Chatcay_var") != 0) {
-		ShowPlayerDialog(playerid, WOOD_MENU, DIALOG_STYLE_LIST, "Cong viec chat go", "Nhan viec chat go\nThay dong phuc\nDung lam viec\nNghi viec chat go", "Tuy chon", "Thoat");
-	}
-	
-	return 1;
+
+QuitWoodJob(playerid)
+{
+	SetPlayerSpecialAction(playerid, SPECIAL_ACTION_NONE);
+	RemovePlayerAttachedObject(playerid, PIZZA_INDEX);
+	ClearAnimations(playerid);
+	DeletePVar(playerid, "Chatcay_var");
+	DisablePlayerCheckpoint(playerid);
+	TogglePlayerControllable(playerid,1);
 }
+
 hook OnDialogResponse(playerid, dialogid, response, listitem, inputtext[]) {
 	switch(dialogid) {
-		  	case WOOD_MENU: {
+		case WOOD_MENU: {
+			if(CMND < 1) return SendErrorMessage(playerid,"Ban khong co CMND khong the xin viec.");
         	switch(listitem) {
         		case 0: {
         			if (IsPlayerInRangeOfPoint(playerid,5.0,-543.2013,-197.4136,78.4063)) {
-        				if(PlayerInfo[playerid][pJob] == 30 || PlayerInfo[playerid][pJob2] == 30) return SendErrorMessage(playerid, " Ban da lam viec Lam Tac roi.");
+        				if(PlayerInfo[playerid][pJob] == JOB_WOOD || PlayerInfo[playerid][pJob2] == JOB_WOOD) return SendErrorMessage(playerid, " Ban da lam viec Lam Tac roi.");
             			if(PlayerInfo[playerid][pJob] == 0)
                         {
                 			SendClientMessageEx(playerid, COLOR_YELLOW, " Ban da nhan cong viec lam tac thanh cong, hay thay dong phuc va bat dau lam viec.");
                 			SendClientTextDraw(playerid, "Ban da nhan viec ~y~Lam Tac~w~ hay thay dong phuc va bat dau lam viec");
-                			PlayerInfo[playerid][pJob] = 30;
+                			PlayerInfo[playerid][pJob] = JOB_WOOD;
                 			return 1;
             			}
             			if((PlayerInfo[playerid][pDonateRank] > 0 || PlayerInfo[playerid][pFamed] > 0) && PlayerInfo[playerid][pJob2] == 0 && PlayerInfo[playerid][pJob] != 30)
             			{
             				SendClientMessageEx(playerid, COLOR_YELLOW, " Ban da nhan cong viec lam tac thanh cong, hay thay dong phuc va bat dau lam viec.");
             				SendClientTextDraw(playerid, "Ban da nhan viec ~y~Lam Tac~w~ hay thay dong phuc va bat dau lam viec");
-                		    PlayerInfo[playerid][pJob2] = 30;
+                		    PlayerInfo[playerid][pJob2] = JOB_WOOD;
                 			return 1;
             			}		
         		    }
+					else
+					{
+						return SendClientMessageEx(playerid, COLOR_YELLOW, "Ban can toi vi tri xin viec /gps de tim cong viec.");
+					}
         		}
-        		case 1: {
-        			if(PlayerInfo[playerid][pJob] != 30 && PlayerInfo[playerid][pJob2] != 30) return SendErrorMessage(playerid, " Ban chua phai Lam Tac."); 
+				case 1: {
+					cmd_nghiviec(playerid,"1");
+					QuitWoodJob(playerid);
+				}
+				case 2: {
+					cmd_nghiviec(playerid,"2");
+					QuitWoodJob(playerid);
+				}
+        		case 3: {
+        			if(PlayerInfo[playerid][pJob] != JOB_WOOD && PlayerInfo[playerid][pJob2] != JOB_WOOD) return SendErrorMessage(playerid, " Ban chua phai Lam Tac."); 
         			SetPlayerSkin(playerid, 16);
         			PlayerInfo[playerid][pModel] = 16;
         			SendClientTextDraw(playerid, "Ban da thay trang phuc hay bat dau lam viec");
-        		}
-        		case 2: {
-        			if(GetPVarInt(playerid,"chatcay_var") == 0) 
-        			{
-        			    if(PlayerInfo[playerid][pJob] != 30 && PlayerInfo[playerid][pJob2] != 30) return SendErrorMessage(playerid, " Ban chua phai Lam Tac."); 
-        	            if(PlayerInfo[playerid][pModel] != 16) SendErrorMessage(playerid," Ban chua mac do bao ho khong the bat dau.");	
-        	            SendClientTextDraw(playerid," Ban da bat dau lam viec, hay chat cay va lay go vao kho");
-        	            SetPVarInt(playerid, "Chatcay_var", 1);
-        	        }
-        	        else if(GetPVarInt(playerid,"chatcay_var") != 0 ) {
-                        if(PlayerInfo[playerid][pJob] != 30 && PlayerInfo[playerid][pJob2] != 30) return SendErrorMessage(playerid, " Ban chua phai Lam Tac."); 
-        	            if(PlayerInfo[playerid][pModel] != 16) SendErrorMessage(playerid," Ban chua mac do bao ho khong the bat dau.");	
-        	            SendClientTextDraw(playerid," Ban da dung dau viec chat go");
-        	            DeletePVar(playerid, "Chatcay_var");
-        	        }	
-
-           		}
-        		case 3: {
-        			if(PlayerInfo[playerid][pJob] != 30 && PlayerInfo[playerid][pJob2] != 30) return SendErrorMessage(playerid, " Ban chua phai Lam Tac."); 
-                    if(PlayerInfo[playerid][pJob] == 30) {
-                    	PlayerInfo[playerid][pJob] = 0;
-                    }
-                    else if(PlayerInfo[playerid][pJob2] == 30) {
-                    	PlayerInfo[playerid][pJob] = 0;
-                    }
-                    DeletePVar(playerid, "Chatcay_var");
-                    SendClientTextDraw(playerid,"Ban da nghi viec thanh cong");
         		}
         	}
         }
@@ -109,7 +92,6 @@ hook OnDialogResponse(playerid, dialogid, response, listitem, inputtext[]) {
 }
 hook OnPlayerConnect(playerid) {
 	CreateWood();
-
 }
 forward ResetChatgo(playerid);
 public ResetChatgo(playerid) {
@@ -118,8 +100,28 @@ public ResetChatgo(playerid) {
 	ApplyAnimation(playerid, "CARRY", "crry_prtial", 4.0, 1, 1, 1, 0, 1);
 	return 1;
 }
+
+CMD:chatgo(playerid, params[])
+{
+	new Float:PosXACtor, Float:PosYACtor, Float:PosZACtor;
+	GetActorPos(ChatGoActor, PosXACtor, PosYACtor, PosZACtor);
+	if(IsPlayerInRangeOfPoint(playerid, 2.0, PosXACtor, PosYACtor, PosZACtor))
+	{
+		if(PlayerInfo[playerid][pJob] != JOB_WOOD && PlayerInfo[playerid][pJob2] != JOB_WOOD)
+		{
+			ShowPlayerDialog(playerid, WOOD_MENU, DIALOG_STYLE_LIST, "Cong viec", "Xin viec\nNghi viec (1)\nNghi viec (2)\nThay dong phuc", "Chon", "Huy");
+			return 1;
+		}
+		else
+		{
+			ShowPlayerDialog(playerid, WOOD_MENU, DIALOG_STYLE_LIST, "Cong viec", "Xin viec\nNghi viec (1)\nNghi viec (2)\nThay dong phuc", "Chon", "Huy");
+		}
+		return 0;
+	}
+	return 1;
+}
 hook OnPlayerKeyStateChange(playerid, newkeys, oldkeys) {
-	if(GetPVarInt(playerid, "Chatcay_var") == 1) {
+	if(PlayerInfo[playerid][pModel] == 16 && PlayerInfo[playerid][pJob] == JOB_WOOD) {
 		switch(newkeys) {
 			case KEY_YES: {
 				for(new i = 0;i<MAX_WOOD;i++ ) {
@@ -155,7 +157,7 @@ hook OnPlayerKeyStateChange(playerid, newkeys, oldkeys) {
 	return 1;
 }
 hook OnPlayerEnterCheckpoint(playerid) {
-	if(GetPVarInt(playerid, "Chatcay_var") == 2) {
+	if(GetPVarInt(playerid, "Chatcay_var") == 1) {
 		LoaderStarting(playerid, LOAD_CHATGO, "Dang chat go vao kho...", 1,4);
 		TogglePlayerControllable(playerid,0);
 	}
