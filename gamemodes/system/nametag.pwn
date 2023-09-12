@@ -129,11 +129,11 @@ public UpdateNametag()
             {
                 if(armour > 1.0)
                 {
-                    format(nametag, sizeof(nametag), "{%06x}%s{FFFFFF} (%i)", GetPlayerColor(i) >>> 8, PlayerInfo[i][pNameCode], i);
+                    format(nametag, sizeof(nametag), "{%06x}%s{FFFFFF} (%i)", GetPlayerColor(i) >>> 8, GetPlayerNameEx(i), i);
                 }
                 else
                 {
-                    format(nametag, sizeof(nametag), "{%06x}%s{FFFFFF} (%i)", GetPlayerColor(i) >>> 8, PlayerInfo[i][pNameCode], i);
+                    format(nametag, sizeof(nametag), "{%06x}%s{FFFFFF} (%i)", GetPlayerColor(i) >>> 8, GetPlayerNameEx(i), i);
                 }
                 if(playerAFK[i] != 0)
                 {
@@ -147,8 +147,7 @@ public UpdateNametag()
                     }
                 }
             }
-   //         UpdateDynamic3DTextLabelText(cNametag[i], 0xFFFFFFFF, nametag);
-            Update3DTextLabelText( Player3DText[i], 0xFFFFFFFF, nametag);
+            UpdateDynamic3DTextLabelText( Player3DText[i], 0xFFFFFFFF, nametag);
         }
     }
     return 1;
@@ -158,13 +157,10 @@ hook OnPlayerUpdate(playerid) {
 }
 
 hook OnPlayerConnect(playerid) {
-    Player3DText[playerid] = Create3DTextLabel("LoadingNameTag", 0x008080FF, 0.0, 0.0, 0.1, 40.0,GetPlayerVirtualWorld(playerid));
-    Attach3DTextLabelToPlayer(Player3DText[playerid], playerid, 0.0, 0.0, 0.1);
-	
+    Player3DText[playerid] = CreateDynamic3DTextLabel("Loading nametag...", 0x008080FF, 0.0, 0.0, 0.1, 25.0, .attachedplayer = playerid, .testlos = 1);
 }
 hook OnPlayerDisconnect(playerid, reason) {
-    
-    Delete3DTextLabel(  Player3DText[playerid] );
-	//if(IsValidDynamic3DTextLabel(cNametag[playerid]))
-   //     DestroyDynamic3DTextLabel(cNametag[playerid]);
+    if(IsValidDynamic3DTextLabel(Player3DText[playerid]))
+        DestroyDynamic3DTextLabel(Player3DText[playerid]);
+    return 1;
 }

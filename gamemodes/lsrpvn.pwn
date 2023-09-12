@@ -84,6 +84,7 @@ main() {}
 
 public OnGameModeInit()
 {
+	ShowNameTags(0);
 	print("Chuong trinh may chu dang duoc khoi dong, vui long cho doi....");
 	g_mysql_Init();
 	return 1;
