@@ -1378,9 +1378,9 @@ CMD:near(playerid, params[])
 CMD:givegun(playerid, params[])
 {
     if (PlayerInfo[playerid][pAdmin] >= 1337) {
-        new sstring[128], playa, gun;
+        new sstring[128], playa, gun, ammo;
 
-        if(sscanf(params, "ud", playa, gun)) {
+        if(sscanf(params, "udd", playa, gun, ammo)) {
             SendUsageMessage(playerid, " /givegun [player] [weaponid]");
             SendClientMessageEx(playerid, COLOR_GREEN, "_______________________________________");
             SendClientMessageEx(playerid, COLOR_GRAD4, "(1)Brass Knuckles (2)Golf Club (3)Nite Stick (4)Knife (5)Baseball Bat (6)Shovel (7)Pool Cue (8)Katana (9)Chainsaw");
@@ -1401,7 +1401,7 @@ CMD:givegun(playerid, params[])
             if(playa != INVALID_PLAYER_ID && gun <= 20 || gun >= 22)
 			{
                 PlayerInfo[playa][pAGuns][GetWeaponSlot(gun)] = gun;
-                GivePlayerValidWeapon(playa, gun, 1);
+                GivePlayerValidWeapon(playa, gun, ammo);
                 SendClientMessageEx(playerid, COLOR_GRAD1, sstring);
             }
             else if(playa != INVALID_PLAYER_ID && gun == 21)
