@@ -38138,6 +38138,38 @@ CMD:0918951443settotalcredits(playerid, params[])
 	return 1;
 }
 
+CMD:muatrangphuc(playerid, params[]) {
+	return cmd_buyclothes(playerid, params);
+}
+
+CMD:buyclothes(playerid, params[])
+{
+	new biz = InBusiness(playerid);
+
+   	if (biz == INVALID_BUSINESS_ID || Businesses[biz][bType] != BUSINESS_TYPE_CLOTHING) {
+        SendClientMessageEx(playerid, COLOR_GRAD2, "Ban khong o mot tiem quan ao!");
+        return 1;
+    }
+	if (Businesses[biz][bInventory] < 1) {
+	    SendClientMessageEx(playerid, COLOR_GRAD2, "Cua hang khong con quan ao de ban!");
+	    return 1;
+	}
+	if (!Businesses[biz][bStatus]) {
+	    SendClientMessageEx(playerid, COLOR_GRAD2, "Cua hang quan ao nay da duoc dong cua!");
+	    return 1;
+	}
+    #if defined zombiemode
+	if(zombieevent == 1 && GetPVarType(playerid, "pIsZombie")) return SendClientMessageEx(playerid, COLOR_GREY, "Zombies khong the su dung.");
+	#endif
+    new string[64];
+    format(string, sizeof(string), "Luu y: Gia ban quan ao thay doi %s", number_format(Businesses[biz][bItemPrices][0]));
+    SetPVarInt(playerid, "SkinChangeCost", Businesses[biz][bItemPrices][0]);
+	SendClientMessageEx(playerid, COLOR_YELLOW, string);
+	ShowModelSelectionMenu(playerid, SkinList, "Change your clothes.");
+	return 1;
+}
+
+
 CMD:muadochoi(playerid, params[]) {
 	return cmd_buytoys(playerid, params);
 }

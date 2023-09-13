@@ -930,7 +930,6 @@ public OnVehicleRespray(playerid, vehicleid, color1, color2)
     return 1;
 }
 
-
 public OnPlayerClickTextDraw(playerid, Text:clickedid)
 {
 	/*if(GetPVarInt(playerid,"OpenNoiThat") == 1) {
@@ -951,30 +950,6 @@ public OnPlayerClickTextDraw(playerid, Text:clickedid)
         	HideInventory(playerid);
         }
     }
-    if(GetPVarInt(playerid, "mS_ignore_next_esc") == 1) {
-		SetPVarInt(playerid, "mS_ignore_next_esc", 0);
-		return CallLocalFunction("MP_OPCTD", "ii", playerid, _:clickedid);
-	}
-   	if(GetPVarInt(playerid, "mS_list_active") == 0) return CallLocalFunction("MP_OPCTD", "ii", playerid, _:clickedid);
-
-	// Handle: They cancelled (with ESC)
-	if(clickedid == Text:INVALID_TEXT_DRAW) {
-		new listid = mS_GetPlayerCurrentListID(playerid);
-		if(listid == mS_CUSTOM_LISTID)
-		{
-			new extraid = GetPVarInt(playerid, "mS_custom_extraid");
-			mS_DestroySelectionMenu(playerid);
-			CallLocalFunction("OnPlayerModelSelectionEx", "dddd", playerid, 0, extraid, -1);
-			PlayerPlaySound(playerid, 1085, 0.0, 0.0, 0.0);
-		}
-		else
-		{
-			mS_DestroySelectionMenu(playerid);
-			CallLocalFunction("OnPlayerModelSelection", "dddd", playerid, 0, listid, -1);
-			PlayerPlaySound(playerid, 1085, 0.0, 0.0, 0.0);
-		}
-        return 1;
-	}
 	return 0;
 }
 stock GetWeaponIDWithItem(itemid) {
@@ -996,6 +971,70 @@ stock GetWeaponIDWithItem(itemid) {
 	}
 	return wpid;
 }
+public OnPlayerModelSelection(playerid, response, listid, modelid)
+{
+	if(listid == SkinList)
+	{
+		if(response)
+		{
+			if(PlayerInfo[playerid][pDonateRank] >= 2)
+			{
+				if (PlayerInfo[playerid][pModel] == modelid)
+					return SendClientMessageEx(playerid, COLOR_GREY, "Ban dang su dung skin nay.");
+
+				PlayerInfo[playerid][pModel] = modelid;
+				SetPlayerSkin(playerid, modelid);
+				return SendClientMessageEx(playerid, COLOR_YELLOW, "VIP: Ban da thay doi skin mien phi.");
+			}
+			if(IsValidSkin(modelid) == 0)
+			{
+				if(GetPVarInt(playerid, "freeSkin") == 1)
+			    {
+					SendClientMessageEx(playerid, COLOR_GREY, "Skin nay bi gioi han cho Faction hoac Family!");
+	            	ShowModelSelectionMenu(playerid, SkinList, "Thay doi skin.");
+				}
+				else {
+					SendClientMessageEx(playerid, COLOR_GREY, "That skin ID is either invalid or restricted to faction or family!");
+	            	ShowModelSelectionMenu(playerid, SkinList, "Thay doi skin.");
+				}
+			}
+			else {
+				if (PlayerInfo[playerid][pModel] == modelid)
+				{
+					return SendClientMessageEx(playerid, COLOR_GREY, "Ban dang su dung skin nay.");
+				}
+			    if(GetPVarInt(playerid, "freeSkin") == 1)
+			    {
+					PlayerInfo[playerid][pModel] = modelid;
+					SetPlayerSkin(playerid, modelid);
+					SetPVarInt(playerid, "freeSkin", 0);
+			    }
+			    else
+			    {
+			        new
+						string[128],
+						iBusiness = InBusiness(playerid);
+
+			        if(GetPlayerCash(playerid) < GetPVarInt(playerid, "SkinChangeCost")) return SendClientMessageEx(playerid, COLOR_GRAD2, "Ban khong the su dung skin nay!");
+					GameTextForPlayer(playerid, "~g~Clothes purchased!", 2000, 1);
+					PlayerInfo[playerid][pModel] = modelid;
+					SetPlayerSkin(playerid, modelid);
+
+					Businesses[iBusiness][bInventory]--;
+					Businesses[iBusiness][bTotalSales]++;
+					Businesses[iBusiness][bSafeBalance] += TaxSale(GetPVarInt(playerid, "SkinChangeCost"));
+                    GivePlayerCash(playerid, -GetPVarInt(playerid, "SkinChangeCost"));
+
+					format(string, sizeof(string), "%s (IP: %s) da mua skin %d trong %s (%d) cho %d.", GetPlayerNameEx(playerid), GetPlayerIpEx(playerid), modelid, Businesses[InBusiness(playerid)][bName],InBusiness(playerid),GetPVarInt(playerid, "SkinChangeCost"));
+					Log("logs/business.log", string);
+					DeletePVar(playerid, "SkinChangeCost");
+				}
+			}
+		}
+	}
+	return 1;
+}
+
 public OnPlayerClickPlayerTextDraw(playerid, PlayerText:playertextid)
 {	
 /*	if(GetPVarInt(playerid,"Page_") != 0) {
@@ -1121,129 +1160,6 @@ public OnPlayerClickPlayerTextDraw(playerid, PlayerText:playertextid)
             }
         }
     }
-  /*  if(GetPVarInt(playerid, "Openinventory") == 1) {
-    	for(new i = 0 ; i < 20 ; i++ ) {
-            if(playertextid == invslot_empty[playerid][i]) {
-                if(InventoryInfo[playerid][pSlot][i] != 0) {
-                    print("alo sa");
-                    ShowSelection_InventoryItem(playerid,i);
-                }
-                    
-            }     		
-    	}
-    	
-    }
-    
-    if(GetPVarInt(playerid, "Openinventory") == 2) {
-    	if(playertextid == invslot_main[playerid][5]) {
-    		if(InventoryInfo[playerid][pSlot][GetPVarInt(playerid,"SelectSlot")] == 0) return SendErrorMessage(playerid," Khong the su dung [Anti Bug Item] ");
-    		new string[500];
-    		format(string, sizeof string, "Ban co chac muon su dung vat pham nay khong?\n [-] Ten vat pham: %s\n [-] So luong hien co: %d\n [?] Thong tin vat pham: %s", GetInventoryItemName(InventoryInfo[playerid][pSlot][GetPVarInt(playerid,"SelectSlot")]),InventoryInfo[playerid][pSoLuong][InventoryInfo[playerid][pSlot][GetPVarInt(playerid,"SelectSlot")]], GetInventoryItemInfo(InventoryInfo[playerid][pSlot][GetPVarInt(playerid,"SelectSlot")]));
-    		ShowPlayerDialog(playerid,USE_PLAYERINV,DIALOG_STYLE_MSGBOX,"Thong tin",string,"Dong y","Huy");
-    		SetPVarInt(playerid, "Openinventory", 3);
-    //		Inventory_use(playerid,GetPVarInt(playerid,"SelectSlot"),InventoryInfo[playerid][pSlot][GetPVarInt(playerid,"SelectSlot")]);
-    	}
-    	if(playertextid == invslot_main[playerid][6]) {
-    		if(InventoryInfo[playerid][pSlot][GetPVarInt(playerid,"SelectSlot")] == 0) return SendErrorMessage(playerid," Khong the vut [Anti Bug Item] ");
-    		if(InventoryInfo[playerid][pSlot][GetPVarInt(playerid,"SelectSlot")] == 1) return SendErrorMessage(playerid," Vat pham nay khong the vut. ");
-    		new string[500];
-    		format(string, sizeof string, "Ban co chac muon vut bo vat pham nay khong?\n [-] Ten vat pham: %s\n [-] So luong hien co: %d\n [?] Thong tin vat pham: %s", GetInventoryItemName(InventoryInfo[playerid][pSlot][GetPVarInt(playerid,"SelectSlot")]),InventoryInfo[playerid][pSoLuong][InventoryInfo[playerid][pSlot][GetPVarInt(playerid,"SelectSlot")]], GetInventoryItemInfo(InventoryInfo[playerid][pSlot][GetPVarInt(playerid,"SelectSlot")]));
-    		ShowPlayerDialog(playerid,DROP_PLAYERINV,DIALOG_STYLE_MSGBOX,"Thong tin",string,"Dong y","Huy");
-    		SetPVarInt(playerid, "Openinventory", 3);
-    	}
-    }*/
-  
-
-	if(GetPVarInt(playerid, "mS_list_active") == 1 || (GetTickCount()-GetPVarInt(playerid, "mS_list_time")) > 200)
-	{
-		new curpage = GetPVarInt(playerid, "mS_list_page");
-
-		// Handle: cancel button
-		if(playertextid == gCancelButtonTextDrawId[playerid]) {
-			new listID = mS_GetPlayerCurrentListID(playerid);
-			if(listID == mS_CUSTOM_LISTID)
-			{
-				new extraid = GetPVarInt(playerid, "mS_custom_extraid");
-				HideModelSelectionMenu(playerid);
-				CallLocalFunction("OnPlayerModelSelectionEx", "dddd", playerid, 0, extraid, -1);
-				PlayerPlaySound(playerid, 1085, 0.0, 0.0, 0.0);
-			}
-			else
-			{
-				HideModelSelectionMenu(playerid);
-				CallLocalFunction("OnPlayerModelSelection", "dddd", playerid, 0, listID, -1);
-				PlayerPlaySound(playerid, 1085, 0.0, 0.0, 0.0);
-			}
-			return 1;
-		}
-
-		// Handle: next button
-		if(playertextid == gNextButtonTextDrawId[playerid]) {
-			new listID = mS_GetPlayerCurrentListID(playerid);
-			if(listID == mS_CUSTOM_LISTID)
-			{
-				if(curpage < (mS_GetNumberOfPagesEx(playerid) - 1)) {
-					SetPVarInt(playerid, "mS_list_page", curpage + 1);
-					mS_ShowPlayerMPs(playerid);
-					mS_UpdatePageTextDraw(playerid);
-					PlayerPlaySound(playerid, 1083, 0.0, 0.0, 0.0);
-				} else {
-					PlayerPlaySound(playerid, 1085, 0.0, 0.0, 0.0);
-				}
-			}
-			else
-			{
-				if(curpage < (mS_GetNumberOfPages(listID) - 1)) {
-					SetPVarInt(playerid, "mS_list_page", curpage + 1);
-					mS_ShowPlayerMPs(playerid);
-					mS_UpdatePageTextDraw(playerid);
-					PlayerPlaySound(playerid, 1083, 0.0, 0.0, 0.0);
-				} else {
-					PlayerPlaySound(playerid, 1085, 0.0, 0.0, 0.0);
-				}
-			}
-			return 1;
-		}
-
-		// Handle: previous button
-		if(playertextid == gPrevButtonTextDrawId[playerid]) {
-			if(curpage > 0) {
-				SetPVarInt(playerid, "mS_list_page", curpage - 1);
-				mS_ShowPlayerMPs(playerid);
-				mS_UpdatePageTextDraw(playerid);
-				PlayerPlaySound(playerid, 1084, 0.0, 0.0, 0.0);
-			} else {
-				PlayerPlaySound(playerid, 1085, 0.0, 0.0, 0.0);
-			}
-			return 1;
-		}
-
-		// Search in the array of textdraws used for the items
-		new x=0;
-		while(x != mS_SELECTION_ITEMS) {
-			if(playertextid == gSelectionItems[playerid][x]) {
-				new listID = mS_GetPlayerCurrentListID(playerid);
-				if(listID == mS_CUSTOM_LISTID)
-				{
-					PlayerPlaySound(playerid, 1083, 0.0, 0.0, 0.0);
-					new item_id = gSelectionItemsTag[playerid][x];
-					new extraid = GetPVarInt(playerid, "mS_custom_extraid");
-					HideModelSelectionMenu(playerid);
-					CallLocalFunction("OnPlayerModelSelectionEx", "dddd", playerid, 1, extraid, item_id);
-					return 1;
-				}
-				else
-				{
-					PlayerPlaySound(playerid, 1083, 0.0, 0.0, 0.0);
-					new item_id = gSelectionItemsTag[playerid][x];
-					HideModelSelectionMenu(playerid);
-					CallLocalFunction("OnPlayerModelSelection", "dddd", playerid, 1, listID, item_id);
-					return 1;
-				}
-			}
-			x++;
-		}
-	}
 	return 1;
 }
 
@@ -1979,21 +1895,10 @@ public OnPlayerConnect(playerid) {
 	for(new i = 0; i < MAX_BUSINESSSALES; i++) {
         Selected[playerid][i] = 0;
 	}
-	for(new x=0; x < mS_SELECTION_ITEMS; x++) {
-        gSelectionItems[playerid][x] = PlayerText:INVALID_TEXT_DRAW;
-	}
-
-	gHeaderTextDrawId[playerid] = PlayerText:INVALID_TEXT_DRAW;
-    gBackgroundTextDrawId[playerid] = PlayerText:INVALID_TEXT_DRAW;
-    gCurrentPageTextDrawId[playerid] = PlayerText:INVALID_TEXT_DRAW;
-    gNextButtonTextDrawId[playerid] = PlayerText:INVALID_TEXT_DRAW;
-    gPrevButtonTextDrawId[playerid] = PlayerText:INVALID_TEXT_DRAW;
-    gCancelButtonTextDrawId[playerid] = PlayerText:INVALID_TEXT_DRAW;
 
 	JustReported[playerid] = -1;
     SpoofKill[playerid] = 0;
 	KillTime[playerid] = 0;
-	gItemAt[playerid] = 0;
 	TruckUsed[playerid] = INVALID_VEHICLE_ID;
 	pDrunkLevelLast[playerid] = 0;
     pFPS[playerid] = 0;
@@ -6433,21 +6338,6 @@ public OnUnoccupiedVehicleUpdate(vehicleid, playerid, passenger_seat)
 	return 1;
 }
 */
-public OnPlayerModelSelectionEx(playerid, response, extraid, modelid)
-{
-	if(extraid == DYNAMIC_FAMILY_CLOTHES)
-	{
-		if(response)
-		{
-			PlayerInfo[playerid][pModel] = modelid;
-			SetPlayerSkin(playerid, modelid);
-			SendClientMessageEx(playerid, COLOR_LIGHTBLUE, "Ban da thay doi skin cua ban.");
-		}
-		else
-			return SendClientMessageEx(playerid, COLOR_GRAD2, "Ban da thoat lua chon  skin.");
-	}
-	return 1;
-}
 
 public OnPlayerClickPlayer(playerid, clickedplayerid, source)
 {
@@ -16084,7 +15974,7 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 			{
             	if(PlayerInfo[playerid][pDonateRank] >= 2)
             	{
-//			    	ShowModelSelectionMenu(playerid, SkinList, "Thay quan ao cua ban.");
+			    	ShowModelSelectionMenu(playerid, SkinList, "Thay quan ao cua ban.");
 			    }
 			    else
 			    {
@@ -24593,20 +24483,3 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 	return 1;
 }
 
-public OnModelSelectionResponse(playerid, extraid, index, modelid, response)
-{
-    if(extraid == TRANGPHUCNAM) {
-    	if(!response) return 1;
-        if(PlayerInfo[playerid][pCash] < 300) return SendErrorMessage(playerid," Ban khong co du tien.");
-        SetPlayerSkin(playerid,modelid);
-        PlayerInfo[playerid][pModel] = modelid;
-    }
-    if(extraid == MUANOITHATD) {
-    	if(!response) return 1;
-		SetPVarInt(playerid, "MuaNoiThat", modelid);
-		new string[129];
-		format(string, sizeof(string),"Noi that: %s\nGia tien: $%d\nID Object: %d\nBan co xac nhan mua noi that nay khong?", GetNoiThatName(modelid),GetNoiThatPrice(modelid),modelid);
-		ShowPlayerDialog(playerid, DIALOG_NOITHAT, DIALOG_STYLE_MSGBOX, "Mua noi that",string , "Dong y", "Huy bo");
-    }
-    return 1;
-}

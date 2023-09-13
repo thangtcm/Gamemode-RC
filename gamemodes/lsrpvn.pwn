@@ -16,7 +16,7 @@
 #include <crashdetect>
 #include <DialogCenter>
 #include <compat>
-#include <eSelection>
+#include <mSelection>
 #if defined SOCKET_ENABLED
 
 
