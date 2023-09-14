@@ -39,6 +39,8 @@
 #include "./system/danhba.pwn"
 #include "./system/driver_test.pwn"
 #include "./system/weapon/ammo.pwn"
+// Doi, no, suc khoe
+#include "./system/playerstatus.pwn"
 
 #include "./system/vehicle/vehicle_info.pwn"
 
