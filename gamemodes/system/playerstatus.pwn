@@ -1,8 +1,8 @@
 #include <YSI_Coding\y_hooks>
-new PlayerText: P_Progress[MAX_PLAYERS][9];
+new PlayerText: P_Progress[MAX_PLAYERS][12];
 stock ShowProgressTD(playerid)
 {
-	for(new i = 0 ; i < 9; i++)
+	for(new i = 0 ; i < 12; i++)
 	{
 		PlayerTextDrawShow(playerid, P_Progress[playerid][i]);
 	}
@@ -16,9 +16,16 @@ stock UpdateProgressStat(playerid)
 	new Float: Eat = Eatz/100.0*-20.0;
 	new Float: Drink = Drinkz/100.0*-20.0;
 	new Float: Strong = Strongz/100.0*-20.0;
+	new pstring[32];
 	PlayerTextDrawTextSize(playerid, P_Progress[playerid][1], 20.000, Eat);
 	PlayerTextDrawTextSize(playerid, P_Progress[playerid][4], 20.000, Drink);
 	PlayerTextDrawTextSize(playerid, P_Progress[playerid][7], 20.000, Strong);
+	format(pstring, sizeof(pstring), "%0.1f", Strongz);
+	PlayerTextDrawSetString(playerid, P_Progress[playerid][9], pstring);
+	format(pstring, sizeof(pstring), "%0.1f", Drinkz);
+	PlayerTextDrawSetString(playerid, P_Progress[playerid][10], pstring);
+	format(pstring, sizeof(pstring), "%0.1f", Eatz);
+	PlayerTextDrawSetString(playerid, P_Progress[playerid][11], pstring);
 	ShowProgressTD(playerid);
 	return 1;
 }
@@ -115,6 +122,36 @@ stock Load_TDProgressPlayer(playerid)
 	PlayerTextDrawBackgroundColor(playerid, P_Progress[playerid][8], 255);
 	PlayerTextDrawFont(playerid, P_Progress[playerid][8], 4);
 	PlayerTextDrawSetProportional(playerid, P_Progress[playerid][8], 1);
+	
+	P_Progress[playerid][9] = CreatePlayerTextDraw(playerid, 342.500, 413.000, "100");
+	PlayerTextDrawLetterSize(playerid, P_Progress[playerid][9], 0.200, 1.199);
+	PlayerTextDrawAlignment(playerid, P_Progress[playerid][9], 2);
+	PlayerTextDrawColor(playerid, P_Progress[playerid][9], -1);
+	PlayerTextDrawSetShadow(playerid, P_Progress[playerid][9], 1);
+	PlayerTextDrawSetOutline(playerid, P_Progress[playerid][9], 1);
+	PlayerTextDrawBackgroundColor(playerid, P_Progress[playerid][9], 255);
+	PlayerTextDrawFont(playerid, P_Progress[playerid][9], 1);
+	PlayerTextDrawSetProportional(playerid, P_Progress[playerid][9], 1);
+
+	P_Progress[playerid][10] = CreatePlayerTextDraw(playerid, 319.500, 413.000, "100");
+	PlayerTextDrawLetterSize(playerid, P_Progress[playerid][10], 0.200, 1.199);
+	PlayerTextDrawAlignment(playerid, P_Progress[playerid][10], 2);
+	PlayerTextDrawColor(playerid, P_Progress[playerid][10], -1);
+	PlayerTextDrawSetShadow(playerid, P_Progress[playerid][10], 1);
+	PlayerTextDrawSetOutline(playerid, P_Progress[playerid][10], 1);
+	PlayerTextDrawBackgroundColor(playerid, P_Progress[playerid][10], 255);
+	PlayerTextDrawFont(playerid, P_Progress[playerid][10], 1);
+	PlayerTextDrawSetProportional(playerid, P_Progress[playerid][10], 1);
+
+	P_Progress[playerid][11] = CreatePlayerTextDraw(playerid, 296.000, 413.000, "100");
+	PlayerTextDrawLetterSize(playerid, P_Progress[playerid][11], 0.200, 1.199);
+	PlayerTextDrawAlignment(playerid, P_Progress[playerid][11], 2);
+	PlayerTextDrawColor(playerid, P_Progress[playerid][11], -1);
+	PlayerTextDrawSetShadow(playerid, P_Progress[playerid][11], 1);
+	PlayerTextDrawSetOutline(playerid, P_Progress[playerid][11], 1);
+	PlayerTextDrawBackgroundColor(playerid, P_Progress[playerid][11], 255);
+	PlayerTextDrawFont(playerid, P_Progress[playerid][11], 1);
+	PlayerTextDrawSetProportional(playerid, P_Progress[playerid][11], 1);
 }
 hook OnPlayerUpdate(playerid)
 {
@@ -174,7 +211,7 @@ public StartDownEatDrinkStrong(playerid)
 		}
 		else
 		{
-			SetTimerEx("DownHP", 60000, false, "i", playerid);
+			SetTimerEx("DownHP", 120000, false, "i", playerid);
 		}
 	}
 	return 1;
@@ -207,7 +244,7 @@ public StartDownEatDrinkStrong2(playerid)
 		}
 		else
 		{
-			SetTimerEx("DownHP", 60000, false, "i", playerid);
+			SetTimerEx("DownHP", 120000, false, "i", playerid);
 		}
 	}
 	return 1;
@@ -227,13 +264,17 @@ public DownHP(playerid)
 {
 	if(GetPVarInt(playerid, #chet) != 1)
 	{
-		if(PlayerInfo[playerid][pEat] <= 1 || PlayerInfo[playerid][pDrink] <= 1)
+		if(PlayerInfo[playerid][pEat] <= 25 || PlayerInfo[playerid][pDrink] <= 25)
 		{
 			new Float: hpz;
 			GetPlayerHealth(playerid, hpz);
+			if(PlayerInfo[playerid][pEat] <= 10)
+			{
+				SetPlayerHealth(playerid, hpz-10);
+			}
 			SetPlayerHealth(playerid, hpz-10);
-			SendClientMessage(playerid, COLOR_TWRED, "SERVER: Ban da bi -10HP do khong an uong, hay an uong gi do truoc khi chet.");
-			SetTimerEx("DownHP2", 60000, false, "i", playerid);
+			SendClientMessage(playerid, COLOR_TWRED, "SERVER: Ban da bi -HP do khong an uong, hay an uong gi do truoc khi chet.");
+			SetTimerEx("DownHP2", 120000, false, "i", playerid);
 		}
 	}
 	return 1;
@@ -243,13 +284,17 @@ public DownHP2(playerid)
 {
 	if(GetPVarInt(playerid, #chet) != 1)
 	{
-		if(PlayerInfo[playerid][pEat] <= 1 || PlayerInfo[playerid][pDrink] <= 1)
+		if(PlayerInfo[playerid][pEat] <= 25 || PlayerInfo[playerid][pDrink] <= 25)
 		{
 			new Float: hpz;
 			GetPlayerHealth(playerid, hpz);
+			if(PlayerInfo[playerid][pEat] <= 10)
+			{
+				SetPlayerHealth(playerid, hpz-10);
+			}
 			SetPlayerHealth(playerid, hpz-10);
-			SendClientMessage(playerid, COLOR_TWRED, "SERVER: Ban da bi -10HP do khong an uong, hay an uong gi do truoc khi chet.");
-			SetTimerEx("DownHP", 60000, false, "i", playerid);
+			SendClientMessage(playerid, COLOR_TWRED, "SERVER: Ban da bi -HP do khong an uong, hay an uong gi do truoc khi chet.");
+			SetTimerEx("DownHP", 120000, false, "i", playerid);
 		}
 	}
 	return 1;
