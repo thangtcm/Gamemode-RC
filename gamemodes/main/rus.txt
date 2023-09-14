@@ -1,0 +1,26 @@
+C:\Users\PHATBENTRE\Desktop\Gamemode-RC\Gamemode-RC\gamemodes\main\_funcs.pwn(2) : ïðåäóïðåæäåíèå 235: public-ôóíêöèÿ íóæäàåòñÿ â îïåðåæàþùåì îáúÿâëåíèè (èäåíòèôèêàòîð "OnPlayerExitedMenu")
+C:\Users\PHATBENTRE\Desktop\Gamemode-RC\Gamemode-RC\gamemodes\main\_funcs.pwn(4) : îøèáêà 004: ôóíêöèÿ "TogglePlayerControllable" íå ðåàëèçîâàíà
+C:\Users\PHATBENTRE\Desktop\Gamemode-RC\Gamemode-RC\gamemodes\main\_funcs.pwn(7) : ïðåäóïðåæäåíèå 235: public-ôóíêöèÿ íóæäàåòñÿ â îïåðåæàþùåì îáúÿâëåíèè (èäåíòèôèêàòîð "OnPlayerObjectMoved")
+C:\Users\PHATBENTRE\Desktop\Gamemode-RC\Gamemode-RC\gamemodes\main\_funcs.pwn(11) : ïðåäóïðåæäåíèå 235: public-ôóíêöèÿ íóæäàåòñÿ â îïåðåæàþùåì îáúÿâëåíèè (èäåíòèôèêàòîð "OnPlayerRequestSpawn")
+C:\Users\PHATBENTRE\Desktop\Gamemode-RC\Gamemode-RC\gamemodes\main\_funcs.pwn(15) : ïðåäóïðåæäåíèå 235: public-ôóíêöèÿ íóæäàåòñÿ â îïåðåæàþùåì îáúÿâëåíèè (èäåíòèôèêàòîð "OnPlayerSelectedMenuRow")
+C:\Users\PHATBENTRE\Desktop\Gamemode-RC\Gamemode-RC\gamemodes\main\_funcs.pwn(20) : ïðåäóïðåæäåíèå 235: public-ôóíêöèÿ íóæäàåòñÿ â îïåðåæàþùåì îáúÿâëåíèè (èäåíòèôèêàòîð "OnPlayerLeaveRaceCheckpoint")
+C:\Users\PHATBENTRE\Desktop\Gamemode-RC\Gamemode-RC\gamemodes\main\_funcs.pwn(24) : ïðåäóïðåæäåíèå 235: public-ôóíêöèÿ íóæäàåòñÿ â îïåðåæàþùåì îáúÿâëåíèè (èäåíòèôèêàòîð "OnPlayerPickUpPickup")
+C:\Users\PHATBENTRE\Desktop\Gamemode-RC\Gamemode-RC\gamemodes\main\_funcs.pwn(28) : ïðåäóïðåæäåíèå 235: public-ôóíêöèÿ íóæäàåòñÿ â îïåðåæàþùåì îáúÿâëåíèè (èäåíòèôèêàòîð "OnRconCommand")
+C:\Users\PHATBENTRE\Desktop\Gamemode-RC\Gamemode-RC\gamemodes\main\_funcs.pwn(32) : ïðåäóïðåæäåíèå 235: public-ôóíêöèÿ íóæäàåòñÿ â îïåðåæàþùåì îáúÿâëåíèè (èäåíòèôèêàòîð "OnVehicleDamageStatusUpdate")
+C:\Users\PHATBENTRE\Desktop\Gamemode-RC\Gamemode-RC\gamemodes\main\_funcs.pwn(32) : ïðåäóïðåæäåíèå 219: ïåðåìåííàÿ "vehicleid" óæå îáúÿâëåíà â áîëåå ãëîáàëüíîé çîíå âèäèìîñòè
+C:\Users\PHATBENTRE\Desktop\Gamemode-RC\Gamemode-RC\gamemodes\main\_funcs.pwn(36) : ïðåäóïðåæäåíèå 235: public-ôóíêöèÿ íóæäàåòñÿ â îïåðåæàþùåì îáúÿâëåíèè (èäåíòèôèêàòîð "OnVehicleStreamOut")
+C:\Users\PHATBENTRE\Desktop\Gamemode-RC\Gamemode-RC\gamemodes\main\_funcs.pwn(36) : ïðåäóïðåæäåíèå 219: ïåðåìåííàÿ "vehicleid" óæå îáúÿâëåíà â áîëåå ãëîáàëüíîé çîíå âèäèìîñòè
+C:\Users\PHATBENTRE\Desktop\Gamemode-RC\Gamemode-RC\gamemodes\main\_funcs.pwn(40) : ïðåäóïðåæäåíèå 235: public-ôóíêöèÿ íóæäàåòñÿ â îïåðåæàþùåì îáúÿâëåíèè (èäåíòèôèêàòîð "OnPlayerUpdate")
+C:\Users\PHATBENTRE\Desktop\Gamemode-RC\Gamemode-RC\gamemodes\main\_funcs.pwn(69) : îøèáêà 017: íåîáúÿâëåííûé ñèìâîë "MAX_SZ"
+C:\Users\PHATBENTRE\Desktop\Gamemode-RC\Gamemode-RC\gamemodes\main\_funcs.pwn(71) : îøèáêà 017: íåîáúÿâëåííûé ñèìâîë "IsACop"
+C:\Users\PHATBENTRE\Desktop\Gamemode-RC\Gamemode-RC\gamemodes\main\_funcs.pwn(71) : ïðåäóïðåæäåíèå 215: âûðàæåíèå íå èìååò ýôôåêòà
+C:\Users\PHATBENTRE\Desktop\Gamemode-RC\Gamemode-RC\gamemodes\main\_funcs.pwn(71) : îøèáêà 001: îæèäàëñÿ òîêåí ";", íî íàéäåí "]"
+C:\Users\PHATBENTRE\Desktop\Gamemode-RC\Gamemode-RC\gamemodes\main\_funcs.pwn(71) : îøèáêà 029: íåïðàâèëüíîå âûðàæåíèå, ïðèíÿò íîëü
+C:\Users\PHATBENTRE\Desktop\Gamemode-RC\Gamemode-RC\gamemodes\main\_funcs.pwn(71) : ôàòàëüíàÿ îøèáêà 107: ñëèøêîì ìíîãî îøèáîê íà îäíîé ñòðîêå
+
+Êîìïèëÿöèÿ îñòàíîâëåíà.
+
+Pawn compiler 3.2.3664	 	 	Copyright (c) 1997-2016, ITB CompuPhase
+
+
+Îøèáîê:6.

@@ -39,7 +39,6 @@ public OnVehicleStreamOut(vehicleid, forplayerid)
 }
 public OnPlayerUpdate(playerid)
 {
-	
   
 /*	if(PlayerInfo[playerid][pNvmot] == 3 && PlayerInfo[playerid][pNvhai] == 3 && PlayerInfo[playerid][phainv] == 0)
 	{
@@ -1734,7 +1733,6 @@ public OnPlayerEnterVehicle(playerid, vehicleid, ispassenger)
 }
 
 public OnPlayerConnect(playerid) {
-
 	CreateLoading(playerid);
 	BlockChat[playerid] = 0;
 	ResetDamages(playerid);

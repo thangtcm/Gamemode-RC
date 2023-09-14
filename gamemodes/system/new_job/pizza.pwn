@@ -188,6 +188,10 @@ hook OnPlayerEnterCheckpoint(playerid) {
         TienLuongPizza[playerid] += pizzamoney;
         format(zzstr, sizeof zzstr, "Ban da giao banh 'Pizza' thanh cong va nhan duoc '$%d' Dollar (Tien luong hien tai la: %d )", pizzamoney, TienLuongPizza[playerid]);     
         SendClientMessage(playerid,COLOR_WHITE,zzstr);
+        // The luc
+        PlayerInfo[playerid][pStrong]--;
+        PlayerInfo[playerid][pEat] -= 2;
+        PlayerInfo[playerid][pDrink] -= 2;
         RemovePlayerAttachedObject(playerid,PIZZA_INDEX);
         SetPlayerSpecialAction(playerid, SPECIAL_ACTION_NONE);
         DeletePVar(playerid, "giaobanh_Pizza");
@@ -228,14 +232,18 @@ hook OnPlayerKeyStateChange(playerid, newkeys, oldkeys) {
             }
             else if(BanhPizzaInFoot[playerid] == 0) { 
             	if(BanhPizzaInCar[playerid] <= 0)  return SendErrorMessage(playerid, " Banh Pizza tren xe da het (0/5).");
-             	BanhPizzaInFoot[playerid] = 1;
-             	BanhPizzaInCar[playerid] --;
-            	SetPlayerAttachedObject( playerid, PIZZA_INDEX, 1582, 1, 0.002953, 0.469660, -0.009797, 269.851104, 88.443557, 0.000000, 0.804894, 1.000000, 0.822361 );                      
-            	SetPlayerSpecialAction(playerid, SPECIAL_ACTION_CARRY);
-            	format(zzstr, sizeof zzstr, "Ban da lay 1 Pizza tu xe, so banh ({2791FF}%d/5{ffffff})",BanhPizzaInCar[playerid]);
-           	    SendClientMessageEx(playerid,-1,zzstr);
-            	format(zzstr, sizeof zzstr, "Xe Pizza cua: {2791FF}%s{ffffff}\nBanh trong xe: {2791FF}%d/5{ffffff}", GetPlayerNameEx(playerid),BanhPizzaInCar[playerid]);
-            	Update3DTextLabelText(PizzaTextInfo[playerid], COLOR_WHITE, zzstr);
+            	if(PlayerInfo[playerid][pStrong] > 1) // The luc
+            	{
+	             	BanhPizzaInFoot[playerid] = 1;
+	             	BanhPizzaInCar[playerid] --;
+	            	SetPlayerAttachedObject( playerid, PIZZA_INDEX, 1582, 1, 0.002953, 0.469660, -0.009797, 269.851104, 88.443557, 0.000000, 0.804894, 1.000000, 0.822361 );                      
+	            	SetPlayerSpecialAction(playerid, SPECIAL_ACTION_CARRY);
+	            	format(zzstr, sizeof zzstr, "Ban da lay 1 Pizza tu xe, so banh ({2791FF}%d/5{ffffff})",BanhPizzaInCar[playerid]);
+	           	    SendClientMessageEx(playerid,-1,zzstr);
+	            	format(zzstr, sizeof zzstr, "Xe Pizza cua: {2791FF}%s{ffffff}\nBanh trong xe: {2791FF}%d/5{ffffff}", GetPlayerNameEx(playerid),BanhPizzaInCar[playerid]);
+	            	Update3DTextLabelText(PizzaTextInfo[playerid], COLOR_WHITE, zzstr);
+	            }
+	            else return SendErrorMessage(playerid, " Ban da qua met moi va khong the lam viec, hay an uong de tang the luc.");
 
             }
         }
