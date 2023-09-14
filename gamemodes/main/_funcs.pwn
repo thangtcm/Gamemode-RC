@@ -2920,13 +2920,13 @@ public OnPlayerDeath(playerid, killerid, reason)
             ABroadCast(COLOR_YELLOW , string, 1);
         }
     }
-    foreach(new i : Player)
-    {
-		if(PlayerInfo[i][pAdmin] >= 2)
-		{
-             SendDeathMessageToPlayer(i, killerid, playerid, reason);
-        }
-    }
+    // foreach(new i : Player)
+    // {
+	// 	if(PlayerInfo[i][pAdmin] >= 2)
+	// 	{
+    //          SendDeathMessageToPlayer(i, killerid, playerid, reason);
+    //     }
+    // }
 	if(IsPlayerConnected(playerid) && IsPlayerConnected(killerid))
 	{
 		SetPVarInt(playerid, "PlayerOwnASurf", 0);
@@ -4570,198 +4570,198 @@ public OnPlayerKeyStateChange(playerid, newkeys, oldkeys)
 		}
 	}
 
-    if ((newkeys & KEY_HANDBRAKE) && (newkeys & KEY_YES))
-    {
-        new Float:PosXACtor, Float:PosYACtor, Float:PosZACtor;
-        GetActorPos(npcvukhizz, PosXACtor, PosYACtor, PosZACtor);
-        if(IsPlayerInRangeOfPoint(playerid, 2.0, PosXACtor, PosYACtor, PosZACtor))
-        {
-            ShowPlayerDialog(playerid, MENUVUKHI, DIALOG_STYLE_LIST, "Weapon Factory", "Dat hang vu khi\nThanh ly vu khi\nMua vu khi thanh ly", "Chon", "Huy");
-            return 1;
-        }
-    }
-	if ((newkeys & KEY_HANDBRAKE) && (newkeys & KEY_YES))
-    {
-        new Float:PosXACtor, Float:PosYACtor, Float:PosZACtor;
-        GetActorPos(HaiTraiCay, PosXACtor, PosYACtor, PosZACtor);
-        if(IsPlayerInRangeOfPoint(playerid, 2.0, PosXACtor, PosYACtor, PosZACtor))
-        {
-            if(PlayerInfo[playerid][pJob] != 22 && PlayerInfo[playerid][pJob2] != 22)
-            {
-                ShowPlayerDialog(playerid, TRAICAYD, DIALOG_STYLE_LIST, "Cong viec", "Xin viec\nNghi viec 1\nNghi viec 2", "Chon", "Huy");
-                return 1;
-            }
-            else
-            {
-                ShowPlayerDialog(playerid, TRAICAYD, DIALOG_STYLE_LIST, "Cong Viec", "Xin viec\nNghi viec 1\nNghi viec 2\nLay thung", "Chon", "Huy");
-            }
-            return 0;
-        }
-    }
-	//Actor xin viec
-	if ((newkeys & KEY_HANDBRAKE) && (newkeys & KEY_YES))
-    {
-        new Float:PosXACtor, Float:PosYACtor, Float:PosZACtor;
-        GetActorPos(CraftActor, PosXACtor, PosYACtor, PosZACtor);
-        if(IsPlayerInRangeOfPoint(playerid, 2.0, PosXACtor, PosYACtor, PosZACtor))
-        {
-            if(PlayerInfo[playerid][pJob] != 18 && PlayerInfo[playerid][pJob2] != 18)
-            {
-       			ShowPlayerDialog(playerid, ACTOR_JOB, DIALOG_STYLE_LIST, "Cong viec", "Xin viec\nNghi viec (1)\nNghi viec (2)", "Chon", "Huy");
-				return 1;
-			}
-			else
-			{
-			    ShowPlayerDialog(playerid, ACTOR_JOB, DIALOG_STYLE_LIST, "Cong viec", "Xin viec\nNghi viec (1)\nNghi viec (2)", "Chon", "Huy");
-			}
-			return 0;
-        }
-    }
-    if ((newkeys & KEY_HANDBRAKE) && (newkeys & KEY_YES))
-    {
-        new Float:PosXACtor, Float:PosYACtor, Float:PosZACtor;
-        GetActorPos(BodyguardActor, PosXACtor, PosYACtor, PosZACtor);
-        if(IsPlayerInRangeOfPoint(playerid, 2.0, PosXACtor, PosYACtor, PosZACtor))
-        {
-            if(PlayerInfo[playerid][pJob] != 8 && PlayerInfo[playerid][pJob2] != 8)
-            {
-       			ShowPlayerDialog(playerid, ACTOR_JOB, DIALOG_STYLE_LIST, "Cong viec", "Xin viec\nNghi viec (1)\nNghi viec (2)", "Chon", "Huy");
-				return 1;
-			}
-			else
-			{
-			    ShowPlayerDialog(playerid, ACTOR_JOB, DIALOG_STYLE_LIST, "Cong viec", "Xin viec\nNghi viec (1)\nNghi viec (2)", "Chon", "Huy");
-			}
-			return 0;
-        }
-    }
-    if ((newkeys & KEY_HANDBRAKE) && (newkeys & KEY_YES))
-    {
-        new Float:PosXACtor, Float:PosYACtor, Float:PosZACtor;
-        GetActorPos(LuatSuActor, PosXACtor, PosYACtor, PosZACtor);
-        if(IsPlayerInRangeOfPoint(playerid, 2.0, PosXACtor, PosYACtor, PosZACtor))
-        {
-            if(PlayerInfo[playerid][pJob] != 2 && PlayerInfo[playerid][pJob2] != 2)
-            {
-       			ShowPlayerDialog(playerid, ACTOR_JOB, DIALOG_STYLE_LIST, "Cong viec", "Xin viec\nNghi viec (1)\nNghi viec (2)", "Chon", "Huy");
-				return 1;
-			}
-			else
-			{
-			    ShowPlayerDialog(playerid, ACTOR_JOB, DIALOG_STYLE_LIST, "Cong viec", "Xin viec\nNghi viec (1)\nNghi viec (2)", "Chon", "Huy");
-			}
-			return 0;
-        }
-    }
+    // if ((newkeys & KEY_HANDBRAKE) && (newkeys & KEY_YES))
+    // {
+    //     new Float:PosXACtor, Float:PosYACtor, Float:PosZACtor;
+    //     GetActorPos(npcvukhizz, PosXACtor, PosYACtor, PosZACtor);
+    //     if(IsPlayerInRangeOfPoint(playerid, 2.0, PosXACtor, PosYACtor, PosZACtor))
+    //     {
+    //         ShowPlayerDialog(playerid, MENUVUKHI, DIALOG_STYLE_LIST, "Weapon Factory", "Dat hang vu khi\nThanh ly vu khi\nMua vu khi thanh ly", "Chon", "Huy");
+    //         return 1;
+    //     }
+    // }
+	// if ((newkeys & KEY_HANDBRAKE) && (newkeys & KEY_YES))
+    // {
+    //     new Float:PosXACtor, Float:PosYACtor, Float:PosZACtor;
+    //     GetActorPos(HaiTraiCay, PosXACtor, PosYACtor, PosZACtor);
+    //     if(IsPlayerInRangeOfPoint(playerid, 2.0, PosXACtor, PosYACtor, PosZACtor))
+    //     {
+    //         if(PlayerInfo[playerid][pJob] != 22 && PlayerInfo[playerid][pJob2] != 22)
+    //         {
+    //             ShowPlayerDialog(playerid, TRAICAYD, DIALOG_STYLE_LIST, "Cong viec", "Xin viec\nNghi viec 1\nNghi viec 2", "Chon", "Huy");
+    //             return 1;
+    //         }
+    //         else
+    //         {
+    //             ShowPlayerDialog(playerid, TRAICAYD, DIALOG_STYLE_LIST, "Cong Viec", "Xin viec\nNghi viec 1\nNghi viec 2\nLay thung", "Chon", "Huy");
+    //         }
+    //         return 0;
+    //     }
+    // }
+	// //Actor xin viec
+	// if ((newkeys & KEY_HANDBRAKE) && (newkeys & KEY_YES))
+    // {
+    //     new Float:PosXACtor, Float:PosYACtor, Float:PosZACtor;
+    //     GetActorPos(CraftActor, PosXACtor, PosYACtor, PosZACtor);
+    //     if(IsPlayerInRangeOfPoint(playerid, 2.0, PosXACtor, PosYACtor, PosZACtor))
+    //     {
+    //         if(PlayerInfo[playerid][pJob] != 18 && PlayerInfo[playerid][pJob2] != 18)
+    //         {
+    //    			ShowPlayerDialog(playerid, ACTOR_JOB, DIALOG_STYLE_LIST, "Cong viec", "Xin viec\nNghi viec (1)\nNghi viec (2)", "Chon", "Huy");
+	// 			return 1;
+	// 		}
+	// 		else
+	// 		{
+	// 		    ShowPlayerDialog(playerid, ACTOR_JOB, DIALOG_STYLE_LIST, "Cong viec", "Xin viec\nNghi viec (1)\nNghi viec (2)", "Chon", "Huy");
+	// 		}
+	// 		return 0;
+    //     }
+    // }
+    // if ((newkeys & KEY_HANDBRAKE) && (newkeys & KEY_YES))
+    // {
+    //     new Float:PosXACtor, Float:PosYACtor, Float:PosZACtor;
+    //     GetActorPos(BodyguardActor, PosXACtor, PosYACtor, PosZACtor);
+    //     if(IsPlayerInRangeOfPoint(playerid, 2.0, PosXACtor, PosYACtor, PosZACtor))
+    //     {
+    //         if(PlayerInfo[playerid][pJob] != 8 && PlayerInfo[playerid][pJob2] != 8)
+    //         {
+    //    			ShowPlayerDialog(playerid, ACTOR_JOB, DIALOG_STYLE_LIST, "Cong viec", "Xin viec\nNghi viec (1)\nNghi viec (2)", "Chon", "Huy");
+	// 			return 1;
+	// 		}
+	// 		else
+	// 		{
+	// 		    ShowPlayerDialog(playerid, ACTOR_JOB, DIALOG_STYLE_LIST, "Cong viec", "Xin viec\nNghi viec (1)\nNghi viec (2)", "Chon", "Huy");
+	// 		}
+	// 		return 0;
+    //     }
+    // }
+    // if ((newkeys & KEY_HANDBRAKE) && (newkeys & KEY_YES))
+    // {
+    //     new Float:PosXACtor, Float:PosYACtor, Float:PosZACtor;
+    //     GetActorPos(LuatSuActor, PosXACtor, PosYACtor, PosZACtor);
+    //     if(IsPlayerInRangeOfPoint(playerid, 2.0, PosXACtor, PosYACtor, PosZACtor))
+    //     {
+    //         if(PlayerInfo[playerid][pJob] != 2 && PlayerInfo[playerid][pJob2] != 2)
+    //         {
+    //    			ShowPlayerDialog(playerid, ACTOR_JOB, DIALOG_STYLE_LIST, "Cong viec", "Xin viec\nNghi viec (1)\nNghi viec (2)", "Chon", "Huy");
+	// 			return 1;
+	// 		}
+	// 		else
+	// 		{
+	// 		    ShowPlayerDialog(playerid, ACTOR_JOB, DIALOG_STYLE_LIST, "Cong viec", "Xin viec\nNghi viec (1)\nNghi viec (2)", "Chon", "Huy");
+	// 		}
+	// 		return 0;
+    //     }
+    // }
   
-    if ((newkeys & KEY_HANDBRAKE) && (newkeys & KEY_YES))
-    {
-        new Float:PosXACtor, Float:PosYACtor, Float:PosZACtor;
-        GetActorPos(ThuocPhien, PosXACtor, PosYACtor, PosZACtor);
-        if(IsPlayerInRangeOfPoint(playerid, 2.0, PosXACtor, PosYACtor, PosZACtor))
-        {
-            if(PlayerInfo[playerid][pJob] != 4 && PlayerInfo[playerid][pJob2] != 4)
-            {
-       			ShowPlayerDialog(playerid, ACTOR_JOB, DIALOG_STYLE_LIST, "Cong viec", "Xin viec\nNghi viec (1)\nNghi viec (2)", "Chon", "Huy");
-				return 1;
-			}
-			else
-			{
-			    ShowPlayerDialog(playerid, ACTOR_JOB, DIALOG_STYLE_LIST, "Cong viec", "Xin viec\nNghi viec (1)\nNghi viec (2)", "Chon", "Huy");
-			}
-			return 0;
-        }
-    }
-    if ((newkeys & KEY_HANDBRAKE) && (newkeys & KEY_YES))
-    {
-        new Float:PosXACtor, Float:PosYACtor, Float:PosZACtor;
-        GetActorPos(MaTuy, PosXACtor, PosYACtor, PosZACtor);
-        if(IsPlayerInRangeOfPoint(playerid, 2.0, PosXACtor, PosYACtor, PosZACtor))
-        {
-            if(PlayerInfo[playerid][pJob] != 14 && PlayerInfo[playerid][pJob2] != 14)
-            {
-       			ShowPlayerDialog(playerid, ACTOR_JOB, DIALOG_STYLE_LIST, "Cong viec", "Xin viec\nNghi viec (1)\nNghi viec (2)", "Chon", "Huy");
-				return 1;
-			}
-			else
-			{
-			    ShowPlayerDialog(playerid, ACTOR_JOB, DIALOG_STYLE_LIST, "Cong viec", "Xin viec\nNghi viec (1)\nNghi viec (2)", "Chon", "Huy");
-			}
-			return 0;
-        }
-    }
-    if ((newkeys & KEY_HANDBRAKE) && (newkeys & KEY_YES))
-    {
-        new Float:PosXACtor, Float:PosYACtor, Float:PosZACtor;
-        GetActorPos(TaxiActor, PosXACtor, PosYACtor, PosZACtor);
-        if(IsPlayerInRangeOfPoint(playerid, 2.0, PosXACtor, PosYACtor, PosZACtor))
-        {
-            if(PlayerInfo[playerid][pJob] != 17 && PlayerInfo[playerid][pJob2] != 17)
-            {
-       			ShowPlayerDialog(playerid, ACTOR_JOB, DIALOG_STYLE_LIST, "Cong viec", "Xin viec\nNghi viec (1)\nNghi viec (2)", "Chon", "Huy");
-				return 1;
-			}
-			else
-			{
-			    ShowPlayerDialog(playerid, ACTOR_JOB, DIALOG_STYLE_LIST, "Cong viec", "Xin viec\nNghi viec (1)\nNghi viec (2)", "Chon", "Huy");
-			}
-			return 0;
-        }
-    }
-    if ((newkeys & KEY_HANDBRAKE) && (newkeys & KEY_YES))
-    {
-        new Float:PosXACtor, Float:PosYACtor, Float:PosZACtor;
-        GetActorPos(BanVuKhi, PosXACtor, PosYACtor, PosZACtor);
-        if(IsPlayerInRangeOfPoint(playerid, 2.0, PosXACtor, PosYACtor, PosZACtor))
-        {
-            if(PlayerInfo[playerid][pJob] != 9 && PlayerInfo[playerid][pJob2] != 9)
-            {
-       			ShowPlayerDialog(playerid, ACTOR_JOB, DIALOG_STYLE_LIST, "Cong viec", "Xin viec\nNghi viec (1)\nNghi viec (2)", "Chon", "Huy");
-				return 1;
-			}
-			else
-			{
-			    ShowPlayerDialog(playerid, ACTOR_JOB, DIALOG_STYLE_LIST, "Cong viec", "Xin viec\nNghi viec (1)\nNghi viec (2)", "Chon", "Huy");
-			}
-			return 0;
-        }
-    }
-	if ((newkeys & KEY_HANDBRAKE) && (newkeys & KEY_YES))
-    {
-        new Float:PosXACtor, Float:PosYACtor, Float:PosZACtor;
-        GetActorPos(DetectiveActor, PosXACtor, PosYACtor, PosZACtor);
-        if(IsPlayerInRangeOfPoint(playerid, 2.0, PosXACtor, PosYACtor, PosZACtor))
-        {
-            if(PlayerInfo[playerid][pJob] != 1 && PlayerInfo[playerid][pJob2] != 1)
-            {
-       			ShowPlayerDialog(playerid, ACTOR_JOB, DIALOG_STYLE_LIST, "Cong viec", "Xin viec\nNghi viec (1)\nNghi viec (2)", "Chon", "Huy");
-				return 1;
-			}
-			else
-			{
-			    ShowPlayerDialog(playerid, ACTOR_JOB, DIALOG_STYLE_LIST, "Cong viec", "Xin viec\nNghi viec (1)\nNghi viec (2)", "Chon", "Huy");
-			}
-			return 0; // 1930.1753,-1767.7589,13.5469
-        }
-    }
-	if ((newkeys & KEY_HANDBRAKE) && (newkeys & KEY_YES))
-    {
-        new Float:PosXACtor, Float:PosYACtor, Float:PosZACtor;
-        GetActorPos(MechanicActor, PosXACtor, PosYACtor, PosZACtor);
-        if(IsPlayerInRangeOfPoint(playerid, 2.0, PosXACtor, PosYACtor, PosZACtor))
-        {
-            if(PlayerInfo[playerid][pJob] != 7 && PlayerInfo[playerid][pJob2] != 7)
-            {
-       			ShowPlayerDialog(playerid, ACTOR_JOB, DIALOG_STYLE_LIST, "Cong viec", "Xin viec\nNghi viec (1)\nNghi viec (2)", "Chon", "Huy");
-				return 1;
-			}
-			else
-			{
-			    ShowPlayerDialog(playerid, ACTOR_JOB, DIALOG_STYLE_LIST, "Cong viec", "Xin viec\nNghi viec (1)\nNghi viec (2)", "Chon", "Huy");
-			}
-			return 0;
-        }
-    }
+    // if ((newkeys & KEY_HANDBRAKE) && (newkeys & KEY_YES))
+    // {
+    //     new Float:PosXACtor, Float:PosYACtor, Float:PosZACtor;
+    //     GetActorPos(ThuocPhien, PosXACtor, PosYACtor, PosZACtor);
+    //     if(IsPlayerInRangeOfPoint(playerid, 2.0, PosXACtor, PosYACtor, PosZACtor))
+    //     {
+    //         if(PlayerInfo[playerid][pJob] != 4 && PlayerInfo[playerid][pJob2] != 4)
+    //         {
+    //    			ShowPlayerDialog(playerid, ACTOR_JOB, DIALOG_STYLE_LIST, "Cong viec", "Xin viec\nNghi viec (1)\nNghi viec (2)", "Chon", "Huy");
+	// 			return 1;
+	// 		}
+	// 		else
+	// 		{
+	// 		    ShowPlayerDialog(playerid, ACTOR_JOB, DIALOG_STYLE_LIST, "Cong viec", "Xin viec\nNghi viec (1)\nNghi viec (2)", "Chon", "Huy");
+	// 		}
+	// 		return 0;
+    //     }
+    // }
+    // if ((newkeys & KEY_HANDBRAKE) && (newkeys & KEY_YES))
+    // {
+    //     new Float:PosXACtor, Float:PosYACtor, Float:PosZACtor;
+    //     GetActorPos(MaTuy, PosXACtor, PosYACtor, PosZACtor);
+    //     if(IsPlayerInRangeOfPoint(playerid, 2.0, PosXACtor, PosYACtor, PosZACtor))
+    //     {
+    //         if(PlayerInfo[playerid][pJob] != 14 && PlayerInfo[playerid][pJob2] != 14)
+    //         {
+    //    			ShowPlayerDialog(playerid, ACTOR_JOB, DIALOG_STYLE_LIST, "Cong viec", "Xin viec\nNghi viec (1)\nNghi viec (2)", "Chon", "Huy");
+	// 			return 1;
+	// 		}
+	// 		else
+	// 		{
+	// 		    ShowPlayerDialog(playerid, ACTOR_JOB, DIALOG_STYLE_LIST, "Cong viec", "Xin viec\nNghi viec (1)\nNghi viec (2)", "Chon", "Huy");
+	// 		}
+	// 		return 0;
+    //     }
+    // }
+    // if ((newkeys & KEY_HANDBRAKE) && (newkeys & KEY_YES))
+    // {
+    //     new Float:PosXACtor, Float:PosYACtor, Float:PosZACtor;
+    //     GetActorPos(TaxiActor, PosXACtor, PosYACtor, PosZACtor);
+    //     if(IsPlayerInRangeOfPoint(playerid, 2.0, PosXACtor, PosYACtor, PosZACtor))
+    //     {
+    //         if(PlayerInfo[playerid][pJob] != 17 && PlayerInfo[playerid][pJob2] != 17)
+    //         {
+    //    			ShowPlayerDialog(playerid, ACTOR_JOB, DIALOG_STYLE_LIST, "Cong viec", "Xin viec\nNghi viec (1)\nNghi viec (2)", "Chon", "Huy");
+	// 			return 1;
+	// 		}
+	// 		else
+	// 		{
+	// 		    ShowPlayerDialog(playerid, ACTOR_JOB, DIALOG_STYLE_LIST, "Cong viec", "Xin viec\nNghi viec (1)\nNghi viec (2)", "Chon", "Huy");
+	// 		}
+	// 		return 0;
+    //     }
+    // }
+    // if ((newkeys & KEY_HANDBRAKE) && (newkeys & KEY_YES))
+    // {
+    //     new Float:PosXACtor, Float:PosYACtor, Float:PosZACtor;
+    //     GetActorPos(BanVuKhi, PosXACtor, PosYACtor, PosZACtor);
+    //     if(IsPlayerInRangeOfPoint(playerid, 2.0, PosXACtor, PosYACtor, PosZACtor))
+    //     {
+    //         if(PlayerInfo[playerid][pJob] != 9 && PlayerInfo[playerid][pJob2] != 9)
+    //         {
+    //    			ShowPlayerDialog(playerid, ACTOR_JOB, DIALOG_STYLE_LIST, "Cong viec", "Xin viec\nNghi viec (1)\nNghi viec (2)", "Chon", "Huy");
+	// 			return 1;
+	// 		}
+	// 		else
+	// 		{
+	// 		    ShowPlayerDialog(playerid, ACTOR_JOB, DIALOG_STYLE_LIST, "Cong viec", "Xin viec\nNghi viec (1)\nNghi viec (2)", "Chon", "Huy");
+	// 		}
+	// 		return 0;
+    //     }
+    // }
+	// if ((newkeys & KEY_HANDBRAKE) && (newkeys & KEY_YES))
+    // {
+    //     new Float:PosXACtor, Float:PosYACtor, Float:PosZACtor;
+    //     GetActorPos(DetectiveActor, PosXACtor, PosYACtor, PosZACtor);
+    //     if(IsPlayerInRangeOfPoint(playerid, 2.0, PosXACtor, PosYACtor, PosZACtor))
+    //     {
+    //         if(PlayerInfo[playerid][pJob] != 1 && PlayerInfo[playerid][pJob2] != 1)
+    //         {
+    //    			ShowPlayerDialog(playerid, ACTOR_JOB, DIALOG_STYLE_LIST, "Cong viec", "Xin viec\nNghi viec (1)\nNghi viec (2)", "Chon", "Huy");
+	// 			return 1;
+	// 		}
+	// 		else
+	// 		{
+	// 		    ShowPlayerDialog(playerid, ACTOR_JOB, DIALOG_STYLE_LIST, "Cong viec", "Xin viec\nNghi viec (1)\nNghi viec (2)", "Chon", "Huy");
+	// 		}
+	// 		return 0; // 1930.1753,-1767.7589,13.5469
+    //     }
+    // }
+	// if ((newkeys & KEY_HANDBRAKE) && (newkeys & KEY_YES))
+    // {
+    //     new Float:PosXACtor, Float:PosYACtor, Float:PosZACtor;
+    //     GetActorPos(MechanicActor, PosXACtor, PosYACtor, PosZACtor);
+    //     if(IsPlayerInRangeOfPoint(playerid, 2.0, PosXACtor, PosYACtor, PosZACtor))
+    //     {
+    //         if(PlayerInfo[playerid][pJob] != 7 && PlayerInfo[playerid][pJob2] != 7)
+    //         {
+    //    			ShowPlayerDialog(playerid, ACTOR_JOB, DIALOG_STYLE_LIST, "Cong viec", "Xin viec\nNghi viec (1)\nNghi viec (2)", "Chon", "Huy");
+	// 			return 1;
+	// 		}
+	// 		else
+	// 		{
+	// 		    ShowPlayerDialog(playerid, ACTOR_JOB, DIALOG_STYLE_LIST, "Cong viec", "Xin viec\nNghi viec (1)\nNghi viec (2)", "Chon", "Huy");
+	// 		}
+	// 		return 0;
+    //     }
+    // }
     if(newkeys & KEY_WALK) {
     	cmd_enter(playerid,"");
     	cmd_exit(playerid,"");
@@ -6939,7 +6939,7 @@ forward LoadStreamerStaticVehicles();
 public LoadStreamerStaticVehicles()
 {
 
-	ActorNV = CreateActor(2,-2415.4856,477.7157,29.8328,26.0032);
+	//ActorNV = CreateActor(2,-2415.4856,477.7157,29.8328,26.0032);
 	
 
 	
@@ -8021,18 +8021,18 @@ public LoadStreamerDynamicObjects()
 	VaultObjects[7] = CreateDynamicObject(2922, 2140.361, 1626.826, 993.978, 0.000, 0.000, 180.000, VAULT_VIRTUALWORLD); // timelock
 	
 	// Actor
-	HaiTraiCay = CreateActor(158,1942.9154,163.8909,37.2813,340.1654);
-	BodyguardActor = CreateActor(93,2227.6780,-1718.1304,13.5162,83.4027);
-	MechanicActor = CreateActor(8,1929.1703,-1767.7230,13.5469,274.9299);
-    CraftActor = CreateActor(234,2200.3245,-1972.8851,13.5578,182.0481);
-    npcvukhizz = CreateActor(21, -719.9512,1462.8923,-90.5046,186.2286);
-	ChatGoActor = CreateActor(16,-544.4698, -196.8952, 78.4063, 276.5303);
-    DetectiveActor = CreateActor(249,1468.7361,-1772.3065,18.7958,359.9619);
-    LuatSuActor = CreateActor(186,1493.3691,-1772.3108,18.7958,2.4686);
-    ThuocPhien = CreateActor(6,2162.7639,-1676.5929,15.0859,221.5762);
-    BanVuKhi = CreateActor(47,1366.3973,-1275.0493,13.5469,91.3734);
-	TaxiActor = CreateActor(255,1741.5220,-1863.6914,13.5748,358.9626);
-	MaTuy = CreateActor(66,2354.2781,-1169.4747,28.0157,3.0360);
+	// HaiTraiCay = CreateActor(158,1942.9154,163.8909,37.2813,340.1654);
+	// BodyguardActor = CreateActor(93,2227.6780,-1718.1304,13.5162,83.4027);
+	// MechanicActor = CreateActor(8,1929.1703,-1767.7230,13.5469,274.9299);
+    // CraftActor = CreateActor(234,2200.3245,-1972.8851,13.5578,182.0481);
+    // npcvukhizz = CreateActor(21, -719.9512,1462.8923,-90.5046,186.2286);
+	// ChatGoActor = CreateActor(16,-544.4698, -196.8952, 78.4063, 276.5303);
+    // DetectiveActor = CreateActor(249,1468.7361,-1772.3065,18.7958,359.9619);
+    // LuatSuActor = CreateActor(186,1493.3691,-1772.3108,18.7958,2.4686);
+    // ThuocPhien = CreateActor(6,2162.7639,-1676.5929,15.0859,221.5762);
+    // BanVuKhi = CreateActor(47,1366.3973,-1275.0493,13.5469,91.3734);
+	// TaxiActor = CreateActor(255,1741.5220,-1863.6914,13.5748,358.9626);
+	// MaTuy = CreateActor(66,2354.2781,-1169.4747,28.0157,3.0360);
 
 
 	/* SAAS CARRIER */

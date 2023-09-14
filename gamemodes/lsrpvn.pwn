@@ -67,7 +67,7 @@
 #include "./main/mysql.pwn"
 //#include "./system/login.pwn"
 //#include "./system/register.pwn"
-#include "./system/new_job/trucking.pwn"
+//#include "./system/new_job/trucking.pwn"
 #include "./system/new_job/pizza.pwn"
 //#include "./system/new_job/daoda.pwn"  bảo trì
 #include "./system/new_job/wood.pwn"

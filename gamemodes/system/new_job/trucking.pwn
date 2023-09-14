@@ -46,7 +46,6 @@ new Float:PosTwo[13][3] = {
 {2230.3364,63.2628,26.4844,}
 };
 new RandomPosTruck[MAX_PLAYERS];
-new LamViec[MAX_PLAYERS];
 new Trailer[MAX_PLAYERS];
 /*hook OnPlayerKeyStateChange(playerid, newkeys, oldkeys) {
 	if ((newkeys & KEY_JUMP) && !(oldkeys & KEY_JUMP))

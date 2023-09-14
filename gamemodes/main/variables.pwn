@@ -1693,6 +1693,7 @@ new Text:BFText;
 new Text:PriorityReport[MAX_PLAYERS];
 new Text3D:veicolo_callsign_testo[MAX_VEHICLES];
 new veicolo_callsign_status[MAX_VEHICLES];
+new LamViec[MAX_PLAYERS];
 
 // Sobeit Check Variable
 new sobeitCheckvar[MAX_PLAYERS];
