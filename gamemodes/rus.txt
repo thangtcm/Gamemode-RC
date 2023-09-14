@@ -1,3 +1,4 @@
+./main/mysql.pwn(3093) : èäåíòèôèêàòîðó ïðèñâîåíî çíà÷åíèå, íî îí íå èñïîëüçóåòñÿ: "str"
 ./system/farmer.pwn(245) : íåïðàâèëüíàÿ òàáóëÿöèÿ
 ./main/variables.pwn(1446) : èäåíòèôèêàòîð íå èñïîëüçóåòñÿ: "BanVuKhi"
 ./main/variables.pwn(1442) : èäåíòèôèêàòîð íå èñïîëüçóåòñÿ: "BodyguardActor"
@@ -10,6 +11,7 @@
 ./main/variables.pwn(1443) : èäåíòèôèêàòîð íå èñïîëüçóåòñÿ: "TaxiActor"
 ./main/variables.pwn(1445) : èäåíòèôèêàòîð íå èñïîëüçóåòñÿ: "ThuocPhien"
 ./main/variables.pwn(2350) : èäåíòèôèêàòîð íå èñïîëüçóåòñÿ: "TruckerCar"
+./system/inventory/inventory.pwn(75) : èäåíòèôèêàòîð íå èñïîëüçóåòñÿ: "g_aInventoryItems"
 ./main/variables.pwn(1438) : èäåíòèôèêàòîð íå èñïîëüçóåòñÿ: "npcvukhizz"
 Pawn compiler 3.2.3664	 	 	Copyright (c) 1997-2016, ITB CompuPhase
 

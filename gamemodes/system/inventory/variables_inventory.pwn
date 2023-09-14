@@ -5,19 +5,19 @@
 
 
 // player inv
-enum player_inventory {
-	pSlot[MAX_INVENTORY_SLOT],
-	pSoLuong[MAX_INVENTORY_ITEM],
-}
-new InventoryInfo[MAX_PLAYERS][player_inventory];
+// enum player_inventory {
+// 	pSlot[MAX_INVENTORY_SLOT],
+// 	pSoLuong[MAX_INVENTORY_ITEM],
+// }
+// new InventoryInfo[MAX_PLAYERS][player_inventory];
 
 
 // car inv
-enum invpvinfo {
-	pSlot[MAX_INVENTORY_SLOT],
-	pSoLuong[MAX_INVENTORY_ITEM],
-}
-new VehicleInventory[MAX_PLAYERS][MAX_PLAYERVEHICLES][invpvinfo];
+// enum invpvinfo {
+// 	pSlot[MAX_INVENTORY_SLOT],
+// 	pSoLuong[MAX_INVENTORY_ITEM],
+// }
+// new VehicleInventory[MAX_PLAYERS][MAX_PLAYERVEHICLES][invpvinfo];
 
 
 enum ItemObj {

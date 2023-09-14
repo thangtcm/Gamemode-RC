@@ -5427,12 +5427,12 @@ CMD:anetstats(playerid, params[])
 	return 1;
 }
 
-CMD:inv(playerid, params[]) {
-	return cmd_invz(playerid, params);
-}
-CMD:tuido(playerid, params[]) {
-	return cmd_invz(playerid, params);
-}
+// CMD:inv(playerid, params[]) {
+// 	return cmd_invz(playerid, params);
+// }
+// CMD:tuido(playerid, params[]) {
+// 	return cmd_invz(playerid, params);
+//}
 CMD:invzz(playerid, params[])
 {
 	if(gPlayerLogged{playerid} != 0) ShowInventory(playerid, playerid);

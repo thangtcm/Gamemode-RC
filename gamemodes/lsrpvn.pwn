@@ -44,8 +44,9 @@
 
 #include "./main/functions.pwn"
 
-#include "./system/inventory/player_inventory.pwn"
-#include "./system/inventory/car_inventory.pwn"
+//#include "./system/inventory/player_inventory.pwn"
+//#include "./system/inventory/car_inventory.pwn"
+#include "./system/inventory/inventory.pwn"
 #include "./system/speedo.pwn"
 #include "./system/gps_system.pwn"
 

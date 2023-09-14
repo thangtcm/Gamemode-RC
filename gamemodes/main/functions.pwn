@@ -13459,7 +13459,7 @@ stock GivePlayerStoreItem(playerid, type, business, item, price)
 		{
 			if(PlayerInfo[playerid][pGPS] == 0) {
 				PlayerInfo[playerid][pGPS] = 1;
-				AddItemInventory(playerid,22,1);
+				//AddItemInventory(playerid,22,1);
 
 				SendClientMessageEx(playerid, COLOR_WHITE, "Ban da mua GPS thanh cong, su dung /inv > GPS");
 			}

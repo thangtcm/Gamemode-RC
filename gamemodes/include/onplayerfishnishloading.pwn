@@ -74,22 +74,22 @@ public OnLoadingFinish(playerid,loadingid) {
             switch(random(100)) {
                 case 0..40: SendClientTextDraw(playerid, "Ban khong dao duoc gi");
                 case 41..79: {
-                    AddItemInventory(playerid,24,1);
+                    //AddItemInventory(playerid,24,1);
                     SendClientTextDraw(playerid, "Ban dao duoc 1 ~y~quang sat");
                     SendClientMessageEx(playerid,-1, "Ban da dao duoc 1 {1c1b1a}Quang sat");
                 }
                 case 80..89: {
-                    AddItemInventory(playerid,25,1);
+                    //AddItemInventory(playerid,25,1);
                     SendClientTextDraw(playerid, "Ban dao duoc 1 ~y~quang dong");
                     SendClientMessageEx(playerid,-1,"Ban da dao duoc 1 {ee8721}Quang dong");
                 }
                 case 90..95: {
-                    AddItemInventory(playerid,26,1);
+                    //AddItemInventory(playerid,26,1);
                     SendClientTextDraw(playerid, "Ban dao duoc 1 ~y~quang bac");
                     SendClientMessageEx(playerid,-1,"Ban da dao duoc 1 {81e3dc}Quang bac");
                 }
                 case 96..99: {
-                    AddItemInventory(playerid,27,1);
+                    //AddItemInventory(playerid,27,1);
                     SendClientTextDraw(playerid, "Ban dao duoc 1 ~y~quang vang");
                     SendClientMessageEx(playerid,-1,"Ban da dao duoc 1 {AB752D}Quang vang");
                 }
