@@ -402,7 +402,7 @@ public OnQueryFinish(resultid, extraid, handleid)
 					cache_get_field_content(row,  "Phonebook", szResult, MainPipeline); PlayerInfo[extraid][pPhoneBook] = strval(szResult);
 					cache_get_field_content(row,  "Fishes", szResult, MainPipeline); PlayerInfo[extraid][pFishes] = strval(szResult);
 					cache_get_field_content(row,  "Gcoin", szResult, MainPipeline); PlayerInfo[extraid][pGcoin] = strval(szResult);
-				
+					cache_get_field_content(row,  "Capacity", szResult, MainPipeline); PlayerInfo[extraid][pCapacity] = strval(szResult);
 
 					cache_get_field_content(row,  "SoTaiKhoan", szResult, MainPipeline); PlayerInfo[extraid][pSoTaiKhoan] = strval(szResult);
 				
@@ -3006,6 +3006,7 @@ stock g_mysql_SaveAccount(playerid)
     SavePlayerInteger(query, GetPlayerSQLId(playerid), "Phonebook", PlayerInfo[playerid][pPhoneBook]);
     SavePlayerInteger(query, GetPlayerSQLId(playerid), "Fishes", PlayerInfo[playerid][pFishes]);
     SavePlayerInteger(query, GetPlayerSQLId(playerid), "Gcoin", PlayerInfo[playerid][pGcoin]);
+	SavePlayerInteger(query, GetPlayerSQLId(playerid), "Capacity", PlayerInfo[playerid][pCapacity]);
     SavePlayerInteger(query, GetPlayerSQLId(playerid), "BiggestFish", PlayerInfo[playerid][pBiggestFish]);
     SavePlayerInteger(query, GetPlayerSQLId(playerid), "Job", PlayerInfo[playerid][pJob]);
     SavePlayerInteger(query, GetPlayerSQLId(playerid), "SoTaiKhoan", PlayerInfo[playerid][pSoTaiKhoan]);
@@ -7939,6 +7940,8 @@ public OnPlayerLoad(playerid)
 		PlayerInfo[playerid][pPhoneBook] = 0;
 		PlayerInfo[playerid][pFishes] = 0;
 		PlayerInfo[playerid][pGcoin] = 0;
+		PlayerInfo[playerid][pCapacity] = 35;
+		PlayerInfo[playerid][pInventoryItem] = 0;
 		PlayerInfo[playerid][pBiggestFish] = 0;
 		PlayerInfo[playerid][pJob] = 0;
 		PlayerInfo[playerid][pJob2] = 0;
@@ -8357,6 +8360,8 @@ public OnPlayerLoad(playerid)
 	LoadPlayerDisabledVehicles(playerid);
 
 	SetPlayerToTeamColor(playerid);
+
+	Inventory_Load(playerid);
 
 	format(string, sizeof(string), "SELECT * FROM `rentedcars` WHERE `sqlid` = '%d'", GetPlayerSQLId(playerid));
 	mysql_function_query(MainPipeline, string, true, "LoadRentedCar", "i", playerid);

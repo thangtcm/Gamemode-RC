@@ -16,7 +16,9 @@
 #include <crashdetect>
 #include <DialogCenter>
 #include <compat>
+#include <easyDialog>
 #include <mSelection>
+#include <eInventory>
 #if defined SOCKET_ENABLED
 
 

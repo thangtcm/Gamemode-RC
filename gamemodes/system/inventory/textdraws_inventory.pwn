@@ -507,8 +507,6 @@ PlayerTextDrawFont(playerid, invslot_amount[playerid][19], 1);
 PlayerTextDrawSetProportional(playerid, invslot_amount[playerid][19], 0);
 PlayerTextDrawSetShadow(playerid, invslot_amount[playerid][19], 0);
 
-
-
 invslot_main[playerid][2] = CreatePlayerTextDraw(playerid, 245.353561, 93.783432, "mdl-2014:select");
 PlayerTextDrawLetterSize(playerid, invslot_main[playerid][2], 0.000000, 0.000000);
 PlayerTextDrawTextSize(playerid, invslot_main[playerid][2], 168.000000, 277.000000);
