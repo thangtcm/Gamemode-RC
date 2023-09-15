@@ -1,9 +1,5 @@
-<<<<<<< HEAD
-./system/inventory/inventory.pwn(452) : èäåíòèôèêàòîðó ïðèñâîåíî çíà÷åíèå, íî îí íå èñïîëüçóåòñÿ: "id"
-=======
-D:\Gamemode Samp\Gamemode-RC\pawno\include\eInventory.inc(133) : èäåíòèôèêàòîð íå èñïîëüçóåòñÿ: "header"
+C:\Users\PHATBENTRE\Desktop\Gamemode-RC\Gamemode-RC\pawno\include\eInventory.inc(133) : èäåíòèôèêàòîð íå èñïîëüçóåòñÿ: "header"
 ./system/inventory/inventory.pwn(453) : èäåíòèôèêàòîðó ïðèñâîåíî çíà÷åíèå, íî îí íå èñïîëüçóåòñÿ: "id"
->>>>>>> 66d3f547fe11a62f6fbb02c086449e442fbfc5ae
 ./main/mysql.pwn(3094) : èäåíòèôèêàòîðó ïðèñâîåíî çíà÷åíèå, íî îí íå èñïîëüçóåòñÿ: "str"
 ./system/farmer.pwn(245) : íåïðàâèëüíàÿ òàáóëÿöèÿ
 ./main/variables.pwn(1452) : èäåíòèôèêàòîð íå èñïîëüçóåòñÿ: "BanVuKhi"
