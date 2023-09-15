@@ -1,7 +1,4 @@
-#include <a_samp>
 #include <YSI\y_hooks>
-
-
 stock AddItemCarInventory(playerid,veh,itemid,soluong) 
 {
 	if(VehicleInventory[playerid][veh][pSoLuong][itemid] >= 1) 

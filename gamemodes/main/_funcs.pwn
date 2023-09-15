@@ -944,11 +944,11 @@ public OnPlayerClickTextDraw(playerid, Text:clickedid)
     		LoaderStarting(playerid, LOAD_CHARACTERLOGIN, "Dang tai du lieu game...", 2);       
     	}
     }
-    if(GetPVarInt(playerid, "OpenInventory") == 1) { // getpvarint tức là bạn kiểm tra biến lienket của ng chơi này có giá trị = 1 hay không, nếu bằng 1 thì callback này mới có thể biết được việc của bạn làm . Còn lại thắc mắc bạn hãy tìm hiểu sâu hơn nhé .
-        if(clickedid == Text:INVALID_TEXT_DRAW) { 
-        	HideInventory(playerid);
-        }
-    }
+    // if(GetPVarInt(playerid, "OpenInventory") == 1) { 
+    //     if(clickedid == Text:INVALID_TEXT_DRAW) { 
+    //     	HideInventory(playerid);
+    //     }
+    // }
 	return 0;
 }
 stock GetWeaponIDWithItem(itemid) {
@@ -1110,54 +1110,6 @@ public OnPlayerClickPlayerTextDraw(playerid, PlayerText:playertextid)
                 
     	    }
     	}
-    
-    }
-    if(GetPVarInt(playerid, "OpenInventory") == 1) {
-    	if(GetPVarInt(playerid,"LockClick") == 1) return 1;
-        if(playertextid == Select_Inventory[playerid][1]) { 
-            if(InventoryInfo[playerid][pSlot][GetPVarInt(playerid,"ClickSlot")] == 0) return SendErrorMessage(playerid," Khong the su dung [Anti Bug Item] ");
-            Inventory_use(playerid,GetPVarInt(playerid, "ClickSlot"),InventoryInfo[playerid][pSlot][GetPVarInt(playerid, "ClickSlot")]);
-            printf("%d,", GetPVarInt(playerid, "ClickSlot"));
-        }
-        if(playertextid == Select_Inventory[playerid][2]) {
-        	if(InventoryInfo[playerid][pSlot][GetPVarInt(playerid,"ClickSlot")] == 0) return SendErrorMessage(playerid," Khong the vut [Anti Bug Item] ");
-    		if(InventoryInfo[playerid][pSlot][GetPVarInt(playerid,"ClickSlot")] == 1) return SendErrorMessage(playerid," Vat pham nay khong the vut. ");
-    		new string[500];
-    		SetPVarInt(playerid,"LockClick",1);
-    		format(string, sizeof string, "Ban co chac muon vut bo vat pham nay khong?\n [-] Ten vat pham: %s\n [-] So luong hien co: %d\n [?] Thong tin vat pham: %s", GetInventoryItemName(InventoryInfo[playerid][pSlot][GetPVarInt(playerid,"ClickSlot")]),InventoryInfo[playerid][pSoLuong][InventoryInfo[playerid][pSlot][GetPVarInt(playerid,"ClickSlot")]], GetInventoryItemInfo(InventoryInfo[playerid][pSlot][GetPVarInt(playerid,"ClickSlot")]));
-    		ShowPlayerDialog(playerid,DROP_PLAYERINV,DIALOG_STYLE_MSGBOX,"Thong tin",string,"Dong y","Huy");
-        }
-        if(playertextid == Select_Inventory[playerid][3]) {
-        	if(InventoryInfo[playerid][pSlot][GetPVarInt(playerid,"ClickSlot")] == 0) return SendErrorMessage(playerid," Khong the vut [Anti Bug Item] ");
-            SetPVarInt(playerid,"LockClick",1);
-            ShowPlayerDialog(playerid, DIALOG_ITEM, DIALOG_STYLE_LIST, "Tuy chon", "Thong tin vat pham\nDua vat pham", "Chon", "Thoat");
-         /*   new str[250],itemid;
-            itemid = InventoryInfo[playerid][pSlot][GetPVarInt(playerid,"ClickSlot")];
-            format(str,sizeof(str),"Ten vat pham %s (%d)\nSo luong: %d\nSlot: %d\nMo ta vat pham: %s",GetInventoryItemName(itemid),itemid,InventoryInfo[playerid][pSoLuong][itemid],GetPVarInt(playerid,"ClickSlot"),GetInventoryItemInfo(itemid));
-            ShowPlayerDialog(playerid, DIALOG_NOTHING, DIALOG_STYLE_MSGBOX, "Thong tin vat pham", str, "Dong", "");*/
-        }
-        for(new i = 0; i < 60 ; i++) {
-            if(playertextid == Inventory_Slot[playerid][i]) {
-            	if(GetPVarInt(playerid,"LockClick") == 1) return 1;
-                if(GetPVarInt(playerid, "ClickSlot") == i && GetPVarInt(playerid, "IsClick") == 1 ) {
-                    DestroySelect(playerid);
-                    DeletePVar(playerid, "IsClick");
-                    DeletePVar(playerid, "ClickSlot");
-                    return 1;
-                }
-                else {
-                    CreateSelectSlot(playerid,i);
-                    PlayerTextDrawShow(playerid, Select_Inventory[playerid][0]);
-                    PlayerTextDrawShow(playerid, Select_Inventory[playerid][1]);
-                    PlayerTextDrawShow(playerid, Select_Inventory[playerid][2]);
-                    PlayerTextDrawShow(playerid, Select_Inventory[playerid][3]);
-                    PlayerTextDrawShow(playerid, Select_Inventory[playerid][4]);
-                    SetPVarInt(playerid,"IsClick",1);
-                    SetPVarInt(playerid,"ClickSlot",i);
-                }
-                
-            }
-        }
     }
 	return 1;
 }
@@ -1740,14 +1692,6 @@ public OnPlayerConnect(playerid) {
 	HandCuff[playerid] = 0;
 	pLoopAnim[playerid] = 0;
 	PlayerInfo[playerid][pObjHop] = INVALID_OBJECT_ID;
-	for(new i = 0; i < MAX_PLAYERVEHICLES; i++) {
-		for(new m = 0; m < 20; m++)
-	    {
-		    VehicleInventory[playerid][i][pSlot][m]  = 0;
-		    VehicleInventory[playerid][i][pSoLuong][m]  = 0;
-	    }
-	}
-	   
     gPlayerUsingLoopingAnim[playerid] = 0;
 	// car mechanic 
 
@@ -4509,8 +4453,6 @@ public OnPlayerKeyStateChange(playerid, newkeys, oldkeys)
 		if(IsPlayerInRangeOfPoint(playerid,30, 581.6000,939.5470,-42.6158))
 	    {
 	    	if(GetPVarInt(playerid, "DangDaoDa") == 1) return SendClientTextDraw(playerid," Ban ~r~dang dao da~w~ roi");
-	    	if(InventoryInfo[playerid][pSoLuong][24] == 0) return SendClientTextDraw(playerid," Ban ~r~khong co cuoc~w~ de dao da");
-
 	    	LoaderStarting(playerid, LoadingDaoDa, "Dang dao da...", 1,10);
 			ApplyAnimation(playerid,"PED","BIKE_elbowL",4.0,0,0,0,0,0);
 			SetPVarInt(playerid,"DangDaoDa",1);
@@ -8243,119 +8185,6 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 				format(string,sizeof(string),"Ban da dang ky thanh cong giay to xe cho phuong tien %s,(/my giaytoxe de xem)",GetVehicleName(PlayerVehicleInfo[playerid][GetPVarInt(playerid, "BSX_SaveCar")][pvId]));
 				SendClientMessageEx(playerid,-1,string);
         	}
-        }
-
-    	case MOBILE_ITEM: {
-    		if(response) {
-    			switch(listitem) {
-    				case 0: {
-    					if(InventoryInfo[playerid][pSlot][GetPVarInt(playerid,"ClickSlot")] == 0) return SendErrorMessage(playerid," Khong the su dung [Anti Bug Item] ");
-            			Inventory_use(playerid,GetPVarInt(playerid, "ClickSlot"),InventoryInfo[playerid][pSlot][GetPVarInt(playerid, "ClickSlot")]);
-    				}
-    				case 1: {
-    					if(InventoryInfo[playerid][pSlot][GetPVarInt(playerid,"ClickSlot")] == 0) return SendErrorMessage(playerid," Khong the vut [Anti Bug Item] ");
-    					if(InventoryInfo[playerid][pSlot][GetPVarInt(playerid,"ClickSlot")] == 1) return SendErrorMessage(playerid," Vat pham nay khong the vut. ");
-    					format(string, sizeof string, "Ban co chac muon vut bo vat pham nay khong?\n [-] Ten vat pham: %s\n [-] So luong hien co: %d\n [?] Thong tin vat pham: %s", GetInventoryItemName(InventoryInfo[playerid][pSlot][GetPVarInt(playerid,"ClickSlot")]),InventoryInfo[playerid][pSoLuong][InventoryInfo[playerid][pSlot][GetPVarInt(playerid,"ClickSlot")]], GetInventoryItemInfo(InventoryInfo[playerid][pSlot][GetPVarInt(playerid,"ClickSlot")]));
-    					ShowPlayerDialog(playerid,DROP_PLAYERINV,DIALOG_STYLE_MSGBOX,"Thong tin",string,"Dong y","Huy");
-    				}
-    				case 2: {
-    					SetPVarInt(playerid,"GiveSlotItem",GetPVarInt(playerid,"ClickSlot"));
-                    	ShowPlayerDialog(playerid,DIALOG_GIVEITEMAMOUNT,DIALOG_STYLE_INPUT,"Give Item","Vui long nhap so luong ban muon dua\nToi thieu la 1 toi da la 99","Tiep tuc","Thoat");
-    				}
-    			}
-    		}
-    	}
-    	case INVENTORY_MOBILE: {
-    		if(response ) {
-    			format(string, sizeof string, "Thao tac vat pham > %s", inputtext);
-    			SetPVarInt(playerid, "ClickSlot", InvPlayer_GetItemSlotFromID(playerid,GetItemIDFromName(inputtext)));
-                ShowPlayerDialog(playerid, MOBILE_ITEM,DIALOG_STYLE_LIST, string, "Su dung\nVut bo\nDua vat pham","Dong y","");
-   		    } 
-    	}
-    	case DIALOG_ITEM: {
-            if(!response) {
-                DeletePVar(playerid,"LockClick");
-                return 1;
-            }
-            switch(listitem) {
-                case 0: {
-                    new str[250],itemid;
-                    itemid = InventoryInfo[playerid][pSlot][GetPVarInt(playerid,"ClickSlot")];
-                    format(str,sizeof(str),"Ten vat pham %s (%d)\nSo luong: %d\nSlot: %d\nMo ta vat pham: %s",GetInventoryItemName(itemid),itemid,InventoryInfo[playerid][pSoLuong][itemid],GetPVarInt(playerid,"ClickSlot"),GetInventoryItemInfo(itemid));
-                    ShowPlayerDialog(playerid, DIALOG_NOTHING, DIALOG_STYLE_MSGBOX, "Thong tin vat pham", str, "Dong", "");
-                    DeletePVar(playerid,"LockClick");
-                }
-                case 1: {
-                    for(new i = 0 ; i < 60 ; i ++) {
-                        PlayerTextDrawHide(playerid, Inventory_Slot[playerid][i]);
-                        PlayerTextDrawHide(playerid, Inventory_Amount[playerid][i]);
-                        CancelSelectTextDraw(playerid);
-                    }
-                    PlayerTextDrawHide(playerid, Select_Inventory[playerid][0]);
-                    PlayerTextDrawHide(playerid, Select_Inventory[playerid][1]);
-                    PlayerTextDrawHide(playerid, Select_Inventory[playerid][2]);
-                    PlayerTextDrawHide(playerid, Select_Inventory[playerid][3]);
-                    PlayerTextDrawHide(playerid, Select_Inventory[playerid][4]);
-                    PlayerTextDrawHide(playerid, Inventory_Main[playerid][0]);
-                    SetPVarInt(playerid,"GiveSlotItem",GetPVarInt(playerid,"ClickSlot"));
-                    DeletePVar(playerid,"LockClick");
-                    ShowPlayerDialog(playerid,DIALOG_GIVEITEMAMOUNT,DIALOG_STYLE_INPUT,"Give Item","Vui long nhap so luong ban muon dua\nToi thieu la 1 toi da la 99","Tiep tuc","Thoat");
-                }
-            }
-        }
-        case DIALOG_GIVEITEMAMOUNT: {
-            if(!response) {
-                DeletePVar(playerid,"LockClick");
-                return 1;
-            }
-            if(strval(inputtext) < 1 || strval(inputtext) > 99 ) return ShowPlayerDialog(playerid,DIALOG_GIVEITEMAMOUNT,DIALOG_STYLE_INPUT,"Give Item","Vui long nhap so luong ban muon dua\nToi thieu la 1 toi da la 99","Tiep tuc","Thoat");
-            new itemid = InventoryInfo[playerid][pSlot][GetPVarInt(playerid,"GiveSlotItem")];
-            if(InventoryInfo[playerid][pSoLuong][itemid] < strval(inputtext) ) return ShowPlayerDialog(playerid,DIALOG_GIVEITEMAMOUNT,DIALOG_STYLE_INPUT,"Give Item","So luong vat pham ban khong du\nVui long nhap so luong ban muon dua\nToi thieu la 1 toi da la 99","Tiep tuc","Thoat");
-            SetPVarInt(playerid,"GiveAmountItem",strval(inputtext));
-            new Float:Pos[3];
-            GetPlayerPos(playerid,Pos[0],Pos[1],Pos[2]);
-            foreach(new i: Player) {
-                if(i != playerid) {
-                    if(IsPlayerInRangeOfPoint(playerid, 20, Pos[0],Pos[1],Pos[2])) {
-                        format(string,sizeof string,"%s%d\t%s\n",string,i,GetPlayerNameEx(i));
-                    }
-                }               
-            }
-            ShowPlayerDialog(playerid, DIALOG_GIVEITEMPLAYER, DIALOG_STYLE_TABLIST, "Give Item | Nguoi dua",string , "Dong y", "Huy");
-        }
-        case DIALOG_GIVEITEMPLAYER: {
-            if(!response) {
-                DeletePVar(playerid,"LockClick");
-                return 1;
-            }
-            if(IsPlayerConnected(strval(inputtext)))
-            {
-                format(string, sizeof string, "Ban da dua cho {54b874}%s(%d){ffffff} vat pham {54b874}%s(%d){ffffff} so luong {54b874}%d", GetPlayerNameEx(strval(inputtext)) , strval(inputtext),GetInventoryItemName(InventoryInfo[playerid][pSlot][GetPVarInt(playerid,"GiveSlotItem")]),
-                InventoryInfo[playerid][pSlot][GetPVarInt(playerid,"GiveSlotItem")],GetPVarInt(playerid,"GiveAmountItem") );
-                SendClientMessageEx(playerid, COLOR_WHITE, string);
-                format(string, sizeof string, "{54b874}%s(%d){ffffff} da dua cho ban vat pham {54b874}%s(%d){ffffff} so luong {54b874}%d", GetPlayerNameEx(playerid) , playerid,GetInventoryItemName(InventoryInfo[playerid][pSlot][GetPVarInt(playerid,"GiveSlotItem")]),
-                InventoryInfo[playerid][pSlot][GetPVarInt(playerid,"GiveSlotItem")],GetPVarInt(playerid,"GiveAmountItem") );
-                SendClientMessageEx(strval(inputtext), COLOR_WHITE, string);
-                AddItemInventory(strval(inputtext),InventoryInfo[playerid][pSlot][GetPVarInt(playerid,"GiveSlotItem")],GetPVarInt(playerid,"GiveAmountItem"));
-                DropItem(playerid,GetPVarInt(playerid,"GiveSlotItem"),InventoryInfo[playerid][pSlot][GetPVarInt(playerid,"GiveSlotItem")],GetPVarInt(playerid,"GiveAmountItem"));
-            }
-        }
-        case DIALOG_INVENTORYCAR: {
-            if(response) {     	
-        ///    if(InventoryInfo[playerid][pSlot][GetItemIDFromName(inputtext)] == 0) return SendErrorMessage(playerid, " Vat pham khong ton tai o slot balo nay.");
-                new veh = GetPVarInt(playerid,"catvaovehicle");
-                new listitemz = InvCar_GetItemSlotFromID(playerid,veh,GetItemIDFromName(inputtext));
-                SetPVarInt(playerid, "TakeItemID", GetItemIDFromName(inputtext));
-                format(string, sizeof string, "\\cNhap so luong vat pham muon lay khoi cop xe\n\
-                	\\cVat pham: %s\n\
-                	\\cSo luong hien co: %d\n\
-                	\\cSlot vat pham: %d", GetInventoryItemName(VehicleInventory[playerid][veh][pSlot][listitemz]),VehicleInventory[playerid][veh][pSoLuong][VehicleInventory[playerid][veh][pSlot][listitemz]],listitemz);
-                ShowPlayerDialog(playerid, DIALOG_TAKEAMOUNT, DIALOG_STYLE_INPUT, "Nhap so luong", string, "Tiep tuc", "Thoat");
-       
-            }
-            else {
-                DeletePVar(playerid, "catvaovehicle");
-            }
         }
         case ACTOR_JOB: {
         	if(response) {
@@ -16169,36 +15998,36 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 
 				printf("%s\n%i", RestaurantItems[iItem], iItem);
 
-				if (strcmp("Hambuger", RestaurantItems[iItem]) == 0) // full meal
-				{
-				    AddItemInventory(playerid,21,1);
-				}
-				else if (strcmp("Pizza", RestaurantItems[iItem]) == 0) // full meal
-				{
-				//    AddInvItem(playerid,2,1);
-					AddItemInventory(playerid,3,1);
-				}
-				else if (strcmp("Banh Mi", RestaurantItems[iItem]) == 0) // full meal
-				{
-				//    AddInvItem(playerid,1,1);
-					AddItemInventory(playerid,4,1);
-				}
-				else if (strcmp("Nuoc Suoi", RestaurantItems[iItem]) == 0) // full meal
-				{
-				    AddItemInventory(playerid,2,1);
-				}
-				else if (strcmp("Sting", RestaurantItems[iItem]) == 0) // full meal
-				{
-				    AddItemInventory(playerid,18,1);
-				}
-				else if (strcmp("7up", RestaurantItems[iItem]) == 0) // full meal
-				{
-				    AddItemInventory(playerid,19,1);
-				}
-				else if (strcmp("coca", RestaurantItems[iItem]) == 0) // full meal
-				{
-				    AddItemInventory(playerid,20,1);
-				}       			
+				// if (strcmp("Hambuger", RestaurantItems[iItem]) == 0) // full meal
+				// {
+				//     AddItemInventory(playerid,21,1);
+				// }
+				// else if (strcmp("Pizza", RestaurantItems[iItem]) == 0) // full meal
+				// {
+				// //    AddInvItem(playerid,2,1);
+				// 	AddItemInventory(playerid,3,1);
+				// }
+				// else if (strcmp("Banh Mi", RestaurantItems[iItem]) == 0) // full meal
+				// {
+				// //    AddInvItem(playerid,1,1);
+				// 	AddItemInventory(playerid,4,1);
+				// }
+				// else if (strcmp("Nuoc Suoi", RestaurantItems[iItem]) == 0) // full meal
+				// {
+				//     AddItemInventory(playerid,2,1);
+				// }
+				// else if (strcmp("Sting", RestaurantItems[iItem]) == 0) // full meal
+				// {
+				//     AddItemInventory(playerid,18,1);
+				// }
+				// else if (strcmp("7up", RestaurantItems[iItem]) == 0) // full meal
+				// {
+				//     AddItemInventory(playerid,19,1);
+				// }
+				// else if (strcmp("coca", RestaurantItems[iItem]) == 0) // full meal
+				// {
+				//     AddItemInventory(playerid,20,1);
+				// }       			
 			}
 		}
 		for (new i; i <= 13; i++)

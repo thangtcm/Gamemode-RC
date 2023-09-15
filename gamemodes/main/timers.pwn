@@ -913,7 +913,6 @@ task EMSUpdate[5000]()
 {
 	foreach(new i: Player)
 	{
-		InventoryInfo[i][pSoLuong][1] = PlayerInfo[i][pCash];
 	    if(InsideTut{i} > 0)
 	    {
 		    if(gettime() - GetPVarInt(i, "pTutTime") > 20)

@@ -402,7 +402,7 @@ public OnQueryFinish(resultid, extraid, handleid)
 					cache_get_field_content(row,  "Phonebook", szResult, MainPipeline); PlayerInfo[extraid][pPhoneBook] = strval(szResult);
 					cache_get_field_content(row,  "Fishes", szResult, MainPipeline); PlayerInfo[extraid][pFishes] = strval(szResult);
 					cache_get_field_content(row,  "Gcoin", szResult, MainPipeline); PlayerInfo[extraid][pGcoin] = strval(szResult);
-				
+					cache_get_field_content(row,  "Capacity", szResult, MainPipeline); PlayerInfo[extraid][pCapacity] = strval(szResult);
 
 					cache_get_field_content(row,  "SoTaiKhoan", szResult, MainPipeline); PlayerInfo[extraid][pSoTaiKhoan] = strval(szResult);
 				
@@ -450,18 +450,6 @@ public OnQueryFinish(resultid, extraid, handleid)
 					cache_get_field_content(row,  "GunLic", szResult, MainPipeline); PlayerInfo[extraid][pGunLic] = strval(szResult);
            			cache_get_field_content(row,  "DoiBung", szResult, MainPipeline); PlayerInfo[extraid][pDoiBung] = strval(szResult);
 					cache_get_field_content(row,  "KhatNuoc", szResult, MainPipeline); PlayerInfo[extraid][pKhatNuoc] = strval(szResult);
-					for(new i = 0; i < 60; i++)
-					{
-						format(szField, sizeof(szField), "Slot%d", i);
-						cache_get_field_content(row,  szField, szResult, MainPipeline);
-						InventoryInfo[extraid][pSlot][i] = strval(szResult);	
-					}
-					for(new i = 0; i < 30; i++)
-					{
-					    format(szField, sizeof(szField), "SoLuong%d", i);
-						cache_get_field_content(row,  szField, szResult, MainPipeline);
-						InventoryInfo[extraid][pSoLuong][i] = strval(szResult);
-					}					
 					for(new i = 0; i < 9; i++)
 					{
 						format(szField, sizeof(szField), "Ammo%d", i);
@@ -931,17 +919,7 @@ public OnQueryFinish(resultid, extraid, handleid)
 
 						cache_get_field_content(i,  "pvInt", szResult, MainPipeline);
 						PlayerVehicleInfo[extraid][i][pvInt] = strval(szResult);
-	                    
-				        for(new m = 0; m < 20; m++)
-						{
-		    				new szField[15];
-							format(szField, sizeof(szField), "pvSlot%d", m);
-							cache_get_field_content(i,  szField, szResult, MainPipeline);
-							VehicleInventory[extraid][i][pSlot][m]  = strval(szResult);
-							format(szField, sizeof(szField), "pvSoLuong%d", m);
-							cache_get_field_content(i,  szField, szResult, MainPipeline);
-							VehicleInventory[extraid][i][pSoLuong][m]  = strval(szResult);
-						}
+
 						for(new m = 0; m < MAX_MODS; m++)
 						{
 		    				new szField[15];
@@ -1620,10 +1598,7 @@ stock g_mysql_SaveVehicle(playerid, slotid)
 	printf("%s (%i) saving their %d (slot %i) (Model %i)...", GetPlayerNameEx(playerid), playerid, PlayerVehicleInfo[playerid][slotid][pvModelId], slotid, PlayerVehicleInfo[playerid][slotid][pvModelId]);
 
 	format(query, sizeof(query), "UPDATE `vehicles` SET");
-	for(new m = 0 ; m < 20 ; m++) {
-		format(query, sizeof(query), "%s `pvSoLuong%d` = %d,", query, m,VehicleInventory[playerid][slotid][pSoLuong][m]);
-		format(query, sizeof(query), "%s `pvSlot%d` = %d,", query, m,VehicleInventory[playerid][slotid][pSlot][m]);
-	}
+
 	format(query, sizeof(query), "%s `pvGiayToXe` = %d,", query, PlayerVehicleInfo[playerid][slotid][pvGiayToXe]);
 	format(query, sizeof(query), "%s `pvPosX` = %0.5f,", query, PlayerVehicleInfo[playerid][slotid][pvPosX]);
 	format(query, sizeof(query), "%s `pvPosY` = %0.5f,", query, PlayerVehicleInfo[playerid][slotid][pvPosY]);
@@ -3031,6 +3006,7 @@ stock g_mysql_SaveAccount(playerid)
     SavePlayerInteger(query, GetPlayerSQLId(playerid), "Phonebook", PlayerInfo[playerid][pPhoneBook]);
     SavePlayerInteger(query, GetPlayerSQLId(playerid), "Fishes", PlayerInfo[playerid][pFishes]);
     SavePlayerInteger(query, GetPlayerSQLId(playerid), "Gcoin", PlayerInfo[playerid][pGcoin]);
+	SavePlayerInteger(query, GetPlayerSQLId(playerid), "Capacity", PlayerInfo[playerid][pCapacity]);
     SavePlayerInteger(query, GetPlayerSQLId(playerid), "BiggestFish", PlayerInfo[playerid][pBiggestFish]);
     SavePlayerInteger(query, GetPlayerSQLId(playerid), "Job", PlayerInfo[playerid][pJob]);
     SavePlayerInteger(query, GetPlayerSQLId(playerid), "SoTaiKhoan", PlayerInfo[playerid][pSoTaiKhoan]);
@@ -3120,15 +3096,6 @@ stock g_mysql_SaveAccount(playerid)
 
 	SavePlayerInteger(query, GetPlayerSQLId(playerid), "DoiBung", PlayerInfo[playerid][pDoiBung]);	
 	SavePlayerInteger(query, GetPlayerSQLId(playerid), "KhatNuoc", PlayerInfo[playerid][pKhatNuoc]);	
-    for(new i = 0; i < 60 ; i++) {
-    	format(str, sizeof str, "Slot%d",i);
-    	SavePlayerInteger(query, GetPlayerSQLId(playerid), str, InventoryInfo[playerid][pSlot][i]);
-
-    }
-    for(new i = 0; i <30 ; i++) {
-        format(str, sizeof str, "SoLuong%d",i);
-    	SavePlayerInteger(query, GetPlayerSQLId(playerid), str, InventoryInfo[playerid][pSoLuong][i]);
-    }
     SavePlayerInteger(query, GetPlayerSQLId(playerid), "Loses", PlayerInfo[playerid][pLoses]);
     SavePlayerInteger(query, GetPlayerSQLId(playerid), "Tutorial", PlayerInfo[playerid][pTut]);
     SavePlayerInteger(query, GetPlayerSQLId(playerid), "OnDuty", PlayerInfo[playerid][pDuty]);
@@ -7973,6 +7940,8 @@ public OnPlayerLoad(playerid)
 		PlayerInfo[playerid][pPhoneBook] = 0;
 		PlayerInfo[playerid][pFishes] = 0;
 		PlayerInfo[playerid][pGcoin] = 0;
+		PlayerInfo[playerid][pCapacity] = 35;
+		PlayerInfo[playerid][pInventoryItem] = 0;
 		PlayerInfo[playerid][pBiggestFish] = 0;
 		PlayerInfo[playerid][pJob] = 0;
 		PlayerInfo[playerid][pJob2] = 0;
@@ -8391,6 +8360,8 @@ public OnPlayerLoad(playerid)
 	LoadPlayerDisabledVehicles(playerid);
 
 	SetPlayerToTeamColor(playerid);
+
+	Inventory_Load(playerid);
 
 	format(string, sizeof(string), "SELECT * FROM `rentedcars` WHERE `sqlid` = '%d'", GetPlayerSQLId(playerid));
 	mysql_function_query(MainPipeline, string, true, "LoadRentedCar", "i", playerid);

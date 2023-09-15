@@ -1438,28 +1438,24 @@ CMD:my(playerid, params[])
     else if(strcmp(choice,"stats",true) == 0) {
         cmd_credits(playerid,"");
     }
-    else if(strcmp(choice,"inventory",true) == 0) {
-        if(IsPlayerAndroid(playerid)) {
-            ShowPlayerInventoryDialog(playerid);
-            return 1;
-        }
-        else {
-            cmd_invz(playerid,"");
-        }
-        
-
-    }
-    else if(strcmp(choice,"inv",true) == 0) {
-        if(IsPlayerAndroid(playerid)) {
-            ShowPlayerInventoryDialog(playerid);
-            return 1;
-        }
-        else {
-            cmd_invz(playerid,"");
-        }
-        
-
-    }
+    // else if(strcmp(choice,"inventory",true) == 0) {
+    //     if(IsPlayerAndroid(playerid)) {
+    //         ShowPlayerInventoryDialog(playerid);
+    //         return 1;
+    //     }
+    //     else {
+    //         cmd_invz(playerid,"");
+    //     }
+    // }
+    // else if(strcmp(choice,"inv",true) == 0) {
+    //     if(IsPlayerAndroid(playerid)) {
+    //         ShowPlayerInventoryDialog(playerid);
+    //         return 1;
+    //     }
+    //     else {
+    //         cmd_invz(playerid,"");
+    //     }
+    // }
     else if(strcmp(choice,"giaytoxe",true) == 0) {
         new vstring[1000], icount = GetPlayerVehicleSlots(playerid);
         for(new i, iModelID; i < icount; i++)

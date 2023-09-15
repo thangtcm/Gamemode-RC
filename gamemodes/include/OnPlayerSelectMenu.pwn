@@ -94,19 +94,16 @@ public OnPlayerSelectMenu(playerid,menuid,itemid,response) {
         			case 0: {
         				if(PlayerInfo[playerid][pCash] < 30) return SendErrorMessage(playerid," Ban khong du '$30' de mua vat pham 'Banh Pizza'");
         				PlayerInfo[playerid][pCash] -= 20;
-        				AddItemInventory(playerid,3,1);
         				SendClientMessageEx(playerid, COLOR_VANG, "Ban da mua thanh cong 1 chiec banh Pizza.");
         			}
         			case 1: {
         				if(PlayerInfo[playerid][pCash] < 20) return SendErrorMessage(playerid," Ban khong du '$20' de mua vat pham 'Banh mi'");
         				PlayerInfo[playerid][pCash] -= 20;
-        				AddItemInventory(playerid,4,1);
         				SendClientMessageEx(playerid, COLOR_VANG, "Ban da mua thanh cong 1 chiec banh Banh mi.");
         			}
         			case 2: {
         				if(PlayerInfo[playerid][pCash] < 20) return SendErrorMessage(playerid," Ban khong du '$80' de mua vat pham 'Chai nuoc'");
         				PlayerInfo[playerid][pCash] -= 20;
-        				AddItemInventory(playerid,2,1);
         				SendClientMessageEx(playerid, COLOR_VANG, "Ban da mua thanh cong 1 chai nuoc.");
         			}
         		}

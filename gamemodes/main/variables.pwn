@@ -1032,6 +1032,7 @@ enum pInfo
 	pReferredBy[MAX_PLAYER_NAME],
 	pPendingRefReward,
 	pRefers,
+	pInventoryItem,
 	pFamed,
 	pFMuted,
 	pDefendTime,
@@ -1052,7 +1053,9 @@ enum pInfo
 	pSVIPExVoucher,
 	pGVIPExVoucher,
 	pVIPSellable,
-	pReceivedPrize
+	pReceivedPrize,
+	pCapacity,
+	pGiveItem
 };
 
 enum pvInfo
