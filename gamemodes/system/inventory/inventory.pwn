@@ -77,12 +77,6 @@ new const g_aInventoryItems[][e_InventoryItems] =
 
 hook OnPlayerConnect(playerid)
 {
-	for(new i = 0; i != MAX_INVENTORY; i++)
-	{
-		InventoryData[playerid][i][invExists] = false;
-		InventoryData[playerid][i][invModel] = 0;
-		InventoryData[playerid][i][invQuantity] = 0;
-	}
 	PlayerInfo[playerid][pGiveItem] = INVALID_PLAYER_ID;
 }
 
@@ -98,6 +92,12 @@ public OnLoadInventory(playerid)
 {
     new i, rows, fields, tmp[128];
     cache_get_data(rows, fields, MainPipeline);
+	for(new index = 0; index != MAX_INVENTORY; index++)
+	{
+		InventoryData[playerid][index][invExists] = false;
+		InventoryData[playerid][index][invModel] = 0;
+		InventoryData[playerid][index][invQuantity] = 0;
+	}
     while(i < rows)
     {
         cache_get_field_content(i, "invID", tmp, MainPipeline); InventoryData[playerid][i][invID] = strval(tmp);
@@ -137,7 +137,7 @@ stock Inventory_Clear(playerid)
 stock Inventory_Set(playerid, item[], model, amount)
 {
 	new itemid = Inventory_GetItemID(playerid, item);
-	printf("%d",itemid);
+	printf("%d %s",itemid, item);
 	if(itemid == -1 && amount > 0)
 		Inventory_Add(playerid, item, model, amount);
 
@@ -152,6 +152,7 @@ stock Inventory_Set(playerid, item[], model, amount)
 
 stock Inventory_GetItemID(playerid, item[])
 {
+	printf("Inventory_GetItemID %s", item);
 	for(new i = 0; i < MAX_INVENTORY; i++)
 	{
 		if(!InventoryData[playerid][i][invExists])
@@ -228,7 +229,7 @@ stock Inventory_Add(playerid, item[], model, quantity = 1)
 	if(itemid == -1)
 	{
 		itemid = Inventory_GetFreeID(playerid);
-		printf("%d", itemid);
+		printf("%d %s", itemid, item);
 		if(itemid != -1)
 		{
 			InventoryData[playerid][itemid][invExists] = true;
