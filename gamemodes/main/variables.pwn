@@ -1033,6 +1033,8 @@ enum pInfo
 	pPendingRefReward,
 	pRefers,
 	pInventoryItem,
+	pCayGiong,
+	pCayThuHoach,
 	pFamed,
 	pFMuted,
 	pDefendTime,
