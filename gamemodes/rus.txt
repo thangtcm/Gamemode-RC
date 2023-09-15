@@ -1,3 +1,4 @@
+D:\Gamemode Samp\Gamemode-RC\pawno\include\eInventory.inc(133) : èäåíòèôèêàòîð íå èñïîëüçóåòñÿ: "header"
 ./system/inventory/inventory.pwn(453) : èäåíòèôèêàòîðó ïðèñâîåíî çíà÷åíèå, íî îí íå èñïîëüçóåòñÿ: "id"
 ./main/mysql.pwn(3094) : èäåíòèôèêàòîðó ïðèñâîåíî çíà÷åíèå, íî îí íå èñïîëüçóåòñÿ: "str"
 ./system/farmer.pwn(245) : íåïðàâèëüíàÿ òàáóëÿöèÿ
