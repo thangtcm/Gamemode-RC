@@ -50645,12 +50645,12 @@ CMD:pm(playerid, params[])
 	return 1;
 }
 CMD:testeat(playerid,params[]) {
-	PlayerInfo[playerid][pEat] = 2;
+	PlayerInfo[playerid][pEat] = 30;
 	printf("%d", PlayerInfo[playerid][pEat]);
 	return 1;
 }
 CMD:testeat1(playerid,params[]) {
-	PlayerInfo[playerid][pEat] = 10;
+	PlayerInfo[playerid][pEat] = 26;
 	printf("%d", PlayerInfo[playerid][pEat]);
 	return 1;
 }

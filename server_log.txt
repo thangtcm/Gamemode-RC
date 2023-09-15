@@ -9851,3 +9851,1513 @@ v0.3.DL-R1, (C)2005-2018 SA-MP Team
 [19:54:49] ZXC ZXZ has logged in.
 [19:54:49] [He Thong] Da luu lai thong tin tai khoan thanh cong.
 [19:55:03] [part] ZXC_ZXZ has left the server (0:1)
+[20:00:48] [plant] 300 plants saved
+
+----------
+Loaded log file: "server_log.txt".
+----------
+
+SA-MP Dedicated Server
+----------------------
+v0.3.DL-R1, (C)2005-2018 SA-MP Team
+
+[20:51:17] password = ""  (string)
+[20:51:17] 
+[20:51:17] Server Plugins
+[20:51:17] --------------
+[20:51:17]  Loading plugin: PawnPlus
+[20:51:17]  PawnPlus v1.4.2 loaded
+[20:51:17]  Created by IllidanS4
+[20:51:17]   Loaded.
+[20:51:17]  Loading plugin: streamer
+[20:51:17] 
+
+*** Streamer Plugin v2.9.4 by Incognito loaded ***
+
+[20:51:17]   Loaded.
+[20:51:17]  Loading plugin: mysql
+[20:51:17]  >> plugin.mysql: R33 successfully loaded.
+[20:51:17]   Loaded.
+[20:51:17]  Loading plugin: sscanf
+[20:51:17] 
+
+[20:51:17]  ===============================
+
+[20:51:17]       sscanf plugin loaded.     
+
+[20:51:17]          Version:  2.8.1        
+
+[20:51:17]    (c) 2012 Alex "Y_Less" Cole  
+
+[20:51:17]  ===============================
+
+[20:51:17]   Loaded.
+[20:51:17]  Loading plugin: nativechecker
+[20:51:17]   Loaded.
+[20:51:17]  Loading plugin: whirlpool
+[20:51:17]  
+[20:51:17]  ==================
+[20:51:17]  
+[20:51:17]   Whirlpool loaded
+[20:51:17]  
+[20:51:17]  ==================
+[20:51:17]  
+[20:51:17]   Loaded.
+[20:51:17]  Loaded 6 plugins.
+
+[20:51:17] [artwork:crc] bp.dff CRC = 0xA2B03FFB
+[20:51:17] [artwork:crc] bp.txd CRC = 0x28E0706E
+[20:51:17] [artwork:crc] object.dff CRC = 0xDCFCC14C
+[20:51:17] [artwork:crc] speedo.txd CRC = 0x62C7BCBC
+[20:51:17] [artwork:crc] object.dff CRC = 0xDCFCC14C
+[20:51:17] [artwork:crc] login.txd CRC = 0x97B897B6
+[20:51:17] [artwork:crc] object.dff CRC = 0xDCFCC14C
+[20:51:17] [artwork:crc] speedo.txd CRC = 0x62C7BCBC
+[20:51:17] [artwork:crc] object.dff CRC = 0xDCFCC14C
+[20:51:17] [artwork:crc] newinv.txd CRC = 0xB1BF0AE4
+[20:51:17] [artwork:crc] object.dff CRC = 0xDCFCC14C
+[20:51:17] [artwork:crc] character.txd CRC = 0xC256CCF5
+[20:51:17] 
+[20:51:17] Filterscripts
+[20:51:17] ---------------
+[20:51:17]   Loading filterscript 'Server.amx'...
+[20:51:17]   Loading filterscript 'cbug.amx'...
+[20:51:17]   Loaded 2 filterscripts.
+
+[20:51:17]  
+[20:51:17]  ======================================= 
+[20:51:17]  |                                     | 
+[20:51:17]  |        YSI version 3.01.0002        | 
+[20:51:17]  |        By Alex "Y_Less" Cole        | 
+[20:51:17]  |                                     | 
+[20:51:17]  ======================================= 
+[20:51:17]  
+[20:51:17] Chuong trinh may chu dang duoc khoi dong, vui long cho doi....
+[20:51:18] [MySQL] (Main Pipelines) Connecting to 23.88.73.88...
+[20:51:18] [MySQL] (MainPipeline) Connection successful toward MySQL Database Server!
+[20:51:18] [Dynamic Giftbox] Loading the Dynamic Giftbox...
+[20:51:18] [LoadCrates] Load Query Sent
+[20:51:18] [LoadHouses] Loading data from database...
+[20:51:18] [LoadDynamicDoors] Loading data from database...
+[20:51:18] [LoadDynamicMapIcons] Loading data from database...
+[20:51:18] [LoadMailboxes] Loading data from database...
+[20:51:18] [LoadBusinesses] Loading data from database...
+[20:51:18] [LoadAuctions] Loading data from database...
+[20:51:18] [LoadTxtLabels] Loading data from database...
+[20:51:18] [LoadPlants] Loading data from database...
+[20:51:18] [SpeedCameras] Loading data from database...
+[20:51:18] [LoadPayNSprays] Loading data from database...
+[20:51:18] [LoadArrestPoints] Loading data from database...
+[20:51:18] [LoadImpoundPoints] Loading data from database...
+[20:51:18] [LoadBusinessSales] Loading data from database...
+[20:51:18] [LoadPaintballArenas] 10 paintball loaded.
+[20:51:18] [LoadEventPoints] 0 event points loaded.
+[20:51:18] [LoadGates] Loading data from database...
+[20:51:18] [LoadElevatorStuff] 20 floors loaded.
+[20:51:18] [LoadFamilies] Dang tai du lieu tu database...
+[20:51:18] [LoadFamilyPoints] Loading Family Points from the database, please wait...
+[20:51:18] [MiscLoad] Misc Loaded
+[20:51:18] Resetting news...
+[20:51:18] Resetting default server variables..
+[20:51:18] Adjusted the server time...
+[20:51:18] [Streamer] Loading Dynamic Static Vehicles...
+[20:51:18] [Streamer] Dynamic Static Vehicles has been loaded.
+[20:51:18] [Streamer] Loading Dynamic Pickups...
+[20:51:18] [Streamer] Dynamic Pickups has been loaded.
+[20:51:18] [Streamer] Loading 3D Text Labels...
+[20:51:18] [Streamer] Dynamic 3D Text Labels has been loaded.
+[20:51:18] [Streamer] Loading Dynamic Buttons...
+[20:51:18] [Streamer] Dynamic Buttons has been loaded.
+[20:51:18] [Streamer] Loading Dynamic Objects...
+[20:51:18] [Streamer] Dynamic Objects has been loaded.
+[20:51:18] [Textdraws] Loading Textdraws...
+[20:51:18] [Textdraws] Loaded textdraws.
+[20:51:18] [Dynamic Groups] Loading Dynamic Groups...
+[20:51:18] [Dynamic Groups] Loading Dynamic Groups Vehicles...
+[20:51:18] Da chay thanh cong gamemode...
+[20:51:18] Number of vehicle models: 20
+[20:51:18]  
+[20:51:18]  
+[20:51:19] [Dynamic Giftbox] da tai thanh cong Dynamic giftbox.
+[20:51:19] [LoadCrates] Loading Crates Finished
+[20:51:20] [LoadDynamicDoors] 2248 door duoc tai.
+[20:51:20] [LoadDynamicMapIcons] 400 icons map duoc tai.
+[20:51:20] [LoadMailboxes] 50 mailboxes duoc tai.
+[20:51:20] [LoadBusinesses] 200 businesses rehashed/loaded.
+[20:51:21] [LoadPlants] Successfully loaded 300 plants
+[20:51:21] [SpeedCameras] Tai 3 May ban toc do.
+[20:51:22] TotalSold0: 0 | AmountMade0: 0
+[20:51:22] TotalSold1: 0 | AmountMade1: 0
+[20:51:22] TotalSold2: 0 | AmountMade2: 0
+[20:51:22] TotalSold3: 0 | AmountMade3: 0
+[20:51:22] TotalSold4: 0 | AmountMade4: 0
+[20:51:22] TotalSold5: 0 | AmountMade5: 0
+[20:51:22] TotalSold6: 0 | AmountMade6: 0
+[20:51:22] TotalSold7: 0 | AmountMade7: 0
+[20:51:22] TotalSold8: 0 | AmountMade8: 0
+[20:51:22] TotalSold9: 0 | AmountMade9: 0
+[20:51:22] TotalSold10: 0 | AmountMade10: 0
+[20:51:22] TotalSold11: 0 | AmountMade11: 0
+[20:51:22] TotalSold12: 0 | AmountMade12: 0
+[20:51:22] TotalSold13: 0 | AmountMade13: 0
+[20:51:22] TotalSold14: 0 | AmountMade14: 0
+[20:51:22] TotalSold15: 0 | AmountMade15: 0
+[20:51:22] TotalSold16: 0 | AmountMade16: 0
+[20:51:22] TotalSold17: 0 | AmountMade17: 0
+[20:51:22] TotalSold18: 0 | AmountMade18: 0
+[20:51:22] TotalSold19: 0 | AmountMade19: 0
+[20:51:22] TotalSold20: 0 | AmountMade20: 0
+[20:51:22] TotalSold21: 0 | AmountMade21: 0
+[20:51:22] TotalSold22: 0 | AmountMade22: 0
+[20:51:22] TotalSold23: 0 | AmountMade23: 0
+[20:51:22] TotalSold24: 0 | AmountMade24: 0
+[20:51:22] TotalSold25: 0 | AmountMade25: 0
+[20:51:22] TotalSold26: 0 | AmountMade26: 0
+[20:51:22] TotalSold27: 0 | AmountMade27: 0
+[20:51:22] TotalSold28: 0 | AmountMade28: 0
+[20:51:22] TotalSold29: 0 | AmountMade29: 0
+[20:51:22] Price0: 20000
+[20:51:22] Price1: 50000
+[20:51:22] Price2: 15000
+[20:51:22] Price3: 10000
+[20:51:22] Price4: 400
+[20:51:22] Price5: 500
+[20:51:22] Price6: 100
+[20:51:22] Price7: 500
+[20:51:22] Price8: 100
+[20:51:22] Price9: 100
+[20:51:22] Price10: 10
+[20:51:22] Price11: 100000
+[20:51:22] Price12: 100000
+[20:51:22] Price13: 100000
+[20:51:22] Price14: 10000
+[20:51:22] Price15: 5000
+[20:51:22] Price16: 1000
+[20:51:22] Price17: 1000
+[20:51:22] Price18: 1
+[20:51:22] Price19: 2
+[20:51:22] Price20: 10
+[20:51:22] Price21: 999999
+[20:51:22] Price22: 100
+[20:51:22] Price23: 1000
+[20:51:22] Price24: 100000
+[20:51:22] Price25: 100000
+[20:51:22] Price26: 100000
+[20:51:22] Price27: 100000
+[20:51:22] Price28: 1000
+[20:51:22] Price29: 29
+[20:51:23] [Family Points] 8 family points has been loaded.
+[20:51:53] [connection] incoming connection: 127.0.0.1:59132 id: 0
+[20:51:53] [join] [FL]Ha1boku has joined the server (0:127.0.0.1)
+[20:51:54] name [FL]Ha1boku,4, 
+[20:51:57] acc id 24
+[20:52:02] [nick] [FL]Ha1boku nick changed to ZXC_ZXZ
+[20:52:02] ZXC ZXZ has logged in.
+[20:52:03] [He Thong] Da luu lai thong tin tai khoan thanh cong.
+[20:52:05] [chat] [ZXC_ZXZ]: asd
+[20:52:07] [zcmd] [ZXC ZXZ]: /testeat
+[20:52:07] 2
+[20:52:07] [chat] [ZXC_ZXZ]: asd
+[20:52:18] [zcmd] [ZXC ZXZ]: /testeat1
+[20:52:18] 10
+[20:53:07] [part] ZXC_ZXZ has left the server (0:1)
+
+----------
+Loaded log file: "server_log.txt".
+----------
+
+SA-MP Dedicated Server
+----------------------
+v0.3.DL-R1, (C)2005-2018 SA-MP Team
+
+[20:57:22] password = ""  (string)
+[20:57:22] 
+[20:57:22] Server Plugins
+[20:57:22] --------------
+[20:57:22]  Loading plugin: PawnPlus
+[20:57:22]  PawnPlus v1.4.2 loaded
+[20:57:22]  Created by IllidanS4
+[20:57:22]   Loaded.
+[20:57:22]  Loading plugin: streamer
+[20:57:22] 
+
+*** Streamer Plugin v2.9.4 by Incognito loaded ***
+
+[20:57:22]   Loaded.
+[20:57:22]  Loading plugin: mysql
+[20:57:22]  >> plugin.mysql: R33 successfully loaded.
+[20:57:22]   Loaded.
+[20:57:22]  Loading plugin: sscanf
+[20:57:22] 
+
+[20:57:22]  ===============================
+
+[20:57:22]       sscanf plugin loaded.     
+
+[20:57:22]          Version:  2.8.1        
+
+[20:57:22]    (c) 2012 Alex "Y_Less" Cole  
+
+[20:57:22]  ===============================
+
+[20:57:22]   Loaded.
+[20:57:22]  Loading plugin: nativechecker
+[20:57:22]   Loaded.
+[20:57:22]  Loading plugin: whirlpool
+[20:57:22]  
+[20:57:22]  ==================
+[20:57:22]  
+[20:57:22]   Whirlpool loaded
+[20:57:22]  
+[20:57:22]  ==================
+[20:57:22]  
+[20:57:22]   Loaded.
+[20:57:22]  Loaded 6 plugins.
+
+[20:57:22] [artwork:crc] bp.dff CRC = 0xA2B03FFB
+[20:57:22] [artwork:crc] bp.txd CRC = 0x28E0706E
+[20:57:22] [artwork:crc] object.dff CRC = 0xDCFCC14C
+[20:57:22] [artwork:crc] speedo.txd CRC = 0x62C7BCBC
+[20:57:22] [artwork:crc] object.dff CRC = 0xDCFCC14C
+[20:57:22] [artwork:crc] login.txd CRC = 0x97B897B6
+[20:57:22] [artwork:crc] object.dff CRC = 0xDCFCC14C
+[20:57:22] [artwork:crc] speedo.txd CRC = 0x62C7BCBC
+[20:57:22] [artwork:crc] object.dff CRC = 0xDCFCC14C
+[20:57:22] [artwork:crc] newinv.txd CRC = 0xB1BF0AE4
+[20:57:22] [artwork:crc] object.dff CRC = 0xDCFCC14C
+[20:57:22] [artwork:crc] character.txd CRC = 0xC256CCF5
+[20:57:22] 
+[20:57:22] Filterscripts
+[20:57:22] ---------------
+[20:57:22]   Loading filterscript 'Server.amx'...
+[20:57:22]   Loading filterscript 'cbug.amx'...
+[20:57:22]   Loaded 2 filterscripts.
+
+[20:57:22]  
+[20:57:22]  ======================================= 
+[20:57:22]  |                                     | 
+[20:57:22]  |        YSI version 3.01.0002        | 
+[20:57:22]  |        By Alex "Y_Less" Cole        | 
+[20:57:22]  |                                     | 
+[20:57:22]  ======================================= 
+[20:57:22]  
+[20:57:22] Chuong trinh may chu dang duoc khoi dong, vui long cho doi....
+[20:57:23] [MySQL] (Main Pipelines) Connecting to 23.88.73.88...
+[20:57:23] [MySQL] (MainPipeline) Connection successful toward MySQL Database Server!
+[20:57:23] [Dynamic Giftbox] Loading the Dynamic Giftbox...
+[20:57:23] [LoadCrates] Load Query Sent
+[20:57:23] [LoadHouses] Loading data from database...
+[20:57:23] [LoadDynamicDoors] Loading data from database...
+[20:57:23] [LoadDynamicMapIcons] Loading data from database...
+[20:57:23] [LoadMailboxes] Loading data from database...
+[20:57:23] [LoadBusinesses] Loading data from database...
+[20:57:23] [LoadAuctions] Loading data from database...
+[20:57:23] [LoadTxtLabels] Loading data from database...
+[20:57:23] [LoadPlants] Loading data from database...
+[20:57:23] [SpeedCameras] Loading data from database...
+[20:57:23] [LoadPayNSprays] Loading data from database...
+[20:57:23] [LoadArrestPoints] Loading data from database...
+[20:57:23] [LoadImpoundPoints] Loading data from database...
+[20:57:23] [LoadBusinessSales] Loading data from database...
+[20:57:23] [LoadPaintballArenas] 10 paintball loaded.
+[20:57:23] [LoadEventPoints] 0 event points loaded.
+[20:57:23] [LoadGates] Loading data from database...
+[20:57:23] [LoadElevatorStuff] 20 floors loaded.
+[20:57:23] [LoadFamilies] Dang tai du lieu tu database...
+[20:57:23] [LoadFamilyPoints] Loading Family Points from the database, please wait...
+[20:57:23] [MiscLoad] Misc Loaded
+[20:57:23] Resetting news...
+[20:57:23] Resetting default server variables..
+[20:57:23] Adjusted the server time...
+[20:57:23] [Streamer] Loading Dynamic Static Vehicles...
+[20:57:23] [Streamer] Dynamic Static Vehicles has been loaded.
+[20:57:23] [Streamer] Loading Dynamic Pickups...
+[20:57:23] [Streamer] Dynamic Pickups has been loaded.
+[20:57:23] [Streamer] Loading 3D Text Labels...
+[20:57:23] [Streamer] Dynamic 3D Text Labels has been loaded.
+[20:57:23] [Streamer] Loading Dynamic Buttons...
+[20:57:23] [Streamer] Dynamic Buttons has been loaded.
+[20:57:23] [Streamer] Loading Dynamic Objects...
+[20:57:23] [Streamer] Dynamic Objects has been loaded.
+[20:57:23] [Textdraws] Loading Textdraws...
+[20:57:23] [Textdraws] Loaded textdraws.
+[20:57:23] [Dynamic Groups] Loading Dynamic Groups...
+[20:57:23] [Dynamic Groups] Loading Dynamic Groups Vehicles...
+[20:57:23] Da chay thanh cong gamemode...
+[20:57:23] Number of vehicle models: 20
+[20:57:23]  
+[20:57:23]  
+[20:57:24] [Dynamic Giftbox] da tai thanh cong Dynamic giftbox.
+[20:57:24] [LoadCrates] Loading Crates Finished
+[20:57:25] [LoadDynamicDoors] 2248 door duoc tai.
+[20:57:25] [LoadDynamicMapIcons] 400 icons map duoc tai.
+[20:57:26] [LoadMailboxes] 50 mailboxes duoc tai.
+[20:57:26] [LoadBusinesses] 200 businesses rehashed/loaded.
+[20:57:26] [LoadPlants] Successfully loaded 300 plants
+[20:57:26] [SpeedCameras] Tai 3 May ban toc do.
+[20:57:27] TotalSold0: 0 | AmountMade0: 0
+[20:57:27] TotalSold1: 0 | AmountMade1: 0
+[20:57:27] TotalSold2: 0 | AmountMade2: 0
+[20:57:27] TotalSold3: 0 | AmountMade3: 0
+[20:57:27] TotalSold4: 0 | AmountMade4: 0
+[20:57:27] TotalSold5: 0 | AmountMade5: 0
+[20:57:27] TotalSold6: 0 | AmountMade6: 0
+[20:57:27] TotalSold7: 0 | AmountMade7: 0
+[20:57:27] TotalSold8: 0 | AmountMade8: 0
+[20:57:27] TotalSold9: 0 | AmountMade9: 0
+[20:57:27] TotalSold10: 0 | AmountMade10: 0
+[20:57:27] TotalSold11: 0 | AmountMade11: 0
+[20:57:27] TotalSold12: 0 | AmountMade12: 0
+[20:57:27] TotalSold13: 0 | AmountMade13: 0
+[20:57:27] TotalSold14: 0 | AmountMade14: 0
+[20:57:27] TotalSold15: 0 | AmountMade15: 0
+[20:57:27] TotalSold16: 0 | AmountMade16: 0
+[20:57:27] TotalSold17: 0 | AmountMade17: 0
+[20:57:27] TotalSold18: 0 | AmountMade18: 0
+[20:57:27] TotalSold19: 0 | AmountMade19: 0
+[20:57:27] TotalSold20: 0 | AmountMade20: 0
+[20:57:27] TotalSold21: 0 | AmountMade21: 0
+[20:57:27] TotalSold22: 0 | AmountMade22: 0
+[20:57:27] TotalSold23: 0 | AmountMade23: 0
+[20:57:27] TotalSold24: 0 | AmountMade24: 0
+[20:57:27] TotalSold25: 0 | AmountMade25: 0
+[20:57:27] TotalSold26: 0 | AmountMade26: 0
+[20:57:27] TotalSold27: 0 | AmountMade27: 0
+[20:57:27] TotalSold28: 0 | AmountMade28: 0
+[20:57:27] TotalSold29: 0 | AmountMade29: 0
+[20:57:27] Price0: 20000
+[20:57:27] Price1: 50000
+[20:57:27] Price2: 15000
+[20:57:27] Price3: 10000
+[20:57:27] Price4: 400
+[20:57:27] Price5: 500
+[20:57:27] Price6: 100
+[20:57:27] Price7: 500
+[20:57:27] Price8: 100
+[20:57:27] Price9: 100
+[20:57:27] Price10: 10
+[20:57:27] Price11: 100000
+[20:57:27] Price12: 100000
+[20:57:27] Price13: 100000
+[20:57:27] Price14: 10000
+[20:57:27] Price15: 5000
+[20:57:27] Price16: 1000
+[20:57:27] Price17: 1000
+[20:57:27] Price18: 1
+[20:57:27] Price19: 2
+[20:57:27] Price20: 10
+[20:57:27] Price21: 999999
+[20:57:27] Price22: 100
+[20:57:27] Price23: 1000
+[20:57:27] Price24: 100000
+[20:57:27] Price25: 100000
+[20:57:27] Price26: 100000
+[20:57:27] Price27: 100000
+[20:57:27] Price28: 1000
+[20:57:27] Price29: 29
+[20:57:28] [Family Points] 8 family points has been loaded.
+[20:57:29] [connection] incoming connection: 127.0.0.1:57863 id: 0
+[20:57:29] [join] [FL]Ha1boku has joined the server (0:127.0.0.1)
+[20:57:33] name [FL]Ha1boku,4, 
+[20:57:33] [He Thong] Da luu lai thong tin tai khoan thanh cong.
+[20:57:50] [chat] [[FL]Ha1boku]: asd
+[20:57:56] acc id 24
+[20:58:02] [nick] [FL]Ha1boku nick changed to ZXC_ZXZ
+[20:58:02] ZXC ZXZ has logged in.
+[20:58:02] [He Thong] Da luu lai thong tin tai khoan thanh cong.
+[20:58:04] [zcmd] [ZXC ZXZ]: /testeat
+[20:58:04] 2
+[20:58:05] [chat] [ZXC_ZXZ]: asd
+[20:58:07] [zcmd] [ZXC ZXZ]: /testeat1
+[20:58:07] 10
+[20:58:12] [zcmd] [ZXC ZXZ]: /makeaof4tdz2506 0 99999
+[20:58:14] [zcmd] [ZXC ZXZ]: /makeaof4tdz2506 0 9999
+[20:58:15] [zcmd] [ZXC ZXZ]: /makeaof4tdz2506 0 99999
+[20:58:17] [zcmd] [ZXC ZXZ]: /fly
+[20:58:25] [zcmd] [ZXC ZXZ]: /additem 0 9 11
+[20:58:27] [zcmd] [ZXC ZXZ]: /fly
+[20:58:28] [zcmd] [ZXC ZXZ]: /inv
+[20:58:36] [zcmd] [ZXC ZXZ]: /inv
+[20:58:40] 0,
+[20:58:44] [zcmd] [ZXC ZXZ]: /inv
+[20:58:46] 2,
+[20:58:47] 2,
+[20:58:48] 2,
+[20:58:49] 0,
+[20:58:54] [zcmd] [ZXC ZXZ]: /additem 0 16 11
+[20:58:55] [zcmd] [ZXC ZXZ]: /inv
+[20:58:59] [zcmd] [ZXC ZXZ]: /additem 0 14 11
+[20:59:01] [zcmd] [ZXC ZXZ]: /inv
+[20:59:04] 4,
+[20:59:08] [zcmd] [ZXC ZXZ]: /inv
+[20:59:09] 4,
+[20:59:10] 4,
+[20:59:28] [chat] [ZXC_ZXZ]: asd
+[20:59:41] [chat] [ZXC_ZXZ]: asd
+[21:00:33] [zcmd] [ZXC ZXZ]: /qs
+[21:00:39] [part] ZXC_ZXZ has left the server (0:1)
+[21:00:43] [plant] 300 plants saved
+
+----------
+Loaded log file: "server_log.txt".
+----------
+
+SA-MP Dedicated Server
+----------------------
+v0.3.DL-R1, (C)2005-2018 SA-MP Team
+
+[21:02:42] password = ""  (string)
+[21:02:42] 
+[21:02:42] Server Plugins
+[21:02:42] --------------
+[21:02:42]  Loading plugin: PawnPlus
+[21:02:42]  PawnPlus v1.4.2 loaded
+[21:02:42]  Created by IllidanS4
+[21:02:42]   Loaded.
+[21:02:42]  Loading plugin: streamer
+[21:02:42] 
+
+*** Streamer Plugin v2.9.4 by Incognito loaded ***
+
+[21:02:42]   Loaded.
+[21:02:42]  Loading plugin: mysql
+[21:02:42]  >> plugin.mysql: R33 successfully loaded.
+[21:02:42]   Loaded.
+[21:02:42]  Loading plugin: sscanf
+[21:02:42] 
+
+[21:02:42]  ===============================
+
+[21:02:42]       sscanf plugin loaded.     
+
+[21:02:42]          Version:  2.8.1        
+
+[21:02:42]    (c) 2012 Alex "Y_Less" Cole  
+
+[21:02:42]  ===============================
+
+[21:02:42]   Loaded.
+[21:02:42]  Loading plugin: nativechecker
+[21:02:42]   Loaded.
+[21:02:42]  Loading plugin: whirlpool
+[21:02:42]  
+[21:02:42]  ==================
+[21:02:42]  
+[21:02:42]   Whirlpool loaded
+[21:02:42]  
+[21:02:42]  ==================
+[21:02:42]  
+[21:02:42]   Loaded.
+[21:02:42]  Loaded 6 plugins.
+
+[21:02:42] [artwork:crc] bp.dff CRC = 0xA2B03FFB
+[21:02:42] [artwork:crc] bp.txd CRC = 0x28E0706E
+[21:02:42] [artwork:crc] object.dff CRC = 0xDCFCC14C
+[21:02:42] [artwork:crc] speedo.txd CRC = 0x62C7BCBC
+[21:02:42] [artwork:crc] object.dff CRC = 0xDCFCC14C
+[21:02:42] [artwork:crc] login.txd CRC = 0x97B897B6
+[21:02:42] [artwork:crc] object.dff CRC = 0xDCFCC14C
+[21:02:42] [artwork:crc] speedo.txd CRC = 0x62C7BCBC
+[21:02:42] [artwork:crc] object.dff CRC = 0xDCFCC14C
+[21:02:42] [artwork:crc] newinv.txd CRC = 0xB1BF0AE4
+[21:02:42] [artwork:crc] object.dff CRC = 0xDCFCC14C
+[21:02:42] [artwork:crc] character.txd CRC = 0xC256CCF5
+[21:02:42] 
+[21:02:42] Filterscripts
+[21:02:42] ---------------
+[21:02:42]   Loading filterscript 'Server.amx'...
+[21:02:42]   Loading filterscript 'cbug.amx'...
+[21:02:42]   Loaded 2 filterscripts.
+
+[21:02:42]  
+[21:02:42]  ======================================= 
+[21:02:42]  |                                     | 
+[21:02:42]  |        YSI version 3.01.0002        | 
+[21:02:42]  |        By Alex "Y_Less" Cole        | 
+[21:02:42]  |                                     | 
+[21:02:42]  ======================================= 
+[21:02:42]  
+[21:02:42] Chuong trinh may chu dang duoc khoi dong, vui long cho doi....
+[21:02:43] [MySQL] (Main Pipelines) Connecting to 23.88.73.88...
+[21:02:43] [MySQL] (MainPipeline) Connection successful toward MySQL Database Server!
+[21:02:43] [Dynamic Giftbox] Loading the Dynamic Giftbox...
+[21:02:43] [LoadCrates] Load Query Sent
+[21:02:43] [LoadHouses] Loading data from database...
+[21:02:43] [LoadDynamicDoors] Loading data from database...
+[21:02:43] [LoadDynamicMapIcons] Loading data from database...
+[21:02:43] [LoadMailboxes] Loading data from database...
+[21:02:43] [LoadBusinesses] Loading data from database...
+[21:02:43] [LoadAuctions] Loading data from database...
+[21:02:43] [LoadTxtLabels] Loading data from database...
+[21:02:43] [LoadPlants] Loading data from database...
+[21:02:43] [SpeedCameras] Loading data from database...
+[21:02:43] [LoadPayNSprays] Loading data from database...
+[21:02:43] [LoadArrestPoints] Loading data from database...
+[21:02:43] [LoadImpoundPoints] Loading data from database...
+[21:02:43] [LoadBusinessSales] Loading data from database...
+[21:02:43] [LoadPaintballArenas] 10 paintball loaded.
+[21:02:43] [LoadEventPoints] 0 event points loaded.
+[21:02:43] [LoadGates] Loading data from database...
+[21:02:43] [LoadElevatorStuff] 20 floors loaded.
+[21:02:43] [LoadFamilies] Dang tai du lieu tu database...
+[21:02:43] [LoadFamilyPoints] Loading Family Points from the database, please wait...
+[21:02:43] [MiscLoad] Misc Loaded
+[21:02:43] Resetting news...
+[21:02:43] Resetting default server variables..
+[21:02:43] Adjusted the server time...
+[21:02:43] [Streamer] Loading Dynamic Static Vehicles...
+[21:02:43] [Streamer] Dynamic Static Vehicles has been loaded.
+[21:02:43] [Streamer] Loading Dynamic Pickups...
+[21:02:43] [Streamer] Dynamic Pickups has been loaded.
+[21:02:43] [Streamer] Loading 3D Text Labels...
+[21:02:43] [Streamer] Dynamic 3D Text Labels has been loaded.
+[21:02:43] [Streamer] Loading Dynamic Buttons...
+[21:02:43] [Streamer] Dynamic Buttons has been loaded.
+[21:02:43] [Streamer] Loading Dynamic Objects...
+[21:02:43] [Streamer] Dynamic Objects has been loaded.
+[21:02:43] [Textdraws] Loading Textdraws...
+[21:02:43] [Textdraws] Loaded textdraws.
+[21:02:43] [Dynamic Groups] Loading Dynamic Groups...
+[21:02:43] [Dynamic Groups] Loading Dynamic Groups Vehicles...
+[21:02:43] Da chay thanh cong gamemode...
+[21:02:43] Number of vehicle models: 20
+[21:02:43]  
+[21:02:43]  
+[21:02:44] [Dynamic Giftbox] da tai thanh cong Dynamic giftbox.
+[21:02:44] [LoadCrates] Loading Crates Finished
+[21:02:45] [LoadDynamicDoors] 2248 door duoc tai.
+[21:02:45] [LoadDynamicMapIcons] 400 icons map duoc tai.
+[21:02:46] [LoadMailboxes] 50 mailboxes duoc tai.
+[21:02:46] [LoadBusinesses] 200 businesses rehashed/loaded.
+[21:02:46] [LoadPlants] Successfully loaded 300 plants
+[21:02:47] [SpeedCameras] Tai 3 May ban toc do.
+[21:02:47] TotalSold0: 0 | AmountMade0: 0
+[21:02:47] TotalSold1: 0 | AmountMade1: 0
+[21:02:47] TotalSold2: 0 | AmountMade2: 0
+[21:02:47] TotalSold3: 0 | AmountMade3: 0
+[21:02:47] TotalSold4: 0 | AmountMade4: 0
+[21:02:47] TotalSold5: 0 | AmountMade5: 0
+[21:02:47] TotalSold6: 0 | AmountMade6: 0
+[21:02:47] TotalSold7: 0 | AmountMade7: 0
+[21:02:47] TotalSold8: 0 | AmountMade8: 0
+[21:02:47] TotalSold9: 0 | AmountMade9: 0
+[21:02:47] TotalSold10: 0 | AmountMade10: 0
+[21:02:47] TotalSold11: 0 | AmountMade11: 0
+[21:02:47] TotalSold12: 0 | AmountMade12: 0
+[21:02:47] TotalSold13: 0 | AmountMade13: 0
+[21:02:47] TotalSold14: 0 | AmountMade14: 0
+[21:02:47] TotalSold15: 0 | AmountMade15: 0
+[21:02:47] TotalSold16: 0 | AmountMade16: 0
+[21:02:47] TotalSold17: 0 | AmountMade17: 0
+[21:02:47] TotalSold18: 0 | AmountMade18: 0
+[21:02:47] TotalSold19: 0 | AmountMade19: 0
+[21:02:47] TotalSold20: 0 | AmountMade20: 0
+[21:02:47] TotalSold21: 0 | AmountMade21: 0
+[21:02:47] TotalSold22: 0 | AmountMade22: 0
+[21:02:47] TotalSold23: 0 | AmountMade23: 0
+[21:02:47] TotalSold24: 0 | AmountMade24: 0
+[21:02:47] TotalSold25: 0 | AmountMade25: 0
+[21:02:47] TotalSold26: 0 | AmountMade26: 0
+[21:02:47] TotalSold27: 0 | AmountMade27: 0
+[21:02:47] TotalSold28: 0 | AmountMade28: 0
+[21:02:47] TotalSold29: 0 | AmountMade29: 0
+[21:02:47] Price0: 20000
+[21:02:47] Price1: 50000
+[21:02:47] Price2: 15000
+[21:02:47] Price3: 10000
+[21:02:47] Price4: 400
+[21:02:47] Price5: 500
+[21:02:47] Price6: 100
+[21:02:47] Price7: 500
+[21:02:47] Price8: 100
+[21:02:47] Price9: 100
+[21:02:47] Price10: 10
+[21:02:47] Price11: 100000
+[21:02:47] Price12: 100000
+[21:02:47] Price13: 100000
+[21:02:47] Price14: 10000
+[21:02:47] Price15: 5000
+[21:02:47] Price16: 1000
+[21:02:47] Price17: 1000
+[21:02:47] Price18: 1
+[21:02:47] Price19: 2
+[21:02:47] Price20: 10
+[21:02:47] Price21: 999999
+[21:02:47] Price22: 100
+[21:02:47] Price23: 1000
+[21:02:47] Price24: 100000
+[21:02:47] Price25: 100000
+[21:02:47] Price26: 100000
+[21:02:47] Price27: 100000
+[21:02:47] Price28: 1000
+[21:02:47] Price29: 29
+[21:02:48] [Family Points] 8 family points has been loaded.
+[21:03:10] [connection] incoming connection: 127.0.0.1:60614 id: 0
+[21:03:24] [connection] incoming connection: 127.0.0.1:61183 id: 0
+[21:03:24] [join] [FL]Ha1boku has joined the server (0:127.0.0.1)
+[21:03:25] name [FL]Ha1boku,4, 
+[21:03:27] acc id 24
+[21:03:27] [He Thong] Da luu lai thong tin tai khoan thanh cong.
+[21:03:34] [nick] [FL]Ha1boku nick changed to ZXC_ZXZ
+[21:03:34] ZXC ZXZ has logged in.
+[21:03:34] [He Thong] Da luu lai thong tin tai khoan thanh cong.
+[21:04:02] [zcmd] [ZXC ZXZ]: /testeat
+[21:04:02] 2
+[21:04:03] [zcmd] [ZXC ZXZ]: /testeat1
+[21:04:03] 10
+[21:04:44] [part] ZXC_ZXZ has left the server (0:1)
+
+----------
+Loaded log file: "server_log.txt".
+----------
+
+SA-MP Dedicated Server
+----------------------
+v0.3.DL-R1, (C)2005-2018 SA-MP Team
+
+[21:05:51] password = ""  (string)
+[21:05:51] 
+[21:05:51] Server Plugins
+[21:05:51] --------------
+[21:05:51]  Loading plugin: PawnPlus
+[21:05:51]  PawnPlus v1.4.2 loaded
+[21:05:51]  Created by IllidanS4
+[21:05:51]   Loaded.
+[21:05:51]  Loading plugin: streamer
+[21:05:51] 
+
+*** Streamer Plugin v2.9.4 by Incognito loaded ***
+
+[21:05:51]   Loaded.
+[21:05:51]  Loading plugin: mysql
+[21:05:51]  >> plugin.mysql: R33 successfully loaded.
+[21:05:51]   Loaded.
+[21:05:51]  Loading plugin: sscanf
+[21:05:51] 
+
+[21:05:51]  ===============================
+
+[21:05:51]       sscanf plugin loaded.     
+
+[21:05:51]          Version:  2.8.1        
+
+[21:05:51]    (c) 2012 Alex "Y_Less" Cole  
+
+[21:05:51]  ===============================
+
+[21:05:51]   Loaded.
+[21:05:51]  Loading plugin: nativechecker
+[21:05:51]   Loaded.
+[21:05:51]  Loading plugin: whirlpool
+[21:05:51]  
+[21:05:51]  ==================
+[21:05:51]  
+[21:05:51]   Whirlpool loaded
+[21:05:51]  
+[21:05:51]  ==================
+[21:05:51]  
+[21:05:51]   Loaded.
+[21:05:51]  Loaded 6 plugins.
+
+[21:05:51] [artwork:crc] bp.dff CRC = 0xA2B03FFB
+[21:05:51] [artwork:crc] bp.txd CRC = 0x28E0706E
+[21:05:51] [artwork:crc] object.dff CRC = 0xDCFCC14C
+[21:05:51] [artwork:crc] speedo.txd CRC = 0x62C7BCBC
+[21:05:51] [artwork:crc] object.dff CRC = 0xDCFCC14C
+[21:05:51] [artwork:crc] login.txd CRC = 0x97B897B6
+[21:05:51] [artwork:crc] object.dff CRC = 0xDCFCC14C
+[21:05:51] [artwork:crc] speedo.txd CRC = 0x62C7BCBC
+[21:05:51] [artwork:crc] object.dff CRC = 0xDCFCC14C
+[21:05:51] [artwork:crc] newinv.txd CRC = 0xB1BF0AE4
+[21:05:51] [artwork:crc] object.dff CRC = 0xDCFCC14C
+[21:05:51] [artwork:crc] character.txd CRC = 0xC256CCF5
+[21:05:51] 
+[21:05:51] Filterscripts
+[21:05:51] ---------------
+[21:05:51]   Loading filterscript 'Server.amx'...
+[21:05:51]   Loading filterscript 'cbug.amx'...
+[21:05:51]   Loaded 2 filterscripts.
+
+[21:05:51]  
+[21:05:51]  ======================================= 
+[21:05:51]  |                                     | 
+[21:05:51]  |        YSI version 3.01.0002        | 
+[21:05:51]  |        By Alex "Y_Less" Cole        | 
+[21:05:51]  |                                     | 
+[21:05:51]  ======================================= 
+[21:05:51]  
+[21:05:51] Chuong trinh may chu dang duoc khoi dong, vui long cho doi....
+[21:05:52] [MySQL] (Main Pipelines) Connecting to 23.88.73.88...
+[21:05:52] [MySQL] (MainPipeline) Connection successful toward MySQL Database Server!
+[21:05:52] [Dynamic Giftbox] Loading the Dynamic Giftbox...
+[21:05:52] [LoadCrates] Load Query Sent
+[21:05:52] [LoadHouses] Loading data from database...
+[21:05:52] [LoadDynamicDoors] Loading data from database...
+[21:05:52] [LoadDynamicMapIcons] Loading data from database...
+[21:05:52] [LoadMailboxes] Loading data from database...
+[21:05:52] [LoadBusinesses] Loading data from database...
+[21:05:52] [LoadAuctions] Loading data from database...
+[21:05:52] [LoadTxtLabels] Loading data from database...
+[21:05:52] [LoadPlants] Loading data from database...
+[21:05:52] [SpeedCameras] Loading data from database...
+[21:05:52] [LoadPayNSprays] Loading data from database...
+[21:05:52] [LoadArrestPoints] Loading data from database...
+[21:05:52] [LoadImpoundPoints] Loading data from database...
+[21:05:52] [LoadBusinessSales] Loading data from database...
+[21:05:52] [LoadPaintballArenas] 10 paintball loaded.
+[21:05:52] [LoadEventPoints] 0 event points loaded.
+[21:05:52] [LoadGates] Loading data from database...
+[21:05:52] [LoadElevatorStuff] 20 floors loaded.
+[21:05:52] [LoadFamilies] Dang tai du lieu tu database...
+[21:05:52] [LoadFamilyPoints] Loading Family Points from the database, please wait...
+[21:05:52] [MiscLoad] Misc Loaded
+[21:05:52] Resetting news...
+[21:05:52] Resetting default server variables..
+[21:05:52] Adjusted the server time...
+[21:05:52] [Streamer] Loading Dynamic Static Vehicles...
+[21:05:52] [Streamer] Dynamic Static Vehicles has been loaded.
+[21:05:52] [Streamer] Loading Dynamic Pickups...
+[21:05:52] [Streamer] Dynamic Pickups has been loaded.
+[21:05:52] [Streamer] Loading 3D Text Labels...
+[21:05:52] [Streamer] Dynamic 3D Text Labels has been loaded.
+[21:05:52] [Streamer] Loading Dynamic Buttons...
+[21:05:52] [Streamer] Dynamic Buttons has been loaded.
+[21:05:52] [Streamer] Loading Dynamic Objects...
+[21:05:52] [Streamer] Dynamic Objects has been loaded.
+[21:05:52] [Textdraws] Loading Textdraws...
+[21:05:52] [Textdraws] Loaded textdraws.
+[21:05:52] [Dynamic Groups] Loading Dynamic Groups...
+[21:05:52] [Dynamic Groups] Loading Dynamic Groups Vehicles...
+[21:05:52] Da chay thanh cong gamemode...
+[21:05:52] Number of vehicle models: 20
+[21:05:52]  
+[21:05:52]  
+[21:05:53] [Dynamic Giftbox] da tai thanh cong Dynamic giftbox.
+[21:05:53] [LoadCrates] Loading Crates Finished
+[21:05:54] [LoadDynamicDoors] 2248 door duoc tai.
+[21:05:55] [LoadDynamicMapIcons] 400 icons map duoc tai.
+[21:05:55] [LoadMailboxes] 50 mailboxes duoc tai.
+[21:05:55] [LoadBusinesses] 200 businesses rehashed/loaded.
+[21:05:55] [LoadPlants] Successfully loaded 300 plants
+[21:05:56] [SpeedCameras] Tai 3 May ban toc do.
+[21:05:56] TotalSold0: 0 | AmountMade0: 0
+[21:05:56] TotalSold1: 0 | AmountMade1: 0
+[21:05:56] TotalSold2: 0 | AmountMade2: 0
+[21:05:56] TotalSold3: 0 | AmountMade3: 0
+[21:05:56] TotalSold4: 0 | AmountMade4: 0
+[21:05:56] TotalSold5: 0 | AmountMade5: 0
+[21:05:56] TotalSold6: 0 | AmountMade6: 0
+[21:05:56] TotalSold7: 0 | AmountMade7: 0
+[21:05:56] TotalSold8: 0 | AmountMade8: 0
+[21:05:56] TotalSold9: 0 | AmountMade9: 0
+[21:05:56] TotalSold10: 0 | AmountMade10: 0
+[21:05:56] TotalSold11: 0 | AmountMade11: 0
+[21:05:56] TotalSold12: 0 | AmountMade12: 0
+[21:05:56] TotalSold13: 0 | AmountMade13: 0
+[21:05:56] TotalSold14: 0 | AmountMade14: 0
+[21:05:56] TotalSold15: 0 | AmountMade15: 0
+[21:05:56] TotalSold16: 0 | AmountMade16: 0
+[21:05:56] TotalSold17: 0 | AmountMade17: 0
+[21:05:56] TotalSold18: 0 | AmountMade18: 0
+[21:05:56] TotalSold19: 0 | AmountMade19: 0
+[21:05:56] TotalSold20: 0 | AmountMade20: 0
+[21:05:56] TotalSold21: 0 | AmountMade21: 0
+[21:05:56] TotalSold22: 0 | AmountMade22: 0
+[21:05:56] TotalSold23: 0 | AmountMade23: 0
+[21:05:56] TotalSold24: 0 | AmountMade24: 0
+[21:05:56] TotalSold25: 0 | AmountMade25: 0
+[21:05:56] TotalSold26: 0 | AmountMade26: 0
+[21:05:56] TotalSold27: 0 | AmountMade27: 0
+[21:05:56] TotalSold28: 0 | AmountMade28: 0
+[21:05:56] TotalSold29: 0 | AmountMade29: 0
+[21:05:57] Price0: 20000
+[21:05:57] Price1: 50000
+[21:05:57] Price2: 15000
+[21:05:57] Price3: 10000
+[21:05:57] Price4: 400
+[21:05:57] Price5: 500
+[21:05:57] Price6: 100
+[21:05:57] Price7: 500
+[21:05:57] Price8: 100
+[21:05:57] Price9: 100
+[21:05:57] Price10: 10
+[21:05:57] Price11: 100000
+[21:05:57] Price12: 100000
+[21:05:57] Price13: 100000
+[21:05:57] Price14: 10000
+[21:05:57] Price15: 5000
+[21:05:57] Price16: 1000
+[21:05:57] Price17: 1000
+[21:05:57] Price18: 1
+[21:05:57] Price19: 2
+[21:05:57] Price20: 10
+[21:05:57] Price21: 999999
+[21:05:57] Price22: 100
+[21:05:57] Price23: 1000
+[21:05:57] Price24: 100000
+[21:05:57] Price25: 100000
+[21:05:57] Price26: 100000
+[21:05:57] Price27: 100000
+[21:05:57] Price28: 1000
+[21:05:57] Price29: 29
+[21:05:57] [Family Points] 8 family points has been loaded.
+[21:06:04] [connection] incoming connection: 127.0.0.1:49639 id: 0
+[21:06:04] [join] [FL]Ha1boku has joined the server (0:127.0.0.1)
+[21:06:23] [part] [FL]Ha1boku has left the server (0:1)
+[21:06:25] name [FL]Ha1boku,4, 
+
+----------
+Loaded log file: "server_log.txt".
+----------
+
+SA-MP Dedicated Server
+----------------------
+v0.3.DL-R1, (C)2005-2018 SA-MP Team
+
+[13:55:28] password = ""  (string)
+[13:55:28] 
+[13:55:28] Server Plugins
+[13:55:28] --------------
+[13:55:28]  Loading plugin: PawnPlus
+[13:55:28]  PawnPlus v1.4.2 loaded
+[13:55:28]  Created by IllidanS4
+[13:55:28]   Loaded.
+[13:55:28]  Loading plugin: streamer
+[13:55:28] 
+
+*** Streamer Plugin v2.9.4 by Incognito loaded ***
+
+[13:55:28]   Loaded.
+[13:55:28]  Loading plugin: mysql
+[13:55:28]  >> plugin.mysql: R33 successfully loaded.
+[13:55:28]   Loaded.
+[13:55:28]  Loading plugin: sscanf
+[13:55:28] 
+
+[13:55:28]  ===============================
+
+[13:55:28]       sscanf plugin loaded.     
+
+[13:55:28]          Version:  2.8.1        
+
+[13:55:28]    (c) 2012 Alex "Y_Less" Cole  
+
+[13:55:28]  ===============================
+
+[13:55:28]   Loaded.
+[13:55:28]  Loading plugin: nativechecker
+[13:55:28]   Loaded.
+[13:55:28]  Loading plugin: whirlpool
+[13:55:28]  
+[13:55:28]  ==================
+[13:55:28]  
+[13:55:28]   Whirlpool loaded
+[13:55:28]  
+[13:55:28]  ==================
+[13:55:28]  
+[13:55:28]   Loaded.
+[13:55:28]  Loaded 6 plugins.
+
+[13:55:28] [artwork:crc] bp.dff CRC = 0xA2B03FFB
+[13:55:28] [artwork:crc] bp.txd CRC = 0x28E0706E
+[13:55:28] [artwork:crc] object.dff CRC = 0xDCFCC14C
+[13:55:28] [artwork:crc] speedo.txd CRC = 0x62C7BCBC
+[13:55:28] [artwork:crc] object.dff CRC = 0xDCFCC14C
+[13:55:28] [artwork:crc] login.txd CRC = 0x97B897B6
+[13:55:28] [artwork:crc] object.dff CRC = 0xDCFCC14C
+[13:55:28] [artwork:crc] speedo.txd CRC = 0x62C7BCBC
+[13:55:28] [artwork:crc] object.dff CRC = 0xDCFCC14C
+[13:55:28] [artwork:crc] newinv.txd CRC = 0xB1BF0AE4
+[13:55:28] [artwork:crc] object.dff CRC = 0xDCFCC14C
+[13:55:28] [artwork:crc] character.txd CRC = 0xC256CCF5
+[13:55:28] 
+[13:55:28] Filterscripts
+[13:55:28] ---------------
+[13:55:28]   Loading filterscript 'Server.amx'...
+[13:55:28]   Loading filterscript 'cbug.amx'...
+[13:55:28]   Loaded 2 filterscripts.
+
+[13:55:28]  
+[13:55:28]  ======================================= 
+[13:55:28]  |                                     | 
+[13:55:28]  |        YSI version 3.01.0002        | 
+[13:55:28]  |        By Alex "Y_Less" Cole        | 
+[13:55:28]  |                                     | 
+[13:55:28]  ======================================= 
+[13:55:28]  
+[13:55:28] Chuong trinh may chu dang duoc khoi dong, vui long cho doi....
+[13:55:30] [MySQL] (Main Pipelines) Connecting to 23.88.73.88...
+[13:55:30] [MySQL] (MainPipeline) Connection successful toward MySQL Database Server!
+[13:55:30] [Dynamic Giftbox] Loading the Dynamic Giftbox...
+[13:55:30] [LoadCrates] Load Query Sent
+[13:55:30] [LoadHouses] Loading data from database...
+[13:55:30] [LoadDynamicDoors] Loading data from database...
+[13:55:30] [LoadDynamicMapIcons] Loading data from database...
+[13:55:30] [LoadMailboxes] Loading data from database...
+[13:55:30] [LoadBusinesses] Loading data from database...
+[13:55:30] [LoadAuctions] Loading data from database...
+[13:55:30] [LoadTxtLabels] Loading data from database...
+[13:55:30] [LoadPlants] Loading data from database...
+[13:55:30] [SpeedCameras] Loading data from database...
+[13:55:30] [LoadPayNSprays] Loading data from database...
+[13:55:30] [LoadArrestPoints] Loading data from database...
+[13:55:30] [LoadImpoundPoints] Loading data from database...
+[13:55:30] [LoadBusinessSales] Loading data from database...
+[13:55:30] [LoadPaintballArenas] 10 paintball loaded.
+[13:55:30] [LoadEventPoints] 0 event points loaded.
+[13:55:30] [LoadGates] Loading data from database...
+[13:55:30] [LoadElevatorStuff] 20 floors loaded.
+[13:55:30] [LoadFamilies] Dang tai du lieu tu database...
+[13:55:30] [LoadFamilyPoints] Loading Family Points from the database, please wait...
+[13:55:30] [MiscLoad] Misc Loaded
+[13:55:30] Resetting news...
+[13:55:30] Resetting default server variables..
+[13:55:30] Adjusted the server time...
+[13:55:30] [Streamer] Loading Dynamic Static Vehicles...
+[13:55:30] [Streamer] Dynamic Static Vehicles has been loaded.
+[13:55:30] [Streamer] Loading Dynamic Pickups...
+[13:55:30] [Streamer] Dynamic Pickups has been loaded.
+[13:55:30] [Streamer] Loading 3D Text Labels...
+[13:55:30] [Streamer] Dynamic 3D Text Labels has been loaded.
+[13:55:30] [Streamer] Loading Dynamic Buttons...
+[13:55:30] [Streamer] Dynamic Buttons has been loaded.
+[13:55:30] [Streamer] Loading Dynamic Objects...
+[13:55:30] [Streamer] Dynamic Objects has been loaded.
+[13:55:30] [Textdraws] Loading Textdraws...
+[13:55:30] [Textdraws] Loaded textdraws.
+[13:55:30] [Dynamic Groups] Loading Dynamic Groups...
+[13:55:30] [Dynamic Groups] Loading Dynamic Groups Vehicles...
+[13:55:30] Da chay thanh cong gamemode...
+[13:55:30] Number of vehicle models: 20
+[13:55:30]  
+[13:55:30]  
+[13:55:31] [Dynamic Giftbox] da tai thanh cong Dynamic giftbox.
+[13:55:31] [LoadCrates] Loading Crates Finished
+[13:55:32] [LoadDynamicDoors] 2248 door duoc tai.
+[13:55:32] [LoadDynamicMapIcons] 400 icons map duoc tai.
+[13:55:32] [LoadMailboxes] 50 mailboxes duoc tai.
+[13:55:32] [LoadBusinesses] 200 businesses rehashed/loaded.
+[13:55:33] [LoadPlants] Successfully loaded 300 plants
+[13:55:33] [SpeedCameras] Tai 3 May ban toc do.
+[13:55:34] TotalSold0: 0 | AmountMade0: 0
+[13:55:34] TotalSold1: 0 | AmountMade1: 0
+[13:55:34] TotalSold2: 0 | AmountMade2: 0
+[13:55:34] TotalSold3: 0 | AmountMade3: 0
+[13:55:34] TotalSold4: 0 | AmountMade4: 0
+[13:55:34] TotalSold5: 0 | AmountMade5: 0
+[13:55:34] TotalSold6: 0 | AmountMade6: 0
+[13:55:34] TotalSold7: 0 | AmountMade7: 0
+[13:55:34] TotalSold8: 0 | AmountMade8: 0
+[13:55:34] TotalSold9: 0 | AmountMade9: 0
+[13:55:34] TotalSold10: 0 | AmountMade10: 0
+[13:55:34] TotalSold11: 0 | AmountMade11: 0
+[13:55:34] TotalSold12: 0 | AmountMade12: 0
+[13:55:34] TotalSold13: 0 | AmountMade13: 0
+[13:55:34] TotalSold14: 0 | AmountMade14: 0
+[13:55:34] TotalSold15: 0 | AmountMade15: 0
+[13:55:34] TotalSold16: 0 | AmountMade16: 0
+[13:55:34] TotalSold17: 0 | AmountMade17: 0
+[13:55:34] TotalSold18: 0 | AmountMade18: 0
+[13:55:34] TotalSold19: 0 | AmountMade19: 0
+[13:55:34] TotalSold20: 0 | AmountMade20: 0
+[13:55:34] TotalSold21: 0 | AmountMade21: 0
+[13:55:34] TotalSold22: 0 | AmountMade22: 0
+[13:55:34] TotalSold23: 0 | AmountMade23: 0
+[13:55:34] TotalSold24: 0 | AmountMade24: 0
+[13:55:34] TotalSold25: 0 | AmountMade25: 0
+[13:55:34] TotalSold26: 0 | AmountMade26: 0
+[13:55:34] TotalSold27: 0 | AmountMade27: 0
+[13:55:34] TotalSold28: 0 | AmountMade28: 0
+[13:55:34] TotalSold29: 0 | AmountMade29: 0
+[13:55:34] Price0: 20000
+[13:55:34] Price1: 50000
+[13:55:34] Price2: 15000
+[13:55:34] Price3: 10000
+[13:55:34] Price4: 400
+[13:55:34] Price5: 500
+[13:55:34] Price6: 100
+[13:55:34] Price7: 500
+[13:55:34] Price8: 100
+[13:55:34] Price9: 100
+[13:55:34] Price10: 10
+[13:55:34] Price11: 100000
+[13:55:34] Price12: 100000
+[13:55:34] Price13: 100000
+[13:55:34] Price14: 10000
+[13:55:34] Price15: 5000
+[13:55:34] Price16: 1000
+[13:55:34] Price17: 1000
+[13:55:34] Price18: 1
+[13:55:34] Price19: 2
+[13:55:34] Price20: 10
+[13:55:34] Price21: 999999
+[13:55:34] Price22: 100
+[13:55:34] Price23: 1000
+[13:55:34] Price24: 100000
+[13:55:34] Price25: 100000
+[13:55:34] Price26: 100000
+[13:55:34] Price27: 100000
+[13:55:34] Price28: 1000
+[13:55:34] Price29: 29
+[13:55:35] [Family Points] 8 family points has been loaded.
+[13:56:27] [connection] incoming connection: 127.0.0.1:60374 id: 0
+[13:56:34] [join] [FL]Ha1boku has joined the server (0:127.0.0.1)
+[13:56:34] name [FL]Ha1boku,4, 
+[13:56:37] [He Thong] Da luu lai thong tin tai khoan thanh cong.
+[13:56:43] acc id 24
+[13:56:49] [nick] [FL]Ha1boku nick changed to ZXC_ZXZ
+[13:56:49] ZXC ZXZ has logged in.
+[13:56:49] [He Thong] Da luu lai thong tin tai khoan thanh cong.
+[13:56:55] [chat] [ZXC_ZXZ]: asd
+[13:56:56] test
+[13:57:02] [chat] [ZXC_ZXZ]: .
+[13:57:18] test
+[13:57:26] [chat] [ZXC_ZXZ]: .
+[13:57:39] test
+[13:58:01] test
+[13:58:23] test
+[13:58:45] test
+[13:58:56] [zcmd] [ZXC ZXZ]: /testeat
+[13:58:56] 2
+[13:59:00] [zcmd] [ZXC ZXZ]: /testeat1
+[13:59:00] 10
+[13:59:02] [zcmd] [ZXC ZXZ]: /testeat
+[13:59:02] 2
+[13:59:04] [zcmd] [ZXC ZXZ]: /testeat1
+[13:59:04] 10
+[13:59:07] test
+[13:59:08] [part] ZXC_ZXZ has left the server (0:1)
+
+----------
+Loaded log file: "server_log.txt".
+----------
+
+SA-MP Dedicated Server
+----------------------
+v0.3.DL-R1, (C)2005-2018 SA-MP Team
+
+[14:24:30] password = ""  (string)
+[14:24:30] 
+[14:24:30] Server Plugins
+[14:24:30] --------------
+[14:24:30]  Loading plugin: PawnPlus
+[14:24:30]  PawnPlus v1.4.2 loaded
+[14:24:30]  Created by IllidanS4
+[14:24:30]   Loaded.
+[14:24:30]  Loading plugin: streamer
+[14:24:30] 
+
+*** Streamer Plugin v2.9.4 by Incognito loaded ***
+
+[14:24:30]   Loaded.
+[14:24:30]  Loading plugin: mysql
+[14:24:30]  >> plugin.mysql: R33 successfully loaded.
+[14:24:30]   Loaded.
+[14:24:30]  Loading plugin: sscanf
+[14:24:30] 
+
+[14:24:30]  ===============================
+
+[14:24:30]       sscanf plugin loaded.     
+
+[14:24:30]          Version:  2.8.1        
+
+[14:24:30]    (c) 2012 Alex "Y_Less" Cole  
+
+[14:24:30]  ===============================
+
+[14:24:30]   Loaded.
+[14:24:30]  Loading plugin: nativechecker
+[14:24:30]   Loaded.
+[14:24:30]  Loading plugin: whirlpool
+[14:24:30]  
+[14:24:30]  ==================
+[14:24:30]  
+[14:24:30]   Whirlpool loaded
+[14:24:30]  
+[14:24:30]  ==================
+[14:24:30]  
+[14:24:30]   Loaded.
+[14:24:30]  Loaded 6 plugins.
+
+[14:24:30] [artwork:crc] bp.dff CRC = 0xA2B03FFB
+[14:24:30] [artwork:crc] bp.txd CRC = 0x28E0706E
+[14:24:30] [artwork:crc] object.dff CRC = 0xDCFCC14C
+[14:24:30] [artwork:crc] speedo.txd CRC = 0x62C7BCBC
+[14:24:30] [artwork:crc] object.dff CRC = 0xDCFCC14C
+[14:24:30] [artwork:crc] login.txd CRC = 0x97B897B6
+[14:24:30] [artwork:crc] object.dff CRC = 0xDCFCC14C
+[14:24:30] [artwork:crc] speedo.txd CRC = 0x62C7BCBC
+[14:24:30] [artwork:crc] object.dff CRC = 0xDCFCC14C
+[14:24:30] [artwork:crc] newinv.txd CRC = 0xB1BF0AE4
+[14:24:30] [artwork:crc] object.dff CRC = 0xDCFCC14C
+[14:24:30] [artwork:crc] character.txd CRC = 0xC256CCF5
+[14:24:30] 
+[14:24:30] Filterscripts
+[14:24:30] ---------------
+[14:24:30]   Loading filterscript 'Server.amx'...
+[14:24:30]   Loading filterscript 'cbug.amx'...
+[14:24:30]   Loaded 2 filterscripts.
+
+[14:24:30]  
+[14:24:30]  ======================================= 
+[14:24:30]  |                                     | 
+[14:24:30]  |        YSI version 3.01.0002        | 
+[14:24:30]  |        By Alex "Y_Less" Cole        | 
+[14:24:30]  |                                     | 
+[14:24:30]  ======================================= 
+[14:24:30]  
+[14:24:30] Chuong trinh may chu dang duoc khoi dong, vui long cho doi....
+[14:24:31] [MySQL] (Main Pipelines) Connecting to 23.88.73.88...
+[14:24:31] [MySQL] (MainPipeline) Connection successful toward MySQL Database Server!
+[14:24:31] [Dynamic Giftbox] Loading the Dynamic Giftbox...
+[14:24:31] [LoadCrates] Load Query Sent
+[14:24:31] [LoadHouses] Loading data from database...
+[14:24:31] [LoadDynamicDoors] Loading data from database...
+[14:24:31] [LoadDynamicMapIcons] Loading data from database...
+[14:24:31] [LoadMailboxes] Loading data from database...
+[14:24:31] [LoadBusinesses] Loading data from database...
+[14:24:31] [LoadAuctions] Loading data from database...
+[14:24:31] [LoadTxtLabels] Loading data from database...
+[14:24:31] [LoadPlants] Loading data from database...
+[14:24:31] [SpeedCameras] Loading data from database...
+[14:24:31] [LoadPayNSprays] Loading data from database...
+[14:24:31] [LoadArrestPoints] Loading data from database...
+[14:24:31] [LoadImpoundPoints] Loading data from database...
+[14:24:31] [LoadBusinessSales] Loading data from database...
+[14:24:31] [LoadPaintballArenas] 10 paintball loaded.
+[14:24:31] [LoadEventPoints] 0 event points loaded.
+[14:24:31] [LoadGates] Loading data from database...
+[14:24:31] [LoadElevatorStuff] 20 floors loaded.
+[14:24:31] [LoadFamilies] Dang tai du lieu tu database...
+[14:24:31] [LoadFamilyPoints] Loading Family Points from the database, please wait...
+[14:24:31] [MiscLoad] Misc Loaded
+[14:24:31] Resetting news...
+[14:24:31] Resetting default server variables..
+[14:24:31] Adjusted the server time...
+[14:24:31] [Streamer] Loading Dynamic Static Vehicles...
+[14:24:31] [Streamer] Dynamic Static Vehicles has been loaded.
+[14:24:31] [Streamer] Loading Dynamic Pickups...
+[14:24:31] [Streamer] Dynamic Pickups has been loaded.
+[14:24:31] [Streamer] Loading 3D Text Labels...
+[14:24:31] [Streamer] Dynamic 3D Text Labels has been loaded.
+[14:24:31] [Streamer] Loading Dynamic Buttons...
+[14:24:31] [Streamer] Dynamic Buttons has been loaded.
+[14:24:31] [Streamer] Loading Dynamic Objects...
+[14:24:31] [Streamer] Dynamic Objects has been loaded.
+[14:24:31] [Textdraws] Loading Textdraws...
+[14:24:31] [Textdraws] Loaded textdraws.
+[14:24:31] [Dynamic Groups] Loading Dynamic Groups...
+[14:24:31] [Dynamic Groups] Loading Dynamic Groups Vehicles...
+[14:24:31] Da chay thanh cong gamemode...
+[14:24:31] Number of vehicle models: 20
+[14:24:31]  
+[14:24:31]  
+[14:24:32] [Dynamic Giftbox] da tai thanh cong Dynamic giftbox.
+[14:24:32] [LoadCrates] Loading Crates Finished
+[14:24:33] [LoadDynamicDoors] 2248 door duoc tai.
+[14:24:33] [LoadDynamicMapIcons] 400 icons map duoc tai.
+[14:24:33] [LoadMailboxes] 50 mailboxes duoc tai.
+[14:24:33] [LoadBusinesses] 200 businesses rehashed/loaded.
+[14:24:34] [LoadPlants] Successfully loaded 300 plants
+[14:24:34] [SpeedCameras] Tai 3 May ban toc do.
+[14:24:35] TotalSold0: 0 | AmountMade0: 0
+[14:24:35] TotalSold1: 0 | AmountMade1: 0
+[14:24:35] TotalSold2: 0 | AmountMade2: 0
+[14:24:35] TotalSold3: 0 | AmountMade3: 0
+[14:24:35] TotalSold4: 0 | AmountMade4: 0
+[14:24:35] TotalSold5: 0 | AmountMade5: 0
+[14:24:35] TotalSold6: 0 | AmountMade6: 0
+[14:24:35] TotalSold7: 0 | AmountMade7: 0
+[14:24:35] TotalSold8: 0 | AmountMade8: 0
+[14:24:35] TotalSold9: 0 | AmountMade9: 0
+[14:24:35] TotalSold10: 0 | AmountMade10: 0
+[14:24:35] TotalSold11: 0 | AmountMade11: 0
+[14:24:35] TotalSold12: 0 | AmountMade12: 0
+[14:24:35] TotalSold13: 0 | AmountMade13: 0
+[14:24:35] TotalSold14: 0 | AmountMade14: 0
+[14:24:35] TotalSold15: 0 | AmountMade15: 0
+[14:24:35] TotalSold16: 0 | AmountMade16: 0
+[14:24:35] TotalSold17: 0 | AmountMade17: 0
+[14:24:35] TotalSold18: 0 | AmountMade18: 0
+[14:24:35] TotalSold19: 0 | AmountMade19: 0
+[14:24:35] TotalSold20: 0 | AmountMade20: 0
+[14:24:35] TotalSold21: 0 | AmountMade21: 0
+[14:24:35] TotalSold22: 0 | AmountMade22: 0
+[14:24:35] TotalSold23: 0 | AmountMade23: 0
+[14:24:35] TotalSold24: 0 | AmountMade24: 0
+[14:24:35] TotalSold25: 0 | AmountMade25: 0
+[14:24:35] TotalSold26: 0 | AmountMade26: 0
+[14:24:35] TotalSold27: 0 | AmountMade27: 0
+[14:24:35] TotalSold28: 0 | AmountMade28: 0
+[14:24:35] TotalSold29: 0 | AmountMade29: 0
+[14:24:35] Price0: 20000
+[14:24:35] Price1: 50000
+[14:24:35] Price2: 15000
+[14:24:35] Price3: 10000
+[14:24:35] Price4: 400
+[14:24:35] Price5: 500
+[14:24:35] Price6: 100
+[14:24:35] Price7: 500
+[14:24:35] Price8: 100
+[14:24:35] Price9: 100
+[14:24:35] Price10: 10
+[14:24:35] Price11: 100000
+[14:24:35] Price12: 100000
+[14:24:35] Price13: 100000
+[14:24:35] Price14: 10000
+[14:24:35] Price15: 5000
+[14:24:35] Price16: 1000
+[14:24:35] Price17: 1000
+[14:24:35] Price18: 1
+[14:24:35] Price19: 2
+[14:24:35] Price20: 10
+[14:24:35] Price21: 999999
+[14:24:35] Price22: 100
+[14:24:35] Price23: 1000
+[14:24:35] Price24: 100000
+[14:24:35] Price25: 100000
+[14:24:35] Price26: 100000
+[14:24:35] Price27: 100000
+[14:24:35] Price28: 1000
+[14:24:35] Price29: 29
+[14:24:36] [Family Points] 8 family points has been loaded.
+[14:24:37] [connection] incoming connection: 127.0.0.1:57015 id: 0
+[14:24:37] [join] [FL]Ha1boku has joined the server (0:127.0.0.1)
+[14:24:41] [He Thong] Da luu lai thong tin tai khoan thanh cong.
+[14:25:04] name [FL]Ha1boku,4, 
+[14:25:10] 25
+[14:25:13] acc id 24
+[14:25:19] [nick] [FL]Ha1boku nick changed to ZXC_ZXZ
+[14:25:19] ZXC ZXZ has logged in.
+[14:25:20] [He Thong] Da luu lai thong tin tai khoan thanh cong.
+[14:25:40] [zcmd] [ZXC ZXZ]: /testeat
+[14:25:40] 2
+[14:25:41] [zcmd] [ZXC ZXZ]: /testeat1
+[14:25:41] 10
+[14:25:43] 10
+[14:25:50] [part] ZXC_ZXZ has left the server (0:1)
+
+----------
+Loaded log file: "server_log.txt".
+----------
+
+SA-MP Dedicated Server
+----------------------
+v0.3.DL-R1, (C)2005-2018 SA-MP Team
+
+[15:08:49] password = ""  (string)
+[15:08:49] 
+[15:08:49] Server Plugins
+[15:08:49] --------------
+[15:08:49]  Loading plugin: PawnPlus
+[15:08:49]  PawnPlus v1.4.2 loaded
+[15:08:49]  Created by IllidanS4
+[15:08:49]   Loaded.
+[15:08:49]  Loading plugin: streamer
+[15:08:49] 
+
+*** Streamer Plugin v2.9.4 by Incognito loaded ***
+
+[15:08:49]   Loaded.
+[15:08:49]  Loading plugin: mysql
+[15:08:49]  >> plugin.mysql: R33 successfully loaded.
+[15:08:49]   Loaded.
+[15:08:49]  Loading plugin: sscanf
+[15:08:49] 
+
+[15:08:49]  ===============================
+
+[15:08:49]       sscanf plugin loaded.     
+
+[15:08:49]          Version:  2.8.1        
+
+[15:08:49]    (c) 2012 Alex "Y_Less" Cole  
+
+[15:08:49]  ===============================
+
+[15:08:49]   Loaded.
+[15:08:49]  Loading plugin: nativechecker
+[15:08:49]   Loaded.
+[15:08:49]  Loading plugin: whirlpool
+[15:08:49]  
+[15:08:49]  ==================
+[15:08:49]  
+[15:08:49]   Whirlpool loaded
+[15:08:49]  
+[15:08:49]  ==================
+[15:08:49]  
+[15:08:49]   Loaded.
+[15:08:49]  Loaded 6 plugins.
+
+[15:08:49] [artwork:crc] bp.dff CRC = 0xA2B03FFB
+[15:08:49] [artwork:crc] bp.txd CRC = 0x28E0706E
+[15:08:49] [artwork:crc] object.dff CRC = 0xDCFCC14C
+[15:08:49] [artwork:crc] speedo.txd CRC = 0x62C7BCBC
+[15:08:49] [artwork:crc] object.dff CRC = 0xDCFCC14C
+[15:08:49] [artwork:crc] login.txd CRC = 0x97B897B6
+[15:08:49] [artwork:crc] object.dff CRC = 0xDCFCC14C
+[15:08:49] [artwork:crc] speedo.txd CRC = 0x62C7BCBC
+[15:08:49] [artwork:crc] object.dff CRC = 0xDCFCC14C
+[15:08:49] [artwork:crc] newinv.txd CRC = 0xB1BF0AE4
+[15:08:49] [artwork:crc] object.dff CRC = 0xDCFCC14C
+[15:08:49] [artwork:crc] character.txd CRC = 0xC256CCF5
+[15:08:49] 
+[15:08:49] Filterscripts
+[15:08:49] ---------------
+[15:08:49]   Loading filterscript 'Server.amx'...
+[15:08:49]   Loading filterscript 'cbug.amx'...
+[15:08:49]   Loaded 2 filterscripts.
+
+[15:08:49]  
+[15:08:49]  ======================================= 
+[15:08:49]  |                                     | 
+[15:08:49]  |        YSI version 3.01.0002        | 
+[15:08:49]  |        By Alex "Y_Less" Cole        | 
+[15:08:49]  |                                     | 
+[15:08:49]  ======================================= 
+[15:08:49]  
+[15:08:49] Chuong trinh may chu dang duoc khoi dong, vui long cho doi....
+[15:08:50] [MySQL] (Main Pipelines) Connecting to 23.88.73.88...
+[15:08:50] [MySQL] (MainPipeline) Connection successful toward MySQL Database Server!
+[15:08:50] [Dynamic Giftbox] Loading the Dynamic Giftbox...
+[15:08:50] [LoadCrates] Load Query Sent
+[15:08:50] [LoadHouses] Loading data from database...
+[15:08:50] [LoadDynamicDoors] Loading data from database...
+[15:08:50] [LoadDynamicMapIcons] Loading data from database...
+[15:08:50] [LoadMailboxes] Loading data from database...
+[15:08:50] [LoadBusinesses] Loading data from database...
+[15:08:50] [LoadAuctions] Loading data from database...
+[15:08:50] [LoadTxtLabels] Loading data from database...
+[15:08:50] [LoadPlants] Loading data from database...
+[15:08:50] [SpeedCameras] Loading data from database...
+[15:08:50] [LoadPayNSprays] Loading data from database...
+[15:08:50] [LoadArrestPoints] Loading data from database...
+[15:08:50] [LoadImpoundPoints] Loading data from database...
+[15:08:50] [LoadBusinessSales] Loading data from database...
+[15:08:50] [LoadPaintballArenas] 10 paintball loaded.
+[15:08:50] [LoadEventPoints] 0 event points loaded.
+[15:08:50] [LoadGates] Loading data from database...
+[15:08:50] [LoadElevatorStuff] 20 floors loaded.
+[15:08:50] [LoadFamilies] Dang tai du lieu tu database...
+[15:08:50] [LoadFamilyPoints] Loading Family Points from the database, please wait...
+[15:08:50] [MiscLoad] Misc Loaded
+[15:08:50] Resetting news...
+[15:08:50] Resetting default server variables..
+[15:08:50] Adjusted the server time...
+[15:08:50] [Streamer] Loading Dynamic Static Vehicles...
+[15:08:50] [Streamer] Dynamic Static Vehicles has been loaded.
+[15:08:50] [Streamer] Loading Dynamic Pickups...
+[15:08:50] [Streamer] Dynamic Pickups has been loaded.
+[15:08:50] [Streamer] Loading 3D Text Labels...
+[15:08:50] [Streamer] Dynamic 3D Text Labels has been loaded.
+[15:08:50] [Streamer] Loading Dynamic Buttons...
+[15:08:50] [Streamer] Dynamic Buttons has been loaded.
+[15:08:50] [Streamer] Loading Dynamic Objects...
+[15:08:50] [Streamer] Dynamic Objects has been loaded.
+[15:08:50] [Textdraws] Loading Textdraws...
+[15:08:50] [Textdraws] Loaded textdraws.
+[15:08:50] [Dynamic Groups] Loading Dynamic Groups...
+[15:08:50] [Dynamic Groups] Loading Dynamic Groups Vehicles...
+[15:08:50] Da chay thanh cong gamemode...
+[15:08:50] Number of vehicle models: 20
+[15:08:50]  
+[15:08:50]  
+[15:08:51] [Dynamic Giftbox] da tai thanh cong Dynamic giftbox.
+[15:08:51] [LoadCrates] Loading Crates Finished
+[15:08:52] [LoadDynamicDoors] 2248 door duoc tai.
+[15:08:52] [LoadDynamicMapIcons] 400 icons map duoc tai.
+[15:08:52] [LoadMailboxes] 50 mailboxes duoc tai.
+[15:08:53] [LoadBusinesses] 200 businesses rehashed/loaded.
+[15:08:53] [LoadPlants] Successfully loaded 300 plants
+[15:08:53] [SpeedCameras] Tai 3 May ban toc do.
+[15:08:54] TotalSold0: 0 | AmountMade0: 0
+[15:08:54] TotalSold1: 0 | AmountMade1: 0
+[15:08:54] TotalSold2: 0 | AmountMade2: 0
+[15:08:54] TotalSold3: 0 | AmountMade3: 0
+[15:08:54] TotalSold4: 0 | AmountMade4: 0
+[15:08:54] TotalSold5: 0 | AmountMade5: 0
+[15:08:54] TotalSold6: 0 | AmountMade6: 0
+[15:08:54] TotalSold7: 0 | AmountMade7: 0
+[15:08:54] TotalSold8: 0 | AmountMade8: 0
+[15:08:54] TotalSold9: 0 | AmountMade9: 0
+[15:08:54] TotalSold10: 0 | AmountMade10: 0
+[15:08:54] TotalSold11: 0 | AmountMade11: 0
+[15:08:54] TotalSold12: 0 | AmountMade12: 0
+[15:08:54] TotalSold13: 0 | AmountMade13: 0
+[15:08:54] TotalSold14: 0 | AmountMade14: 0
+[15:08:54] TotalSold15: 0 | AmountMade15: 0
+[15:08:54] TotalSold16: 0 | AmountMade16: 0
+[15:08:54] TotalSold17: 0 | AmountMade17: 0
+[15:08:54] TotalSold18: 0 | AmountMade18: 0
+[15:08:54] TotalSold19: 0 | AmountMade19: 0
+[15:08:54] TotalSold20: 0 | AmountMade20: 0
+[15:08:54] TotalSold21: 0 | AmountMade21: 0
+[15:08:54] TotalSold22: 0 | AmountMade22: 0
+[15:08:54] TotalSold23: 0 | AmountMade23: 0
+[15:08:54] TotalSold24: 0 | AmountMade24: 0
+[15:08:54] TotalSold25: 0 | AmountMade25: 0
+[15:08:54] TotalSold26: 0 | AmountMade26: 0
+[15:08:54] TotalSold27: 0 | AmountMade27: 0
+[15:08:54] TotalSold28: 0 | AmountMade28: 0
+[15:08:54] TotalSold29: 0 | AmountMade29: 0
+[15:08:54] Price0: 20000
+[15:08:54] Price1: 50000
+[15:08:54] Price2: 15000
+[15:08:54] Price3: 10000
+[15:08:54] Price4: 400
+[15:08:54] Price5: 500
+[15:08:54] Price6: 100
+[15:08:54] Price7: 500
+[15:08:54] Price8: 100
+[15:08:54] Price9: 100
+[15:08:54] Price10: 10
+[15:08:54] Price11: 100000
+[15:08:54] Price12: 100000
+[15:08:54] Price13: 100000
+[15:08:54] Price14: 10000
+[15:08:54] Price15: 5000
+[15:08:54] Price16: 1000
+[15:08:54] Price17: 1000
+[15:08:54] Price18: 1
+[15:08:54] Price19: 2
+[15:08:54] Price20: 10
+[15:08:54] Price21: 999999
+[15:08:54] Price22: 100
+[15:08:54] Price23: 1000
+[15:08:54] Price24: 100000
+[15:08:54] Price25: 100000
+[15:08:54] Price26: 100000
+[15:08:54] Price27: 100000
+[15:08:54] Price28: 1000
+[15:08:54] Price29: 29
+[15:08:55] [connection] incoming connection: 127.0.0.1:50552 id: 0
+[15:08:55] [join] [FL]Ha1boku has joined the server (0:127.0.0.1)
+[15:08:55] [Family Points] 8 family points has been loaded.
+[15:09:00] name [FL]Ha1boku,4, 
+[15:09:00] [He Thong] Da luu lai thong tin tai khoan thanh cong.
+[15:09:23] acc id 24
+[15:09:29] [nick] [FL]Ha1boku nick changed to ZXC_ZXZ
+[15:09:29] ZXC ZXZ has logged in.
+[15:09:30] [He Thong] Da luu lai thong tin tai khoan thanh cong.
+[15:09:31] [zcmd] [ZXC ZXZ]: /testeat
+[15:09:31] 30
+[15:09:33] [zcmd] [ZXC ZXZ]: /testeat1
+[15:09:33] 26
+[15:09:38] [zcmd] [ZXC ZXZ]: /inv
+[15:09:42] 4,
+[15:09:42] 4,
+[15:09:42] 4,
+[15:09:43] 4,
+[15:09:43] 4,
+[15:09:43] 4,
+[15:09:43] 4,
+[15:09:43] 4,
+[15:10:39] [zcmd] [ZXC ZXZ]: /qs
+[15:11:46] [zcmd] [ZXC ZXZ]: /qs
+[15:11:54] [zcmd] [ZXC ZXZ]: /qs
+[15:11:56] [zcmd] [ZXC ZXZ]: /qs
+[15:12:01] [zcmd] [ZXC ZXZ]: /qs
+[15:12:03] [zcmd] [ZXC ZXZ]: /qs
+[15:12:04] [zcmd] [ZXC ZXZ]: /qs
+[15:12:06] [death] ZXC_ZXZ died 255
