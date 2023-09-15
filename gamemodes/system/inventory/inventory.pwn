@@ -406,7 +406,7 @@ CMD:itemlist(playerid, params[])
 	{
 		for(new i = 0; i < sizeof(g_aInventoryItems); i++)
 		{
-			format(string, sizeof(string), "[%d]%s%s\n", i, string, g_aInventoryItems[i][e_InventoryItem]);
+			format(string, sizeof(string), "%s[%d]%s\n", string, i, g_aInventoryItems[i][e_InventoryItem]);
 		}
 	}
 	return Dialog_Show(playerid, ShowOnly, DIALOG_STYLE_LIST, "Item list", string, "Lua chon", "Huy bo");

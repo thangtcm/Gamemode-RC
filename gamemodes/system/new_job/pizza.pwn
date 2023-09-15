@@ -120,6 +120,7 @@ hook OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
            				Attach3DTextLabelToVehicle(PizzaTextInfo[playerid], PizzaCar[playerid], 0.0, 0.0, 2.0); // Attaching Text Label To Vehicle.
            				SendClientMessageEx(playerid,COLOR_VANG,"Ban da bat dau lam viec 'Pizza Boy' hay di den pickup lay banh va chat len xe (Press 'Y' de lay banh/cat banh vao xe)");
 	    				SendClientMessageEx(playerid,COLOR_VANG,"/pizza giaobanh de bat dau di giao");
+	    				SetPVarInt(playerid, #danglamviec, 1);
 	        			return 1;
 	    			}
 	    			else if(LamViec[playerid] == 1) {
@@ -136,6 +137,7 @@ hook OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
              			DeletePVar(playerid, "postion_Pizza");
              			DisablePlayerCheckpoint(playerid);
              			Delete3DTextLabel(PizzaTextInfo[playerid]);
+             			SetPVarInt(playerid, #danglamviec, 0);
              			return 1;
 	    			}
         		}

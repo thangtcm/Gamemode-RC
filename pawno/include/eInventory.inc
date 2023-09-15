@@ -207,7 +207,7 @@ stock ShowModelSelectionInventory(playerid, header[], extraid, items[], size = s
 		}
 		else
 		{
-			x += 70.0;
+			x += 68.0;
 		}
 		if (idx < MAX_ITEMPAGE)
 		{
@@ -223,7 +223,7 @@ stock ShowModelSelectionInventory(playerid, header[], extraid, items[], size = s
 			PlayerTextDrawSetProportional(playerid, g_ePlayerMenuData[playerid][g_eMenuSlots][idx], 0);
 		}
 	}
-	x = 91.0,
+	x = 90.0,
 	y = 114.0;
  	for (new i = 0, idx = 0; i != MAX_MENU_ITEMS; i ++)
 	{
@@ -256,7 +256,7 @@ stock ShowModelSelectionInventory(playerid, header[], extraid, items[], size = s
 	  			}
 	    		else
 				{
-	 	    		x += 69.0;
+	 	    		x += 67.0;
 	        	}
 	        	idx++;
 
