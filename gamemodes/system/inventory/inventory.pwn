@@ -163,8 +163,9 @@ stock Inventory_Count(playerid, index)
 	return 0;
 }
 
-stock Inventory_HasItem(playerid, index)
+stock Inventory_HasItem(playerid, indexname[])
 {
+	new index = Inventory_GetItemIndex(indexname);
 	return (Inventory_GetItemID(playerid, index) != -1);
 }
 

@@ -1,19 +1,19 @@
-C:\Users\Admin\Desktop\Gamemode-RCz\pawno\include\eInventory.inc(133) : èäåị́èôèêạ̀îđ íå èñïîëüçóạ̊ñÿ: "header"
-C:\Users\Admin\Desktop\Gamemode-RCz\pawno\include\eInventory.inc(426) : íåïđàâèëüíàÿ ̣àáóëÿöèÿ
-C:\Users\Admin\Desktop\Gamemode-RCz\pawno\include\eInventory.inc(456) : íåïđàâèëüíàÿ ̣àáóëÿöèÿ
-./main/mysql.pwn(3094) : èäåị́èôèêạ̀îđó ïđèñâîåíî çíà÷åíèå, íî îí íå èñïîëüçóạ̊ñÿ: "str"
-./main/variables.pwn(1454) : èäåị́èôèêạ̀îđ íå èñïîëüçóạ̊ñÿ: "BanVuKhi"
-./main/variables.pwn(1450) : èäåị́èôèêạ̀îđ íå èñïîëüçóạ̊ñÿ: "BodyguardActor"
-./main/variables.pwn(1458) : èäåị́èôèêạ̀îđ íå èñïîëüçóạ̊ñÿ: "CraftActor"
-./main/variables.pwn(1457) : èäåị́èôèêạ̀îđ íå èñïîëüçóạ̊ñÿ: "DetectiveActor"
-./main/variables.pwn(1448) : èäåị́èôèêạ̀îđ íå èñïîëüçóạ̊ñÿ: "HaiTraiCay"
-./main/variables.pwn(1455) : èäåị́èôèêạ̀îđ íå èñïîëüçóạ̊ñÿ: "LuatSuActor"
-./main/variables.pwn(1452) : èäåị́èôèêạ̀îđ íå èñïîëüçóạ̊ñÿ: "MaTuy"
-./main/variables.pwn(1456) : èäåị́èôèêạ̀îđ íå èñïîëüçóạ̊ñÿ: "MechanicActor"
-./main/variables.pwn(1451) : èäåị́èôèêạ̀îđ íå èñïîëüçóạ̊ñÿ: "TaxiActor"
-./main/variables.pwn(1453) : èäåị́èôèêạ̀îđ íå èñïîëüçóạ̊ñÿ: "ThuocPhien"
-./main/variables.pwn(2358) : èäåị́èôèêạ̀îđ íå èñïîëüçóạ̊ñÿ: "TruckerCar"
-C:\Users\Admin\Desktop\Gamemode-RCz\pawno\include\eInventory.inc(74) : èäåị́èôèêạ̀îđ íå èñïîëüçóạ̊ñÿ: "g_arrVehicleColors"
-./main/variables.pwn(1446) : èäåị́èôèêạ̀îđ íå èñïîëüçóạ̊ñÿ: "npcvukhizz"
+D:\Gamemode Samp\Gamemode-RC\pawno\include\eInventory.inc(133) : èäåíòèôèêàòîð íå èñïîëüçóåòñÿ: "header"
+D:\Gamemode Samp\Gamemode-RC\pawno\include\eInventory.inc(426) : íåïðàâèëüíàÿ òàáóëÿöèÿ
+D:\Gamemode Samp\Gamemode-RC\pawno\include\eInventory.inc(456) : íåïðàâèëüíàÿ òàáóëÿöèÿ
+./main/mysql.pwn(3094) : èäåíòèôèêàòîðó ïðèñâîåíî çíà÷åíèå, íî îí íå èñïîëüçóåòñÿ: "str"
+./main/variables.pwn(1454) : èäåíòèôèêàòîð íå èñïîëüçóåòñÿ: "BanVuKhi"
+./main/variables.pwn(1450) : èäåíòèôèêàòîð íå èñïîëüçóåòñÿ: "BodyguardActor"
+./main/variables.pwn(1458) : èäåíòèôèêàòîð íå èñïîëüçóåòñÿ: "CraftActor"
+./main/variables.pwn(1457) : èäåíòèôèêàòîð íå èñïîëüçóåòñÿ: "DetectiveActor"
+./main/variables.pwn(1448) : èäåíòèôèêàòîð íå èñïîëüçóåòñÿ: "HaiTraiCay"
+./main/variables.pwn(1455) : èäåíòèôèêàòîð íå èñïîëüçóåòñÿ: "LuatSuActor"
+./main/variables.pwn(1452) : èäåíòèôèêàòîð íå èñïîëüçóåòñÿ: "MaTuy"
+./main/variables.pwn(1456) : èäåíòèôèêàòîð íå èñïîëüçóåòñÿ: "MechanicActor"
+./main/variables.pwn(1451) : èäåíòèôèêàòîð íå èñïîëüçóåòñÿ: "TaxiActor"
+./main/variables.pwn(1453) : èäåíòèôèêàòîð íå èñïîëüçóåòñÿ: "ThuocPhien"
+./main/variables.pwn(2358) : èäåíòèôèêàòîð íå èñïîëüçóåòñÿ: "TruckerCar"
+D:\Gamemode Samp\Gamemode-RC\pawno\include\eInventory.inc(74) : èäåíòèôèêàòîð íå èñïîëüçóåòñÿ: "g_arrVehicleColors"
+./main/variables.pwn(1446) : èäåíòèôèêàòîð íå èñïîëüçóåòñÿ: "npcvukhizz"
 Pawn compiler 3.2.3664	 	 	Copyright (c) 1997-2016, ITB CompuPhase
 
