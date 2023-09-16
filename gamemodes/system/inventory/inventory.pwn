@@ -108,13 +108,14 @@ stock Inventory_Set(playerid, index, amount, timer)
 	return 1;
 }
 
-stock Inventory_GetItemID(playerid, index)
+stock Inventory_GetItemID(playerid, index, amount = -1)
 {
 	for(new i = 0; i < MAX_INVENTORY; i++)
 	{
 		if(!InventoryData[playerid][i][invExists])
 			continue;
-		if(!strcmp(InventoryData[playerid][i][invItem], g_aInventoryItems[index][e_InventoryItem])) 
+		if(amount != -1 && InventoryData[playerid][i][invQuantity] >= amount && !strcmp(InventoryData[playerid][i][invItem], g_aInventoryItems[index][e_InventoryItem]))
+		if(!strcmp(InventoryData[playerid][i][invItem], g_aInventoryItems[index][e_InventoryItem]) && amount == -1) 
 			return i;
 	}
 	return -1;
@@ -163,10 +164,9 @@ stock Inventory_Count(playerid, index)
 	return 0;
 }
 
-stock Inventory_HasItem(playerid, indexname[])
+stock Inventory_HasItem(playerid, index, amount = -1)
 {
-	new index = Inventory_GetItemIndex(indexname);
-	return (Inventory_GetItemID(playerid, index) != -1);
+	return (Inventory_GetItemID(playerid, index, amount) != -1);
 }
 
 stock Inventory_SetQuantity(playerid, index, quantity, timer)
