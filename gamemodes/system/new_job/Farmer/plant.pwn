@@ -70,7 +70,6 @@ PlantTree(playerid)
 							PlantTreeInfo[playerid][idplant][pi_PosY],
 							PlantTreeInfo[playerid][idplant][pi_PosZ]-1, 50);
 	CountPlayerPlant[playerid]++;
-	PlantTreeInfo[playerid][idplant][pi_Timer] = SetTimerEx("OnPlantTree", 1000, 1, "ii", playerid, idplant);
 	if(PlantTreeInfo[playerid][idplant][pi_Text] && PlantTreeInfo[playerid][idplant][pi_Object]) return 1;
 	else return 0;
 }
@@ -78,8 +77,8 @@ CMD:trongcay(playerid, params[])
 {
 	if(IsPlayerInRangeOfPoint(playerid, 100, -382.8567,-1430.5543,25.7266) && PlayerInfo[playerid][pJob] == JOB_FARMER || PlayerInfo[playerid][pJob2] == JOB_FARMER)
 	{
-		if(PlantTree(playerid)) SendFarmerJob(playerid, "Ban da trong {00FF00}thanh cong{FFFFFF}1 cay giong");
-		else SendFarmerJob(playerid, "Ban da trong {FF0000}that bai{FFFFFF}1 cay giong");
+		if(PlantTree(playerid)) SendFarmerJob(playerid, "Ban da trong {00FF00}thanh cong{FFFFFF} 1 cay giong");
+		else SendFarmerJob(playerid, "Ban da trong {FF0000}that bai{FFFFFF} 1 cay giong");
 	}
 	else SendFarmerJob(playerid, "Ban khong phai nong dan hoac khong o trong khu vuc trong cay");
 	return 1;

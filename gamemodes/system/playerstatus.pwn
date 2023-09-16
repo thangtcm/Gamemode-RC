@@ -194,30 +194,66 @@ hook OnPlayerConnect(playerid)
 forward StartDownEatDrinkStrong(playerid);
 public StartDownEatDrinkStrong(playerid)
 {
-	if(PlayerInfo[playerid][pEat] > 25)
+	if(GetPlayerState(playerid) == PLAYER_STATE_DRIVER || GetPlayerState(playerid) == PLAYER_STATE_PASSENGER || !IsPlayerRunning(playerid))
 	{
-		PlayerInfo[playerid][pEat]--;
-	}
-	else if(PlayerInfo[playerid][pEat] >= 10)
-	{
-		PlayerInfo[playerid][pEat]--;
-		if(GetPVarInt(playerid, #HPDown) == 0)
+		if(PlayerInfo[playerid][pEat] > 25)
 		{
-			SetPVarInt(playerid, #HPDown, 1);
-			SetTimerEx("DownHP", 100, false, "i", playerid);
+			PlayerInfo[playerid][pEat]--;
+		}
+		else if(PlayerInfo[playerid][pEat] >= 10)
+		{
+			PlayerInfo[playerid][pEat]--;
+			if(GetPVarInt(playerid, #HPDown) == 0)
+			{
+				SetPVarInt(playerid, #HPDown, 1);
+				SetTimerEx("DownHP", 100, false, "i", playerid);
+			}
+		}
+		if(PlayerInfo[playerid][pDrink] > 25)
+		{
+			PlayerInfo[playerid][pDrink]--;
+		}
+		else if(PlayerInfo[playerid][pDrink] >= 10)
+		{
+			PlayerInfo[playerid][pDrink]--;
+			if(GetPVarInt(playerid, #HPDown) == 0)
+			{
+				SetPVarInt(playerid, #HPDown, 1);
+				SetTimerEx("DownHP", 100, false, "i", playerid);
+			}
 		}
 	}
-	if(PlayerInfo[playerid][pDrink] > 25)
+	else
 	{
-		PlayerInfo[playerid][pDrink]--;
-	}
-	else if(PlayerInfo[playerid][pDrink] >= 10)
-	{
-		PlayerInfo[playerid][pDrink]--;
-		if(GetPVarInt(playerid, #HPDown) == 0)
+		if(PlayerInfo[playerid][pEat] > 25)
 		{
-			SetPVarInt(playerid, #HPDown, 1);
-			SetTimerEx("DownHP", 100, false, "i", playerid);
+			PlayerInfo[playerid][pEat]--;
+			PlayerInfo[playerid][pEat]--;
+		}
+		else if(PlayerInfo[playerid][pEat] >= 10)
+		{
+			PlayerInfo[playerid][pEat]--;
+			PlayerInfo[playerid][pEat]--;
+			if(GetPVarInt(playerid, #HPDown) == 0)
+			{
+				SetPVarInt(playerid, #HPDown, 1);
+				SetTimerEx("DownHP", 100, false, "i", playerid);
+			}
+		}
+		if(PlayerInfo[playerid][pDrink] > 25)
+		{
+			PlayerInfo[playerid][pDrink]--;
+			PlayerInfo[playerid][pDrink]--;
+		}
+		else if(PlayerInfo[playerid][pDrink] >= 10)
+		{
+			PlayerInfo[playerid][pDrink]--;
+			PlayerInfo[playerid][pDrink]--;
+			if(GetPVarInt(playerid, #HPDown) == 0)
+			{
+				SetPVarInt(playerid, #HPDown, 1);
+				SetTimerEx("DownHP", 100, false, "i", playerid);
+			}
 		}
 	}
 	SetTimerEx("StartDownEatDrinkStrong", 150000, false, "i", playerid);
@@ -238,7 +274,7 @@ public DownStrong(playerid)
 forward DownHP(playerid);
 public DownHP(playerid)
 {
-	if(GetPVarInt(playerid, #chetdoi) != 1)
+	if(GetPVarInt(playerid, "Injured") == 0)
 	{
 		if(PlayerInfo[playerid][pEat] >= 10 && PlayerInfo[playerid][pEat] <= 25)
 		{
@@ -252,8 +288,7 @@ public DownHP(playerid)
 			else
 			{
 				SetPlayerHealth(playerid, 0);
-				SetPVarInt(playerid, #chetdoi, 1);
-				SendClientMessage(playerid, COLOR_LIGHTRED, "[SERVER] {ffffff}Ban da chet vi doi bung.");
+				SendClientMessage(playerid, COLOR_LIGHTRED, "[SERVER] {ffffff}Ban chet vi doi bung.");
 			}
 			SetTimerEx("DownHP", 120000, false, "i", playerid);
 		}
@@ -273,7 +308,6 @@ public DownHP(playerid)
 			else
 			{
 				SetPlayerHealth(playerid, 0);
-				SetPVarInt(playerid, #chetdoi, 1);
 				SendClientMessage(playerid, COLOR_REALRED, "[SERVER] {ffffff}Ban da chet vi doi bung.");
 			}
 			SetTimerEx("DownHP", 120000, false, "i", playerid);
@@ -290,7 +324,6 @@ public DownHP(playerid)
 			else
 			{
 				SetPlayerHealth(playerid, 0);
-				SetPVarInt(playerid, #chetdoi, 1);
 				SendClientMessage(playerid, COLOR_LIGHTRED, "[SERVER] {ffffff}Ban da chet vi khat nuoc.");
 			}
 			SetTimerEx("DownHP", 120000, false, "i", playerid);
@@ -311,7 +344,6 @@ public DownHP(playerid)
 			else
 			{
 				SetPlayerHealth(playerid, 0);
-				SetPVarInt(playerid, #chetdoi, 1);
 				SendClientMessage(playerid, COLOR_REALRED, "[SERVER] {ffffff}Ban da chet vi khat nuoc.");
 			}
 			SetTimerEx("DownHP", 120000, false, "i", playerid);

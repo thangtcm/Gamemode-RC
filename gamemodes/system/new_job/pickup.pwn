@@ -1,7 +1,7 @@
 
 
 stock LoadTextUpJob() {
-
+	CreateDynamic3DTextLabel("Khu vuc {2791FF}Farmer{ffffff}\n{2791FF}/farmer{ffffff} de bat dau lam viec", -1, -382.8567,-1430.5543,25.7266, 30);
 	CreateDynamic3DTextLabel("Khu vuc {2791FF}Pizza{ffffff}\n{2791FF}/pizza{ffffff} de bat dau lay xe lam viec", -1, 2098.5432,-1800.6925,13.3889, 30);
 	CreateDynamic3DTextLabel("Khu vuc {2791FF}Chat go{ffffff}\n{2791FF}/chatgo{ffffff} de bat dau xin viec/lamviec", -1, -544.0293,-196.8639,78.4063, 30);
 	CreateDynamic3DTextLabel("Khu vuc {2791FF}Trucker{ffffff}\n{2791FF}/truck{ffffff} de bat dau xin viec/lamviec", -1, 2507.7554,-2120.0732,13.546, 30);
