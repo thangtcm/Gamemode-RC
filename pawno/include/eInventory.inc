@@ -93,7 +93,7 @@ stock HideModelSelectionInventory(playerid)
 	    return 0;
 
 	for (new i = 0; i < MAX_ITEMPAGE; i ++) {
-		if(i < 6)	PlayerTextDrawDestroy(playerid, g_ePlayerMenuData[playerid][g_eMenuTextdraws][i]);
+		if(i < 4)	PlayerTextDrawDestroy(playerid, g_ePlayerMenuData[playerid][g_eMenuTextdraws][i]);
 		PlayerTextDrawDestroy(playerid, g_ePlayerMenuData[playerid][g_eMenuSlots][i]);
 	}
 	for (new i = 0; i != MAX_MENU_ITEMS; i ++)
@@ -151,9 +151,80 @@ stock ShowModelSelectionInventory(playerid, header[], extraid, items[], size = s
 	    Float:y = 111.0,
 		page[8],
 		str[16];
-
 	format(page, 8, "1/%d", (size / MAX_ITEMPAGE) + 1);
+	g_ePlayerMenuData[playerid][g_eMenuTextdraws][0] = CreatePlayerTextDraw(playerid, 146.464, 92.583, "mdl-2020:main_inv");
+	PlayerTextDrawTextSize(playerid, g_ePlayerMenuData[playerid][g_eMenuTextdraws][0], 350.000, 251.000);
+	PlayerTextDrawAlignment(playerid, g_ePlayerMenuData[playerid][g_eMenuTextdraws][0], 1);
+	PlayerTextDrawColor(playerid, g_ePlayerMenuData[playerid][g_eMenuTextdraws][0], -1);
+	PlayerTextDrawSetShadow(playerid, g_ePlayerMenuData[playerid][g_eMenuTextdraws][0], 0);
+	PlayerTextDrawSetOutline(playerid, g_ePlayerMenuData[playerid][g_eMenuTextdraws][0], 0);
+	PlayerTextDrawBackgroundColor(playerid, g_ePlayerMenuData[playerid][g_eMenuTextdraws][0], 255);
+	PlayerTextDrawFont(playerid, g_ePlayerMenuData[playerid][g_eMenuTextdraws][0], 4);
+	PlayerTextDrawUseBox(playerid, g_ePlayerMenuData[playerid][g_eMenuTextdraws][0], 0);
+	PlayerTextDrawSetProportional(playerid, g_ePlayerMenuData[playerid][g_eMenuTextdraws][0], 0);
 
+	g_ePlayerMenuData[playerid][g_eMenuTextdraws][1] = CreatePlayerTextDraw(playerid, 315.000, 320.000, page);
+	PlayerTextDrawLetterSize(playerid, g_ePlayerMenuData[playerid][g_eMenuTextdraws][1], 0.300, 1.500);
+	PlayerTextDrawAlignment(playerid, g_ePlayerMenuData[playerid][g_eMenuTextdraws][1], 1);
+	PlayerTextDrawColor(playerid, g_ePlayerMenuData[playerid][g_eMenuTextdraws][1], -1);
+	PlayerTextDrawSetShadow(playerid, g_ePlayerMenuData[playerid][g_eMenuTextdraws][1], 1);
+	PlayerTextDrawSetOutline(playerid, g_ePlayerMenuData[playerid][g_eMenuTextdraws][1], 1);
+	PlayerTextDrawBackgroundColor(playerid, g_ePlayerMenuData[playerid][g_eMenuTextdraws][1], 150);
+	PlayerTextDrawFont(playerid, g_ePlayerMenuData[playerid][g_eMenuTextdraws][1], 1);
+	PlayerTextDrawUseBox(playerid, g_ePlayerMenuData[playerid][g_eMenuTextdraws][1], 0);
+	PlayerTextDrawSetProportional(playerid, g_ePlayerMenuData[playerid][g_eMenuTextdraws][1], 1);
+
+	g_ePlayerMenuData[playerid][g_eMenuTextdraws][2] = CreatePlayerTextDraw(playerid, 470.000, 314.000, "mdl-2020:btn_right");
+	PlayerTextDrawTextSize(playerid, g_ePlayerMenuData[playerid][g_eMenuTextdraws][2], 19.000, 26.000);
+	PlayerTextDrawAlignment(playerid, g_ePlayerMenuData[playerid][g_eMenuTextdraws][2], 1);
+	PlayerTextDrawColor(playerid, g_ePlayerMenuData[playerid][g_eMenuTextdraws][2], -1);
+	PlayerTextDrawSetShadow(playerid, g_ePlayerMenuData[playerid][g_eMenuTextdraws][2], 0);
+	PlayerTextDrawSetOutline(playerid, g_ePlayerMenuData[playerid][g_eMenuTextdraws][2], 0);
+	PlayerTextDrawBackgroundColor(playerid, g_ePlayerMenuData[playerid][g_eMenuTextdraws][2], 255);
+	PlayerTextDrawFont(playerid, g_ePlayerMenuData[playerid][g_eMenuTextdraws][2], 4);
+	PlayerTextDrawUseBox(playerid, g_ePlayerMenuData[playerid][g_eMenuTextdraws][2], 0);
+	PlayerTextDrawSetProportional(playerid, g_ePlayerMenuData[playerid][g_eMenuTextdraws][2], 1);
+	PlayerTextDrawSetSelectable(playerid, g_ePlayerMenuData[playerid][g_eMenuTextdraws][2], 1);
+
+	g_ePlayerMenuData[playerid][g_eMenuTextdraws][3] = CreatePlayerTextDraw(playerid, 154.000, 314.000, "mdl-2020:btn_left");
+	PlayerTextDrawTextSize(playerid, g_ePlayerMenuData[playerid][g_eMenuTextdraws][3], 19.000, 26.000);
+	PlayerTextDrawAlignment(playerid, g_ePlayerMenuData[playerid][g_eMenuTextdraws][3], 1);
+	PlayerTextDrawColor(playerid, g_ePlayerMenuData[playerid][g_eMenuTextdraws][3], -1);
+	PlayerTextDrawSetShadow(playerid, g_ePlayerMenuData[playerid][g_eMenuTextdraws][3], 0);
+	PlayerTextDrawSetOutline(playerid, g_ePlayerMenuData[playerid][g_eMenuTextdraws][3], 0);
+	PlayerTextDrawBackgroundColor(playerid, g_ePlayerMenuData[playerid][g_eMenuTextdraws][3], 255);
+	PlayerTextDrawFont(playerid, g_ePlayerMenuData[playerid][g_eMenuTextdraws][3], 4);
+	PlayerTextDrawUseBox(playerid, g_ePlayerMenuData[playerid][g_eMenuTextdraws][3], 0);
+	PlayerTextDrawSetProportional(playerid, g_ePlayerMenuData[playerid][g_eMenuTextdraws][3], 1);
+	PlayerTextDrawSetSelectable(playerid, g_ePlayerMenuData[playerid][g_eMenuTextdraws][3], 1);
+
+	for(new idx = 0; idx < MAX_ITEMPAGE; idx++)
+	{
+		if (idx > 0 && (idx % 5) == 0)
+		{
+			x = 155.0;
+			y += 72.0;
+		}
+		else
+		{
+			x += 68.0;
+		}
+		if (idx < MAX_ITEMPAGE)
+		{
+			g_ePlayerMenuData[playerid][g_eMenuSlots][idx] = CreatePlayerTextDraw(playerid, x, y, "mdl-2020:slot");
+			PlayerTextDrawTextSize(playerid, g_ePlayerMenuData[playerid][g_eMenuSlots][idx], 61.000, 54.000);
+			PlayerTextDrawAlignment(playerid, g_ePlayerMenuData[playerid][g_eMenuSlots][idx], 1);
+			PlayerTextDrawColor(playerid, g_ePlayerMenuData[playerid][g_eMenuSlots][idx], -1);
+			PlayerTextDrawSetShadow(playerid, g_ePlayerMenuData[playerid][g_eMenuSlots][idx], 0);
+			PlayerTextDrawSetOutline(playerid, g_ePlayerMenuData[playerid][g_eMenuSlots][idx], 0);
+			PlayerTextDrawBackgroundColor(playerid, g_ePlayerMenuData[playerid][g_eMenuSlots][idx], 255);
+			PlayerTextDrawFont(playerid, g_ePlayerMenuData[playerid][g_eMenuSlots][idx], 4);
+			PlayerTextDrawUseBox(playerid, g_ePlayerMenuData[playerid][g_eMenuSlots][0], 0);
+			PlayerTextDrawSetProportional(playerid, g_ePlayerMenuData[playerid][g_eMenuSlots][idx], 0);
+		}
+	}
+	x = 90.0,
+	y = 114.0;
  	for (new i = 0, idx = 0; i != MAX_MENU_ITEMS; i ++)
 	{
  		if (i >= size)
@@ -180,18 +251,21 @@ stock ShowModelSelectionInventory(playerid, header[], extraid, items[], size = s
 			{
 				if (idx > 0 && (idx % 5) == 0)
 				{
-	   				x = 155.0;
-	  	    		y += 70.0;
+	   				x = 160.0;
+	  	    		y += 72.0;
 	  			}
 	    		else
 				{
-	 	    		x += 70.0;
+	 	    		x += 67.0;
 	        	}
 	        	idx++;
 
 	        	if (i < MAX_ITEMPAGE && items[i] != -1)
 				{
-				    g_ePlayerMenuData[playerid][g_eMenuItems][i] = CreatePlayerTextDraw(playerid, x, y, "_");
+					// format(strs, sizeof(strs), "X %f Y %f ID %d", x, y, i);
+					// SendClientMessageEx(playerid, 0x00FF00FF, strs);
+					g_ePlayerMenuData[playerid][g_eMenuItems][i] = CreatePlayerTextDraw(playerid, x, y, "_");
+					PlayerTextDrawTextSize(playerid, g_ePlayerMenuData[playerid][g_eMenuItems][i], 52.000, 47.000);
 					PlayerTextDrawAlignment(playerid, g_ePlayerMenuData[playerid][g_eMenuItems][i], 1);
 					PlayerTextDrawColor(playerid, g_ePlayerMenuData[playerid][g_eMenuItems][i], -1);
 					PlayerTextDrawSetShadow(playerid, g_ePlayerMenuData[playerid][g_eMenuItems][i], 0);
@@ -203,18 +277,17 @@ stock ShowModelSelectionInventory(playerid, header[], extraid, items[], size = s
 					PlayerTextDrawSetPreviewRot(playerid, g_ePlayerMenuData[playerid][g_eMenuItems][i], 0.000, 0.000, 0.000, 1.000);
 					PlayerTextDrawSetPreviewVehCol(playerid, g_ePlayerMenuData[playerid][g_eMenuItems][i], 0, 0);
 					PlayerTextDrawSetSelectable(playerid, g_ePlayerMenuData[playerid][g_eMenuItems][i], 1);
-
 					if (amount && amounts[i] != -1)
 					{
 					    format(str, 16, "%d", amounts[i]);
-
-					    g_ePlayerMenuData[playerid][g_eMenuAmounts][i] = CreatePlayerTextDraw(playerid, x + 57.0, y + 43.0, str);
-						PlayerTextDrawAlignment(playerid, g_ePlayerMenuData[playerid][g_eMenuAmounts][i], 3);
-						PlayerTextDrawBackgroundColor(playerid, g_ePlayerMenuData[playerid][g_eMenuAmounts][i], 255);
-						PlayerTextDrawFont(playerid, g_ePlayerMenuData[playerid][g_eMenuAmounts][i], 1);
-						PlayerTextDrawLetterSize(playerid, g_ePlayerMenuData[playerid][g_eMenuAmounts][i], 0.310000, 1.000000);
-						PlayerTextDrawColor(playerid, g_ePlayerMenuData[playerid][g_eMenuAmounts][i], -1429936641);
+						g_ePlayerMenuData[playerid][g_eMenuAmounts][i] = CreatePlayerTextDraw(playerid, x + 40.0, y + 34.0, str);
+						PlayerTextDrawLetterSize(playerid, g_ePlayerMenuData[playerid][g_eMenuAmounts][i], 0.300, 1.500);
+						PlayerTextDrawAlignment(playerid, g_ePlayerMenuData[playerid][g_eMenuAmounts][i], 1);
+						PlayerTextDrawColor(playerid, g_ePlayerMenuData[playerid][g_eMenuAmounts][i], -1);
+						PlayerTextDrawSetShadow(playerid, g_ePlayerMenuData[playerid][g_eMenuAmounts][i], 1);
 						PlayerTextDrawSetOutline(playerid, g_ePlayerMenuData[playerid][g_eMenuAmounts][i], 1);
+						PlayerTextDrawBackgroundColor(playerid, g_ePlayerMenuData[playerid][g_eMenuAmounts][i], 150);
+						PlayerTextDrawFont(playerid, g_ePlayerMenuData[playerid][g_eMenuAmounts][i], 1);
 						PlayerTextDrawSetProportional(playerid, g_ePlayerMenuData[playerid][g_eMenuAmounts][i], 1);
 					}
 					else
@@ -248,148 +321,15 @@ stock ShowModelSelectionInventory(playerid, header[], extraid, items[], size = s
     g_ePlayerMenuData[playerid][g_eMenuRot][1] = fRotY;
     g_ePlayerMenuData[playerid][g_eMenuRot][2] = fRotZ;
     g_ePlayerMenuData[playerid][g_eMenuRot][3] = fZoom;
-
-	g_ePlayerMenuData[playerid][g_eMenuTextdraws][0] = CreatePlayerTextDraw(playerid, 146.464, 92.583, "mdl-2020:main_inv");
-	PlayerTextDrawTextSize(playerid, g_ePlayerMenuData[playerid][g_eMenuTextdraws][0], 350.000, 251.000);
-	PlayerTextDrawAlignment(playerid, g_ePlayerMenuData[playerid][g_eMenuTextdraws][0], 1);
-	PlayerTextDrawColor(playerid, g_ePlayerMenuData[playerid][g_eMenuTextdraws][0], -1);
-	PlayerTextDrawSetShadow(playerid, g_ePlayerMenuData[playerid][g_eMenuTextdraws][0], 0);
-	PlayerTextDrawSetOutline(playerid, g_ePlayerMenuData[playerid][g_eMenuTextdraws][0], 0);
-	PlayerTextDrawBackgroundColor(playerid, g_ePlayerMenuData[playerid][g_eMenuTextdraws][0], 255);
-	PlayerTextDrawFont(playerid, g_ePlayerMenuData[playerid][g_eMenuTextdraws][0], 4);
-	PlayerTextDrawSetProportional(playerid, g_ePlayerMenuData[playerid][g_eMenuTextdraws][0], 0);
-
-    // g_ePlayerMenuData[playerid][g_eMenuTextdraws][1] = CreatePlayerTextDraw(playerid, 126.000000, 125.000000, header);
-	// PlayerTextDrawBackgroundColor(playerid, g_ePlayerMenuData[playerid][g_eMenuTextdraws][1], 255);
-	// PlayerTextDrawFont(playerid, g_ePlayerMenuData[playerid][g_eMenuTextdraws][1], 0);
-	// PlayerTextDrawLetterSize(playerid, g_ePlayerMenuData[playerid][g_eMenuTextdraws][1], 0.809999, 2.599999);
-	// PlayerTextDrawColor(playerid, g_ePlayerMenuData[playerid][g_eMenuTextdraws][1], -1);
-	// PlayerTextDrawSetOutline(playerid, g_ePlayerMenuData[playerid][g_eMenuTextdraws][1], 1);
-	// PlayerTextDrawSetProportional(playerid, g_ePlayerMenuData[playerid][g_eMenuTextdraws][1], 1);
-	// PlayerTextDrawSetSelectable(playerid, g_ePlayerMenuData[playerid][g_eMenuTextdraws][1], 0);
-
-	// g_ePlayerMenuData[playerid][g_eMenuTextdraws][2] = CreatePlayerTextDraw(playerid, 498.000000, 141.000000, page);
-	// PlayerTextDrawAlignment(playerid, g_ePlayerMenuData[playerid][g_eMenuTextdraws][2], 2);
-	// PlayerTextDrawBackgroundColor(playerid, g_ePlayerMenuData[playerid][g_eMenuTextdraws][2], 255);
-	// PlayerTextDrawFont(playerid, g_ePlayerMenuData[playerid][g_eMenuTextdraws][2], 1);
-	// PlayerTextDrawLetterSize(playerid, g_ePlayerMenuData[playerid][g_eMenuTextdraws][2], 0.390000, 1.100000);
-	// PlayerTextDrawColor(playerid, g_ePlayerMenuData[playerid][g_eMenuTextdraws][2], -1);
-	// PlayerTextDrawSetOutline(playerid, g_ePlayerMenuData[playerid][g_eMenuTextdraws][2], 0);
-	// PlayerTextDrawSetProportional(playerid, g_ePlayerMenuData[playerid][g_eMenuTextdraws][2], 1);
-	// PlayerTextDrawSetShadow(playerid, g_ePlayerMenuData[playerid][g_eMenuTextdraws][2], 1);
-	// PlayerTextDrawSetSelectable(playerid, g_ePlayerMenuData[playerid][g_eMenuTextdraws][2], 0);
-
-	g_ePlayerMenuData[playerid][g_eMenuTextdraws][2] = CreatePlayerTextDraw(playerid, 315.000, 320.000, page);
-	PlayerTextDrawLetterSize(playerid, g_ePlayerMenuData[playerid][g_eMenuTextdraws][2], 0.300, 1.500);
-	PlayerTextDrawAlignment(playerid, g_ePlayerMenuData[playerid][g_eMenuTextdraws][2], 1);
-	PlayerTextDrawColor(playerid, g_ePlayerMenuData[playerid][g_eMenuTextdraws][2], -1);
-	PlayerTextDrawSetShadow(playerid, g_ePlayerMenuData[playerid][g_eMenuTextdraws][2], 1);
-	PlayerTextDrawSetOutline(playerid, g_ePlayerMenuData[playerid][g_eMenuTextdraws][2], 1);
-	PlayerTextDrawBackgroundColor(playerid, g_ePlayerMenuData[playerid][g_eMenuTextdraws][2], 150);
-	PlayerTextDrawFont(playerid, g_ePlayerMenuData[playerid][g_eMenuTextdraws][2], 1);
-	PlayerTextDrawSetProportional(playerid, g_ePlayerMenuData[playerid][g_eMenuTextdraws][2], 1);
-
-	g_ePlayerMenuData[playerid][g_eMenuTextdraws][3] = CreatePlayerTextDraw(playerid, 470.000, 314.000, "mdl-2020:btn_right");
-	PlayerTextDrawTextSize(playerid, g_ePlayerMenuData[playerid][g_eMenuTextdraws][3], 19.000, 26.000);
-	PlayerTextDrawAlignment(playerid, g_ePlayerMenuData[playerid][g_eMenuTextdraws][3], 1);
-	PlayerTextDrawColor(playerid, g_ePlayerMenuData[playerid][g_eMenuTextdraws][3], -1);
-	PlayerTextDrawSetShadow(playerid, g_ePlayerMenuData[playerid][g_eMenuTextdraws][3], 0);
-	PlayerTextDrawSetOutline(playerid, g_ePlayerMenuData[playerid][g_eMenuTextdraws][3], 0);
-	PlayerTextDrawBackgroundColor(playerid, g_ePlayerMenuData[playerid][g_eMenuTextdraws][3], 255);
-	PlayerTextDrawFont(playerid, g_ePlayerMenuData[playerid][g_eMenuTextdraws][3], 4);
-	PlayerTextDrawSetProportional(playerid, g_ePlayerMenuData[playerid][g_eMenuTextdraws][3], 1);
-	PlayerTextDrawSetSelectable(playerid, g_ePlayerMenuData[playerid][g_eMenuTextdraws][3], 1);
-
-	// g_ePlayerMenuData[playerid][g_eMenuTextdraws][3] = CreatePlayerTextDraw(playerid, 499.000000, 335.000000, "Next");
-	// PlayerTextDrawAlignment(playerid, g_ePlayerMenuData[playerid][g_eMenuTextdraws][3], 2);
-	// PlayerTextDrawBackgroundColor(playerid, g_ePlayerMenuData[playerid][g_eMenuTextdraws][3], 255);
-	// PlayerTextDrawFont(playerid, g_ePlayerMenuData[playerid][g_eMenuTextdraws][3], 1);
-	// PlayerTextDrawLetterSize(playerid, g_ePlayerMenuData[playerid][g_eMenuTextdraws][3], 0.400000, 1.100000);
-	// PlayerTextDrawColor(playerid, g_ePlayerMenuData[playerid][g_eMenuTextdraws][3], -1);
-	// PlayerTextDrawSetOutline(playerid, g_ePlayerMenuData[playerid][g_eMenuTextdraws][3], 0);
-	// PlayerTextDrawSetProportional(playerid, g_ePlayerMenuData[playerid][g_eMenuTextdraws][3], 1);
-	// PlayerTextDrawSetShadow(playerid, g_ePlayerMenuData[playerid][g_eMenuTextdraws][3], 1);
-	// PlayerTextDrawUseBox(playerid, g_ePlayerMenuData[playerid][g_eMenuTextdraws][3], 1);
-	// PlayerTextDrawBoxColor(playerid, g_ePlayerMenuData[playerid][g_eMenuTextdraws][3], -188);
-	// PlayerTextDrawTextSize(playerid, g_ePlayerMenuData[playerid][g_eMenuTextdraws][3], 559.000000, 45.000000);
-	// PlayerTextDrawSetSelectable(playerid, g_ePlayerMenuData[playerid][g_eMenuTextdraws][3], 1);
-
-	// g_ePlayerMenuData[playerid][g_eMenuTextdraws][4] = CreatePlayerTextDraw(playerid, 449.000000, 335.000000, "Back");
-	// PlayerTextDrawAlignment(playerid, g_ePlayerMenuData[playerid][g_eMenuTextdraws][4], 2);
-	// PlayerTextDrawBackgroundColor(playerid, g_ePlayerMenuData[playerid][g_eMenuTextdraws][4], 255);
-	// PlayerTextDrawFont(playerid, g_ePlayerMenuData[playerid][g_eMenuTextdraws][4], 1);
-	// PlayerTextDrawLetterSize(playerid, g_ePlayerMenuData[playerid][g_eMenuTextdraws][4], 0.400000, 1.100000);
-	// PlayerTextDrawColor(playerid, g_ePlayerMenuData[playerid][g_eMenuTextdraws][4], -1);
-	// PlayerTextDrawSetOutline(playerid, g_ePlayerMenuData[playerid][g_eMenuTextdraws][4], 0);
-	// PlayerTextDrawSetProportional(playerid, g_ePlayerMenuData[playerid][g_eMenuTextdraws][4], 1);
-	// PlayerTextDrawSetShadow(playerid, g_ePlayerMenuData[playerid][g_eMenuTextdraws][4], 1);
-	// PlayerTextDrawUseBox(playerid, g_ePlayerMenuData[playerid][g_eMenuTextdraws][4], 1);
-	// PlayerTextDrawBoxColor(playerid, g_ePlayerMenuData[playerid][g_eMenuTextdraws][4], -188);
-	// PlayerTextDrawTextSize(playerid, g_ePlayerMenuData[playerid][g_eMenuTextdraws][4], 559.000000, 45.000000);
-	// PlayerTextDrawSetSelectable(playerid, g_ePlayerMenuData[playerid][g_eMenuTextdraws][4], 1);
-
-	g_ePlayerMenuData[playerid][g_eMenuTextdraws][4] = CreatePlayerTextDraw(playerid, 154.000, 314.000, "mdl-2020:btn_left");
-	PlayerTextDrawTextSize(playerid, g_ePlayerMenuData[playerid][g_eMenuTextdraws][4], 19.000, 26.000);
-	PlayerTextDrawAlignment(playerid, g_ePlayerMenuData[playerid][g_eMenuTextdraws][4], 1);
-	PlayerTextDrawColor(playerid, g_ePlayerMenuData[playerid][g_eMenuTextdraws][4], -1);
-	PlayerTextDrawSetShadow(playerid, g_ePlayerMenuData[playerid][g_eMenuTextdraws][4], 0);
-	PlayerTextDrawSetOutline(playerid, g_ePlayerMenuData[playerid][g_eMenuTextdraws][4], 0);
-	PlayerTextDrawBackgroundColor(playerid, g_ePlayerMenuData[playerid][g_eMenuTextdraws][4], 255);
-	PlayerTextDrawFont(playerid, g_ePlayerMenuData[playerid][g_eMenuTextdraws][4], 4);
-	PlayerTextDrawSetProportional(playerid, g_ePlayerMenuData[playerid][g_eMenuTextdraws][4], 1);
-	PlayerTextDrawSetSelectable(playerid, g_ePlayerMenuData[playerid][g_eMenuTextdraws][4], 1);
-
-	g_ePlayerMenuData[playerid][g_eMenuTextdraws][5] = CreatePlayerTextDraw(playerid, 399.000000, 335.000000, "Close");
-	PlayerTextDrawAlignment(playerid, g_ePlayerMenuData[playerid][g_eMenuTextdraws][5], 2);
-	PlayerTextDrawBackgroundColor(playerid, g_ePlayerMenuData[playerid][g_eMenuTextdraws][5], 255);
-	PlayerTextDrawFont(playerid, g_ePlayerMenuData[playerid][g_eMenuTextdraws][5], 1);
-	PlayerTextDrawLetterSize(playerid, g_ePlayerMenuData[playerid][g_eMenuTextdraws][5], 0.400000, 1.100000);
-	PlayerTextDrawColor(playerid, g_ePlayerMenuData[playerid][g_eMenuTextdraws][5], -1);
-	PlayerTextDrawSetOutline(playerid, g_ePlayerMenuData[playerid][g_eMenuTextdraws][5], 0);
-	PlayerTextDrawSetProportional(playerid, g_ePlayerMenuData[playerid][g_eMenuTextdraws][5], 1);
-	PlayerTextDrawSetShadow(playerid, g_ePlayerMenuData[playerid][g_eMenuTextdraws][5], 1);
-	PlayerTextDrawUseBox(playerid, g_ePlayerMenuData[playerid][g_eMenuTextdraws][5], 1);
-	PlayerTextDrawBoxColor(playerid, g_ePlayerMenuData[playerid][g_eMenuTextdraws][5], -188);
-	PlayerTextDrawTextSize(playerid, g_ePlayerMenuData[playerid][g_eMenuTextdraws][5], 559.000000, 45.000000);
-	PlayerTextDrawSetSelectable(playerid, g_ePlayerMenuData[playerid][g_eMenuTextdraws][5], 1);
-
-	x = 85.0, y = 110.0;
-	for(new idx = 0; idx < MAX_ITEMPAGE; idx++)
-	{
-		if (idx > 0 && (idx % 5) == 0)
-		{
-			x = 155.0;
-			y += 72.0;
-		}
-		else
-		{
-			x += 70.0;
-		}
-		idx++;
-
-		if (idx < MAX_ITEMPAGE)
-		{
-			g_ePlayerMenuData[playerid][g_eMenuSlots][idx] = CreatePlayerTextDraw(playerid, x, y, "mdl-2020:slot");
-			PlayerTextDrawTextSize(playerid, g_ePlayerMenuData[playerid][g_eMenuSlots][idx], 61.000, 54.000);
-			PlayerTextDrawAlignment(playerid, g_ePlayerMenuData[playerid][g_eMenuSlots][idx], 1);
-			PlayerTextDrawColor(playerid, g_ePlayerMenuData[playerid][g_eMenuSlots][idx], -1);
-			PlayerTextDrawSetShadow(playerid, g_ePlayerMenuData[playerid][g_eMenuSlots][idx], 0);
-			PlayerTextDrawSetOutline(playerid, g_ePlayerMenuData[playerid][g_eMenuSlots][idx], 0);
-			PlayerTextDrawBackgroundColor(playerid, g_ePlayerMenuData[playerid][g_eMenuSlots][idx], 255);
-			PlayerTextDrawFont(playerid, g_ePlayerMenuData[playerid][g_eMenuSlots][idx], 4);
-			PlayerTextDrawSetProportional(playerid, g_ePlayerMenuData[playerid][g_eMenuSlots][idx], 0);
-		}
-	}
-
+		
     for (new i = 0; i < MAX_ITEMPAGE; i ++) {
-		if(i < 6)	PlayerTextDrawShow(playerid, g_ePlayerMenuData[playerid][g_eMenuTextdraws][i]);
+		if(i < 4)	PlayerTextDrawShow(playerid, g_ePlayerMenuData[playerid][g_eMenuTextdraws][i]);
 		PlayerTextDrawShow(playerid, g_ePlayerMenuData[playerid][g_eMenuSlots][i]);
 	}
 
 	for (new i = 0; i < MAX_ITEMPAGE; i ++) if (g_ePlayerMenuData[playerid][g_eMenuModels][i] != -1) {
-	    PlayerTextDrawShow(playerid, g_ePlayerMenuData[playerid][g_eMenuItems][i]);
-
-	    if (g_ePlayerMenuData[playerid][g_eMenuAmounts][i] != PlayerText:INVALID_TEXT_DRAW) {
+		if (g_ePlayerMenuData[playerid][g_eMenuAmounts][i] != PlayerText:INVALID_TEXT_DRAW) {
+	    	PlayerTextDrawShow(playerid, g_ePlayerMenuData[playerid][g_eMenuItems][i]);
 	        PlayerTextDrawShow(playerid, g_ePlayerMenuData[playerid][g_eMenuAmounts][i]);
 		}
 	}
@@ -439,25 +379,18 @@ stock Menu_SetPage(playerid, page)
 			}
 			else
 			{
-			    if (g_ePlayerMenuData[playerid][g_eMenuType] == 2)
-				{
-			        PlayerTextDrawSetPreviewModel(playerid, g_ePlayerMenuData[playerid][g_eMenuItems][i - start], 19300);
-			        PlayerTextDrawBackgroundColor(playerid, g_ePlayerMenuData[playerid][g_eMenuItems][i - start], g_arrVehicleColors[g_ePlayerMenuData[playerid][g_eMenuModels][i]]);
-			    }
-			    else
-				{
-					PlayerTextDrawSetPreviewRot(playerid, g_ePlayerMenuData[playerid][g_eMenuItems][i - start], g_ePlayerMenuData[playerid][g_eMenuRot][0], g_ePlayerMenuData[playerid][g_eMenuRot][1], g_ePlayerMenuData[playerid][g_eMenuRot][2], g_ePlayerMenuData[playerid][g_eMenuRot][3]);
 
-				    for (new j = 0; j != MAX_CUSTOM_ROTATIONS; j ++)
+				PlayerTextDrawSetPreviewRot(playerid, g_ePlayerMenuData[playerid][g_eMenuItems][i - start], g_ePlayerMenuData[playerid][g_eMenuRot][0], g_ePlayerMenuData[playerid][g_eMenuRot][1], g_ePlayerMenuData[playerid][g_eMenuRot][2], g_ePlayerMenuData[playerid][g_eMenuRot][3]);
+
+				for (new j = 0; j != MAX_CUSTOM_ROTATIONS; j ++)
+				{
+					if (g_eMenuCustomRotation[j][g_eItemModel] == g_ePlayerMenuData[playerid][g_eMenuModels][i])
 					{
-						if (g_eMenuCustomRotation[j][g_eItemModel] == g_ePlayerMenuData[playerid][g_eMenuModels][i])
-						{
-							PlayerTextDrawSetPreviewRot(playerid, g_ePlayerMenuData[playerid][g_eMenuItems][i - start], g_eMenuCustomRotation[j][g_eItemRotX], g_eMenuCustomRotation[j][g_eItemRotY], g_eMenuCustomRotation[j][g_eItemRotZ], g_eMenuCustomRotation[j][g_eItemZoom]);
-							break;
-						}
+						PlayerTextDrawSetPreviewRot(playerid, g_ePlayerMenuData[playerid][g_eMenuItems][i - start], g_eMenuCustomRotation[j][g_eItemRotX], g_eMenuCustomRotation[j][g_eItemRotY], g_eMenuCustomRotation[j][g_eItemRotZ], g_eMenuCustomRotation[j][g_eItemZoom]);
+						break;
 					}
-				    PlayerTextDrawSetPreviewModel(playerid, g_ePlayerMenuData[playerid][g_eMenuItems][i - start], g_ePlayerMenuData[playerid][g_eMenuModels][i]);
 				}
+				PlayerTextDrawSetPreviewModel(playerid, g_ePlayerMenuData[playerid][g_eMenuItems][i - start], g_ePlayerMenuData[playerid][g_eMenuModels][i]);
 		        PlayerTextDrawHide(playerid, g_ePlayerMenuData[playerid][g_eMenuItems][i - start]);
 		        PlayerTextDrawShow(playerid, g_ePlayerMenuData[playerid][g_eMenuItems][i - start]);
 
@@ -474,7 +407,7 @@ stock Menu_SetPage(playerid, page)
 	    g_ePlayerMenuData[playerid][g_eMenuPage] = page;
 
 	    format(str, 8, "%d/%d", page, g_ePlayerMenuData[playerid][g_eMenuPages]);
-	    PlayerTextDrawSetString(playerid, g_ePlayerMenuData[playerid][g_eMenuTextdraws][2], str);
+	    PlayerTextDrawSetString(playerid, g_ePlayerMenuData[playerid][g_eMenuTextdraws][1], str);
 	}
 	return 1;
 }
@@ -485,14 +418,12 @@ public OnPlayerClickPlayerTextDraw(playerid, PlayerText:playertextid)
 	{
 		return CallLocalFunction("MS_OnPlayerClickPlayerTextDraw", "ii", playerid, _:playertextid);
 	}
-    if (playertextid == g_ePlayerMenuData[playerid][g_eMenuTextdraws][5])
-	{
-        CallLocalFunction("OnModelSelectionResponse", "ddddd", playerid, g_ePlayerMenuData[playerid][g_eMenuExtra], 0, 0, MODEL_RESPONSE_CANCEL);
-        HideModelSelectionInventory(playerid);
-	}
-	else
-	{
-		if (playertextid == g_ePlayerMenuData[playerid][g_eMenuTextdraws][3])
+    // if (playertextid == g_ePlayerMenuData[playerid][g_eMenuTextdraws][5])
+	// {
+    //     CallLocalFunction("OnModelSelectionResponse", "ddddd", playerid, g_ePlayerMenuData[playerid][g_eMenuExtra], 0, 0, MODEL_RESPONSE_CANCEL);
+    //     HideModelSelectionInventory(playerid);
+	// }
+		if (playertextid == g_ePlayerMenuData[playerid][g_eMenuTextdraws][2])
 		{
 			if (g_ePlayerMenuData[playerid][g_eMenuPage] == g_ePlayerMenuData[playerid][g_eMenuPages])
 			    return 0;
@@ -500,7 +431,7 @@ public OnPlayerClickPlayerTextDraw(playerid, PlayerText:playertextid)
 			else
 				Menu_SetPage(playerid, g_ePlayerMenuData[playerid][g_eMenuPage] + 1);
 		}
-		else if (playertextid == g_ePlayerMenuData[playerid][g_eMenuTextdraws][4])
+		else if (playertextid == g_ePlayerMenuData[playerid][g_eMenuTextdraws][3])
 		{
 			if (g_ePlayerMenuData[playerid][g_eMenuPage] < 2)
 			    return 0;
@@ -522,7 +453,6 @@ public OnPlayerClickPlayerTextDraw(playerid, PlayerText:playertextid)
 		        break;
 		    }
 		}
-	}
 	return CallLocalFunction("MS_OnPlayerClickPlayerTextDraw", "dd", playerid, _:playertextid);
 }
 

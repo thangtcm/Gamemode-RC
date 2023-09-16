@@ -6,7 +6,7 @@ enum inventoryData
 {
 	invExists,
 	invID,
-	invItem[32 char],
+	invItem[32],
 	invModel,
 	invQuantity
 };
@@ -22,57 +22,12 @@ forward OnLoadInventory(playerid);
 forward OnInventoryAdd(playerid, itemid);
 new const g_aInventoryItems[][e_InventoryItems] =
 {
-	{"Marijuana", 1578},
-	{"Cocaine", 1575},
-	{"Heroin", 1577},
-	{"Steroids", 1241},
-	{"Marijuana Seeds", 1578},
-	{"Cocaine Seeds", 1575},
-	{"Heroin Opium Seeds", 1577},
-	{"Golf Club", 333},
-	{"Knife", 335},
-	{"Shovel", 337},
-	{"Katana", 339},
-	{"Colt 45", 346},
-	{"Desert Eagle", 348},
-	{"Micro SMG", 352},
-	{"Tec-9", 372},
-	{"MP5", 353},
-	{"Shotgun", 349},
-	{"AK-47", 355},
-	{"M4", 356},
-	{"Rifle", 357},
-	{"Sniper", 358},
-	{"Magazine", 2039},
-	{"Burger", 2703},
 	{"Pizza", 2702},
-	{"Bang lai xe oto", 1581},
 	{"Dien thoai", 330},
 	{"GPS", 18875},
-	{"Binh son", 365},
-	{"Nuoc uong", 2958},
-	{"Soda", 1543},
     {"Binh xang", 1650},
-	{"Xa beng", 18634},
 	{"Boombox", 2226},
-	{"Mask", 19036},
-	{"Medkit", 1580},
-	{"Bo dung cu", 920},
-	{"Nitro", 1010},
-	{"Ammo Cartridge", 2358},
-	{"Armored Vest", 19142},
-	{"Cardboard", 928},
-	{"Radio", 18868},
-	{"But", 322},
-	{"Bat lua", 19998},
-	{"Tua vit", 18644},
-	{"The ngan hang", 1581},
-	{"Bang lai xe moto", 1581},
-	{"Bang lai xe truck", 1581},
-	{"Bang lai may bay", 1581},
-	{"Bang lai truc thang", 1581},
-	{"Giay phep sung B", 1581},
-	{"Giay phep sung C", 1581}
+	{"Radio", 18868}
 };
 
 hook OnPlayerConnect(playerid)
@@ -103,7 +58,7 @@ public OnLoadInventory(playerid)
         cache_get_field_content(i, "invID", tmp, MainPipeline); InventoryData[playerid][i][invID] = strval(tmp);
         cache_get_field_content(i, "invModel", tmp, MainPipeline); InventoryData[playerid][i][invModel] = strval(tmp);
         cache_get_field_content(i, "invQuantity", tmp, MainPipeline); InventoryData[playerid][i][invQuantity] = strval(tmp);
-        cache_get_field_content(i, "invItem", tmp, MainPipeline); InventoryData[playerid][i][invItem] = strval(tmp);
+        cache_get_field_content(i, "invItem", InventoryData[playerid][i][invItem], MainPipeline, 32); 
         InventoryData[playerid][i][invExists] = true;
         i++;
     }
@@ -134,31 +89,37 @@ stock Inventory_Clear(playerid)
 	return mysql_tquery(g_iHandle, string);
 }
 
-stock Inventory_Set(playerid, item[], model, amount)
+stock Inventory_Set(playerid, index, amount)
 {
-	new itemid = Inventory_GetItemID(playerid, item);
-	printf("%d %s",itemid, item);
+	new itemid = Inventory_GetItemID(playerid, index);
 	if(itemid == -1 && amount > 0)
-		Inventory_Add(playerid, item, model, amount);
+		Inventory_Add(playerid, index, amount);
 
 	else if(amount > 0 && itemid != -1)
-		Inventory_SetQuantity(playerid, item, amount);
+		Inventory_SetQuantity(playerid, index, amount);
 
 	else if(amount < 1 && itemid != -1)
-		Inventory_Remove(playerid, item, -1);
+		Inventory_Remove(playerid, index, -1);
 
 	return 1;
 }
 
-stock Inventory_GetItemID(playerid, item[])
+stock Inventory_GetItemID(playerid, index)
 {
-	printf("Inventory_GetItemID %s", item);
 	for(new i = 0; i < MAX_INVENTORY; i++)
 	{
 		if(!InventoryData[playerid][i][invExists])
 			continue;
+		if(!strcmp(InventoryData[playerid][i][invItem], g_aInventoryItems[index][e_InventoryItem])) return i;
+	}
+	return -1;
+}
 
-		if(!strcmp(InventoryData[playerid][i][invItem], item)) return i;
+stock Inventory_GetItemIndex(name[])
+{
+	for(new i = 0; i < sizeof(g_aInventoryItems); i++)
+	{
+		if(!strcmp(name, g_aInventoryItems[i][e_InventoryItem])) return i;
 	}
 	return -1;
 }
@@ -187,9 +148,9 @@ stock Inventory_Items(playerid)
 	return count;
 }
 
-stock Inventory_Count(playerid, item[])
+stock Inventory_Count(playerid, index)
 {
-	new itemid = Inventory_GetItemID(playerid, item);
+	new itemid = Inventory_GetItemID(playerid, index);
 
 	if(itemid != -1)
 		return InventoryData[playerid][itemid][invQuantity];
@@ -197,15 +158,15 @@ stock Inventory_Count(playerid, item[])
 	return 0;
 }
 
-stock Inventory_HasItem(playerid, item[])
+stock Inventory_HasItem(playerid, index)
 {
-	return (Inventory_GetItemID(playerid, item) != -1);
+	return (Inventory_GetItemID(playerid, index) != -1);
 }
 
-stock Inventory_SetQuantity(playerid, item[], quantity)
+stock Inventory_SetQuantity(playerid, index, quantity)
 {
 	new
-		itemid = Inventory_GetItemID(playerid, item),
+		itemid = Inventory_GetItemID(playerid, index),
 		string[128],
         PlayerSQLId = GetPlayerSQLId(playerid);
 
@@ -219,27 +180,26 @@ stock Inventory_SetQuantity(playerid, item[], quantity)
 	return 1;
 }
 
-stock Inventory_Add(playerid, item[], model, quantity = 1)
+stock Inventory_Add(playerid, index, quantity = 1)
 {
 	new
-		itemid = Inventory_GetItemID(playerid, item),
+		itemid = Inventory_GetItemID(playerid, index),
 		string[128],
         PlayerSQLId = GetPlayerSQLId(playerid);
 
 	if(itemid == -1)
 	{
 		itemid = Inventory_GetFreeID(playerid);
-		printf("%d %s", itemid, item);
 		if(itemid != -1)
 		{
 			InventoryData[playerid][itemid][invExists] = true;
-			InventoryData[playerid][itemid][invModel] = model;
+			InventoryData[playerid][itemid][invModel] = g_aInventoryItems[index][e_InventoryModel];
 			InventoryData[playerid][itemid][invQuantity] = quantity;
-
-			strpack(InventoryData[playerid][itemid][invItem], item, 32 char);
-            format(string, sizeof(string), "INSERT INTO `inventory` (`ID`, `invItem`, `invModel`, `invQuantity`) VALUES('%d', '%s', '%d', '%d')", PlayerSQLId, g_mysql_ReturnEscaped(item, MainPipeline), model, quantity);
+			strcpy(InventoryData[playerid][itemid][invItem], g_aInventoryItems[index][e_InventoryItem], 32);
+            format(string, sizeof(string), "INSERT INTO `inventory` (`ID`, `invItem`, `invModel`, `invQuantity`) VALUES('%d', '%s', '%d', '%d')", 
+				PlayerSQLId, g_mysql_ReturnEscaped(g_aInventoryItems[index][e_InventoryItem], MainPipeline), g_aInventoryItems[index][e_InventoryModel], quantity);
 			mysql_function_query(MainPipeline, string, false, "OnInventoryAdd", "ii", playerid, itemid);
-			printf("[CREATE INVENTORY] %s (ID %d) da duoc them vao du lieu cua %s", item, itemid, GetPlayerNameEx(playerid));
+			printf("[CREATE INVENTORY] %s (ID %d) da duoc them vao du lieu cua %s", InventoryData[playerid][itemid][invItem], itemid, GetPlayerNameEx(playerid));
 			return itemid;
 		}
 		return -1;
@@ -254,10 +214,10 @@ stock Inventory_Add(playerid, item[], model, quantity = 1)
 	return itemid;
 }
 
-stock Inventory_Remove(playerid, item[], quantity = 1)
+stock Inventory_Remove(playerid, index, quantity = 1)
 {
 	new
-		itemid = Inventory_GetItemID(playerid, item),
+		itemid = Inventory_GetItemID(playerid, index),
 		string[128],
         PlayerSQLId = GetPlayerSQLId(playerid);
 
@@ -316,6 +276,13 @@ public OpenInventory(playerid)
 		{
 			items[i] = InventoryData[playerid][i][invModel];
 			amounts[i] = InventoryData[playerid][i][invQuantity];
+			new string[128];
+			format(string, sizeof(string), "Vi tri %d - ModelId %d - Quantity %d - ItemName %s", 
+				i,
+				InventoryData[playerid][i][invModel],
+				InventoryData[playerid][i][invQuantity],
+				InventoryData[playerid][i][invItem]);
+			SendClientMessageEx(playerid, COLOR_YELLOW, string);
 		}
 		else
 		{
@@ -323,7 +290,42 @@ public OpenInventory(playerid)
 			amounts[i] = -1;
 		}
 	}
+	for(new i = PlayerInfo[playerid][pCapacity]; i < 120; i++)
+	{
+		items[i] = -1;
+		amounts[i] = -1;
+	}
 	return ShowModelSelectionInventory(playerid, "Inventory", MODEL_SELECTION_INVENTORY, items, sizeof(items), 0.0, 0.0, 0.0, 1.0, -1, true, amounts);
+}
+
+forward OnPlayerUseItem(playerid, itemid, name[]);
+public OnPlayerUseItem(playerid, itemid, name[])
+{
+	if(!strcmp(name, "Dien thoai", true))
+	{
+		return cmd_phone(playerid, "\1");
+	}
+	else if(!strcmp(name, "Pizza", true))
+	{
+		SendClientMessageEx(playerid, COLOR_RED, "Vat pham nay chua duoc su dung");
+	}
+	else if(!strcmp(name, "Boombox", true))
+	{
+		SendClientMessageEx(playerid, COLOR_RED, "Vat pham nay chua duoc su dung");
+	}
+	else if(!strcmp(name, "Radio", true))
+	{
+		SendClientMessageEx(playerid, COLOR_YELLOW, "Hay su dung \"/pr [text]\" de chat kenh radio.");
+	}
+	else if(!strcmp(name, "Binh xang", true))
+	{
+		SendClientMessageEx(playerid, COLOR_RED, "Vat pham nay chua duoc su dung");
+	}
+	else if(!strcmp(name, "GPS", true))
+	{
+		return cmd_gps(playerid, "\1");
+	}
+	return 1;
 }
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -372,30 +374,26 @@ CMD:inv(playerid, params[])
 
 CMD:setitem(playerid, params[])
 {
-	static
-		userid,
-		item[32],
+	new
+		giveplayerid,
+		index,
 		amount;
 
 	if(PlayerInfo[playerid][pAdmin] < 4)
 		return SendClientMessageEx(playerid, COLOR_LIGHTRED, "Ban khong duoc phep su dung lenh nay.");
 
-	if(sscanf(params, "uds[32]", userid, amount, item))
-		return SendClientMessageEx(playerid, COLOR_GRAD1, "/setitem [playerid/name] [amount] [item name]");
-
-	for(new i = 0; i < sizeof(g_aInventoryItems); i++) if(!strcmp(g_aInventoryItems[i][e_InventoryItem], item, true))
+	if(sscanf(params, "udd", giveplayerid, amount, index))
+		return SendClientMessageEx(playerid, COLOR_GRAD1, "/setitem [playerid/name] [amount] [item id]");
+	if(index == -1 || index >= sizeof(g_aInventoryItems))	return SendClientMessageEx(playerid, COLOR_LIGHTRED, "Item khong hop le (su dung [/itemlist] de xem).");
+	if(!strcmp(g_aInventoryItems[index][e_InventoryItem], "Dien thoai", true))
 	{
-		if(!strcmp(item, "Dien thoai", true))
-		{
-			PlayerInfo[userid][pPhoneBook] = 1;
-			PlayerInfo[userid][pPnumber] = random(90000) + 10000;
-		}
-		Inventory_Set(userid, g_aInventoryItems[i][e_InventoryItem], g_aInventoryItems[i][e_InventoryModel], amount);
-		new string[128];
-		format(string, sizeof(string), "Ban da cho %s item \"%s\" voi so luong %d.", GetPlayerNameEx(userid), item, amount);
-		return SendClientMessageEx(playerid, COLOR_YELLOW, string);
+		PlayerInfo[giveplayerid][pPhoneBook] = 1;
+		PlayerInfo[giveplayerid][pPnumber] = random(90000) + 10000;
 	}
-	SendClientMessageEx(playerid, COLOR_LIGHTRED, "Item khong hop le (su dung [/itemlist] de xem).");
+	Inventory_Set(giveplayerid, index, amount);
+	new string[128];
+	format(string, sizeof(string), "Ban da cho %s item \"%s\" voi so luong %d.", GetPlayerNameEx(giveplayerid), g_aInventoryItems[index][e_InventoryItem], amount);
+	SendClientMessageEx(playerid, COLOR_YELLOW, string);
 	return 1;
 }
 
@@ -408,7 +406,7 @@ CMD:itemlist(playerid, params[])
 	{
 		for(new i = 0; i < sizeof(g_aInventoryItems); i++)
 		{
-			format(string, sizeof(string), "%s%s\n", string, g_aInventoryItems[i][e_InventoryItem]);
+			format(string, sizeof(string), "%s[%d]%s\n", string, i, g_aInventoryItems[i][e_InventoryItem]);
 		}
 	}
 	return Dialog_Show(playerid, ShowOnly, DIALOG_STYLE_LIST, "Item list", string, "Lua chon", "Huy bo");
@@ -450,7 +448,6 @@ Dialog:Inventory(playerid, response, listitem, inputtext[])
 			}
 			case 2:
 			{
-				new id = -1;
 				if(IsPlayerInAnyVehicle(playerid))
 					return SendClientMessageEx(playerid, COLOR_LIGHTRED, "Ban khong the vut item ngay bay gio.");
 				else
@@ -494,21 +491,21 @@ Dialog:GiveItem(playerid, response, listitem, inputtext[])
 {
 	if(response)
 	{
-		static
-			userid = -1,
+		new
+			giveplayerid = -1,
 			itemid = -1,
 		 itemName[32];
 
-		if(sscanf(inputtext, "u", userid))
+		if(sscanf(inputtext, "u", giveplayerid))
 			return Dialog_Show(playerid, GiveItem, DIALOG_STYLE_INPUT, "Dua item", "Xin vui long nhap ten nguoi choi hoac ID:", "Xac nhan", "Huy bo");
 
-		if(userid == INVALID_PLAYER_ID)
+		if(giveplayerid == INVALID_PLAYER_ID)
 			return Dialog_Show(playerid, GiveItem, DIALOG_STYLE_INPUT, "Dua item", "Nguoi choi khong hop le.\n\nXin vui long nhap ten nguoi choi hoac ID:", "Xac nhan", "Huy bo");
 
-		if(!ProxDetectorS(6.0, playerid, userid))
+		if(!ProxDetectorS(6.0, playerid, giveplayerid))
 			return Dialog_Show(playerid, GiveItem, DIALOG_STYLE_INPUT, "Dua item", "Ban khong dung gan nguoi choi do.\n\nXin vui long nhap ten nguoi choi hoac ID:", "Xac nhan", "Huy bo");
 
-		if(userid == playerid)
+		if(giveplayerid == playerid)
 			return Dialog_Show(playerid, GiveItem, DIALOG_STYLE_INPUT, "Dua item", "Ban khong the dua item cho chinh minh.\n\nXin vui long nhap ten nguoi choi hoac ID:", "Xac nhan", "Huy bo");
 
 		itemid = PlayerInfo[playerid][pInventoryItem];
@@ -516,32 +513,32 @@ Dialog:GiveItem(playerid, response, listitem, inputtext[])
 		if(itemid == -1)
 			return 0;
 
-		strunpack(itemName, InventoryData[playerid][itemid][invItem]);
-
+		strcpy(itemName, InventoryData[playerid][itemid][invItem], 32);
+		new index = Inventory_GetItemIndex(itemName);
 		if(InventoryData[playerid][itemid][invQuantity] == 1)
 		{
-			new id = Inventory_Add(userid, itemName, InventoryData[playerid][itemid][invModel]), str[560];
+			new id = Inventory_Add(giveplayerid, index), str[560];
 			if(id == -1)
 				return SendErrorMessage(playerid, "Nguoi choi do khong con slot trong tui do.");
-			format(str, sizeof(str), "* %s da lay \"%s\" va dua cho %s.", GetPlayerNameEx(playerid), itemName, GetPlayerNameEx(userid));
+			format(str, sizeof(str), "* %s da lay \"%s\" va dua cho %s.", GetPlayerNameEx(playerid), itemName, GetPlayerNameEx(giveplayerid));
 			ProxDetector(30.0, playerid, str, COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE);
 			format(str, sizeof(str), "%s da dua \"%s\" va da duoc them vao trong tui do.", GetPlayerNameEx(playerid), itemName);
-			SendClientMessageEx(userid, COLOR_YELLOW, str);
+			SendClientMessageEx(giveplayerid, COLOR_YELLOW, str);
 
-			Inventory_Remove(playerid, itemName);
+			Inventory_Remove(playerid, index);
 			new years,month,day,hourz,minz,sec,time[50];
 			getdate(years,month,day);
 			gettime(hourz,minz,sec);
 			format(time, sizeof time , "%d/%d/%d %d:%d:%d",day,month,years,hourz,minz,sec);
-			format(str, sizeof(str), "[%s] %s (%s) da dua %s cho %s (%s).", time, GetPlayerNameEx(playerid), PlayerInfo[playerid][pIP], itemName, GetPlayerNameEx(userid), PlayerInfo[userid][pIP]);
+			format(str, sizeof(str), "[%s] %s (%s) da dua %s cho %s (%s).", time, GetPlayerNameEx(playerid), PlayerInfo[playerid][pIP], itemName, GetPlayerNameEx(giveplayerid), PlayerInfo[giveplayerid][pIP]);
 			Log("logs/give_log.txt", str);
 		}
 		else
 		{
 			new str[128];
-			format(str, sizeof(str), "Item: %s (So luong: %d)\n\nXin vui long nhap so luong de dua item %s:", itemName, InventoryData[playerid][itemid][invQuantity], GetPlayerNameEx(userid));
+			format(str, sizeof(str), "Item: %s (So luong: %d)\n\nXin vui long nhap so luong de dua item %s:", itemName, InventoryData[playerid][itemid][invQuantity], GetPlayerNameEx(giveplayerid));
 			Dialog_Show(playerid, GiveQuantity, DIALOG_STYLE_INPUT, "Dua item", str, "Dua", "Huy bo");
-			PlayerInfo[playerid][pGiveItem] = userid;
+			PlayerInfo[playerid][pGiveItem] = giveplayerid;
 		}
 	}
 	return 1;
@@ -552,7 +549,7 @@ Dialog:GiveQuantity(playerid, response, listitem, inputtext[])
 	if(response && PlayerInfo[playerid][pGiveItem] != INVALID_PLAYER_ID)
 	{
 		new
-			userid = PlayerInfo[playerid][pGiveItem],
+			giveplayerid = PlayerInfo[playerid][pGiveItem],
 			itemid = PlayerInfo[playerid][pInventoryItem],
 			itemName[32], str[560];
 
@@ -560,32 +557,32 @@ Dialog:GiveQuantity(playerid, response, listitem, inputtext[])
 
 		if(isnull(inputtext))
 		{
-			format(str, sizeof(str), "Item: %s (So luong: %d)\n\nXin vui long nhap so luong %s:", itemName, InventoryData[playerid][itemid][invQuantity], GetPlayerNameEx(userid));
+			format(str, sizeof(str), "Item: %s (So luong: %d)\n\nXin vui long nhap so luong %s:", itemName, InventoryData[playerid][itemid][invQuantity], GetPlayerNameEx(giveplayerid));
 			return Dialog_Show(playerid, GiveQuantity, DIALOG_STYLE_INPUT, "Dua item", str, "Dua", "Huy bo");
 		}
 
 		if(strval(inputtext) < 1 || strval(inputtext) > InventoryData[playerid][itemid][invQuantity])
 		{
-			format(str, sizeof(str), "Ban khong co nhieu item.\n\nItem: %s (So luong: %d)\n\nXin vui long nhap so luong %s:", itemName, InventoryData[playerid][itemid][invQuantity], GetPlayerNameEx(userid));
+			format(str, sizeof(str), "Ban khong co nhieu item.\n\nItem: %s (So luong: %d)\n\nXin vui long nhap so luong %s:", itemName, InventoryData[playerid][itemid][invQuantity], GetPlayerNameEx(giveplayerid));
 			return  Dialog_Show(playerid, GiveQuantity, DIALOG_STYLE_INPUT, "Dua item", str, "Dua", "Huy bo");
 		}
-
-		new id = Inventory_Add(userid, itemName, InventoryData[playerid][itemid][invModel], strval(inputtext));
+		new index = Inventory_GetItemIndex(itemName);
+		new id = Inventory_Add(giveplayerid, index, strval(inputtext));
 
 		if(id == -1)
 			return SendErrorMessage(playerid, "Nguoi choi do khong con slot trong tui do.");
 
-		format(str, sizeof(str), "* %s da lay \"%s\" va dua cho %s.", GetPlayerNameEx(playerid), itemName, GetPlayerNameEx(userid));
+		format(str, sizeof(str), "* %s da lay \"%s\" va dua cho %s.", GetPlayerNameEx(playerid), itemName, GetPlayerNameEx(giveplayerid));
 		ProxDetector(30.0, playerid, str, COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE);
 		format(str, sizeof(str), "%s da dua \"%s\" va da duoc them vao trong tui do.", GetPlayerNameEx(playerid), str);
-		SendClientMessageEx(userid, COLOR_YELLOW, str);
+		SendClientMessageEx(giveplayerid, COLOR_YELLOW, str);
 
-		Inventory_Remove(playerid, itemName, strval(inputtext));
+		Inventory_Remove(playerid, index, strval(inputtext));
 		new years,month,day,hourz,minz,sec,time[50];
 		getdate(years,month,day);
 		gettime(hourz,minz,sec);
 		format(time, sizeof time , "%d/%d/%d %d:%d:%d",day,month,years,hourz,minz,sec);
-		format(str, sizeof(str), "[%s] %s (%s) da dua %s cho %s (%s).", time, GetPlayerNameEx(playerid), PlayerInfo[playerid][pIP], itemName, GetPlayerNameEx(userid), PlayerInfo[userid][pIP]);
+		format(str, sizeof(str), "[%s] %s (%s) da dua %s cho %s (%s).", time, GetPlayerNameEx(playerid), PlayerInfo[playerid][pIP], itemName, GetPlayerNameEx(giveplayerid), PlayerInfo[giveplayerid][pIP]);
 		Log("logs/give_log.txt", str);
 	}
 	return 1;

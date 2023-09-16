@@ -2,71 +2,71 @@ public OnLoadingFinish(playerid,loadingid) {
 	switch(loadingid) {
 		case 1: SendServerMessage(playerid, " [TESTING SUCCES]");
 	//	case LOAD_LOGIN: { clicklogin_check_account(playerid); }
-        case LOAD_BONPHAN: {
-            new i = GetPVarInt(playerid, "Loadcay");
-            RemovePlayerAttachedObject(playerid, 8);
-            RemovePlayerAttachedObject(playerid, 9);
-            DeletePVar(playerid, "Loadcay");
+        // case LOAD_BONPHAN: {
+        //     new i = GetPVarInt(playerid, "Loadcay");
+        //     RemovePlayerAttachedObject(playerid, 8);
+        //     RemovePlayerAttachedObject(playerid, 9);
+        //     DeletePVar(playerid, "Loadcay");
             
-            StopLoopingAnim(playerid);
-            if(seeds_info[i][s_want] != 2) {
-                SendClientMessageEx(playerid, -1, "Ban da bon phan thanh cong, nhung cay khong can bon phan =)");   
-                PlayerSeed[playerid][ps_Phan]--;
-            } 
-            else {
-                SendClientMessageEx(playerid, -1, "Ban da bon phan thanh cong");
-                seeds_info[i][s_want] = 0;
-                PlayerSeed[playerid][ps_Phan]--;
-            }
-        }
-        case LOAD_BATSAU: {
-            new i = GetPVarInt(playerid, "Loadcay");
-            RemovePlayerAttachedObject(playerid, 8);
-            RemovePlayerAttachedObject(playerid, 9);
-            DeletePVar(playerid, "Loadcay");
-            StopLoopingAnim(playerid);
-            if(seeds_info[i][s_want] != 4) {
-                SendClientMessageEx(playerid, -1, "Khong co sau tren cay...");      
-            } 
-            else {
-                SendClientMessageEx(playerid, -1, "Ban da bat va diet sau thanh cong");
-                seeds_info[i][s_want] = 0;                  
-            }
-        }
-        case LOAD_TUOINUOC: 
-        {
-            new i = GetPVarInt(playerid, "Loadcay");
-            RemovePlayerAttachedObject(playerid, 8);
-            RemovePlayerAttachedObject(playerid, 9);
-            DeletePVar(playerid, "Loadcay");
-            StopLoopingAnim(playerid);
-            if(seeds_info[i][s_want] != 1) {
-                SendClientMessageEx(playerid, -1, "Ban da tuoi nuoc thanh cong nhung cay khong can nuoc =)");   
-                PlayerSeed[playerid][ps_Nuoc]--;
-            } 
-            else {
-                SendClientMessageEx(playerid, -1, "Ban da tuoi nuoc thanh cong");
-                seeds_info[i][s_want] = 0;
-                PlayerSeed[playerid][ps_Nuoc]--;
-            }
-        }
-        case LOAD_XITTHUOC: {
-            new i = GetPVarInt(playerid, "Loadcay");
-            RemovePlayerAttachedObject(playerid, 8);
-            RemovePlayerAttachedObject(playerid, 9);
-            DeletePVar(playerid, "Loadcay");
-            StopLoopingAnim(playerid);
-            if(seeds_info[i][s_want] != 3) {
-                SendClientMessageEx(playerid, -1, "Ban da xit thuoc thanh cong, nhung cay khong can xit thuoc =)"); 
-                PlayerSeed[playerid][ps_ThuocTruSau]--; 
-            }
-            else {
-                SendClientMessageEx(playerid, -1, "Ban da xit thuoc thanh cong");   
-                seeds_info[i][s_want] = 0;
-                PlayerSeed[playerid][ps_ThuocTruSau]--; 
-            }
+        //     StopLoopingAnim(playerid);
+        //     if(seeds_info[i][s_want] != 2) {
+        //         SendClientMessageEx(playerid, -1, "Ban da bon phan thanh cong, nhung cay khong can bon phan =)");   
+        //         PlayerSeed[playerid][ps_Phan]--;
+        //     } 
+        //     else {
+        //         SendClientMessageEx(playerid, -1, "Ban da bon phan thanh cong");
+        //         seeds_info[i][s_want] = 0;
+        //         PlayerSeed[playerid][ps_Phan]--;
+        //     }
+        // }
+        // case LOAD_BATSAU: {
+        //     new i = GetPVarInt(playerid, "Loadcay");
+        //     RemovePlayerAttachedObject(playerid, 8);
+        //     RemovePlayerAttachedObject(playerid, 9);
+        //     DeletePVar(playerid, "Loadcay");
+        //     StopLoopingAnim(playerid);
+        //     if(seeds_info[i][s_want] != 4) {
+        //         SendClientMessageEx(playerid, -1, "Khong co sau tren cay...");      
+        //     } 
+        //     else {
+        //         SendClientMessageEx(playerid, -1, "Ban da bat va diet sau thanh cong");
+        //         seeds_info[i][s_want] = 0;                  
+        //     }
+        // }
+        // case LOAD_TUOINUOC: 
+        // {
+        //     new i = GetPVarInt(playerid, "Loadcay");
+        //     RemovePlayerAttachedObject(playerid, 8);
+        //     RemovePlayerAttachedObject(playerid, 9);
+        //     DeletePVar(playerid, "Loadcay");
+        //     StopLoopingAnim(playerid);
+        //     if(seeds_info[i][s_want] != 1) {
+        //         SendClientMessageEx(playerid, -1, "Ban da tuoi nuoc thanh cong nhung cay khong can nuoc =)");   
+        //         PlayerSeed[playerid][ps_Nuoc]--;
+        //     } 
+        //     else {
+        //         SendClientMessageEx(playerid, -1, "Ban da tuoi nuoc thanh cong");
+        //         seeds_info[i][s_want] = 0;
+        //         PlayerSeed[playerid][ps_Nuoc]--;
+        //     }
+        // }
+        // case LOAD_XITTHUOC: {
+        //     new i = GetPVarInt(playerid, "Loadcay");
+        //     RemovePlayerAttachedObject(playerid, 8);
+        //     RemovePlayerAttachedObject(playerid, 9);
+        //     DeletePVar(playerid, "Loadcay");
+        //     StopLoopingAnim(playerid);
+        //     if(seeds_info[i][s_want] != 3) {
+        //         SendClientMessageEx(playerid, -1, "Ban da xit thuoc thanh cong, nhung cay khong can xit thuoc =)"); 
+        //         PlayerSeed[playerid][ps_ThuocTruSau]--; 
+        //     }
+        //     else {
+        //         SendClientMessageEx(playerid, -1, "Ban da xit thuoc thanh cong");   
+        //         seeds_info[i][s_want] = 0;
+        //         PlayerSeed[playerid][ps_ThuocTruSau]--; 
+        //     }
 
-        }
+        // }
         case LoadingDaoDa: {
             RemovePlayerAttachedObject(playerid, PIZZA_INDEX);
             StopLoopingAnim(playerid);

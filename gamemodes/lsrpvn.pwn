@@ -37,6 +37,7 @@
 #include "./main/variables.pwn"
 #include "./include/loading.pwn"
 #include "./system/new_job/pickup.pwn"
+#include "./system/new_job/Farmer/main.pwn"
 #include "./system/noithat.pwn"
 #include "./system/haha.pwn"
 #include "./system/danhba.pwn"
@@ -49,8 +50,6 @@
 
 #include "./main/functions.pwn"
 
-//#include "./system/inventory/player_inventory.pwn"
-//#include "./system/inventory/car_inventory.pwn"
 #include "./system/inventory/inventory.pwn"
 #include "./system/speedo.pwn"
 #include "./system/gps_system.pwn"
@@ -78,7 +77,7 @@
 //#include "./system/new_job/daoda.pwn"  bảo trì
 #include "./system/new_job/wood.pwn"
 #include "./system/new_job/caucanew.pwn"
-#include "./system/farmer.pwn"
+// #include "./system/farmer.pwn"
 #include "./system/bodydame/bodydamage.pwn"
 #include "./system/vehicle/vehicle_info.pwn"
 #include "./system/nametag.pwn"
