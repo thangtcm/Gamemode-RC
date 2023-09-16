@@ -1,4 +1,5 @@
 #include <YSI_Coding\y_hooks>
+#include "./system/inventory/inventoryitem.pwn"
 #define MAX_INVENTORY (120)
 #define MODEL_SELECTION_INVENTORY (1)
 
@@ -19,7 +20,7 @@ enum e_InventoryItems
 
 new InventoryData[MAX_PLAYERS][MAX_INVENTORY][inventoryData];
 forward OnLoadInventory(playerid);
-forward OnInventoryAdd(playerid, itemid);
+forward OnInventoryAdd(playerid, itemid, index, timer);
 new const g_aInventoryItems[][e_InventoryItems] =
 {
 	{"Pizza", 2702},
@@ -63,11 +64,14 @@ public OnLoadInventory(playerid)
         i++;
     }
     if(i > 0) printf("[LOAD INVENTORY]  du lieu inventory cua %s (ID: %d) da duoc tai.", GetPlayerNameEx(playerid), playerid);
+	ITEMTIMER_LOAD(playerid);
 }
 
-public OnInventoryAdd(playerid, itemid)
+public OnInventoryAdd(playerid, itemid, index, timer)
 {
+	InventoryData[playerid][itemid][invExists] = true;
 	InventoryData[playerid][itemid][invID] = mysql_insert_id(MainPipeline);
+	if(timer != 0)	ITEMTIMER_ADD(playerid, index, InventoryData[playerid][itemid][invQuantity], timer);
 	return 1;
 }
 
@@ -89,17 +93,17 @@ stock Inventory_Clear(playerid)
 	return mysql_tquery(g_iHandle, string);
 }
 
-stock Inventory_Set(playerid, index, amount)
+stock Inventory_Set(playerid, index, amount, timer)
 {
 	new itemid = Inventory_GetItemID(playerid, index);
 	if(itemid == -1 && amount > 0)
-		Inventory_Add(playerid, index, amount);
+		Inventory_Add(playerid, index, amount, timer);
 
 	else if(amount > 0 && itemid != -1)
-		Inventory_SetQuantity(playerid, index, amount);
+		Inventory_SetQuantity(playerid, index, amount, timer);
 
 	else if(amount < 1 && itemid != -1)
-		Inventory_Remove(playerid, index, -1);
+		Inventory_Remove(playerid, index, amount);
 
 	return 1;
 }
@@ -110,7 +114,8 @@ stock Inventory_GetItemID(playerid, index)
 	{
 		if(!InventoryData[playerid][i][invExists])
 			continue;
-		if(!strcmp(InventoryData[playerid][i][invItem], g_aInventoryItems[index][e_InventoryItem])) return i;
+		if(!strcmp(InventoryData[playerid][i][invItem], g_aInventoryItems[index][e_InventoryItem])) 
+			return i;
 	}
 	return -1;
 }
@@ -163,7 +168,7 @@ stock Inventory_HasItem(playerid, index)
 	return (Inventory_GetItemID(playerid, index) != -1);
 }
 
-stock Inventory_SetQuantity(playerid, index, quantity)
+stock Inventory_SetQuantity(playerid, index, quantity, timer)
 {
 	new
 		itemid = Inventory_GetItemID(playerid, index),
@@ -172,33 +177,40 @@ stock Inventory_SetQuantity(playerid, index, quantity)
 
 	if(itemid != -1)
 	{
-		format(string, sizeof(string), "UPDATE `inventory` SET `invQuantity` = %d WHERE `ID` = '%d' AND `invID` = '%d'", quantity, PlayerSQLId, InventoryData[playerid][itemid][invID]);
+		format(string, sizeof(string), "UPDATE `inventory` SET `invQuantity` = `invQuantity` + %d WHERE `ID` = '%d' AND `invID` = '%d'", quantity, PlayerSQLId, InventoryData[playerid][itemid][invID]);
 		mysql_function_query(MainPipeline, string, false, "OnQueryFinish", "i", SENDDATA_THREAD);
-
-		InventoryData[playerid][itemid][invQuantity] = quantity;
+		InventoryData[playerid][itemid][invQuantity] += quantity;
+		printf("[UPDATE INVENTORY] %s (ID %d) da duoc them %d so luong vao du lieu cua %s", InventoryData[playerid][itemid][invItem], itemid, quantity, GetPlayerNameEx(playerid));
+		if(timer != 0)	ITEMTIMER_ADD(playerid, index, quantity, timer);
 	}
 	return 1;
 }
 
-stock Inventory_Add(playerid, index, quantity = 1)
+stock Inventory_SendRemoveTimer(playerid, index, amount)
+{
+	new str[128];
+	format(str, sizeof(str), "Vat Pham %s (so luong : %d) cua ban da het han - he thong da tu dong tich thu vat pham", g_aInventoryItems[index][e_InventoryItem], amount);
+	SendClientMessageEx(playerid, COLOR_YELLOW, str);
+	Inventory_Remove(playerid, index, amount);
+}
+
+stock Inventory_Add(playerid, index, quantity = 1, timer = 0) //timer là dữ liệu số phút - 1 ngay = 60*24 - 1 tuan = 60*24*7 
 {
 	new
 		itemid = Inventory_GetItemID(playerid, index),
 		string[128],
         PlayerSQLId = GetPlayerSQLId(playerid);
-
 	if(itemid == -1)
 	{
 		itemid = Inventory_GetFreeID(playerid);
 		if(itemid != -1)
 		{
-			InventoryData[playerid][itemid][invExists] = true;
 			InventoryData[playerid][itemid][invModel] = g_aInventoryItems[index][e_InventoryModel];
 			InventoryData[playerid][itemid][invQuantity] = quantity;
 			strcpy(InventoryData[playerid][itemid][invItem], g_aInventoryItems[index][e_InventoryItem], 32);
             format(string, sizeof(string), "INSERT INTO `inventory` (`ID`, `invItem`, `invModel`, `invQuantity`) VALUES('%d', '%s', '%d', '%d')", 
 				PlayerSQLId, g_mysql_ReturnEscaped(g_aInventoryItems[index][e_InventoryItem], MainPipeline), g_aInventoryItems[index][e_InventoryModel], quantity);
-			mysql_function_query(MainPipeline, string, false, "OnInventoryAdd", "ii", playerid, itemid);
+			mysql_function_query(MainPipeline, string, false, "OnInventoryAdd", "iiii", playerid, itemid, index, timer);
 			printf("[CREATE INVENTORY] %s (ID %d) da duoc them vao du lieu cua %s", InventoryData[playerid][itemid][invItem], itemid, GetPlayerNameEx(playerid));
 			return itemid;
 		}
@@ -208,8 +220,9 @@ stock Inventory_Add(playerid, index, quantity = 1)
 	{
 		format(string, sizeof(string), "UPDATE `inventory` SET `invQuantity` = `invQuantity` + %d WHERE `ID` = '%d' AND `invID` = '%d'", quantity, PlayerSQLId, InventoryData[playerid][itemid][invID]);
 		mysql_function_query(MainPipeline, string, false, "OnQueryFinish", "i", SENDDATA_THREAD);
-
 		InventoryData[playerid][itemid][invQuantity] += quantity;
+		printf("[UPDATE INVENTORY] %s (ID %d) da duoc them %d so luong vao du lieu cua %s", InventoryData[playerid][itemid][invItem], itemid, quantity, GetPlayerNameEx(playerid));
+		if(timer != 0)	ITEMTIMER_ADD(playerid, index, quantity, timer);
 	}
 	return itemid;
 }
@@ -276,13 +289,6 @@ public OpenInventory(playerid)
 		{
 			items[i] = InventoryData[playerid][i][invModel];
 			amounts[i] = InventoryData[playerid][i][invQuantity];
-			new string[128];
-			format(string, sizeof(string), "Vi tri %d - ModelId %d - Quantity %d - ItemName %s", 
-				i,
-				InventoryData[playerid][i][invModel],
-				InventoryData[playerid][i][invQuantity],
-				InventoryData[playerid][i][invItem]);
-			SendClientMessageEx(playerid, COLOR_YELLOW, string);
 		}
 		else
 		{
@@ -377,12 +383,13 @@ CMD:setitem(playerid, params[])
 	new
 		giveplayerid,
 		index,
-		amount;
+		amount, 
+		timer;
 
 	if(PlayerInfo[playerid][pAdmin] < 4)
 		return SendClientMessageEx(playerid, COLOR_LIGHTRED, "Ban khong duoc phep su dung lenh nay.");
 
-	if(sscanf(params, "udd", giveplayerid, amount, index))
+	if(sscanf(params, "uddd", giveplayerid, amount, index, timer))
 		return SendClientMessageEx(playerid, COLOR_GRAD1, "/setitem [playerid/name] [amount] [item id]");
 	if(index == -1 || index >= sizeof(g_aInventoryItems))	return SendClientMessageEx(playerid, COLOR_LIGHTRED, "Item khong hop le (su dung [/itemlist] de xem).");
 	if(!strcmp(g_aInventoryItems[index][e_InventoryItem], "Dien thoai", true))
@@ -390,7 +397,7 @@ CMD:setitem(playerid, params[])
 		PlayerInfo[giveplayerid][pPhoneBook] = 1;
 		PlayerInfo[giveplayerid][pPnumber] = random(90000) + 10000;
 	}
-	Inventory_Set(giveplayerid, index, amount);
+	Inventory_Set(giveplayerid, index, amount, timer);
 	new string[128];
 	format(string, sizeof(string), "Ban da cho %s item \"%s\" voi so luong %d.", GetPlayerNameEx(giveplayerid), g_aInventoryItems[index][e_InventoryItem], amount);
 	SendClientMessageEx(playerid, COLOR_YELLOW, string);
@@ -587,3 +594,4 @@ Dialog:GiveQuantity(playerid, response, listitem, inputtext[])
 	}
 	return 1;
 }
+
