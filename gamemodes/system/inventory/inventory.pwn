@@ -23,12 +23,13 @@ forward OnLoadInventory(playerid);
 forward OnInventoryAdd(playerid, itemid, index, timer);
 new const g_aInventoryItems[][e_InventoryItems] =
 {
-	{"Pizza", 2702},
+	{"Pickaxe", 2228},
 	{"Dien thoai", 330},
 	{"GPS", 18875},
     {"Binh xang", 1650},
 	{"Boombox", 2226},
 	{"Radio", 18868},
+	{"Pizza", 2702},
 	{"Hamburger", 19094},
 	{"Bread", 19579},
 	{"Juice", 19562},
@@ -366,6 +367,18 @@ public OnPlayerUseItem(playerid, itemid, name[])
 		PlayerInfo[playerid][pStrong] += 8;
 		ApplyAnimation(playerid, "GANGS", "drnkbr_prtl_F", 2.67, 0, 1, 1, 1, 2000, 1);
 		PlayerPlaySound(playerid, 42600, 0.0, 0.0, 0.0);
+	}
+	else if(!strcmp(name, "Pickaxe", true))
+	{
+		if(GetPVarInt(playerid, #campickaxe) != 1)
+		{
+			SendClientMessage(playerid, COLOR_LIGHTRED, "SERVER: Ban da trang bi Pickaxe thanh cong!");
+			SetPVarInt(playerid, #campickaxe, 1);
+		}
+		else
+		{
+			SendErrorMessage(playerid, "Ban da trang bi Pickaxe roi!!");
+		}
 	}
 	return 1;
 }

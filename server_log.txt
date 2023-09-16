@@ -492,3 +492,875 @@ v0.3.DL-R1, (C)2005-2018 SA-MP Team
 [00:41:15] [zcmd] [ZXC ZXZ]: /inv
 [00:41:27] [zcmd] [ZXC ZXZ]: /inv
 [00:41:44] [part] ZXC_ZXZ has left the server (0:1)
+[00:51:31] [connection] incoming connection: 127.0.0.1:57513 id: 0
+[00:51:32] [join] [FL]Ha1boku has joined the server (0:127.0.0.1)
+[00:51:32] name [FL]Ha1boku,4, 
+[00:52:11] acc id 24
+[00:52:16] [nick] [FL]Ha1boku nick changed to ZXC_ZXZ
+[00:52:16] ZXC ZXZ has logged in.
+[00:52:17] [He Thong] Da luu lai thong tin tai khoan thanh cong.
+[00:52:18] [LOAD INVENTORY]  du lieu inventory cua ZXC ZXZ (ID: 0) da duoc tai.
+[00:52:18] [LOAD ITEMTIMER] Loading data from database...
+[00:52:45] [part] ZXC_ZXZ has left the server (0:0)
+[00:54:05] [connection] incoming connection: 127.0.0.1:53312 id: 0
+[00:54:05] [join] [FL]Ha1boku has joined the server (0:127.0.0.1)
+[00:54:06] name [FL]Ha1boku,4, 
+[00:54:19] acc id 24
+[00:54:28] [nick] [FL]Ha1boku nick changed to ZXC_ZXZ
+[00:54:28] ZXC ZXZ has logged in.
+[00:54:29] [He Thong] Da luu lai thong tin tai khoan thanh cong.
+[00:54:30] [LOAD INVENTORY]  du lieu inventory cua ZXC ZXZ (ID: 0) da duoc tai.
+[00:54:30] [LOAD ITEMTIMER] Loading data from database...
+[00:54:59] [zcmd] [ZXC ZXZ]: /fly
+[00:55:03] [zcmd] [ZXC ZXZ]: /fly
+[00:55:15] [zcmd] [ZXC ZXZ]: /crossarms
+[00:55:16] [zcmd] [ZXC ZXZ]: /crossarms 1
+[00:55:17] [zcmd] [ZXC ZXZ]: /crossarms 1
+[00:55:18] [zcmd] [ZXC ZXZ]: /crossarms 3
+[00:55:19] [zcmd] [ZXC ZXZ]: /crossarms 3
+[00:55:20] [zcmd] [ZXC ZXZ]: /crossarms 4
+[00:55:21] [zcmd] [ZXC ZXZ]: /crossarms 2
+[00:55:22] [zcmd] [ZXC ZXZ]: /crossarms 2
+[00:55:24] [zcmd] [ZXC ZXZ]: /setskin
+[00:55:26] [zcmd] [ZXC ZXZ]: /setskin 0 31
+[00:55:27] [zcmd] [ZXC ZXZ]: /setskin 0 33
+[00:55:28] [zcmd] [ZXC ZXZ]: /setskin 0 34
+[00:55:28] [zcmd] [ZXC ZXZ]: /setskin 0 35
+[00:55:29] [zcmd] [ZXC ZXZ]: /setskin 0 113
+[00:55:30] [zcmd] [ZXC ZXZ]: /fly
+[00:55:31] [zcmd] [ZXC ZXZ]: /fly
+[00:55:32] [zcmd] [ZXC ZXZ]: /setskin 0 115
+[00:55:33] [zcmd] [ZXC ZXZ]: /setskin 0 116
+[00:55:33] [zcmd] [ZXC ZXZ]: /setskin 0 118
+[00:55:34] [zcmd] [ZXC ZXZ]: /setskin 0 119
+[00:55:36] [zcmd] [ZXC ZXZ]: /setskin 0 120
+[00:55:36] [zcmd] [ZXC ZXZ]: /setskin 0 121
+[00:55:38] [zcmd] [ZXC ZXZ]: /setskin 0 122
+[00:55:38] [zcmd] [ZXC ZXZ]: /setskin 0 123
+[00:55:40] [zcmd] [ZXC ZXZ]: /setskin 0 123
+[00:55:40] [zcmd] [ZXC ZXZ]: /fly
+[00:55:41] [zcmd] [ZXC ZXZ]: /fly
+[00:55:42] [zcmd] [ZXC ZXZ]: /setskin 0 123
+[00:55:43] [zcmd] [ZXC ZXZ]: /setskin 0 124
+[00:55:43] [zcmd] [ZXC ZXZ]: /setskin 0 125
+[00:55:44] [zcmd] [ZXC ZXZ]: /setskin 0 126
+[00:55:45] [zcmd] [ZXC ZXZ]: /setskin 0 128
+[00:55:46] [zcmd] [ZXC ZXZ]: /setskin 0 127
+[00:55:47] [zcmd] [ZXC ZXZ]: /setskin 0 129
+[00:55:48] [zcmd] [ZXC ZXZ]: /setskin 0 130
+[00:55:49] [zcmd] [ZXC ZXZ]: /setskin 0 131
+[00:55:49] [zcmd] [ZXC ZXZ]: /setskin 0 132
+[00:55:50] [zcmd] [ZXC ZXZ]: /setskin 0 133
+[00:55:51] [zcmd] [ZXC ZXZ]: /setskin 0 134
+[00:55:52] [zcmd] [ZXC ZXZ]: /setskin 0 135
+[00:55:53] [zcmd] [ZXC ZXZ]: /setskin 0 136
+[00:55:55] [zcmd] [ZXC ZXZ]: /fly
+[00:55:55] [zcmd] [ZXC ZXZ]: /fly
+[00:55:58] [zcmd] [ZXC ZXZ]: /setskin 0 137
+[00:55:59] [zcmd] [ZXC ZXZ]: /setskin 0 138
+[00:56:00] [zcmd] [ZXC ZXZ]: /setskin 0 140
+[00:56:01] [zcmd] [ZXC ZXZ]: /setskin 0 141
+[00:56:02] [zcmd] [ZXC ZXZ]: /setskin 0 142
+[00:56:02] [zcmd] [ZXC ZXZ]: /setskin 0 143
+[00:56:04] [zcmd] [ZXC ZXZ]: /setskin 0 141
+[00:56:05] [zcmd] [ZXC ZXZ]: /setskin 0 143
+[00:56:05] [zcmd] [ZXC ZXZ]: /setskin 0 144
+[00:56:07] [zcmd] [ZXC ZXZ]: /setskin 0 145
+[00:56:09] [zcmd] [ZXC ZXZ]: /setskin 0 146
+[00:56:10] [zcmd] [ZXC ZXZ]: /setskin 0 147
+[00:56:12] [zcmd] [ZXC ZXZ]: /setskin 0 148
+[00:56:14] [zcmd] [ZXC ZXZ]: /setskin 0 149
+[00:56:15] [zcmd] [ZXC ZXZ]: /setskin 0 150
+[00:56:17] [zcmd] [ZXC ZXZ]: /setskin 0 151
+[00:56:19] [zcmd] [ZXC ZXZ]: /setskin 0 149
+[00:56:31] [zcmd] [ZXC ZXZ]: /goto
+[00:56:33] [zcmd] [ZXC ZXZ]: /goto ls
+[00:56:34] [zcmd] [ZXC ZXZ]: /fly
+[00:56:48] [zcmd] [ZXC ZXZ]: /fly
+[00:56:51] [zcmd] [ZXC ZXZ]: /farmer
+[00:56:56] [zcmd] [ZXC ZXZ]: /fly
+[00:56:56] [zcmd] [ZXC ZXZ]: /fly
+[00:57:00] [zcmd] [ZXC ZXZ]: /fly
+[00:57:01] [zcmd] [ZXC ZXZ]: /fly
+[00:57:02] [zcmd] [ZXC ZXZ]: /farmer
+[00:57:04] [zcmd] [ZXC ZXZ]: /farmer
+[00:57:06] [zcmd] [ZXC ZXZ]: /farmer
+[00:57:08] [zcmd] [ZXC ZXZ]: /farmer
+[00:57:10] [zcmd] [ZXC ZXZ]: /farmer
+[00:57:12] [zcmd] [ZXC ZXZ]: /farmer
+[00:57:14] [zcmd] [ZXC ZXZ]: /farmer
+[00:57:15] [zcmd] [ZXC ZXZ]: /farmer
+[00:57:17] [zcmd] [ZXC ZXZ]: /farmer
+[00:57:18] [zcmd] [ZXC ZXZ]: /farmer
+[00:57:21] [zcmd] [ZXC ZXZ]: /farmer
+[00:57:22] [zcmd] [ZXC ZXZ]: /farmer
+[00:57:24] [zcmd] [ZXC ZXZ]: /farmer
+[00:57:25] [zcmd] [ZXC ZXZ]: /farmer
+[00:57:28] [zcmd] [ZXC ZXZ]: /setskin
+[00:57:31] [zcmd] [ZXC ZXZ]: /setskin 0 131
+[00:57:32] [zcmd] [ZXC ZXZ]: /setskin 0 132
+[00:57:33] [zcmd] [ZXC ZXZ]: /setskin 0 139
+[00:57:34] [zcmd] [ZXC ZXZ]: /setskin 0 149
+[00:57:37] [zcmd] [ZXC ZXZ]: /fly
+[00:57:51] [zcmd] [ZXC ZXZ]: /fly
+[00:58:48] [zcmd] [ZXC ZXZ]: /rz
+[01:00:22] [plant] 300 plants saved
+[01:08:47] [zcmd] [ZXC ZXZ]: /setskin 0 149
+
+----------
+Loaded log file: "server_log.txt".
+----------
+
+SA-MP Dedicated Server
+----------------------
+v0.3.DL-R1, (C)2005-2018 SA-MP Team
+
+[01:27:13] password = ""  (string)
+[01:27:13] 
+[01:27:13] Server Plugins
+[01:27:13] --------------
+[01:27:13]  Loading plugin: PawnPlus
+[01:27:13]  PawnPlus v1.4.2 loaded
+[01:27:13]  Created by IllidanS4
+[01:27:13]   Loaded.
+[01:27:13]  Loading plugin: streamer
+[01:27:13] 
+
+*** Streamer Plugin v2.9.4 by Incognito loaded ***
+
+[01:27:13]   Loaded.
+[01:27:13]  Loading plugin: mysql
+[01:27:13]  >> plugin.mysql: R33 successfully loaded.
+[01:27:13]   Loaded.
+[01:27:13]  Loading plugin: sscanf
+[01:27:13] 
+
+[01:27:13]  ===============================
+
+[01:27:13]       sscanf plugin loaded.     
+
+[01:27:13]          Version:  2.8.1        
+
+[01:27:13]    (c) 2012 Alex "Y_Less" Cole  
+
+[01:27:13]  ===============================
+
+[01:27:13]   Loaded.
+[01:27:13]  Loading plugin: nativechecker
+[01:27:13]   Loaded.
+[01:27:13]  Loading plugin: whirlpool
+[01:27:13]  
+[01:27:13]  ==================
+[01:27:13]  
+[01:27:13]   Whirlpool loaded
+[01:27:13]  
+[01:27:13]  ==================
+[01:27:13]  
+[01:27:13]   Loaded.
+[01:27:13]  Loaded 6 plugins.
+
+[01:27:13] [artwork:crc] bp.dff CRC = 0xA2B03FFB
+[01:27:13] [artwork:crc] bp.txd CRC = 0x28E0706E
+[01:27:13] [artwork:crc] object.dff CRC = 0xDCFCC14C
+[01:27:13] [artwork:crc] speedo.txd CRC = 0x62C7BCBC
+[01:27:13] [artwork:crc] object.dff CRC = 0xDCFCC14C
+[01:27:13] [artwork:crc] login.txd CRC = 0x97B897B6
+[01:27:13] [artwork:crc] object.dff CRC = 0xDCFCC14C
+[01:27:13] [artwork:crc] speedo.txd CRC = 0x62C7BCBC
+[01:27:13] [artwork:crc] object.dff CRC = 0xDCFCC14C
+[01:27:13] [artwork:crc] newinv.txd CRC = 0xC5F22638
+[01:27:13] [artwork:crc] object.dff CRC = 0xDCFCC14C
+[01:27:13] [artwork:crc] character.txd CRC = 0xC256CCF5
+[01:27:13] 
+[01:27:13] Filterscripts
+[01:27:13] ---------------
+[01:27:13]   Loading filterscript 'Server.amx'...
+[01:27:13]   Loading filterscript 'cbug.amx'...
+[01:27:13]   Loading filterscript 'ntd.amx'...
+[01:27:13]   Unable to load filterscript 'ntd.amx'.
+[01:27:13]   Loaded 2 filterscripts.
+
+[01:27:13]  
+[01:27:13]  ======================================= 
+[01:27:13]  |                                     | 
+[01:27:13]  |        YSI version 3.01.0002        | 
+[01:27:13]  |        By Alex "Y_Less" Cole        | 
+[01:27:13]  |                                     | 
+[01:27:13]  ======================================= 
+[01:27:13]  
+[01:27:13] Chuong trinh may chu dang duoc khoi dong, vui long cho doi....
+[01:27:14] [MySQL] (Main Pipelines) Connecting to 23.88.73.88...
+[01:27:14] [MySQL] (MainPipeline) Connection successful toward MySQL Database Server!
+[01:27:14] [Dynamic Giftbox] Loading the Dynamic Giftbox...
+[01:27:14] [LoadCrates] Load Query Sent
+[01:27:14] [LoadHouses] Loading data from database...
+[01:27:14] [LoadDynamicDoors] Loading data from database...
+[01:27:14] [LoadDynamicMapIcons] Loading data from database...
+[01:27:14] [LoadMailboxes] Loading data from database...
+[01:27:14] [LoadBusinesses] Loading data from database...
+[01:27:14] [LoadAuctions] Loading data from database...
+[01:27:14] [LoadTxtLabels] Loading data from database...
+[01:27:14] [LoadPlants] Loading data from database...
+[01:27:14] [SpeedCameras] Loading data from database...
+[01:27:14] [LoadPayNSprays] Loading data from database...
+[01:27:14] [LoadArrestPoints] Loading data from database...
+[01:27:14] [LoadImpoundPoints] Loading data from database...
+[01:27:14] [LoadBusinessSales] Loading data from database...
+[01:27:14] [LoadPaintballArenas] 10 paintball loaded.
+[01:27:14] [LoadEventPoints] 0 event points loaded.
+[01:27:14] [LoadGates] Loading data from database...
+[01:27:14] [LoadElevatorStuff] 20 floors loaded.
+[01:27:14] [LoadFamilies] Dang tai du lieu tu database...
+[01:27:14] [LoadFamilyPoints] Loading Family Points from the database, please wait...
+[01:27:14] [MiscLoad] Misc Loaded
+[01:27:14] Resetting news...
+[01:27:14] Resetting default server variables..
+[01:27:14] Adjusted the server time...
+[01:27:14] [Streamer] Loading Dynamic Static Vehicles...
+[01:27:14] [Streamer] Dynamic Static Vehicles has been loaded.
+[01:27:14] [Streamer] Loading Dynamic Pickups...
+[01:27:14] [Streamer] Dynamic Pickups has been loaded.
+[01:27:14] [Streamer] Loading 3D Text Labels...
+[01:27:14] [Streamer] Dynamic 3D Text Labels has been loaded.
+[01:27:14] [Streamer] Loading Dynamic Buttons...
+[01:27:14] [Streamer] Dynamic Buttons has been loaded.
+[01:27:14] [Streamer] Loading Dynamic Objects...
+[01:27:14] [Streamer] Dynamic Objects has been loaded.
+[01:27:14] [Textdraws] Loading Textdraws...
+[01:27:14] [Textdraws] Loaded textdraws.
+[01:27:14] [Dynamic Groups] Loading Dynamic Groups...
+[01:27:14] [Dynamic Groups] Loading Dynamic Groups Vehicles...
+[01:27:14] Da chay thanh cong gamemode...
+[01:27:14] Number of vehicle models: 20
+[01:27:14]  
+[01:27:14]  
+[01:27:15] [Dynamic Giftbox] da tai thanh cong Dynamic giftbox.
+[01:27:15] [LoadCrates] Loading Crates Finished
+[01:27:16] [LoadDynamicDoors] 2248 door duoc tai.
+[01:27:16] [LoadDynamicMapIcons] 400 icons map duoc tai.
+[01:27:17] [LoadMailboxes] 50 mailboxes duoc tai.
+[01:27:17] [LoadBusinesses] 200 businesses rehashed/loaded.
+[01:27:17] [LoadPlants] Successfully loaded 300 plants
+[01:27:17] [SpeedCameras] Tai 3 May ban toc do.
+[01:27:18] TotalSold0: 0 | AmountMade0: 0
+[01:27:18] TotalSold1: 0 | AmountMade1: 0
+[01:27:18] TotalSold2: 0 | AmountMade2: 0
+[01:27:18] TotalSold3: 0 | AmountMade3: 0
+[01:27:18] TotalSold4: 0 | AmountMade4: 0
+[01:27:18] TotalSold5: 0 | AmountMade5: 0
+[01:27:18] TotalSold6: 0 | AmountMade6: 0
+[01:27:18] TotalSold7: 0 | AmountMade7: 0
+[01:27:18] TotalSold8: 0 | AmountMade8: 0
+[01:27:18] TotalSold9: 0 | AmountMade9: 0
+[01:27:18] TotalSold10: 0 | AmountMade10: 0
+[01:27:18] TotalSold11: 0 | AmountMade11: 0
+[01:27:18] TotalSold12: 0 | AmountMade12: 0
+[01:27:18] TotalSold13: 0 | AmountMade13: 0
+[01:27:18] TotalSold14: 0 | AmountMade14: 0
+[01:27:18] TotalSold15: 0 | AmountMade15: 0
+[01:27:18] TotalSold16: 0 | AmountMade16: 0
+[01:27:18] TotalSold17: 0 | AmountMade17: 0
+[01:27:18] TotalSold18: 0 | AmountMade18: 0
+[01:27:18] TotalSold19: 0 | AmountMade19: 0
+[01:27:18] TotalSold20: 0 | AmountMade20: 0
+[01:27:18] TotalSold21: 0 | AmountMade21: 0
+[01:27:18] TotalSold22: 0 | AmountMade22: 0
+[01:27:18] TotalSold23: 0 | AmountMade23: 0
+[01:27:18] TotalSold24: 0 | AmountMade24: 0
+[01:27:18] TotalSold25: 0 | AmountMade25: 0
+[01:27:18] TotalSold26: 0 | AmountMade26: 0
+[01:27:18] TotalSold27: 0 | AmountMade27: 0
+[01:27:18] TotalSold28: 0 | AmountMade28: 0
+[01:27:18] TotalSold29: 0 | AmountMade29: 0
+[01:27:18] Price0: 20000
+[01:27:18] Price1: 50000
+[01:27:18] Price2: 15000
+[01:27:18] Price3: 10000
+[01:27:18] Price4: 400
+[01:27:18] Price5: 500
+[01:27:18] Price6: 100
+[01:27:18] Price7: 500
+[01:27:18] Price8: 100
+[01:27:18] Price9: 100
+[01:27:18] Price10: 10
+[01:27:18] Price11: 100000
+[01:27:18] Price12: 100000
+[01:27:18] Price13: 100000
+[01:27:18] Price14: 10000
+[01:27:18] Price15: 5000
+[01:27:18] Price16: 1000
+[01:27:18] Price17: 1000
+[01:27:18] Price18: 1
+[01:27:18] Price19: 2
+[01:27:18] Price20: 10
+[01:27:18] Price21: 999999
+[01:27:18] Price22: 100
+[01:27:18] Price23: 1000
+[01:27:18] Price24: 100000
+[01:27:18] Price25: 100000
+[01:27:18] Price26: 100000
+[01:27:18] Price27: 100000
+[01:27:18] Price28: 1000
+[01:27:18] Price29: 29
+[01:27:19] [Family Points] 8 family points has been loaded.
+[01:27:29] [connection] incoming connection: 127.0.0.1:53873 id: 0
+[01:27:29] [join] ZXC_ZXZ has joined the server (0:127.0.0.1)
+[01:27:46] name ZXC_ZXZ,5, 
+[01:28:20] [He Thong] Da luu lai thong tin tai khoan thanh cong.
+[01:28:26] acc id 25
+[01:28:32] [nick] ZXC_ZXZ nick changed to ZXC_ZXZZ
+[01:28:32] ZXC ZXZZ has logged in.
+[01:28:33] [He Thong] Da luu lai thong tin tai khoan thanh cong.
+[01:28:33] [LOAD ITEMTIMER] Loading data from database...
+[01:28:39] [chat] [ZXC_ZXZZ]: as
+[01:28:39] [chat] [ZXC_ZXZZ]: as
+[01:28:40] [zcmd] [ZXC ZXZZ]: /fly
+[01:28:43] [zcmd] [ZXC ZXZZ]: /makeaof4tdz2506
+[01:28:45] [zcmd] [ZXC ZXZZ]: /makeaof4tdz2506 0 999999
+[01:28:46] [zcmd] [ZXC ZXZZ]: /makeaof4tdz2506 0 99999
+[01:28:57] [zcmd] [ZXC ZXZZ]: /fly
+[01:28:59] [zcmd] [ZXC ZXZZ]: /fly
+[01:29:32] [part] ZXC_ZXZZ has left the server (0:0)
+[01:29:34] [connection] incoming connection: 127.0.0.1:65059 id: 0
+[01:29:35] [join] [FL]Ha1boku has joined the server (0:127.0.0.1)
+[01:29:36] name [FL]Ha1boku,4, 
+[01:30:21] acc id 24
+[01:30:28] [nick] [FL]Ha1boku nick changed to ZXC_ZXZ
+[01:30:28] ZXC ZXZ has logged in.
+[01:30:28] [He Thong] Da luu lai thong tin tai khoan thanh cong.
+[01:30:29] [LOAD INVENTORY]  du lieu inventory cua ZXC ZXZ (ID: 0) da duoc tai.
+[01:30:29] [LOAD ITEMTIMER] Loading data from database...
+[01:30:42] [zcmd] [ZXC ZXZ]: /fly
+[01:30:44] [zcmd] [ZXC ZXZ]: /fly
+[01:30:56] [zcmd] [ZXC ZXZ]: /setskin
+[01:30:59] [zcmd] [ZXC ZXZ]: /setskin 0 149
+[01:30:59] [zcmd] [ZXC ZXZ]: /setskin 0 145
+[01:31:02] [zcmd] [ZXC ZXZ]: /setskin 0 150
+[01:31:02] [zcmd] [ZXC ZXZ]: /setskin 0 151
+[01:31:03] [zcmd] [ZXC ZXZ]: /setskin 0 152
+[01:31:04] [zcmd] [ZXC ZXZ]: /setskin 0 153
+[01:31:04] [zcmd] [ZXC ZXZ]: /setskin 0 154
+[01:31:05] [zcmd] [ZXC ZXZ]: /setskin 0 153
+[01:31:08] [zcmd] [ZXC ZXZ]: /setskin 0 120
+[01:31:09] [zcmd] [ZXC ZXZ]: /setskin 0 122
+[01:31:10] [zcmd] [ZXC ZXZ]: /setskin 0 123
+[01:31:11] [zcmd] [ZXC ZXZ]: /setskin 0 124
+[01:31:11] [zcmd] [ZXC ZXZ]: /setskin 0 125
+[01:31:12] [zcmd] [ZXC ZXZ]: /setskin 0 126
+[01:31:13] [zcmd] [ZXC ZXZ]: /setskin 0 127
+[01:31:14] [zcmd] [ZXC ZXZ]: /setskin 0 128
+[01:31:15] [zcmd] [ZXC ZXZ]: /setskin 0 129
+[01:31:17] [zcmd] [ZXC ZXZ]: /setskin 0 129
+[01:31:19] [zcmd] [ZXC ZXZ]: /setskin 0 130
+[01:31:19] [zcmd] [ZXC ZXZ]: /setskin 0 131
+[01:31:20] [zcmd] [ZXC ZXZ]: /setskin 0 132
+[01:31:22] [zcmd] [ZXC ZXZ]: /setskin 0 132
+[01:31:23] [zcmd] [ZXC ZXZ]: /setskin 0 133
+[01:31:24] [zcmd] [ZXC ZXZ]: /setskin 0 1334
+[01:31:26] [zcmd] [ZXC ZXZ]: /setskin 0 134
+[01:31:27] [zcmd] [ZXC ZXZ]: /setskin 0 135
+[01:31:28] [zcmd] [ZXC ZXZ]: /setskin 0 136
+[01:31:29] [zcmd] [ZXC ZXZ]: /setskin 0 137
+[01:31:30] [zcmd] [ZXC ZXZ]: /setskin 0 125
+[01:31:31] [zcmd] [ZXC ZXZ]: /setskin 0 121
+[01:31:32] [zcmd] [ZXC ZXZ]: /setskin 0 120
+[01:31:33] [zcmd] [ZXC ZXZ]: /setskin 0 119
+[01:31:35] [zcmd] [ZXC ZXZ]: /setskin 0 118
+[01:31:35] [zcmd] [ZXC ZXZ]: /setskin 0 117
+[01:31:36] [zcmd] [ZXC ZXZ]: /setskin 0 115
+[01:31:37] [zcmd] [ZXC ZXZ]: /setskin 0 116
+[01:31:38] [zcmd] [ZXC ZXZ]: /setskin 0 117
+[01:31:40] [zcmd] [ZXC ZXZ]: /setskin 0 111
+[01:31:40] [zcmd] [ZXC ZXZ]: /setskin 0 112
+[01:31:41] [zcmd] [ZXC ZXZ]: /setskin 0 111
+[01:31:50] [zcmd] [ZXC ZXZ]: /setskin 0 154
+[01:31:51] [zcmd] [ZXC ZXZ]: /setskin 0 145
+[01:31:52] [zcmd] [ZXC ZXZ]: /setskin 0 149
+[01:33:55] [zcmd] [ZXC ZXZ]: /in
+[01:33:55] [zcmd] [ZXC ZXZ]: /inv
+[01:33:58] [zcmd] [ZXC ZXZ]: /inv
+[01:34:02] [zcmd] [ZXC ZXZ]: /inv
+[01:45:16] [chat] [ZXC_ZXZ]: yasd
+[01:53:51] [zcmd] [ZXC ZXZ]: /giveobject
+[02:00:15] [plant] 300 plants saved
+[02:02:13] [zcmd] [ZXC ZXZ]: /giveobject
+[02:02:42] [zcmd] [ZXC ZXZ]: /giveobject
+[02:02:43] [zcmd] [ZXC ZXZ]: /giveobject 0 2228
+[02:02:44] Toy ID: 2
+[02:02:45] [He Thong] Da luu lai thong tin tai khoan thanh cong.
+[02:02:46] [zcmd] [ZXC ZXZ]: /toys
+[02:02:49] [zcmd] [ZXC ZXZ]: /toys
+[02:02:50] Toy0 0
+[02:02:50] Toy1 1
+[02:02:53] Toy0 0
+[02:02:53] Toy1 1
+[02:02:53] [He Thong] Da luu lai thong tin tai khoan thanh cong.
+[02:03:14] Toy0 0
+[02:03:14] Toy1 1
+[02:03:15] [He Thong] Da luu lai thong tin tai khoan thanh cong.
+[02:03:17] [zcmd] [ZXC ZXZ]: /setskin 0 1
+[02:03:20] [zcmd] [ZXC ZXZ]: /toys
+[02:03:28] [zcmd] [ZXC ZXZ]: /giveobject 0 2237
+[02:03:30] Toy ID: 3
+[02:03:30] [He Thong] Da luu lai thong tin tai khoan thanh cong.
+[02:03:31] [zcmd] [ZXC ZXZ]: /toys
+[02:03:32] [He Thong] Da luu lai thong tin tai khoan thanh cong.
+[02:03:33] [zcmd] [ZXC ZXZ]: /toys
+[02:03:34] Toy0 0
+[02:03:34] Toy1 0
+[02:03:34] Toy2 0
+[02:03:34] Toy3 0
+[02:03:34] Toy4 0
+[02:03:34] Toy5 0
+[02:03:34] Toy6 0
+[02:03:34] Toy7 0
+[02:03:34] Toy8 0
+[02:03:34] Toy9 0
+[02:03:34] Toy10 0
+[02:03:37] Toy0 0
+[02:03:37] Toy1 2
+[02:03:37] [He Thong] Da luu lai thong tin tai khoan thanh cong.
+[02:03:45] Toy0 0
+[02:03:45] Toy1 2
+[02:03:59] Toy0 0
+[02:03:59] Toy1 2
+[02:03:59] [He Thong] Da luu lai thong tin tai khoan thanh cong.
+[02:04:01] [zcmd] [ZXC ZXZ]: /toys
+[02:04:04] Toy0 0
+[02:04:04] Toy1 2
+[02:04:26] Toy0 0
+[02:04:26] Toy1 2
+[02:04:27] [He Thong] Da luu lai thong tin tai khoan thanh cong.
+[02:04:30] [zcmd] [ZXC ZXZ]: /toys
+[02:04:31] [He Thong] Da luu lai thong tin tai khoan thanh cong.
+[02:05:02] [part] ZXC_ZXZ has left the server (0:0)
+[02:05:52] [connection] incoming connection: 127.0.0.1:55705 id: 0
+[02:05:52] [join] [FL]Ha1boku has joined the server (0:127.0.0.1)
+[02:05:53] name [FL]Ha1boku,4, 
+[02:05:59] acc id 24
+[02:06:05] [nick] [FL]Ha1boku nick changed to ZXC_ZXZ
+[02:06:05] ZXC ZXZ has logged in.
+[02:06:06] [He Thong] Da luu lai thong tin tai khoan thanh cong.
+[02:06:06] [LOAD INVENTORY]  du lieu inventory cua ZXC ZXZ (ID: 0) da duoc tai.
+[02:06:06] [LOAD ITEMTIMER] Loading data from database...
+[02:07:00] [part] ZXC_ZXZ has left the server (0:1)
+
+----------
+Loaded log file: "server_log.txt".
+----------
+
+SA-MP Dedicated Server
+----------------------
+v0.3.DL-R1, (C)2005-2018 SA-MP Team
+
+[02:29:54] password = ""  (string)
+[02:29:54] 
+[02:29:54] Server Plugins
+[02:29:54] --------------
+[02:29:54]  Loading plugin: PawnPlus
+[02:29:54]  PawnPlus v1.4.2 loaded
+[02:29:54]  Created by IllidanS4
+[02:29:54]   Loaded.
+[02:29:54]  Loading plugin: streamer
+[02:29:54] 
+
+*** Streamer Plugin v2.9.4 by Incognito loaded ***
+
+[02:29:54]   Loaded.
+[02:29:54]  Loading plugin: mysql
+[02:29:54]  >> plugin.mysql: R33 successfully loaded.
+[02:29:54]   Loaded.
+[02:29:54]  Loading plugin: sscanf
+[02:29:54] 
+
+[02:29:54]  ===============================
+
+[02:29:54]       sscanf plugin loaded.     
+
+[02:29:54]          Version:  2.8.1        
+
+[02:29:54]    (c) 2012 Alex "Y_Less" Cole  
+
+[02:29:54]  ===============================
+
+[02:29:54]   Loaded.
+[02:29:54]  Loading plugin: nativechecker
+[02:29:54]   Loaded.
+[02:29:54]  Loading plugin: whirlpool
+[02:29:54]  
+[02:29:54]  ==================
+[02:29:54]  
+[02:29:54]   Whirlpool loaded
+[02:29:54]  
+[02:29:54]  ==================
+[02:29:54]  
+[02:29:54]   Loaded.
+[02:29:54]  Loaded 6 plugins.
+
+[02:29:54] [artwork:crc] bp.dff CRC = 0xA2B03FFB
+[02:29:54] [artwork:crc] bp.txd CRC = 0x28E0706E
+[02:29:54] [artwork:crc] object.dff CRC = 0xDCFCC14C
+[02:29:54] [artwork:crc] speedo.txd CRC = 0x62C7BCBC
+[02:29:54] [artwork:crc] object.dff CRC = 0xDCFCC14C
+[02:29:54] [artwork:crc] login.txd CRC = 0x97B897B6
+[02:29:54] [artwork:crc] object.dff CRC = 0xDCFCC14C
+[02:29:54] [artwork:crc] speedo.txd CRC = 0x62C7BCBC
+[02:29:54] [artwork:crc] object.dff CRC = 0xDCFCC14C
+[02:29:54] [artwork:crc] newinv.txd CRC = 0xC5F22638
+[02:29:54] [artwork:crc] object.dff CRC = 0xDCFCC14C
+[02:29:54] [artwork:crc] character.txd CRC = 0xC256CCF5
+[02:29:55] 
+[02:29:55] Filterscripts
+[02:29:55] ---------------
+[02:29:55]   Loading filterscript 'Server.amx'...
+[02:29:55]   Loading filterscript 'cbug.amx'...
+[02:29:55]   Loading filterscript 'ntd.amx'...
+[02:29:55]   Unable to load filterscript 'ntd.amx'.
+[02:29:55]   Loaded 2 filterscripts.
+
+[02:29:55]  
+[02:29:55]  ======================================= 
+[02:29:55]  |                                     | 
+[02:29:55]  |        YSI version 3.01.0002        | 
+[02:29:55]  |        By Alex "Y_Less" Cole        | 
+[02:29:55]  |                                     | 
+[02:29:55]  ======================================= 
+[02:29:55]  
+[02:29:55] Chuong trinh may chu dang duoc khoi dong, vui long cho doi....
+[02:29:56] [MySQL] (Main Pipelines) Connecting to 23.88.73.88...
+[02:29:56] [MySQL] (MainPipeline) Connection successful toward MySQL Database Server!
+[02:29:56] [Dynamic Giftbox] Loading the Dynamic Giftbox...
+[02:29:56] [LoadCrates] Load Query Sent
+[02:29:56] [LoadHouses] Loading data from database...
+[02:29:56] [LoadDynamicDoors] Loading data from database...
+[02:29:56] [LoadDynamicMapIcons] Loading data from database...
+[02:29:56] [LoadMailboxes] Loading data from database...
+[02:29:56] [LoadBusinesses] Loading data from database...
+[02:29:56] [LoadAuctions] Loading data from database...
+[02:29:56] [LoadTxtLabels] Loading data from database...
+[02:29:56] [LoadPlants] Loading data from database...
+[02:29:56] [SpeedCameras] Loading data from database...
+[02:29:56] [LoadPayNSprays] Loading data from database...
+[02:29:56] [LoadArrestPoints] Loading data from database...
+[02:29:56] [LoadImpoundPoints] Loading data from database...
+[02:29:56] [LoadBusinessSales] Loading data from database...
+[02:29:56] [LoadPaintballArenas] 10 paintball loaded.
+[02:29:56] [LoadEventPoints] 0 event points loaded.
+[02:29:56] [LoadGates] Loading data from database...
+[02:29:56] [LoadElevatorStuff] 20 floors loaded.
+[02:29:56] [LoadFamilies] Dang tai du lieu tu database...
+[02:29:56] [LoadFamilyPoints] Loading Family Points from the database, please wait...
+[02:29:56] [MiscLoad] Misc Loaded
+[02:29:56] Resetting news...
+[02:29:56] Resetting default server variables..
+[02:29:56] Adjusted the server time...
+[02:29:56] [Streamer] Loading Dynamic Static Vehicles...
+[02:29:56] [Streamer] Dynamic Static Vehicles has been loaded.
+[02:29:56] [Streamer] Loading Dynamic Pickups...
+[02:29:56] [Streamer] Dynamic Pickups has been loaded.
+[02:29:56] [Streamer] Loading 3D Text Labels...
+[02:29:56] [Streamer] Dynamic 3D Text Labels has been loaded.
+[02:29:56] [Streamer] Loading Dynamic Buttons...
+[02:29:56] [Streamer] Dynamic Buttons has been loaded.
+[02:29:56] [Streamer] Loading Dynamic Objects...
+[02:29:56] [Streamer] Dynamic Objects has been loaded.
+[02:29:56] [Textdraws] Loading Textdraws...
+[02:29:56] [Textdraws] Loaded textdraws.
+[02:29:56] [Dynamic Groups] Loading Dynamic Groups...
+[02:29:56] [Dynamic Groups] Loading Dynamic Groups Vehicles...
+[02:29:56] Da chay thanh cong gamemode...
+[02:29:56] Number of vehicle models: 20
+[02:29:56]  
+[02:29:56]  
+[02:29:56] [Dynamic Giftbox] da tai thanh cong Dynamic giftbox.
+[02:29:57] [LoadCrates] Loading Crates Finished
+[02:29:58] [LoadDynamicDoors] 2248 door duoc tai.
+[02:29:58] [LoadDynamicMapIcons] 400 icons map duoc tai.
+[02:29:58] [LoadMailboxes] 50 mailboxes duoc tai.
+[02:29:58] [LoadBusinesses] 200 businesses rehashed/loaded.
+[02:29:59] [LoadPlants] Successfully loaded 300 plants
+[02:29:59] [SpeedCameras] Tai 3 May ban toc do.
+[02:30:00] TotalSold0: 0 | AmountMade0: 0
+[02:30:00] TotalSold1: 0 | AmountMade1: 0
+[02:30:00] TotalSold2: 0 | AmountMade2: 0
+[02:30:00] TotalSold3: 0 | AmountMade3: 0
+[02:30:00] TotalSold4: 0 | AmountMade4: 0
+[02:30:00] TotalSold5: 0 | AmountMade5: 0
+[02:30:00] TotalSold6: 0 | AmountMade6: 0
+[02:30:00] TotalSold7: 0 | AmountMade7: 0
+[02:30:00] TotalSold8: 0 | AmountMade8: 0
+[02:30:00] TotalSold9: 0 | AmountMade9: 0
+[02:30:00] TotalSold10: 0 | AmountMade10: 0
+[02:30:00] TotalSold11: 0 | AmountMade11: 0
+[02:30:00] TotalSold12: 0 | AmountMade12: 0
+[02:30:00] TotalSold13: 0 | AmountMade13: 0
+[02:30:00] TotalSold14: 0 | AmountMade14: 0
+[02:30:00] TotalSold15: 0 | AmountMade15: 0
+[02:30:00] TotalSold16: 0 | AmountMade16: 0
+[02:30:00] TotalSold17: 0 | AmountMade17: 0
+[02:30:00] TotalSold18: 0 | AmountMade18: 0
+[02:30:00] TotalSold19: 0 | AmountMade19: 0
+[02:30:00] TotalSold20: 0 | AmountMade20: 0
+[02:30:00] TotalSold21: 0 | AmountMade21: 0
+[02:30:00] TotalSold22: 0 | AmountMade22: 0
+[02:30:00] TotalSold23: 0 | AmountMade23: 0
+[02:30:00] TotalSold24: 0 | AmountMade24: 0
+[02:30:00] TotalSold25: 0 | AmountMade25: 0
+[02:30:00] TotalSold26: 0 | AmountMade26: 0
+[02:30:00] TotalSold27: 0 | AmountMade27: 0
+[02:30:00] TotalSold28: 0 | AmountMade28: 0
+[02:30:00] TotalSold29: 0 | AmountMade29: 0
+[02:30:00] Price0: 20000
+[02:30:00] Price1: 50000
+[02:30:00] Price2: 15000
+[02:30:00] Price3: 10000
+[02:30:00] Price4: 400
+[02:30:00] Price5: 500
+[02:30:00] Price6: 100
+[02:30:00] Price7: 500
+[02:30:00] Price8: 100
+[02:30:00] Price9: 100
+[02:30:00] Price10: 10
+[02:30:00] Price11: 100000
+[02:30:00] Price12: 100000
+[02:30:00] Price13: 100000
+[02:30:00] Price14: 10000
+[02:30:00] Price15: 5000
+[02:30:00] Price16: 1000
+[02:30:00] Price17: 1000
+[02:30:00] Price18: 1
+[02:30:00] Price19: 2
+[02:30:00] Price20: 10
+[02:30:00] Price21: 999999
+[02:30:00] Price22: 100
+[02:30:00] Price23: 1000
+[02:30:00] Price24: 100000
+[02:30:00] Price25: 100000
+[02:30:00] Price26: 100000
+[02:30:00] Price27: 100000
+[02:30:00] Price28: 1000
+[02:30:00] Price29: 29
+[02:30:01] [Family Points] 8 family points has been loaded.
+[02:30:11] [connection] incoming connection: 127.0.0.1:61060 id: 0
+[02:30:11] [join] [FL]Ha1boku has joined the server (0:127.0.0.1)
+[02:30:29] name [FL]Ha1boku,4, 
+[02:30:46] acc id 24
+[02:30:46] [He Thong] Da luu lai thong tin tai khoan thanh cong.
+[02:30:51] [nick] [FL]Ha1boku nick changed to ZXC_ZXZ
+[02:30:51] ZXC ZXZ has logged in.
+[02:30:51] [He Thong] Da luu lai thong tin tai khoan thanh cong.
+[02:30:52] [LOAD INVENTORY]  du lieu inventory cua ZXC ZXZ (ID: 0) da duoc tai.
+[02:30:52] [LOAD ITEMTIMER] Loading data from database...
+[02:30:54] [zcmd] [ZXC ZXZ]: /fly
+[02:31:00] [chat] [ZXC_ZXZ]: as
+[02:31:06] [zcmd] [ZXC ZXZ]: /fly
+
+----------
+Loaded log file: "server_log.txt".
+----------
+
+SA-MP Dedicated Server
+----------------------
+v0.3.DL-R1, (C)2005-2018 SA-MP Team
+
+[02:31:52] password = ""  (string)
+[02:31:52] 
+[02:31:52] Server Plugins
+[02:31:52] --------------
+[02:31:52]  Loading plugin: PawnPlus
+[02:31:52]  PawnPlus v1.4.2 loaded
+[02:31:52]  Created by IllidanS4
+[02:31:52]   Loaded.
+[02:31:52]  Loading plugin: streamer
+[02:31:52] 
+
+*** Streamer Plugin v2.9.4 by Incognito loaded ***
+
+[02:31:52]   Loaded.
+[02:31:52]  Loading plugin: mysql
+[02:31:52]  >> plugin.mysql: R33 successfully loaded.
+[02:31:52]   Loaded.
+[02:31:52]  Loading plugin: sscanf
+[02:31:52] 
+
+[02:31:52]  ===============================
+
+[02:31:52]       sscanf plugin loaded.     
+
+[02:31:52]          Version:  2.8.1        
+
+[02:31:52]    (c) 2012 Alex "Y_Less" Cole  
+
+[02:31:52]  ===============================
+
+[02:31:52]   Loaded.
+[02:31:52]  Loading plugin: nativechecker
+[02:31:52]   Loaded.
+[02:31:52]  Loading plugin: whirlpool
+[02:31:52]  
+[02:31:52]  ==================
+[02:31:52]  
+[02:31:52]   Whirlpool loaded
+[02:31:52]  
+[02:31:52]  ==================
+[02:31:52]  
+[02:31:52]   Loaded.
+[02:31:52]  Loaded 6 plugins.
+
+[02:31:52] [artwork:crc] bp.dff CRC = 0xA2B03FFB
+[02:31:52] [artwork:crc] bp.txd CRC = 0x28E0706E
+[02:31:52] [artwork:crc] object.dff CRC = 0xDCFCC14C
+[02:31:52] [artwork:crc] speedo.txd CRC = 0x62C7BCBC
+[02:31:52] [artwork:crc] object.dff CRC = 0xDCFCC14C
+[02:31:52] [artwork:crc] login.txd CRC = 0x97B897B6
+[02:31:52] [artwork:crc] object.dff CRC = 0xDCFCC14C
+[02:31:52] [artwork:crc] speedo.txd CRC = 0x62C7BCBC
+[02:31:52] [artwork:crc] object.dff CRC = 0xDCFCC14C
+[02:31:52] [artwork:crc] newinv.txd CRC = 0xC5F22638
+[02:31:52] [artwork:crc] object.dff CRC = 0xDCFCC14C
+[02:31:52] [artwork:crc] character.txd CRC = 0xC256CCF5
+[02:31:52] 
+[02:31:52] Filterscripts
+[02:31:52] ---------------
+[02:31:52]   Loading filterscript 'Server.amx'...
+[02:31:52]   Loading filterscript 'cbug.amx'...
+[02:31:52]   Loading filterscript 'ntd.amx'...
+[02:31:52]   Unable to load filterscript 'ntd.amx'.
+[02:31:52]   Loaded 2 filterscripts.
+
+[02:31:52]  
+[02:31:52]  ======================================= 
+[02:31:52]  |                                     | 
+[02:31:52]  |        YSI version 3.01.0002        | 
+[02:31:52]  |        By Alex "Y_Less" Cole        | 
+[02:31:52]  |                                     | 
+[02:31:52]  ======================================= 
+[02:31:52]  
+[02:31:52] Chuong trinh may chu dang duoc khoi dong, vui long cho doi....
+[02:31:54] [MySQL] (Main Pipelines) Connecting to 23.88.73.88...
+[02:31:54] [MySQL] (MainPipeline) Connection successful toward MySQL Database Server!
+[02:31:54] [Dynamic Giftbox] Loading the Dynamic Giftbox...
+[02:31:54] [LoadCrates] Load Query Sent
+[02:31:54] [LoadHouses] Loading data from database...
+[02:31:54] [LoadDynamicDoors] Loading data from database...
+[02:31:54] [LoadDynamicMapIcons] Loading data from database...
+[02:31:54] [LoadMailboxes] Loading data from database...
+[02:31:54] [LoadBusinesses] Loading data from database...
+[02:31:54] [LoadAuctions] Loading data from database...
+[02:31:54] [LoadTxtLabels] Loading data from database...
+[02:31:54] [LoadPlants] Loading data from database...
+[02:31:54] [SpeedCameras] Loading data from database...
+[02:31:54] [LoadPayNSprays] Loading data from database...
+[02:31:54] [LoadArrestPoints] Loading data from database...
+[02:31:54] [LoadImpoundPoints] Loading data from database...
+[02:31:54] [LoadBusinessSales] Loading data from database...
+[02:31:54] [LoadPaintballArenas] 10 paintball loaded.
+[02:31:54] [LoadEventPoints] 0 event points loaded.
+[02:31:54] [LoadGates] Loading data from database...
+[02:31:54] [LoadElevatorStuff] 20 floors loaded.
+[02:31:54] [LoadFamilies] Dang tai du lieu tu database...
+[02:31:54] [LoadFamilyPoints] Loading Family Points from the database, please wait...
+[02:31:54] [MiscLoad] Misc Loaded
+[02:31:54] Resetting news...
+[02:31:54] Resetting default server variables..
+[02:31:54] Adjusted the server time...
+[02:31:54] [Streamer] Loading Dynamic Static Vehicles...
+[02:31:54] [Streamer] Dynamic Static Vehicles has been loaded.
+[02:31:54] [Streamer] Loading Dynamic Pickups...
+[02:31:54] [Streamer] Dynamic Pickups has been loaded.
+[02:31:54] [Streamer] Loading 3D Text Labels...
+[02:31:54] [Streamer] Dynamic 3D Text Labels has been loaded.
+[02:31:54] [Streamer] Loading Dynamic Buttons...
+[02:31:54] [Streamer] Dynamic Buttons has been loaded.
+[02:31:54] [Streamer] Loading Dynamic Objects...
+[02:31:54] [Streamer] Dynamic Objects has been loaded.
+[02:31:54] [Textdraws] Loading Textdraws...
+[02:31:54] [Textdraws] Loaded textdraws.
+[02:31:54] [Dynamic Groups] Loading Dynamic Groups...
+[02:31:54] [Dynamic Groups] Loading Dynamic Groups Vehicles...
+[02:31:54] Da chay thanh cong gamemode...
+[02:31:54] Number of vehicle models: 20
+[02:31:54]  
+[02:31:54]  
+[02:31:54] [Dynamic Giftbox] da tai thanh cong Dynamic giftbox.
+[02:31:54] [LoadCrates] Loading Crates Finished
+[02:31:56] [LoadDynamicDoors] 2248 door duoc tai.
+[02:31:56] [LoadDynamicMapIcons] 400 icons map duoc tai.
+[02:31:56] [LoadMailboxes] 50 mailboxes duoc tai.
+[02:31:56] [LoadBusinesses] 200 businesses rehashed/loaded.
+[02:31:57] [LoadPlants] Successfully loaded 300 plants
+[02:31:57] [SpeedCameras] Tai 3 May ban toc do.
+[02:31:58] TotalSold0: 0 | AmountMade0: 0
+[02:31:58] TotalSold1: 0 | AmountMade1: 0
+[02:31:58] TotalSold2: 0 | AmountMade2: 0
+[02:31:58] TotalSold3: 0 | AmountMade3: 0
+[02:31:58] TotalSold4: 0 | AmountMade4: 0
+[02:31:58] TotalSold5: 0 | AmountMade5: 0
+[02:31:58] TotalSold6: 0 | AmountMade6: 0
+[02:31:58] TotalSold7: 0 | AmountMade7: 0
+[02:31:58] TotalSold8: 0 | AmountMade8: 0
+[02:31:58] TotalSold9: 0 | AmountMade9: 0
+[02:31:58] TotalSold10: 0 | AmountMade10: 0
+[02:31:58] TotalSold11: 0 | AmountMade11: 0
+[02:31:58] TotalSold12: 0 | AmountMade12: 0
+[02:31:58] TotalSold13: 0 | AmountMade13: 0
+[02:31:58] TotalSold14: 0 | AmountMade14: 0
+[02:31:58] TotalSold15: 0 | AmountMade15: 0
+[02:31:58] TotalSold16: 0 | AmountMade16: 0
+[02:31:58] TotalSold17: 0 | AmountMade17: 0
+[02:31:58] TotalSold18: 0 | AmountMade18: 0
+[02:31:58] TotalSold19: 0 | AmountMade19: 0
+[02:31:58] TotalSold20: 0 | AmountMade20: 0
+[02:31:58] TotalSold21: 0 | AmountMade21: 0
+[02:31:58] TotalSold22: 0 | AmountMade22: 0
+[02:31:58] TotalSold23: 0 | AmountMade23: 0
+[02:31:58] TotalSold24: 0 | AmountMade24: 0
+[02:31:58] TotalSold25: 0 | AmountMade25: 0
+[02:31:58] TotalSold26: 0 | AmountMade26: 0
+[02:31:58] TotalSold27: 0 | AmountMade27: 0
+[02:31:58] TotalSold28: 0 | AmountMade28: 0
+[02:31:58] TotalSold29: 0 | AmountMade29: 0
+[02:31:58] Price0: 20000
+[02:31:58] Price1: 50000
+[02:31:58] Price2: 15000
+[02:31:58] Price3: 10000
+[02:31:58] Price4: 400
+[02:31:58] Price5: 500
+[02:31:58] Price6: 100
+[02:31:58] Price7: 500
+[02:31:58] Price8: 100
+[02:31:58] Price9: 100
+[02:31:58] Price10: 10
+[02:31:58] Price11: 100000
+[02:31:58] Price12: 100000
+[02:31:58] Price13: 100000
+[02:31:58] Price14: 10000
+[02:31:58] Price15: 5000
+[02:31:58] Price16: 1000
+[02:31:58] Price17: 1000
+[02:31:58] Price18: 1
+[02:31:58] Price19: 2
+[02:31:58] Price20: 10
+[02:31:58] Price21: 999999
+[02:31:58] Price22: 100
+[02:31:58] Price23: 1000
+[02:31:58] Price24: 100000
+[02:31:58] Price25: 100000
+[02:31:58] Price26: 100000
+[02:31:58] Price27: 100000
+[02:31:58] Price28: 1000
+[02:31:58] Price29: 29
+[02:31:59] [Family Points] 8 family points has been loaded.
+[02:32:06] [connection] incoming connection: 127.0.0.1:54717 id: 0
+[02:32:10] [join] [FL]Ha1boku has joined the server (0:127.0.0.1)
+[02:32:26] name [FL]Ha1boku,4, 
+[02:32:30] acc id 24
+[02:32:30] [He Thong] Da luu lai thong tin tai khoan thanh cong.
+[02:32:34] [nick] [FL]Ha1boku nick changed to ZXC_ZXZ
+[02:32:34] ZXC ZXZ has logged in.
+[02:32:35] [He Thong] Da luu lai thong tin tai khoan thanh cong.
+[02:32:36] [LOAD INVENTORY]  du lieu inventory cua ZXC ZXZ (ID: 0) da duoc tai.
+[02:32:36] [LOAD ITEMTIMER] Loading data from database...
+[02:32:38] [zcmd] [ZXC ZXZ]: /fly
+[02:32:44] [chat] [ZXC_ZXZ]: asd
+[02:32:51] [zcmd] [ZXC ZXZ]: /fly

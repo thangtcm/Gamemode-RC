@@ -74,6 +74,8 @@
 //#include "./system/register.pwn"
 //#include "./system/new_job/trucking.pwn"
 #include "./system/new_job/pizza.pwn"
+#include "./system/new_job/miner/mn_callbacks.pwn"
+#include "./system/new_job/miner/mn_funcs.pwn"
 //#include "./system/new_job/daoda.pwn"  bảo trì
 #include "./system/new_job/wood.pwn"
 #include "./system/new_job/caucanew.pwn"
