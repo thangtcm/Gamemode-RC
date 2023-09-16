@@ -19,6 +19,7 @@
 #include <easyDialog>
 #include <mSelection>
 #include <eInventory>
+#include <stamina>
 #if defined SOCKET_ENABLED
 
 
