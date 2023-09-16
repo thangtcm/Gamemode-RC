@@ -28,7 +28,11 @@ new const g_aInventoryItems[][e_InventoryItems] =
 	{"GPS", 18875},
     {"Binh xang", 1650},
 	{"Boombox", 2226},
-	{"Radio", 18868}
+	{"Radio", 18868},
+	{"Hamburger", 19094},
+	{"Bread", 19579},
+	{"Juice", 19562},
+	{"Beer", 1544}
 };
 
 hook OnPlayerConnect(playerid)
@@ -314,7 +318,8 @@ public OnPlayerUseItem(playerid, itemid, name[])
 	}
 	else if(!strcmp(name, "Pizza", true))
 	{
-		SendClientMessageEx(playerid, COLOR_RED, "Vat pham nay chua duoc su dung");
+		PlayerInfo[playerid][pEat] += 20;
+		PlayerInfo[playerid][pStrong] += 10;
 	}
 	else if(!strcmp(name, "Boombox", true))
 	{
@@ -331,6 +336,26 @@ public OnPlayerUseItem(playerid, itemid, name[])
 	else if(!strcmp(name, "GPS", true))
 	{
 		return cmd_gps(playerid, "\1");
+	}
+	else if(!strcmp(name, "Hamburger", true))
+	{
+		PlayerInfo[playerid][pEat] += 16;
+		PlayerInfo[playerid][pStrong] += 8;
+	}
+	else if(!strcmp(name, "Bread", true))
+	{
+		PlayerInfo[playerid][pEat] += 20;
+		PlayerInfo[playerid][pStrong] += 10;
+	}
+	else if(!strcmp(name, "Juice", true))
+	{
+		PlayerInfo[playerid][pDrink] += 16;
+		PlayerInfo[playerid][pStrong] += 8;
+	}
+	else if(!strcmp(name, "Beer", true))
+	{
+		PlayerInfo[playerid][pDrink] += 16;
+		PlayerInfo[playerid][pStrong] += 8;
 	}
 	return 1;
 }
