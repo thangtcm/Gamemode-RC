@@ -9,6 +9,11 @@ enum itemTimerInfo{
     bool:Exists
 }
 
+enum ItemRemoveInfo{
+    itemTimerId,
+    itemAmount
+}
+
 new ItemTimerData[MAX_PLAYERS][MAX_ITEMTINER][itemTimerInfo];
 new Timer:myItemTimer[MAX_PLAYERS] = {Timer:-1, ...};
 forward OnLoadItemTimer(playerid);
@@ -41,7 +46,6 @@ public OnLoadItemTimer(playerid)
         cache_get_field_content(i, "ItemName", ItemTimerData[playerid][i][ItemName], MainPipeline, 32);
 		cache_get_field_content(i, "Timer", tmp, MainPipeline); ItemTimerData[playerid][i][Timer] = strval(tmp);
         cache_get_field_content(i, "Quantity", tmp, MainPipeline); ItemTimerData[playerid][i][Quantity] = strval(tmp);
-        printf("timer %d", gettime());
         if(ItemTimerData[playerid][i][Timer] < gettime()) ITEMTIMER_DELETE(playerid, i);
   		i++;
  	}
@@ -61,7 +65,7 @@ stock ITEMTIMER_ADD(playerid, itemName[], quantity, timer)
 		`Timer`, \
         `Quantity`, \
 		`PlayerId`)\
-		VALUES ('%d', '%d', '%d', '%d')", 
+		VALUES ('%s', '%d', '%d', '%d')", 
 		g_mysql_ReturnEscaped(ItemTimerData[playerid][index][ItemName], MainPipeline),
 		ItemTimerData[playerid][index][Timer],
         quantity,
@@ -78,22 +82,54 @@ public OnItemTimerAdd(playerid, index)
     ItemTimerData[playerid][index][Id] = mysql_insert_id(MainPipeline);
 }
 
-stock ITEMTIMER_DELETE(playerid, index)
+stock ITEMTIMER_DELETE(playerid, index, quantity = 1)
 {
     if(ItemTimerData[playerid][index][Id] == -1) return 0;
     new
         string[64];
-    format(string, sizeof(string), "DELETE FROM `itemtimer` WHERE `Id`= '%d'", ItemTimerData[playerid][index][Id]);
-    mysql_function_query(MainPipeline, string, false, "OnQueryFinish", "i", SENDDATA_THREAD);
-    ItemTimerData[playerid][index][Id] = 0;
-    ItemTimerData[playerid][index][Exists] = false;
-    Inventory_SendRemoveTimer(playerid, ItemTimerData[playerid][index][ItemName], ItemTimerData[playerid][index][Quantity]);
+    if(ItemTimerData[playerid][index][Quantity] <= quantity)
+    {
+        ItemTimerData[playerid][index][Id] = 0;
+        ItemTimerData[playerid][index][Exists] = false;
+        format(string, sizeof(string), "DELETE FROM `itemtimer` WHERE `Id`= '%d'", ItemTimerData[playerid][index][Id]);
+        mysql_function_query(MainPipeline, string, false, "OnQueryFinish", "i", SENDDATA_THREAD);
+        Inventory_SendRemoveTimer(playerid, ItemTimerData[playerid][index][ItemName], quantity);
+    }
+    else if(ItemTimerData[playerid][index][Quantity] > quantity && quantity > 0)
+    {
+        format(string, sizeof(string), "UPDATE `itemtimer` SET `Quantity` = `Quantity` - %d WHERE `Id` = '%d'", quantity, ItemTimerData[playerid][index][Id]);
+        mysql_function_query(MainPipeline, string, false, "OnQueryFinish", "i", SENDDATA_THREAD);
+    }
 	return 1;
 }
 
-stock INVITEM_DELETE(playerid, itemId, amount = -1)
+stock INVITEM_DELETE(playerid, itemName[], amount = -1)
 {
-    
+    new ItemTimerRemove[MAX_ITEMTINER][ItemRemoveInfo] = {-1,...},
+    count = 0;
+    for(new i, index; i < MAX_ITEMTINER; i++)
+    {
+        if(ItemTimerData[playerid][i][Exists] && !strcmp(ItemTimerData[playerid][i][ItemName], itemName))
+        {
+            ItemTimerRemove[index][itemTimerId] = i;
+            ItemTimerRemove[index++][itemAmount] = ItemTimerData[playerid][i][Quantity];
+            if(ItemTimerData[playerid][i][Quantity] >= amount)  return ITEMTIMER_DELETE(playerid, i, amount);
+            count++;
+        }
+    }
+    for(new i; i < count; i++)
+    {
+        if(amount > ItemTimerRemove[i][itemAmount])
+        {
+            amount -= ItemTimerRemove[i][itemAmount];
+            ITEMTIMER_DELETE(playerid, ItemTimerRemove[i][itemTimerId], ItemTimerRemove[i][itemAmount]);
+        }
+        else
+        {
+            ItemTimerRemove[i][itemAmount] -= amount;
+            ITEMTIMER_DELETE(playerid, ItemTimerRemove[i][itemTimerId], amount);
+        }
+    }
     return 1;
 }
 
@@ -113,7 +149,7 @@ timer ItemTimer[1000](playerid)
     {
         for(new i; i < MAX_ITEMTINER; i++)
             if(ItemTimerData[playerid][i][Exists] && ItemTimerData[playerid][i][Timer] < gettime()) 
-                ITEMTIMER_DELETE(playerid, i);
+                ITEMTIMER_DELETE(playerid, i, ItemTimerData[playerid][i][Quantity]);
     }
 }
 

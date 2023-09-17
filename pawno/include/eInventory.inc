@@ -17,6 +17,7 @@ enum g_ePlayerMenuEnum {
 	PlayerText:g_eMenuTextdraws[6],
 	PlayerText:g_eMenuItems[MAX_ITEMPAGE],
 	PlayerText:g_eMenuAmounts[MAX_ITEMPAGE],
+	PlayerText:g_eMenuNames[MAX_ITEMPAGE],
 	PlayerText:g_eMenuSlots[MAX_ITEMPAGE],
 	Float:g_eMenuRot[4],
 	g_eMenuModels[MAX_MENU_ITEMS],
@@ -31,6 +32,7 @@ enum g_ePlayerMenuEnum {
 	g_eMenuTime,
 	g_eMenuType
 };
+
 enum g_eItemRotationEnum {
 	g_eItemModel,
 	Float:g_eItemRotX,
@@ -40,38 +42,10 @@ enum g_eItemRotationEnum {
 };
 
 static stock
+	g_ePlayerMenuName[MAX_PLAYERS][MAX_MENU_ITEMS][32],
 	g_ePlayerMenuData[MAX_PLAYERS][g_ePlayerMenuEnum],
 	g_eMenuCustomRotation[MAX_CUSTOM_ROTATIONS][g_eItemRotationEnum]
 ;
-
-static const g_arrVehicleColors[256] = {
-	0x000000FF, 0xF5F5F5FF, 0x2A77A1FF, 0x840410FF, 0x263739FF, 0x86446EFF, 0xD78E10FF, 0x4C75B7FF, 0xBDBEC6FF, 0x5E7072FF,
-	0x46597AFF, 0x656A79FF, 0x5D7E8DFF, 0x58595AFF, 0xD6DAD6FF, 0x9CA1A3FF, 0x335F3FFF, 0x730E1AFF, 0x7B0A2AFF, 0x9F9D94FF,
-	0x3B4E78FF, 0x732E3EFF, 0x691E3BFF, 0x96918CFF, 0x515459FF, 0x3F3E45FF, 0xA5A9A7FF, 0x635C5AFF, 0x3D4A68FF, 0x979592FF,
-	0x421F21FF, 0x5F272BFF, 0x8494ABFF, 0x767B7CFF, 0x646464FF, 0x5A5752FF, 0x252527FF, 0x2D3A35FF, 0x93A396FF, 0x6D7A88FF,
-	0x221918FF, 0x6F675FFF, 0x7C1C2AFF, 0x5F0A15FF, 0x193826FF, 0x5D1B20FF, 0x9D9872FF, 0x7A7560FF, 0x989586FF, 0xADB0B0FF,
-	0x848988FF, 0x304F45FF, 0x4D6268FF, 0x162248FF, 0x272F4BFF, 0x7D6256FF, 0x9EA4ABFF, 0x9C8D71FF, 0x6D1822FF, 0x4E6881FF,
-	0x9C9C98FF, 0x917347FF, 0x661C26FF, 0x949D9FFF, 0xA4A7A5FF, 0x8E8C46FF, 0x341A1EFF, 0x6A7A8CFF, 0xAAAD8EFF, 0xAB988FFF,
-	0x851F2EFF, 0x6F8297FF, 0x585853FF, 0x9AA790FF, 0x601A23FF, 0x20202CFF, 0xA4A096FF, 0xAA9D84FF, 0x78222BFF, 0x0E316DFF,
-	0x722A3FFF, 0x7B715EFF, 0x741D28FF, 0x1E2E32FF, 0x4D322FFF, 0x7C1B44FF, 0x2E5B20FF, 0x395A83FF, 0x6D2837FF, 0xA7A28FFF,
-	0xAFB1B1FF, 0x364155FF, 0x6D6C6EFF, 0x0F6A89FF, 0x204B6BFF, 0x2B3E57FF, 0x9B9F9DFF, 0x6C8495FF, 0x4D8495FF, 0xAE9B7FFF,
-	0x406C8FFF, 0x1F253BFF, 0xAB9276FF, 0x134573FF, 0x96816CFF, 0x64686AFF, 0x105082FF, 0xA19983FF, 0x385694FF, 0x525661FF,
-	0x7F6956FF, 0x8C929AFF, 0x596E87FF, 0x473532FF, 0x44624FFF, 0x730A27FF, 0x223457FF, 0x640D1BFF, 0xA3ADC6FF, 0x695853FF,
-	0x9B8B80FF, 0x620B1CFF, 0x5B5D5EFF, 0x624428FF, 0x731827FF, 0x1B376DFF, 0xEC6AAEFF, 0x000000FF, 0x177517FF, 0x210606FF,
-	0x125478FF, 0x452A0DFF, 0x571E1EFF, 0x010701FF, 0x25225AFF, 0x2C89AAFF, 0x8A4DBDFF, 0x35963AFF, 0xB7B7B7FF, 0x464C8DFF,
-	0x84888CFF, 0x817867FF, 0x817A26FF, 0x6A506FFF, 0x583E6FFF, 0x8CB972FF, 0x824F78FF, 0x6D276AFF, 0x1E1D13FF, 0x1E1306FF,
-	0x1F2518FF, 0x2C4531FF, 0x1E4C99FF, 0x2E5F43FF, 0x1E9948FF, 0x1E9999FF, 0x999976FF, 0x7C8499FF, 0x992E1EFF, 0x2C1E08FF,
-	0x142407FF, 0x993E4DFF, 0x1E4C99FF, 0x198181FF, 0x1A292AFF, 0x16616FFF, 0x1B6687FF, 0x6C3F99FF, 0x481A0EFF, 0x7A7399FF,
-	0x746D99FF, 0x53387EFF, 0x222407FF, 0x3E190CFF, 0x46210EFF, 0x991E1EFF, 0x8D4C8DFF, 0x805B80FF, 0x7B3E7EFF, 0x3C1737FF,
-	0x733517FF, 0x781818FF, 0x83341AFF, 0x8E2F1CFF, 0x7E3E53FF, 0x7C6D7CFF, 0x020C02FF, 0x072407FF, 0x163012FF, 0x16301BFF,
-	0x642B4FFF, 0x368452FF, 0x999590FF, 0x818D96FF, 0x99991EFF, 0x7F994CFF, 0x839292FF, 0x788222FF, 0x2B3C99FF, 0x3A3A0BFF,
-	0x8A794EFF, 0x0E1F49FF, 0x15371CFF, 0x15273AFF, 0x375775FF, 0x060820FF, 0x071326FF, 0x20394BFF, 0x2C5089FF, 0x15426CFF,
-	0x103250FF, 0x241663FF, 0x692015FF, 0x8C8D94FF, 0x516013FF, 0x090F02FF, 0x8C573AFF, 0x52888EFF, 0x995C52FF, 0x99581EFF,
-	0x993A63FF, 0x998F4EFF, 0x99311EFF, 0x0D1842FF, 0x521E1EFF, 0x42420DFF, 0x4C991EFF, 0x082A1DFF, 0x96821DFF, 0x197F19FF,
-	0x3B141FFF, 0x745217FF, 0x893F8DFF, 0x7E1A6CFF, 0x0B370BFF, 0x27450DFF, 0x071F24FF, 0x784573FF, 0x8A653AFF, 0x732617FF,
-	0x319490FF, 0x56941DFF, 0x59163DFF, 0x1B8A2FFF, 0x38160BFF, 0x041804FF, 0x355D8EFF, 0x2E3F5BFF, 0x561A28FF, 0x4E0E27FF,
-	0x706C67FF, 0x3B3E42FF, 0x2E2D33FF, 0x7B7E7DFF, 0x4A4442FF, 0x28344EFF
-};
 
 stock SetModelPreviewRotation(modelid, Float:x, Float:y, Float:z, Float:zoom = 1.0)
 {
@@ -110,9 +84,15 @@ stock HideModelSelectionInventory(playerid)
                 PlayerTextDrawDestroy(playerid, g_ePlayerMenuData[playerid][g_eMenuAmounts][i]);
                 g_ePlayerMenuData[playerid][g_eMenuAmounts][i] = PlayerText:INVALID_TEXT_DRAW;
 			}
+			if (g_ePlayerMenuData[playerid][g_eMenuNames][i] != PlayerText:INVALID_TEXT_DRAW)
+	    	{
+                PlayerTextDrawDestroy(playerid, g_ePlayerMenuData[playerid][g_eMenuNames][i]);
+                g_ePlayerMenuData[playerid][g_eMenuNames][i] = PlayerText:INVALID_TEXT_DRAW;
+			}
 		}
 		g_ePlayerMenuData[playerid][g_eMenuModels][i] = -1;
 		g_ePlayerMenuData[playerid][g_eMenuAmount][i] = 0;
+		strcpy(g_ePlayerMenuName[playerid][i], "_", 32);
 	}
 	g_ePlayerMenuData[playerid][g_eMenuShown] = false;
 	g_ePlayerMenuData[playerid][g_eMenuTotalItems] = 0;
@@ -130,7 +110,7 @@ stock HideModelSelectionInventory(playerid)
 	return 1;
 }
 
-stock ShowModelSelectionInventory(playerid, header[], extraid, items[], size = sizeof(items), Float:fRotX = 0.0, Float:fRotY = 0.0, Float:fRotZ = 0.0, Float:fZoom = 1.0, carcol = -1, bool:amount = false, amounts[] = {-1})
+stock ShowModelSelectionInventory(playerid, extraid, items[], size = sizeof(items), Float:fRotX = 0.0, Float:fRotY = 0.0, Float:fRotZ = 0.0, Float:fZoom = 1.0, carcol = -1, bool:amount = false, amounts[] = {-1}, itemnames[120][32] = {"_",...})
 {
 	if (!IsPlayerConnected(playerid))
 	    return 0;
@@ -145,6 +125,7 @@ stock ShowModelSelectionInventory(playerid, header[], extraid, items[], size = s
 	for (new i = 0; i < MAX_ITEMPAGE; i ++) {
 	    g_ePlayerMenuData[playerid][g_eMenuItems][i] = PlayerText:INVALID_TEXT_DRAW;
 		g_ePlayerMenuData[playerid][g_eMenuAmounts][i] = PlayerText:INVALID_TEXT_DRAW;
+		g_ePlayerMenuData[playerid][g_eMenuNames][i] = PlayerText:INVALID_TEXT_DRAW;
 	}
 	new
 	    Float:x = 85.0,
@@ -153,7 +134,7 @@ stock ShowModelSelectionInventory(playerid, header[], extraid, items[], size = s
 		str[16];
 	format(page, 8, "1/%d", (size / MAX_ITEMPAGE) + 1);
 	g_ePlayerMenuData[playerid][g_eMenuTextdraws][0] = CreatePlayerTextDraw(playerid, 146.464, 92.583, "mdl-2020:main_inv");
-	PlayerTextDrawTextSize(playerid, g_ePlayerMenuData[playerid][g_eMenuTextdraws][0], 350.000, 251.000);
+	PlayerTextDrawTextSize(playerid, g_ePlayerMenuData[playerid][g_eMenuTextdraws][0], 350.000, 280.000);
 	PlayerTextDrawAlignment(playerid, g_ePlayerMenuData[playerid][g_eMenuTextdraws][0], 1);
 	PlayerTextDrawColor(playerid, g_ePlayerMenuData[playerid][g_eMenuTextdraws][0], -1);
 	PlayerTextDrawSetShadow(playerid, g_ePlayerMenuData[playerid][g_eMenuTextdraws][0], 0);
@@ -163,7 +144,7 @@ stock ShowModelSelectionInventory(playerid, header[], extraid, items[], size = s
 	PlayerTextDrawUseBox(playerid, g_ePlayerMenuData[playerid][g_eMenuTextdraws][0], 0);
 	PlayerTextDrawSetProportional(playerid, g_ePlayerMenuData[playerid][g_eMenuTextdraws][0], 0);
 
-	g_ePlayerMenuData[playerid][g_eMenuTextdraws][1] = CreatePlayerTextDraw(playerid, 315.000, 320.000, page);
+	g_ePlayerMenuData[playerid][g_eMenuTextdraws][1] = CreatePlayerTextDraw(playerid, 315.000, 335.000, page);
 	PlayerTextDrawLetterSize(playerid, g_ePlayerMenuData[playerid][g_eMenuTextdraws][1], 0.300, 1.500);
 	PlayerTextDrawAlignment(playerid, g_ePlayerMenuData[playerid][g_eMenuTextdraws][1], 1);
 	PlayerTextDrawColor(playerid, g_ePlayerMenuData[playerid][g_eMenuTextdraws][1], -1);
@@ -174,7 +155,7 @@ stock ShowModelSelectionInventory(playerid, header[], extraid, items[], size = s
 	PlayerTextDrawUseBox(playerid, g_ePlayerMenuData[playerid][g_eMenuTextdraws][1], 0);
 	PlayerTextDrawSetProportional(playerid, g_ePlayerMenuData[playerid][g_eMenuTextdraws][1], 1);
 
-	g_ePlayerMenuData[playerid][g_eMenuTextdraws][2] = CreatePlayerTextDraw(playerid, 470.000, 314.000, "mdl-2020:btn_right");
+	g_ePlayerMenuData[playerid][g_eMenuTextdraws][2] = CreatePlayerTextDraw(playerid, 470.000, 330.000, "mdl-2020:btn_right");
 	PlayerTextDrawTextSize(playerid, g_ePlayerMenuData[playerid][g_eMenuTextdraws][2], 19.000, 26.000);
 	PlayerTextDrawAlignment(playerid, g_ePlayerMenuData[playerid][g_eMenuTextdraws][2], 1);
 	PlayerTextDrawColor(playerid, g_ePlayerMenuData[playerid][g_eMenuTextdraws][2], -1);
@@ -186,7 +167,7 @@ stock ShowModelSelectionInventory(playerid, header[], extraid, items[], size = s
 	PlayerTextDrawSetProportional(playerid, g_ePlayerMenuData[playerid][g_eMenuTextdraws][2], 1);
 	PlayerTextDrawSetSelectable(playerid, g_ePlayerMenuData[playerid][g_eMenuTextdraws][2], 1);
 
-	g_ePlayerMenuData[playerid][g_eMenuTextdraws][3] = CreatePlayerTextDraw(playerid, 154.000, 314.000, "mdl-2020:btn_left");
+	g_ePlayerMenuData[playerid][g_eMenuTextdraws][3] = CreatePlayerTextDraw(playerid, 155.000, 330.000, "mdl-2020:btn_left");
 	PlayerTextDrawTextSize(playerid, g_ePlayerMenuData[playerid][g_eMenuTextdraws][3], 19.000, 26.000);
 	PlayerTextDrawAlignment(playerid, g_ePlayerMenuData[playerid][g_eMenuTextdraws][3], 1);
 	PlayerTextDrawColor(playerid, g_ePlayerMenuData[playerid][g_eMenuTextdraws][3], -1);
@@ -237,12 +218,13 @@ stock ShowModelSelectionInventory(playerid, header[], extraid, items[], size = s
 			{
                 g_ePlayerMenuData[playerid][g_eMenuModels][i] = -1;
                 g_ePlayerMenuData[playerid][g_eMenuAmount][i] = 0;
+				strcpy(g_ePlayerMenuName[playerid][i], "_", 32);
       		}
 	  		else
 	  		{
 	   			g_ePlayerMenuData[playerid][g_eMenuTotalItems]++;
 				g_ePlayerMenuData[playerid][g_eMenuModels][i] = items[i];
-
+				strcpy(g_ePlayerMenuName[playerid][i], itemnames[i], 32);
 				if (amount) {
 	                g_ePlayerMenuData[playerid][g_eMenuAmount][i] = amounts[i];
 				}
@@ -289,10 +271,21 @@ stock ShowModelSelectionInventory(playerid, header[], extraid, items[], size = s
 						PlayerTextDrawBackgroundColor(playerid, g_ePlayerMenuData[playerid][g_eMenuAmounts][i], 150);
 						PlayerTextDrawFont(playerid, g_ePlayerMenuData[playerid][g_eMenuAmounts][i], 1);
 						PlayerTextDrawSetProportional(playerid, g_ePlayerMenuData[playerid][g_eMenuAmounts][i], 1);
+
+						g_ePlayerMenuData[playerid][g_eMenuNames][i]  = CreatePlayerTextDraw(playerid, x + 18, y + 54.0, itemnames[i]);
+						PlayerTextDrawLetterSize(playerid, g_ePlayerMenuData[playerid][g_eMenuNames][i], 0.219, 0.999);
+						PlayerTextDrawAlignment(playerid, g_ePlayerMenuData[playerid][g_eMenuNames][i], 1);
+						PlayerTextDrawColor(playerid, g_ePlayerMenuData[playerid][g_eMenuNames][i], -1);
+						PlayerTextDrawSetShadow(playerid, g_ePlayerMenuData[playerid][g_eMenuNames][i], 1);
+						PlayerTextDrawSetOutline(playerid, g_ePlayerMenuData[playerid][g_eMenuNames][i], 1);
+						PlayerTextDrawBackgroundColor(playerid, g_ePlayerMenuData[playerid][g_eMenuNames][i], 150);
+						PlayerTextDrawFont(playerid, g_ePlayerMenuData[playerid][g_eMenuNames][i], 1);
+						PlayerTextDrawSetProportional(playerid, g_ePlayerMenuData[playerid][g_eMenuNames][i], 1);
 					}
 					else
 					{
 					    g_ePlayerMenuData[playerid][g_eMenuAmounts][i] = PlayerText:INVALID_TEXT_DRAW;
+						g_ePlayerMenuData[playerid][g_eMenuNames][i] = PlayerText:INVALID_TEXT_DRAW;
 					}
                     if (carcol != -1)
                     {
@@ -331,6 +324,7 @@ stock ShowModelSelectionInventory(playerid, header[], extraid, items[], size = s
 		if (g_ePlayerMenuData[playerid][g_eMenuAmounts][i] != PlayerText:INVALID_TEXT_DRAW) {
 	    	PlayerTextDrawShow(playerid, g_ePlayerMenuData[playerid][g_eMenuItems][i]);
 	        PlayerTextDrawShow(playerid, g_ePlayerMenuData[playerid][g_eMenuAmounts][i]);
+			PlayerTextDrawShow(playerid, g_ePlayerMenuData[playerid][g_eMenuNames][i]);
 		}
 	}
 	SelectTextDraw(playerid, -1);
@@ -346,7 +340,7 @@ public OnPlayerClickTextDraw(playerid, Text:clickedid)
 	}
 	else if ((clickedid == Text:INVALID_TEXT_DRAW && g_ePlayerMenuData[playerid][g_eMenuShown]))
 	{
-	    CallLocalFunction("OnModelSelectionResponse", "ddddd", playerid, g_ePlayerMenuData[playerid][g_eMenuExtra], 0, 0, MODEL_RESPONSE_CANCEL);
+	    CallLocalFunction("OnModelSelectionResponseInv", "ddddd", playerid, g_ePlayerMenuData[playerid][g_eMenuExtra], 0, 0, MODEL_RESPONSE_CANCEL);
 	    HideModelSelectionInventory(playerid);
 	}
 	return CallLocalFunction("MS_OnPlayerClickTextDraw", "dd", playerid, _:clickedid);
@@ -375,6 +369,7 @@ stock Menu_SetPage(playerid, page)
 		        if (g_ePlayerMenuData[playerid][g_eMenuAmounts][i - start] != PlayerText:INVALID_TEXT_DRAW)
 				{
     			    PlayerTextDrawHide(playerid, g_ePlayerMenuData[playerid][g_eMenuAmounts][i - start]);
+					PlayerTextDrawHide(playerid, g_ePlayerMenuData[playerid][g_eMenuNames][i - start]);
 				}
 			}
 			else
@@ -401,6 +396,11 @@ stock Menu_SetPage(playerid, page)
 
 					PlayerTextDrawHide(playerid, g_ePlayerMenuData[playerid][g_eMenuAmounts][i - start]);
 			        PlayerTextDrawShow(playerid, g_ePlayerMenuData[playerid][g_eMenuAmounts][i - start]);
+
+					PlayerTextDrawSetString(playerid, g_ePlayerMenuData[playerid][g_eMenuNames][i - start], g_ePlayerMenuName[playerid][i - start]);
+
+					PlayerTextDrawHide(playerid, g_ePlayerMenuData[playerid][g_eMenuNames][i - start]);
+			        PlayerTextDrawShow(playerid, g_ePlayerMenuData[playerid][g_eMenuNames][i - start]);
 				}
 			}
 		}
@@ -418,41 +418,36 @@ public OnPlayerClickPlayerTextDraw(playerid, PlayerText:playertextid)
 	{
 		return CallLocalFunction("MS_OnPlayerClickPlayerTextDraw", "ii", playerid, _:playertextid);
 	}
-    // if (playertextid == g_ePlayerMenuData[playerid][g_eMenuTextdraws][5])
-	// {
-    //     CallLocalFunction("OnModelSelectionResponse", "ddddd", playerid, g_ePlayerMenuData[playerid][g_eMenuExtra], 0, 0, MODEL_RESPONSE_CANCEL);
-    //     HideModelSelectionInventory(playerid);
-	// }
-		if (playertextid == g_ePlayerMenuData[playerid][g_eMenuTextdraws][2])
-		{
-			if (g_ePlayerMenuData[playerid][g_eMenuPage] == g_ePlayerMenuData[playerid][g_eMenuPages])
-			    return 0;
+	if (playertextid == g_ePlayerMenuData[playerid][g_eMenuTextdraws][2])
+	{
+		if (g_ePlayerMenuData[playerid][g_eMenuPage] == g_ePlayerMenuData[playerid][g_eMenuPages])
+			return 0;
 
-			else
-				Menu_SetPage(playerid, g_ePlayerMenuData[playerid][g_eMenuPage] + 1);
-		}
-		else if (playertextid == g_ePlayerMenuData[playerid][g_eMenuTextdraws][3])
-		{
-			if (g_ePlayerMenuData[playerid][g_eMenuPage] < 2)
-			    return 0;
+		else
+			Menu_SetPage(playerid, g_ePlayerMenuData[playerid][g_eMenuPage] + 1);
+	}
+	else if (playertextid == g_ePlayerMenuData[playerid][g_eMenuTextdraws][3])
+	{
+		if (g_ePlayerMenuData[playerid][g_eMenuPage] < 2)
+			return 0;
 
-	        else
-				Menu_SetPage(playerid, g_ePlayerMenuData[playerid][g_eMenuPage] - 1);
-		}
-		else for (new i = 0; i < MAX_ITEMPAGE; i ++)
+		else
+			Menu_SetPage(playerid, g_ePlayerMenuData[playerid][g_eMenuPage] - 1);
+	}
+	else for (new i = 0; i < MAX_ITEMPAGE; i ++)
+	{
+		if (g_ePlayerMenuData[playerid][g_eMenuItems][i] == playertextid)
 		{
-		    if (g_ePlayerMenuData[playerid][g_eMenuItems][i] == playertextid)
-			{
-		        new
-					index = (i + (g_ePlayerMenuData[playerid][g_eMenuPage] - 1) * MAX_ITEMPAGE),
-					extraid = g_ePlayerMenuData[playerid][g_eMenuExtra],
-					modelid = g_ePlayerMenuData[playerid][g_eMenuModels][index];
+			new
+				index = (i + (g_ePlayerMenuData[playerid][g_eMenuPage] - 1) * MAX_ITEMPAGE),
+				extraid = g_ePlayerMenuData[playerid][g_eMenuExtra],
+				modelid = g_ePlayerMenuData[playerid][g_eMenuModels][index];
 
-	            HideModelSelectionInventory(playerid);
-		        CallLocalFunction("OnModelSelectionResponse", "ddddd", playerid, extraid, index, modelid, MODEL_RESPONSE_SELECT);
-		        break;
-		    }
+			HideModelSelectionInventory(playerid);
+			CallLocalFunction("OnModelSelectionResponseInv", "ddddd", playerid, extraid, index, modelid, MODEL_RESPONSE_SELECT);
+			break;
 		}
+	}
 	return CallLocalFunction("MS_OnPlayerClickPlayerTextDraw", "dd", playerid, _:playertextid);
 }
 
@@ -474,4 +469,4 @@ public OnPlayerClickPlayerTextDraw(playerid, PlayerText:playertextid)
 forward MS_OnPlayerClickTextDraw(playerid, Text:clickedid);
 forward MS_OnPlayerClickPlayerTextDraw(playerid, PlayerText:playertextid);
 
-forward OnModelSelectionResponse(playerid, extraid, index, modelid, response);
+forward OnModelSelectionResponseInv(playerid, extraid, index, modelid, response);

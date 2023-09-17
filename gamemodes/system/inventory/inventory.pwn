@@ -17,7 +17,6 @@ enum e_InventoryItems
 	e_InventoryItem[32],
 	e_InventoryModel
 };
-
 new InventoryData[MAX_PLAYERS][MAX_INVENTORY][inventoryData];
 forward OnLoadInventory(playerid);
 forward OnInventoryAdd(playerid, itemid, timer);
@@ -229,8 +228,6 @@ stock Inventory_Add(playerid, item[], quantity = 1, timer = 0) //timer là dữ 
 		itemid = Inventory_GetFreeID(playerid);
 		if(itemid != -1)
 		{
-			printf("%s", item);
-			
 			InventoryData[playerid][itemid][invModel] = model;
 			InventoryData[playerid][itemid][invQuantity] = quantity;
 			strcpy(InventoryData[playerid][itemid][invItem], item, 32);
@@ -274,18 +271,21 @@ stock Inventory_Remove(playerid, item[], quantity = 1)
 
 			format(string, sizeof(string), "DELETE FROM `inventory` WHERE `ID` = '%d' AND `invID` = '%d'", PlayerSQLId, InventoryData[playerid][itemid][invID]);
 			mysql_function_query(MainPipeline, string, false, "OnQueryFinish", "i", SENDDATA_THREAD);
+			format(string, sizeof(string), "DELETE FROM `itemtimer` WHERE `ItemName` = '%s'", item);
+			mysql_function_query(MainPipeline, string, false, "OnQueryFinish", "i", SENDDATA_THREAD);
 		}
 		else if(quantity != -1 && InventoryData[playerid][itemid][invQuantity] > 0)
 		{
 			format(string, sizeof(string), "UPDATE `inventory` SET `invQuantity` = `invQuantity` - %d WHERE `ID` = '%d' AND `invID` = '%d'", quantity, PlayerSQLId, InventoryData[playerid][itemid][invID]);
 			mysql_function_query(MainPipeline, string, false, "OnQueryFinish", "i", SENDDATA_THREAD);
+			INVITEM_DELETE(playerid, item, quantity);
 		}
 		return 1;
 	}
 	return 0;
 }
 
-public OnModelSelectionResponse(playerid, extraid, index, modelid, response)
+public OnModelSelectionResponseInv(playerid, extraid, index, modelid, response)
 {
 	if((extraid == MODEL_SELECTION_INVENTORY && response) && InventoryData[playerid][index][invExists])
 	{
@@ -307,7 +307,8 @@ public OpenInventory(playerid)
 		return 0;
 	static
 		items[MAX_INVENTORY],
-		amounts[MAX_INVENTORY];
+		amounts[MAX_INVENTORY],
+		itemName[MAX_INVENTORY][32];
 
 	for(new i = 0; i < PlayerInfo[playerid][pCapacity]; i++)
 	{
@@ -315,20 +316,22 @@ public OpenInventory(playerid)
 		{
 			items[i] = InventoryData[playerid][i][invModel];
 			amounts[i] = InventoryData[playerid][i][invQuantity];
-
+			strcpy(itemName[i], InventoryData[playerid][i][invItem], 32);
 		}
 		else
 		{
 			items[i] = -1;
 			amounts[i] = -1;
+			strcpy(itemName[i], "_", 32);
 		}
 	}
 	for(new i = PlayerInfo[playerid][pCapacity]; i < 120; i++)
 	{
 		items[i] = -1;
 		amounts[i] = -1;
+		strcpy(itemName[i], "_", 32);
 	}
-	return ShowModelSelectionInventory(playerid, "Inventory", MODEL_SELECTION_INVENTORY, items, sizeof(items), 0.0, 0.0, 0.0, 1.0, -1, true, amounts);
+	return ShowModelSelectionInventory(playerid, MODEL_SELECTION_INVENTORY, items, sizeof(items), 0.0, 0.0, 0.0, 1.0, -1, true, amounts, itemName);
 }
 
 forward OnPlayerUseItem(playerid, itemid, name[]);
