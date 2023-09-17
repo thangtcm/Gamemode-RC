@@ -22,7 +22,7 @@ hook OnPlayerKeyStateChange(playerid, newkeys, oldkeys)
 						{
 							if(Inventory_HasItem(playerid, 0, 1))
 							{
-								if(timerdc == 0)
+								if(timerdc[playerid] == 0)
 								{
 									OnPlayerPickUpRock(playerid, i);
 								}
@@ -42,7 +42,7 @@ hook OnPlayerDisconnect(playerid, reason)
 {
 	if(GetPVarInt(playerid, #skinsavezxc) != 0)
 	{
-		timerdc = 0;
+		timerdc[playerid] = 0;
 		RemovePlayerAttachedObject(playerid, 8);
 		RemovePlayerAttachedObject(playerid, 9);
 		new skinc = GetPVarInt(playerid, #skinsavezxc);
@@ -64,8 +64,8 @@ public OnPlayerPickUpRock(playerid, rockIndex)
     if (RockStatus[rockIndex] == 1)
     {
     	RockStatus[rockIndex] = 0;
-		timerdc = 35+(random(40));
-		timerd = timerdc*1000;
+		timerdc[playerid] = 35+(random(40));
+		timerd = timerdc[playerid]*1000;
 		SetTimerEx("OnRockMined", timerd, false, "i", playerid);
 		SetTimerEx("StartCountTime", 1000, false, "i", playerid);
     	DestroyDynamicObject(RockObj[rockIndex]);
@@ -82,11 +82,11 @@ public StartCountTime(playerid)
 {
 	if(IsPlayerConnected(playerid))
 	{
-		if(timerdc > 0)
+		if(timerdc[playerid] > 0)
 		{
-			timerdc--;
+			timerdc[playerid]--;
 			new format_job[1280];
-			format(format_job, sizeof(format_job), "Ban dang dao da, vui long doi~p~ %d~w~ de dao xong.", timerdc);
+			format(format_job, sizeof(format_job), "Ban dang dao da, vui long doi~p~ %d~w~ de dao xong.", timerdc[playerid]);
 			SendClientTextDraw(playerid, format_job);
 			SetTimerEx("StartCountTime", 1000, false, "i", playerid);
 			ApplyAnimation(playerid,"PED","BIKE_elbowL",4.0,1,1,1,1,1);
@@ -99,25 +99,25 @@ public StartCountTime(playerid)
 			new format_job[1280];
 			switch(random(100))
 			{
-				case 0..34:
+				case 0..79:
 				{
 					format(format_job, sizeof(format_job), "~g~Ban da dao thanh cong va nhan duoc ~y~1 Da~g~.");
-					Inventory_Add(playerid, 0, 11);
+					Inventory_Add(playerid, 11, 1);
 				}
-				case 35..65:
+				case 80..90:
 				{
 					format(format_job, sizeof(format_job), "~g~Ban da dao thanh cong va nhan duoc ~b~1 Sat~g~.");
-					Inventory_Add(playerid, 0, 13);
+					Inventory_Add(playerid, 13, 1);
 				}
-				case 66..95:
+				case 91..99:
 				{
 					format(format_job, sizeof(format_job), "~g~Ban da dao thanh cong va nhan duoc ~b~1 Dong~g~.");
-					Inventory_Add(playerid, 0, 12);
+					Inventory_Add(playerid, 12, 1);
 				}
-				case 96..100:
+				case 100:
 				{
 					format(format_job, sizeof(format_job), "~g~Ban da dao thanh cong va nhan duoc ~r~1 VANG~g~.");
-					Inventory_Add(playerid, 0, 14);
+					Inventory_Add(playerid, 14, 1);
 				}
 			}
 			SendClientTextDraw(playerid, format_job);

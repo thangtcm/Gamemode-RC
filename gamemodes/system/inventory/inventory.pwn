@@ -328,7 +328,7 @@ public OnPlayerUseItem(playerid, itemid, name[])
 		PlayerInfo[playerid][pStrong] += 10;
 		ApplyAnimation(playerid, "FOOD", "EAT_Pizza", 5.0, 0, 1, 1, 1, 2000, 1);
 		PlayerPlaySound(playerid, 32200, 0.0, 0.0, 0.0);
-		Inventory_Remove(playerid, 7, 1);
+		Inventory_Remove(playerid, 6, 1);
 	}
 	else if(!strcmp(name, "Boombox", true))
 	{
@@ -352,7 +352,7 @@ public OnPlayerUseItem(playerid, itemid, name[])
 		PlayerInfo[playerid][pStrong] += 8;
 		ApplyAnimation(playerid, "FOOD", "EAT_Burger", 5.0, 0, 1, 1, 1, 2000, 1);
 		PlayerPlaySound(playerid, 32201, 0.0, 0.0, 0.0);
-		Inventory_Remove(playerid, 8, 1);
+		Inventory_Remove(playerid, 7, 1);
 	}
 	else if(!strcmp(name, "Bread", true))
 	{
@@ -360,7 +360,7 @@ public OnPlayerUseItem(playerid, itemid, name[])
 		PlayerInfo[playerid][pStrong] += 10;
 		ApplyAnimation(playerid, "FOOD", "EAT_Chicken", 5.0, 0, 1, 1, 1, 2000, 1);
 		PlayerPlaySound(playerid, 32200, 0.0, 0.0, 0.0);
-		Inventory_Remove(playerid, 9, 1);
+		Inventory_Remove(playerid, 8, 1);
 	}
 	else if(!strcmp(name, "Juice", true))
 	{
@@ -368,7 +368,7 @@ public OnPlayerUseItem(playerid, itemid, name[])
 		PlayerInfo[playerid][pStrong] += 8;
 		ApplyAnimation(playerid, "GANGS", "drnkbr_prtl", 2.67, 0, 1, 1, 1, 2000, 1);
 		PlayerPlaySound(playerid, 42600, 0.0, 0.0, 0.0);
-		Inventory_Remove(playerid, 10, 1);
+		Inventory_Remove(playerid, 9, 1);
 	}
 	else if(!strcmp(name, "Beer", true))
 	{
@@ -376,7 +376,7 @@ public OnPlayerUseItem(playerid, itemid, name[])
 		PlayerInfo[playerid][pStrong] += 8;
 		ApplyAnimation(playerid, "GANGS", "drnkbr_prtl_F", 2.67, 0, 1, 1, 1, 2000, 1);
 		PlayerPlaySound(playerid, 42600, 0.0, 0.0, 0.0);
-		Inventory_Remove(playerid, 11, 1);
+		Inventory_Remove(playerid, 10, 1);
 	}
 	else if(!strcmp(name, "Pickaxe", true))
 	{

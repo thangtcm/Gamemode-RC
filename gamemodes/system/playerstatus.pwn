@@ -188,7 +188,7 @@ hook OnPlayerConnect(playerid)
 	PlayerInfo[playerid][pDrink] = 50;
 	PlayerInfo[playerid][pStrong] = 25;
 	Load_TDProgressPlayer(playerid);
-	SetTimerEx("StartDownEatDrinkStrong", 150000, false, "i", playerid);
+	SetTimerEx("StartDownEatDrinkStrong", 60000, false, "i", playerid);
 	return 1;
 }
 forward StartDownEatDrinkStrong(playerid);
@@ -256,8 +256,8 @@ public StartDownEatDrinkStrong(playerid)
 			}
 		}
 	}
-	SetTimerEx("StartDownEatDrinkStrong", 150000, false, "i", playerid);
-	SetTimerEx("DownStrong", 150000, false, "i", playerid);
+	SetTimerEx("StartDownEatDrinkStrong", 60000, false, "i", playerid);
+	SetTimerEx("DownStrong", 60000, false, "i", playerid);
 	return 1;
 }
 
