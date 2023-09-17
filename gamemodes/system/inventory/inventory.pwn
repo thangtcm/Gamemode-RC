@@ -120,6 +120,7 @@ stock Inventory_GetItemID(playerid, index, amount = -1)
 		if(!InventoryData[playerid][i][invExists])
 			continue;
 		if(amount != -1 && InventoryData[playerid][i][invQuantity] >= amount && !strcmp(InventoryData[playerid][i][invItem], g_aInventoryItems[index][e_InventoryItem]))
+			return i;
 		if(!strcmp(InventoryData[playerid][i][invItem], g_aInventoryItems[index][e_InventoryItem]) && amount == -1) 
 			return i;
 	}
@@ -372,7 +373,7 @@ public OnPlayerUseItem(playerid, itemid, name[])
 	{
 		if(GetPVarInt(playerid, #campickaxe) != 1)
 		{
-			SendClientMessage(playerid, COLOR_LIGHTRED, "SERVER: Ban da trang bi Pickaxe thanh cong!");
+			SendClientMessage(playerid, COLOR_LIGHTRED, "SERVER: {ffffff}Ban da trang bi Pickaxe thanh cong!");
 			SetPVarInt(playerid, #campickaxe, 1);
 		}
 		else

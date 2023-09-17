@@ -1,4 +1,4 @@
-d:\Gamemode Samp\Gamemode-RC\gamemodes\system\inventory\inventory.pwn(3) : ôàòàëüíàÿ îøèáêà 100: íåâîçìîæíî ïðî÷åñòü ôàéë: "./system/inventory/inventoryitem.pwn"
+C:\Users\PHATBENTRE\Desktop\Gamemode-RC\Gamemode-RC\gamemodes\system\inventory\inventory.pwn(2) : ôàòàëüíàÿ îøèáêà 100: íåâîçìîæíî ïðî÷åñòü ôàéë: "./system/inventory/inventoryitem.pwn"
 
 Êîìïèëÿöèÿ îñòàíîâëåíà.
 

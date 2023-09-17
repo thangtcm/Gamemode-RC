@@ -24,7 +24,7 @@ Dialog:minerdialog(playerid, response, listitem, inputtext[])
 			}
 			case 1:
 			{
-				ShowPlayerDialog(playerid, muapickaxedialog, DIALOG_STYLE_MSGBOX, "Mua PICKAXE", "Ban co chac chan muon mua PICKAXE voi gia 500$?", "Dong y", "Khong");
+				Dialog_Show(playerid, muapickaxedialog, DIALOG_STYLE_MSGBOX, "Mua PICKAXE", "Ban co chac chan muon mua PICKAXE voi gia 500$?\n1 PICKAXE chi duoc su dung trong vong 60 phut", "Dong y", "Khong");
 			}
 		}
 	}
