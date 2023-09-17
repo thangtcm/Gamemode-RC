@@ -14,7 +14,6 @@ enum inventoryData
 
 enum e_InventoryItems
 {
-	e_InventoryId, //Index
 	e_InventoryItem[32],
 	e_InventoryModel
 };
@@ -23,17 +22,22 @@ new InventoryData[MAX_PLAYERS][MAX_INVENTORY][inventoryData];
 forward OnLoadInventory(playerid);
 forward OnInventoryAdd(playerid, itemid, index, timer);
 new const g_aInventoryItems[][e_InventoryItems] =
-{//	Index		Name				ObjectID
-	{0, 		"Pizza", 			2702},
-	{1, 		"Dien thoai", 		330},
-	{2, 		"GPS", 				18875},
-    {3, 		"Binh xang", 		1650},
-	{4, 		"Boombox", 			2226},
-	{5, 		"Radio", 			18868},
-	{6, 		"Hamburger", 		19094},
-	{7, 		"Bread", 			19579},
-	{8, 		"Juice", 			19562},
-	{9, 		"Beer", 			1544}
+{
+	{"Pickaxe", 2228},
+	{"Dien thoai", 330},
+	{"GPS", 18875},
+    {"Binh xang", 1650},
+	{"Boombox", 2226},
+	{"Radio", 18868},
+	{"Pizza", 2702},
+	{"Hamburger", 19094},
+	{"Bread", 19579},
+	{"Juice", 19562},
+	{"Beer", 1544},
+	{"Da", 905},
+	{"Dong", 2952},
+	{"Sat", 19845},
+	{"Vang", 19941}
 };
 
 hook OnPlayerConnect(playerid)
