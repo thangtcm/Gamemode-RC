@@ -101,19 +101,23 @@ public StartCountTime(playerid)
 			{
 				case 0..34:
 				{
-					format(format_job, sizeof(format_job), "~g~Ban da dao thanh cong va nhan duoc ~y~1 Stone~g~.");
+					format(format_job, sizeof(format_job), "~g~Ban da dao thanh cong va nhan duoc ~y~1 Da~g~.");
+					Inventory_Add(playerid, 0, 11);
 				}
 				case 35..65:
 				{
 					format(format_job, sizeof(format_job), "~g~Ban da dao thanh cong va nhan duoc ~b~1 Sat~g~.");
+					Inventory_Add(playerid, 0, 13);
 				}
 				case 66..95:
 				{
 					format(format_job, sizeof(format_job), "~g~Ban da dao thanh cong va nhan duoc ~b~1 Dong~g~.");
+					Inventory_Add(playerid, 0, 12);
 				}
 				case 96..100:
 				{
-					format(format_job, sizeof(format_job), "~g~Ban da dao thanh cong va nhan duoc ~r~1 GOLD~g~.");
+					format(format_job, sizeof(format_job), "~g~Ban da dao thanh cong va nhan duoc ~r~1 VANG~g~.");
+					Inventory_Add(playerid, 0, 14);
 				}
 			}
 			SendClientTextDraw(playerid, format_job);

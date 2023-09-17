@@ -33,7 +33,11 @@ new const g_aInventoryItems[][e_InventoryItems] =
 	{"Hamburger", 19094},
 	{"Bread", 19579},
 	{"Juice", 19562},
-	{"Beer", 1544}
+	{"Beer", 1544},
+	{"Da", 905},
+	{"Dong", 2952},
+	{"Sat", 19845},
+	{"Vang", 19941}
 };
 
 hook OnPlayerConnect(playerid)
@@ -380,6 +384,22 @@ public OnPlayerUseItem(playerid, itemid, name[])
 		{
 			SendErrorMessage(playerid, "Ban da trang bi Pickaxe roi!!");
 		}
+	}
+	else if(!strcmp(name, "Da", true))
+	{
+		SendErrorMessage(playerid, " Ban chi co the dem da di ban, khong the su dung.");
+	}
+	else if(!strcmp(name, "Dong", true))
+	{
+		SendErrorMessage(playerid, " Ban chi co the dem dong di che tao gi do hoac ban, khong the su dung.");
+	}
+	else if(!strcmp(name, "Sat", true))
+	{
+		SendErrorMessage(playerid, " Ban chi co the dem sat di che tao gi do hoac ban, khong the su dung.");
+	}
+	else if(!strcmp(name, "Vang", true))
+	{
+		SendErrorMessage(playerid, " Ban chi co the dem dong di doi sang tien Credit hoac ban, khong the su dung.");
 	}
 	return 1;
 }
