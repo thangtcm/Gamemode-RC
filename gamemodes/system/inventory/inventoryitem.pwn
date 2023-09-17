@@ -2,7 +2,7 @@
 
 enum itemTimerInfo{
     Id,
-    ItemId, // ItemId của Vật Phẩm g_aInventoryItems
+    ItemName[32],
     Quantity,
     Timer,
     PlayerId,
@@ -38,7 +38,7 @@ public OnLoadItemTimer(playerid)
 	{
         ItemTimerData[playerid][i][Exists] = true;
 		cache_get_field_content(i, "Id", tmp, MainPipeline); ItemTimerData[playerid][i][Id] = strval(tmp);
-        cache_get_field_content(i, "ItemId", tmp, MainPipeline); ItemTimerData[playerid][i][ItemId] = strval(tmp);
+        cache_get_field_content(i, "ItemName", ItemTimerData[playerid][i][ItemName], MainPipeline, 32);
 		cache_get_field_content(i, "Timer", tmp, MainPipeline); ItemTimerData[playerid][i][Timer] = strval(tmp);
         cache_get_field_content(i, "Quantity", tmp, MainPipeline); ItemTimerData[playerid][i][Quantity] = strval(tmp);
         printf("timer %d", gettime());
@@ -49,20 +49,20 @@ public OnLoadItemTimer(playerid)
     myItemTimer[playerid] = repeat ItemTimer(playerid);
 }
 
-stock ITEMTIMER_ADD(playerid, itemId, quantity, timer)
+stock ITEMTIMER_ADD(playerid, itemName[], quantity, timer)
 {
 	new string[2048], index = ItemTimer_GetFreeID(playerid);
     if(index == -1) return SendClientMessageEx(playerid, COLOR_RED, "Item gioi han thoi cua ban da het slot luu tru");
-    ItemTimerData[playerid][index][ItemId] = itemId,
+    strcpy(ItemTimerData[playerid][index][ItemName], itemName, 32),
     ItemTimerData[playerid][index][Quantity] = quantity,
     ItemTimerData[playerid][index][Timer] = gettime() + (timer * 60);
     format(string, sizeof(string), "INSERT INTO `itemtimer` (\
-		`ItemId`, \
+		`ItemName`, \
 		`Timer`, \
         `Quantity`, \
 		`PlayerId`)\
 		VALUES ('%d', '%d', '%d', '%d')", 
-		itemId,
+		g_mysql_ReturnEscaped(ItemTimerData[playerid][index][ItemName], MainPipeline),
 		ItemTimerData[playerid][index][Timer],
         quantity,
 		GetPlayerSQLId(playerid)
@@ -87,7 +87,7 @@ stock ITEMTIMER_DELETE(playerid, index)
     mysql_function_query(MainPipeline, string, false, "OnQueryFinish", "i", SENDDATA_THREAD);
     ItemTimerData[playerid][index][Id] = 0;
     ItemTimerData[playerid][index][Exists] = false;
-    Inventory_SendRemoveTimer(playerid, ItemTimerData[playerid][index][ItemId], ItemTimerData[playerid][index][Quantity]);
+    Inventory_SendRemoveTimer(playerid, ItemTimerData[playerid][index][ItemName], ItemTimerData[playerid][index][Quantity]);
 	return 1;
 }
 

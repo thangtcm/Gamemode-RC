@@ -20,7 +20,7 @@ hook OnPlayerKeyStateChange(playerid, newkeys, oldkeys)
 					{
 						if(GetPlayerSkin(playerid) == 27)
 						{
-							if(Inventory_HasItem(playerid, 0, 1))
+							if(Inventory_HasItem(playerid, "Pickaxe", 1))
 							{
 								if(timerdc[playerid] == 0)
 								{
@@ -102,22 +102,22 @@ public StartCountTime(playerid)
 				case 0..79:
 				{
 					format(format_job, sizeof(format_job), "~g~Ban da dao thanh cong va nhan duoc ~y~1 Da~g~.");
-					Inventory_Add(playerid, 11, 1);
+					Inventory_Add(playerid, "Da", 1);
 				}
 				case 80..90:
 				{
 					format(format_job, sizeof(format_job), "~g~Ban da dao thanh cong va nhan duoc ~b~1 Sat~g~.");
-					Inventory_Add(playerid, 13, 1);
+					Inventory_Add(playerid, "Sat", 1);
 				}
 				case 91..99:
 				{
 					format(format_job, sizeof(format_job), "~g~Ban da dao thanh cong va nhan duoc ~b~1 Dong~g~.");
-					Inventory_Add(playerid, 12, 1);
+					Inventory_Add(playerid, "Dong", 1);
 				}
 				case 100:
 				{
 					format(format_job, sizeof(format_job), "~g~Ban da dao thanh cong va nhan duoc ~r~1 VANG~g~.");
-					Inventory_Add(playerid, 14, 1);
+					Inventory_Add(playerid, "Vang", 1);
 				}
 			}
 			SendClientTextDraw(playerid, format_job);

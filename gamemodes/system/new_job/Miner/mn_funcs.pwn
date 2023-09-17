@@ -35,10 +35,10 @@ Dialog:muapickaxedialog(playerid, response, listitem, inputtext[])
 {
 	if(response)
 	{
-		if(!Inventory_HasItem(playerid, 0))
+		if(!Inventory_HasItem(playerid, "Pickaxe"))
 		{
 			GivePlayerMoney(playerid, -500);
-			Inventory_Add(playerid, 0, 1, 60);
+			Inventory_Add(playerid, "Pickaxe", 1, 60);
 			SendClientMessage(playerid, COLOR_LIGHTRED, "SERVER: {ffffff}Ban da mua thanh cong Pickaxe, hay di tim khoang san de dao");
 		}
 		else return SendErrorMessage(playerid, "Ban da mua Pickaxe roi, hay di tim nhung khoang san de dao");
