@@ -14,6 +14,7 @@ enum inventoryData
 
 enum e_InventoryItems
 {
+	e_InventoryId, //Index
 	e_InventoryItem[32],
 	e_InventoryModel
 };
@@ -22,22 +23,33 @@ new InventoryData[MAX_PLAYERS][MAX_INVENTORY][inventoryData];
 forward OnLoadInventory(playerid);
 forward OnInventoryAdd(playerid, itemid, index, timer);
 new const g_aInventoryItems[][e_InventoryItems] =
-{
-	{"Pizza", 2702},
-	{"Dien thoai", 330},
-	{"GPS", 18875},
-    {"Binh xang", 1650},
-	{"Boombox", 2226},
-	{"Radio", 18868},
-	{"Hamburger", 19094},
-	{"Bread", 19579},
-	{"Juice", 19562},
-	{"Beer", 1544}
+{//	Index		Name				ObjectID
+	{0, 		"Pizza", 			2702},
+	{1, 		"Dien thoai", 		330},
+	{2, 		"GPS", 				18875},
+    {3, 		"Binh xang", 		1650},
+	{4, 		"Boombox", 			2226},
+	{5, 		"Radio", 			18868},
+	{6, 		"Hamburger", 		19094},
+	{7, 		"Bread", 			19579},
+	{8, 		"Juice", 			19562},
+	{9, 		"Beer", 			1544}
 };
 
 hook OnPlayerConnect(playerid)
 {
 	PlayerInfo[playerid][pGiveItem] = INVALID_PLAYER_ID;
+	return 1;
+}
+
+hook OnPlayerKeyStateChange(playerid, newkeys, oldkeys)
+{
+	if(newkeys == 0) return 1;
+	else if (PRESSED(KEY_CTRL_BACK))
+    {
+		return cmd_inv(playerid, "\1"); 
+	}
+	return 1;
 }
 
 stock Inventory_Load(playerid)
@@ -52,11 +64,11 @@ public OnLoadInventory(playerid)
 {
     new i, rows, fields, tmp[128];
     cache_get_data(rows, fields, MainPipeline);
-	for(new index = 0; index != MAX_INVENTORY; index++)
+	for(new itemid = 0; itemid != MAX_INVENTORY; itemid++)
 	{
-		InventoryData[playerid][index][invExists] = false;
-		InventoryData[playerid][index][invModel] = 0;
-		InventoryData[playerid][index][invQuantity] = 0;
+		InventoryData[playerid][itemid][invExists] = false;
+		InventoryData[playerid][itemid][invModel] = 0;
+		InventoryData[playerid][itemid][invQuantity] = 0;
 	}
     while(i < rows)
     {
@@ -119,6 +131,7 @@ stock Inventory_GetItemID(playerid, index, amount = -1)
 		if(!InventoryData[playerid][i][invExists])
 			continue;
 		if(amount != -1 && InventoryData[playerid][i][invQuantity] >= amount && !strcmp(InventoryData[playerid][i][invItem], g_aInventoryItems[index][e_InventoryItem]))
+			return i;
 		if(!strcmp(InventoryData[playerid][i][invItem], g_aInventoryItems[index][e_InventoryItem]) && amount == -1) 
 			return i;
 	}

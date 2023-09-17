@@ -2,7 +2,7 @@
 
 enum itemTimerInfo{
     Id,
-    ItemId,
+    ItemId, // ItemId của Vật Phẩm g_aInventoryItems
     Quantity,
     Timer,
     PlayerId,
@@ -89,6 +89,12 @@ stock ITEMTIMER_DELETE(playerid, index)
     ItemTimerData[playerid][index][Exists] = false;
     Inventory_SendRemoveTimer(playerid, ItemTimerData[playerid][index][ItemId], ItemTimerData[playerid][index][Quantity]);
 	return 1;
+}
+
+stock INVITEM_DELETE(playerid, itemId, amount = -1)
+{
+    
+    return 1;
 }
 
 stock ItemTimer_GetFreeID(playerid)

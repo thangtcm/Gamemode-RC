@@ -1,6 +1,8 @@
-C:\Users\PHATBENTRE\Desktop\Gamemode-RC\Gamemode-RC\pawno\include\eInventory.inc(133) : èäåíòèôèêàòîð íå èñïîëüçóåòñÿ: "header"
-C:\Users\PHATBENTRE\Desktop\Gamemode-RC\Gamemode-RC\pawno\include\eInventory.inc(426) : íåïðàâèëüíàÿ òàáóëÿöèÿ
-C:\Users\PHATBENTRE\Desktop\Gamemode-RC\Gamemode-RC\pawno\include\eInventory.inc(456) : íåïðàâèëüíàÿ òàáóëÿöèÿ
+D:\Gamemode Samp\Gamemode-RC\pawno\include\eInventory.inc(133) : èäåíòèôèêàòîð íå èñïîëüçóåòñÿ: "header"
+D:\Gamemode Samp\Gamemode-RC\pawno\include\eInventory.inc(426) : íåïðàâèëüíàÿ òàáóëÿöèÿ
+D:\Gamemode Samp\Gamemode-RC\pawno\include\eInventory.inc(456) : íåïðàâèëüíàÿ òàáóëÿöèÿ
+./system/inventory/inventoryitem.pwn(52) : ïðåäóïðåæäåíèå 219: ïåðåìåííàÿ "pInvId" óæå îáúÿâëåíà â áîëåå ãëîáàëüíîé çîíå âèäèìîñòè
+./system/inventory/inventoryitem.pwn(52) : èäåíòèôèêàòîð íå èñïîëüçóåòñÿ: "pInvId"
 ./main/mysql.pwn(3094) : èäåíòèôèêàòîðó ïðèñâîåíî çíà÷åíèå, íî îí íå èñïîëüçóåòñÿ: "str"
 ./main/variables.pwn(1454) : èäåíòèôèêàòîð íå èñïîëüçóåòñÿ: "BanVuKhi"
 ./main/variables.pwn(1450) : èäåíòèôèêàòîð íå èñïîëüçóåòñÿ: "BodyguardActor"
@@ -13,7 +15,9 @@ C:\Users\PHATBENTRE\Desktop\Gamemode-RC\Gamemode-RC\pawno\include\eInventory.inc
 ./main/variables.pwn(1451) : èäåíòèôèêàòîð íå èñïîëüçóåòñÿ: "TaxiActor"
 ./main/variables.pwn(1453) : èäåíòèôèêàòîð íå èñïîëüçóåòñÿ: "ThuocPhien"
 ./main/variables.pwn(2358) : èäåíòèôèêàòîð íå èñïîëüçóåòñÿ: "TruckerCar"
-C:\Users\PHATBENTRE\Desktop\Gamemode-RC\Gamemode-RC\pawno\include\eInventory.inc(74) : èäåíòèôèêàòîð íå èñïîëüçóåòñÿ: "g_arrVehicleColors"
+D:\Gamemode Samp\Gamemode-RC\pawno\include\eInventory.inc(74) : èäåíòèôèêàòîð íå èñïîëüçóåòñÿ: "g_arrVehicleColors"
 ./main/variables.pwn(1446) : èäåíòèôèêàòîð íå èñïîëüçóåòñÿ: "npcvukhizz"
 Pawn compiler 3.2.3664	 	 	Copyright (c) 1997-2016, ITB CompuPhase
 
+
+Ïðåäóïðåæäåíèé:1.
