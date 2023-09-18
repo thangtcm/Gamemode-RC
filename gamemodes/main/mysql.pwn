@@ -364,6 +364,7 @@ public OnQueryFinish(resultid, extraid, handleid)
 					cache_get_field_content(row,  "Drink", szResult, MainPipeline); PlayerInfo[extraid][pDrink] = strval(szResult);
 					cache_get_field_content(row,  "Strong", szResult, MainPipeline); PlayerInfo[extraid][pStrong] = strval(szResult);
 					cache_get_field_content(row,  "SoLanMiner", szResult, MainPipeline); PlayerInfo[extraid][pSoLanMiner] = strval(szResult);
+					cache_get_field_content(row,  "MinerLevel", szResult, MainPipeline); PlayerInfo[extraid][pMinerLevel] = strval(szResult);
 
 
 
@@ -2975,6 +2976,7 @@ stock g_mysql_SaveAccount(playerid)
     SavePlayerInteger(query, GetPlayerSQLId(playerid), "Drink", PlayerInfo[playerid][pDrink]);
     SavePlayerInteger(query, GetPlayerSQLId(playerid), "Strong", PlayerInfo[playerid][pStrong]);
     SavePlayerInteger(query, GetPlayerSQLId(playerid), "SoLanMiner", PlayerInfo[playerid][pSoLanMiner]);
+    SavePlayerInteger(query, GetPlayerSQLId(playerid), "MinerLevel", PlayerInfo[playerid][pMinerLevel]);
 
 	SavePlayerString(query, GetPlayerSQLId(playerid), "BannedBy", PlayerInfo[playerid][pBannedBy]);
 	SavePlayerString(query, GetPlayerSQLId(playerid), "ReasonBanned", PlayerInfo[playerid][pReasonBanned]);

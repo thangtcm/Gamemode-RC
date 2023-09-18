@@ -347,6 +347,7 @@ public OnPlayerUseItem(playerid, itemid, name[])
 		PlayerInfo[playerid][pStrong] += 10;
 		ApplyAnimation(playerid, "FOOD", "EAT_Pizza", 5.0, 0, 1, 1, 1, 2000, 1);
 		PlayerPlaySound(playerid, 32200, 0.0, 0.0, 0.0);
+		Inventory_Remove(playerid, "Pizza", 1);
 	}
 	else if(!strcmp(name, "Boombox", true))
 	{

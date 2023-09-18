@@ -182,11 +182,10 @@ hook OnPlayerUpdate(playerid)
 	UpdateProgressStat(playerid);
 	return 1;
 }
+
+
 hook OnPlayerConnect(playerid)
 {
-	PlayerInfo[playerid][pEat] = 50;
-	PlayerInfo[playerid][pDrink] = 50;
-	PlayerInfo[playerid][pStrong] = 25;
 	Load_TDProgressPlayer(playerid);
 	SetTimerEx("StartDownEatDrinkStrong", 100000, false, "i", playerid);
 	return 1;
@@ -200,7 +199,7 @@ public StartDownEatDrinkStrong(playerid)
 		{
 			PlayerInfo[playerid][pEat]--;
 		}
-		else if(PlayerInfo[playerid][pEat] >= 10)
+		else if(PlayerInfo[playerid][pEat] >= 1)
 		{
 			PlayerInfo[playerid][pEat]--;
 			if(GetPVarInt(playerid, #HPDown) == 0)
@@ -213,7 +212,7 @@ public StartDownEatDrinkStrong(playerid)
 		{
 			PlayerInfo[playerid][pDrink]--;
 		}
-		else if(PlayerInfo[playerid][pDrink] >= 10)
+		else if(PlayerInfo[playerid][pDrink] >= 1)
 		{
 			PlayerInfo[playerid][pDrink]--;
 			if(GetPVarInt(playerid, #HPDown) == 0)
@@ -230,7 +229,7 @@ public StartDownEatDrinkStrong(playerid)
 			PlayerInfo[playerid][pEat]--;
 			PlayerInfo[playerid][pEat]--;
 		}
-		else if(PlayerInfo[playerid][pEat] >= 10)
+		else if(PlayerInfo[playerid][pEat] >= 1)
 		{
 			PlayerInfo[playerid][pEat]--;
 			PlayerInfo[playerid][pEat]--;
@@ -245,7 +244,7 @@ public StartDownEatDrinkStrong(playerid)
 			PlayerInfo[playerid][pDrink]--;
 			PlayerInfo[playerid][pDrink]--;
 		}
-		else if(PlayerInfo[playerid][pDrink] >= 10)
+		else if(PlayerInfo[playerid][pDrink] >= 1)
 		{
 			PlayerInfo[playerid][pDrink]--;
 			PlayerInfo[playerid][pDrink]--;
