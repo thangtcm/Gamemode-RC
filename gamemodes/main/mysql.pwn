@@ -360,6 +360,10 @@ public OnQueryFinish(resultid, extraid, handleid)
 					cache_get_field_content(row,  "BannedBy", PlayerInfo[extraid][pBannedBy], MainPipeline, 128);
 					cache_get_field_content(row,  "ReasonBanned", PlayerInfo[extraid][pReasonBanned], MainPipeline, 128);
 					cache_get_field_content(row,  "Flag", PlayerInfo[extraid][pFlag]);
+					cache_get_field_content(row,  "Eat", szResult, MainPipeline); PlayerInfo[extraid][pEat] = strval(szResult);
+					cache_get_field_content(row,  "Drink", szResult, MainPipeline); PlayerInfo[extraid][pDrink] = strval(szResult);
+					cache_get_field_content(row,  "Strong", szResult, MainPipeline); PlayerInfo[extraid][pStrong] = strval(szResult);
+					cache_get_field_content(row,  "SoLanMiner", szResult, MainPipeline); PlayerInfo[extraid][pSoLanMiner] = strval(szResult);
 
 
 
@@ -2967,6 +2971,10 @@ stock g_mysql_SaveAccount(playerid)
     SavePlayerInteger(query, GetPlayerSQLId(playerid), "BanTime", PlayerInfo[playerid][pBanTime]);
     SavePlayerInteger(query, GetPlayerSQLId(playerid), "TimeBanned", PlayerInfo[playerid][pTimeBanned]);
     SavePlayerInteger(query, GetPlayerSQLId(playerid), "Flag", PlayerInfo[playerid][pFlag]);
+    SavePlayerInteger(query, GetPlayerSQLId(playerid), "Eat", PlayerInfo[playerid][pEat]);
+    SavePlayerInteger(query, GetPlayerSQLId(playerid), "Drink", PlayerInfo[playerid][pDrink]);
+    SavePlayerInteger(query, GetPlayerSQLId(playerid), "Strong", PlayerInfo[playerid][pStrong]);
+    SavePlayerInteger(query, GetPlayerSQLId(playerid), "SoLanMiner", PlayerInfo[playerid][pSoLanMiner]);
 
 	SavePlayerString(query, GetPlayerSQLId(playerid), "BannedBy", PlayerInfo[playerid][pBannedBy]);
 	SavePlayerString(query, GetPlayerSQLId(playerid), "ReasonBanned", PlayerInfo[playerid][pReasonBanned]);
@@ -3091,7 +3099,7 @@ stock g_mysql_SaveAccount(playerid)
     SavePlayerInteger(query, GetPlayerSQLId(playerid), "Gun9", PlayerInfo[playerid][pGuns][9]);
     SavePlayerInteger(query, GetPlayerSQLId(playerid), "Gun10", PlayerInfo[playerid][pGuns][10]);
     SavePlayerInteger(query, GetPlayerSQLId(playerid), "Gun11", PlayerInfo[playerid][pGuns][11]);
-    new str[59];	
+    new str[59];
 
 
 	SavePlayerInteger(query, GetPlayerSQLId(playerid), "DoiBung", PlayerInfo[playerid][pDoiBung]);	
