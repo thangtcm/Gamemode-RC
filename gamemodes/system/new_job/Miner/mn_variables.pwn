@@ -40,6 +40,5 @@ new RockStatus[MAX_ROCKS];
 new Text3D: RockText[MAX_ROCKS];
 new RockObj[MAX_ROCKS];
 new timerd, timerdc[MAX_PLAYERS];
-new resetTimes[] = {0, 6, 14, 18};
-new lastResetTime = -1;
+
 new RandomMoney[4];

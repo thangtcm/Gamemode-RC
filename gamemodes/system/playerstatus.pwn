@@ -155,17 +155,17 @@ stock Load_TDProgressPlayer(playerid)
 }
 hook OnPlayerUpdate(playerid)
 {
-	if(PlayerInfo[playerid][pEat] < 0)
+	if(PlayerInfo[playerid][pEat] < 1)
 	{
-		PlayerInfo[playerid][pEat] = 0;
+		PlayerInfo[playerid][pEat] = 1;
 	}
-	if(PlayerInfo[playerid][pDrink] < 0)
+	if(PlayerInfo[playerid][pDrink] < 1)
 	{
-		PlayerInfo[playerid][pDrink] = 0;
+		PlayerInfo[playerid][pDrink] = 1;
 	}
-	if(PlayerInfo[playerid][pStrong] < 0)
+	if(PlayerInfo[playerid][pStrong] < 1)
 	{
-		PlayerInfo[playerid][pStrong] = 0;
+		PlayerInfo[playerid][pStrong] = 1;
 	}
 	if(PlayerInfo[playerid][pEat] > 100)
 	{
@@ -199,7 +199,7 @@ public StartDownEatDrinkStrong(playerid)
 		{
 			PlayerInfo[playerid][pEat]--;
 		}
-		else if(PlayerInfo[playerid][pEat] >= 1)
+		else if(PlayerInfo[playerid][pEat] >= 2)
 		{
 			PlayerInfo[playerid][pEat]--;
 			if(GetPVarInt(playerid, #HPDown) == 0)
@@ -212,7 +212,7 @@ public StartDownEatDrinkStrong(playerid)
 		{
 			PlayerInfo[playerid][pDrink]--;
 		}
-		else if(PlayerInfo[playerid][pDrink] >= 1)
+		else if(PlayerInfo[playerid][pDrink] >= 2)
 		{
 			PlayerInfo[playerid][pDrink]--;
 			if(GetPVarInt(playerid, #HPDown) == 0)
@@ -229,7 +229,7 @@ public StartDownEatDrinkStrong(playerid)
 			PlayerInfo[playerid][pEat]--;
 			PlayerInfo[playerid][pEat]--;
 		}
-		else if(PlayerInfo[playerid][pEat] >= 1)
+		else if(PlayerInfo[playerid][pEat] >= 0)
 		{
 			PlayerInfo[playerid][pEat]--;
 			PlayerInfo[playerid][pEat]--;
@@ -244,7 +244,7 @@ public StartDownEatDrinkStrong(playerid)
 			PlayerInfo[playerid][pDrink]--;
 			PlayerInfo[playerid][pDrink]--;
 		}
-		else if(PlayerInfo[playerid][pDrink] >= 1)
+		else if(PlayerInfo[playerid][pDrink] >= 0)
 		{
 			PlayerInfo[playerid][pDrink]--;
 			PlayerInfo[playerid][pDrink]--;

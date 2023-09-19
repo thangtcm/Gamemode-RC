@@ -11,15 +11,15 @@ new MonitorPizzaCar[MAX_PLAYERS];
 new TimeExitsPizzaCar[MAX_PLAYERS];
 
 new Float:pizza_postion[9][3] = {
-{1002.9375,-1418.3210,13.5831},
-{2075.4326,-1082.1317,25.5239},
-{2061.1113,-1075.3915,25.6744},
-{1276.7023,320.7425,19.5547},
-{842.3666,-1595.3340,13.5469},
-{933.4890,-1805.1810,13.8434},
-{568.3357,-1131.0737,50.6797},
-{292.9550,-1428.6537,14.0000},
-{2332.1865,75.5173,26.6210}
+{1372.5529,405.4841,19.9555},
+{1475.7509,373.7871,19.6563},
+{1233.3397,224.7737,19.5547},
+{1299.1719,140.9764,20.4074},
+{1234.5676,359.0692,19.5547},
+{1213.0397,224.6016,19.5547},
+{1323.5597,374.9776,19.5625},
+{1244.1217,203.8483,19.6454},
+{1394.6504,400.6509,19.7578}
 };
 
 forward MonitorPizzaCarPlayer(playerid);
@@ -27,7 +27,7 @@ forward MonitorPizzaCarPlayer(playerid);
 CMD:laybanh(playerid,params[]) {
 	if(IsPlayerInAnyVehicle(playerid)) return SendErrorMessage(playerid, " Ban khong the lam dieu nay khi o tren xe.");
 	if(BanhPizzaInFoot[playerid] == 1) return SendErrorMessage(playerid, " Ban da cam banh tren tay khong the lay them.");
-	if(IsPlayerInRangeOfPoint(playerid, 5, 2098.5432,-1800.6925,13.3889)) {
+	if(IsPlayerInRangeOfPoint(playerid, 5, 1362.9523,253.9632,19.5669)) {
         SetPlayerAttachedObject( playerid, PIZZA_INDEX, 1582, 1, 0.002953, 0.469660, -0.009797, 269.851104, 88.443557, 0.000000, 0.804894, 1.000000, 0.822361 );                      
         SetPlayerSpecialAction(playerid, SPECIAL_ACTION_CARRY);
         BanhPizzaInFoot[playerid] = 1;
@@ -53,16 +53,16 @@ CMD:pizza(playerid,params[]) {
 stock GetNameDeliverPizza(iddeliver) {
 	new name[32];
 	switch(iddeliver) {
-		case 0: name = "David de Gea";
-		case 1: name = "Eric Bailly";
-		case 2: name = "Paul Pogba";
-		case 3: name = "Edinson Cavani";
-		case 4: name = "Marcus Rashford";
-		case 5: name = "Bruno Fernandes";
-		case 6: name = "Scott McTominay";
-		case 7: name = "Nemanja Matic";
-		case 8: name = "Juan Mata";
-		case 9: name = "Sergio Romero";
+		case 0: name = "Chirs Fat";
+		case 1: name = "Stanley Taellious";
+		case 2: name = "Jacob Sylvester";
+		case 3: name = "Deontray Travis";
+		case 4: name = "Travis Scott";
+		case 5: name = "Cristiano Ronaldo";
+		case 6: name = "Roberto Carlos";
+		case 7: name = "David Beckham";
+		case 8: name = "Leoniel Messi";
+		case 9: name = "Sergio Ramos";
 	}
 	return name;
 }
@@ -107,9 +107,10 @@ hook OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
         	if(!response) return 1;
         	switch(listitem) {
         		case 0: {
-        			if(!IsPlayerInRangeOfPoint(playerid, 5, 2098.5432,-1800.6925,13.3889)) return SendErrorMessage(playerid, " Ban khong dung gan noi lam viec Pizza."); 
+        			if(!IsPlayerInRangeOfPoint(playerid, 5, 1362.9523,253.9632,19.5669)) return SendErrorMessage(playerid, " Ban khong dung gan noi lam viec Pizza."); 
+        			if(PlayerInfo[playerid][pStrong] <= 1) return SendErrorMessage(playerid, " Ban da qua met moi khong the lam viec."); 
         			if(LamViec[playerid] == 0) {
-	    				SetPlayerPos(playerid, 2113.1775,-1772.8745,12.9609);
+	    				SetPlayerPos(playerid, 1380.8643,270.4954,21.9751);
 		    			PizzaCar[playerid] = CreateVehicle(448, 2113.1775,-1772.8745,12.9609 , 0 , random(255), random(255), 1000, 0);
 	        			PutPlayerInVehicle(playerid, PizzaCar[playerid] ,0);
 	       				SetPVarInt(playerid, "IsDaThue", 1);
@@ -119,7 +120,7 @@ hook OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 	        			PizzaTextInfo[playerid] = Create3DTextLabel(zzstr, COLOR_WHITE, 0.0, 0.0, 0.0, 50.0, 0, 1);
            				Attach3DTextLabelToVehicle(PizzaTextInfo[playerid], PizzaCar[playerid], 0.0, 0.0, 2.0); // Attaching Text Label To Vehicle.
            				SendClientMessageEx(playerid,COLOR_VANG,"Ban da bat dau lam viec 'Pizza Boy' hay di den pickup lay banh va chat len xe (Press 'Y' de lay banh/cat banh vao xe)");
-	    				SendClientMessageEx(playerid,COLOR_VANG,"/pizza giaobanh de bat dau di giao");
+	    				SendClientMessageEx(playerid,COLOR_VANG,"Bam 'N' chon giao banh de bat dau di giao");
 	    				SetPVarInt(playerid, #danglamviec, 1);
 	        			return 1;
 	    			}
@@ -145,7 +146,8 @@ hook OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
     		        if(LamViec[playerid] != 1 || LamViec[playerid] == 0 && LamViec[playerid] != 1) return SendErrorMessage(playerid, " Ban chua lam cong viec Pizza.");
 	    			if(IsPlayerInAnyVehicle(playerid)) return SendErrorMessage(playerid, " Ban khong the lam dieu nay khi o tren xe.");
 					if(BanhPizzaInFoot[playerid] == 1) return SendErrorMessage(playerid, " Ban da cam banh tren tay khong the lay them.");
-					if(IsPlayerInRangeOfPoint(playerid, 5, 2098.5432,-1800.6925,13.3889)) {
+					if(PlayerInfo[playerid][pStrong] <= 1) return SendErrorMessage(playerid, " Ban da qua met moi khong the lam viec."); 
+					if(IsPlayerInRangeOfPoint(playerid, 5, 1362.9523,253.9632,19.5669)) {
         				SetPlayerAttachedObject( playerid, PIZZA_INDEX, 1582, 1, 0.002953, 0.469660, -0.009797, 269.851104, 88.443557, 0.000000, 0.804894, 1.000000, 0.822361 );                      
         				SetPlayerSpecialAction(playerid, SPECIAL_ACTION_CARRY);
         				BanhPizzaInFoot[playerid] = 1;
@@ -158,6 +160,7 @@ hook OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
         		}
         		case 2: {
         			if(!IsPlayerInAnyVehicle(playerid)) return SendErrorMessage(playerid, " Ban khong o tren xe [Pizza].");
+        			if(PlayerInfo[playerid][pStrong] <= 1) return SendErrorMessage(playerid, " Ban da qua met moi khong the lam viec."); 
 					if(GetPVarInt(playerid, "giaobanh_Pizza") == 1) return SendErrorMessage(playerid, " Ban dang giao banh, hay giao xong roi hay tiep tuc.");
 					if(LamViec[playerid] != 1) return SendErrorMessage(playerid, " Ban khong lam viec [PIZZA].");
 					if(GetPlayerVehicleID(playerid) != PizzaCar[playerid] ) return SendErrorMessage(playerid, " Ban khong o tren xe pizza ban da thue.");
@@ -214,8 +217,16 @@ hook OnPlayerEnterCheckpoint(playerid) {
 	return 1;
 }
 hook OnPlayerKeyStateChange(playerid, newkeys, oldkeys) {
+	if(IsPlayerInRangeOfPoint(playerid, 5, 1362.9523,253.9632,19.5669))
+	{
+	    if(PRESSED(KEY_CTRL_BACK))
+	    {
+	    	return cmd_pizza(playerid, "/1"); 
+	    }
+	}
 	if(LamViec[playerid] == 1)
     {
+
     	if(newkeys == KEY_YES)
 	    { 
 	    	if(!IsPlayerInRangeOfVehicle(playerid, PizzaCar[playerid], 3)) return 1;

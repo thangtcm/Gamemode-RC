@@ -1,11 +1,20 @@
 #include <YSI_Coding\y_hooks>
 hook OnPlayerKeyStateChange(playerid, newkeys, oldkeys)
 {
-	if(IsPlayerInRangeOfPoint(playerid, 5.0, 588.1791,866.1268,-42.4973))
+	if(IsPlayerInRangeOfPoint(playerid, 2.5, 588.1791,866.1268,-42.4973))
 	{
 	    if(PRESSED(KEY_YES))
 	    {
 	    	Dialog_Show(playerid, minerdialog, DIALOG_STYLE_LIST, "Quan ly khu mo", "Nhan / tra dong phuc lam viec\nMua Pickaxe (dung cu de dao)", "Lua chon", "Huy bo");
+	    }
+	}
+	if(IsPlayerInRangeOfPoint(playerid, 2.5, 2126.8018,-76.6521,2.4721))
+	{
+	    if(PRESSED(KEY_YES))
+	    {
+			new format_job[1280];
+			format(format_job, sizeof(format_job), "{a8a7a7}Da: {ffffff}%d$\n{c96c02}Dong: {ffffff}%d$\n{5c5c5c}Sat: {ffffff}%d$\n{f7ff05}Vang: {ffffff}%d$", RandomMoney[0], RandomMoney[1], RandomMoney[2], RandomMoney[3]);
+	    	Dialog_Show(playerid, thuksdialog, DIALOG_STYLE_LIST, "Thu mua khoang san", format_job, "Lua chon", "Huy bo");
 	    }
 	}
 	if(IsPlayerInRangeOfPoint(playerid, 300.0, 588.1791,866.1268,-42.4973))
@@ -39,31 +48,7 @@ hook OnPlayerKeyStateChange(playerid, newkeys, oldkeys)
 	return 1;
 }
 
-forward CheckResetTime();
-public CheckResetTime()
-{
-	new hourz;
-    gettime(hourz);
 
-    if (IsResetTime(hourz) && hourz != lastResetTime)
-    {
-        ResetPrice(); 
-        lastResetTime = hourz; 
-    }
-    return 1;
-}
-forward IsResetTime(Float:time);
-public IsResetTime(Float:time)
-{
-    for (new i = 0; i < sizeof(resetTimes); i++)
-    {
-        if (time == resetTimes[i])
-        {
-            return true;
-        }
-    }
-    return false;
-}
 forward ResetPrice();
 public ResetPrice()
 {
@@ -91,7 +76,8 @@ public ResetPrice()
 			RandomMoney[3] = (1800+random(1200))*10;
 		}
 	}
-	SendClientMessageToAll(COLOR_REALRED, "THU MUA KHOANG SAN: {ffffff}Gia ca thi truong da thay doi, hay den nguoi thu mua tai Palomino Creek de xem gia ca.");
+	SetTimer("ResetPrice", 3600000, false);
+	SendClientMessageToAll(COLOR_REALRED, "[THU MUA KHOANG SAN] {ffffff}Gia ca thi truong da thay doi, hay den nguoi thu mua tai Palomino Creek de xem gia ca.");
 	printf("%d %d %d %d", RandomMoney[0], RandomMoney[1], RandomMoney[2], RandomMoney[3]);
     return 1;
 }
@@ -116,7 +102,7 @@ hook OnGameModeInit()
         RockStatus[i] = 1; 
         CreateRock(i);
     }
-    SetTimer("CheckResetTime", 1000, true);
+    SetTimer("ResetPrice", 20000, false);
     return 1;
 }
 forward OnPlayerPickUpRock(playerid, rockIndex);
