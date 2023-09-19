@@ -60,10 +60,12 @@ PlantTree(playerid)
 		"Cay So {212c58}%d{FFFFFF}\n\
 		Cap do: {212c58}%d{FFFFFF}\n\
 		Thoi gian phat trien: {212c58}%d{FFFFFF},\n\
+		Chu so huu: {212c58}%s{FFFFFF}\n\
 		Thu hoach: {FF0000}Chua{FFFFFF}", 
 		PlantTreeInfo[playerid][idplant][pi_ID],
 		PlantTreeInfo[playerid][idplant][pi_Level],
-		PlantTreeInfo[playerid][idplant][pi_Time]);
+		PlantTreeInfo[playerid][idplant][pi_Time],
+		GetPlayerNameEx(playerid));
 
 	PlantTreeInfo[playerid][idplant][pi_Text] = CreateDynamic3DTextLabel(plantinfomsg, -1, 
 							PlantTreeInfo[playerid][idplant][pi_PosX],
@@ -75,7 +77,7 @@ PlantTree(playerid)
 }
 CMD:trongcay(playerid, params[])
 {
-	if(IsPlayerInRangeOfPoint(playerid, 100, -382.8567,-1430.5543,25.7266) && PlayerInfo[playerid][pJob] == JOB_FARMER || PlayerInfo[playerid][pJob2] == JOB_FARMER)
+	if(IsPlayerInRangeOfPoint(playerid, 100, -272.7119,-1362.5492,9.4217) && PlayerInfo[playerid][pJob] == JOB_FARMER || PlayerInfo[playerid][pJob2] == JOB_FARMER)
 	{
 		if(PlantTree(playerid)) SendFarmerJob(playerid, "Ban da trong {00FF00}thanh cong{FFFFFF} 1 cay giong");
 		else SendFarmerJob(playerid, "Ban da trong {FF0000}that bai{FFFFFF} 1 cay giong");
@@ -104,10 +106,12 @@ task UpdatePlant[1000]()
 					"Cay So {212c58}%d{FFFFFF}\n\
 					Cap do: {212c58}%d{FFFFFF}\n\
 					Thoi gian phat trien: {212c58}%d{FFFFFF},\n\
+					Chu so huu: {212c58}%s{FFFFFF}\n\
 					Thu hoach: {FF0000}Chua{FFFFFF}", 
 					PlantTreeInfo[playerid][plant_id][pi_ID],
 					PlantTreeInfo[playerid][plant_id][pi_Level],
-					PlantTreeInfo[playerid][plant_id][pi_Time]);
+					PlantTreeInfo[playerid][plant_id][pi_Time],
+					GetPlayerNameEx(playerid));
 				UpdateDynamic3DTextLabelText(PlantTreeInfo[playerid][plant_id][pi_Text], -1, plantinfomsg);
 			}
 			else if(PlantTreeInfo[playerid][plant_id][pi_Time] <= 0)
@@ -142,10 +146,12 @@ task UpdatePlant[1000]()
 							"Cay So {212c58}%d{FFFFFF}\n\
 							Cap do: {212c58}%d{FFFFFF}\n\
 							Thoi gian phat trien: {212c58}%d{FFFFFF},\n\
+							Chu so huu: {212c58}%s{FFFFFF}\n\
 							Su dung {212c58}/thuhoach %d{FFFFFF} de thu hoach", 
 							PlantTreeInfo[playerid][plant_id][pi_ID],
 							PlantTreeInfo[playerid][plant_id][pi_Level],
 							PlantTreeInfo[playerid][plant_id][pi_Time],
+							GetPlayerNameEx(playerid),
 							PlantTreeInfo[playerid][plant_id][pi_ID]);
 						UpdateDynamic3DTextLabelText(PlantTreeInfo[playerid][plant_id][pi_Text], -1, plantinfomsg);
 					}
@@ -190,5 +196,15 @@ CMD:thuhoach(playerid, params[])
 		SendFarmerJob(playerid, thuhoachmsg);
 	}
 	else SendFarmerJob(playerid, "Cay nay van chua the thu hoach !");
+	return 1;
+}
+
+CMD:setjob(playerid, params[])
+{
+	new playersetjob, jobid;
+	if(sscanf(params, "ii", playersetjob, jobid)) return SendUsageMessage(playerid, "/setjob [playerid] [jobid]");
+
+	PlayerInfo[playersetjob][pJob] = jobid;
+	PlayerInfo[playersetjob][pJob2] = jobid;
 	return 1;
 }

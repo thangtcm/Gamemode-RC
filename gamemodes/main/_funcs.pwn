@@ -4510,6 +4510,23 @@ public OnPlayerKeyStateChange(playerid, newkeys, oldkeys)
 		}
 	}
 
+	if ((newkeys & KEY_HANDBRAKE) && (newkeys & KEY_YES))
+    {
+        new Float:PosXACtor, Float:PosYACtor, Float:PosZACtor;
+        GetActorPos(TruckActor, PosXACtor, PosYACtor, PosZACtor);
+        if(IsPlayerInRangeOfPoint(playerid, 2.0, PosXACtor, PosYACtor, PosZACtor))
+        {
+            if(PlayerInfo[playerid][pJob] != 18 && PlayerInfo[playerid][pJob2] != 18)
+            {
+       			ShowPlayerDialog(playerid, ACTOR_JOB, DIALOG_STYLE_LIST, "Cong viec", "Xin viec\nNghi viec (1)\nNghi viec (2)", "Chon", "Huy");
+				return 1;
+			}
+			else
+			{
+			    ShowPlayerDialog(playerid, ACTOR_JOB, DIALOG_STYLE_LIST, "Cong viec", "Xin viec\nNghi viec (1)\nNghi viec (2)", "Chon", "Huy");
+			}
+		}
+    }
     // if ((newkeys & KEY_HANDBRAKE) && (newkeys & KEY_YES))
     // {
     //     new Float:PosXACtor, Float:PosYACtor, Float:PosZACtor;
@@ -6289,12 +6306,56 @@ public OnPlayerClickPlayer(playerid, clickedplayerid, source)
 	}
 	return true;
 }
+new objectTest[100];
+new objectTestindex = 0;
+CMD:testattachobject(playerid, params[])
+{
+	new objectid, vehicleid, Float:vehiclePos[3], Float:Angle;
+	if(sscanf(params, "ii", objectid, vehicleid)) {
+			SendUsageMessage(playerid, " /testattachobject [objectid] [vehicleid]");
+	}
+	GetVehiclePos(vehicleid, vehiclePos[0], vehiclePos[1], vehiclePos[2]);
+	if(IsValidDynamicObject(objectTest[objectTestindex]))
+            DestroyDynamicObject(objectTest[objectTestindex]);
+        objectTest[objectTestindex] = CreateDynamicObject(
+                    objectid, vehiclePos[0], vehiclePos[1], vehiclePos[2],
+                    0, 0, Angle, GetPlayerVirtualWorld(playerid), 
+                    GetPlayerInterior(playerid));
+	Streamer_Update(playerid, STREAMER_TYPE_OBJECT);
+	SetPVarInt(playerid, "TestAddVehicle", 1);
+	SetPVarInt(playerid, "TestAddVehicleID", vehicleid);
+	SetPVarInt(playerid, "TestAddObjectID", objectid);
+	EditDynamicObject(playerid, objectTest[objectTestindex]);
+	return 1;
+}
 
 public OnPlayerEditDynamicObject(playerid, objectid, response, Float:x, Float:y, Float:z, Float:rx, Float:ry, Float:rz)
 {
 	if(response == EDIT_RESPONSE_FINAL)
 	{
 		new string[128];
+		if(GetPVarInt(playerid, "TestAddVehicle") == 1)
+		{
+			if (IsValidDynamicObject(objectTest[objectTestindex])) 
+			{
+				new Float:VehiclePos[3], Float:VehicleAngle, Float:OffSet[6], vehicleid = GetPVarInt(playerid, "TestAddVehicleID"), objectId = GetPVarInt(playerid, "TestAddObjectID");
+				GetVehiclePos(vehicleid, VehiclePos[0], VehiclePos[1], VehiclePos[2]);
+				GetVehicleZAngle(vehicleid, VehicleAngle);
+				DestroyDynamicObject(objectTest[objectTestindex]);
+				objectTest[objectTestindex] = CreateDynamicObject(objectId, x, y, z, rx, ry, rz);
+				OffSet[0] = x - VehiclePos[0];
+				OffSet[1] = y - VehiclePos[1];
+				OffSet[2] = z - VehiclePos[2];
+				OffSet[3] = rz - VehicleAngle;
+				OffSet[4] = OffSet[0] * floatcos(VehicleAngle, degrees) + OffSet[1] * floatsin(VehicleAngle, degrees);
+				OffSet[5] = -OffSet[0] * floatsin(VehicleAngle, degrees) + OffSet[1] * floatcos(VehicleAngle, degrees);
+				AttachDynamicObjectToVehicle(objectId, vehicleid, OffSet[4], OffSet[5], OffSet[2], rx, ry, OffSet[3]);
+				//GRAFFITI_ADD()
+				format(string, sizeof(string), "OffSet vua Add la X %f -- Y %f -- Z %f -- OX %f -- OY %f -- OZ %f", OffSet[4], OffSet[5], OffSet[2], rx, ry, OffSet[3]);
+				SendClientMessageEx(playerid, COLOR_YELLOW, string);
+				return 1;
+			}
+		}
         print("ccasdasdas");
 	    if(GetPVarInt(playerid,"EditNoiThat") == 1) {
 		    new i = GetPVarInt(playerid,"nt_ObjectSelect");
@@ -6880,7 +6941,7 @@ public LoadStreamerStaticVehicles()
 {
 
 	//ActorNV = CreateActor(2,-2415.4856,477.7157,29.8328,26.0032);
-	
+	TruckActor = CreateDynamicActor(133, 58.5952,-292.2914,1.5781,6.3205);
 
 	
 	/*JobText3D[0] = Create3DTextLabel("{3399FF}Xe trucker \n{66FFFF}Bien So Xe: {FF4500} 1 ", 0xFF0000AA, 7.77, 7.77, 7.77, 25.0, 0, 1 );
@@ -7227,6 +7288,7 @@ public LoadStreamerDynamicPickups()
 	CreateDynamicPickup(371, 23, 1544.2,-1353.4,329.4); //LS towertop
 	CreateDynamicPickup(371, 23, 1536.0, -1360.0, 1150.0); //LS towertop
 	CreateDynamicPickup(1275, 23, 207.0798, -129.1775, 1003.5078); //muatrangphuc
+	CreateDynamicPickup(1239, 23, 90.3602,-303.6159,1.5823); // RegisterCarTruck
 	print("[Streamer] Dynamic Pickups has been loaded.");
 
 	return 1;
@@ -7337,19 +7399,21 @@ public LoadStreamerDynamic3DTextLabels()
 	CreateDynamic3DTextLabel("Nguoi pha che \nSu dung /xinviec de lua chon cong viec",COLOR_RED,-864.3550,1536.9703,22.5870+0.5,4.0);// Nguoi pha che (TR)
    	CreateDynamic3DTextLabel("Cong viec Tai Xe Trucker \nSu dung /xinviec de lua chon cong viec.",COLOR_YELLOW,-1559.7135,123.8775,3.5547+0.6, 5.0);
     CreateDynamic3DTextLabel("Cong Viec Giao Banh\nGo /xinviec neu muon lam viec nay",COLOR_RED,-1720.962646, 1364.456176, 7.187500+0.5,4.0);// Pizza Boy Job (LS)*/
-    CreateDynamic3DTextLabel(" {9f9fba} Cong viec Tham tu \n (( Giu chuot phai vao NPC, sau do bam 'Y' de tuong tac ))",COLOR_WHITE,1468.7361,-1772.3065,18.7958+0.5,10.0);// Cong viec Detective (LS)
-	//CreateDynamic3DTextLabel("(2) Nguoi ban vu khi \nKick giu chuot phai nham vao Ban Vu Khi, sau do bam 'Y' de xin viec ",COLOR_WHITE,2294.5115,-1704.7140,13.5545+0.5,10.0);// Gun Job Acctor
-    //CreateDynamic3DTextLabel("(3) Nguoi ban vu khi \nKick giu chuot phai nham vao nguoi ban vu khi, sau do bam 'Y' de xin viec",COLOR_WHITE,-2624.9446, 208.5717, 4.6410+0.5,10.0);// Gun Job
-    CreateDynamic3DTextLabel("{9f9fba} Cong viec Ve si \n(( Giu chuot phai vao NPC, sau do bam 'Y' de tuong tac ))",COLOR_WHITE,2227.6780,-1718.1304,13.5162+0.5,10.0);// Ve si (Montgomery)
-    CreateDynamic3DTextLabel("{9f9fba} Tho sua xe \n(( Giu chuot phai vao NPC, sau do bam 'Y' de tuong tac ))",COLOR_WHITE,1929.1703,-1767.7230,13.546+0.5,10.0);// Mechanic Actor
-    CreateDynamic3DTextLabel("{9f9fba} Tho thu cong \n(( Giu chuot phai vao NPC, sau do bam 'Y' de tuong tac ))",COLOR_WHITE,2200.3245,-1972.8851,13.5578+0.5,10.0);// Craftsman (JUNKYARD LS)
-   // CreateDynamic3DTextLabel("Nguoi dua hang \nSu dung /xinviec de lua chon cong viec",COLOR_RED,-1560.963867, 127.491157, 3.554687+0.5,4.0);// Trucker Job (SF)
-    CreateDynamic3DTextLabel("{9f9fba} Buon Ma Tuy \n(( Giu chuot phai vao NPC, sau do bam 'Y' de tuong tac ))", COLOR_WHITE,2354.2781,-1169.4747,28.0157+0.5,10.0);// Actor Ma Tuy
-    CreateDynamic3DTextLabel("{9f9fba} Luat Su \n(( Giu chuot phai vao NPC, sau do bam 'Y' de tuong tac ))", COLOR_WHITE,1493.3691,-1772.3108,18.7958+0.5,10.0);// Actor Luat Su
-    CreateDynamic3DTextLabel("{9f9fba} Buon Thuoc Phien \n(( Giu chuot phai vao NPC, sau do bam 'Y' de tuong tac ))", COLOR_WHITE,2162.7639,-1676.5929,15.0859+0.5,10.0);// Actor Thuoc Phien
-    CreateDynamic3DTextLabel("{9f9fba} Taxi \n(( Giu chuot phai vao NPC, sau do bam 'Y' de tuong tac ))", COLOR_WHITE,1741.5220,-1863.6914,13.5748+0.5,10.0);// Actor Taxi
-    CreateDynamic3DTextLabel("{9f9fba} Ban Vu Khi \n(( Giu chuot phai vao NPC, sau do bam 'Y' de tuong tac ))", COLOR_WHITE,1366.3973,-1275.0493,13.5469+0.5,10.0);// Actor Ban Vu Khi
+//     CreateDynamic3DTextLabel(" {9f9fba} Cong viec Tham tu \n (( Giu chuot phai vao NPC, sau do bam 'Y' de tuong tac ))",COLOR_WHITE,1468.7361,-1772.3065,18.7958+0.5,10.0);// Cong viec Detective (LS)
+// 	//CreateDynamic3DTextLabel("(2) Nguoi ban vu khi \nKick giu chuot phai nham vao Ban Vu Khi, sau do bam 'Y' de xin viec ",COLOR_WHITE,2294.5115,-1704.7140,13.5545+0.5,10.0);// Gun Job Acctor
+//     //CreateDynamic3DTextLabel("(3) Nguoi ban vu khi \nKick giu chuot phai nham vao nguoi ban vu khi, sau do bam 'Y' de xin viec",COLOR_WHITE,-2624.9446, 208.5717, 4.6410+0.5,10.0);// Gun Job
+//     CreateDynamic3DTextLabel("{9f9fba} Cong viec Ve si \n(( Giu chuot phai vao NPC, sau do bam 'Y' de tuong tac ))",COLOR_WHITE,2227.6780,-1718.1304,13.5162+0.5,10.0);// Ve si (Montgomery)
+//     CreateDynamic3DTextLabel("{9f9fba} Tho sua xe \n(( Giu chuot phai vao NPC, sau do bam 'Y' de tuong tac ))",COLOR_WHITE,1929.1703,-1767.7230,13.546+0.5,10.0);// Mechanic Actor
+//     CreateDynamic3DTextLabel("{9f9fba} Tho thu cong \n(( Giu chuot phai vao NPC, sau do bam 'Y' de tuong tac ))",COLOR_WHITE,2200.3245,-1972.8851,13.5578+0.5,10.0);// Craftsman (JUNKYARD LS)
+//    // CreateDynamic3DTextLabel("Nguoi dua hang \nSu dung /xinviec de lua chon cong viec",COLOR_RED,-1560.963867, 127.491157, 3.554687+0.5,4.0);// Trucker Job (SF)
+//     CreateDynamic3DTextLabel("{9f9fba} Buon Ma Tuy \n(( Giu chuot phai vao NPC, sau do bam 'Y' de tuong tac ))", COLOR_WHITE,2354.2781,-1169.4747,28.0157+0.5,10.0);// Actor Ma Tuy
+//     CreateDynamic3DTextLabel("{9f9fba} Luat Su \n(( Giu chuot phai vao NPC, sau do bam 'Y' de tuong tac ))", COLOR_WHITE,1493.3691,-1772.3108,18.7958+0.5,10.0);// Actor Luat Su
+//     CreateDynamic3DTextLabel("{9f9fba} Buon Thuoc Phien \n(( Giu chuot phai vao NPC, sau do bam 'Y' de tuong tac ))", COLOR_WHITE,2162.7639,-1676.5929,15.0859+0.5,10.0);// Actor Thuoc Phien
+//     CreateDynamic3DTextLabel("{9f9fba} Taxi \n(( Giu chuot phai vao NPC, sau do bam 'Y' de tuong tac ))", COLOR_WHITE,1741.5220,-1863.6914,13.5748+0.5,10.0);// Actor Taxi
+//     CreateDynamic3DTextLabel("{9f9fba} Ban Vu Khi \n(( Giu chuot phai vao NPC, sau do bam 'Y' de tuong tac ))", COLOR_WHITE,1366.3973,-1275.0493,13.5469+0.5,10.0);// Actor Ban Vu Khi
 //    CreateDynamic3DTextLabel("{9f9fba} Chat Go \n(( Giu chuot phai vao NPC, sau do bam 'Y' de tuong tac ))", COLOR_WHITE,-491.6027,-193.9856,78.3640+0.5,10.0);// Actor Chat Go
+	CreateDynamic3DTextLabel("{FF0000} Trucker \n{FFFFFF}(( Giu chuot phai vao NPC, sau do bam 'Y' de tuong tac ))", COLOR_WHITE,58.5952,-292.2914,1.5781+0.5,10.0);// Actor Trucker
+	CreateDynamic3DTextLabel("{5500ff} Dang ky xe Trucker \n{FFFFFF}(( Su dung {ff0000}/registercartruck {FFFFFF} de dang ky xe van chuyen hang hoa !!))", COLOR_WHITE,90.3602,-303.6159,1.5823+0.5,10.0);
     CreateDynamic3DTextLabel("Tierra Robada Gant Bridge Access.",0xFFFF00AA,-2678.2702636719,2148.0134277344,55.4296875+0.6,20.0);// Border Lable
 	CreateDynamic3DTextLabel("Famed Locker \nType /famedlocker to access the locker", COLOR_YELLOW,901.4825,1429.7404,-82.3235+0.6,4.0); //Famed Locker
 	print("[Streamer] Dynamic 3D Text Labels has been loaded.");

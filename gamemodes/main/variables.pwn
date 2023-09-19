@@ -731,6 +731,7 @@ new MasterInfo[MAX_PLAYERS][master];
 new TruckerVehicles[20];
 enum pInfo
 {
+	pRegisterCarTruck,
 	pCMND,
 	pGiayPhepCauCa,
     pCanCau,
@@ -1452,6 +1453,7 @@ new TaxiActor;
 new MaTuy;
 new ThuocPhien;
 new BanVuKhi;
+new TruckActor;
 new LuatSuActor;
 new MechanicActor;
 new DetectiveActor;

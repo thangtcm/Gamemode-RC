@@ -11113,25 +11113,22 @@ CMD:join(playerid, params[])
                   return 1;
                }
 		}
-		else if (IsPlayerInRangeOfPoint(playerid,5.0,2424.3186,-2099.1064,13.5469)) {
-			if(PlayerInfo[playerid][pLevel] >= 2)
+		else if (IsPlayerInRangeOfPoint(playerid,5.0, 58.5952, -292.2914, 1.5781)) {
+			if(PlayerInfo[playerid][pJob] == 0)
 			{
-				if(PlayerInfo[playerid][pJob] == 0)
-				{
-					ShowPlayerDialog(playerid,DIALOG_XINVIEC,0,"He thong cong viec","Day la cong viec Tai Xe,cong viec nay la ban se cho nhung chiec hang hoa de kiem tien\nCMD:/layhang\nCong viec nay ban can Lv2 moi co the lam va viec nay kiem duoc kha nhieu tien!", "Hieu", ""); //TRUCKERJOB
-					GettingJob[playerid] = 20;
-					SendClientMessageEx(playerid, 0x9f991aFF, "[JOB] Ban da nhan cong viec thanh cong, su dung /trogiup de biet cac lenh co ban");
-					PlayerInfo[playerid][pJob] = GettingJob[playerid];
-					return 1;
-				}
-				if((PlayerInfo[playerid][pDonateRank] > 0 || PlayerInfo[playerid][pFamed] > 0) && PlayerInfo[playerid][pJob2] == 0 && PlayerInfo[playerid][pJob] != 20)
-				{
-					ShowPlayerDialog(playerid,DIALOG_XINVIEC,0,"He thong cong viec","{3366FF}Trucker{FFFFFF}: Xin chao anh ban, anh ban dang muon xin cong viec giao hang? anh co muon tham gia cung chung toi khong ?\n\nBan co muon nhan cong viec {3366FF}Trucker{FFFFFF} khong ? \n\n Huong Dan\n+De nhan viec hay nhan vao Dong y hoac Tu choi\n+Neu ban can tro giup ve cach lam hay go /trogiup hoac hoi tren kenh Hoi Dap","Dong y","Tu choi");
-                    SendClientMessageEx(playerid, COLOR_YELLOW, "Ban nhan them cong viec phu. Chi VIP/Famed moi  lam duoc dieu nay");
-					GettingJob2[playerid] = 20;
-					PlayerInfo[playerid][pJob2] = GettingJob2[playerid];
-					return 1;
-				}
+				ShowPlayerDialog(playerid,DIALOG_XINVIEC,0,"He thong cong viec","Day la cong viec Tai Xe,cong viec nay la ban se cho nhung chiec hang hoa de kiem tien\nCMD:/registercartruck va /layhang\nCong viec nay ban can co phuong tien theo yeu cau moi co the lam va viec nay kiem duoc kha nhieu tien!", "Hieu", ""); //TRUCKERJOB
+				GettingJob[playerid] = 20;
+				SendClientMessageEx(playerid, 0x9f991aFF, "[JOB] Ban da nhan cong viec thanh cong, su dung /trogiup de biet cac lenh co ban");
+				PlayerInfo[playerid][pJob] = GettingJob[playerid];
+				return 1;
+			}
+			if((PlayerInfo[playerid][pDonateRank] > 0 || PlayerInfo[playerid][pFamed] > 0) && PlayerInfo[playerid][pJob2] == 0 && PlayerInfo[playerid][pJob] != 20)
+			{
+				ShowPlayerDialog(playerid,DIALOG_XINVIEC,0,"He thong cong viec","{3366FF}Trucker{FFFFFF}: Xin chao anh ban, anh ban dang muon xin cong viec giao hang? anh co muon tham gia cung chung toi khong ?\n\nBan co muon nhan cong viec {3366FF}Trucker{FFFFFF} khong ? \n\n Huong Dan\n+De nhan viec hay nhan vao Dong y hoac Tu choi\n+Neu ban can tro giup ve cach lam hay go /trogiup hoac hoi tren kenh Hoi Dap","Dong y","Tu choi");
+				SendClientMessageEx(playerid, COLOR_YELLOW, "Ban nhan them cong viec phu. Chi VIP/Famed moi  lam duoc dieu nay");
+				GettingJob2[playerid] = 20;
+				PlayerInfo[playerid][pJob2] = GettingJob2[playerid];
+				return 1;
 			}
 			else return SendErrorMessage(playerid, " Ban phai dat it nhat level 2 moi co the tro thanh Nguoi dua hang.");
 		}
@@ -14987,7 +14984,7 @@ CMD:cuophang(playerid, params[])
 	return 1;
 }
 
-CMD:layhang(playerid, params[])
+CMD:layhangremovesss(playerid, params[])
 {
 	if(PlayerInfo[playerid][pJob] == 20 || PlayerInfo[playerid][pJob2] == 20)
 	{
@@ -32380,7 +32377,7 @@ CMD:setweather(playerid, params[])
 	if(weather < 0||weather > 45) { SendErrorMessage(playerid, "    ID thoi thiet phai lon hon 1 va nho hon 45!"); return 1; }
 	SetWeather(weather);
 	gWeather = weather;
-	SendErrorMessage(playerid, " Thoi tiet da duoc thiet lap cho tat ca moi nguoi!");
+	SendServerMessage(playerid, " Thoi tiet da duoc thiet lap cho tat ca moi nguoi!");
 	return 1;
 }
 

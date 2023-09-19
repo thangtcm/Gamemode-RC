@@ -194,6 +194,7 @@ hook OnPlayerConnect(playerid)
 forward StartDownEatDrinkStrong(playerid);
 public StartDownEatDrinkStrong(playerid)
 {
+	if(PlayerInfo[playerid][pAdmin] > 4) return 1;
 	if(GetPlayerState(playerid) == PLAYER_STATE_DRIVER || GetPlayerState(playerid) == PLAYER_STATE_PASSENGER || !IsPlayerRunning(playerid))
 	{
 		if(PlayerInfo[playerid][pEat] > 25)

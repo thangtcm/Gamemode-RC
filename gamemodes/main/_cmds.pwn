@@ -1534,7 +1534,6 @@ stock ShowCMND(playerid,giveplayerid) {
     if( PlayerInfo[giveplayerid][pPhousekey] != INVALID_HOUSE_ID )
     {
         new h = PlayerInfo[giveplayerid][pPhousekey], zone[50];
-        printf("%d",h);
         Get3DZone(HouseInfo[h][hExteriorX], HouseInfo[h][hExteriorY], HouseInfo[h][hExteriorZ],zone, sizeof(zone));
         format(sonha,sizeof(sonha),"%d %s San Andreas",PlayerInfo[giveplayerid][pPhousekey],zone);
     }

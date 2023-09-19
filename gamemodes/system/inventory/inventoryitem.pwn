@@ -93,7 +93,6 @@ stock ITEMTIMER_DELETE(playerid, index, quantity = 1)
         ItemTimerData[playerid][index][Exists] = false;
         format(string, sizeof(string), "DELETE FROM `itemtimer` WHERE `Id`= '%d'", ItemTimerData[playerid][index][Id]);
         mysql_function_query(MainPipeline, string, false, "OnQueryFinish", "i", SENDDATA_THREAD);
-        Inventory_SendRemoveTimer(playerid, ItemTimerData[playerid][index][ItemName], quantity);
     }
     else if(ItemTimerData[playerid][index][Quantity] > quantity && quantity > 0)
     {
@@ -149,7 +148,7 @@ timer ItemTimer[1000](playerid)
     {
         for(new i; i < MAX_ITEMTINER; i++)
             if(ItemTimerData[playerid][i][Exists] && ItemTimerData[playerid][i][Timer] < gettime()) 
-                ITEMTIMER_DELETE(playerid, i, ItemTimerData[playerid][i][Quantity]);
+                Inventory_SendRemoveTimer(playerid, ItemTimerData[playerid][i][ItemName], ItemTimerData[playerid][i][Quantity]);
     }
 }
 
