@@ -78,7 +78,8 @@ Dialog:banda(playerid, response, listitem, inputtext[])
 			format(format_job, sizeof(format_job), "[SERVER] {ffffff}Ban da ban {6e69ff}%d {a8a7a7}DA {ffffff}thanh cong va nhan duoc %d$.", inputtext, moneyselled);
 			PlayerInfo[playerid][pCash] += moneyselled;
 			SendClientMessage(playerid, COLOR_LIGHTRED, format_job);
-			Inventory_Remove(playerid, "Da", strval(inputtext));
+			new pItemId = Inventory_GetItemID(playerid, "Da", strval(inputtext));
+			Inventory_Remove(playerid, pItemId, strval(inputtext));
 		}
 	}
 	return 1;
@@ -105,7 +106,8 @@ Dialog:bandong(playerid, response, listitem, inputtext[])
 			format(format_job, sizeof(format_job), "[SERVER] {ffffff}Ban da ban {6e69ff}%d {c96c02}DONG {ffffff}thanh cong va nhan duoc %d$.", inputtext, moneyselled);
 			PlayerInfo[playerid][pCash] += moneyselled;
 			SendClientMessage(playerid, COLOR_LIGHTRED, format_job);
-			Inventory_Remove(playerid, "Dong", strval(inputtext));
+			new pItemId = Inventory_GetItemID(playerid, "Dong", strval(inputtext));
+			Inventory_Remove(playerid, pItemId, strval(inputtext));
 		}
 	}
 	return 1;
@@ -132,7 +134,8 @@ Dialog:bansat(playerid, response, listitem, inputtext[])
 			format(format_job, sizeof(format_job), "[SERVER] {ffffff}Ban da ban {6e69ff}%d {5c5c5c}SAT {ffffff}thanh cong va nhan duoc %d$.", strval(inputtext), moneyselled);
 			PlayerInfo[playerid][pCash] += moneyselled;
 			SendClientMessage(playerid, COLOR_LIGHTRED, format_job);
-			Inventory_Remove(playerid, "Sat", strval(inputtext));
+			new pItemId = Inventory_GetItemID(playerid, "Sat", strval(inputtext));
+			Inventory_Remove(playerid, pItemId, strval(inputtext));
 		}
 	}
 	return 1;
@@ -159,7 +162,8 @@ Dialog:banvang(playerid, response, listitem, inputtext[])
 			format(format_job, sizeof(format_job), "[SERVER] {ffffff}Ban da ban {6e69ff}%d {f7ff05}VANG {ffffff}thanh cong va nhan duoc %d$.", strval(inputtext), moneyselled);
 			PlayerInfo[playerid][pCash] += moneyselled;
 			SendClientMessage(playerid, COLOR_LIGHTRED, format_job);
-			Inventory_Remove(playerid, "Vang", strval(inputtext));
+			new pItemId = Inventory_GetItemID(playerid, "Vang", strval(inputtext));
+			Inventory_Remove(playerid, pItemId, strval(inputtext));
 		}
 	}
 	return 1;

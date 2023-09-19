@@ -111,7 +111,7 @@ hook OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
         			if(PlayerInfo[playerid][pStrong] <= 1) return SendErrorMessage(playerid, " Ban da qua met moi khong the lam viec."); 
         			if(LamViec[playerid] == 0) {
 	    				SetPlayerPos(playerid, 1380.8643,270.4954,21.9751);
-		    			PizzaCar[playerid] = CreateVehicle(448, 2113.1775,-1772.8745,12.9609 , 0 , random(255), random(255), 1000, 0);
+		    			PizzaCar[playerid] = CreateVehicle(448, 1367.3431,270.6667,19.5669, 0 , random(255), random(255), 1000, 0);
 	        			PutPlayerInVehicle(playerid, PizzaCar[playerid] ,0);
 	       				SetPVarInt(playerid, "IsDaThue", 1);
 	       				LamViec[playerid] =1;
@@ -219,7 +219,7 @@ hook OnPlayerEnterCheckpoint(playerid) {
 hook OnPlayerKeyStateChange(playerid, newkeys, oldkeys) {
 	if(IsPlayerInRangeOfPoint(playerid, 5, 1362.9523,253.9632,19.5669))
 	{
-	    if(PRESSED(KEY_CTRL_BACK))
+	    if(PRESSED(KEY_YES))
 	    {
 	    	return cmd_pizza(playerid, "/1"); 
 	    }
