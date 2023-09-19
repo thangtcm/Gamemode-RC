@@ -1,11 +1,20 @@
 #include <YSI_Coding\y_hooks>
 hook OnPlayerKeyStateChange(playerid, newkeys, oldkeys)
 {
-	if(IsPlayerInRangeOfPoint(playerid, 5.0, 588.1791,866.1268,-42.4973))
+	if(IsPlayerInRangeOfPoint(playerid, 2.5, 588.1791,866.1268,-42.4973))
 	{
 	    if(PRESSED(KEY_YES))
 	    {
 	    	Dialog_Show(playerid, minerdialog, DIALOG_STYLE_LIST, "Quan ly khu mo", "Nhan / tra dong phuc lam viec\nMua Pickaxe (dung cu de dao)", "Lua chon", "Huy bo");
+	    }
+	}
+	if(IsPlayerInRangeOfPoint(playerid, 2.5, 2126.8018,-76.6521,2.4721))
+	{
+	    if(PRESSED(KEY_YES))
+	    {
+			new format_job[1280];
+			format(format_job, sizeof(format_job), "{a8a7a7}Da: {ffffff}%d$\n{c96c02}Dong: {ffffff}%d$\n{5c5c5c}Sat: {ffffff}%d$\n{f7ff05}Vang: {ffffff}%d$", RandomMoney[0], RandomMoney[1], RandomMoney[2], RandomMoney[3]);
+	    	Dialog_Show(playerid, thuksdialog, DIALOG_STYLE_LIST, "Thu mua khoang san", format_job, "Lua chon", "Huy bo");
 	    }
 	}
 	if(IsPlayerInRangeOfPoint(playerid, 300.0, 588.1791,866.1268,-42.4973))
@@ -38,6 +47,42 @@ hook OnPlayerKeyStateChange(playerid, newkeys, oldkeys)
 	}
 	return 1;
 }
+
+
+forward ResetPrice();
+public ResetPrice()
+{
+	switch(random(100))
+	{
+		case 0..50:
+		{
+			RandomMoney[0] = (10+random(10))*10;
+			RandomMoney[1] = (50+random(30))*10;
+			RandomMoney[2] = (50+random(30))*10;
+			RandomMoney[3] = (1000+random(500))*10;
+		}
+		case 51..79:
+		{
+			RandomMoney[0] = (20+random(20))*10;
+			RandomMoney[1] = (80+random(50))*10;
+			RandomMoney[2] = (80+random(50))*10;
+			RandomMoney[3] = (1200+random(800))*10;
+		}
+		case 80..100:
+		{
+			RandomMoney[0] = (50+random(30))*10;
+			RandomMoney[1] = (150+random(100))*10;
+			RandomMoney[2] = (150+random(100))*10;
+			RandomMoney[3] = (1800+random(1200))*10;
+		}
+	}
+	SetTimer("ResetPrice", 3600000, false);
+	SendClientMessageToAll(COLOR_REALRED, "[THU MUA KHOANG SAN] {ffffff}Gia ca thi truong da thay doi, hay den nguoi thu mua tai Palomino Creek de xem gia ca.");
+	printf("%d %d %d %d", RandomMoney[0], RandomMoney[1], RandomMoney[2], RandomMoney[3]);
+    return 1;
+}
+
+
 hook OnPlayerDisconnect(playerid, reason)
 {
 	if(GetPVarInt(playerid, #skinsavezxc) != 0)
@@ -57,6 +102,8 @@ hook OnGameModeInit()
         RockStatus[i] = 1; 
         CreateRock(i);
     }
+    SetTimer("ResetPrice", 20000, false);
+    return 1;
 }
 forward OnPlayerPickUpRock(playerid, rockIndex);
 public OnPlayerPickUpRock(playerid, rockIndex)
@@ -97,28 +144,96 @@ public StartCountTime(playerid)
 			ApplyAnimation(playerid,"SWORD","sword_1",0.87,1,0,0,0,0);
 			ClearAnimations(playerid);
 			new format_job[1280];
-			switch(random(100))
+			if(PlayerInfo[playerid][pMinerLevel] == 0)
 			{
-				case 0..79:
+				switch(random(100))
 				{
-					format(format_job, sizeof(format_job), "~g~Ban da dao thanh cong va nhan duoc ~y~1 Da~g~.");
-					Inventory_Add(playerid, "Da", 1);
+					case 0..72:
+					{
+						format(format_job, sizeof(format_job), "~g~Ban da dao thanh cong va nhan duoc ~y~1 Da~g~.");
+						Inventory_Add(playerid, "Da", 1);
+					}
+					case 73..83:
+					{
+						format(format_job, sizeof(format_job), "~g~Ban da dao thanh cong va nhan duoc ~b~1 Sat~g~.");
+						Inventory_Add(playerid, "Sat", 1);
+					}
+					case 84..94:
+					{
+						format(format_job, sizeof(format_job), "~g~Ban da dao thanh cong va nhan duoc ~b~1 Dong~g~.");
+						Inventory_Add(playerid, "Dong", 1);
+					}
+					case 95..100:
+					{
+						format(format_job, sizeof(format_job), "~g~Ban da dao thanh cong va nhan duoc ~r~1 VANG~g~.");
+						Inventory_Add(playerid, "Vang", 1);
+					}
 				}
-				case 80..90:
+			}
+			else if(PlayerInfo[playerid][pMinerLevel] == 2)
+			{
+				switch(random(100))
 				{
-					format(format_job, sizeof(format_job), "~g~Ban da dao thanh cong va nhan duoc ~b~1 Sat~g~.");
-					Inventory_Add(playerid, "Sat", 1);
+					case 0..60:
+					{
+						format(format_job, sizeof(format_job), "~g~Ban da dao thanh cong va nhan duoc ~y~1 Da~g~.");
+						Inventory_Add(playerid, "Da", 1);
+					}
+					case 61..76:
+					{
+						format(format_job, sizeof(format_job), "~g~Ban da dao thanh cong va nhan duoc ~b~1 Sat~g~.");
+						Inventory_Add(playerid, "Sat", 1);
+					}
+					case 77..92:
+					{
+						format(format_job, sizeof(format_job), "~g~Ban da dao thanh cong va nhan duoc ~b~1 Dong~g~.");
+						Inventory_Add(playerid, "Dong", 1);
+					}
+					case 93..100:
+					{
+						format(format_job, sizeof(format_job), "~g~Ban da dao thanh cong va nhan duoc ~r~1 VANG~g~.");
+						Inventory_Add(playerid, "Vang", 1);
+					}
 				}
-				case 91..99:
+			}
+			else if(PlayerInfo[playerid][pMinerLevel] == 3)
+			{
+				switch(random(100))
 				{
-					format(format_job, sizeof(format_job), "~g~Ban da dao thanh cong va nhan duoc ~b~1 Dong~g~.");
-					Inventory_Add(playerid, "Dong", 1);
+					case 0..48:
+					{
+						format(format_job, sizeof(format_job), "~g~Ban da dao thanh cong va nhan duoc ~y~1 Da~g~.");
+						Inventory_Add(playerid, "Da", 1);
+					}
+					case 49..68:
+					{
+						format(format_job, sizeof(format_job), "~g~Ban da dao thanh cong va nhan duoc ~b~1 Sat~g~.");
+						Inventory_Add(playerid, "Sat", 1);
+					}
+					case 69..89:
+					{
+						format(format_job, sizeof(format_job), "~g~Ban da dao thanh cong va nhan duoc ~b~1 Dong~g~.");
+						Inventory_Add(playerid, "Dong", 1);
+					}
+					case 90..100:
+					{
+						format(format_job, sizeof(format_job), "~g~Ban da dao thanh cong va nhan duoc ~r~1 VANG~g~.");
+						Inventory_Add(playerid, "Vang", 1);
+					}
 				}
-				case 100:
-				{
-					format(format_job, sizeof(format_job), "~g~Ban da dao thanh cong va nhan duoc ~r~1 VANG~g~.");
-					Inventory_Add(playerid, "Vang", 1);
-				}
+			}
+			PlayerInfo[playerid][pSoLanMiner]++;
+			if(PlayerInfo[playerid][pMinerLevel] == 0 && PlayerInfo[playerid][pSoLanMiner] == 500)
+			{
+				SendClientMessage(playerid, COLOR_LIGHTRED, "SERVER: {ffffff}Chuc mung, ban da dat duoc Level 2 cua job miner.");
+				SendClientMessage(playerid, COLOR_LIGHTRED, "Level cang cao thi ti le ra duoc dong, sat, vang cao hon binh thuong.");
+				PlayerInfo[playerid][pMinerLevel] = 2;
+			}
+			else if(PlayerInfo[playerid][pMinerLevel] == 2 && PlayerInfo[playerid][pSoLanMiner] == 1000)
+			{
+				SendClientMessage(playerid, COLOR_LIGHTRED, "SERVER: {ffffff}Chuc mung, ban da dat duoc Level 3 cua job miner.");
+				SendClientMessage(playerid, COLOR_LIGHTRED, "Level cang cao thi ti le ra duoc dong, sat, vang cao hon binh thuong.");
+				PlayerInfo[playerid][pMinerLevel] = 3;
 			}
 			SendClientTextDraw(playerid, format_job);
 			SetPlayerSpecialAction(playerid, SPECIAL_ACTION_NONE);

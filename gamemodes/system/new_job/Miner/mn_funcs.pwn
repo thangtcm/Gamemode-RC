@@ -30,6 +30,141 @@ Dialog:minerdialog(playerid, response, listitem, inputtext[])
 	}
 	return 1;
 }
+Dialog:thuksdialog(playerid, response, listitem, inputtext[])
+{
+	if(response)
+	{
+		switch(listitem)
+		{
+			case 0:
+			{
+				Dialog_Show(playerid, banda, DIALOG_STYLE_INPUT, "Ban {a8a7a7}DA", "{ffffff}Hay nhap so luong ma ban muon ban", "Ban", "Huy");
+			}
+			case 1:
+			{
+				Dialog_Show(playerid, bandong, DIALOG_STYLE_INPUT, "Ban {c96c02}DONG", "{ffffff}Hay nhap so luong ma ban muon ban", "Ban", "Huy");
+			}
+			case 2:
+			{
+				Dialog_Show(playerid, bandong, DIALOG_STYLE_INPUT, "Ban {5c5c5c}SAT", "{ffffff}Hay nhap so luong ma ban muon ban", "Ban", "Huy");
+			}
+			case 3:
+			{
+				Dialog_Show(playerid, bandong, DIALOG_STYLE_INPUT, "Ban {f7ff05}VANG", "{ffffff}Hay nhap so luong ma ban muon ban", "Ban", "Huy");
+			}
+		}
+	}
+	return 1;
+}
+Dialog:banda(playerid, response, listitem, inputtext[])
+{
+	if(response)
+	{
+		if(isnull(inputtext))
+		{
+			return Dialog_Show(playerid, banda, DIALOG_STYLE_INPUT, "Ban {a8a7a7}DA", "{8f0a03}Hay nhap so luong hop le !", "Ban", "Huy");
+		}
+		else if(strval(inputtext) < 1)
+		{
+			return Dialog_Show(playerid, banda, DIALOG_STYLE_INPUT, "Ban {a8a7a7}DA", "{8f0a03}Hay nhap so luong hop le !", "Ban", "Huy");
+		}
+		else if(!Inventory_HasItem(playerid, "Da", strval(inputtext)))
+		{
+			return Dialog_Show(playerid, banda, DIALOG_STYLE_INPUT, "Ban {a8a7a7}DA", "{8f0a03}Ban da nhap nhieu hon so {a8a7a7}DA{8f0a03} ma ban co trong tui do !", "Ban", "Huy");
+		}
+		else
+		{
+			new format_job[1280], moneyselled = RandomMoney[0]*strval(inputtext);
+			format(format_job, sizeof(format_job), "[SERVER] {ffffff}Ban da ban {6e69ff}%d {a8a7a7}DA {ffffff}thanh cong va nhan duoc %d$.", inputtext, moneyselled);
+			PlayerInfo[playerid][pCash] += moneyselled;
+			SendClientMessage(playerid, COLOR_LIGHTRED, format_job);
+			Inventory_Remove(playerid, "Da", strval(inputtext));
+		}
+	}
+	return 1;
+}
+Dialog:bandong(playerid, response, listitem, inputtext[])
+{
+	if(response)
+	{
+		if(isnull(inputtext))
+		{
+			return Dialog_Show(playerid, bandong, DIALOG_STYLE_INPUT, "Ban {c96c02}DONG", "{8f0a03}Hay nhap so luong hop le !", "Ban", "Huy");
+		}
+		else if(strval(inputtext) < 1)
+		{
+			return Dialog_Show(playerid, bandong, DIALOG_STYLE_INPUT, "Ban {c96c02}DONG", "{8f0a03}Hay nhap so luong hop le !", "Ban", "Huy");
+		}
+		else if(!Inventory_HasItem(playerid, "Dong", strval(inputtext)))
+		{
+			return Dialog_Show(playerid, bandong, DIALOG_STYLE_INPUT, "Ban {c96c02}DONG", "{8f0a03}Ban da nhap nhieu hon so {c96c02}DONG{8f0a03} ma ban co trong tui do !", "Ban", "Huy");
+		}
+		else
+		{
+			new format_job[1280], moneyselled = RandomMoney[1]*strval(inputtext);
+			format(format_job, sizeof(format_job), "[SERVER] {ffffff}Ban da ban {6e69ff}%d {c96c02}DONG {ffffff}thanh cong va nhan duoc %d$.", inputtext, moneyselled);
+			PlayerInfo[playerid][pCash] += moneyselled;
+			SendClientMessage(playerid, COLOR_LIGHTRED, format_job);
+			Inventory_Remove(playerid, "Dong", strval(inputtext));
+		}
+	}
+	return 1;
+}
+Dialog:bansat(playerid, response, listitem, inputtext[])
+{
+	if(response)
+	{
+		if(isnull(inputtext))
+		{
+			return Dialog_Show(playerid, bansat, DIALOG_STYLE_INPUT, "Ban {5c5c5c}SAT", "{8f0a03}Hay nhap so luong hop le !", "Ban", "Huy");
+		}
+		else if(strval(inputtext) < 1)
+		{
+			return Dialog_Show(playerid, bansat, DIALOG_STYLE_INPUT, "Ban {5c5c5c}SAT", "{8f0a03}Hay nhap so luong hop le !", "Ban", "Huy");
+		}
+		else if(!Inventory_HasItem(playerid, "Sat", strval(inputtext)))
+		{
+			return Dialog_Show(playerid, bansat, DIALOG_STYLE_INPUT, "Ban {5c5c5c}SAT", "{8f0a03}Ban da nhap nhieu hon so {5c5c5c}SAT{8f0a03} ma ban co trong tui do !", "Ban", "Huy");
+		}
+		else
+		{
+			new format_job[1280], moneyselled = RandomMoney[2]*strval(inputtext);
+			format(format_job, sizeof(format_job), "[SERVER] {ffffff}Ban da ban {6e69ff}%d {5c5c5c}SAT {ffffff}thanh cong va nhan duoc %d$.", strval(inputtext), moneyselled);
+			PlayerInfo[playerid][pCash] += moneyselled;
+			SendClientMessage(playerid, COLOR_LIGHTRED, format_job);
+			Inventory_Remove(playerid, "Sat", strval(inputtext));
+		}
+	}
+	return 1;
+}
+Dialog:banvang(playerid, response, listitem, inputtext[])
+{
+	if(response)
+	{
+		if(isnull(inputtext))
+		{
+			return Dialog_Show(playerid, bansat, DIALOG_STYLE_INPUT, "Ban {f7ff05}VANG", "{8f0a03}Hay nhap so luong hop le !", "Ban", "Huy");
+		}
+		else if(strval(inputtext) < 1)
+		{
+			return Dialog_Show(playerid, bansat, DIALOG_STYLE_INPUT, "Ban {f7ff05}VANG", "{8f0a03}Hay nhap so luong hop le !", "Ban", "Huy");
+		}
+		else if(!Inventory_HasItem(playerid, "Vang", strval(inputtext)))
+		{
+			return Dialog_Show(playerid, bansat, DIALOG_STYLE_INPUT, "Ban {f7ff05}VANG", "{8f0a03}Ban da nhap nhieu hon so {f7ff05}VANG{8f0a03} ma ban co trong tui do !", "Ban", "Huy");
+		}
+		else
+		{
+			new format_job[1280], moneyselled = RandomMoney[3]*strval(inputtext);
+			format(format_job, sizeof(format_job), "[SERVER] {ffffff}Ban da ban {6e69ff}%d {f7ff05}VANG {ffffff}thanh cong va nhan duoc %d$.", strval(inputtext), moneyselled);
+			PlayerInfo[playerid][pCash] += moneyselled;
+			SendClientMessage(playerid, COLOR_LIGHTRED, format_job);
+			Inventory_Remove(playerid, "Vang", strval(inputtext));
+		}
+	}
+	return 1;
+}
+
 
 Dialog:muapickaxedialog(playerid, response, listitem, inputtext[])
 {
@@ -37,7 +172,7 @@ Dialog:muapickaxedialog(playerid, response, listitem, inputtext[])
 	{
 		if(!Inventory_HasItem(playerid, "Pickaxe"))
 		{
-			GivePlayerMoney(playerid, -500);
+			PlayerInfo[playerid][pCash] -= 500;
 			Inventory_Add(playerid, "Pickaxe", 1, 60);
 			SendClientMessage(playerid, COLOR_LIGHTRED, "SERVER: {ffffff}Ban da mua thanh cong Pickaxe, hay di tim khoang san de dao");
 		}

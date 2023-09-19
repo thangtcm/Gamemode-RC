@@ -763,6 +763,8 @@ enum pInfo
 	pId,
 	pOnline,
 	pLevel,
+	pSoLanMiner,
+	pMinerLevel,
 	pLastFire,
 	pEat,
 	pDrink,
