@@ -75,7 +75,7 @@ Dialog:banda(playerid, response, listitem, inputtext[])
 		else
 		{
 			new format_job[1280], moneyselled = RandomMoney[0]*strval(inputtext);
-			format(format_job, sizeof(format_job), "[SERVER] {ffffff}Ban da ban {6e69ff}%d {a8a7a7}DA {ffffff}thanh cong va nhan duoc %d$.", inputtext, moneyselled);
+			format(format_job, sizeof(format_job), "[SERVER] {ffffff}Ban da ban {6e69ff}%d {a8a7a7}DA {ffffff}thanh cong va nhan duoc %d$.", strval(inputtext), moneyselled);
 			PlayerInfo[playerid][pCash] += moneyselled;
 			SendClientMessage(playerid, COLOR_LIGHTRED, format_job);
 			new pItemId = Inventory_GetItemID(playerid, "Da", strval(inputtext));
@@ -103,7 +103,7 @@ Dialog:bandong(playerid, response, listitem, inputtext[])
 		else
 		{
 			new format_job[1280], moneyselled = RandomMoney[1]*strval(inputtext);
-			format(format_job, sizeof(format_job), "[SERVER] {ffffff}Ban da ban {6e69ff}%d {c96c02}DONG {ffffff}thanh cong va nhan duoc %d$.", inputtext, moneyselled);
+			format(format_job, sizeof(format_job), "[SERVER] {ffffff}Ban da ban {6e69ff}%d {c96c02}DONG {ffffff}thanh cong va nhan duoc %d$.", strval(inputtext), moneyselled);
 			PlayerInfo[playerid][pCash] += moneyselled;
 			SendClientMessage(playerid, COLOR_LIGHTRED, format_job);
 			new pItemId = Inventory_GetItemID(playerid, "Dong", strval(inputtext));
