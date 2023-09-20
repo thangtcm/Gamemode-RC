@@ -7953,7 +7953,7 @@ public OnPlayerLoad(playerid)
 		PlayerInfo[playerid][pPhoneBook] = 0;
 		PlayerInfo[playerid][pFishes] = 0;
 		PlayerInfo[playerid][pGcoin] = 0;
-		PlayerInfo[playerid][pCapacity] = 35;
+		PlayerInfo[playerid][pCapacity] = 16;
 		PlayerInfo[playerid][pInventoryItem] = 0;
 		PlayerInfo[playerid][pBiggestFish] = 0;
 		PlayerInfo[playerid][pJob] = 0;

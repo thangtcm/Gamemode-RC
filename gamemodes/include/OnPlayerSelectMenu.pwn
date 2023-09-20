@@ -76,8 +76,8 @@ public OnPlayerSelectMenu(playerid,menuid,itemid,response) {
         			case 5: {
         				if(PlayerInfo[playerid][pCash] < 80) return SendErrorMessage(playerid," Ban khong du '$80' de mua vat pham 'GPS'");
         				PlayerInfo[playerid][pCash] -= 80;
-        				if(PlayerInfo[playerid][pGPS] == 0) {
-							PlayerInfo[playerid][pGPS] = 1;
+        				if(!Inventory_HasItem(playerid, "GPS")) {
+							Inventory_Add(playerid, "GPS");
 						}
 						else return SendClientMessageEx(playerid, COLOR_WHITE, "Ban da so huu GPS");
         			}

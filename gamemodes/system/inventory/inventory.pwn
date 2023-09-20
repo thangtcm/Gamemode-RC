@@ -1,5 +1,4 @@
 #include <YSI_Coding\y_hooks>
-#include "./system/inventory/inventoryitem.pwn"
 #define MAX_INVENTORY (120)
 #define MODEL_SELECTION_INVENTORY (1)
 
@@ -9,7 +8,8 @@ enum inventoryData
 	invID,
 	invItem[32],
 	invModel[64],
-	invQuantity
+	invQuantity,
+	invTimer
 };
 
 enum e_InventoryItems
@@ -17,27 +17,35 @@ enum e_InventoryItems
 	e_InventoryItem[32],
 	e_InventoryModel[64]
 };
+new Timer:myItemTimer[MAX_PLAYERS] = {Timer:-1, ...};
 new InventoryData[MAX_PLAYERS][MAX_INVENTORY][inventoryData];
 forward OnLoadInventory(playerid);
 forward OnInventoryAdd(playerid, pItemId, timer);
 new const g_aInventoryItems[][e_InventoryItems] =
 {
-	{"Pickaxe", "mdl-2023:item_Pickaxe"},
-	{"Dien thoai", "mdl-2023:item_GPS"},
-	{"GPS", "mdl-2023:item_GPS"},
-    {"Binh xang", "mdl-2023:item_gas"},
-	{"Boombox", "mdl-2023:item_boombox"},
-	{"Radio", "mdl-2023:item_PRadio"},
-	{"Pizza", "mdl-2023:item_pizza"},
-	{"Hamburger", "mdl-2023:item_buger"},
-	{"Bread", "mdl-2023:item_bread"},
-	{"Juice", "mdl-2023:item_juice"},
+	{"Pickaxe", "item_Pickaxe"},
+	{"Dien thoai", "item_GPS"},
+	{"GPS", "item_GPS"},
+    {"Binh xang", "item_gas"},
+	{"Boombox", "item_boombox"},
+	{"Radio", "item_PRadio"},
+	{"Pizza", "item_pizza"},
+	{"Hamburger", "item_buger"},
+	{"Bread", "item_bread"},
+	{"Juice", "item_juice"},
 	// {"Beer", 1544},
 	// {"Da", 905},
-	{"Dong", "mdl-2023:item_cropper"},
-	{"Sat", "mdl-2023:item_iron"},
-	{"Vang", "mdl-2023:item_gold"}
+	{"Dong", "item_cropper"},
+	{"Sat", "item_iron"},
+	{"Vang", "item_gold"}
 };
+
+hook OnPlayerDisconnect(playerid, reason)
+{
+    stop myItemTimer[playerid];
+    myItemTimer[playerid] = Timer:-1;
+    return 1;
+}
 
 hook OnPlayerConnect(playerid)
 {
@@ -48,7 +56,8 @@ hook OnPlayerConnect(playerid)
 hook OnPlayerKeyStateChange(playerid, newkeys, oldkeys)
 {
 	if(newkeys == 0) return 1;
-	else if (PRESSED(KEY_YES) && CheckKeyInventory(playerid)) //Nhớ bổ sung các trường hợp sử dụng key Y để không bật inventory, ví dụ như Pizza
+	printf("%d", CheckKeyInventory(playerid));
+	if ((newkeys & KEY_YES) && CheckKeyInventory(playerid)) //Nhớ bổ sung các trường hợp sử dụng key Y để không bật inventory, ví dụ như Pizza
     {
 		return cmd_inv(playerid, "\1"); 
 	}
@@ -58,6 +67,8 @@ hook OnPlayerKeyStateChange(playerid, newkeys, oldkeys)
 stock CheckKeyInventory(playerid)
 {
 	//if(GetPVarInt(playerid, "SomeThing") == value) return 0;
+	if(!IsPlayerInRangeOfPoint(playerid, 2.5, 588.1791,866.1268,-42.4973) || !IsPlayerInRangeOfPoint(playerid, 2.5, 2126.8018,-76.6521,2.4721)
+	|| !IsPlayerInRangeOfPoint(playerid, 300.0, 588.1791,866.1268,-42.4973)) return 0;
 	return 1;
 }
 
@@ -77,25 +88,26 @@ public OnLoadInventory(playerid)
 	{
 		InventoryData[playerid][pItemId][invExists] = false;
 		InventoryData[playerid][pItemId][invQuantity] = 0;
+		InventoryData[playerid][pItemId][invTimer] = 0;
 	}
     while(i < rows)
     {
         cache_get_field_content(i, "invID", tmp, MainPipeline); InventoryData[playerid][i][invID] = strval(tmp);
         cache_get_field_content(i, "invModel", InventoryData[playerid][i][invModel], MainPipeline, 64);
         cache_get_field_content(i, "invQuantity", tmp, MainPipeline); InventoryData[playerid][i][invQuantity] = strval(tmp);
+		cache_get_field_content(i, "invTimer", tmp, MainPipeline); InventoryData[playerid][i][invTimer] = strval(tmp);
         cache_get_field_content(i, "invItem", InventoryData[playerid][i][invItem], MainPipeline, 32); 
         InventoryData[playerid][i][invExists] = true;
         i++;
     }
     if(i > 0) printf("[LOAD INVENTORY]  du lieu inventory cua %s (ID: %d) da duoc tai.", GetPlayerNameEx(playerid), playerid);
-	ITEMTIMER_LOAD(playerid);
+	myItemTimer[playerid] = repeat ItemTimer(playerid);
 }
 
 public OnInventoryAdd(playerid, pItemId, timer)
 {
 	InventoryData[playerid][pItemId][invExists] = true;
 	InventoryData[playerid][pItemId][invID] = mysql_insert_id(MainPipeline);
-	if(timer != 0)	ITEMTIMER_ADD(playerid, InventoryData[playerid][pItemId][invID], InventoryData[playerid][pItemId][invQuantity], timer);
 	return 1;
 }
 
@@ -110,6 +122,7 @@ stock Inventory_Clear(playerid)
 		{
 			InventoryData[playerid][i][invExists] = false;
 			InventoryData[playerid][i][invQuantity] = 0;
+			InventoryData[playerid][i][invTimer] = 0;
 		}
 	}
 	format(string, sizeof(string), "DELETE FROM `inventory` WHERE `ID` = '%d'", PlayerSQLId);
@@ -139,9 +152,9 @@ stock Inventory_GetItemID(playerid, item[], quantity = -1)
 	{
 		if(!InventoryData[playerid][i][invExists])
 			continue;
-		if(quantity != -1 && InventoryData[playerid][i][invQuantity] >= quantity && !strcmp(InventoryData[playerid][i][invItem], item))
+		if(quantity != -1 && InventoryData[playerid][i][invQuantity] >= quantity && InventoryData[playerid][i][invTimer] == 0 && !strcmp(InventoryData[playerid][i][invItem], item))
 			return i;
-		if(!strcmp(InventoryData[playerid][i][invItem], item) && quantity == -1) 
+		if(!strcmp(InventoryData[playerid][i][invItem], item) && quantity == -1 && InventoryData[playerid][i][invTimer] == 0) 
 			return i;
 	}
 	return -1;
@@ -227,11 +240,10 @@ stock Inventory_Add(playerid, item[], quantity = 1, timer = 0) //timer là dữ 
 {
 	new
 		pItemId = Inventory_GetItemID(playerid, item),
-		string[128],
+		string[250],
         PlayerSQLId = GetPlayerSQLId(playerid),
 		model[64];
 	strcpy(model, g_aInventoryItems[Get_GInventoryItem(item)][e_InventoryModel], 64);
-	printf("%s", model);
 	if(pItemId == -1 || timer != 0)
 	{
 		pItemId = Inventory_GetFreeID(playerid);
@@ -239,9 +251,10 @@ stock Inventory_Add(playerid, item[], quantity = 1, timer = 0) //timer là dữ 
 		{
 			strcpy(InventoryData[playerid][pItemId][invModel], model);
 			InventoryData[playerid][pItemId][invQuantity] = quantity;
+			InventoryData[playerid][pItemId][invTimer] = timer == 0 ? 0 : gettime() + timer*60;
 			strcpy(InventoryData[playerid][pItemId][invItem], item, 32);
-            format(string, sizeof(string), "INSERT INTO `inventory` (`ID`, `invItem`, `invModel`, `invQuantity`) VALUES('%d', '%s', '%s', '%d')", 
-				PlayerSQLId, g_mysql_ReturnEscaped(item, MainPipeline), g_mysql_ReturnEscaped(model, MainPipeline), quantity);
+            format(string, sizeof(string), "INSERT INTO `inventory` (`ID`, `invItem`, `invModel`, `invQuantity`, `invTimer`) VALUES('%d', '%s', '%s', '%d', '%d')", 
+				PlayerSQLId, g_mysql_ReturnEscaped(item, MainPipeline), g_mysql_ReturnEscaped(model, MainPipeline), quantity, timer);
 			mysql_function_query(MainPipeline, string, false, "OnInventoryAdd", "iii", playerid, pItemId, timer);
 			printf("[CREATE INVENTORY] %s (ID %d) da duoc them vao du lieu cua %s", InventoryData[playerid][pItemId][invItem], pItemId, GetPlayerNameEx(playerid));
 			return pItemId;
@@ -261,7 +274,7 @@ stock Inventory_Add(playerid, item[], quantity = 1, timer = 0) //timer là dữ 
 stock Inventory_Remove(playerid, pItemId, quantity = 1) //ID cua InventoryData
 {
 	new
-		string[128],
+		string[258],
         PlayerSQLId = GetPlayerSQLId(playerid);
 
 	if(InventoryData[playerid][pItemId][invExists])
@@ -277,18 +290,35 @@ stock Inventory_Remove(playerid, pItemId, quantity = 1) //ID cua InventoryData
 
 			format(string, sizeof(string), "DELETE FROM `inventory` WHERE `ID` = '%d' AND `invID` = '%d'", PlayerSQLId, InventoryData[playerid][pItemId][invID]);
 			mysql_function_query(MainPipeline, string, false, "OnQueryFinish", "i", SENDDATA_THREAD);
-			format(string, sizeof(string), "DELETE FROM `itemtimer` WHERE `ItemId` = '%d'", InventoryData[playerid][pItemId][invID]);
-			mysql_function_query(MainPipeline, string, false, "OnQueryFinish", "i", SENDDATA_THREAD);
 		}
 		else if(quantity != -1 && InventoryData[playerid][pItemId][invQuantity] > 0)
 		{
 			format(string, sizeof(string), "UPDATE `inventory` SET `invQuantity` = `invQuantity` - %d WHERE `ID` = '%d' AND `invID` = '%d'", quantity, PlayerSQLId, InventoryData[playerid][pItemId][invID]);
 			mysql_function_query(MainPipeline, string, false, "OnQueryFinish", "i", SENDDATA_THREAD);
-			INVITEM_DELETE(playerid, pItemId, quantity);
 		}
 		return 1;
 	}
 	return 0;
+}
+
+public OnModelSelectionMenuInv(playerid, extraid, selectType, response)
+{
+	printf("Runnnnnn");
+	if((extraid == MODEL_SELECTION_INVENTORY && response))
+	{
+		switch(selectType){
+			case SELECT_ICONUSER:{
+				return cmd_thongtin(playerid, "\1");
+			}
+			case SELECT_ICONCAR:{
+				return cmd_chinhxe(playerid, "\1");
+			}
+			case SELECT_ICONSETTING:{
+				SendErrorMessage(playerid, "Chuc nang nay dang bao tri");
+			}
+		}
+	}
+	return 1;
 }
 
 public OnModelSelectionResponseInv(playerid, extraid, index, modelid[], response)
@@ -324,11 +354,13 @@ public OpenInventory(playerid)
 			strcpy(items[i], InventoryData[playerid][i][invModel], 64);
 			quantitys[i] = InventoryData[playerid][i][invQuantity];
 			strcpy(itemName[i], InventoryData[playerid][i][invItem], 32);
+			expirys[i] = InventoryData[playerid][i][invTimer] == 0 ? 0 : InventoryData[playerid][i][invTimer] - gettime();
 		}
 		else
 		{
 			strcpy(items[i], "_", 64);
 			quantitys[i] = -1;
+			expirys[i] = 0;
 			strcpy(itemName[i], "_", 32);
 		}
 	}
@@ -336,9 +368,10 @@ public OpenInventory(playerid)
 	{
 		quantitys[i] = -1;
 		strcpy(itemName[i], "_", 32);
+		expirys[i] = 0;
 		strcpy(items[i], "_", 64);
 	}
-	return ShowModelSelectionInventory(playerid, "INVENTORY" ,MODEL_SELECTION_INVENTORY, items, sizeof(items), true, quantitys, itemName);
+	return ShowModelSelectionInventory(playerid, "INVENTORY" ,MODEL_SELECTION_INVENTORY, items, sizeof(items), true, quantitys, itemName, true, expirys);
 }
 
 forward OnPlayerUseItem(playerid, pItemId, name[]);
@@ -492,6 +525,20 @@ CMD:itemlist(playerid, params[])
 	return Dialog_Show(playerid, ShowOnly, DIALOG_STYLE_LIST, "Item list", string, "Lua chon", "Huy bo");
 }
 
+
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+//                          TIMER
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+timer ItemTimer[1000](playerid)
+{
+    if(IsPlayerConnected(playerid))
+    {
+        for(new i; i < MAX_INVENTORY; i++)
+            if(InventoryData[playerid][i][invExists] && InventoryData[playerid][i][invTimer] != 0 && InventoryData[playerid][i][invTimer] < gettime()) 
+                Inventory_SendRemoveTimer(playerid, i, InventoryData[playerid][i][invQuantity]);
+    }
+}
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 //                          INVENTORY
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

@@ -9,6 +9,18 @@
 	#define MAX_CUSTOM_ROTATIONS (50)
 #endif
 
+#if !defined SELECT_ICONUSER
+	#define SELECT_ICONUSER (1)
+#endif
+
+#if !defined SELECT_ICONCAR
+	#define SELECT_ICONCAR (2)
+#endif
+
+#if !defined SELECT_ICONSETTING
+	#define SELECT_ICONSETTING (3)
+#endif
+
 #define MODEL_RESPONSE_CANCEL (0)
 #define MODEL_RESPONSE_SELECT (1)
 #define MAX_ITEMPAGE	(16)
@@ -139,7 +151,6 @@ stock ShowModelSelectionInventory(playerid, header[] , extraid, items[][64], siz
 	new
 	    Float:x = 385.0,
 	    Float:y = 190.0,
-		page[8],
 		str[64];
 	g_ePlayerMenuData[playerid][g_eMenuTextdraws][0] = CreatePlayerTextDraw(playerid, 498.000, 180.000, "_");
 	PlayerTextDrawLetterSize(playerid, g_ePlayerMenuData[playerid][g_eMenuTextdraws][0], 6.000, 23.000);
@@ -353,6 +364,7 @@ stock ShowModelSelectionInventory(playerid, header[] , extraid, items[][64], siz
 	}
 	x = 370.0,
 	y = 194.0;
+	new itemModel[64];
  	for (new i = 0, idx = 0; i != MAX_MENU_ITEMS; i ++)
 	{
  		if (i >= size)
@@ -365,12 +377,15 @@ stock ShowModelSelectionInventory(playerid, header[] , extraid, items[][64], siz
 			{
                 strcpy(g_ePlayerMenuModel[playerid][i], "_", 64);
                 g_ePlayerMenuData[playerid][g_eMenuAmount][i] = 0;
+				g_ePlayerMenuData[playerid][g_eMenuExpiry][i] = 0;
 				strcpy(g_ePlayerMenuName[playerid][i], "_", 32);
       		}
 	  		else
 	  		{
 	   			g_ePlayerMenuData[playerid][g_eMenuTotalItems]++;
-				strcpy(g_ePlayerMenuModel[playerid][i], items[i], 64);
+				format(itemModel, sizeof(itemModel), "mdl-2023:%s", items[i]);
+				printf("%s", itemModel);
+				strcpy(g_ePlayerMenuModel[playerid][i], itemModel, 64);
 				strcpy(g_ePlayerMenuName[playerid][i], itemnames[i], 32);
 				if (amount) {
 	                g_ePlayerMenuData[playerid][g_eMenuAmount][i] = amounts[i];
@@ -394,8 +409,7 @@ stock ShowModelSelectionInventory(playerid, header[] , extraid, items[][64], siz
 
 	        	if (i < MAX_ITEMPAGE && strcmp(items[i], "_"))
 				{
-					printf("Run %d -- x %f -- y %f -- %s", i, x, y, items[i]);
-					g_ePlayerMenuData[playerid][g_eMenuItems][i] = CreatePlayerTextDraw(playerid, x, y, items[i]);
+					g_ePlayerMenuData[playerid][g_eMenuItems][i] = CreatePlayerTextDraw(playerid, x, y, g_ePlayerMenuModel[playerid][i]);
 					PlayerTextDrawTextSize(playerid, g_ePlayerMenuData[playerid][g_eMenuItems][i], 30.000, 30.000);
 					PlayerTextDrawAlignment(playerid, g_ePlayerMenuData[playerid][g_eMenuItems][i], 1);
 					PlayerTextDrawColor(playerid, g_ePlayerMenuData[playerid][g_eMenuItems][i], -1);
@@ -408,7 +422,7 @@ stock ShowModelSelectionInventory(playerid, header[] , extraid, items[][64], siz
 					if (expiry && expirys[i] != 0)
 					{
 						format(str, 64, "HSD: %s", ConvertSecondsToDuration(expirys[i]));
-						g_ePlayerMenuData[playerid][g_eMenuExpirys][i] = CreatePlayerTextDraw(playerid, x - 7.0, y + 29.6, str);
+						g_ePlayerMenuData[playerid][g_eMenuExpirys][i] = CreatePlayerTextDraw(playerid, x, y + 29.6, str);
 						PlayerTextDrawLetterSize(playerid, g_ePlayerMenuData[playerid][g_eMenuExpirys][i], 0.109, 0.680);
 						PlayerTextDrawAlignment(playerid, g_ePlayerMenuData[playerid][g_eMenuExpirys][i], 2);
 						PlayerTextDrawColor(playerid, g_ePlayerMenuData[playerid][g_eMenuExpirys][i], -1);
@@ -485,44 +499,40 @@ stock ShowModelSelectionInventory(playerid, header[] , extraid, items[][64], siz
 
 stock ConvertSecondsToDuration(seconds)
 {
-	new result[64];
-    if (seconds >= 31536000)
+    new result[64];
+	printf("%d", minutes);
+	new minutes = seconds/60;
+    
+	if (minutes >= 525600)
     {
-        new years = seconds / 31536000;
+        new years = minutes / 525600;
         format(result, sizeof(result), "%dy", years);
-		return result;
     }
-    if (seconds >= 2592000)
+	else if (minutes >= 43200)
     {
-        new months = seconds / 2592000;
+        new months = minutes / 43200;
         format(result, sizeof(result), "%dm", months);
-        return result;
     }
-    if (seconds >= 604800)
+	else if (minutes >= 10080)
     {
-        new weeks = seconds / 604800;
+        new weeks = minutes / 10080;
         format(result, sizeof(result), "%dw", weeks);
-        return result;
     }
-    if (seconds >= 86400)
+    else if (minutes >= 1440)
     {
-        new days = seconds / 86400;
+        new days = minutes / 1440;
         format(result, sizeof(result), "%dd", days);
-        return result;
     }
-    if (seconds >= 3600)
+    else if (minutes >= 60)
     {
-        new hours = seconds / 3600;
+        new hours = minutes / 60;
         format(result, sizeof(result), "%dh", hours);
-        return result;
     }
-    if (seconds >= 60)
+    else
     {
-        new minutes = seconds / 60;
         format(result, sizeof(result), "%dmin", minutes);
-        return result;
     }
-    format(result, sizeof(result), "%dsec", seconds);
+
     return result;
 }
 
@@ -593,7 +603,7 @@ stock Menu_SetPage(playerid, page)
 				}
 				if (g_ePlayerMenuData[playerid][g_eMenuExpirys][i - start] != PlayerText:INVALID_TEXT_DRAW)
 				{
-					format(str, sizeof(str), "HSD: %s", ConvertSecondsToDuration(g_ePlayerMenuData[playerid][g_eMenuExpiry][i]));
+					format(str, sizeof(str), "HSD: %s", ConvertSecondsToDuration(g_ePlayerMenuData[playerid][g_eMenuExpiry][i - start]));
 					PlayerTextDrawSetString(playerid, g_ePlayerMenuData[playerid][g_eMenuExpirys][i - start], str);
 
 					PlayerTextDrawHide(playerid, g_ePlayerMenuData[playerid][g_eMenuExpirys][i - start]);
@@ -631,6 +641,24 @@ public OnPlayerClickPlayerTextDraw(playerid, PlayerText:playertextid)
 		else
 			Menu_SetPage(playerid, g_ePlayerMenuData[playerid][g_eMenuPage] - 1);
 	}
+	else if (playertextid == g_ePlayerMenuData[playerid][g_eMenuTextdraws][12])
+	{
+		new extraid = g_ePlayerMenuData[playerid][g_eMenuExtra];
+	    HideModelSelectionInventory(playerid);
+		return CallLocalFunction("OnModelSelectionMenuInv", "ddd", playerid, extraid, SELECT_ICONCAR, MODEL_RESPONSE_SELECT);
+	}
+	else if (playertextid == g_ePlayerMenuData[playerid][g_eMenuTextdraws][13])
+	{
+		new extraid = g_ePlayerMenuData[playerid][g_eMenuExtra];
+	    HideModelSelectionInventory(playerid);
+		return CallLocalFunction("OnModelSelectionMenuInv", "ddd", playerid, extraid, SELECT_ICONUSER, MODEL_RESPONSE_SELECT);
+	}
+	else if (playertextid == g_ePlayerMenuData[playerid][g_eMenuTextdraws][14])
+	{
+		new extraid = g_ePlayerMenuData[playerid][g_eMenuExtra];
+	    HideModelSelectionInventory(playerid);
+		return CallLocalFunction("OnModelSelectionMenuInv", "ddd", playerid, extraid, SELECT_ICONSETTING, MODEL_RESPONSE_SELECT);
+	}
 	else for (new i = 0; i < MAX_ITEMPAGE; i ++)
 	{
 		if (g_ePlayerMenuData[playerid][g_eMenuItems][i] == playertextid)
@@ -667,3 +695,4 @@ forward MS_OnPlayerClickTextDraw(playerid, Text:clickedid);
 forward MS_OnPlayerClickPlayerTextDraw(playerid, PlayerText:playertextid);
 
 forward OnModelSelectionResponseInv(playerid, extraid, index, modelid[], response);
+forward OnModelSelectionMenuInv(playerid, extraid, selectType, response);

@@ -32,10 +32,14 @@ d:\Gamemode Samp\Gamemode-RC\pawno\include\eInventory.inc(115) : îøèáêà 07
 d:\Gamemode Samp\Gamemode-RC\pawno\include\eInventory.inc(115) : ïðåäóïðåæäåíèå 213: íåñîâïàäåíèå òèïîâ
 d:\Gamemode Samp\Gamemode-RC\pawno\include\eInventory.inc(117) : íåïðàâèëüíàÿ òàáóëÿöèÿ
 d:\Gamemode Samp\Gamemode-RC\pawno\include\eInventory.inc(117) : îøèáêà 017: íåîáúÿâëåííûé ñèìâîë "CancelSelectTextDraw"
-d:\Gamemode Samp\Gamemode-RC\pawno\include\eInventory.inc(533) : ïðåäóïðåæäåíèå 235: public-ôóíêöèÿ íóæäàåòñÿ â îïåðåæàþùåì îáúÿâëåíèè (èäåíòèôèêàòîð "OnPlayerClickTextDraw")
-d:\Gamemode Samp\Gamemode-RC\pawno\include\eInventory.inc(535) : îøèáêà 017: íåîáúÿâëåííûé ñèìâîë "GetTickCount"
-d:\Gamemode Samp\Gamemode-RC\pawno\include\eInventory.inc(538) : îøèáêà 017: íåîáúÿâëåííûé ñèìâîë "CallLocalFunction"
-d:\Gamemode Samp\Gamemode-RC\pawno\include\eInventory.inc(540) : îøèáêà 017: íåîáúÿâëåííûé ñèìâîë "INVALID_TEXT_DRAW"
+d:\Gamemode Samp\Gamemode-RC\pawno\include\eInventory.inc(493) : íåïðàâèëüíàÿ òàáóëÿöèÿ
+d:\Gamemode Samp\Gamemode-RC\pawno\include\eInventory.inc(493) : îøèáêà 017: íåîáúÿâëåííûé ñèìâîë "printf"
+d:\Gamemode Samp\Gamemode-RC\pawno\include\eInventory.inc(498) : îøèáêà 017: íåîáúÿâëåííûé ñèìâîë "format"
+d:\Gamemode Samp\Gamemode-RC\pawno\include\eInventory.inc(498) : ïðåäóïðåæäåíèå 202: êîëè÷åñòâî àðãóìåíòîâ íå ñîâïàäàåò ñ îáúÿâëåíèåì
+d:\Gamemode Samp\Gamemode-RC\pawno\include\eInventory.inc(498) : ïðåäóïðåæäåíèå 202: êîëè÷åñòâî àðãóìåíòîâ íå ñîâïàäàåò ñ îáúÿâëåíèåì
+d:\Gamemode Samp\Gamemode-RC\pawno\include\eInventory.inc(498) : ïðåäóïðåæäåíèå 202: êîëè÷åñòâî àðãóìåíòîâ íå ñîâïàäàåò ñ îáúÿâëåíèåì
+d:\Gamemode Samp\Gamemode-RC\pawno\include\eInventory.inc(497) : èäåíòèôèêàòîðó ïðèñâîåíî çíà÷åíèå, íî îí íå èñïîëüçóåòñÿ: "years"
+d:\Gamemode Samp\Gamemode-RC\pawno\include\eInventory.inc(503) : îøèáêà 017: íåîáúÿâëåííûé ñèìâîë "format"
 
 Êîìïèëÿöèÿ îñòàíîâëåíà.
 

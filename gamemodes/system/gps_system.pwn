@@ -57,7 +57,7 @@ new Float:timvieclam_postion[5][3] = {
 };
 CMD:gps(playerid, params[])
 {
-	if(PlayerInfo[playerid][pGPS] >= 1)
+	if(Inventory_HasItem(playerid, "GPS"))
 	{
 	    if(PlayerInfo[playerid][pSudungGPS] == 0) return ShowPlayerDialog(playerid, GPS_SYSTEM, DIALOG_STYLE_LIST, "GPS SYSTEM", "Xac dinh vi tri\nTim cong viec\nTim dia diem\n{357c5a}Bat GPS", "Chon", "Huy");
 	    if(PlayerInfo[playerid][pSudungGPS] == 1) return ShowPlayerDialog(playerid, GPS_SYSTEM, DIALOG_STYLE_LIST, "GPS SYSTEM", "Xac dinh vi tri\nTim cong viec\nTim dia diem\n{813027}Tat GPS", "Chon", "Huy");

@@ -30131,7 +30131,7 @@ CMD:spec(playerid, params[])
 CMD:pr(playerid, params[])
 {
     if(gettime() < PlayerInfo[playerid][pServiceTime]) return SendServerMessage(playerid, " Ban phai cho 3 giay truoc khi su dung lenh nay mot lan nua. " );
-	if(PlayerInfo[playerid][pRadio] == 1)
+	if(Inventory_HasItem(playerid, "Radio"))
 	{
 		if(isnull(params))
 		{
@@ -30176,7 +30176,7 @@ CMD:setfreq(playerid, params[])
 	}
 
 	if(frequency > 9999999 || frequency < -9999999) { SendErrorMessage(playerid, " Tan so co the cao hon -9999999 va thap hon 9999999!"); return 1; }
-	if (PlayerInfo[playerid][pRadio] == 1)
+	if(Inventory_HasItem(playerid, "Radio"))
 	{
 		PlayerInfo[playerid][pRadioFreq] = frequency;
 		format(string, sizeof(string), "Ban da thay doi tan so thanh %d khz.",frequency);
