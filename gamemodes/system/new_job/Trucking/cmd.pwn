@@ -8,7 +8,11 @@ CMD:registercartruck(playerid, params[])
         PlayerInfo[playerid][pRegisterCarTruck] = vehicleid;
         Dialog_Show(playerid, ShowOnly, DIALOG_STYLE_MSGBOX, "Trucker", "{FFFFFF}Ban da hoan thanh viec dang ky xe %s cho viec van chuyen hang hoa. \n\nBan can phai lam theo yeu cau cua {FF0000}Ong Chu{FFFFFF} dua ra.\n\nDe bat dau cong viec, ban hay den gap {FF0000}Ong Chu{FFFFFF} de nhan thong tin lam viec.", "Dong lai", "", GetVehicleName(vehicleid));
     }
-    else    return SendErrorMessage(playerid, "Ban can den vi tri dang ky xe van chuyen");
+    else 
+    { 
+        SetPlayerCheckpoint(playerid,  90.3602, -303.6159, 1.5823, 7.0);
+        return SendErrorMessage(playerid, "Ban can den vi tri tren cham do de dang ky xe van chuyen hang hoa.");
+    }
     return 1;
 }
 
@@ -23,11 +27,12 @@ CMD:layhang(playerid, params[])
     }
     if(IsPlayerInRangeOfPoint(playerid, 5.0, 58.5952,-292.2914,1.5781))
     {
-        TogglePlayerControllable(playerid, 0);
-        SetPlayerFacingAngle(playerid, 88.0);
-        InterpolateCameraPos(playerid, 54.1970,-183.9300,22.3937, 58.6004,-291.1005,1.5781, 10000, CAMERA_MOVE);
-        InterpolateCameraLookAt(playerid, 54.1970,-183.9300,22.3937, 58.6004,-291.1005,3.5781, 5000, CAMERA_MOVE);
-        SetTimerEx("ToggleCameraMove", 10000, false, "d", playerid);
+        // TogglePlayerControllable(playerid, 0);
+        // SetPlayerFacingAngle(playerid, 88.0);
+        // InterpolateCameraPos(playerid, 54.1970,-183.9300,22.3937, 58.6004,-291.1005,1.5781, 10000, CAMERA_MOVE);
+        // InterpolateCameraLookAt(playerid, 54.1970,-183.9300,22.3937, 58.6004,-291.1005,3.5781, 5000, CAMERA_MOVE);
+        // SetTimerEx("ToggleCameraMove", 10000, false, "d", playerid);
+        Dialog_Show(playerid, DIALOG_STARTTRUCKER, DIALOG_STYLE_LIST, "Cong viec Trucker", "Nhan nhiem vu\nXem Huong Dan", "Lua chon", "Huy bo");
     }
     return 1;
 }

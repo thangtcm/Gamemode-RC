@@ -500,7 +500,6 @@ stock ShowModelSelectionInventory(playerid, header[] , extraid, items[][64], siz
 stock ConvertSecondsToDuration(seconds)
 {
     new result[64];
-	printf("%d", minutes);
 	new minutes = seconds/60;
     
 	if (minutes >= 525600)

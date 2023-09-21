@@ -16,3 +16,44 @@ Dialog:DIALOG_LISTFACTORY(playerid, response, listitem, inputtext[])
 	}
 	return 1;
 }
+
+Dialog:DIALOG_STARTTRUCKER(playerid, response, listitem, inputtext[])
+{
+    if(response)
+	{
+        new str[256];
+        switch(listitem)
+        {
+            case 0:{
+                SetPVarInt(playerid, "IntroMissionTruck", 1);
+                ///
+                new CarTruckID = GetCarTruckID(PlayerInfo[playerid][pRegisterCarTruck]);
+                new UnitID = CarTruckWorking[CarTruckID][CarUnitType][random(strlen(CarTruckWorking[CarTruckID][CarUnitType]))];
+                new matchingProducts[sizeof(ProductData)];
+                new numMatchingProducts = 0;
+                for (new i = 0; i < sizeof(ProductData); i++)
+                {
+                    if (ProductData[i][ProductUnitID] == UnitID)
+                    {
+                        matchingProducts[numMatchingProducts] = i;
+                        numMatchingProducts++;
+                    }
+                }
+                if (numMatchingProducts == 0)
+                {
+                    return -1;
+                }
+                new weight = CarTruckWorking[CarTruckID][Weight];
+                printf("%d", weight);
+                new randomIndex[2];
+                for(new i; i < CarTruckWorking[CarTruckID][Weight]; i++)
+                {
+                    randomIndex[i] = matchingProducts[random(numMatchingProducts)]; 
+                }
+                format(str, sizeof(str), "Ban da nhan duoc nhiem vu giao %s va %s", ProductData[randomIndex[0]][ProductName], ProductData[randomIndex[1]][ProductName]);
+                SendClientMessage(playerid, COLOR_YELLOW, str);
+            }
+        }
+    }
+    return 1;
+}
