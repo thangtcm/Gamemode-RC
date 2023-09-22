@@ -266,6 +266,7 @@ hook OnPlayerKeyStateChange(playerid, newkeys, oldkeys) {
 
 public MonitorPizzaCarPlayer(playerid)
 {
+	if(PizzaCar[playerid] == INVALID_VEHICLE_ID) return 1;
 	--TimeExitsPizzaCar[playerid];
 	if(TimeExitsPizzaCar[playerid] <= 0)
 	{

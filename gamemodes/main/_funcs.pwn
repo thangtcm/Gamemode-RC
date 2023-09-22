@@ -1125,7 +1125,6 @@ public OnPlayerClickMap(playerid, Float:fX, Float:fY, Float:fZ)
 
 public OnPlayerTakeDamage(playerid, issuerid, Float:amount, weaponid)
 {
-
 	SetPVarInt(playerid, "NameTagTime", gettime()+5);
     if(GetPVarInt(playerid, "commitSuicide") == 1)
 	{
@@ -3383,6 +3382,7 @@ public OnPlayerLeaveCheckpoint(playerid)
 
 public OnPlayerEnterCheckpoint(playerid)
 {
+	DisablePlayerCheckpoint(playerid);
 	if(CP[playerid] == 252000)
  	{
 	 	CP[playerid] = 0;
