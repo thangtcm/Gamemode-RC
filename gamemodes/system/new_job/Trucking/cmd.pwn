@@ -67,6 +67,7 @@ CMD:truckergo(playerid, params[])
         return 1;
     }
     new FactoryId = IsPlayerInFactory(playerid);
+    printf("FactoryId %d", FactoryId);
     new string[560], ProductId;
     if(!strcmp(type, "mission", true))
 	{
@@ -88,10 +89,11 @@ CMD:truckergo(playerid, params[])
             format(string, sizeof(string), "{FFFFFF}ID\t\tSan Pham\t\tGia");
             if(GetPVarInt(playerid, "MissionTruck") == 1)
             {
+                printf("RUNNN");
                 new BuyProductLenght = 0; 
                 for(new i; i < strlen(PlayerTruckerData[playerid][MissionProduct]); i++)
                 {
-                    for(new j; j < strlen(FactoryData[FactoryId][ProductName]); i++)
+                    for(new j; j < strlen(FactoryData[FactoryId][ProductName]); j++)
                     {
                         if(FactoryData[FactoryId][ProductName][j] == PlayerTruckerData[playerid][MissionProduct][i])
                         {
