@@ -5,7 +5,7 @@
 ./main/variables.pwn(1453) : èäåíòèôèêàòîð íå èñïîëüçóåòñÿ: "BodyguardActor"
 ./main/variables.pwn(1462) : èäåíòèôèêàòîð íå èñïîëüçóåòñÿ: "CraftActor"
 ./main/variables.pwn(1461) : èäåíòèôèêàòîð íå èñïîëüçóåòñÿ: "DetectiveActor"
-d:\Gamemode Samp\Gamemode-RC\gamemodes\lsrpvn.pwn(16) : èäåíòèôèêàòîð íå èñïîëüçóåòñÿ: "FindFreeAnimDataID"
+C:\Users\PHATBENTRE\Desktop\vc\gamemodes\lsrpvn.pwn(16) : èäåíòèôèêàòîð íå èñïîëüçóåòñÿ: "FindFreeAnimDataID"
 ./main/variables.pwn(1451) : èäåíòèôèêàòîð íå èñïîëüçóåòñÿ: "HaiTraiCay"
 ./main/variables.pwn(1459) : èäåíòèôèêàòîð íå èñïîëüçóåòñÿ: "LuatSuActor"
 ./main/variables.pwn(1455) : èäåíòèôèêàòîð íå èñïîëüçóåòñÿ: "MaTuy"

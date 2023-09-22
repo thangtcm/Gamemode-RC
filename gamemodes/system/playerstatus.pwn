@@ -200,9 +200,12 @@ public StartDownEatDrinkStrong(playerid)
 		{
 			PlayerInfo[playerid][pEat]--;
 		}
-		else if(PlayerInfo[playerid][pEat] >= 2)
+		else if(PlayerInfo[playerid][pEat] >= 1)
 		{
-			PlayerInfo[playerid][pEat]--;
+			if(PlayerInfo[playerid][pEat] >= 2)
+			{
+				PlayerInfo[playerid][pEat]--;
+			}
 			if(GetPVarInt(playerid, #HPDown) == 0)
 			{
 				SetPVarInt(playerid, #HPDown, 1);
@@ -213,9 +216,12 @@ public StartDownEatDrinkStrong(playerid)
 		{
 			PlayerInfo[playerid][pDrink]--;
 		}
-		else if(PlayerInfo[playerid][pDrink] >= 2)
+		else if(PlayerInfo[playerid][pDrink] >= 1)
 		{
-			PlayerInfo[playerid][pDrink]--;
+			if(PlayerInfo[playerid][pDrink] >= 2)
+			{
+				PlayerInfo[playerid][pDrink]--;
+			}
 			if(GetPVarInt(playerid, #HPDown) == 0)
 			{
 				SetPVarInt(playerid, #HPDown, 1);
