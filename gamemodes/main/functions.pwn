@@ -7072,22 +7072,15 @@ stock SafeLogin(playerid, type)
         {
                 case 1: // Account Exists
                 {
-                    new string[229],ip[32];
-                    GetPlayerIp(playerid, ip, 32);
-                    format(string,sizeof (string),"Tai khoan: %s\n\n\
-                    Dia chi IP cua ban: %s\n\n\
-                    Lan cuoi dang nhap cua tai khoan: %s\n\n\
-                    Thoi gian tao tai khoan: %s\n\n\
-                    Tai khoan ban da dang ky hay nhap mat khau de dang nhap\n\n\n",GetPlayerNameEx(playerid),ip,MasterInfo[playerid][acc_lastlogin],MasterInfo[playerid][acc_regidate]);
-                    ShowPlayerDialog(playerid,DANGNHAP,DIALOG_STYLE_PASSWORD,"Dang nhap",string,"Dang nhap","Thoat");
-                    SetPlayerCameraPos(playerid, 1527.1915, -1388.5413, 405.3455);
-                    SetPlayerCameraLookAt(playerid, 1527.1210, -1389.5367, 403.4106);
-                    SetPlayerPos(playerid, 1535.3447,-1357.3451,329.4568);
+                	LoadLogin(playerid);
+                    SetPlayerCameraPos(playerid, 1313.2040,355.5530,77.3809);
+                    SetPlayerCameraLookAt(playerid, 1346.9469,279.9837,27.8488);
+                    SetPlayerPos(playerid, 1392.9966,420.9134,28.7555);
                 }
                 case 2: // No Account Exists
                 {
-                //      ShowMainMenuDialog(playerid, 2);
-                    new string[229],ip[32];
+                	SendErrorMessage(playerid, " Tai khoan cua ban khong ton tai, vui long dang ky tai WEB cua may chu.");
+                    /*new string[229],ip[32];
                     GetPlayerIp(playerid, ip, 32);
                     format(string,sizeof (string),"Tai khoan: %s\n\n\
                     Dia chi IP cua ban: %s\n\n\
@@ -7095,7 +7088,7 @@ stock SafeLogin(playerid, type)
                     ShowPlayerDialog(playerid,DANGKY,DIALOG_STYLE_PASSWORD,"Dang ky",string,"Dang ky","Thoat");
                     SetPlayerCameraPos(playerid, 1527.1915, -1388.5413, 405.3455);
                     SetPlayerCameraLookAt(playerid, 1527.1210, -1389.5367, 403.4106);
-                    SetPlayerPos(playerid, 1535.3447,-1357.3451,329.4568);
+                    SetPlayerPos(playerid, 1535.3447,-1357.3451,329.4568);*/
                 }
         }
 }

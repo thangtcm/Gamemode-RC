@@ -1353,6 +1353,7 @@ public LOGIN_TH(playerid) {
 			HideNoticeGUIFrame(playerid);
 		//	g_mysql_LoadAccount(playerid);
 			SendClientMessage(playerid, 0xa5bbd0FF, "(LOGIN) Ban da dang nhap thanh cong hay chon nhan vat de tham gia game!.");
+			HideLoginTD(playerid);
 			LoadTempCharacters(playerid);
 			new years,month,day,hourz,minz,sec,time[50];
 			getdate(years,month,day);
@@ -8491,6 +8492,7 @@ public OnPlayerLoad(playerid)
  	SetPlayerWeapons(playerid);
  	DestroyLog@_Reg(playerid);
  	SendClientMessageEx(playerid, COLOR_VANG, "Chao mung ban da tro lai may chu Los Santos Roleplay Vietnam.");
+ 	SetTimerEx("StartDownEatDrinkStrong", 100000, false, "i", playerid);
  	GetHomeCount(playerid);
 	return 1;
 }

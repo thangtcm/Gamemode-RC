@@ -1,6 +1,6 @@
 AddSimpleModel(-1,19379, -2202, "bp.dff", "bp.txd");
 AddSimpleModel(-1,19379, -2018, "object.dff", "speedo.txd");
-AddSimpleModel(-1,19379, -2016, "object.dff", "login.txd");
+AddSimpleModel(-1,19379, -3000, "object.dff", "login.txd");
 AddSimpleModel(-1,19379, -2018, "object.dff", "speedo.txd");
 AddSimpleModel(-1,19379, -2020, "object.dff", "newinv.txd");
 AddSimpleModel(-1,19379, -2021, "object.dff", "character.txd");

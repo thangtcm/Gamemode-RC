@@ -187,7 +187,6 @@ hook OnPlayerUpdate(playerid)
 hook OnPlayerConnect(playerid)
 {
 	Load_TDProgressPlayer(playerid);
-	SetTimerEx("StartDownEatDrinkStrong", 100000, false, "i", playerid);
 	return 1;
 }
 forward StartDownEatDrinkStrong(playerid);

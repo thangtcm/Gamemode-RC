@@ -16,7 +16,6 @@ public OnPlayerSelectedMenuRow(playerid, row)
 {
     return 1;
 }
-
 public OnPlayerLeaveRaceCheckpoint(playerid)
 {
     return 1;
@@ -936,14 +935,14 @@ public OnPlayerClickTextDraw(playerid, Text:clickedid)
 			HideNoiThatTD(playerid);
 		}
 	}*/
-		
+	/*	
 	if(_:clickedid != INVALID_TEXT_DRAW)
     {
     	if(clickedid == ButtonCharacter[1]) {
     		HideTDCharacter(playerid);
     		LoaderStarting(playerid, LOAD_CHARACTERLOGIN, "Dang tai du lieu game...", 2);       
     	}
-    }
+    }*/
     // if(GetPVarInt(playerid, "OpenInventory") == 1) { 
     //     if(clickedid == Text:INVALID_TEXT_DRAW) { 
     //     	HideInventory(playerid);
@@ -1096,11 +1095,12 @@ public OnPlayerClickPlayerTextDraw(playerid, PlayerText:playertextid)
     	}
     }*/
     if(GetPVarInt(playerid, "TextDrawCharacter") == 1) {
-        for(new i = 0 ; i <  4 ; i++) {
-    	    if(playertextid == CharacterButton[playerid][i]) {
+        for(new i = 0 ; i < 3 ; i++) {
+    	    if(playertextid == CharacterName[playerid][i]) {
     	    	if(TempCharacter[playerid][i][IsCreated]) {
-    	    		ShowInfoCharacter(playerid,i);
                 	SetPVarInt(playerid,"SelectNhanVat",i);
+			    	HideTDCharacter(playerid);
+			    	LoaderStarting(playerid, LOAD_CHARACTERLOGIN, "Dang tai du lieu game...", 2);       
     	    	}
     	    	else if(!TempCharacter[playerid][i][IsCreated]) {
                     HideTDCharacter(playerid);
@@ -1111,6 +1111,21 @@ public OnPlayerClickPlayerTextDraw(playerid, PlayerText:playertextid)
     	    }
     	}
     }
+   	if(playertextid == LoginTD[playerid][2])
+   	{
+        new string[229],ip[32];
+        GetPlayerIp(playerid, ip, 32);
+        format(string,sizeof (string),"Tai khoan: %s\n\n\
+        Dia chi IP cua ban: %s\n\n\
+        Lan cuoi dang nhap cua tai khoan: %s\n\n\
+        Thoi gian tao tai khoan: %s\n\n\
+        Tai khoan ban da dang ky hay nhap mat khau de dang nhap\n\n\n",GetPlayerNameEx(playerid),ip,MasterInfo[playerid][acc_lastlogin],MasterInfo[playerid][acc_regidate]);
+        ShowPlayerDialog(playerid,DANGNHAP,DIALOG_STYLE_PASSWORD,"Dang nhap",string,"Dang nhap","Thoat");
+   	}
+   	if(playertextid == LoginTD[playerid][0])
+   	{
+   		g_mysql_AccountLoginCheckzz(playerid);
+   	}
 	return 1;
 }
 
@@ -1684,6 +1699,9 @@ public OnPlayerEnterVehicle(playerid, vehicleid, ispassenger)
 }
 
 public OnPlayerConnect(playerid) {
+	SetTimerEx("LoadLogin", 1000, 0, "i", playerid);
+	SetPVarString(playerid, "PassAuth", "abc");
+	LoadLoginTextDraws(playerid);
 	CreateLoading(playerid);
 	BlockChat[playerid] = 0;
 	ResetDamages(playerid);
@@ -6316,8 +6334,8 @@ CMD:testattachobject(playerid, params[])
 	}
 	GetVehiclePos(vehicleid, vehiclePos[0], vehiclePos[1], vehiclePos[2]);
 	if(IsValidDynamicObject(objectTest[objectTestindex]))
-            DestroyDynamicObject(objectTest[objectTestindex]);
-        objectTest[objectTestindex] = CreateDynamicObject(
+    DestroyDynamicObject(objectTest[objectTestindex]);
+    objectTest[objectTestindex] = CreateDynamicObject(
                     objectid, vehiclePos[0], vehiclePos[1], vehiclePos[2],
                     0, 0, Angle, GetPlayerVirtualWorld(playerid), 
                     GetPlayerInterior(playerid));
@@ -6651,6 +6669,108 @@ public LoadTextDraws()
 	print("[Textdraws] Loaded textdraws.");
 	return 1;
 }
+stock LoadLoginTextDraws(playerid)
+{
+	LoginTD[playerid][0] = CreatePlayerTextDraw(playerid, 273.000, 259.000, "mdl-3000:login-dn");
+	PlayerTextDrawTextSize(playerid, LoginTD[playerid][0], 93.000, 49.000);
+	PlayerTextDrawAlignment(playerid, LoginTD[playerid][0], 1);
+	PlayerTextDrawColor(playerid, LoginTD[playerid][0], -1);
+	PlayerTextDrawSetShadow(playerid, LoginTD[playerid][0], 0);
+	PlayerTextDrawSetOutline(playerid, LoginTD[playerid][0], 0);
+	PlayerTextDrawBackgroundColor(playerid, LoginTD[playerid][0], 255);
+	PlayerTextDrawFont(playerid, LoginTD[playerid][0], 4);
+	PlayerTextDrawSetProportional(playerid, LoginTD[playerid][0], 1);
+	PlayerTextDrawSetSelectable(playerid, LoginTD[playerid][0], 1);
+
+	LoginTD[playerid][1] = CreatePlayerTextDraw(playerid, 250.000, 199.000, "mdl-3000:login-trong");
+	PlayerTextDrawTextSize(playerid, LoginTD[playerid][1], 139.000, 30.000);
+	PlayerTextDrawAlignment(playerid, LoginTD[playerid][1], 1);
+	PlayerTextDrawColor(playerid, LoginTD[playerid][1], -1);
+	PlayerTextDrawSetShadow(playerid, LoginTD[playerid][1], 0);
+	PlayerTextDrawSetOutline(playerid, LoginTD[playerid][1], 0);
+	PlayerTextDrawBackgroundColor(playerid, LoginTD[playerid][1], 255);
+	PlayerTextDrawFont(playerid, LoginTD[playerid][1], 4);
+	PlayerTextDrawSetProportional(playerid, LoginTD[playerid][1], 1);
+
+	LoginTD[playerid][2] = CreatePlayerTextDraw(playerid, 250.000, 227.000, "mdl-3000:login-mk");
+	PlayerTextDrawTextSize(playerid, LoginTD[playerid][2], 139.000, 30.000);
+	PlayerTextDrawAlignment(playerid, LoginTD[playerid][2], 1);
+	PlayerTextDrawColor(playerid, LoginTD[playerid][2], -1);
+	PlayerTextDrawSetShadow(playerid, LoginTD[playerid][2], 0);
+	PlayerTextDrawSetOutline(playerid, LoginTD[playerid][2], 0);
+	PlayerTextDrawBackgroundColor(playerid, LoginTD[playerid][2], 255);
+	PlayerTextDrawFont(playerid, LoginTD[playerid][2], 4);
+	PlayerTextDrawSetProportional(playerid, LoginTD[playerid][2], 1);
+	PlayerTextDrawSetSelectable(playerid, LoginTD[playerid][2], 1);
+
+	LoginTD[playerid][3] = CreatePlayerTextDraw(playerid, 254.000, 67.000, "mdl-3000:login-logo");
+	PlayerTextDrawTextSize(playerid, LoginTD[playerid][3], 128.000, 131.000);
+	PlayerTextDrawAlignment(playerid, LoginTD[playerid][3], 1);
+	PlayerTextDrawColor(playerid, LoginTD[playerid][3], -1);
+	PlayerTextDrawSetShadow(playerid, LoginTD[playerid][3], 0);
+	PlayerTextDrawSetOutline(playerid, LoginTD[playerid][3], 0);
+	PlayerTextDrawBackgroundColor(playerid, LoginTD[playerid][3], 255);
+	PlayerTextDrawFont(playerid, LoginTD[playerid][3], 4);
+	PlayerTextDrawSetProportional(playerid, LoginTD[playerid][3], 1);
+
+	LoginTD[playerid][4] = CreatePlayerTextDraw(playerid, 321.000, 208.000, "phatbentre");
+	PlayerTextDrawLetterSize(playerid, LoginTD[playerid][4], 0.230, 1.298);
+	PlayerTextDrawAlignment(playerid, LoginTD[playerid][4], 2);
+	PlayerTextDrawColor(playerid, LoginTD[playerid][4], -1);
+	PlayerTextDrawSetShadow(playerid, LoginTD[playerid][4], 0);
+	PlayerTextDrawSetOutline(playerid, LoginTD[playerid][4], 0);
+	PlayerTextDrawBackgroundColor(playerid, LoginTD[playerid][4], 150);
+	PlayerTextDrawFont(playerid, LoginTD[playerid][4], 1);
+	PlayerTextDrawSetProportional(playerid, LoginTD[playerid][4], 1);
+
+	LoginTD[playerid][5] = CreatePlayerTextDraw(playerid, 250.000, 227.000, "mdl-3000:login-trong");
+	PlayerTextDrawTextSize(playerid, LoginTD[playerid][5], 139.000, 30.000);
+	PlayerTextDrawAlignment(playerid, LoginTD[playerid][5], 1);
+	PlayerTextDrawColor(playerid, LoginTD[playerid][5], -1);
+	PlayerTextDrawSetShadow(playerid, LoginTD[playerid][5], 0);
+	PlayerTextDrawSetOutline(playerid, LoginTD[playerid][5], 0);
+	PlayerTextDrawBackgroundColor(playerid, LoginTD[playerid][5], 255);
+	PlayerTextDrawFont(playerid, LoginTD[playerid][5], 4);
+	PlayerTextDrawSetProportional(playerid, LoginTD[playerid][5], 1);
+
+	LoginTD[playerid][6] = CreatePlayerTextDraw(playerid, 320.000, 230.000, ".......................");
+	PlayerTextDrawLetterSize(playerid, LoginTD[playerid][6], 0.379, 1.799);
+	PlayerTextDrawAlignment(playerid, LoginTD[playerid][6], 2);
+	PlayerTextDrawColor(playerid, LoginTD[playerid][6], -1);
+	PlayerTextDrawSetShadow(playerid, LoginTD[playerid][6], 0);
+	PlayerTextDrawSetOutline(playerid, LoginTD[playerid][6], 0);
+	PlayerTextDrawBackgroundColor(playerid, LoginTD[playerid][6], 150);
+	PlayerTextDrawFont(playerid, LoginTD[playerid][6], 1);
+	PlayerTextDrawSetProportional(playerid, LoginTD[playerid][6], 1);
+}
+stock HideLoginTD(playerid)
+{
+	PlayerTextDrawHide(playerid, LoginTD[playerid][0]);
+	PlayerTextDrawHide(playerid, LoginTD[playerid][1]);
+	PlayerTextDrawHide(playerid, LoginTD[playerid][2]);
+	PlayerTextDrawHide(playerid, LoginTD[playerid][3]);
+	PlayerTextDrawHide(playerid, LoginTD[playerid][4]);
+	PlayerTextDrawHide(playerid, LoginTD[playerid][5]);
+	PlayerTextDrawHide(playerid, LoginTD[playerid][6]);
+	CancelSelectTextDraw(playerid);
+
+}
+
+stock LoadLogin(playerid)
+{
+	new string[128];
+	format(string, sizeof(string), "%s", GetPlayerNameEx(playerid));
+	PlayerTextDrawSetString(playerid, LoginTD[playerid][4], string);
+	// PlayerTextDrawSetString(playerid, LoginTD[playerid][6], string);
+	PlayerTextDrawShow(playerid, LoginTD[playerid][0]);
+	PlayerTextDrawShow(playerid, LoginTD[playerid][1]);
+	PlayerTextDrawShow(playerid, LoginTD[playerid][2]);
+	PlayerTextDrawShow(playerid, LoginTD[playerid][3]);
+	PlayerTextDrawShow(playerid, LoginTD[playerid][4]);
+	SelectTextDraw(playerid, 0xe1dfa2FF);
+	return 1;
+}
+
 
 stock PrepTradeToysGUI(playerid, sellerid, price, object)
 {
@@ -7940,7 +8060,6 @@ public LoadStreamerDynamicObjects()
     LoadWeaponFactory();
     LoadObjectCityHall();
     LoadTextUpJob();
-    LoadBTNC();
 /*    for(new i = 0; i< MAX_NOITHAT; i++) {
     	LoadNoiThat(i);
     }*/
@@ -14131,15 +14250,26 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 		if(response) {
 		    if(!isnull(inputtext) && strlen(inputtext) < 64)
 		    {
-			    SetPVarString(playerid, "PassAuth", inputtext);
-			    g_mysql_AccountLoginCheckzz(playerid);
+		        SetPVarString(playerid, "PassAuth", inputtext);
+		        new passdayne[256];
+		       	GetPVarString(playerid, "PassAuth", passdayne, sizeof(passdayne));
+		       	strdel(passLength, 0, 256);
+		        new lengthpass = strlen(passdayne);
+		        for(new i = 0; i < lengthpass; i++)
+		        {
+		        	strcat(passLength, ".");
+		        }
+		        PlayerTextDrawSetString(playerid, LoginTD[playerid][6], passLength);
+		        PlayerTextDrawShow(playerid, LoginTD[playerid][5]);
+		        PlayerTextDrawShow(playerid, LoginTD[playerid][6]);
+		        //g_mysql_AccountLoginCheckzz(playerid);
 		    }
 		    else
 		    {
 		    	SendClientMessage(playerid, 0xa5bbd0FF, "(LOGIN) Vui long nhap mat khau.");
 			    new ip[32];
 			    GetPlayerIp(playerid, ip, 32);
-			    format(string,sizeof (string),"\n\nDia chi IP cua ban: %s\n\nLan dang nhap cua tai khoan: %s\n\nThoi gian tao tai khoan: %s\n\nTai khoan ban da dang ky hay nhap mat khau de dang nhap",ip,MasterInfo[playerid][acc_lastlogin],MasterInfo[playerid][acc_regidate]);
+			    format(string,sizeof (string),"\n\nDia chi IP cua ban: %s\n\nLan dang nhap cua tai khoan: %s\n\nThoi gian tao tai khoan: %s\n",ip,MasterInfo[playerid][acc_lastlogin],MasterInfo[playerid][acc_regidate]);
 			    ShowPlayerDialog(playerid,DANGNHAP,DIALOG_STYLE_PASSWORD,"Dang nhap",string,"Dang nhap","Thoat");
 			    SetPlayerCameraPos(playerid, 1527.1915, -1388.5413, 405.3455);
 			    SetPlayerCameraLookAt(playerid, 1527.1210, -1389.5367, 403.4106);
