@@ -1696,7 +1696,7 @@ new SkinList = mS_INVALID_LISTID;
 new PlayerText:radio[MAX_PLAYERS];
 new CauHoiNewb[MAX_PLAYERS][128];
 new TraLoiCauHoi[MAX_PLAYERS][128];
-
+new PlayerText: LoginTD[MAX_PLAYERS][7];
 new Text:MainMenuTxtdraw[12];
 new Text:NoticeTxtdraw[8];
 new Text:WristWatch;
@@ -1706,7 +1706,7 @@ new Text:PriorityReport[MAX_PLAYERS];
 new Text3D:veicolo_callsign_testo[MAX_VEHICLES];
 new veicolo_callsign_status[MAX_VEHICLES];
 new LamViec[MAX_PLAYERS];
-
+new passLength[256];
 // Sobeit Check Variable
 new sobeitCheckvar[MAX_PLAYERS];
 new sobeitCheckIsDone[MAX_PLAYERS];

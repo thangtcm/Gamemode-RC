@@ -1,8 +1,8 @@
-C:\Users\PHATBENTRE\Desktop\Gamemode-RC\Gamemode-RC\pawno\include\YSI_Coding\y_hooks\..\..\YSI_Core\y_core\y_scriptinit_impl.inc(414) : îøèáêà 017: íåîáúÿâëåííûé ñèìâîë "numargs"
-C:\Users\PHATBENTRE\Desktop\Gamemode-RC\Gamemode-RC\pawno\include\YSI_Coding\y_hooks\..\..\YSI_Core\y_core\y_scriptinit_impl.inc(414) : ïðåäóïðåæäåíèå 215: âûðàæåíèå íå èìååò ýôôåêòà
-C:\Users\PHATBENTRE\Desktop\Gamemode-RC\Gamemode-RC\pawno\include\YSI_Coding\y_hooks\..\..\YSI_Core\y_core\y_scriptinit_impl.inc(414) : îøèáêà 001: îæèäàëñÿ òîêåí ")", íî íàéäåí ";"
-C:\Users\PHATBENTRE\Desktop\Gamemode-RC\Gamemode-RC\pawno\include\YSI_Coding\y_hooks\..\..\YSI_Core\y_core\y_scriptinit_impl.inc(414) : îøèáêà 036: ïóñòîå äåéñòâèå
-C:\Users\PHATBENTRE\Desktop\Gamemode-RC\Gamemode-RC\pawno\include\YSI_Coding\y_hooks\..\..\YSI_Core\y_core\y_scriptinit_impl.inc(414) : ôàòàëüíàÿ îøèáêà 107: ñëèøêîì ìíîãî îøèáîê íà îäíîé ñòðîêå
+C:\Users\PHATBENTRE\Desktop\vc\gamemodes\system\login.pwn(77) : îøèáêà 017: íåîáúÿâëåííûé ñèìâîë "PlayerTextDrawHide"
+C:\Users\PHATBENTRE\Desktop\vc\gamemodes\system\login.pwn(77) : ïðåäóïðåæäåíèå 215: âûðàæåíèå íå èìååò ýôôåêòà
+C:\Users\PHATBENTRE\Desktop\vc\gamemodes\system\login.pwn(77) : îøèáêà 001: îæèäàëñÿ òîêåí ";", íî íàéäåí "]"
+C:\Users\PHATBENTRE\Desktop\vc\gamemodes\system\login.pwn(77) : îøèáêà 029: íåïðàâèëüíîå âûðàæåíèå, ïðèíÿò íîëü
+C:\Users\PHATBENTRE\Desktop\vc\gamemodes\system\login.pwn(77) : ôàòàëüíàÿ îøèáêà 107: ñëèøêîì ìíîãî îøèáîê íà îäíîé ñòðîêå
 
 Êîìïèëÿöèÿ îñòàíîâëåíà.
 

@@ -1,92 +1,75 @@
 
 stock LoadLoginTextDraws(playerid)
 {
-	LoginTD[playerid][0] = CreatePlayerTextDraw(playerid, 242.405487, 106.000015, "mdl-2016:main_dangnhap");
-	PlayerTextDrawLetterSize(playerid, LoginTD[playerid][0], 0.000000, 0.000000);
-	PlayerTextDrawTextSize(playerid, LoginTD[playerid][0], 206.000000, 234.000000);
-	PlayerTextDrawAlignment(playerid, LoginTD[playerid][0], 1);
-	PlayerTextDrawColor(playerid, LoginTD[playerid][0], -1);
-	PlayerTextDrawSetShadow(playerid, LoginTD[playerid][0], 0);
-	PlayerTextDrawSetOutline(playerid, LoginTD[playerid][0], 0);
-	PlayerTextDrawBackgroundColor(playerid, LoginTD[playerid][0], 255);
-	PlayerTextDrawFont(playerid, LoginTD[playerid][0], 4);
-	PlayerTextDrawSetProportional(playerid, LoginTD[playerid][0], 0);
-	PlayerTextDrawSetShadow(playerid, LoginTD[playerid][0], 0);
+	Text_Player[playerid][0] = CreatePlayerTextDraw(playerid, 273.000, 259.000, "mdl-3000:login-dn");
+	PlayerTextDrawTextSize(playerid, Text_Player[playerid][0], 93.000, 49.000);
+	PlayerTextDrawAlignment(playerid, Text_Player[playerid][0], 1);
+	PlayerTextDrawColor(playerid, Text_Player[playerid][0], -1);
+	PlayerTextDrawSetShadow(playerid, Text_Player[playerid][0], 0);
+	PlayerTextDrawSetOutline(playerid, Text_Player[playerid][0], 0);
+	PlayerTextDrawBackgroundColor(playerid, Text_Player[playerid][0], 255);
+	PlayerTextDrawFont(playerid, Text_Player[playerid][0], 4);
+	PlayerTextDrawSetProportional(playerid, Text_Player[playerid][0], 1);
 
-	LoginTD[playerid][1] = CreatePlayerTextDraw(playerid, 298.733581, 210.550094, "mdl-2016:button");
-	PlayerTextDrawLetterSize(playerid, LoginTD[playerid][1], 0.000000, 0.000000);
-	PlayerTextDrawTextSize(playerid, LoginTD[playerid][1], 126.000000, 20.239982);
-	PlayerTextDrawAlignment(playerid, LoginTD[playerid][1], 1);
-	PlayerTextDrawColor(playerid, LoginTD[playerid][1], -1);
-	PlayerTextDrawSetShadow(playerid, LoginTD[playerid][1], 0);
-	PlayerTextDrawSetOutline(playerid, LoginTD[playerid][1], 0);
-	PlayerTextDrawBackgroundColor(playerid, LoginTD[playerid][1], 255);
-	PlayerTextDrawFont(playerid, LoginTD[playerid][1], 4);
-	PlayerTextDrawSetProportional(playerid, LoginTD[playerid][1], 0);
-	PlayerTextDrawSetShadow(playerid, LoginTD[playerid][1], 0);
-	PlayerTextDrawSetSelectable(playerid, LoginTD[playerid][1], true);
+	Text_Player[playerid][1] = CreatePlayerTextDraw(playerid, 250.000, 199.000, "mdl-3000:login-trong");
+	PlayerTextDrawTextSize(playerid, Text_Player[playerid][1], 139.000, 30.000);
+	PlayerTextDrawAlignment(playerid, Text_Player[playerid][1], 1);
+	PlayerTextDrawColor(playerid, Text_Player[playerid][1], -1);
+	PlayerTextDrawSetShadow(playerid, Text_Player[playerid][1], 0);
+	PlayerTextDrawSetOutline(playerid, Text_Player[playerid][1], 0);
+	PlayerTextDrawBackgroundColor(playerid, Text_Player[playerid][1], 255);
+	PlayerTextDrawFont(playerid, Text_Player[playerid][1], 4);
+	PlayerTextDrawSetProportional(playerid, Text_Player[playerid][1], 1);
 
-	LoginTD[playerid][2] = CreatePlayerTextDraw(playerid, 298.733581, 235.633377, "mdl-2016:button");
-	PlayerTextDrawLetterSize(playerid, LoginTD[playerid][2], 0.000000, 0.000000);
-	PlayerTextDrawTextSize(playerid, LoginTD[playerid][2], 126.000000, 20.239982);
-	PlayerTextDrawAlignment(playerid, LoginTD[playerid][2], 1);
-	PlayerTextDrawColor(playerid, LoginTD[playerid][2], -1);
-	PlayerTextDrawSetShadow(playerid, LoginTD[playerid][2], 0);
-	PlayerTextDrawSetOutline(playerid, LoginTD[playerid][2], 0);
-	PlayerTextDrawBackgroundColor(playerid, LoginTD[playerid][2], 255);
-	PlayerTextDrawFont(playerid, LoginTD[playerid][2], 4);
-	PlayerTextDrawSetProportional(playerid, LoginTD[playerid][2], 0);
-	PlayerTextDrawSetShadow(playerid, LoginTD[playerid][2], 0);
-	PlayerTextDrawSetSelectable(playerid, LoginTD[playerid][2], true);
+	Text_Player[playerid][2] = CreatePlayerTextDraw(playerid, 250.000, 227.000, "mdl-3000:login-mk");
+	PlayerTextDrawTextSize(playerid, Text_Player[playerid][2], 139.000, 30.000);
+	PlayerTextDrawAlignment(playerid, Text_Player[playerid][2], 1);
+	PlayerTextDrawColor(playerid, Text_Player[playerid][2], -1);
+	PlayerTextDrawSetShadow(playerid, Text_Player[playerid][2], 0);
+	PlayerTextDrawSetOutline(playerid, Text_Player[playerid][2], 0);
+	PlayerTextDrawBackgroundColor(playerid, Text_Player[playerid][2], 255);
+	PlayerTextDrawFont(playerid, Text_Player[playerid][2], 4);
+	PlayerTextDrawSetProportional(playerid, Text_Player[playerid][2], 1);
 
-	LoginTD[playerid][3] = CreatePlayerTextDraw(playerid, 376.482208, 259.550109, "mdl-2016:dangnhap_blue");
-	PlayerTextDrawLetterSize(playerid, LoginTD[playerid][3], 0.000000, 0.000000);
-	PlayerTextDrawTextSize(playerid, LoginTD[playerid][3], 47.000000, 20.000000);
-	PlayerTextDrawAlignment(playerid, LoginTD[playerid][3], 1);
-	PlayerTextDrawColor(playerid, LoginTD[playerid][3], -1);
-	PlayerTextDrawSetShadow(playerid, LoginTD[playerid][3], 0);
-	PlayerTextDrawSetOutline(playerid, LoginTD[playerid][3], 0);
-	PlayerTextDrawBackgroundColor(playerid, LoginTD[playerid][3], 255);
-	PlayerTextDrawFont(playerid, LoginTD[playerid][3], 4);
-	PlayerTextDrawSetProportional(playerid, LoginTD[playerid][3], 0);
-	PlayerTextDrawSetShadow(playerid, LoginTD[playerid][3], 0);
-	PlayerTextDrawSetSelectable(playerid, LoginTD[playerid][3], true);
+	Text_Player[playerid][3] = CreatePlayerTextDraw(playerid, 254.000, 67.000, "mdl-3000:login-logo");
+	PlayerTextDrawTextSize(playerid, Text_Player[playerid][3], 128.000, 131.000);
+	PlayerTextDrawAlignment(playerid, Text_Player[playerid][3], 1);
+	PlayerTextDrawColor(playerid, Text_Player[playerid][3], -1);
+	PlayerTextDrawSetShadow(playerid, Text_Player[playerid][3], 0);
+	PlayerTextDrawSetOutline(playerid, Text_Player[playerid][3], 0);
+	PlayerTextDrawBackgroundColor(playerid, Text_Player[playerid][3], 255);
+	PlayerTextDrawFont(playerid, Text_Player[playerid][3], 4);
+	PlayerTextDrawSetProportional(playerid, Text_Player[playerid][3], 1);
 
-	LoginTD[playerid][4] = CreatePlayerTextDraw(playerid, 392.701110, 282.616790, "mdl-2016:dangky_dark");
-	PlayerTextDrawLetterSize(playerid, LoginTD[playerid][4], 0.000000, 0.000000);
-	PlayerTextDrawTextSize(playerid, LoginTD[playerid][4], 39.000000, 17.000000);
-	PlayerTextDrawAlignment(playerid, LoginTD[playerid][4], 1);
-	PlayerTextDrawColor(playerid, LoginTD[playerid][4], -1);
-	PlayerTextDrawSetShadow(playerid, LoginTD[playerid][4], 0);
-	PlayerTextDrawSetOutline(playerid, LoginTD[playerid][4], 0);
-	PlayerTextDrawBackgroundColor(playerid, LoginTD[playerid][4], 255);
-	PlayerTextDrawFont(playerid, LoginTD[playerid][4], 4);
-	PlayerTextDrawSetProportional(playerid, LoginTD[playerid][4], 0);
-	PlayerTextDrawSetShadow(playerid, LoginTD[playerid][4], 0);
-	PlayerTextDrawSetSelectable(playerid, LoginTD[playerid][4], true);
+	Text_Player[playerid][4] = CreatePlayerTextDraw(playerid, 320.000, 207.000, "BAZLXORLAPZZO");
+	PlayerTextDrawLetterSize(playerid, Text_Player[playerid][4], 0.270, 1.499);
+	PlayerTextDrawAlignment(playerid, Text_Player[playerid][4], 2);
+	PlayerTextDrawColor(playerid, Text_Player[playerid][4], -1);
+	PlayerTextDrawSetShadow(playerid, Text_Player[playerid][4], 0);
+	PlayerTextDrawSetOutline(playerid, Text_Player[playerid][4], 0);
+	PlayerTextDrawBackgroundColor(playerid, Text_Player[playerid][4], 150);
+	PlayerTextDrawFont(playerid, Text_Player[playerid][4], 1);
+	PlayerTextDrawSetProportional(playerid, Text_Player[playerid][4], 1);
 
-	LoginTD[playerid][5] = CreatePlayerTextDraw(playerid, 358.936004, 213.266677, "cuong_khongzz");
-	PlayerTextDrawLetterSize(playerid, LoginTD[playerid][5], 0.208374, 1.384166);
-	PlayerTextDrawAlignment(playerid, LoginTD[playerid][5], 2);
-	PlayerTextDrawColor(playerid, LoginTD[playerid][5], -1);
-	PlayerTextDrawSetShadow(playerid, LoginTD[playerid][5], 0);
-	PlayerTextDrawSetOutline(playerid, LoginTD[playerid][5], 0);
-	PlayerTextDrawBackgroundColor(playerid, LoginTD[playerid][5], 255);
-	PlayerTextDrawFont(playerid, LoginTD[playerid][5], 1);
-	PlayerTextDrawSetProportional(playerid, LoginTD[playerid][5], 1);
-	PlayerTextDrawSetShadow(playerid, LoginTD[playerid][5], 0);
+	Text_Player[playerid][5] = CreatePlayerTextDraw(playerid, 250.000, 227.000, "mdl-3000:login-trong");
+	PlayerTextDrawTextSize(playerid, Text_Player[playerid][5], 139.000, 30.000);
+	PlayerTextDrawAlignment(playerid, Text_Player[playerid][5], 1);
+	PlayerTextDrawColor(playerid, Text_Player[playerid][5], -1);
+	PlayerTextDrawSetShadow(playerid, Text_Player[playerid][5], 0);
+	PlayerTextDrawSetOutline(playerid, Text_Player[playerid][5], 0);
+	PlayerTextDrawBackgroundColor(playerid, Text_Player[playerid][5], 255);
+	PlayerTextDrawFont(playerid, Text_Player[playerid][5], 4);
+	PlayerTextDrawSetProportional(playerid, Text_Player[playerid][5], 1);
 
-	LoginTD[playerid][6] = CreatePlayerTextDraw(playerid, 358.467437, 237.849990, "0352755532");
-	PlayerTextDrawLetterSize(playerid, LoginTD[playerid][6], 0.208374, 1.384166);
-	PlayerTextDrawAlignment(playerid, LoginTD[playerid][6], 2);
-	PlayerTextDrawColor(playerid, LoginTD[playerid][6], -1);
-	PlayerTextDrawSetShadow(playerid, LoginTD[playerid][6], 0);
-	PlayerTextDrawSetOutline(playerid, LoginTD[playerid][6], 0);
-	PlayerTextDrawBackgroundColor(playerid, LoginTD[playerid][6], 255);
-	PlayerTextDrawFont(playerid, LoginTD[playerid][6], 1);
-	PlayerTextDrawSetProportional(playerid, LoginTD[playerid][6], 1);
-	PlayerTextDrawSetShadow(playerid, LoginTD[playerid][6], 0);
-
+	Text_Player[playerid][6] = CreatePlayerTextDraw(playerid, 320.000, 227.000, "...............");
+	PlayerTextDrawLetterSize(playerid, Text_Player[playerid][6], 0.469, 2.399);
+	PlayerTextDrawAlignment(playerid, Text_Player[playerid][6], 2);
+	PlayerTextDrawColor(playerid, Text_Player[playerid][6], -1);
+	PlayerTextDrawSetShadow(playerid, Text_Player[playerid][6], 0);
+	PlayerTextDrawSetOutline(playerid, Text_Player[playerid][6], 0);
+	PlayerTextDrawBackgroundColor(playerid, Text_Player[playerid][6], 150);
+	PlayerTextDrawFont(playerid, Text_Player[playerid][6], 1);
+	PlayerTextDrawSetProportional(playerid, Text_Player[playerid][6], 1);
 
 }
 stock HideLoginTD(playerid)
@@ -104,7 +87,6 @@ stock HideLoginTD(playerid)
 
 stock LoadLogin(playerid)
 {
-	// PlayerTextDrawSetString(playerid, LoginTD[playerid][6], string);
 	PlayerTextDrawShow(playerid, LoginTD[playerid][0]);
 	PlayerTextDrawShow(playerid, LoginTD[playerid][1]);
 	PlayerTextDrawShow(playerid, LoginTD[playerid][2]);
