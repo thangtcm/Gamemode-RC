@@ -6349,7 +6349,7 @@ public OnPlayerEditDynamicObject(playerid, objectid, response, Float:x, Float:y,
 				OffSet[3] = rz - VehicleAngle;
 				OffSet[4] = OffSet[0] * floatcos(VehicleAngle, degrees) + OffSet[1] * floatsin(VehicleAngle, degrees);
 				OffSet[5] = -OffSet[0] * floatsin(VehicleAngle, degrees) + OffSet[1] * floatcos(VehicleAngle, degrees);
-				AttachDynamicObjectToVehicle(objectId, vehicleid, OffSet[4], OffSet[5], OffSet[2], rx, ry, OffSet[3]);
+				AttachDynamicObjectToVehicle(objectTest[objectTestindex], vehicleid, OffSet[4], OffSet[5], OffSet[2], rx, ry, OffSet[3]);
 				//GRAFFITI_ADD()
 				format(string, sizeof(string), "OffSet vua Add la X %f -- Y %f -- Z %f -- OX %f -- OY %f -- OZ %f", OffSet[4], OffSet[5], OffSet[2], rx, ry, OffSet[3]);
 				SendClientMessageEx(playerid, COLOR_YELLOW, string);

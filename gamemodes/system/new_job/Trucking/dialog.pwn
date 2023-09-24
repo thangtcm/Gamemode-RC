@@ -209,6 +209,7 @@ Dialog:DIALOG_STARTTRUCKER(playerid, response, listitem, inputtext[])
                 {
                     return -1;
                 }
+                
                 for(new i; i < CarTruckWorking[CarTruckID][Weight]; i++)
                 {
                     PlayerTruckerData[playerid][MissionProduct][i] = matchingProducts[random(numMatchingProducts)];
@@ -228,18 +229,68 @@ Dialog:DIALOG_BUYPRODUCT(playerid, response, listitem, inputtext[])
 	{
         new str[256];
         new factoryID = GetPVarInt(playerid, "BUY_FactoryID");
-        if(GetPVarInt(playerid, "MissionTruck") == 1)
-        {
-            listitem = PlayerTruckerData[playerid][MissionBuy][listitem];
-        }
-        format(str, sizeof(str), "Mua san pham %s thanh cong.", ProductData[FactoryData[factoryID][ProductName][listitem]][ProductName]);
-        GivePlayerCash(playerid, FactoryData[factoryID][ProductPrice][listitem]);
-        RemoveMissionProduct(playerid, FactoryData[factoryID][ProductName][listitem]);
+        new index = PlayerTruckerData[playerid][MissionBuy][listitem];
+        new productID = FactoryData[factoryID][ProductName][index];
+        format(str, sizeof(str), "Mua san pham %s thanh cong.", ProductData[productID][ProductName]);
+        new money = FactoryData[factoryID][ProductPrice][index] * -1;
+        GivePlayerCash(playerid, money);
+        SetPVarInt(playerid, "ClaimProduct", productID);
+        RemoveMissionProduct(playerid, productID);
         SendClientMessageEx(playerid, COLOR_1YELLOW, str);
-        SetPlayerAttachedObject(playerid, PIZZA_INDEX, 1220, 5, 0.137832, 0.176979, 0.151424, 96.305931, 185.363006, 20.328088, 0.699999, 0.800000, 0.699999);
+        SetPlayerAttachedObject(playerid, PIZZA_INDEX, 1271, 5, 0.137832, 0.176979, 0.151424, 96.305931, 185.363006, 20.328088, 0.699999, 0.800000, 0.699999);
         SetPlayerSpecialAction(playerid, SPECIAL_ACTION_CARRY);
         ApplyAnimation(playerid, "CARRY", "liftup", 4.1, 0, 0, 0, 0, 0, 1);
         SetPVarInt(playerid, "CarryProductToCar", 1);
+    }
+    return 1;
+}
+
+Dialog:DIALOG_SELLPRODUCT(playerid, response, listitem, inputtext[])
+{
+    if(response)
+	{
+        new str[256];
+        new factoryID = GetPVarInt(playerid, "Sell_ProductID");
+        if(GetPVarInt(playerid, "MissionTruck") == 1)
+        {
+            listitem = PlayerTruckerData[playerid][ClaimProduct][listitem];
+        }
+        format(str, sizeof(str), "Ban da tra lai san pham %s thanh cong.", ProductData[FactoryData[factoryID][ProductName][listitem]][ProductName]);
+        GivePlayerCash(playerid, FactoryData[factoryID][ProductPrice][listitem]);
+        SendClientMessageEx(playerid, COLOR_1YELLOW, str);
+        RemovePlayerAttachedObject(playerid, PIZZA_INDEX);
+        SetPlayerSpecialAction(playerid, SPECIAL_ACTION_NONE);
+        ApplyAnimation(playerid, "CARRY", "putdwn", 4.1, 0, 0, 0, 0, 0, 1);
+    }
+    return 1;
+}
+
+Dialog:DIALOG_SELLPRODUCT2(playerid, response, listitem, inputtext[])
+{
+    if(response)
+	{
+        new str[256];
+        new factoryID = GetPVarInt(playerid, "Sell_ProductID");
+        if(GetPVarInt(playerid, "MissionTruck") == 1)
+        {
+            listitem = PlayerTruckerData[playerid][ClaimProduct][listitem];
+        }
+        for(new i; i < MAX_PLAYERPRODUCT; i++)
+        {
+            if(PlayerTruckerData[playerid][MissionProduct][i] != -1 && PlayerTruckerData[playerid][MissionProduct][i] == ProductData[FactoryExportData[factoryID][ProductName][listitem]][ProductName])
+            {
+                format(str, sizeof(str), "Ban san pham %s thanh cong.", ProductData[FactoryExportData[factoryID][ProductName][listitem]][ProductName]);
+                GivePlayerCash(playerid, FactoryExportData[factoryID][ProductPrice][listitem]);
+                SendClientMessageEx(playerid, COLOR_1YELLOW, str);
+                PlayerTruckerData[playerid][MissionProduct][i] = -1;
+                RemovePlayerAttachedObject(playerid, PIZZA_INDEX);
+                SetPlayerSpecialAction(playerid, SPECIAL_ACTION_NONE);
+                ApplyAnimation(playerid, "CARRY", "putdwn", 4.1, 0, 0, 0, 0, 0, 1);
+                return 1;
+            }
+        } 
+        SendErrorMessage(playerid, "Ban khong co san pham nay");
+        
     }
     return 1;
 }

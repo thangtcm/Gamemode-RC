@@ -65,7 +65,6 @@ stock ShowPlayerMenu(playerid, menuid ,const name_tittle[],select) {
     PlayerTextDrawSetString(playerid, Menu_BackGr[playerid][3], str);
     for(new i = 0; i < MAX_MENU_ITEMSZ ; i++) {
         if(playermenu_itemset[playerid][i] == 1) {
-        	printf("%d", i);
         	PlayerTextDrawShow(playerid, Menu_ItemSelect[playerid][i]);
         	PlayerTextDrawShow(playerid, Menu_ItemName[playerid][i]);
         }

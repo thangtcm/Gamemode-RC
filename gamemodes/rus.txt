@@ -1,6 +1,8 @@
 ./main/_funcs.pwn(6320) : íåïðàâèëüíàÿ òàáóëÿöèÿ
 ./main/_funcs.pwn(6324) : íåïðàâèëüíàÿ òàáóëÿöèÿ
 ./main/mysql.pwn(3106) : èäåíòèôèêàòîðó ïðèñâîåíî çíà÷åíèå, íî îí íå èñïîëüçóåòñÿ: "str"
+./system/new_job/Trucking/cmd.pwn(8) : íåïðàâèëüíàÿ òàáóëÿöèÿ
+./system/new_job/Trucking/cmd.pwn(16) : íåïðàâèëüíàÿ òàáóëÿöèÿ
 ./main/variables.pwn(1457) : èäåíòèôèêàòîð íå èñïîëüçóåòñÿ: "BanVuKhi"
 ./main/variables.pwn(1453) : èäåíòèôèêàòîð íå èñïîëüçóåòñÿ: "BodyguardActor"
 ./system/new_job/Trucking/setting.pwn(460) : èäåíòèôèêàòîð íå èñïîëüçóåòñÿ: "CarTruckProduct"

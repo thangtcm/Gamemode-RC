@@ -462,11 +462,13 @@ enum PlayerTruckerInfo{
     SuggestFactory[sizeof(FactoryData)],
     MissionProduct[MAX_PLAYERPRODUCT],
     ClaimProduct[MAX_PLAYERPRODUCT],
-    MissionBuy[sizeof(ProductData)]
+    MissionBuy[MAX_PLAYERPRODUCT]
 };
 new PlayerTruckerData[MAX_PLAYERS][PlayerTruckerInfo];
 
-
-
-
-new TestTruck[MAX_PLAYERS][2] = {-1,...};
+enum CarTruckerInfo{
+    Object[30], 
+    ClaimProduct[30]
+}
+new SaveWeigth[MAX_PLAYERS];
+new PlayerCarTrucker[MAX_VEHICLES][CarTruckerInfo];

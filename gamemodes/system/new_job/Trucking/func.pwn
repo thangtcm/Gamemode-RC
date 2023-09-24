@@ -11,14 +11,63 @@ stock RemoveMissionProduct(playerid, productId)
 {
     for(new i; i < MAX_PLAYERPRODUCT; i++)
     {
-        if(PlayerTruckerData[playerid][MissionProduct][i] == productId)
+        if(GetPVarInt(playerid, "MissionTruck") == 1)
         {
-            PlayerTruckerData[playerid][MissionProduct][i] = -1;
-            PlayerTruckerData[playerid][ClaimProduct][i] = productId;
-            return true;
+            if(PlayerTruckerData[playerid][MissionProduct][i] == productId)
+            {
+                PlayerTruckerData[playerid][MissionProduct][i] = -1;
+                PlayerTruckerData[playerid][ClaimProduct][i] = productId;
+                return 1;
+            }
         }
+        else
+        {
+            if(PlayerTruckerData[playerid][ClaimProduct][i] == -1)
+                PlayerTruckerData[playerid][ClaimProduct][i] = productId;
+        }
+        
     }
-    return false;
+    return -1;
+}
+
+stock AttachProductToVehicle(playerid)
+{
+    new vehicleid = PlayerInfo[playerid][pRegisterCarTruck];
+    switch(GetVehicleModel(vehicleid))
+    {
+        case 422:
+        {
+            new index;
+            if(PlayerCarTrucker[vehicleid][ClaimProduct][0] == -1) index = 0;
+            else if(PlayerCarTrucker[vehicleid][ClaimProduct][1] == -1) index = 1;
+            else return 0;
+            printf("index %d --%d ", index, GetPVarInt(playerid, "ClaimProduct"));
+            new Float:playerPos[3];
+            GetPlayerPos(playerid, playerPos[0], playerPos[1], playerPos[2]);
+            PlayerCarTrucker[vehicleid][ClaimProduct][index] = GetPVarInt(playerid, "ClaimProduct");
+            if(IsValidDynamicObject(PlayerCarTrucker[vehicleid][Object][index]))
+            {
+                DestroyDynamicObject(PlayerCarTrucker[vehicleid][Object][index]);
+            }
+            PlayerCarTrucker[vehicleid][Object][index] = CreateDynamicObject(1271, playerPos[0], playerPos[1], playerPos[2], 0, 0, 0);
+            AttachDynamicObjectToVehicle(PlayerCarTrucker[vehicleid][Object][index], vehicleid, 
+                0.01, -0.82 - (0.1 * index), 0.049999, 0.0, 0.0, -90);
+            return 1;
+        } 
+    }
+    return 0;
+}
+
+stock IsPlayerNearCar(playerid, vehicleid)
+{
+	new
+		Float:fX,
+		Float:fY,
+		Float:fZ;
+
+	GetVehiclePos(vehicleid, fX, fY, fZ);
+
+	return (GetPlayerVirtualWorld(playerid) == GetVehicleVirtualWorld(vehicleid)) && IsPlayerInRangeOfPoint(playerid, 3.5, fX, fY, fZ);
 }
 
 stock IsProductValid(playerid, productId)
@@ -51,6 +100,16 @@ stock IsPlayerInFactory(playerid)
     for(new i; i < sizeof(FactoryData); i++)
     {
         if(IsPlayerInRangeOfPoint(playerid, 5.0, FactoryData[i][FactoryPos][0], FactoryData[i][FactoryPos][1], FactoryData[i][FactoryPos][2]))
+            return i;
+    }
+    return -1;
+}
+
+stock IsPlayerInFactory2(playerid)
+{
+    for(new i; i < sizeof(FactoryExportData); i++)
+    {
+        if(IsPlayerInRangeOfPoint(playerid, 5.0, FactoryExportData[i][FactoryPos][0], FactoryExportData[i][FactoryPos][1], FactoryExportData[i][FactoryPos][2]))
             return i;
     }
     return -1;
@@ -92,10 +151,13 @@ stock ClearTrucker(playerid)
     DeletePVar(playerid, "MissionTruck");
     DeletePVar(playerid, "BUY_FactoryID");
     DeletePVar(playerid, "CarryProductToCar");
+    DeletePVar(playerid, "Sell_ProductID");
+    DeletePVar(playerid, "Sell_ProductID2");
     for(new i; i < MAX_PLAYERPRODUCT; i++)
     {
         PlayerTruckerData[playerid][ClaimProduct][i] = -1;
         PlayerTruckerData[playerid][MissionProduct][i] = -1;
     }
+    SaveWeigth[playerid] = 0;
     return 1;
 }
