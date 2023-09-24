@@ -935,14 +935,14 @@ public OnPlayerClickTextDraw(playerid, Text:clickedid)
 			HideNoiThatTD(playerid);
 		}
 	}*/
-		
+	/*	
 	if(_:clickedid != INVALID_TEXT_DRAW)
     {
     	if(clickedid == ButtonCharacter[1]) {
     		HideTDCharacter(playerid);
     		LoaderStarting(playerid, LOAD_CHARACTERLOGIN, "Dang tai du lieu game...", 2);       
     	}
-    }
+    }*/
     // if(GetPVarInt(playerid, "OpenInventory") == 1) { 
     //     if(clickedid == Text:INVALID_TEXT_DRAW) { 
     //     	HideInventory(playerid);
@@ -1095,11 +1095,12 @@ public OnPlayerClickPlayerTextDraw(playerid, PlayerText:playertextid)
     	}
     }*/
     if(GetPVarInt(playerid, "TextDrawCharacter") == 1) {
-        for(new i = 0 ; i <  4 ; i++) {
-    	    if(playertextid == CharacterButton[playerid][i]) {
+        for(new i = 0 ; i < 3 ; i++) {
+    	    if(playertextid == CharacterName[playerid][i]) {
     	    	if(TempCharacter[playerid][i][IsCreated]) {
-    	    		ShowInfoCharacter(playerid,i);
                 	SetPVarInt(playerid,"SelectNhanVat",i);
+			    	HideTDCharacter(playerid);
+			    	LoaderStarting(playerid, LOAD_CHARACTERLOGIN, "Dang tai du lieu game...", 2);       
     	    	}
     	    	else if(!TempCharacter[playerid][i][IsCreated]) {
                     HideTDCharacter(playerid);
@@ -1698,6 +1699,7 @@ public OnPlayerEnterVehicle(playerid, vehicleid, ispassenger)
 }
 
 public OnPlayerConnect(playerid) {
+	SetTimerEx("LoadLogin", 1000, 0, "i", playerid);
 	SetPVarString(playerid, "PassAuth", "abc");
 	LoadLoginTextDraws(playerid);
 	CreateLoading(playerid);
@@ -3279,7 +3281,6 @@ public OnVehicleDeath(vehicleid) {
 
 public OnPlayerSpawn(playerid)
 {
-	LoadLogin(playerid);
     if(IsPlayerNPC(playerid)) return 1;
 	SetPlayerSkillLevel(playerid, WEAPONSKILL_PISTOL, 1);
 	SetPlayerSkillLevel(playerid, WEAPONSKILL_MICRO_UZI, 1);
@@ -6333,8 +6334,8 @@ CMD:testattachobject(playerid, params[])
 	}
 	GetVehiclePos(vehicleid, vehiclePos[0], vehiclePos[1], vehiclePos[2]);
 	if(IsValidDynamicObject(objectTest[objectTestindex]))
-            DestroyDynamicObject(objectTest[objectTestindex]);
-        objectTest[objectTestindex] = CreateDynamicObject(
+    DestroyDynamicObject(objectTest[objectTestindex]);
+    objectTest[objectTestindex] = CreateDynamicObject(
                     objectid, vehiclePos[0], vehiclePos[1], vehiclePos[2],
                     0, 0, Angle, GetPlayerVirtualWorld(playerid), 
                     GetPlayerInterior(playerid));
@@ -8059,7 +8060,6 @@ public LoadStreamerDynamicObjects()
     LoadWeaponFactory();
     LoadObjectCityHall();
     LoadTextUpJob();
-    LoadBTNC();
 /*    for(new i = 0; i< MAX_NOITHAT; i++) {
     	LoadNoiThat(i);
     }*/

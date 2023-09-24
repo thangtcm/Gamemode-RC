@@ -1549,12 +1549,11 @@ stock ShowCMND(playerid,giveplayerid) {
 }
 
 stock DestroyLog@_Reg(playerid) {
-    for(new i = 0; i< 7; i++) {
-        PlayerTextDrawDestroy(playerid, CharacterMain[playerid][i]);
-    }
-    for(new i = 0; i< 4; i++) {
-        PlayerTextDrawDestroy(playerid, CharacterButton[playerid][i]);
+    PlayerTextDrawDestroy(playerid, CharacterMain[playerid][0]);
+    for(new i = 0; i< 3; i++) {
+        PlayerTextDrawDestroy(playerid, CharacterSkin[playerid][i]);
         PlayerTextDrawDestroy(playerid, CharacterName[playerid][i]);
+        PlayerTextDrawDestroy(playerid, CharacterLevel[playerid][i]);
     }
     return 1;
 }
