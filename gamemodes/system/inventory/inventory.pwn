@@ -24,7 +24,7 @@ forward OnInventoryAdd(playerid, pItemId, timer);
 new const g_aInventoryItems[][e_InventoryItems] =
 {
 	{"Pickaxe", "item_Pickaxe"},
-	{"Dien thoai", "item_GPS"},
+	{"Dien thoai", "item_Phone"},
 	{"GPS", "item_GPS"},
     {"Binh xang", "item_gas"},
 	{"Boombox", "item_boombox"},

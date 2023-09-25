@@ -620,6 +620,7 @@ stock Menu_SetPage(playerid, page)
 
 public OnPlayerClickPlayerTextDraw(playerid, PlayerText:playertextid)
 {
+	printf("RNNNN");
 	if (!g_ePlayerMenuData[playerid][g_eMenuShown] || (GetTickCount() - g_ePlayerMenuData[playerid][g_eMenuTime]) < 600)
 	{
 		return CallLocalFunction("MS_OnPlayerClickPlayerTextDraw", "ii", playerid, _:playertextid);
