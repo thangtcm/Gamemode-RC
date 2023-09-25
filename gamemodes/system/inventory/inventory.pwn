@@ -37,7 +37,13 @@ new const g_aInventoryItems[][e_InventoryItems] =
 	// {"Da", 905},
 	{"Dong", "item_cropper"},
 	{"Sat", "item_iron"},
-	{"Vang", "item_gold"}
+	{"Vang", "item_gold"},
+	{"Chat hoa hoc I", "chh_1"},
+	{"Chat hoa hoc II", "chh_2"},
+	{"Codeine", "Codeine"},
+	{"Cocain", "Cocain"},
+	{"Ecstacy", "Ecstacy"},
+	{"LSD", "LSD"}
 };
 
 hook OnPlayerDisconnect(playerid, reason)
@@ -56,6 +62,7 @@ hook OnPlayerConnect(playerid)
 hook OnPlayerKeyStateChange(playerid, newkeys, oldkeys)
 {
 	if(newkeys == 0) return 1;
+	printf("%d", CheckKeyInventory(playerid));
 	if ((newkeys & KEY_YES) && CheckKeyInventory(playerid)) //Nhớ bổ sung các trường hợp sử dụng key Y để không bật inventory, ví dụ như Pizza
     {
 		return cmd_inv(playerid, "\1"); 
@@ -435,6 +442,23 @@ public OnPlayerUseItem(playerid, pItemId, name[])
 		ApplyAnimation(playerid, "GANGS", "drnkbr_prtl_F", 2.67, 0, 1, 1, 1, 2000, 1);
 		PlayerPlaySound(playerid, 42600, 0.0, 0.0, 0.0);
 		Inventory_Remove(playerid, pItemId, 1);
+	}
+	else if(!strcmp(name, "Cocain", true))
+	{
+	    UseDrug(playerid,0,pItemId);
+		
+	}
+	else if(!strcmp(name, "Codeine", true))
+	{
+		UseDrug(playerid,1,pItemId);
+	}
+	else if(!strcmp(name, "Ecstacy", true))
+	{
+		UseDrug(playerid,2,pItemId);
+	}
+	else if(!strcmp(name, "LSD", true))
+	{
+		UseDrug(playerid,3,pItemId);
 	}
 	return 1;
 }
