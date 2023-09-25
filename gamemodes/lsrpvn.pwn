@@ -72,6 +72,7 @@
 #include "./main/mysql.pwn"
 //#include "./system/login.pwn"
 //#include "./system/register.pwn"
+#include "./system/drug/drug.pwn"
 #include "./system/new_job/Trucking/textdrawanim.pwn"
 #include "./system/new_job/Trucking/main.pwn"
 #include "./system/new_job/pizza.pwn"
