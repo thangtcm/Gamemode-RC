@@ -1094,6 +1094,29 @@ public OnPlayerClickPlayerTextDraw(playerid, PlayerText:playertextid)
     		ShowPlayerDialog(playerid, DIALOG_NOTHING, DIALOG_STYLE_MSGBOX, "Loi", "Khong du quyen hang de xoa nhan vat\nNeu ban muon xoa nhan vat hay lien he Admin nhe", "Tiep tuc", "Quay lai");
     	}
     }*/
+   	if(GetPVarInt(playerid, "DangTaoAcc") == 1)
+   	{
+   		if(playertextid == RegCharacter[playerid][1])
+   		{
+			ShowPlayerDialog(playerid, REGISTERMONTH, DIALOG_STYLE_LIST, "Khoi tao nhan vat | Thang sinh?", "Thang 1\nThang 2\nThang 3\nThang 4\nThang 5\nThang 6\nThang 7\nThang 8\nThang 9\nThang 10\nThang 11\nThang 12", "Luu chon", "");
+   		}
+   		if(playertextid == RegCharacter[playerid][2])
+   		{
+   			ShowPlayerDialog(playerid, REGISTERSEX, DIALOG_STYLE_MSGBOX, "Khoi tao nhan vat | Gioi tinh", "Gioi tinh nhan vat ban la gi?", "Nam", "Nu");
+   		}
+   		if(playertextid == RegCharacter[playerid][3])
+   		{
+   			Dialog_Show(playerid, NhapQuocTich, DIALOG_STYLE_INPUT, "Khoi tao nhan vat | Quoc tich", "Quoc tich cua ban la gi?", "Xac nhan", "");
+   		}
+   		if(playertextid == RegCharacter[playerid][5])
+   		{
+			if(PlayerInfo[playerid][pSex] != 0 && GetPVarInt(playerid, #dateinsert) == 1 && PlayerInfo[playerid][pQuocTich] != 0)
+			{
+					JoinGame(playerid);
+			}
+			else return SendClientTextDraw(playerid, "~r~Ban chua dien day du thong tin.");
+   		}
+   	}
     if(GetPVarInt(playerid, "TextDrawCharacter") == 1) {
         for(new i = 0 ; i < 3 ; i++) {
     	    if(playertextid == CharacterName[playerid][i]) {
@@ -1699,7 +1722,7 @@ public OnPlayerEnterVehicle(playerid, vehicleid, ispassenger)
 }
 
 public OnPlayerConnect(playerid) {
-	SetTimerEx("LoadLogin", 1000, 0, "i", playerid);
+	SetTimerEx("LoadLogin", 500, 0, "i", playerid);
 	SetPVarString(playerid, "PassAuth", "abc");
 	LoadLoginTextDraws(playerid);
 	CreateLoading(playerid);
@@ -9174,15 +9197,25 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 		    {
 				PlayerInfo[playerid][pSex] = 1;
 			//		SendClientMessageEx(playerid, COLOR_YELLOW2, "Ok, vay ban la Nam.");
-				ShowPlayerDialog(playerid, REGISTERMONTH, DIALOG_STYLE_LIST, "Khoi tao nhan vat | Thang sinh", "Thang 1\nThang 2\nThang 3\nThang 4\nThang 5\nThang 6\nThang 7\nThang 8\nThang 9\nThang 10\nThang 11\nThang 12", "Luu chon", "");
-				RegistrationStep[playerid] = 2;
-
 			}
 			else {
 				PlayerInfo[playerid][pSex] = 2;
 				SendClientMessageEx(playerid, COLOR_YELLOW2, "Ok, vay ban la Nu.");
-				ShowPlayerDialog(playerid, REGISTERMONTH, DIALOG_STYLE_LIST, "Khoi tao nhan vat | Thang sinh?", "Thang 1\nThang 2\nThang 3\nThang 4\nThang 5\nThang 6\nThang 7\nThang 8\nThang 9\nThang 10\nThang 11\nThang 12", "Luu chon", "");
-				RegistrationStep[playerid] = 2;
+			}
+			if(PlayerInfo[playerid][pSex] == 1)
+			{
+				PlayerTextDrawSetString(playerid, RegCharacter[playerid][2], "Nam");
+				PlayerTextDrawShow(playerid, RegCharacter[playerid][2]);
+			}
+			else if(PlayerInfo[playerid][pSex] == 2)
+			{
+				PlayerTextDrawSetString(playerid, RegCharacter[playerid][2], "Nu");
+				PlayerTextDrawShow(playerid, RegCharacter[playerid][2]);
+			}
+			else
+			{
+				PlayerTextDrawSetString(playerid, RegCharacter[playerid][2], "None");
+				PlayerTextDrawShow(playerid, RegCharacter[playerid][2]);
 			}
 		}
 	}
@@ -9236,11 +9269,9 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 				format(PlayerInfo[playerid][pBirthDate], 11, "%d-%02d-%02d", setyear, GetPVarInt(playerid, "RegisterMonth"), GetPVarInt(playerid, "RegisterDay"));
 				DeletePVar(playerid, "RegisterMonth");
 				DeletePVar(playerid, "RegisterDay");
-				if(RegistrationStep[playerid] != 0)
-				{
-					JoinGame(playerid);
-				}
-				else return SendClientMessageEx(playerid, COLOR_LIGHTRED, "Ngay sinh cua ban da duoc thiet lap thanh cong.");
+				SetPVarInt(playerid, #dateinsert, 1);
+				PlayerTextDrawSetString(playerid, RegCharacter[playerid][1], PlayerInfo[playerid][pBirthDate]);
+				PlayerTextDrawShow(playerid, RegCharacter[playerid][1]);
 			}
 			else
 			{
@@ -24504,3 +24535,12 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 	return 1;
 }
 
+
+Dialog:NhapQuocTich(playerid, response, listitem, inputtext[])
+{
+	if(strlen(inputtext) > 30) return SendClientTextDraw(playerid, "~r~Quoc tich khong duoc qua 30 ky tu");
+	format(PlayerInfo[playerid][pQuocTich], 30, "%s", inputtext);
+	PlayerTextDrawSetString(playerid, RegCharacter[playerid][3], PlayerInfo[playerid][pQuocTich]);
+	PlayerTextDrawShow(playerid, RegCharacter[playerid][3]);
+	return 1;
+}
