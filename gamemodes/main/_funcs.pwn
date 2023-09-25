@@ -1107,7 +1107,6 @@ public OnPlayerClickPlayerTextDraw(playerid, PlayerText:playertextid)
                     SetPVarInt(playerid, "SelectNhanVat", i);
                     ShowPlayerDialog(playerid, DIALOG_TAONHANVAT, DIALOG_STYLE_INPUT, "Tao nhan vat", "Hay nhap ten nhan vat de tiep tuc tao nhan vat\nLuu y: Ten phai viet hoa 2 chu dau, va khong co ky tu dac biet", "Tiep tuc", "Quay lai");
     	    	}
-                
     	    }
     	}
     }
