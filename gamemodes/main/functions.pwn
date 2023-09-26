@@ -7079,8 +7079,8 @@ stock SafeLogin(playerid, type)
                 }
                 case 2: // No Account Exists
                 {
-                	SendErrorMessage(playerid, " Tai khoan cua ban khong ton tai, vui long dang ky tai WEB cua may chu.");
-                    /*new string[229],ip[32];
+                	//SendErrorMessage(playerid, " Tai khoan cua ban khong ton tai, vui long dang ky tai WEB cua may chu.");
+                    new string[229],ip[32];
                     GetPlayerIp(playerid, ip, 32);
                     format(string,sizeof (string),"Tai khoan: %s\n\n\
                     Dia chi IP cua ban: %s\n\n\
@@ -7088,7 +7088,7 @@ stock SafeLogin(playerid, type)
                     ShowPlayerDialog(playerid,DANGKY,DIALOG_STYLE_PASSWORD,"Dang ky",string,"Dang ky","Thoat");
                     SetPlayerCameraPos(playerid, 1527.1915, -1388.5413, 405.3455);
                     SetPlayerCameraLookAt(playerid, 1527.1210, -1389.5367, 403.4106);
-                    SetPlayerPos(playerid, 1535.3447,-1357.3451,329.4568);*/
+                    SetPlayerPos(playerid, 1535.3447,-1357.3451,329.4568);
                 }
         }
 }
@@ -11353,14 +11353,17 @@ stock SetPlayerSpawn(playerid)
 			PlayerHasNationSelected[playerid] = 0;
 			SetPlayerInterior(playerid, 0);
 			Streamer_UpdateEx(playerid, 2229.4968,-1722.0701,13.5625);
-			SetPlayerCameraPos(playerid, 1527.1915, -1388.5413, 405.3455);
-			SetPlayerCameraLookAt(playerid, 1527.1210, -1389.5367, 403.4106);
-			SetPlayerPos(playerid, 1535.3447,-1357.3451,329.4568);
+			SetPlayerCameraPos(playerid, 2144.0933,-80.9560,9.7431);
+			SetPlayerCameraLookAt(playerid, 2126.6655,-77.3383,2.4477);
+			SetPlayerPos(playerid, 2177.0903,-75.1653,27.4766);
             PlayerInfo[playerid][pVW] = 0;
             SetPlayerVirtualWorld(playerid,0);
    			RegistrationStep[playerid] = 1;
    			SetPVarInt(playerid,"DangTaoAcc",1);
-   			ShowPlayerDialog(playerid, REGISTERSEX, DIALOG_STYLE_MSGBOX, "Khoi tao nhan vat | Gioi tinh", "Gioi tinh nhan vat ban la gi?", "Nam", "Nu");
+   			PlayerInfo[playerid][pEat] = 100;
+   			PlayerInfo[playerid][pDrink] = 100;
+   			PlayerInfo[playerid][pStrong] = 100;
+   			ShowRegCharTD(playerid);
 			return 1;
 		}
 		new rand;

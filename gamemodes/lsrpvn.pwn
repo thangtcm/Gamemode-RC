@@ -43,6 +43,7 @@
 #include "./system/danhba.pwn"
 #include "./system/driver_test.pwn"
 #include "./system/weapon/ammo.pwn"
+#include "./system/register_char.pwn"
 // Doi, no, suc khoe
 #include "./system/playerstatus.pwn"
 

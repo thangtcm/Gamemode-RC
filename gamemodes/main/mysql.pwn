@@ -360,6 +360,7 @@ public OnQueryFinish(resultid, extraid, handleid)
 					cache_get_field_content(row,  "TimeBanned", szResult, MainPipeline); PlayerInfo[extraid][pTimeBanned] = strval(szResult);
 					cache_get_field_content(row,  "BannedBy", PlayerInfo[extraid][pBannedBy], MainPipeline, 128);
 					cache_get_field_content(row,  "ReasonBanned", PlayerInfo[extraid][pReasonBanned], MainPipeline, 128);
+					cache_get_field_content(row,  "QuocTich", PlayerInfo[extraid][pQuocTich], MainPipeline, 30);
 					cache_get_field_content(row,  "Flag", PlayerInfo[extraid][pFlag]);
 					cache_get_field_content(row,  "Eat", szResult, MainPipeline); PlayerInfo[extraid][pEat] = strval(szResult);
 					cache_get_field_content(row,  "Drink", szResult, MainPipeline); PlayerInfo[extraid][pDrink] = strval(szResult);
@@ -2995,6 +2996,7 @@ stock g_mysql_SaveAccount(playerid)
 
 	SavePlayerString(query, GetPlayerSQLId(playerid), "BannedBy", PlayerInfo[playerid][pBannedBy]);
 	SavePlayerString(query, GetPlayerSQLId(playerid), "ReasonBanned", PlayerInfo[playerid][pReasonBanned]);
+	SavePlayerString(query, GetPlayerSQLId(playerid), "QuocTich", PlayerInfo[playerid][pQuocTich]);
 	SavePlayerInteger(query, GetPlayerSQLId(playerid), "Flag", PlayerInfo[playerid][pFlag]);
  	SavePlayerInteger(query, GetPlayerSQLId(playerid), "Hambuger", PlayerInfo[playerid][pHambuger]);
     SavePlayerInteger(query, GetPlayerSQLId(playerid), "Banhmi", PlayerInfo[playerid][pBanhmi]);
