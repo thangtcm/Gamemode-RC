@@ -16861,7 +16861,7 @@ stock SaveElevatorStuff() {
 	return fclose(iFileHandle);
 }
 
-stock CreatePlayerVehicle(playerid, playervehicleid, modelid, Float: x, Float: y, Float: z, Float: angle, color1, color2, price, VW, Int)
+stock CreatePlayerVehicle(playerid, playervehicleid, modelid, Float: x, Float: y, Float: z, Float: angle, color1, color2, price, VW, Int, pvtimer = 0)
 {
 	if(PlayerVehicleInfo[playerid][playervehicleid][pvId] == INVALID_PLAYER_VEHICLE_ID)
 	{
@@ -16898,6 +16898,7 @@ stock CreatePlayerVehicle(playerid, playervehicleid, modelid, Float: x, Float: y
 		PlayerVehicleInfo[playerid][playervehicleid][pvPlate] = 0;
 		PlayerVehicleInfo[playerid][playervehicleid][pvLock] = 0;
         PlayerVehicleInfo[playerid][playervehicleid][pvLocked] = 0;
+		PlayerVehicleInfo[playerid][playervehicleid][pvTimer] = pvtimer;
 		for(new m = 0; m < MAX_MODS; m++)
 	    {
 	    	PlayerVehicleInfo[playerid][playervehicleid][pvMods][m] = 0;

@@ -1,0 +1,183 @@
+////Out Car Player      OnVehicleSpawn
+stock IsHasCarTrucker(playerid)
+{
+    for(new i=0; i<MAX_PLAYERVEHICLES; i++)
+        if(PlayerVehicleInfo[playerid][i][pvId] != INVALID_PLAYER_VEHICLE_ID && PlayerVehicleInfo[playerid][i][pvIsRegisterTrucker] == 1)
+            return 1;
+    return -1;
+}
+
+stock IsValidCarTrucker(playerid)
+{
+    new maxCarTruckWorking;
+    for(new d = 0 ; d < MAX_PLAYERVEHICLES; d++)
+	{
+		if(IsPlayerInVehicle(playerid, PlayerVehicleInfo[playerid][d][pvId]) && PlayerVehicleInfo[playerid][d][pvIsRegisterTrucker] == 0)
+		{
+            maxCarTruckWorking = sizeof(CarTruckWorking);
+            for(new i; i < maxCarTruckWorking; i++)
+            {
+                if(CarTruckWorking[i][CarModel] == PlayerVehicleInfo[playerid][d][pvModelId]){
+                    return d;
+                }
+            }
+		}
+	}
+    return -1;
+}
+
+
+stock LoadVehicleTrucker(playerid)
+{
+	new string[2085];
+	new GetPlayerId = GetPlayerSQLId(playerid);
+	format(string, sizeof(string), "SELECT * FROM vehicletrucker\
+		WHERE vtPSQL = '%d'", GetPlayerId);
+	mysql_function_query(MainPipeline, string, true, "VEHICLETRUCKER_LOAD", "i", playerid);
+	printf("[VEHICLE TRUCKER LOAD] Loading data from database...");
+}
+
+public VEHICLETRUCKER_LOAD(playerid)
+{
+    for(new j; j < MAX_OBJECTTRUCKER; j++)
+    {
+        VehicleTruckerData[playerid][j][vtId] = -1;
+        VehicleTruckerData[playerid][j][vtObject] = INVALID_OBJECT_ID;
+        VehicleTruckerData[playerid][j][vtProductID] = -1;
+    }
+	new i, rows, fields, tmp[128], str[128];
+	cache_get_data(rows, fields, MainPipeline);
+	while(i < rows)
+	{
+		cache_get_field_content(i, "vtId", tmp, MainPipeline); VehicleTruckerData[playerid][i][vtId] = strval(tmp);
+		cache_get_field_content(i, "vtSlotId", tmp, MainPipeline); VehicleTruckerData[playerid][i][vtSlotId] = strval(tmp);
+		cache_get_field_content(i, "vtProductID", tmp, MainPipeline); VehicleTruckerData[playerid][i][vtProductID] = strval(tmp);
+        cache_get_field_content(i, "vtPos1", tmp, MainPipeline); VehicleTruckerData[playerid][i][vtPos][0] = floatstr(tmp);
+        cache_get_field_content(i, "vtPos2", tmp, MainPipeline); VehicleTruckerData[playerid][i][vtPos][1] = floatstr(tmp);
+        cache_get_field_content(i, "vtPos3", tmp, MainPipeline); VehicleTruckerData[playerid][i][vtPos][2] = floatstr(tmp);
+        cache_get_field_content(i, "vtPos4", tmp, MainPipeline); VehicleTruckerData[playerid][i][vtPos][3] = floatstr(tmp);
+        cache_get_field_content(i, "vtPos5", tmp, MainPipeline); VehicleTruckerData[playerid][i][vtPos][4] = floatstr(tmp);
+        cache_get_field_content(i, "vtPos6", tmp, MainPipeline); VehicleTruckerData[playerid][i][vtPos][5] = floatstr(tmp);
+
+  		i++;
+ 	}
+	if(i > 0) printf("[Load Vehicle Trucker] %d du lieu product trong xe cua %s da duoc tai.", i, GetPlayerNameEx(playerid));
+	else printf("[Load Vehicle Trucker] Khong co du lieu de tai");
+}
+
+stock VEHICLETRUCKER_UPDATE(playerid, index)
+{
+	new string[2048],
+        GetPlayerId = GetPlayerSQLId(playerid);
+        format(string, sizeof(string), "UPDATE `vehicletrucker` SET \
+        `vtSlotId`=%d, \
+        `vtProductID`='%d', \
+        WHERE `vtId`=%d AND `vtPSQL`=%d",
+        VehicleTruckerData[playerid][index][vtSlotId],
+        VehicleTruckerData[playerid][index][vtProductID],
+        VehicleTruckerData[playerid][index][vtId],
+        GetPlayerId
+    );
+    mysql_function_query(MainPipeline, string, false, "OnQueryFinish", "i", SENDDATA_THREAD);
+    return 1;
+}
+
+stock VEHICLETRUCKER_ADD(playerid, vehicleid, modelid, pCarSlotID, ProductID, Float:x, Float:y, Float:z, Float:ox, Float:oy, Float:oz)
+{
+	new string[2048],
+        GetPlayerId = GetPlayerSQLId(playerid),
+        index = GetVehicleTruckerFree(playerid, pCarSlotID);
+
+    if(index == -1) return SendErrorMessage(playerid, "Xe cua ban da chat day hang, khong the chat them hang hoa len xe.");
+    VehicleTruckerData[playerid][index][vtSlotId] = pCarSlotID,
+    VehicleTruckerData[playerid][index][vtProductID] = ProductID,
+    VehicleTruckerData[playerid][index][vtPos][0] = x,
+    VehicleTruckerData[playerid][index][vtPos][1] = y,
+    VehicleTruckerData[playerid][index][vtPos][2] = z,
+    VehicleTruckerData[playerid][index][vtPos][3] = ox,
+    VehicleTruckerData[playerid][index][vtPos][4] = oy,
+    VehicleTruckerData[playerid][index][vtPos][5] = oz,
+
+    format(string, sizeof(string), "INSERT INTO `vehicletrucker` (\
+		`vtSlotId`, \
+		`vtProductID`, \
+        `vtPSQL`,\
+        `vtPos1`,\
+        `vtPos2`,\
+        `vtPos3`,\
+        `vtPos4`,\
+        `vtPos5`,\
+        `vtPos6`)\
+		VALUES ('%d', '%d', '%d', '%f', '%f', '%f', '%f', '%f', '%f')", 
+		pCarSlotID,
+		ProductID,
+		GetPlayerId,
+        x,
+        y,
+        z,
+        ox,
+        oy,
+        oz
+	);
+	mysql_function_query(MainPipeline, string, false, "OnAddVehicleTruckerFinish", "iiii", playerid, vehicleid, modelid, index);
+	return 1;
+}
+
+public OnAddVehicleTruckerFinish(playerid, vehicleid, modelid, index)
+{
+    VehicleTruckerData[playerid][index][vtId] = mysql_insert_id(MainPipeline);
+    new Float:playerPos[3];
+    GetPlayerPos(playerid, playerPos[0], playerPos[1], playerPos[2]);
+    if(IsValidDynamicObject(VehicleTruckerData[vehicleid][index][vtObject]))
+    {
+        DestroyDynamicObject(VehicleTruckerData[vehicleid][index][vtObject]);
+    }
+    VehicleTruckerData[vehicleid][index][vtObject] = CreateDynamicObject(1271, playerPos[0], playerPos[1], playerPos[2], 0, 0, 0);
+    AttachDynamicObjectToVehicle(VehicleTruckerData[vehicleid][index][vtObject], vehicleid, 
+        VehicleTruckerData[playerid][index][vtPos][0],
+        VehicleTruckerData[playerid][index][vtPos][1],
+        VehicleTruckerData[playerid][index][vtPos][2],
+        VehicleTruckerData[playerid][index][vtPos][3],
+        VehicleTruckerData[playerid][index][vtPos][4],
+        VehicleTruckerData[playerid][index][vtPos][5]);
+    return 1;
+}
+
+stock VEHICLETRUCKER_DELETE(playerid, index)
+{
+    new
+        string[64];
+    format(string, sizeof(string), "DELETE FROM `vehicletrucker` WHERE `Id`= '%d'", VehicleTruckerData[playerid][index][vtId]);
+    mysql_function_query(MainPipeline, string, false, "OnQueryFinish", "i", SENDDATA_THREAD);
+
+    if(IsValidDynamicObject(VehicleTruckerData[playerid][index][vtObject]))
+        DestroyDynamicObject(VehicleTruckerData[playerid][index][vtObject]);
+    
+    VehicleTruckerData[playerid][index][vtObject] = INVALID_OBJECT_ID;
+    VehicleTruckerData[playerid][index][vtId] = -1;
+    VehicleTruckerData[playerid][index][vtProductID] = -1;
+	return 1;
+}
+
+stock GetVehicleTruckerFree(playerid, pCarSlotID)
+{
+    for(new i; i < MAX_OBJECTTRUCKER; i++)
+    {
+        if(VehicleTruckerData[playerid][i][vtId] == -1)
+            return i;
+    }
+    return -1;
+}
+
+stock VehicleTruckerCount(playerid, pCarSlotID)
+{
+    new count = 0;
+    for(new i; i < MAX_OBJECTTRUCKER; i++)
+    {
+        if(VehicleTruckerData[playerid][i][vtId] != -1 && VehicleTruckerData[playerid][i][vtSlotId] == pCarSlotID
+            && VehicleTruckerData[playerid][i][vtProductID] != -1){
+            count++;
+        }
+    }
+    return count;
+}

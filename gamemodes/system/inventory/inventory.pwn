@@ -443,12 +443,12 @@ public OnPlayerUseItem(playerid, pItemId, name[])
 		PlayerPlaySound(playerid, 42600, 0.0, 0.0, 0.0);
 		Inventory_Remove(playerid, pItemId, 1);
 	}
-	else if(!strcmp(name, "Cocain", true))
+	else if(!strcmp(name, "Codeine", true))
 	{
 	    UseDrug(playerid,0,pItemId);
 		
 	}
-	else if(!strcmp(name, "Codeine", true))
+	else if(!strcmp(name, "Cocain", true))
 	{
 		UseDrug(playerid,1,pItemId);
 	}

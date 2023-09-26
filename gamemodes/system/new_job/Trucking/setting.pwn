@@ -2,6 +2,20 @@
 #define MAX_CARTRUCK        (30)
 #define MAX_FACTORY         (30)
 #define MAX_PLAYERPRODUCT   (7)
+#define MAX_OBJECTTRUCKER   (100)
+forward public VEHICLETRUCKER_LOAD(playerid);
+forward OnAddVehicleTruckerFinish(playerid, vehicleid, modelid, index);
+
+enum VehicleTruckerInfo{
+    vtId,
+    vtPSQL,
+    vtSlotId, //pvSlotId
+    vtObject,
+    Float:vtPos[6],
+    vtProductID //ID PRODUCTDATA
+};
+
+new VehicleTruckerData[MAX_PLAYERS][MAX_OBJECTTRUCKER][VehicleTruckerInfo];
 
 new const UnitType[][] = 
 {
@@ -73,17 +87,24 @@ new CarTruckWorking[][CarTruckInfo] = {
 };
 
 enum FactoryInfo{ //Xuất khẩu
+    IsLocked,
     FactoryName[108],
     ProductName[MAX_PRODUCT],// Danh sách ID ProductData
     ProductPrice[MAX_PRODUCT],
     Productivity[MAX_PRODUCT], 
     WareHouse[MAX_PRODUCT],
     MaxWareHouse[MAX_PRODUCT],
-    Float:FactoryPos[3]
+    Float:FactoryPos[3],
+    ProductImportName[MAX_PRODUCT],
+    ProductImportPrice[MAX_PRODUCT],
+    ProductImport[MAX_PRODUCT],
+    ImportWareHouse[MAX_PRODUCT],
+    ImportMaxWareHouse[MAX_PRODUCT]
 };
 
 new FactoryData[][FactoryInfo] = {
     {//0
+        false,
         "Green Palms Reafinery", 
         {20}, 
         {300},
@@ -93,6 +114,7 @@ new FactoryData[][FactoryInfo] = {
         {260.7484,1412.1002,11.1693}
     },
     {//1
+        false,
         "Easter Bay Chemicals", 
         {9, 19}, 
         {60, 160},
@@ -102,6 +124,7 @@ new FactoryData[][FactoryInfo] = {
         {-992.8083,-696.1418,32.0078}
     },
     {//2
+        false,
         "Whetstone Scrap Yard", 
         {14}, 
         {80},
@@ -111,6 +134,7 @@ new FactoryData[][FactoryInfo] = {
         {-1869.1418,-1717.2013,21.7500}
     },
     {//3
+        false,
         "The Panopticon Forest - West", 
         {22}, 
         {300},
@@ -120,6 +144,7 @@ new FactoryData[][FactoryInfo] = {
         {-788.3041,-133.7872,64.5020}
     },
     {//4
+        false,
         "The Panopticon Forest - East", 
         {22}, 
         {300},
@@ -129,6 +154,7 @@ new FactoryData[][FactoryInfo] = {
         {-528.1472,-191.3672,78.4063}
     },
     {//5
+        false,
         "The Impounder’s Farm", 
         {15, 21, 7}, 
         {30, 30, 70},
@@ -138,6 +164,7 @@ new FactoryData[][FactoryInfo] = {
         {-1058.7488,-1195.4639,129.2188}
     },
     {//6
+        false,
         "The Farm On a Rock", 
         {15, 21}, 
         {30, 30},
@@ -147,6 +174,7 @@ new FactoryData[][FactoryInfo] = {
         {-1448.5803,-1499.0050,101.3283}
     },
     {//7
+        false,
         "The Beacon Hill Eggs", 
         {11}, 
         {50},
@@ -156,6 +184,7 @@ new FactoryData[][FactoryInfo] = {
         {-384.0244,-1041.0443,58.8835}
     },
     {//8
+        false,
         "EasterBoard Farm", 
         {13, 21, 7}, 
         {50, 40, 80},
@@ -165,6 +194,7 @@ new FactoryData[][FactoryInfo] = {
         {-21.1862,81.3918,3.1096}
     },
     {//9
+        false,
         "The Palomino Farm", 
         {13}, 
         {40},
@@ -174,6 +204,7 @@ new FactoryData[][FactoryInfo] = {
         {1938.3217,166.3846,37.2813}
     },
     {//10
+        false,
         "The Leafy Hollow Orchards", 
         {10}, 
         {30},
@@ -183,6 +214,7 @@ new FactoryData[][FactoryInfo] = {
         {-1092.4702,-1622.1119,76.3672}
     },
     {//11
+        false,
         "The Hilltop Farm", 
         {7, 21, 11}, 
         {90, 50, 70},
@@ -192,6 +224,7 @@ new FactoryData[][FactoryInfo] = {
         {1059.6445,-345.3934,73.9922}
     },
     {//12
+        false,
         "Fort Carson Quarry", 
         {16}, 
         {30},
@@ -201,6 +234,7 @@ new FactoryData[][FactoryInfo] = {
         {325.7538,1147.9755,8.1741}
     },
     {//13
+        false,
         "Blueberry Distribution Hub", 
         {13, 10, 23, 6, 20, 19, 8}, 
         {50, 50, 700, 165, 340, 170, 245},
@@ -210,250 +244,244 @@ new FactoryData[][FactoryInfo] = {
         {-226.1169,-190.0281,0.9920}
     },
     {//14
+        false,
         "San Andreas Federal Weapon Factory", 
         {17}, 
         {250},
         {16}, 
         {100},
         {100},
-        {2511.4922,2799.9509,10.8203}
+        {2511.4922,2799.9509,10.8203},
+        {9, 6}, 
+        {300, 290},
+        {8, 8}, 
+        {0, 0},
+        {60, 100}
     },
     {//15
+        false,
         "San Andreas Steel Mill", 
         {6}, 
         {90},
         {15}, 
         {200},
         {200},
-        {2658.2119,-1591.6473,13.7133}
+        {2658.2119,-1591.6473,13.7133},
+        {14}, 
+        {250},
+        {10}, 
+        {0},
+        {300}
     },
     {//16
+        false,
         "Angel Pine Sawmill", 
         {4, 3}, 
         {220, 220},
         {5, 30}, 
         {50, 300},
         {50, 300},
-        {-1999.1478,-2415.9165,30.6250}
+        {-1999.1478,-2415.9165,30.6250},
+        {22}, 
+        {3300},
+        {30}, 
+        {0},
+        {300}
     },
     {//17
+        false,
         "Doherty Textile Factory", 
         {5}, 
         {210},
         {20}, 
         {200},
         {200},
-        {-2121.7207,-264.5204,34.8916}
+        {-2121.7207,-264.5204,34.8916},
+        {15, 19}, 
+        {130, 200},
+        {20, 10}, 
+        {0, 0},
+        {200, 100}
     },
     {//18
+        false,
         "FleischBerg Brewery", 
         {24}, 
         {210},
         {25}, 
         {400},
         {400},
-        {-58.0229,83.4377,3.1172}
+        {-58.0229,83.4377,3.1172},
+        {12}, 
+        {340},
+        {5}, 
+        {0},
+        {120}
     },
     {//19
+        false,
         "SA Food Processing Plant", 
         {8}, 
         {190},
         {8}, 
         {100},
         {100},
-        {1052.5149,2134.7427,10.8203}
+        {1052.5149,2134.7427,10.8203},
+        {7, 13, 11, 10}, 
+        {170, 130, 170, 170},
+        {8, 8, 8, 8}, 
+        {0, 0, 0, 0},
+        {200, 200, 200, 200}
     },
     {//20
+        false,
         "Ocean Docks Concrete Plant", 
         {23}, 
         {130},
         {6}, 
         {150},
         {150},
-        {1059.6445,-345.3934,73.9922}
+        {1059.6445,-345.3934,73.9922},
+        {16}, 
+        {240},
+        {40}, 
+        {0},
+        {300}
     },
     {//21
+        false,
         "Fort Carson Distillery", 
         {24}, 
         {210},
         {10}, 
         {120},
         {120},
-        {-116.8637,1133.0490,19.7422}
+        {-116.8637,1133.0490,19.7422},
+        {10}, 
+        {170},
+        {10}, 
+        {0},
+        {80}
     },
     {//22
+        false,
         "Las Payasdas Malt House", 
         {12}, 
         {230},
         {20}, 
         {120},
         {120},
-        {-317.8109,2662.0435,63.0919}
+        {-317.8109,2662.0435,63.0919},
+        {13}, 
+        {190},
+        {20}, 
+        {0},
+        {120}
     },
     {//23
+        false,
         "Shafted Appliances", 
         {2, 0}, 
         {210, 1000},
         {25, 3}, 
         {200, 30},
         {200, 30},
-        {1703.7877,998.6878,10.8203}
+        {1703.7877,998.6878,10.8203},
+        {6}, 
+        {235},
+        {15}, 
+        {0},
+        {150}
     },
     {//24
+        false,
         "Solarin Autos", 
         {18, 1}, 
         {800, 250},
         {5, 350}, 
         {40, 65535},
         {40, 65535},
-        {-1835.2246,115.1202,15.1172}
-    }
-};
-
-new FactoryExportData[][FactoryInfo] = {
-    {//0
-        "San Andreas Federal Weapon Factory", 
-        {9, 6}, 
-        {300, 290},
-        {8, 8}, 
-        {0, 0},
-        {60, 100},
-        {2511.4922,2799.9509,10.8203}
-    },
-    {//1
-        "San Andreas Steel Mill", 
-        {14}, 
-        {250},
-        {10}, 
-        {0},
-        {300},
-        {2658.2119,-1591.6473,13.7133}
-    },
-    {//2
-        "Angel Pine Sawmill", 
-        {22}, 
-        {3300},
-        {30}, 
-        {0},
-        {300},
-        {2658.2119,-1591.6473,13.7133}
-    },
-    {//3
-        "Doherty Textile Factory", 
-        {15, 19}, 
-        {130, 200},
-        {20, 10}, 
-        {0, 0},
-        {200, 100},
-        {-2176.4045,-209.2566,34.8844}
-    },
-    {//4
-        "FleischBerg Brewery", 
-        {12}, 
-        {340},
-        {5}, 
-        {0},
-        {120},
-        {-58.0229,83.4377,3.1172}
-    },
-    {//5
-        "SA Food Processing Plant", 
-        {7, 13, 11, 10}, 
-        {170, 130, 170, 170},
-        {8, 8, 8, 8}, 
-        {0, 0, 0, 0},
-        {200, 200, 200, 200},
-        {1052.5149,2134.7427,10.8203}
-    },
-    {//6
-        "Ocean Docks Concrete Plant", 
-        {16}, 
-        {240},
-        {40}, 
-        {0},
-        {300},
-        {2505.8315,-2119.4412,13.1183}
-    },
-    {//7
-        "Fort Carson Distillery", 
-        {10}, 
-        {170},
-        {10}, 
-        {0},
-        {80},
-        {-116.8637,1133.0490,19.7422}
-    },
-    {//8
-        "Las Payasdas Malt House", 
-        {13}, 
-        {190},
-        {20}, 
-        {0},
-        {120},
-        {-317.8109,2662.0435,63.0919}
-    },
-    {//9
-        "Shafted Appliances", 
-        {6}, 
-        {235},
-        {15}, 
-        {0},
-        {150},
-        {1703.7877,998.6878,10.8203}
-    },
-    {//10
-        "Solarin Autos", 
+        {-1835.2246,115.1202,15.1172},
         {6, 19}, 
         {280, 200},
         {10, 30}, 
         {0, 0},
-        {100, 160},
-        {-1835.2246,115.1202,15.1172}
+        {100, 160}
     },
-    {//11
+    {//25
+        false,
         "Rockshore Construction Site", 
+        {-1}, 
+        {-1},
+        {-1}, 
+        {-1},
+        {-1},
+        {2703.8293,902.2045,10.4221},
         {23}, 
         {915},
         {4}, 
         {0},
-        {40},
-        {2703.8293,902.2045,10.4221}
+        {40}
     },
-    {//12
+    {//26
+        false,
         "Doherty Construction Site", 
+        {-1}, 
+        {-1},
+        {-1}, 
+        {-1},
+        {-1},
+        {-2063.1355,227.1720,35.8125},
         {23}, 
         {1300},
         {6}, 
         {0},
-        {75},
-        {-2063.1355,227.1720,35.8125}
+        {75}
     },
-    {//13
+    {//27
+        false,
         "Bone County Substation", 
+        {-1}, 
+        {-1},
+        {-1}, 
+        {-1},
+        {-1},
+        {-766.9951,1634.0951,27.2124},
         {0}, 
         {1450},
         {2}, 
         {0},
-        {18},
-        {-766.9951,1634.0951,27.2124}
+        {18}
     },
-    {//14
+    {//28
+        false,
         "Sherman Dam Powerplant", 
+        {-1}, 
+        {-1},
+        {-1}, 
+        {-1},
+        {-1},
+        {782.8306,2035.0806,6.7109},
         {0}, 
         {2000},
         {3}, 
         {0},
-        {25},
-        {782.8306,2035.0806,6.7109}
+        {25}
     },
-    {//15
+    {//29
+        false,
         "The Ship", 
+        {-1}, 
+        {-1},
+        {-1}, 
+        {-1},
+        {-1},
+        {2771.0579,-2421.7144,13.6543},
         {5, 24, 2, 18, 8, 4, 20}, 
         {2000, 360, 360, 360, 1500, 360, 360, 410},
         {0, 0, 0, 0, 0, 0, 0}, 
         {0, 0, 0, 0, 0, 0, 0},
         {20, 500, 500, 500, 20, 500, 500, 500},
-        {2771.0579,-2421.7144,13.6543}
     }
 };
 
@@ -465,10 +493,5 @@ enum PlayerTruckerInfo{
     MissionBuy[MAX_PLAYERPRODUCT]
 };
 new PlayerTruckerData[MAX_PLAYERS][PlayerTruckerInfo];
-
-enum CarTruckerInfo{
-    Object[30], 
-    ClaimProduct[30]
-}
+new pLoadProduct[MAX_PLAYERS];
 new SaveWeigth[MAX_PLAYERS];
-new PlayerCarTrucker[MAX_VEHICLES][CarTruckerInfo];
