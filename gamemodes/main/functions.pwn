@@ -11360,9 +11360,6 @@ stock SetPlayerSpawn(playerid)
             SetPlayerVirtualWorld(playerid,0);
    			RegistrationStep[playerid] = 1;
    			SetPVarInt(playerid,"DangTaoAcc",1);
-   			PlayerInfo[playerid][pEat] = 100;
-   			PlayerInfo[playerid][pDrink] = 100;
-   			PlayerInfo[playerid][pStrong] = 100;
    			ShowRegCharTD(playerid);
 			return 1;
 		}

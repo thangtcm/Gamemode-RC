@@ -80,7 +80,7 @@ hook OnPlayerConnect(playerid)
 	PlayerTextDrawBackgroundColor(playerid, RegCharacter[playerid][6], 0);
 	PlayerTextDrawFont(playerid, RegCharacter[playerid][6], 5);
 	PlayerTextDrawSetProportional(playerid, RegCharacter[playerid][6], 0);
-	PlayerTextDrawSetPreviewModel(playerid, RegCharacter[playerid][6], 19);
+	PlayerTextDrawSetPreviewModel(playerid, RegCharacter[playerid][6], 1);
 	PlayerTextDrawSetPreviewRot(playerid, RegCharacter[playerid][6], 0.000, 0.000, 0.000, 1.000);
 	PlayerTextDrawSetPreviewVehCol(playerid, RegCharacter[playerid][6], 0, 0);
 
@@ -109,6 +109,7 @@ hook OnPlayerConnect(playerid)
 }
 
 stock ShowRegCharTD(playerid) {
+	ChangeSkin[playerid] = 1;
 	new name[MAX_PLAYER_NAME];
 	GetPlayerName(playerid, name, MAX_PLAYER_NAME);
 	PlayerTextDrawSetString(playerid, RegCharacter[playerid][4], name);
@@ -117,5 +118,13 @@ stock ShowRegCharTD(playerid) {
     	PlayerTextDrawShow(playerid, RegCharacter[playerid][i]);
     }
     SelectTextDraw(playerid, COLOR_LIGHTRED);
+    return 1;
+}
+stock HideRegCharTD(playerid) {
+    for(new i = 0 ; i < 9 ; i++)
+    {
+    	PlayerTextDrawHide(playerid, RegCharacter[playerid][i]);
+    }
+    CancelSelectTextDraw(playerid);
     return 1;
 }

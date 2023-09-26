@@ -8495,7 +8495,6 @@ public OnPlayerLoad(playerid)
  	DestroyLog@_Reg(playerid);
  	SendClientMessageEx(playerid, COLOR_VANG, "Chao mung ban da tro lai may chu Los Santos Roleplay Vietnam.");
 	DeletePVar(playerid, "TextDrawCharacter");
- 	SetTimerEx("StartDownEatDrinkStrong", 100000, false, "i", playerid);
  	GetHomeCount(playerid);
 	return 1;
 }
