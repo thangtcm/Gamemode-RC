@@ -1209,6 +1209,7 @@ CMD:toglichsu(playerid, params[])
     return 1;
 }
 stock JoinGame(playerid) {
+        HideRegCharTD(playerid);
 	    PlayerHasNationSelected[playerid] = 1;
 	    TextDrawHideForPlayer(playerid,txtNationSelHelper);
 		TextDrawHideForPlayer(playerid,txtNationSelMain);
@@ -1224,16 +1225,8 @@ stock JoinGame(playerid) {
 		DeletePVar(playerid,"DangTaoAcc");
 		new randomskinnam[] = {19, 20, 21, 46, 186,30};
         new randskinnu[] = {12, 13, 55, 91, 225,224};
-		if(PlayerInfo[playerid][pSex] == 1)
-		{		
-			PlayerInfo[playerid][pModel] = randomskinnam[random(6)];
-			SetPlayerSkin(playerid,randomskinnam[random(6)]);
-		}
-        else if(PlayerInfo[playerid][pSex] == 2)
-        {
-			PlayerInfo[playerid][pModel] = randskinnu[random(6)];
-			SetPlayerSkin(playerid, randskinnu[random(6)]);
-		}
+		SetPlayerSkin(playerid, ChangeSkin[playerid]);
+        PlayerInfo[playerid][pModel] = ChangeSkin[playerid];
 		PlayerInfo[playerid][pTempVIP] = 0;
 		PlayerInfo[playerid][pBuddyInvited] = 0;
 		PlayerInfo[playerid][pSpeedo] = 1;
@@ -1242,12 +1235,15 @@ stock JoinGame(playerid) {
 	    TextDrawHideForPlayer(playerid, BannerServer[1]);
 		SetPlayerVirtualWorld(playerid, 0);
 		SetPlayerInterior(playerid,0);
-		Streamer_UpdateEx(playerid,1799.0856,-1862.2181,13.5766);
-		SetPlayerPos(playerid,1799.0856,-1862.2181,13.5766);
-		SetPlayerFacingAngle(playerid, 354.1151);
+		Streamer_UpdateEx(playerid,1319.7906,275.6697,20.9252);
+		SetPlayerPos(playerid,1319.7906,275.6697,20.9252);
+		SetPlayerFacingAngle(playerid, 247.5060);
 		PlayerInfo[playerid][pVW] = 0;
 		PlayerInfo[playerid][pDoiBung] = 100;
 		PlayerInfo[playerid][pKhatNuoc] = 100;
+        PlayerInfo[playerid][pEat] = 100;
+        PlayerInfo[playerid][pDrink] = 100;
+        PlayerInfo[playerid][pStrong] = 100;
         ClearChatbox(playerid);
         SendClientMessageEx(playerid,COLOR_VANG,"Chao mung ban da den voi may chu LS-RP Viet nam.");
       //  SendClientMessageEx(playerid,COLOR_VANG,"(HUONG DAN) Hay di vao Market tim cua hang dien tu mua mot cai GPS nhe.");
