@@ -875,6 +875,15 @@ public OnQueryFinish(resultid, extraid, handleid)
 						cache_get_field_content(i,  "pvPosAngle", szResult, MainPipeline);
 						PlayerVehicleInfo[extraid][i][pvPosAngle] = floatstr(szResult);
 
+						cache_get_field_content(i,  "pvIsRegisterTrucker", szResult, MainPipeline);
+						PlayerVehicleInfo[extraid][i][pvIsRegisterTrucker] = strval(szResult);
+
+						cache_get_field_content(i,  "pvMaxSlotTrucker", szResult, MainPipeline);
+						PlayerVehicleInfo[extraid][i][pvMaxSlotTrucker] = strval(szResult);
+
+						cache_get_field_content(i,  "pvTimer", szResult, MainPipeline);
+						PlayerVehicleInfo[extraid][i][pvTimer] = strval(szResult);
+					
 						cache_get_field_content(i,  "pvLock", szResult, MainPipeline);
 						PlayerVehicleInfo[extraid][i][pvLock] = strval(szResult);
 
@@ -1637,6 +1646,9 @@ stock g_mysql_SaveVehicle(playerid, slotid)
 	format(query, sizeof(query), "%s `pvVW` = %d,", query, PlayerVehicleInfo[playerid][slotid][pvVW]);
 	format(query, sizeof(query), "%s `pvInt` = %d,", query, PlayerVehicleInfo[playerid][slotid][pvInt]);
 	format(query, sizeof(query), "%s `pvCrashFlag` = %d,", query, PlayerVehicleInfo[playerid][slotid][pvCrashFlag]);
+	format(query, sizeof(query), "%s `pvIsRegisterTrucker` = %d,", query, PlayerVehicleInfo[playerid][slotid][pvIsRegisterTrucker]);
+	format(query, sizeof(query), "%s `pvMaxSlotTrucker` = %d,", query, PlayerVehicleInfo[playerid][slotid][pvIsRegisterTrucker]);
+	format(query, sizeof(query), "%s `pvTimer` = %d,", query, PlayerVehicleInfo[playerid][slotid][pvTimer]);
 	format(query, sizeof(query), "%s `pvCrashVW` = %d,", query, PlayerVehicleInfo[playerid][slotid][pvCrashVW]);
 	format(query, sizeof(query), "%s `pvCrashX` = %0.5f,", query, PlayerVehicleInfo[playerid][slotid][pvCrashX]);
 	format(query, sizeof(query), "%s `pvCrashY` = %0.5f,", query, PlayerVehicleInfo[playerid][slotid][pvCrashY]);
@@ -7852,6 +7864,9 @@ public OnPlayerLoad(playerid)
 			PlayerVehicleInfo[playerid][v][pvPlate] = 0;
 			PlayerVehicleInfo[playerid][v][pvVW] = 0;
 			PlayerVehicleInfo[playerid][v][pvInt] = 0;
+			PlayerVehicleInfo[playerid][v][pvIsRegisterTrucker] = 0;
+			PlayerVehicleInfo[playerid][v][pvMaxSlotTrucker] = 0;
+			PlayerVehicleInfo[playerid][v][pvTimer] = 0;
 			ListItemTrackId[playerid][v] = -1;
 			for(new m = 0; m < MAX_MODS; m++)
 			{

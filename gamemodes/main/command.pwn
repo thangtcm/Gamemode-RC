@@ -8732,6 +8732,9 @@ CMD:accept(playerid, params[])
 							PlayerVehicleInfo[playerid][playervehicleid][pvPlate] = 0;
 							PlayerVehicleInfo[playerid][playervehicleid][pvTicket] = 0;
                             PlayerVehicleInfo[playerid][playervehicleid][pvSpawned] = 1;
+							PlayerVehicleInfo[playerid][playervehicleid][pvTimer] = 0;
+							PlayerVehicleInfo[playerid][playervehicleid][pvIsRegisterTrucker] = 0;
+							PlayerVehicleInfo[playerid][playervehicleid][pvMaxSlotTrucker] = 0;
                             VehicleSpawned[playerid]++;
                             for(new m = 0; m < MAX_MODS; m++) {
                                 PlayerVehicleInfo[playerid][playervehicleid][pvMods][m] = PlayerVehicleInfo[VehicleOffer[playerid]][VehicleId[playerid]][pvMods][m];
@@ -8769,6 +8772,9 @@ CMD:accept(playerid, params[])
 							PlayerVehicleInfo[VehicleOffer[playerid]][VehicleId[playerid]][pvAmmos][2] = 0;
 							PlayerVehicleInfo[VehicleOffer[playerid]][VehicleId[playerid]][pvPlate] = 0;
 							PlayerVehicleInfo[VehicleOffer[playerid]][VehicleId[playerid]][pvTicket] = 0;
+							PlayerVehicleInfo[VehicleOffer[playerid]][VehicleId[playerid]][pvTimer] = 0;
+							PlayerVehicleInfo[VehicleOffer[playerid]][VehicleId[playerid]][pvIsRegisterTrucker] = 0;
+							PlayerVehicleInfo[VehicleOffer[playerid]][VehicleId[playerid]][pvMaxSlotTrucker] = 0;
                             VehicleSpawned[VehicleOffer[playerid]]--;
                             for(new m = 0; m < MAX_MODS; m++) {
                                 PlayerVehicleInfo[VehicleOffer[playerid]][VehicleId[playerid]][pvMods][m] = 0;
@@ -11130,7 +11136,7 @@ CMD:join(playerid, params[])
 				PlayerInfo[playerid][pJob2] = GettingJob2[playerid];
 				return 1;
 			}
-			else return SendErrorMessage(playerid, " Ban phai dat it nhat level 2 moi co the tro thanh Nguoi dua hang.");
+			else return SendErrorMessage(playerid, "Ban khong the xin tiep mot cong viec moi [/nghiviec] de nghi cong viec cu.");
 		}
         else if (IsPlayerInRangeOfPoint(playerid,5.0, 2105.4529,-1809.5568,13.5547))
 		{

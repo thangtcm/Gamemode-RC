@@ -1102,7 +1102,10 @@ enum pvInfo
 	Float:pvCrashX,
 	Float:pvCrashY,
 	Float:pvCrashZ,
-	Float:pvCrashAngle
+	Float:pvCrashAngle,
+	pvIsRegisterTrucker,
+	pvMaxSlotTrucker,
+	pvTimer
 };
 
 enum ptInfo

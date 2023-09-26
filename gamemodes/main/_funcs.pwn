@@ -2351,6 +2351,8 @@ public OnPlayerDisconnect(playerid, reason)
 		if(gettime() >= PlayerInfo[playerid][pDrugsTime]) PlayerInfo[playerid][pDrugsTime] = 0;
 		if(gettime() >= PlayerInfo[playerid][pSexTime]) PlayerInfo[playerid][pSexTime] = 0;
 
+
+		//Out Car Player
 		for(new i = 0; i < MAX_PLAYERVEHICLES; ++i) {
 			if(PlayerVehicleInfo[playerid][i][pvSpawned] == 1)
 			{
