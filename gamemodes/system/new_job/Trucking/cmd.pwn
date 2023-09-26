@@ -143,15 +143,21 @@ CMD:truckergo(playerid, params[])
         {
             SetPVarInt(playerid, "Sell_ProductID", FactoryId);
             format(string, sizeof(string), "{FFFFFF}ID\t\tSan Pham\t\tGia");
-        
-            for(new i; i < strlen(FactoryData[FactoryId][ProductName]); i++)
+            new count = 0;
+            for(new i; i < MAX_PLAYERPRODUCT; i++)
             {
-                ProductId = FactoryData[FactoryId][ProductName][i];
-                format(string, sizeof(string),"%s\n%d\t\t%s\t\t$%d",string, i, ProductData[ProductId][ProductName], FactoryData[FactoryId][ProductPrice][i]);
+                PlayerTruckerData[playerid][SellProduct][i] = -1;
+                if(i < strlen(FactoryData[FactoryId][ProductName]))
+                {
+                    ProductId = FactoryData[FactoryId][ProductName][i];
+                    PlayerTruckerData[playerid][SellProduct][count++] = i;
+                    format(string, sizeof(string),"%s\n%d\t\t%s\t\t$%d",string, i, ProductData[ProductId][ProductName], FactoryData[FactoryId][ProductPrice][i]);
+                }
             }
             for(new i; i < strlen(FactoryData[FactoryId][ProductImportName]); i++)
             {
                 ProductId = FactoryData[FactoryId][ProductImportName][i];
+                PlayerTruckerData[playerid][SellProduct][count++] = i;
                 format(string, sizeof(string),"%s\n%d\t\t%s\t\t$%d",string, i, ProductData[ProductId][ProductName], FactoryData[FactoryId][ProductImportPrice][i]);
             }
             Dialog_Show(playerid, DIALOG_SELLPRODUCT,DIALOG_STYLE_TABLIST_HEADERS, "Danh Sach Cac San Pham", string, "Xac nhan", "<");

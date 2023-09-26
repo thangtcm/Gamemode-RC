@@ -12,7 +12,7 @@ stock IsValidCarTrucker(playerid)
     new maxCarTruckWorking;
     for(new d = 0 ; d < MAX_PLAYERVEHICLES; d++)
 	{
-		if(IsPlayerInVehicle(playerid, PlayerVehicleInfo[playerid][d][pvId]) && PlayerVehicleInfo[playerid][d][pvIsRegisterTrucker] == 0)
+		if(IsPlayerInVehicle(playerid, PlayerVehicleInfo[playerid][d][pvId]))
 		{
             maxCarTruckWorking = sizeof(CarTruckWorking);
             for(new i; i < maxCarTruckWorking; i++)
@@ -20,6 +20,7 @@ stock IsValidCarTrucker(playerid)
                 if(CarTruckWorking[i][CarModel] == PlayerVehicleInfo[playerid][d][pvModelId]){
                     PlayerVehicleInfo[playerid][d][pvIsRegisterTrucker] = true;
                     PlayerVehicleInfo[playerid][d][pvMaxSlotTrucker] = CarTruckWorking[i][Weight];
+                    printf("PlayerVehicleInfo[playerid][d][pvMaxSlotTrucker] %d", PlayerVehicleInfo[playerid][d][pvMaxSlotTrucker]);
                     PlayerInfo[playerid][pRegisterCarTruck] = PlayerVehicleInfo[playerid][d][pvSlotId];
                     g_mysql_SaveVehicle(playerid, d);
                     return true;
@@ -97,8 +98,14 @@ stock VEHICLETRUCKER_ADD(playerid, vehicleid, modelid, pCarSlotID, ProductID, Fl
 	new string[2048],
         GetPlayerId = GetPlayerSQLId(playerid),
         index = GetVehicleTruckerFree(playerid, pCarSlotID);
-    printf("RUNNNNN -- %d", index);
     if(index == -1) return SendErrorMessage(playerid, "Xe cua ban da chat day hang, khong the chat them hang hoa len xe.");
+    new Float:playerPos[3];
+    GetPlayerPos(playerid, playerPos[0], playerPos[1], playerPos[2]);
+    if(IsValidDynamicObject(VehicleTruckerData[playerid][index][vtObject]))
+        DestroyDynamicObject(VehicleTruckerData[playerid][index][vtObject]);
+    VehicleTruckerData[playerid][index][vtObject] = CreateDynamicObject(modelid, playerPos[0], playerPos[1], playerPos[2], 0, 0, 0, GetPlayerVirtualWorld(playerid), GetPlayerInterior(playerid));
+    AttachDynamicObjectToVehicle(VehicleTruckerData[playerid][index][vtObject], vehicleid, x, y, z, ox, oy, oz);
+    printf("VehicleTruckerData[vehicleid][index][vtObject] %d ", VehicleTruckerData[playerid][index][vtObject]);
     VehicleTruckerData[playerid][index][vtSlotId] = pCarSlotID,
     VehicleTruckerData[playerid][index][vtProductID] = ProductID,
     VehicleTruckerData[playerid][index][vtPos][0] = x,
@@ -110,37 +117,14 @@ stock VEHICLETRUCKER_ADD(playerid, vehicleid, modelid, pCarSlotID, ProductID, Fl
 
     format(string, sizeof(string), "INSERT INTO `vehicletrucker` (`vtSlotId`, `vtProductID`, `vtPSQL`,`vtPos1`,`vtPos2`,`vtPos3`,`vtPos4`,`vtPos5`,`vtPos6`)\
 		VALUES ('%d', '%d', '%d', '%f', '%f', '%f', '%f', '%f', '%f')",  pCarSlotID, ProductID, GetPlayerId, x, y, z, ox, oy, oz);
-	mysql_function_query(MainPipeline, string, false, "OnAddVehicleTruckerFinish", "iiii", playerid, vehicleid, modelid, index);
+	mysql_function_query(MainPipeline, string, false, "OnAddVehicleTruckerFinish", "ii", playerid, index);
     printf("Nguoi choi %s da dua san pham %s vao xe %s ", GetPlayerNameEx(playerid), ProductData[ProductID][ProductName], GetVehicleName(vehicleid));
 	return 1;
 }
 
-public OnAddVehicleTruckerFinish(playerid, vehicleid, modelid, index)
+public OnAddVehicleTruckerFinish(playerid, index)
 {
-    printf("%d -- %d -- %f -- %f -- %f -- %f -- %f -- %f", vehicleid, modelid,
-    VehicleTruckerData[playerid][index][vtPos][0],
-        VehicleTruckerData[playerid][index][vtPos][1],
-        VehicleTruckerData[playerid][index][vtPos][2],
-        VehicleTruckerData[playerid][index][vtPos][3],
-        VehicleTruckerData[playerid][index][vtPos][4],
-        VehicleTruckerData[playerid][index][vtPos][5]);
-
     VehicleTruckerData[playerid][index][vtId] = mysql_insert_id(MainPipeline);
-    new Float:playerPos[3];
-    GetPlayerPos(playerid, playerPos[0], playerPos[1], playerPos[2]);
-    printf("RUNNNNNNNNNNNNNNNNNN1");
-    // if(IsValidDynamicObject(VehicleTruckerData[vehicleid][index][vtObject]))
-    //     DestroyDynamicObject(VehicleTruckerData[vehicleid][index][vtObject]);
-    printf("RUNNNNNNNNNNNNNNNNNN2");
-    VehicleTruckerData[vehicleid][index][vtObject] = CreateDynamicObject(1271, playerPos[0], playerPos[1], playerPos[2], 0, 0, 0);
-    printf("VehicleTruckerData[vehicleid][index][vtObject] %d ", VehicleTruckerData[vehicleid][index][vtObject]);
-    AttachDynamicObjectToVehicle(VehicleTruckerData[vehicleid][index][vtObject], vehicleid, -0.046103, -0925213, 0.000, 0.000, 0.000, 0.000);
-        // VehicleTruckerData[playerid][index][vtPos][0],
-        // VehicleTruckerData[playerid][index][vtPos][1],
-        // VehicleTruckerData[playerid][index][vtPos][2],
-        // VehicleTruckerData[playerid][index][vtPos][3],
-        // VehicleTruckerData[playerid][index][vtPos][4],
-        // VehicleTruckerData[playerid][index][vtPos][5]);
     return 1;
 }
 
@@ -148,7 +132,7 @@ stock VEHICLETRUCKER_DELETE(playerid, index)
 {
     new
         string[64];
-    format(string, sizeof(string), "DELETE FROM `vehicletrucker` WHERE `Id`= '%d'", VehicleTruckerData[playerid][index][vtId]);
+    format(string, sizeof(string), "DELETE FROM `vehicletrucker` WHERE `vtId`= '%d'", VehicleTruckerData[playerid][index][vtId]);
     mysql_function_query(MainPipeline, string, false, "OnQueryFinish", "i", SENDDATA_THREAD);
 
     if(IsValidDynamicObject(VehicleTruckerData[playerid][index][vtObject]))

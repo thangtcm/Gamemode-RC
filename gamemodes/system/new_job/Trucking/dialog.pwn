@@ -138,7 +138,6 @@ Dialog:DIALOG_BUYPRODUCT(playerid, response, listitem, inputtext[])
         format(str, sizeof(str), "Mua san pham %s thanh cong.", ProductData[productID][ProductName]);
         new money = FactoryData[factoryID][ProductPrice][index] * -1;
         GivePlayerCash(playerid, money);
-        SetPVarInt(playerid, "ClaimProduct", productID);
         RemoveMissionProduct(playerid, productID);
         pLoadProduct[playerid] = productID;
         SendClientMessageEx(playerid, COLOR_1YELLOW, str);
@@ -156,16 +155,16 @@ Dialog:DIALOG_SELLPRODUCT(playerid, response, listitem, inputtext[])
 	{
         new str[256];
         new factoryID = GetPVarInt(playerid, "Sell_ProductID");
-        if(GetPVarInt(playerid, "MissionTruck") == 1)
-        {
-            listitem = PlayerTruckerData[playerid][ClaimProduct][listitem];
-        }
-        format(str, sizeof(str), "Ban da ban san pham %s thanh cong.", ProductData[FactoryData[factoryID][ProductName][listitem]][ProductName]);
-        GivePlayerCash(playerid, FactoryData[factoryID][ProductPrice][listitem]);
+        if(pLoadProduct[playerid] == -1) return 1;
+        new index = PlayerTruckerData[playerid][SellProduct][listitem];
+        if(pLoadProduct[playerid] != FactoryData[factoryID][ProductName][index]) return SendErrorMessage(playerid, "Ban khong co san pham nay.");
+        format(str, sizeof(str), "Ban da ban san pham %s thanh cong.", ProductData[pLoadProduct[playerid]][ProductName]);
+        GivePlayerCash(playerid, FactoryData[factoryID][ProductPrice][index]);
         SendClientMessageEx(playerid, COLOR_1YELLOW, str);
         RemovePlayerAttachedObject(playerid, PIZZA_INDEX);
         SetPlayerSpecialAction(playerid, SPECIAL_ACTION_NONE);
         ApplyAnimation(playerid, "CARRY", "putdwn", 4.1, 0, 0, 0, 0, 0, 1);
+        pLoadProduct[playerid] = -1;
     }
     return 1;
 }

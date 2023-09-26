@@ -137,6 +137,7 @@ stock ClearTrucker(playerid)
         PlayerTruckerData[playerid][ClaimProduct][i] = -1;
         PlayerTruckerData[playerid][MissionProduct][i] = -1;
         PlayerTruckerData[playerid][ClaimFromCar][i] = -1;
+        PlayerTruckerData[playerid][SellProduct][i] = -1;
     }
     SaveWeigth[playerid] = 0;
     pLoadProduct[playerid] = -1;

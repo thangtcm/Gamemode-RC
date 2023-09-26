@@ -4,7 +4,7 @@
 #define MAX_PLAYERPRODUCT   (7)
 #define MAX_OBJECTTRUCKER   (100)
 forward VEHICLETRUCKER_LOAD(playerid);
-forward OnAddVehicleTruckerFinish(playerid, vehicleid, modelid, index);
+forward OnAddVehicleTruckerFinish(playerid, index);
 
 enum VehicleTruckerInfo{
     vtId,
@@ -490,7 +490,8 @@ enum PlayerTruckerInfo{
     MissionProduct[MAX_PLAYERPRODUCT],
     ClaimProduct[MAX_PLAYERPRODUCT],
     MissionBuy[MAX_PLAYERPRODUCT],
-    ClaimFromCar[MAX_PLAYERPRODUCT]
+    ClaimFromCar[MAX_PLAYERPRODUCT],
+    SellProduct[MAX_PLAYERPRODUCT]
 };
 new PlayerTruckerData[MAX_PLAYERS][PlayerTruckerInfo];
 new pLoadProduct[MAX_PLAYERS];
