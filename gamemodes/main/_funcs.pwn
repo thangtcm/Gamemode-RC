@@ -8347,7 +8347,6 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
         		if( PlayerInfo[playerid][pPhousekey] != INVALID_HOUSE_ID )
         		{
             		new h = PlayerInfo[playerid][pPhousekey], zone[50];
-            		printf("%d",h);
             		Get3DZone(HouseInfo[h][hExteriorX], HouseInfo[h][hExteriorY], HouseInfo[h][hExteriorZ],zone, sizeof(zone));
             		format(sonha,sizeof(sonha),"%d %s San Andreas",PlayerInfo[playerid][pPhousekey],zone);
         		}

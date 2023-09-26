@@ -43,7 +43,6 @@ stock AddItemPlayerMenu(playerid,const itemname[]) {
 		if(playermenu_itemset[playerid][i] == 0) {
 			playermenu_itemset[playerid][i] = 1;
 			item_count[playerid]++;
-			printf("%d", playermenu_itemset[playerid][i] );
 			format(str, sizeof str, "%s", itemname);
             PlayerTextDrawSetString(playerid, Menu_ItemName[playerid][i], str);
             break;
@@ -113,7 +112,6 @@ public ResetAyza(playerid)  {
 }
 hook OnPlayerConnect(playerid) {
 	CreateMenuTextDraw(playerid);
-	printf("%d", playermenu_itemset[playerid][1] );
 }
 hook OnPlayerClickPlayerTextDraw(playerid, PlayerText:playertextid) {
 	if(GetPVarInt(playerid, "open_menu") == 1) {

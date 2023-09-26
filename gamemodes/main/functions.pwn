@@ -1988,9 +1988,8 @@ public OnPlayerWeaponShot(playerid, weaponid, hittype, hitid, Float:fX, Float:fY
                 {
                     if(PlayerAmmo[playerid][ 1 ] > 0)
                     {
-                    	printf("%d", PlayerAmmo[playerid][ 1 ] );
+                    	//printf("%d", PlayerAmmo[playerid][ 1 ] );
                         PlayerAmmo[playerid][ 1 ] -= 1;
-
                     }
                 }
                 case 25: 

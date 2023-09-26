@@ -1,7 +1,3 @@
-CMD:factorystatus(playerid, params[])
-{
-    return cmd_thongtinnhamay(playerid, params);
-}
 
 CMD:thongtinnhamay(playerid, params[])
 {
@@ -79,12 +75,11 @@ CMD:truckergo(playerid, params[])
     new string[560], ProductId;
     if(!strcmp(type, "car", true))
     {
-        new playerCar = IsValidCarTrucker(playerid);
-        if(!IsPlayerInAnyVehicle(playerid) || playerCar == -1) return SendErrorMessage(playerid, "Ban can phai lai chiec xe van chuyen de dang ky!!");
         if(IsPlayerInRangeOfPoint(playerid, 10.0, 90.3602,-303.6159,1.5823))
         {
-            PlayerVehicleInfo[playerid][playerCar][pvIsRegisterTrucker] = playerCar;
-            Dialog_Show(playerid, ShowOnly, DIALOG_STYLE_MSGBOX, "Trucker", "{FFFFFF}Ban da hoan thanh viec dang ky xe %s cho viec van chuyen hang hoa. \n\nNeu ban can lam nhiem vu tu {FF0000}Ong Chu{FFFFFF} dua ra.\n\nDe bat dau cong viec, ban hay den gap {FF0000}Ong Chu{FFFFFF} de nhan thong tin lam viec (/truckergo mission).", "Dong lai", "", GetVehicleName(PlayerVehicleInfo[playerid][playerCar][pvId]));
+            if(!IsValidCarTrucker(playerid)) return SendErrorMessage(playerid, "Ban can phai lai chiec xe duoc phep van chuyen de dang ky!!");
+            new vehicleid = GetPlayerVehicleID(playerid);
+            Dialog_Show(playerid, ShowOnly, DIALOG_STYLE_MSGBOX, "Trucker", "{FFFFFF}Ban da hoan thanh viec dang ky xe %s cho viec van chuyen hang hoa. \n\nNeu ban can lam nhiem vu tu {FF0000}Ong Chu{FFFFFF} dua ra.\n\nDe bat dau cong viec, ban hay den gap {FF0000}Ong Chu{FFFFFF} de nhan thong tin lam viec (/truckergo mission).", "Dong lai", "", GetVehicleName(vehicleid));
         }
         else 
         { 

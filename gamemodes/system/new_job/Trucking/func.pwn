@@ -27,10 +27,11 @@ stock AttachProductToVehicle(playerid, vehicleid, pvSlotID)
     {
         case 422:
         {
-            // new count = VehicleTruckerCount(playerid, VehicleTruckerData[playerid][index][vtSlotId]);
-            // VEHICLETRUCKER_ADD(playerid, vehicleid, 1271, pvSlotID, pLoadProduct[playerid],  0.01, -0.82 - (0.1 * count), 0.05, 0.0, 0.0, -90);
-            // pLoadProduct[playerid] = -1;
-            // return 1;
+            new count = VehicleTruckerCount(playerid, pvSlotID);
+            printf("Count %d -- product %d", count, pLoadProduct[playerid]);
+            VEHICLETRUCKER_ADD(playerid, vehicleid, 1271, pvSlotID, pLoadProduct[playerid],  0.01, -0.82 - (0.1 * count), 0.05, 0.0, 0.0, -90);
+            pLoadProduct[playerid] = -1;
+            return 1;
         } 
     }
     return 0;
@@ -135,6 +136,7 @@ stock ClearTrucker(playerid)
     {
         PlayerTruckerData[playerid][ClaimProduct][i] = -1;
         PlayerTruckerData[playerid][MissionProduct][i] = -1;
+        PlayerTruckerData[playerid][ClaimFromCar][i] = -1;
     }
     SaveWeigth[playerid] = 0;
     pLoadProduct[playerid] = -1;

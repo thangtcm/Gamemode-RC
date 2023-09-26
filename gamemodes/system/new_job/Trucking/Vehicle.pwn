@@ -18,21 +18,31 @@ stock IsValidCarTrucker(playerid)
             for(new i; i < maxCarTruckWorking; i++)
             {
                 if(CarTruckWorking[i][CarModel] == PlayerVehicleInfo[playerid][d][pvModelId]){
-                    return d;
+                    PlayerVehicleInfo[playerid][d][pvIsRegisterTrucker] = true;
+                    PlayerVehicleInfo[playerid][d][pvMaxSlotTrucker] = CarTruckWorking[i][Weight];
+                    PlayerInfo[playerid][pRegisterCarTruck] = PlayerVehicleInfo[playerid][d][pvSlotId];
+                    g_mysql_SaveVehicle(playerid, d);
+                    return true;
                 }
             }
 		}
 	}
-    return -1;
+    return false;
 }
 
+stock GetPlayerCarID(playerid, pvSQLID)
+{
+    for(new d = 0 ; d < MAX_PLAYERVEHICLES; d++)
+        if(PlayerVehicleInfo[playerid][d][pvSlotId] == pvSQLID)
+            return d;
+    return -1;
+}
 
 stock LoadVehicleTrucker(playerid)
 {
 	new string[2085];
 	new GetPlayerId = GetPlayerSQLId(playerid);
-	format(string, sizeof(string), "SELECT * FROM vehicletrucker\
-		WHERE vtPSQL = '%d'", GetPlayerId);
+	format(string, sizeof(string), "SELECT * FROM vehicletrucker WHERE vtPSQL = '%d'", GetPlayerId);
 	mysql_function_query(MainPipeline, string, true, "VEHICLETRUCKER_LOAD", "i", playerid);
 	printf("[VEHICLE TRUCKER LOAD] Loading data from database...");
 }
@@ -87,7 +97,7 @@ stock VEHICLETRUCKER_ADD(playerid, vehicleid, modelid, pCarSlotID, ProductID, Fl
 	new string[2048],
         GetPlayerId = GetPlayerSQLId(playerid),
         index = GetVehicleTruckerFree(playerid, pCarSlotID);
-
+    printf("RUNNNNN -- %d", index);
     if(index == -1) return SendErrorMessage(playerid, "Xe cua ban da chat day hang, khong the chat them hang hoa len xe.");
     VehicleTruckerData[playerid][index][vtSlotId] = pCarSlotID,
     VehicleTruckerData[playerid][index][vtProductID] = ProductID,
@@ -98,48 +108,39 @@ stock VEHICLETRUCKER_ADD(playerid, vehicleid, modelid, pCarSlotID, ProductID, Fl
     VehicleTruckerData[playerid][index][vtPos][4] = oy,
     VehicleTruckerData[playerid][index][vtPos][5] = oz,
 
-    format(string, sizeof(string), "INSERT INTO `vehicletrucker` (\
-		`vtSlotId`, \
-		`vtProductID`, \
-        `vtPSQL`,\
-        `vtPos1`,\
-        `vtPos2`,\
-        `vtPos3`,\
-        `vtPos4`,\
-        `vtPos5`,\
-        `vtPos6`)\
-		VALUES ('%d', '%d', '%d', '%f', '%f', '%f', '%f', '%f', '%f')", 
-		pCarSlotID,
-		ProductID,
-		GetPlayerId,
-        x,
-        y,
-        z,
-        ox,
-        oy,
-        oz
-	);
+    format(string, sizeof(string), "INSERT INTO `vehicletrucker` (`vtSlotId`, `vtProductID`, `vtPSQL`,`vtPos1`,`vtPos2`,`vtPos3`,`vtPos4`,`vtPos5`,`vtPos6`)\
+		VALUES ('%d', '%d', '%d', '%f', '%f', '%f', '%f', '%f', '%f')",  pCarSlotID, ProductID, GetPlayerId, x, y, z, ox, oy, oz);
 	mysql_function_query(MainPipeline, string, false, "OnAddVehicleTruckerFinish", "iiii", playerid, vehicleid, modelid, index);
+    printf("Nguoi choi %s da dua san pham %s vao xe %s ", GetPlayerNameEx(playerid), ProductData[ProductID][ProductName], GetVehicleName(vehicleid));
 	return 1;
 }
 
 public OnAddVehicleTruckerFinish(playerid, vehicleid, modelid, index)
 {
-    VehicleTruckerData[playerid][index][vtId] = mysql_insert_id(MainPipeline);
-    new Float:playerPos[3];
-    GetPlayerPos(playerid, playerPos[0], playerPos[1], playerPos[2]);
-    if(IsValidDynamicObject(VehicleTruckerData[vehicleid][index][vtObject]))
-    {
-        DestroyDynamicObject(VehicleTruckerData[vehicleid][index][vtObject]);
-    }
-    VehicleTruckerData[vehicleid][index][vtObject] = CreateDynamicObject(1271, playerPos[0], playerPos[1], playerPos[2], 0, 0, 0);
-    AttachDynamicObjectToVehicle(VehicleTruckerData[vehicleid][index][vtObject], vehicleid, 
-        VehicleTruckerData[playerid][index][vtPos][0],
+    printf("%d -- %d -- %f -- %f -- %f -- %f -- %f -- %f", vehicleid, modelid,
+    VehicleTruckerData[playerid][index][vtPos][0],
         VehicleTruckerData[playerid][index][vtPos][1],
         VehicleTruckerData[playerid][index][vtPos][2],
         VehicleTruckerData[playerid][index][vtPos][3],
         VehicleTruckerData[playerid][index][vtPos][4],
         VehicleTruckerData[playerid][index][vtPos][5]);
+
+    VehicleTruckerData[playerid][index][vtId] = mysql_insert_id(MainPipeline);
+    new Float:playerPos[3];
+    GetPlayerPos(playerid, playerPos[0], playerPos[1], playerPos[2]);
+    printf("RUNNNNNNNNNNNNNNNNNN1");
+    // if(IsValidDynamicObject(VehicleTruckerData[vehicleid][index][vtObject]))
+    //     DestroyDynamicObject(VehicleTruckerData[vehicleid][index][vtObject]);
+    printf("RUNNNNNNNNNNNNNNNNNN2");
+    VehicleTruckerData[vehicleid][index][vtObject] = CreateDynamicObject(1271, playerPos[0], playerPos[1], playerPos[2], 0, 0, 0);
+    printf("VehicleTruckerData[vehicleid][index][vtObject] %d ", VehicleTruckerData[vehicleid][index][vtObject]);
+    AttachDynamicObjectToVehicle(VehicleTruckerData[vehicleid][index][vtObject], vehicleid, -0.046103, -0925213, 0.000, 0.000, 0.000, 0.000);
+        // VehicleTruckerData[playerid][index][vtPos][0],
+        // VehicleTruckerData[playerid][index][vtPos][1],
+        // VehicleTruckerData[playerid][index][vtPos][2],
+        // VehicleTruckerData[playerid][index][vtPos][3],
+        // VehicleTruckerData[playerid][index][vtPos][4],
+        // VehicleTruckerData[playerid][index][vtPos][5]);
     return 1;
 }
 
@@ -168,6 +169,21 @@ stock GetVehicleTruckerFree(playerid, pCarSlotID)
     }
     return -1;
 }
+
+stock GetVehicleProduct(playerid, pCarSlotID)
+{
+    new str[1000];
+    format(str, sizeof(str), "ID\t\tSan Pham");
+    for(new i; i < MAX_OBJECTTRUCKER; i++)
+    {
+        if(VehicleTruckerData[playerid][i][vtId] != -1 && VehicleTruckerData[playerid][i][vtSlotId] == pCarSlotID
+            && VehicleTruckerData[playerid][i][vtProductID] != -1){
+            format(str, sizeof(str), "%s\n%d\t\t%s", str, i);
+        }
+    }
+    Dialog_Show(playerid, DIALOG_CARPRODUCT, DIALOG_STYLE_TABLIST_HEADER, "San Pham Trong Xe", str, "Lay", "<");
+}
+
 
 stock VehicleTruckerCount(playerid, pCarSlotID)
 {

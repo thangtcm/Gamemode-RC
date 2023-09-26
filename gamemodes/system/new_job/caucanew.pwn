@@ -1212,7 +1212,6 @@ CMD:thungca(playerid,params[]) {
                 if(!IsABoatne(PlayerVehicleInfo[playerid][d][pvId])) return SendClientMessage(playerid, COLOR_GREY, "Ban phai o gan phuong tien cua ban ( Luu y: Dinghy, Reefer, Speeder  ) "); 
                 veh = d;
                 check = 1;
-                printf("%d",veh);
                 break;
             }
         }   

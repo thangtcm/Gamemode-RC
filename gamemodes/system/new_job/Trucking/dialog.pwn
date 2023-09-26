@@ -94,8 +94,10 @@ Dialog:DIALOG_STARTTRUCKER(playerid, response, listitem, inputtext[])
         switch(listitem)
         {
             case 0:{
+                new iVehicleID = GetPlayerCarID(playerid, PlayerInfo[playerid][pRegisterCarTruck]);
+                if(PlayerVehicleInfo[playerid][iVehicleID][pvSpawned] == 0) return SendErrorMessage(playerid, "Ban can lay chiec xe da dang ky van chuyen de lam viec.");
                 SetPVarInt(playerid, "MissionTruck", 1);
-                new CarTruckID = GetCarTruckID(PlayerInfo[playerid][pRegisterCarTruck]);
+                new CarTruckID = GetCarTruckID(PlayerVehicleInfo[playerid][iVehicleID][pvId]);
                 new UnitID = CarTruckWorking[CarTruckID][CarUnitType][GetUnitType(CarTruckID)];
                 new matchingProducts[sizeof(ProductData)];
                 new numMatchingProducts = 0;
@@ -164,6 +166,25 @@ Dialog:DIALOG_SELLPRODUCT(playerid, response, listitem, inputtext[])
         RemovePlayerAttachedObject(playerid, PIZZA_INDEX);
         SetPlayerSpecialAction(playerid, SPECIAL_ACTION_NONE);
         ApplyAnimation(playerid, "CARRY", "putdwn", 4.1, 0, 0, 0, 0, 0, 1);
+    }
+    return 1;
+}
+
+Dialog:DIALOG_CARCLAIMPRODUCT(playerid, response, listitem, inputtext[])
+{
+    if(response)
+	{
+        new str[256];
+        new index = PlayerTruckerData[playerid][ClaimFromCar][listitem],
+            ProductId = VehicleTruckerData[playerid][index][vtProductID];
+        pLoadProduct[playerid] = ProductId;
+        VEHICLETRUCKER_DELETE(playerid, index);
+        SetPlayerAttachedObject(playerid, PIZZA_INDEX, 1271, 5, 0.137832, 0.176979, 0.151424, 96.305931, 185.363006, 20.328088, 0.699999, 0.800000, 0.699999);
+        SetPlayerSpecialAction(playerid, SPECIAL_ACTION_CARRY);
+        ApplyAnimation(playerid, "CARRY", "liftup", 4.1, 0, 0, 0, 0, 0, 1);
+        new string[MAX_PLAYER_NAME + 44];
+        format(string, sizeof(string), "* %s da lay thung hang %s tren xe xuong.", GetPlayerNameEx(playerid), ProductData[ProductId][ProductName]);
+        ProxDetector(20.0, playerid, string, COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE);
     }
     return 1;
 }

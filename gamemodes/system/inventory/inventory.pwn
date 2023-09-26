@@ -62,7 +62,6 @@ hook OnPlayerConnect(playerid)
 hook OnPlayerKeyStateChange(playerid, newkeys, oldkeys)
 {
 	if(newkeys == 0) return 1;
-	printf("%d", CheckKeyInventory(playerid));
 	if ((newkeys & KEY_YES) && CheckKeyInventory(playerid)) //Nhớ bổ sung các trường hợp sử dụng key Y để không bật inventory, ví dụ như Pizza
     {
 		return cmd_inv(playerid, "\1"); 
@@ -74,8 +73,8 @@ stock CheckKeyInventory(playerid)
 {
 	//if(GetPVarInt(playerid, "SomeThing") == value) return 0;
 	if(!IsPlayerInRangeOfPoint(playerid, 2.5, 588.1791,866.1268,-42.4973) || !IsPlayerInRangeOfPoint(playerid, 2.5, 2126.8018,-76.6521,2.4721)
-	|| !IsPlayerInRangeOfPoint(playerid, 300.0, 588.1791,866.1268,-42.4973)) return 0;
-	return 1;
+	|| !IsPlayerInRangeOfPoint(playerid, 300.0, 588.1791,866.1268,-42.4973)) return true;
+	return false;
 }
 
 stock Inventory_Load(playerid)

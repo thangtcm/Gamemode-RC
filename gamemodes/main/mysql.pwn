@@ -984,6 +984,7 @@ public OnQueryFinish(resultid, extraid, handleid)
 					i++;
 				}
 			}
+			LoadVehicleTrucker(extraid);
 		}
 		case LOADPVEHPOS_THREAD:
 		{
