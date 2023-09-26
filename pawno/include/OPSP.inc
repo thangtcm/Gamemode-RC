@@ -62,13 +62,13 @@ stock AdjustVector(& Float: vX, & Float: vY, & Float: vZ, Float: oX, Float: oY, 
 	static
 		Float: Angle;
 	Angle = -atan2(vX, vY);
-	if(45.0 < Angle) {
+	if (45.0 < Angle) {
 		oX ^= oY;
 		oY ^= oX;
 		oX ^= oY;
-		if(90.0 < Angle) {
+		if (90.0 < Angle) {
 			oX *= -1;
-			if(135.0 < Angle) {
+			if (135.0 < Angle) {
 				oX *= -1;
 				oX ^= oY;
 				oY ^= oX;
@@ -76,17 +76,17 @@ stock AdjustVector(& Float: vX, & Float: vY, & Float: vZ, Float: oX, Float: oY, 
 				oX *= -1;
 			}
 		}
-	} else if(Angle < 0.0) {
+	} else if (Angle < 0.0) {
 		oY *= -1;
-		if(Angle < -45.0) {
+		if (Angle < -45.0) {
 			oX *= -1;
 			oX ^= oY;
 			oY ^= oX;
 			oX ^= oY;
 			oX *= -1;
-			if(Angle < -90.0) {
+			if (Angle < -90.0) {
 				oX *= -1;
-				if(Angle < -135.0) {
+				if (Angle < -135.0) {
 					oX ^= oY;
 					oY ^= oX;
 					oX ^= oY;
@@ -117,7 +117,7 @@ native GetPlayerCameraWeaponVector(playerid, & Float: vX, & Float: vY, & Float: 
 stock GetPlayerCameraWeaponVector(playerid, & Float: vX, & Float: vY, & Float: vZ) { // Credits Nero_3D
 	static
 		weapon;
-	if(21 < (weapon = GetPlayerWeapon(playerid)) < 39) {
+	if (21 < (weapon = GetPlayerWeapon(playerid)) < 39) {
 		GetPlayerCameraFrontVector(playerid, vX, vY, vZ);
 		switch(weapon) {
 			case WEAPON_SNIPER, WEAPON_ROCKETLAUNCHER, WEAPON_HEATSEEKER: {}
@@ -162,9 +162,9 @@ public OnPlayerUpdate(playerid)
 			Float:RL_Armour;
 	GetPlayerHealth(playerid,RL_HP);
 	GetPlayerArmour(playerid,RL_Armour);
-	if(RL_HP != RL_phealth[playerid] || RL_Armour != RL_parmour[playerid])
+	if (RL_HP != RL_phealth[playerid] || RL_Armour != RL_parmour[playerid])
 	{
-		if(RL_UpdatedHealth[playerid])
+		if (RL_UpdatedHealth[playerid])
 			RL_UpdatedHealth[playerid]=false;
 		else
 		{
@@ -179,17 +179,17 @@ public OnPlayerUpdate(playerid)
 			GetPlayerPos(playerid, RL_PlayerPos[0], RL_PlayerPos[1], RL_PlayerPos[2]);
 			foreach(Player,i)
 			{
-				if(RL_Shooting[i] || RL_Tick < RL_Released[i])
+				if (RL_Shooting[i] || RL_Tick < RL_Released[i])
 				{
-					if(i != playerid)
+					if (i != playerid)
 					{
-						if(IsPlayerInRangeOfPoint(i,200.0,RL_PlayerPos[0], RL_PlayerPos[1], RL_PlayerPos[2]))
+						if (IsPlayerInRangeOfPoint(i,200.0,RL_PlayerPos[0], RL_PlayerPos[1], RL_PlayerPos[2]))
 						{
 							GetPlayerCameraWeaponVector(i, RL_CameraVectors[0], RL_CameraVectors[1], RL_CameraVectors[2]);
 							
 							GetPlayerCameraPos(i, RL_CameraPos[0], RL_CameraPos[1], RL_CameraPos[2]);
 							GetDistanceFromPointToLine(RL_Distance, RL_CameraVectors[0], RL_CameraVectors[1], RL_CameraVectors[2], RL_CameraPos[0], RL_CameraPos[1], RL_CameraPos[2], RL_PlayerPos[0], RL_PlayerPos[1], RL_PlayerPos[2]);
-							if(RL_Distance < 2.5)
+							if (RL_Distance < 2.5)
 							{
 									CallLocalFunction("OnPlayerShootPlayer","iiff",i,playerid,(RL_phealth[playerid]-RL_HP),(RL_parmour[playerid]-RL_Armour));
 									break;
@@ -238,8 +238,8 @@ forward RL_OnPlayerUpdate(playerid);
 // OnPlayerKeyStateChange
 public OnPlayerKeyStateChange(playerid, newkeys, oldkeys)
 {
-	if(PRESSED(KEY_FIRE)) RL_Shooting[playerid]=true;
-	else if(RELEASED(KEY_FIRE))
+	if (PRESSED(KEY_FIRE)) RL_Shooting[playerid]=true;
+	else if (RELEASED(KEY_FIRE))
 	{
 		RL_Shooting[playerid]=false;
 		RL_Released[playerid]=GetTickCount();
@@ -257,9 +257,9 @@ forward RL_OnPlayerKeyStateChange(playerid,newkeys,oldkeys);
 // OnPlayerStateChange
 public OnPlayerStateChange(playerid, newstate, oldstate)
 {
-	if(newstate == PLAYER_STATE_WASTED)
+	if (newstate == PLAYER_STATE_WASTED)
 	{
-		if(RL_UpdatedHealth[playerid])
+		if (RL_UpdatedHealth[playerid])
 			RL_UpdatedHealth[playerid]=false;
 		else
 		{
@@ -278,16 +278,16 @@ public OnPlayerStateChange(playerid, newstate, oldstate)
 			GetPlayerPos(playerid, RL_PlayerPos[0], RL_PlayerPos[1], RL_PlayerPos[2]);
 			foreach(Player,i)
 			{
-				if(RL_Shooting[i] || RL_Tick < RL_Released[i])
+				if (RL_Shooting[i] || RL_Tick < RL_Released[i])
 				{
-					if(i != playerid)
+					if (i != playerid)
 					{
 						GetPlayerCameraWeaponVector(i, RL_CameraVectors[0], RL_CameraVectors[1], RL_CameraVectors[2]);
 						GetPlayerCameraPos(i, RL_CameraPos[0], RL_CameraPos[1], RL_CameraPos[2]);
-						if(IsPlayerInRangeOfPoint(i,200.0,RL_PlayerPos[0], RL_PlayerPos[1], RL_PlayerPos[2]))
+						if (IsPlayerInRangeOfPoint(i,200.0,RL_PlayerPos[0], RL_PlayerPos[1], RL_PlayerPos[2]))
 						{
 							GetDistanceFromPointToLine(RL_Distance, RL_CameraVectors[0], RL_CameraVectors[1], RL_CameraVectors[2], RL_CameraPos[0], RL_CameraPos[1], RL_CameraPos[2], RL_PlayerPos[0], RL_PlayerPos[1], RL_PlayerPos[2]);
-							if(RL_Distance < 2.5)
+							if (RL_Distance < 2.5)
 							{
 									CallLocalFunction("OnPlayerShootPlayer","iiff",i,playerid,(RL_phealth[playerid]-RL_HP),(RL_parmour[playerid]-RL_Armour));
 									break;

@@ -25,6 +25,7 @@
 
 #include <socket>
 #endif
+#pragma disablerecursion
 // player - inventory
 // mapping
 #include "./system/map/cityhall.pwn"
@@ -89,7 +90,6 @@
 #include "./system/nametag.pwn"
 
 #include "./include/onplayerfishnishloading.pwn"
-#pragma disablerecursion
 
 main() {}
 

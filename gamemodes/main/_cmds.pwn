@@ -1223,8 +1223,6 @@ stock JoinGame(playerid) {
 		DeletePVar(playerid, "MedicBill");
 		SetPlayerColor(playerid,TEAM_HIT_COLOR);
 		DeletePVar(playerid,"DangTaoAcc");
-		new randomskinnam[] = {19, 20, 21, 46, 186,30};
-        new randskinnu[] = {12, 13, 55, 91, 225,224};
 		SetPlayerSkin(playerid, ChangeSkin[playerid]);
         PlayerInfo[playerid][pModel] = ChangeSkin[playerid];
 		PlayerInfo[playerid][pTempVIP] = 0;

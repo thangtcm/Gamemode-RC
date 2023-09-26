@@ -6,7 +6,6 @@
 	#endinput
 #endif
 #define _colandreas_included
-
 #pragma library colandreas
 
 #define COLANDREAS_VERSION (10500) //a.b.c 10000*a+100*b+c
@@ -40,12 +39,13 @@
 #define		OBJECT_TYPE_OBJECT	0
 #define		OBJECT_TYPE_DYNAMIC	1
 
+
 #if !defined FLOAT_INFINITY
 	#define FLOAT_INFINITY (Float:0x7F800000)
 #endif
 
 // Maximum number of raycasts in CA_RayCastMultiLine
-#define MAX_MULTICAST_SIZE 99
+#define MAX_MULTICAST_SIZE 99 
 
 /**--------------------------------------------------------------------------**\
 <summary>
@@ -447,6 +447,7 @@ static stock CA_ObjectList[MAX_CA_OBJECTS][CAOBJECTINFO];
 
 //Streamer
 #if defined STREAMER_TYPE_OBJECT
+
 	// Static collision object functions (The index is not returned these can not be deleted!)
 	stock STREAMER_TAG_OBJECT:CA_CreateDynamicObjectEx_SC(modelid, Float:x, Float:y, Float:z, Float:rx, Float:ry, Float:rz, Float:streamdistance = STREAMER_OBJECT_SD, Float:drawdistance = STREAMER_OBJECT_DD, worlds[] = { -1 }, interiors[] = { -1 }, players[] = { -1 }, STREAMER_TAG_AREA:areas[] = { STREAMER_TAG_AREA:-1 }, priority = 0, maxworlds = sizeof worlds, maxinteriors = sizeof interiors, maxplayers = sizeof players, maxareas = sizeof areas)
 	{
@@ -750,24 +751,22 @@ stock CA_RayCastExplode(Float:cX, Float:cY, Float:cZ, Float:Radius, Float:intens
 	if(intensity < 1.0 || intensity > 360.0 || (((360.0 / intensity) - floatround((360.0 / intensity), floatround_floor)) * intensity))
 		return 0;
 
-	new index, Float:LAT, Float:LON, Float:x, Float:y, Float:z;
-	for(new Float:lat = -180.0, Float:lon = -90.0; lat < 180.0; lat += (intensity * 0.75))
+	new index;
+	for(new Float:lat = -180.0; lat < 180.0; lat += (intensity * 0.75))
+	for(new Float:lon = -90.0; lon < 90.0; lon += intensity)
 	{
-		for(lon = -90.0; lon < 90.0; lon += intensity)
-		{
-			LAT = lat * 3.141593 / 180.0;
-			LON = lon * 3.141593 / 180.0;
-			x = -Radius * floatcos(LAT) * floatcos(LON);
-			y = Radius * floatcos(LAT) * floatsin(LON);
-			z = Radius * floatsin(LAT);
+		new Float:LAT = lat * 3.141593 / 180.0,
+			Float:LON = lon * 3.141593 / 180.0,
+			Float:x = -Radius * floatcos(LAT) * floatcos(LON),
+			Float:y = Radius * floatcos(LAT) * floatsin(LON),
+			Float:z = Radius * floatsin(LAT);
 
-			if(CA_RayCastLine(cX, cY, cZ, cX + x, cY + y, cZ + z, x, y, z))
-			{
-				collisions[index][0] = x;
-				collisions[index][1] = y;
-				collisions[index][2] = z;
-				index++;
-			}
+		if(CA_RayCastLine(cX, cY, cZ, cX + x, cY + y, cZ + z, x, y, z))
+		{
+			collisions[index][0] = x;
+			collisions[index][1] = y;
+			collisions[index][2] = z;
+			index++;
 		}
 	}
 
@@ -880,13 +879,13 @@ stock CA_IsPlayerInWater(playerid, &Float:depth, &Float:playerdepth)
 	new collisions = CA_RayCastMultiLine(x, y, z+1000.0, x, y, z-1000.0, retx, rety, retz, retdist, modelids, 10);
 	if(collisions > 0)
 	{
-		for(new i = 0, j = 0; i < collisions; i++)
+		for(new i = 0; i < collisions; i++)
 		{
 			if(modelids[i] == WATER_OBJECT)
 			{
 				depth = FLOAT_INFINITY;
 
-				for(j = 0; j < collisions; j++)
+				for(new j = 0; j < collisions; j++)
 				{
 					if(retz[j] < depth)
 					depth = retz[j];
@@ -898,52 +897,6 @@ stock CA_IsPlayerInWater(playerid, &Float:depth, &Float:playerdepth)
 				playerdepth = retz[i] - z;
 
 				if(playerdepth < -2.0)
-					return 0;
-
-				return 1;
-			}
-		}
-	}
-	return 0;
-}
-
-/**--------------------------------------------------------------------------**\
-<summary>
-	CA_IsVehicleInWater
-</summary>
-<param name="vehicleid">The vehicleid to check</param>
-<param name="&Float:depth">The depth</param>
-<param name="&Float:vehicledepth">The depth of the vehicle</param>
-<returns>
-    0 if the vehicle is not in water
-    1 if the vehicle is in water
-</returns>
-\**--------------------------------------------------------------------------**/
-stock CA_IsVehicleInWater(vehicleid, &Float:depth, &Float:vehicledepth)
-{
-	new Float:x, Float:y, Float:z, Float:retx[10], Float:rety[10], Float:retz[10], Float:retdist[10], modelids[10];
-	GetVehiclePos(vehicleid, x, y, z);
-	new collisions = CA_RayCastMultiLine(x, y, z + 1000.0, x, y, z - 1000.0, retx, rety, retz, retdist, modelids, 10);
-	if(collisions)
-	{
-		for(new i = 0, j = 0; i < collisions; i++)
-		{
-			if(modelids[i] == WATER_OBJECT)
-			{
-				depth = FLOAT_INFINITY;
-
-				for(j = 0; j < collisions; j++)
-				{
-					if(retz[j] < depth)
-					depth = retz[j];
-				}
-
-				depth = retz[i] - depth;
-				if(depth < 0.001 && depth > -0.001)
-					depth = 100.0;
-				vehicledepth = retz[i] - z;
-
-				if(vehicledepth < -2.0)
 					return 0;
 
 				return 1;
@@ -981,32 +934,6 @@ stock CA_IsPlayerNearWater(playerid, Float:dist=3.0, Float:height=3.0)
 
 /**--------------------------------------------------------------------------**\
 <summary>
-	CA_IsVehicleNearWater
-</summary>
-<param name="vehicleid">The vehicleid to check</param>
-<param name="Float:dist = 3.0">The distance to check for water</param>
-<param name="Float:height = 3.0">The height the vehicle can be from the water</param>
-<returns>
-    0 if the vehicle is not in water
-    1 if the vehicle is in water
-</returns>
-<remarks>
-    Checks for water all around the vehicle
-</remarks>
-\**--------------------------------------------------------------------------**/
-stock CA_IsVehicleNearWater(vehicleid, Float:dist=3.0, Float:height=3.0)
-{
-	new Float:x, Float:y, Float:z, Float:tmp;
-	GetVehiclePos(vehicleid, x, y, z);
-
-	for(new i; i < 6; i++)
-		if(CA_RayCastLine(x + (dist * floatsin(i * 60.0, degrees)), y + (dist * floatcos(i * 60.0, degrees)), z + height, x + (dist * floatsin(i * 60.0, degrees)), y + (dist * floatcos(i * 60.0, degrees)), z - height, tmp, tmp, tmp) == WATER_OBJECT)
-			return 1;
-	return 0;
-}
-
-/**--------------------------------------------------------------------------**\
-<summary>
 	CA_IsPlayerFacingWater
 </summary>
 <param name="playerid">The playerid to check</param>
@@ -1025,32 +952,6 @@ stock CA_IsPlayerFacingWater(playerid, Float:dist=3.0, Float:height=3.0)
 	new Float:x, Float:y, Float:z, Float:r, Float:tmp;
 	GetPlayerPos(playerid, x, y, z);
 	GetPlayerFacingAngle(playerid, r);
-
-	if(CA_RayCastLine(x + (dist * floatsin(-r, degrees)), y + (dist * floatcos(-r, degrees)), z, x + (dist * floatsin(-r, degrees)), y + (dist * floatcos(-r, degrees)), z - height, tmp, tmp, tmp) == WATER_OBJECT)
-		return 1;
-	return 0;
-}
-
-/**--------------------------------------------------------------------------**\
-<summary>
-	CA_IsVehicleFacingWater
-</summary>
-<param name="vehicleid">The vehicleid to check</param>
-<param name="Float:dist = 3.0">The distance to check for water</param>
-<param name="Float:height = 3.0">The height the vehicle can be from the water</param>
-<returns>
-    0 if the vehicle is not in water
-    1 if the vehicle is in water
-</returns>
-<remarks>
-    Checks for water only in front of the vehicle
-</remarks>
-\**--------------------------------------------------------------------------**/
-stock CA_IsVehicleFacingWater(vehicleid, Float:dist=3.0, Float:height=3.0)
-{
-	new Float:x, Float:y, Float:z, Float:r, Float:tmp;
-	GetVehiclePos(vehicleid, x, y, z);
-	GetVehicleZAngle(vehicleid, r);
 
 	if(CA_RayCastLine(x + (dist * floatsin(-r, degrees)), y + (dist * floatcos(-r, degrees)), z, x + (dist * floatsin(-r, degrees)), y + (dist * floatcos(-r, degrees)), z - height, tmp, tmp, tmp) == WATER_OBJECT)
 		return 1;
@@ -1150,6 +1051,7 @@ stock Float:CA_GetRoomCenter(Float:x, Float:y, Float:z, &Float:m_x, &Float:m_y)
 	return VectorSize(m_x - pt1x, m_y - pt1y, 0.0);
 }
 
+
 // Hooked functions
 public OnFilterScriptExit()
 {
@@ -1170,6 +1072,7 @@ public OnFilterScriptExit()
 
 forward CA_OnFilterScriptExit();
 
+
 public OnGameModeExit()
 {
 	CA_DestroyAllObjects_DC();
@@ -1188,12 +1091,11 @@ public OnGameModeExit()
 #define OnGameModeExit CA_OnGameModeExit
 
 forward CA_OnGameModeExit();
-
 /*
-Create an object with collision in ColAndreas dynamic
+Create a object with collision in ColAndreas dynamic
 CA_CreateObject_DC(modelid, Float:x, Float:y, Float:z, Float:rx, Float:ry, Float:rz, Float:drawdistance = 300.0)
 
-Destroy an object with collision in ColAndreas
+Destroy a object with collision in ColAndreas
 CA_DestroyObject_DC(index)
 
 Destoys all objects streamer/regular
@@ -1206,7 +1108,7 @@ Explode ray casts in every direction
 CA_RayCastExplode(Float:cX, Float:cY, Float:cZ, Float:Radius, Float:intensity = 20.0, Float:collisions[][3])
 
 Checks if a player is standing on any surface (prevent animation exploit when falling)
-CA_IsPlayerOnSurface(playerid, Float:tolerance=1.5)
+CA_IsOnSurface(playerid, Float:tolerance=1.5)
 
 Removes all barries this function only works BEFORE using CA_Init()
 CA_RemoveBarriers()
@@ -1220,10 +1122,10 @@ CA_IsPlayerInWater(playerid, &Float:depth, &Float:playerdepth)
 
 Checks if a player is near water (returns 0 if they are actually in the water) distance is the radius to check
 Height is how high above the water to detect
-CA_IsPlayerNearWater(playerid, Float:dist=3.0, Float:height=3.0)
+CA_IsNearWater(playerid, Float:dist=3.0, Float:height=3.0)
 
 // Check if a player is blocked by a wall
-CA_IsPlayerBlocked(playerid, Float:dist=1.5, Float:height=0.5)
+CA_IsBlocked(playerid, Float:dist=1.5, Float:height=0.5)
 
 
 Notes:

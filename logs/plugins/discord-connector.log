@@ -1,0 +1,1172 @@
+[07/14/22 21:43:50] [ERROR] Discord terminated websocket connection; reason: Disallowed intent(s). (4014)
+[07/14/22 21:44:28] [ERROR] Discord terminated websocket connection; reason: Disallowed intent(s). (4014)
+[07/14/22 23:13:13] [ERROR] Error while retrieving HTTP POST response from '/api/v8/channels/997153872906821735/messages': end of stream
+[07/15/22 00:12:06] [ERROR] Can't write to Discord websocket gateway: The I/O operation has been aborted because of either a thread exit or an application request (995)
+[07/15/22 02:08:28] [ERROR] Discord terminated websocket connection; reason:  (0)
+[07/15/22 09:48:43] [ERROR] Can't read from Discord websocket gateway: An existing connection was forcibly closed by the remote host (10054)
+[07/16/22 17:36:13] [ERROR] Can't read from Discord websocket gateway: An existing connection was forcibly closed by the remote host (10054)
+[07/16/22 17:36:13] [ERROR] Can't write to Discord websocket gateway: The I/O operation has been aborted because of either a thread exit or an application request (995)
+[07/19/22 10:18:02] [ERROR] Discord terminated websocket connection; reason:  (0)
+[07/19/22 15:20:37] [ERROR] Can't read from Discord websocket gateway: The semaphore timeout period has expired (121)
+[07/19/22 15:20:37] [ERROR] Can't write to Discord websocket gateway: The I/O operation has been aborted because of either a thread exit or an application request (995)
+[07/19/22 15:20:37] [ERROR] Can't resolve Discord gateway URL 'gateway.discord.gg': No such host is known (11001)
+[07/19/22 15:20:42] [ERROR] Can't resolve Discord gateway URL 'gateway.discord.gg': No such host is known (11001)
+[07/19/22 15:20:52] [ERROR] Can't resolve Discord gateway URL 'gateway.discord.gg': No such host is known (11001)
+[07/19/22 15:21:07] [ERROR] Can't resolve Discord gateway URL 'gateway.discord.gg': No such host is known (11001)
+[07/19/22 15:21:27] [ERROR] Can't resolve Discord gateway URL 'gateway.discord.gg': No such host is known (11001)
+[07/19/22 15:21:52] [ERROR] Can't resolve Discord gateway URL 'gateway.discord.gg': No such host is known (11001)
+[07/19/22 15:52:25] [ERROR] Can't read from Discord websocket gateway: An existing connection was forcibly closed by the remote host (10054)
+[07/19/22 16:26:29] [ERROR] Can't write to Discord websocket gateway: The I/O operation has been aborted because of either a thread exit or an application request (995)
+[07/19/22 21:33:29] [ERROR] Discord terminated websocket connection; reason:  (0)
+[07/19/22 21:33:29] [ERROR] Can't write to Discord websocket gateway: The I/O operation has been aborted because of either a thread exit or an application request (995)
+[07/19/22 22:10:44] [ERROR] Can't read from Discord websocket gateway: An existing connection was forcibly closed by the remote host (10054)
+[07/19/22 22:46:31] [ERROR] Discord terminated websocket connection; reason:  (0)
+[07/19/22 22:46:31] [ERROR] Can't write to Discord websocket gateway: The I/O operation has been aborted because of either a thread exit or an application request (995)
+[07/19/22 23:31:45] [ERROR] Can't write to Discord websocket gateway: The I/O operation has been aborted because of either a thread exit or an application request (995)
+[07/19/22 23:50:50] [ERROR] Can't write to Discord websocket gateway: The I/O operation has been aborted because of either a thread exit or an application request (995)
+[07/20/22 19:39:59] [ERROR] Can't read from Discord websocket gateway: The network connection was aborted by the local system (1236)
+[07/20/22 19:39:59] [ERROR] Can't write to Discord websocket gateway: The I/O operation has been aborted because of either a thread exit or an application request (995)
+[07/20/22 19:39:59] [ERROR] Can't resolve Discord gateway URL 'gateway.discord.gg': No such host is known (11001)
+[07/20/22 19:40:04] [ERROR] Can't resolve Discord gateway URL 'gateway.discord.gg': No such host is known (11001)
+[07/20/22 19:40:14] [ERROR] Can't resolve Discord gateway URL 'gateway.discord.gg': No such host is known (11001)
+[07/20/22 19:40:29] [ERROR] Can't resolve Discord gateway URL 'gateway.discord.gg': No such host is known (11001)
+[07/20/22 19:40:49] [ERROR] Can't resolve Discord gateway URL 'gateway.discord.gg': No such host is known (11001)
+[07/20/22 19:41:14] [ERROR] Can't resolve Discord gateway URL 'gateway.discord.gg': No such host is known (11001)
+[07/20/22 19:41:44] [ERROR] Can't resolve Discord gateway URL 'gateway.discord.gg': No such host is known (11001)
+[07/20/22 19:42:19] [ERROR] Can't resolve Discord gateway URL 'gateway.discord.gg': No such host is known (11001)
+[07/20/22 19:42:59] [ERROR] Can't resolve Discord gateway URL 'gateway.discord.gg': No such host is known (11001)
+[07/20/22 19:43:44] [ERROR] Can't resolve Discord gateway URL 'gateway.discord.gg': No such host is known (11001)
+[07/20/22 19:44:34] [ERROR] Can't resolve Discord gateway URL 'gateway.discord.gg': No such host is known (11001)
+[07/20/22 19:45:29] [ERROR] Can't resolve Discord gateway URL 'gateway.discord.gg': No such host is known (11001)
+[07/20/22 19:46:29] [ERROR] Can't resolve Discord gateway URL 'gateway.discord.gg': No such host is known (11001)
+[07/20/22 19:47:29] [ERROR] Can't resolve Discord gateway URL 'gateway.discord.gg': No such host is known (11001)
+[07/20/22 19:48:29] [ERROR] Can't resolve Discord gateway URL 'gateway.discord.gg': No such host is known (11001)
+[07/20/22 19:49:29] [ERROR] Can't resolve Discord gateway URL 'gateway.discord.gg': No such host is known (11001)
+[07/20/22 19:50:29] [ERROR] Can't resolve Discord gateway URL 'gateway.discord.gg': No such host is known (11001)
+[07/20/22 19:51:29] [ERROR] Can't resolve Discord gateway URL 'gateway.discord.gg': No such host is known (11001)
+[07/20/22 19:52:29] [ERROR] Can't resolve Discord gateway URL 'gateway.discord.gg': No such host is known (11001)
+[07/20/22 19:53:29] [ERROR] Can't resolve Discord gateway URL 'gateway.discord.gg': No such host is known (11001)
+[07/20/22 19:54:29] [ERROR] Can't resolve Discord gateway URL 'gateway.discord.gg': No such host is known (11001)
+[07/20/22 19:55:29] [ERROR] Can't resolve Discord gateway URL 'gateway.discord.gg': No such host is known (11001)
+[07/20/22 19:56:29] [ERROR] Can't resolve Discord gateway URL 'gateway.discord.gg': No such host is known (11001)
+[07/20/22 19:57:29] [ERROR] Can't resolve Discord gateway URL 'gateway.discord.gg': No such host is known (11001)
+[07/20/22 19:58:29] [ERROR] Can't resolve Discord gateway URL 'gateway.discord.gg': No such host is known (11001)
+[07/20/22 19:59:29] [ERROR] Can't resolve Discord gateway URL 'gateway.discord.gg': No such host is known (11001)
+[07/20/22 20:00:29] [ERROR] Can't resolve Discord gateway URL 'gateway.discord.gg': No such host is known (11001)
+[07/20/22 20:01:29] [ERROR] Can't resolve Discord gateway URL 'gateway.discord.gg': No such host is known (11001)
+[07/20/22 20:02:29] [ERROR] Can't resolve Discord gateway URL 'gateway.discord.gg': No such host is known (11001)
+[07/20/22 20:03:29] [ERROR] Can't resolve Discord gateway URL 'gateway.discord.gg': No such host is known (11001)
+[07/20/22 20:04:29] [ERROR] Can't resolve Discord gateway URL 'gateway.discord.gg': No such host is known (11001)
+[07/20/22 20:05:29] [ERROR] Can't resolve Discord gateway URL 'gateway.discord.gg': No such host is known (11001)
+[07/20/22 20:06:29] [ERROR] Can't resolve Discord gateway URL 'gateway.discord.gg': No such host is known (11001)
+[07/20/22 20:07:29] [ERROR] Can't resolve Discord gateway URL 'gateway.discord.gg': No such host is known (11001)
+[07/20/22 20:08:29] [ERROR] Can't resolve Discord gateway URL 'gateway.discord.gg': No such host is known (11001)
+[07/20/22 20:09:29] [ERROR] Can't resolve Discord gateway URL 'gateway.discord.gg': No such host is known (11001)
+[07/20/22 20:10:29] [ERROR] Can't resolve Discord gateway URL 'gateway.discord.gg': No such host is known (11001)
+[07/20/22 20:11:30] [ERROR] Can't resolve Discord gateway URL 'gateway.discord.gg': No such host is known (11001)
+[07/20/22 20:12:30] [ERROR] Can't resolve Discord gateway URL 'gateway.discord.gg': No such host is known (11001)
+[07/20/22 20:13:30] [ERROR] Can't resolve Discord gateway URL 'gateway.discord.gg': No such host is known (11001)
+[07/20/22 20:14:30] [ERROR] Can't resolve Discord gateway URL 'gateway.discord.gg': No such host is known (11001)
+[07/20/22 20:15:30] [ERROR] Can't resolve Discord gateway URL 'gateway.discord.gg': No such host is known (11001)
+[07/20/22 20:16:30] [ERROR] Can't resolve Discord gateway URL 'gateway.discord.gg': No such host is known (11001)
+[07/20/22 20:17:30] [ERROR] Can't resolve Discord gateway URL 'gateway.discord.gg': No such host is known (11001)
+[07/20/22 20:18:30] [ERROR] Can't resolve Discord gateway URL 'gateway.discord.gg': No such host is known (11001)
+[07/20/22 20:19:30] [ERROR] Can't resolve Discord gateway URL 'gateway.discord.gg': No such host is known (11001)
+[07/20/22 20:20:30] [ERROR] Can't resolve Discord gateway URL 'gateway.discord.gg': No such host is known (11001)
+[07/20/22 20:21:30] [ERROR] Can't resolve Discord gateway URL 'gateway.discord.gg': No such host is known (11001)
+[07/20/22 20:22:30] [ERROR] Can't resolve Discord gateway URL 'gateway.discord.gg': No such host is known (11001)
+[07/20/22 20:23:30] [ERROR] Can't resolve Discord gateway URL 'gateway.discord.gg': No such host is known (11001)
+[07/20/22 20:24:30] [ERROR] Can't resolve Discord gateway URL 'gateway.discord.gg': No such host is known (11001)
+[07/20/22 20:25:30] [ERROR] Can't resolve Discord gateway URL 'gateway.discord.gg': No such host is known (11001)
+[07/21/22 00:28:20] [ERROR] Can't write to Discord websocket gateway: The I/O operation has been aborted because of either a thread exit or an application request (995)
+[07/22/22 00:16:10] [ERROR] Can't write to Discord websocket gateway: The I/O operation has been aborted because of either a thread exit or an application request (995)
+[07/22/22 19:28:03] [ERROR] Can't read from Discord websocket gateway: An existing connection was forcibly closed by the remote host (10054)
+[07/22/22 19:28:03] [ERROR] Can't write to Discord websocket gateway: The I/O operation has been aborted because of either a thread exit or an application request (995)
+[07/22/22 19:31:51] [ERROR] can't update guild member presence: user id "733992599462871071" not cached
+[07/22/22 19:31:51] [ERROR] can't update guild member voice channel: user id "733992599462871071" not cached
+[07/22/22 19:36:35] [ERROR] can't update guild member presence: user id "733992599462871071" not cached
+[07/22/22 19:38:35] [ERROR] can't update guild member presence: user id "733992599462871071" not cached
+[07/22/22 19:45:32] [ERROR] Discord terminated websocket connection; reason:  (0)
+[07/22/22 23:39:59] [ERROR] Can't write to Discord websocket gateway: The I/O operation has been aborted because of either a thread exit or an application request (995)
+[07/23/22 12:15:11] [ERROR] Can't write to Discord websocket gateway: The I/O operation has been aborted because of either a thread exit or an application request (995)
+[07/23/22 13:37:14] [ERROR] Can't write to Discord websocket gateway: The I/O operation has been aborted because of either a thread exit or an application request (995)
+[07/23/22 14:33:57] [ERROR] Can't write to Discord websocket gateway: The I/O operation has been aborted because of either a thread exit or an application request (995)
+[07/31/22 10:52:37] [ERROR] Can't write to Discord websocket gateway: The I/O operation has been aborted because of either a thread exit or an application request (995)
+[08/02/22 14:31:09] [ERROR] Can't read from Discord websocket gateway: An existing connection was forcibly closed by the remote host (10054)
+[08/02/22 14:31:09] [ERROR] Can't write to Discord websocket gateway: The I/O operation has been aborted because of either a thread exit or an application request (995)
+[08/03/22 18:17:33] [ERROR] Can't read from Discord websocket gateway: An existing connection was forcibly closed by the remote host (10054)
+[08/03/22 18:17:33] [ERROR] Can't write to Discord websocket gateway: The I/O operation has been aborted because of either a thread exit or an application request (995)
+[08/03/22 18:43:43] [ERROR] Can't read from Discord websocket gateway: The semaphore timeout period has expired (121)
+[08/03/22 18:43:43] [ERROR] Can't write to Discord websocket gateway: The I/O operation has been aborted because of either a thread exit or an application request (995)
+[08/03/22 19:19:30] [ERROR] Can't read from Discord websocket gateway: The semaphore timeout period has expired (121)
+[08/03/22 19:19:30] [ERROR] Can't write to Discord websocket gateway: The I/O operation has been aborted because of either a thread exit or an application request (995)
+[08/04/22 20:10:25] [ERROR] Can't read from Discord websocket gateway: An existing connection was forcibly closed by the remote host (10054)
+[08/04/22 20:10:25] [ERROR] Can't write to Discord websocket gateway: The I/O operation has been aborted because of either a thread exit or an application request (995)
+[04/18/23 16:19:53] [ERROR] Can't read from Discord websocket gateway: End of file (2)
+[04/18/23 16:19:53] [ERROR] Can't write to Discord websocket gateway: The I/O operation has been aborted because of either a thread exit or an application request (995)
+[04/18/23 16:20:41] [ERROR] Error while retrieving HTTP POST response from '/api/v8/channels/997153872906821735/messages': end of stream
+[04/18/23 16:57:29] [ERROR] Error while retrieving HTTP POST response from '/api/v8/channels/997153872906821735/messages': end of stream
+[04/18/23 17:18:21] [ERROR] Error while retrieving HTTP POST response from '/api/v8/channels/997153872906821735/messages': end of stream
+[04/18/23 17:51:28] [ERROR] Can't write to Discord websocket gateway: The I/O operation has been aborted because of either a thread exit or an application request (995)
+[04/22/23 22:43:56] [ERROR] DCC_SendChannelMessage: invalid channel id '0'
+[04/22/23 22:45:29] [ERROR] DCC_SendChannelMessage: invalid channel id '0'
+[04/22/23 22:45:52] [ERROR] DCC_SendChannelMessage: invalid channel id '0'
+[04/22/23 23:08:27] [ERROR] Discord terminated websocket connection; reason: Disallowed intent(s). (4014)
+[04/22/23 23:08:27] [ERROR] Can't write to Discord websocket gateway: The I/O operation has been aborted because of either a thread exit or an application request (995)
+[04/22/23 23:09:08] [ERROR] Can't write to Discord websocket gateway: The I/O operation has been aborted because of either a thread exit or an application request (995)
+[04/22/23 23:09:27] [ERROR] Discord terminated websocket connection; reason: Disallowed intent(s). (4014)
+[04/22/23 23:09:27] [ERROR] Can't write to Discord websocket gateway: The I/O operation has been aborted because of either a thread exit or an application request (995)
+[04/22/23 23:10:12] [ERROR] Discord terminated websocket connection; reason: Disallowed intent(s). (4014)
+[04/22/23 23:10:12] [ERROR] Can't write to Discord websocket gateway: The I/O operation has been aborted because of either a thread exit or an application request (995)
+[04/22/23 23:10:58] [ERROR] Discord terminated websocket connection; reason: Disallowed intent(s). (4014)
+[04/22/23 23:10:58] [ERROR] Can't write to Discord websocket gateway: The I/O operation has been aborted because of either a thread exit or an application request (995)
+[04/22/23 23:11:39] [ERROR] Can't write to Discord websocket gateway: The I/O operation has been aborted because of either a thread exit or an application request (995)
+[04/22/23 23:12:19] [ERROR] Discord terminated websocket connection; reason: Disallowed intent(s). (4014)
+[04/22/23 23:12:19] [ERROR] Can't write to Discord websocket gateway: The I/O operation has been aborted because of either a thread exit or an application request (995)
+[04/22/23 23:13:00] [ERROR] Can't write to Discord websocket gateway: The I/O operation has been aborted because of either a thread exit or an application request (995)
+[04/22/23 23:13:04] [WARNING] Unknown gateway event 'GUILD_MEMBERS_CHUNK'
+[04/22/23 23:13:14] [ERROR] can't update guild member presence: user id "447681756657745920" not cached
+[04/22/23 23:14:10] [ERROR] can't update guild member presence: user id "413577220234280970" not cached
+[04/22/23 23:14:28] [ERROR] can't update guild member presence: user id "447681756657745920" not cached
+[04/22/23 23:16:21] [ERROR] can't update guild member presence: user id "488649988721737758" not cached
+[04/22/23 23:18:21] [ERROR] can't update guild member presence: user id "488649988721737758" not cached
+[04/22/23 23:19:45] [ERROR] can't update guild member presence: user id "297038019297542145" not cached
+[04/22/23 23:21:25] [ERROR] can't update guild member presence: user id "792256736198918145" not cached
+[04/22/23 23:21:36] [ERROR] Error while retrieving HTTP POST response from '/api/v10/channels/1099367936369635509/messages': end of stream
+[04/22/23 23:22:05] [ERROR] can't update guild member presence: user id "297038019297542145" not cached
+[04/22/23 23:22:20] [ERROR] can't update guild member presence: user id "792256736198918145" not cached
+[04/22/23 23:22:24] [ERROR] can't update guild member presence: user id "792256736198918145" not cached
+[04/22/23 23:28:55] [WARNING] Unknown gateway event 'GUILD_MEMBERS_CHUNK'
+[04/22/23 23:29:00] [WARNING] Unknown gateway event 'GUILD_MEMBERS_CHUNK'
+[04/23/23 01:02:49] [WARNING] Unknown gateway event 'GUILD_MEMBERS_CHUNK'
+[04/23/23 01:06:18] [WARNING] Unknown gateway event 'GUILD_MEMBERS_CHUNK'
+[04/23/23 01:06:42] [ERROR] can't update guild member presence: user id "738018621254795315" not cached
+[04/23/23 10:35:20] [WARNING] Unknown gateway event 'GUILD_MEMBERS_CHUNK'
+[04/23/23 10:35:37] [ERROR] can't update guild member presence: user id "478534384899588096" not cached
+[04/23/23 10:36:56] [ERROR] can't update guild member presence: user id "1012201537143058514" not cached
+[04/23/23 10:37:37] [ERROR] can't update guild member presence: user id "478534384899588096" not cached
+[04/23/23 10:38:56] [ERROR] can't update guild member presence: user id "1012201537143058514" not cached
+[04/23/23 10:39:34] [ERROR] can't update guild member presence: user id "857612671259377704" not cached
+[04/23/23 10:39:36] [ERROR] can't update guild member presence: user id "478534384899588096" not cached
+[04/23/23 10:41:34] [ERROR] can't update guild member presence: user id "857612671259377704" not cached
+[04/23/23 10:41:37] [ERROR] can't update guild member presence: user id "1012201537143058514" not cached
+[04/23/23 10:41:45] [ERROR] can't update guild member presence: user id "1012201537143058514" not cached
+[04/23/23 10:42:09] [ERROR] can't update guild member presence: user id "683987251587186697" not cached
+[04/23/23 10:42:19] [ERROR] can't update guild member presence: user id "478534384899588096" not cached
+[04/23/23 10:42:25] [ERROR] can't update guild member presence: user id "335434915715743745" not cached
+[04/23/23 10:44:06] [ERROR] can't update guild member presence: user id "724830363385593909" not cached
+[04/23/23 10:44:12] [ERROR] can't update guild member presence: user id "724830363385593909" not cached
+[04/23/23 10:44:14] [ERROR] can't update guild member presence: user id "683987251587186697" not cached
+[04/23/23 10:44:19] [ERROR] can't update guild member presence: user id "478534384899588096" not cached
+[04/23/23 10:44:20] [ERROR] can't update guild member presence: user id "478534384899588096" not cached
+[04/23/23 10:44:21] [ERROR] can't update guild member presence: user id "478534384899588096" not cached
+[04/23/23 10:44:26] [ERROR] can't update guild member presence: user id "1012201537143058514" not cached
+[04/23/23 10:45:26] [ERROR] can't update guild member presence: user id "289410609894653972" not cached
+[04/23/23 10:46:24] [ERROR] can't update guild member presence: user id "923049181529137212" not cached
+[04/23/23 10:47:01] [ERROR] can't update guild member presence: user id "478534384899588096" not cached
+[04/23/23 10:47:27] [ERROR] can't update guild member presence: user id "289410609894653972" not cached
+[04/23/23 10:48:50] [ERROR] can't update guild member presence: user id "871359235877924947" not cached
+[04/23/23 10:50:15] [ERROR] can't update guild member presence: user id "871359235877924947" not cached
+[04/23/23 10:50:16] [ERROR] DCC_IsUserBot: invalid user id '0'
+[04/23/23 10:50:17] [ERROR] can't update guild member presence: user id "871359235877924947" not cached
+[04/23/23 10:50:18] [ERROR] can't update guild member presence: user id "699321978510901310" not cached
+[04/23/23 10:50:19] [ERROR] can't update guild member presence: user id "699321978510901310" not cached
+[04/23/23 10:50:32] [ERROR] can't update guild member presence: user id "699321978510901310" not cached
+[04/23/23 10:50:32] [ERROR] can't update guild member: user id "699321978510901310" not cached
+[04/23/23 10:50:32] [ERROR] can't update guild member presence: user id "699321978510901310" not cached
+[04/23/23 10:50:45] [ERROR] can't update guild member presence: user id "1012201537143058514" not cached
+[04/23/23 10:50:53] [ERROR] can't update guild member presence: user id "1012201537143058514" not cached
+[04/23/23 14:01:17] [WARNING] Unknown gateway event 'GUILD_MEMBERS_CHUNK'
+[04/23/23 14:04:31] [ERROR] can't update guild member presence: user id "454597059539107851" not cached
+[04/23/23 14:04:38] [ERROR] can't update guild member presence: user id "466230959918809089" not cached
+[04/23/23 14:05:12] [ERROR] can't update guild member presence: user id "466230959918809089" not cached
+[04/23/23 14:05:38] [ERROR] can't update guild member presence: user id "466230959918809089" not cached
+[04/23/23 14:08:29] [ERROR] can't update guild member presence: user id "466230959918809089" not cached
+[04/23/23 14:08:44] [ERROR] can't update guild member presence: user id "288182862509899786" not cached
+[04/23/23 14:09:33] [ERROR] can't update guild member presence: user id "454597059539107851" not cached
+[04/23/23 14:09:48] [ERROR] can't update guild member presence: user id "478534384899588096" not cached
+[04/23/23 14:09:53] [ERROR] can't update guild member presence: user id "730316363406508074" not cached
+[04/23/23 14:10:06] [ERROR] can't update guild member presence: user id "994186026325127219" not cached
+[04/23/23 14:10:08] [ERROR] can't update guild member presence: user id "994186026325127219" not cached
+[04/23/23 14:10:08] [ERROR] can't update guild member presence: user id "994186026325127219" not cached
+[04/23/23 14:11:52] [ERROR] can't update guild member presence: user id "288182862509899786" not cached
+[04/23/23 14:12:31] [ERROR] can't update guild member presence: user id "645855224866799626" not cached
+[04/23/23 14:14:20] [ERROR] can't update guild member presence: user id "454597059539107851" not cached
+[04/23/23 14:14:23] [ERROR] can't update guild member presence: user id "996025153534304266" not cached
+[04/23/23 14:14:31] [ERROR] can't update guild member presence: user id "645855224866799626" not cached
+[04/23/23 14:16:45] [ERROR] can't update guild member presence: user id "996025153534304266" not cached
+[04/23/23 14:18:22] [ERROR] can't update guild member presence: user id "838658476301221930" not cached
+[04/23/23 14:18:24] [ERROR] can't update guild member presence: user id "838658476301221930" not cached
+[04/23/23 14:19:39] [ERROR] can't update guild member presence: user id "288182862509899786" not cached
+[04/23/23 14:19:55] [ERROR] can't update guild member presence: user id "288182862509899786" not cached
+[04/23/23 14:20:16] [ERROR] can't update guild member presence: user id "645855224866799626" not cached
+[04/23/23 14:21:52] [ERROR] can't update guild member presence: user id "478534384899588096" not cached
+[04/23/23 14:22:16] [ERROR] can't update guild member presence: user id "645855224866799626" not cached
+[04/23/23 14:24:34] [ERROR] can't update guild member presence: user id "797426087679492126" not cached
+[04/23/23 14:26:18] [ERROR] can't update guild member presence: user id "932214119707340900" not cached
+[04/23/23 14:27:08] [ERROR] can't update guild member presence: user id "454597059539107851" not cached
+[04/23/23 14:27:21] [ERROR] can't update guild member presence: user id "645855224866799626" not cached
+[04/23/23 14:27:45] [ERROR] can't update guild member presence: user id "454597059539107851" not cached
+[04/23/23 14:28:18] [ERROR] can't update guild member presence: user id "297038019297542145" not cached
+[04/23/23 14:28:30] [ERROR] can't update guild member presence: user id "668831456277299219" not cached
+[04/23/23 14:28:42] [ERROR] can't update guild member presence: user id "668831456277299219" not cached
+[04/23/23 14:30:31] [ERROR] can't update guild member presence: user id "668831456277299219" not cached
+[04/23/23 14:31:28] [ERROR] can't update guild member presence: user id "712577103521906730" not cached
+[04/23/23 14:31:36] [ERROR] can't update guild member presence: user id "645855224866799626" not cached
+[04/23/23 14:32:46] [ERROR] can't update guild member presence: user id "454597059539107851" not cached
+[04/23/23 14:33:28] [ERROR] can't update guild member presence: user id "994186026325127219" not cached
+[04/23/23 14:35:57] [ERROR] can't update guild member presence: user id "466230959918809089" not cached
+[04/23/23 14:36:30] [ERROR] can't update guild member presence: user id "466230959918809089" not cached
+[04/23/23 14:37:28] [ERROR] can't update guild member presence: user id "712577103521906730" not cached
+[04/23/23 14:37:33] [ERROR] can't update guild member presence: user id "466230959918809089" not cached
+[04/23/23 14:38:36] [ERROR] can't update guild member presence: user id "466230959918809089" not cached
+[04/23/23 14:40:15] [ERROR] can't update guild member presence: user id "478534384899588096" not cached
+[04/23/23 14:40:17] [ERROR] can't update guild member presence: user id "466230959918809089" not cached
+[04/23/23 14:40:18] [ERROR] can't update guild member presence: user id "466230959918809089" not cached
+[04/23/23 14:40:18] [ERROR] can't update guild member presence: user id "466230959918809089" not cached
+[04/23/23 14:40:18] [ERROR] can't update guild member presence: user id "466230959918809089" not cached
+[04/23/23 14:40:18] [ERROR] can't update guild member presence: user id "466230959918809089" not cached
+[04/23/23 14:40:32] [ERROR] can't update guild member presence: user id "712577103521906730" not cached
+[04/23/23 14:40:34] [ERROR] can't update guild member presence: user id "712577103521906730" not cached
+[04/23/23 14:40:37] [ERROR] can't update guild member presence: user id "466230959918809089" not cached
+[04/23/23 14:40:38] [ERROR] can't update guild member presence: user id "466230959918809089" not cached
+[04/23/23 14:40:38] [ERROR] can't update guild member presence: user id "466230959918809089" not cached
+[04/23/23 14:40:38] [ERROR] can't update guild member presence: user id "466230959918809089" not cached
+[04/23/23 14:40:39] [ERROR] can't update guild member presence: user id "466230959918809089" not cached
+[04/23/23 14:40:48] [ERROR] can't update guild member presence: user id "712577103521906730" not cached
+[04/23/23 14:40:57] [ERROR] can't update guild member presence: user id "466230959918809089" not cached
+[04/23/23 14:40:58] [ERROR] can't update guild member presence: user id "466230959918809089" not cached
+[04/23/23 14:40:58] [ERROR] can't update guild member presence: user id "466230959918809089" not cached
+[04/23/23 14:40:58] [ERROR] can't update guild member presence: user id "466230959918809089" not cached
+[04/23/23 14:40:59] [ERROR] can't update guild member presence: user id "466230959918809089" not cached
+[04/23/23 14:41:17] [ERROR] can't update guild member presence: user id "466230959918809089" not cached
+[04/23/23 14:41:18] [ERROR] can't update guild member presence: user id "466230959918809089" not cached
+[04/23/23 14:41:18] [ERROR] can't update guild member presence: user id "712577103521906730" not cached
+[04/23/23 14:41:18] [ERROR] can't update guild member presence: user id "466230959918809089" not cached
+[04/23/23 14:41:18] [ERROR] can't update guild member presence: user id "466230959918809089" not cached
+[04/23/23 14:41:19] [ERROR] can't update guild member presence: user id "466230959918809089" not cached
+[04/23/23 14:41:37] [ERROR] can't update guild member presence: user id "466230959918809089" not cached
+[04/23/23 14:41:38] [ERROR] can't update guild member presence: user id "466230959918809089" not cached
+[04/23/23 14:41:38] [ERROR] can't update guild member presence: user id "466230959918809089" not cached
+[04/23/23 14:41:38] [ERROR] can't update guild member presence: user id "466230959918809089" not cached
+[04/23/23 14:41:39] [ERROR] can't update guild member presence: user id "466230959918809089" not cached
+[04/23/23 14:41:48] [ERROR] can't update guild member presence: user id "712577103521906730" not cached
+[04/23/23 14:41:57] [ERROR] can't update guild member presence: user id "466230959918809089" not cached
+[04/23/23 14:41:57] [ERROR] can't update guild member presence: user id "466230959918809089" not cached
+[04/23/23 14:41:58] [ERROR] can't update guild member presence: user id "466230959918809089" not cached
+[04/23/23 14:41:58] [ERROR] can't update guild member presence: user id "466230959918809089" not cached
+[04/23/23 14:41:59] [ERROR] can't update guild member presence: user id "466230959918809089" not cached
+[04/23/23 14:42:03] [ERROR] can't update guild member presence: user id "712577103521906730" not cached
+[04/23/23 14:42:17] [ERROR] can't update guild member presence: user id "466230959918809089" not cached
+[04/23/23 14:42:18] [ERROR] can't update guild member presence: user id "466230959918809089" not cached
+[04/23/23 14:42:18] [ERROR] can't update guild member presence: user id "466230959918809089" not cached
+[04/23/23 14:42:18] [ERROR] can't update guild member presence: user id "466230959918809089" not cached
+[04/23/23 14:42:19] [ERROR] can't update guild member presence: user id "466230959918809089" not cached
+[04/23/23 14:42:33] [ERROR] can't update guild member presence: user id "712577103521906730" not cached
+[04/23/23 14:42:37] [ERROR] can't update guild member presence: user id "466230959918809089" not cached
+[04/23/23 14:42:38] [ERROR] can't update guild member presence: user id "466230959918809089" not cached
+[04/23/23 14:42:38] [ERROR] can't update guild member presence: user id "466230959918809089" not cached
+[04/23/23 14:42:38] [ERROR] can't update guild member presence: user id "466230959918809089" not cached
+[04/23/23 14:42:39] [ERROR] can't update guild member presence: user id "478534384899588096" not cached
+[04/23/23 14:42:39] [ERROR] can't update guild member presence: user id "466230959918809089" not cached
+[04/23/23 14:42:48] [ERROR] can't update guild member presence: user id "712577103521906730" not cached
+[04/23/23 14:42:57] [ERROR] can't update guild member presence: user id "466230959918809089" not cached
+[04/23/23 14:42:58] [ERROR] can't update guild member presence: user id "466230959918809089" not cached
+[04/23/23 14:42:58] [ERROR] can't update guild member presence: user id "466230959918809089" not cached
+[04/23/23 14:42:58] [ERROR] can't update guild member presence: user id "466230959918809089" not cached
+[04/23/23 14:42:59] [ERROR] can't update guild member presence: user id "466230959918809089" not cached
+[04/23/23 14:43:03] [ERROR] can't update guild member presence: user id "730316363406508074" not cached
+[04/23/23 14:43:03] [ERROR] can't update guild member presence: user id "712577103521906730" not cached
+[04/23/23 14:43:17] [ERROR] can't update guild member presence: user id "466230959918809089" not cached
+[04/23/23 14:43:18] [ERROR] can't update guild member presence: user id "466230959918809089" not cached
+[04/23/23 14:43:18] [ERROR] can't update guild member presence: user id "466230959918809089" not cached
+[04/23/23 14:43:18] [ERROR] can't update guild member presence: user id "466230959918809089" not cached
+[04/23/23 14:43:19] [ERROR] can't update guild member presence: user id "466230959918809089" not cached
+[04/23/23 14:43:33] [ERROR] can't update guild member presence: user id "712577103521906730" not cached
+[04/23/23 14:43:37] [ERROR] can't update guild member presence: user id "466230959918809089" not cached
+[04/23/23 14:43:38] [ERROR] can't update guild member presence: user id "466230959918809089" not cached
+[04/23/23 14:43:38] [ERROR] can't update guild member presence: user id "466230959918809089" not cached
+[04/23/23 14:43:38] [ERROR] can't update guild member presence: user id "466230959918809089" not cached
+[04/23/23 14:43:39] [ERROR] can't update guild member presence: user id "466230959918809089" not cached
+[04/23/23 14:43:48] [ERROR] can't update guild member presence: user id "712577103521906730" not cached
+[04/23/23 14:43:49] [ERROR] Error while retrieving HTTP POST response from '/api/v10/channels/1099367936369635509/messages': end of stream
+[04/23/23 14:43:57] [ERROR] can't update guild member presence: user id "466230959918809089" not cached
+[04/23/23 14:43:58] [ERROR] can't update guild member presence: user id "466230959918809089" not cached
+[04/23/23 14:43:58] [ERROR] can't update guild member presence: user id "466230959918809089" not cached
+[04/23/23 14:43:58] [ERROR] can't update guild member presence: user id "466230959918809089" not cached
+[04/23/23 14:43:59] [ERROR] can't update guild member presence: user id "466230959918809089" not cached
+[04/23/23 14:44:17] [ERROR] can't update guild member presence: user id "466230959918809089" not cached
+[04/23/23 14:44:18] [ERROR] can't update guild member presence: user id "466230959918809089" not cached
+[04/23/23 14:44:18] [ERROR] can't update guild member presence: user id "466230959918809089" not cached
+[04/23/23 14:44:18] [ERROR] can't update guild member presence: user id "712577103521906730" not cached
+[04/23/23 14:44:18] [ERROR] can't update guild member presence: user id "466230959918809089" not cached
+[04/23/23 14:44:19] [ERROR] can't update guild member presence: user id "466230959918809089" not cached
+[04/23/23 14:44:37] [ERROR] can't update guild member presence: user id "466230959918809089" not cached
+[04/23/23 14:44:38] [ERROR] can't update guild member presence: user id "466230959918809089" not cached
+[04/23/23 14:44:38] [ERROR] can't update guild member presence: user id "466230959918809089" not cached
+[04/23/23 14:44:38] [ERROR] can't update guild member presence: user id "466230959918809089" not cached
+[04/23/23 14:44:39] [ERROR] can't update guild member presence: user id "466230959918809089" not cached
+[04/23/23 14:44:57] [ERROR] can't update guild member presence: user id "466230959918809089" not cached
+[04/23/23 14:44:58] [ERROR] can't update guild member presence: user id "466230959918809089" not cached
+[04/23/23 14:44:58] [ERROR] can't update guild member presence: user id "466230959918809089" not cached
+[04/23/23 14:44:58] [ERROR] can't update guild member presence: user id "466230959918809089" not cached
+[04/23/23 14:44:59] [ERROR] can't update guild member presence: user id "466230959918809089" not cached
+[04/23/23 14:45:03] [ERROR] can't update guild member presence: user id "712577103521906730" not cached
+[04/23/23 14:45:17] [ERROR] can't update guild member presence: user id "466230959918809089" not cached
+[04/23/23 14:45:18] [ERROR] can't update guild member presence: user id "466230959918809089" not cached
+[04/23/23 14:45:18] [ERROR] can't update guild member presence: user id "466230959918809089" not cached
+[04/23/23 14:45:18] [ERROR] can't update guild member presence: user id "466230959918809089" not cached
+[04/23/23 14:45:19] [ERROR] can't update guild member presence: user id "712577103521906730" not cached
+[04/23/23 14:45:19] [ERROR] can't update guild member presence: user id "466230959918809089" not cached
+[04/23/23 14:45:34] [ERROR] can't update guild member presence: user id "712577103521906730" not cached
+[04/23/23 14:45:35] [ERROR] can't update guild member presence: user id "838658476301221930" not cached
+[04/23/23 14:45:37] [ERROR] can't update guild member presence: user id "753935454897832048" not cached
+[04/23/23 14:45:37] [ERROR] can't update guild member presence: user id "466230959918809089" not cached
+[04/23/23 14:45:38] [ERROR] can't update guild member presence: user id "466230959918809089" not cached
+[04/23/23 14:45:38] [ERROR] can't update guild member presence: user id "466230959918809089" not cached
+[04/23/23 14:45:38] [ERROR] can't update guild member presence: user id "466230959918809089" not cached
+[04/23/23 14:45:39] [ERROR] can't update guild member presence: user id "466230959918809089" not cached
+[04/23/23 14:45:49] [ERROR] can't update guild member presence: user id "712577103521906730" not cached
+[04/23/23 14:45:57] [ERROR] can't update guild member presence: user id "753935454897832048" not cached
+[04/23/23 14:45:57] [ERROR] can't update guild member presence: user id "466230959918809089" not cached
+[04/23/23 14:45:58] [ERROR] can't update guild member presence: user id "466230959918809089" not cached
+[04/23/23 14:45:58] [ERROR] can't update guild member presence: user id "466230959918809089" not cached
+[04/23/23 14:45:58] [ERROR] can't update guild member presence: user id "466230959918809089" not cached
+[04/23/23 14:45:59] [ERROR] can't update guild member presence: user id "466230959918809089" not cached
+[04/23/23 14:46:04] [ERROR] can't update guild member presence: user id "712577103521906730" not cached
+[04/23/23 14:46:17] [ERROR] can't update guild member presence: user id "466230959918809089" not cached
+[04/23/23 14:46:18] [ERROR] can't update guild member presence: user id "466230959918809089" not cached
+[04/23/23 14:46:18] [ERROR] can't update guild member presence: user id "466230959918809089" not cached
+[04/23/23 14:46:18] [ERROR] can't update guild member presence: user id "466230959918809089" not cached
+[04/23/23 14:46:19] [ERROR] can't update guild member presence: user id "712577103521906730" not cached
+[04/23/23 14:46:19] [ERROR] can't update guild member presence: user id "466230959918809089" not cached
+[04/23/23 14:46:34] [ERROR] can't update guild member presence: user id "712577103521906730" not cached
+[04/23/23 14:46:37] [ERROR] can't update guild member presence: user id "466230959918809089" not cached
+[04/23/23 14:46:38] [ERROR] can't update guild member presence: user id "466230959918809089" not cached
+[04/23/23 14:46:38] [ERROR] can't update guild member presence: user id "466230959918809089" not cached
+[04/23/23 14:46:38] [ERROR] can't update guild member presence: user id "466230959918809089" not cached
+[04/23/23 14:46:39] [ERROR] can't update guild member presence: user id "466230959918809089" not cached
+[04/23/23 14:46:49] [ERROR] can't update guild member presence: user id "712577103521906730" not cached
+[04/23/23 14:46:57] [ERROR] can't update guild member presence: user id "466230959918809089" not cached
+[04/23/23 14:46:58] [ERROR] can't update guild member presence: user id "466230959918809089" not cached
+[04/23/23 14:46:58] [ERROR] can't update guild member presence: user id "466230959918809089" not cached
+[04/23/23 14:46:59] [ERROR] can't update guild member presence: user id "466230959918809089" not cached
+[04/23/23 14:46:59] [ERROR] can't update guild member presence: user id "466230959918809089" not cached
+[04/23/23 14:47:01] [ERROR] can't update guild member presence: user id "838658476301221930" not cached
+[04/23/23 14:47:03] [ERROR] can't update guild member presence: user id "838658476301221930" not cached
+[04/23/23 14:47:04] [ERROR] can't update guild member presence: user id "712577103521906730" not cached
+[04/23/23 14:47:17] [ERROR] can't update guild member presence: user id "466230959918809089" not cached
+[04/23/23 14:47:18] [ERROR] can't update guild member presence: user id "466230959918809089" not cached
+[04/23/23 14:47:18] [ERROR] can't update guild member presence: user id "466230959918809089" not cached
+[04/23/23 14:47:18] [ERROR] can't update guild member presence: user id "466230959918809089" not cached
+[04/23/23 14:47:19] [ERROR] can't update guild member presence: user id "712577103521906730" not cached
+[04/23/23 14:47:19] [ERROR] can't update guild member presence: user id "466230959918809089" not cached
+[04/23/23 14:47:34] [ERROR] can't update guild member presence: user id "712577103521906730" not cached
+[04/23/23 14:47:37] [ERROR] can't update guild member presence: user id "466230959918809089" not cached
+[04/23/23 14:47:38] [ERROR] can't update guild member presence: user id "466230959918809089" not cached
+[04/23/23 14:47:38] [ERROR] can't update guild member presence: user id "466230959918809089" not cached
+[04/23/23 14:47:38] [ERROR] can't update guild member presence: user id "466230959918809089" not cached
+[04/23/23 14:47:39] [ERROR] can't update guild member presence: user id "466230959918809089" not cached
+[04/23/23 14:52:03] [WARNING] Unknown gateway event 'GUILD_MEMBERS_CHUNK'
+[04/23/23 14:52:29] [WARNING] Unknown gateway event 'GUILD_MEMBERS_CHUNK'
+[04/23/23 14:53:21] [ERROR] can't update guild member presence: user id "934750893591654421" not cached
+[04/23/23 14:54:44] [WARNING] Unknown gateway event 'GUILD_MEMBERS_CHUNK'
+[04/23/23 14:57:15] [ERROR] can't update guild member presence: user id "574799029318451200" not cached
+[04/23/23 14:57:15] [ERROR] can't update guild member presence: user id "297038019297542145" not cached
+[04/23/23 14:57:59] [ERROR] can't update guild member presence: user id "465576302892810250" not cached
+[04/23/23 14:59:16] [ERROR] can't update guild member presence: user id "297038019297542145" not cached
+[04/23/23 14:59:24] [ERROR] can't update guild member presence: user id "730316363406508074" not cached
+[04/23/23 14:59:27] [ERROR] can't update guild member presence: user id "303372593996627968" not cached
+[04/23/23 15:02:06] [ERROR] can't update guild member presence: user id "572770669834797066" not cached
+[04/23/23 15:02:23] [ERROR] can't update guild member presence: user id "289410609894653972" not cached
+[04/23/23 15:02:40] [ERROR] can't update guild member presence: user id "465576302892810250" not cached
+[04/23/23 15:02:51] [ERROR] can't update guild member presence: user id "465576302892810250" not cached
+[04/23/23 15:04:24] [ERROR] can't update guild member presence: user id "289410609894653972" not cached
+[04/23/23 15:04:40] [ERROR] can't update guild member presence: user id "465576302892810250" not cached
+[04/23/23 15:05:13] [ERROR] can't update guild member presence: user id "374090536073560065" not cached
+[04/23/23 15:06:56] [ERROR] can't update guild member presence: user id "973705217424109582" not cached
+[04/23/23 15:08:40] [ERROR] can't update guild member presence: user id "1037751193369317456" not cached
+[04/23/23 15:08:51] [ERROR] can't update guild member presence: user id "374090536073560065" not cached
+[04/23/23 15:08:55] [ERROR] can't update guild member presence: user id "973705217424109582" not cached
+[04/23/23 15:10:40] [ERROR] can't update guild member presence: user id "1037751193369317456" not cached
+[04/23/23 15:11:41] [WARNING] Unknown gateway event 'GUILD_MEMBERS_CHUNK'
+[04/23/23 15:12:42] [ERROR] can't update guild member presence: user id "797426087679492126" not cached
+[04/23/23 15:15:24] [ERROR] can't update guild member presence: user id "841664146180276255" not cached
+[04/23/23 15:18:12] [ERROR] can't update guild member presence: user id "797426087679492126" not cached
+[04/23/23 15:28:50] [ERROR] can't update guild member presence: user id "454597059539107851" not cached
+[04/23/23 15:29:30] [ERROR] can't update guild member presence: user id "738018621254795315" not cached
+[04/23/23 15:29:54] [WARNING] Unknown gateway event 'GUILD_MEMBERS_CHUNK'
+[04/23/23 15:32:01] [WARNING] Unknown gateway event 'GUILD_MEMBERS_CHUNK'
+[04/23/23 15:32:57] [WARNING] Unknown gateway event 'GUILD_MEMBERS_CHUNK'
+[04/23/23 15:33:00] [ERROR] can't update guild member presence: user id "934750893591654421" not cached
+[04/23/23 15:33:38] [WARNING] Unknown gateway event 'GUILD_MEMBERS_CHUNK'
+[04/23/23 15:34:10] [ERROR] can't update guild member presence: user id "699321978510901310" not cached
+[04/23/23 15:35:14] [WARNING] Unknown gateway event 'GUILD_MEMBERS_CHUNK'
+[04/23/23 15:35:45] [ERROR] can't update guild member presence: user id "994186026325127219" not cached
+[04/23/23 15:35:48] [ERROR] can't update guild member presence: user id "994186026325127219" not cached
+[04/23/23 15:37:06] [WARNING] Unknown gateway event 'GUILD_MEMBERS_CHUNK'
+[04/23/23 15:37:09] [ERROR] can't update guild member presence: user id "934750893591654421" not cached
+[04/23/23 15:40:17] [ERROR] can't update guild member presence: user id "738018621254795315" not cached
+[04/23/23 15:40:44] [ERROR] can't update guild member presence: user id "699321978510901310" not cached
+[04/23/23 15:40:56] [WARNING] Unknown gateway event 'GUILD_MEMBERS_CHUNK'
+[04/23/23 15:42:45] [WARNING] Unknown gateway event 'GUILD_MEMBERS_CHUNK'
+[04/23/23 15:44:26] [WARNING] Unknown gateway event 'GUILD_MEMBERS_CHUNK'
+[04/23/23 15:46:17] [ERROR] can't update guild member presence: user id "699321978510901310" not cached
+[04/23/23 15:47:02] [ERROR] can't update guild member presence: user id "394176330519805953" not cached
+[04/23/23 15:47:03] [ERROR] can't update guild member presence: user id "394176330519805953" not cached
+[04/23/23 15:47:04] [ERROR] can't update guild member presence: user id "394176330519805953" not cached
+[04/23/23 15:48:00] [ERROR] can't update guild member presence: user id "394176330519805953" not cached
+[04/23/23 15:48:48] [ERROR] can't update guild member presence: user id "478534384899588096" not cached
+[04/23/23 15:49:40] [WARNING] Unknown gateway event 'GUILD_MEMBERS_CHUNK'
+[04/23/23 15:49:54] [WARNING] Unknown gateway event 'GUILD_MEMBERS_CHUNK'
+[04/23/23 15:51:39] [ERROR] can't update guild member presence: user id "1037751193369317456" not cached
+[04/23/23 15:51:58] [ERROR] can't update guild member presence: user id "1012201537143058514" not cached
+[04/23/23 15:53:05] [ERROR] can't update guild member presence: user id "1012201537143058514" not cached
+[04/23/23 15:53:22] [ERROR] can't update guild member presence: user id "1012201537143058514" not cached
+[04/23/23 15:53:35] [WARNING] Unknown gateway event 'GUILD_MEMBERS_CHUNK'
+[04/23/23 15:53:59] [ERROR] can't update guild member presence: user id "645855224866799626" not cached
+[04/23/23 15:55:20] [WARNING] Unknown gateway event 'GUILD_MEMBERS_CHUNK'
+[04/23/23 15:56:18] [WARNING] Unknown gateway event 'GUILD_MEMBERS_CHUNK'
+[04/23/23 15:58:49] [ERROR] can't update guild member presence: user id "468660232147435520" not cached
+[04/23/23 15:58:59] [ERROR] can't update guild member presence: user id "934750893591654421" not cached
+[04/23/23 16:00:40] [ERROR] can't update guild member presence: user id "488649988721737758" not cached
+[04/23/23 16:01:24] [ERROR] can't update guild member presence: user id "893150749146624090" not cached
+[04/23/23 16:02:02] [ERROR] can't update guild member presence: user id "454597059539107851" not cached
+[04/23/23 16:02:25] [ERROR] can't update guild member presence: user id "934750893591654421" not cached
+[04/23/23 16:03:47] [ERROR] can't update guild member presence: user id "994186026325127219" not cached
+[04/23/23 16:05:22] [ERROR] can't update guild member presence: user id "867419907809476669" not cached
+[04/23/23 16:05:51] [ERROR] can't update guild member presence: user id "454597059539107851" not cached
+[04/23/23 16:07:10] [ERROR] can't update guild member presence: user id "926719291573829662" not cached
+[04/23/23 16:07:13] [ERROR] can't update guild member presence: user id "926719291573829662" not cached
+[04/23/23 16:07:14] [ERROR] can't update guild member presence: user id "926719291573829662" not cached
+[04/23/23 16:18:12] [WARNING] Unknown gateway event 'GUILD_MEMBERS_CHUNK'
+[04/23/23 16:21:22] [ERROR] can't update guild member presence: user id "479929427069894667" not cached
+[04/23/23 16:22:31] [ERROR] can't update guild member presence: user id "893150749146624090" not cached
+[04/23/23 16:26:37] [ERROR] can't update guild member presence: user id "893150749146624090" not cached
+[04/23/23 16:26:40] [ERROR] can't update guild member presence: user id "852812541587488789" not cached
+[04/23/23 16:26:42] [ERROR] can't update guild member presence: user id "852812541587488789" not cached
+[04/23/23 16:30:42] [ERROR] can't update guild member presence: user id "852812541587488789" not cached
+[04/23/23 16:33:18] [ERROR] can't update guild member presence: user id "866588114888556545" not cached
+[04/23/23 16:33:19] [ERROR] can't update guild member presence: user id "947078785226924053" not cached
+[04/23/23 16:34:18] [ERROR] can't update guild member presence: user id "729331349277769781" not cached
+[04/23/23 16:34:23] [ERROR] can't update guild member presence: user id "729331349277769781" not cached
+[04/23/23 16:35:38] [ERROR] can't update guild member presence: user id "866588114888556545" not cached
+[04/23/23 16:37:47] [ERROR] can't remove guild member: user id "479929427069894667" not cached
+[04/23/23 16:38:45] [ERROR] can't update guild member presence: user id "994186026325127219" not cached
+[04/23/23 16:38:46] [ERROR] can't update guild member presence: user id "994186026325127219" not cached
+[04/23/23 16:38:47] [ERROR] can't update guild member presence: user id "994186026325127219" not cached
+[04/23/23 16:38:52] [ERROR] can't update guild member presence: user id "947078785226924053" not cached
+[04/23/23 16:40:12] [ERROR] can't update guild member presence: user id "488649988721737758" not cached
+[04/23/23 16:42:12] [ERROR] can't update guild member presence: user id "488649988721737758" not cached
+[04/23/23 16:43:33] [ERROR] can't update guild member presence: user id "557512799064948766" not cached
+[04/23/23 16:45:02] [ERROR] can't update guild member presence: user id "947078785226924053" not cached
+[04/23/23 16:45:47] [ERROR] can't update guild member presence: user id "557512799064948766" not cached
+[04/23/23 16:46:18] [ERROR] can't update guild member presence: user id "866588114888556545" not cached
+[04/23/23 16:46:29] [ERROR] can't update guild member presence: user id "1096438155302944809" not cached
+[04/23/23 16:46:47] [ERROR] can't update guild member presence: user id "934750893591654421" not cached
+[04/23/23 16:46:58] [ERROR] can't update guild member presence: user id "934750893591654421" not cached
+[04/23/23 16:48:23] [ERROR] can't update guild member presence: user id "866588114888556545" not cached
+[04/23/23 16:49:13] [ERROR] can't update guild member presence: user id "934750893591654421" not cached
+[04/23/23 16:49:36] [ERROR] can't update guild member presence: user id "867419907809476669" not cached
+[04/23/23 16:50:48] [ERROR] can't update guild member presence: user id "934750893591654421" not cached
+[04/23/23 16:50:50] [ERROR] can't update guild member presence: user id "934750893591654421" not cached
+[04/23/23 16:50:58] [ERROR] can't update guild member presence: user id "934750893591654421" not cached
+[04/23/23 16:51:03] [ERROR] can't update guild member presence: user id "934750893591654421" not cached
+[04/23/23 16:51:53] [ERROR] can't update guild member presence: user id "934750893591654421" not cached
+[04/23/23 16:51:58] [ERROR] can't update guild member presence: user id "934750893591654421" not cached
+[04/23/23 16:52:16] [ERROR] can't update guild member presence: user id "867419907809476669" not cached
+[04/23/23 16:52:25] [ERROR] can't update guild member presence: user id "934750893591654421" not cached
+[04/23/23 16:52:35] [ERROR] can't update guild member presence: user id "934750893591654421" not cached
+[04/23/23 16:54:56] [ERROR] can't update guild member presence: user id "934750893591654421" not cached
+[04/23/23 16:56:51] [ERROR] can't update guild member presence: user id "934750893591654421" not cached
+[04/23/23 16:58:49] [ERROR] can't update guild member presence: user id "866588114888556545" not cached
+[04/23/23 16:59:17] [ERROR] can't update guild member presence: user id "934750893591654421" not cached
+[04/23/23 17:23:09] [WARNING] Unknown gateway event 'GUILD_MEMBERS_CHUNK'
+[04/23/23 17:24:34] [WARNING] Unknown gateway event 'GUILD_MEMBERS_CHUNK'
+[04/23/23 17:25:30] [ERROR] can't update guild member presence: user id "476938644762918922" not cached
+[04/23/23 17:25:30] [ERROR] can't update guild member presence: user id "476938644762918922" not cached
+[04/23/23 17:25:31] [ERROR] can't update guild member presence: user id "476938644762918922" not cached
+[04/23/23 17:25:44] [ERROR] can't update guild member presence: user id "857612671259377704" not cached
+[04/23/23 17:25:53] [ERROR] can't update guild member presence: user id "476938644762918922" not cached
+[04/23/23 17:27:31] [ERROR] can't update guild member presence: user id "476938644762918922" not cached
+[04/23/23 17:27:44] [ERROR] can't update guild member presence: user id "857612671259377704" not cached
+[04/23/23 17:28:18] [ERROR] can't update guild member presence: user id "454597059539107851" not cached
+[04/23/23 17:28:37] [ERROR] can't update guild member presence: user id "724830363385593909" not cached
+[04/23/23 17:28:37] [ERROR] can't update guild member presence: user id "288182862509899786" not cached
+[04/23/23 17:30:00] [ERROR] can't update guild member presence: user id "454597059539107851" not cached
+[04/23/23 17:30:07] [ERROR] can't update guild member presence: user id "769652614915686464" not cached
+[04/23/23 17:30:08] [ERROR] can't update guild member presence: user id "769652614915686464" not cached
+[04/23/23 17:30:24] [ERROR] can't update guild member presence: user id "769652614915686464" not cached
+[04/23/23 17:30:37] [ERROR] can't update guild member presence: user id "288182862509899786" not cached
+[04/23/23 17:31:59] [ERROR] can't update guild member presence: user id "630656828769959936" not cached
+[04/23/23 17:32:13] [ERROR] can't update guild member presence: user id "335434915715743745" not cached
+[04/23/23 17:33:03] [ERROR] can't update guild member presence: user id "1003889436720898058" not cached
+[04/23/23 17:33:25] [ERROR] can't update guild member presence: user id "1003889436720898058" not cached
+[04/23/23 17:33:35] [ERROR] can't update guild member presence: user id "1003889436720898058" not cached
+[04/23/23 17:34:00] [ERROR] can't update guild member presence: user id "630656828769959936" not cached
+[04/23/23 17:34:12] [ERROR] can't update guild member presence: user id "973705217424109582" not cached
+[04/23/23 17:34:34] [ERROR] can't update guild member presence: user id "948870965876637756" not cached
+[04/23/23 17:35:06] [ERROR] can't update guild member presence: user id "454597059539107851" not cached
+[04/23/23 17:36:27] [ERROR] can't update guild member presence: user id "857612671259377704" not cached
+[04/23/23 17:36:40] [ERROR] can't remove guild member: user id "857612671259377704" not cached
+[04/23/23 17:37:03] [ERROR] can't update guild member presence: user id "1012201537143058514" not cached
+[04/23/23 17:37:30] [ERROR] can't update guild member presence: user id "973705217424109582" not cached
+[04/23/23 17:37:37] [ERROR] can't update guild member presence: user id "1012201537143058514" not cached
+[04/23/23 17:38:15] [ERROR] can't update guild member presence: user id "1003889436720898058" not cached
+[04/23/23 17:38:42] [ERROR] can't update guild member presence: user id "1003889436720898058" not cached
+[04/23/23 17:38:46] [ERROR] can't update guild member presence: user id "994186026325127219" not cached
+[04/23/23 17:38:48] [ERROR] can't update guild member presence: user id "994186026325127219" not cached
+[04/23/23 17:38:50] [ERROR] can't update guild member presence: user id "994186026325127219" not cached
+[04/23/23 17:38:56] [ERROR] can't update guild member presence: user id "1003889436720898058" not cached
+[04/23/23 17:39:23] [ERROR] can't update guild member presence: user id "454597059539107851" not cached
+[04/23/23 17:39:27] [ERROR] can't update guild member presence: user id "1012201537143058514" not cached
+[04/23/23 17:40:03] [ERROR] can't update guild member presence: user id "1012201537143058514" not cached
+[04/23/23 17:40:03] [ERROR] can't update guild member presence: user id "1012201537143058514" not cached
+[04/23/23 17:40:17] [ERROR] can't update guild member presence: user id "1003889436720898058" not cached
+[04/23/23 17:40:19] [ERROR] can't update guild member presence: user id "1012201537143058514" not cached
+[04/23/23 17:40:24] [ERROR] can't update guild member presence: user id "454597059539107851" not cached
+[04/23/23 17:40:29] [ERROR] can't update guild member presence: user id "454597059539107851" not cached
+[04/23/23 17:40:38] [ERROR] can't update guild member presence: user id "866588114888556545" not cached
+[04/23/23 17:40:39] [ERROR] can't update guild member presence: user id "866588114888556545" not cached
+[04/23/23 17:42:26] [ERROR] can't update guild member presence: user id "973705217424109582" not cached
+[04/23/23 17:42:33] [ERROR] can't update guild member presence: user id "454597059539107851" not cached
+[04/23/23 17:43:37] [ERROR] can't update guild member presence: user id "973705217424109582" not cached
+[04/23/23 17:44:47] [ERROR] can't update guild member presence: user id "288182862509899786" not cached
+[04/23/23 17:45:21] [ERROR] can't update guild member presence: user id "288182862509899786" not cached
+[04/23/23 17:45:35] [ERROR] can't update guild member presence: user id "973705217424109582" not cached
+[04/23/23 17:46:12] [ERROR] can't update guild member presence: user id "1012201537143058514" not cached
+[04/23/23 17:46:28] [ERROR] can't update guild member presence: user id "1012201537143058514" not cached
+[04/23/23 17:46:36] [ERROR] can't update guild member presence: user id "1012201537143058514" not cached
+[04/23/23 17:47:12] [ERROR] can't update guild member presence: user id "1012201537143058514" not cached
+[04/23/23 17:47:43] [ERROR] can't update guild member presence: user id "994186026325127219" not cached
+[04/23/23 17:48:00] [ERROR] can't update guild member presence: user id "454597059539107851" not cached
+[04/23/23 17:48:00] [ERROR] can't update guild member presence: user id "1012201537143058514" not cached
+[04/23/23 17:48:06] [ERROR] can't update guild member presence: user id "1012201537143058514" not cached
+[04/23/23 17:48:32] [ERROR] can't update guild member presence: user id "973705217424109582" not cached
+[04/23/23 17:48:35] [ERROR] can't update guild member presence: user id "1012201537143058514" not cached
+[04/23/23 17:48:40] [ERROR] can't update guild member presence: user id "973705217424109582" not cached
+[04/23/23 17:48:49] [ERROR] can't update guild member presence: user id "753935454897832048" not cached
+[04/23/23 17:49:10] [ERROR] can't update guild member presence: user id "973705217424109582" not cached
+[04/23/23 17:49:12] [ERROR] can't update guild member presence: user id "948870965876637756" not cached
+[04/23/23 17:49:12] [ERROR] can't update guild member presence: user id "753935454897832048" not cached
+[04/23/23 17:49:34] [ERROR] can't update guild member presence: user id "792256736198918145" not cached
+[04/23/23 17:49:37] [ERROR] can't update guild member presence: user id "792256736198918145" not cached
+[04/23/23 17:49:43] [ERROR] can't update guild member presence: user id "1012201537143058514" not cached
+[04/23/23 17:50:28] [ERROR] can't update guild member presence: user id "1003889436720898058" not cached
+[04/23/23 17:51:13] [ERROR] can't update guild member presence: user id "973705217424109582" not cached
+[04/23/23 17:51:15] [ERROR] can't update guild member presence: user id "792256736198918145" not cached
+[04/23/23 17:51:56] [ERROR] can't update guild member presence: user id "1003889436720898058" not cached
+[04/23/23 17:52:58] [ERROR] can't update guild member presence: user id "923049181529137212" not cached
+[04/23/23 17:54:17] [WARNING] Unknown gateway event 'GUILD_MEMBERS_CHUNK'
+[04/23/23 17:55:22] [WARNING] Unknown gateway event 'GUILD_MEMBERS_CHUNK'
+[04/23/23 17:55:37] [ERROR] can't update guild member presence: user id "353346588128706561" not cached
+[04/23/23 17:55:42] [ERROR] can't update guild member presence: user id "926719291573829662" not cached
+[04/23/23 17:55:44] [ERROR] can't update guild member presence: user id "926719291573829662" not cached
+[04/23/23 17:55:45] [ERROR] can't update guild member presence: user id "926719291573829662" not cached
+[04/23/23 17:57:53] [ERROR] can't update guild member presence: user id "353346588128706561" not cached
+[04/23/23 17:59:03] [ERROR] can't update guild member presence: user id "926719291573829662" not cached
+[04/23/23 17:59:42] [ERROR] can't update guild member presence: user id "297038019297542145" not cached
+[04/23/23 18:00:52] [ERROR] can't update guild member presence: user id "994186026325127219" not cached
+[04/23/23 18:01:19] [ERROR] can't update guild member presence: user id "973705217424109582" not cached
+[04/23/23 18:01:22] [ERROR] can't update guild member presence: user id "973705217424109582" not cached
+[04/23/23 18:02:03] [ERROR] can't update guild member presence: user id "330487110685556746" not cached
+[04/23/23 18:02:10] [ERROR] can't update guild member presence: user id "330487110685556746" not cached
+[04/23/23 18:02:25] [ERROR] can't update guild member presence: user id "973705217424109582" not cached
+[04/23/23 18:02:59] [ERROR] can't update guild member presence: user id "994186026325127219" not cached
+[04/23/23 21:52:53] [WARNING] Unknown gateway event 'GUILD_MEMBERS_CHUNK'
+[04/23/23 21:53:13] [ERROR] can't update guild member presence: user id "321860929937473536" not cached
+[04/23/23 21:55:11] [ERROR] can't update guild member presence: user id "657075846992887819" not cached
+[04/23/23 21:55:13] [ERROR] can't update guild member presence: user id "321860929937473536" not cached
+[04/23/23 21:55:31] [ERROR] can't update guild member presence: user id "866621818991149077" not cached
+[04/23/23 21:56:39] [ERROR] can't update guild member presence: user id "288182862509899786" not cached
+[04/23/23 21:57:41] [ERROR] can't update guild member presence: user id "866621818991149077" not cached
+[04/23/23 21:58:40] [ERROR] can't update guild member presence: user id "288182862509899786" not cached
+[04/23/23 21:59:55] [ERROR] can't update guild member presence: user id "478534384899588096" not cached
+[04/23/23 22:01:16] [ERROR] can't update guild member presence: user id "731777943239524393" not cached
+[04/23/23 22:02:45] [ERROR] can't update guild member presence: user id "731777943239524393" not cached
+[04/23/23 22:03:28] [ERROR] can't update guild member presence: user id "893150749146624090" not cached
+[04/23/23 22:03:32] [ERROR] can't update guild member presence: user id "683987251587186697" not cached
+[04/23/23 22:03:48] [ERROR] can't update guild member presence: user id "1096438155302944809" not cached
+[04/23/23 22:04:19] [ERROR] can't update guild member presence: user id "488649988721737758" not cached
+[04/23/23 22:04:20] [ERROR] can't update guild member presence: user id "413249545775087618" not cached
+[04/23/23 22:04:41] [ERROR] can't update guild member presence: user id "478534384899588096" not cached
+[04/23/23 22:05:33] [ERROR] can't update guild member presence: user id "683987251587186697" not cached
+[04/23/23 22:05:40] [ERROR] can't update guild member presence: user id "866621818991149077" not cached
+[04/23/23 22:05:51] [ERROR] can't update guild member presence: user id "478534384899588096" not cached
+[04/23/23 22:07:28] [ERROR] can't update guild member presence: user id "473681829803851789" not cached
+[04/23/23 22:07:41] [ERROR] can't update guild member presence: user id "866621818991149077" not cached
+[04/23/23 22:08:05] [ERROR] can't update guild member presence: user id "289410609894653972" not cached
+[04/23/23 22:08:45] [ERROR] can't update guild member presence: user id "413249545775087618" not cached
+[04/23/23 22:08:46] [ERROR] can't update guild member presence: user id "1096438155302944809" not cached
+[04/23/23 22:08:46] [ERROR] can't update guild member presence: user id "413249545775087618" not cached
+[04/23/23 22:09:42] [ERROR] can't update guild member presence: user id "683987251587186697" not cached
+[04/23/23 22:09:46] [ERROR] can't update guild member presence: user id "530206000029106179" not cached
+[04/23/23 22:09:51] [ERROR] can't update guild member presence: user id "466230959918809089" not cached
+[04/23/23 22:10:05] [ERROR] can't update guild member presence: user id "289410609894653972" not cached
+[04/23/23 22:10:09] [ERROR] can't update guild member presence: user id "530206000029106179" not cached
+[04/23/23 22:10:27] [ERROR] can't update guild member presence: user id "893150749146624090" not cached
+[04/23/23 22:11:13] [ERROR] can't update guild member presence: user id "488649988721737758" not cached
+[04/23/23 22:11:46] [ERROR] can't update guild member presence: user id "530206000029106179" not cached
+[04/23/23 22:12:03] [ERROR] can't update guild member presence: user id "478534384899588096" not cached
+[04/23/23 22:13:12] [ERROR] can't update guild member presence: user id "530206000029106179" not cached
+[04/23/23 22:13:26] [ERROR] can't update guild member presence: user id "530206000029106179" not cached
+[04/23/23 22:13:34] [ERROR] can't update guild member presence: user id "683987251587186697" not cached
+[04/23/23 22:13:42] [ERROR] can't update guild member presence: user id "466230959918809089" not cached
+[04/23/23 22:14:01] [ERROR] can't update guild member presence: user id "683987251587186697" not cached
+[04/23/23 22:14:15] [ERROR] can't update guild member presence: user id "657075846992887819" not cached
+[04/23/23 22:14:38] [ERROR] can't update guild member presence: user id "289410609894653972" not cached
+[04/23/23 22:16:02] [ERROR] can't update guild member presence: user id "683987251587186697" not cached
+[04/23/23 22:16:28] [ERROR] can't update guild member presence: user id "413249545775087618" not cached
+[04/23/23 22:16:40] [ERROR] can't update guild member presence: user id "657075846992887819" not cached
+[04/23/23 22:17:03] [ERROR] can't update guild member presence: user id "289410609894653972" not cached
+[04/23/23 22:17:34] [ERROR] can't update guild member presence: user id "1037751193369317456" not cached
+[04/23/23 22:18:30] [ERROR] can't update guild member presence: user id "473681829803851789" not cached
+[04/23/23 22:18:34] [ERROR] can't update guild member presence: user id "473681829803851789" not cached
+[04/23/23 22:18:40] [ERROR] can't update guild member presence: user id "478534384899588096" not cached
+[04/23/23 22:19:26] [ERROR] can't update guild member presence: user id "683987251587186697" not cached
+[04/23/23 22:19:39] [ERROR] can't update guild member presence: user id "1037751193369317456" not cached
+[04/23/23 22:20:06] [ERROR] can't update guild member presence: user id "478534384899588096" not cached
+[04/23/23 22:20:20] [ERROR] can't update guild member presence: user id "478534384899588096" not cached
+[04/23/23 22:21:08] [WARNING] Unknown gateway event 'GUILD_MEMBERS_CHUNK'
+[04/23/23 22:21:38] [WARNING] Unknown gateway event 'GUILD_MEMBERS_CHUNK'
+[04/23/23 22:25:20] [WARNING] Unknown gateway event 'GUILD_MEMBERS_CHUNK'
+[04/23/23 22:26:45] [ERROR] can't update guild member presence: user id "586126043056701441" not cached
+[04/23/23 22:26:48] [ERROR] can't update guild member presence: user id "586126043056701441" not cached
+[04/23/23 22:26:48] [ERROR] can't update guild member presence: user id "586126043056701441" not cached
+[04/23/23 22:27:23] [ERROR] can't update guild member presence: user id "413249545775087618" not cached
+[04/23/23 22:28:05] [ERROR] can't update guild member presence: user id "932894047050301542" not cached
+[04/23/23 22:28:38] [WARNING] Unknown gateway event 'GUILD_MEMBERS_CHUNK'
+[04/23/23 22:29:53] [ERROR] can't update guild member presence: user id "466230959918809089" not cached
+[04/23/23 22:30:03] [ERROR] can't update guild member presence: user id "466230959918809089" not cached
+[04/23/23 22:32:27] [ERROR] can't update guild member presence: user id "466230959918809089" not cached
+[04/23/23 22:37:04] [ERROR] can't update guild member presence: user id "683987251587186697" not cached
+[04/23/23 22:37:12] [ERROR] can't update guild member presence: user id "466230959918809089" not cached
+[04/23/23 22:37:13] [ERROR] can't update guild member presence: user id "1093891798788755496" not cached
+[04/23/23 22:38:46] [ERROR] can't update guild member presence: user id "683987251587186697" not cached
+[04/23/23 22:39:18] [ERROR] can't update guild member presence: user id "434927556911824897" not cached
+[04/23/23 22:39:48] [WARNING] Unknown gateway event 'GUILD_MEMBERS_CHUNK'
+[04/23/23 22:40:25] [ERROR] can't update guild member presence: user id "1012201537143058514" not cached
+[04/23/23 22:40:35] [ERROR] can't update guild member presence: user id "1012201537143058514" not cached
+[04/23/23 22:41:43] [ERROR] can't update guild member presence: user id "1003889436720898058" not cached
+[04/23/23 22:42:31] [ERROR] can't update guild member presence: user id "1003889436720898058" not cached
+[04/23/23 22:42:47] [ERROR] can't update guild member presence: user id "1087039973431185488" not cached
+[04/23/23 22:43:31] [ERROR] can't update guild member presence: user id "1012201537143058514" not cached
+[04/23/23 22:44:02] [WARNING] Unknown gateway event 'GUILD_MEMBERS_CHUNK'
+[04/24/23 19:50:48] [WARNING] Unknown gateway event 'GUILD_MEMBERS_CHUNK'
+[04/24/23 20:18:35] [WARNING] Unknown gateway event 'GUILD_MEMBERS_CHUNK'
+[04/24/23 20:19:05] [WARNING] Unknown gateway event 'GUILD_MEMBERS_CHUNK'
+[04/24/23 20:22:12] [ERROR] can't update guild member presence: user id "530206000029106179" not cached
+[04/24/23 20:22:35] [ERROR] can't update guild member presence: user id "530206000029106179" not cached
+[04/24/23 20:23:25] [ERROR] can't update guild member presence: user id "731777943239524393" not cached
+[04/24/23 20:23:26] [ERROR] can't update guild member presence: user id "926719291573829662" not cached
+[04/24/23 20:23:51] [ERROR] can't update guild member presence: user id "731777943239524393" not cached
+[04/24/23 20:23:54] [ERROR] can't update guild member presence: user id "413249545775087618" not cached
+[04/24/23 20:24:24] [ERROR] can't update guild member presence: user id "530206000029106179" not cached
+[04/24/23 20:24:29] [ERROR] can't update guild member presence: user id "413249545775087618" not cached
+[04/24/23 20:24:33] [ERROR] can't update guild member presence: user id "413249545775087618" not cached
+[04/24/23 20:24:39] [ERROR] can't update guild member presence: user id "774019936480919603" not cached
+[04/24/23 20:24:42] [ERROR] can't update guild member presence: user id "289410609894653972" not cached
+[04/24/23 20:25:17] [ERROR] can't update guild member presence: user id "948870965876637756" not cached
+[04/24/23 20:26:05] [ERROR] can't update guild member presence: user id "948870965876637756" not cached
+[04/24/23 20:26:37] [WARNING] Unknown gateway event 'GUILD_MEMBERS_CHUNK'
+[04/24/23 20:26:43] [ERROR] can't update guild member presence: user id "1100009965856501760" not cached
+[04/24/23 20:26:55] [ERROR] can't update guild member presence: user id "1100009965856501760" not cached
+[04/24/23 20:26:56] [ERROR] can't update guild member presence: user id "1100009965856501760" not cached
+[04/24/23 20:26:59] [ERROR] can't update guild member presence: user id "1100009965856501760" not cached
+[04/24/23 20:28:07] [ERROR] can't update guild member presence: user id "1093891798788755496" not cached
+[04/24/23 20:31:20] [ERROR] can't update guild member presence: user id "797426087679492126" not cached
+[04/24/23 20:31:49] [ERROR] can't update guild member presence: user id "586126043056701441" not cached
+[04/24/23 20:34:00] [WARNING] Unknown gateway event 'GUILD_MEMBERS_CHUNK'
+[04/24/23 20:35:25] [ERROR] can't update guild member presence: user id "421225880518393858" not cached
+[04/24/23 20:35:53] [ERROR] can't update guild member presence: user id "871359235877924947" not cached
+[04/24/23 20:36:04] [ERROR] can't update guild member presence: user id "730316363406508074" not cached
+[04/24/23 20:36:06] [ERROR] can't update guild member presence: user id "1008392082202828840" not cached
+[04/24/23 20:36:34] [ERROR] can't update guild member presence: user id "747847564723749226" not cached
+[04/24/23 20:36:37] [ERROR] can't update guild member presence: user id "747847564723749226" not cached
+[04/24/23 20:37:54] [ERROR] can't update guild member presence: user id "421225880518393858" not cached
+[04/24/23 20:38:08] [ERROR] can't update guild member presence: user id "421225880518393858" not cached
+[04/24/23 20:39:03] [ERROR] can't update guild member presence: user id "871359235877924947" not cached
+[04/24/23 20:39:06] [ERROR] can't update guild member presence: user id "413249545775087618" not cached
+[04/24/23 20:39:15] [ERROR] can't update guild member presence: user id "1012201537143058514" not cached
+[04/24/23 20:40:08] [ERROR] can't update guild member presence: user id "421225880518393858" not cached
+[04/24/23 20:40:14] [ERROR] can't update guild member presence: user id "1012201537143058514" not cached
+[04/24/23 20:40:47] [ERROR] can't update guild member presence: user id "413249545775087618" not cached
+[04/24/23 20:42:21] [WARNING] Unknown gateway event 'GUILD_MEMBERS_CHUNK'
+[04/24/23 20:44:27] [ERROR] can't update guild member presence: user id "530206000029106179" not cached
+[04/24/23 20:45:42] [ERROR] can't update guild member presence: user id "871359235877924947" not cached
+[04/24/23 20:46:49] [ERROR] can't update guild member presence: user id "530206000029106179" not cached
+[04/24/23 20:48:49] [ERROR] can't update guild member presence: user id "530206000029106179" not cached
+[04/24/23 20:49:45] [ERROR] can't update guild member presence: user id "871359235877924947" not cached
+[04/24/23 20:50:59] [ERROR] can't update guild member presence: user id "749649911238230099" not cached
+[04/24/23 20:51:21] [ERROR] can't update guild member presence: user id "749649911238230099" not cached
+[04/24/23 20:52:59] [ERROR] can't update guild member presence: user id "749649911238230099" not cached
+[04/24/23 20:53:00] [ERROR] can't update guild member presence: user id "886480916619354143" not cached
+[04/24/23 20:53:05] [ERROR] can't update guild member presence: user id "886480916619354143" not cached
+[04/24/23 20:53:13] [ERROR] can't update guild member presence: user id "1096438155302944809" not cached
+[04/24/23 20:53:18] [ERROR] can't update guild member presence: user id "886480916619354143" not cached
+[04/24/23 20:53:31] [ERROR] can't update guild member presence: user id "886480916619354143" not cached
+[04/24/23 20:53:40] [ERROR] can't update guild member presence: user id "886480916619354143" not cached
+[04/24/23 20:55:25] [ERROR] can't update guild member presence: user id "1003538187391598592" not cached
+[04/24/23 20:56:48] [ERROR] can't update guild member presence: user id "488649988721737758" not cached
+[04/24/23 20:59:01] [ERROR] can't update guild member presence: user id "1003538187391598592" not cached
+[04/24/23 20:59:10] [ERROR] Error while retrieving HTTP POST response from '/api/v10/channels/1099961566549528656/messages': end of stream
+[04/24/23 20:59:37] [ERROR] can't update guild member presence: user id "1093891798788755496" not cached
+[04/24/23 20:59:41] [ERROR] can't update guild member presence: user id "488649988721737758" not cached
+[04/24/23 21:00:08] [ERROR] can't update guild member presence: user id "872778305244364840" not cached
+[04/24/23 21:00:10] [ERROR] can't update guild member presence: user id "886480916619354143" not cached
+[04/24/23 21:00:16] [ERROR] can't update guild member presence: user id "973705217424109582" not cached
+[04/24/23 21:00:24] [ERROR] can't update guild member presence: user id "879342163597615165" not cached
+[04/24/23 21:00:54] [ERROR] can't update guild member presence: user id "1003538187391598592" not cached
+[04/24/23 21:01:38] [WARNING] Unknown gateway event 'GUILD_MEMBERS_CHUNK'
+[04/24/23 21:02:46] [ERROR] can't update guild member presence: user id "1080993250476839013" not cached
+[04/24/23 21:02:52] [ERROR] can't update guild member presence: user id "1080993250476839013" not cached
+[04/24/23 21:03:14] [ERROR] can't update guild member presence: user id "413249545775087618" not cached
+[04/24/23 21:03:25] [ERROR] can't update guild member presence: user id "413249545775087618" not cached
+[04/24/23 21:03:48] [ERROR] can't update guild member presence: user id "804985031809957898" not cached
+[04/24/23 21:03:53] [ERROR] can't update guild member presence: user id "804985031809957898" not cached
+[04/24/23 21:04:42] [ERROR] can't update guild member presence: user id "572770669834797066" not cached
+[04/24/23 21:05:30] [ERROR] can't update guild member presence: user id "1080993250476839013" not cached
+[04/24/23 21:06:59] [WARNING] Unknown gateway event 'GUILD_MEMBERS_CHUNK'
+[04/24/23 21:07:26] [ERROR] can't update guild member presence: user id "1087039973431185488" not cached
+[04/24/23 21:07:52] [ERROR] can't update guild member presence: user id "947078785226924053" not cached
+[04/24/23 21:08:43] [ERROR] can't update guild member presence: user id "413249545775087618" not cached
+[04/24/23 21:09:04] [ERROR] can't update guild member presence: user id "413249545775087618" not cached
+[04/24/23 21:09:44] [ERROR] can't update guild member presence: user id "454597059539107851" not cached
+[04/24/23 21:09:49] [ERROR] can't update guild member presence: user id "454597059539107851" not cached
+[04/24/23 21:10:13] [ERROR] can't update guild member presence: user id "1087039973431185488" not cached
+[04/24/23 21:12:21] [ERROR] can't update guild member presence: user id "413249545775087618" not cached
+[04/24/23 21:12:43] [ERROR] can't update guild member presence: user id "886480916619354143" not cached
+[04/24/23 21:12:43] [ERROR] can't update guild member presence: user id "1003538187391598592" not cached
+[04/24/23 21:12:45] [ERROR] can't update guild member presence: user id "488649988721737758" not cached
+[04/24/23 21:12:48] [ERROR] can't update guild member presence: user id "413249545775087618" not cached
+[04/24/23 21:13:29] [ERROR] can't update guild member presence: user id "871359235877924947" not cached
+[04/24/23 21:14:03] [ERROR] can't update guild member presence: user id "947078785226924053" not cached
+[04/24/23 21:14:19] [ERROR] can't update guild member presence: user id "1003538187391598592" not cached
+[04/24/23 21:15:25] [ERROR] can't update guild member presence: user id "886480916619354143" not cached
+[04/24/23 21:16:03] [ERROR] can't update guild member presence: user id "1003538187391598592" not cached
+[04/24/23 21:16:54] [ERROR] can't update guild member presence: user id "871359235877924947" not cached
+[04/24/23 21:16:59] [ERROR] can't update guild member presence: user id "897152787622813736" not cached
+[04/24/23 21:17:17] [ERROR] can't remove guild member: user id "897152787622813736" not cached
+[04/24/23 21:19:10] [ERROR] can't update guild member presence: user id "769652614915686464" not cached
+[04/24/23 21:19:32] [ERROR] can't update guild member presence: user id "769652614915686464" not cached
+[04/24/23 21:19:37] [ERROR] can't update guild member presence: user id "769652614915686464" not cached
+[04/24/23 21:19:50] [ERROR] can't update guild member presence: user id "769652614915686464" not cached
+[04/24/23 21:21:22] [ERROR] can't update guild member presence: user id "1093891798788755496" not cached
+[04/24/23 21:22:07] [ERROR] can't update guild member presence: user id "413249545775087618" not cached
+[04/24/23 21:22:25] [ERROR] can't update guild member presence: user id "683987251587186697" not cached
+[04/24/23 21:23:06] [ERROR] can't update guild member presence: user id "453836189330571265" not cached
+[04/24/23 21:24:07] [ERROR] can't update guild member presence: user id "413249545775087618" not cached
+[04/24/23 21:25:08] [ERROR] can't update guild member presence: user id "683987251587186697" not cached
+[04/24/23 21:25:11] [ERROR] can't update guild member presence: user id "947078785226924053" not cached
+[04/24/23 21:26:53] [ERROR] can't update guild member presence: user id "1093891798788755496" not cached
+[04/24/23 21:26:56] [ERROR] can't update guild member presence: user id "905302567708397589" not cached
+[04/24/23 21:27:01] [ERROR] can't update guild member presence: user id "335434915715743745" not cached
+[04/24/23 21:27:23] [ERROR] can't update guild member presence: user id "413249545775087618" not cached
+[04/24/23 21:29:12] [ERROR] Error while retrieving HTTP POST response from '/api/v10/channels/1099961566549528656/messages': end of stream
+[04/24/23 21:29:23] [ERROR] can't update guild member presence: user id "413249545775087618" not cached
+[04/24/23 21:29:46] [ERROR] can't update guild member presence: user id "769652614915686464" not cached
+[04/24/23 21:29:48] [ERROR] can't update guild member presence: user id "866588114888556545" not cached
+[04/24/23 21:29:50] [ERROR] can't update guild member presence: user id "289410609894653972" not cached
+[04/24/23 21:29:51] [ERROR] can't update guild member presence: user id "769652614915686464" not cached
+[04/24/23 21:29:58] [ERROR] can't update guild member presence: user id "466230959918809089" not cached
+[04/24/23 21:31:49] [ERROR] can't update guild member presence: user id "866588114888556545" not cached
+[04/24/23 21:31:50] [ERROR] can't update guild member presence: user id "289410609894653972" not cached
+[04/24/23 21:32:18] [ERROR] can't update guild member presence: user id "335434915715743745" not cached
+[04/24/23 21:32:57] [ERROR] can't update guild member presence: user id "488649988721737758" not cached
+[04/24/23 21:32:59] [ERROR] can't update guild member presence: user id "466230959918809089" not cached
+[04/24/23 21:33:15] [ERROR] can't update guild member presence: user id "267584070374916096" not cached
+[04/24/23 21:34:18] [ERROR] can't update guild member presence: user id "947078785226924053" not cached
+[04/24/23 21:35:19] [ERROR] can't update guild member presence: user id "849943702030123029" not cached
+[04/24/23 21:35:20] [ERROR] can't update guild member presence: user id "267584070374916096" not cached
+[04/24/23 21:35:47] [ERROR] can't update guild member presence: user id "849943702030123029" not cached
+[04/24/23 21:36:13] [ERROR] can't update guild member presence: user id "339736212233256960" not cached
+[04/24/23 21:36:25] [ERROR] can't update guild member presence: user id "947078785226924053" not cached
+[04/24/23 21:37:58] [WARNING] Unknown gateway event 'GUILD_MEMBERS_CHUNK'
+[04/24/23 21:39:00] [ERROR] can't update guild member presence: user id "488649988721737758" not cached
+[04/24/23 21:41:00] [ERROR] can't update guild member presence: user id "488649988721737758" not cached
+[04/24/23 21:44:23] [ERROR] can't update guild member presence: user id "723925879427694592" not cached
+[04/24/23 21:46:19] [ERROR] can't update guild member presence: user id "289410609894653972" not cached
+[04/24/23 21:46:24] [ERROR] can't update guild member presence: user id "723925879427694592" not cached
+[04/24/23 21:48:19] [ERROR] can't update guild member presence: user id "289410609894653972" not cached
+[04/24/23 21:48:46] [ERROR] can't update guild member presence: user id "1093891798788755496" not cached
+[04/24/23 21:49:47] [ERROR] can't update guild member presence: user id "749649911238230099" not cached
+[04/24/23 21:50:04] [ERROR] can't update guild member presence: user id "973705217424109582" not cached
+[04/24/23 21:50:44] [ERROR] can't update guild member presence: user id "749649911238230099" not cached
+[04/24/23 21:51:01] [ERROR] Error while retrieving HTTP POST response from '/api/v10/channels/1099961566549528656/messages': end of stream
+[04/24/23 21:52:04] [ERROR] can't update guild member presence: user id "973705217424109582" not cached
+[04/24/23 21:52:16] [ERROR] can't update guild member presence: user id "923049181529137212" not cached
+[04/24/23 21:53:21] [ERROR] can't update guild member presence: user id "923049181529137212" not cached
+[04/24/23 21:53:31] [ERROR] can't update guild member presence: user id "749649911238230099" not cached
+[04/24/23 21:53:35] [ERROR] can't update guild member presence: user id "749649911238230099" not cached
+[04/24/23 21:54:28] [ERROR] can't update guild member presence: user id "1093891798788755496" not cached
+[04/24/23 21:54:32] [ERROR] can't update guild member presence: user id "297038019297542145" not cached
+[04/24/23 21:54:37] [ERROR] can't update guild member presence: user id "749649911238230099" not cached
+[04/24/23 21:55:35] [ERROR] can't update guild member presence: user id "749649911238230099" not cached
+[04/24/23 21:55:39] [ERROR] can't update guild member presence: user id "749649911238230099" not cached
+[04/24/23 21:55:56] [ERROR] can't update guild member presence: user id "749649911238230099" not cached
+[04/24/23 21:56:13] [ERROR] can't update guild member presence: user id "1037751193369317456" not cached
+[04/24/23 21:57:17] [ERROR] can't update guild member presence: user id "297038019297542145" not cached
+[04/24/23 21:58:13] [ERROR] can't update guild member presence: user id "1037751193369317456" not cached
+[04/24/23 21:58:36] [ERROR] can't update guild member presence: user id "923049181529137212" not cached
+[04/24/23 21:58:47] [ERROR] can't update guild member presence: user id "749649911238230099" not cached
+[04/24/23 22:00:32] [ERROR] can't update guild member presence: user id "749649911238230099" not cached
+[04/24/23 22:01:05] [ERROR] can't update guild member presence: user id "473681829803851789" not cached
+[04/24/23 22:01:09] [ERROR] can't update guild member presence: user id "473681829803851789" not cached
+[04/24/23 22:01:49] [ERROR] can't update guild member presence: user id "893150749146624090" not cached
+[04/24/23 22:02:26] [ERROR] can't update guild member presence: user id "1093891798788755496" not cached
+[04/24/23 22:02:58] [ERROR] can't update guild member presence: user id "473681829803851789" not cached
+[04/24/23 22:07:20] [ERROR] can't update guild member presence: user id "769652614915686464" not cached
+[04/24/23 22:08:07] [ERROR] can't update guild member presence: user id "1093891798788755496" not cached
+[04/24/23 22:08:34] [ERROR] can't update guild member presence: user id "769652614915686464" not cached
+[04/24/23 22:09:57] [ERROR] can't update guild member presence: user id "769652614915686464" not cached
+[04/24/23 22:10:32] [ERROR] can't update guild member presence: user id "769652614915686464" not cached
+[04/24/23 22:11:14] [ERROR] can't update guild member presence: user id "893150749146624090" not cached
+[04/24/23 22:11:37] [ERROR] Can't write to Discord websocket gateway: The I/O operation has been aborted because of either a thread exit or an application request (995)
+[04/24/23 22:11:38] [ERROR] Error while retrieving HTTP GET response from '/api/oauth2/applications/@me': end of stream
+[04/24/23 22:12:30] [ERROR] can't update guild member presence: user id "769652614915686464" not cached
+[04/24/23 22:12:54] [ERROR] can't update guild member presence: user id "749649911238230099" not cached
+[04/24/23 22:14:30] [ERROR] can't update guild member presence: user id "769652614915686464" not cached
+[04/24/23 22:14:38] [ERROR] can't update guild member presence: user id "683987251587186697" not cached
+[04/24/23 22:16:25] [ERROR] can't update guild member presence: user id "769652614915686464" not cached
+[04/24/23 22:16:36] [ERROR] can't update guild member presence: user id "886480916619354143" not cached
+[04/24/23 22:17:07] [ERROR] can't update guild member presence: user id "683987251587186697" not cached
+[04/24/23 22:17:10] [ERROR] can't update guild member presence: user id "742757353740435596" not cached
+[04/24/23 22:18:16] [ERROR] can't update guild member presence: user id "297038019297542145" not cached
+[04/24/23 22:18:59] [ERROR] can't update guild member presence: user id "769652614915686464" not cached
+[04/24/23 22:19:46] [ERROR] can't update guild member presence: user id "886480916619354143" not cached
+[04/24/23 22:20:07] [ERROR] can't update guild member presence: user id "413249545775087618" not cached
+[04/24/23 22:20:18] [ERROR] can't update guild member presence: user id "742757353740435596" not cached
+[04/24/23 22:22:07] [ERROR] can't update guild member presence: user id "413249545775087618" not cached
+[04/24/23 22:24:39] [ERROR] can't update guild member presence: user id "753935454897832048" not cached
+[04/24/23 22:24:56] [ERROR] can't update guild member presence: user id "749649911238230099" not cached
+[04/24/23 22:25:45] [ERROR] can't update guild member presence: user id "769652614915686464" not cached
+[04/24/23 22:25:53] [ERROR] can't update guild member presence: user id "749649911238230099" not cached
+[04/24/23 22:25:58] [ERROR] can't update guild member presence: user id "769652614915686464" not cached
+[04/24/23 22:25:59] [ERROR] can't update guild member presence: user id "753935454897832048" not cached
+[04/24/23 22:27:50] [ERROR] can't update guild member presence: user id "709925264775446600" not cached
+[04/24/23 22:30:02] [ERROR] can't update guild member presence: user id "297038019297542145" not cached
+[04/24/23 22:30:39] [ERROR] can't update guild member presence: user id "709925264775446600" not cached
+[04/24/23 22:31:29] [ERROR] can't update guild member presence: user id "416167220452917248" not cached
+[04/24/23 22:31:33] [ERROR] can't update guild member presence: user id "769652614915686464" not cached
+[04/24/23 22:32:24] [ERROR] can't update guild member presence: user id "769652614915686464" not cached
+[04/24/23 22:33:01] [ERROR] can't update guild member presence: user id "1037751193369317456" not cached
+[04/24/23 23:06:45] [WARNING] Unknown gateway event 'GUILD_MEMBERS_CHUNK'
+[04/24/23 23:07:38] [ERROR] can't update guild member presence: user id "683987251587186697" not cached
+[04/24/23 23:07:41] [ERROR] can't update guild member presence: user id "973705217424109582" not cached
+[04/24/23 23:08:38] [WARNING] Unknown gateway event 'GUILD_MEMBERS_CHUNK'
+[04/24/23 23:09:31] [ERROR] can't update guild member presence: user id "871359235877924947" not cached
+[04/24/23 23:09:33] [ERROR] can't update guild member presence: user id "871359235877924947" not cached
+[04/24/23 23:12:52] [ERROR] can't update guild member presence: user id "488649988721737758" not cached
+[04/24/23 23:13:42] [ERROR] can't update guild member presence: user id "303372593996627968" not cached
+[04/24/23 23:14:39] [ERROR] can't update guild member presence: user id "303372593996627968" not cached
+[04/24/23 23:14:41] [ERROR] can't update guild member presence: user id "303372593996627968" not cached
+[04/24/23 23:14:55] [ERROR] can't update guild member presence: user id "303372593996627968" not cached
+[04/24/23 23:15:10] [ERROR] can't update guild member presence: user id "303372593996627968" not cached
+[04/24/23 23:15:25] [ERROR] can't update guild member presence: user id "303372593996627968" not cached
+[04/24/23 23:15:40] [ERROR] can't update guild member presence: user id "303372593996627968" not cached
+[04/24/23 23:15:55] [ERROR] can't update guild member presence: user id "303372593996627968" not cached
+[04/24/23 23:16:25] [ERROR] can't update guild member presence: user id "303372593996627968" not cached
+[04/24/23 23:17:07] [ERROR] can't update guild member presence: user id "488649988721737758" not cached
+[04/24/23 23:17:25] [ERROR] can't update guild member presence: user id "303372593996627968" not cached
+[04/24/23 23:18:25] [ERROR] can't update guild member presence: user id "303372593996627968" not cached
+[04/24/23 23:18:40] [ERROR] can't update guild member presence: user id "303372593996627968" not cached
+[04/24/23 23:18:42] [ERROR] can't update guild member presence: user id "478534384899588096" not cached
+[04/24/23 23:19:40] [ERROR] can't update guild member presence: user id "303372593996627968" not cached
+[04/24/23 23:19:55] [ERROR] can't update guild member presence: user id "303372593996627968" not cached
+[04/24/23 23:20:41] [ERROR] can't update guild member presence: user id "303372593996627968" not cached
+[04/24/23 23:20:56] [ERROR] can't update guild member presence: user id "303372593996627968" not cached
+[04/24/23 23:21:11] [ERROR] can't update guild member presence: user id "303372593996627968" not cached
+[04/24/23 23:22:11] [ERROR] can't update guild member presence: user id "303372593996627968" not cached
+[04/24/23 23:22:12] [ERROR] can't update guild member presence: user id "1003538187391598592" not cached
+[04/24/23 23:22:26] [ERROR] can't update guild member presence: user id "303372593996627968" not cached
+[04/24/23 23:23:11] [ERROR] can't update guild member presence: user id "303372593996627968" not cached
+[04/24/23 23:23:15] [ERROR] can't update guild member presence: user id "288182862509899786" not cached
+[04/24/23 23:23:20] [ERROR] can't update guild member presence: user id "288182862509899786" not cached
+[04/24/23 23:23:41] [ERROR] can't update guild member presence: user id "303372593996627968" not cached
+[04/24/23 23:23:56] [ERROR] can't update guild member presence: user id "303372593996627968" not cached
+[04/24/23 23:24:06] [ERROR] can't update guild member presence: user id "1003538187391598592" not cached
+[04/24/23 23:24:41] [ERROR] can't update guild member presence: user id "303372593996627968" not cached
+[04/24/23 23:25:11] [ERROR] can't update guild member presence: user id "303372593996627968" not cached
+[04/24/23 23:25:12] [ERROR] can't update guild member presence: user id "289410609894653972" not cached
+[04/24/23 23:25:26] [ERROR] can't update guild member presence: user id "303372593996627968" not cached
+[04/24/23 23:26:06] [ERROR] can't update guild member presence: user id "1003538187391598592" not cached
+[04/24/23 23:26:11] [ERROR] can't update guild member presence: user id "303372593996627968" not cached
+[04/24/23 23:26:26] [ERROR] can't update guild member presence: user id "303372593996627968" not cached
+[04/24/23 23:26:41] [ERROR] can't update guild member presence: user id "303372593996627968" not cached
+[04/24/23 23:27:12] [ERROR] can't update guild member presence: user id "289410609894653972" not cached
+[04/24/23 23:27:20] [ERROR] can't update guild member presence: user id "1003538187391598592" not cached
+[04/24/23 23:27:25] [ERROR] can't update guild member presence: user id "1003538187391598592" not cached
+[04/24/23 23:27:27] [ERROR] can't update guild member presence: user id "303372593996627968" not cached
+[04/24/23 23:27:44] [ERROR] can't update guild member presence: user id "769652614915686464" not cached
+[04/24/23 23:27:57] [ERROR] can't update guild member presence: user id "303372593996627968" not cached
+[04/24/23 23:28:42] [ERROR] can't update guild member presence: user id "303372593996627968" not cached
+[04/24/23 23:28:56] [ERROR] can't update guild member presence: user id "478534384899588096" not cached
+[04/24/23 23:28:57] [ERROR] can't update guild member presence: user id "1003538187391598592" not cached
+[04/24/23 23:28:57] [ERROR] can't update guild member presence: user id "303372593996627968" not cached
+[04/24/23 23:29:04] [ERROR] can't update guild member presence: user id "769652614915686464" not cached
+[04/24/23 23:29:27] [ERROR] can't update guild member presence: user id "303372593996627968" not cached
+[04/24/23 23:29:57] [ERROR] can't update guild member presence: user id "303372593996627968" not cached
+[04/24/23 23:30:12] [ERROR] can't update guild member presence: user id "303372593996627968" not cached
+[04/24/23 23:30:20] [ERROR] can't update guild member presence: user id "1003538187391598592" not cached
+[04/24/23 23:30:27] [ERROR] can't update guild member presence: user id "266221787212283906" not cached
+[04/24/23 23:30:50] [ERROR] can't update guild member presence: user id "266221787212283906" not cached
+[04/24/23 23:31:42] [ERROR] can't update guild member presence: user id "303372593996627968" not cached
+[04/24/23 23:32:27] [ERROR] can't update guild member presence: user id "303372593996627968" not cached
+[04/24/23 23:33:27] [ERROR] can't update guild member presence: user id "303372593996627968" not cached
+[04/24/23 23:33:58] [ERROR] can't update guild member presence: user id "303372593996627968" not cached
+[04/24/23 23:34:28] [ERROR] can't update guild member presence: user id "303372593996627968" not cached
+[04/24/23 23:34:43] [ERROR] can't update guild member presence: user id "303372593996627968" not cached
+[04/24/23 23:34:53] [ERROR] can't update guild member presence: user id "1003538187391598592" not cached
+[04/24/23 23:34:58] [ERROR] can't update guild member presence: user id "303372593996627968" not cached
+[04/24/23 23:35:28] [ERROR] can't update guild member presence: user id "303372593996627968" not cached
+[04/24/23 23:35:43] [ERROR] can't update guild member presence: user id "303372593996627968" not cached
+[04/24/23 23:35:53] [ERROR] can't update guild member presence: user id "769652614915686464" not cached
+[04/24/23 23:35:54] [ERROR] can't update guild member presence: user id "297038019297542145" not cached
+[04/24/23 23:36:28] [ERROR] can't update guild member presence: user id "303372593996627968" not cached
+[04/24/23 23:36:28] [ERROR] can't update guild member presence: user id "769652614915686464" not cached
+[04/24/23 23:36:43] [ERROR] can't update guild member presence: user id "303372593996627968" not cached
+[04/24/23 23:36:58] [ERROR] can't update guild member presence: user id "303372593996627968" not cached
+[04/24/23 23:37:28] [ERROR] can't update guild member presence: user id "303372593996627968" not cached
+[04/24/23 23:37:34] [ERROR] can't update guild member presence: user id "769652614915686464" not cached
+[04/24/23 23:37:39] [ERROR] can't update guild member presence: user id "769652614915686464" not cached
+[04/24/23 23:37:43] [ERROR] can't update guild member presence: user id "303372593996627968" not cached
+[04/24/23 23:38:17] [ERROR] can't update guild member presence: user id "530206000029106179" not cached
+[04/24/23 23:38:35] [ERROR] can't update guild member presence: user id "769652614915686464" not cached
+[04/24/23 23:38:35] [ERROR] can't update guild member presence: user id "769652614915686464" not cached
+[04/24/23 23:38:58] [ERROR] can't update guild member presence: user id "303372593996627968" not cached
+[04/24/23 23:39:13] [ERROR] can't update guild member presence: user id "303372593996627968" not cached
+[04/24/23 23:39:28] [ERROR] can't update guild member presence: user id "303372593996627968" not cached
+[04/24/23 23:39:43] [ERROR] can't update guild member presence: user id "303372593996627968" not cached
+[04/24/23 23:40:03] [ERROR] can't update guild member presence: user id "1003538187391598592" not cached
+[04/24/23 23:40:13] [ERROR] can't update guild member presence: user id "303372593996627968" not cached
+[04/24/23 23:40:29] [ERROR] can't update guild member presence: user id "303372593996627968" not cached
+[04/24/23 23:41:29] [ERROR] can't update guild member presence: user id "303372593996627968" not cached
+[04/24/23 23:41:52] [ERROR] can't update guild member presence: user id "530206000029106179" not cached
+[04/24/23 23:42:03] [ERROR] can't update guild member presence: user id "1003538187391598592" not cached
+[04/24/23 23:42:12] [ERROR] can't update guild member presence: user id "530206000029106179" not cached
+[04/24/23 23:42:14] [ERROR] can't update guild member presence: user id "303372593996627968" not cached
+[04/24/23 23:42:16] [ERROR] can't update guild member presence: user id "1003538187391598592" not cached
+[04/24/23 23:42:29] [ERROR] can't update guild member presence: user id "303372593996627968" not cached
+[04/24/23 23:42:40] [ERROR] can't update guild member presence: user id "1003538187391598592" not cached
+[04/24/23 23:42:42] [ERROR] can't update guild member presence: user id "1003538187391598592" not cached
+[04/24/23 23:42:44] [ERROR] can't update guild member presence: user id "303372593996627968" not cached
+[04/24/23 23:42:45] [ERROR] can't update guild member presence: user id "1003538187391598592" not cached
+[04/24/23 23:46:36] [WARNING] Unknown gateway event 'GUILD_MEMBERS_CHUNK'
+[04/24/23 23:47:19] [ERROR] can't update guild member presence: user id "711541799096942632" not cached
+[04/24/23 23:47:32] [ERROR] can't update guild member presence: user id "711541799096942632" not cached
+[04/24/23 23:47:52] [ERROR] can't update guild member presence: user id "711541799096942632" not cached
+[04/24/23 23:48:15] [WARNING] Unknown gateway event 'GUILD_MEMBERS_CHUNK'
+[04/24/23 23:49:11] [WARNING] Unknown gateway event 'GUILD_MEMBERS_CHUNK'
+[04/24/23 23:52:21] [ERROR] can't update guild member presence: user id "797426087679492126" not cached
+[04/25/23 00:00:12] [WARNING] Unknown gateway event 'GUILD_MEMBERS_CHUNK'
+[04/25/23 00:04:02] [ERROR] can't update guild member presence: user id "1012201537143058514" not cached
+[04/25/23 00:04:12] [ERROR] can't update guild member presence: user id "1012201537143058514" not cached
+[04/25/23 00:04:25] [WARNING] Unknown gateway event 'GUILD_MEMBERS_CHUNK'
+[04/25/23 00:06:06] [ERROR] can't update guild member presence: user id "288182862509899786" not cached
+[04/25/23 00:07:44] [WARNING] Unknown gateway event 'GUILD_MEMBERS_CHUNK'
+[04/25/23 00:10:01] [WARNING] Unknown gateway event 'GUILD_MEMBERS_CHUNK'
+[04/25/23 00:11:16] [ERROR] can't update guild member presence: user id "1003889436720898058" not cached
+[04/25/23 00:11:38] [ERROR] can't update guild member presence: user id "1003889436720898058" not cached
+[04/25/23 00:12:22] [ERROR] can't update guild member presence: user id "1003889436720898058" not cached
+[04/25/23 00:12:45] [ERROR] can't update guild member presence: user id "1003889436720898058" not cached
+[04/25/23 00:17:05] [ERROR] can't update guild member presence: user id "1003889436720898058" not cached
+[04/25/23 00:18:13] [ERROR] can't update guild member presence: user id "1003889436720898058" not cached
+[04/25/23 00:20:16] [ERROR] can't update guild member presence: user id "1080993250476839013" not cached
+[04/25/23 00:20:21] [ERROR] can't update guild member presence: user id "1080993250476839013" not cached
+[04/25/23 00:20:40] [ERROR] can't update guild member presence: user id "1003889436720898058" not cached
+[04/25/23 00:21:40] [ERROR] can't update guild member presence: user id "515549942962716728" not cached
+[04/25/23 00:22:20] [ERROR] can't update guild member presence: user id "1003889436720898058" not cached
+[04/25/23 00:22:34] [ERROR] can't update guild member presence: user id "1008392082202828840" not cached
+[04/25/23 00:23:32] [ERROR] can't update guild member presence: user id "769652614915686464" not cached
+[04/25/23 00:23:53] [ERROR] can't update guild member presence: user id "769652614915686464" not cached
+[04/25/23 00:24:21] [ERROR] can't update guild member presence: user id "515549942962716728" not cached
+[04/25/23 00:24:41] [ERROR] can't update guild member presence: user id "1003889436720898058" not cached
+[04/25/23 00:25:05] [ERROR] can't update guild member presence: user id "297038019297542145" not cached
+[04/25/23 00:26:58] [ERROR] can't update guild member presence: user id "330487110685556746" not cached
+[04/25/23 00:26:59] [ERROR] can't update guild member presence: user id "288182862509899786" not cached
+[04/25/23 00:27:06] [ERROR] can't update guild member presence: user id "515549942962716728" not cached
+[04/25/23 00:27:08] [ERROR] can't update guild member presence: user id "429652475180744705" not cached
+[04/25/23 00:27:14] [ERROR] can't update guild member presence: user id "1008392082202828840" not cached
+[04/25/23 00:27:14] [ERROR] can't update guild member: user id "1008392082202828840" not cached
+[04/25/23 00:27:15] [ERROR] can't update guild member presence: user id "1003889436720898058" not cached
+[04/25/23 00:27:20] [ERROR] can't update guild member presence: user id "1008392082202828840" not cached
+[04/25/23 00:27:45] [ERROR] can't update guild member presence: user id "1003889436720898058" not cached
+[04/25/23 00:27:46] [ERROR] can't update guild member presence: user id "297038019297542145" not cached
+[04/25/23 00:27:55] [ERROR] can't update guild member presence: user id "515549942962716728" not cached
+[04/25/23 00:29:25] [ERROR] can't update guild member presence: user id "1008392082202828840" not cached
+[04/25/23 00:30:41] [ERROR] can't update guild member presence: user id "1003889436720898058" not cached
+[04/25/23 00:32:19] [ERROR] can't update guild member presence: user id "1003889436720898058" not cached
+[04/25/23 00:32:20] [ERROR] can't update guild member presence: user id "1003889436720898058" not cached
+[04/25/23 00:36:30] [WARNING] Unknown gateway event 'GUILD_MEMBERS_CHUNK'
+[04/25/23 00:36:33] [ERROR] can't update guild member presence: user id "874629187191848971" not cached
+[04/25/23 00:36:33] [ERROR] can't update guild member: user id "874629187191848971" not cached
+[04/25/23 00:37:24] [WARNING] Unknown gateway event 'GUILD_MEMBERS_CHUNK'
+[04/25/23 10:18:22] [WARNING] Unknown gateway event 'GUILD_MEMBERS_CHUNK'
+[04/25/23 10:22:10] [ERROR] can't update guild member presence: user id "557512799064948766" not cached
+[04/25/23 10:22:28] [ERROR] can't update guild member presence: user id "557512799064948766" not cached
+[04/25/23 10:26:42] [ERROR] can't update guild member presence: user id "530206000029106179" not cached
+[04/25/23 10:26:57] [ERROR] can't update guild member presence: user id "530206000029106179" not cached
+[04/25/23 10:27:28] [ERROR] can't update guild member presence: user id "413577220234280970" not cached
+[04/25/23 10:28:04] [ERROR] can't update guild member presence: user id "413577220234280970" not cached
+[04/25/23 10:28:34] [ERROR] can't update guild member presence: user id "630656828769959936" not cached
+[04/25/23 10:28:42] [ERROR] can't update guild member presence: user id "530206000029106179" not cached
+[04/25/23 10:28:49] [ERROR] can't update guild member presence: user id "574799029318451200" not cached
+[04/25/23 10:29:37] [ERROR] can't update guild member presence: user id "454597059539107851" not cached
+[04/25/23 10:29:41] [ERROR] can't update guild member presence: user id "413577220234280970" not cached
+[04/25/23 10:29:56] [ERROR] can't update guild member presence: user id "557512799064948766" not cached
+[04/25/23 10:30:30] [ERROR] can't update guild member presence: user id "557512799064948766" not cached
+[04/25/23 10:31:15] [ERROR] can't update guild member presence: user id "454597059539107851" not cached
+[04/25/23 10:31:16] [ERROR] can't update guild member presence: user id "454597059539107851" not cached
+[04/25/23 10:31:18] [ERROR] can't update guild member presence: user id "454597059539107851" not cached
+[04/25/23 10:31:19] [ERROR] can't update guild member presence: user id "454597059539107851" not cached
+[04/25/23 10:31:21] [ERROR] can't update guild member presence: user id "454597059539107851" not cached
+[04/25/23 10:31:35] [ERROR] can't update guild member presence: user id "724830363385593909" not cached
+[04/25/23 10:31:39] [ERROR] can't update guild member presence: user id "724830363385593909" not cached
+[04/25/23 10:32:05] [ERROR] can't update guild member presence: user id "630656828769959936" not cached
+[04/25/23 10:32:05] [ERROR] can't update guild member presence: user id "574799029318451200" not cached
+[04/25/23 10:32:34] [ERROR] can't update guild member presence: user id "749649911238230099" not cached
+[04/25/23 10:33:16] [ERROR] can't update guild member presence: user id "645855224866799626" not cached
+[04/25/23 10:33:18] [ERROR] can't update guild member presence: user id "454597059539107851" not cached
+[04/25/23 10:33:20] [ERROR] can't update guild member presence: user id "749649911238230099" not cached
+[04/25/23 10:33:36] [ERROR] can't update guild member presence: user id "488649988721737758" not cached
+[04/25/23 10:33:45] [ERROR] can't update guild member presence: user id "749649911238230099" not cached
+[04/25/23 10:34:29] [ERROR] can't update guild member presence: user id "413577220234280970" not cached
+[04/25/23 10:34:47] [ERROR] can't update guild member presence: user id "557512799064948766" not cached
+[04/25/23 10:34:48] [ERROR] can't update guild member presence: user id "557512799064948766" not cached
+[04/25/23 10:34:49] [ERROR] can't update guild member presence: user id "557512799064948766" not cached
+[04/25/23 10:35:14] [ERROR] can't update guild member presence: user id "749649911238230099" not cached
+[04/25/23 10:35:27] [ERROR] can't update guild member presence: user id "557512799064948766" not cached
+[04/25/23 10:35:56] [ERROR] can't update guild member presence: user id "1087039973431185488" not cached
+[04/25/23 10:36:22] [ERROR] can't update guild member presence: user id "574799029318451200" not cached
+[04/25/23 10:36:29] [ERROR] can't update guild member presence: user id "413577220234280970" not cached
+[04/25/23 10:36:47] [ERROR] can't update guild member presence: user id "749649911238230099" not cached
+[04/25/23 10:36:55] [ERROR] can't update guild member presence: user id "574799029318451200" not cached
+[04/25/23 10:37:11] [ERROR] can't update guild member presence: user id "488649988721737758" not cached
+[04/25/23 10:37:38] [ERROR] can't update guild member presence: user id "645855224866799626" not cached
+[04/25/23 10:39:54] [ERROR] can't update guild member presence: user id "465576302892810250" not cached
+[04/25/23 10:41:10] [ERROR] can't update guild member presence: user id "973705217424109582" not cached
+[04/25/23 10:41:58] [ERROR] can't update guild member presence: user id "1089431869407367241" not cached
+[04/25/23 10:42:17] [ERROR] can't update guild member presence: user id "1087039973431185488" not cached
+[04/25/23 10:42:42] [ERROR] can't update guild member presence: user id "973705217424109582" not cached
+[04/25/23 10:44:18] [ERROR] can't update guild member presence: user id "434927556911824897" not cached
+[04/25/23 10:45:52] [ERROR] can't update guild member presence: user id "749649911238230099" not cached
+[04/25/23 10:45:52] [ERROR] can't update guild member presence: user id "749649911238230099" not cached
+[04/25/23 10:45:53] [ERROR] can't update guild member presence: user id "973705217424109582" not cached
+[04/25/23 10:45:58] [ERROR] can't update guild member presence: user id "973705217424109582" not cached
+[04/25/23 10:46:00] [ERROR] can't update guild member presence: user id "973705217424109582" not cached
+[04/25/23 10:46:41] [ERROR] can't update guild member presence: user id "886480916619354143" not cached
+[04/25/23 10:46:42] [ERROR] can't update guild member presence: user id "434927556911824897" not cached
+[04/25/23 10:47:01] [ERROR] can't update guild member presence: user id "973705217424109582" not cached
+[04/25/23 10:47:53] [ERROR] can't remove guild member: user id "886480916619354143" not cached
+[04/26/23 22:39:46] [ERROR] Discord terminated websocket connection; reason: Disallowed intent(s). (4014)
+[04/26/23 22:39:46] [ERROR] Can't write to Discord websocket gateway: The I/O operation has been aborted because of either a thread exit or an application request (995)
+[04/26/23 22:40:15] [ERROR] Can't write to Discord websocket gateway: The I/O operation has been aborted because of either a thread exit or an application request (995)
+[04/26/23 22:40:27] [ERROR] Can't write to Discord websocket gateway: The I/O operation has been aborted because of either a thread exit or an application request (995)
+[04/26/23 22:41:12] [WARNING] Unknown gateway event 'GUILD_MEMBERS_CHUNK'
+[04/26/23 22:43:08] [ERROR] can't update guild member presence: user id "1080993250476839013" not cached
+[04/26/23 22:44:37] [ERROR] can't update guild member presence: user id "724830363385593909" not cached
+[04/26/23 22:44:40] [ERROR] can't update guild member presence: user id "724830363385593909" not cached
+[04/26/23 22:45:04] [ERROR] can't update guild member presence: user id "724830363385593909" not cached
+[04/26/23 22:45:06] [ERROR] can't update guild member presence: user id "724830363385593909" not cached
+[04/26/23 22:45:34] [ERROR] can't update guild member presence: user id "585705431897210880" not cached
+[04/26/23 22:45:35] [ERROR] can't update guild member presence: user id "685064204285247494" not cached
+[04/26/23 22:45:47] [ERROR] can't update guild member presence: user id "685064204285247494" not cached
+[04/26/23 22:47:03] [ERROR] can't update guild member presence: user id "1003538187391598592" not cached
+[04/26/23 22:47:39] [ERROR] can't update guild member presence: user id "1080993250476839013" not cached
+[04/26/23 22:48:06] [ERROR] can't update guild member presence: user id "1003538187391598592" not cached
+[04/26/23 22:48:10] [ERROR] can't update guild member presence: user id "729331349277769781" not cached
+[04/26/23 22:48:39] [WARNING] Unknown gateway event 'GUILD_MEMBERS_CHUNK'
+[04/26/23 22:50:31] [WARNING] Unknown gateway event 'GUILD_MEMBERS_CHUNK'
+[04/26/23 22:50:54] [ERROR] can't update guild member presence: user id "429652475180744705" not cached
+[04/26/23 22:51:56] [ERROR] can't update guild member presence: user id "723925879427694592" not cached
+[04/26/23 22:53:40] [ERROR] can't update guild member presence: user id "374090536073560065" not cached
+[04/26/23 22:53:43] [ERROR] can't update guild member presence: user id "374090536073560065" not cached
+[04/26/23 22:53:44] [ERROR] can't update guild member presence: user id "374090536073560065" not cached
+[04/26/23 22:53:56] [ERROR] can't update guild member presence: user id "723925879427694592" not cached
+[04/26/23 22:54:00] [ERROR] can't update guild member presence: user id "374090536073560065" not cached
+[04/26/23 22:54:18] [ERROR] can't update guild member presence: user id "454597059539107851" not cached
+[04/26/23 22:55:12] [ERROR] can't update guild member presence: user id "374090536073560065" not cached
+[04/26/23 22:55:30] [ERROR] can't update guild member presence: user id "374090536073560065" not cached
+[04/26/23 22:56:13] [ERROR] can't update guild member presence: user id "374090536073560065" not cached
+[04/26/23 22:56:46] [ERROR] can't update guild member presence: user id "374090536073560065" not cached
+[04/26/23 22:57:06] [ERROR] can't update guild member presence: user id "454597059539107851" not cached
+[04/26/23 22:59:25] [ERROR] can't update guild member presence: user id "723925879427694592" not cached
+[04/26/23 23:00:50] [ERROR] can't update guild member presence: user id "1003538187391598592" not cached
+[04/26/23 23:01:19] [ERROR] can't update guild member presence: user id "685064204285247494" not cached
+[04/26/23 23:01:21] [ERROR] can't update guild member presence: user id "685064204285247494" not cached
+[04/26/23 23:02:43] [ERROR] can't update guild member presence: user id "1003538187391598592" not cached
+[04/26/23 23:03:20] [ERROR] can't update guild member presence: user id "685064204285247494" not cached
+[04/26/23 23:04:18] [ERROR] can't update guild member presence: user id "1003538187391598592" not cached
+[04/26/23 23:04:19] [ERROR] can't update guild member presence: user id "683987251587186697" not cached
+[04/26/23 23:04:51] [ERROR] can't update guild member presence: user id "630656828769959936" not cached
+[04/26/23 23:05:14] [ERROR] can't update guild member presence: user id "1100448652335525970" not cached
+[04/26/23 23:06:25] [ERROR] can't update guild member presence: user id "683987251587186697" not cached
+[04/26/23 23:06:39] [ERROR] can't update guild member presence: user id "645855224866799626" not cached
+[04/26/23 23:07:33] [ERROR] can't update guild member presence: user id "1100448652335525970" not cached
+[04/26/23 23:08:40] [ERROR] can't update guild member presence: user id "645855224866799626" not cached
+[04/26/23 23:09:19] [ERROR] can't update guild member presence: user id "683987251587186697" not cached
+[04/26/23 23:09:20] [ERROR] can't update guild member presence: user id "630656828769959936" not cached
+[04/26/23 23:11:19] [ERROR] can't update guild member presence: user id "683987251587186697" not cached
+[04/26/23 23:11:43] [ERROR] can't update guild member presence: user id "711541799096942632" not cached
+[04/26/23 23:12:53] [ERROR] can't update guild member presence: user id "723925879427694592" not cached
+[04/26/23 23:13:04] [ERROR] can't update guild member presence: user id "723925879427694592" not cached
+[04/26/23 23:13:43] [ERROR] can't update guild member presence: user id "711541799096942632" not cached
+[04/26/23 23:14:10] [ERROR] can't update guild member presence: user id "374090536073560065" not cached
+[04/26/23 23:14:30] [ERROR] can't update guild member presence: user id "374090536073560065" not cached
+[04/26/23 23:15:09] [ERROR] can't update guild member presence: user id "861927802336313354" not cached
+[04/26/23 23:15:16] [ERROR] can't update guild member presence: user id "374090536073560065" not cached
+[04/26/23 23:15:26] [ERROR] can't update guild member presence: user id "374090536073560065" not cached
+[04/26/23 23:15:35] [ERROR] can't update guild member presence: user id "374090536073560065" not cached
+[04/26/23 23:16:01] [ERROR] can't update guild member presence: user id "374090536073560065" not cached
+[04/26/23 23:16:08] [ERROR] can't update guild member presence: user id "374090536073560065" not cached
+[04/26/23 23:16:17] [ERROR] can't update guild member presence: user id "374090536073560065" not cached
+[04/26/23 23:19:20] [ERROR] can't update guild member presence: user id "1100448652335525970" not cached
+[04/26/23 23:19:38] [ERROR] can't update guild member presence: user id "1100448652335525970" not cached
+[04/26/23 23:20:10] [ERROR] can't update guild member presence: user id "861927802336313354" not cached
+[04/26/23 23:20:16] [ERROR] can't update guild member presence: user id "1037751193369317456" not cached
+[04/26/23 23:21:05] [ERROR] can't update guild member presence: user id "374090536073560065" not cached
+[04/26/23 23:22:12] [ERROR] can't update guild member presence: user id "729331349277769781" not cached
+[04/26/23 23:23:10] [ERROR] can't update guild member presence: user id "630656828769959936" not cached
+[04/26/23 23:23:50] [ERROR] can't update guild member presence: user id "1037751193369317456" not cached
+[04/26/23 23:24:15] [ERROR] can't update guild member presence: user id "1037751193369317456" not cached
+[04/26/23 23:24:16] [ERROR] can't update guild member presence: user id "729331349277769781" not cached
+[04/26/23 23:25:10] [ERROR] can't update guild member presence: user id "630656828769959936" not cached
+[04/26/23 23:25:27] [ERROR] can't update guild member presence: user id "683987251587186697" not cached
+[04/26/23 23:26:12] [ERROR] can't update guild member presence: user id "861927802336313354" not cached
+[09/27/23 04:28:30] [WARNING] Unknown gateway event 'GUILD_MEMBERS_CHUNK'
+[09/27/23 04:29:19] [WARNING] Unknown gateway event 'GUILD_MEMBERS_CHUNK'
+[09/27/23 04:30:05] [ERROR] can't update guild member presence: user id "880057771347836978" not cached
+[09/27/23 04:31:12] [ERROR] can't update guild member presence: user id "760437874050334740" not cached
+[09/27/23 04:31:29] [ERROR] can't update guild member presence: user id "760437874050334740" not cached
+[09/27/23 04:31:50] [ERROR] can't update guild member presence: user id "760437874050334740" not cached
+[09/27/23 04:31:50] [ERROR] can't update guild member presence: user id "760437874050334740" not cached
+[09/27/23 04:31:51] [ERROR] can't update guild member presence: user id "760437874050334740" not cached
+[09/27/23 04:32:12] [ERROR] can't update guild member presence: user id "760437874050334740" not cached
+[09/27/23 04:32:12] [ERROR] can't update guild member presence: user id "760437874050334740" not cached
+[09/27/23 04:32:12] [ERROR] can't update guild member presence: user id "760437874050334740" not cached
+[09/27/23 04:32:17] [ERROR] can't update guild member presence: user id "760437874050334740" not cached
+[09/27/23 04:32:23] [ERROR] can't update guild member presence: user id "760437874050334740" not cached
+[09/27/23 04:32:32] [ERROR] can't update guild member presence: user id "760437874050334740" not cached
+[09/27/23 04:33:29] [ERROR] can't update guild member presence: user id "760437874050334740" not cached
+[09/27/23 04:33:33] [ERROR] can't update guild member presence: user id "760437874050334740" not cached
+[09/27/23 04:33:33] [ERROR] can't update guild member: user id "760437874050334740" not cached
+[09/27/23 04:36:56] [WARNING] Unknown gateway event 'GUILD_MEMBERS_CHUNK'
+[09/27/23 04:37:39] [ERROR] can't update guild member presence: user id "954849501217181696" not cached
+[09/27/23 04:41:11] [WARNING] Unknown gateway event 'GUILD_MEMBERS_CHUNK'
+[09/27/23 04:45:20] [WARNING] Unknown gateway event 'GUILD_MEMBERS_CHUNK'
+[09/27/23 04:45:41] [ERROR] can't update guild member presence: user id "884493193075363930" not cached
+[09/27/23 04:45:41] [ERROR] can't update guild member presence: user id "884493193075363930" not cached
+[09/27/23 04:45:41] [ERROR] can't update guild member presence: user id "208303716036640768" not cached
+[09/27/23 04:46:41] [ERROR] can't update guild member presence: user id "641877457158537228" not cached
+[09/27/23 04:46:53] [ERROR] can't update guild member presence: user id "641877457158537228" not cached
+[09/27/23 04:47:05] [ERROR] can't update guild member presence: user id "297038019297542145" not cached
+[09/27/23 04:47:26] [ERROR] can't update guild member presence: user id "667920717945241640" not cached
+[09/27/23 04:49:59] [WARNING] Unknown gateway event 'GUILD_MEMBERS_CHUNK'
+[09/27/23 04:50:51] [ERROR] can't update guild member presence: user id "972935317399167109" not cached
+[09/27/23 04:53:33] [ERROR] can't update guild member presence: user id "972935317399167109" not cached
+[09/27/23 04:54:38] [ERROR] can't update guild member presence: user id "972935317399167109" not cached
+[09/27/23 04:55:00] [ERROR] can't update guild member presence: user id "954849501217181696" not cached
+[09/27/23 04:56:38] [WARNING] Unknown gateway event 'GUILD_MEMBERS_CHUNK'
+[09/27/23 04:59:54] [WARNING] Unknown gateway event 'GUILD_MEMBERS_CHUNK'
+[09/27/23 05:00:11] [WARNING] Unknown gateway event 'GUILD_MEMBERS_CHUNK'
+[09/27/23 05:03:36] [WARNING] Unknown gateway event 'GUILD_MEMBERS_CHUNK'

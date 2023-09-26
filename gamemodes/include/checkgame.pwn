@@ -4,10 +4,6 @@
 
 #define IsPlayerAndroid(%0)                 GetPVarInt(%0, "NotAndroid") == 0
 
-native SendClientCheck(playerid, type, arg, offset, size);
-forward OnClientCheckResponse(playerid, type, arg, response);
-
-
 hook OnPlayerConnect(playerid)
 {
     SetPVarInt(playerid, "NotAndroid", 0);  
@@ -15,9 +11,9 @@ hook OnPlayerConnect(playerid)
     return 1;
 }
 
-public OnClientCheckResponse(playerid, type, arg, response)
+public OnClientCheckResponse(playerid, actionid, memaddr, retndata)
 {
-    switch(type)
+    switch(actionid)
     {       
         case 0x48:
         {

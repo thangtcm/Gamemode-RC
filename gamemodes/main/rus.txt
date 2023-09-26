@@ -1,26 +1,7 @@
-C:\Users\PHATBENTRE\Desktop\vc\gamemodes\main\_funcs.pwn(2) : ïðåäóïðåæäåíèå 235: public-ôóíêöèÿ íóæäàåòñÿ â îïåðåæàþùåì îáúÿâëåíèè (èäåíòèôèêàòîð "OnPlayerExitedMenu")
-C:\Users\PHATBENTRE\Desktop\vc\gamemodes\main\_funcs.pwn(4) : îøèáêà 004: ôóíêöèÿ "TogglePlayerControllable" íå ðåàëèçîâàíà
-C:\Users\PHATBENTRE\Desktop\vc\gamemodes\main\_funcs.pwn(7) : ïðåäóïðåæäåíèå 235: public-ôóíêöèÿ íóæäàåòñÿ â îïåðåæàþùåì îáúÿâëåíèè (èäåíòèôèêàòîð "OnPlayerObjectMoved")
-C:\Users\PHATBENTRE\Desktop\vc\gamemodes\main\_funcs.pwn(11) : ïðåäóïðåæäåíèå 235: public-ôóíêöèÿ íóæäàåòñÿ â îïåðåæàþùåì îáúÿâëåíèè (èäåíòèôèêàòîð "OnPlayerRequestSpawn")
-C:\Users\PHATBENTRE\Desktop\vc\gamemodes\main\_funcs.pwn(15) : ïðåäóïðåæäåíèå 235: public-ôóíêöèÿ íóæäàåòñÿ â îïåðåæàþùåì îáúÿâëåíèè (èäåíòèôèêàòîð "OnPlayerSelectedMenuRow")
-C:\Users\PHATBENTRE\Desktop\vc\gamemodes\main\_funcs.pwn(19) : ïðåäóïðåæäåíèå 235: public-ôóíêöèÿ íóæäàåòñÿ â îïåðåæàþùåì îáúÿâëåíèè (èäåíòèôèêàòîð "OnPlayerLeaveRaceCheckpoint")
-C:\Users\PHATBENTRE\Desktop\vc\gamemodes\main\_funcs.pwn(23) : ïðåäóïðåæäåíèå 235: public-ôóíêöèÿ íóæäàåòñÿ â îïåðåæàþùåì îáúÿâëåíèè (èäåíòèôèêàòîð "OnPlayerPickUpPickup")
-C:\Users\PHATBENTRE\Desktop\vc\gamemodes\main\_funcs.pwn(27) : ïðåäóïðåæäåíèå 235: public-ôóíêöèÿ íóæäàåòñÿ â îïåðåæàþùåì îáúÿâëåíèè (èäåíòèôèêàòîð "OnRconCommand")
-C:\Users\PHATBENTRE\Desktop\vc\gamemodes\main\_funcs.pwn(31) : ïðåäóïðåæäåíèå 235: public-ôóíêöèÿ íóæäàåòñÿ â îïåðåæàþùåì îáúÿâëåíèè (èäåíòèôèêàòîð "OnVehicleDamageStatusUpdate")
-C:\Users\PHATBENTRE\Desktop\vc\gamemodes\main\_funcs.pwn(31) : ïðåäóïðåæäåíèå 219: ïåðåìåííàÿ "vehicleid" óæå îáúÿâëåíà â áîëåå ãëîáàëüíîé çîíå âèäèìîñòè
-C:\Users\PHATBENTRE\Desktop\vc\gamemodes\main\_funcs.pwn(35) : ïðåäóïðåæäåíèå 235: public-ôóíêöèÿ íóæäàåòñÿ â îïåðåæàþùåì îáúÿâëåíèè (èäåíòèôèêàòîð "OnVehicleStreamOut")
-C:\Users\PHATBENTRE\Desktop\vc\gamemodes\main\_funcs.pwn(35) : ïðåäóïðåæäåíèå 219: ïåðåìåííàÿ "vehicleid" óæå îáúÿâëåíà â áîëåå ãëîáàëüíîé çîíå âèäèìîñòè
-C:\Users\PHATBENTRE\Desktop\vc\gamemodes\main\_funcs.pwn(39) : ïðåäóïðåæäåíèå 235: public-ôóíêöèÿ íóæäàåòñÿ â îïåðåæàþùåì îáúÿâëåíèè (èäåíòèôèêàòîð "OnPlayerUpdate")
-C:\Users\PHATBENTRE\Desktop\vc\gamemodes\main\_funcs.pwn(68) : îøèáêà 017: íåîáúÿâëåííûé ñèìâîë "MAX_SZ"
-C:\Users\PHATBENTRE\Desktop\vc\gamemodes\main\_funcs.pwn(70) : îøèáêà 017: íåîáúÿâëåííûé ñèìâîë "IsACop"
-C:\Users\PHATBENTRE\Desktop\vc\gamemodes\main\_funcs.pwn(70) : ïðåäóïðåæäåíèå 215: âûðàæåíèå íå èìååò ýôôåêòà
-C:\Users\PHATBENTRE\Desktop\vc\gamemodes\main\_funcs.pwn(70) : îøèáêà 001: îæèäàëñÿ òîêåí ";", íî íàéäåí "]"
-C:\Users\PHATBENTRE\Desktop\vc\gamemodes\main\_funcs.pwn(70) : îøèáêà 029: íåïðàâèëüíîå âûðàæåíèå, ïðèíÿò íîëü
-C:\Users\PHATBENTRE\Desktop\vc\gamemodes\main\_funcs.pwn(70) : ôàòàëüíàÿ îøèáêà 107: ñëèøêîì ìíîãî îøèáîê íà îäíîé ñòðîêå
-
-Êîìïèëÿöèÿ îñòàíîâëåíà.
-
+d:\Gamemode Samp\Gamemode-RC\gamemodes\main\defines.pwn(17) : îøèáêà 017: íåîáúÿâëåííûé ñèìâîë "MAX_PLAYERS"
+d:\Gamemode Samp\Gamemode-RC\gamemodes\main\defines.pwn(17) : îøèáêà 010: íåâåðíàÿ ôóíêöèÿ èëè îáúÿâëåíèå
+d:\Gamemode Samp\Gamemode-RC\gamemodes\main\defines.pwn(918) : îøèáêà 013: îòñóòñòâóåò òî÷êà âõîäà (íåò public-ôóíêöèé)
 Pawn compiler 3.2.3664	 	 	Copyright (c) 1997-2016, ITB CompuPhase
 
 
-Îøèáîê:6.
+Îøèáîê:3.

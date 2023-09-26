@@ -485,7 +485,6 @@ new FactoryData[][FactoryInfo] = {
     }
 };
 
-new CarTruckProduct[MAX_PLAYERPRODUCT][CarTruckInfo] = {-1,...};
 enum PlayerTruckerInfo{
     SuggestFactory[sizeof(FactoryData)],
     MissionProduct[MAX_PLAYERPRODUCT],

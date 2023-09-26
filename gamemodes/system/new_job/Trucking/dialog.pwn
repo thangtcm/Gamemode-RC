@@ -174,7 +174,6 @@ Dialog:DIALOG_CARCLAIMPRODUCT(playerid, response, listitem, inputtext[])
 {
     if(response)
 	{
-        new str[256];
         new index = PlayerTruckerData[playerid][ClaimFromCar][listitem],
             ProductId = VehicleTruckerData[playerid][index][vtProductID];
         pLoadProduct[playerid] = ProductId;

@@ -3,7 +3,7 @@
 // - D0erfler 2013
 // - Kye 2013
 //
-// Version 1.1 R3
+// Version 1.1 R2
 
 /*Functions to be used
 
@@ -15,7 +15,7 @@ ShowModelSelectionMenuEx(playerid, items_array[], item_amount, header_text[], ex
 */
 // Callbacks
 forward OnPlayerModelSelection(playerid, response, listid, modelid);
-forward OnPlayerModelSelectionEx(playerid, response, extraid, modelid, extralist_id);
+forward OnPlayerModelSelectionEx(playerid, response, extraid, modelid);
 
 // settings static lists
 #define mS_TOTAL_ITEMS         	1000 // Max amount of items from all lists
@@ -25,7 +25,6 @@ forward OnPlayerModelSelectionEx(playerid, response, extraid, modelid, extralist
 // settings dynamic per player lists
 #define mS_CUSTOM_MAX_ITEMS		20
 new gCustomList[MAX_PLAYERS][mS_CUSTOM_MAX_ITEMS];
-new gCustomExtraList[MAX_PLAYERS][mS_CUSTOM_MAX_ITEMS];
 
 #define mS_INVALID_LISTID		mS_TOTAL_LISTS
 #define mS_CUSTOM_LISTID		(mS_TOTAL_LISTS+1)
@@ -51,7 +50,6 @@ new PlayerText:gPrevButtonTextDrawId[MAX_PLAYERS];
 new PlayerText:gCancelButtonTextDrawId[MAX_PLAYERS];
 new PlayerText:gSelectionItems[MAX_PLAYERS][mS_SELECTION_ITEMS];
 new gSelectionItemsTag[MAX_PLAYERS][mS_SELECTION_ITEMS];
-new gSelectionItemsExtra[MAX_PLAYERS][mS_SELECTION_ITEMS];
 new gItemAt[MAX_PLAYERS];
 
 #define mS_LIST_START			0
@@ -246,7 +244,6 @@ stock mS_ShowPlayerMPs(playerid)
 			}
 			gSelectionItems[playerid][x] = mS_CreateMPTextDraw(playerid, gCustomList[playerid][itemat], BaseX, BaseY, rotzoom[0], rotzoom[1], rotzoom[2], rotzoom[3], mS_SPRITE_DIM_X, mS_SPRITE_DIM_Y, bgcolor);
 			gSelectionItemsTag[playerid][x] = gCustomList[playerid][itemat];
-			gSelectionItemsExtra[playerid][x] = gCustomExtraList[playerid][itemat];
 			BaseX += mS_SPRITE_DIM_X + 1.0; // move on the X for the next sprite
 			linetracker++;
 			if(linetracker == mS_ITEMS_PER_LINE) linetracker = 0;
@@ -463,7 +460,7 @@ public OnPlayerClickTextDraw(playerid, Text:clickedid)
 		{
 			new extraid = GetPVarInt(playerid, "mS_custom_extraid");
 			mS_DestroySelectionMenu(playerid);
-			CallLocalFunction("OnPlayerModelSelectionEx", "ddddd", playerid, 0, extraid, -1, -1);
+			CallLocalFunction("OnPlayerModelSelectionEx", "dddd", playerid, 0, extraid, -1);
 			PlayerPlaySound(playerid, 1085, 0.0, 0.0, 0.0);
 		}
 		else
@@ -502,7 +499,7 @@ public OnPlayerClickPlayerTextDraw(playerid, PlayerText:playertextid)
 		{
 			new extraid = GetPVarInt(playerid, "mS_custom_extraid");
 			HideModelSelectionMenu(playerid);
-			CallLocalFunction("OnPlayerModelSelectionEx", "ddddd", playerid, 0, extraid, -1, -1);
+			CallLocalFunction("OnPlayerModelSelectionEx", "dddd", playerid, 0, extraid, -1);
 			PlayerPlaySound(playerid, 1085, 0.0, 0.0, 0.0);
 		}
 		else
@@ -565,9 +562,8 @@ public OnPlayerClickPlayerTextDraw(playerid, PlayerText:playertextid)
 				PlayerPlaySound(playerid, 1083, 0.0, 0.0, 0.0);
 				new item_id = gSelectionItemsTag[playerid][x];
 				new extraid = GetPVarInt(playerid, "mS_custom_extraid");
-				new extralist_id = gSelectionItemsExtra[playerid][x];
 				HideModelSelectionMenu(playerid);
-				CallLocalFunction("OnPlayerModelSelectionEx", "ddddd", playerid, 1, extraid, item_id, extralist_id);
+				CallLocalFunction("OnPlayerModelSelectionEx", "dddd", playerid, 1, extraid, item_id);
 				return 1;
 			}
 			else

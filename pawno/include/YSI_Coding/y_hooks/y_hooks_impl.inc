@@ -98,11 +98,11 @@ DEFINE_HOOK_RETURN__(OnRconCommand, 0);
 
 // Create the default replacements.  I try to avoid defining replacements for
 // the words `Player` and `Vehicle` - they're too important and fundamental.
-DEFINE_HOOK_REPLACEMENT__(Checkpoint, CP );
+DEFINE_HOOK_REPLACEMENT__(Checkpoint, CP_);
 DEFINE_HOOK_REPLACEMENT__(Collisions, Col);
 DEFINE_HOOK_REPLACEMENT__(Container , Cnt);
 DEFINE_HOOK_REPLACEMENT__(Inventory , Inv);
-DEFINE_HOOK_REPLACEMENT__(TextDraw  , TD );
+DEFINE_HOOK_REPLACEMENT__(TextDraw  , TD_);
 DEFINE_HOOK_REPLACEMENT__(Command   , Cmd);
 DEFINE_HOOK_REPLACEMENT__(Dynamic   , Dyn);
 DEFINE_HOOK_REPLACEMENT__(Action    , Act);

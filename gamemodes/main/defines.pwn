@@ -13,7 +13,6 @@
 #pragma dynamic 4500000
 /*  ---------------- NATIVES ----------------- */
 
-native gpci(playerid, serial[], maxlen);
 /*  ---------------- SERVER DEFINES ----------------- */
 #undef 			MAX_PLAYERS
 
@@ -95,8 +94,8 @@ native gpci(playerid, serial[], maxlen);
 #define 		NEW_VULNERABLE 				(24)
 #define 		TIME_TO_CLAIM 				(1)
 #define 		TIME_TO_TAKEOVER 			(10)
-#define 		MAX_FAMILY 					(17)
-#define 		MAX_POINTS 					(8)
+#define 		MAX_FAMILY 					(60)
+#define 		MAX_POINTS 					(10)
 #define 		MAX_DMAPICONS 				(400)
 #define 		MAX_DDOORS					(3000)
 
@@ -104,9 +103,9 @@ native gpci(playerid, serial[], maxlen);
 #define         DIALOG_SLWEAPON                    (5124)
 #define         MENUVUKHI                    (5125)
 #define         DIALOG_HELP                    (5123)
-#define 		MAX_HOUSES 					(500)
+#define 		MAX_HOUSES 					(3000)
 #define 		MAX_OWNABLE_HOUSES 			(2)
-#define 		MAX_GATES 					(500)
+#define 		MAX_GATES 					(5000)
 #define 		MAX_EVENTPOINTS 			(50)
 #define 		INVALID_HOUSE_ID			(-1)
 #define			MAX_ARENAS					(10)
@@ -136,9 +135,6 @@ native gpci(playerid, serial[], maxlen);
 #define 		MAX_ITEMS 					(30)
 #define 		RocketHeight 				50
 #define 		TYPE_COUNTDOWN 				2000
-#define         DOWNLOAD_REQUEST_EMPTY		0
-#define         DOWNLOAD_REQUEST_MODEL_FILE	1
-#define         DOWNLOAD_REQUEST_TEXTURE_FILE	2
 #define 		TYPE_LAUNCH 				2001
 #define 		TYPE_EXPLODE 				2002
 #define 		MAX_FIREWORKS 				100

@@ -3119,8 +3119,6 @@ stock g_mysql_SaveAccount(playerid)
     SavePlayerInteger(query, GetPlayerSQLId(playerid), "Gun9", PlayerInfo[playerid][pGuns][9]);
     SavePlayerInteger(query, GetPlayerSQLId(playerid), "Gun10", PlayerInfo[playerid][pGuns][10]);
     SavePlayerInteger(query, GetPlayerSQLId(playerid), "Gun11", PlayerInfo[playerid][pGuns][11]);
-    new str[59];
-
 
 	SavePlayerInteger(query, GetPlayerSQLId(playerid), "DoiBung", PlayerInfo[playerid][pDoiBung]);	
 	SavePlayerInteger(query, GetPlayerSQLId(playerid), "KhatNuoc", PlayerInfo[playerid][pKhatNuoc]);	

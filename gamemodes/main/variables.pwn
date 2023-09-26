@@ -1450,20 +1450,9 @@ enum szPeace
 new bool:InfoMessage[MAX_PLAYERS] = true;
 new SafeZoneInfo[MAX_SZ][szPeace];
 new Loaded[MAX_PLAYERS];
-new npcvukhizz;
 new ChatGoActor;
-new HaiTraiCay;
 new ActorNV;
-new BodyguardActor;
-new TaxiActor;
-new MaTuy;
-new ThuocPhien;
-new BanVuKhi;
 new TruckActor;
-new LuatSuActor;
-new MechanicActor;
-new DetectiveActor;
-new CraftActor;
 enum 	e_labeltypes
 {
 	Text3D: TYPE_KEYPAD,
@@ -1847,7 +1836,7 @@ new PumpkinStock, HalloweenShop;
 
 new CrateVehicleLoad[MAX_VEHICLES][cVehicleLoad];
 
-new CrateInfo[20][crateInfo];
+new CrateInfo[22][crateInfo];
 
 new Train[3];
 
@@ -2363,7 +2352,6 @@ new ShopReminder = 1;
 
 new PlayerHoldingObject[MAX_PLAYERS][11];
 new PizzaCar[MAX_PLAYERS];
-new TruckerCar[MAX_PLAYERS];
 // Dynamic Gift Box Stuff
 // Note: dgGVIP = 7 Days | dgGVIPEx = 1 Month
 // Example: dgMoney[0] = Is it enabled? || dgMoney[1] = Quantity of gift available || dgMoney[2] = Quantity of money the player will receive || dgMoney[3] = Rarity Category of Item (Common, Less Common, Rare, Super Rare)

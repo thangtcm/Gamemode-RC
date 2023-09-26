@@ -1,0 +1,19 @@
+
+AddSimpleModel(-1, 19477, -2207, "chinaboard.dff", "chinatownsfe.txd");
+AddSimpleModel(-1, 19477, -2208, "chinaboard1.dff", "chinatownsfe.txd");
+AddSimpleModel(-1, 19477, -2209, "chinaboard2.dff", "chinatownsfe.txd");
+AddSimpleModel(-1, 19477, -2210, "chinalights.dff", "chinatownsfe.txd");
+AddSimpleModel(-1, 19477, -2211, "chinagate.dff", "sfw_victemp2.txd");
+AddSimpleModel(-1, 19477, -2212, "chinalamp_sf.dff", "china_light.txd");
+AddSimpleModel(-1, 19482, -2213, "cluckinbell_3d.dff", "cluckinbell_3d.txd");
+AddSimpleModel(-1, 19477, -2215, "chinagate1.dff", "lanbloka.txd");
+AddSimpleModel(-1, 19482, -2216, "figfree5_lan.dff", "lanbloka.txd");
+AddSimpleModel(-1, 19482, -2218, "figfree6_lan.dff", "sunset1_lan2.txd"); 
+AddSimpleModel(-1, 19477, -2217, "noodlecart_prop.dff", "foodkarts.txd");
+AddSimpleModel(-1, 19477, -2220, "chinalight.dff", "chinatownsfe.txd");
+AddSimpleModel(-1, 19477, -2221, "cables16.dff", "cables_sfe.txd");
+AddSimpleModel(-1, 19477, -2222, "chinaboard3.dff", "chinatownsfe.txd");
+AddSimpleModel(-1, 19477, -2223, "chinaboard4.dff", "chinatownsfe.txd");
+AddSimpleModel(-1, 19477, -2224, "cables17.dff", "cables_sfe.txd");
+AddSimpleModel(-1, 19482, -2228, "tempbuild_sfw41.dff", "chinatownsfe.txd");
+AddSimpleModel(-1, 19482, -2229, "chinatown_sfe1.dff", "chinatownsfe.txd");
