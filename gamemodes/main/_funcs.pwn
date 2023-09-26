@@ -1,21 +1,3 @@
-
-public OnPlayerExitedMenu(playerid)
-{
-    TogglePlayerControllable(playerid,1); // unfreeze the player when they exit a menu
-    return 1;
-}
-public OnPlayerObjectMoved(playerid,objectid)
-{
-    return 1;
-}
-public OnPlayerRequestSpawn(playerid)
-{
-    return 1;
-}
-public OnPlayerSelectedMenuRow(playerid, row)
-{
-    return 1;
-}
 public OnPlayerLeaveRaceCheckpoint(playerid)
 {
     return 1;
@@ -24,47 +6,8 @@ public OnPlayerPickUpPickup(playerid, pickupid)
 {
     return 1;
 }
-public OnRconCommand(cmd[])
-{
-    return 0;
-}
-public OnVehicleDamageStatusUpdate(vehicleid, playerid)
-{
-    return 1;
-}
-public OnVehicleStreamOut(vehicleid, forplayerid)
-{
-    return 1;
-}
 public OnPlayerUpdate(playerid)
 {
-  
-/*	if(PlayerInfo[playerid][pNvmot] == 3 && PlayerInfo[playerid][pNvhai] == 3 && PlayerInfo[playerid][phainv] == 0)
-	{
-        switch(random(100))
-        {
-            case 0..30:
-			{
-   				new string[128];
-				new rand = Random(150000, 250000);
-    			new rand2 = Random(500, 1500);
-    			PlayerInfo[playerid][pXP] += rand2;
-				GivePlayerCash(playerid, rand);
-				PlayerInfo[playerid][phainv] = 1;
-    			format(string, sizeof(string), "* Ban da hoan thanh 2 nhiem vu va nhan duoc{A7A9D9} %d XP - %d$",rand2, rand);
-				SendClientMessageEx(playerid, COLOR_YELLOW, string);
-			}
-			case 31..100:
-			{
-   				new string[128];
-				new rand = Random(1,5);
-    			PlayerInfo[playerid][pManhxe] += rand;
-    			PlayerInfo[playerid][phainv] = 1;
-    			format(string, sizeof(string), "* Ban da hoan thanh 2 nhiem vu va nhan duoc{A7A9D9} %d manh ghep xe",rand);
-				SendClientMessageEx(playerid, COLOR_YELLOW, string);
-			}
-		}
-	}*/
 	for(new Sz; Sz < MAX_SZ; Sz++)
     {
 		if(!IsACop(playerid) && IsPlayerInRangeOfPoint(playerid, SafeZoneInfo[Sz][szKhoangcach], SafeZoneInfo[Sz][szExteriorX], SafeZoneInfo[Sz][szExteriorY], SafeZoneInfo[Sz][szExteriorZ]))
@@ -6392,27 +6335,75 @@ public OnPlayerText(playerid, text[])
 	}
 	return 0;
 }
-/*
+ /*  ---------------- PUBLIC FUNCTIONS -----------------  */
+
+forward OnPlayerModelSelection(playerid, response, listid, modelid);
+forward OnPlayerModelSelectionEx(playerid, response, extraid, modelid);
+//forward strfind(const string[],const sub[],bool:ignorecase=false,pos=0);
+
+forward OnVehicleStreamOut(vehicleid, forplayerid);
+public OnVehicleStreamOut(vehicleid, forplayerid)
+{
+    return 1;
+}
+
+forward OnVehicleDamageStatusUpdate(vehicleid, playerid);
+public OnVehicleDamageStatusUpdate(vehicleid, playerid)
+{
+    return CallRemoteFunction("OVDStatusUpdate", "dd", vehicleid, playerid);
+}
+
+forward OnUnoccupiedVehicleUpdate(vehicleid, playerid, passenger_seat);
 public OnUnoccupiedVehicleUpdate(vehicleid, playerid, passenger_seat)
 {
-	if(DynVeh[vehicleid] != -1)
-	{
-	    new vw[1];
-		vw[0] = GetVehicleVirtualWorld(vehicleid);
-	    if(DynVehicleInfo[DynVeh[vehicleid]][gv_iAttachedObjectModel][0] != INVALID_OBJECT_ID)
-	    {
-	    	Streamer_SetArrayData(STREAMER_TYPE_OBJECT, DynVehicleInfo[DynVeh[vehicleid]][gv_iAttachedObjectID][0], E_STREAMER_WORLD_ID, vw[0]);
-
-		}
-		if(DynVehicleInfo[DynVeh[vehicleid]][gv_iAttachedObjectModel][1] != INVALID_OBJECT_ID)
-	    {
-			Streamer_SetArrayData(STREAMER_TYPE_OBJECT, DynVehicleInfo[DynVeh[vehicleid]][gv_iAttachedObjectID][1], E_STREAMER_WORLD_ID, vw[0]);
-
-		}
-	}
-	return 1;
+    return 1;
 }
-*/
+
+forward OnRconCommand(cmd[]);
+public OnRconCommand(cmd[])
+{
+    return 0;
+}
+
+forward OnPlayerSelectedMenuRow(playerid, row);
+public OnPlayerSelectedMenuRow(playerid, row)
+{
+    return 1;
+}
+
+forward OnPlayerRequestSpawn(playerid);
+public OnPlayerRequestSpawn(playerid)
+{
+    return 1;
+}
+
+forward OnPlayerObjectMoved(playerid,objectid);
+public OnPlayerObjectMoved(playerid,objectid)
+{
+    return 1;
+}
+
+forward OnPlayerExitedMenu(playerid);
+public OnPlayerExitedMenu(playerid)
+{
+    SendClientMessage(playerid, -1, "[!] Test Da Tat Menu");
+    return 1;
+}
+
+forward StreamPrepLogin(playerid);
+public StreamPrepLogin(playerid)
+{
+    TogglePlayerControllable(playerid, 0);
+    SetTimerEx("StreamPrepUnfreeze", 2000, false,"i", playerid);
+    return 1;
+}
+
+forward StreamPrepUnfreeze(playerid);
+public StreamPrepUnfreeze(playerid)
+{
+    TogglePlayerControllable(playerid, true);
+    return 1;
+}
 
 public OnPlayerClickPlayer(playerid, clickedplayerid, source)
 {
