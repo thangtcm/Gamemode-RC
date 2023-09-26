@@ -36178,3 +36178,288 @@ Description: Unknown column 'Eat' in 'field list' (index 0). Query:
 
 [21:22:42] UPDATE `accounts` SET `IP`='127.0.0.1',`Registered`=1,`ConnectedTime`=7,`Sex`=1,`BirthDate`='1923-01-01',`Band`=0,`PermBand`=0,`Warnings`=0,`Disabled`=0,`Level`=1,`AdminLevel`=99999,`CMND`=109946829,`RegisterCarTruck`=0,`SeniorModerator`=0,`Helper`=0,`DonateRank`=0,`Respect`=14,`XP`=700,`Money`=1000027649,`MaHieu1`=0,`TruyDuoi`=0,`BanTime`=0,`TimeBanned`=0,`Flag`=53,`Eat`=1,`Drink`=1,`Strong`=1,`SoLanMiner`=0,`MinerLevel`=0,`BannedBy`='NULL',`ReasonBanned`='NULL',`Flag`=53,`Hambuger`=0,`Banhmi`=0,`Pizza`=0,`Bank`=0,`pHealth`='50.00',`pArmor`='0.00',`pSHealth`='0.00',`Int`=0,`VirtualWorld`=0,`Model`=29,`BanAppealer`=0,`PR`=0,`HR`=0,`AP`=1,`Security`=0,`ShopTech`=0,`FactionModerator`=0,`GangModerator`=0,`Undercover`=0,`TogReports`=0,`Radio`=0,`RadioFreq`=0,`UpgradePoints`=0,`Origin`=0,`Muted`=0,`Crimes`=0,`Accent`=1,`CHits`=0,`FHits`=0,`Arrested`=0,`Phonebook`=1,`Fishes`=0,`Gcoin`=0,`Capacity`=30,`BiggestFish`=0,`Job`=20,`SoTaiKhoan`=0,`Job2`=0,`Paycheck`=1305,`HeadValue`=0,`JailTime`=0,`WRestricted`=0,`Materi
 [21:22:42] als`=0,`Crates`=0,`Pot`=0,`Crack`=0,`Nation`=-1,`Leader`=-1,`Member`=-1,`Division`=-1,`FMember`=255,`Rank`=255,`DetSkill`=0,`SexSkill`=0,`BoxSkill`=0,`LawSkill`=0,`MechSkill`=0,`TruckSkill`=0,`DrugsSkill`=0,`ArmsSkill`=0,`SmugglerSkill`=0,`FishSkill`=0,`CheckCash`=0,`Checks`=0,`BoatLic`=0,`FlyLic`=0,`GunLic`=0,`FishLic`=0,`FishSkill`=0,`FightingStyle`=0,`PhoneNr`=46924,`Apartment`=-1,`Apartment2`=-1,`Renting`=-1,`CarLic`=1,`DrugsTime`=0,`LawyerTime`=0,`LawyerFreeTime`=0,`MechTime`=0,`SexTime`=0,`PayDay`=1305,`PayDayHad`=0,`CDPlayer`=0,`Dice`=0,`Spraycan`=0,`Rope`=0,`Cigars`=0,`Sprunk`=0,`Bombs`=0,`Wins`=0,`Ammo1`=0,`Ammo2`=0,`Ammo3`=0,`Ammo4`=0,`Ammo5`=0,`Ammo6`=0,`Ammo7`=0,`Ammo8`=0,`Gun0`=0,`Gun1`=0,`Gun2`=0,`Gun3`=0,`Gun4`=0,`Gun5`=0,`Gun6`=0,`Gun7`=0,`Gun8`=0,`Gun9`=0,`Gun10`=0,`Gun11`=0,`DoiBung`=100,`KhatNuoc`=100 WHERE `id`=12
+
+----------
+Loaded log file: "server_log.txt".
+----------
+
+SA-MP Dedicated Server
+----------------------
+v0.3.DL-R1, (C)2005-2018 SA-MP Team
+
+[12:50:26] password = ""  (string)
+[12:50:26] 
+[12:50:26] Server Plugins
+[12:50:26] --------------
+[12:50:26]  Loading plugin: PawnPlus
+[12:50:26]  PawnPlus v1.4.2 loaded
+[12:50:26]  Created by IllidanS4
+[12:50:26]   Loaded.
+[12:50:26]  Loading plugin: streamer
+[12:50:26] 
+
+*** Streamer Plugin v2.9.4 by Incognito loaded ***
+
+[12:50:26]   Loaded.
+[12:50:26]  Loading plugin: mysql
+[12:50:26]  >> plugin.mysql: R33 successfully loaded.
+[12:50:26]   Loaded.
+[12:50:26]  Loading plugin: sscanf
+[12:50:26] 
+
+[12:50:26]  ===============================
+
+[12:50:26]       sscanf plugin loaded.     
+
+[12:50:26]          Version:  2.8.1        
+
+[12:50:26]    (c) 2012 Alex "Y_Less" Cole  
+
+[12:50:26]  ===============================
+
+[12:50:26]   Loaded.
+[12:50:26]  Loading plugin: nativechecker
+[12:50:26]   Loaded.
+[12:50:26]  Loading plugin: whirlpool
+[12:50:26]  
+[12:50:26]  ==================
+[12:50:26]  
+[12:50:26]   Whirlpool loaded
+[12:50:26]  
+[12:50:26]  ==================
+[12:50:26]  
+[12:50:26]   Loaded.
+[12:50:26]  Loaded 6 plugins.
+
+[12:50:26] [artwork:crc] bp.dff CRC = 0xA2B03FFB
+[12:50:26] [artwork:crc] bp.txd CRC = 0x28E0706E
+[12:50:26] [artwork:crc] object.dff CRC = 0xDCFCC14C
+[12:50:26] [artwork:crc] speedo.txd CRC = 0x62C7BCBC
+[12:50:26] [artwork:crc] object.dff CRC = 0xDCFCC14C
+[12:50:26] [artwork:crc] login.txd CRC = 0x7F38D5E6
+[12:50:26] [artwork:crc] object.dff CRC = 0xDCFCC14C
+[12:50:26] [artwork:crc] character.txd CRC = 0xC1BABE5F
+[12:50:26] [artwork:crc] object.dff CRC = 0xDCFCC14C
+[12:50:26] [artwork:crc] speedo.txd CRC = 0x62C7BCBC
+[12:50:26] [artwork:crc] object.dff CRC = 0xDCFCC14C
+[12:50:26] [artwork:crc] newinv.txd CRC = 0xC5F22638
+[12:50:26] [artwork:crc] object.dff CRC = 0xDCFCC14C
+[12:50:26] [artwork:crc] character.txd CRC = 0xC1BABE5F
+[12:50:26] [artwork:crc] object.dff CRC = 0xDCFCC14C
+[12:50:26] [artwork:crc] inventory.txd CRC = 0xDD1D7E8C
+[12:50:26] 
+[12:50:26] Filterscripts
+[12:50:26] ---------------
+[12:50:26]   Loading filterscript 'Server.amx'...
+[12:50:26]   Loading filterscript 'cbug.amx'...
+[12:50:26]   Loading filterscript 'ntd.amx'...
+[12:50:26]   Unable to load filterscript 'ntd.amx'.
+[12:50:26]   Loaded 2 filterscripts.
+
+[12:50:26]  
+[12:50:26]  ======================================= 
+[12:50:26]  |                                     | 
+[12:50:26]  |        YSI version 3.01.0002        | 
+[12:50:26]  |        By Alex "Y_Less" Cole        | 
+[12:50:26]  |                                     | 
+[12:50:26]  ======================================= 
+[12:50:26]  
+[12:50:27] Chuong trinh may chu dang duoc khoi dong, vui long cho doi....
+[12:50:28] [MySQL] (Main Pipelines) Connecting to 23.88.73.88...
+[12:50:28] [MySQL] (MainPipeline) Connection successful toward MySQL Database Server!
+[12:50:28] [Dynamic Giftbox] Loading the Dynamic Giftbox...
+[12:50:28] [LoadCrates] Load Query Sent
+[12:50:28] [LoadHouses] Loading data from database...
+[12:50:28] [LoadDynamicDoors] Loading data from database...
+[12:50:28] [LoadDynamicMapIcons] Loading data from database...
+[12:50:28] [LoadMailboxes] Loading data from database...
+[12:50:28] [LoadBusinesses] Loading data from database...
+[12:50:28] [LoadAuctions] Loading data from database...
+[12:50:28] [LoadTxtLabels] Loading data from database...
+[12:50:28] [LoadPlants] Loading data from database...
+[12:50:28] [SpeedCameras] Loading data from database...
+[12:50:28] [LoadPayNSprays] Loading data from database...
+[12:50:28] [LoadArrestPoints] Loading data from database...
+[12:50:28] [LoadImpoundPoints] Loading data from database...
+[12:50:28] [LoadBusinessSales] Loading data from database...
+[12:50:28] [LoadPaintballArenas] 10 paintball loaded.
+[12:50:28] [LoadEventPoints] 0 event points loaded.
+[12:50:28] [LoadGates] Loading data from database...
+[12:50:28] [LoadElevatorStuff] 20 floors loaded.
+[12:50:28] [LoadFamilies] Dang tai du lieu tu database...
+[12:50:28] [LoadFamilyPoints] Loading Family Points from the database, please wait...
+[12:50:28] [MiscLoad] Misc Loaded
+[12:50:28] Resetting news...
+[12:50:28] Resetting default server variables..
+[12:50:28] Adjusted the server time...
+[12:50:28] [Streamer] Loading Dynamic Static Vehicles...
+[12:50:28] [Streamer] Dynamic Static Vehicles has been loaded.
+[12:50:28] [Streamer] Loading Dynamic Pickups...
+[12:50:28] [Streamer] Dynamic Pickups has been loaded.
+[12:50:28] [Streamer] Loading 3D Text Labels...
+[12:50:28] [Streamer] Dynamic 3D Text Labels has been loaded.
+[12:50:28] [Streamer] Loading Dynamic Buttons...
+[12:50:28] [Streamer] Dynamic Buttons has been loaded.
+[12:50:28] [Streamer] Loading Dynamic Objects...
+[12:50:28] [Streamer] Dynamic Objects has been loaded.
+[12:50:28] [Textdraws] Loading Textdraws...
+[12:50:28] [Textdraws] Loaded textdraws.
+[12:50:28] [Dynamic Groups] Loading Dynamic Groups...
+[12:50:28] [Dynamic Groups] Loading Dynamic Groups Vehicles...
+[12:50:28] Da chay thanh cong gamemode...
+[12:50:28] Number of vehicle models: 20
+[12:50:28]  
+[12:50:28]  
+[12:50:28] [Dynamic Giftbox] da tai thanh cong Dynamic giftbox.
+[12:50:28] [LoadCrates] Loading Crates Finished
+[12:50:30] [LoadDynamicDoors] 2248 door duoc tai.
+[12:50:30] [LoadDynamicMapIcons] 400 icons map duoc tai.
+[12:50:30] [LoadMailboxes] 50 mailboxes duoc tai.
+[12:50:30] [LoadBusinesses] 200 businesses rehashed/loaded.
+[12:50:31] [LoadPlants] Successfully loaded 300 plants
+[12:50:31] [SpeedCameras] Tai 3 May ban toc do.
+[12:50:32] TotalSold0: 0 | AmountMade0: 0
+[12:50:32] TotalSold1: 0 | AmountMade1: 0
+[12:50:32] TotalSold2: 0 | AmountMade2: 0
+[12:50:32] TotalSold3: 0 | AmountMade3: 0
+[12:50:32] TotalSold4: 0 | AmountMade4: 0
+[12:50:32] TotalSold5: 0 | AmountMade5: 0
+[12:50:32] TotalSold6: 0 | AmountMade6: 0
+[12:50:32] TotalSold7: 0 | AmountMade7: 0
+[12:50:32] TotalSold8: 0 | AmountMade8: 0
+[12:50:32] TotalSold9: 0 | AmountMade9: 0
+[12:50:32] TotalSold10: 0 | AmountMade10: 0
+[12:50:32] TotalSold11: 0 | AmountMade11: 0
+[12:50:32] TotalSold12: 0 | AmountMade12: 0
+[12:50:32] TotalSold13: 0 | AmountMade13: 0
+[12:50:32] TotalSold14: 0 | AmountMade14: 0
+[12:50:32] TotalSold15: 0 | AmountMade15: 0
+[12:50:32] TotalSold16: 0 | AmountMade16: 0
+[12:50:32] TotalSold17: 0 | AmountMade17: 0
+[12:50:32] TotalSold18: 0 | AmountMade18: 0
+[12:50:32] TotalSold19: 0 | AmountMade19: 0
+[12:50:32] TotalSold20: 0 | AmountMade20: 0
+[12:50:32] TotalSold21: 0 | AmountMade21: 0
+[12:50:32] TotalSold22: 0 | AmountMade22: 0
+[12:50:32] TotalSold23: 0 | AmountMade23: 0
+[12:50:32] TotalSold24: 0 | AmountMade24: 0
+[12:50:32] TotalSold25: 0 | AmountMade25: 0
+[12:50:32] TotalSold26: 0 | AmountMade26: 0
+[12:50:32] TotalSold27: 0 | AmountMade27: 0
+[12:50:32] TotalSold28: 0 | AmountMade28: 0
+[12:50:32] TotalSold29: 0 | AmountMade29: 0
+[12:50:32] Price0: 20000
+[12:50:32] Price1: 50000
+[12:50:32] Price2: 15000
+[12:50:32] Price3: 10000
+[12:50:32] Price4: 400
+[12:50:32] Price5: 500
+[12:50:32] Price6: 100
+[12:50:32] Price7: 500
+[12:50:32] Price8: 100
+[12:50:32] Price9: 100
+[12:50:32] Price10: 10
+[12:50:32] Price11: 100000
+[12:50:32] Price12: 100000
+[12:50:32] Price13: 100000
+[12:50:32] Price14: 10000
+[12:50:32] Price15: 5000
+[12:50:32] Price16: 1000
+[12:50:32] Price17: 1000
+[12:50:32] Price18: 1
+[12:50:32] Price19: 2
+[12:50:32] Price20: 10
+[12:50:32] Price21: 999999
+[12:50:32] Price22: 100
+[12:50:32] Price23: 1000
+[12:50:32] Price24: 100000
+[12:50:32] Price25: 100000
+[12:50:32] Price26: 100000
+[12:50:32] Price27: 100000
+[12:50:32] Price28: 1000
+[12:50:32] Price29: 29
+[12:50:33] [Family Points] 8 family points has been loaded.
+[12:50:49] 180 710 570 12570
+[12:51:55] [connection] incoming connection: 127.0.0.1:55829 id: 0
+[12:51:55] [join] cuozg has joined the server (0:127.0.0.1)
+[12:51:56] name cuozg,6, 
+[12:52:32] [He Thong] Da luu lai thong tin tai khoan thanh cong.
+[12:53:13] RNNNN
+[12:53:15] RNNNN
+[12:53:15] acc id 36
+[12:53:16] RNNNN
+[12:53:16] acc id 36
+[12:53:16] RNNNN
+[12:53:17] acc id 36
+[12:53:18] RNNNN
+[12:53:18] acc id 36
+[12:53:18] [part] cuozg has left the server (0:2)
+[12:54:03] [connection] incoming connection: 127.0.0.1:60565 id: 0
+[12:54:03] [join] cuozg has joined the server (0:127.0.0.1)
+[12:54:04] name cuozg,6, 
+[12:54:06] RNNNN
+[12:54:08] RNNNN
+[12:54:08] acc id 36
+[12:54:11] RNNNN
+[12:54:14] [nick] cuozg nick changed to Cuozg_Nguyen
+[12:54:14] Cuozg Nguyen has logged in.
+[12:54:15] [He Thong] Da luu lai thong tin tai khoan thanh cong.
+[12:54:15] RNNNN
+[12:54:18] RNNNN
+[12:54:19] RNNNN
+[12:54:24] RNNNN
+[12:54:25] RNNNN
+[12:54:27] 0
+[12:54:28] 0
+[12:54:29] 0
+[12:54:29] 0
+[12:54:29] 0
+[12:54:29] 0
+[12:54:33] [zcmd] [Cuozg Nguyen]: /inv
+[12:54:36] [zcmd] [Cuozg Nguyen]: /additem 
+[12:54:41] [zcmd] [Cuozg Nguyen]: /setitem
+[12:54:48] [zcmd] [Cuozg Nguyen]: /setitem 0 10 14 10
+[12:54:48] [CREATE INVENTORY] Chat hoa hoc II (ID 0) da duoc them vao du lieu cua Cuozg Nguyen
+[12:54:53] [zcmd] [Cuozg Nguyen]: /setitem 0 10 15 1
+[12:54:53] [CREATE INVENTORY] Codeine (ID 1) da duoc them vao du lieu cua Cuozg Nguyen
+[12:54:57] [zcmd] [Cuozg Nguyen]: /setitem 0 10 16 1
+[12:54:57] [CREATE INVENTORY] Cocain (ID 2) da duoc them vao du lieu cua Cuozg Nguyen
+[12:54:59] [zcmd] [Cuozg Nguyen]: /setitem 0 10 17 
+[12:55:00] [zcmd] [Cuozg Nguyen]: /setitem 0 10 17 1
+[12:55:00] [CREATE INVENTORY] Ecstacy (ID 3) da duoc them vao du lieu cua Cuozg Nguyen
+[12:55:01] [zcmd] [Cuozg Nguyen]: /setitem 0 10 18 1
+[12:55:01] [CREATE INVENTORY] LSD (ID 4) da duoc them vao du lieu cua Cuozg Nguyen
+[12:55:03] [zcmd] [Cuozg Nguyen]: /inv
+[12:55:03] mdl-2023:chh_2
+[12:55:03] mdl-2023:Codeine
+[12:55:03] mdl-2023:Cocain
+[12:55:03] mdl-2023:Ecstacy
+[12:55:03] mdl-2023:LSD
+[12:55:04] RNNNN
+[12:55:09] [zcmd] [Cuozg Nguyen]: /inv
+[12:55:09] mdl-2023:chh_2
+[12:55:09] mdl-2023:Codeine
+[12:55:09] mdl-2023:Cocain
+[12:55:09] mdl-2023:Ecstacy
+[12:55:09] mdl-2023:LSD
+[12:55:10] RNNNN
+[12:55:15] [zcmd] [Cuozg Nguyen]: /inv
+[12:55:15] mdl-2023:chh_2
+[12:55:15] mdl-2023:Codeine
+[12:55:15] mdl-2023:Cocain
+[12:55:15] mdl-2023:Ecstacy
+[12:55:15] mdl-2023:LSD
+[12:55:16] RNNNN
+[12:55:19] 0
+[12:55:20] 0
+[12:55:22] 0
+[12:55:22] 0
+[12:55:24] [part] Cuozg_Nguyen has left the server (0:1)
+[12:55:25] [MySQL] Query Error - (ErrorID: 1054) (Handle: 1)
+[12:55:25] [MySQL] Check mysql_log.txt to review the query that threw the error.
+[12:55:25] Dumping query from 2023/9/26 (12:55:25)
+Description: Unknown column 'Eat' in 'field list' (index 0). Query:
+
+[12:55:25] UPDATE `accounts` SET `IP`='127.0.0.1',`Registered`=1,`ConnectedTime`=0,`Sex`=1,`BirthDate`='1933-06-11',`Band`=0,`PermBand`=0,`Warnings`=0,`Disabled`=0,`Level`=1,`AdminLevel`=65,`CMND`=0,`RegisterCarTruck`=0,`SeniorModerator`=0,`Helper`=0,`DonateRank`=0,`Respect`=0,`XP`=0,`Money`=1000,`MaHieu1`=0,`TruyDuoi`=0,`BanTime`=0,`TimeBanned`=0,`Flag`=0,`Eat`=65,`Drink`=78,`Strong`=68,`SoLanMiner`=65,`MinerLevel`=78,`BannedBy`='NULL',`ReasonBanned`='NULL',`QuocTich`='SAN ANDEAS',`Flag`=0,`Hambuger`=0,`Banhmi`=0,`Pizza`=0,`Bank`=0,`pHealth`='100.00',`pArmor`='0.00',`pSHealth`='0.00',`Int`=0,`VirtualWorld`=0,`Model`=21,`BanAppealer`=0,`PR`=0,`HR`=0,`AP`=1,`Security`=0,`ShopTech`=0,`FactionModerator`=0,`GangModerator`=0,`Undercover`=0,`TogReports`=0,`Radio`=0,`RadioFreq`=0,`UpgradePoints`=0,`Origin`=0,`Muted`=0,`Crimes`=0,`Accent`=1,`CHits`=0,`FHits`=0,`Arrested`=0,`Phonebook`=0,`Fishes`=0,`Gcoin`=0,`Capacity`=16,`BiggestFish`=0,`Job`=0,`SoTaiKhoan`=0,`Job2`=0,`Paycheck`=66,`HeadValue`=0,`JailTime`=0,`WRestricted`=0,`
+[12:55:25] Materials`=0,`Crates`=0,`Pot`=0,`Crack`=0,`Nation`=-1,`Leader`=-1,`Member`=-1,`Division`=-1,`FMember`=255,`Rank`=255,`DetSkill`=0,`SexSkill`=0,`BoxSkill`=0,`LawSkill`=0,`MechSkill`=0,`TruckSkill`=0,`DrugsSkill`=0,`ArmsSkill`=0,`SmugglerSkill`=0,`FishSkill`=0,`CheckCash`=0,`Checks`=0,`BoatLic`=0,`FlyLic`=0,`GunLic`=0,`FishLic`=0,`FishSkill`=0,`FightingStyle`=0,`PhoneNr`=0,`Apartment`=-1,`Apartment2`=-1,`Renting`=-1,`CarLic`=0,`DrugsTime`=0,`LawyerTime`=0,`LawyerFreeTime`=0,`MechTime`=0,`SexTime`=0,`PayDay`=66,`PayDayHad`=0,`CDPlayer`=0,`Dice`=0,`Spraycan`=0,`Rope`=0,`Cigars`=0,`Sprunk`=0,`Bombs`=0,`Wins`=0,`Ammo1`=0,`Ammo2`=0,`Ammo3`=0,`Ammo4`=0,`Ammo5`=0,`Ammo6`=0,`Ammo7`=0,`Ammo8`=0,`Gun0`=0,`Gun1`=0,`Gun2`=0,`Gun3`=0,`Gun4`=0,`Gun5`=0,`Gun6`=0,`Gun7`=0,`Gun8`=0,`Gun9`=0,`Gun10`=0,`Gun11`=0,`DoiBung`=100,`KhatNuoc`=100 WHERE `id`=41
+[13:00:06] [plant] 300 plants saved
