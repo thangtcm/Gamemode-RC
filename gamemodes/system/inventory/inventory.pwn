@@ -213,7 +213,6 @@ stock Inventory_Count(playerid, item[])
 	}
 	return count;
 }
-
 stock Inventory_HasItem(playerid, item[], quantity = -1)
 {
 	return (Inventory_GetItemID(playerid, item, quantity) != -1);
