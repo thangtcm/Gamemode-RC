@@ -203,14 +203,16 @@ stock Inventory_Items(playerid)
 
 stock Inventory_Count(playerid, item[])
 {
-	new pItemId = Inventory_GetItemID(playerid, item);
-
-	if(pItemId != -1)
-		return InventoryData[playerid][pItemId][invQuantity];
-
-	return 0;
+	new count = 0;
+	for(new i = 0; i < MAX_INVENTORY; i++)
+	{
+		if(!InventoryData[playerid][i][invExists])
+			continue;
+		if(!strcmp(InventoryData[playerid][i][invItem], item)) 
+			count++;
+	}
+	return count;
 }
-
 stock Inventory_HasItem(playerid, item[], quantity = -1)
 {
 	return (Inventory_GetItemID(playerid, item, quantity) != -1);
