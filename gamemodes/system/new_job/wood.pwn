@@ -1,5 +1,5 @@
 #include <a_samp>
-#include <YSI\y_hooks>
+#include <YSI_Coding\y_hooks>
 #define JOB_WOOD 30
 #define MAX_WOOD 10
 enum Wood {

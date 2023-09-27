@@ -1,4 +1,4 @@
-#include <YSI\y_hooks>
+#include <YSI_Coding\y_hooks>
 #define MAX_DRUG_POINT 10
 enum DrugLab {
 	Float:DLab_Postion[3],

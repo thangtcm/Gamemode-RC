@@ -978,65 +978,9 @@ public OnPlayerModelSelection(playerid, response, listid, modelid)
 
 public OnPlayerClickPlayerTextDraw(playerid, PlayerText:playertextid)
 {	
-/*	if(GetPVarInt(playerid,"Page_") != 0) {
-		if(playertextid == Main_BNoiThat[playerid][3]) {
-			new pg = pg = sizeof(NoithatObj) / 21,max_page;
-			max_page = sizeof(NoithatObj) / 21;
-			if(pg > 0) max_page = sizeof(NoithatObj) / 21 + 1;
-			if(GetPVarInt(playerid, "Page_") >= max_page) {
-            	Showshopnoithat(playerid,1);
-            	return 1;
-        	}
-        	Showshopnoithat(playerid,GetPVarInt(playerid, "Page_")+1);
-		}
-		if(playertextid == Main_BNoiThat[playerid][4]) {
-			if(GetPVarInt(playerid, "Page_") == 1) {
-				new pg = pg = sizeof(NoithatObj) / 21;
-				if(pg > 0) {
-					Showshopnoithat(playerid,sizeof(NoithatObj) / 21 + 1);
-				}
-				else {
-					Showshopnoithat(playerid,sizeof(NoithatObj) / 21);
-				}			
-				return 1;
-			}
-       		Showshopnoithat(playerid,GetPVarInt(playerid, "Page_")-1);
-		}
-		for(new i = 0 ; i < 21 ; i++) {
-				if(playertextid == B_NoiThat[playerid][i]) {
-				new ntvar = GetPVarInt(playerid, "Page_") - 1;
-				SetPVarInt(playerid, "MuaNoiThat", i + ( ntvar * 21));
-				HideNoiThatTD(playerid);
-				new string[129];
-				format(string, sizeof(string),"Noi that: %s\nGia tien: $%d\nID Object: %d\nBan co xac nhan mua noi that nay khong?", GetNoiThatName(NoithatObj[i + ( ntvar * 21)]),GetNoiThatPrice(NoithatObj[i + ( ntvar * 21)]),NoithatObj[i + ( ntvar * 21)]);
-				ShowPlayerDialog(playerid, DIALOG_NOITHAT, DIALOG_STYLE_MSGBOX, "Mua noi that",string , "Dong y", "Huy bo");
-			}
-		}
-	}*/
+
 	if(GetPVarInt(playerid, "is_loading") == 1) return 1;
-/*	if(GetPVarInt(playerid, "TextDrawCharacter") == 1) {
-        for(new i = 0 ; i <  4 ; i++) {
-    	    if(playertextid == CharacterName[playerid][i]) {
-    	    	if(TempCharacter[playerid][i][IsCreated]) {
-    	    		ShowInfoCharacter(playerid,i);
-                	SetPVarInt(playerid,"SelectNhanVat",i);
-    	    	}
-    	    	else if(!TempCharacter[playerid][i][IsCreated]) {
-                    HideTDCharacter(playerid);
-                    SetPVarInt(playerid, "SelectNhanVat", i);
-                    ShowPlayerDialog(playerid, DIALOG_TAONHANVAT, DIALOG_STYLE_INPUT, "Tao nhan vat", "Hay nhap ten nhan vat de tiep tuc tao nhan vat\nLuu y: Ten phai viet hoa 2 chu dau, va khong co ky tu dac biet", "Tiep tuc", "Quay lai");
-    	    	}
-                
-    	    }
-    	}
-    	if(playertextid == CharacterMain[playerid][15]) {
-    		HideTDCharacter(playerid);
-    		LoaderStarting(playerid, LOAD_CHARACTERLOGIN, "Dang tai du lieu game...", 2);       
-    	}
-    	if(playertextid == CharacterMain[playerid][17]) {
-    		ShowPlayerDialog(playerid, DIALOG_NOTHING, DIALOG_STYLE_MSGBOX, "Loi", "Khong du quyen hang de xoa nhan vat\nNeu ban muon xoa nhan vat hay lien he Admin nhe", "Tiep tuc", "Quay lai");
-    	}
-    }*/
+
    	if(GetPVarInt(playerid, "DangTaoAcc") == 1)
    	{
    		if(playertextid == RegCharacter[playerid][1])
@@ -1158,240 +1102,6 @@ public OnPlayerClickMap(playerid, Float:fX, Float:fY, Float:fZ)
     if(PlayerInfo[playerid][pAdmin] > 2) SetPlayerPos(playerid,fX,fY,fZ);
 	acstruct[playerid][checkmaptp] = 1; acstruct[playerid][maptplastclick] = GetTickCount();
 	acstruct[playerid][maptp][0] = fX; acstruct[playerid][maptp][1] = fY; acstruct[playerid][maptp][2] = fZ;
-	return 1;
-}
-
-public OnPlayerTakeDamage(playerid, issuerid, Float:amount, weaponid)
-{
-	SetPVarInt(playerid, "NameTagTime", gettime()+5);
-    if(GetPVarInt(playerid, "commitSuicide") == 1)
-	{
-		SetPVarInt(playerid, "commitSuicide", 0);
-	}
-	if(issuerid != INVALID_PLAYER_ID)
-	{
-	    ShotPlayer[issuerid][playerid] = gettime();
-	    LastShot[playerid] = gettime();
-		aLastShot[playerid] = issuerid;
-		if(GetPVarType(playerid, "gt_Spraying"))
-		{
-			DeletePVar(playerid, "gt_Spraying");
-		}
-		if(prisonactive == 0)
-	    {
-			if(amount == 0)
-  			{
-    			if(weaponid != 54 && weaponid != 4)
-	    		{
-					if(GetPVarInt(playerid, "CleoWarning") == 2)
-					{
-					    if(PlayerInfo[playerid][pJailTime] > 0) return 1;
-					    new totalwealth = PlayerInfo[playerid][pAccount] + GetPlayerCash(playerid);
-						if(PlayerInfo[playerid][pPhousekey] != INVALID_HOUSE_ID && HouseInfo[PlayerInfo[playerid][pPhousekey]][hOwnerID] == GetPlayerSQLId(playerid)) totalwealth += HouseInfo[PlayerInfo[playerid][pPhousekey]][hSafeMoney];
-						if(PlayerInfo[playerid][pPhousekey2] != INVALID_HOUSE_ID && HouseInfo[PlayerInfo[playerid][pPhousekey2]][hOwnerID] == GetPlayerSQLId(playerid)) totalwealth += HouseInfo[PlayerInfo[playerid][pPhousekey2]][hSafeMoney];
-
-						new fine = 15*totalwealth/100;
-						if(fine < 1) fine = 1000000;
-						GivePlayerCash(playerid, -fine);
-                        PlayerInfo[playerid][pWarns] += 1;
-	                    SetPlayerArmedWeapon(playerid, 0);
-						if(GetPVarInt(playerid, "IsInArena") >= 0)
-						{
-							LeavePaintballArena(playerid, GetPVarInt(playerid, "IsInArena"));
-						}
-						new string[128];
-						GameTextForPlayer(playerid, "~w~Chao mung ban den ~n~~r~Fort DeMorgan", 5000, 3);
-						ResetPlayerWeaponsEx(playerid);
-						SendClientMessageEx(playerid, COLOR_CYAN, "Tang 15% CLEO vao tai khoan cua ban cung voi thoi gian ngoi tu 3 gio - neu con su dung ban co the bi khoa tai khoan");
-						ShowPlayerDialog(playerid,DIALOG_NOTHING,DIALOG_STYLE_MSGBOX,"BUSTED!","Tang 15% CLEO vao tai khoan cua ban cung voi thoi gian ngoi tu 3 gio - neu con su dung ban co the bi khoa tai khoan","Thoat","");
-
-						if(PlayerInfo[playerid][pLevel] > 3) {
-						    format(string, sizeof(string), "AdmCmd: %s da bi dua vao tu boi Admin, ly do: BUSTED!", GetPlayerNameEx(playerid), GetPlayerNameEx(playerid));
-							SendClientMessageToAllEx(COLOR_LIGHTRED, string);
-						}
-						else {
-						    format(string, sizeof(string), "{AA3333}AdmWarning{FFFF00}: %s da bi dua vao tu boi Admin, ly do: BUSTED!", GetPlayerNameEx(playerid), GetPlayerNameEx(playerid));
-							ABroadCast(COLOR_YELLOW, string, 3);
-						}
-						PlayerInfo[playerid][pWantedLevel] = 0;
-						SetPlayerWantedLevel(playerid, 0);
-						SetPlayerHealth(playerid, 0x7FB00000);
-						PlayerInfo[playerid][pJailTime] = 180*60;
-						SetTimerEx("IdiotSound", 10000, 0, "i", playerid);
-						strcpy(PlayerInfo[playerid][pPrisonReason], "[OOC][PRISON] BUSTED!", 128);
-						strcpy(PlayerInfo[playerid][pPrisonedBy], "System", 128);
-						PhoneOnline[playerid] = 1;
-						SetPlayerVirtualWorld(playerid, 3);
-						PlayerInfo[playerid][pVW] = 3;
-						new rand = random(sizeof(OOCPrisonSpawns));
-						Streamer_UpdateEx(playerid, OOCPrisonSpawns[rand][0], OOCPrisonSpawns[rand][1], OOCPrisonSpawns[rand][2]);
-						SetPlayerPos(playerid, OOCPrisonSpawns[rand][0], OOCPrisonSpawns[rand][1], OOCPrisonSpawns[rand][2]);
-						SetPlayerSkin(playerid, 50);
-						SetPlayerColor(playerid, TEAM_APRISON_COLOR);
-						Player_StreamPrep(playerid, OOCPrisonSpawns[rand][0], OOCPrisonSpawns[rand][1], OOCPrisonSpawns[rand][2], FREEZE_TIME);
-						new WeaponName[ 32 ];
-						GetWeaponName( weaponid, WeaponName, sizeof( WeaponName ) );
-						format(string, sizeof(string), "[PRISONED] %s(%d) (Ping: %d) | damage: %f | Weapon: %s | Issuer: %s(%d) | Frames: %d", GetPlayerNameExt(playerid), playerid, GetPlayerPing(playerid), amount, WeaponName, GetPlayerNameExt(issuerid), issuerid, pFPS[playerid]);
-						Log("logs/cleo.log", string);
-						foreach(new i : Player)
-					    {
-					        if(IsPlayerAdmin(i))
-					        {
-								SendClientMessageEx(i, COLOR_CYAN, string);
-					        }
-					    }
-						DeletePVar(playerid, "CleoWarning");
-					}
-					else
-					{
-					    new WeaponName[ 32 ], string[128];
-						GetWeaponName( weaponid, WeaponName, sizeof( WeaponName ) );
-						format(string, sizeof(string), "%s(%d) (Ping: %d) | damage: %f | Weapon: %s | Issuer: %s(%d) | Frames: %d", GetPlayerNameExt(playerid), playerid, GetPlayerPing(playerid), amount, WeaponName, GetPlayerNameExt(issuerid), issuerid, pFPS[playerid]);
-						Log("logs/cleo.log", string);
-						foreach(new i : Player)
-					    {
-					        if(IsPlayerAdmin(i))
-					        {
-								SendClientMessageEx(i, COLOR_CYAN, string);
-					        }
-					    }
-					    SetPVarInt(playerid, "CleoWarning", GetPVarInt(playerid, "CleoWarning")+1);
-					}
-				}
-			}
-		}
-	}
-	if(issuerid != INVALID_PLAYER_ID)
-	{
-	    for(new Sz; Sz < MAX_SZ; Sz++)
-   		{
-			if(IsPlayerInRangeOfPoint(playerid, SafeZoneInfo[Sz][szKhoangcach], SafeZoneInfo[Sz][szExteriorX], SafeZoneInfo[Sz][szExteriorY], SafeZoneInfo[Sz][szExteriorZ]))
-			if(GetPlayerState(playerid) == PLAYER_STATE_ONFOOT)
-			{
-		        if(GetPlayerState(issuerid) == PLAYER_STATE_DRIVER)
-		        {
-		            if(weaponid == 49 || weaponid == 50)
-		            {
-		                new Float:x, Float:y, Float:z;
-		                GetPlayerPos(issuerid, x, y, z);
-		                SetPlayerPos(issuerid, x, y, z + 5);
-						SendClientMessageEx(issuerid, COLOR_YELLOW, "(-) Canh bao : Khong duoc tan cong nguoi choi o khu an toan (-).");
-						GameTextForPlayer(issuerid, "~r~Khong duoc Car Raming", 5000, 3);
-						return 1;
-					}
-				}
-			}
-		}
-	}
-	if(GetPVarInt(playerid, "PlayerCuffed") == 1)
-	{
-		new Float:currenthealth;
-		GetPlayerHealth(playerid, currenthealth);
-		if(currenthealth+amount > 100) SetPlayerHealth(playerid, 100); else SetPlayerHealth(playerid, currenthealth+amount);
-	}
-
-	foreach(new i: Player) {
-		if(PlayerInfo[i][pAdmin] >= 2 && GetPVarType(i, "_dCheck") && GetPVarInt(i, "_dCheck") == playerid) {
-			new string[128];
-			format(string, sizeof(string), "Damagecheck on %s: Issuer: %s (%d) | Weapon: %s | Damage: %f", GetPlayerNameEx(playerid), GetPlayerNameEx(issuerid), issuerid, GetWeaponNameEx(weaponid), amount);
-			SendClientMessageEx(i, COLOR_WHITE, string);
-		}
-	}
-	return 1;
-}
-
-
-public OnPlayerGiveDamage(playerid, damagedid, Float:amount, weaponid)
-{
- 
-	if (damagedid == INVALID_PLAYER_ID) return 1;
-	if (playerid == INVALID_PLAYER_ID) return 1;
-	for(new Sz; Sz < MAX_SZ; Sz++)
-    {
-		if(IsPlayerInRangeOfPoint(damagedid, SafeZoneInfo[Sz][szKhoangcach], SafeZoneInfo[Sz][szExteriorX], SafeZoneInfo[Sz][szExteriorY], SafeZoneInfo[Sz][szExteriorZ]))
-		{
-		    if(!IsACop(playerid))
-		    {
-                new Float:hp;
-                TogglePlayerControllable(playerid, 0);
-                Loaded[playerid] = 1;
-	    		SetTimer("LoadPlayer", 2000, false);
-			    GameTextForPlayer(playerid, "~r~Khu vuc an toan", 5000, 3);
-			    SendClientMessageEx(playerid, COLOR_YELLOW, "Canh bao: Khong tan cong nguoi trong khu vuc bao ve");
-                GetPlayerHealth(playerid, hp);
-		        SetPlayerHealth(playerid, hp-amount);
-			    GetPlayerHealth(damagedid, hp);
-			    SetPlayerHealth(damagedid, hp+amount);
-			}
-		}
-	}
-    if(pTazer{playerid} == 1)
-	{
-	    if(weaponid !=  23) {
-	    	new string[44 + MAX_PLAYER_NAME];
-			RemovePlayerWeapon(playerid, 23);
-			GivePlayerValidWeapon(playerid, pTazerReplace{playerid}, pTazerAmmoReplace{playerid});
-			format(string, sizeof(string), "* %s holsters their tazer.", GetPlayerNameEx(playerid));
-			ProxDetector(30.0, playerid, string, COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE);
-			pTazer{playerid} = 0;
-			return 1;
-		}
-		if(!ProxDetectorS(20.0, playerid, damagedid)) {
-			new string[44 + (MAX_PLAYER_NAME * 2)];
-			format(string, sizeof(string), "* %s ban da ban dien vao %s va lam te liet nguoi do.", GetPlayerNameEx(playerid), GetPlayerNameEx(damagedid));
-			ProxDetector(30.0, playerid, string, COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE);
-			return 1;
-		}
- 		if(TazerTimeout[playerid] > 0 && !GetPVarType(damagedid, "IsFrozen"))
-  		{
-  		    new Float:hp;
-  		    GetPlayerHealth(damagedid, hp);
-  		    SetPlayerHealth(damagedid, hp-amount);
-			return 1;
-		}
-		if(GetPlayerState(damagedid) == PLAYER_STATE_ONFOOT && PlayerCuffed[damagedid] == 0 && PlayerInfo[playerid][pHasTazer] == 1)
-		{
-		    if(PlayerInfo[damagedid][pAdmin] >= 2 && PlayerInfo[damagedid][pTogReports] != 1)
-			{
-			    SendClientMessageEx(playerid, COLOR_GRAD2, "Admin khong the bi tazer!");
-			    new Float:hp;
-	  		    GetPlayerHealth(damagedid, hp);
-	  		    SetPlayerHealth(damagedid, hp+amount);
-				return 1;
-			}
-		    if(PlayerInfo[damagedid][pDangHelp] == 1)
-			{
-			    SendClientMessageEx(playerid, COLOR_GRAD2, "(-) Ban Khong The Tazer Khi Advisors Dang Lam Viec");
-				return 1;
-			}
-			#if defined zombiemode
-			if(GetPVarInt(damagedid, "pIsZombie"))
-			{
-			    SendClientMessageEx(playerid, COLOR_GRAD2, "Zombie khong the bi tazer!");
-				return 1;
-			}
-			#endif
-			new Float:X, Float:Y, Float:Z, Float:hp;
-	  		GetPlayerPos(playerid, X, Y, Z);
-			GetPlayerHealth(damagedid, hp);
-			new string[44 + (MAX_PLAYER_NAME * 2)];
-			format(string, sizeof(string), "* %s da ban sung dien lam te liet %s .", GetPlayerNameEx(playerid), GetPlayerNameEx(damagedid));
-			ProxDetector(30.0, playerid, string, COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE);
-			GameTextForPlayer(damagedid, "~r~Tazed", 3500, 3);
-   			SetPlayerHealth(damagedid, hp+amount);
-			TogglePlayerControllable(damagedid, 0);
-			ApplyAnimation(damagedid,"CRACK","crckdeth2",4.1,0,1,1,1,1,1);
-			PlayerPlaySound(damagedid, 1085, X, Y, Z);
-			PlayerPlaySound(playerid, 1085, X, Y, Z);
-			PlayerCuffed[damagedid] = 1;
-			SetPVarInt(damagedid, "PlayerCuffed", 1);
-			PlayerCuffedTime[damagedid] = 16;
-			SetPVarInt(damagedid, "IsFrozen", 1);
-			TazerTimeout[playerid] = 6;
-			SetTimerEx("TazerTimer",1000,false,"d",playerid);
-			GameTextForPlayer(playerid, "~n~~n~~n~~n~~n~~n~~n~~n~~r~Dang tai dien... ~w~5", 1500,3);
-		}
-	}
 	return 1;
 }
 
@@ -7152,7 +6862,7 @@ public LoadStreamerStaticVehicles()
 {
 
 	//ActorNV = CreateActor(2,-2415.4856,477.7157,29.8328,26.0032);
-	TruckActor = CreateDynamicActor(133, 58.5952,-292.2914,1.5781,6.3205);
+	
 
 	
 	/*JobText3D[0] = Create3DTextLabel("{3399FF}Xe trucker \n{66FFFF}Bien So Xe: {FF4500} 1 ", 0xFF0000AA, 7.77, 7.77, 7.77, 25.0, 0, 1 );
@@ -7500,6 +7210,92 @@ public LoadStreamerDynamicPickups()
 	CreateDynamicPickup(371, 23, 1536.0, -1360.0, 1150.0); //LS towertop
 	CreateDynamicPickup(1275, 23, 207.0798, -129.1775, 1003.5078); //muatrangphuc
 	CreateDynamicPickup(1239, 23, 90.3602,-303.6159,1.5823); // RegisterCarTruck
+	CreateDynamicPickup(1239, 23, 260.7484, 1412.1002, 11.1693);
+	CreateDynamicPickup(1239, 23, -992.8083, -696.1418, 32.0078);
+	CreateDynamicPickup(1239, 23, -1869.1418, -1717.2013, 21.7500);
+	CreateDynamicPickup(1239, 23, -788.3041, -133.7872, 64.5020);
+	CreateDynamicPickup(1239, 23, -528.1472, -191.3672, 78.4063);
+	CreateDynamicPickup(1239, 23, -1058.7488, -1195.4639, 129.2188);
+	CreateDynamicPickup(1239, 23, -1448.5803, -1499.0050, 101.3283);
+	CreateDynamicPickup(1239, 23, -384.0244, -1041.0443, 58.8835);
+	CreateDynamicPickup(1239, 23, -21.1862, 81.3918, 3.1096);
+	CreateDynamicPickup(1239, 23, 1938.3217, 166.3846, 19.8281);
+	CreateDynamicPickup(1239, 23, -1092.4702, -1622.1119, 76.3672);
+	// The Hilltop Farm
+	CreateDynamicPickup(1239, 23, 1059.6445, -345.3934, 73.9922);
+	CreateDynamic3DTextLabel("{FF0000} The Hilltop Farm \n{FFFFFF}((/truckergo [buy/sell] de mua hoac ban san pham.))", COLOR_WHITE, 1059.6445, -345.3934, 73.9922 + 0.5, 10.0);// Actor Trucker
+
+	// Fort Carson Quarry
+	CreateDynamicPickup(1239, 23, 325.7538, 1147.9755, 8.1741);
+	CreateDynamic3DTextLabel("{FF0000} Fort Carson Quarry \n{FFFFFF}((/truckergo [buy/sell] de mua hoac ban san pham.))", COLOR_WHITE, 325.7538, 1147.9755, 8.1741 + 0.5, 10.0);// Actor Trucker
+	//
+	// Blueberry Distribution Hub
+	CreateDynamicPickup(1239, 23, -226.1169, -190.0281, 0.9920);
+	CreateDynamic3DTextLabel("{FF0000} Blueberry Distribution Hub \n{FFFFFF}((/truckergo [buy/sell] de mua hoac ban san pham.))", COLOR_WHITE, -226.1169, -190.0281, 0.9920 + 0.5, 10.0);// Actor Trucker
+
+	// San Andreas Federal Weapon Factory
+	CreateDynamicPickup(1239, 23, 2511.4922, 2799.9509, 10.8203);
+	CreateDynamic3DTextLabel("{FF0000} San Andreas Federal Weapon Factory \n{FFFFFF}((/truckergo [buy/sell] de mua hoac ban san pham.))", COLOR_WHITE, 2511.4922, 2799.9509, 10.8203 + 0.5, 10.0);// Actor Trucker
+
+	// San Andreas Steel Mill
+	CreateDynamicPickup(1239, 23, 2658.2119, -1591.6473, 13.7133);
+	CreateDynamic3DTextLabel("{FF0000} San Andreas Steel Mill \n{FFFFFF}((/truckergo [buy/sell] de mua hoac ban san pham.))", COLOR_WHITE, 2658.2119, -1591.6473, 13.7133 + 0.5, 10.0);// Actor Trucker
+
+	// Angel Pine Sawmill
+	CreateDynamicPickup(1239, 23, -1999.1478, -2415.9165, 30.6250);
+	CreateDynamic3DTextLabel("{FF0000} Angel Pine Sawmill \n{FFFFFF}((/truckergo [buy/sell] de mua hoac ban san pham.))", COLOR_WHITE, -1999.1478, -2415.9165, 30.6250 + 0.5, 10.0);// Actor Trucker
+
+	// Doherty Textile Factory
+	CreateDynamicPickup(1239, 23, -2121.7207, -264.5204, 34.8916);
+	CreateDynamic3DTextLabel("{FF0000} Doherty Textile Factory \n{FFFFFF}((/truckergo [buy/sell] de mua hoac ban san pham.))", COLOR_WHITE, -2121.7207, -264.5204, 34.8916 + 0.5, 10.0);// Actor Trucker
+
+	// FleischBerg Brewery
+	CreateDynamicPickup(1239, 23, -58.0229, 83.4377, 3.1172);
+	CreateDynamic3DTextLabel("{FF0000} FleischBerg Brewery \n{FFFFFF}((/truckergo [buy/sell] de mua hoac ban san pham.))", COLOR_WHITE, -58.0229, 83.4377, 3.1172 + 0.5, 10.0);// Actor Trucker
+
+	// SA Food Processing Plant
+	CreateDynamicPickup(1239, 23, 1052.5149, 2134.7427, 10.8203);
+	CreateDynamic3DTextLabel("{FF0000} SA Food Processing Plant \n{FFFFFF}((/truckergo [buy/sell] de mua hoac ban san pham.))", COLOR_WHITE, 1052.5149, 2134.7427, 10.8203 + 0.5, 10.0);// Actor Trucker
+
+	// Ocean Docks Concrete Plant
+	CreateDynamicPickup(1239, 23, 1059.6445, -345.3934, 73.9922);
+	CreateDynamic3DTextLabel("{FF0000} Ocean Docks Concrete Plant \n{FFFFFF}((/truckergo [buy/sell] de mua hoac ban san pham.))", COLOR_WHITE, 1059.6445, -345.3934, 73.9922 + 0.5, 10.0);// Actor Trucker
+
+	// Fort Carson Distillery
+	CreateDynamicPickup(1239, 23, -116.8637, 1133.0490, 19.7422);
+	CreateDynamic3DTextLabel("{FF0000} Fort Carson Distillery \n{FFFFFF}((/truckergo [buy/sell] de mua hoac ban san pham.))", COLOR_WHITE, -116.8637, 1133.0490, 19.7422 + 0.5, 10.0);// Actor Trucker
+
+	// Las Payasdas Malt House
+	CreateDynamicPickup(1239, 23, -317.8109, 2662.0435, 63.0919);
+	CreateDynamic3DTextLabel("{FF0000} Las Payasdas Malt House \n{FFFFFF}((/truckergo [buy/sell] de mua hoac ban san pham.))", COLOR_WHITE, -317.8109,2662.0435,63.0919 + 0.5, 10.0);// Actor Trucker
+	// Shafted Appliances
+	CreateDynamicPickup(1239, 23, 1703.7877, 998.6878, 10.8203);
+	CreateDynamic3DTextLabel("{FF0000} Shafted Appliances \n{FFFFFF}((/truckergo [buy/sell] de mua hoac ban san pham.))", COLOR_WHITE, 1703.7877, 998.6878, 10.8203 + 0.5, 10.0);// Actor Trucker
+
+	// Solarin Autos
+	CreateDynamicPickup(1239, 23, -1835.2246, 115.1202, 15.1172);
+	CreateDynamic3DTextLabel("{FF0000} Solarin Autos \n{FFFFFF}((/truckergo [buy/sell] de mua hoac ban san pham.))", COLOR_WHITE, -1835.2246, 115.1202, 15.1172 + 0.5, 10.0);// Actor Trucker
+
+	// Rockshore Construction Site
+	CreateDynamicPickup(1239, 23, 2703.8293, 902.2045, 10.4221);
+	CreateDynamic3DTextLabel("{FF0000} Rockshore Construction Site \n{FFFFFF}((/truckergo [buy/sell] de mua hoac ban san pham.))", COLOR_WHITE, 2703.8293, 902.2045, 10.4221 + 0.5, 10.0);// Actor Trucker
+
+	// Doherty Construction Site
+	CreateDynamicPickup(1239, 23, -2063.1355, 227.1720, 35.8125);
+	CreateDynamic3DTextLabel("{FF0000} Doherty Construction Site \n{FFFFFF}((/truckergo [buy/sell] de mua hoac ban san pham.))", COLOR_WHITE, -2063.1355, 227.1720, 35.8125 + 0.5, 10.0);// Actor Trucker
+
+	// Bone County Substation
+	CreateDynamicPickup(1239, 23, -766.9951, 1634.0951, 27.2124);
+	CreateDynamic3DTextLabel("{FF0000} Bone County Substation \n{FFFFFF}((/truckergo [buy/sell] de mua hoac ban san pham.))", COLOR_WHITE, -766.9951, 1634.0951, 27.2124 + 0.5, 10.0);// Actor Trucker
+
+	// Sherman Dam Powerplant
+	CreateDynamicPickup(1239, 23, 782.8306, 2035.0806, 6.7109);
+	CreateDynamic3DTextLabel("{FF0000} Sherman Dam Powerplant \n{FFFFFF}((/truckergo [buy/sell] de mua hoac ban san pham.))", COLOR_WHITE, 782.8306, 2035.0806, 6.7109 + 0.5, 10.0);// Actor Trucker
+
+	// The Ship
+	CreateDynamicPickup(1239, 23, 2771.0579, -2421.7144, 13.6543);
+	CreateDynamic3DTextLabel("{FF0000} The Ship \n{FFFFFF}((/truckergo [buy/sell] de mua hoac ban san pham.))", COLOR_WHITE, 2771.0579, -2421.7144, 13.6543 + 0.5, 10.0);// Actor Trucker
+	
 	print("[Streamer] Dynamic Pickups has been loaded.");
 
 	return 1;
@@ -7509,7 +7305,39 @@ forward LoadStreamerDynamic3DTextLabels();
 public LoadStreamerDynamic3DTextLabels()
 {
 	new string[128];
-    CreateDynamic3DTextLabel("{FF8000}/loadforklift\nDe dua cac thung len xe forklift", COLOR_YELLOW, -2114.1, -1723.5, 11984.5, 20.0, _, _, 1, 0, -1, _, 20.0);
+	// Green Palms Refinery
+	CreateDynamic3DTextLabel("{FF0000} Green Palms Refinery \n{FFFFFF}((/truckergo [buy/sell] de mua hoac ban san pham.))", COLOR_WHITE, 260.7484, 1412.1002, 11.1693 + 0.5, 10.0);
+
+	// Easter Bay Chemicals
+	CreateDynamic3DTextLabel("{FF0000} Easter Bay Chemicals \n{FFFFFF}((/truckergo [buy/sell] de mua hoac ban san pham.))", COLOR_WHITE, -992.8083, -696.1418, 32.0078 + 0.5, 10.0);
+
+	// Whetstone Scrap Yard
+	CreateDynamic3DTextLabel("{FF0000} Whetstone Scrap Yard \n{FFFFFF}((/truckergo [buy/sell] de mua hoac ban san pham.))", COLOR_WHITE, -1869.1418, -1717.2013, 21.7500 + 0.5, 10.0);
+
+	// The Panopticon Forest - West
+	CreateDynamic3DTextLabel("{FF0000} The Panopticon Forest - West \n{FFFFFF}((/truckergo [buy/sell] de mua hoac ban san pham.))", COLOR_WHITE, -788.3041, -133.7872, 64.5020 + 0.5, 10.0);
+
+	// The Panopticon Forest - East
+	CreateDynamic3DTextLabel("{FF0000} The Panopticon Forest - East \n{FFFFFF}((/truckergo [buy/sell] de mua hoac ban san pham.))", COLOR_WHITE, -528.1472, -191.3672, 78.4063 + 0.5, 10.0);
+
+	// The Impounder's Farm
+	CreateDynamic3DTextLabel("{FF0000} The Impounder's Farm \n{FFFFFF}((/truckergo [buy/sell] de mua hoac ban san pham.))", COLOR_WHITE, -1058.7488, -1195.4639, 129.2188 + 0.5, 10.0);
+
+	// The Farm On A Rock
+	CreateDynamic3DTextLabel("{FF0000} The Farm On A Rock \n{FFFFFF}((/truckergo [buy/sell] de mua hoac ban san pham.))", COLOR_WHITE, -1448.5803, -1499.0050, 101.3283 + 0.5, 10.0);
+
+	// The Beacon Hill Eggs
+	CreateDynamic3DTextLabel("{FF0000} The Beacon Hill Eggs \n{FFFFFF}((/truckergo [buy/sell] de mua hoac ban san pham.))", COLOR_WHITE, -384.0244, -1041.0443, 58.8835 + 0.5, 10.0);
+
+	// EasterBoard Farm
+	CreateDynamic3DTextLabel("{FF0000} EasterBoard Farm \n{FFFFFF}((/truckergo [buy/sell] de mua hoac ban san pham.))", COLOR_WHITE, -21.1862, 81.3918, 3.1096 + 0.5, 10.0);
+
+	// The Palomino Farm
+	CreateDynamic3DTextLabel("{FF0000} The Palomino Farm \n{FFFFFF}((/truckergo [buy/sell] de mua hoac ban san pham.))", COLOR_WHITE, 1938.3217, 166.3846, 19.8281 + 0.5, 10.0);// Actor Trucker
+	CreateDynamic3DTextLabel("{FF0000} The Leafy Hollow Orchards \n{FFFFFF}((/truckergo [buy/sell] de mua hoac ban san pham.))", COLOR_WHITE, -1092.4702, -1622.1119, 76.3672 + 0.5, 10.0);// Actor Trucker
+
+
+	CreateDynamic3DTextLabel("{FF8000}/loadforklift\nDe dua cac thung len xe forklift", COLOR_YELLOW, -2114.1, -1723.5, 11984.5, 20.0, _, _, 1, 0, -1, _, 20.0);
 	CreateDynamic3DTextLabel("{FF8000}LOCKDOWN\nCHI BAM TRONG TRUONG HOP KHAN CAP", COLOR_YELLOW, -1121.70, 4290.41, 5.88, 20.0, _, _, 1, 0, 0, _, 20.0);
 	// General text labels
 	CreateDynamic3DTextLabel("All Saints Plaza Parking Garage\nType /enter de dua xe cua ban vao bai",COLOR_YELLOW,1218.69,-1425.01,13.15+0.6,25.0);
@@ -7623,8 +7451,8 @@ public LoadStreamerDynamic3DTextLabels()
 //     CreateDynamic3DTextLabel("{9f9fba} Taxi \n(( Giu chuot phai vao NPC, sau do bam 'Y' de tuong tac ))", COLOR_WHITE,1741.5220,-1863.6914,13.5748+0.5,10.0);// Actor Taxi
 //     CreateDynamic3DTextLabel("{9f9fba} Ban Vu Khi \n(( Giu chuot phai vao NPC, sau do bam 'Y' de tuong tac ))", COLOR_WHITE,1366.3973,-1275.0493,13.5469+0.5,10.0);// Actor Ban Vu Khi
 //    CreateDynamic3DTextLabel("{9f9fba} Chat Go \n(( Giu chuot phai vao NPC, sau do bam 'Y' de tuong tac ))", COLOR_WHITE,-491.6027,-193.9856,78.3640+0.5,10.0);// Actor Chat Go
-	CreateDynamic3DTextLabel("{FF0000} Trucker \n{FFFFFF}(( Giu chuot phai vao NPC, sau do bam 'Y' de tuong tac ))", COLOR_WHITE,58.5952,-292.2914,1.5781+0.5,10.0);// Actor Trucker
-	CreateDynamic3DTextLabel("{5500ff} Dang ky xe Trucker \n{FFFFFF}(( Su dung {ff0000}/registercartruck {FFFFFF} de dang ky xe van chuyen hang hoa !!))", COLOR_WHITE,90.3602,-303.6159,1.5823+0.5,10.0);
+	CreateDynamic3DTextLabel("{FF0000} Trucker \n{FFFFFF}((/truckergo [mission] de tuong tac voi NPC ))", COLOR_WHITE,58.5952,-292.2914,1.5781+0.5,10.0);// Actor Trucker
+	CreateDynamic3DTextLabel("{5500ff} Dang ky xe Trucker \n{FFFFFF}(( Su dung {ff0000}/truckergo car {FFFFFF} de dang ky xe van chuyen hang hoa !!))", COLOR_WHITE,90.3602,-303.6159,1.5823+0.5,10.0);
     CreateDynamic3DTextLabel("Tierra Robada Gant Bridge Access.",0xFFFF00AA,-2678.2702636719,2148.0134277344,55.4296875+0.6,20.0);// Border Lable
 	CreateDynamic3DTextLabel("Famed Locker \nType /famedlocker to access the locker", COLOR_YELLOW,901.4825,1429.7404,-82.3235+0.6,4.0); //Famed Locker
 	print("[Streamer] Dynamic 3D Text Labels has been loaded.");
@@ -16453,6 +16281,239 @@ public OnCheckCharacterExist(playerid, name[])
 		format(TempCharacter[playerid][i][Name], 24, "%s", name);
     }
     return 1;
+}
+public OnPlayerTakeDamage(playerid, issuerid, Float:amount, weaponid)
+{
+	SetPVarInt(playerid, "NameTagTime", gettime()+5);
+    if(GetPVarInt(playerid, "commitSuicide") == 1)
+	{
+		SetPVarInt(playerid, "commitSuicide", 0);
+	}
+	if(issuerid != INVALID_PLAYER_ID)
+	{
+	    ShotPlayer[issuerid][playerid] = gettime();
+	    LastShot[playerid] = gettime();
+		aLastShot[playerid] = issuerid;
+		if(GetPVarType(playerid, "gt_Spraying"))
+		{
+			DeletePVar(playerid, "gt_Spraying");
+		}
+		if(prisonactive == 0)
+	    {
+			if(amount == 0)
+  			{
+    			if(weaponid != 54 && weaponid != 4)
+	    		{
+					if(GetPVarInt(playerid, "CleoWarning") == 2)
+					{
+					    if(PlayerInfo[playerid][pJailTime] > 0) return 1;
+					    new totalwealth = PlayerInfo[playerid][pAccount] + GetPlayerCash(playerid);
+						if(PlayerInfo[playerid][pPhousekey] != INVALID_HOUSE_ID && HouseInfo[PlayerInfo[playerid][pPhousekey]][hOwnerID] == GetPlayerSQLId(playerid)) totalwealth += HouseInfo[PlayerInfo[playerid][pPhousekey]][hSafeMoney];
+						if(PlayerInfo[playerid][pPhousekey2] != INVALID_HOUSE_ID && HouseInfo[PlayerInfo[playerid][pPhousekey2]][hOwnerID] == GetPlayerSQLId(playerid)) totalwealth += HouseInfo[PlayerInfo[playerid][pPhousekey2]][hSafeMoney];
+
+						new fine = 15*totalwealth/100;
+						if(fine < 1) fine = 1000000;
+						GivePlayerCash(playerid, -fine);
+                        PlayerInfo[playerid][pWarns] += 1;
+	                    SetPlayerArmedWeapon(playerid, 0);
+						if(GetPVarInt(playerid, "IsInArena") >= 0)
+						{
+							LeavePaintballArena(playerid, GetPVarInt(playerid, "IsInArena"));
+						}
+						new string[128];
+						GameTextForPlayer(playerid, "~w~Chao mung ban den ~n~~r~Fort DeMorgan", 5000, 3);
+						ResetPlayerWeaponsEx(playerid);
+						SendClientMessageEx(playerid, COLOR_CYAN, "Tang 15% CLEO vao tai khoan cua ban cung voi thoi gian ngoi tu 3 gio - neu con su dung ban co the bi khoa tai khoan");
+						ShowPlayerDialog(playerid,DIALOG_NOTHING,DIALOG_STYLE_MSGBOX,"BUSTED!","Tang 15% CLEO vao tai khoan cua ban cung voi thoi gian ngoi tu 3 gio - neu con su dung ban co the bi khoa tai khoan","Thoat","");
+
+						if(PlayerInfo[playerid][pLevel] > 3) {
+						    format(string, sizeof(string), "AdmCmd: %s da bi dua vao tu boi Admin, ly do: BUSTED!", GetPlayerNameEx(playerid), GetPlayerNameEx(playerid));
+							SendClientMessageToAllEx(COLOR_LIGHTRED, string);
+						}
+						else {
+						    format(string, sizeof(string), "{AA3333}AdmWarning{FFFF00}: %s da bi dua vao tu boi Admin, ly do: BUSTED!", GetPlayerNameEx(playerid), GetPlayerNameEx(playerid));
+							ABroadCast(COLOR_YELLOW, string, 3);
+						}
+						PlayerInfo[playerid][pWantedLevel] = 0;
+						SetPlayerWantedLevel(playerid, 0);
+						SetPlayerHealth(playerid, 0x7FB00000);
+						PlayerInfo[playerid][pJailTime] = 180*60;
+						SetTimerEx("IdiotSound", 10000, 0, "i", playerid);
+						strcpy(PlayerInfo[playerid][pPrisonReason], "[OOC][PRISON] BUSTED!", 128);
+						strcpy(PlayerInfo[playerid][pPrisonedBy], "System", 128);
+						PhoneOnline[playerid] = 1;
+						SetPlayerVirtualWorld(playerid, 3);
+						PlayerInfo[playerid][pVW] = 3;
+						new rand = random(sizeof(OOCPrisonSpawns));
+						Streamer_UpdateEx(playerid, OOCPrisonSpawns[rand][0], OOCPrisonSpawns[rand][1], OOCPrisonSpawns[rand][2]);
+						SetPlayerPos(playerid, OOCPrisonSpawns[rand][0], OOCPrisonSpawns[rand][1], OOCPrisonSpawns[rand][2]);
+						SetPlayerSkin(playerid, 50);
+						SetPlayerColor(playerid, TEAM_APRISON_COLOR);
+						Player_StreamPrep(playerid, OOCPrisonSpawns[rand][0], OOCPrisonSpawns[rand][1], OOCPrisonSpawns[rand][2], FREEZE_TIME);
+						new WeaponName[ 32 ];
+						GetWeaponName( weaponid, WeaponName, sizeof( WeaponName ) );
+						format(string, sizeof(string), "[PRISONED] %s(%d) (Ping: %d) | damage: %f | Weapon: %s | Issuer: %s(%d) | Frames: %d", GetPlayerNameExt(playerid), playerid, GetPlayerPing(playerid), amount, WeaponName, GetPlayerNameExt(issuerid), issuerid, pFPS[playerid]);
+						Log("logs/cleo.log", string);
+						foreach(new i : Player)
+					    {
+					        if(IsPlayerAdmin(i))
+					        {
+								SendClientMessageEx(i, COLOR_CYAN, string);
+					        }
+					    }
+						DeletePVar(playerid, "CleoWarning");
+					}
+					else
+					{
+					    new WeaponName[ 32 ], string[128];
+						GetWeaponName( weaponid, WeaponName, sizeof( WeaponName ) );
+						format(string, sizeof(string), "%s(%d) (Ping: %d) | damage: %f | Weapon: %s | Issuer: %s(%d) | Frames: %d", GetPlayerNameExt(playerid), playerid, GetPlayerPing(playerid), amount, WeaponName, GetPlayerNameExt(issuerid), issuerid, pFPS[playerid]);
+						Log("logs/cleo.log", string);
+						foreach(new i : Player)
+					    {
+					        if(IsPlayerAdmin(i))
+					        {
+								SendClientMessageEx(i, COLOR_CYAN, string);
+					        }
+					    }
+					    SetPVarInt(playerid, "CleoWarning", GetPVarInt(playerid, "CleoWarning")+1);
+					}
+				}
+			}
+		}
+	}
+	if(issuerid != INVALID_PLAYER_ID)
+	{
+	    for(new Sz; Sz < MAX_SZ; Sz++)
+   		{
+			if(IsPlayerInRangeOfPoint(playerid, SafeZoneInfo[Sz][szKhoangcach], SafeZoneInfo[Sz][szExteriorX], SafeZoneInfo[Sz][szExteriorY], SafeZoneInfo[Sz][szExteriorZ]))
+			if(GetPlayerState(playerid) == PLAYER_STATE_ONFOOT)
+			{
+		        if(GetPlayerState(issuerid) == PLAYER_STATE_DRIVER)
+		        {
+		            if(weaponid == 49 || weaponid == 50)
+		            {
+		                new Float:x, Float:y, Float:z;
+		                GetPlayerPos(issuerid, x, y, z);
+		                SetPlayerPos(issuerid, x, y, z + 5);
+						SendClientMessageEx(issuerid, COLOR_YELLOW, "(-) Canh bao : Khong duoc tan cong nguoi choi o khu an toan (-).");
+						GameTextForPlayer(issuerid, "~r~Khong duoc Car Raming", 5000, 3);
+						return 1;
+					}
+				}
+			}
+		}
+	}
+	if(GetPVarInt(playerid, "PlayerCuffed") == 1)
+	{
+		new Float:currenthealth;
+		GetPlayerHealth(playerid, currenthealth);
+		if(currenthealth+amount > 100) SetPlayerHealth(playerid, 100); else SetPlayerHealth(playerid, currenthealth+amount);
+	}
+
+	foreach(new i: Player) {
+		if(PlayerInfo[i][pAdmin] >= 2 && GetPVarType(i, "_dCheck") && GetPVarInt(i, "_dCheck") == playerid) {
+			new string[128];
+			format(string, sizeof(string), "Damagecheck on %s: Issuer: %s (%d) | Weapon: %s | Damage: %f", GetPlayerNameEx(playerid), GetPlayerNameEx(issuerid), issuerid, GetWeaponNameEx(weaponid), amount);
+			SendClientMessageEx(i, COLOR_WHITE, string);
+		}
+	}
+	return 1;
+}
+
+
+public OnPlayerGiveDamage(playerid, damagedid, Float:amount, weaponid)
+{
+ 
+	if (damagedid == INVALID_PLAYER_ID) return 1;
+	if (playerid == INVALID_PLAYER_ID) return 1;
+	for(new Sz; Sz < MAX_SZ; Sz++)
+    {
+		if(IsPlayerInRangeOfPoint(damagedid, SafeZoneInfo[Sz][szKhoangcach], SafeZoneInfo[Sz][szExteriorX], SafeZoneInfo[Sz][szExteriorY], SafeZoneInfo[Sz][szExteriorZ]))
+		{
+		    if(!IsACop(playerid))
+		    {
+                new Float:hp;
+                TogglePlayerControllable(playerid, 0);
+                Loaded[playerid] = 1;
+	    		SetTimer("LoadPlayer", 2000, false);
+			    GameTextForPlayer(playerid, "~r~Khu vuc an toan", 5000, 3);
+			    SendClientMessageEx(playerid, COLOR_YELLOW, "Canh bao: Khong tan cong nguoi trong khu vuc bao ve");
+                GetPlayerHealth(playerid, hp);
+		        SetPlayerHealth(playerid, hp-amount);
+			    GetPlayerHealth(damagedid, hp);
+			    SetPlayerHealth(damagedid, hp+amount);
+			}
+		}
+	}
+    if(pTazer{playerid} == 1)
+	{
+	    if(weaponid !=  23) {
+	    	new string[44 + MAX_PLAYER_NAME];
+			RemovePlayerWeapon(playerid, 23);
+			GivePlayerValidWeapon(playerid, pTazerReplace{playerid}, pTazerAmmoReplace{playerid});
+			format(string, sizeof(string), "* %s holsters their tazer.", GetPlayerNameEx(playerid));
+			ProxDetector(30.0, playerid, string, COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE);
+			pTazer{playerid} = 0;
+			return 1;
+		}
+		if(!ProxDetectorS(20.0, playerid, damagedid)) {
+			new string[44 + (MAX_PLAYER_NAME * 2)];
+			format(string, sizeof(string), "* %s ban da ban dien vao %s va lam te liet nguoi do.", GetPlayerNameEx(playerid), GetPlayerNameEx(damagedid));
+			ProxDetector(30.0, playerid, string, COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE);
+			return 1;
+		}
+ 		if(TazerTimeout[playerid] > 0 && !GetPVarType(damagedid, "IsFrozen"))
+  		{
+  		    new Float:hp;
+  		    GetPlayerHealth(damagedid, hp);
+  		    SetPlayerHealth(damagedid, hp-amount);
+			return 1;
+		}
+		if(GetPlayerState(damagedid) == PLAYER_STATE_ONFOOT && PlayerCuffed[damagedid] == 0 && PlayerInfo[playerid][pHasTazer] == 1)
+		{
+		    if(PlayerInfo[damagedid][pAdmin] >= 2 && PlayerInfo[damagedid][pTogReports] != 1)
+			{
+			    SendClientMessageEx(playerid, COLOR_GRAD2, "Admin khong the bi tazer!");
+			    new Float:hp;
+	  		    GetPlayerHealth(damagedid, hp);
+	  		    SetPlayerHealth(damagedid, hp+amount);
+				return 1;
+			}
+		    if(PlayerInfo[damagedid][pDangHelp] == 1)
+			{
+			    SendClientMessageEx(playerid, COLOR_GRAD2, "(-) Ban Khong The Tazer Khi Advisors Dang Lam Viec");
+				return 1;
+			}
+			#if defined zombiemode
+			if(GetPVarInt(damagedid, "pIsZombie"))
+			{
+			    SendClientMessageEx(playerid, COLOR_GRAD2, "Zombie khong the bi tazer!");
+				return 1;
+			}
+			#endif
+			new Float:X, Float:Y, Float:Z, Float:hp;
+	  		GetPlayerPos(playerid, X, Y, Z);
+			GetPlayerHealth(damagedid, hp);
+			new string[44 + (MAX_PLAYER_NAME * 2)];
+			format(string, sizeof(string), "* %s da ban sung dien lam te liet %s .", GetPlayerNameEx(playerid), GetPlayerNameEx(damagedid));
+			ProxDetector(30.0, playerid, string, COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE);
+			GameTextForPlayer(damagedid, "~r~Tazed", 3500, 3);
+   			SetPlayerHealth(damagedid, hp+amount);
+			TogglePlayerControllable(damagedid, 0);
+			ApplyAnimation(damagedid,"CRACK","crckdeth2",4.1,0,1,1,1,1,1);
+			PlayerPlaySound(damagedid, 1085, X, Y, Z);
+			PlayerPlaySound(playerid, 1085, X, Y, Z);
+			PlayerCuffed[damagedid] = 1;
+			SetPVarInt(damagedid, "PlayerCuffed", 1);
+			PlayerCuffedTime[damagedid] = 16;
+			SetPVarInt(damagedid, "IsFrozen", 1);
+			TazerTimeout[playerid] = 6;
+			SetTimerEx("TazerTimer",1000,false,"d",playerid);
+			GameTextForPlayer(playerid, "~n~~n~~n~~n~~n~~n~~n~~n~~r~Dang tai dien... ~w~5", 1500,3);
+		}
+	}
+	return 1;
 }
 public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 {

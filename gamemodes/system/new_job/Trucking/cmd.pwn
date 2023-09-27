@@ -133,7 +133,7 @@ CMD:truckergo(playerid, params[])
                     ProductId = FactoryData[FactoryId][ProductName][i];
                     format(string, sizeof(string),"%s\n%d\t\t%s\t\t$%d",string, i, ProductData[ProductId][ProductName], FactoryData[FactoryId][ProductPrice][i]);
                 }
-                Dialog_Show(playerid, DIALOG_BUYPRODUCT,DIALOG_STYLE_TABLIST_HEADERS, "Danh Sach Cac Nha May", string, "Xac nhan", "<");
+                Dialog_Show(playerid, DIALOG_BUYPRODUCT,DIALOG_STYLE_TABLIST_HEADERS, "Danh Sach Cac San Pham", string, "Xac nhan", "<");
             }
         }
     }

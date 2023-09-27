@@ -3,7 +3,6 @@
 
 
 #include <a_samp>
-
 #include <a_mysql>
 #include <streamer>
 #include <yom_buttons>
@@ -20,6 +19,7 @@
 #include <mSelection>
 #include <eInventory>
 #include <stamina>
+#include <YSF>
 #if defined SOCKET_ENABLED
 
 

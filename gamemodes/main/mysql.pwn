@@ -1649,7 +1649,7 @@ stock g_mysql_SaveVehicle(playerid, slotid)
 	format(query, sizeof(query), "%s `pvInt` = %d,", query, PlayerVehicleInfo[playerid][slotid][pvInt]);
 	format(query, sizeof(query), "%s `pvCrashFlag` = %d,", query, PlayerVehicleInfo[playerid][slotid][pvCrashFlag]);
 	format(query, sizeof(query), "%s `pvIsRegisterTrucker` = %d,", query, PlayerVehicleInfo[playerid][slotid][pvIsRegisterTrucker]);
-	format(query, sizeof(query), "%s `pvMaxSlotTrucker` = %d,", query, PlayerVehicleInfo[playerid][slotid][pvIsRegisterTrucker]);
+	format(query, sizeof(query), "%s `pvMaxSlotTrucker` = %d,", query, PlayerVehicleInfo[playerid][slotid][pvMaxSlotTrucker]);
 	format(query, sizeof(query), "%s `pvTimer` = %d,", query, PlayerVehicleInfo[playerid][slotid][pvTimer]);
 	format(query, sizeof(query), "%s `pvCrashVW` = %d,", query, PlayerVehicleInfo[playerid][slotid][pvCrashVW]);
 	format(query, sizeof(query), "%s `pvCrashX` = %0.5f,", query, PlayerVehicleInfo[playerid][slotid][pvCrashX]);

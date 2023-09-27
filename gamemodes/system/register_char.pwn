@@ -1,4 +1,4 @@
-#include <YSI\y_hooks>
+#include <YSI_Coding\y_hooks>
 
 new PlayerText: RegCharacter[MAX_PLAYERS][9];
 

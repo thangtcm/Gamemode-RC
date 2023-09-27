@@ -1,5 +1,5 @@
 #include <a_samp>
-#include <YSI\y_hooks>
+#include <YSI_Coding\y_hooks>
 
 new SendClientText[MAX_PLAYERS];
 new PlayerText:ClientText[MAX_PLAYERS][1];

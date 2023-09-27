@@ -1,5 +1,5 @@
 #include <a_samp>
-#include <YSI\y_hooks>
+#include <YSI_Coding\y_hooks>
 
 #define TRUCKBACKCAR 1030
 #define DIALOG_TRUCKER1 1031

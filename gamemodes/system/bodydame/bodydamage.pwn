@@ -1,5 +1,5 @@
 #include <a_samp>
-#include <YSI\y_hooks>
+#include <YSI_Coding\y_hooks>
 
 #define MAX_BODY_PARTS 7
 

@@ -20061,7 +20061,7 @@ CMD:loadpt(playerid, params[])
                     new carid = gLastCar[playerid];
                     if(IsAnAmbulance(carid))
 					{
-                        if(IsVehicleOccupied(carid, seat)) {
+                        if(IsVehicleOccupiedEx(carid, seat)) {
 							SendErrorMessage(playerid, " Nghe do dang co nguoi dung.");
 							return 1;
 						}

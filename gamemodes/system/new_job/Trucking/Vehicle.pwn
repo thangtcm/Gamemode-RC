@@ -99,13 +99,12 @@ stock VEHICLETRUCKER_ADD(playerid, vehicleid, modelid, pCarSlotID, ProductID, Fl
         GetPlayerId = GetPlayerSQLId(playerid),
         index = GetVehicleTruckerFree(playerid, pCarSlotID);
     if(index == -1) return SendErrorMessage(playerid, "Xe cua ban da chat day hang, khong the chat them hang hoa len xe.");
-    new Float:playerPos[3];
-    GetPlayerPos(playerid, playerPos[0], playerPos[1], playerPos[2]);
-    if(IsValidDynamicObject(VehicleTruckerData[playerid][index][vtObject]))
-        DestroyDynamicObject(VehicleTruckerData[playerid][index][vtObject]);
-    VehicleTruckerData[playerid][index][vtObject] = CreateDynamicObject(modelid, playerPos[0], playerPos[1], playerPos[2], 0, 0, 0, GetPlayerVirtualWorld(playerid), GetPlayerInterior(playerid));
-    AttachDynamicObjectToVehicle(VehicleTruckerData[playerid][index][vtObject], vehicleid, x, y, z, ox, oy, oz);
-    printf("VehicleTruckerData[vehicleid][index][vtObject] %d ", VehicleTruckerData[playerid][index][vtObject]);
+    // new Float:playerPos[3];
+    // GetPlayerPos(playerid, playerPos[0], playerPos[1], playerPos[2]);
+    // if(IsValidDynamicObject(VehicleTruckerData[playerid][index][vtObject]))
+    //     DestroyDynamicObject(VehicleTruckerData[playerid][index][vtObject]);
+    // VehicleTruckerData[playerid][index][vtObject] = CreateDynamicObject(modelid, playerPos[0], playerPos[1], playerPos[2], 0, 0, 0, GetPlayerVirtualWorld(playerid), GetPlayerInterior(playerid));
+    // AttachDynamicObjectToVehicle(VehicleTruckerData[playerid][index][vtObject], vehicleid, x, y, z, ox, oy, oz);
     VehicleTruckerData[playerid][index][vtSlotId] = pCarSlotID,
     VehicleTruckerData[playerid][index][vtProductID] = ProductID,
     VehicleTruckerData[playerid][index][vtPos][0] = x,

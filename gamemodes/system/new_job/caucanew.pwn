@@ -1,5 +1,5 @@
 #include <a_samp>
-#include <YSI\y_hooks>
+#include <YSI_Coding\y_hooks>
 #define DIALOG_THUNGCA (13421)
 #define  MAX_THUNGHANG 100  
 new ThungCaAttach[MAX_PLAYERS];

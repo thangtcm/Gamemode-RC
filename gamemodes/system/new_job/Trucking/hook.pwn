@@ -22,7 +22,6 @@ hook OnPlayerKeyStateChange(playerid, newkeys, oldkeys)
                     }
                     else
                     {
-                        printf("vehicleid %d", closestcar);
                         AttachProductToVehicle(playerid, closestcar, PlayerVehicleInfo[i][v][pvSlotId]);
                         SendServerMessage(playerid, "Ban da chat thung hang len xe.");
                         RemovePlayerAttachedObject(playerid, PIZZA_INDEX);
@@ -56,7 +55,7 @@ hook OnPlayerKeyStateChange(playerid, newkeys, oldkeys)
                             if(VehicleTruckerData[i][index][vtId] != -1 && VehicleTruckerData[i][index][vtSlotId] == PlayerVehicleInfo[i][v][pvSlotId]
                                 && VehicleTruckerData[i][index][vtProductID] != -1){
                                 PlayerTruckerData[playerid][ClaimFromCar][count++] = index;
-                                format(str, sizeof(str), "%s\n%d\t\t%s", str, i, ProductData[VehicleTruckerData[i][index][vtProductID]][ProductName]);
+                                format(str, sizeof(str), "%s\n%d\t\t%s", str, index, ProductData[VehicleTruckerData[i][index][vtProductID]][ProductName]);
                             }
                         }
                         Dialog_Show(playerid, DIALOG_CARCLAIMPRODUCT, DIALOG_STYLE_TABLIST_HEADERS, "San Pham Trong Xe", str, "Lay", "<");

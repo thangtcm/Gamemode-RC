@@ -7164,7 +7164,7 @@ stock RespawnNearbyVehicles(iPlayerID, Float: fRadius) {
 	return 1;
 }
 
-stock IsVehicleOccupied(iVehicleID, iSeatID = 0) {
+stock IsVehicleOccupiedEx(iVehicleID, iSeatID = 0) {
 	foreach(new x : Player)
 	{
 		if(GetPlayerVehicleID(x) == iVehicleID && GetPlayerVehicleSeat(x) == iSeatID) {
@@ -10208,61 +10208,61 @@ stock SearchingHit(playerid)
 	return 0;
 }
 
-stock GetWeaponSlot(weaponid)
-{
-	switch( weaponid )
-	{
-		case 0, 1:
-		{
-			return 0;
-		}
-		case 2, 3, 4, 5, 6, 7, 8, 9:
-		{
-			return 1;
-		}
-		case 22, 23, 24:
-		{
-			return 2;
-		}
-		case 25, 26, 27:
-		{
-			return 3;
-		}
-		case 28, 29, 32:
-		{
-			return 4;
-		}
-		case 30, 31:
-		{
-			return 5;
-		}
-		case 33, 34:
-		{
-			return 6;
-		}
-		case 35, 36, 37, 38:
-		{
-			return 7;
-		}
-		case 16, 17, 18, 39, 40:
-		{
-			return 8;
-		}
-		case 41, 42, 43:
-		{
-			return 9;
-		}
-		case 10, 11, 12, 13, 14, 15:
-		{
-			return 10;
-		}
-		case 44, 45, 46:
-		{
-			return 11;
-		}
-	}
-	return -1;
-}
+// stock GetWeaponSlot(weaponid)
+// {
+// 	switch( weaponid )
+// 	{
+// 		case 0, 1:
+// 		{
+// 			return 0;
+// 		}
+// 		case 2, 3, 4, 5, 6, 7, 8, 9:
+// 		{
+// 			return 1;
+// 		}
+// 		case 22, 23, 24:
+// 		{
+// 			return 2;
+// 		}
+// 		case 25, 26, 27:
+// 		{
+// 			return 3;
+// 		}
+// 		case 28, 29, 32:
+// 		{
+// 			return 4;
+// 		}
+// 		case 30, 31:
+// 		{
+// 			return 5;
+// 		}
+// 		case 33, 34:
+// 		{
+// 			return 6;
+// 		}
+// 		case 35, 36, 37, 38:
+// 		{
+// 			return 7;
+// 		}
+// 		case 16, 17, 18, 39, 40:
+// 		{
+// 			return 8;
+// 		}
+// 		case 41, 42, 43:
+// 		{
+// 			return 9;
+// 		}
+// 		case 10, 11, 12, 13, 14, 15:
+// 		{
+// 			return 10;
+// 		}
+// 		case 44, 45, 46:
+// 		{
+// 			return 11;
+// 		}
+// 	}
+// 	return -1;
+// }
 
 stock ExecuteHackerAction( playerid, weaponid )
 {
@@ -15316,7 +15316,7 @@ stock IsSeatAvailable(vehicleid, seat)
 {
 	switch(GetVehicleModel(vehicleid)) {
 		case 425, 430, 432, 441, 446, 448, 452, 453, 454, 464, 465, 472, 473, 476, 481, 484, 485, 486, 493, 501, 509, 510, 519, 520, 530, 531, 532, 539, 553, 564, 568, 571, 572, 574, 583, 592, 594, 595: return 0;
-		default: if(IsVehicleOccupied(vehicleid, seat)) return 0;
+		default: if(IsVehicleOccupiedEx(vehicleid, seat)) return 0;
 	}
 	return 1;
 }

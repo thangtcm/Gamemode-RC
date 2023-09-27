@@ -1,5 +1,5 @@
 #include <a_samp>
-#include <YSI\y_hooks>
+#include <YSI_Coding\y_hooks>
 new PlayerAmmo[MAX_PLAYERS][10];
 
 new weaponzz, ammosdzz;
