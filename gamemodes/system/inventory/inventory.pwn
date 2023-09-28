@@ -43,7 +43,24 @@ new const g_aInventoryItems[][e_InventoryItems] =
 	{"Codeine", "Codeine"},
 	{"Cocain", "Cocain"},
 	{"Ecstacy", "Ecstacy"},
-	{"LSD", "LSD"}
+	{"LSD", "LSD"},
+
+	// ammo & weapon item
+	{"9mm", "9mm"}, // ammo type = 1
+	{"Sdpistol", "Sdpistol"}, // ammo type = 1
+	{"Deagle", "Deagle"},// ammo type = 1
+	{"Shotgun", "Shotgun"},// ammo type = 2
+	{"Combat Shotgun", "C_shotgun"},// ammo type = 2
+	{"MP5", "MP5"}, /// type 3
+	{"AK47", "AK47"}, // TYPE 4
+	{"M4", "M4"}, // TYPE 4
+	{"Sniper", "Sniper"}, // type 5
+
+	{"Dan sung luc", "Ammo1"}, // type 5
+	{"Dan Shotgun", "Ammo2"}, // type 5
+	{"Dan Tieu lien", "Ammo3"}, // type 5
+	{"Dan sung truong", "Ammo4"}, // type 5
+	{"Dan Sniper", "Ammo5"}, // type 5
 };
 
 hook OnPlayerDisconnect(playerid, reason)

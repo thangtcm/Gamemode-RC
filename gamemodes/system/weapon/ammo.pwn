@@ -13,7 +13,7 @@ stock GivePlayerAmmoEx(playerid, weapon, Ammo)
     	    SetPlayerAmmo(playerid, weapon, PlayerAmmo[playerid][ 1 ]);
     	  
     	}
-    	case 25: {
+    	case 25,27: {
     	    PlayerAmmo[playerid][ 2 ] += Ammo;
     	    SetPlayerAmmo(playerid, weapon, PlayerAmmo[playerid][ 2 ]);
     	  
@@ -98,6 +98,12 @@ hook OnPlayerUpdate(playerid) {
     }
     GetPlayerWeaponData(playerid, 3, weaponzz, ammosdzz);
 	if(GetPlayerWeapon(playerid) == 25 && ammosdzz <= 1)
+	{
+        SetPlayerArmedWeapon(playerid, 0);
+        SendClientTextDraw(playerid," Vu khi cua ban da~r~ het dan ~w~vui long gan them dan");
+    }
+    GetPlayerWeaponData(playerid, 3, weaponzz, ammosdzz);
+	if(GetPlayerWeapon(playerid) == 27 && ammosdzz <= 1)
 	{
         SetPlayerArmedWeapon(playerid, 0);
         SendClientTextDraw(playerid," Vu khi cua ban da~r~ het dan ~w~vui long gan them dan");
