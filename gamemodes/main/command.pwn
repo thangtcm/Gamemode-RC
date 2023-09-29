@@ -42434,6 +42434,78 @@ CMD:cuff(playerid, params[])
 	}
 	return 1;
 }
+CMD:handcuff(playerid, params[])
+{
+	if(IsACop(playerid))
+	{
+		if(GetPVarInt(playerid, "Injured") == 1 || PlayerCuffed[ playerid ] >= 1 || PlayerInfo[ playerid ][ pJailTime ] > 0 || PlayerInfo[playerid][pHospital] > 0)
+		{
+			SendErrorMessage(playerid, " Ban khong the lam dieu nay bay gio.");
+			return 1;
+		}
+
+		if(PlayerInfo[playerid][pHasCuff] < 1)
+		{
+		    SendServerMessage(playerid, " Ban khong co chiec cong tay nao!");
+		    return 1;
+		}
+
+		new string[128], giveplayerid, Float:health, Float:armor;
+		if(sscanf(params, "u", giveplayerid)) return SendUsageMessage(playerid, " /cuff [Player]");
+		if(IsPlayerConnected(giveplayerid))
+		{
+			if (ProxDetectorS(8.0, playerid, giveplayerid))
+			{
+				if(giveplayerid == playerid) { SendErrorMessage(playerid, " Ban khong the tu cong tay minh!"); return 1; }
+				if(!GetPVarType(giveplayerid, "IsTackled"))
+				{
+					format(string, sizeof(string), "* Ban da bi cong tay boi %s.", GetPlayerNameEx(playerid));
+					SendClientMessageEx(giveplayerid, COLOR_LIGHTBLUE, string);
+					format(string, sizeof(string), "* Ban da cong tay %s, su dung /uncuff de thao cong.", GetPlayerNameEx(giveplayerid));
+					SendClientMessageEx(playerid, COLOR_LIGHTBLUE, string);
+					format(string, sizeof(string), "* %s da cong tay %s lai.", GetPlayerNameEx(playerid), GetPlayerNameEx(giveplayerid));
+					ProxDetector(30.0, playerid, string, COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE);
+					GameTextForPlayer(giveplayerid, "~r~Cong tay", 2500, 3);
+					TogglePlayerControllable(giveplayerid, 0);
+					ClearAnimations(giveplayerid);
+					GetPlayerHealth(giveplayerid, health);
+					GetPlayerArmour(giveplayerid, armor);
+					SetPVarFloat(giveplayerid, "cuffhealth",health);
+					SetPVarFloat(giveplayerid, "cuffarmor",armor);
+					SetPlayerSpecialAction(giveplayerid, SPECIAL_ACTION_CUFFED);
+					ApplyAnimation(giveplayerid,"ped","cower",1,1,0,0,0,0,1);
+					PlayerCuffed[giveplayerid] = 2;
+					SetPVarInt(giveplayerid, "PlayerCuffed", 2);
+					SetPVarInt(giveplayerid, "IsFrozen", 1);
+					//Frozen[giveplayerid] = 1;
+					PlayerCuffedTime[giveplayerid] = 300;
+				}
+				else
+				{
+				    format(string, sizeof(string), "* %s da lay chiec cong tu trong nguoi ra va cong tay %s lai.", GetPlayerNameEx(playerid), GetPlayerNameEx(giveplayerid));
+					ProxDetector(30.0, playerid, string, COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE);
+					SetTimerEx("CuffTackled", 4000, 0, "ii", playerid, giveplayerid);
+				}
+			}
+			else
+			{
+				SendErrorMessage(playerid, " Nguoi do khong o gan ban.");
+				return 1;
+			}
+		}
+		else
+		{
+			SendErrorMessage(playerid, " nguoi choi khong hop le.");
+			return 1;
+		}
+	}
+	else
+	{
+		SendErrorMessage(playerid, " Ban khong phai nhan vien chinh phu");
+	}
+	return 1;
+}
+
 CMD:thaocong(playerid, params[]) {
 	return cmd_uncuff(playerid, params);
 }
