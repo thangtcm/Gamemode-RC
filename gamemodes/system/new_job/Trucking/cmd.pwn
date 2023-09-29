@@ -62,7 +62,7 @@ CMD:truckergo(playerid, params[])
     if(sscanf(params, "s[24]", type))
 	{
 		SendServerMessage(playerid, "/truckergo [name]");
-		SendServerMessage(playerid, "Lua chon: car, mission, buy, sell.");
+		SendServerMessage(playerid, "Lua chon: car, mission, buy, sell, ship.");
 		return 1;
 	}
     if(PlayerInfo[playerid][pJob] != 20) return SendErrorMessage(playerid, "Ban khong phai la Trucker!!");

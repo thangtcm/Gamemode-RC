@@ -160,6 +160,17 @@ Dialog:DIALOG_SELLPRODUCT(playerid, response, listitem, inputtext[])
         if(pLoadProduct[playerid] != FactoryData[factoryID][ProductName][index]) return SendErrorMessage(playerid, "Ban khong co san pham nay.");
         format(str, sizeof(str), "Ban da ban san pham %s thanh cong.", ProductData[pLoadProduct[playerid]][ProductName]);
         GivePlayerCash(playerid, FactoryData[factoryID][ProductPrice][index]);
+        if(GetPVarInt(playerid, "MissionTruck") == 1) 
+        {
+            for(new i; i < MAX_PLAYERPRODUCT; i++)
+            {
+                if(PlayerTruckerData[playerid][MissionProduct][i] == -1)
+                {
+                    PlayerTruckerData[playerid][MissionProduct][i] = pLoadProduct[playerid];
+                    break;
+                }
+            }
+        }
         SendClientMessageEx(playerid, COLOR_1YELLOW, str);
         RemovePlayerAttachedObject(playerid, PIZZA_INDEX);
         SetPlayerSpecialAction(playerid, SPECIAL_ACTION_NONE);
@@ -176,6 +187,14 @@ Dialog:DIALOG_CARCLAIMPRODUCT(playerid, response, listitem, inputtext[])
         new index = PlayerTruckerData[playerid][ClaimFromCar][listitem],
             ProductId = VehicleTruckerData[playerid][index][vtProductID];
         pLoadProduct[playerid] = ProductId;
+        for(new i; i < MAX_PLAYERPRODUCT; i++)
+        {
+            if(PlayerTruckerData[playerid][ClaimProduct][i] == ProductId)
+            {
+                PlayerTruckerData[playerid][ClaimProduct][i]  = -1;
+                break;
+            }
+        }
         VEHICLETRUCKER_DELETE(playerid, index);
         SetPlayerAttachedObject(playerid, PIZZA_INDEX, 1271, 5, 0.137832, 0.176979, 0.151424, 96.305931, 185.363006, 20.328088, 0.699999, 0.800000, 0.699999);
         SetPlayerSpecialAction(playerid, SPECIAL_ACTION_CARRY);

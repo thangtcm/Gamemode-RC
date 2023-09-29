@@ -7,16 +7,9 @@ stock RemoveMissionProduct(playerid, productId)
             if(PlayerTruckerData[playerid][MissionProduct][i] == productId)
             {
                 PlayerTruckerData[playerid][MissionProduct][i] = -1;
-                PlayerTruckerData[playerid][ClaimProduct][i] = productId;
                 return 1;
             }
         }
-        else
-        {
-            if(PlayerTruckerData[playerid][ClaimProduct][i] == -1)
-                PlayerTruckerData[playerid][ClaimProduct][i] = productId;
-        }
-        
     }
     return -1;
 }
@@ -29,10 +22,34 @@ stock AttachProductToVehicle(playerid, vehicleid, pvSlotID)
         {
             new count = VehicleTruckerCount(playerid, pvSlotID);
             printf("Count %d -- product %d", count, pLoadProduct[playerid]);
+            for(new i; i < MAX_PLAYERPRODUCT; i++)
+            {
+                if(PlayerTruckerData[playerid][ClaimProduct][i] == -1)
+                {
+                    PlayerTruckerData[playerid][ClaimProduct][i]  = pLoadProduct[playerid];
+                    break;
+                }
+            }
             VEHICLETRUCKER_ADD(playerid, vehicleid, 1271, pvSlotID, pLoadProduct[playerid],  0.01, -0.82 - (0.1 * count), 0.05, 0.0, 0.0, -90);
             pLoadProduct[playerid] = -1;
             return 1;
         } 
+        default:
+        {
+            new count = VehicleTruckerCount(playerid, pvSlotID);
+            printf("Count %d -- product %d", count, pLoadProduct[playerid]);
+            for(new i; i < MAX_PLAYERPRODUCT; i++)
+            {
+                if(PlayerTruckerData[playerid][ClaimProduct][i] == -1)
+                {
+                    PlayerTruckerData[playerid][ClaimProduct][i]  = pLoadProduct[playerid];
+                    break;
+                }
+            }
+            VEHICLETRUCKER_ADD(playerid, vehicleid, 0, pvSlotID, pLoadProduct[playerid],  0.01, -0.82 - (0.1 * count), 0.05, 0.0, 0.0, -90);
+            pLoadProduct[playerid] = -1;
+            return 1;
+        }
     }
     return 0;
 }
