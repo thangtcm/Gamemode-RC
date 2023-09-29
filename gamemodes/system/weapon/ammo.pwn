@@ -3,7 +3,23 @@
 new PlayerAmmo[MAX_PLAYERS][10];
 
 new weaponzz, ammosdzz;
-    
+    // 	// ammo & weapon item
+	// {"9mm", "9mm"}, // ammo type = 1
+	// {"Sdpistol", "Sdpistol"}, // ammo type = 1
+	// {"Deagle", "Deagle"},// ammo type = 1
+	// {"Shotgun", "Shotgun"},// ammo type = 2
+	// {"Combat Shotgun", "C_shotgun"},// ammo type = 2
+	// {"MP5", "MP5"}, /// type 3
+	// {"AK47", "AK47"}, // TYPE 4
+	// {"M4", "M4"}, // TYPE 4
+	// {"Sniper", "Sniper"}, // type 5
+
+	// {"Dan sung luc", "Ammo1"}, // type 5
+	// {"Dan Shotgun", "Ammo2"}, // type 5
+	// {"Dan Tieu lien", "Ammo3"}, // type 5
+	// {"Dan sung truong", "Ammo4"}, // type 5
+	// {"Dan Sniper", "Ammo5"}, // type 5
+
 stock GivePlayerAmmoEx(playerid, weapon, Ammo)
 {
     switch(weapon)
@@ -380,3 +396,111 @@ stock SetPlayerWeaponsEx(playerid)
 	SetPlayerArmedWeapon(playerid, GetPVarInt(playerid, "LastWeapon"));
 }
 
+stock UseAmmo(playerid,type_ammo,ammo) {
+	new string[128];
+	switch(type_ammo) {
+		case 1: {
+			new weapon_g,ammos_g;
+			GetPlayerWeaponData(playerid, 2, weapon_g, ammos_g);
+            if(weapon_g != 22 && weapon_g != 23 && weapon_g != 24) return SendClientMessage(playerid,-1,"Ban khong so huu vu khi 'Sung luc' tren nguoi.");
+            GivePlayerAmmoEx(playerid, weapon_g, ammo);
+            SetPlayerArmedWeapon(playerid, weapon_g);
+            //x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x//
+            format(string, sizeof(string), "{FF8000}* {C2A2DA}%s dua tay len va lap bang dan vao vu khi.", GetPlayerNameEx(playerid));
+            ProxDetector(30.0, playerid, string, COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE);
+            ApplyAnimation(playerid, "PYTHON", "python_reload", 4.0, 0, 0, 0, 0, 0, 1);
+		}
+		case 2: {
+			new weapon_g,ammos_g;
+			GetPlayerWeaponData(playerid, 3, weapon_g, ammos_g);
+            if(weapon_g != 25 && weapon_g != 27) return SendClientMessage(playerid,-1,"Ban khong so huu vu khi 'Sung Shotgun' tren nguoi.");
+            GivePlayerAmmoEx(playerid, weapon_g, ammo);
+            SetPlayerArmedWeapon(playerid, weapon_g);
+            //x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x//
+            format(string, sizeof(string), "{FF8000}* {C2A2DA}%s dua tay len va lap bang dan vao vu khi.", GetPlayerNameEx(playerid));
+            ProxDetector(30.0, playerid, string, COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE);
+            ApplyAnimation(playerid, "PYTHON", "python_reload", 4.0, 0, 0, 0, 0, 0, 1);
+        }
+        case 3: {
+			new weapon_g,ammos_g;
+			GetPlayerWeaponData(playerid, 4, weapon_g, ammos_g);
+            if(weapon_g != 29) return SendClientMessage(playerid,-1,"Ban khong so huu vu khi 'Sung tieu lien MP5' tren nguoi.");
+            GivePlayerAmmoEx(playerid, weapon_g, ammo);
+            SetPlayerArmedWeapon(playerid, weapon_g);
+            //x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x//
+            format(string, sizeof(string), "{FF8000}* {C2A2DA}%s dua tay len va lap bang dan vao vu khi.", GetPlayerNameEx(playerid));
+            ProxDetector(30.0, playerid, string, COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE);
+            ApplyAnimation(playerid, "PYTHON", "python_reload", 4.0, 0, 0, 0, 0, 0, 1);
+        }
+        case 4: {
+			new weapon_g,ammos_g;
+			GetPlayerWeaponData(playerid, 4, weapon_g, ammos_g);
+            if(weapon_g != 30 && weapon_g != 31) return SendClientMessage(playerid,-1,"Ban khong so huu vu khi 'Sung truong' tren nguoi.");
+            GivePlayerAmmoEx(playerid, weapon_g, ammo);
+            SetPlayerArmedWeapon(playerid, weapon_g);
+            //x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x//
+            format(string, sizeof(string), "{FF8000}* {C2A2DA}%s dua tay len va lap bang dan vao vu khi.", GetPlayerNameEx(playerid));
+            ProxDetector(30.0, playerid, string, COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE);
+            ApplyAnimation(playerid, "PYTHON", "python_reload", 4.0, 0, 0, 0, 0, 0, 1);
+        }
+        case 5: {
+			new weapon_g,ammos_g;
+			GetPlayerWeaponData(playerid, 5, weapon_g, ammos_g);
+            if(weapon_g != 34 ) return SendClientMessage(playerid,-1,"Ban khong so huu vu khi 'Sung Sniper' tren nguoi.");
+            GivePlayerAmmoEx(playerid, weapon_g, ammo);
+            SetPlayerArmedWeapon(playerid, weapon_g);
+            //x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x//
+            format(string, sizeof(string), "{FF8000}* {C2A2DA}%s dua tay len va lap bang dan vao vu khi.", GetPlayerNameEx(playerid));
+            ProxDetector(30.0, playerid, string, COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE);
+            ApplyAnimation(playerid, "PYTHON", "python_reload", 4.0, 0, 0, 0, 0, 0, 1);
+        }
+	}
+	return 1;
+}
+Dialog:DIALOG_USEAMMO1(playerid, response, listitem, inputtext[]) {
+    if(response) {
+    	printf("%d so sanh %d",Inventory_Count(playerid, "Dan sung luc") ,strval(inputtext));
+    	if(Inventory_Count(playerid, "Dan sung luc") < strval(inputtext)) return SendClientMessage(playerid, -1, "Ban khong du so luong dan sung luc (/inv de kiem tra).");
+    	UseAmmo(playerid,1,strval(inputtext));
+    	new pItemId = Inventory_GetItemID(playerid,"Dan sung luc");
+		Inventory_Remove(playerid, pItemId, strval(inputtext)); //ID cua InventoryData
+    } 
+    return 1;  
+}
+
+Dialog:DIALOG_USEAMMO2(playerid, response, listitem, inputtext[]) {
+    if(response) {
+    	if(Inventory_Count(playerid, "Dan shotgun") < strval(inputtext)) return SendClientMessage(playerid, -1, "Ban khong du so luong dan Shotgun (/inv de kiem tra).");
+    	UseAmmo(playerid,2,strval(inputtext));
+    	new pItemId = Inventory_GetItemID(playerid,"Dan shotgun");
+		Inventory_Remove(playerid, pItemId, strval(inputtext)); //ID cua InventoryData
+    }
+    return 1;   
+}
+Dialog:DIALOG_USEAMMO3(playerid, response, listitem, inputtext[]) {
+    if(response) {
+    	if(Inventory_Count(playerid, "Dan tieu lien") < strval(inputtext)) return SendClientMessage(playerid, -1, "Ban khong du so luong dan tieu lien (/inv de kiem tra).");
+    	UseAmmo(playerid,3,strval(inputtext));
+    	new pItemId = Inventory_GetItemID(playerid,"Dan tieu lien");
+		Inventory_Remove(playerid, pItemId, strval(inputtext)); //ID cua InventoryData
+    } 
+    return 1;  
+}
+Dialog:DIALOG_USEAMMO4(playerid, response, listitem, inputtext[]) {
+    if(response) {
+    	if(Inventory_Count(playerid, "Dan sung truong") < strval(inputtext)) return SendClientMessage(playerid, -1, "Ban khong du so luong Dan sung truong (/inv de kiem tra).");
+    	UseAmmo(playerid,4,strval(inputtext));
+    	new pItemId = Inventory_GetItemID(playerid,"Dan sung truong");
+		Inventory_Remove(playerid, pItemId, strval(inputtext)); //ID cua InventoryData
+    } 
+    return 1;  
+}
+Dialog:DIALOG_USEAMMO5(playerid, response, listitem, inputtext[]) {
+    if(response) {
+    	if(Inventory_Count(playerid, "Dan sniper") < strval(inputtext)) return SendClientMessage(playerid, -1, "Ban khong du so luong Dan sniper (/inv de kiem tra).");
+    	UseAmmo(playerid,5,strval(inputtext));
+    	new pItemId = Inventory_GetItemID(playerid,"Dan sniper");
+		Inventory_Remove(playerid, pItemId, strval(inputtext)); //ID cua InventoryData
+    }  
+    return 1; 
+}

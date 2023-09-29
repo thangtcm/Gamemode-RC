@@ -7496,3 +7496,351 @@ bcrypt.dll	A: 0x6D5A0000 - 0x6D5BA000	(C:\Windows\SYSTEM32\bcrypt.dll)
 CRYPTBASE.DLL	A: 0x715E0000 - 0x715EB000	(C:\Windows\SYSTEM32\CRYPTBASE.DLL)
 bcryptPrimitives.dll	A: 0x761C0000 - 0x76222000	(C:\Windows\System32\bcryptPrimitives.dll)
 MSASN1.dll	A: 0x71B40000 - 0x71B4E000	(C:\Windows\SYSTEM32\MSASN1.dll)
+
+--------------------------
+SA-MP Server: 0.3.DL-R1
+
+Exception At Address: 0x64656C69 Module: (Unknown)
+
+Registers:
+EAX: 0x0019ED88	EBX: 0x19930520	ECX: 0x00000003	EDX: 0x00000000
+ESI: 0x630802D8	EDI: 0x630CCF78	EBP: 0x61462020	ESP: 0x004BBA8C
+EFLAGS: 0x00000216
+
+Stack:
++0000: 0x0000002E   0x6F4C2020   0x64656461   0x0000002E
++0010: 0x616F4C20   0x676E6964   0x756C7020   0x3A6E6967
++0020: 0x00732520   0x67756C70   0x00736E69   0x2D2D2D2D
++0030: 0x2D2D2D2D   0x2D2D2D2D   0x00002D2D   0x76726553
++0040: 0x50207265   0x6967756C   0x0000736E   0x0000005C
++0050: 0x69466E4F   0x7265746C   0x69726353   0x6E497470
++0060: 0x00007469   0x6C696146   0x74206465   0x6F6C206F
++0070: 0x27206461   0x612E7325   0x2027786D   0x746C6966
++0080: 0x63737265   0x74706972   0x0000002E   0x746C6966
++0090: 0x63737265   0x74706972   0x73252F73   0x786D612E
++00A0: 0x00000000   0x69466E4F   0x7265746C   0x69726353
++00B0: 0x78457470   0x00007469   0x6C506E4F   0x72657961
++00C0: 0x6E6E6F43   0x00746365   0x6C506E4F   0x72657961
++00D0: 0x63736944   0x656E6E6F   0x00007463   0x61476E4F
++00E0: 0x6F4D656D   0x6E496564   0x00007469   0x61476E4F
++00F0: 0x6F4D656D   0x78456564   0x00007469   0x6C506E4F
++0100: 0x72657961   0x77617053   0x0000006E   0x6C506E4F
++0110: 0x72657961   0x74616544   0x00000068   0x65566E4F
++0120: 0x6C636968   0x61705365   0x00006E77   0x65566E4F
++0130: 0x6C636968   0x61654465   0x00006874   0x6C506E4F
+
+--------------------------
+
+Loaded Modules:
+samp-server.exe	A: 0x00400000 - 0x0051F000	(C:\Users\cuozg7\Desktop\San Andreas Mutilplayer 2023\Gamemode-RCz\samp-server.exe)
+ntdll.dll	A: 0x77430000 - 0x775DF000	(C:\WINDOWS\SYSTEM32\ntdll.dll)
+KERNEL32.DLL	A: 0x762F0000 - 0x763E0000	(C:\WINDOWS\System32\KERNEL32.DLL)
+KERNELBASE.dll	A: 0x76DD0000 - 0x77043000	(C:\WINDOWS\System32\KERNELBASE.dll)
+SHELL32.dll	A: 0x766E0000 - 0x76D6F000	(C:\WINDOWS\System32\SHELL32.dll)
+msvcp_win.dll	A: 0x75750000 - 0x757C9000	(C:\WINDOWS\System32\msvcp_win.dll)
+ucrtbase.dll	A: 0x75C70000 - 0x75D82000	(C:\WINDOWS\System32\ucrtbase.dll)
+USER32.dll	A: 0x77270000 - 0x77418000	(C:\WINDOWS\System32\USER32.dll)
+win32u.dll	A: 0x76640000 - 0x7665A000	(C:\WINDOWS\System32\win32u.dll)
+GDI32.dll	A: 0x753A0000 - 0x753C3000	(C:\WINDOWS\System32\GDI32.dll)
+gdi32full.dll	A: 0x75920000 - 0x75A01000	(C:\WINDOWS\System32\gdi32full.dll)
+WINMM.dll	A: 0x74240000 - 0x74271000	(C:\WINDOWS\SYSTEM32\WINMM.dll)
+WSOCK32.dll	A: 0x565D0000 - 0x565D8000	(C:\WINDOWS\SYSTEM32\WSOCK32.dll)
+msvcrt.dll	A: 0x75A10000 - 0x75AD4000	(C:\WINDOWS\System32\msvcrt.dll)
+ws2_32.DLL	A: 0x76D70000 - 0x76DCF000	(C:\WINDOWS\System32\ws2_32.DLL)
+RPCRT4.dll	A: 0x76440000 - 0x764FA000	(C:\WINDOWS\System32\RPCRT4.dll)
+IMM32.DLL	A: 0x75370000 - 0x75395000	(C:\WINDOWS\System32\IMM32.DLL)
+mysql.DLL	A: 0x63490000 - 0x63564000	(C:\Users\cuozg7\Desktop\San Andreas Mutilplayer 2023\Gamemode-RCz\plugins\mysql.DLL)
+MSVCR110.dll	A: 0x633B0000 - 0x63486000	(C:\Users\cuozg7\Desktop\San Andreas Mutilplayer 2023\Gamemode-RCz\MSVCR110.dll)
+LIBMYSQL.dll	A: 0x10000000 - 0x1023E000	(C:\Users\cuozg7\Desktop\San Andreas Mutilplayer 2023\Gamemode-RCz\LIBMYSQL.dll)
+MSVCP110.dll	A: 0x63320000 - 0x633A5000	(C:\WINDOWS\SYSTEM32\MSVCP110.dll)
+ADVAPI32.dll	A: 0x76660000 - 0x766DD000	(C:\WINDOWS\System32\ADVAPI32.dll)
+sechost.dll	A: 0x76510000 - 0x76594000	(C:\WINDOWS\System32\sechost.dll)
+napinsp.dll	A: 0x71440000 - 0x71452000	(C:\WINDOWS\system32\napinsp.dll)
+pnrpnsp.dll	A: 0x71410000 - 0x71426000	(C:\WINDOWS\system32\pnrpnsp.dll)
+mswsock.dll	A: 0x713B0000 - 0x71401000	(C:\WINDOWS\System32\mswsock.dll)
+DNSAPI.dll	A: 0x72520000 - 0x725D9000	(C:\WINDOWS\SYSTEM32\DNSAPI.dll)
+IPHLPAPI.DLL	A: 0x73450000 - 0x73474000	(C:\WINDOWS\SYSTEM32\IPHLPAPI.DLL)
+NSI.dll	A: 0x75D90000 - 0x75D97000	(C:\WINDOWS\System32\NSI.dll)
+winrnr.dll	A: 0x71300000 - 0x7130E000	(C:\WINDOWS\System32\winrnr.dll)
+wshbth.dll	A: 0x712A0000 - 0x712B1000	(C:\WINDOWS\system32\wshbth.dll)
+rasadhlp.dll	A: 0x6E630000 - 0x6E638000	(C:\Windows\System32\rasadhlp.dll)
+sscanf.DLL	A: 0x02410000 - 0x0241D000	(C:\Users\cuozg7\Desktop\San Andreas Mutilplayer 2023\Gamemode-RCz\plugins\sscanf.DLL)
+MSVCR100.dll	A: 0x63260000 - 0x6331F000	(C:\WINDOWS\SYSTEM32\MSVCR100.dll)
+whirlpool.DLL	A: 0x02430000 - 0x0243C000	(C:\Users\cuozg7\Desktop\San Andreas Mutilplayer 2023\Gamemode-RCz\plugins\whirlpool.DLL)
+MSVCR80.dll	A: 0x71310000 - 0x713AB000	(C:\WINDOWS\WinSxS\x86_microsoft.vc80.crt_1fc8b3b9a1e18e3b_8.0.50727.9680_none_d090cb7c44278b28\MSVCR80.dll)
+MSVCP100.dll	A: 0x63190000 - 0x631F9000	(C:\Users\cuozg7\Desktop\San Andreas Mutilplayer 2023\Gamemode-RCz\MSVCP100.dll)
+sampvoice.DLL	A: 0x63160000 - 0x6318B000	(C:\Users\cuozg7\Desktop\San Andreas Mutilplayer 2023\Gamemode-RCz\plugins\sampvoice.DLL)
+VCRUNTIME140.dll	A: 0x743A0000 - 0x743B5000	(C:\WINDOWS\SYSTEM32\VCRUNTIME140.dll)
+MSVCP140.dll	A: 0x74330000 - 0x7439D000	(C:\WINDOWS\SYSTEM32\MSVCP140.dll)
+combase.dll	A: 0x75430000 - 0x756AC000	(C:\WINDOWS\System32\combase.dll)
+kernel.appcore.dll	A: 0x748C0000 - 0x748D3000	(C:\WINDOWS\SYSTEM32\kernel.appcore.dll)
+samp-compat.dll	A: 0x69040000 - 0x6904A000	(C:\Users\cuozg7\Desktop\San Andreas Mutilplayer 2023\Gamemode-RCz\plugins\samp-compat.dll)
+streamer.DLL	A: 0x630F0000 - 0x6315D000	(C:\Users\cuozg7\Desktop\San Andreas Mutilplayer 2023\Gamemode-RCz\plugins\streamer.DLL)
+server.DLL	A: 0x62E30000 - 0x630E1000	(C:\Users\cuozg7\Desktop\San Andreas Mutilplayer 2023\Gamemode-RCz\plugins\server.DLL)
+CRYPT32.dll	A: 0x75DA0000 - 0x75EA3000	(C:\WINDOWS\System32\CRYPT32.dll)
+bcrypt.dll	A: 0x74220000 - 0x7423A000	(C:\WINDOWS\SYSTEM32\bcrypt.dll)
+CRYPTBASE.DLL	A: 0x71430000 - 0x7143B000	(C:\WINDOWS\SYSTEM32\CRYPTBASE.DLL)
+bcryptPrimitives.dll	A: 0x756E0000 - 0x75742000	(C:\WINDOWS\System32\bcryptPrimitives.dll)
+MSASN1.dll	A: 0x750C0000 - 0x750CE000	(C:\WINDOWS\SYSTEM32\MSASN1.dll)
+
+--------------------------
+SA-MP Server: 0.3.DL-R1
+
+Exception At Address: 0x64656C69 Module: (Unknown)
+
+Registers:
+EAX: 0x0019ED88	EBX: 0x19930520	ECX: 0x00000003	EDX: 0x00000000
+ESI: 0x630802D8	EDI: 0x630CCF78	EBP: 0x61462020	ESP: 0x004BBA8C
+EFLAGS: 0x00000216
+
+Stack:
++0000: 0x0000002E   0x6F4C2020   0x64656461   0x0000002E
++0010: 0x616F4C20   0x676E6964   0x756C7020   0x3A6E6967
++0020: 0x00732520   0x67756C70   0x00736E69   0x2D2D2D2D
++0030: 0x2D2D2D2D   0x2D2D2D2D   0x00002D2D   0x76726553
++0040: 0x50207265   0x6967756C   0x0000736E   0x0000005C
++0050: 0x69466E4F   0x7265746C   0x69726353   0x6E497470
++0060: 0x00007469   0x6C696146   0x74206465   0x6F6C206F
++0070: 0x27206461   0x612E7325   0x2027786D   0x746C6966
++0080: 0x63737265   0x74706972   0x0000002E   0x746C6966
++0090: 0x63737265   0x74706972   0x73252F73   0x786D612E
++00A0: 0x00000000   0x69466E4F   0x7265746C   0x69726353
++00B0: 0x78457470   0x00007469   0x6C506E4F   0x72657961
++00C0: 0x6E6E6F43   0x00746365   0x6C506E4F   0x72657961
++00D0: 0x63736944   0x656E6E6F   0x00007463   0x61476E4F
++00E0: 0x6F4D656D   0x6E496564   0x00007469   0x61476E4F
++00F0: 0x6F4D656D   0x78456564   0x00007469   0x6C506E4F
++0100: 0x72657961   0x77617053   0x0000006E   0x6C506E4F
++0110: 0x72657961   0x74616544   0x00000068   0x65566E4F
++0120: 0x6C636968   0x61705365   0x00006E77   0x65566E4F
++0130: 0x6C636968   0x61654465   0x00006874   0x6C506E4F
+
+--------------------------
+
+Loaded Modules:
+samp-server.exe	A: 0x00400000 - 0x0051F000	(C:\Users\cuozg7\Desktop\San Andreas Mutilplayer 2023\Gamemode-RCz\samp-server.exe)
+ntdll.dll	A: 0x77430000 - 0x775DF000	(C:\WINDOWS\SYSTEM32\ntdll.dll)
+KERNEL32.DLL	A: 0x762F0000 - 0x763E0000	(C:\WINDOWS\System32\KERNEL32.DLL)
+KERNELBASE.dll	A: 0x76DD0000 - 0x77043000	(C:\WINDOWS\System32\KERNELBASE.dll)
+SHELL32.dll	A: 0x766E0000 - 0x76D6F000	(C:\WINDOWS\System32\SHELL32.dll)
+msvcp_win.dll	A: 0x75750000 - 0x757C9000	(C:\WINDOWS\System32\msvcp_win.dll)
+ucrtbase.dll	A: 0x75C70000 - 0x75D82000	(C:\WINDOWS\System32\ucrtbase.dll)
+USER32.dll	A: 0x77270000 - 0x77418000	(C:\WINDOWS\System32\USER32.dll)
+win32u.dll	A: 0x76640000 - 0x7665A000	(C:\WINDOWS\System32\win32u.dll)
+GDI32.dll	A: 0x753A0000 - 0x753C3000	(C:\WINDOWS\System32\GDI32.dll)
+gdi32full.dll	A: 0x75920000 - 0x75A01000	(C:\WINDOWS\System32\gdi32full.dll)
+WSOCK32.dll	A: 0x565D0000 - 0x565D8000	(C:\WINDOWS\SYSTEM32\WSOCK32.dll)
+WINMM.dll	A: 0x74240000 - 0x74271000	(C:\WINDOWS\SYSTEM32\WINMM.dll)
+msvcrt.dll	A: 0x75A10000 - 0x75AD4000	(C:\WINDOWS\System32\msvcrt.dll)
+ws2_32.DLL	A: 0x76D70000 - 0x76DCF000	(C:\WINDOWS\System32\ws2_32.DLL)
+RPCRT4.dll	A: 0x76440000 - 0x764FA000	(C:\WINDOWS\System32\RPCRT4.dll)
+IMM32.DLL	A: 0x75370000 - 0x75395000	(C:\WINDOWS\System32\IMM32.DLL)
+mysql.DLL	A: 0x63490000 - 0x63564000	(C:\Users\cuozg7\Desktop\San Andreas Mutilplayer 2023\Gamemode-RCz\plugins\mysql.DLL)
+LIBMYSQL.dll	A: 0x10000000 - 0x1023E000	(C:\Users\cuozg7\Desktop\San Andreas Mutilplayer 2023\Gamemode-RCz\LIBMYSQL.dll)
+MSVCR110.dll	A: 0x633B0000 - 0x63486000	(C:\Users\cuozg7\Desktop\San Andreas Mutilplayer 2023\Gamemode-RCz\MSVCR110.dll)
+MSVCP110.dll	A: 0x63320000 - 0x633A5000	(C:\WINDOWS\SYSTEM32\MSVCP110.dll)
+ADVAPI32.dll	A: 0x76660000 - 0x766DD000	(C:\WINDOWS\System32\ADVAPI32.dll)
+sechost.dll	A: 0x76510000 - 0x76594000	(C:\WINDOWS\System32\sechost.dll)
+napinsp.dll	A: 0x71440000 - 0x71452000	(C:\WINDOWS\system32\napinsp.dll)
+pnrpnsp.dll	A: 0x71410000 - 0x71426000	(C:\WINDOWS\system32\pnrpnsp.dll)
+mswsock.dll	A: 0x713B0000 - 0x71401000	(C:\WINDOWS\System32\mswsock.dll)
+DNSAPI.dll	A: 0x72520000 - 0x725D9000	(C:\WINDOWS\SYSTEM32\DNSAPI.dll)
+IPHLPAPI.DLL	A: 0x73450000 - 0x73474000	(C:\WINDOWS\SYSTEM32\IPHLPAPI.DLL)
+NSI.dll	A: 0x75D90000 - 0x75D97000	(C:\WINDOWS\System32\NSI.dll)
+winrnr.dll	A: 0x71300000 - 0x7130E000	(C:\WINDOWS\System32\winrnr.dll)
+wshbth.dll	A: 0x712A0000 - 0x712B1000	(C:\WINDOWS\system32\wshbth.dll)
+rasadhlp.dll	A: 0x6E630000 - 0x6E638000	(C:\Windows\System32\rasadhlp.dll)
+sscanf.DLL	A: 0x02410000 - 0x0241D000	(C:\Users\cuozg7\Desktop\San Andreas Mutilplayer 2023\Gamemode-RCz\plugins\sscanf.DLL)
+MSVCR100.dll	A: 0x63260000 - 0x6331F000	(C:\WINDOWS\SYSTEM32\MSVCR100.dll)
+whirlpool.DLL	A: 0x02430000 - 0x0243C000	(C:\Users\cuozg7\Desktop\San Andreas Mutilplayer 2023\Gamemode-RCz\plugins\whirlpool.DLL)
+MSVCR80.dll	A: 0x71310000 - 0x713AB000	(C:\WINDOWS\WinSxS\x86_microsoft.vc80.crt_1fc8b3b9a1e18e3b_8.0.50727.9680_none_d090cb7c44278b28\MSVCR80.dll)
+MSVCP100.dll	A: 0x63190000 - 0x631F9000	(C:\Users\cuozg7\Desktop\San Andreas Mutilplayer 2023\Gamemode-RCz\MSVCP100.dll)
+sampvoice.DLL	A: 0x63160000 - 0x6318B000	(C:\Users\cuozg7\Desktop\San Andreas Mutilplayer 2023\Gamemode-RCz\plugins\sampvoice.DLL)
+MSVCP140.dll	A: 0x74330000 - 0x7439D000	(C:\WINDOWS\SYSTEM32\MSVCP140.dll)
+VCRUNTIME140.dll	A: 0x743A0000 - 0x743B5000	(C:\WINDOWS\SYSTEM32\VCRUNTIME140.dll)
+combase.dll	A: 0x75430000 - 0x756AC000	(C:\WINDOWS\System32\combase.dll)
+kernel.appcore.dll	A: 0x748C0000 - 0x748D3000	(C:\WINDOWS\SYSTEM32\kernel.appcore.dll)
+samp-compat.dll	A: 0x69040000 - 0x6904A000	(C:\Users\cuozg7\Desktop\San Andreas Mutilplayer 2023\Gamemode-RCz\plugins\samp-compat.dll)
+streamer.DLL	A: 0x630F0000 - 0x6315D000	(C:\Users\cuozg7\Desktop\San Andreas Mutilplayer 2023\Gamemode-RCz\plugins\streamer.DLL)
+server.DLL	A: 0x62E30000 - 0x630E1000	(C:\Users\cuozg7\Desktop\San Andreas Mutilplayer 2023\Gamemode-RCz\plugins\server.DLL)
+CRYPT32.dll	A: 0x75DA0000 - 0x75EA3000	(C:\WINDOWS\System32\CRYPT32.dll)
+bcrypt.dll	A: 0x74220000 - 0x7423A000	(C:\WINDOWS\SYSTEM32\bcrypt.dll)
+CRYPTBASE.DLL	A: 0x71430000 - 0x7143B000	(C:\WINDOWS\SYSTEM32\CRYPTBASE.DLL)
+bcryptPrimitives.dll	A: 0x756E0000 - 0x75742000	(C:\WINDOWS\System32\bcryptPrimitives.dll)
+MSASN1.dll	A: 0x750C0000 - 0x750CE000	(C:\WINDOWS\SYSTEM32\MSASN1.dll)
+
+--------------------------
+SA-MP Server: 0.3.DL-R1
+
+Exception At Address: 0x64656C69 Module: (Unknown)
+
+Registers:
+EAX: 0x0019ED88	EBX: 0x19930520	ECX: 0x00000003	EDX: 0x00000000
+ESI: 0x630802D8	EDI: 0x630CCF78	EBP: 0x61462020	ESP: 0x004BBA8C
+EFLAGS: 0x00000216
+
+Stack:
++0000: 0x0000002E   0x6F4C2020   0x64656461   0x0000002E
++0010: 0x616F4C20   0x676E6964   0x756C7020   0x3A6E6967
++0020: 0x00732520   0x67756C70   0x00736E69   0x2D2D2D2D
++0030: 0x2D2D2D2D   0x2D2D2D2D   0x00002D2D   0x76726553
++0040: 0x50207265   0x6967756C   0x0000736E   0x0000005C
++0050: 0x69466E4F   0x7265746C   0x69726353   0x6E497470
++0060: 0x00007469   0x6C696146   0x74206465   0x6F6C206F
++0070: 0x27206461   0x612E7325   0x2027786D   0x746C6966
++0080: 0x63737265   0x74706972   0x0000002E   0x746C6966
++0090: 0x63737265   0x74706972   0x73252F73   0x786D612E
++00A0: 0x00000000   0x69466E4F   0x7265746C   0x69726353
++00B0: 0x78457470   0x00007469   0x6C506E4F   0x72657961
++00C0: 0x6E6E6F43   0x00746365   0x6C506E4F   0x72657961
++00D0: 0x63736944   0x656E6E6F   0x00007463   0x61476E4F
++00E0: 0x6F4D656D   0x6E496564   0x00007469   0x61476E4F
++00F0: 0x6F4D656D   0x78456564   0x00007469   0x6C506E4F
++0100: 0x72657961   0x77617053   0x0000006E   0x6C506E4F
++0110: 0x72657961   0x74616544   0x00000068   0x65566E4F
++0120: 0x6C636968   0x61705365   0x00006E77   0x65566E4F
++0130: 0x6C636968   0x61654465   0x00006874   0x6C506E4F
+
+--------------------------
+
+Loaded Modules:
+samp-server.exe	A: 0x00400000 - 0x0051F000	(C:\Users\cuozg7\Desktop\San Andreas Mutilplayer 2023\Gamemode-RCz\samp-server.exe)
+ntdll.dll	A: 0x77430000 - 0x775DF000	(C:\WINDOWS\SYSTEM32\ntdll.dll)
+KERNEL32.DLL	A: 0x762F0000 - 0x763E0000	(C:\WINDOWS\System32\KERNEL32.DLL)
+KERNELBASE.dll	A: 0x76DD0000 - 0x77043000	(C:\WINDOWS\System32\KERNELBASE.dll)
+SHELL32.dll	A: 0x766E0000 - 0x76D6F000	(C:\WINDOWS\System32\SHELL32.dll)
+msvcp_win.dll	A: 0x75750000 - 0x757C9000	(C:\WINDOWS\System32\msvcp_win.dll)
+ucrtbase.dll	A: 0x75C70000 - 0x75D82000	(C:\WINDOWS\System32\ucrtbase.dll)
+USER32.dll	A: 0x77270000 - 0x77418000	(C:\WINDOWS\System32\USER32.dll)
+win32u.dll	A: 0x76640000 - 0x7665A000	(C:\WINDOWS\System32\win32u.dll)
+GDI32.dll	A: 0x753A0000 - 0x753C3000	(C:\WINDOWS\System32\GDI32.dll)
+gdi32full.dll	A: 0x75920000 - 0x75A01000	(C:\WINDOWS\System32\gdi32full.dll)
+WSOCK32.dll	A: 0x565D0000 - 0x565D8000	(C:\WINDOWS\SYSTEM32\WSOCK32.dll)
+WINMM.dll	A: 0x74240000 - 0x74271000	(C:\WINDOWS\SYSTEM32\WINMM.dll)
+msvcrt.dll	A: 0x75A10000 - 0x75AD4000	(C:\WINDOWS\System32\msvcrt.dll)
+WS2_32.dll	A: 0x76D70000 - 0x76DCF000	(C:\WINDOWS\System32\WS2_32.dll)
+RPCRT4.dll	A: 0x76440000 - 0x764FA000	(C:\WINDOWS\System32\RPCRT4.dll)
+IMM32.DLL	A: 0x75370000 - 0x75395000	(C:\WINDOWS\System32\IMM32.DLL)
+mysql.DLL	A: 0x63490000 - 0x63564000	(C:\Users\cuozg7\Desktop\San Andreas Mutilplayer 2023\Gamemode-RCz\plugins\mysql.DLL)
+MSVCR110.dll	A: 0x633B0000 - 0x63486000	(C:\Users\cuozg7\Desktop\San Andreas Mutilplayer 2023\Gamemode-RCz\MSVCR110.dll)
+LIBMYSQL.dll	A: 0x10000000 - 0x1023E000	(C:\Users\cuozg7\Desktop\San Andreas Mutilplayer 2023\Gamemode-RCz\LIBMYSQL.dll)
+MSVCP110.dll	A: 0x63320000 - 0x633A5000	(C:\WINDOWS\SYSTEM32\MSVCP110.dll)
+ADVAPI32.dll	A: 0x76660000 - 0x766DD000	(C:\WINDOWS\System32\ADVAPI32.dll)
+sechost.dll	A: 0x76510000 - 0x76594000	(C:\WINDOWS\System32\sechost.dll)
+napinsp.dll	A: 0x71440000 - 0x71452000	(C:\WINDOWS\system32\napinsp.dll)
+pnrpnsp.dll	A: 0x71410000 - 0x71426000	(C:\WINDOWS\system32\pnrpnsp.dll)
+mswsock.dll	A: 0x713B0000 - 0x71401000	(C:\WINDOWS\System32\mswsock.dll)
+DNSAPI.dll	A: 0x72520000 - 0x725D9000	(C:\WINDOWS\SYSTEM32\DNSAPI.dll)
+IPHLPAPI.DLL	A: 0x73450000 - 0x73474000	(C:\WINDOWS\SYSTEM32\IPHLPAPI.DLL)
+NSI.dll	A: 0x75D90000 - 0x75D97000	(C:\WINDOWS\System32\NSI.dll)
+winrnr.dll	A: 0x71300000 - 0x7130E000	(C:\WINDOWS\System32\winrnr.dll)
+wshbth.dll	A: 0x712A0000 - 0x712B1000	(C:\WINDOWS\system32\wshbth.dll)
+rasadhlp.dll	A: 0x6E630000 - 0x6E638000	(C:\Windows\System32\rasadhlp.dll)
+sscanf.DLL	A: 0x02520000 - 0x0252D000	(C:\Users\cuozg7\Desktop\San Andreas Mutilplayer 2023\Gamemode-RCz\plugins\sscanf.DLL)
+MSVCR100.dll	A: 0x63260000 - 0x6331F000	(C:\WINDOWS\SYSTEM32\MSVCR100.dll)
+whirlpool.DLL	A: 0x02540000 - 0x0254C000	(C:\Users\cuozg7\Desktop\San Andreas Mutilplayer 2023\Gamemode-RCz\plugins\whirlpool.DLL)
+MSVCR80.dll	A: 0x71310000 - 0x713AB000	(C:\WINDOWS\WinSxS\x86_microsoft.vc80.crt_1fc8b3b9a1e18e3b_8.0.50727.9680_none_d090cb7c44278b28\MSVCR80.dll)
+MSVCP100.dll	A: 0x63190000 - 0x631F9000	(C:\Users\cuozg7\Desktop\San Andreas Mutilplayer 2023\Gamemode-RCz\MSVCP100.dll)
+sampvoice.DLL	A: 0x63160000 - 0x6318B000	(C:\Users\cuozg7\Desktop\San Andreas Mutilplayer 2023\Gamemode-RCz\plugins\sampvoice.DLL)
+MSVCP140.dll	A: 0x74330000 - 0x7439D000	(C:\WINDOWS\SYSTEM32\MSVCP140.dll)
+VCRUNTIME140.dll	A: 0x743A0000 - 0x743B5000	(C:\WINDOWS\SYSTEM32\VCRUNTIME140.dll)
+combase.dll	A: 0x75430000 - 0x756AC000	(C:\WINDOWS\System32\combase.dll)
+kernel.appcore.dll	A: 0x748C0000 - 0x748D3000	(C:\WINDOWS\SYSTEM32\kernel.appcore.dll)
+samp-compat.dll	A: 0x69040000 - 0x6904A000	(C:\Users\cuozg7\Desktop\San Andreas Mutilplayer 2023\Gamemode-RCz\plugins\samp-compat.dll)
+streamer.DLL	A: 0x630F0000 - 0x6315D000	(C:\Users\cuozg7\Desktop\San Andreas Mutilplayer 2023\Gamemode-RCz\plugins\streamer.DLL)
+server.DLL	A: 0x62E30000 - 0x630E1000	(C:\Users\cuozg7\Desktop\San Andreas Mutilplayer 2023\Gamemode-RCz\plugins\server.DLL)
+CRYPT32.dll	A: 0x75DA0000 - 0x75EA3000	(C:\WINDOWS\System32\CRYPT32.dll)
+bcrypt.dll	A: 0x74220000 - 0x7423A000	(C:\WINDOWS\SYSTEM32\bcrypt.dll)
+CRYPTBASE.DLL	A: 0x71430000 - 0x7143B000	(C:\WINDOWS\SYSTEM32\CRYPTBASE.DLL)
+bcryptPrimitives.dll	A: 0x756E0000 - 0x75742000	(C:\WINDOWS\System32\bcryptPrimitives.dll)
+MSASN1.dll	A: 0x750C0000 - 0x750CE000	(C:\WINDOWS\SYSTEM32\MSASN1.dll)
+
+--------------------------
+SA-MP Server: 0.3.DL-R1
+
+Exception At Address: 0x10037A7A Module: (LIBMYSQL.dll)
+
+Registers:
+EAX: 0x00000000	EBX: 0xFFFFFFFF	ECX: 0xFFFFFFFF	EDX: 0x00000000
+ESI: 0x02ADE2D0	EDI: 0x084B5060	EBP: 0x00000000	ESP: 0x0849FD6C
+EFLAGS: 0x00010286
+
+Stack:
++0000: 0x0849FD8C   0x02ADE2D0   0x02ADE2D0   0x07FC5E98
++0010: 0x00000000   0x00000000   0x07FC5E60   0x1000C9C5
++0020: 0x00000000   0x02ADE2D0   0x07FC5E98   0x1000E352
++0030: 0x02ADE2D0   0x02ADE2D0   0x0849FEE4   0x1000BF5D
++0040: 0x02ADE2D0   0x0071D298   0x6349F4AA   0x02ADE2D0
++0050: 0x07FC5E60   0x0000002F   0xD6A8CAAA   0x07B6E288
++0060: 0x07FC5E98   0x07B6E248   0x00000000   0x07FC5BC0
++0070: 0x07FC5E98   0x00000033   0x02ADE868   0x30300000
++0080: 0x34350000   0x54410000   0x0033302D   0x00000000
++0090: 0x0000000F   0x75007000   0x50496572   0x6E006C00
++00A0: 0x00004449   0x00000000   0x0000000F   0x76F1FA90
++00B0: 0x5F6E7862   0xFFFFFFFE   0x0849FE40   0x76F12EE8
++00C0: 0x00000001   0x00000000   0x00000000   0x00000000
++00D0: 0x00000000   0x0849FEC8   0x63494D0A   0x53794D43
++00E0: 0x75514C51   0x3A797265   0x6578453A   0x65747563
++00F0: 0x5455415B   0x48545F48   0x5D296428   0x69286800
++0100: 0x5D296969   0x5D296900   0x29286800   0x6349005D
++0110: 0x00000018   0x81481C32   0x01D9F283   0xC2F51605
++0120: 0x00000444   0x00000000   0x00000000   0x61636F00
++0130: 0x0000000A   0x00000000   0xFFFFFFFF   0x00000000
+
+--------------------------
+
+Loaded Modules:
+samp-server.exe	A: 0x00400000 - 0x0051F000	(C:\Users\cuozg7\Desktop\San Andreas Mutilplayer 2023\Gamemode-RCz\samp-server.exe)
+ntdll.dll	A: 0x77430000 - 0x775DF000	(C:\WINDOWS\SYSTEM32\ntdll.dll)
+KERNEL32.DLL	A: 0x762F0000 - 0x763E0000	(C:\WINDOWS\System32\KERNEL32.DLL)
+KERNELBASE.dll	A: 0x76DD0000 - 0x77043000	(C:\WINDOWS\System32\KERNELBASE.dll)
+SHELL32.dll	A: 0x766E0000 - 0x76D6F000	(C:\WINDOWS\System32\SHELL32.dll)
+msvcp_win.dll	A: 0x75750000 - 0x757C9000	(C:\WINDOWS\System32\msvcp_win.dll)
+ucrtbase.dll	A: 0x75C70000 - 0x75D82000	(C:\WINDOWS\System32\ucrtbase.dll)
+USER32.dll	A: 0x77270000 - 0x77418000	(C:\WINDOWS\System32\USER32.dll)
+win32u.dll	A: 0x76640000 - 0x7665A000	(C:\WINDOWS\System32\win32u.dll)
+GDI32.dll	A: 0x753A0000 - 0x753C3000	(C:\WINDOWS\System32\GDI32.dll)
+gdi32full.dll	A: 0x75920000 - 0x75A01000	(C:\WINDOWS\System32\gdi32full.dll)
+WINMM.dll	A: 0x74240000 - 0x74271000	(C:\WINDOWS\SYSTEM32\WINMM.dll)
+WSOCK32.dll	A: 0x565D0000 - 0x565D8000	(C:\WINDOWS\SYSTEM32\WSOCK32.dll)
+msvcrt.dll	A: 0x75A10000 - 0x75AD4000	(C:\WINDOWS\System32\msvcrt.dll)
+ws2_32.DLL	A: 0x76D70000 - 0x76DCF000	(C:\WINDOWS\System32\ws2_32.DLL)
+RPCRT4.dll	A: 0x76440000 - 0x764FA000	(C:\WINDOWS\System32\RPCRT4.dll)
+IMM32.DLL	A: 0x75370000 - 0x75395000	(C:\WINDOWS\System32\IMM32.DLL)
+mysql.DLL	A: 0x63490000 - 0x63564000	(C:\Users\cuozg7\Desktop\San Andreas Mutilplayer 2023\Gamemode-RCz\plugins\mysql.DLL)
+LIBMYSQL.dll	A: 0x10000000 - 0x1023E000	(C:\Users\cuozg7\Desktop\San Andreas Mutilplayer 2023\Gamemode-RCz\LIBMYSQL.dll)
+MSVCR110.dll	A: 0x633B0000 - 0x63486000	(C:\Users\cuozg7\Desktop\San Andreas Mutilplayer 2023\Gamemode-RCz\MSVCR110.dll)
+ADVAPI32.dll	A: 0x76660000 - 0x766DD000	(C:\WINDOWS\System32\ADVAPI32.dll)
+MSVCP110.dll	A: 0x63320000 - 0x633A5000	(C:\WINDOWS\SYSTEM32\MSVCP110.dll)
+sechost.dll	A: 0x76510000 - 0x76594000	(C:\WINDOWS\System32\sechost.dll)
+napinsp.dll	A: 0x71440000 - 0x71452000	(C:\WINDOWS\system32\napinsp.dll)
+pnrpnsp.dll	A: 0x71410000 - 0x71426000	(C:\WINDOWS\system32\pnrpnsp.dll)
+mswsock.dll	A: 0x713B0000 - 0x71401000	(C:\WINDOWS\System32\mswsock.dll)
+DNSAPI.dll	A: 0x72520000 - 0x725D9000	(C:\WINDOWS\SYSTEM32\DNSAPI.dll)
+IPHLPAPI.DLL	A: 0x73450000 - 0x73474000	(C:\WINDOWS\SYSTEM32\IPHLPAPI.DLL)
+NSI.dll	A: 0x75D90000 - 0x75D97000	(C:\WINDOWS\System32\NSI.dll)
+winrnr.dll	A: 0x71300000 - 0x7130E000	(C:\WINDOWS\System32\winrnr.dll)
+wshbth.dll	A: 0x712A0000 - 0x712B1000	(C:\WINDOWS\system32\wshbth.dll)
+rasadhlp.dll	A: 0x6E630000 - 0x6E638000	(C:\Windows\System32\rasadhlp.dll)
+sscanf.DLL	A: 0x02410000 - 0x0241D000	(C:\Users\cuozg7\Desktop\San Andreas Mutilplayer 2023\Gamemode-RCz\plugins\sscanf.DLL)
+MSVCR100.dll	A: 0x63260000 - 0x6331F000	(C:\WINDOWS\SYSTEM32\MSVCR100.dll)
+whirlpool.DLL	A: 0x02430000 - 0x0243C000	(C:\Users\cuozg7\Desktop\San Andreas Mutilplayer 2023\Gamemode-RCz\plugins\whirlpool.DLL)
+MSVCR80.dll	A: 0x71310000 - 0x713AB000	(C:\WINDOWS\WinSxS\x86_microsoft.vc80.crt_1fc8b3b9a1e18e3b_8.0.50727.9680_none_d090cb7c44278b28\MSVCR80.dll)
+MSVCP100.dll	A: 0x63190000 - 0x631F9000	(C:\Users\cuozg7\Desktop\San Andreas Mutilplayer 2023\Gamemode-RCz\MSVCP100.dll)
+sampvoice.DLL	A: 0x63160000 - 0x6318B000	(C:\Users\cuozg7\Desktop\San Andreas Mutilplayer 2023\Gamemode-RCz\plugins\sampvoice.DLL)
+VCRUNTIME140.dll	A: 0x743A0000 - 0x743B5000	(C:\WINDOWS\SYSTEM32\VCRUNTIME140.dll)
+MSVCP140.dll	A: 0x74330000 - 0x7439D000	(C:\WINDOWS\SYSTEM32\MSVCP140.dll)
+combase.dll	A: 0x75430000 - 0x756AC000	(C:\WINDOWS\System32\combase.dll)
+kernel.appcore.dll	A: 0x748C0000 - 0x748D3000	(C:\WINDOWS\SYSTEM32\kernel.appcore.dll)
+samp-compat.dll	A: 0x69040000 - 0x6904A000	(C:\Users\cuozg7\Desktop\San Andreas Mutilplayer 2023\Gamemode-RCz\plugins\samp-compat.dll)
+streamer.DLL	A: 0x630F0000 - 0x6315D000	(C:\Users\cuozg7\Desktop\San Andreas Mutilplayer 2023\Gamemode-RCz\plugins\streamer.DLL)
+server.DLL	A: 0x62E30000 - 0x630E1000	(C:\Users\cuozg7\Desktop\San Andreas Mutilplayer 2023\Gamemode-RCz\plugins\server.DLL)
+CRYPT32.dll	A: 0x75DA0000 - 0x75EA3000	(C:\WINDOWS\System32\CRYPT32.dll)
+bcrypt.dll	A: 0x74220000 - 0x7423A000	(C:\WINDOWS\SYSTEM32\bcrypt.dll)
+CRYPTBASE.DLL	A: 0x71430000 - 0x7143B000	(C:\WINDOWS\SYSTEM32\CRYPTBASE.DLL)
+bcryptPrimitives.dll	A: 0x756E0000 - 0x75742000	(C:\WINDOWS\System32\bcryptPrimitives.dll)
+MSASN1.dll	A: 0x750C0000 - 0x750CE000	(C:\WINDOWS\SYSTEM32\MSASN1.dll)
+TDE.DLL	A: 0x62E10000 - 0x62E2B000	(C:\Users\cuozg7\Desktop\San Andreas Mutilplayer 2023\Gamemode-RCz\plugins\TDE.DLL)
+MSVCR100D.dll	A: 0x62C90000 - 0x62E02000	(C:\Users\cuozg7\Desktop\San Andreas Mutilplayer 2023\Gamemode-RCz\MSVCR100D.dll)
+YSF_DL.DLL	A: 0x04CE0000 - 0x04D8A000	(C:\Users\cuozg7\Desktop\San Andreas Mutilplayer 2023\Gamemode-RCz\plugins\YSF_DL.DLL)
+OLEAUT32.dll	A: 0x765A0000 - 0x7663C000	(C:\WINDOWS\System32\OLEAUT32.dll)
