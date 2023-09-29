@@ -10471,9 +10471,15 @@ stock GetPlayerNameEx(playerid) {
 	new
 		szName[MAX_PLAYER_NAME],
 		iPos;
-
-	GetPlayerName(playerid, szName, MAX_PLAYER_NAME);
-	while ((iPos = strfind(szName, "_", false, iPos)) != -1) szName[iPos] = ' ';
+	if(PlayerInfo[playerid][pMaskOn])
+	{
+		format(szName, sizeof(szName), "[Mask %d_%d]", PlayerInfo[playerid][pMaskID][0], PlayerInfo[playerid][pMaskID][1]);
+	}
+	else
+	{
+		GetPlayerName(playerid, szName, MAX_PLAYER_NAME);
+		while ((iPos = strfind(szName, "_", false, iPos)) != -1) szName[iPos] = ' ';
+	}
 	return szName;
 }
 

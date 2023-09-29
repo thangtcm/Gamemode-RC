@@ -350,7 +350,6 @@ public OnQueryFinish(resultid, extraid, handleid)
 					cache_get_field_content(row,  "Level", szResult, MainPipeline); PlayerInfo[extraid][pLevel] = strval(szResult);
 					cache_get_field_content(row,  "AdminLevel", szResult, MainPipeline); PlayerInfo[extraid][pAdmin] = strval(szResult);
 					cache_get_field_content(row,  "CMND", szResult, MainPipeline); PlayerInfo[extraid][pCMND] = strval(szResult);
-					cache_get_field_content(row,  "MaskOn", szResult, MainPipeline); PlayerInfo[extraid][pMaskOn] = strval(szResult);
 					cache_get_field_content(row,  "MaskID1", szResult, MainPipeline); PlayerInfo[extraid][pMaskID][0] = strval(szResult);
 					cache_get_field_content(row,  "MaskID2", szResult, MainPipeline); PlayerInfo[extraid][pMaskID][1] = strval(szResult);
 					cache_get_field_content(row,  "RegisterCarTruck", szResult, MainPipeline); PlayerInfo[extraid][pRegisterCarTruck] = strval(szResult);
@@ -2981,7 +2980,6 @@ stock g_mysql_SaveAccount(playerid)
     SavePlayerInteger(query, GetPlayerSQLId(playerid), "AdminLevel", PlayerInfo[playerid][pAdmin]); 
     SavePlayerInteger(query, GetPlayerSQLId(playerid), "CMND", PlayerInfo[playerid][pCMND]);
 	SavePlayerInteger(query, GetPlayerSQLId(playerid), "RegisterCarTruck", PlayerInfo[playerid][pRegisterCarTruck]);
-	SavePlayerInteger(query, GetPlayerSQLId(playerid), "MaskOn", PlayerInfo[playerid][pMaskOn]);
 	SavePlayerInteger(query, GetPlayerSQLId(playerid), "MaskID1", PlayerInfo[playerid][pMaskID][0]);
 	SavePlayerInteger(query, GetPlayerSQLId(playerid), "MaskID2", PlayerInfo[playerid][pMaskID][1]);
 	SavePlayerInteger(query, GetPlayerSQLId(playerid), "SeniorModerator", PlayerInfo[playerid][pSMod]);

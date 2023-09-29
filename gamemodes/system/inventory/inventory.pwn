@@ -61,6 +61,9 @@ new const g_aInventoryItems[][e_InventoryItems] =
 	{"Dan Tieu lien", "Ammo3"}, // type 5
 	{"Dan sung truong", "Ammo4"}, // type 5
 	{"Dan Sniper", "Ammo5"}, // type 5
+
+	//NameTag
+	{"Mat na", "Mask"} 
 };
 
 hook OnPlayerDisconnect(playerid, reason)
@@ -401,6 +404,7 @@ public OpenInventory(playerid)
 forward OnPlayerUseItem(playerid, pItemId, name[]);
 public OnPlayerUseItem(playerid, pItemId, name[])
 {
+	new str[256];
 	if(!strcmp(name, "Dien thoai", true))
 	{
 		return cmd_phone(playerid, "\1");
@@ -477,6 +481,24 @@ public OnPlayerUseItem(playerid, pItemId, name[])
 	else if(!strcmp(name, "LSD", true))
 	{
 		UseDrug(playerid,3,pItemId);
+	}
+	else if(!strcmp(name, "Mat na", true))
+	{
+		switch(PlayerInfo[playerid][pMaskOn])
+		{
+			case 0:
+			{
+				format(str, sizeof(str), "* %s da deo mat na.", GetPlayerNameEx(playerid));
+				ProxDetector(30.0, playerid, str, COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE);
+				PlayerInfo[playerid][pMaskOn] = 1;
+			}
+			case 1:
+			{
+				format(str, sizeof(str), "* %s da thao mat na.", GetPlayerNameEx(playerid));
+				ProxDetector(30.0, playerid, str, COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE);
+				PlayerInfo[playerid][pMaskOn] = 0;
+			}
+		}
 	}
 	return 1;
 }

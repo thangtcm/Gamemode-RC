@@ -2,7 +2,7 @@
 ./system/new_job/Trucking/Vehicle.pwn(96) : èäåíòèôèêàòîð íå èñïîëüçóåòñÿ: "modelid"
 ./system/new_job/Trucking/Vehicle.pwn(146) : èäåíòèôèêàòîð íå èñïîëüçóåòñÿ: "pCarSlotID"
 ./system/drug/drug.pwn(11) : èäåíòèôèêàòîð íå èñïîëüçóåòñÿ: "DrugTypeName"
-C:\Users\PHATBENTRE\Desktop\vc\gamemodes\lsrpvn.pwn(16) : èäåíòèôèêàòîð íå èñïîëüçóåòñÿ: "FindFreeAnimDataID"
+d:\Gamemode Samp\Gamemode-RC\gamemodes\lsrpvn.pwn(16) : èäåíòèôèêàòîð íå èñïîëüçóåòñÿ: "FindFreeAnimDataID"
 ./system/new_job/Trucking/setting.pwn(31) : èäåíòèôèêàòîð íå èñïîëüçóåòñÿ: "UnitType"
 Pawn compiler 3.2.3664	 	 	Copyright (c) 1997-2016, ITB CompuPhase
 

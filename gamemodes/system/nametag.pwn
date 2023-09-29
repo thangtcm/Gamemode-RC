@@ -6,6 +6,8 @@
 
 //new Text3D:cNametag[MAX_PLAYERS];
 // new Text3D:Player3DText[MAX_PLAYERS];
+new PlayerNameTag[MAX_PLAYERS][MAX_PLAYERS][MAX_PLAYER_NAME];
+new Timer:myNameTagTimer[MAX_PLAYERS] = {Timer:-1, ...};
 stock GetHealthDots(playerid)
 {
     new dots[64];
@@ -71,35 +73,45 @@ stock GetArmorDots(playerid)
 
     return dots;
 }
-forward UpdateNametag();
-public UpdateNametag()
+timer UpdateNameTagTimer[500](playerid)
 {
-    for(new i = 0, j = GetPlayerPoolSize(); i <= j; i++)
+    foreach(new i: Player)
     {
         if(IsPlayerConnected(i))
         {
-            new nametag[128], playername[MAX_PLAYER_NAME], Float:armour;
+            new nametag[128], Float:armour;
             GetPlayerArmour(i, armour);
-            GetPlayerName(i, playername, sizeof(playername));
+			if(PlayerInfo[i][pMaskOn])
+			{
+				format(PlayerNameTag[playerid][i], MAX_PLAYER_NAME, "[Mask %d_%d]", PlayerInfo[i][pMaskID][0], PlayerInfo[i][pMaskID][1]);
+			}
+			else if(!ProxDetectorS(6.0, playerid, i))
+			{
+				format(PlayerNameTag[playerid][i], MAX_PLAYER_NAME, "%d_%d", PlayerInfo[i][pMaskID][0], PlayerInfo[i][pMaskID][1]);
+			}
+			else
+			{
+            	GetPlayerName(i, PlayerNameTag[playerid][i], MAX_PLAYER_NAME);
+			}
             if(GetPVarInt(i, "NameTagTime") <= gettime())
             {
             	if(armour > 1.0)
             	{
-               	    format(nametag, sizeof(nametag), "{%06x}%s{FFFFFF} (%i)", GetPlayerColor(i) >>> 8, GetPlayerNameEx(i), i);
+               	    format(nametag, sizeof(nametag), "{%06x}%s{FFFFFF} (%i)", GetPlayerColor(i) >>> 8, PlayerNameTag[playerid][i], i);
             	}
            	 	else
             	{
-                	format(nametag, sizeof(nametag), "{%06x}%s{FFFFFF} (%i)", GetPlayerColor(i) >>> 8, GetPlayerNameEx(i), i);
+                	format(nametag, sizeof(nametag), "{%06x}%s{FFFFFF} (%i)", GetPlayerColor(i) >>> 8, PlayerNameTag[playerid][i], i);
            		}
            		if(playerAFK[i] != 0)
            		{
            			if(armour > 1.0)
             		{
-               	    	format(nametag, sizeof(nametag), "{F81414}[AFK]{FFFFFF} {%06x}%s{FFFFFF} (%i)", GetPlayerColor(i) >>> 8,GetPlayerNameEx(i), i);
+               	    	format(nametag, sizeof(nametag), "{F81414}[AFK]{FFFFFF} {%06x}%s{FFFFFF} (%i)", GetPlayerColor(i) >>> 8,PlayerNameTag[playerid][i], i);
             		}
             		else
             		{
-                		format(nametag, sizeof(nametag), "{F81414}[AFK]{FFFFFF} {%06x}%s{FFFFFF} (%i)", GetPlayerColor(i) >>> 8,GetPlayerNameEx(i), i);
+                		format(nametag, sizeof(nametag), "{F81414}[AFK]{FFFFFF} {%06x}%s{FFFFFF} (%i)", GetPlayerColor(i) >>> 8,PlayerNameTag[playerid][i], i);
            			}
            		}
             }
@@ -107,21 +119,21 @@ public UpdateNametag()
             {
                 if(armour > 1.0)
                 {
-                    format(nametag, sizeof(nametag), "{%06x}%s {FFFFFF} (%i)\n{FFFFFF}%s\n{FF0000}%s", GetPlayerColor(i) >>> 8, GetPlayerNameEx(i), i, GetArmorDots(i), GetHealthDots(i));
+                    format(nametag, sizeof(nametag), "{%06x}%s {FFFFFF} (%i)\n{FFFFFF}%s\n{FF0000}%s", GetPlayerColor(i) >>> 8, PlayerNameTag[playerid][i], i, GetArmorDots(i), GetHealthDots(i));
                 }
                 else
                 {
-                    format(nametag, sizeof(nametag), "{%06x}%s {FFFFFF} (%i)\n{FF0000}%s", GetPlayerColor(i) >>> 8, GetPlayerNameEx(i), i, GetHealthDots(i));
+                    format(nametag, sizeof(nametag), "{%06x}%s {FFFFFF} (%i)\n{FF0000}%s", GetPlayerColor(i) >>> 8, PlayerNameTag[playerid][i], i, GetHealthDots(i));
                 }
                 if(IsPlayerPaused(i))
            		{
            			if(armour > 1.0)
             		{
-               	    	format(nametag, sizeof(nametag), "{F81414}[AFK]{FFFFFF} {%06x}%s {FFFFFF} (%i)\n{FFFFFF}%s\n{FF0000}%s", GetPlayerColor(i) >>> 8, GetPlayerNameEx(i), i, GetArmorDots(i), GetHealthDots(i));
+               	    	format(nametag, sizeof(nametag), "{F81414}[AFK]{FFFFFF} {%06x}%s {FFFFFF} (%i)\n{FFFFFF}%s\n{FF0000}%s", GetPlayerColor(i) >>> 8, PlayerNameTag[playerid][i], i, GetArmorDots(i), GetHealthDots(i));
             		}
            	 		else
             		{
-                		format(nametag, sizeof(nametag), "{F81414}[AFK]{FFFFFF} {%06x}%s {FFFFFF} (%i)\n{FF0000}%s", GetPlayerColor(i) >>> 8, GetPlayerNameEx(i), i, GetHealthDots(i));
+                		format(nametag, sizeof(nametag), "{F81414}[AFK]{FFFFFF} {%06x}%s {FFFFFF} (%i)\n{FF0000}%s", GetPlayerColor(i) >>> 8, PlayerNameTag[playerid][i], i, GetHealthDots(i));
            			}
            		}
             }
@@ -129,21 +141,21 @@ public UpdateNametag()
             {
                 if(armour > 1.0)
                 {
-                    format(nametag, sizeof(nametag), "{%06x}%s{FFFFFF} (%i)", GetPlayerColor(i) >>> 8, GetPlayerNameEx(i), i);
+                    format(nametag, sizeof(nametag), "{%06x}%s{FFFFFF} (%i)", GetPlayerColor(i) >>> 8, PlayerNameTag[playerid][i], i);
                 }
                 else
                 {
-                    format(nametag, sizeof(nametag), "{%06x}%s{FFFFFF} (%i)", GetPlayerColor(i) >>> 8, GetPlayerNameEx(i), i);
+                    format(nametag, sizeof(nametag), "{%06x}%s{FFFFFF} (%i)", GetPlayerColor(i) >>> 8, PlayerNameTag[playerid][i], i);
                 }
                 if(IsPlayerPaused(i))
                 {
                     if(armour > 1.0)
                     {
-                        format(nametag, sizeof(nametag), "{F81414}[AFK]{FFFFFF} {%06x}%s{FFFFFF} (%i)", GetPlayerColor(i) >>> 8,GetPlayerNameEx(i), i);
+                        format(nametag, sizeof(nametag), "{F81414}[AFK]{FFFFFF} {%06x}%s{FFFFFF} (%i)", GetPlayerColor(i) >>> 8,PlayerNameTag[playerid][i], i);
                     }
                     else
                     {
-                        format(nametag, sizeof(nametag), "{F81414}[AFK]{FFFFFF} {%06x}%s{FFFFFF} (%i)", GetPlayerColor(i) >>> 8,GetPlayerNameEx(i), i);
+                        format(nametag, sizeof(nametag), "{F81414}[AFK]{FFFFFF} {%06x}%s{FFFFFF} (%i)", GetPlayerColor(i) >>> 8,PlayerNameTag[playerid][i], i);
                     }
                 }
             }
@@ -152,15 +164,23 @@ public UpdateNametag()
     }
     return 1;
 }
-hook OnPlayerUpdate(playerid) {
-	UpdateNametag();
-}
 
 hook OnPlayerConnect(playerid) {
     PlayerInfo[playerid][pNameTag] = CreateDynamic3DTextLabel("Loading nametag...", 0x008080FF, 0.0, 0.0, 0.1, 25.0, .attachedplayer = playerid, .testlos = 1);
+	myNameTagTimer[playerid] = repeat UpdateNameTagTimer(playerid);
+	if(PlayerInfo[playerid][pMaskID][0] == 0 || PlayerInfo[playerid][pMaskID][1] == 0)
+	{
+		PlayerInfo[playerid][pMaskID][0] = random(90000) + 10000;
+		PlayerInfo[playerid][pMaskID][1] = random(40) + 59;
+	}
+	PlayerInfo[playerid][pMaskOn] = 0;
+	return 1;
 }
 hook OnPlayerDisconnect(playerid, reason) {
     if(IsValidDynamic3DTextLabel(PlayerInfo[playerid][pNameTag]))
         DestroyDynamic3DTextLabel(PlayerInfo[playerid][pNameTag]);
+
+    stop myNameTagTimer[playerid];
+    myNameTagTimer[playerid] = Timer:-1;
     return 1;
 }
