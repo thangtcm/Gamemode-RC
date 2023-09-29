@@ -5081,41 +5081,7 @@ public RadarCooldown(playerid)
    return 1;
 }
 
-forward CopGetUp(playerid);
-public CopGetUp(playerid)
-{
-    SetPVarInt(playerid, "CopTackleCooldown", 30);
-    SendClientMessageEx(playerid, COLOR_GRAD2, "Se can 30 giay sau ban moi co the giai quyet mot lan nua.");
-	TogglePlayerControllable(playerid, 1);
-	PreloadAnimLib(playerid, "SUNBATHE");
-	ApplyAnimation(playerid, "SUNBATHE", "Lay_Bac_out", 4.0, 0, 1, 1, 0, 0, 1);
-	return 1;
-}
 
-stock TacklePlayer(playerid, tacklee)
-{
-	new string[128], Float: posx, Float: posy, Float: posz, group[GROUP_MAX_NAME_LEN], rank[GROUP_MAX_RANK_LEN], division[GROUP_MAX_DIV_LEN];
-	PreloadAnimLib(playerid, "PED");
-	format(string, sizeof(string), "** %s troi chat %s.", GetPlayerNameEx(playerid), GetPlayerNameEx(tacklee));
-	ProxDetector(30.0, playerid, string, COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE);
-	SetPVarInt(tacklee, "IsTackled", playerid);
-	TogglePlayerControllable(tacklee, 0);
-	SetPVarInt(tacklee, "TackleCooldown", 20);
-	SetPVarInt(playerid, "Tackling", tacklee);
-	GetPlayerPos(tacklee, posx, posy,posz);
-	SetPlayerFacingAngle(playerid, 180.0);
-	SetPlayerFacingAngle(tacklee, 0.0);
-	GetXYBehindPlayer(tacklee, posx, posy, 0.8);
-	ApplyAnimation(playerid, "PED", "KO_shot_stom", 4.0, 0, 1, 1, 1, 20000, 1);
-	ApplyAnimation(tacklee, "DILDO", "Dildo_Hit_3", 4.1, 0, 1, 1, 1, 20000, 1);
-	GetPlayerGroupInfo(playerid, group, rank, division);
-	GameTextForPlayer(playerid, "~n~~n~~n~~n~~n~~n~~n~~n~~w~Bam ~r~'~k~~CONVERSATION_YES~' ~n~~w~de khang cu.", 15000, 3);
-	format(string, sizeof(string), "%s %s %s da troi ban.  Ban co muon khang cu lai?", group, rank, GetPlayerNameEx(playerid));
-	ShowPlayerDialog(tacklee, DIALOG_TACKLED, DIALOG_STYLE_MSGBOX, "Ban bi troi", string, "Tuan theo", "Chong cu");
-	SetPVarInt(playerid, "TackleMode", 0);
-	SendClientMessageEx(playerid, COLOR_LIGHTBLUE, "Khang cu bi vo hieu hoa. Bay gio ban co the cat vu khi vao tui. (/holster)");
-	return 1;
-}
 
 forward CaptureTimer(point);
 public CaptureTimer(point)
@@ -23409,5 +23375,40 @@ stock UpdateRadio(playerid) {
 	PlayerTextDrawShow(playerid, RadioInfo[playerid]);
 	PlayerTextDrawShow(playerid, ChannelInfo[playerid]);
 	PlayerTextDrawShow(playerid, SlotInfo[playerid]);
+	return 1;
+}
+forward CopGetUp(playerid);
+public CopGetUp(playerid)
+{
+    SetPVarInt(playerid, "CopTackleCooldown", 30);
+    SendClientMessageEx(playerid, COLOR_GRAD2, "Se can 30 giay sau ban moi co the giai quyet mot lan nua.");
+	TogglePlayerControllable(playerid, 1);
+	PreloadAnimLib(playerid, "SUNBATHE");
+	ApplyAnimation(playerid, "SUNBATHE", "Lay_Bac_out", 4.0, 0, 1, 1, 0, 0, 1);
+	return 1;
+}
+
+stock TacklePlayer(playerid, tacklee)
+{
+	new string[128], Float: posx, Float: posy, Float: posz, group[GROUP_MAX_NAME_LEN], rank[GROUP_MAX_RANK_LEN], division[GROUP_MAX_DIV_LEN];
+	PreloadAnimLib(playerid, "PED");
+	format(string, sizeof(string), "** %s troi chat %s.", GetPlayerNameEx(playerid), GetPlayerNameEx(tacklee));
+	ProxDetector(30.0, playerid, string, COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE);
+	SetPVarInt(tacklee, "IsTackled", playerid);
+	TogglePlayerControllable(tacklee, 0);
+	SetPVarInt(tacklee, "TackleCooldown", 20);
+	SetPVarInt(playerid, "Tackling", tacklee);
+	GetPlayerPos(tacklee, posx, posy,posz);
+	SetPlayerFacingAngle(playerid, 180.0);
+	SetPlayerFacingAngle(tacklee, 0.0);
+	GetXYBehindPlayer(tacklee, posx, posy, 0.8);
+	ApplyAnimation(playerid, "PED", "KO_shot_stom", 4.0, 0, 1, 1, 1, 20000, 1);
+	ApplyAnimation(tacklee, "DILDO", "Dildo_Hit_3", 4.1, 0, 1, 1, 1, 20000, 1);
+	GetPlayerGroupInfo(playerid, group, rank, division);
+	GameTextForPlayer(playerid, "~n~~n~~n~~n~~n~~n~~n~~n~~w~Bam ~r~'~k~~CONVERSATION_YES~' ~n~~w~de khang cu.", 15000, 3);
+	format(string, sizeof(string), "%s %s %s da troi ban.  Ban co muon khang cu lai?", group, rank, GetPlayerNameEx(playerid));
+	ShowPlayerDialog(tacklee, DIALOG_TACKLED, DIALOG_STYLE_MSGBOX, "Ban bi troi", string, "Tuan theo", "Chong cu");
+	SetPVarInt(playerid, "TackleMode", 0);
+	SendClientMessageEx(playerid, COLOR_LIGHTBLUE, "Khang cu bi vo hieu hoa. Bay gio ban co the cat vu khi vao tui. (/holster)");
 	return 1;
 }

@@ -42505,7 +42505,30 @@ CMD:handcuff(playerid, params[])
 	}
 	return 1;
 }
-
+CMD:tackle(playerid, params[])
+{
+	#if defined zombiemode
+	if(zombieevent == 1 && GetPVarType(playerid, "pIsZombie")) return SendClientMessageEx(playerid, COLOR_GREY, "Zombies can't tackle humans!");
+	#endif
+	if(IsACop(playerid))
+	{
+		if(GetPVarInt(playerid, "WeaponsHolstered") == 0)
+	    {
+	        cmd_holster(playerid, params);
+		}
+        if(GetPVarInt(playerid, "TackleMode") == 0)
+        {
+	        SetPVarInt(playerid, "TackleMode", 1);
+	        return SendClientMessageEx(playerid, COLOR_LIGHTBLUE, "You've enabled tackling.  Aim at the suspect and hit enter to initiate the tackle.");
+		}
+		else
+		{
+	        SetPVarInt(playerid, "TackleMode", 0);
+	        return SendClientMessageEx(playerid, COLOR_LIGHTBLUE, "You've disabled tackling. You may now unholster your weapon. (/holster)");
+		}
+	}
+	else return SendClientMessageEx(playerid, COLOR_GRAD2, "You're not Law Enforcement.");
+}
 CMD:thaocong(playerid, params[]) {
 	return cmd_uncuff(playerid, params);
 }
@@ -42813,6 +42836,7 @@ CMD:tim(playerid, params[]) {
 	}
 	return 1;
 }
+
 
 CMD:hfind(playerid, params[])
 {
