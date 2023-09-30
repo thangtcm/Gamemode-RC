@@ -229,7 +229,7 @@ stock Inventory_Count(playerid, item[])
 		if(!InventoryData[playerid][i][invExists])
 			continue;
 		if(!strcmp(InventoryData[playerid][i][invItem], item)) 
-			count++;
+			count+=InventoryData[playerid][i][invQuantity];
 	}
 	return count;
 }
