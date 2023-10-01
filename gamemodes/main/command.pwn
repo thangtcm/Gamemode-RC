@@ -45892,7 +45892,7 @@ CMD:locker(playerid, params[]) {
 	new
 		iGroupID = PlayerInfo[playerid][pMember],
 		szTitle[18 + GROUP_MAX_NAME_LEN],
-		szDialog[100];
+		szDialog[256];
 
 	if(PlayerInfo[playerid][pWRestricted] != 0) return SendServerMessage(playerid, " Ban khong the mo tu nay khi dang bi gioi han vu khi");
 	if(0 <= iGroupID < MAX_GROUPS)
@@ -45916,7 +45916,7 @@ CMD:locker(playerid, params[]) {
 							    format(szTitle, sizeof(szTitle), "%s - {AA3333}Locker Stock: %d", szTitle, arrGroupData[iGroupID][g_iLockerStock]);
 							}
 					    }
-					    format(szDialog, sizeof(szDialog), "Duty\nVu khi\nDong phuc%s", (arrGroupData[iGroupID][g_iGroupType] == 1) ? ("\nClear Suspect\nFirstAid & Kevlar\nMedkit & Vest Trunk Kit\nTazer & Cuffs\nWEAPON") : (""));
+					    format(szDialog, sizeof(szDialog), "Duty\nVu khi\nDong phuc%s", (arrGroupData[iGroupID][g_iGroupType] == 1) ? ("\nClear Suspect\nFirstAid & Kevlar\nMedkit & Vest Trunk Kit\nTazer & Cuffs\nWEAPON (NEW)\n AMMO (NEW)") : (""));
 						ShowPlayerDialog(playerid, G_LOCKER_MAIN, DIALOG_STYLE_LIST, szTitle, szDialog, "Lua chon", "Huy bo");
 						return 1;
 					}
