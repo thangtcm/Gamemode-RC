@@ -1099,3 +1099,27 @@
 [09/27/23 04:53:33] [plugins/discord-connector] can't update guild member presence: user id "972935317399167109" not cached
 [09/27/23 04:54:38] [plugins/discord-connector] can't update guild member presence: user id "972935317399167109" not cached
 [09/27/23 04:55:00] [plugins/discord-connector] can't update guild member presence: user id "954849501217181696" not cached
+[10/01/23 11:40:46] [plugins/discord-connector] Can't write to Discord websocket gateway: The I/O operation has been aborted because of either a thread exit or an application request (995)
+[10/01/23 12:29:29] [plugins/discord-connector] Can't read from Discord websocket gateway: The network connection was aborted by the local system (1236)
+[10/01/23 12:29:29] [plugins/discord-connector] Can't write to Discord websocket gateway: The I/O operation has been aborted because of either a thread exit or an application request (995)
+[10/01/23 13:17:45] [plugins/discord-connector] Can't write to Discord websocket gateway: The I/O operation has been aborted because of either a thread exit or an application request (995)
+[10/01/23 13:17:46] [plugins/discord-connector] Error while retrieving HTTP GET response from '/api/oauth2/applications/@me': end of stream
+[10/01/23 14:15:03] [plugins/discord-connector] can't serialize JSON: [json.exception.type_error.316] invalid UTF-8 byte at index 2: 0x6E
+[10/01/23 14:40:12] [plugins/discord-connector] can't serialize JSON: [json.exception.type_error.316] invalid UTF-8 byte at index 2: 0x6E
+[10/01/23 14:50:03] [plugins/discord-connector] can't serialize JSON: [json.exception.type_error.316] invalid UTF-8 byte at index 2: 0x6E
+[10/01/23 15:03:32] [plugins/discord-connector] can't serialize JSON: [json.exception.type_error.316] invalid UTF-8 byte at index 2: 0x6E
+[10/01/23 15:08:29] [plugins/discord-connector] can't serialize JSON: [json.exception.type_error.316] invalid UTF-8 byte at index 2: 0x6E
+[10/01/23 15:17:54] [plugins/discord-connector] can't serialize JSON: [json.exception.type_error.316] invalid UTF-8 byte at index 2: 0x6E
+[10/01/23 15:35:09] [plugins/discord-connector] can't serialize JSON: [json.exception.type_error.316] invalid UTF-8 byte at index 2: 0x6E
+[10/01/23 15:49:34] [plugins/discord-connector] can't serialize JSON: [json.exception.type_error.316] invalid UTF-8 byte at index 2: 0x6E
+[10/01/23 15:49:34] [plugins/discord-connector] DCC_SendChannelEmbedMessage: invalid channel id '0'
+[10/01/23 15:53:00] [plugins/discord-connector] can't serialize JSON: [json.exception.type_error.316] invalid UTF-8 byte at index 2: 0x6E
+[10/01/23 15:53:00] [plugins/discord-connector] DCC_SendChannelEmbedMessage: invalid channel id '0'
+[10/01/23 15:56:02] [plugins/discord-connector] can't serialize JSON: [json.exception.type_error.316] invalid UTF-8 byte at index 2: 0x6E
+[10/01/23 15:59:35] [plugins/discord-connector] can't serialize JSON: [json.exception.type_error.316] invalid UTF-8 byte at index 2: 0x6E
+[10/01/23 16:27:07] [plugins/discord-connector] Error while retrieving HTTP POST response from '/api/v10/channels/1157969036848668733/messages': stream truncated
+[10/01/23 16:33:48] [plugins/discord-connector] can't serialize JSON: [json.exception.type_error.316] incomplete UTF-8 string; last byte: 0xD2
+[10/01/23 18:02:37] [plugins/discord-connector] can't serialize JSON: [json.exception.type_error.316] invalid UTF-8 byte at index 0: 0xBA
+[10/01/23 18:05:36] [plugins/discord-connector] can't serialize JSON: [json.exception.type_error.316] invalid UTF-8 byte at index 0: 0xB4
+[10/01/23 18:06:15] [plugins/discord-connector] can't serialize JSON: [json.exception.type_error.316] invalid UTF-8 byte at index 0: 0xA0
+[10/01/23 18:08:03] [plugins/discord-connector] can't serialize JSON: [json.exception.type_error.316] invalid UTF-8 byte at index 0: 0xA0

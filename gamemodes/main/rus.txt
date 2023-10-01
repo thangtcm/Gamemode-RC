@@ -1,7 +1,16 @@
-d:\Gamemode Samp\Gamemode-RC\gamemodes\main\defines.pwn(17) : îøèáêà 017: íåîáúÿâëåííûé ñèìâîë "MAX_PLAYERS"
-d:\Gamemode Samp\Gamemode-RC\gamemodes\main\defines.pwn(17) : îøèáêà 010: íåâåðíàÿ ôóíêöèÿ èëè îáúÿâëåíèå
-d:\Gamemode Samp\Gamemode-RC\gamemodes\main\defines.pwn(918) : îøèáêà 013: îòñóòñòâóåò òî÷êà âõîäà (íåò public-ôóíêöèé)
+C:\Users\PHATBENTRE\Desktop\Gamemode-RC\Gamemode-RC\gamemodes\main\_funcs.pwn(2) : ïðåäóïðåæäåíèå 235: public-ôóíêöèÿ íóæäàåòñÿ â îïåðåæàþùåì îáúÿâëåíèè (èäåíòèôèêàòîð "OnPlayerLeaveRaceCheckpoint")
+C:\Users\PHATBENTRE\Desktop\Gamemode-RC\Gamemode-RC\gamemodes\main\_funcs.pwn(6) : ïðåäóïðåæäåíèå 235: public-ôóíêöèÿ íóæäàåòñÿ â îïåðåæàþùåì îáúÿâëåíèè (èäåíòèôèêàòîð "OnPlayerPickUpPickup")
+C:\Users\PHATBENTRE\Desktop\Gamemode-RC\Gamemode-RC\gamemodes\main\_funcs.pwn(10) : ïðåäóïðåæäåíèå 235: public-ôóíêöèÿ íóæäàåòñÿ â îïåðåæàþùåì îáúÿâëåíèè (èäåíòèôèêàòîð "OnPlayerUpdate")
+C:\Users\PHATBENTRE\Desktop\Gamemode-RC\Gamemode-RC\gamemodes\main\_funcs.pwn(12) : îøèáêà 017: íåîáúÿâëåííûé ñèìâîë "MAX_SZ"
+C:\Users\PHATBENTRE\Desktop\Gamemode-RC\Gamemode-RC\gamemodes\main\_funcs.pwn(14) : îøèáêà 017: íåîáúÿâëåííûé ñèìâîë "IsACop"
+C:\Users\PHATBENTRE\Desktop\Gamemode-RC\Gamemode-RC\gamemodes\main\_funcs.pwn(14) : ïðåäóïðåæäåíèå 215: âûðàæåíèå íå èìååò ýôôåêòà
+C:\Users\PHATBENTRE\Desktop\Gamemode-RC\Gamemode-RC\gamemodes\main\_funcs.pwn(14) : îøèáêà 001: îæèäàëñÿ òîêåí ";", íî íàéäåí "]"
+C:\Users\PHATBENTRE\Desktop\Gamemode-RC\Gamemode-RC\gamemodes\main\_funcs.pwn(14) : îøèáêà 029: íåïðàâèëüíîå âûðàæåíèå, ïðèíÿò íîëü
+C:\Users\PHATBENTRE\Desktop\Gamemode-RC\Gamemode-RC\gamemodes\main\_funcs.pwn(14) : ôàòàëüíàÿ îøèáêà 107: ñëèøêîì ìíîãî îøèáîê íà îäíîé ñòðîêå
+
+Êîìïèëÿöèÿ îñòàíîâëåíà.
+
 Pawn compiler 3.2.3664	 	 	Copyright (c) 1997-2016, ITB CompuPhase
 
 
-Îøèáîê:3.
+Îøèáîê:5.

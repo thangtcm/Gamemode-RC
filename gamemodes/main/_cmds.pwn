@@ -1121,6 +1121,20 @@ CMD:makiemsoat(playerid,params[])
                 new string[128];
                 format(string, sizeof(string), "%s",params);
                 veicolo_callsign_testo[veh] = Create3DTextLabel(string, 0xFFFFFFFF, 0.0, 0.0, 0.0, 50.0, 0, 1);
+                new szEmployer[GROUP_MAX_NAME_LEN], szRank[GROUP_MAX_RANK_LEN], szDivision[GROUP_MAX_DIV_LEN];
+                GetPlayerGroupInfo(playerid, szRank, szDivision, szEmployer);
+                if(arrGroupData[PlayerInfo[playerid][pMember]][g_iGroupType] == 1)
+                {
+                    new idveh[10];
+                    format(idveh, 10, "%d", GetPlayerVehicleID(playerid));
+                    SendLogToDiscordRoom4(string ,"1158002044381188188", "Name", GetPlayerNameEx(playerid), "Rank", szRank, "Division", szDivision, "ID Veh", idveh, 0x226199);
+                }
+                else if(arrGroupData[PlayerInfo[playerid][pMember]][g_iGroupType] == 3)
+                {
+                    new idveh[10];
+                    format(idveh, 10, "%d", GetPlayerVehicleID(playerid));
+                    SendLogToDiscordRoom4(string ,"1158006184347963432", "Name", GetPlayerNameEx(playerid), "Rank", szRank, "Division", szDivision, "ID Veh", idveh, 0x226199);
+                }
                 format(string, sizeof(string), " %s su dung ma kiem soat: %s ", GetPlayerNameEx(playerid), string);
                 foreach (new i: Player)
                 {

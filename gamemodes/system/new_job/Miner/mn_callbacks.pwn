@@ -78,7 +78,12 @@ public ResetPrice()
 	}
 	SetTimer("ResetPrice", 3600000, false);
 	SendClientMessageToAll(COLOR_REALRED, "[THU MUA KHOANG SAN] {ffffff}Gia ca thi truong da thay doi, hay den nguoi thu mua tai Palomino Creek de xem gia ca.");
-	printf("%d %d %d %d", RandomMoney[0], RandomMoney[1], RandomMoney[2], RandomMoney[3]);
+    new moneyzxc0[30], moneyzxc1[30], moneyzxc2[30], moneyzxc3[30];
+    format(moneyzxc0, 30, "%d$", RandomMoney[0]);
+    format(moneyzxc1, 30, "%d$", RandomMoney[1]);
+    format(moneyzxc2, 30, "%d$", RandomMoney[2]);
+    format(moneyzxc3, 30, "%d$", RandomMoney[3]);
+	SendLogToDiscordRoom4("RC:RP LOG - GIÁ CẢ THU MUA", "1157993235776557156", "ĐÁ", moneyzxc0, "ĐỒNG", moneyzxc1, "SẮT", moneyzxc2, "VÀNG", moneyzxc3, 0x8d9922);
     return 1;
 }
 
@@ -152,21 +157,25 @@ public StartCountTime(playerid)
 					{
 						format(format_job, sizeof(format_job), "~g~Ban da dao thanh cong va nhan duoc ~y~1 Da~g~.");
 						Inventory_Add(playerid, "Da", 1);
+						SendLogToDiscordRoom("MINERAL LOG" ,"1157988317548265523", "Name", GetPlayerNameEx(playerid), "ADDED", "Đá", "Số lượng", "1", 0x226199);
 					}
 					case 73..83:
 					{
 						format(format_job, sizeof(format_job), "~g~Ban da dao thanh cong va nhan duoc ~b~1 Sat~g~.");
 						Inventory_Add(playerid, "Sat", 1);
+						SendLogToDiscordRoom("MINERAL LOG" ,"1157988317548265523", "Name", GetPlayerNameEx(playerid), "ADDED", "Sắt", "Số lượng", "1", 0x226199);
 					}
 					case 84..94:
 					{
 						format(format_job, sizeof(format_job), "~g~Ban da dao thanh cong va nhan duoc ~b~1 Dong~g~.");
 						Inventory_Add(playerid, "Dong", 1);
+						SendLogToDiscordRoom("MINERAL LOG" ,"1157988317548265523", "Name", GetPlayerNameEx(playerid), "ADDED", "Đồng", "Số lượng", "1", 0x226199);
 					}
 					case 95..100:
 					{
 						format(format_job, sizeof(format_job), "~g~Ban da dao thanh cong va nhan duoc ~r~1 VANG~g~.");
 						Inventory_Add(playerid, "Vang", 1);
+						SendLogToDiscordRoom("MINERAL LOG" ,"1157988317548265523", "Name", GetPlayerNameEx(playerid), "ADDED", "VÀNG", "Số lượng", "1", 0x226199);
 					}
 				}
 			}
