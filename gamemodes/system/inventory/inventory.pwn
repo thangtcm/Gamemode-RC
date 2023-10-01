@@ -471,15 +471,15 @@ public OnModelSelectionResponseInv(playerid, extraid, index, modelid[], response
 		format(name, sizeof(name), "%s (%d)", name, InventoryData[playerid][index][invQuantity]);
 		Dialog_Show(playerid, Inventory, DIALOG_STYLE_LIST, name, "Tich thu\nCho item\nVut item", "Lua chon", "<");
 	}
-	if((extraid == MODEL_SELECTION_RANSACK && response) && InventoryData[playerid][index][invExists])
-	{
-		new
-			name[48];
-		strunpack(name, InventoryData[playerid][index][invItem]);
-		PlayerInfo[playerid][pInventoryItem] = index;
-		format(name, sizeof(name), "%s (%d)", name, InventoryData[playerid][index][invQuantity]);
-		Dialog_Show(playerid, Take_Inventory, DIALOG_STYLE_LIST, name, "Tich Thu", "Lua chon", "<");
-	}
+	// else if((extraid == MODEL_SELECTION_RANSACK && response) && InventoryData[playerid][index][invExists])
+	// {
+	// 	new
+	// 		name[48];
+	// 	strunpack(name, InventoryData[playerid][index][invItem]);
+	// 	PlayerInfo[playerid][pInventoryItem] = index;
+	// 	format(name, sizeof(name), "%s (%d)", name, InventoryData[playerid][index][invQuantity]);
+	// 	Dialog_Show(playerid, Take_Inventory, DIALOG_STYLE_LIST, name, "Tich Thu", "Lua chon", "<");
+	// }
 	return 1;
 }
 

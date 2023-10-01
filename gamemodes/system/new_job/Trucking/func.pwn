@@ -21,7 +21,6 @@ stock AttachProductToVehicle(playerid, vehicleid, pvSlotID)
         case 422:
         {
             new count = VehicleTruckerCount(playerid, pvSlotID);
-            printf("Count %d -- product %d", count, pLoadProduct[playerid]);
             for(new i; i < MAX_PLAYERPRODUCT; i++)
             {
                 if(PlayerTruckerData[playerid][ClaimProduct][i] == -1)
