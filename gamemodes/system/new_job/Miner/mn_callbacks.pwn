@@ -78,7 +78,12 @@ public ResetPrice()
 	}
 	SetTimer("ResetPrice", 3600000, false);
 	SendClientMessageToAll(COLOR_REALRED, "[THU MUA KHOANG SAN] {ffffff}Gia ca thi truong da thay doi, hay den nguoi thu mua tai Palomino Creek de xem gia ca.");
-	printf("%d %d %d %d", RandomMoney[0], RandomMoney[1], RandomMoney[2], RandomMoney[3]);
+    new moneyzxc0[30], moneyzxc1[30], moneyzxc2[30], moneyzxc3[30];
+    format(moneyzxc0, 30, "%d$", RandomMoney[0]);
+    format(moneyzxc1, 30, "%d$", RandomMoney[1]);
+    format(moneyzxc2, 30, "%d$", RandomMoney[2]);
+    format(moneyzxc3, 30, "%d$", RandomMoney[3]);
+	SendLogToDiscordRoom4("RC:RP LOG - GIÁ CẢ THU MUA", "1157993235776557156", "ĐÁ", moneyzxc0, "ĐỒNG", moneyzxc1, "SẮT", moneyzxc2, "VÀNG", moneyzxc3, 0x8d9922);
     return 1;
 }
 

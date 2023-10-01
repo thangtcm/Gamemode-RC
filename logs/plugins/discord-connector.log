@@ -18,3 +18,9 @@
 [10/01/23 15:59:35] [ERROR] can't serialize JSON: [json.exception.type_error.316] invalid UTF-8 byte at index 2: 0x6E
 [10/01/23 16:27:07] [ERROR] Error while retrieving HTTP POST response from '/api/v10/channels/1157969036848668733/messages': stream truncated
 [10/01/23 16:33:48] [ERROR] can't serialize JSON: [json.exception.type_error.316] incomplete UTF-8 string; last byte: 0xD2
+[10/01/23 17:51:55] [WARNING] Unknown gateway event 'CHANNEL_TOPIC_UPDATE'
+[10/01/23 17:51:55] [WARNING] Unknown gateway event 'VOICE_CHANNEL_STATUS_UPDATE'
+[10/01/23 18:02:37] [ERROR] can't serialize JSON: [json.exception.type_error.316] invalid UTF-8 byte at index 0: 0xBA
+[10/01/23 18:05:36] [ERROR] can't serialize JSON: [json.exception.type_error.316] invalid UTF-8 byte at index 0: 0xB4
+[10/01/23 18:06:15] [ERROR] can't serialize JSON: [json.exception.type_error.316] invalid UTF-8 byte at index 0: 0xA0
+[10/01/23 18:08:03] [ERROR] can't serialize JSON: [json.exception.type_error.316] invalid UTF-8 byte at index 0: 0xA0

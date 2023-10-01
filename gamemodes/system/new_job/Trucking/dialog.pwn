@@ -139,7 +139,7 @@ Dialog:DIALOG_BUYPRODUCT(playerid, response, listitem, inputtext[])
         new money = FactoryData[factoryID][ProductPrice][index] * -1;
         new moneyzxc[30];
         format(moneyzxc, 30, "%d$", FactoryData[factoryID][ProductPrice][index]);
-        SendLogToDiscordRoom("1157969036848668733", "Name", GetPlayerNameEx(playerid), "Đã mua", ProductData[productID][ProductName], "Giá tiền", moneyzxc, 0x992422);
+        SendLogToDiscordRoom("LOG MUA THÙNG HÀNG", "1157969036848668733", "Name", GetPlayerNameEx(playerid), "Đã mua", ProductData[productID][ProductName], "Giá tiền", moneyzxc, 0x992422);
         GivePlayerCash(playerid, money);
         RemoveMissionProduct(playerid, productID);
         pLoadProduct[playerid] = productID;
@@ -165,7 +165,7 @@ Dialog:DIALOG_SELLPRODUCT(playerid, response, listitem, inputtext[])
         GivePlayerCash(playerid, FactoryData[factoryID][ProductPrice][index]);
         new moneyzxc[30];
         format(moneyzxc, 30, "%d$", FactoryData[factoryID][ProductPrice][index]);
-        SendLogToDiscordRoom("1157969051264503838", "Name", GetPlayerNameEx(playerid), "Đã bán", ProductData[pLoadProduct[playerid]][ProductName], "Giá tiền", moneyzxc, 0x229926);
+        SendLogToDiscordRoom("LOG BÁN THÙNG HÀNG", "1157969051264503838", "Name", GetPlayerNameEx(playerid), "Đã bán", ProductData[pLoadProduct[playerid]][ProductName], "Giá tiền", moneyzxc, 0x229926);
         if(GetPVarInt(playerid, "MissionTruck") == 1) 
         {
             for(new i; i < MAX_PLAYERPRODUCT; i++)

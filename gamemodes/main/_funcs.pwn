@@ -19626,7 +19626,7 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 				}
 				case 7: //New Weapon
 				{
-					Dialog_Show(playerid, WeaponCop, DIALOG_STYLE_LIST, "LAY DUNG VU KHI, LAY SAI TRA LAI", "Deagle\nShotgun\nSpas-12\nMP5\nAK47\nM4\nSniper", "Lua chon", "Huy bo");
+					Dialog_Show(playerid, WeaponCop, DIALOG_STYLE_LIST, "{ff0000}LAY DUNG VU KHI, LAY SAI TRA LAI{ffffff}", "Deagle\nShotgun\nSpas-12\nMP5\nAK47\nM4\nSniper", "Lua chon", "Huy bo");
 				}
 			}
 		}
@@ -34674,8 +34674,8 @@ Dialog:WeaponCop(playerid, response, listitem, inputtext[])
 				SendClientTextDraw(playerid, "Ban da lay thanh cong khau Sniper.~n~~r~Neu lay nham, bat buoc phai tra lai cho leader.");
 			}
 		}
-		SendLogToDiscordRoom("1157912890410541167", "Name", GetPlayerNameEx(playerid), "Rank", szRank, "Wep", wepget, 0x226199);
-		SendLogToDiscordRoom("1157957903874007111", "Name", GetPlayerNameEx(playerid), "Rank", szRank, "Wep", wepget, 0x226199);
+		SendLogToDiscordRoom("[MDC-Police] Wep log" ,"1157912890410541167", "Name", GetPlayerNameEx(playerid), "Rank", szRank, "Wep", wepget, 0x226199);
+		SendLogToDiscordRoom("[MDC-Police] Wep log" , "1157957903874007111", "Name", GetPlayerNameEx(playerid), "Rank", szRank, "Wep", wepget, 0x226199);
 	}
 	return 1;
 }

@@ -82,7 +82,7 @@
 #include "./system/new_job/Trucking/main.pwn"
 #include "./system/new_job/pizza.pwn"
 #include "./system/new_job/miner/mn_variables.pwn"
-#include "./system/new_job/miner/mn_callbacks.pwn"	
+#include "./system/new_job/miner/mn_callbacks.pwn"
 #include "./system/new_job/miner/mn_funcs.pwn"
 //#include "./system/new_job/daoda.pwn"  bảo trì
 #include "./system/new_job/wood.pwn"

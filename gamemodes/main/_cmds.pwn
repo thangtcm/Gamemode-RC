@@ -1138,6 +1138,14 @@ CMD:makiemsoat(playerid,params[])
                 }
                 Attach3DTextLabelToVehicle(veicolo_callsign_testo[veh], veh, -0.7, -1.9, -0.3);
                 veicolo_callsign_status[veh] = 1;
+                new szEmployer[GROUP_MAX_NAME_LEN], szRank[GROUP_MAX_RANK_LEN], szDivision[GROUP_MAX_DIV_LEN];
+                GetPlayerGroupInfo(playerid, szRank, szDivision, szEmployer);
+                if(arrGroupData[PlayerInfo[playerid][pMember]][g_iGroupType] == 1)
+                {
+                    new idveh[10];
+                    format(idveh, 10, "%d", GetPlayerVehicleID(playerid));
+                    SendLogToDiscordRoom4("[MDC-Police] CALLSIGN" ,"1158002044381188188", "Name", GetPlayerNameEx(playerid), "Rank", szRank, "ID Veh", idveh, "MKS", string, 0x226199);
+                }
             }
             else
             {

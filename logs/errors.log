@@ -1119,3 +1119,7 @@
 [10/01/23 15:59:35] [plugins/discord-connector] can't serialize JSON: [json.exception.type_error.316] invalid UTF-8 byte at index 2: 0x6E
 [10/01/23 16:27:07] [plugins/discord-connector] Error while retrieving HTTP POST response from '/api/v10/channels/1157969036848668733/messages': stream truncated
 [10/01/23 16:33:48] [plugins/discord-connector] can't serialize JSON: [json.exception.type_error.316] incomplete UTF-8 string; last byte: 0xD2
+[10/01/23 18:02:37] [plugins/discord-connector] can't serialize JSON: [json.exception.type_error.316] invalid UTF-8 byte at index 0: 0xBA
+[10/01/23 18:05:36] [plugins/discord-connector] can't serialize JSON: [json.exception.type_error.316] invalid UTF-8 byte at index 0: 0xB4
+[10/01/23 18:06:15] [plugins/discord-connector] can't serialize JSON: [json.exception.type_error.316] invalid UTF-8 byte at index 0: 0xA0
+[10/01/23 18:08:03] [plugins/discord-connector] can't serialize JSON: [json.exception.type_error.316] invalid UTF-8 byte at index 0: 0xA0

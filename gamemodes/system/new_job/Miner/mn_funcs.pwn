@@ -80,6 +80,9 @@ Dialog:banda(playerid, response, listitem, inputtext[])
 			SendClientMessage(playerid, COLOR_LIGHTRED, format_job);
 			new pItemId = Inventory_GetItemID(playerid, "Da", strval(inputtext));
 			Inventory_Remove(playerid, pItemId, strval(inputtext));
+        	new moneyzxc[30];
+        	format(moneyzxc, 30, "%d$", moneyselled);
+			SendLogToDiscordRoom4("RC:RP LOG - BÁN ĐÁ", "1157988261382328392", "Name", GetPlayerNameEx(playerid), "Đã bán", "Đá", "Số lượng", inputtext, "TỔNG TIỀN", moneyzxc, 0x229926);
 		}
 	}
 	return 1;
@@ -108,6 +111,9 @@ Dialog:bandong(playerid, response, listitem, inputtext[])
 			SendClientMessage(playerid, COLOR_LIGHTRED, format_job);
 			new pItemId = Inventory_GetItemID(playerid, "Dong", strval(inputtext));
 			Inventory_Remove(playerid, pItemId, strval(inputtext));
+        	new moneyzxc[30];
+        	format(moneyzxc, 30, "%d$", moneyselled);
+			SendLogToDiscordRoom4("RC:RP LOG - BÁN ĐỒNG", "1157988261382328392", "Name", GetPlayerNameEx(playerid), "Đã bán", "Đồng", "Số lượng", inputtext, "TỔNG TIỀN", moneyzxc, 0x229926);
 		}
 	}
 	return 1;
@@ -136,6 +142,9 @@ Dialog:bansat(playerid, response, listitem, inputtext[])
 			SendClientMessage(playerid, COLOR_LIGHTRED, format_job);
 			new pItemId = Inventory_GetItemID(playerid, "Sat", strval(inputtext));
 			Inventory_Remove(playerid, pItemId, strval(inputtext));
+        	new moneyzxc[30];
+        	format(moneyzxc, 30, "%d$", moneyselled);
+			SendLogToDiscordRoom4("RC:RP LOG - BÁN SẮT", "1157988261382328392", "Name", GetPlayerNameEx(playerid), "Đã bán", "Sắt", "Số lượng", inputtext, "TỔNG TIỀN", moneyzxc, 0x229926);
 		}
 	}
 	return 1;
@@ -164,6 +173,9 @@ Dialog:banvang(playerid, response, listitem, inputtext[])
 			SendClientMessage(playerid, COLOR_LIGHTRED, format_job);
 			new pItemId = Inventory_GetItemID(playerid, "Vang", strval(inputtext));
 			Inventory_Remove(playerid, pItemId, strval(inputtext));
+        	new moneyzxc[30];
+        	format(moneyzxc, 30, "%d$", moneyselled);
+			SendLogToDiscordRoom4("RC:RP LOG - BÁN VÀNG NÈ", "1157988261382328392", "Name", GetPlayerNameEx(playerid), "Đã bán", "VÀNGGGGGGGGGG", "Số lượng", inputtext, "TỔNG TIỀN", moneyzxc, 0x229926);
 		}
 	}
 	return 1;
