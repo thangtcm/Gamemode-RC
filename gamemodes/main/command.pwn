@@ -14548,7 +14548,7 @@ CMD:pay(playerid, params[])
 	else if(amount > 1000 && PlayerInfo[playerid][pLevel] < 3) {
 		SendServerMessage(playerid, " Ban phai dat level 3 , chuyen tien hien tai la $1,000.");
 	}
-	else if(!(1 <= amount <= 100000)) {
+	else if(!(1 <= amount <= 50000)) {
 		SendServerMessage(playerid, " Khong chuyen tien duoi $1, va cao hon $50.000.");
 	}
 	else if(gettime()-GetPVarInt(playerid, "LastTransaction") < 180) {
@@ -14562,6 +14562,9 @@ CMD:pay(playerid, params[])
 		OnPlayerStatsUpdate(playerid);
 		OnPlayerStatsUpdate(id);
 		SetPVarInt(playerid, "LastTransaction", gettime());
+        new amountz[20];
+        format(amountz, 20, "%d$", amount);
+		SendLogToDiscordRoom("LOG MONEY", "1158020776654540801", "Người đưa", GetPlayerNameEx(playerid), "Người nhận", GetPlayerNameEx(id), "Số tiền", amountz, 0x25b807);
 	}
 	else SendErrorMessage(playerid, " Nguoi do khong gan ban.");
 	return 1;
@@ -20486,7 +20489,7 @@ CMD:sellmycar(playerid, params[])
             new string[128], giveplayerid, price;
 			if(sscanf(params, "ud", giveplayerid, price)) return SendUsageMessage(playerid, " /banxetoi [nguoi choi] [gia tien]");
 
-            if(price < 1 || price > 1000000000) return SendErrorMessage(playerid, " Gia xe phai cao hon 0 va thap hon 1,000,000,000.");
+            if(price < 50000 || price > 1000000000) return SendErrorMessage(playerid, " Gia xe phai cao hon 50.000 va thap hon 1,000,000,000.");
 
             if(playerid == giveplayerid)
 			{
@@ -20520,6 +20523,9 @@ CMD:sellmycar(playerid, params[])
                 SendClientMessageEx(playerid, COLOR_LIGHTBLUE, string);
                 format(string, sizeof(string), "* %s has offered you their %s (VID: %d) for $%s, (Su dung /chapnhan xe) to buy.", GetPlayerNameEx(playerid), GetVehicleName(PlayerVehicleInfo[playerid][d][pvId]), PlayerVehicleInfo[playerid][d][pvId], number_format(price));
                 SendClientMessageEx(giveplayerid, COLOR_LIGHTBLUE, string);
+                new pricez[20];
+        		format(pricez, 20, "%d$", price);
+				SendLogToDiscordRoom("LOG SELL VEHICLE", "1158022204789895288", "Người bán", GetPlayerNameEx(playerid), "Người nhận", GetPlayerNameEx(giveplayerid), "Số tiền", pricez, 0x25b807);
                 return 1;
             }
             else

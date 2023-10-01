@@ -157,21 +157,25 @@ public StartCountTime(playerid)
 					{
 						format(format_job, sizeof(format_job), "~g~Ban da dao thanh cong va nhan duoc ~y~1 Da~g~.");
 						Inventory_Add(playerid, "Da", 1);
+						SendLogToDiscordRoom("MINERAL LOG" ,"1157988317548265523", "Name", GetPlayerNameEx(playerid), "ADDED", "Đá", "Số lượng", "1", 0x226199);
 					}
 					case 73..83:
 					{
 						format(format_job, sizeof(format_job), "~g~Ban da dao thanh cong va nhan duoc ~b~1 Sat~g~.");
 						Inventory_Add(playerid, "Sat", 1);
+						SendLogToDiscordRoom("MINERAL LOG" ,"1157988317548265523", "Name", GetPlayerNameEx(playerid), "ADDED", "Sắt", "Số lượng", "1", 0x226199);
 					}
 					case 84..94:
 					{
 						format(format_job, sizeof(format_job), "~g~Ban da dao thanh cong va nhan duoc ~b~1 Dong~g~.");
 						Inventory_Add(playerid, "Dong", 1);
+						SendLogToDiscordRoom("MINERAL LOG" ,"1157988317548265523", "Name", GetPlayerNameEx(playerid), "ADDED", "Đồng", "Số lượng", "1", 0x226199);
 					}
 					case 95..100:
 					{
 						format(format_job, sizeof(format_job), "~g~Ban da dao thanh cong va nhan duoc ~r~1 VANG~g~.");
 						Inventory_Add(playerid, "Vang", 1);
+						SendLogToDiscordRoom("MINERAL LOG" ,"1157988317548265523", "Name", GetPlayerNameEx(playerid), "ADDED", "VÀNG", "Số lượng", "1", 0x226199);
 					}
 				}
 			}

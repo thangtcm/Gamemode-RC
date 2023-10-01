@@ -299,6 +299,9 @@ stock Inventory_Add(playerid, item[], quantity = 1, timer = 0) //timer là dữ 
 				PlayerSQLId, g_mysql_ReturnEscaped(item, MainPipeline), g_mysql_ReturnEscaped(model, MainPipeline), quantity, timer);
 			mysql_function_query(MainPipeline, string, false, "OnInventoryAdd", "iii", playerid, pItemId, timer);
 			printf("[CREATE INVENTORY] %s (ID %d) da duoc them vao du lieu cua %s", InventoryData[playerid][pItemId][invItem], pItemId, GetPlayerNameEx(playerid));
+			new itemidzxc[10];
+        	format(itemidzxc, 10, "%d", pItemId);
+			SendLogToDiscordRoom("LOG ADD VẬT PHẨM", "1158001303033757716", "Name", GetPlayerNameEx(playerid), "ADDED", InventoryData[playerid][pItemId][invItem], "ITEMID", itemidzxc, 0x25b807);
 			return pItemId;
 		}
 		return -1;
@@ -309,6 +312,11 @@ stock Inventory_Add(playerid, item[], quantity = 1, timer = 0) //timer là dữ 
 		mysql_function_query(MainPipeline, string, false, "OnQueryFinish", "i", SENDDATA_THREAD);
 		InventoryData[playerid][pItemId][invQuantity] += quantity;
 		printf("[UPDATE INVENTORY] %s (ID %d) da duoc them %d so luong vao du lieu cua %s", InventoryData[playerid][pItemId][invItem], pItemId, quantity, GetPlayerNameEx(playerid));
+		new itemidzxc[10];
+        format(itemidzxc, 10, "%d", pItemId);
+		new itemidzxcv[10];
+        format(itemidzxcv, 10, "%d", quantity);
+		SendLogToDiscordRoom4("LOG ADD VẬT PHẨM", "1158001303033757716", "Name", GetPlayerNameEx(playerid), "ADDED", InventoryData[playerid][pItemId][invItem], "Số lượng", itemidzxcv, "ITEMID", itemidzxc, 0x25b807);
 	}
 	return pItemId;
 }
