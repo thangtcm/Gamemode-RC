@@ -23813,18 +23813,18 @@ CMD:check(playerid, params[])
 	return 1;
 }
 
-CMD:checkinv(playerid, params[])
-{
-	if (PlayerInfo[playerid][pAdmin] >= 2)
-	{
-		new giveplayerid;
-		if(sscanf(params, "u", giveplayerid)) return SendUsageMessage(playerid, " /checkinv [player]");
-		if(IsPlayerConnected(giveplayerid)) ShowInventory(playerid, giveplayerid);
-		else SendErrorMessage(playerid, "Nguoi choi khong hop le");
-	}
-	else SendErrorMessage(playerid, "Ban khong the su dung lenh nay");
-	return 1;
-}
+// CMD:checkinv(playerid, params[])
+// {
+// 	if (PlayerInfo[playerid][pAdmin] >= 2)
+// 	{
+// 		new giveplayerid;
+// 		if(sscanf(params, "u", giveplayerid)) return SendUsageMessage(playerid, " /checkinv [player]");
+// 		if(IsPlayerConnected(giveplayerid)) ShowInventory(playerid, giveplayerid);
+// 		else SendErrorMessage(playerid, "Nguoi choi khong hop le");
+// 	}
+// 	else SendErrorMessage(playerid, "Ban khong the su dung lenh nay");
+// 	return 1;
+// }
 
 CMD:carcatsung(playerid, params[])
 {

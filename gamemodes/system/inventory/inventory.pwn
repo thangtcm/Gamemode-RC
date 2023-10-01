@@ -1,6 +1,7 @@
 #include <YSI_Coding\y_hooks>
 #define MAX_INVENTORY (120)
 #define MODEL_SELECTION_INVENTORY (1)
+#define MODEL_SELECTION_RANSACK (2)
 
 enum inventoryData
 {
@@ -151,7 +152,7 @@ stock Inventory_Clear(playerid)
 		}
 	}
 	format(string, sizeof(string), "DELETE FROM `inventory` WHERE `ID` = '%d'", PlayerSQLId);
-	return mysql_tquery(g_iHandle, string);
+	return mysql_function_query(MainPipeline, string, false, "OnQueryFinish", "i", SENDDATA_THREAD);
 }
 
 stock Inventory_Set(playerid, item[], quantity, timer)
@@ -281,7 +282,7 @@ stock Inventory_Add(playerid, item[], quantity = 1, timer = 0) //timer là dữ 
 			InventoryData[playerid][pItemId][invTimer] = timer == 0 ? 0 : gettime() + timer*60;
 			strcpy(InventoryData[playerid][pItemId][invItem], item, 32);
             format(string, sizeof(string), "INSERT INTO `inventory` (`ID`, `invItem`, `invModel`, `invQuantity`, `invTimer`) VALUES('%d', '%s', '%s', '%d', '%d')", 
-				PlayerSQLId, g_mysql_ReturnEscaped(item, MainPipeline), g_mysql_ReturnEscaped(model, MainPipeline), quantity, timer);
+				PlayerSQLId, g_mysql_ReturnEscaped(item, MainPipeline), g_mysql_ReturnEscaped(model, MainPipeline), quantity, InventoryData[playerid][pItemId][invTimer]);
 			mysql_function_query(MainPipeline, string, false, "OnInventoryAdd", "iii", playerid, pItemId, timer);
 			printf("[CREATE INVENTORY] %s (ID %d) da duoc them vao du lieu cua %s", InventoryData[playerid][pItemId][invItem], pItemId, GetPlayerNameEx(playerid));
 			return pItemId;
@@ -296,6 +297,93 @@ stock Inventory_Add(playerid, item[], quantity = 1, timer = 0) //timer là dữ 
 		printf("[UPDATE INVENTORY] %s (ID %d) da duoc them %d so luong vao du lieu cua %s", InventoryData[playerid][pItemId][invItem], pItemId, quantity, GetPlayerNameEx(playerid));
 	}
 	return pItemId;
+}
+
+stock Inventory_RemoveTimer(playerid, item[], quantity)
+{
+	new invforever, arrTimer[MAX_INVENTORY] = {-1,...}, arrRemove[MAX_INVENTORY], quantityTemp = 0, countRemove = 0;
+	new str[128], maxItem = 0;
+	for(new i = 0; i < MAX_INVENTORY; i++)
+	{
+		if(!InventoryData[playerid][i][invExists])
+			continue;
+		if(!strcmp(InventoryData[playerid][i][invItem], item) && InventoryData[playerid][i][invTimer] == 0) 
+			invforever= i;
+		if(!strcmp(InventoryData[playerid][i][invItem], item) && InventoryData[playerid][i][invTimer] != 0) 
+		{
+			arrTimer[maxItem++] = i;
+		}
+	}
+	for(new i = 0; i < maxItem - 1; i++)
+	{
+		if(arrTimer[i] == -1 || arrTimer[i+1] == -1)
+			break;
+		if(!InventoryData[playerid][i][invExists])
+			continue;
+		for(new j = 0; j < maxItem - i - 1 ; j++)
+		{
+			if (InventoryData[playerid][arrTimer[j]][invTimer] - gettime() > InventoryData[playerid][arrTimer[j + 1]][invTimer] - gettime()) {
+				new temp = arrTimer[j];
+				arrTimer[j] = arrTimer[j + 1];
+				arrTimer[j + 1] = temp;
+			}
+		}
+	}
+	if(maxItem > 0)
+	{
+		for(new i; i < maxItem; i++)
+		{
+			if(InventoryData[playerid][arrTimer[i]][invQuantity] < quantity)
+			{
+				arrRemove[countRemove++] = arrTimer[i];
+				quantity -= InventoryData[playerid][arrTimer[i]][invQuantity];
+			}
+			else
+			{
+				arrRemove[countRemove++] = arrTimer[i];
+				quantityTemp = InventoryData[playerid][arrTimer[i]][invQuantity] - quantity;
+				quantity -= InventoryData[playerid][arrTimer[i]][invQuantity];
+				break;
+			}
+		}
+		if(quantityTemp <= 0)
+		{
+			format(str, sizeof(str), "%d", InventoryData[playerid][arrRemove[0]][invID]);
+			InventoryData[playerid][arrRemove[0]][invExists] = false;
+			InventoryData[playerid][arrRemove[0]][invQuantity] = 0;
+			for(new i = 1; i < countRemove; i++)
+			{
+				InventoryData[playerid][arrRemove[i]][invExists] = false;
+				InventoryData[playerid][arrRemove[i]][invQuantity] = 0;
+				format(str, sizeof(str), "%s, %d", str, InventoryData[playerid][arrRemove[i]][invID]);
+			}
+			format(str, sizeof(str), "DELETE FROM `inventory` WHERE `invID` IN(%s)", str);
+			mysql_function_query(MainPipeline, str, false, "OnQueryFinish", "i", SENDDATA_THREAD);
+		}
+		else{
+			new update_amount = 0;
+			if(countRemove > 1)
+			{
+				format(str, sizeof(str), "%d", InventoryData[playerid][arrRemove[0]][invID]);
+				InventoryData[playerid][arrRemove[0]][invExists] = false;
+				InventoryData[playerid][arrRemove[0]][invQuantity] = 0;
+			}
+			for(new i = 1; i < countRemove - 1; i++)
+			{
+				InventoryData[playerid][arrRemove[i]][invExists] = false;
+				InventoryData[playerid][arrRemove[i]][invQuantity] = 0;
+				format(str, sizeof(str), "%s, %d", str, InventoryData[playerid][arrRemove[i]][invID]);
+			}
+			format(str, sizeof(str), "DELETE FROM `inventory` WHERE `invID` IN(%s)", str);
+			mysql_function_query(MainPipeline, str, false, "OnQueryFinish", "i", SENDDATA_THREAD);
+			new str2[128];
+			update_amount = InventoryData[playerid][arrRemove[countRemove-1]][invQuantity] - quantityTemp;
+			InventoryData[playerid][arrRemove[countRemove-1]][invQuantity] = update_amount;
+			format(str2, sizeof(str2), "UPDATE `inventory` SET `invQuantity` = `invQuantity` - %d WHERE `invID` = '%d'", update_amount, InventoryData[playerid][arrRemove[countRemove-1]][invID]);
+			mysql_function_query(MainPipeline, str2, false, "OnQueryFinish", "i", SENDDATA_THREAD);
+		}
+	}
+	return 1;
 }
 
 stock Inventory_Remove(playerid, pItemId, quantity = 1) //ID cua InventoryData
@@ -320,6 +408,7 @@ stock Inventory_Remove(playerid, pItemId, quantity = 1) //ID cua InventoryData
 		}
 		else if(quantity != -1 && InventoryData[playerid][pItemId][invQuantity] > 0)
 		{
+			InventoryData[playerid][pItemId][invQuantity] -= quantity;
 			format(string, sizeof(string), "UPDATE `inventory` SET `invQuantity` = `invQuantity` - %d WHERE `ID` = '%d' AND `invID` = '%d'", quantity, PlayerSQLId, InventoryData[playerid][pItemId][invID]);
 			mysql_function_query(MainPipeline, string, false, "OnQueryFinish", "i", SENDDATA_THREAD);
 		}
@@ -330,7 +419,6 @@ stock Inventory_Remove(playerid, pItemId, quantity = 1) //ID cua InventoryData
 
 public OnModelSelectionMenuInv(playerid, extraid, selectType, response)
 {
-	printf("Runnnnnn");
 	if((extraid == MODEL_SELECTION_INVENTORY && response))
 	{
 		switch(selectType){
@@ -363,12 +451,11 @@ public OnModelSelectionResponseInv(playerid, extraid, index, modelid[], response
 	return 1;
 }
 
-forward OpenInventory(playerid);
-public OpenInventory(playerid)
+stock OpenInventory(playerid, bool:Ransack = false)
 {
 	if(!IsPlayerConnected(playerid))
 		return 0;
-	static
+	new
 		items[MAX_INVENTORY][64],
 		quantitys[MAX_INVENTORY],
 		itemName[MAX_INVENTORY][32],
@@ -398,7 +485,11 @@ public OpenInventory(playerid)
 		expirys[i] = 0;
 		strcpy(items[i], "_", 64);
 	}
-	return ShowModelSelectionInventory(playerid, "INVENTORY" ,MODEL_SELECTION_INVENTORY, items, sizeof(items), true, quantitys, itemName, true, expirys);
+	if(!Ransack)
+		return ShowModelSelectionInventory(playerid, "INVENTORY" ,MODEL_SELECTION_INVENTORY, items, sizeof(items), true, quantitys, itemName, true, expirys);
+	new str[128];
+	format(str, sizeof(str), "Tui do cua %s", GetPlayerNameEx(playerid));
+	return ShowModelSelectionInventory(playerid, str ,MODEL_SELECTION_RANSACK, items, sizeof(items), true, quantitys, itemName, true, expirys);
 }
 
 forward OnPlayerUseItem(playerid, pItemId, name[]);
@@ -610,7 +701,6 @@ public OnPlayerUseItem(playerid, pItemId, name[])
 	return 1;
 }
 
-
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 //                          CMD
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -642,6 +732,29 @@ CMD:setinventory(playerid, params[])
 	return 1;
 }
 
+CMD:clearinventory(playerid, params[])
+{
+	new
+		giveplayerid, str[128];
+
+	if(PlayerInfo[playerid][pAdmin] < 4)
+		return SendErrorMessage(playerid, "Ban khong duoc phep su dung lenh nay.");
+
+	if(sscanf(params, "u", giveplayerid))
+		return SendClientMessageEx(playerid, COLOR_GRAD1, "/clearinventory [playerid/name]");
+
+	if(giveplayerid == INVALID_PLAYER_ID)
+		return SendErrorMessage(playerid, "Nguoi choi khong hop le.");
+
+	Inventory_Clear(giveplayerid);
+
+	SendServerMessage(playerid, "Ban da xoa tat ca item trong tui do %s.", GetPlayerNameEx(giveplayerid));
+	SendServerMessage(giveplayerid, "%s da xoa tat ca item trong tui do cua ban.", GetPlayerNameEx(playerid));
+	format(str, sizeof(str), "[Administrator]: %s da xoa tat ca item trong tui do %s.", GetPlayerNameEx(playerid), GetPlayerNameEx(giveplayerid));
+	ABroadCast( COLOR_YELLOW, str, 2);
+	Log("logs/admin_inventory.log", str);
+	return 1;
+}
 CMD:inventory(playerid, params[]) return cmd_inv(playerid, params);
 CMD:inv(playerid, params[])
 {
@@ -652,6 +765,21 @@ CMD:inv(playerid, params[])
 		return SendClientMessageEx(playerid, COLOR_LIGHTRED, "Ban khong the mo tui do khi ban dang trong tu.");
 
 	OpenInventory(playerid);
+	return 1;
+}
+
+CMD:checkinv(playerid, params[])
+{
+	new
+		giveplayerid;
+	if(PlayerInfo[playerid][pAdmin] < 4)
+		return SendClientMessageEx(playerid, COLOR_LIGHTRED, "Ban khong duoc phep su dung lenh nay.");
+	if(sscanf(params, "u", giveplayerid))
+		return SendClientMessageEx(playerid, COLOR_GRAD1, "/checkinv [playerid/name]");
+	OpenInventory(giveplayerid, true);
+	new str[128];
+	format(str, sizeof(str), "Ban dang xem tui do cua %s", GetPlayerNameEx(giveplayerid));
+	SendClientMessageEx(playerid, COLOR_LIGHTRED, str);
 	return 1;
 }
 

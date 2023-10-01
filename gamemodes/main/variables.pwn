@@ -731,6 +731,7 @@ new MasterInfo[MAX_PLAYERS][master];
 new TruckerVehicles[20];
 enum pInfo
 {
+	pRansack,
 	Text3D:pNameTag,
 	pMaskID[2],
 	pMaskOn,
