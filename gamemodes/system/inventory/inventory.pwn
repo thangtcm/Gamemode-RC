@@ -50,17 +50,31 @@ new const g_aInventoryItems[][e_InventoryItems] =
 	{"Sdpistol", "Sdpistol"}, // ammo type = 1
 	{"Deagle", "Deagle"},// ammo type = 1
 	{"Shotgun", "Shotgun"},// ammo type = 2
-	{"Combat Shotgun", "C_shotgun"},// ammo type = 2
+	{"Spas", "Spas"},// ammo type = 2
 	{"MP5", "MP5"}, /// type 3
 	{"AK47", "AK47"}, // TYPE 4
 	{"M4", "M4"}, // TYPE 4
 	{"Sniper", "Sniper"}, // type 5
+
+	{"Deagle-AS", "Deagle-AS"},// ammo type = 1
+	{"Shotgun-AS", "Shotgun-AS"},// ammo type = 2
+	{"Spas-AS", "Spas-AS"},// ammo type = 2
+	{"MP5-AS", "MP5-AS"}, /// type 3
+	{"M4-AS", "M4-AS"}, // TYPE 4
+	{"Sniper-AS", "Sniper-AS"}, // type 5
+	{"Rifle-AS", "Rifle-AS"}, // type 5
 
 	{"Dan sung luc", "Ammo1"}, // type 5
 	{"Dan shotgun", "Ammo2"}, // type 5
 	{"Dan tieu lien", "Ammo3"}, // type 5
 	{"Dan sung truong", "Ammo4"}, // type 5
 	{"Dan sniper", "Ammo5"}, // type 5
+
+	{"Dan sung luc SAAS", "Ammo1-AS"}, // type 5
+	{"Dan shotgun SAAS", "Ammo2-AS"}, // type 5
+	{"Dan tieu lien SAAS", "Ammo3-AS"}, // type 5
+	{"Dan sung truong SAAS", "Ammo4-AS"}, // type 5
+	{"Dan sniper SAAS", "Ammo5-AS"}, // type 5
 
 	//NameTag
 	{"Mat na", "Mask"} 
@@ -524,7 +538,23 @@ public OnPlayerUseItem(playerid, pItemId, name[])
         GivePlayerValidWeapon(playerid, 24, 1);
         SendClientTextDraw(playerid, "Ban da trang bi thanh cong vu khi ~r~Deagle~w~ voi ~r~1 vien dan");
 	}
+	else if(!strcmp(name, "Deagle-AS", true))
+	{
+		new weapon_g,ammos_g;
+		GetPlayerWeaponData(playerid, 2, weapon_g, ammos_g);
+        if(weapon_g == 22 || weapon_g == 23 || weapon_g == 24) return SendClientMessage(playerid,-1,"Ban da trang bi mot loai vu khi tuong tu.");
+        GivePlayerValidWeapon(playerid, 24, 1);
+        SendClientTextDraw(playerid, "Ban da trang bi thanh cong vu khi ~r~Deagle~w~ voi ~r~1 vien dan");
+	}
 	else if(!strcmp(name, "Spas", true))
+	{
+		new weapon_g,ammos_g;
+		GetPlayerWeaponData(playerid, 3, weapon_g, ammos_g);
+        if(weapon_g == 25 || weapon_g == 26 || weapon_g == 27) return SendClientMessage(playerid,-1,"Ban da trang bi mot loai vu khi tuong tu.");
+        GivePlayerValidWeapon(playerid, 27, 1);
+        SendClientTextDraw(playerid, "Ban da trang bi thanh cong vu khi ~r~Spas-12~w~ voi ~r~1 vien dan");
+	}
+	else if(!strcmp(name, "Spas-AS", true))
 	{
 		new weapon_g,ammos_g;
 		GetPlayerWeaponData(playerid, 3, weapon_g, ammos_g);
@@ -540,7 +570,23 @@ public OnPlayerUseItem(playerid, pItemId, name[])
         GivePlayerValidWeapon(playerid, 25, 1);
         SendClientTextDraw(playerid, "Ban da trang bi thanh cong vu khi ~r~Shotgun~w~ voi ~r~1 vien dan");
 	}
+	else if(!strcmp(name, "Shotgun-AS", true))
+	{
+		new weapon_g,ammos_g;
+		GetPlayerWeaponData(playerid, 3, weapon_g, ammos_g);
+        if(weapon_g == 25 || weapon_g == 26 || weapon_g == 27) return SendClientMessage(playerid,-1,"Ban da trang bi mot loai vu khi tuong tu.");
+        GivePlayerValidWeapon(playerid, 25, 1);
+        SendClientTextDraw(playerid, "Ban da trang bi thanh cong vu khi ~r~Shotgun~w~ voi ~r~1 vien dan");
+	}
 	else if(!strcmp(name, "mp5", true))
+	{
+		new weapon_g,ammos_g;
+		GetPlayerWeaponData(playerid, 4, weapon_g, ammos_g);
+        if(weapon_g == 29 ) return SendClientMessage(playerid,-1,"Ban da trang bi mot loai vu khi tuong tu.");
+        GivePlayerValidWeapon(playerid, 29, 1);
+        SendClientTextDraw(playerid, "Ban da trang bi thanh cong vu khi ~r~MP5~w~ voi ~r~1 vien dan");
+	}
+	else if(!strcmp(name, "mp5-AS", true))
 	{
 		new weapon_g,ammos_g;
 		GetPlayerWeaponData(playerid, 4, weapon_g, ammos_g);
@@ -564,12 +610,36 @@ public OnPlayerUseItem(playerid, pItemId, name[])
         GivePlayerValidWeapon(playerid, 31, 1);
         SendClientTextDraw(playerid, "Ban da trang bi thanh cong vu khi ~r~M4~w~ voi ~r~1 vien dan");
 	}
+	else if(!strcmp(name, "m4-AS", true))
+	{
+		new weapon_g,ammos_g;
+		GetPlayerWeaponData(playerid, 5, weapon_g, ammos_g);
+        if(weapon_g == 30 || weapon_g == 31) return SendClientMessage(playerid,-1,"Ban da trang bi mot loai vu khi tuong tu.");
+        GivePlayerValidWeapon(playerid, 31, 1);
+        SendClientTextDraw(playerid, "Ban da trang bi thanh cong vu khi ~r~M4~w~ voi ~r~1 vien dan");
+	}
 	else if(!strcmp(name, "Sniper", true))
 	{
 		new weapon_g,ammos_g;
 		GetPlayerWeaponData(playerid, 6, weapon_g, ammos_g);
         if(weapon_g == 34 ) return SendClientMessage(playerid,-1,"Ban da trang bi mot loai vu khi tuong tu.");
         GivePlayerValidWeapon(playerid, 34, 1);
+        SendClientTextDraw(playerid, "Ban da trang bi thanh cong vu khi ~r~Sniper~w~ voi ~r~1 vien dan");
+	}
+	else if(!strcmp(name, "Sniper-AS", true))
+	{
+		new weapon_g,ammos_g;
+		GetPlayerWeaponData(playerid, 6, weapon_g, ammos_g);
+        if(weapon_g == 34 ) return SendClientMessage(playerid,-1,"Ban da trang bi mot loai vu khi tuong tu.");
+        GivePlayerValidWeapon(playerid, 34, 1);
+        SendClientTextDraw(playerid, "Ban da trang bi thanh cong vu khi ~r~Sniper~w~ voi ~r~1 vien dan");
+	}
+	else if(!strcmp(name, "Rifle-AS", true))
+	{
+		new weapon_g,ammos_g;
+		GetPlayerWeaponData(playerid, 6, weapon_g, ammos_g);
+        if(weapon_g == 33 ) return SendClientMessage(playerid,-1,"Ban da trang bi mot loai vu khi tuong tu.");
+        GivePlayerValidWeapon(playerid, 33, 1);
         SendClientTextDraw(playerid, "Ban da trang bi thanh cong vu khi ~r~Sniper~w~ voi ~r~1 vien dan");
 	}
 	else if(!strcmp(name, "Dan sung luc", true))
@@ -579,12 +649,26 @@ public OnPlayerUseItem(playerid, pItemId, name[])
         if(weapon_g != 22 && weapon_g != 23 && weapon_g != 24) return SendClientMessage(playerid,-1,"Ban khong so huu vu khi 'Sung luc' tren nguoi.");
         Dialog_Show(playerid, DIALOG_USEAMMO1, DIALOG_STYLE_INPUT, "Trang bi - Dan sung luc", "Ban muon nap bao nhieu vien dan ?", "Xac nhan", "Huy bo");
 	}
+	else if(!strcmp(name, "Dan sung luc SAAS", true))
+	{
+		new weapon_g,ammos_g;
+		GetPlayerWeaponData(playerid, 2, weapon_g, ammos_g);
+        if(weapon_g != 22 && weapon_g != 23 && weapon_g != 24) return SendClientMessage(playerid,-1,"Ban khong so huu vu khi 'Sung luc' tren nguoi.");
+        Dialog_Show(playerid, DIALOG_USEAMMO1AS, DIALOG_STYLE_INPUT, "Trang bi - Dan sung luc", "Ban muon nap bao nhieu vien dan ?", "Xac nhan", "Huy bo");
+	}
 	else if(!strcmp(name, "Dan shotgun", true))
 	{
 		new weapon_g,ammos_g;
 		GetPlayerWeaponData(playerid, 3, weapon_g, ammos_g);
         if(weapon_g != 25 && weapon_g != 26 && weapon_g != 27) return SendClientMessage(playerid,-1,"Ban khong so huu vu khi 'sung shotgun' tren nguoi.");
         Dialog_Show(playerid, DIALOG_USEAMMO2, DIALOG_STYLE_INPUT, "Trang bi - Dan Shotgun", "Ban muon nap bao nhieu vien dan ?", "Xac nhan", "Huy bo");
+	}
+	else if(!strcmp(name, "Dan shotgun SAAS", true))
+	{
+		new weapon_g,ammos_g;
+		GetPlayerWeaponData(playerid, 3, weapon_g, ammos_g);
+        if(weapon_g != 25 && weapon_g != 26 && weapon_g != 27) return SendClientMessage(playerid,-1,"Ban khong so huu vu khi 'sung shotgun' tren nguoi.");
+        Dialog_Show(playerid, DIALOG_USEAMMO2AS, DIALOG_STYLE_INPUT, "Trang bi - Dan Shotgun", "Ban muon nap bao nhieu vien dan ?", "Xac nhan", "Huy bo");
 	}
 	else if(!strcmp(name, "Dan tieu lien", true))
 	{
@@ -593,19 +677,40 @@ public OnPlayerUseItem(playerid, pItemId, name[])
         if(weapon_g != 29 ) return SendClientMessage(playerid,-1,"Ban khong so huu vu khi 'Sung tieu lien' tren nguoi.");
         Dialog_Show(playerid, DIALOG_USEAMMO3, DIALOG_STYLE_INPUT, "Trang bi - Dan tieu lien", "Ban muon nap bao nhieu vien dan ?", "Xac nhan", "Huy bo");
 	}
-	else if(!strcmp(name, "Dan truong", true))
+	else if(!strcmp(name, "Dan tieu lien SAAS", true))
+	{
+		new weapon_g,ammos_g;
+		GetPlayerWeaponData(playerid, 4, weapon_g, ammos_g);
+        if(weapon_g != 29 ) return SendClientMessage(playerid,-1,"Ban khong so huu vu khi 'Sung tieu lien' tren nguoi.");
+        Dialog_Show(playerid, DIALOG_USEAMMO3AS, DIALOG_STYLE_INPUT, "Trang bi - Dan tieu lien", "Ban muon nap bao nhieu vien dan ?", "Xac nhan", "Huy bo");
+	}
+	else if(!strcmp(name, "Dan sung truong", true))
 	{
 		new weapon_g,ammos_g;
 		GetPlayerWeaponData(playerid, 5, weapon_g, ammos_g);
         if(weapon_g != 30 && weapon_g != 31 ) return SendClientMessage(playerid,-1,"Ban khong so huu vu khi 'Sung truong' tren nguoi.");
         Dialog_Show(playerid, DIALOG_USEAMMO4, DIALOG_STYLE_INPUT, "Trang bi - Dan sung truong", "Ban muon nap bao nhieu vien dan ?", "Xac nhan", "Huy bo");
 	}
+	else if(!strcmp(name, "Dan sung truong SAAS", true))
+	{
+		new weapon_g,ammos_g;
+		GetPlayerWeaponData(playerid, 5, weapon_g, ammos_g);
+        if(weapon_g != 30 && weapon_g != 31 ) return SendClientMessage(playerid,-1,"Ban khong so huu vu khi 'Sung truong' tren nguoi.");
+        Dialog_Show(playerid, DIALOG_USEAMMO4AS, DIALOG_STYLE_INPUT, "Trang bi - Dan sung truong", "Ban muon nap bao nhieu vien dan ?", "Xac nhan", "Huy bo");
+	}
 	else if(!strcmp(name, "Dan sniper", true))
 	{
 		new weapon_g,ammos_g;
 		GetPlayerWeaponData(playerid, 6, weapon_g, ammos_g);
-        if(weapon_g != 34) return SendClientMessage(playerid,-1,"Ban khong so huu vu khi 'Sniper' tren nguoi.");
+        if(weapon_g != 34 && weapon_g != 33) return SendClientMessage(playerid,-1,"Ban khong so huu vu khi 'Sniper' tren nguoi.");
         Dialog_Show(playerid, DIALOG_USEAMMO5, DIALOG_STYLE_INPUT, "Trang bi - Dan Sniper", "Ban muon nap bao nhieu vien dan ?", "Xac nhan", "Huy bo");
+	}
+	else if(!strcmp(name, "Dan sniper SAAS", true))
+	{
+		new weapon_g,ammos_g;
+		GetPlayerWeaponData(playerid, 6, weapon_g, ammos_g);
+        if(weapon_g != 34 && weapon_g != 33) return SendClientMessage(playerid,-1,"Ban khong so huu vu khi 'Sniper' tren nguoi.");
+        Dialog_Show(playerid, DIALOG_USEAMMO5AS, DIALOG_STYLE_INPUT, "Trang bi - Dan Sniper", "Ban muon nap bao nhieu vien dan ?", "Xac nhan", "Huy bo");
 	}
 	return 1;
 }

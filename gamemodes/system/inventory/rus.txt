@@ -1,4 +1,5 @@
-d:\Gamemode Samp\Gamemode-RC\gamemodes\system\inventory\inventory.pwn(2) : ôàòàëüíàÿ îøèáêà 100: íåâîçìîæíî ïðî÷åñòü ôàéë: "./system/inventory/inventoryitem.pwn"
+C:\Users\PHATBENTRE\Desktop\Gamemode-RC\Gamemode-RC\pawno\include\YSI_Coding\y_hooks\..\y_cgen\..\..\YSI_Core\y_core\y_thirdpartyinclude.inc(324) : ôàòàëüíàÿ îøèáêà 111: ïîëüçîâàòåëüñêàÿ îøèáêà: Could not include "https://github.com/Zeex/amx_assembly" - ensure its files are in "include\amx_assembly\"
+
 
 Êîìïèëÿöèÿ îñòàíîâëåíà.
 

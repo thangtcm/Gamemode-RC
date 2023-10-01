@@ -1,3 +1,4 @@
+
 public OnPlayerLeaveRaceCheckpoint(playerid)
 {
     return 1;
@@ -19623,6 +19624,10 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 					}
 					else return SendServerMessage(playerid, " You're already carrying a tazer and pair of cuffs");
 				}
+				case 7: //New Weapon
+				{
+					Dialog_Show(playerid, WeaponCop, DIALOG_STYLE_LIST, "LAY DUNG VU KHI, LAY SAI TRA LAI", "Deagle\nShotgun\nSpas-12\nMP5\nAK47\nM4\nSniper", "Lua chon", "Huy bo");
+				}
 			}
 		}
 		case G_LOCKER_EQUIPMENT: if(response)
@@ -34616,5 +34621,61 @@ Dialog:NhapQuocTich(playerid, response, listitem, inputtext[])
 	format(PlayerInfo[playerid][pQuocTich], 30, "%s", inputtext);
 	PlayerTextDrawSetString(playerid, RegCharacter[playerid][3], PlayerInfo[playerid][pQuocTich]);
 	PlayerTextDrawShow(playerid, RegCharacter[playerid][3]);
+	return 1;
+}
+Dialog:WeaponCop(playerid, response, listitem, inputtext[])
+{
+	if(response)
+	{
+		new wepget[20], string[256], szEmployer[GROUP_MAX_NAME_LEN], szRank[GROUP_MAX_RANK_LEN], szDivision[GROUP_MAX_DIV_LEN];
+		GetPlayerGroupInfo(playerid, szRank, szDivision, szEmployer);
+		switch(listitem)
+		{
+			case 0:
+			{
+				format(string, sizeof(string), "[MDC-Police] {ffffff}%s %s (%s) da lay mot khau sung Deagle.",szRank, GetPlayerNameEx(playerid), szDivision);
+				format(wepget, sizeof(wepget), "Deagle");
+				Inventory_Add(playerid, "Deagle-AS");
+				SendClientTextDraw(playerid, "Ban da lay thanh cong khau Deagle.~n~~r~Neu lay nham, bat buoc phai tra lai cho leader.");
+			}
+			case 1:
+			{
+				format(string, sizeof(string), "[MDC-Police] {ffffff}%s %s (%s) da lay mot khau sung Shotgun.",szRank, GetPlayerNameEx(playerid), szDivision);
+				format(wepget, sizeof(wepget), "Shotgun");
+				Inventory_Add(playerid, "Shotgun-AS");
+				SendClientTextDraw(playerid, "Ban da lay thanh cong khau Shotgun.~n~~r~Neu lay nham, bat buoc phai tra lai cho leader.");
+			}
+			case 2:
+			{
+				format(string, sizeof(string), "[MDC-Police] {ffffff}%s %s (%s) da lay mot khau sung Combat Shotgun.",szRank, GetPlayerNameEx(playerid), szDivision);
+				format(wepget, sizeof(wepget), "Spas");
+				Inventory_Add(playerid, "Spas-AS");
+				SendClientTextDraw(playerid, "Ban da lay thanh cong khau SPAS 12.~n~~r~Neu lay nham, bat buoc phai tra lai cho leader.");
+			}
+			case 3:
+			{
+				format(string, sizeof(string), "[MDC-Police] {ffffff}%s %s (%s) da lay mot khau sung MP5.",szRank, GetPlayerNameEx(playerid), szDivision);
+				format(wepget, sizeof(wepget), "MP5");
+				Inventory_Add(playerid, "MP5-AS");
+				SendClientTextDraw(playerid, "Ban da lay thanh cong khau MP5.~n~~r~Neu lay nham, bat buoc phai tra lai cho leader.");
+			}
+			case 4:
+			{
+				format(string, sizeof(string), "[MDC-Police] {ffffff}%s %s (%s) da lay mot khau sung M4A1.",szRank, GetPlayerNameEx(playerid), szDivision);
+				format(wepget, sizeof(wepget), "M4A1");
+				Inventory_Add(playerid, "M4-AS");
+				SendClientTextDraw(playerid, "Ban da lay thanh cong khau M4.~n~~r~Neu lay nham, bat buoc phai tra lai cho leader.");
+			}
+			case 5:
+			{
+				format(string, sizeof(string), "[MDC-Police] {ffffff}%s %s (%s) da lay mot khau sung Sniper.",szRank, GetPlayerNameEx(playerid), szDivision);
+				format(wepget, sizeof(wepget), "Sniper");
+				Inventory_Add(playerid, "Sniper-AS");
+				SendClientTextDraw(playerid, "Ban da lay thanh cong khau Sniper.~n~~r~Neu lay nham, bat buoc phai tra lai cho leader.");
+			}
+		}
+		SendLogToDiscordRoom("1157912890410541167", "Name", GetPlayerNameEx(playerid), "Rank", szRank, "Wep", wepget, 0x226199);
+		SendLogToDiscordRoom("1157957903874007111", "Name", GetPlayerNameEx(playerid), "Rank", szRank, "Wep", wepget, 0x226199);
+	}
 	return 1;
 }

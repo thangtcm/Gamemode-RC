@@ -20,6 +20,8 @@
 #include <eInventory>
 #include <stamina>
 #include <YSF>
+#include <discord-connector>
+#include <discord-cmd>
 #if defined SOCKET_ENABLED
 
 
@@ -45,6 +47,7 @@
 #include "./system/driver_test.pwn"
 #include "./system/weapon/ammo.pwn"
 #include "./system/register_char.pwn"
+#include "./main/discord-bot.pwn"
 // Doi, no, suc khoe
 #include "./system/playerstatus.pwn"
 
@@ -79,7 +82,7 @@
 #include "./system/new_job/Trucking/main.pwn"
 #include "./system/new_job/pizza.pwn"
 #include "./system/new_job/miner/mn_variables.pwn"
-#include "./system/new_job/miner/mn_callbacks.pwn"
+#include "./system/new_job/miner/mn_callbacks.pwn"	
 #include "./system/new_job/miner/mn_funcs.pwn"
 //#include "./system/new_job/daoda.pwn"  bảo trì
 #include "./system/new_job/wood.pwn"
@@ -91,16 +94,18 @@
 
 #include "./include/onplayerfishnishloading.pwn"
 
-main() {}
+main() {
+}
 
 public OnGameModeInit()
 {
+	DCC_SetBotActivity("RC:RPvn");
+	DCC_SetBotPresenceStatus(DO_NOT_DISTURB);
 	ShowNameTags(0);
 	print("Chuong trinh may chu dang duoc khoi dong, vui long cho doi....");
 	g_mysql_Init();
 	return 1;
 }
-
 public OnGameModeExit()
 {
     g_mysql_Exit();
