@@ -1144,7 +1144,7 @@ CMD:makiemsoat(playerid,params[])
                 {
                     new idveh[10];
                     format(idveh, 10, "%d", GetPlayerVehicleID(playerid));
-                    SendLogToDiscordRoom4("[MDC-Police] CALLSIGN" ,"1158002044381188188", "Name", GetPlayerNameEx(playerid), "Rank", szRank, "ID Veh", idveh, "MKS", string, 0x226199);
+                    SendLogToDiscordRoom4("[MDC-Police] CALLSIGN" ,"1158002044381188188", "Name", GetPlayerNameEx(playerid), "Rank", szRank, "ID Veh", idveh, "MKS", strin, 0x226199);
                 }
             }
             else
