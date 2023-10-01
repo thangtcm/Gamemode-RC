@@ -469,7 +469,16 @@ public OnModelSelectionResponseInv(playerid, extraid, index, modelid[], response
 		PlayerInfo[playerid][pInventoryItem] = index;
 
 		format(name, sizeof(name), "%s (%d)", name, InventoryData[playerid][index][invQuantity]);
-		Dialog_Show(playerid, Inventory, DIALOG_STYLE_LIST, name, "Su dung item\nCho item\nVut item", "Lua chon", "Huy bo");
+		Dialog_Show(playerid, Inventory, DIALOG_STYLE_LIST, name, "Tich thu\nCho item\nVut item", "Lua chon", "<");
+	}
+	if((extraid == MODEL_SELECTION_RANSACK && response) && InventoryData[playerid][index][invExists])
+	{
+		new
+			name[48];
+		strunpack(name, InventoryData[playerid][index][invItem]);
+		PlayerInfo[playerid][pInventoryItem] = index;
+		format(name, sizeof(name), "%s (%d)", name, InventoryData[playerid][index][invQuantity]);
+		Dialog_Show(playerid, Take_Inventory, DIALOG_STYLE_LIST, name, "Tich Thu", "Lua chon", "<");
 	}
 	return 1;
 }
@@ -892,6 +901,7 @@ CMD:checkinv(playerid, params[])
 		return SendClientMessageEx(playerid, COLOR_GRAD1, "/checkinv [playerid/name]");
 	OpenInventory(giveplayerid, true);
 	new str[128];
+	SetPVarInt(playerid, "GivePlayerid_Inventory", giveplayerid);
 	format(str, sizeof(str), "Ban dang xem tui do cua %s", GetPlayerNameEx(giveplayerid));
 	SendClientMessageEx(playerid, COLOR_LIGHTRED, str);
 	return 1;
@@ -995,6 +1005,30 @@ Dialog:Inventory(playerid, response, listitem, inputtext[])
 					format(str, sizeof(str), "Item: %s - So luong: %d\n\nXin vui long nhap so luong ban muon vut item nay:", itemName, InventoryData[playerid][itemId][invQuantity]);
 					Dialog_Show(playerid, DropItem, DIALOG_STYLE_INPUT, "Vut Item", str, "Vut", "Huy bo");
 				}
+			}
+		}
+	}
+	return 1;
+}
+
+Dialog:Take_Inventory(playerid, response, listitem, inputtext[])
+{
+	if(response)
+	{
+		new
+			itemId = PlayerInfo[playerid][pInventoryItem],
+			itemName[64], str[128];
+
+		strunpack(itemName, InventoryData[playerid][itemId][invItem]);
+
+		switch(listitem)
+		{
+			case 0:
+			{
+				new giveplayerid = GetPVarInt(playerid, "GivePlayerid_Inventory");
+				Inventory_Remove(giveplayerid, itemId, InventoryData[playerid][itemId][invQuantity]);
+				format(str, sizeof(str), "%s da tich thu vat pham %s cua %s.", GetPlayerNameEx(playerid), itemName, GetPlayerNameEx(giveplayerid));
+				ProxDetector(30.0, playerid, str, COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE);
 			}
 		}
 	}
