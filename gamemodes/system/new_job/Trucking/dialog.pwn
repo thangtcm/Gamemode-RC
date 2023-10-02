@@ -122,6 +122,10 @@ Dialog:DIALOG_STARTTRUCKER(playerid, response, listitem, inputtext[])
                 format(str, sizeof(str), "Ban da nhan duoc nhiem vu lay san pham %s .\nSu dung lenh (/goiynhamay) :\nDe co the biet duoc nha may can den de lay san pham.", str);
                 Dialog_Show(playerid, ShowOnly, DIALOG_STYLE_MSGBOX, "Trucker", "{FFFFFF}%s", "<", "", str);
             }
+            case 1:{
+                DeletePVar(playerid, "ViewTutorialTruck");
+                NextTutorialTruck(playerid);
+            }
         }
     }
     return 1;

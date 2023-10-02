@@ -73,3 +73,9 @@ hook OnPlayerConnect(playerid)
     ClearTrucker(playerid);
     return 1;
 }
+
+hook OnPlayerDisconnect(playerid, reason)
+{
+	DeletePVar(playerid, "ViewTutorialTruck");
+	return 1;
+}

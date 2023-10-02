@@ -159,3 +159,59 @@ stock ClearTrucker(playerid)
     pLoadProduct[playerid] = -1;
     return 1;
 }
+
+public NextTutorialTruck(playerid)
+{
+    new type = GetPVarInt(playerid, "ViewTutorialTruck"), str[1080];
+    switch(type)
+    {
+        case 0:
+        {
+            SetPVarInt(playerid, "ViewTutorialTruck", 1);
+            TogglePlayerControllable(playerid, 0);
+            SetPlayerFacingAngle(playerid, 90.0);
+            SetPlayerPos(playerid, 58.6429, -288.6857, 2.00);
+            InterpolateCameraPos(playerid, 53.9746, -220.4122, 13.00, 58.6429, -288.6857, 2.00, 10000, CAMERA_MOVE);
+            InterpolateCameraLookAt(playerid, 53.9746, -220.4122, 13.00, 58.6429, -288.6857, 2.00, 5000, CAMERA_MOVE);
+            format(str, sizeof(str), "Xin chao va chuc mung ban den voi Red County!~n~Toi la Mike, va toi da thay rang ban co the tro thanh mot tai xe xuat sac.");
+            ShowTutorialTruck(playerid, "Tutorial", str);
+            SetTimerEx("NextTutorialTruck", ((75 * strlen(str)) + 2000)  , false, "d", playerid);
+        }
+        case 1:
+        {
+            SetPVarInt(playerid, "ViewTutorialTruck", 2);
+            format(str, sizeof(str), "Giao hang la mot cong viec tuyet voi tai day, va toi muon giup ban bat dau mot cach thanh cong.");
+            ShowTutorialTruck(playerid, "Tutorial", str);
+            SetTimerEx("NextTutorialTruck", ((75 * strlen(str)) + 2000)  , false, "d", playerid);
+        }
+        case 2:
+        {
+            SetPVarInt(playerid, "ViewTutorialTruck", 3);
+            format(str, sizeof(str), "Dau tien, de bat dau giao hang, ban can co mot chiec xe van tai.~n~Hien tai, toi de xuat ban thue mot chiec bobcat.");
+            ShowTutorialTruck(playerid, "Tutorial", str);
+            SetTimerEx("NextTutorialTruck", ((75 * strlen(str)) + 2000)  , false, "d", playerid);
+        }
+        case 3:
+        {
+            SetPVarInt(playerid, "ViewTutorialTruck", 4);
+            format(str, sizeof(str), "Neu ban so huu nhung chiec xe co trong tai lon, ban se co co hoi van chuyen nhung mat hang co loi nhuan cao hon.");
+            ShowTutorialTruck(playerid, "Tutorial", str);
+            SetTimerEx("NextTutorialTruck", ((75 * strlen(str)) + 2000)  , false, "d", playerid);
+        }
+        case 4:
+        {
+            SetPVarInt(playerid, "ViewTutorialTruck", 5);
+            format(str, sizeof(str), "Hay bat dau bang viec thue chiec bobcat va sau do toi se gui cho ban nhiem vu dau tien.");
+            ShowTutorialTruck(playerid, "Tutorial", str);
+            SetTimerEx("NextTutorialTruck", ((75 * strlen(str)) + 2000)  , false, "d", playerid);
+        }
+        case 5:
+        {
+            SetPVarInt(playerid, "ViewTutorialTruck", 6);
+            format(str, sizeof(str), "Hay nam vung van hanh xe va dam bao loi nhuan luon la uu tien hang dau trong moi chuyen di cua ban.~n~Good luck!");
+            ShowTutorialTruck(playerid, "Tutorial", str);
+            SetTimerEx("NextTutorialTruck", ((75 * strlen(str)) + 2000)  , false, "d", playerid);
+        }
+    }
+    return 1;
+}

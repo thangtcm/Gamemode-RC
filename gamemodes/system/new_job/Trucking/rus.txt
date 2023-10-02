@@ -1,15 +1,12 @@
-d:\Gamemode Samp\Gamemode-RC\gamemodes\system\new_job\Trucking\hook.pwn(1) : îøèáêà 010: íåâåðíàÿ ôóíêöèÿ èëè îáúÿâëåíèå
-d:\Gamemode Samp\Gamemode-RC\gamemodes\system\new_job\Trucking\hook.pwn(3) : îøèáêà 010: íåâåðíàÿ ôóíêöèÿ èëè îáúÿâëåíèå
-d:\Gamemode Samp\Gamemode-RC\gamemodes\system\new_job\Trucking\hook.pwn(35) : îøèáêà 054: íåñîîòâåòñòâóþùàÿ çàêðûâàþùàÿ ñêîáêà ("}")
-d:\Gamemode Samp\Gamemode-RC\gamemodes\system\new_job\Trucking\hook.pwn(36) : îøèáêà 010: íåâåðíàÿ ôóíêöèÿ èëè îáúÿâëåíèå
-d:\Gamemode Samp\Gamemode-RC\gamemodes\system\new_job\Trucking\hook.pwn(39) : îøèáêà 010: íåâåðíàÿ ôóíêöèÿ èëè îáúÿâëåíèå
-d:\Gamemode Samp\Gamemode-RC\gamemodes\system\new_job\Trucking\hook.pwn(40) : îøèáêà 010: íåâåðíàÿ ôóíêöèÿ èëè îáúÿâëåíèå
-d:\Gamemode Samp\Gamemode-RC\gamemodes\system\new_job\Trucking\hook.pwn(42) : îøèáêà 010: íåâåðíàÿ ôóíêöèÿ èëè îáúÿâëåíèå
-d:\Gamemode Samp\Gamemode-RC\gamemodes\system\new_job\Trucking\hook.pwn(50) : îøèáêà 010: íåâåðíàÿ ôóíêöèÿ èëè îáúÿâëåíèå
-d:\Gamemode Samp\Gamemode-RC\gamemodes\system\new_job\Trucking\hook.pwn(53) : îøèáêà 010: íåâåðíàÿ ôóíêöèÿ èëè îáúÿâëåíèå
-d:\Gamemode Samp\Gamemode-RC\gamemodes\system\new_job\Trucking\hook.pwn(56) : îøèáêà 010: íåâåðíàÿ ôóíêöèÿ èëè îáúÿâëåíèå
-d:\Gamemode Samp\Gamemode-RC\gamemodes\system\new_job\Trucking\hook.pwn(57) : îøèáêà 013: îòñóòñòâóåò òî÷êà âõîäà (íåò public-ôóíêöèé)
+d:\Gamemode Samp\Gamemode-RC\gamemodes\system\new_job\Trucking\dialog.pwn(137) : èäåíòèôèêàòîð íå èñïîëüçóåòñÿ: "DIALOG_BUYPRODUCT"
+d:\Gamemode Samp\Gamemode-RC\gamemodes\system\new_job\Trucking\dialog.pwn(205) : èäåíòèôèêàòîð íå èñïîëüçóåòñÿ: "DIALOG_CARCLAIMPRODUCT"
+d:\Gamemode Samp\Gamemode-RC\gamemodes\system\new_job\Trucking\dialog.pwn(1) : èäåíòèôèêàòîð íå èñïîëüçóåòñÿ: "DIALOG_LISTFACTORY"
+d:\Gamemode Samp\Gamemode-RC\gamemodes\system\new_job\Trucking\dialog.pwn(167) : èäåíòèôèêàòîð íå èñïîëüçóåòñÿ: "DIALOG_SELLPRODUCT"
+d:\Gamemode Samp\Gamemode-RC\gamemodes\system\new_job\Trucking\dialog.pwn(78) : èäåíòèôèêàòîð íå èñïîëüçóåòñÿ: "DIALOG_SETPOINTFACTORY"
+d:\Gamemode Samp\Gamemode-RC\gamemodes\system\new_job\Trucking\dialog.pwn(89) : èäåíòèôèêàòîð íå èñïîëüçóåòñÿ: "DIALOG_STARTTRUCKER"
+d:\Gamemode Samp\Gamemode-RC\gamemodes\system\new_job\Trucking\dialog.pwn(36) : èäåíòèôèêàòîð íå èñïîëüçóåòñÿ: "DIALOG_SUGGESTFACTORY"
+d:\Gamemode Samp\Gamemode-RC\gamemodes\system\new_job\Trucking\dialog.pwn(36) -- (230) : îøèáêà 013: îòñóòñòâóåò òî÷êà âõîäà (íåò public-ôóíêöèé)
 Pawn compiler 3.2.3664	 	 	Copyright (c) 1997-2016, ITB CompuPhase
 
 
-Îøèáîê:11.
+Îøèáîê:1.

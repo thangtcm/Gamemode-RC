@@ -982,6 +982,19 @@ public OnPlayerClickPlayerTextDraw(playerid, PlayerText:playertextid)
 
 	if(GetPVarInt(playerid, "is_loading") == 1) return 1;
 
+	if(GetPVarInt(playerid, "ViewTutorialTruck") != 0)
+	{
+		if(playertextid == Tutorial_Truck[playerid][5])
+		{
+			TogglePlayerControllable(playerid,1);
+			HideTutorialTruck(playerid);
+			CancelSelectTextDraw(playerid);
+			SetCameraBehindPlayer(playerid);
+			DeletePVar(playerid, "ViewTutorialTruck");
+		}
+	}
+	
+
    	if(GetPVarInt(playerid, "DangTaoAcc") == 1)
    	{
    		if(playertextid == RegCharacter[playerid][1])

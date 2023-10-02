@@ -72,3 +72,10 @@
 [10/01/23 13:17:46] [plugins/discord-connector] Error while shutting down SSL on HTTP connection: An established connection was aborted by the software in your host machine (10053)
 [10/01/23 17:51:55] [plugins/discord-connector] Unknown gateway event 'CHANNEL_TOPIC_UPDATE'
 [10/01/23 17:51:55] [plugins/discord-connector] Unknown gateway event 'VOICE_CHANNEL_STATUS_UPDATE'
+[10/03/23 05:33:37] [plugins/discord-connector] Unknown gateway event 'GUILD_MEMBERS_CHUNK'
+[10/03/23 05:34:23] [plugins/discord-connector] Unknown gateway event 'GUILD_MEMBERS_CHUNK'
+[10/03/23 05:48:26] [plugins/discord-connector] Unknown gateway event 'GUILD_MEMBERS_CHUNK'
+[10/03/23 05:50:17] [plugins/discord-connector] Unknown gateway event 'GUILD_MEMBERS_CHUNK'
+[10/03/23 05:52:56] [plugins/discord-connector] Unknown gateway event 'GUILD_MEMBERS_CHUNK'
+[10/03/23 06:12:41] [plugins/discord-connector] Unknown gateway event 'GUILD_MEMBERS_CHUNK'
+[10/03/23 06:13:17] [plugins/discord-connector] Unknown gateway event 'GUILD_MEMBERS_CHUNK'

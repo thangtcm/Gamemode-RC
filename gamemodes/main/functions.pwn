@@ -2769,6 +2769,8 @@ public InitiateGamemode()
 	NationSel_InitTextDraws();
 	CountCitizens();
 	SetNameTagDrawDistance(40.0);
+	Streamer_SetVisibleItems(STREAMER_TYPE_OBJECT, 1000);
+	Streamer_SetTickRate(60);
 	AllowInteriorWeapons(1);
  	AddPlayerClass(0, 1958.3783, 1343.1572, 15.3746, 269.1425, 0, 0, 0, 0, 0, 0);
 	ManualVehicleEngineAndLights();

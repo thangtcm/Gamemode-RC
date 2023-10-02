@@ -80,6 +80,7 @@
 #include "./system/drug/drug.pwn"
 #include "./system/new_job/Trucking/textdrawanim.pwn"
 #include "./system/new_job/Trucking/main.pwn"
+#include "./system/new_job/Trucking/tutorial.pwn"
 #include "./system/new_job/pizza.pwn"
 #include "./system/new_job/miner/mn_variables.pwn"
 #include "./system/new_job/miner/mn_callbacks.pwn"

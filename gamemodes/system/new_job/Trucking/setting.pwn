@@ -5,6 +5,7 @@
 #define MAX_OBJECTTRUCKER   (100)
 forward VEHICLETRUCKER_LOAD(playerid);
 forward OnAddVehicleTruckerFinish(playerid, index);
+forward NextTutorialTruck(playerid);
 
 enum VehicleTruckerInfo{
     vtId,

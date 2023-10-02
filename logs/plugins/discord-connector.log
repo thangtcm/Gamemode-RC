@@ -24,3 +24,13 @@
 [10/01/23 18:05:36] [ERROR] can't serialize JSON: [json.exception.type_error.316] invalid UTF-8 byte at index 0: 0xB4
 [10/01/23 18:06:15] [ERROR] can't serialize JSON: [json.exception.type_error.316] invalid UTF-8 byte at index 0: 0xA0
 [10/01/23 18:08:03] [ERROR] can't serialize JSON: [json.exception.type_error.316] invalid UTF-8 byte at index 0: 0xA0
+[10/03/23 05:33:37] [WARNING] Unknown gateway event 'GUILD_MEMBERS_CHUNK'
+[10/03/23 05:34:23] [WARNING] Unknown gateway event 'GUILD_MEMBERS_CHUNK'
+[10/03/23 05:48:26] [WARNING] Unknown gateway event 'GUILD_MEMBERS_CHUNK'
+[10/03/23 05:50:17] [WARNING] Unknown gateway event 'GUILD_MEMBERS_CHUNK'
+[10/03/23 05:52:56] [WARNING] Unknown gateway event 'GUILD_MEMBERS_CHUNK'
+[10/03/23 06:00:08] [ERROR] Can't read from Discord websocket gateway: End of file (2)
+[10/03/23 06:00:08] [ERROR] Can't write to Discord websocket gateway: The I/O operation has been aborted because of either a thread exit or an application request (995)
+[10/03/23 06:06:45] [ERROR] can't update guild member: user id "750212447826083971" not cached
+[10/03/23 06:12:41] [WARNING] Unknown gateway event 'GUILD_MEMBERS_CHUNK'
+[10/03/23 06:13:17] [WARNING] Unknown gateway event 'GUILD_MEMBERS_CHUNK'
