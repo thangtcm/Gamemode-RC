@@ -135,9 +135,13 @@ Dialog:DIALOG_BUYPRODUCT(playerid, response, listitem, inputtext[])
         new index = PlayerTruckerData[playerid][MissionBuy][listitem];
         new money = FactoryData[factoryID][ProductPrice][index] * -1;
         if(GetPlayerCash(playerid < money)) return SendErrorMessage(playerid, "Ban khong du tien de mua thung hang nay.");
+        if(FactoryData[factoryID][WareHouse][index] <= 0) return SendErrorMessage(playerid, "Nha may nay khong du so luong san pham de ban cho ban.");
         new str[256];
         new productID = FactoryData[factoryID][ProductName][index];
         format(str, sizeof(str), "Mua san pham %s thanh cong.", ProductData[productID][ProductName]);
+        FactoryData[factoryID][WareHouse][index] -= FactoryData[factoryID][Productivity][index];
+        if(FactoryData[factoryID][WareHouse][index] <= 0)
+            FactoryData[factoryID][WareHouse][index] = 0;
         new moneyzxc[30];
         format(moneyzxc, 30, "%d$", FactoryData[factoryID][ProductPrice][index]);
         SendLogToDiscordRoom("LOG MUA THÙNG HÀNG", "1157969036848668733", "Name", GetPlayerNameEx(playerid), "Đã mua", ProductData[productID][ProductName], "Giá tiền", moneyzxc, 0x992422);
@@ -162,8 +166,12 @@ Dialog:DIALOG_SELLPRODUCT(playerid, response, listitem, inputtext[])
         if(pLoadProduct[playerid] == -1) return 1;
         new index = PlayerTruckerData[playerid][SellProduct][listitem];
         if(pLoadProduct[playerid] != FactoryData[factoryID][ProductName][index]) return SendErrorMessage(playerid, "Ban khong co san pham nay.");
+        if(FactoryData[factoryID][ImportWareHouse][index] > FactoryData[factoryID][ImportMaxWareHouse][index] - FactoryData[factoryID][ProductImport][index]) return SendErrorMessage(playerid, "Nha may nay khong du so luong san pham de ban cho ban.");
         format(str, sizeof(str), "Ban da ban san pham %s thanh cong.", ProductData[pLoadProduct[playerid]][ProductName]);
         GivePlayerCash(playerid, FactoryData[factoryID][ProductPrice][index]);
+        FactoryData[factoryID][ImportWareHouse][index] += FactoryData[factoryID][ProductImport][index];
+        if(FactoryData[factoryID][ImportWareHouse][index] > FactoryData[factoryID][ImportMaxWareHouse][index])
+            FactoryData[factoryID][ImportWareHouse][index] = FactoryData[factoryID][ImportMaxWareHouse][index];
         new moneyzxc[30];
         format(moneyzxc, 30, "%d$", FactoryData[factoryID][ProductPrice][index]);
         SendLogToDiscordRoom("LOG BÁN THÙNG HÀNG", "1157969051264503838", "Name", GetPlayerNameEx(playerid), "Đã bán", ProductData[pLoadProduct[playerid]][ProductName], "Giá tiền", moneyzxc, 0x229926);

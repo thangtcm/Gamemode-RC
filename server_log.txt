@@ -1228,3 +1228,290 @@ TDEditor Plugin loaded, thank you for using.
 [06:14:44] [dbg:raknet:free] : module released
 [06:14:44] [sv:dbg:network:free] : module releasing...
 [06:14:44] [sv:dbg:network:free] : module released
+
+----------
+Loaded log file: "server_log.txt".
+----------
+
+SA-MP Dedicated Server
+----------------------
+v0.3.DL-R1, (C)2005-2018 SA-MP Team
+
+[19:39:56] password = ""  (string)
+[19:39:56] 
+[19:39:56] Server Plugins
+[19:39:56] --------------
+[19:39:56]  Loading plugin: mysql
+[19:39:56]  >> plugin.mysql: R33 successfully loaded.
+[19:39:56]   Loaded.
+[19:39:56]  Loading plugin: sscanf
+[19:39:56] 
+
+[19:39:56]  ===============================
+
+[19:39:56]       sscanf plugin loaded.     
+
+[19:39:56]          Version:  2.8.1        
+
+[19:39:56]    (c) 2012 Alex "Y_Less" Cole  
+
+[19:39:56]  ===============================
+
+[19:39:56]   Loaded.
+[19:39:56]  Loading plugin: whirlpool
+[19:39:56]  
+[19:39:56]  ==================
+[19:39:56]  
+[19:39:56]   Whirlpool loaded
+[19:39:56]  
+[19:39:56]  ==================
+[19:39:56]  
+[19:39:56]   Loaded.
+[19:39:56]  Loading plugin: crashdetect
+[19:39:56]   CrashDetect plugin 4.19.4
+[19:39:56]   Loaded.
+[19:39:56]  Loading plugin: sampvoice
+[19:39:56] [sv:dbg:network:init] : module initializing...
+[19:39:56] [dbg:raknet:init] : module initializing...
+[19:39:56] [dbg:raknet:init] : module initialized
+[19:39:56] [sv:dbg:network:init] : module initialized
+[19:39:56] [sv:dbg:main:Load] : creating 8 work threads...
+[19:39:56]  -------------------------------------------    
+[19:39:56]    ___                __   __    _              
+[19:39:56]   / __| __ _ _ __  _ _\ \ / /__ (_) __ ___    
+[19:39:56]   \__ \/ _` | '  \| '_ \   / _ \| |/ _/ -_)
+[19:39:56]   |___/\__,_|_|_|_| .__/\_/\___/|_|\__\___|
+[19:39:56]                   |_|                           
+[19:39:56]  -------------------------------------------    
+[19:39:56]            SampVoice by MOR loaded              
+[19:39:56]  -------------------------------------------    
+[19:39:56]   Loaded.
+[19:39:56]  Loading plugin: samp-compat.dll
+[19:39:56]   -- samp-compat for 0.3.DL-R1 initialized
+[19:39:56]   Loaded.
+[19:39:56]  Loading plugin: streamer
+[19:39:56] 
+
+*** Streamer Plugin v2.9.5 by Incognito loaded ***
+
+[19:39:56]   Loaded.
+[19:39:56]  Loading plugin: server
+[19:39:56]   Loaded.
+[19:39:56]  Loading plugin: TDE
+[19:39:56] 
+TDEditor Plugin loaded, thank you for using.
+
+[19:39:56]   Loaded.
+[19:39:56]  Loading plugin: YSF_DL
+[19:39:56] 
+[19:39:56]  ==============================================
+[19:39:56]  YSF 2.2 (compiled Sep 19 2021 13:02:34) loaded
+[19:39:56]   (c) 2008 Alex "Y_Less" Cole
+[19:39:56]   (c) 2010 - 2018 kurta999
+[19:39:56]   (c) 2018 - 2020 IllidanS4
+[19:39:56]  Server version: 0.3.DL R1, Windows
+[19:39:56]  ==============================================
+[19:39:56] 
+[19:39:56]   Loaded.
+[19:39:56]  Loading plugin: discord-connector
+[19:40:00]  >> discord-connector: afb7e3b successfully loaded.
+[19:40:00]   Loaded.
+[19:40:00]  Loaded 11 plugins.
+
+[19:40:00] [artwork:crc] bp.dff CRC = 0xA2B03FFB
+[19:40:00] [artwork:crc] bp.txd CRC = 0x28E0706E
+[19:40:00] [artwork:crc] object.dff CRC = 0xDCFCC14C
+[19:40:00] [artwork:crc] speedo.txd CRC = 0x62C7BCBC
+[19:40:00] [artwork:crc] object.dff CRC = 0xDCFCC14C
+[19:40:00] [artwork:crc] login.txd CRC = 0x54694AE4
+[19:40:00] [artwork:crc] object.dff CRC = 0xDCFCC14C
+[19:40:00] [artwork:crc] character.txd CRC = 0xC1BABE5F
+[19:40:00] [artwork:crc] object.dff CRC = 0xDCFCC14C
+[19:40:00] [artwork:crc] speedo.txd CRC = 0x62C7BCBC
+[19:40:00] [artwork:crc] object.dff CRC = 0xDCFCC14C
+[19:40:00] [artwork:crc] newinv.txd CRC = 0xC5F22638
+[19:40:00] [artwork:crc] object.dff CRC = 0xDCFCC14C
+[19:40:00] [artwork:crc] character.txd CRC = 0xC1BABE5F
+[19:40:00] [artwork:crc] object.dff CRC = 0xDCFCC14C
+[19:40:00] [artwork:crc] inventory.txd CRC = 0xF2E5A1D4
+[19:40:00] I couldn't load any gamemode scripts. Please verify your server.cfg
+[19:40:00] It needs a gamemode0 line at the very least.
+
+----------
+Loaded log file: "server_log.txt".
+----------
+
+SA-MP Dedicated Server
+----------------------
+v0.3.DL-R1, (C)2005-2018 SA-MP Team
+
+[19:40:40] password = ""  (string)
+[19:40:40] 
+[19:40:40] Server Plugins
+[19:40:40] --------------
+[19:40:40]  Loading plugin: mysql
+[19:40:40]  >> plugin.mysql: R33 successfully loaded.
+[19:40:40]   Loaded.
+[19:40:40]  Loading plugin: sscanf
+[19:40:40] 
+
+[19:40:40]  ===============================
+
+[19:40:40]       sscanf plugin loaded.     
+
+[19:40:40]          Version:  2.8.1        
+
+[19:40:40]    (c) 2012 Alex "Y_Less" Cole  
+
+[19:40:40]  ===============================
+
+[19:40:40]   Loaded.
+[19:40:40]  Loading plugin: whirlpool
+[19:40:40]  
+[19:40:40]  ==================
+[19:40:40]  
+[19:40:40]   Whirlpool loaded
+[19:40:40]  
+[19:40:40]  ==================
+[19:40:40]  
+[19:40:40]   Loaded.
+[19:40:40]  Loading plugin: crashdetect
+[19:40:40]   CrashDetect plugin 4.19.4
+[19:40:40]   Loaded.
+[19:40:40]  Loading plugin: sampvoice
+[19:40:40] [sv:dbg:network:init] : module initializing...
+[19:40:40] [dbg:raknet:init] : module initializing...
+[19:40:40] [dbg:raknet:init] : module initialized
+[19:40:40] [sv:dbg:network:init] : module initialized
+[19:40:40] [sv:dbg:main:Load] : creating 8 work threads...
+[19:40:40]  -------------------------------------------    
+[19:40:40]    ___                __   __    _              
+[19:40:40]   / __| __ _ _ __  _ _\ \ / /__ (_) __ ___    
+[19:40:40]   \__ \/ _` | '  \| '_ \   / _ \| |/ _/ -_)
+[19:40:40]   |___/\__,_|_|_|_| .__/\_/\___/|_|\__\___|
+[19:40:40]                   |_|                           
+[19:40:40]  -------------------------------------------    
+[19:40:40]            SampVoice by MOR loaded              
+[19:40:40]  -------------------------------------------    
+[19:40:40]   Loaded.
+[19:40:40]  Loading plugin: samp-compat.dll
+[19:40:40]   -- samp-compat for 0.3.DL-R1 initialized
+[19:40:40]   Loaded.
+[19:40:40]  Loading plugin: streamer
+[19:40:40] 
+
+*** Streamer Plugin v2.9.5 by Incognito loaded ***
+
+[19:40:40]   Loaded.
+[19:40:40]  Loading plugin: server
+[19:40:40]   Loaded.
+[19:40:40]  Loading plugin: TDE
+[19:40:40] 
+TDEditor Plugin loaded, thank you for using.
+
+[19:40:40]   Loaded.
+[19:40:40]  Loading plugin: YSF_DL
+[19:40:40] 
+[19:40:40]  ==============================================
+[19:40:40]  YSF 2.2 (compiled Sep 19 2021 13:02:34) loaded
+[19:40:40]   (c) 2008 Alex "Y_Less" Cole
+[19:40:40]   (c) 2010 - 2018 kurta999
+[19:40:40]   (c) 2018 - 2020 IllidanS4
+[19:40:40]  Server version: 0.3.DL R1, Windows
+[19:40:40]  ==============================================
+[19:40:40] 
+[19:40:40]   Loaded.
+[19:40:40]  Loading plugin: discord-connector
+[19:40:44]  >> discord-connector: afb7e3b successfully loaded.
+[19:40:44]   Loaded.
+[19:40:44]  Loaded 11 plugins.
+
+[19:40:44] [artwork:crc] bp.dff CRC = 0xA2B03FFB
+[19:40:44] [artwork:crc] bp.txd CRC = 0x28E0706E
+[19:40:44] [artwork:crc] object.dff CRC = 0xDCFCC14C
+[19:40:44] [artwork:crc] speedo.txd CRC = 0x62C7BCBC
+[19:40:44] [artwork:crc] object.dff CRC = 0xDCFCC14C
+[19:40:44] [artwork:crc] login.txd CRC = 0x54694AE4
+[19:40:44] [artwork:crc] object.dff CRC = 0xDCFCC14C
+[19:40:44] [artwork:crc] character.txd CRC = 0xC1BABE5F
+[19:40:44] [artwork:crc] object.dff CRC = 0xDCFCC14C
+[19:40:44] [artwork:crc] speedo.txd CRC = 0x62C7BCBC
+[19:40:44] [artwork:crc] object.dff CRC = 0xDCFCC14C
+[19:40:44] [artwork:crc] newinv.txd CRC = 0xC5F22638
+[19:40:44] [artwork:crc] object.dff CRC = 0xDCFCC14C
+[19:40:44] [artwork:crc] character.txd CRC = 0xC1BABE5F
+[19:40:44] [artwork:crc] object.dff CRC = 0xDCFCC14C
+[19:40:44] [artwork:crc] inventory.txd CRC = 0xF2E5A1D4
+[19:40:44] 
+[19:40:44] Filterscripts
+[19:40:44] ---------------
+[19:40:44]   Loading filterscript 'Server.amx'...
+[19:40:44] [sv:dbg:main:AmxLoad] : net game pointer (value:06630048) received
+[19:40:44] [sv:dbg:network:bind] : voice server running on port 53659
+[19:40:44]   Loading filterscript 'cbug.amx'...
+[19:40:44]   Loaded 2 filterscripts.
+
+[19:40:45]  
+[19:40:45]  ======================================= 
+[19:40:45]  |                                     | 
+[19:40:45]  |        YSI version 3.01.0002        | 
+[19:40:45]  |        By Alex "Y_Less" Cole        | 
+[19:40:45]  |                                     | 
+[19:40:45]  ======================================= 
+[19:40:45]  
+[19:40:45] Chuong trinh may chu dang duoc khoi dong, vui long cho doi....
+[19:41:05] [MySQL] (Main Pipelines) Connecting to 23.88.73.88...
+[19:41:05] [MySQL] (MainPipeline) Connection successful toward MySQL Database Server!
+[19:41:05] [Dynamic Giftbox] Loading the Dynamic Giftbox...
+[19:41:05] [LoadCrates] Load Query Sent
+[19:41:05] [LoadHouses] Loading data from database...
+[19:41:05] [LoadDynamicDoors] Loading data from database...
+[19:41:05] [LoadDynamicMapIcons] Loading data from database...
+[19:41:05] [LoadMailboxes] Loading data from database...
+[19:41:05] [LoadBusinesses] Loading data from database...
+[19:41:05] [LoadAuctions] Loading data from database...
+[19:41:05] [LoadTxtLabels] Loading data from database...
+[19:41:05] [LoadPlants] Loading data from database...
+[19:41:05] [SpeedCameras] Loading data from database...
+[19:41:05] [LoadPayNSprays] Loading data from database...
+[19:41:05] [LoadArrestPoints] Loading data from database...
+[19:41:05] [LoadImpoundPoints] Loading data from database...
+[19:41:05] [LoadBusinessSales] Loading data from database...
+[19:41:05] [LoadPaintballArenas] 10 paintball loaded.
+[19:41:05] [LoadEventPoints] 0 event points loaded.
+[19:41:05] [LoadGates] Loading data from database...
+[19:41:05] [LoadElevatorStuff] 20 floors loaded.
+[19:41:05] [LoadFamilies] Dang tai du lieu tu database...
+[19:41:05] [LoadFamilyPoints] Loading Family Points from the database, please wait...
+[19:41:05] [MiscLoad] Misc Loaded
+[19:41:05] Resetting news...
+[19:41:05] Resetting default server variables..
+[19:41:05] Adjusted the server time...
+[19:41:05] [Streamer] Loading Dynamic Static Vehicles...
+[19:41:05] [Streamer] Dynamic Static Vehicles has been loaded.
+[19:41:05] [Streamer] Loading Dynamic Pickups...
+[19:41:05] [Streamer] Dynamic Pickups has been loaded.
+[19:41:05] [Streamer] Loading 3D Text Labels...
+[19:41:05] [Streamer] Dynamic 3D Text Labels has been loaded.
+[19:41:05] [Streamer] Loading Dynamic Buttons...
+[19:41:05] [Streamer] Dynamic Buttons has been loaded.
+[19:41:05] [Streamer] Loading Dynamic Objects...
+[19:41:05] [Streamer] Dynamic Objects has been loaded.
+[19:41:05] [Textdraws] Loading Textdraws...
+[19:41:05] [Textdraws] Loaded textdraws.
+[19:41:05] [Dynamic Groups] Loading Dynamic Groups...
+[19:41:05] [Dynamic Groups] Loading Dynamic Groups Vehicles...
+[19:41:05] Da chay thanh cong gamemode...
+[19:41:05] Number of vehicle models: 20
+[19:41:05]  
+[19:41:05]  
+[19:41:06] [Dynamic Giftbox] da tai thanh cong Dynamic giftbox.
+[19:41:06] [LoadCrates] Loading Crates Finished
+[19:41:10] [LoadHouses] 3000 ngoi nha duoc tai.
+[19:41:10]  -------------------------------------------
+[19:41:10]            SampVoice unloading...           
+[19:41:10]  -------------------------------------------
+[19:41:10] [dbg:raknet:free] : module releasing...
+[19:41:10] [dbg:raknet:free] : module released
+[19:41:10] [sv:dbg:network:free] : module releasing...
+[19:41:10] [sv:dbg:network:free] : module released

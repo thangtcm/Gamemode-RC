@@ -27,7 +27,8 @@ new const UnitType[][] =
     {"Khuc Go"}, //5
     {"Ke Hang"}, //6
     {"Transformer"},//7
-    {"Phuong Tien"}//8
+    {"Phuong Tien"},//8,
+    {"Not Working"}//9
 };
 
 enum ProductInfo{
@@ -38,7 +39,7 @@ enum ProductInfo{
 
 new const ProductData[][ProductInfo] = {
     { "Transformer", 7 }, // 0
-    { "Car parts", 0 }, // 1
+    { "Car parts", 9 }, // 1
     { "Do gia dung", 0 }, // 2
     { "Giay", 0 }, // 3
     { "Noi that", 0 }, // 4

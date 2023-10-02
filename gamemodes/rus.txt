@@ -9,6 +9,6 @@
 ./system/new_job/Trucking/cmd.pwn(65) : èäåíòèôèêàòîðó ïðèñâîåíî çíà÷åíèå, íî îí íå èñïîëüçóåòñÿ: "typef"
 ./system/drug/drug.pwn(11) : èäåíòèôèêàòîð íå èñïîëüçóåòñÿ: "DrugTypeName"
 d:\Gamemode Samp\Gamemode-RC\gamemodes\lsrpvn.pwn(16) : èäåíòèôèêàòîð íå èñïîëüçóåòñÿ: "FindFreeAnimDataID"
-./system/new_job/Trucking/setting.pwn(31) : èäåíòèôèêàòîð íå èñïîëüçóåòñÿ: "UnitType"
+./system/new_job/Trucking/setting.pwn(32) : èäåíòèôèêàòîð íå èñïîëüçóåòñÿ: "UnitType"
 Pawn compiler 3.2.3664	 	 	Copyright (c) 1997-2016, ITB CompuPhase
 
