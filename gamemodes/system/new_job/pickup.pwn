@@ -18,7 +18,7 @@ stock LoadTextUpJob() {
 	CreateActor(111, 588.1791,866.1268,-42.4973,182.9709);
 	CreateActor(6, 2126.8018,-76.6521,2.4721,275.2467);
 	CreateActor(155, 1362.9523,253.9632,19.5669,63.6866);
-	TruckActor = CreateDynamicActor(133, 58.5952,-292.2914,1.5781,6.3205);
+	TruckActor = CreateDynamicActor(133, 58.5952,-292.2914,1.5781,6.3205, true, 100.0, 0, 0, -1);
     return 1;
 }
 /*
