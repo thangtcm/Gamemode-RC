@@ -20,8 +20,7 @@ stock IsValidCarTrucker(playerid)
                 if(CarTruckWorking[i][CarModel] == PlayerVehicleInfo[playerid][d][pvModelId]){
                     PlayerVehicleInfo[playerid][d][pvIsRegisterTrucker] = true;
                     PlayerVehicleInfo[playerid][d][pvMaxSlotTrucker] = CarTruckWorking[i][Weight];
-                    printf("PlayerVehicleInfo[playerid][d][pvMaxSlotTrucker] %d", PlayerVehicleInfo[playerid][d][pvMaxSlotTrucker]);
-                    PlayerInfo[playerid][pRegisterCarTruck] = PlayerVehicleInfo[playerid][d][pvSlotId];
+                    PlayerInfo[playerid][pRegisterCarTruck] = d;
                     g_mysql_SaveVehicle(playerid, d);
                     return true;
                 }

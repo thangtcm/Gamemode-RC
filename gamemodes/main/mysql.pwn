@@ -882,7 +882,10 @@ public OnQueryFinish(resultid, extraid, handleid)
 
 						cache_get_field_content(i,  "pvIsRegisterTrucker", szResult, MainPipeline);
 						PlayerVehicleInfo[extraid][i][pvIsRegisterTrucker] = strval(szResult);
-
+						if(PlayerVehicleInfo[extraid][i][pvIsRegisterTrucker])
+						{
+							PlayerInfo[extraid][pRegisterCarTruck] = i;
+						}
 						cache_get_field_content(i,  "pvMaxSlotTrucker", szResult, MainPipeline);
 						PlayerVehicleInfo[extraid][i][pvMaxSlotTrucker] = strval(szResult);
 

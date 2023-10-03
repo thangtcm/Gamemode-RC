@@ -79,17 +79,19 @@ timer UpdateNameTagTimer[500](playerid)
     {
         if(IsPlayerConnected(i))
         {
-            new nametag[228], Float:armour;
+            new nametag[228], Float:armour, Float:targetPos[3], Float:distance;
             GetPlayerArmour(i, armour);
+			GetPlayerPos(i, targetPos[0], targetPos[1], targetPos[2]);
+			distance = GetPlayerDistanceFromPoint(playerid, targetPos[0], targetPos[1], targetPos[2]);
 			if(PlayerInfo[i][pMaskOn])
 			{
 				format(nametag, sizeof(nametag), "{%06x}[Mask %d_%d]{FFFFFF} (%d)", GetPlayerColor(i) >>> 8, PlayerInfo[i][pMaskID][0], PlayerInfo[i][pMaskID][1], i);
 			}
-			else if(!ProxDetectorS(6.0, playerid, i) && !PlayerInfo[i][pMaskOn])
+			else if(distance > 6.0 && !PlayerInfo[i][pMaskOn])
 			{
             	format(nametag, sizeof(nametag), "{%06x}Stranger_%d_%d{FFFFFF} (%d)", GetPlayerColor(i) >>> 8, PlayerInfo[i][pMaskID][0], PlayerInfo[i][pMaskID][1], i);
 			}
-			else if(ProxDetectorS(6.0, playerid, i) && !PlayerInfo[i][pMaskOn])
+			else if(distance <= 6.0 && !PlayerInfo[i][pMaskOn])
 			{
 				format(nametag, sizeof(nametag), "{%06x}%s{FFFFFF} (%d)", GetPlayerColor(i) >>> 8, GetPlayerNameEx(i), i);
 			}

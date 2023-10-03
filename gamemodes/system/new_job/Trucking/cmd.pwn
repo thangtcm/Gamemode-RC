@@ -52,7 +52,7 @@ CMD:goiygiaohang(playerid, params[])
         for (new j = 0; j < MaxExport; j++) {
             for(new index; index < MAX_OBJECTTRUCKER; index++)
             {
-                if(VehicleTruckerData[playerid][index][vtId] != -1 && VehicleTruckerData[playerid][index][vtSlotId] == d
+                if(VehicleTruckerData[playerid][index][vtId] != -1 && VehicleTruckerData[playerid][index][vtSlotId] == PlayerVehicleInfo[playerid][d][pvSlotId]
                     && VehicleTruckerData[playerid][index][vtProductID] == FactoryData[i][ProductName][j]){
                     PlayerTruckerData[playerid][SuggestFactory][numFoundFactories++] = i;
                     break;
