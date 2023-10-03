@@ -77,7 +77,9 @@ new const g_aInventoryItems[][e_InventoryItems] =
 	{"Dan tieu lien SAAS", "Ammo3-AS"}, // type 5
 	{"Dan sung truong SAAS", "Ammo4-AS"}, // type 5
 	{"Dan sniper SAAS", "Ammo5-AS"}, // type 5
-
+	
+	{"Duoc lieu", "item_duoclieu"},
+	{"Medkit", "item_medkit"},  
 	//NameTag
 	{"Mat na", "Mask"} 
 };

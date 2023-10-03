@@ -45932,6 +45932,56 @@ CMD:locker(playerid, params[]) {
 	SendErrorMessage(playerid, " Ban khong o gan tu lay do!");
 	return 1;
 }
+CMD:chetaomedkit(playerid, params[]) {
+
+	new iGroupID = PlayerInfo[playerid][pMember];
+
+	if(PlayerInfo[playerid][pWRestricted] != 0) return SendServerMessage(playerid, " Ban khong the mo tu nay khi dang bi gioi han vu khi");
+	if(0 <= iGroupID < MAX_GROUPS)
+	{
+		for(new i; i < MAX_GROUPS; i++)
+		{
+			for(new j; j < MAX_GROUP_LOCKERS; j++)
+			{
+				if(IsPlayerInRangeOfPoint(playerid, 3.0, arrGroupLockers[i][j][g_fLockerPos][0], arrGroupLockers[i][j][g_fLockerPos][1], arrGroupLockers[i][j][g_fLockerPos][2]) && arrGroupLockers[i][j][g_iLockerVW] == GetPlayerVirtualWorld(playerid))
+				{
+					if(i == iGroupID || (arrGroupData[i][g_iGroupType] == arrGroupData[iGroupID][g_iGroupType] && arrGroupLockers[i][j][g_iLockerShare]))
+					{
+						if(arrGroupData[PlayerInfo[playerid][pMember]][g_iGroupType] == 3)
+						{
+							if(PlayerInfo[playerid][pTimeCraft] >= 1)
+							{
+								if(Inventory_HasItem(playerid, "Duoc lieu", 30))
+								{
+									new format_job[1280];
+									format(format_job, sizeof(format_job), "[SERVER] {ffffff}Ban da che tao thanh cong {6e69ff}1 {5c5c5c}Medkit{ffffff}.");
+									SendClientMessage(playerid, COLOR_LIGHTRED, format_job);
+									new pItemId = Inventory_GetItemID(playerid, "Duoc lieu", 30);
+									Inventory_Remove(playerid, pItemId, 30);
+									Inventory_Add(playerid, "Medkit", 1, 180);
+									PlayerInfo[playerid][pTimeCraft] = 10;
+									SetTimerEx("TimeCraftMed", 60000, 0, "d", playerid);
+								}
+								else return SendErrorMessage(playerid, " Ban khong co du 30 duoc lieu de che tao.");
+							}
+							else return SendErrorMessage(playerid, " Ban vua che medkit trong vong 10 phut tro lai roi, vui long doi.");
+						}
+						else return SendErrorMessage(playerid, " Ban khong the su dung lenh nay.");
+						return 1;
+					}
+					else
+					{
+					    SendErrorMessage(playerid, " Ban khong the che tao o day, hay ve locker cua to chuc.");
+						return 1;
+					}
+				}
+			}
+		}
+	}
+	SendErrorMessage(playerid, " Ban khong o gan tu lay do!");
+	return 1;
+}
+
 
 CMD:editgroup(playerid, params[]) {
 	if(PlayerInfo[playerid][pAdmin] >= 1337 || PlayerInfo[playerid][pFactionModerator] >= 2)

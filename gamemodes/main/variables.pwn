@@ -793,6 +793,7 @@ enum pInfo
 	pBannedBy[MAX_PLAYER_NAME],
 	pReasonBanned[128],
 	pRankText[64],
+	pTimeCraft,
 	pFlag[128],
 	pMaHieu1,
 	pHyp,
