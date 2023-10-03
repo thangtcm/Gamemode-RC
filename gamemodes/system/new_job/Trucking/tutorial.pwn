@@ -3,6 +3,7 @@
 hook OnPlayerConnect(playerid)
 {
 	LoadTutorialTruck(playerid);
+    TutorialTruck_Timer[playerid] = -1;
 	return 1;
 }
 
@@ -10,6 +11,7 @@ hook OnPlayerDisconnect(playerid, reason)
 {
 	for(new i = 0 ; i < 6; i++)
 		PlayerTextDrawDestroy(playerid, Tutorial_Truck[playerid][i]);
+    KillTimer(TutorialTruck_Timer[playerid]);
 	return 1;
 }
 
@@ -90,7 +92,7 @@ stock ShowTutorialTruck(playerid, const header[], const message[])
 	format(string, sizeof(string), "%s", message); 
     format(strHeader, sizeof(strHeader), "%s", header);
     PlayerTextDrawSetString(playerid, Tutorial_Truck[playerid][2], strHeader);
-    CreateTextdrawAnimation(playerid, Tutorial_Truck[playerid][4], 75, "~p~", string);
+    CreateTextdrawAnimation(playerid, Tutorial_Truck[playerid][4], 25, "~p~", string);
     SelectTextDraw(playerid, 0x7A342CFF);
     for(new i = 0 ; i < 6; i++)
 		PlayerTextDrawShow(playerid, Tutorial_Truck[playerid][i]);

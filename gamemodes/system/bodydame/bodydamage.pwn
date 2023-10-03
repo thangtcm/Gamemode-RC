@@ -339,8 +339,14 @@ hook OnPlayerTakeDamage(playerid, issuerid, Float:amount, weaponid, bodypart)
 				else 
 				{
 					SetPlayerHealth(playerid,health-floatround(damage/2));
+					printf("armour < 0 %d -- %d", health-floatround(damage/2), armour-damage);
 					return SetPlayerArmour(playerid,armour-damage);
 				}	
+			}
+			else
+			{
+				SetPlayerHealth(playerid,health-damage);
+				printf("health < 0 %d ", health-damage);
 			}  	
 		}	
     }

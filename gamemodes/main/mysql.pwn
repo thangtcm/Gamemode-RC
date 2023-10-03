@@ -352,7 +352,6 @@ public OnQueryFinish(resultid, extraid, handleid)
 					cache_get_field_content(row,  "CMND", szResult, MainPipeline); PlayerInfo[extraid][pCMND] = strval(szResult);
 					cache_get_field_content(row,  "MaskID1", szResult, MainPipeline); PlayerInfo[extraid][pMaskID][0] = strval(szResult);
 					cache_get_field_content(row,  "MaskID2", szResult, MainPipeline); PlayerInfo[extraid][pMaskID][1] = strval(szResult);
-					cache_get_field_content(row,  "RegisterCarTruck", szResult, MainPipeline); PlayerInfo[extraid][pRegisterCarTruck] = strval(szResult);
 					cache_get_field_content(row,  "SeniorModerator", szResult, MainPipeline); PlayerInfo[extraid][pSMod] = strval(szResult);
 					cache_get_field_content(row,  "DonateRank", szResult, MainPipeline); PlayerInfo[extraid][pDonateRank] = strval(szResult);
 					cache_get_field_content(row,  "Respect", szResult, MainPipeline); PlayerInfo[extraid][pExp] = strval(szResult);
@@ -2979,7 +2978,6 @@ stock g_mysql_SaveAccount(playerid)
     SavePlayerInteger(query, GetPlayerSQLId(playerid), "Level", PlayerInfo[playerid][pLevel]);
     SavePlayerInteger(query, GetPlayerSQLId(playerid), "AdminLevel", PlayerInfo[playerid][pAdmin]); 
     SavePlayerInteger(query, GetPlayerSQLId(playerid), "CMND", PlayerInfo[playerid][pCMND]);
-	SavePlayerInteger(query, GetPlayerSQLId(playerid), "RegisterCarTruck", PlayerInfo[playerid][pRegisterCarTruck]);
 	SavePlayerInteger(query, GetPlayerSQLId(playerid), "MaskID1", PlayerInfo[playerid][pMaskID][0]);
 	SavePlayerInteger(query, GetPlayerSQLId(playerid), "MaskID2", PlayerInfo[playerid][pMaskID][1]);
 	SavePlayerInteger(query, GetPlayerSQLId(playerid), "SeniorModerator", PlayerInfo[playerid][pSMod]);
@@ -7951,7 +7949,7 @@ public OnPlayerLoad(playerid)
 		PlayerInfo[playerid][pRadioFreq] = 0;
 		PlayerInfo[playerid][pPermaBanned] = 0;
 		PlayerInfo[playerid][pDonateRank] = 0;
-		PlayerInfo[playerid][pRegisterCarTruck] = 0;
+		PlayerInfo[playerid][pRegisterCarTruck] = -1;
 		PlayerInfo[playerid][pMaskOn] = 0;
 		PlayerInfo[playerid][pMaskID][0] = random(90000) + 10000;
 		PlayerInfo[playerid][pMaskID][1] = random(40) + 59;

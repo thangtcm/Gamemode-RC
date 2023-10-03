@@ -7,6 +7,7 @@
 //new Text3D:cNametag[MAX_PLAYERS];
 // new Text3D:Player3DText[MAX_PLAYERS];
 new PlayerNameTag[MAX_PLAYERS][MAX_PLAYERS][128];
+new PlayerNameTagType[MAX_PLAYERS][MAX_PLAYERS];
 new Timer:myNameTagTimer[MAX_PLAYERS] = {Timer:-1, ...};
 stock GetHealthDots(playerid)
 {
@@ -78,40 +79,33 @@ timer UpdateNameTagTimer[500](playerid)
     {
         if(IsPlayerConnected(i))
         {
-            new nametag[128], Float:armour;
+            new nametag[228], Float:armour;
             GetPlayerArmour(i, armour);
 			if(PlayerInfo[i][pMaskOn])
 			{
-				format(nametag, 128, "[Mask %d_%d]", PlayerInfo[i][pMaskID][0], PlayerInfo[i][pMaskID][1]);
+				format(nametag, sizeof(nametag), "{%06x}[Mask %d_%d]{FFFFFF} (%d)", GetPlayerColor(i) >>> 8, PlayerInfo[i][pMaskID][0], PlayerInfo[i][pMaskID][1], i);
 			}
 			else if(!ProxDetectorS(6.0, playerid, i) && !PlayerInfo[i][pMaskOn])
 			{
-            	format(nametag, 128, "Stranger_%d_%d", PlayerInfo[i][pMaskID][0], PlayerInfo[i][pMaskID][1]);
+            	format(nametag, sizeof(nametag), "{%06x}Stranger_%d_%d{FFFFFF} (%d)", GetPlayerColor(i) >>> 8, PlayerInfo[i][pMaskID][0], PlayerInfo[i][pMaskID][1], i);
 			}
 			else if(ProxDetectorS(6.0, playerid, i) && !PlayerInfo[i][pMaskOn])
 			{
-				GetPlayerName(i, nametag, 128);
+				format(nametag, sizeof(nametag), "{%06x}%s{FFFFFF} (%d)", GetPlayerColor(i) >>> 8, GetPlayerNameEx(i), i);
 			}
 			if(IsPlayerPaused(i))
 			{
 				format(nametag, sizeof(nametag), "{F81414}[AFK]{FFFFFF} {%06x}%s{FFFFFF} (%i)", GetPlayerColor(i) >>> 8,nametag, i);
 			}
-            else
-            {
-            	if(armour > 1.0)
-            	{
-               	    format(nametag, sizeof(nametag), "{%06x}%s{FFFFFF} (%i)", GetPlayerColor(i) >>> 8, nametag, i);
-            	}
-           	 	else
-            	{
-                	format(nametag, sizeof(nametag), "{%06x}%s{FFFFFF} (%i)", GetPlayerColor(i) >>> 8, nametag, i);
-           		}
-            }
-			if(strcmp(PlayerNameTag[playerid][i], nametag, true))	
+			if(armour > 1.0)
 			{
-				strcpy(PlayerNameTag[playerid][i], nametag, 128);
-				UpdateDynamic3DTextLabelText(PlayerInfo[i][pNameTag], COLOR_WHITE, nametag);
+				format(nametag, sizeof(nametag), "%s\n{FFFFFF}%s\n{FF0000}%s", nametag, GetArmorDots(i), GetHealthDots(i));
 			}
+			else
+			{
+				format(nametag, sizeof(nametag), "%s\n{FF0000}%s", nametag, GetHealthDots(i));
+			}
+			UpdateDynamic3DTextLabelText(PlayerInfo[i][pNameTag], COLOR_WHITE, nametag);
         }
     }
     return 1;

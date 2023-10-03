@@ -991,6 +991,7 @@ public OnPlayerClickPlayerTextDraw(playerid, PlayerText:playertextid)
 			CancelSelectTextDraw(playerid);
 			SetCameraBehindPlayer(playerid);
 			DeletePVar(playerid, "ViewTutorialTruck");
+			KillTimer(TutorialTruck_Timer[playerid]);
 		}
 	}
 	
@@ -1783,6 +1784,7 @@ public OnPlayerConnect(playerid) {
 	PlayerInfo[playerid][pDangHelp] = 0;
 	PlayerInfo[playerid][pMaskOn] = false;
 	PlayerInfo[playerid][pRansack] = INVALID_PLAYER_ID;
+	PlayerInfo[playerid][pRegisterCarTruck] = -1;
 	courtjail[playerid]=0;
 	gLastCar[playerid]=0;
 	FirstSpawn[playerid]=0;

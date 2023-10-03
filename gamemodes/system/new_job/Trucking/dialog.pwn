@@ -137,7 +137,7 @@ Dialog:DIALOG_BUYPRODUCT(playerid, response, listitem, inputtext[])
 	{
         new factoryID = GetPVarInt(playerid, "BUY_FactoryID");
         new index = PlayerTruckerData[playerid][MissionBuy][listitem];
-        new money = FactoryData[factoryID][ProductPrice][index] * -1;
+        new money = FactoryData[factoryID][ProductPrice][index];
         if(GetPlayerCash(playerid < money)) return SendErrorMessage(playerid, "Ban khong du tien de mua thung hang nay.");
         if(FactoryData[factoryID][WareHouse][index] <= 0) return SendErrorMessage(playerid, "Nha may nay khong du so luong san pham de ban cho ban.");
         new str[256];
@@ -149,7 +149,7 @@ Dialog:DIALOG_BUYPRODUCT(playerid, response, listitem, inputtext[])
         new moneyzxc[30];
         format(moneyzxc, 30, "%d$", FactoryData[factoryID][ProductPrice][index]);
         SendLogToDiscordRoom("LOG MUA THÙNG HÀNG", "1157969036848668733", "Name", GetPlayerNameEx(playerid), "Đã mua", ProductData[productID][ProductName], "Giá tiền", moneyzxc, 0x992422);
-        GivePlayerCash(playerid, money);
+        GivePlayerCash(playerid, money*-1);
         RemoveMissionProduct(playerid, productID);
         pLoadProduct[playerid] = productID;
         SendClientMessageEx(playerid, COLOR_1YELLOW, str);

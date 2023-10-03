@@ -34,3 +34,4 @@
 [10/03/23 06:06:45] [ERROR] can't update guild member: user id "750212447826083971" not cached
 [10/03/23 06:12:41] [WARNING] Unknown gateway event 'GUILD_MEMBERS_CHUNK'
 [10/03/23 06:13:17] [WARNING] Unknown gateway event 'GUILD_MEMBERS_CHUNK'
+[10/03/23 18:12:15] [WARNING] Unknown gateway event 'GUILD_MEMBERS_CHUNK'
