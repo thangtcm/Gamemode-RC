@@ -1,4 +1,3 @@
-./main/_funcs.pwn(8006) : èäåíòèôèêàòîð íå èñïîëüçóåòñÿ: "Cong_Vien_RC"
 ./main/_funcs.pwn(8005) : èäåíòèôèêàòîð íå èñïîëüçóåòñÿ: "CityHall_RC"
 ./main/_funcs.pwn(8004) : èäåíòèôèêàòîð íå èñïîëüçóåòñÿ: "Tu_RCPD"
 ./main/_funcs.pwn(8003) : èäåíòèôèêàòîð íå èñïîëüçóåòñÿ: "Tru_So_RCPD"
