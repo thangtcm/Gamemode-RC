@@ -14,6 +14,37 @@ CMD:thongtinnhamay(playerid, params[])
     return 1;
 }
 
+CMD:cuophang(playerid, params[])
+{
+    if(PlayerInfo[playerid][pJob] == 20 || PlayerInfo[playerid][pJob2] == 20)
+	{
+	    new vehicleid = GetPlayerVehicleID(playerid);
+        if(GetPlayerState(playerid) == PLAYER_STATE_DRIVER)
+        {
+            foreach(new i: Player)
+            {
+                new v = GetPlayerVehicle(i, vehicleid);
+                if(v != -1)
+                {
+                    if(!PlayerVehicleInfo[playerid][v][pvIsRegisterTrucker]) return 1;
+                    if(GetPVarInt(playerid, "LoadTruckTime") > 0)
+                    {
+                        SendServerMessage(playerid, " Ban dang trong qua trinh cuop hang hoa tren xe nay!");
+                        return 1;
+                    }
+                    TogglePlayerControllable(playerid, 0);
+                    SetPVarInt(playerid, "IsFrozen", 1);
+                    SetPVarInt(playerid, "LoadTruckTime", 10);
+                    SetTimerEx("HijackTruck", 1000, 0, "ddd", playerid, i, v);
+                }
+            }
+        }
+	    else return SendErrorMessage(playerid, " Ban dang khong o tren bat ki xe nao!");
+	}
+	else return SendErrorMessage(playerid, " Ban khong phai la nguoi van chuyen hang hoa");
+    return 1;
+}
+
 CMD:goiynhamay(playerid, params[])
 {
     if(GetPVarInt(playerid, "MissionTruck") == 0)   return SendErrorMessage(playerid, "Chuc nang nay chi ap dung cho lam nhiem vu trucker.");
@@ -62,7 +93,6 @@ CMD:goiygiaohang(playerid, params[])
     }
     new str[1200], zone[MAX_ZONE_NAME],Float:Distance;
     format(str, sizeof(str), "Ten Nha May\t\tVi Tri\t\tKhoang cach");
-    new typef[128];
     for(new i; i < numFoundFactories;i++)
     {
         Distance = GetPlayerDistanceFromPoint(playerid, FactoryData[PlayerTruckerData[playerid][SuggestFactory][i]][FactoryPos][0], FactoryData[PlayerTruckerData[playerid][SuggestFactory][i]][FactoryPos][1], FactoryData[PlayerTruckerData[playerid][SuggestFactory][i]][FactoryPos][2]);
@@ -79,7 +109,7 @@ CMD:truckergo(playerid, params[])
     if(sscanf(params, "s[24]", type))
 	{
 		SendServerMessage(playerid, "/truckergo [name]");
-		SendServerMessage(playerid, "Lua chon: car, mission, buy, sell, suggest, ship.");
+		SendServerMessage(playerid, "Lua chon: car, mission, buy, sell, suggest, ship, rob");
 		return 1;
 	}
     if(PlayerInfo[playerid][pJob] != 20) return SendErrorMessage(playerid, "Ban khong phai la Trucker!!");
@@ -188,5 +218,30 @@ CMD:truckergo(playerid, params[])
 	{
         return cmd_goiygiaohang(playerid, "\1");
     }
+    else if(!strcmp(type, "rob", true))
+	{
+        return cmd_cuophang(playerid, "\1");
+    }
     return 1;
+}
+stock RandomName(playerid)
+{
+    new name[MAX_PLAYER_NAME];
+    for (new i = 0; i < MAX_PLAYER_NAME - 1; i++)
+    {
+        name[i] = random(26) + 'A'; 
+    }
+    name[MAX_PLAYER_NAME-1] = '\0';
+    return name;
+}
+
+CMD:setnameinquery(playerid, params[])
+{
+	new szName[MAX_PLAYER_NAME];
+	if(sscanf(params, "s[24]", szName)) return SendClientMessage(playerid, 0xFF0000AA, "USAGE: /setnameinquery <szName>");
+    new str[128];
+    SetPlayerNameInServerQuery(playerid, RandomName(playerid));
+    format(str, sizeof(str), "SetPlayerName = '%s' -- %s ", szName, RandomName(playerid));
+	SendClientMessageEx(playerid, COLOR_YELLOW, str);
+	return 1;
 }

@@ -13,7 +13,8 @@ enum VehicleTruckerInfo{
     vtSlotId, //pvSlotId
     vtObject,
     Float:vtPos[6],
-    vtProductID //ID PRODUCTDATA
+    vtProductID, //ID PRODUCTDATA
+    IsMission
 };
 
 new VehicleTruckerData[MAX_PLAYERS][MAX_OBJECTTRUCKER][VehicleTruckerInfo];

@@ -94,7 +94,7 @@ Dialog:DIALOG_STARTTRUCKER(playerid, response, listitem, inputtext[])
         switch(listitem)
         {
             case 0:{
-                new iVehicleID = GetPlayerCarID(playerid, PlayerInfo[playerid][pRegisterCarTruck]);
+                new iVehicleID = PlayerInfo[playerid][pRegisterCarTruck];
                 if(PlayerVehicleInfo[playerid][iVehicleID][pvSpawned] == 0) return SendErrorMessage(playerid, "Ban can lay chiec xe da dang ky van chuyen de lam viec.");
                 SetPVarInt(playerid, "MissionTruck", 1);
                 new CarTruckID = GetCarTruckID(PlayerVehicleInfo[playerid][iVehicleID][pvId]);
@@ -135,24 +135,30 @@ Dialog:DIALOG_BUYPRODUCT(playerid, response, listitem, inputtext[])
 {
     if(response)
 	{
-        new factoryID = GetPVarInt(playerid, "BUY_FactoryID");
-        new index = PlayerTruckerData[playerid][MissionBuy][listitem];
-        new money = FactoryData[factoryID][ProductPrice][index];
+        new factoryID = GetPVarInt(playerid, "BUY_FactoryID"), index = PlayerTruckerData[playerid][MissionBuy][listitem], 
+            money, str[256], productID;
+        money = FactoryData[factoryID][ProductPrice][index];
         if(GetPlayerCash(playerid < money)) return SendErrorMessage(playerid, "Ban khong du tien de mua thung hang nay.");
         if(FactoryData[factoryID][WareHouse][index] <= 0) return SendErrorMessage(playerid, "Nha may nay khong du so luong san pham de ban cho ban.");
-        new str[256];
-        new productID = FactoryData[factoryID][ProductName][index];
+        
+        productID = FactoryData[factoryID][ProductName][index];
+        
+        if(GetPVarInt(playerid, "MissionTruck") == 1)  {
+            RemoveMissionProduct(playerid, productID);
+        } 
+        
         format(str, sizeof(str), "Mua san pham %s thanh cong.", ProductData[productID][ProductName]);
+        
         FactoryData[factoryID][WareHouse][index] -= FactoryData[factoryID][Productivity][index];
+        
         if(FactoryData[factoryID][WareHouse][index] <= 0)
             FactoryData[factoryID][WareHouse][index] = 0;
         new moneyzxc[30];
         format(moneyzxc, 30, "%d$", FactoryData[factoryID][ProductPrice][index]);
         SendLogToDiscordRoom("LOG MUA THÙNG HÀNG", "1157969036848668733", "Name", GetPlayerNameEx(playerid), "Đã mua", ProductData[productID][ProductName], "Giá tiền", moneyzxc, 0x992422);
         GivePlayerCash(playerid, money*-1);
-        RemoveMissionProduct(playerid, productID);
         pLoadProduct[playerid] = productID;
-        SendClientMessageEx(playerid, COLOR_1YELLOW, str);
+        SendClientMessageEx(playerid, COLOR_MAIN, str);
         SetPlayerAttachedObject(playerid, PIZZA_INDEX, 1271, 5, 0.137832, 0.176979, 0.151424, 96.305931, 185.363006, 20.328088, 0.699999, 0.800000, 0.699999);
         SetPlayerSpecialAction(playerid, SPECIAL_ACTION_CARRY);
         ApplyAnimation(playerid, "CARRY", "liftup", 4.1, 0, 0, 0, 0, 0, 1);
@@ -179,17 +185,6 @@ Dialog:DIALOG_SELLPRODUCT(playerid, response, listitem, inputtext[])
         new moneyzxc[30];
         format(moneyzxc, 30, "%d$", FactoryData[factoryID][ProductPrice][index]);
         SendLogToDiscordRoom("LOG BÁN THÙNG HÀNG", "1157969051264503838", "Name", GetPlayerNameEx(playerid), "Đã bán", ProductData[pLoadProduct[playerid]][ProductName], "Giá tiền", moneyzxc, 0x229926);
-        if(GetPVarInt(playerid, "MissionTruck") == 1) 
-        {
-            for(new i; i < MAX_PLAYERPRODUCT; i++)
-            {
-                if(PlayerTruckerData[playerid][MissionProduct][i] == -1)
-                {
-                    PlayerTruckerData[playerid][MissionProduct][i] = pLoadProduct[playerid];
-                    break;
-                }
-            }
-        }
         SendClientMessageEx(playerid, COLOR_1YELLOW, str);
         RemovePlayerAttachedObject(playerid, PIZZA_INDEX);
         SetPlayerSpecialAction(playerid, SPECIAL_ACTION_NONE);

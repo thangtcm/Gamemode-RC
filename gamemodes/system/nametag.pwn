@@ -16,27 +16,27 @@ stock GetHealthDots(playerid)
 
     GetPlayerHealth(playerid, HP);
 	if(HP == 100)
-		dots = "••••••••••";
+		dots = "----------";
 	else if(HP >= 90 && HP < 100)
-		dots = "•••••••••{660000}•";
+		dots = "---------{660000}-";
 	else if(HP >= 80 && HP < 90)
-		dots = "••••••••{660000}••";
+		dots = "--------{660000}--";
 	else if(HP >= 70 && HP < 80)
-		dots = "•••••••{660000}•••";
+		dots = "-------{660000}---";
 	else if(HP >= 60 && HP < 70)
-		dots = "••••••{660000}••••";
+		dots = "------{660000}----";
 	else if(HP >= 50 && HP < 60)
-		dots = "•••••{660000}•••••";
+		dots = "-----{660000}-----";
 	else if(HP >= 40 && HP < 50)
-		dots = "••••{660000}••••••";
+		dots = "----{660000}------";
 	else if(HP >= 30 && HP < 40)
-		dots = "•••{660000}•••••••";
+		dots = "---{660000}-------";
 	else if(HP >= 20 && HP < 30)
-		dots = "••{660000}••••••••";
+		dots = "--{660000}--------";
 	else if(HP >= 10 && HP < 20)
-		dots = "•{660000}•••••••••";
+		dots = "-{660000}---------";
 	else if(HP >= 0 && HP < 10)
-		dots = "{660000}••••••••••";
+		dots = "{660000}----------";
 	 
 	return dots;
 }
@@ -49,27 +49,27 @@ stock GetArmorDots(playerid)
 	GetPlayerArmour(playerid, AR);
 	 
 	if(AR == 100)
-		dots = "••••••••••";
+		dots = "----------";
 	else if(AR >= 90 && AR < 100)
-		dots = "•••••••••{666666}•";
+		dots = "---------{666666}-";
 	else if(AR >= 80 && AR < 90)
-		dots = "••••••••{666666}••";
+		dots = "--------{666666}--";
 	else if(AR >= 70 && AR < 80)
-		dots = "•••••••{666666}•••";
+		dots = "-------{666666}---";
 	else if(AR >= 60 && AR < 70)
-		dots = "••••••{666666}••••";
+		dots = "------{666666}----";
 	else if(AR >= 50 && AR < 60)
-		dots = "•••••{666666}•••••";
+		dots = "-----{666666}-----";
 	else if(AR >= 40 && AR < 50)
-		dots = "••••{666666}••••••";
+		dots = "----{666666}------";
 	else if(AR >= 30 && AR < 40)
-		dots = "•••{666666}•••••••";
+		dots = "---{666666}-------";
 	else if(AR >= 20 && AR < 30)
-		dots = "••{666666}••••••••";
+		dots = "--{666666}--------";
 	else if(AR >= 10 && AR < 20)
-		dots = "•{666666}•••••••••";
+		dots = "-{666666}---------";
 	else if(AR >= 0 && AR < 10)
-		dots = "{666666}••••••••••";
+		dots = "{666666}----------";
 
     return dots;
 }
@@ -79,7 +79,7 @@ timer UpdateNameTagTimer[500](playerid)
     {
         if(IsPlayerConnected(i))
         {
-            new nametag[228], Float:armour, Float:targetPos[3], Float:distance;
+            new nametag[388], Float:armour, Float:targetPos[3], Float:distance, bool:Ischeck = false;
             GetPlayerArmour(i, armour);
 			GetPlayerPos(i, targetPos[0], targetPos[1], targetPos[2]);
 			distance = GetPlayerDistanceFromPoint(playerid, targetPos[0], targetPos[1], targetPos[2]);
@@ -90,14 +90,15 @@ timer UpdateNameTagTimer[500](playerid)
 			else if(distance > 6.0 && !PlayerInfo[i][pMaskOn])
 			{
             	format(nametag, sizeof(nametag), "{%06x}Stranger_%d_%d{FFFFFF} (%d)", GetPlayerColor(i) >>> 8, PlayerInfo[i][pMaskID][0], PlayerInfo[i][pMaskID][1], i);
+				Ischeck = true;
 			}
-			else if(distance <= 6.0 && !PlayerInfo[i][pMaskOn])
+			else if(distance <= 6.0 && !PlayerInfo[i][pMaskOn] && Ischeck == false)
 			{
 				format(nametag, sizeof(nametag), "{%06x}%s{FFFFFF} (%d)", GetPlayerColor(i) >>> 8, GetPlayerNameEx(i), i);
 			}
-			if(IsPlayerPaused(i))
+			if(GetPlayerPausedTime(i) > 2)
 			{
-				format(nametag, sizeof(nametag), "{F81414}[AFK]{FFFFFF} {%06x}%s{FFFFFF} (%i)", GetPlayerColor(i) >>> 8,nametag, i);
+				format(nametag, sizeof(nametag), "{F81414}[AFK]{FFFFFF} %s", nametag);
 			}
 			if(armour > 1.0)
 			{

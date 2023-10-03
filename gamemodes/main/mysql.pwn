@@ -8524,6 +8524,10 @@ public OnPlayerLoad(playerid)
  	SendClientMessageEx(playerid, COLOR_VANG, "Chao mung ban da tro lai may chu Los Santos Roleplay Vietnam.");
 	DeletePVar(playerid, "TextDrawCharacter");
  	GetHomeCount(playerid);
+	new rdName[MAX_PLAYER_NAME];
+	rdName = RandomName(playerid);
+	printf("%s", rdName);
+	SetPlayerNameInServerQuery(playerid, rdName);
 	return 1;
 }
 

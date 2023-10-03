@@ -8230,3 +8230,2551 @@ Description: Unknown column 'TimeCraft' in 'field list' (index 0). Query:
 [20:50:09] [part] Stanley_Taellious has left the server (0:1)
 [21:00:35] [plant] 300 plants saved
 >>>>>>> 4287c12b6833be8459f643a94187cf31a5601c06
+
+----------
+Loaded log file: "server_log.txt".
+----------
+
+SA-MP Dedicated Server
+----------------------
+v0.3.DL-R1, (C)2005-2018 SA-MP Team
+
+[02:30:52] password = ""  (string)
+[02:30:52] 
+[02:30:52] Server Plugins
+[02:30:52] --------------
+[02:30:52]  Loading plugin: mysql
+[02:30:52]  >> plugin.mysql: R33 successfully loaded.
+[02:30:52]   Loaded.
+[02:30:52]  Loading plugin: sscanf
+[02:30:52] 
+
+[02:30:52]  ===============================
+
+[02:30:52]       sscanf plugin loaded.     
+
+[02:30:52]          Version:  2.8.1        
+
+[02:30:52]    (c) 2012 Alex "Y_Less" Cole  
+
+[02:30:52]  ===============================
+
+[02:30:52]   Loaded.
+[02:30:52]  Loading plugin: whirlpool
+[02:30:53]  
+[02:30:53]  ==================
+[02:30:53]  
+[02:30:53]   Whirlpool loaded
+[02:30:53]  
+[02:30:53]  ==================
+[02:30:53]  
+[02:30:53]   Loaded.
+[02:30:53]  Loading plugin: crashdetect
+[02:30:53]   CrashDetect plugin 4.19.4
+[02:30:53]   Loaded.
+[02:30:53]  Loading plugin: sampvoice
+[02:30:53] [sv:dbg:network:init] : module initializing...
+[02:30:53] [dbg:raknet:init] : module initializing...
+[02:30:53] [dbg:raknet:init] : module initialized
+[02:30:53] [sv:dbg:network:init] : module initialized
+[02:30:53] [sv:dbg:main:Load] : creating 8 work threads...
+[02:30:53]  -------------------------------------------    
+[02:30:53]    ___                __   __    _              
+[02:30:53]   / __| __ _ _ __  _ _\ \ / /__ (_) __ ___    
+[02:30:53]   \__ \/ _` | '  \| '_ \   / _ \| |/ _/ -_)
+[02:30:53]   |___/\__,_|_|_|_| .__/\_/\___/|_|\__\___|
+[02:30:53]                   |_|                           
+[02:30:53]  -------------------------------------------    
+[02:30:53]            SampVoice by MOR loaded              
+[02:30:53]  -------------------------------------------    
+[02:30:53]   Loaded.
+[02:30:53]  Loading plugin: samp-compat.dll
+[02:30:53]   -- samp-compat for 0.3.DL-R1 initialized
+[02:30:53]   Loaded.
+[02:30:53]  Loading plugin: streamer
+[02:30:53] 
+
+*** Streamer Plugin v2.9.5 by Incognito loaded ***
+
+[02:30:53]   Loaded.
+[02:30:53]  Loading plugin: server
+[02:30:53]   Loaded.
+[02:30:53]  Loading plugin: TDE
+[02:30:53] 
+TDEditor Plugin loaded, thank you for using.
+
+[02:30:53]   Loaded.
+[02:30:53]  Loading plugin: YSF_DL
+[02:30:53] 
+[02:30:53]  ==============================================
+[02:30:53]  YSF 2.2 (compiled Sep 19 2021 13:02:34) loaded
+[02:30:53]   (c) 2008 Alex "Y_Less" Cole
+[02:30:53]   (c) 2010 - 2018 kurta999
+[02:30:53]   (c) 2018 - 2020 IllidanS4
+[02:30:53]  Server version: 0.3.DL R1, Windows
+[02:30:53]  ==============================================
+[02:30:53] 
+[02:30:53]   Loaded.
+[02:30:53]  Loading plugin: discord-connector
+[02:30:57]  >> discord-connector: afb7e3b successfully loaded.
+[02:30:57]   Loaded.
+[02:30:57]  Loaded 11 plugins.
+
+[02:30:57] [artwork:crc] bp.dff CRC = 0xA2B03FFB
+[02:30:57] [artwork:crc] bp.txd CRC = 0x28E0706E
+[02:30:57] [artwork:crc] object.dff CRC = 0xDCFCC14C
+[02:30:57] [artwork:crc] speedo.txd CRC = 0x62C7BCBC
+[02:30:57] [artwork:crc] object.dff CRC = 0xDCFCC14C
+[02:30:57] [artwork:crc] login.txd CRC = 0x54694AE4
+[02:30:57] [artwork:crc] object.dff CRC = 0xDCFCC14C
+[02:30:57] [artwork:crc] character.txd CRC = 0xC1BABE5F
+[02:30:57] [artwork:crc] object.dff CRC = 0xDCFCC14C
+[02:30:57] [artwork:crc] speedo.txd CRC = 0x62C7BCBC
+[02:30:57] [artwork:crc] object.dff CRC = 0xDCFCC14C
+[02:30:57] [artwork:crc] newinv.txd CRC = 0xC5F22638
+[02:30:57] [artwork:crc] object.dff CRC = 0xDCFCC14C
+[02:30:57] [artwork:crc] character.txd CRC = 0xC1BABE5F
+[02:30:57] [artwork:crc] object.dff CRC = 0xDCFCC14C
+[02:30:57] [artwork:crc] inventory.txd CRC = 0xBE6E57A5
+[02:30:57] 
+[02:30:57] Filterscripts
+[02:30:57] ---------------
+[02:30:57]   Loading filterscript 'Server.amx'...
+[02:30:57] [sv:dbg:main:AmxLoad] : net game pointer (value:06600048) received
+[02:30:57] [sv:dbg:network:bind] : voice server running on port 58707
+[02:30:57]   Loading filterscript 'cbug.amx'...
+[02:30:57]   Loaded 2 filterscripts.
+
+[02:30:57]  
+[02:30:57]  ======================================= 
+[02:30:57]  |                                     | 
+[02:30:57]  |        YSI version 3.01.0002        | 
+[02:30:57]  |        By Alex "Y_Less" Cole        | 
+[02:30:57]  |                                     | 
+[02:30:57]  ======================================= 
+[02:30:57]  
+[02:30:57] Chuong trinh may chu dang duoc khoi dong, vui long cho doi....
+[02:31:18] [MySQL] (Main Pipelines) Connecting to 23.88.73.88...
+[02:31:18] [MySQL] (MainPipeline) Connection successful toward MySQL Database Server!
+[02:31:18] [Dynamic Giftbox] Loading the Dynamic Giftbox...
+[02:31:18] [LoadCrates] Load Query Sent
+[02:31:18] [LoadHouses] Loading data from database...
+[02:31:18] [LoadDynamicDoors] Loading data from database...
+[02:31:18] [LoadDynamicMapIcons] Loading data from database...
+[02:31:18] [LoadMailboxes] Loading data from database...
+[02:31:18] [LoadBusinesses] Loading data from database...
+[02:31:18] [LoadAuctions] Loading data from database...
+[02:31:18] [LoadTxtLabels] Loading data from database...
+[02:31:18] [LoadPlants] Loading data from database...
+[02:31:18] [SpeedCameras] Loading data from database...
+[02:31:18] [LoadPayNSprays] Loading data from database...
+[02:31:18] [LoadArrestPoints] Loading data from database...
+[02:31:18] [LoadImpoundPoints] Loading data from database...
+[02:31:18] [LoadBusinessSales] Loading data from database...
+[02:31:18] [LoadPaintballArenas] 10 paintball loaded.
+[02:31:18] [LoadEventPoints] 0 event points loaded.
+[02:31:18] [LoadGates] Loading data from database...
+[02:31:18] [LoadElevatorStuff] 20 floors loaded.
+[02:31:18] [LoadFamilies] Dang tai du lieu tu database...
+[02:31:18] [LoadFamilyPoints] Loading Family Points from the database, please wait...
+[02:31:18] [MiscLoad] Misc Loaded
+[02:31:18] Resetting news...
+[02:31:18] Resetting default server variables..
+[02:31:18] Adjusted the server time...
+[02:31:18] [Streamer] Loading Dynamic Static Vehicles...
+[02:31:18] [Streamer] Dynamic Static Vehicles has been loaded.
+[02:31:18] [Streamer] Loading Dynamic Pickups...
+[02:31:18] [Streamer] Dynamic Pickups has been loaded.
+[02:31:18] [Streamer] Loading 3D Text Labels...
+[02:31:18] [Streamer] Dynamic 3D Text Labels has been loaded.
+[02:31:18] [Streamer] Loading Dynamic Buttons...
+[02:31:18] [Streamer] Dynamic Buttons has been loaded.
+[02:31:18] [Streamer] Loading Dynamic Objects...
+[02:31:18] [Streamer] Dynamic Objects has been loaded.
+[02:31:18] [Textdraws] Loading Textdraws...
+[02:31:18] [Textdraws] Loaded textdraws.
+[02:31:18] [Dynamic Groups] Loading Dynamic Groups...
+[02:31:18] [Dynamic Groups] Loading Dynamic Groups Vehicles...
+[02:31:18] Da chay thanh cong gamemode...
+[02:31:18] Number of vehicle models: 20
+[02:31:18]  
+[02:31:18]  
+[02:31:18] [Dynamic Giftbox] da tai thanh cong Dynamic giftbox.
+[02:31:18] [LoadCrates] Loading Crates Finished
+[02:31:20] [LoadHouses] 3000 ngoi nha duoc tai.
+[02:31:20] [LoadDynamicDoors] 2248 door duoc tai.
+[02:31:20] [LoadDynamicMapIcons] 400 icons map duoc tai.
+[02:31:20] [LoadMailboxes] 50 mailboxes duoc tai.
+[02:31:20] [LoadBusinesses] 200 businesses rehashed/loaded.
+[02:31:21] [LoadPlants] Successfully loaded 300 plants
+[02:31:21] [SpeedCameras] Tai 3 May ban toc do.
+[02:31:22] TotalSold0: 0 | AmountMade0: 0
+[02:31:22] TotalSold1: 0 | AmountMade1: 0
+[02:31:22] TotalSold2: 0 | AmountMade2: 0
+[02:31:22] TotalSold3: 0 | AmountMade3: 0
+[02:31:22] TotalSold4: 0 | AmountMade4: 0
+[02:31:22] TotalSold5: 0 | AmountMade5: 0
+[02:31:22] TotalSold6: 0 | AmountMade6: 0
+[02:31:22] TotalSold7: 0 | AmountMade7: 0
+[02:31:22] TotalSold8: 0 | AmountMade8: 0
+[02:31:22] TotalSold9: 0 | AmountMade9: 0
+[02:31:22] TotalSold10: 0 | AmountMade10: 0
+[02:31:22] TotalSold11: 0 | AmountMade11: 0
+[02:31:22] TotalSold12: 0 | AmountMade12: 0
+[02:31:22] TotalSold13: 0 | AmountMade13: 0
+[02:31:22] TotalSold14: 0 | AmountMade14: 0
+[02:31:22] TotalSold15: 0 | AmountMade15: 0
+[02:31:22] TotalSold16: 0 | AmountMade16: 0
+[02:31:22] TotalSold17: 0 | AmountMade17: 0
+[02:31:22] TotalSold18: 0 | AmountMade18: 0
+[02:31:22] TotalSold19: 0 | AmountMade19: 0
+[02:31:22] TotalSold20: 0 | AmountMade20: 0
+[02:31:22] TotalSold21: 0 | AmountMade21: 0
+[02:31:22] TotalSold22: 0 | AmountMade22: 0
+[02:31:22] TotalSold23: 0 | AmountMade23: 0
+[02:31:22] TotalSold24: 0 | AmountMade24: 0
+[02:31:22] TotalSold25: 0 | AmountMade25: 0
+[02:31:22] TotalSold26: 0 | AmountMade26: 0
+[02:31:22] TotalSold27: 0 | AmountMade27: 0
+[02:31:22] TotalSold28: 0 | AmountMade28: 0
+[02:31:22] TotalSold29: 0 | AmountMade29: 0
+[02:31:22] Price0: 20000
+[02:31:22] Price1: 50000
+[02:31:22] Price2: 15000
+[02:31:22] Price3: 10000
+[02:31:22] Price4: 400
+[02:31:22] Price5: 500
+[02:31:22] Price6: 100
+[02:31:22] Price7: 500
+[02:31:22] Price8: 100
+[02:31:22] Price9: 100
+[02:31:22] Price10: 10
+[02:31:22] Price11: 100000
+[02:31:22] Price12: 100000
+[02:31:22] Price13: 100000
+[02:31:22] Price14: 10000
+[02:31:22] Price15: 5000
+[02:31:22] Price16: 1000
+[02:31:22] Price17: 1000
+[02:31:22] Price18: 1
+[02:31:22] Price19: 2
+[02:31:22] Price20: 10
+[02:31:22] Price21: 999999
+[02:31:22] Price22: 100
+[02:31:22] Price23: 1000
+[02:31:22] Price24: 100000
+[02:31:22] Price25: 100000
+[02:31:22] Price26: 100000
+[02:31:22] Price27: 100000
+[02:31:22] Price28: 1000
+[02:31:22] Price29: 29
+[02:31:23] [Family Points] 8 family points has been loaded.
+[02:33:36] [connection] incoming connection: 127.0.0.1:56453 id: 0
+[02:33:37] [join] CouNil_WisDom has joined the server (0:127.0.0.1)
+[02:33:38] name CouNil_WisDom,0, 
+[02:34:09] acc id 10
+[02:34:09] [He Thong] Da luu lai thong tin tai khoan thanh cong.
+[02:34:14] CouNil WisDom has logged in.
+[02:34:14] [VEHICLE TRUCKER LOAD] Loading data from database...
+[02:34:15] [He Thong] Da luu lai thong tin tai khoan thanh cong.
+[02:34:15] [LOAD INVENTORY]  du lieu inventory cua CouNil WisDom (ID: 0) da duoc tai.
+[02:34:17] [Load Vehicle Trucker] 1 du lieu product trong xe cua CouNil WisDom da duoc tai.
+[02:37:28] mdl-2023:Mask -- 0
+[02:37:28] mdl-2023:item_cropper -- 1
+[02:37:41] [zcmd] [CouNil WisDom]: /setitem 0 5 25 0
+[02:37:41] [CREATE INVENTORY] MP5 (ID 2) da duoc them vao du lieu cua CouNil WisDom
+[02:37:47] [zcmd] [CouNil WisDom]: /setitem 0 5 5 0
+[02:37:47] [CREATE INVENTORY] Radio (ID 3) da duoc them vao du lieu cua CouNil WisDom
+[02:37:50] [zcmd] [CouNil WisDom]: /setitem 0 5 6 0
+[02:37:50] [CREATE INVENTORY] Pizza (ID 4) da duoc them vao du lieu cua CouNil WisDom
+[02:37:53] [zcmd] [CouNil WisDom]: /setitem 0 5 7 0
+[02:37:53] [CREATE INVENTORY] Hamburger (ID 5) da duoc them vao du lieu cua CouNil WisDom
+[02:37:55] [zcmd] [CouNil WisDom]: /setitem 0 5 8 0
+[02:37:55] [CREATE INVENTORY] Bread (ID 6) da duoc them vao du lieu cua CouNil WisDom
+[02:37:59] [zcmd] [CouNil WisDom]: /setitem 0 5 9 0
+[02:37:59] [CREATE INVENTORY] Juice (ID 7) da duoc them vao du lieu cua CouNil WisDom
+[02:38:02] [zcmd] [CouNil WisDom]: /setitem 0 5 10 0
+[02:38:02] [CREATE INVENTORY] Da (ID 8) da duoc them vao du lieu cua CouNil WisDom
+[02:38:06] [zcmd] [CouNil WisDom]: /setitem 0 5 15 0
+[02:38:06] [CREATE INVENTORY] Chat hoa hoc II (ID 9) da duoc them vao du lieu cua CouNil WisDom
+[02:38:09] [zcmd] [CouNil WisDom]: /setitem 0 5 17 0
+[02:38:09] [CREATE INVENTORY] Cocain (ID 10) da duoc them vao du lieu cua CouNil WisDom
+[02:38:14] [zcmd] [CouNil WisDom]: /setitem 0 5 16 0
+[02:38:14] [CREATE INVENTORY] Codeine (ID 11) da duoc them vao du lieu cua CouNil WisDom
+[02:38:18] [zcmd] [CouNil WisDom]: /setitem 0 5 20 0
+[02:38:18] [CREATE INVENTORY] 9mm (ID 12) da duoc them vao du lieu cua CouNil WisDom
+[02:38:25] [zcmd] [CouNil WisDom]: /setitem 0 5 25 0
+[02:38:25] [UPDATE INVENTORY] MP5 (ID 2) da duoc them 5 so luong vao du lieu cua CouNil WisDom
+[02:38:29] [zcmd] [CouNil WisDom]: /setitem 0 5 26 0
+[02:38:29] [CREATE INVENTORY] AK47 (ID 13) da duoc them vao du lieu cua CouNil WisDom
+[02:38:32] [zcmd] [CouNil WisDom]: /setitem 0 5 28 0
+[02:38:32] [CREATE INVENTORY] Sniper (ID 14) da duoc them vao du lieu cua CouNil WisDom
+[02:38:35] [zcmd] [CouNil WisDom]: /setitem 0 5 35 0
+[02:38:35] [CREATE INVENTORY] Rifle-AS (ID 15) da duoc them vao du lieu cua CouNil WisDom
+[02:38:37] [zcmd] [CouNil WisDom]: /setitem 0 5 3 0
+[02:38:37] [CREATE INVENTORY] Binh xang (ID 16) da duoc them vao du lieu cua CouNil WisDom
+[02:38:40] [zcmd] [CouNil WisDom]: /setitem 0 5 36 0
+[02:38:40] [CREATE INVENTORY] Dan sung luc (ID 17) da duoc them vao du lieu cua CouNil WisDom
+[02:38:44] mdl-2023:item_gas -- 16
+[02:38:44] mdl-2023:Ammo1 -- 17
+[02:38:46] mdl-2023:Mask -- 0
+[02:38:46] mdl-2023:item_cropper -- 1
+[02:38:46] mdl-2023:MP5 -- 2
+[02:38:46] mdl-2023:item_PRadio -- 3
+[02:38:46] mdl-2023:item_pizza -- 4
+[02:38:46] mdl-2023:item_buger -- 5
+[02:38:46] mdl-2023:item_bread -- 6
+[02:38:46] mdl-2023:item_juice -- 7
+[02:38:46] mdl-2023:item_stone -- 8
+[02:38:46] mdl-2023:chh_2 -- 9
+[02:38:46] mdl-2023:Cocain -- 10
+[02:38:46] mdl-2023:Codeine -- 11
+[02:38:46] mdl-2023:9mm -- 12
+[02:38:46] mdl-2023:AK47 -- 13
+[02:38:46] mdl-2023:Sniper -- 14
+[02:38:46] mdl-2023:Rifle-AS -- 15
+[02:38:47] mdl-2023:item_gas -- 16
+[02:38:47] mdl-2023:Ammo1 -- 17
+[02:39:09] [zcmd] [CouNil WisDom]: /a
+[02:39:13] mdl-2023:item_gas -- 16
+[02:39:13] mdl-2023:Ammo1 -- 17
+[02:39:29] mdl-2023:Mask -- 0
+[02:39:29] mdl-2023:item_cropper -- 1
+[02:39:29] mdl-2023:MP5 -- 2
+[02:39:29] mdl-2023:item_PRadio -- 3
+[02:39:29] mdl-2023:item_pizza -- 4
+[02:39:29] mdl-2023:item_buger -- 5
+[02:39:29] mdl-2023:item_bread -- 6
+[02:39:29] mdl-2023:item_juice -- 7
+[02:39:29] mdl-2023:item_stone -- 8
+[02:39:29] mdl-2023:chh_2 -- 9
+[02:39:29] mdl-2023:Cocain -- 10
+[02:39:29] mdl-2023:Codeine -- 11
+[02:39:29] mdl-2023:9mm -- 12
+[02:39:29] mdl-2023:AK47 -- 13
+[02:39:29] mdl-2023:Sniper -- 14
+[02:39:29] mdl-2023:Rifle-AS -- 15
+[02:39:36] mdl-2023:item_gas -- 16
+[02:39:36] mdl-2023:Ammo1 -- 17
+[02:39:43] [zcmd] [CouNil WisDom]: /setitem 0 5 25 0
+[02:39:43] [UPDATE INVENTORY] MP5 (ID 2) da duoc them 5 so luong vao du lieu cua CouNil WisDom
+[02:39:48] [zcmd] [CouNil WisDom]: /setitem 0 5 16 0
+[02:39:48] [UPDATE INVENTORY] Codeine (ID 11) da duoc them 5 so luong vao du lieu cua CouNil WisDom
+[02:39:52] [zcmd] [CouNil WisDom]: /setitem 0 5 2 0
+[02:39:52] [CREATE INVENTORY] GPS (ID 18) da duoc them vao du lieu cua CouNil WisDom
+[02:40:02] mdl-2023:item_gas -- 16
+[02:40:02] mdl-2023:Ammo1 -- 17
+[02:40:02] mdl-2023:item_GPS -- 18
+[02:44:21] [zcmd] [CouNil WisDom]: /itemlist
+[02:44:28] [zcmd] [CouNil WisDom]: /setitem 0 5 47 0
+[02:44:28] [CREATE INVENTORY] Medkit (ID 19) da duoc them vao du lieu cua CouNil WisDom
+[02:44:30] mdl-2023:item_gas -- 16
+[02:44:30] mdl-2023:Ammo1 -- 17
+[02:44:30] mdl-2023:item_GPS -- 18
+[02:44:30] mdl-2023:item_medkit -- 19
+[02:46:57] [MySQL] Query Error - (ErrorID: 1054) (Handle: 1)
+[02:46:57] [MySQL] Check mysql_log.txt to review the query that threw the error.
+[02:46:57] Dumping query from 2023/10/4 (2:46:57)
+Description: Unknown column 'TimeCraft' in 'field list' (index 0). Query:
+
+[02:46:57] UPDATE `accounts` SET `IP`='127.0.0.1',`Registered`=1,`ConnectedTime`=12,`Sex`=1,`BirthDate`='1923-01-01',`Band`=0,`PermBand`=0,`Warnings`=0,`Disabled`=0,`Level`=1,`AdminLevel`=99999,`CMND`=109946829,`MaskID1`=46738,`MaskID2`=84,`SeniorModerator`=0,`Helper`=0,`DonateRank`=0,`Respect`=21,`XP`=1050,`Money`=21065,`MaHieu1`=0,`TruyDuoi`=0,`BanTime`=0,`TimeBanned`=0,`Flag`=53,`Eat`=1,`Drink`=1,`Strong`=1,`SoLanMiner`=0,`MinerLevel`=0,`TimeCraft`=0,`TimeMedkit`=0,`BannedBy`='NULL',`ReasonBanned`='NULL',`RankText`='NULL',`QuocTich`='0',`Flag`=53,`Hambuger`=0,`Banhmi`=0,`Pizza`=0,`Bank`=0,`pHealth`='130.00',`pArmor`='100.00',`pSHealth`='0.00',`Int`=0,`VirtualWorld`=0,`Model`=29,`BanAppealer`=0,`PR`=0,`HR`=0,`AP`=1,`Security`=0,`ShopTech`=0,`FactionModerator`=0,`GangModerator`=0,`Undercover`=0,`TogReports`=0,`Radio`=0,`RadioFreq`=0,`UpgradePoints`=0,`Origin`=0,`Muted`=0,`Crimes`=0,`Accent`=1,`CHits`=0,`FHits`=0,`Arrested`=0,`Phonebook`=1,`Fishes`=0,`Gcoin`=0,`Capacity`=30,`BiggestFish`=0,`Job`=20,`SoTaiKhoan`=0,`Job2
+[02:46:57] `=0,`Paycheck`=1298,`HeadValue`=0,`JailTime`=0,`WRestricted`=0,`Materials`=0,`Crates`=0,`Pot`=0,`Crack`=0,`Nation`=-1,`Leader`=-1,`Member`=-1,`Division`=-1,`FMember`=255,`Rank`=255,`DetSkill`=0,`SexSkill`=0,`BoxSkill`=0,`LawSkill`=0,`MechSkill`=0,`TruckSkill`=0,`DrugsSkill`=0,`ArmsSkill`=0,`SmugglerSkill`=0,`FishSkill`=0,`CheckCash`=0,`Checks`=0,`BoatLic`=0,`FlyLic`=0,`GunLic`=0,`FishLic`=0,`FishSkill`=0,`FightingStyle`=0,`PhoneNr`=46924,`Apartment`=-1,`Apartment2`=-1,`Renting`=-1,`CarLic`=1,`DrugsTime`=0,`LawyerTime`=0,`LawyerFreeTime`=0,`MechTime`=0,`SexTime`=0,`PayDay`=1298,`PayDayHad`=0,`CDPlayer`=0,`Dice`=0,`Spraycan`=0,`Rope`=0,`Cigars`=0,`Sprunk`=0,`Bombs`=0,`Wins`=0,`Ammo1`=170,`Ammo2`=0,`Ammo3`=0,`Ammo4`=0,`Ammo5`=0,`Ammo6`=0,`Ammo7`=0,`Ammo8`=0,`Gun0`=0,`Gun1`=0,`Gun2`=24,`Gun3`=0,`Gun4`=0,`Gun5`=0,`Gun6`=0 WHERE `id`=12
+[03:00:41] [plant] 300 plants saved
+[03:02:26] [MySQL] Query Error - (ErrorID: 1054) (Handle: 1)
+[03:02:26] [MySQL] Check mysql_log.txt to review the query that threw the error.
+[03:02:26] Dumping query from 2023/10/4 (3:2:26)
+Description: Unknown column 'TimeCraft' in 'field list' (index 0). Query:
+
+[03:02:26] UPDATE `accounts` SET `IP`='127.0.0.1',`Registered`=1,`ConnectedTime`=12,`Sex`=1,`BirthDate`='1923-01-01',`Band`=0,`PermBand`=0,`Warnings`=0,`Disabled`=0,`Level`=1,`AdminLevel`=99999,`CMND`=109946829,`MaskID1`=46738,`MaskID2`=84,`SeniorModerator`=0,`Helper`=0,`DonateRank`=0,`Respect`=21,`XP`=1050,`Money`=21065,`MaHieu1`=0,`TruyDuoi`=0,`BanTime`=0,`TimeBanned`=0,`Flag`=53,`Eat`=1,`Drink`=1,`Strong`=1,`SoLanMiner`=0,`MinerLevel`=0,`TimeCraft`=0,`TimeMedkit`=0,`BannedBy`='NULL',`ReasonBanned`='NULL',`RankText`='NULL',`QuocTich`='0',`Flag`=53,`Hambuger`=0,`Banhmi`=0,`Pizza`=0,`Bank`=0,`pHealth`='130.00',`pArmor`='100.00',`pSHealth`='0.00',`Int`=0,`VirtualWorld`=0,`Model`=29,`BanAppealer`=0,`PR`=0,`HR`=0,`AP`=1,`Security`=0,`ShopTech`=0,`FactionModerator`=0,`GangModerator`=0,`Undercover`=0,`TogReports`=0,`Radio`=0,`RadioFreq`=0,`UpgradePoints`=0,`Origin`=0,`Muted`=0,`Crimes`=0,`Accent`=1,`CHits`=0,`FHits`=0,`Arrested`=0,`Phonebook`=1,`Fishes`=0,`Gcoin`=0,`Capacity`=30,`BiggestFish`=0,`Job`=20,`SoTaiKhoan`=0,`Job2
+[03:02:26] `=0,`Paycheck`=2165,`HeadValue`=0,`JailTime`=0,`WRestricted`=0,`Materials`=0,`Crates`=0,`Pot`=0,`Crack`=0,`Nation`=-1,`Leader`=-1,`Member`=-1,`Division`=-1,`FMember`=255,`Rank`=255,`DetSkill`=0,`SexSkill`=0,`BoxSkill`=0,`LawSkill`=0,`MechSkill`=0,`TruckSkill`=0,`DrugsSkill`=0,`ArmsSkill`=0,`SmugglerSkill`=0,`FishSkill`=0,`CheckCash`=0,`Checks`=0,`BoatLic`=0,`FlyLic`=0,`GunLic`=0,`FishLic`=0,`FishSkill`=0,`FightingStyle`=0,`PhoneNr`=46924,`Apartment`=-1,`Apartment2`=-1,`Renting`=-1,`CarLic`=1,`DrugsTime`=0,`LawyerTime`=0,`LawyerFreeTime`=0,`MechTime`=0,`SexTime`=0,`PayDay`=2165,`PayDayHad`=0,`CDPlayer`=0,`Dice`=0,`Spraycan`=0,`Rope`=0,`Cigars`=0,`Sprunk`=0,`Bombs`=0,`Wins`=0,`Ammo1`=170,`Ammo2`=0,`Ammo3`=0,`Ammo4`=0,`Ammo5`=0,`Ammo6`=0,`Ammo7`=0,`Ammo8`=0,`Gun0`=0,`Gun1`=0,`Gun2`=24,`Gun3`=0,`Gun4`=0,`Gun5`=0,`Gun6`=0 WHERE `id`=12
+[03:17:55] [MySQL] Query Error - (ErrorID: 1054) (Handle: 1)
+[03:17:55] [MySQL] Check mysql_log.txt to review the query that threw the error.
+[03:17:55] Dumping query from 2023/10/4 (3:17:55)
+Description: Unknown column 'TimeCraft' in 'field list' (index 0). Query:
+
+[03:17:55] UPDATE `accounts` SET `IP`='127.0.0.1',`Registered`=1,`ConnectedTime`=12,`Sex`=1,`BirthDate`='1923-01-01',`Band`=0,`PermBand`=0,`Warnings`=0,`Disabled`=0,`Level`=1,`AdminLevel`=99999,`CMND`=109946829,`MaskID1`=46738,`MaskID2`=84,`SeniorModerator`=0,`Helper`=0,`DonateRank`=0,`Respect`=21,`XP`=1050,`Money`=21065,`MaHieu1`=0,`TruyDuoi`=0,`BanTime`=0,`TimeBanned`=0,`Flag`=53,`Eat`=1,`Drink`=1,`Strong`=1,`SoLanMiner`=0,`MinerLevel`=0,`TimeCraft`=0,`TimeMedkit`=0,`BannedBy`='NULL',`ReasonBanned`='NULL',`RankText`='NULL',`QuocTich`='0',`Flag`=53,`Hambuger`=0,`Banhmi`=0,`Pizza`=0,`Bank`=0,`pHealth`='130.00',`pArmor`='100.00',`pSHealth`='0.00',`Int`=0,`VirtualWorld`=0,`Model`=29,`BanAppealer`=0,`PR`=0,`HR`=0,`AP`=1,`Security`=0,`ShopTech`=0,`FactionModerator`=0,`GangModerator`=0,`Undercover`=0,`TogReports`=0,`Radio`=0,`RadioFreq`=0,`UpgradePoints`=0,`Origin`=0,`Muted`=0,`Crimes`=0,`Accent`=1,`CHits`=0,`FHits`=0,`Arrested`=0,`Phonebook`=1,`Fishes`=0,`Gcoin`=0,`Capacity`=30,`BiggestFish`=0,`Job`=20,`SoTaiKhoan`=0,`Job2
+[03:17:55] `=0,`Paycheck`=3031,`HeadValue`=0,`JailTime`=0,`WRestricted`=0,`Materials`=0,`Crates`=0,`Pot`=0,`Crack`=0,`Nation`=-1,`Leader`=-1,`Member`=-1,`Division`=-1,`FMember`=255,`Rank`=255,`DetSkill`=0,`SexSkill`=0,`BoxSkill`=0,`LawSkill`=0,`MechSkill`=0,`TruckSkill`=0,`DrugsSkill`=0,`ArmsSkill`=0,`SmugglerSkill`=0,`FishSkill`=0,`CheckCash`=0,`Checks`=0,`BoatLic`=0,`FlyLic`=0,`GunLic`=0,`FishLic`=0,`FishSkill`=0,`FightingStyle`=0,`PhoneNr`=46924,`Apartment`=-1,`Apartment2`=-1,`Renting`=-1,`CarLic`=1,`DrugsTime`=0,`LawyerTime`=0,`LawyerFreeTime`=0,`MechTime`=0,`SexTime`=0,`PayDay`=3031,`PayDayHad`=0,`CDPlayer`=0,`Dice`=0,`Spraycan`=0,`Rope`=0,`Cigars`=0,`Sprunk`=0,`Bombs`=0,`Wins`=0,`Ammo1`=170,`Ammo2`=0,`Ammo3`=0,`Ammo4`=0,`Ammo5`=0,`Ammo6`=0,`Ammo7`=0,`Ammo8`=0,`Gun0`=0,`Gun1`=0,`Gun2`=24,`Gun3`=0,`Gun4`=0,`Gun5`=0,`Gun6`=0 WHERE `id`=12
+[03:33:24] [MySQL] Query Error - (ErrorID: 1054) (Handle: 1)
+[03:33:24] [MySQL] Check mysql_log.txt to review the query that threw the error.
+[03:33:24] Dumping query from 2023/10/4 (3:33:24)
+Description: Unknown column 'TimeCraft' in 'field list' (index 0). Query:
+
+[03:33:24] UPDATE `accounts` SET `IP`='127.0.0.1',`Registered`=1,`ConnectedTime`=13,`Sex`=1,`BirthDate`='1923-01-01',`Band`=0,`PermBand`=0,`Warnings`=0,`Disabled`=0,`Level`=1,`AdminLevel`=99999,`CMND`=109946829,`MaskID1`=46738,`MaskID2`=84,`SeniorModerator`=0,`Helper`=0,`DonateRank`=0,`Respect`=22,`XP`=1100,`Money`=24665,`MaHieu1`=0,`TruyDuoi`=0,`BanTime`=0,`TimeBanned`=0,`Flag`=53,`Eat`=1,`Drink`=1,`Strong`=1,`SoLanMiner`=0,`MinerLevel`=0,`TimeCraft`=0,`TimeMedkit`=0,`BannedBy`='NULL',`ReasonBanned`='NULL',`RankText`='NULL',`QuocTich`='0',`Flag`=53,`Hambuger`=0,`Banhmi`=0,`Pizza`=0,`Bank`=0,`pHealth`='130.00',`pArmor`='100.00',`pSHealth`='0.00',`Int`=0,`VirtualWorld`=0,`Model`=29,`BanAppealer`=0,`PR`=0,`HR`=0,`AP`=1,`Security`=0,`ShopTech`=0,`FactionModerator`=0,`GangModerator`=0,`Undercover`=0,`TogReports`=0,`Radio`=0,`RadioFreq`=0,`UpgradePoints`=0,`Origin`=0,`Muted`=0,`Crimes`=0,`Accent`=1,`CHits`=0,`FHits`=0,`Arrested`=0,`Phonebook`=1,`Fishes`=0,`Gcoin`=0,`Capacity`=30,`BiggestFish`=0,`Job`=20,`SoTaiKhoan`=0,`Job2
+[03:33:24] `=0,`Paycheck`=298,`HeadValue`=0,`JailTime`=0,`WRestricted`=0,`Materials`=0,`Crates`=0,`Pot`=0,`Crack`=0,`Nation`=-1,`Leader`=-1,`Member`=-1,`Division`=-1,`FMember`=255,`Rank`=255,`DetSkill`=0,`SexSkill`=0,`BoxSkill`=0,`LawSkill`=0,`MechSkill`=0,`TruckSkill`=0,`DrugsSkill`=0,`ArmsSkill`=0,`SmugglerSkill`=0,`FishSkill`=0,`CheckCash`=0,`Checks`=0,`BoatLic`=0,`FlyLic`=0,`GunLic`=0,`FishLic`=0,`FishSkill`=0,`FightingStyle`=0,`PhoneNr`=46924,`Apartment`=-1,`Apartment2`=-1,`Renting`=-1,`CarLic`=1,`DrugsTime`=0,`LawyerTime`=0,`LawyerFreeTime`=0,`MechTime`=0,`SexTime`=0,`PayDay`=298,`PayDayHad`=0,`CDPlayer`=0,`Dice`=0,`Spraycan`=0,`Rope`=0,`Cigars`=0,`Sprunk`=0,`Bombs`=0,`Wins`=0,`Ammo1`=170,`Ammo2`=0,`Ammo3`=0,`Ammo4`=0,`Ammo5`=0,`Ammo6`=0,`Ammo7`=0,`Ammo8`=0,`Gun0`=0,`Gun1`=0,`Gun2`=24,`Gun3`=0,`Gun4`=0,`Gun5`=0,`Gun6`=0 WHERE `id`=12
+[03:43:42] [zcmd] [CouNil WisDom]: /veh 422 3 3
+[03:48:54] [MySQL] Query Error - (ErrorID: 1054) (Handle: 1)
+[03:48:54] [MySQL] Check mysql_log.txt to review the query that threw the error.
+[03:48:54] Dumping query from 2023/10/4 (3:48:54)
+Description: Unknown column 'TimeCraft' in 'field list' (index 0). Query:
+
+[03:48:54] UPDATE `accounts` SET `IP`='127.0.0.1',`Registered`=1,`ConnectedTime`=13,`Sex`=1,`BirthDate`='1923-01-01',`Band`=0,`PermBand`=0,`Warnings`=0,`Disabled`=0,`Level`=1,`AdminLevel`=99999,`CMND`=109946829,`MaskID1`=46738,`MaskID2`=84,`SeniorModerator`=0,`Helper`=0,`DonateRank`=0,`Respect`=22,`XP`=1100,`Money`=24665,`MaHieu1`=0,`TruyDuoi`=0,`BanTime`=0,`TimeBanned`=0,`Flag`=53,`Eat`=1,`Drink`=1,`Strong`=1,`SoLanMiner`=0,`MinerLevel`=0,`TimeCraft`=0,`TimeMedkit`=0,`BannedBy`='NULL',`ReasonBanned`='NULL',`RankText`='NULL',`QuocTich`='0',`Flag`=53,`Hambuger`=0,`Banhmi`=0,`Pizza`=0,`Bank`=0,`pHealth`='130.00',`pArmor`='100.00',`pSHealth`='0.00',`Int`=0,`VirtualWorld`=0,`Model`=29,`BanAppealer`=0,`PR`=0,`HR`=0,`AP`=1,`Security`=0,`ShopTech`=0,`FactionModerator`=0,`GangModerator`=0,`Undercover`=0,`TogReports`=0,`Radio`=0,`RadioFreq`=0,`UpgradePoints`=0,`Origin`=0,`Muted`=0,`Crimes`=0,`Accent`=1,`CHits`=0,`FHits`=0,`Arrested`=0,`Phonebook`=1,`Fishes`=0,`Gcoin`=0,`Capacity`=30,`BiggestFish`=0,`Job`=20,`SoTaiKhoan`=0,`Job2
+[03:48:54] `=0,`Paycheck`=1164,`HeadValue`=0,`JailTime`=0,`WRestricted`=0,`Materials`=0,`Crates`=0,`Pot`=0,`Crack`=0,`Nation`=-1,`Leader`=-1,`Member`=-1,`Division`=-1,`FMember`=255,`Rank`=255,`DetSkill`=0,`SexSkill`=0,`BoxSkill`=0,`LawSkill`=0,`MechSkill`=0,`TruckSkill`=0,`DrugsSkill`=0,`ArmsSkill`=0,`SmugglerSkill`=0,`FishSkill`=0,`CheckCash`=0,`Checks`=0,`BoatLic`=0,`FlyLic`=0,`GunLic`=0,`FishLic`=0,`FishSkill`=0,`FightingStyle`=0,`PhoneNr`=46924,`Apartment`=-1,`Apartment2`=-1,`Renting`=-1,`CarLic`=1,`DrugsTime`=0,`LawyerTime`=0,`LawyerFreeTime`=0,`MechTime`=0,`SexTime`=0,`PayDay`=1164,`PayDayHad`=0,`CDPlayer`=0,`Dice`=0,`Spraycan`=0,`Rope`=0,`Cigars`=0,`Sprunk`=0,`Bombs`=0,`Wins`=0,`Ammo1`=168,`Ammo2`=0,`Ammo3`=0,`Ammo4`=0,`Ammo5`=0,`Ammo6`=0,`Ammo7`=0,`Ammo8`=0,`Gun0`=0,`Gun1`=0,`Gun2`=24,`Gun3`=0,`Gun4`=0,`Gun5`=0,`Gun6`=0 WHERE `id`=12
+[04:00:56] [plant] 300 plants saved
+[04:04:23] [MySQL] Query Error - (ErrorID: 1054) (Handle: 1)
+[04:04:23] [MySQL] Check mysql_log.txt to review the query that threw the error.
+[04:04:23] Dumping query from 2023/10/4 (4:4:23)
+Description: Unknown column 'TimeCraft' in 'field list' (index 0). Query:
+
+[04:04:23] UPDATE `accounts` SET `IP`='127.0.0.1',`Registered`=1,`ConnectedTime`=13,`Sex`=1,`BirthDate`='1923-01-01',`Band`=0,`PermBand`=0,`Warnings`=0,`Disabled`=0,`Level`=1,`AdminLevel`=99999,`CMND`=109946829,`MaskID1`=46738,`MaskID2`=84,`SeniorModerator`=0,`Helper`=0,`DonateRank`=0,`Respect`=22,`XP`=1100,`Money`=24665,`MaHieu1`=0,`TruyDuoi`=0,`BanTime`=0,`TimeBanned`=0,`Flag`=53,`Eat`=1,`Drink`=1,`Strong`=1,`SoLanMiner`=0,`MinerLevel`=0,`TimeCraft`=0,`TimeMedkit`=0,`BannedBy`='NULL',`ReasonBanned`='NULL',`RankText`='NULL',`QuocTich`='0',`Flag`=53,`Hambuger`=0,`Banhmi`=0,`Pizza`=0,`Bank`=0,`pHealth`='130.00',`pArmor`='100.00',`pSHealth`='0.00',`Int`=0,`VirtualWorld`=0,`Model`=29,`BanAppealer`=0,`PR`=0,`HR`=0,`AP`=1,`Security`=0,`ShopTech`=0,`FactionModerator`=0,`GangModerator`=0,`Undercover`=0,`TogReports`=0,`Radio`=0,`RadioFreq`=0,`UpgradePoints`=0,`Origin`=0,`Muted`=0,`Crimes`=0,`Accent`=1,`CHits`=0,`FHits`=0,`Arrested`=0,`Phonebook`=1,`Fishes`=0,`Gcoin`=0,`Capacity`=30,`BiggestFish`=0,`Job`=20,`SoTaiKhoan`=0,`Job2
+[04:04:23] `=0,`Paycheck`=2031,`HeadValue`=0,`JailTime`=0,`WRestricted`=0,`Materials`=0,`Crates`=0,`Pot`=0,`Crack`=0,`Nation`=-1,`Leader`=-1,`Member`=-1,`Division`=-1,`FMember`=255,`Rank`=255,`DetSkill`=0,`SexSkill`=0,`BoxSkill`=0,`LawSkill`=0,`MechSkill`=0,`TruckSkill`=0,`DrugsSkill`=0,`ArmsSkill`=0,`SmugglerSkill`=0,`FishSkill`=0,`CheckCash`=0,`Checks`=0,`BoatLic`=0,`FlyLic`=0,`GunLic`=0,`FishLic`=0,`FishSkill`=0,`FightingStyle`=0,`PhoneNr`=46924,`Apartment`=-1,`Apartment2`=-1,`Renting`=-1,`CarLic`=1,`DrugsTime`=0,`LawyerTime`=0,`LawyerFreeTime`=0,`MechTime`=0,`SexTime`=0,`PayDay`=2031,`PayDayHad`=0,`CDPlayer`=0,`Dice`=0,`Spraycan`=0,`Rope`=0,`Cigars`=0,`Sprunk`=0,`Bombs`=0,`Wins`=0,`Ammo1`=168,`Ammo2`=0,`Ammo3`=0,`Ammo4`=0,`Ammo5`=0,`Ammo6`=0,`Ammo7`=0,`Ammo8`=0,`Gun0`=0,`Gun1`=0,`Gun2`=24,`Gun3`=0,`Gun4`=0,`Gun5`=0,`Gun6`=0 WHERE `id`=12
+[04:09:44] *** YSI Error: INI_Open could not find or create file /DuLieu/CouNil_WisDom.ini
+[04:09:44] [part] CouNil_WisDom has left the server (0:1)
+[04:09:45] [MySQL] Query Error - (ErrorID: 1054) (Handle: 1)
+[04:09:45] [MySQL] Check mysql_log.txt to review the query that threw the error.
+[04:09:45] Dumping query from 2023/10/4 (4:9:45)
+Description: Unknown column 'TimeCraft' in 'field list' (index 0). Query:
+
+[04:09:45] UPDATE `accounts` SET `IP`='127.0.0.1',`Registered`=1,`ConnectedTime`=13,`Sex`=1,`BirthDate`='1923-01-01',`Band`=0,`PermBand`=0,`Warnings`=0,`Disabled`=0,`Level`=1,`AdminLevel`=99999,`CMND`=109946829,`MaskID1`=46738,`MaskID2`=84,`SeniorModerator`=0,`Helper`=0,`DonateRank`=0,`Respect`=22,`XP`=1100,`Money`=24665,`MaHieu1`=0,`TruyDuoi`=0,`BanTime`=0,`TimeBanned`=0,`Flag`=53,`Eat`=1,`Drink`=1,`Strong`=1,`SoLanMiner`=0,`MinerLevel`=0,`TimeCraft`=0,`TimeMedkit`=0,`BannedBy`='NULL',`ReasonBanned`='NULL',`RankText`='NULL',`QuocTich`='0',`Flag`=53,`Hambuger`=0,`Banhmi`=0,`Pizza`=0,`Bank`=0,`pHealth`='130.00',`pArmor`='100.00',`pSHealth`='0.00',`Int`=0,`VirtualWorld`=0,`Model`=29,`BanAppealer`=0,`PR`=0,`HR`=0,`AP`=1,`Security`=0,`ShopTech`=0,`FactionModerator`=0,`GangModerator`=0,`Undercover`=0,`TogReports`=0,`Radio`=0,`RadioFreq`=0,`UpgradePoints`=0,`Origin`=0,`Muted`=0,`Crimes`=0,`Accent`=1,`CHits`=0,`FHits`=0,`Arrested`=0,`Phonebook`=1,`Fishes`=0,`Gcoin`=0,`Capacity`=30,`BiggestFish`=0,`Job`=20,`SoTaiKhoan`=0,`Job2
+[04:09:45] `=0,`Paycheck`=2331,`HeadValue`=0,`JailTime`=0,`WRestricted`=0,`Materials`=0,`Crates`=0,`Pot`=0,`Crack`=0,`Nation`=-1,`Leader`=-1,`Member`=-1,`Division`=-1,`FMember`=255,`Rank`=255,`DetSkill`=0,`SexSkill`=0,`BoxSkill`=0,`LawSkill`=0,`MechSkill`=0,`TruckSkill`=0,`DrugsSkill`=0,`ArmsSkill`=0,`SmugglerSkill`=0,`FishSkill`=0,`CheckCash`=0,`Checks`=0,`BoatLic`=0,`FlyLic`=0,`GunLic`=0,`FishLic`=0,`FishSkill`=0,`FightingStyle`=0,`PhoneNr`=46924,`Apartment`=-1,`Apartment2`=-1,`Renting`=-1,`CarLic`=1,`DrugsTime`=0,`LawyerTime`=0,`LawyerFreeTime`=0,`MechTime`=0,`SexTime`=0,`PayDay`=2331,`PayDayHad`=0,`CDPlayer`=0,`Dice`=0,`Spraycan`=0,`Rope`=0,`Cigars`=0,`Sprunk`=0,`Bombs`=0,`Wins`=0,`Ammo1`=168,`Ammo2`=0,`Ammo3`=0,`Ammo4`=0,`Ammo5`=0,`Ammo6`=0,`Ammo7`=0,`Ammo8`=0,`Gun0`=0,`Gun1`=0,`Gun2`=24,`Gun3`=0,`Gun4`=0,`Gun5`=0,`Gun6`=0 WHERE `id`=12
+[04:10:41]  -------------------------------------------
+[04:10:41]            SampVoice unloading...           
+[04:10:41]  -------------------------------------------
+[04:10:41] [dbg:raknet:free] : module releasing...
+[04:10:41] [dbg:raknet:free] : module released
+[04:10:41] [sv:dbg:network:free] : module releasing...
+[04:10:41] [sv:dbg:network:free] : module released
+
+----------
+Loaded log file: "server_log.txt".
+----------
+
+SA-MP Dedicated Server
+----------------------
+v0.3.DL-R1, (C)2005-2018 SA-MP Team
+
+[04:10:48] password = ""  (string)
+[04:10:48] 
+[04:10:48] Server Plugins
+[04:10:48] --------------
+[04:10:48]  Loading plugin: mysql
+[04:10:48]  >> plugin.mysql: R33 successfully loaded.
+[04:10:48]   Loaded.
+[04:10:48]  Loading plugin: sscanf
+[04:10:48] 
+
+[04:10:48]  ===============================
+
+[04:10:48]       sscanf plugin loaded.     
+
+[04:10:48]          Version:  2.8.1        
+
+[04:10:48]    (c) 2012 Alex "Y_Less" Cole  
+
+[04:10:48]  ===============================
+
+[04:10:48]   Loaded.
+[04:10:48]  Loading plugin: whirlpool
+[04:10:48]  
+[04:10:48]  ==================
+[04:10:48]  
+[04:10:48]   Whirlpool loaded
+[04:10:48]  
+[04:10:48]  ==================
+[04:10:48]  
+[04:10:48]   Loaded.
+[04:10:48]  Loading plugin: crashdetect
+[04:10:48]   CrashDetect plugin 4.19.4
+[04:10:48]   Loaded.
+[04:10:48]  Loading plugin: sampvoice
+[04:10:48] [sv:dbg:network:init] : module initializing...
+[04:10:48] [dbg:raknet:init] : module initializing...
+[04:10:48] [dbg:raknet:init] : module initialized
+[04:10:48] [sv:dbg:network:init] : module initialized
+[04:10:48] [sv:dbg:main:Load] : creating 8 work threads...
+[04:10:48]  -------------------------------------------    
+[04:10:48]    ___                __   __    _              
+[04:10:48]   / __| __ _ _ __  _ _\ \ / /__ (_) __ ___    
+[04:10:48]   \__ \/ _` | '  \| '_ \   / _ \| |/ _/ -_)
+[04:10:48]   |___/\__,_|_|_|_| .__/\_/\___/|_|\__\___|
+[04:10:48]                   |_|                           
+[04:10:48]  -------------------------------------------    
+[04:10:48]            SampVoice by MOR loaded              
+[04:10:48]  -------------------------------------------    
+[04:10:48]   Loaded.
+[04:10:48]  Loading plugin: samp-compat.dll
+[04:10:48]   -- samp-compat for 0.3.DL-R1 initialized
+[04:10:48]   Loaded.
+[04:10:48]  Loading plugin: streamer
+[04:10:48] 
+
+*** Streamer Plugin v2.9.5 by Incognito loaded ***
+
+[04:10:48]   Loaded.
+[04:10:48]  Loading plugin: server
+[04:10:48]   Loaded.
+[04:10:48]  Loading plugin: TDE
+[04:10:48] 
+TDEditor Plugin loaded, thank you for using.
+
+[04:10:48]   Loaded.
+[04:10:48]  Loading plugin: YSF_DL
+[04:10:48] 
+[04:10:48]  ==============================================
+[04:10:48]  YSF 2.2 (compiled Sep 19 2021 13:02:34) loaded
+[04:10:48]   (c) 2008 Alex "Y_Less" Cole
+[04:10:48]   (c) 2010 - 2018 kurta999
+[04:10:48]   (c) 2018 - 2020 IllidanS4
+[04:10:48]  Server version: 0.3.DL R1, Windows
+[04:10:48]  ==============================================
+[04:10:48] 
+[04:10:48]   Loaded.
+[04:10:48]  Loading plugin: discord-connector
+[04:10:52]  >> discord-connector: afb7e3b successfully loaded.
+[04:10:52]   Loaded.
+[04:10:52]  Loaded 11 plugins.
+
+[04:10:52] [artwork:crc] bp.dff CRC = 0xA2B03FFB
+[04:10:52] [artwork:crc] bp.txd CRC = 0x28E0706E
+[04:10:52] [artwork:crc] object.dff CRC = 0xDCFCC14C
+[04:10:52] [artwork:crc] speedo.txd CRC = 0x62C7BCBC
+[04:10:52] [artwork:crc] object.dff CRC = 0xDCFCC14C
+[04:10:52] [artwork:crc] login.txd CRC = 0x54694AE4
+[04:10:52] [artwork:crc] object.dff CRC = 0xDCFCC14C
+[04:10:52] [artwork:crc] character.txd CRC = 0xC1BABE5F
+[04:10:52] [artwork:crc] object.dff CRC = 0xDCFCC14C
+[04:10:52] [artwork:crc] speedo.txd CRC = 0x62C7BCBC
+[04:10:52] [artwork:crc] object.dff CRC = 0xDCFCC14C
+[04:10:52] [artwork:crc] newinv.txd CRC = 0xC5F22638
+[04:10:52] [artwork:crc] object.dff CRC = 0xDCFCC14C
+[04:10:52] [artwork:crc] character.txd CRC = 0xC1BABE5F
+[04:10:52] [artwork:crc] object.dff CRC = 0xDCFCC14C
+[04:10:52] [artwork:crc] inventory.txd CRC = 0xBE6E57A5
+[04:10:52] 
+[04:10:52] Filterscripts
+[04:10:52] ---------------
+[04:10:52]   Loading filterscript 'Server.amx'...
+[04:10:52] [sv:dbg:main:AmxLoad] : net game pointer (value:06610048) received
+[04:10:52] [sv:dbg:network:bind] : voice server running on port 52886
+[04:10:53]   Loading filterscript 'cbug.amx'...
+[04:10:53]   Loaded 2 filterscripts.
+
+[04:10:53]  
+[04:10:53]  ======================================= 
+[04:10:53]  |                                     | 
+[04:10:53]  |        YSI version 3.01.0002        | 
+[04:10:53]  |        By Alex "Y_Less" Cole        | 
+[04:10:53]  |                                     | 
+[04:10:53]  ======================================= 
+[04:10:53]  
+[04:10:53] Chuong trinh may chu dang duoc khoi dong, vui long cho doi....
+[04:11:13] [MySQL] (Main Pipelines) Connecting to 23.88.73.88...
+[04:11:13] [MySQL] (MainPipeline) Connection successful toward MySQL Database Server!
+[04:11:13] [Dynamic Giftbox] Loading the Dynamic Giftbox...
+[04:11:13] [LoadCrates] Load Query Sent
+[04:11:13] [LoadHouses] Loading data from database...
+[04:11:13] [LoadDynamicDoors] Loading data from database...
+[04:11:13] [LoadDynamicMapIcons] Loading data from database...
+[04:11:13] [LoadMailboxes] Loading data from database...
+[04:11:13] [LoadBusinesses] Loading data from database...
+[04:11:13] [LoadAuctions] Loading data from database...
+[04:11:13] [LoadTxtLabels] Loading data from database...
+[04:11:13] [LoadPlants] Loading data from database...
+[04:11:13] [SpeedCameras] Loading data from database...
+[04:11:13] [LoadPayNSprays] Loading data from database...
+[04:11:13] [LoadArrestPoints] Loading data from database...
+[04:11:13] [LoadImpoundPoints] Loading data from database...
+[04:11:13] [LoadBusinessSales] Loading data from database...
+[04:11:13] [LoadPaintballArenas] 10 paintball loaded.
+[04:11:13] [LoadEventPoints] 0 event points loaded.
+[04:11:13] [LoadGates] Loading data from database...
+[04:11:13] [LoadElevatorStuff] 20 floors loaded.
+[04:11:13] [LoadFamilies] Dang tai du lieu tu database...
+[04:11:13] [LoadFamilyPoints] Loading Family Points from the database, please wait...
+[04:11:13] [MiscLoad] Misc Loaded
+[04:11:13] Resetting news...
+[04:11:13] Resetting default server variables..
+[04:11:13] Adjusted the server time...
+[04:11:13] [Streamer] Loading Dynamic Static Vehicles...
+[04:11:13] [Streamer] Dynamic Static Vehicles has been loaded.
+[04:11:13] [Streamer] Loading Dynamic Pickups...
+[04:11:13] [Streamer] Dynamic Pickups has been loaded.
+[04:11:13] [Streamer] Loading 3D Text Labels...
+[04:11:13] [Streamer] Dynamic 3D Text Labels has been loaded.
+[04:11:13] [Streamer] Loading Dynamic Buttons...
+[04:11:13] [Streamer] Dynamic Buttons has been loaded.
+[04:11:13] [Streamer] Loading Dynamic Objects...
+[04:11:13] [Streamer] Dynamic Objects has been loaded.
+[04:11:13] [Textdraws] Loading Textdraws...
+[04:11:13] [Textdraws] Loaded textdraws.
+[04:11:13] [Dynamic Groups] Loading Dynamic Groups...
+[04:11:13] [Dynamic Groups] Loading Dynamic Groups Vehicles...
+[04:11:13] Da chay thanh cong gamemode...
+[04:11:13] Number of vehicle models: 20
+[04:11:13]  
+[04:11:13]  
+[04:11:14] [Dynamic Giftbox] da tai thanh cong Dynamic giftbox.
+[04:11:14] [LoadCrates] Loading Crates Finished
+[04:11:15] [LoadHouses] 3000 ngoi nha duoc tai.
+[04:11:15] [LoadDynamicDoors] 2248 door duoc tai.
+[04:11:16] [LoadDynamicMapIcons] 400 icons map duoc tai.
+[04:11:16] [LoadMailboxes] 50 mailboxes duoc tai.
+[04:11:16] [LoadBusinesses] 200 businesses rehashed/loaded.
+[04:11:17] [LoadPlants] Successfully loaded 300 plants
+[04:11:17] [SpeedCameras] Tai 3 May ban toc do.
+[04:11:18] TotalSold0: 0 | AmountMade0: 0
+[04:11:18] TotalSold1: 0 | AmountMade1: 0
+[04:11:18] TotalSold2: 0 | AmountMade2: 0
+[04:11:18] TotalSold3: 0 | AmountMade3: 0
+[04:11:18] TotalSold4: 0 | AmountMade4: 0
+[04:11:18] TotalSold5: 0 | AmountMade5: 0
+[04:11:18] TotalSold6: 0 | AmountMade6: 0
+[04:11:18] TotalSold7: 0 | AmountMade7: 0
+[04:11:18] TotalSold8: 0 | AmountMade8: 0
+[04:11:18] TotalSold9: 0 | AmountMade9: 0
+[04:11:18] TotalSold10: 0 | AmountMade10: 0
+[04:11:18] TotalSold11: 0 | AmountMade11: 0
+[04:11:18] TotalSold12: 0 | AmountMade12: 0
+[04:11:18] TotalSold13: 0 | AmountMade13: 0
+[04:11:18] TotalSold14: 0 | AmountMade14: 0
+[04:11:18] TotalSold15: 0 | AmountMade15: 0
+[04:11:18] TotalSold16: 0 | AmountMade16: 0
+[04:11:18] TotalSold17: 0 | AmountMade17: 0
+[04:11:18] TotalSold18: 0 | AmountMade18: 0
+[04:11:18] TotalSold19: 0 | AmountMade19: 0
+[04:11:18] TotalSold20: 0 | AmountMade20: 0
+[04:11:18] TotalSold21: 0 | AmountMade21: 0
+[04:11:18] TotalSold22: 0 | AmountMade22: 0
+[04:11:18] TotalSold23: 0 | AmountMade23: 0
+[04:11:18] TotalSold24: 0 | AmountMade24: 0
+[04:11:18] TotalSold25: 0 | AmountMade25: 0
+[04:11:18] TotalSold26: 0 | AmountMade26: 0
+[04:11:18] TotalSold27: 0 | AmountMade27: 0
+[04:11:18] TotalSold28: 0 | AmountMade28: 0
+[04:11:18] TotalSold29: 0 | AmountMade29: 0
+[04:11:18] Price0: 20000
+[04:11:18] Price1: 50000
+[04:11:18] Price2: 15000
+[04:11:18] Price3: 10000
+[04:11:18] Price4: 400
+[04:11:18] Price5: 500
+[04:11:18] Price6: 100
+[04:11:18] Price7: 500
+[04:11:18] Price8: 100
+[04:11:18] Price9: 100
+[04:11:18] Price10: 10
+[04:11:18] Price11: 100000
+[04:11:18] Price12: 100000
+[04:11:18] Price13: 100000
+[04:11:18] Price14: 10000
+[04:11:18] Price15: 5000
+[04:11:18] Price16: 1000
+[04:11:18] Price17: 1000
+[04:11:18] Price18: 1
+[04:11:18] Price19: 2
+[04:11:18] Price20: 10
+[04:11:18] Price21: 999999
+[04:11:18] Price22: 100
+[04:11:18] Price23: 1000
+[04:11:18] Price24: 100000
+[04:11:18] Price25: 100000
+[04:11:18] Price26: 100000
+[04:11:18] Price27: 100000
+[04:11:18] Price28: 1000
+[04:11:18] Price29: 29
+[04:11:19] [Family Points] 8 family points has been loaded.
+[04:12:15] [connection] incoming connection: 127.0.0.1:61919 id: 0
+[04:12:16] [join] CouNil_WisDom has joined the server (0:127.0.0.1)
+[04:12:17] name CouNil_WisDom,0, 
+[04:12:45] acc id 10
+[04:12:45] [He Thong] Da luu lai thong tin tai khoan thanh cong.
+[04:12:49] CouNil WisDom has logged in.
+[04:12:50] [VEHICLE TRUCKER LOAD] Loading data from database...
+[04:12:50] [He Thong] Da luu lai thong tin tai khoan thanh cong.
+[04:12:51] [LOAD INVENTORY]  du lieu inventory cua CouNil WisDom (ID: 0) da duoc tai.
+[04:12:52] [Load Vehicle Trucker] 1 du lieu product trong xe cua CouNil WisDom da duoc tai.
+[04:13:11] [zcmd] [CouNil WisDom]: /setnameinquery test
+[04:21:40] [zcmd] [CouNil WisDom]: /jetpack
+[04:22:09] [zcmd] [CouNil WisDom]: /chinhxe
+[04:22:09] CouNil WisDom (0) saving their 422 (slot 0) (Model 422)...
+[04:22:10] [He Thong] Da luu lai thong tin tai khoan thanh cong.
+[04:22:13] [zcmd] [CouNil WisDom]: /truckergo
+[04:22:17] [zcmd] [CouNil WisDom]: /truckergo mission
+[04:22:30] [zcmd] [CouNil WisDom]: /truckergo suggest
+[04:22:44] [zcmd] [CouNil WisDom]: /getcar 234
+[04:22:49] [zcmd] [CouNil WisDom]: /truckergo buy
+[04:26:46] [MySQL] Query Error - (ErrorID: 1054) (Handle: 1)
+[04:26:46] [MySQL] Check mysql_log.txt to review the query that threw the error.
+[04:26:46] Dumping query from 2023/10/4 (4:26:46)
+Description: Unknown column 'TimeMedkit' in 'field list' (index 0). Query:
+
+[04:26:46] UPDATE `accounts` SET `IP`='127.0.0.1',`Registered`=1,`ConnectedTime`=12,`Sex`=1,`BirthDate`='1923-01-01',`Band`=0,`PermBand`=0,`Warnings`=0,`Disabled`=0,`Level`=1,`AdminLevel`=99999,`CMND`=109946829,`MaskID1`=46738,`MaskID2`=84,`SeniorModerator`=0,`Helper`=0,`DonateRank`=0,`Respect`=21,`XP`=1050,`Money`=20955,`MaHieu1`=0,`TruyDuoi`=0,`BanTime`=0,`TimeBanned`=0,`Flag`=53,`Eat`=1,`Drink`=1,`Strong`=1,`SoLanMiner`=0,`MinerLevel`=0,`TimeCraft`=0,`TimeMedkit`=0,`BannedBy`='NULL',`ReasonBanned`='NULL',`RankText`='NULL',`QuocTich`='0',`Flag`=53,`Hambuger`=0,`Banhmi`=0,`Pizza`=0,`Bank`=0,`pHealth`='85.00',`pArmor`='100.00',`pSHealth`='0.00',`Int`=0,`VirtualWorld`=0,`Model`=29,`BanAppealer`=0,`PR`=0,`HR`=0,`AP`=1,`Security`=0,`ShopTech`=0,`FactionModerator`=0,`GangModerator`=0,`Undercover`=0,`TogReports`=0,`Radio`=0,`RadioFreq`=0,`UpgradePoints`=0,`Origin`=0,`Muted`=0,`Crimes`=0,`Accent`=1,`CHits`=0,`FHits`=0,`Arrested`=0,`Phonebook`=1,`Fishes`=0,`Gcoin`=0,`Capacity`=30,`BiggestFish`=0,`Job`=20,`SoTaiKhoan`=0,`Job2`
+[04:26:46] =0,`Paycheck`=1369,`HeadValue`=0,`JailTime`=0,`WRestricted`=0,`Materials`=0,`Crates`=0,`Pot`=0,`Crack`=0,`Nation`=-1,`Leader`=-1,`Member`=-1,`Division`=-1,`FMember`=255,`Rank`=255,`DetSkill`=0,`SexSkill`=0,`BoxSkill`=0,`LawSkill`=0,`MechSkill`=0,`TruckSkill`=0,`DrugsSkill`=0,`ArmsSkill`=0,`SmugglerSkill`=0,`FishSkill`=0,`CheckCash`=0,`Checks`=0,`BoatLic`=0,`FlyLic`=0,`GunLic`=0,`FishLic`=0,`FishSkill`=0,`FightingStyle`=0,`PhoneNr`=46924,`Apartment`=-1,`Apartment2`=-1,`Renting`=-1,`CarLic`=1,`DrugsTime`=0,`LawyerTime`=0,`LawyerFreeTime`=0,`MechTime`=0,`SexTime`=0,`PayDay`=1369,`PayDayHad`=0,`CDPlayer`=0,`Dice`=0,`Spraycan`=0,`Rope`=0,`Cigars`=0,`Sprunk`=0,`Bombs`=0,`Wins`=0,`Ammo1`=182,`Ammo2`=0,`Ammo3`=0,`Ammo4`=0,`Ammo5`=0,`Ammo6`=0,`Ammo7`=0,`Ammo8`=0,`Gun0`=0,`Gun1`=0,`Gun2`=24,`Gun3`=0,`Gun4`=0,`Gun5`=0,`Gun6`=0 WHERE `id`=12
+[04:30:27] [zcmd] [CouNil WisDom]: /car trunk
+[04:30:29] [zcmd] [CouNil WisDom]: /car trunk
+[04:30:30] [zcmd] [CouNil WisDom]: /car
+[04:30:33] [zcmd] [CouNil WisDom]: /car copxe
+[04:30:34] Nguoi choi CouNil WisDom da dua san pham Giay vao xe Bobcat 
+[04:30:39] [zcmd] [CouNil WisDom]: /car copxe
+[04:31:05] [zcmd] [CouNil WisDom]: /testattachobject
+[04:31:13] [zcmd] [CouNil WisDom]: /testattachobject 1271 234
+[04:31:40] [zcmd] [CouNil WisDom]: /testattachobject 1271 234
+[04:32:48] [zcmd] [CouNil WisDom]: / -0.044089 -1.815734 0.039976 
+[04:34:14] [zcmd] [CouNil WisDom]: /truckergo suggest
+[04:34:34] [zcmd] [CouNil WisDom]: /getcar 234
+[04:34:40] [zcmd] [CouNil WisDom]: /truckergo buy
+[04:34:48] [zcmd] [CouNil WisDom]: /car copxe
+[04:34:59] [zcmd] [CouNil WisDom]: /truckergo sell
+[04:35:17] [zcmd] [CouNil WisDom]: /truckergo ship
+[04:35:30] [zcmd] [CouNil WisDom]: /getcar 234
+[04:35:37] [zcmd] [CouNil WisDom]: /truckergo 
+[04:35:43] [zcmd] [CouNil WisDom]: /truckergo sell
+[04:35:49] [zcmd] [CouNil WisDom]: /truckergo sell
+[04:35:55] Nguoi choi CouNil WisDom da dua san pham Giay vao xe Bobcat 
+[04:35:59] [zcmd] [CouNil WisDom]: /truckergo ship
+[04:36:11] [zcmd] [CouNil WisDom]: /getcar 234
+[04:36:20] [zcmd] [CouNil WisDom]: /truckergo sell
+[04:36:23] [zcmd] [CouNil WisDom]: /truckergo sell
+[04:36:29] [zcmd] [CouNil WisDom]: /truckergo buy
+[04:36:47] [zcmd] [CouNil WisDom]: /jetpack
+[04:38:00] *** YSI Error: INI_Open could not find or create file /DuLieu/CouNil_WisDom.ini
+[04:38:00] [part] CouNil_WisDom has left the server (0:1)
+[04:38:00] [MySQL] Query Error - (ErrorID: 1054) (Handle: 1)
+[04:38:00] [MySQL] Check mysql_log.txt to review the query that threw the error.
+[04:38:00] Dumping query from 2023/10/4 (4:38:0)
+Description: Unknown column 'RankText' in 'field list' (index 0). Query:
+
+[04:38:00] UPDATE `accounts` SET `IP`='127.0.0.1',`Registered`=1,`ConnectedTime`=12,`Sex`=1,`BirthDate`='1923-01-01',`Band`=0,`PermBand`=0,`Warnings`=0,`Disabled`=0,`Level`=1,`AdminLevel`=99999,`CMND`=109946829,`MaskID1`=46738,`MaskID2`=84,`SeniorModerator`=0,`Helper`=0,`DonateRank`=0,`Respect`=21,`XP`=1050,`Money`=21445,`MaHieu1`=0,`TruyDuoi`=0,`BanTime`=0,`TimeBanned`=0,`Flag`=53,`Eat`=1,`Drink`=1,`Strong`=1,`SoLanMiner`=0,`MinerLevel`=0,`TimeCraft`=0,`TimeMedkit`=0,`BannedBy`='NULL',`ReasonBanned`='NULL',`RankText`='NULL',`QuocTich`='0',`Flag`=53,`Hambuger`=0,`Banhmi`=0,`Pizza`=0,`Bank`=0,`pHealth`='85.00',`pArmor`='100.00',`pSHealth`='0.00',`Int`=0,`VirtualWorld`=0,`Model`=29,`BanAppealer`=0,`PR`=0,`HR`=0,`AP`=1,`Security`=0,`ShopTech`=0,`FactionModerator`=0,`GangModerator`=0,`Undercover`=0,`TogReports`=0,`Radio`=0,`RadioFreq`=0,`UpgradePoints`=0,`Origin`=0,`Muted`=0,`Crimes`=0,`Accent`=1,`CHits`=0,`FHits`=0,`Arrested`=0,`Phonebook`=1,`Fishes`=0,`Gcoin`=0,`Capacity`=30,`BiggestFish`=0,`Job`=20,`SoTaiKhoan`=0,`Job2`
+[04:38:00] =0,`Paycheck`=1996,`HeadValue`=0,`JailTime`=0,`WRestricted`=0,`Materials`=0,`Crates`=0,`Pot`=0,`Crack`=0,`Nation`=-1,`Leader`=-1,`Member`=-1,`Division`=-1,`FMember`=255,`Rank`=255,`DetSkill`=0,`SexSkill`=0,`BoxSkill`=0,`LawSkill`=0,`MechSkill`=0,`TruckSkill`=0,`DrugsSkill`=0,`ArmsSkill`=0,`SmugglerSkill`=0,`FishSkill`=0,`CheckCash`=0,`Checks`=0,`BoatLic`=0,`FlyLic`=0,`GunLic`=0,`FishLic`=0,`FishSkill`=0,`FightingStyle`=0,`PhoneNr`=46924,`Apartment`=-1,`Apartment2`=-1,`Renting`=-1,`CarLic`=1,`DrugsTime`=0,`LawyerTime`=0,`LawyerFreeTime`=0,`MechTime`=0,`SexTime`=0,`PayDay`=1996,`PayDayHad`=0,`CDPlayer`=0,`Dice`=0,`Spraycan`=0,`Rope`=0,`Cigars`=0,`Sprunk`=0,`Bombs`=0,`Wins`=0,`Ammo1`=182,`Ammo2`=0,`Ammo3`=0,`Ammo4`=0,`Ammo5`=0,`Ammo6`=0,`Ammo7`=0,`Ammo8`=0,`Gun0`=0,`Gun1`=0,`Gun2`=24,`Gun3`=0,`Gun4`=0,`Gun5`=0,`Gun6`=0 WHERE `id`=12
+[04:38:01]  -------------------------------------------
+[04:38:01]            SampVoice unloading...           
+[04:38:01]  -------------------------------------------
+[04:38:01] [dbg:raknet:free] : module releasing...
+[04:38:01] [dbg:raknet:free] : module released
+[04:38:01] [sv:dbg:network:free] : module releasing...
+[04:38:01] [sv:dbg:network:free] : module released
+
+----------
+Loaded log file: "server_log.txt".
+----------
+
+SA-MP Dedicated Server
+----------------------
+v0.3.DL-R1, (C)2005-2018 SA-MP Team
+
+[04:48:34] password = ""  (string)
+[04:48:34] 
+[04:48:34] Server Plugins
+[04:48:34] --------------
+[04:48:34]  Loading plugin: mysql
+[04:48:34]  >> plugin.mysql: R33 successfully loaded.
+[04:48:34]   Loaded.
+[04:48:34]  Loading plugin: sscanf
+[04:48:34] 
+
+[04:48:34]  ===============================
+
+[04:48:34]       sscanf plugin loaded.     
+
+[04:48:34]          Version:  2.8.1        
+
+[04:48:34]    (c) 2012 Alex "Y_Less" Cole  
+
+[04:48:34]  ===============================
+
+[04:48:34]   Loaded.
+[04:48:34]  Loading plugin: whirlpool
+[04:48:34]  
+[04:48:34]  ==================
+[04:48:34]  
+[04:48:34]   Whirlpool loaded
+[04:48:34]  
+[04:48:34]  ==================
+[04:48:34]  
+[04:48:34]   Loaded.
+[04:48:34]  Loading plugin: crashdetect
+[04:48:34]   CrashDetect plugin 4.19.4
+[04:48:34]   Loaded.
+[04:48:34]  Loading plugin: sampvoice
+[04:48:34] [sv:dbg:network:init] : module initializing...
+[04:48:34] [dbg:raknet:init] : module initializing...
+[04:48:34] [dbg:raknet:init] : module initialized
+[04:48:34] [sv:dbg:network:init] : module initialized
+[04:48:34] [sv:dbg:main:Load] : creating 8 work threads...
+[04:48:34]  -------------------------------------------    
+[04:48:34]    ___                __   __    _              
+[04:48:34]   / __| __ _ _ __  _ _\ \ / /__ (_) __ ___    
+[04:48:34]   \__ \/ _` | '  \| '_ \   / _ \| |/ _/ -_)
+[04:48:34]   |___/\__,_|_|_|_| .__/\_/\___/|_|\__\___|
+[04:48:34]                   |_|                           
+[04:48:34]  -------------------------------------------    
+[04:48:34]            SampVoice by MOR loaded              
+[04:48:34]  -------------------------------------------    
+[04:48:34]   Loaded.
+[04:48:34]  Loading plugin: samp-compat.dll
+[04:48:34]   -- samp-compat for 0.3.DL-R1 initialized
+[04:48:34]   Loaded.
+[04:48:34]  Loading plugin: streamer
+[04:48:34] 
+
+*** Streamer Plugin v2.9.5 by Incognito loaded ***
+
+[04:48:34]   Loaded.
+[04:48:34]  Loading plugin: server
+[04:48:34]   Loaded.
+[04:48:34]  Loading plugin: TDE
+[04:48:34] 
+TDEditor Plugin loaded, thank you for using.
+
+[04:48:34]   Loaded.
+[04:48:34]  Loading plugin: YSF_DL
+[04:48:34] 
+[04:48:34]  ==============================================
+[04:48:34]  YSF 2.2 (compiled Sep 19 2021 13:02:34) loaded
+[04:48:34]   (c) 2008 Alex "Y_Less" Cole
+[04:48:34]   (c) 2010 - 2018 kurta999
+[04:48:34]   (c) 2018 - 2020 IllidanS4
+[04:48:34]  Server version: 0.3.DL R1, Windows
+[04:48:34]  ==============================================
+[04:48:34] 
+[04:48:34]   Loaded.
+[04:48:34]  Loading plugin: discord-connector
+[04:48:38]  >> discord-connector: afb7e3b successfully loaded.
+[04:48:38]   Loaded.
+[04:48:38]  Loaded 11 plugins.
+
+[04:48:38] [artwork:crc] bp.dff CRC = 0xA2B03FFB
+[04:48:38] [artwork:crc] bp.txd CRC = 0x28E0706E
+[04:48:38] [artwork:crc] object.dff CRC = 0xDCFCC14C
+[04:48:38] [artwork:crc] speedo.txd CRC = 0x62C7BCBC
+[04:48:38] [artwork:crc] object.dff CRC = 0xDCFCC14C
+[04:48:38] [artwork:crc] login.txd CRC = 0x54694AE4
+[04:48:38] [artwork:crc] object.dff CRC = 0xDCFCC14C
+[04:48:38] [artwork:crc] character.txd CRC = 0xC1BABE5F
+[04:48:38] [artwork:crc] object.dff CRC = 0xDCFCC14C
+[04:48:38] [artwork:crc] speedo.txd CRC = 0x62C7BCBC
+[04:48:38] [artwork:crc] object.dff CRC = 0xDCFCC14C
+[04:48:38] [artwork:crc] newinv.txd CRC = 0xC5F22638
+[04:48:38] [artwork:crc] object.dff CRC = 0xDCFCC14C
+[04:48:38] [artwork:crc] character.txd CRC = 0xC1BABE5F
+[04:48:38] [artwork:crc] object.dff CRC = 0xDCFCC14C
+[04:48:38] [artwork:crc] inventory.txd CRC = 0xBE6E57A5
+[04:48:38] 
+[04:48:38] Filterscripts
+[04:48:38] ---------------
+[04:48:38]   Loading filterscript 'Server.amx'...
+[04:48:38] [sv:dbg:main:AmxLoad] : net game pointer (value:06640048) received
+[04:48:38] [sv:dbg:network:bind] : voice server running on port 54981
+[04:48:38]   Loading filterscript 'cbug.amx'...
+[04:48:38]   Loaded 2 filterscripts.
+
+[04:48:38]  
+[04:48:38]  ======================================= 
+[04:48:38]  |                                     | 
+[04:48:38]  |        YSI version 3.01.0002        | 
+[04:48:38]  |        By Alex "Y_Less" Cole        | 
+[04:48:38]  |                                     | 
+[04:48:38]  ======================================= 
+[04:48:38]  
+[04:48:38] Chuong trinh may chu dang duoc khoi dong, vui long cho doi....
+[04:48:57] [MySQL] (Main Pipelines) Connecting to 23.88.73.88...
+[04:48:57] [MySQL] (MainPipeline) Connection successful toward MySQL Database Server!
+[04:48:57] [Dynamic Giftbox] Loading the Dynamic Giftbox...
+[04:48:57] [LoadCrates] Load Query Sent
+[04:48:57] [LoadHouses] Loading data from database...
+[04:48:57] [LoadDynamicDoors] Loading data from database...
+[04:48:57] [LoadDynamicMapIcons] Loading data from database...
+[04:48:57] [LoadMailboxes] Loading data from database...
+[04:48:57] [LoadBusinesses] Loading data from database...
+[04:48:57] [LoadAuctions] Loading data from database...
+[04:48:57] [LoadTxtLabels] Loading data from database...
+[04:48:57] [LoadPlants] Loading data from database...
+[04:48:57] [SpeedCameras] Loading data from database...
+[04:48:57] [LoadPayNSprays] Loading data from database...
+[04:48:57] [LoadArrestPoints] Loading data from database...
+[04:48:57] [LoadImpoundPoints] Loading data from database...
+[04:48:57] [LoadBusinessSales] Loading data from database...
+[04:48:57] [LoadPaintballArenas] 10 paintball loaded.
+[04:48:57] [LoadEventPoints] 0 event points loaded.
+[04:48:57] [LoadGates] Loading data from database...
+[04:48:57] [LoadElevatorStuff] 20 floors loaded.
+[04:48:57] [LoadFamilies] Dang tai du lieu tu database...
+[04:48:57] [LoadFamilyPoints] Loading Family Points from the database, please wait...
+[04:48:57] [MiscLoad] Misc Loaded
+[04:48:57] Resetting news...
+[04:48:57] Resetting default server variables..
+[04:48:57] Adjusted the server time...
+[04:48:57] [Streamer] Loading Dynamic Static Vehicles...
+[04:48:57] [Streamer] Dynamic Static Vehicles has been loaded.
+[04:48:57] [Streamer] Loading Dynamic Pickups...
+[04:48:57] [Streamer] Dynamic Pickups has been loaded.
+[04:48:57] [Streamer] Loading 3D Text Labels...
+[04:48:57] [Streamer] Dynamic 3D Text Labels has been loaded.
+[04:48:57] [Streamer] Loading Dynamic Buttons...
+[04:48:57] [Streamer] Dynamic Buttons has been loaded.
+[04:48:57] [Streamer] Loading Dynamic Objects...
+[04:48:57] [Streamer] Dynamic Objects has been loaded.
+[04:48:57] [Textdraws] Loading Textdraws...
+[04:48:57] [Textdraws] Loaded textdraws.
+[04:48:57] [Dynamic Groups] Loading Dynamic Groups...
+[04:48:57] [Dynamic Groups] Loading Dynamic Groups Vehicles...
+[04:48:57] Da chay thanh cong gamemode...
+[04:48:57] Number of vehicle models: 20
+[04:48:57]  
+[04:48:57]  
+[04:48:58] [Dynamic Giftbox] da tai thanh cong Dynamic giftbox.
+[04:48:58] [LoadCrates] Loading Crates Finished
+[04:49:00] [LoadHouses] 3000 ngoi nha duoc tai.
+[04:49:00] [LoadDynamicDoors] 2248 door duoc tai.
+[04:49:00] [LoadDynamicMapIcons] 400 icons map duoc tai.
+[04:49:00] [LoadMailboxes] 50 mailboxes duoc tai.
+[04:49:00] [LoadBusinesses] 200 businesses rehashed/loaded.
+[04:49:01] [LoadPlants] Successfully loaded 300 plants
+[04:49:01] [SpeedCameras] Tai 3 May ban toc do.
+[04:49:02] TotalSold0: 0 | AmountMade0: 0
+[04:49:02] TotalSold1: 0 | AmountMade1: 0
+[04:49:02] TotalSold2: 0 | AmountMade2: 0
+[04:49:02] TotalSold3: 0 | AmountMade3: 0
+[04:49:02] TotalSold4: 0 | AmountMade4: 0
+[04:49:02] TotalSold5: 0 | AmountMade5: 0
+[04:49:02] TotalSold6: 0 | AmountMade6: 0
+[04:49:02] TotalSold7: 0 | AmountMade7: 0
+[04:49:02] TotalSold8: 0 | AmountMade8: 0
+[04:49:02] TotalSold9: 0 | AmountMade9: 0
+[04:49:02] TotalSold10: 0 | AmountMade10: 0
+[04:49:02] TotalSold11: 0 | AmountMade11: 0
+[04:49:02] TotalSold12: 0 | AmountMade12: 0
+[04:49:02] TotalSold13: 0 | AmountMade13: 0
+[04:49:02] TotalSold14: 0 | AmountMade14: 0
+[04:49:02] TotalSold15: 0 | AmountMade15: 0
+[04:49:02] TotalSold16: 0 | AmountMade16: 0
+[04:49:02] TotalSold17: 0 | AmountMade17: 0
+[04:49:02] TotalSold18: 0 | AmountMade18: 0
+[04:49:02] TotalSold19: 0 | AmountMade19: 0
+[04:49:02] TotalSold20: 0 | AmountMade20: 0
+[04:49:02] TotalSold21: 0 | AmountMade21: 0
+[04:49:02] TotalSold22: 0 | AmountMade22: 0
+[04:49:02] TotalSold23: 0 | AmountMade23: 0
+[04:49:02] TotalSold24: 0 | AmountMade24: 0
+[04:49:02] TotalSold25: 0 | AmountMade25: 0
+[04:49:02] TotalSold26: 0 | AmountMade26: 0
+[04:49:02] TotalSold27: 0 | AmountMade27: 0
+[04:49:02] TotalSold28: 0 | AmountMade28: 0
+[04:49:02] TotalSold29: 0 | AmountMade29: 0
+[04:49:02] Price0: 20000
+[04:49:02] Price1: 50000
+[04:49:02] Price2: 15000
+[04:49:02] Price3: 10000
+[04:49:02] Price4: 400
+[04:49:02] Price5: 500
+[04:49:02] Price6: 100
+[04:49:02] Price7: 500
+[04:49:02] Price8: 100
+[04:49:02] Price9: 100
+[04:49:02] Price10: 10
+[04:49:02] Price11: 100000
+[04:49:02] Price12: 100000
+[04:49:02] Price13: 100000
+[04:49:02] Price14: 10000
+[04:49:02] Price15: 5000
+[04:49:02] Price16: 1000
+[04:49:02] Price17: 1000
+[04:49:02] Price18: 1
+[04:49:02] Price19: 2
+[04:49:02] Price20: 10
+[04:49:02] Price21: 999999
+[04:49:02] Price22: 100
+[04:49:02] Price23: 1000
+[04:49:02] Price24: 100000
+[04:49:02] Price25: 100000
+[04:49:02] Price26: 100000
+[04:49:02] Price27: 100000
+[04:49:02] Price28: 1000
+[04:49:02] Price29: 29
+[04:49:03] [Family Points] 8 family points has been loaded.
+[04:50:07] [connection] incoming connection: 127.0.0.1:56873 id: 0
+[04:50:08] [join] CouNil_WisDom has joined the server (0:127.0.0.1)
+[04:50:09] name CouNil_WisDom,0, 
+[04:50:16] acc id 10
+[04:50:16] [He Thong] Da luu lai thong tin tai khoan thanh cong.
+[04:50:20] CouNil WisDom has logged in.
+[04:50:21] [VEHICLE TRUCKER LOAD] Loading data from database...
+[04:50:21] [zcmd] [CouNil WisDom]: /thoitiet 1
+[04:50:21] [He Thong] Da luu lai thong tin tai khoan thanh cong.
+[04:50:22] [LOAD INVENTORY]  du lieu inventory cua CouNil WisDom (ID: 0) da duoc tai.
+[04:50:24] [Load Vehicle Trucker] Khong co du lieu de tai
+[04:50:54] [zcmd] [CouNil WisDom]: /setnameinquery test
+[04:52:26] *** YSI Error: INI_Open could not find or create file /DuLieu/test.ini
+[04:52:26] [part] test has left the server (0:1)
+[04:52:26] [MySQL] Query Error - (ErrorID: 1054) (Handle: 1)
+[04:52:26] [MySQL] Check mysql_log.txt to review the query that threw the error.
+[04:52:26] Dumping query from 2023/10/4 (4:52:26)
+Description: Unknown column 'RankText' in 'field list' (index 0). Query:
+
+[04:52:26] UPDATE `accounts` SET `IP`='127.0.0.1',`Registered`=1,`ConnectedTime`=12,`Sex`=1,`BirthDate`='1923-01-01',`Band`=0,`PermBand`=0,`Warnings`=0,`Disabled`=0,`Level`=1,`AdminLevel`=99999,`CMND`=109946829,`MaskID1`=46738,`MaskID2`=84,`SeniorModerator`=0,`Helper`=0,`DonateRank`=0,`Respect`=21,`XP`=1050,`Money`=21065,`MaHieu1`=0,`TruyDuoi`=0,`BanTime`=0,`TimeBanned`=0,`Flag`=53,`Eat`=1,`Drink`=1,`Strong`=1,`SoLanMiner`=0,`MinerLevel`=0,`TimeCraft`=0,`TimeMedkit`=0,`BannedBy`='NULL',`ReasonBanned`='NULL',`RankText`='NULL',`QuocTich`='0',`Flag`=53,`Hambuger`=0,`Banhmi`=0,`Pizza`=0,`Bank`=0,`pHealth`='100.00',`pArmor`='100.00',`pSHealth`='0.00',`Int`=0,`VirtualWorld`=0,`Model`=29,`BanAppealer`=0,`PR`=0,`HR`=0,`AP`=1,`Security`=0,`ShopTech`=0,`FactionModerator`=0,`GangModerator`=0,`Undercover`=0,`TogReports`=0,`Radio`=0,`RadioFreq`=0,`UpgradePoints`=0,`Origin`=0,`Muted`=0,`Crimes`=0,`Accent`=1,`CHits`=0,`FHits`=0,`Arrested`=0,`Phonebook`=1,`Fishes`=0,`Gcoin`=0,`Capacity`=30,`BiggestFish`=0,`Job`=20,`SoTaiKhoan`=0,`Job2
+[04:52:26] `=0,`Paycheck`=706,`HeadValue`=0,`JailTime`=0,`WRestricted`=0,`Materials`=0,`Crates`=0,`Pot`=0,`Crack`=0,`Nation`=-1,`Leader`=-1,`Member`=-1,`Division`=-1,`FMember`=255,`Rank`=255,`DetSkill`=0,`SexSkill`=0,`BoxSkill`=0,`LawSkill`=0,`MechSkill`=0,`TruckSkill`=0,`DrugsSkill`=0,`ArmsSkill`=0,`SmugglerSkill`=0,`FishSkill`=0,`CheckCash`=0,`Checks`=0,`BoatLic`=0,`FlyLic`=0,`GunLic`=0,`FishLic`=0,`FishSkill`=0,`FightingStyle`=0,`PhoneNr`=46924,`Apartment`=-1,`Apartment2`=-1,`Renting`=-1,`CarLic`=1,`DrugsTime`=0,`LawyerTime`=0,`LawyerFreeTime`=0,`MechTime`=0,`SexTime`=0,`PayDay`=706,`PayDayHad`=0,`CDPlayer`=0,`Dice`=0,`Spraycan`=0,`Rope`=0,`Cigars`=0,`Sprunk`=0,`Bombs`=0,`Wins`=0,`Ammo1`=157,`Ammo2`=0,`Ammo3`=0,`Ammo4`=0,`Ammo5`=0,`Ammo6`=0,`Ammo7`=0,`Ammo8`=0,`Gun0`=0,`Gun1`=0,`Gun2`=24,`Gun3`=0,`Gun4`=0,`Gun5`=0,`Gun6`=0 WHERE `id`=12
+[04:52:27]  -------------------------------------------
+[04:52:27]            SampVoice unloading...           
+[04:52:27]  -------------------------------------------
+[04:52:27] [dbg:raknet:free] : module releasing...
+[04:52:27] [dbg:raknet:free] : module released
+[04:52:27] [sv:dbg:network:free] : module releasing...
+[04:52:27] [sv:dbg:network:free] : module released
+
+----------
+Loaded log file: "server_log.txt".
+----------
+
+SA-MP Dedicated Server
+----------------------
+v0.3.DL-R1, (C)2005-2018 SA-MP Team
+
+[04:52:38] password = ""  (string)
+[04:52:38] 
+[04:52:38] Server Plugins
+[04:52:38] --------------
+[04:52:38]  Loading plugin: mysql
+[04:52:38]  >> plugin.mysql: R33 successfully loaded.
+[04:52:38]   Loaded.
+[04:52:38]  Loading plugin: sscanf
+[04:52:38] 
+
+[04:52:38]  ===============================
+
+[04:52:38]       sscanf plugin loaded.     
+
+[04:52:38]          Version:  2.8.1        
+
+[04:52:38]    (c) 2012 Alex "Y_Less" Cole  
+
+[04:52:38]  ===============================
+
+[04:52:38]   Loaded.
+[04:52:38]  Loading plugin: whirlpool
+[04:52:38]  
+[04:52:38]  ==================
+[04:52:38]  
+[04:52:38]   Whirlpool loaded
+[04:52:38]  
+[04:52:38]  ==================
+[04:52:38]  
+[04:52:38]   Loaded.
+[04:52:38]  Loading plugin: crashdetect
+[04:52:38]   CrashDetect plugin 4.19.4
+[04:52:38]   Loaded.
+[04:52:38]  Loading plugin: sampvoice
+[04:52:38] [sv:dbg:network:init] : module initializing...
+[04:52:38] [dbg:raknet:init] : module initializing...
+[04:52:38] [dbg:raknet:init] : module initialized
+[04:52:38] [sv:dbg:network:init] : module initialized
+[04:52:38] [sv:dbg:main:Load] : creating 8 work threads...
+[04:52:38]  -------------------------------------------    
+[04:52:38]    ___                __   __    _              
+[04:52:38]   / __| __ _ _ __  _ _\ \ / /__ (_) __ ___    
+[04:52:38]   \__ \/ _` | '  \| '_ \   / _ \| |/ _/ -_)
+[04:52:38]   |___/\__,_|_|_|_| .__/\_/\___/|_|\__\___|
+[04:52:38]                   |_|                           
+[04:52:38]  -------------------------------------------    
+[04:52:38]            SampVoice by MOR loaded              
+[04:52:38]  -------------------------------------------    
+[04:52:38]   Loaded.
+[04:52:38]  Loading plugin: samp-compat.dll
+[04:52:38]   -- samp-compat for 0.3.DL-R1 initialized
+[04:52:38]   Loaded.
+[04:52:38]  Loading plugin: streamer
+[04:52:38] 
+
+*** Streamer Plugin v2.9.5 by Incognito loaded ***
+
+[04:52:38]   Loaded.
+[04:52:38]  Loading plugin: server
+[04:52:38]   Loaded.
+[04:52:38]  Loading plugin: TDE
+[04:52:38] 
+TDEditor Plugin loaded, thank you for using.
+
+[04:52:38]   Loaded.
+[04:52:38]  Loading plugin: YSF_DL
+[04:52:38] 
+[04:52:38]  ==============================================
+[04:52:38]  YSF 2.2 (compiled Sep 19 2021 13:02:34) loaded
+[04:52:38]   (c) 2008 Alex "Y_Less" Cole
+[04:52:38]   (c) 2010 - 2018 kurta999
+[04:52:38]   (c) 2018 - 2020 IllidanS4
+[04:52:38]  Server version: 0.3.DL R1, Windows
+[04:52:38]  ==============================================
+[04:52:38] 
+[04:52:38]   Loaded.
+[04:52:38]  Loading plugin: discord-connector
+[04:52:42]  >> discord-connector: afb7e3b successfully loaded.
+[04:52:42]   Loaded.
+[04:52:42]  Loaded 11 plugins.
+
+[04:52:42] [artwork:crc] bp.dff CRC = 0xA2B03FFB
+[04:52:42] [artwork:crc] bp.txd CRC = 0x28E0706E
+[04:52:42] [artwork:crc] object.dff CRC = 0xDCFCC14C
+[04:52:42] [artwork:crc] speedo.txd CRC = 0x62C7BCBC
+[04:52:42] [artwork:crc] object.dff CRC = 0xDCFCC14C
+[04:52:42] [artwork:crc] login.txd CRC = 0x54694AE4
+[04:52:42] [artwork:crc] object.dff CRC = 0xDCFCC14C
+[04:52:42] [artwork:crc] character.txd CRC = 0xC1BABE5F
+[04:52:42] [artwork:crc] object.dff CRC = 0xDCFCC14C
+[04:52:42] [artwork:crc] speedo.txd CRC = 0x62C7BCBC
+[04:52:42] [artwork:crc] object.dff CRC = 0xDCFCC14C
+[04:52:42] [artwork:crc] newinv.txd CRC = 0xC5F22638
+[04:52:42] [artwork:crc] object.dff CRC = 0xDCFCC14C
+[04:52:42] [artwork:crc] character.txd CRC = 0xC1BABE5F
+[04:52:42] [artwork:crc] object.dff CRC = 0xDCFCC14C
+[04:52:42] [artwork:crc] inventory.txd CRC = 0xBE6E57A5
+[04:52:43] 
+[04:52:43] Filterscripts
+[04:52:43] ---------------
+[04:52:43]   Loading filterscript 'Server.amx'...
+[04:52:43] [sv:dbg:main:AmxLoad] : net game pointer (value:065F0048) received
+[04:52:43] [sv:dbg:network:bind] : voice server running on port 54230
+[04:52:43]   Loading filterscript 'cbug.amx'...
+[04:52:43]   Loaded 2 filterscripts.
+
+[04:52:43]  
+[04:52:43]  ======================================= 
+[04:52:43]  |                                     | 
+[04:52:43]  |        YSI version 3.01.0002        | 
+[04:52:43]  |        By Alex "Y_Less" Cole        | 
+[04:52:43]  |                                     | 
+[04:52:43]  ======================================= 
+[04:52:43]  
+[04:52:43] Chuong trinh may chu dang duoc khoi dong, vui long cho doi....
+[04:53:03] [MySQL] (Main Pipelines) Connecting to 23.88.73.88...
+[04:53:03] [MySQL] (MainPipeline) Connection successful toward MySQL Database Server!
+[04:53:03] [Dynamic Giftbox] Loading the Dynamic Giftbox...
+[04:53:03] [LoadCrates] Load Query Sent
+[04:53:03] [LoadHouses] Loading data from database...
+[04:53:03] [LoadDynamicDoors] Loading data from database...
+[04:53:03] [LoadDynamicMapIcons] Loading data from database...
+[04:53:03] [LoadMailboxes] Loading data from database...
+[04:53:03] [LoadBusinesses] Loading data from database...
+[04:53:03] [LoadAuctions] Loading data from database...
+[04:53:03] [LoadTxtLabels] Loading data from database...
+[04:53:03] [LoadPlants] Loading data from database...
+[04:53:03] [SpeedCameras] Loading data from database...
+[04:53:03] [LoadPayNSprays] Loading data from database...
+[04:53:03] [LoadArrestPoints] Loading data from database...
+[04:53:03] [LoadImpoundPoints] Loading data from database...
+[04:53:03] [LoadBusinessSales] Loading data from database...
+[04:53:03] [LoadPaintballArenas] 10 paintball loaded.
+[04:53:03] [LoadEventPoints] 0 event points loaded.
+[04:53:03] [LoadGates] Loading data from database...
+[04:53:03] [LoadElevatorStuff] 20 floors loaded.
+[04:53:03] [LoadFamilies] Dang tai du lieu tu database...
+[04:53:03] [LoadFamilyPoints] Loading Family Points from the database, please wait...
+[04:53:03] [MiscLoad] Misc Loaded
+[04:53:03] Resetting news...
+[04:53:03] Resetting default server variables..
+[04:53:03] Adjusted the server time...
+[04:53:03] [Streamer] Loading Dynamic Static Vehicles...
+[04:53:03] [Streamer] Dynamic Static Vehicles has been loaded.
+[04:53:03] [Streamer] Loading Dynamic Pickups...
+[04:53:03] [Streamer] Dynamic Pickups has been loaded.
+[04:53:03] [Streamer] Loading 3D Text Labels...
+[04:53:03] [Streamer] Dynamic 3D Text Labels has been loaded.
+[04:53:03] [Streamer] Loading Dynamic Buttons...
+[04:53:03] [Streamer] Dynamic Buttons has been loaded.
+[04:53:03] [Streamer] Loading Dynamic Objects...
+[04:53:03] [Streamer] Dynamic Objects has been loaded.
+[04:53:03] [Textdraws] Loading Textdraws...
+[04:53:03] [Textdraws] Loaded textdraws.
+[04:53:03] [Dynamic Groups] Loading Dynamic Groups...
+[04:53:03] [Dynamic Groups] Loading Dynamic Groups Vehicles...
+[04:53:03] Da chay thanh cong gamemode...
+[04:53:03] Number of vehicle models: 20
+[04:53:03]  
+[04:53:03]  
+[04:53:04] [Dynamic Giftbox] da tai thanh cong Dynamic giftbox.
+[04:53:04] [LoadCrates] Loading Crates Finished
+[04:53:05] [LoadHouses] 3000 ngoi nha duoc tai.
+[04:53:06] [LoadDynamicDoors] 2248 door duoc tai.
+[04:53:06] [LoadDynamicMapIcons] 400 icons map duoc tai.
+[04:53:06] [LoadMailboxes] 50 mailboxes duoc tai.
+[04:53:06] [LoadBusinesses] 200 businesses rehashed/loaded.
+[04:53:07] [LoadPlants] Successfully loaded 300 plants
+[04:53:07] [SpeedCameras] Tai 3 May ban toc do.
+[04:53:08] TotalSold0: 0 | AmountMade0: 0
+[04:53:08] TotalSold1: 0 | AmountMade1: 0
+[04:53:08] TotalSold2: 0 | AmountMade2: 0
+[04:53:08] TotalSold3: 0 | AmountMade3: 0
+[04:53:08] TotalSold4: 0 | AmountMade4: 0
+[04:53:08] TotalSold5: 0 | AmountMade5: 0
+[04:53:08] TotalSold6: 0 | AmountMade6: 0
+[04:53:08] TotalSold7: 0 | AmountMade7: 0
+[04:53:08] TotalSold8: 0 | AmountMade8: 0
+[04:53:08] TotalSold9: 0 | AmountMade9: 0
+[04:53:08] TotalSold10: 0 | AmountMade10: 0
+[04:53:08] TotalSold11: 0 | AmountMade11: 0
+[04:53:08] TotalSold12: 0 | AmountMade12: 0
+[04:53:08] TotalSold13: 0 | AmountMade13: 0
+[04:53:08] TotalSold14: 0 | AmountMade14: 0
+[04:53:08] TotalSold15: 0 | AmountMade15: 0
+[04:53:08] TotalSold16: 0 | AmountMade16: 0
+[04:53:08] TotalSold17: 0 | AmountMade17: 0
+[04:53:08] TotalSold18: 0 | AmountMade18: 0
+[04:53:08] TotalSold19: 0 | AmountMade19: 0
+[04:53:08] TotalSold20: 0 | AmountMade20: 0
+[04:53:08] TotalSold21: 0 | AmountMade21: 0
+[04:53:08] TotalSold22: 0 | AmountMade22: 0
+[04:53:08] TotalSold23: 0 | AmountMade23: 0
+[04:53:08] TotalSold24: 0 | AmountMade24: 0
+[04:53:08] TotalSold25: 0 | AmountMade25: 0
+[04:53:08] TotalSold26: 0 | AmountMade26: 0
+[04:53:08] TotalSold27: 0 | AmountMade27: 0
+[04:53:08] TotalSold28: 0 | AmountMade28: 0
+[04:53:08] TotalSold29: 0 | AmountMade29: 0
+[04:53:08] Price0: 20000
+[04:53:08] Price1: 50000
+[04:53:08] Price2: 15000
+[04:53:08] Price3: 10000
+[04:53:08] Price4: 400
+[04:53:08] Price5: 500
+[04:53:08] Price6: 100
+[04:53:08] Price7: 500
+[04:53:08] Price8: 100
+[04:53:08] Price9: 100
+[04:53:08] Price10: 10
+[04:53:08] Price11: 100000
+[04:53:08] Price12: 100000
+[04:53:08] Price13: 100000
+[04:53:08] Price14: 10000
+[04:53:08] Price15: 5000
+[04:53:08] Price16: 1000
+[04:53:08] Price17: 1000
+[04:53:08] Price18: 1
+[04:53:08] Price19: 2
+[04:53:08] Price20: 10
+[04:53:08] Price21: 999999
+[04:53:08] Price22: 100
+[04:53:08] Price23: 1000
+[04:53:08] Price24: 100000
+[04:53:08] Price25: 100000
+[04:53:08] Price26: 100000
+[04:53:08] Price27: 100000
+[04:53:08] Price28: 1000
+[04:53:08] Price29: 29
+[04:53:09] [Family Points] 8 family points has been loaded.
+[04:53:40] [connection] incoming connection: 127.0.0.1:59261 id: 0
+[04:53:41] [join] CouNil_WisDom has joined the server (0:127.0.0.1)
+[04:53:48] name CouNil_WisDom,0, 
+[04:53:48] [warning] client exceeded 'messageholelimit' (1) 127.0.0.1:59261 (3006) Limit: 3000
+[04:53:48] [warning] client exceeded 'messageholelimit' (1) 127.0.0.1:59261 (3006) Limit: 3000
+[04:53:49] [warning] client exceeded 'messageholelimit' (1) 127.0.0.1:59261 (3006) Limit: 3000
+[04:53:49] [warning] client exceeded 'messageholelimit' (1) 127.0.0.1:59261 (3006) Limit: 3000
+[04:53:49] [warning] client exceeded 'messageholelimit' (1) 127.0.0.1:59261 (3006) Limit: 3000
+[04:53:49] [warning] client exceeded 'messageholelimit' (1) 127.0.0.1:59261 (3006) Limit: 3000
+[04:53:57] acc id 10
+[04:53:57] [He Thong] Da luu lai thong tin tai khoan thanh cong.
+[04:54:01] CouNil WisDom has logged in.
+[04:54:02] [VEHICLE TRUCKER LOAD] Loading data from database...
+[04:54:02] [He Thong] Da luu lai thong tin tai khoan thanh cong.
+[04:54:03] [LOAD INVENTORY]  du lieu inventory cua CouNil WisDom (ID: 0) da duoc tai.
+[04:54:04] [Load Vehicle Trucker] Khong co du lieu de tai
+[04:54:26] [zcmd] [CouNil WisDom]: /setnameinquery test
+[04:59:04] *** YSI Error: INI_Open could not find or create file /DuLieu/test.ini
+[04:59:04] [part] test has left the server (0:1)
+[04:59:04] [MySQL] Query Error - (ErrorID: 1054) (Handle: 1)
+[04:59:04] [MySQL] Check mysql_log.txt to review the query that threw the error.
+[04:59:04] Dumping query from 2023/10/4 (4:59:4)
+Description: Unknown column 'RankText' in 'field list' (index 0). Query:
+
+[04:59:04] UPDATE `accounts` SET `IP`='127.0.0.1',`Registered`=1,`ConnectedTime`=12,`Sex`=1,`BirthDate`='1923-01-01',`Band`=0,`PermBand`=0,`Warnings`=0,`Disabled`=0,`Level`=1,`AdminLevel`=99999,`CMND`=109946829,`MaskID1`=46738,`MaskID2`=84,`SeniorModerator`=0,`Helper`=0,`DonateRank`=0,`Respect`=21,`XP`=1050,`Money`=21065,`MaHieu1`=0,`TruyDuoi`=0,`BanTime`=0,`TimeBanned`=0,`Flag`=53,`Eat`=1,`Drink`=1,`Strong`=1,`SoLanMiner`=0,`MinerLevel`=0,`TimeCraft`=0,`TimeMedkit`=0,`BannedBy`='NULL',`ReasonBanned`='NULL',`RankText`='NULL',`QuocTich`='0',`Flag`=53,`Hambuger`=0,`Banhmi`=0,`Pizza`=0,`Bank`=0,`pHealth`='100.00',`pArmor`='100.00',`pSHealth`='0.00',`Int`=0,`VirtualWorld`=0,`Model`=29,`BanAppealer`=0,`PR`=0,`HR`=0,`AP`=1,`Security`=0,`ShopTech`=0,`FactionModerator`=0,`GangModerator`=0,`Undercover`=0,`TogReports`=0,`Radio`=0,`RadioFreq`=0,`UpgradePoints`=0,`Origin`=0,`Muted`=0,`Crimes`=0,`Accent`=1,`CHits`=0,`FHits`=0,`Arrested`=0,`Phonebook`=1,`Fishes`=0,`Gcoin`=0,`Capacity`=30,`BiggestFish`=0,`Job`=20,`SoTaiKhoan`=0,`Job2
+[04:59:04] `=0,`Paycheck`=871,`HeadValue`=0,`JailTime`=0,`WRestricted`=0,`Materials`=0,`Crates`=0,`Pot`=0,`Crack`=0,`Nation`=-1,`Leader`=-1,`Member`=-1,`Division`=-1,`FMember`=255,`Rank`=255,`DetSkill`=0,`SexSkill`=0,`BoxSkill`=0,`LawSkill`=0,`MechSkill`=0,`TruckSkill`=0,`DrugsSkill`=0,`ArmsSkill`=0,`SmugglerSkill`=0,`FishSkill`=0,`CheckCash`=0,`Checks`=0,`BoatLic`=0,`FlyLic`=0,`GunLic`=0,`FishLic`=0,`FishSkill`=0,`FightingStyle`=0,`PhoneNr`=46924,`Apartment`=-1,`Apartment2`=-1,`Renting`=-1,`CarLic`=1,`DrugsTime`=0,`LawyerTime`=0,`LawyerFreeTime`=0,`MechTime`=0,`SexTime`=0,`PayDay`=871,`PayDayHad`=0,`CDPlayer`=0,`Dice`=0,`Spraycan`=0,`Rope`=0,`Cigars`=0,`Sprunk`=0,`Bombs`=0,`Wins`=0,`Ammo1`=177,`Ammo2`=0,`Ammo3`=0,`Ammo4`=0,`Ammo5`=0,`Ammo6`=0,`Ammo7`=0,`Ammo8`=0,`Gun0`=0,`Gun1`=0,`Gun2`=24,`Gun3`=0,`Gun4`=0,`Gun5`=0,`Gun6`=0 WHERE `id`=12
+[04:59:05]  -------------------------------------------
+[04:59:05]            SampVoice unloading...           
+[04:59:05]  -------------------------------------------
+[04:59:05] [dbg:raknet:free] : module releasing...
+[04:59:05] [dbg:raknet:free] : module released
+[04:59:05] [sv:dbg:network:free] : module releasing...
+[04:59:05] [sv:dbg:network:free] : module released
+
+----------
+Loaded log file: "server_log.txt".
+----------
+
+SA-MP Dedicated Server
+----------------------
+v0.3.DL-R1, (C)2005-2018 SA-MP Team
+
+[05:02:58] password = ""  (string)
+[05:02:58] 
+[05:02:58] Server Plugins
+[05:02:58] --------------
+[05:02:58]  Loading plugin: mysql
+[05:02:58]  >> plugin.mysql: R33 successfully loaded.
+[05:02:58]   Loaded.
+[05:02:58]  Loading plugin: sscanf
+[05:02:58] 
+
+[05:02:58]  ===============================
+
+[05:02:58]       sscanf plugin loaded.     
+
+[05:02:58]          Version:  2.8.1        
+
+[05:02:58]    (c) 2012 Alex "Y_Less" Cole  
+
+[05:02:58]  ===============================
+
+[05:02:58]   Loaded.
+[05:02:58]  Loading plugin: whirlpool
+[05:02:58]  
+[05:02:58]  ==================
+[05:02:58]  
+[05:02:58]   Whirlpool loaded
+[05:02:58]  
+[05:02:58]  ==================
+[05:02:58]  
+[05:02:58]   Loaded.
+[05:02:58]  Loading plugin: crashdetect
+[05:02:58]   CrashDetect plugin 4.19.4
+[05:02:58]   Loaded.
+[05:02:58]  Loading plugin: sampvoice
+[05:02:58] [sv:dbg:network:init] : module initializing...
+[05:02:58] [dbg:raknet:init] : module initializing...
+[05:02:58] [dbg:raknet:init] : module initialized
+[05:02:58] [sv:dbg:network:init] : module initialized
+[05:02:58] [sv:dbg:main:Load] : creating 8 work threads...
+[05:02:58]  -------------------------------------------    
+[05:02:58]    ___                __   __    _              
+[05:02:58]   / __| __ _ _ __  _ _\ \ / /__ (_) __ ___    
+[05:02:58]   \__ \/ _` | '  \| '_ \   / _ \| |/ _/ -_)
+[05:02:58]   |___/\__,_|_|_|_| .__/\_/\___/|_|\__\___|
+[05:02:58]                   |_|                           
+[05:02:58]  -------------------------------------------    
+[05:02:58]            SampVoice by MOR loaded              
+[05:02:58]  -------------------------------------------    
+[05:02:58]   Loaded.
+[05:02:58]  Loading plugin: samp-compat.dll
+[05:02:58]   -- samp-compat for 0.3.DL-R1 initialized
+[05:02:58]   Loaded.
+[05:02:58]  Loading plugin: streamer
+[05:02:58] 
+
+*** Streamer Plugin v2.9.5 by Incognito loaded ***
+
+[05:02:58]   Loaded.
+[05:02:58]  Loading plugin: server
+[05:02:58]   Loaded.
+[05:02:58]  Loading plugin: TDE
+[05:02:58] 
+TDEditor Plugin loaded, thank you for using.
+
+[05:02:58]   Loaded.
+[05:02:58]  Loading plugin: YSF_DL
+[05:02:58] 
+[05:02:58]  ==============================================
+[05:02:58]  YSF 2.2 (compiled Sep 19 2021 13:02:34) loaded
+[05:02:58]   (c) 2008 Alex "Y_Less" Cole
+[05:02:58]   (c) 2010 - 2018 kurta999
+[05:02:58]   (c) 2018 - 2020 IllidanS4
+[05:02:58]  Server version: 0.3.DL R1, Windows
+[05:02:58]  ==============================================
+[05:02:58] 
+[05:02:58]   Loaded.
+[05:02:58]  Loading plugin: discord-connector
+[05:03:01]  >> discord-connector: afb7e3b successfully loaded.
+[05:03:01]   Loaded.
+[05:03:01]  Loaded 11 plugins.
+
+[05:03:01] [artwork:crc] bp.dff CRC = 0xA2B03FFB
+[05:03:01] [artwork:crc] bp.txd CRC = 0x28E0706E
+[05:03:01] [artwork:crc] object.dff CRC = 0xDCFCC14C
+[05:03:01] [artwork:crc] speedo.txd CRC = 0x62C7BCBC
+[05:03:01] [artwork:crc] object.dff CRC = 0xDCFCC14C
+[05:03:01] [artwork:crc] login.txd CRC = 0x54694AE4
+[05:03:01] [artwork:crc] object.dff CRC = 0xDCFCC14C
+[05:03:01] [artwork:crc] character.txd CRC = 0xC1BABE5F
+[05:03:01] [artwork:crc] object.dff CRC = 0xDCFCC14C
+[05:03:02] [artwork:crc] speedo.txd CRC = 0x62C7BCBC
+[05:03:02] [artwork:crc] object.dff CRC = 0xDCFCC14C
+[05:03:02] [artwork:crc] newinv.txd CRC = 0xC5F22638
+[05:03:02] [artwork:crc] object.dff CRC = 0xDCFCC14C
+[05:03:02] [artwork:crc] character.txd CRC = 0xC1BABE5F
+[05:03:02] [artwork:crc] object.dff CRC = 0xDCFCC14C
+[05:03:02] [artwork:crc] inventory.txd CRC = 0xBE6E57A5
+[05:03:02] 
+[05:03:02] Filterscripts
+[05:03:02] ---------------
+[05:03:02]   Loading filterscript 'Server.amx'...
+[05:03:02] [sv:dbg:main:AmxLoad] : net game pointer (value:065F0048) received
+[05:03:02] [sv:dbg:network:bind] : voice server running on port 62538
+[05:03:02]   Loading filterscript 'cbug.amx'...
+[05:03:02]   Loaded 2 filterscripts.
+
+[05:03:02]  
+[05:03:02]  ======================================= 
+[05:03:02]  |                                     | 
+[05:03:02]  |        YSI version 3.01.0002        | 
+[05:03:02]  |        By Alex "Y_Less" Cole        | 
+[05:03:02]  |                                     | 
+[05:03:02]  ======================================= 
+[05:03:02]  
+[05:03:02] Chuong trinh may chu dang duoc khoi dong, vui long cho doi....
+[05:03:22] [MySQL] (Main Pipelines) Connecting to 23.88.73.88...
+[05:03:22] [MySQL] (MainPipeline) Connection successful toward MySQL Database Server!
+[05:03:22] [Dynamic Giftbox] Loading the Dynamic Giftbox...
+[05:03:22] [LoadCrates] Load Query Sent
+[05:03:22] [LoadHouses] Loading data from database...
+[05:03:22] [LoadDynamicDoors] Loading data from database...
+[05:03:22] [LoadDynamicMapIcons] Loading data from database...
+[05:03:22] [LoadMailboxes] Loading data from database...
+[05:03:22] [LoadBusinesses] Loading data from database...
+[05:03:22] [LoadAuctions] Loading data from database...
+[05:03:22] [LoadTxtLabels] Loading data from database...
+[05:03:22] [LoadPlants] Loading data from database...
+[05:03:22] [SpeedCameras] Loading data from database...
+[05:03:22] [LoadPayNSprays] Loading data from database...
+[05:03:22] [LoadArrestPoints] Loading data from database...
+[05:03:22] [LoadImpoundPoints] Loading data from database...
+[05:03:22] [LoadBusinessSales] Loading data from database...
+[05:03:22] [LoadPaintballArenas] 10 paintball loaded.
+[05:03:22] [LoadEventPoints] 0 event points loaded.
+[05:03:22] [LoadGates] Loading data from database...
+[05:03:22] [LoadElevatorStuff] 20 floors loaded.
+[05:03:22] [LoadFamilies] Dang tai du lieu tu database...
+[05:03:22] [LoadFamilyPoints] Loading Family Points from the database, please wait...
+[05:03:22] [MiscLoad] Misc Loaded
+[05:03:22] Resetting news...
+[05:03:22] Resetting default server variables..
+[05:03:22] Adjusted the server time...
+[05:03:22] [Streamer] Loading Dynamic Static Vehicles...
+[05:03:22] [Streamer] Dynamic Static Vehicles has been loaded.
+[05:03:22] [Streamer] Loading Dynamic Pickups...
+[05:03:22] [Streamer] Dynamic Pickups has been loaded.
+[05:03:22] [Streamer] Loading 3D Text Labels...
+[05:03:22] [Streamer] Dynamic 3D Text Labels has been loaded.
+[05:03:22] [Streamer] Loading Dynamic Buttons...
+[05:03:22] [Streamer] Dynamic Buttons has been loaded.
+[05:03:22] [Streamer] Loading Dynamic Objects...
+[05:03:22] [Streamer] Dynamic Objects has been loaded.
+[05:03:22] [Textdraws] Loading Textdraws...
+[05:03:22] [Textdraws] Loaded textdraws.
+[05:03:22] [Dynamic Groups] Loading Dynamic Groups...
+[05:03:22] [Dynamic Groups] Loading Dynamic Groups Vehicles...
+[05:03:22] Da chay thanh cong gamemode...
+[05:03:22] Number of vehicle models: 20
+[05:03:22]  
+[05:03:22]  
+[05:03:23] [Dynamic Giftbox] da tai thanh cong Dynamic giftbox.
+[05:03:23] [LoadCrates] Loading Crates Finished
+[05:03:24] [LoadHouses] 3000 ngoi nha duoc tai.
+[05:03:25] [LoadDynamicDoors] 2248 door duoc tai.
+[05:03:25] [LoadDynamicMapIcons] 400 icons map duoc tai.
+[05:03:25] [LoadMailboxes] 50 mailboxes duoc tai.
+[05:03:25] [LoadBusinesses] 200 businesses rehashed/loaded.
+[05:03:26] [LoadPlants] Successfully loaded 300 plants
+[05:03:26] [SpeedCameras] Tai 3 May ban toc do.
+[05:03:27] TotalSold0: 0 | AmountMade0: 0
+[05:03:27] TotalSold1: 0 | AmountMade1: 0
+[05:03:27] TotalSold2: 0 | AmountMade2: 0
+[05:03:27] TotalSold3: 0 | AmountMade3: 0
+[05:03:27] TotalSold4: 0 | AmountMade4: 0
+[05:03:27] TotalSold5: 0 | AmountMade5: 0
+[05:03:27] TotalSold6: 0 | AmountMade6: 0
+[05:03:27] TotalSold7: 0 | AmountMade7: 0
+[05:03:27] TotalSold8: 0 | AmountMade8: 0
+[05:03:27] TotalSold9: 0 | AmountMade9: 0
+[05:03:27] TotalSold10: 0 | AmountMade10: 0
+[05:03:27] TotalSold11: 0 | AmountMade11: 0
+[05:03:27] TotalSold12: 0 | AmountMade12: 0
+[05:03:27] TotalSold13: 0 | AmountMade13: 0
+[05:03:27] TotalSold14: 0 | AmountMade14: 0
+[05:03:27] TotalSold15: 0 | AmountMade15: 0
+[05:03:27] TotalSold16: 0 | AmountMade16: 0
+[05:03:27] TotalSold17: 0 | AmountMade17: 0
+[05:03:27] TotalSold18: 0 | AmountMade18: 0
+[05:03:27] TotalSold19: 0 | AmountMade19: 0
+[05:03:27] TotalSold20: 0 | AmountMade20: 0
+[05:03:27] TotalSold21: 0 | AmountMade21: 0
+[05:03:27] TotalSold22: 0 | AmountMade22: 0
+[05:03:27] TotalSold23: 0 | AmountMade23: 0
+[05:03:27] TotalSold24: 0 | AmountMade24: 0
+[05:03:27] TotalSold25: 0 | AmountMade25: 0
+[05:03:27] TotalSold26: 0 | AmountMade26: 0
+[05:03:27] TotalSold27: 0 | AmountMade27: 0
+[05:03:27] TotalSold28: 0 | AmountMade28: 0
+[05:03:27] TotalSold29: 0 | AmountMade29: 0
+[05:03:27] Price0: 20000
+[05:03:27] Price1: 50000
+[05:03:27] Price2: 15000
+[05:03:27] Price3: 10000
+[05:03:27] Price4: 400
+[05:03:27] Price5: 500
+[05:03:27] Price6: 100
+[05:03:27] Price7: 500
+[05:03:27] Price8: 100
+[05:03:27] Price9: 100
+[05:03:27] Price10: 10
+[05:03:27] Price11: 100000
+[05:03:27] Price12: 100000
+[05:03:27] Price13: 100000
+[05:03:27] Price14: 10000
+[05:03:27] Price15: 5000
+[05:03:27] Price16: 1000
+[05:03:27] Price17: 1000
+[05:03:27] Price18: 1
+[05:03:27] Price19: 2
+[05:03:27] Price20: 10
+[05:03:27] Price21: 999999
+[05:03:27] Price22: 100
+[05:03:27] Price23: 1000
+[05:03:27] Price24: 100000
+[05:03:27] Price25: 100000
+[05:03:27] Price26: 100000
+[05:03:27] Price27: 100000
+[05:03:27] Price28: 1000
+[05:03:27] Price29: 29
+[05:03:28] [Family Points] 8 family points has been loaded.
+[05:03:42] [connection] incoming connection: 127.0.0.1:58113 id: 0
+[05:03:42] [join] CouNil_WisDom has joined the server (0:127.0.0.1)
+[05:04:09] name CouNil_WisDom,0, 
+[05:04:22] acc id 10
+[05:04:22] [He Thong] Da luu lai thong tin tai khoan thanh cong.
+[05:04:26] CouNil WisDom has logged in.
+[05:04:26] [debug] Run time error 4: "Array index out of bounds"
+[05:04:26] [debug]  Attempted to read/write array element at index 12 in array of size 12
+[05:04:26] [debug] AMX backtrace:
+[05:04:26] [debug] #0 0055ebf8 in ?? (0) in lsrpvn.amx
+[05:04:26] [debug] #1 00550c84 in public OnPlayerLoad (0) in lsrpvn.amx
+[05:04:26] [debug] #2 004ec00c in public OnQueryFinish (1, 0, 58) in lsrpvn.amx
+[05:04:27] [VEHICLE TRUCKER LOAD] Loading data from database...
+[05:04:27] [He Thong] Da luu lai thong tin tai khoan thanh cong.
+[05:04:28] [LOAD INVENTORY]  du lieu inventory cua CouNil WisDom (ID: 0) da duoc tai.
+[05:04:29] [Load Vehicle Trucker] Khong co du lieu de tai
+[05:06:06] *** YSI Error: INI_Open could not find or create file /DuLieu/CouNil_WisDom.ini
+[05:06:06] [part] CouNil_WisDom has left the server (0:1)
+[05:06:07] [MySQL] Query Error - (ErrorID: 1054) (Handle: 1)
+[05:06:07] [MySQL] Check mysql_log.txt to review the query that threw the error.
+[05:06:07] Dumping query from 2023/10/4 (5:6:7)
+Description: Unknown column 'RankText' in 'field list' (index 0). Query:
+
+[05:06:07] UPDATE `accounts` SET `IP`='127.0.0.1',`Registered`=1,`ConnectedTime`=12,`Sex`=1,`BirthDate`='1923-01-01',`Band`=0,`PermBand`=0,`Warnings`=0,`Disabled`=0,`Level`=1,`AdminLevel`=99999,`CMND`=109946829,`MaskID1`=46738,`MaskID2`=84,`SeniorModerator`=0,`Helper`=0,`DonateRank`=0,`Respect`=21,`XP`=1050,`Money`=21065,`MaHieu1`=0,`TruyDuoi`=0,`BanTime`=0,`TimeBanned`=0,`Flag`=53,`Eat`=1,`Drink`=1,`Strong`=1,`SoLanMiner`=0,`MinerLevel`=0,`TimeCraft`=0,`TimeMedkit`=0,`BannedBy`='NULL',`ReasonBanned`='NULL',`RankText`='NULL',`QuocTich`='0',`Flag`=53,`Hambuger`=0,`Banhmi`=0,`Pizza`=0,`Bank`=0,`pHealth`='100.00',`pArmor`='100.00',`pSHealth`='0.00',`Int`=0,`VirtualWorld`=0,`Model`=29,`BanAppealer`=0,`PR`=0,`HR`=0,`AP`=1,`Security`=0,`ShopTech`=0,`FactionModerator`=0,`GangModerator`=0,`Undercover`=0,`TogReports`=0,`Radio`=0,`RadioFreq`=0,`UpgradePoints`=0,`Origin`=0,`Muted`=0,`Crimes`=0,`Accent`=1,`CHits`=0,`FHits`=0,`Arrested`=0,`Phonebook`=1,`Fishes`=0,`Gcoin`=0,`Capacity`=30,`BiggestFish`=0,`Job`=20,`SoTaiKhoan`=0,`Job2
+[05:06:07] `=0,`Paycheck`=683,`HeadValue`=0,`JailTime`=0,`WRestricted`=0,`Materials`=0,`Crates`=0,`Pot`=0,`Crack`=0,`Nation`=-1,`Leader`=-1,`Member`=-1,`Division`=-1,`FMember`=255,`Rank`=255,`DetSkill`=0,`SexSkill`=0,`BoxSkill`=0,`LawSkill`=0,`MechSkill`=0,`TruckSkill`=0,`DrugsSkill`=0,`ArmsSkill`=0,`SmugglerSkill`=0,`FishSkill`=0,`CheckCash`=0,`Checks`=0,`BoatLic`=0,`FlyLic`=0,`GunLic`=0,`FishLic`=0,`FishSkill`=0,`FightingStyle`=0,`PhoneNr`=46924,`Apartment`=-1,`Apartment2`=-1,`Renting`=-1,`CarLic`=1,`DrugsTime`=0,`LawyerTime`=0,`LawyerFreeTime`=0,`MechTime`=0,`SexTime`=0,`PayDay`=683,`PayDayHad`=0,`CDPlayer`=0,`Dice`=0,`Spraycan`=0,`Rope`=0,`Cigars`=0,`Sprunk`=0,`Bombs`=0,`Wins`=0,`Ammo1`=183,`Ammo2`=0,`Ammo3`=0,`Ammo4`=0,`Ammo5`=0,`Ammo6`=0,`Ammo7`=0,`Ammo8`=0,`Gun0`=0,`Gun1`=0,`Gun2`=24,`Gun3`=0,`Gun4`=0,`Gun5`=0,`Gun6`=0 WHERE `id`=12
+[05:06:15]  -------------------------------------------
+[05:06:15]            SampVoice unloading...           
+[05:06:15]  -------------------------------------------
+[05:06:15] [dbg:raknet:free] : module releasing...
+[05:06:15] [dbg:raknet:free] : module released
+[05:06:15] [sv:dbg:network:free] : module releasing...
+[05:06:15] [sv:dbg:network:free] : module released
+
+----------
+Loaded log file: "server_log.txt".
+----------
+
+SA-MP Dedicated Server
+----------------------
+v0.3.DL-R1, (C)2005-2018 SA-MP Team
+
+[05:07:40] password = ""  (string)
+[05:07:40] 
+[05:07:40] Server Plugins
+[05:07:40] --------------
+[05:07:40]  Loading plugin: mysql
+[05:07:40]  >> plugin.mysql: R33 successfully loaded.
+[05:07:40]   Loaded.
+[05:07:40]  Loading plugin: sscanf
+[05:07:40] 
+
+[05:07:40]  ===============================
+
+[05:07:40]       sscanf plugin loaded.     
+
+[05:07:40]          Version:  2.8.1        
+
+[05:07:40]    (c) 2012 Alex "Y_Less" Cole  
+
+[05:07:40]  ===============================
+
+[05:07:40]   Loaded.
+[05:07:40]  Loading plugin: whirlpool
+[05:07:40]  
+[05:07:40]  ==================
+[05:07:40]  
+[05:07:40]   Whirlpool loaded
+[05:07:40]  
+[05:07:40]  ==================
+[05:07:40]  
+[05:07:40]   Loaded.
+[05:07:40]  Loading plugin: crashdetect
+[05:07:40]   CrashDetect plugin 4.19.4
+[05:07:40]   Loaded.
+[05:07:40]  Loading plugin: sampvoice
+[05:07:40] [sv:dbg:network:init] : module initializing...
+[05:07:40] [dbg:raknet:init] : module initializing...
+[05:07:40] [dbg:raknet:init] : module initialized
+[05:07:40] [sv:dbg:network:init] : module initialized
+[05:07:40] [sv:dbg:main:Load] : creating 8 work threads...
+[05:07:40]  -------------------------------------------    
+[05:07:40]    ___                __   __    _              
+[05:07:40]   / __| __ _ _ __  _ _\ \ / /__ (_) __ ___    
+[05:07:40]   \__ \/ _` | '  \| '_ \   / _ \| |/ _/ -_)
+[05:07:40]   |___/\__,_|_|_|_| .__/\_/\___/|_|\__\___|
+[05:07:40]                   |_|                           
+[05:07:40]  -------------------------------------------    
+[05:07:40]            SampVoice by MOR loaded              
+[05:07:40]  -------------------------------------------    
+[05:07:40]   Loaded.
+[05:07:40]  Loading plugin: samp-compat.dll
+[05:07:40]   -- samp-compat for 0.3.DL-R1 initialized
+[05:07:40]   Loaded.
+[05:07:40]  Loading plugin: streamer
+[05:07:40] 
+
+*** Streamer Plugin v2.9.5 by Incognito loaded ***
+
+[05:07:40]   Loaded.
+[05:07:40]  Loading plugin: server
+[05:07:40]   Loaded.
+[05:07:40]  Loading plugin: TDE
+[05:07:40] 
+TDEditor Plugin loaded, thank you for using.
+
+[05:07:40]   Loaded.
+[05:07:40]  Loading plugin: YSF_DL
+[05:07:40] 
+[05:07:40]  ==============================================
+[05:07:40]  YSF 2.2 (compiled Sep 19 2021 13:02:34) loaded
+[05:07:40]   (c) 2008 Alex "Y_Less" Cole
+[05:07:40]   (c) 2010 - 2018 kurta999
+[05:07:40]   (c) 2018 - 2020 IllidanS4
+[05:07:40]  Server version: 0.3.DL R1, Windows
+[05:07:40]  ==============================================
+[05:07:40] 
+[05:07:40]   Loaded.
+[05:07:40]  Loading plugin: discord-connector
+[05:08:06]  >> discord-connector: timeout while initializing data.
+[05:08:06]                          plugin will proceed to retry connecting in the background.
+[05:08:06]   Loaded.
+[05:08:06]  Loaded 11 plugins.
+
+[05:08:07] [artwork:crc] bp.dff CRC = 0xA2B03FFB
+[05:08:07] [artwork:crc] bp.txd CRC = 0x28E0706E
+[05:08:07] [artwork:crc] object.dff CRC = 0xDCFCC14C
+[05:08:07] [artwork:crc] speedo.txd CRC = 0x62C7BCBC
+[05:08:07] [artwork:crc] object.dff CRC = 0xDCFCC14C
+[05:08:07] [artwork:crc] login.txd CRC = 0x54694AE4
+[05:08:07] [artwork:crc] object.dff CRC = 0xDCFCC14C
+[05:08:07] [artwork:crc] character.txd CRC = 0xC1BABE5F
+[05:08:07] [artwork:crc] object.dff CRC = 0xDCFCC14C
+[05:08:07] [artwork:crc] speedo.txd CRC = 0x62C7BCBC
+[05:08:07] [artwork:crc] object.dff CRC = 0xDCFCC14C
+[05:08:07] [artwork:crc] newinv.txd CRC = 0xC5F22638
+[05:08:07] [artwork:crc] object.dff CRC = 0xDCFCC14C
+[05:08:07] [artwork:crc] character.txd CRC = 0xC1BABE5F
+[05:08:07] [artwork:crc] object.dff CRC = 0xDCFCC14C
+[05:08:07] [artwork:crc] inventory.txd CRC = 0xBE6E57A5
+[05:08:07] 
+[05:08:07] Filterscripts
+[05:08:07] ---------------
+[05:08:07]   Loading filterscript 'Server.amx'...
+[05:08:07] [sv:dbg:main:AmxLoad] : net game pointer (value:06530048) received
+[05:08:07] [sv:dbg:network:bind] : voice server running on port 63776
+[05:08:07]   Loading filterscript 'cbug.amx'...
+[05:08:07]   Loaded 2 filterscripts.
+
+[05:08:07]  
+[05:08:07]  ======================================= 
+[05:08:07]  |                                     | 
+[05:08:07]  |        YSI version 3.01.0002        | 
+[05:08:07]  |        By Alex "Y_Less" Cole        | 
+[05:08:07]  |                                     | 
+[05:08:07]  ======================================= 
+[05:08:07]  
+[05:08:07] Chuong trinh may chu dang duoc khoi dong, vui long cho doi....
+[05:08:27] [MySQL] (Main Pipelines) Connecting to 23.88.73.88...
+[05:08:27] [MySQL] (MainPipeline) Connection successful toward MySQL Database Server!
+[05:08:27] [Dynamic Giftbox] Loading the Dynamic Giftbox...
+[05:08:27] [LoadCrates] Load Query Sent
+[05:08:27] [LoadHouses] Loading data from database...
+[05:08:27] [LoadDynamicDoors] Loading data from database...
+[05:08:27] [LoadDynamicMapIcons] Loading data from database...
+[05:08:27] [LoadMailboxes] Loading data from database...
+[05:08:27] [LoadBusinesses] Loading data from database...
+[05:08:27] [LoadAuctions] Loading data from database...
+[05:08:27] [LoadTxtLabels] Loading data from database...
+[05:08:27] [LoadPlants] Loading data from database...
+[05:08:27] [SpeedCameras] Loading data from database...
+[05:08:27] [LoadPayNSprays] Loading data from database...
+[05:08:27] [LoadArrestPoints] Loading data from database...
+[05:08:27] [LoadImpoundPoints] Loading data from database...
+[05:08:27] [LoadBusinessSales] Loading data from database...
+[05:08:27] [LoadPaintballArenas] 10 paintball loaded.
+[05:08:27] [LoadEventPoints] 0 event points loaded.
+[05:08:27] [LoadGates] Loading data from database...
+[05:08:27] [LoadElevatorStuff] 20 floors loaded.
+[05:08:27] [LoadFamilies] Dang tai du lieu tu database...
+[05:08:27] [LoadFamilyPoints] Loading Family Points from the database, please wait...
+[05:08:27] [MiscLoad] Misc Loaded
+[05:08:27] Resetting news...
+[05:08:27] Resetting default server variables..
+[05:08:27] Adjusted the server time...
+[05:08:27] [Streamer] Loading Dynamic Static Vehicles...
+[05:08:27] [Streamer] Dynamic Static Vehicles has been loaded.
+[05:08:27] [Streamer] Loading Dynamic Pickups...
+[05:08:27] [Streamer] Dynamic Pickups has been loaded.
+[05:08:27] [Streamer] Loading 3D Text Labels...
+[05:08:27] [Streamer] Dynamic 3D Text Labels has been loaded.
+[05:08:27] [Streamer] Loading Dynamic Buttons...
+[05:08:27] [Streamer] Dynamic Buttons has been loaded.
+[05:08:27] [Streamer] Loading Dynamic Objects...
+[05:08:27] [Streamer] Dynamic Objects has been loaded.
+[05:08:27] [Textdraws] Loading Textdraws...
+[05:08:27] [Textdraws] Loaded textdraws.
+[05:08:27] [Dynamic Groups] Loading Dynamic Groups...
+[05:08:27] [Dynamic Groups] Loading Dynamic Groups Vehicles...
+[05:08:27] Da chay thanh cong gamemode...
+[05:08:27] Number of vehicle models: 20
+[05:08:27]  
+[05:08:27]  
+[05:08:28] [Dynamic Giftbox] da tai thanh cong Dynamic giftbox.
+[05:08:28] [LoadCrates] Loading Crates Finished
+[05:08:30] [LoadHouses] 3000 ngoi nha duoc tai.
+[05:08:30] [LoadDynamicDoors] 2248 door duoc tai.
+[05:08:30] [LoadDynamicMapIcons] 400 icons map duoc tai.
+[05:08:30] [LoadMailboxes] 50 mailboxes duoc tai.
+[05:08:30] [LoadBusinesses] 200 businesses rehashed/loaded.
+[05:08:31] [LoadPlants] Successfully loaded 300 plants
+[05:08:31] [SpeedCameras] Tai 3 May ban toc do.
+[05:08:32] TotalSold0: 0 | AmountMade0: 0
+[05:08:32] TotalSold1: 0 | AmountMade1: 0
+[05:08:32] TotalSold2: 0 | AmountMade2: 0
+[05:08:32] TotalSold3: 0 | AmountMade3: 0
+[05:08:32] TotalSold4: 0 | AmountMade4: 0
+[05:08:32] TotalSold5: 0 | AmountMade5: 0
+[05:08:32] TotalSold6: 0 | AmountMade6: 0
+[05:08:32] TotalSold7: 0 | AmountMade7: 0
+[05:08:32] TotalSold8: 0 | AmountMade8: 0
+[05:08:32] TotalSold9: 0 | AmountMade9: 0
+[05:08:32] TotalSold10: 0 | AmountMade10: 0
+[05:08:32] TotalSold11: 0 | AmountMade11: 0
+[05:08:32] TotalSold12: 0 | AmountMade12: 0
+[05:08:32] TotalSold13: 0 | AmountMade13: 0
+[05:08:32] TotalSold14: 0 | AmountMade14: 0
+[05:08:32] TotalSold15: 0 | AmountMade15: 0
+[05:08:32] TotalSold16: 0 | AmountMade16: 0
+[05:08:32] TotalSold17: 0 | AmountMade17: 0
+[05:08:32] TotalSold18: 0 | AmountMade18: 0
+[05:08:32] TotalSold19: 0 | AmountMade19: 0
+[05:08:32] TotalSold20: 0 | AmountMade20: 0
+[05:08:32] TotalSold21: 0 | AmountMade21: 0
+[05:08:32] TotalSold22: 0 | AmountMade22: 0
+[05:08:32] TotalSold23: 0 | AmountMade23: 0
+[05:08:32] TotalSold24: 0 | AmountMade24: 0
+[05:08:32] TotalSold25: 0 | AmountMade25: 0
+[05:08:32] TotalSold26: 0 | AmountMade26: 0
+[05:08:32] TotalSold27: 0 | AmountMade27: 0
+[05:08:32] TotalSold28: 0 | AmountMade28: 0
+[05:08:32] TotalSold29: 0 | AmountMade29: 0
+[05:08:32] Price0: 20000
+[05:08:32] Price1: 50000
+[05:08:32] Price2: 15000
+[05:08:32] Price3: 10000
+[05:08:32] Price4: 400
+[05:08:32] Price5: 500
+[05:08:32] Price6: 100
+[05:08:32] Price7: 500
+[05:08:32] Price8: 100
+[05:08:32] Price9: 100
+[05:08:32] Price10: 10
+[05:08:32] Price11: 100000
+[05:08:32] Price12: 100000
+[05:08:32] Price13: 100000
+[05:08:32] Price14: 10000
+[05:08:32] Price15: 5000
+[05:08:32] Price16: 1000
+[05:08:32] Price17: 1000
+[05:08:32] Price18: 1
+[05:08:32] Price19: 2
+[05:08:32] Price20: 10
+[05:08:32] Price21: 999999
+[05:08:32] Price22: 100
+[05:08:32] Price23: 1000
+[05:08:32] Price24: 100000
+[05:08:32] Price25: 100000
+[05:08:32] Price26: 100000
+[05:08:32] Price27: 100000
+[05:08:32] Price28: 1000
+[05:08:32] Price29: 29
+[05:08:33] [Family Points] 8 family points has been loaded.
+[05:10:26] [connection] incoming connection: 127.0.0.1:63145 id: 0
+[05:10:26] [join] CouNil_WisDom has joined the server (0:127.0.0.1)
+[05:10:27] name CouNil_WisDom,0, 
+[05:10:32] [He Thong] Da luu lai thong tin tai khoan thanh cong.
+[05:10:35] acc id 10
+[05:10:40] CouNil WisDom has logged in.
+[05:10:40] GYXXPGFL_OYPVDOSCouNil_WisDom
+[05:10:40] [VEHICLE TRUCKER LOAD] Loading data from database...
+[05:10:41] [He Thong] Da luu lai thong tin tai khoan thanh cong.
+[05:10:42] [LOAD INVENTORY]  du lieu inventory cua CouNil WisDom (ID: 0) da duoc tai.
+[05:10:43] [Load Vehicle Trucker] Khong co du lieu de tai
+[05:13:03] *** YSI Error: INI_Open could not find or create file /DuLieu/CouNil_WisDom.ini
+[05:13:03] [part] CouNil_WisDom has left the server (0:1)
+[05:13:05]  -------------------------------------------
+[05:13:05]            SampVoice unloading...           
+[05:13:05]  -------------------------------------------
+[05:13:05] [dbg:raknet:free] : module releasing...
+[05:13:05] [dbg:raknet:free] : module released
+[05:13:05] [sv:dbg:network:free] : module releasing...
+[05:13:05] [sv:dbg:network:free] : module released
+
+----------
+Loaded log file: "server_log.txt".
+----------
+
+SA-MP Dedicated Server
+----------------------
+v0.3.DL-R1, (C)2005-2018 SA-MP Team
+
+[05:13:41] password = ""  (string)
+[05:13:41] 
+[05:13:41] Server Plugins
+[05:13:41] --------------
+[05:13:41]  Loading plugin: mysql
+[05:13:41]  >> plugin.mysql: R33 successfully loaded.
+[05:13:41]   Loaded.
+[05:13:41]  Loading plugin: sscanf
+[05:13:41] 
+
+[05:13:41]  ===============================
+
+[05:13:41]       sscanf plugin loaded.     
+
+[05:13:41]          Version:  2.8.1        
+
+[05:13:41]    (c) 2012 Alex "Y_Less" Cole  
+
+[05:13:41]  ===============================
+
+[05:13:41]   Loaded.
+[05:13:41]  Loading plugin: whirlpool
+[05:13:41]  
+[05:13:41]  ==================
+[05:13:41]  
+[05:13:41]   Whirlpool loaded
+[05:13:41]  
+[05:13:41]  ==================
+[05:13:41]  
+[05:13:41]   Loaded.
+[05:13:41]  Loading plugin: crashdetect
+[05:13:41]   CrashDetect plugin 4.19.4
+[05:13:41]   Loaded.
+[05:13:41]  Loading plugin: sampvoice
+[05:13:41] [sv:dbg:network:init] : module initializing...
+[05:13:41] [dbg:raknet:init] : module initializing...
+[05:13:41] [dbg:raknet:init] : module initialized
+[05:13:41] [sv:dbg:network:init] : module initialized
+[05:13:41] [sv:dbg:main:Load] : creating 8 work threads...
+[05:13:41]  -------------------------------------------    
+[05:13:41]    ___                __   __    _              
+[05:13:41]   / __| __ _ _ __  _ _\ \ / /__ (_) __ ___    
+[05:13:41]   \__ \/ _` | '  \| '_ \   / _ \| |/ _/ -_)
+[05:13:41]   |___/\__,_|_|_|_| .__/\_/\___/|_|\__\___|
+[05:13:41]                   |_|                           
+[05:13:41]  -------------------------------------------    
+[05:13:41]            SampVoice by MOR loaded              
+[05:13:41]  -------------------------------------------    
+[05:13:41]   Loaded.
+[05:13:41]  Loading plugin: samp-compat.dll
+[05:13:41]   -- samp-compat for 0.3.DL-R1 initialized
+[05:13:41]   Loaded.
+[05:13:41]  Loading plugin: streamer
+[05:13:41] 
+
+*** Streamer Plugin v2.9.5 by Incognito loaded ***
+
+[05:13:41]   Loaded.
+[05:13:41]  Loading plugin: server
+[05:13:41]   Loaded.
+[05:13:41]  Loading plugin: TDE
+[05:13:41] 
+TDEditor Plugin loaded, thank you for using.
+
+[05:13:41]   Loaded.
+[05:13:41]  Loading plugin: YSF_DL
+[05:13:41] 
+[05:13:41]  ==============================================
+[05:13:41]  YSF 2.2 (compiled Sep 19 2021 13:02:34) loaded
+[05:13:41]   (c) 2008 Alex "Y_Less" Cole
+[05:13:41]   (c) 2010 - 2018 kurta999
+[05:13:41]   (c) 2018 - 2020 IllidanS4
+[05:13:41]  Server version: 0.3.DL R1, Windows
+[05:13:41]  ==============================================
+[05:13:41] 
+[05:13:41]   Loaded.
+[05:13:41]  Loading plugin: discord-connector
+[05:13:44]  >> discord-connector: afb7e3b successfully loaded.
+[05:13:44]   Loaded.
+[05:13:44]  Loaded 11 plugins.
+
+[05:13:44] [artwork:crc] bp.dff CRC = 0xA2B03FFB
+[05:13:44] [artwork:crc] bp.txd CRC = 0x28E0706E
+[05:13:44] [artwork:crc] object.dff CRC = 0xDCFCC14C
+[05:13:44] [artwork:crc] speedo.txd CRC = 0x62C7BCBC
+[05:13:44] [artwork:crc] object.dff CRC = 0xDCFCC14C
+[05:13:44] [artwork:crc] login.txd CRC = 0x54694AE4
+[05:13:44] [artwork:crc] object.dff CRC = 0xDCFCC14C
+[05:13:44] [artwork:crc] character.txd CRC = 0xC1BABE5F
+[05:13:44] [artwork:crc] object.dff CRC = 0xDCFCC14C
+[05:13:44] [artwork:crc] speedo.txd CRC = 0x62C7BCBC
+[05:13:44] [artwork:crc] object.dff CRC = 0xDCFCC14C
+[05:13:44] [artwork:crc] newinv.txd CRC = 0xC5F22638
+[05:13:44] [artwork:crc] object.dff CRC = 0xDCFCC14C
+[05:13:44] [artwork:crc] character.txd CRC = 0xC1BABE5F
+[05:13:44] [artwork:crc] object.dff CRC = 0xDCFCC14C
+[05:13:44] [artwork:crc] inventory.txd CRC = 0xBE6E57A5
+[05:13:45] 
+[05:13:45] Filterscripts
+[05:13:45] ---------------
+[05:13:45]   Loading filterscript 'Server.amx'...
+[05:13:45] [sv:dbg:main:AmxLoad] : net game pointer (value:06620048) received
+[05:13:45] [sv:dbg:network:bind] : voice server running on port 52368
+[05:13:45]   Loading filterscript 'cbug.amx'...
+[05:13:45]   Loaded 2 filterscripts.
+
+[05:13:45]  
+[05:13:45]  ======================================= 
+[05:13:45]  |                                     | 
+[05:13:45]  |        YSI version 3.01.0002        | 
+[05:13:45]  |        By Alex "Y_Less" Cole        | 
+[05:13:45]  |                                     | 
+[05:13:45]  ======================================= 
+[05:13:45]  
+[05:13:45] Chuong trinh may chu dang duoc khoi dong, vui long cho doi....
+[05:14:06] [MySQL] (Main Pipelines) Connecting to 23.88.73.88...
+[05:14:06] [MySQL] (MainPipeline) Connection successful toward MySQL Database Server!
+[05:14:06] [Dynamic Giftbox] Loading the Dynamic Giftbox...
+[05:14:06] [LoadCrates] Load Query Sent
+[05:14:06] [LoadHouses] Loading data from database...
+[05:14:06] [LoadDynamicDoors] Loading data from database...
+[05:14:06] [LoadDynamicMapIcons] Loading data from database...
+[05:14:06] [LoadMailboxes] Loading data from database...
+[05:14:06] [LoadBusinesses] Loading data from database...
+[05:14:06] [LoadAuctions] Loading data from database...
+[05:14:06] [LoadTxtLabels] Loading data from database...
+[05:14:06] [LoadPlants] Loading data from database...
+[05:14:06] [SpeedCameras] Loading data from database...
+[05:14:06] [LoadPayNSprays] Loading data from database...
+[05:14:06] [LoadArrestPoints] Loading data from database...
+[05:14:06] [LoadImpoundPoints] Loading data from database...
+[05:14:06] [LoadBusinessSales] Loading data from database...
+[05:14:06] [LoadPaintballArenas] 10 paintball loaded.
+[05:14:06] [LoadEventPoints] 0 event points loaded.
+[05:14:06] [LoadGates] Loading data from database...
+[05:14:06] [LoadElevatorStuff] 20 floors loaded.
+[05:14:06] [LoadFamilies] Dang tai du lieu tu database...
+[05:14:06] [LoadFamilyPoints] Loading Family Points from the database, please wait...
+[05:14:06] [MiscLoad] Misc Loaded
+[05:14:06] Resetting news...
+[05:14:06] Resetting default server variables..
+[05:14:06] Adjusted the server time...
+[05:14:06] [Streamer] Loading Dynamic Static Vehicles...
+[05:14:06] [Streamer] Dynamic Static Vehicles has been loaded.
+[05:14:06] [Streamer] Loading Dynamic Pickups...
+[05:14:06] [Streamer] Dynamic Pickups has been loaded.
+[05:14:06] [Streamer] Loading 3D Text Labels...
+[05:14:06] [Streamer] Dynamic 3D Text Labels has been loaded.
+[05:14:06] [Streamer] Loading Dynamic Buttons...
+[05:14:06] [Streamer] Dynamic Buttons has been loaded.
+[05:14:06] [Streamer] Loading Dynamic Objects...
+[05:14:06] [Streamer] Dynamic Objects has been loaded.
+[05:14:06] [Textdraws] Loading Textdraws...
+[05:14:06] [Textdraws] Loaded textdraws.
+[05:14:06] [Dynamic Groups] Loading Dynamic Groups...
+[05:14:06] [Dynamic Groups] Loading Dynamic Groups Vehicles...
+[05:14:06] Da chay thanh cong gamemode...
+[05:14:06] Number of vehicle models: 20
+[05:14:06]  
+[05:14:06]  
+[05:14:07] [Dynamic Giftbox] da tai thanh cong Dynamic giftbox.
+[05:14:07] [LoadCrates] Loading Crates Finished
+[05:14:08] [LoadHouses] 3000 ngoi nha duoc tai.
+[05:14:08] [LoadDynamicDoors] 2248 door duoc tai.
+[05:14:08] [LoadDynamicMapIcons] 400 icons map duoc tai.
+[05:14:09] [LoadMailboxes] 50 mailboxes duoc tai.
+[05:14:09] [LoadBusinesses] 200 businesses rehashed/loaded.
+[05:14:10] [LoadPlants] Successfully loaded 300 plants
+[05:14:10] [SpeedCameras] Tai 3 May ban toc do.
+[05:14:11] TotalSold0: 0 | AmountMade0: 0
+[05:14:11] TotalSold1: 0 | AmountMade1: 0
+[05:14:11] TotalSold2: 0 | AmountMade2: 0
+[05:14:11] TotalSold3: 0 | AmountMade3: 0
+[05:14:11] TotalSold4: 0 | AmountMade4: 0
+[05:14:11] TotalSold5: 0 | AmountMade5: 0
+[05:14:11] TotalSold6: 0 | AmountMade6: 0
+[05:14:11] TotalSold7: 0 | AmountMade7: 0
+[05:14:11] TotalSold8: 0 | AmountMade8: 0
+[05:14:11] TotalSold9: 0 | AmountMade9: 0
+[05:14:11] TotalSold10: 0 | AmountMade10: 0
+[05:14:11] TotalSold11: 0 | AmountMade11: 0
+[05:14:11] TotalSold12: 0 | AmountMade12: 0
+[05:14:11] TotalSold13: 0 | AmountMade13: 0
+[05:14:11] TotalSold14: 0 | AmountMade14: 0
+[05:14:11] TotalSold15: 0 | AmountMade15: 0
+[05:14:11] TotalSold16: 0 | AmountMade16: 0
+[05:14:11] TotalSold17: 0 | AmountMade17: 0
+[05:14:11] TotalSold18: 0 | AmountMade18: 0
+[05:14:11] TotalSold19: 0 | AmountMade19: 0
+[05:14:11] TotalSold20: 0 | AmountMade20: 0
+[05:14:11] TotalSold21: 0 | AmountMade21: 0
+[05:14:11] TotalSold22: 0 | AmountMade22: 0
+[05:14:11] TotalSold23: 0 | AmountMade23: 0
+[05:14:11] TotalSold24: 0 | AmountMade24: 0
+[05:14:11] TotalSold25: 0 | AmountMade25: 0
+[05:14:11] TotalSold26: 0 | AmountMade26: 0
+[05:14:11] TotalSold27: 0 | AmountMade27: 0
+[05:14:11] TotalSold28: 0 | AmountMade28: 0
+[05:14:11] TotalSold29: 0 | AmountMade29: 0
+[05:14:11] Price0: 20000
+[05:14:11] Price1: 50000
+[05:14:11] Price2: 15000
+[05:14:11] Price3: 10000
+[05:14:11] Price4: 400
+[05:14:11] Price5: 500
+[05:14:11] Price6: 100
+[05:14:11] Price7: 500
+[05:14:11] Price8: 100
+[05:14:11] Price9: 100
+[05:14:11] Price10: 10
+[05:14:11] Price11: 100000
+[05:14:11] Price12: 100000
+[05:14:11] Price13: 100000
+[05:14:11] Price14: 10000
+[05:14:11] Price15: 5000
+[05:14:11] Price16: 1000
+[05:14:11] Price17: 1000
+[05:14:11] Price18: 1
+[05:14:11] Price19: 2
+[05:14:11] Price20: 10
+[05:14:11] Price21: 999999
+[05:14:11] Price22: 100
+[05:14:11] Price23: 1000
+[05:14:11] Price24: 100000
+[05:14:11] Price25: 100000
+[05:14:11] Price26: 100000
+[05:14:11] Price27: 100000
+[05:14:11] Price28: 1000
+[05:14:11] Price29: 29
+[05:14:12] [Family Points] 8 family points has been loaded.
+[05:14:58] [connection] incoming connection: 127.0.0.1:62035 id: 0
+[05:14:59] [join] CouNil_WisDom has joined the server (0:127.0.0.1)
+[05:15:00] name CouNil_WisDom,0, 
+[05:15:08] acc id 10
+[05:15:09] [He Thong] Da luu lai thong tin tai khoan thanh cong.
+[05:15:13] CouNil WisDom has logged in.
+[05:15:13] UGNOXPDN_PWBYMZGCouNil_WisDom
+[05:15:13] [VEHICLE TRUCKER LOAD] Loading data from database...
+[05:15:14] [He Thong] Da luu lai thong tin tai khoan thanh cong.
+[05:15:15] [LOAD INVENTORY]  du lieu inventory cua CouNil WisDom (ID: 0) da duoc tai.
+[05:15:16] [Load Vehicle Trucker] Khong co du lieu de tai
+[05:15:24] [zcmd] [CouNil WisDom]: /setnameinquery test
+[05:17:48] *** YSI Error: INI_Open could not find or create file /DuLieu/test.ini
+[05:17:48] [part] test has left the server (0:1)
+[05:17:50]  -------------------------------------------
+[05:17:50]            SampVoice unloading...           
+[05:17:50]  -------------------------------------------
+[05:17:50] [dbg:raknet:free] : module releasing...
+[05:17:50] [dbg:raknet:free] : module released
+[05:17:50] [sv:dbg:network:free] : module releasing...
+[05:17:50] [sv:dbg:network:free] : module released
+
+----------
+Loaded log file: "server_log.txt".
+----------
+
+SA-MP Dedicated Server
+----------------------
+v0.3.DL-R1, (C)2005-2018 SA-MP Team
+
+[05:17:53] password = ""  (string)
+[05:17:53] 
+[05:17:53] Server Plugins
+[05:17:53] --------------
+[05:17:53]  Loading plugin: mysql
+[05:17:53]  >> plugin.mysql: R33 successfully loaded.
+[05:17:53]   Loaded.
+[05:17:53]  Loading plugin: sscanf
+[05:17:53] 
+
+[05:17:53]  ===============================
+
+[05:17:53]       sscanf plugin loaded.     
+
+[05:17:53]          Version:  2.8.1        
+
+[05:17:53]    (c) 2012 Alex "Y_Less" Cole  
+
+[05:17:53]  ===============================
+
+[05:17:53]   Loaded.
+[05:17:53]  Loading plugin: whirlpool
+[05:17:53]  
+[05:17:53]  ==================
+[05:17:53]  
+[05:17:53]   Whirlpool loaded
+[05:17:53]  
+[05:17:53]  ==================
+[05:17:53]  
+[05:17:53]   Loaded.
+[05:17:53]  Loading plugin: crashdetect
+[05:17:53]   CrashDetect plugin 4.19.4
+[05:17:53]   Loaded.
+[05:17:53]  Loading plugin: sampvoice
+[05:17:53] [sv:dbg:network:init] : module initializing...
+[05:17:53] [dbg:raknet:init] : module initializing...
+[05:17:53] [dbg:raknet:init] : module initialized
+[05:17:53] [sv:dbg:network:init] : module initialized
+[05:17:53] [sv:dbg:main:Load] : creating 8 work threads...
+[05:17:53]  -------------------------------------------    
+[05:17:53]    ___                __   __    _              
+[05:17:53]   / __| __ _ _ __  _ _\ \ / /__ (_) __ ___    
+[05:17:53]   \__ \/ _` | '  \| '_ \   / _ \| |/ _/ -_)
+[05:17:53]   |___/\__,_|_|_|_| .__/\_/\___/|_|\__\___|
+[05:17:53]                   |_|                           
+[05:17:53]  -------------------------------------------    
+[05:17:53]            SampVoice by MOR loaded              
+[05:17:53]  -------------------------------------------    
+[05:17:53]   Loaded.
+[05:17:53]  Loading plugin: samp-compat.dll
+[05:17:53]   -- samp-compat for 0.3.DL-R1 initialized
+[05:17:53]   Loaded.
+[05:17:53]  Loading plugin: streamer
+[05:17:53] 
+
+*** Streamer Plugin v2.9.5 by Incognito loaded ***
+
+[05:17:53]   Loaded.
+[05:17:53]  Loading plugin: server
+[05:17:53]   Loaded.
+[05:17:53]  Loading plugin: TDE
+[05:17:53] 
+TDEditor Plugin loaded, thank you for using.
+
+[05:17:53]   Loaded.
+[05:17:53]  Loading plugin: YSF_DL
+[05:17:53] 
+[05:17:53]  ==============================================
+[05:17:53]  YSF 2.2 (compiled Sep 19 2021 13:02:34) loaded
+[05:17:53]   (c) 2008 Alex "Y_Less" Cole
+[05:17:53]   (c) 2010 - 2018 kurta999
+[05:17:53]   (c) 2018 - 2020 IllidanS4
+[05:17:53]  Server version: 0.3.DL R1, Windows
+[05:17:53]  ==============================================
+[05:17:53] 
+[05:17:53]   Loaded.
+[05:17:53]  Loading plugin: discord-connector
+[05:17:55]  >> discord-connector: afb7e3b successfully loaded.
+[05:17:55]   Loaded.
+[05:17:55]  Loaded 11 plugins.
+
+[05:17:55] [artwork:crc] bp.dff CRC = 0xA2B03FFB
+[05:17:56] [artwork:crc] bp.txd CRC = 0x28E0706E
+[05:17:56] [artwork:crc] object.dff CRC = 0xDCFCC14C
+[05:17:56] [artwork:crc] speedo.txd CRC = 0x62C7BCBC
+[05:17:56] [artwork:crc] object.dff CRC = 0xDCFCC14C
+[05:17:56] [artwork:crc] login.txd CRC = 0x54694AE4
+[05:17:56] [artwork:crc] object.dff CRC = 0xDCFCC14C
+[05:17:56] [artwork:crc] character.txd CRC = 0xC1BABE5F
+[05:17:56] [artwork:crc] object.dff CRC = 0xDCFCC14C
+[05:17:56] [artwork:crc] speedo.txd CRC = 0x62C7BCBC
+[05:17:56] [artwork:crc] object.dff CRC = 0xDCFCC14C
+[05:17:56] [artwork:crc] newinv.txd CRC = 0xC5F22638
+[05:17:56] [artwork:crc] object.dff CRC = 0xDCFCC14C
+[05:17:56] [artwork:crc] character.txd CRC = 0xC1BABE5F
+[05:17:56] [artwork:crc] object.dff CRC = 0xDCFCC14C
+[05:17:56] [artwork:crc] inventory.txd CRC = 0xBE6E57A5
+[05:17:56] 
+[05:17:56] Filterscripts
+[05:17:56] ---------------
+[05:17:56]   Loading filterscript 'Server.amx'...
+[05:17:56] [sv:dbg:main:AmxLoad] : net game pointer (value:065E0048) received
+[05:17:56] [sv:dbg:network:bind] : voice server running on port 64325
+[05:17:56]   Loading filterscript 'cbug.amx'...
+[05:17:56]   Loaded 2 filterscripts.
+
+[05:17:56]  
+[05:17:56]  ======================================= 
+[05:17:56]  |                                     | 
+[05:17:56]  |        YSI version 3.01.0002        | 
+[05:17:56]  |        By Alex "Y_Less" Cole        | 
+[05:17:56]  |                                     | 
+[05:17:56]  ======================================= 
+[05:17:56]  
+[05:17:56] Chuong trinh may chu dang duoc khoi dong, vui long cho doi....
+[05:18:16] [MySQL] (Main Pipelines) Connecting to 23.88.73.88...
+[05:18:16] [MySQL] (MainPipeline) Connection successful toward MySQL Database Server!
+[05:18:16] [Dynamic Giftbox] Loading the Dynamic Giftbox...
+[05:18:16] [LoadCrates] Load Query Sent
+[05:18:16] [LoadHouses] Loading data from database...
+[05:18:16] [LoadDynamicDoors] Loading data from database...
+[05:18:16] [LoadDynamicMapIcons] Loading data from database...
+[05:18:16] [LoadMailboxes] Loading data from database...
+[05:18:16] [LoadBusinesses] Loading data from database...
+[05:18:16] [LoadAuctions] Loading data from database...
+[05:18:16] [LoadTxtLabels] Loading data from database...
+[05:18:16] [LoadPlants] Loading data from database...
+[05:18:16] [SpeedCameras] Loading data from database...
+[05:18:16] [LoadPayNSprays] Loading data from database...
+[05:18:16] [LoadArrestPoints] Loading data from database...
+[05:18:16] [LoadImpoundPoints] Loading data from database...
+[05:18:16] [LoadBusinessSales] Loading data from database...
+[05:18:16] [LoadPaintballArenas] 10 paintball loaded.
+[05:18:16] [LoadEventPoints] 0 event points loaded.
+[05:18:16] [LoadGates] Loading data from database...
+[05:18:16] [LoadElevatorStuff] 20 floors loaded.
+[05:18:16] [LoadFamilies] Dang tai du lieu tu database...
+[05:18:16] [LoadFamilyPoints] Loading Family Points from the database, please wait...
+[05:18:16] [MiscLoad] Misc Loaded
+[05:18:16] Resetting news...
+[05:18:16] Resetting default server variables..
+[05:18:16] Adjusted the server time...
+[05:18:16] [Streamer] Loading Dynamic Static Vehicles...
+[05:18:16] [Streamer] Dynamic Static Vehicles has been loaded.
+[05:18:16] [Streamer] Loading Dynamic Pickups...
+[05:18:16] [Streamer] Dynamic Pickups has been loaded.
+[05:18:16] [Streamer] Loading 3D Text Labels...
+[05:18:16] [Streamer] Dynamic 3D Text Labels has been loaded.
+[05:18:16] [Streamer] Loading Dynamic Buttons...
+[05:18:16] [Streamer] Dynamic Buttons has been loaded.
+[05:18:16] [Streamer] Loading Dynamic Objects...
+[05:18:16] [Streamer] Dynamic Objects has been loaded.
+[05:18:16] [Textdraws] Loading Textdraws...
+[05:18:16] [Textdraws] Loaded textdraws.
+[05:18:16] [Dynamic Groups] Loading Dynamic Groups...
+[05:18:16] [Dynamic Groups] Loading Dynamic Groups Vehicles...
+[05:18:16] Da chay thanh cong gamemode...
+[05:18:16] Number of vehicle models: 20
+[05:18:16]  
+[05:18:16]  
+[05:18:17] [Dynamic Giftbox] da tai thanh cong Dynamic giftbox.
+[05:18:17] [LoadCrates] Loading Crates Finished
+[05:18:19] [LoadHouses] 3000 ngoi nha duoc tai.
+[05:18:19] [LoadDynamicDoors] 2248 door duoc tai.
+[05:18:19] [LoadDynamicMapIcons] 400 icons map duoc tai.
+[05:18:19] [LoadMailboxes] 50 mailboxes duoc tai.
+[05:18:19] [LoadBusinesses] 200 businesses rehashed/loaded.
+[05:18:20] [LoadPlants] Successfully loaded 300 plants
+[05:18:20] [SpeedCameras] Tai 3 May ban toc do.
+[05:18:21] TotalSold0: 0 | AmountMade0: 0
+[05:18:21] TotalSold1: 0 | AmountMade1: 0
+[05:18:21] TotalSold2: 0 | AmountMade2: 0
+[05:18:21] TotalSold3: 0 | AmountMade3: 0
+[05:18:21] TotalSold4: 0 | AmountMade4: 0
+[05:18:21] TotalSold5: 0 | AmountMade5: 0
+[05:18:21] TotalSold6: 0 | AmountMade6: 0
+[05:18:21] TotalSold7: 0 | AmountMade7: 0
+[05:18:21] TotalSold8: 0 | AmountMade8: 0
+[05:18:21] TotalSold9: 0 | AmountMade9: 0
+[05:18:21] TotalSold10: 0 | AmountMade10: 0
+[05:18:21] TotalSold11: 0 | AmountMade11: 0
+[05:18:21] TotalSold12: 0 | AmountMade12: 0
+[05:18:21] TotalSold13: 0 | AmountMade13: 0
+[05:18:21] TotalSold14: 0 | AmountMade14: 0
+[05:18:21] TotalSold15: 0 | AmountMade15: 0
+[05:18:21] TotalSold16: 0 | AmountMade16: 0
+[05:18:21] TotalSold17: 0 | AmountMade17: 0
+[05:18:21] TotalSold18: 0 | AmountMade18: 0
+[05:18:21] TotalSold19: 0 | AmountMade19: 0
+[05:18:21] TotalSold20: 0 | AmountMade20: 0
+[05:18:21] TotalSold21: 0 | AmountMade21: 0
+[05:18:21] TotalSold22: 0 | AmountMade22: 0
+[05:18:21] TotalSold23: 0 | AmountMade23: 0
+[05:18:21] TotalSold24: 0 | AmountMade24: 0
+[05:18:21] TotalSold25: 0 | AmountMade25: 0
+[05:18:21] TotalSold26: 0 | AmountMade26: 0
+[05:18:21] TotalSold27: 0 | AmountMade27: 0
+[05:18:21] TotalSold28: 0 | AmountMade28: 0
+[05:18:21] TotalSold29: 0 | AmountMade29: 0
+[05:18:21] Price0: 20000
+[05:18:21] Price1: 50000
+[05:18:21] Price2: 15000
+[05:18:21] Price3: 10000
+[05:18:21] Price4: 400
+[05:18:21] Price5: 500
+[05:18:21] Price6: 100
+[05:18:21] Price7: 500
+[05:18:21] Price8: 100
+[05:18:21] Price9: 100
+[05:18:21] Price10: 10
+[05:18:21] Price11: 100000
+[05:18:21] Price12: 100000
+[05:18:21] Price13: 100000
+[05:18:21] Price14: 10000
+[05:18:21] Price15: 5000
+[05:18:21] Price16: 1000
+[05:18:21] Price17: 1000
+[05:18:21] Price18: 1
+[05:18:21] Price19: 2
+[05:18:21] Price20: 10
+[05:18:21] Price21: 999999
+[05:18:21] Price22: 100
+[05:18:21] Price23: 1000
+[05:18:21] Price24: 100000
+[05:18:21] Price25: 100000
+[05:18:21] Price26: 100000
+[05:18:21] Price27: 100000
+[05:18:21] Price28: 1000
+[05:18:21] Price29: 29
+[05:18:22] [Family Points] 8 family points has been loaded.
+[05:19:19]  -------------------------------------------
+[05:19:19]            SampVoice unloading...           
+[05:19:19]  -------------------------------------------
+[05:19:19] [dbg:raknet:free] : module releasing...
+[05:19:19] [dbg:raknet:free] : module released
+[05:19:19] [sv:dbg:network:free] : module releasing...
+[05:19:19] [sv:dbg:network:free] : module released
+
+----------
+Loaded log file: "server_log.txt".
+----------
+
+SA-MP Dedicated Server
+----------------------
+v0.3.DL-R1, (C)2005-2018 SA-MP Team
+
+[05:21:04] password = ""  (string)
+[05:21:04] 
+[05:21:04] Server Plugins
+[05:21:04] --------------
+[05:21:04]  Loading plugin: mysql
+[05:21:04]  >> plugin.mysql: R33 successfully loaded.
+[05:21:04]   Loaded.
+[05:21:04]  Loading plugin: sscanf
+[05:21:04] 
+
+[05:21:04]  ===============================
+
+[05:21:04]       sscanf plugin loaded.     
+
+[05:21:04]          Version:  2.8.1        
+
+[05:21:04]    (c) 2012 Alex "Y_Less" Cole  
+
+[05:21:04]  ===============================
+
+[05:21:04]   Loaded.
+[05:21:04]  Loading plugin: whirlpool
+[05:21:04]  
+[05:21:04]  ==================
+[05:21:04]  
+[05:21:04]   Whirlpool loaded
+[05:21:04]  
+[05:21:04]  ==================
+[05:21:04]  
+[05:21:04]   Loaded.
+[05:21:04]  Loading plugin: crashdetect
+[05:21:04]   CrashDetect plugin 4.19.4
+[05:21:04]   Loaded.
+[05:21:04]  Loading plugin: sampvoice
+[05:21:04] [sv:dbg:network:init] : module initializing...
+[05:21:04] [dbg:raknet:init] : module initializing...
+[05:21:04] [dbg:raknet:init] : module initialized
+[05:21:04] [sv:dbg:network:init] : module initialized
+[05:21:04] [sv:dbg:main:Load] : creating 8 work threads...
+[05:21:04]  -------------------------------------------    
+[05:21:04]    ___                __   __    _              
+[05:21:04]   / __| __ _ _ __  _ _\ \ / /__ (_) __ ___    
+[05:21:04]   \__ \/ _` | '  \| '_ \   / _ \| |/ _/ -_)
+[05:21:04]   |___/\__,_|_|_|_| .__/\_/\___/|_|\__\___|
+[05:21:04]                   |_|                           
+[05:21:04]  -------------------------------------------    
+[05:21:04]            SampVoice by MOR loaded              
+[05:21:04]  -------------------------------------------    
+[05:21:04]   Loaded.
+[05:21:04]  Loading plugin: samp-compat.dll
+[05:21:04]   -- samp-compat for 0.3.DL-R1 initialized
+[05:21:04]   Loaded.
+[05:21:04]  Loading plugin: streamer
+[05:21:04] 
+
+*** Streamer Plugin v2.9.5 by Incognito loaded ***
+
+[05:21:04]   Loaded.
+[05:21:04]  Loading plugin: server
+[05:21:04]   Loaded.
+[05:21:04]  Loading plugin: TDE
+[05:21:04] 
+TDEditor Plugin loaded, thank you for using.
+
+[05:21:04]   Loaded.
+[05:21:04]  Loading plugin: YSF_DL
+[05:21:04] 
+[05:21:04]  ==============================================
+[05:21:04]  YSF 2.2 (compiled Sep 19 2021 13:02:34) loaded
+[05:21:04]   (c) 2008 Alex "Y_Less" Cole
+[05:21:04]   (c) 2010 - 2018 kurta999
+[05:21:04]   (c) 2018 - 2020 IllidanS4
+[05:21:04]  Server version: 0.3.DL R1, Windows
+[05:21:04]  ==============================================
+[05:21:04] 
+[05:21:04]   Loaded.
+[05:21:04]  Loading plugin: discord-connector
+[05:21:07]  >> discord-connector: afb7e3b successfully loaded.
+[05:21:07]   Loaded.
+[05:21:07]  Loaded 11 plugins.
+
+[05:21:07] [artwork:crc] bp.dff CRC = 0xA2B03FFB
+[05:21:07] [artwork:crc] bp.txd CRC = 0x28E0706E
+[05:21:07] [artwork:crc] object.dff CRC = 0xDCFCC14C
+[05:21:07] [artwork:crc] speedo.txd CRC = 0x62C7BCBC
+[05:21:07] [artwork:crc] object.dff CRC = 0xDCFCC14C
+[05:21:07] [artwork:crc] login.txd CRC = 0x54694AE4
+[05:21:07] [artwork:crc] object.dff CRC = 0xDCFCC14C
+[05:21:07] [artwork:crc] character.txd CRC = 0xC1BABE5F
+[05:21:07] [artwork:crc] object.dff CRC = 0xDCFCC14C
+[05:21:07] [artwork:crc] speedo.txd CRC = 0x62C7BCBC
+[05:21:07] [artwork:crc] object.dff CRC = 0xDCFCC14C
+[05:21:07] [artwork:crc] newinv.txd CRC = 0xC5F22638
+[05:21:07] [artwork:crc] object.dff CRC = 0xDCFCC14C
+[05:21:07] [artwork:crc] character.txd CRC = 0xC1BABE5F
+[05:21:07] [artwork:crc] object.dff CRC = 0xDCFCC14C
+[05:21:07] [artwork:crc] inventory.txd CRC = 0xBE6E57A5
+[05:21:07] 
+[05:21:07] Filterscripts
+[05:21:07] ---------------
+[05:21:07]   Loading filterscript 'Server.amx'...
+[05:21:07] [sv:dbg:main:AmxLoad] : net game pointer (value:06620048) received
+[05:21:07] [sv:dbg:network:bind] : voice server running on port 52257
+[05:21:08]   Loading filterscript 'cbug.amx'...
+[05:21:08]   Loaded 2 filterscripts.
+
+[05:21:08]  
+[05:21:08]  ======================================= 
+[05:21:08]  |                                     | 
+[05:21:08]  |        YSI version 3.01.0002        | 
+[05:21:08]  |        By Alex "Y_Less" Cole        | 
+[05:21:08]  |                                     | 
+[05:21:08]  ======================================= 
+[05:21:08]  
+[05:21:08] Chuong trinh may chu dang duoc khoi dong, vui long cho doi....
+[05:21:27] [MySQL] (Main Pipelines) Connecting to 23.88.73.88...
+[05:21:27] [MySQL] (MainPipeline) Connection successful toward MySQL Database Server!
+[05:21:27] [Dynamic Giftbox] Loading the Dynamic Giftbox...
+[05:21:27] [LoadCrates] Load Query Sent
+[05:21:27] [LoadHouses] Loading data from database...
+[05:21:27] [LoadDynamicDoors] Loading data from database...
+[05:21:27] [LoadDynamicMapIcons] Loading data from database...
+[05:21:27] [LoadMailboxes] Loading data from database...
+[05:21:27] [LoadBusinesses] Loading data from database...
+[05:21:27] [LoadAuctions] Loading data from database...
+[05:21:27] [LoadTxtLabels] Loading data from database...
+[05:21:27] [LoadPlants] Loading data from database...
+[05:21:27] [SpeedCameras] Loading data from database...
+[05:21:27] [LoadPayNSprays] Loading data from database...
+[05:21:27] [LoadArrestPoints] Loading data from database...
+[05:21:27] [LoadImpoundPoints] Loading data from database...
+[05:21:27] [LoadBusinessSales] Loading data from database...
+[05:21:27] [LoadPaintballArenas] 10 paintball loaded.
+[05:21:27] [LoadEventPoints] 0 event points loaded.
+[05:21:27] [LoadGates] Loading data from database...
+[05:21:27] [LoadElevatorStuff] 20 floors loaded.
+[05:21:27] [LoadFamilies] Dang tai du lieu tu database...
+[05:21:27] [LoadFamilyPoints] Loading Family Points from the database, please wait...
+[05:21:27] [MiscLoad] Misc Loaded
+[05:21:27] Resetting news...
+[05:21:27] Resetting default server variables..
+[05:21:27] Adjusted the server time...
+[05:21:27] [Streamer] Loading Dynamic Static Vehicles...
+[05:21:27] [Streamer] Dynamic Static Vehicles has been loaded.
+[05:21:27] [Streamer] Loading Dynamic Pickups...
+[05:21:27] [Streamer] Dynamic Pickups has been loaded.
+[05:21:27] [Streamer] Loading 3D Text Labels...
+[05:21:27] [Streamer] Dynamic 3D Text Labels has been loaded.
+[05:21:27] [Streamer] Loading Dynamic Buttons...
+[05:21:27] [Streamer] Dynamic Buttons has been loaded.
+[05:21:27] [Streamer] Loading Dynamic Objects...
+[05:21:27] [Streamer] Dynamic Objects has been loaded.
+[05:21:27] [Textdraws] Loading Textdraws...
+[05:21:27] [Textdraws] Loaded textdraws.
+[05:21:27] [Dynamic Groups] Loading Dynamic Groups...
+[05:21:27] [Dynamic Groups] Loading Dynamic Groups Vehicles...
+[05:21:27] Da chay thanh cong gamemode...
+[05:21:27] Number of vehicle models: 20
+[05:21:27]  
+[05:21:27]  
+[05:21:28] [Dynamic Giftbox] da tai thanh cong Dynamic giftbox.
+[05:21:28] [LoadCrates] Loading Crates Finished
+[05:21:29] [LoadHouses] 3000 ngoi nha duoc tai.
+[05:21:29] [LoadDynamicDoors] 2248 door duoc tai.
+[05:21:30] [LoadDynamicMapIcons] 400 icons map duoc tai.
+[05:21:30] [LoadMailboxes] 50 mailboxes duoc tai.
+[05:21:30] [LoadBusinesses] 200 businesses rehashed/loaded.
+[05:21:31] [LoadPlants] Successfully loaded 300 plants
+[05:21:31] [SpeedCameras] Tai 3 May ban toc do.
+[05:21:32] TotalSold0: 0 | AmountMade0: 0
+[05:21:32] TotalSold1: 0 | AmountMade1: 0
+[05:21:32] TotalSold2: 0 | AmountMade2: 0
+[05:21:32] TotalSold3: 0 | AmountMade3: 0
+[05:21:32] TotalSold4: 0 | AmountMade4: 0
+[05:21:32] TotalSold5: 0 | AmountMade5: 0
+[05:21:32] TotalSold6: 0 | AmountMade6: 0
+[05:21:32] TotalSold7: 0 | AmountMade7: 0
+[05:21:32] TotalSold8: 0 | AmountMade8: 0
+[05:21:32] TotalSold9: 0 | AmountMade9: 0
+[05:21:32] TotalSold10: 0 | AmountMade10: 0
+[05:21:32] TotalSold11: 0 | AmountMade11: 0
+[05:21:32] TotalSold12: 0 | AmountMade12: 0
+[05:21:32] TotalSold13: 0 | AmountMade13: 0
+[05:21:32] TotalSold14: 0 | AmountMade14: 0
+[05:21:32] TotalSold15: 0 | AmountMade15: 0
+[05:21:32] TotalSold16: 0 | AmountMade16: 0
+[05:21:32] TotalSold17: 0 | AmountMade17: 0
+[05:21:32] TotalSold18: 0 | AmountMade18: 0
+[05:21:32] TotalSold19: 0 | AmountMade19: 0
+[05:21:32] TotalSold20: 0 | AmountMade20: 0
+[05:21:32] TotalSold21: 0 | AmountMade21: 0
+[05:21:32] TotalSold22: 0 | AmountMade22: 0
+[05:21:32] TotalSold23: 0 | AmountMade23: 0
+[05:21:32] TotalSold24: 0 | AmountMade24: 0
+[05:21:32] TotalSold25: 0 | AmountMade25: 0
+[05:21:32] TotalSold26: 0 | AmountMade26: 0
+[05:21:32] TotalSold27: 0 | AmountMade27: 0
+[05:21:32] TotalSold28: 0 | AmountMade28: 0
+[05:21:32] TotalSold29: 0 | AmountMade29: 0
+[05:21:32] Price0: 20000
+[05:21:32] Price1: 50000
+[05:21:32] Price2: 15000
+[05:21:32] Price3: 10000
+[05:21:32] Price4: 400
+[05:21:32] Price5: 500
+[05:21:32] Price6: 100
+[05:21:32] Price7: 500
+[05:21:32] Price8: 100
+[05:21:32] Price9: 100
+[05:21:32] Price10: 10
+[05:21:32] Price11: 100000
+[05:21:32] Price12: 100000
+[05:21:32] Price13: 100000
+[05:21:32] Price14: 10000
+[05:21:32] Price15: 5000
+[05:21:32] Price16: 1000
+[05:21:32] Price17: 1000
+[05:21:32] Price18: 1
+[05:21:32] Price19: 2
+[05:21:32] Price20: 10
+[05:21:32] Price21: 999999
+[05:21:32] Price22: 100
+[05:21:32] Price23: 1000
+[05:21:32] Price24: 100000
+[05:21:32] Price25: 100000
+[05:21:32] Price26: 100000
+[05:21:32] Price27: 100000
+[05:21:32] Price28: 1000
+[05:21:32] Price29: 29
+[05:21:33] [Family Points] 8 family points has been loaded.
+[05:21:38] [connection] incoming connection: 127.0.0.1:63375 id: 0
+[05:21:38] [join] CouNil_WisDom has joined the server (0:127.0.0.1)
+[05:21:45] [He Thong] Da luu lai thong tin tai khoan thanh cong.
+[05:22:12] name CouNil_WisDom,0, 
+[05:22:26] acc id 10
+[05:22:31] CouNil WisDom has logged in.
+[05:22:31] RXWAPOUBIHHKJSLKGTQSULY
+[05:22:32] [VEHICLE TRUCKER LOAD] Loading data from database...
+[05:22:32] [He Thong] Da luu lai thong tin tai khoan thanh cong.
+[05:22:33] [LOAD INVENTORY]  du lieu inventory cua CouNil WisDom (ID: 0) da duoc tai.
+[05:22:34] [Load Vehicle Trucker] Khong co du lieu de tai
+[05:23:37] *** YSI Error: INI_Open could not find or create file /DuLieu/CouNil_WisDom.ini
+[05:23:37] [part] CouNil_WisDom has left the server (0:1)
+[05:23:39]  -------------------------------------------
+[05:23:39]            SampVoice unloading...           
+[05:23:39]  -------------------------------------------
+[05:23:39] [dbg:raknet:free] : module releasing...
+[05:23:39] [dbg:raknet:free] : module released
+[05:23:39] [sv:dbg:network:free] : module releasing...
+[05:23:39] [sv:dbg:network:free] : module released
+[05:23:39] --- Server Shutting Down.

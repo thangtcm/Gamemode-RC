@@ -384,7 +384,6 @@ stock ShowModelSelectionInventory(playerid, header[] , extraid, items[][64], siz
 	  		{
 	   			g_ePlayerMenuData[playerid][g_eMenuTotalItems]++;
 				format(itemModel, sizeof(itemModel), "mdl-2023:%s", items[i]);
-				printf("%s", itemModel);
 				strcpy(g_ePlayerMenuModel[playerid][i], itemModel, 64);
 				strcpy(g_ePlayerMenuName[playerid][i], itemnames[i], 32);
 				if (amount) {
@@ -583,10 +582,6 @@ stock Menu_SetPage(playerid, page)
 			}
 			else
 			{
-				PlayerTextDrawSetString(playerid, g_ePlayerMenuData[playerid][g_eMenuNames][i - start], g_ePlayerMenuModel[playerid][i - start]);
-		        PlayerTextDrawHide(playerid, g_ePlayerMenuData[playerid][g_eMenuItems][i - start]);
-		        PlayerTextDrawShow(playerid, g_ePlayerMenuData[playerid][g_eMenuItems][i - start]);
-
 		        if (g_ePlayerMenuData[playerid][g_eMenuAmounts][i - start] != PlayerText:INVALID_TEXT_DRAW)
 				{
 				    format(str, sizeof(str), "%d", g_ePlayerMenuData[playerid][g_eMenuAmount][i]);
@@ -595,14 +590,18 @@ stock Menu_SetPage(playerid, page)
 					PlayerTextDrawHide(playerid, g_ePlayerMenuData[playerid][g_eMenuAmounts][i - start]);
 			        PlayerTextDrawShow(playerid, g_ePlayerMenuData[playerid][g_eMenuAmounts][i - start]);
 
-					PlayerTextDrawSetString(playerid, g_ePlayerMenuData[playerid][g_eMenuNames][i - start], g_ePlayerMenuName[playerid][i - start]);
+					PlayerTextDrawSetString(playerid, g_ePlayerMenuData[playerid][g_eMenuNames][i - start], g_ePlayerMenuName[playerid][i]);
 
 					PlayerTextDrawHide(playerid, g_ePlayerMenuData[playerid][g_eMenuNames][i - start]);
 			        PlayerTextDrawShow(playerid, g_ePlayerMenuData[playerid][g_eMenuNames][i - start]);
+
+					PlayerTextDrawSetString(playerid, g_ePlayerMenuData[playerid][g_eMenuItems][i - start], g_ePlayerMenuModel[playerid][i]);
+					PlayerTextDrawHide(playerid, g_ePlayerMenuData[playerid][g_eMenuItems][i - start]);
+					PlayerTextDrawShow(playerid, g_ePlayerMenuData[playerid][g_eMenuItems][i - start]);
 				}
 				if (g_ePlayerMenuData[playerid][g_eMenuExpirys][i - start] != PlayerText:INVALID_TEXT_DRAW)
 				{
-					format(str, sizeof(str), "HSD: %s", ConvertSecondsToDuration(g_ePlayerMenuData[playerid][g_eMenuExpiry][i - start]));
+					format(str, sizeof(str), "HSD: %s", ConvertSecondsToDuration(g_ePlayerMenuData[playerid][g_eMenuExpiry][i]));
 					PlayerTextDrawSetString(playerid, g_ePlayerMenuData[playerid][g_eMenuExpirys][i - start], str);
 
 					PlayerTextDrawHide(playerid, g_ePlayerMenuData[playerid][g_eMenuExpirys][i - start]);

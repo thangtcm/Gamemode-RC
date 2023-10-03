@@ -1,3 +1,33 @@
+forward HijackTruck(playerid, target, pVehicleId);
+public HijackTruck(playerid, target, pVehicleId)
+{
+    new vehicleid = PlayerVehicleInfo[playerid][pVehicleId][pvId];
+	SetPVarInt(playerid, "LoadTruckTime", GetPVarInt(playerid, "LoadTruckTime")-1);
+	new string[128];
+	format(string, sizeof(string), "~n~~n~~n~~n~~n~~n~~n~~n~~n~~w~%d giay nua", GetPVarInt(playerid, "LoadTruckTime"));
+	GameTextForPlayer(playerid, string, 1100, 3);
+	if(GetPVarInt(playerid, "LoadTruckTime") > 0) SetTimerEx("HijackTruck", 1000, 0, "d", playerid);
+
+	if(GetPVarInt(playerid, "LoadTruckTime") <= 0)
+	{
+		DeletePVar(playerid, "IsFrozen");
+		TogglePlayerControllable(playerid, 1);
+  		DeletePVar(playerid, "LoadTruckTime");
+
+        if(!IsPlayerInVehicle(playerid, vehicleid))
+        {
+			gPlayerCheckpointStatus[playerid] = CHECKPOINT_NONE;
+ 			DisablePlayerCheckpoint(playerid);
+            SendClientMessageEx(playerid, COLOR_LIGHTBLUE,"* Ban cuop hang khong thanh cong.");
+			return 1;
+        }
+        SendClientMessageEx(playerid, COLOR_MAIN, "Ban da cuop hang hoa thanh cong, ban co the lay hang hoa chuyen qua xe ban hoac toi nha may ban no.");
+        SetPVarInt(playerid, "RobberyCarTruck", pVehicleId);
+        SendClientMessageEx(target, COLOR_WHITE, "Xe van chuyen hang hoa cua ban da bi cuop.");
+	}
+	return 1;
+}
+
 stock RemoveMissionProduct(playerid, productId)
 {
     for(new i; i < MAX_PLAYERPRODUCT; i++)
@@ -14,39 +44,40 @@ stock RemoveMissionProduct(playerid, productId)
     return -1;
 }
 
-stock AttachProductToVehicle(playerid, vehicleid, pvSlotID)
+stock AttachProductToVehicle(playerid, vehicleid, Product, pVehicleId)
 {
     switch(GetVehicleModel(vehicleid))
     {
         case 422:
         {
-            new count = VehicleTruckerCount(playerid, pvSlotID);
+            new count = VehicleTruckerCount(playerid, PlayerVehicleInfo[playerid][pVehicleId][pvSlotId]);
+            if(count +1 >= PlayerVehicleInfo[playerid][pVehicleId][pvMaxSlotTrucker])
+            {
+                SendClientMessageEx(playerid, COLOR_MAIN, "Xe cua ban da chat day hang, hay su dung [ /truckergo ship ] de lay dia diem giao hang.");
+            }
             for(new i; i < MAX_PLAYERPRODUCT; i++)
             {
                 if(PlayerTruckerData[playerid][ClaimProduct][i] == -1)
                 {
-                    PlayerTruckerData[playerid][ClaimProduct][i]  = pLoadProduct[playerid];
+                    PlayerTruckerData[playerid][ClaimProduct][i]  = Product;
                     break;
                 }
             }
-            VEHICLETRUCKER_ADD(playerid, vehicleid, 1271, pvSlotID, pLoadProduct[playerid],  0.01, -0.82 - (0.1 * count), 0.05, 0.0, 0.0, -90);
-            pLoadProduct[playerid] = -1;
+            VEHICLETRUCKER_ADD(playerid, vehicleid, 1271, PlayerVehicleInfo[playerid][pVehicleId][pvSlotId], Product,  0.00, -0.82 - (1 * count), 0.05, 0.0, 0.0, 0);
             return 1;
         } 
         default:
         {
-            new count = VehicleTruckerCount(playerid, pvSlotID);
-            printf("Count %d -- product %d", count, pLoadProduct[playerid]);
+            new count = VehicleTruckerCount(playerid, PlayerVehicleInfo[playerid][pVehicleId][pvSlotId]);
             for(new i; i < MAX_PLAYERPRODUCT; i++)
             {
                 if(PlayerTruckerData[playerid][ClaimProduct][i] == -1)
                 {
-                    PlayerTruckerData[playerid][ClaimProduct][i]  = pLoadProduct[playerid];
+                    PlayerTruckerData[playerid][ClaimProduct][i]  = Product;
                     break;
                 }
             }
-            VEHICLETRUCKER_ADD(playerid, vehicleid, 0, pvSlotID, pLoadProduct[playerid],  0.01, -0.82 - (0.1 * count), 0.05, 0.0, 0.0, -90);
-            pLoadProduct[playerid] = -1;
+            VEHICLETRUCKER_ADD(playerid, vehicleid, 0, PlayerVehicleInfo[playerid][pVehicleId][pvSlotId], Product,  0.01, -0.82 - (0.1 * count), 0.05, 0.0, 0.0, -90);
             return 1;
         }
     }
@@ -122,6 +153,18 @@ stock GetUnitType(index) //CarTruckWorking
     }
     new rand = random(count);
     return arr[rand];
+}
+
+stock CheckProductCar(CarTruckID, Unit)
+{
+    for(new i; i < MAX_PLAYERPRODUCT; i++)
+    {
+        if(CarTruckWorking[CarTruckID][CarUnitType][i] == Unit)
+        {
+            return 1;
+        }
+    }
+    return 0;
 }
 
 stock GetCarTruckID(vehicleid) // Return CarTruckWorking

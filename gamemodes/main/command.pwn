@@ -14941,57 +14941,57 @@ CMD:clearcargo(playerid, params[])
     return 1;
 }
 
-CMD:cuophang(playerid, params[])
-{
-	if(PlayerInfo[playerid][pJob] == 20 || PlayerInfo[playerid][pJob2] == 20)
-	{
-	    new vehicleid = GetPlayerVehicleID(playerid);
-	    if(IsATruckerCar(vehicleid) && GetPlayerState(playerid) == PLAYER_STATE_DRIVER)
-	    {
-     		if(!CheckPointCheck(playerid))
-	        {
-         		if(GetPVarInt(playerid, "LoadTruckTime") > 0)
-	            {
-	                SendServerMessage(playerid, " Ban dang doi van chuyen hang hoa len xe tai cua ban!");
-					return 1;
-	            }
-	            if(TruckUsed[playerid] != INVALID_VEHICLE_ID)
-	            {
-	                SendServerMessage(playerid, " Ban da co mot chuyen hang truoc do, su dung /huybo giaohang de huy bo don dat hang hien tai.");
-					return 1;
-	            }
-				if(TruckDeliveringTo[vehicleid] == 0 && TruckContents{vehicleid} == 0)
-				{
-				    SendServerMessage(playerid, " Xe tai nay khong co bat ki hang hoa nao!");
-				    return 1;
-				}
-				if(IsPlayerInRangeOfPoint(playerid, 65, -1570.9442,83.1619,3.5547))
-				{
-				    SendServerMessage(playerid, " Ban khong the cuop hang khi xe da han ben cang Trucker Los Santos!");
-					return 1;
-				}
-				if(!IsABoat(vehicleid))
-				{
-					SendClientMessageEx(playerid, COLOR_LIGHTBLUE,"* Ban dang co gang cuop mot lo hang tu xe tai, xin vui long cho...");
-				}
-				else
-				{
-					SendClientMessageEx(playerid, COLOR_LIGHTBLUE,"* Ban dang co gang cuop mot lo hang tu thuyen, xin vui long cho....");
-				}
+// CMD:cuophang(playerid, params[])
+// {
+// 	if(PlayerInfo[playerid][pJob] == 20 || PlayerInfo[playerid][pJob2] == 20)
+// 	{
+// 	    new vehicleid = GetPlayerVehicleID(playerid);
+// 	    if(IsATruckerCar(vehicleid) && GetPlayerState(playerid) == PLAYER_STATE_DRIVER)
+// 	    {
+//      		if(!CheckPointCheck(playerid))
+// 	        {
+//          		if(GetPVarInt(playerid, "LoadTruckTime") > 0)
+// 	            {
+// 	                SendServerMessage(playerid, " Ban dang doi van chuyen hang hoa len xe tai cua ban!");
+// 					return 1;
+// 	            }
+// 	            if(TruckUsed[playerid] != INVALID_VEHICLE_ID)
+// 	            {
+// 	                SendServerMessage(playerid, " Ban da co mot chuyen hang truoc do, su dung /huybo giaohang de huy bo don dat hang hien tai.");
+// 					return 1;
+// 	            }
+// 				if(TruckDeliveringTo[vehicleid] == 0 && TruckContents{vehicleid} == 0)
+// 				{
+// 				    SendServerMessage(playerid, " Xe tai nay khong co bat ki hang hoa nao!");
+// 				    return 1;
+// 				}
+// 				if(IsPlayerInRangeOfPoint(playerid, 65, -1570.9442,83.1619,3.5547))
+// 				{
+// 				    SendServerMessage(playerid, " Ban khong the cuop hang khi xe da han ben cang Trucker Los Santos!");
+// 					return 1;
+// 				}
+// 				if(!IsABoat(vehicleid))
+// 				{
+// 					SendClientMessageEx(playerid, COLOR_LIGHTBLUE,"* Ban dang co gang cuop mot lo hang tu xe tai, xin vui long cho...");
+// 				}
+// 				else
+// 				{
+// 					SendClientMessageEx(playerid, COLOR_LIGHTBLUE,"* Ban dang co gang cuop mot lo hang tu thuyen, xin vui long cho....");
+// 				}
 
-				TogglePlayerControllable(playerid, 0);
-				SetPVarInt(playerid, "IsFrozen", 1);
+// 				TogglePlayerControllable(playerid, 0);
+// 				SetPVarInt(playerid, "IsFrozen", 1);
 
-				SetPVarInt(playerid, "LoadTruckTime", 10);
-				SetTimerEx("HijackTruck", 1000, 0, "dd", playerid);
-	        }
-	        else return SendServerMessage(playerid, " Xin hay chac chan rang cac diem checkpoint cua ban da bi xoa bo.");
-	    }
-	    else return SendErrorMessage(playerid, " Ban khong lai xe van chuyen hang hoa!");
-	}
-	else return SendErrorMessage(playerid, " Ban khong phai la nguoi van chuyen hang hoa");
-	return 1;
-}
+// 				SetPVarInt(playerid, "LoadTruckTime", 10);
+// 				SetTimerEx("HijackTruck", 1000, 0, "dd", playerid);
+// 	        }
+// 	        else return SendServerMessage(playerid, " Xin hay chac chan rang cac diem checkpoint cua ban da bi xoa bo.");
+// 	    }
+// 	    else return SendErrorMessage(playerid, " Ban khong lai xe van chuyen hang hoa!");
+// 	}
+// 	else return SendErrorMessage(playerid, " Ban khong phai la nguoi van chuyen hang hoa");
+// 	return 1;
+// }
 
 CMD:layhangremovesss(playerid, params[])
 {

@@ -609,6 +609,7 @@ public OnPlayerUseItem(playerid, pItemId, name[])
 	}
 	else if(!strcmp(name, "Mat na", true))
 	{
+		new szName[MAX_PLAYER_NAME];
 		switch(PlayerInfo[playerid][pMaskOn])
 		{
 			case 0:
@@ -616,12 +617,16 @@ public OnPlayerUseItem(playerid, pItemId, name[])
 				format(str, sizeof(str), "* %s da deo mat na.", GetPlayerNameEx(playerid));
 				ProxDetector(30.0, playerid, str, COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE);
 				PlayerInfo[playerid][pMaskOn] = 1;
+				format(szName, sizeof(szName), "[Mask %d_%d]", PlayerInfo[playerid][pMaskID][0], PlayerInfo[playerid][pMaskID][1]);
+				SetPlayerName(playerid, szName);
 			}
 			case 1:
 			{
 				format(str, sizeof(str), "* %s da thao mat na.", GetPlayerNameEx(playerid));
 				ProxDetector(30.0, playerid, str, COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE);
 				PlayerInfo[playerid][pMaskOn] = 0;
+				GetPlayerName(playerid, szName,MAX_PLAYER_NAME);
+				SetPlayerName(playerid, szName);
 			}
 		}
 	}
