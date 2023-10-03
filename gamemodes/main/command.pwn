@@ -13790,7 +13790,7 @@ CMD:freezebank(playerid, params[])
     {
         PlayerInfo[giveplayerid][pFreezeBank] = 1;
        	GetPlayerGroupInfo(playerid, rank, division, employer);
-	   	format(string, sizeof(string), "{AA3333}AdmWarning{FFFF00}: %s %s has froze %s bank account.", rank, GetPlayerNameEx(playerid), GetPlayerNameEx(giveplayerid));
+	   	format(string, sizeof(string), "{AA3333}AdmWarning{FFFF00}: %s %s has froze %s bank account.", PlayerInfo[playerid][pRankText], GetPlayerNameEx(playerid), GetPlayerNameEx(giveplayerid));
     	ABroadCast(COLOR_YELLOW,string, 2);
     	format(string, sizeof(string), "You have frozen %s's bank account.", GetPlayerNameEx(giveplayerid));
    	 	SendClientMessageEx(playerid, COLOR_WHITE, string);
@@ -13800,7 +13800,7 @@ CMD:freezebank(playerid, params[])
     else
     {
 		PlayerInfo[giveplayerid][pFreezeBank] = 0;
-		format(string, sizeof(string), "{AA3333}AdmWarning{FFFF00}: %s %s has unfrozen %s bank account.", rank, GetPlayerNameEx(playerid), GetPlayerNameEx(giveplayerid));
+		format(string, sizeof(string), "{AA3333}AdmWarning{FFFF00}: %s %s has unfrozen %s bank account.", PlayerInfo[playerid][pRankText], GetPlayerNameEx(playerid), GetPlayerNameEx(giveplayerid));
 		ABroadCast(COLOR_YELLOW,string, 2);
 		format(string, sizeof(string), "You have unfrozen %s's bank account.", GetPlayerNameEx(giveplayerid));
 		SendClientMessageEx(playerid, COLOR_WHITE, string);
@@ -13828,7 +13828,7 @@ CMD:freezeassets(playerid, params[])
 	    {
 			PlayerInfo[giveplayerid][pFreezeHouse] = 1;
 	       	GetPlayerGroupInfo(playerid, rank, division, employer);
-		   	format(string, sizeof(string), "{AA3333}AdmWarning{FFFF00}: %s %s has frozen %s house assets.", rank, GetPlayerNameEx(playerid), GetPlayerNameEx(giveplayerid));
+		   	format(string, sizeof(string), "{AA3333}AdmWarning{FFFF00}: %s %s has frozen %s house assets.", PlayerInfo[playerid][pRankText], GetPlayerNameEx(playerid), GetPlayerNameEx(giveplayerid));
 		   	ABroadCast(COLOR_YELLOW,string, 2);
 		   	format(string, sizeof(string), "You have frozen %s's house assets.", GetPlayerNameEx(giveplayerid));
 	   	 	SendClientMessageEx(playerid, COLOR_WHITE, string);
@@ -13838,7 +13838,7 @@ CMD:freezeassets(playerid, params[])
 	    else
 	    {
 	        PlayerInfo[giveplayerid][pFreezeHouse] = 0;
-			format(string, sizeof(string), "{AA3333}AdmWarning{FFFF00}: %s %s has unfrozen %s house assets.", rank, GetPlayerNameEx(playerid), GetPlayerNameEx(giveplayerid));
+			format(string, sizeof(string), "{AA3333}AdmWarning{FFFF00}: %s %s has unfrozen %s house assets.", PlayerInfo[playerid][pRankText], GetPlayerNameEx(playerid), GetPlayerNameEx(giveplayerid));
 	    	ABroadCast(COLOR_YELLOW,string, 2);
 		   	format(string, sizeof(string), "You have unfrozen %s's house assets.", GetPlayerNameEx(giveplayerid));
 	   	 	SendClientMessageEx(playerid, COLOR_WHITE, string);
@@ -13852,7 +13852,7 @@ CMD:freezeassets(playerid, params[])
 		{
 			PlayerInfo[giveplayerid][pFreezeCar] = 1;
 	       	GetPlayerGroupInfo(playerid, rank, division, employer);
-			format(string, sizeof(string), "{AA3333}AdmWarning{FFFF00}: %s %s has frozen %s vehicle assets.", rank, GetPlayerNameEx(playerid), GetPlayerNameEx(giveplayerid));
+			format(string, sizeof(string), "{AA3333}AdmWarning{FFFF00}: %s %s has frozen %s vehicle assets.", PlayerInfo[playerid][pRankText], GetPlayerNameEx(playerid), GetPlayerNameEx(giveplayerid));
 	    	ABroadCast(COLOR_YELLOW,string, 2);
 	    	format(string, sizeof(string), "You have frozen %s's vehicle assets.", GetPlayerNameEx(giveplayerid));
 	   	 	SendClientMessageEx(playerid, COLOR_WHITE, string);
@@ -13862,7 +13862,7 @@ CMD:freezeassets(playerid, params[])
 	    else
 	    {
 	        PlayerInfo[giveplayerid][pFreezeCar] = 0;
-	        format(string, sizeof(string), "{AA3333}AdmWarning{FFFF00}: %s %s has unfrozen %s vehicle assets.", rank, GetPlayerNameEx(playerid), GetPlayerNameEx(giveplayerid));
+	        format(string, sizeof(string), "{AA3333}AdmWarning{FFFF00}: %s %s has unfrozen %s vehicle assets.", PlayerInfo[playerid][pRankText], GetPlayerNameEx(playerid), GetPlayerNameEx(giveplayerid));
 	    	ABroadCast(COLOR_YELLOW,string, 2);
 	    	format(string, sizeof(string), "You have unfrozen %s's vehicle assets.", GetPlayerNameEx(giveplayerid));
 		 	SendClientMessageEx(playerid, COLOR_WHITE, string);
@@ -13897,16 +13897,16 @@ CMD:reward(playerid, params[])
   		if(money < 1 || money > 50000) return SendClientMessageEx(playerid, COLOR_GRAD5, "Reward amount cannot be lower than $1 or higher than $50,000!");
     	new rank[GROUP_MAX_RANK_LEN], division[GROUP_MAX_DIV_LEN], employer[GROUP_MAX_NAME_LEN];
    		GetPlayerGroupInfo(playerid, rank, division, employer);
-	    format(string, sizeof(string), "{AA3333}AdmWarning{FFFF00}: %s %s has just rewarded %s $%d.", rank, GetPlayerNameEx(playerid), GetPlayerNameEx(giveplayerid), money);
+	    format(string, sizeof(string), "{AA3333}AdmWarning{FFFF00}: %s %s has just rewarded %s $%d.", PlayerInfo[playerid][pRankText], GetPlayerNameEx(playerid), GetPlayerNameEx(giveplayerid), money);
 	    ABroadCast(COLOR_YELLOW,string, 2);
 
-		format(string, sizeof(string), "AdmCmd: %s %s has just rewarded %s $%d", rank, GetPlayerNameEx(playerid), GetPlayerNameEx(giveplayerid), money);
+		format(string, sizeof(string), "AdmCmd: %s %s has just rewarded %s $%d", PlayerInfo[playerid][pRankText], GetPlayerNameEx(playerid), GetPlayerNameEx(giveplayerid), money);
 		Log("logs/rpspecial.log", string);
 		Tax -= money;
   		GivePlayerCash(giveplayerid, money);
     	format(string, sizeof(string), "You have given a reward of $%d to %s.", money, GetPlayerNameEx(giveplayerid));
 	    SendClientMessageEx(playerid, COLOR_WHITE, string);
-	    format(string, sizeof(string), "You have recieved a reward of $%d from %s %s.", money, rank, GetPlayerNameEx(playerid));
+	    format(string, sizeof(string), "You have recieved a reward of $%d from %s %s.", money, PlayerInfo[playerid][pRankText], GetPlayerNameEx(playerid));
 	   	SendClientMessageEx(giveplayerid, COLOR_WHITE, string);
 	}
 	return 1;
@@ -13933,8 +13933,8 @@ CMD:reversejudgement(playerid, params[])
 			PlayerInfo[giveplayerid][pJudgeJailTime] = 0;
    			switch(PlayerInfo[playerid][pSex])
 			{
-			    case 1: format(string, sizeof(string), "%s %s has reversed %s's judgement, he is free to go.", rank, GetPlayerNameEx(playerid), GetPlayerNameEx(giveplayerid));
-			    case 2: format(string, sizeof(string), "%s %s has reversed %s's judgement, she is free to go.", rank, GetPlayerNameEx(playerid), GetPlayerNameEx(giveplayerid));
+			    case 1: format(string, sizeof(string), "%s %s has reversed %s's judgement, he is free to go.", PlayerInfo[playerid][pRankText], GetPlayerNameEx(playerid), GetPlayerNameEx(giveplayerid));
+			    case 2: format(string, sizeof(string), "%s %s has reversed %s's judgement, she is free to go.", PlayerInfo[playerid][pRankText], GetPlayerNameEx(playerid), GetPlayerNameEx(giveplayerid));
 			}
    			SendGroupMessage(1, DEPTRADIO, string);
    		}
@@ -25223,7 +25223,7 @@ CMD:showbadge(playerid, params[])
 				GetPlayerGroupInfo(playerid, infoArrays[0], infoArrays[1], infoArrays[2]);
 
 				SendClientMessageEx(giveplayerid, COLOR_GRAD2, "----------------------------------------------------------------------------------------------------");
-				format(string, sizeof(string), "%s %s is a duly sworn member of the %s.", infoArrays[0], GetPlayerNameEx(playerid), infoArrays[2]);
+				format(string, sizeof(string), "%s %s is a duly sworn member of the %s.", PlayerInfo[playerid][pRankText], GetPlayerNameEx(playerid), infoArrays[2]);
 				SendClientMessageEx(giveplayerid, COLOR_WHITE, string);
 				format(string, sizeof(string), "Current Assignment: %s.", infoArrays[1]);
 				SendClientMessageEx(giveplayerid, COLOR_WHITE, string);
@@ -25332,7 +25332,7 @@ CMD:r(playerid, params[]) {
 					format(string, sizeof(string), "(radio) %s", params);
 					SetPlayerChatBubble(playerid, string, COLOR_WHITE, 15.0, 5000);
 					GetPlayerGroupInfo(playerid, rank, division, employer);
-					format(string, sizeof(string), "**[%s-%d] %s %s: %s **",division,PlayerInfo[playerid][pMaHieu1],rank, GetPlayerNameEx(playerid), params);
+					format(string, sizeof(string), "**[%s-%d] %s %s: %s **",division,PlayerInfo[playerid][pMaHieu1],PlayerInfo[playerid][pRankText], GetPlayerNameEx(playerid), params);
 					foreach(new i: Player)
 					{
 						if(GetPVarInt(i, "togRadio") == 0)
@@ -25375,7 +25375,7 @@ CMD:international(playerid, params[])
 	        {
 	            new szRadio[128], szEmployer[GROUP_MAX_NAME_LEN], szRank[GROUP_MAX_RANK_LEN], szDivision[GROUP_MAX_DIV_LEN];
 	            GetPlayerGroupInfo(playerid, szRank, szDivision, szEmployer);
-	            format(szRadio, sizeof(szRadio), "** %s %s (%s) %s: %s **", szEmployer, szRank, szDivision, GetPlayerNameEx(playerid), params);
+	            format(szRadio, sizeof(szRadio), "** %s %s (%s) %s: %s **", szEmployer, PlayerInfo[playerid][pRankText], szDivision, GetPlayerNameEx(playerid), params);
 	            foreach(new i: Player)
 	            {
 	                if((0 <= PlayerInfo[i][pMember] < MAX_GROUPS) && PlayerInfo[i][pRank] >= arrGroupData[PlayerInfo[i][pMember]][g_iIntRadioAccess])
@@ -25423,7 +25423,7 @@ CMD:dept(playerid, params[])
 				{
 					new szRadio[128], RadioBubble[128], szEmployer[GROUP_MAX_NAME_LEN], szRank[GROUP_MAX_RANK_LEN], szDivision[GROUP_MAX_DIV_LEN];
 					GetPlayerGroupInfo(playerid, szRank, szDivision, szEmployer);
-					format(szRadio, sizeof(szRadio), "** %s %s (%s) %s: %s **", szEmployer, szRank, szDivision, GetPlayerNameEx(playerid), params);
+					format(szRadio, sizeof(szRadio), "** %s %s (%s) %s: %s **", szEmployer, PlayerInfo[playerid][pRankText], szDivision, GetPlayerNameEx(playerid), params);
 					format(RadioBubble, sizeof(RadioBubble), "(radio) %s",params);
 					SetPlayerChatBubble(playerid, RadioBubble, COLOR_WHITE, 15.0, 5000);
 					foreach(new i: Player)
@@ -34350,7 +34350,7 @@ CMD:leaders(playerid, params[])
 		{
 			if(PlayerInfo[i][pLeader] >= 0) {
 				GetPlayerGroupInfo(i, sz_FacInfo[0], sz_FacInfo[1], sz_FacInfo[2]);
-				format(string, sizeof(string), "(%s) %s %s", sz_FacInfo[2], sz_FacInfo[0], GetPlayerNameEx(i));
+				format(string, sizeof(string), "(%s) %s %s", sz_FacInfo[2], PlayerInfo[playerid][pRankText], GetPlayerNameEx(i));
 				SendClientMessageEx(playerid, COLOR_GRAD2, string);
 			}
 		}
@@ -35171,7 +35171,7 @@ CMD:revokelicense(playerid, params[])
 					GetPlayerGroupInfo(playerid, sz_FacInfo[0], sz_FacInfo[1], sz_FacInfo[2]);
 					format(string,sizeof(string),"Nhan vien %s da thu hoi giay phep lai xe cua ban, ly do: %s.", sz_FacInfo[2], reason);
 					SendClientMessageEx(giveplayerid,COLOR_LIGHTBLUE,string);
-					format(string,sizeof(string),"HQ: %s %s %s da thu hoi %s' giay phep lai xe, ly do: %s.", sz_FacInfo[2], sz_FacInfo[0], GetPlayerNameEx(playerid), GetPlayerNameEx(giveplayerid), reason);
+					format(string,sizeof(string),"HQ: %s %s %s da thu hoi %s' giay phep lai xe, ly do: %s.", sz_FacInfo[2], PlayerInfo[playerid][pRankText], GetPlayerNameEx(playerid), GetPlayerNameEx(giveplayerid), reason);
 					SendGroupMessage(1,TEAM_BLUE_COLOR,string);
 					format(string,sizeof(string),"Ban da thu hoi %s' giay phep lai xe.",GetPlayerNameEx(giveplayerid));
 					SendClientMessageEx(playerid,COLOR_WHITE,string);
@@ -35187,7 +35187,7 @@ CMD:revokelicense(playerid, params[])
 					GetPlayerGroupInfo(playerid, sz_FacInfo[0], sz_FacInfo[1], sz_FacInfo[2]);
 					format(string,sizeof(string),"Nhan vien %s da thu hoi giay phep lai thuyen cua ban, ly do: %s.", sz_FacInfo[2], reason);
 					SendClientMessageEx(giveplayerid,COLOR_LIGHTBLUE,string);
-					format(string,sizeof(string),"HQ: %s %s %s da thu hoi %s' giay phep lai thuyen, ly do: %s.", sz_FacInfo[2], sz_FacInfo[0], GetPlayerNameEx(playerid), GetPlayerNameEx(giveplayerid), reason);
+					format(string,sizeof(string),"HQ: %s %s %s da thu hoi %s' giay phep lai thuyen, ly do: %s.", sz_FacInfo[2], PlayerInfo[playerid][pRankText], GetPlayerNameEx(playerid), GetPlayerNameEx(giveplayerid), reason);
 					SendGroupMessage(1,TEAM_BLUE_COLOR,string);
 					format(string,sizeof(string),"Ban da thu hoi %s' giay phep lai thuyen.",GetPlayerNameEx(giveplayerid));
 					SendClientMessageEx(playerid,COLOR_WHITE,string);
@@ -35203,7 +35203,7 @@ CMD:revokelicense(playerid, params[])
 					GetPlayerGroupInfo(playerid, sz_FacInfo[0], sz_FacInfo[1], sz_FacInfo[2]);
 					format(string,sizeof(string),"Nhan vien %s da thu hoi giay phep lai may bay cua ban, ly do: %s.", sz_FacInfo[2], reason);
 					SendClientMessageEx(giveplayerid,COLOR_LIGHTBLUE,string);
-					format(string,sizeof(string),"HQ: %s %s %s da thu hoi %s' giay phep lai may bay, ly do: %s.", sz_FacInfo[2], sz_FacInfo[0], GetPlayerNameEx(playerid), GetPlayerNameEx(giveplayerid), reason);
+					format(string,sizeof(string),"HQ: %s %s %s da thu hoi %s' giay phep lai may bay, ly do: %s.", sz_FacInfo[2], PlayerInfo[playerid][pRankText], GetPlayerNameEx(playerid), GetPlayerNameEx(giveplayerid), reason);
 					SendGroupMessage(1,TEAM_BLUE_COLOR,string);
 					format(string,sizeof(string),"Ban da thu hoi %s' giay phep lai may bay.",GetPlayerNameEx(giveplayerid));
 					SendClientMessageEx(playerid,COLOR_WHITE,string);
@@ -45932,6 +45932,56 @@ CMD:locker(playerid, params[]) {
 	SendErrorMessage(playerid, " Ban khong o gan tu lay do!");
 	return 1;
 }
+CMD:chetaomedkit(playerid, params[]) {
+
+	new iGroupID = PlayerInfo[playerid][pMember];
+
+	if(PlayerInfo[playerid][pWRestricted] != 0) return SendServerMessage(playerid, " Ban khong the mo tu nay khi dang bi gioi han vu khi");
+	if(0 <= iGroupID < MAX_GROUPS)
+	{
+		for(new i; i < MAX_GROUPS; i++)
+		{
+			for(new j; j < MAX_GROUP_LOCKERS; j++)
+			{
+				if(IsPlayerInRangeOfPoint(playerid, 3.0, arrGroupLockers[i][j][g_fLockerPos][0], arrGroupLockers[i][j][g_fLockerPos][1], arrGroupLockers[i][j][g_fLockerPos][2]) && arrGroupLockers[i][j][g_iLockerVW] == GetPlayerVirtualWorld(playerid))
+				{
+					if(i == iGroupID || (arrGroupData[i][g_iGroupType] == arrGroupData[iGroupID][g_iGroupType] && arrGroupLockers[i][j][g_iLockerShare]))
+					{
+						if(arrGroupData[PlayerInfo[playerid][pMember]][g_iGroupType] == 3)
+						{
+							if(PlayerInfo[playerid][pTimeCraft] == 0)
+							{
+								if(Inventory_HasItem(playerid, "Duoc lieu", 30))
+								{
+									new format_job[1280];
+									format(format_job, sizeof(format_job), "[SERVER] {ffffff}Ban da che tao thanh cong {6e69ff}1 {5c5c5c}Medkit{ffffff}.");
+									SendClientMessage(playerid, COLOR_LIGHTRED, format_job);
+									new pItemId = Inventory_GetItemID(playerid, "Duoc lieu", 30);
+									Inventory_Remove(playerid, pItemId, 30);
+									Inventory_Add(playerid, "Medkit", 1, 180);
+									PlayerInfo[playerid][pTimeCraft] = 10;
+									SetTimerEx("TimeCraftMed", 60000, 0, "d", playerid);
+								}
+								else return SendErrorMessage(playerid, " Ban khong co du 30 duoc lieu de che tao.");
+							}
+							else return SendErrorMessage(playerid, " Ban vua che medkit trong vong 10 phut tro lai roi, vui long doi.");
+						}
+						else return SendErrorMessage(playerid, " Ban khong the su dung lenh nay.");
+						return 1;
+					}
+					else
+					{
+					    SendErrorMessage(playerid, " Ban khong the che tao o day, hay ve locker cua to chuc.");
+						return 1;
+					}
+				}
+			}
+		}
+	}
+	SendErrorMessage(playerid, " Ban khong o gan tu lay do!");
+	return 1;
+}
+
 
 CMD:editgroup(playerid, params[]) {
 	if(PlayerInfo[playerid][pAdmin] >= 1337 || PlayerInfo[playerid][pFactionModerator] >= 2)
@@ -50749,13 +50799,24 @@ CMD:pm(playerid, params[])
 	}
 	return 1;
 }
-CMD:testeat(playerid,params[]) {
-	PlayerInfo[playerid][pEat] = 30;
-	printf("%d", PlayerInfo[playerid][pEat]);
-	return 1;
-}
-CMD:testeat1(playerid,params[]) {
-	PlayerInfo[playerid][pEat] = 26;
-	printf("%d", PlayerInfo[playerid][pEat]);
+
+CMD:setranktext(playerid, params[])
+{
+	if(PlayerInfo[playerid][pLeader] >= 0)
+	{
+		new string[128], giveplayerid, ranktext[64];
+		if(sscanf(params, "us[64]", giveplayerid, ranktext)) return SendErrorMessage(playerid, " SUDUNG: /setranktext [player] [text]");
+
+		if(IsPlayerConnected(giveplayerid))
+		{
+			format(string, sizeof(string), "Ban da dat ranktext cua %s thanh %s", GetPlayerNameEx(giveplayerid), ranktext);
+			SendClientMessage(playerid, -1, string);
+			format(string, sizeof(string), "ranktext cua ban da duoc %s dat thanh %s", GetPlayerNameEx(playerid), ranktext);
+			SendClientMessage(giveplayerid, -1, string);
+			format(PlayerInfo[playerid][pRankText], 64, ranktext);
+			return 1;
+		}
+	}
+	else SendServerMessage(playerid, " Ban khong the su dung lenh nay.");
 	return 1;
 }

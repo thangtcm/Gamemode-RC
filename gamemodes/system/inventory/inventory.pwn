@@ -77,7 +77,9 @@ new const g_aInventoryItems[][e_InventoryItems] =
 	{"Dan tieu lien SAAS", "Ammo3-AS"}, // type 5
 	{"Dan sung truong SAAS", "Ammo4-AS"}, // type 5
 	{"Dan sniper SAAS", "Ammo5-AS"}, // type 5
-
+	
+	{"Duoc lieu", "item_duoclieu"},
+	{"Medkit", "item_medkit"},  
 	//NameTag
 	{"Mat na", "Mask"} 
 };
@@ -820,6 +822,17 @@ public OnPlayerUseItem(playerid, pItemId, name[])
 		GetPlayerWeaponData(playerid, 6, weapon_g, ammos_g);
         if(weapon_g != 34 && weapon_g != 33) return SendClientMessage(playerid,-1,"Ban khong so huu vu khi 'Sniper' tren nguoi.");
         Dialog_Show(playerid, DIALOG_USEAMMO5AS, DIALOG_STYLE_INPUT, "Trang bi - Dan Sniper", "Ban muon nap bao nhieu vien dan ?", "Xac nhan", "Huy bo");
+	}
+	else if(!strcmp(name, "Medkit", true))
+	{
+		if(PlayerInfo[playerid][pTimeMedkit] == 0)
+		{
+			new Float: HP;
+			GetPlayerHealth(playerid, HP);
+			SetPlayerHealth(playerid, HP+30);
+			SetTimerEx("TimeUseMed", 60000, 0, "d", playerid);
+		}
+		else return SendErrorMessage(playerid, " Ban vua su dung Medkit trong vong 30 phut truoc roi, vui long doi.");
 	}
 	return 1;
 }

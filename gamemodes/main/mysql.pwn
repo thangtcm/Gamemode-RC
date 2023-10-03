@@ -361,6 +361,7 @@ public OnQueryFinish(resultid, extraid, handleid)
 					cache_get_field_content(row,  "TimeBanned", szResult, MainPipeline); PlayerInfo[extraid][pTimeBanned] = strval(szResult);
 					cache_get_field_content(row,  "BannedBy", PlayerInfo[extraid][pBannedBy], MainPipeline, 128);
 					cache_get_field_content(row,  "ReasonBanned", PlayerInfo[extraid][pReasonBanned], MainPipeline, 128);
+					cache_get_field_content(row,  "RankText", PlayerInfo[extraid][pRankText], MainPipeline, 64);
 					cache_get_field_content(row,  "QuocTich", PlayerInfo[extraid][pQuocTich], MainPipeline, 30);
 					cache_get_field_content(row,  "Flag", PlayerInfo[extraid][pFlag]);
 					cache_get_field_content(row,  "Eat", szResult, MainPipeline); PlayerInfo[extraid][pEat] = strval(szResult);
@@ -368,6 +369,8 @@ public OnQueryFinish(resultid, extraid, handleid)
 					cache_get_field_content(row,  "Strong", szResult, MainPipeline); PlayerInfo[extraid][pStrong] = strval(szResult);
 					cache_get_field_content(row,  "SoLanMiner", szResult, MainPipeline); PlayerInfo[extraid][pSoLanMiner] = strval(szResult);
 					cache_get_field_content(row,  "MinerLevel", szResult, MainPipeline); PlayerInfo[extraid][pMinerLevel] = strval(szResult);
+					cache_get_field_content(row,  "TimeCraft", szResult, MainPipeline); PlayerInfo[extraid][pTimeCraft] = strval(szResult);
+					cache_get_field_content(row,  "TimeMedkit", szResult, MainPipeline); PlayerInfo[extraid][pTimeMedkit] = strval(szResult);
 
 
 
@@ -2996,9 +2999,12 @@ stock g_mysql_SaveAccount(playerid)
     SavePlayerInteger(query, GetPlayerSQLId(playerid), "Strong", PlayerInfo[playerid][pStrong]);
     SavePlayerInteger(query, GetPlayerSQLId(playerid), "SoLanMiner", PlayerInfo[playerid][pSoLanMiner]);
     SavePlayerInteger(query, GetPlayerSQLId(playerid), "MinerLevel", PlayerInfo[playerid][pMinerLevel]);
+    SavePlayerInteger(query, GetPlayerSQLId(playerid), "TimeCraft", PlayerInfo[playerid][pTimeCraft]);
+    SavePlayerInteger(query, GetPlayerSQLId(playerid), "TimeMedkit", PlayerInfo[playerid][pTimeMedkit]);
 
 	SavePlayerString(query, GetPlayerSQLId(playerid), "BannedBy", PlayerInfo[playerid][pBannedBy]);
 	SavePlayerString(query, GetPlayerSQLId(playerid), "ReasonBanned", PlayerInfo[playerid][pReasonBanned]);
+	SavePlayerString(query, GetPlayerSQLId(playerid), "RankText", PlayerInfo[playerid][pRankText]);
 	SavePlayerString(query, GetPlayerSQLId(playerid), "QuocTich", PlayerInfo[playerid][pQuocTich]);
 	SavePlayerInteger(query, GetPlayerSQLId(playerid), "Flag", PlayerInfo[playerid][pFlag]);
  	SavePlayerInteger(query, GetPlayerSQLId(playerid), "Hambuger", PlayerInfo[playerid][pHambuger]);

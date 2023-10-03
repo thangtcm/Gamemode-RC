@@ -23351,7 +23351,26 @@ public todtime()
     SetWorldTime(0);
     GioFix = SetTimerEx("todtime1", 10000, 0, "d", 1);
 }
-
+forward TimeCraftMed(playerid);
+public TimeCraftMed(playerid)
+{
+	if(PlayerInfo[playerid][pTimeCraft] > 1)
+	{
+    	PlayerInfo[playerid][pTimeCraft] -= 1;
+    	SetTimerEx("TimeCraftMed", 60000, 0, "d", playerid);
+    }
+    return 1;
+}
+forward TimeUseMed(playerid);
+public TimeUseMed(playerid)
+{
+	if(PlayerInfo[playerid][pTimeMedkit] > 1)
+	{
+    	PlayerInfo[playerid][pTimeMedkit] -= 1;
+    	SetTimerEx("TimeUseMed", 60000, 0, "d", playerid);
+    }
+    return 1;
+}
 forward todtime1();
 public todtime1()
 {

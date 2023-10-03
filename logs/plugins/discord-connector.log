@@ -34,4 +34,14 @@
 [10/03/23 06:06:45] [ERROR] can't update guild member: user id "750212447826083971" not cached
 [10/03/23 06:12:41] [WARNING] Unknown gateway event 'GUILD_MEMBERS_CHUNK'
 [10/03/23 06:13:17] [WARNING] Unknown gateway event 'GUILD_MEMBERS_CHUNK'
+<<<<<<< HEAD
 [10/03/23 18:12:15] [WARNING] Unknown gateway event 'GUILD_MEMBERS_CHUNK'
+=======
+[10/03/23 19:48:13] [ERROR] Error while retrieving HTTP POST response from '/api/v10/channels/1158001303033757716/messages': end of stream
+[10/03/23 20:14:47] [ERROR] Error while retrieving HTTP POST response from '/api/v10/channels/1158001303033757716/messages': end of stream
+[10/03/23 20:34:13] [WARNING] Unknown gateway event 'CHANNEL_TOPIC_UPDATE'
+[10/03/23 20:34:13] [WARNING] Unknown gateway event 'VOICE_CHANNEL_STATUS_UPDATE'
+[10/03/23 20:55:33] [WARNING] Unknown gateway event 'CHANNEL_TOPIC_UPDATE'
+[10/03/23 20:55:33] [WARNING] Unknown gateway event 'VOICE_CHANNEL_STATUS_UPDATE'
+[10/03/23 21:10:31] [ERROR] Error while retrieving HTTP GET response from '/api/oauth2/applications/@me': end of stream
+>>>>>>> 4287c12b6833be8459f643a94187cf31a5601c06
