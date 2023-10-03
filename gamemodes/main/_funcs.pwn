@@ -1446,6 +1446,7 @@ public OnPlayerEnterVehicle(playerid, vehicleid, ispassenger)
 }
 
 public OnPlayerConnect(playerid) {
+	SetTimerEx("TimeUseMed", 60000, 0, "d", playerid);
 	SetTimerEx("TimeCraftMed", 60000, 0, "d", playerid);
 	SetPlayerCameraPos(playerid, 1527.1915, -1388.5413, 405.3455);
 	SetPlayerCameraLookAt(playerid, 1527.1210, -1389.5367, 403.4106);

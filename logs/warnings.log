@@ -79,3 +79,7 @@
 [10/03/23 05:52:56] [plugins/discord-connector] Unknown gateway event 'GUILD_MEMBERS_CHUNK'
 [10/03/23 06:12:41] [plugins/discord-connector] Unknown gateway event 'GUILD_MEMBERS_CHUNK'
 [10/03/23 06:13:17] [plugins/discord-connector] Unknown gateway event 'GUILD_MEMBERS_CHUNK'
+[10/03/23 20:34:13] [plugins/discord-connector] Unknown gateway event 'CHANNEL_TOPIC_UPDATE'
+[10/03/23 20:34:13] [plugins/discord-connector] Unknown gateway event 'VOICE_CHANNEL_STATUS_UPDATE'
+[10/03/23 20:55:33] [plugins/discord-connector] Unknown gateway event 'CHANNEL_TOPIC_UPDATE'
+[10/03/23 20:55:33] [plugins/discord-connector] Unknown gateway event 'VOICE_CHANNEL_STATUS_UPDATE'

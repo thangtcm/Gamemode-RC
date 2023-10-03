@@ -45949,7 +45949,7 @@ CMD:chetaomedkit(playerid, params[]) {
 					{
 						if(arrGroupData[PlayerInfo[playerid][pMember]][g_iGroupType] == 3)
 						{
-							if(PlayerInfo[playerid][pTimeCraft] >= 1)
+							if(PlayerInfo[playerid][pTimeCraft] == 0)
 							{
 								if(Inventory_HasItem(playerid, "Duoc lieu", 30))
 								{

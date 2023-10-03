@@ -823,6 +823,17 @@ public OnPlayerUseItem(playerid, pItemId, name[])
         if(weapon_g != 34 && weapon_g != 33) return SendClientMessage(playerid,-1,"Ban khong so huu vu khi 'Sniper' tren nguoi.");
         Dialog_Show(playerid, DIALOG_USEAMMO5AS, DIALOG_STYLE_INPUT, "Trang bi - Dan Sniper", "Ban muon nap bao nhieu vien dan ?", "Xac nhan", "Huy bo");
 	}
+	else if(!strcmp(name, "Medkit", true))
+	{
+		if(PlayerInfo[playerid][pTimeMedkit] == 0)
+		{
+			new Float: HP;
+			GetPlayerHealth(playerid, HP);
+			SetPlayerHealth(playerid, HP+30);
+			SetTimerEx("TimeUseMed", 60000, 0, "d", playerid);
+		}
+		else return SendErrorMessage(playerid, " Ban vua su dung Medkit trong vong 30 phut truoc roi, vui long doi.");
+	}
 	return 1;
 }
 

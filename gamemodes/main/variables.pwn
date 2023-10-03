@@ -794,6 +794,7 @@ enum pInfo
 	pReasonBanned[128],
 	pRankText[64],
 	pTimeCraft,
+	pTimeMedkit,
 	pFlag[128],
 	pMaHieu1,
 	pHyp,

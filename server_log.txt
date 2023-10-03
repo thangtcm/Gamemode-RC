@@ -4346,3 +4346,459 @@ TDEditor Plugin loaded, thank you for using.
 [20:29:26]  
 [20:29:29] [Dynamic Giftbox] da tai thanh cong Dynamic giftbox.
 [20:29:30] [LoadCrates] Loading Crates Finished
+[20:30:47] [connection] incoming connection: 127.0.0.1:61481 id: 0
+[20:30:47] [join] [FL]Ha1bokuzxc has joined the server (0:127.0.0.1)
+[20:30:52] [debug] Run time error 4: "Array index out of bounds"
+[20:30:52] [debug]  Attempted to read/write array element at negative index -1
+[20:30:52] [debug] AMX backtrace:
+[20:30:52] [debug] #0 0000a300 in ?? (0) in lsrpvn.amx
+[20:30:52] [debug] #1 0001980c in ?? (0) in lsrpvn.amx
+[20:30:52] [debug] #2 0014faa4 in ?? (0, 1) in lsrpvn.amx
+[20:30:52] [debug] #3 0000f4c0 in public Itter_OnPlayerDisconnect (0, 1) in lsrpvn.amx
+[20:30:52] [debug] #4 native CallLocalFunction () in samp-server.exe
+[20:30:52] [debug] #5 00006f74 in public SSCANF_OnPlayerDisconnect (0, 1) in lsrpvn.amx
+[20:30:52] [debug] #6 00000924 in public OnPlayerDisconnect (0, 1) in lsrpvn.amx
+[20:30:52] [part] [FL]Ha1bokuzxc has left the server (0:1)
+[20:31:43] [LoadHouses] 3000 ngoi nha duoc tai.
+[20:32:45] [LoadDynamicDoors] 2248 door duoc tai.
+[20:32:47] [LoadDynamicMapIcons] 400 icons map duoc tai.
+[20:32:48] [LoadMailboxes] 50 mailboxes duoc tai.
+[20:32:59] [LoadBusinesses] 200 businesses rehashed/loaded.
+[20:33:01] [LoadPlants] Successfully loaded 300 plants
+[20:33:01] [SpeedCameras] Tai 3 May ban toc do.
+[20:33:03] TotalSold0: 0 | AmountMade0: 0
+[20:33:03] TotalSold1: 0 | AmountMade1: 0
+[20:33:03] TotalSold2: 0 | AmountMade2: 0
+[20:33:03] TotalSold3: 0 | AmountMade3: 0
+[20:33:03] TotalSold4: 0 | AmountMade4: 0
+[20:33:03] TotalSold5: 0 | AmountMade5: 0
+[20:33:03] TotalSold6: 0 | AmountMade6: 0
+[20:33:03] TotalSold7: 0 | AmountMade7: 0
+[20:33:03] TotalSold8: 0 | AmountMade8: 0
+[20:33:03] TotalSold9: 0 | AmountMade9: 0
+[20:33:03] TotalSold10: 0 | AmountMade10: 0
+[20:33:03] TotalSold11: 0 | AmountMade11: 0
+[20:33:03] TotalSold12: 0 | AmountMade12: 0
+[20:33:03] TotalSold13: 0 | AmountMade13: 0
+[20:33:03] TotalSold14: 0 | AmountMade14: 0
+[20:33:03] TotalSold15: 0 | AmountMade15: 0
+[20:33:03] TotalSold16: 0 | AmountMade16: 0
+[20:33:03] TotalSold17: 0 | AmountMade17: 0
+[20:33:03] TotalSold18: 0 | AmountMade18: 0
+[20:33:03] TotalSold19: 0 | AmountMade19: 0
+[20:33:03] TotalSold20: 0 | AmountMade20: 0
+[20:33:03] TotalSold21: 0 | AmountMade21: 0
+[20:33:03] TotalSold22: 0 | AmountMade22: 0
+[20:33:03] TotalSold23: 0 | AmountMade23: 0
+[20:33:03] TotalSold24: 0 | AmountMade24: 0
+[20:33:03] TotalSold25: 0 | AmountMade25: 0
+[20:33:03] TotalSold26: 0 | AmountMade26: 0
+[20:33:03] TotalSold27: 0 | AmountMade27: 0
+[20:33:03] TotalSold28: 0 | AmountMade28: 0
+[20:33:03] TotalSold29: 0 | AmountMade29: 0
+[20:33:04] Price0: 20000
+[20:33:04] Price1: 50000
+[20:33:04] Price2: 15000
+[20:33:04] Price3: 10000
+[20:33:04] Price4: 400
+[20:33:04] Price5: 500
+[20:33:04] Price6: 100
+[20:33:04] Price7: 500
+[20:33:04] Price8: 100
+[20:33:04] Price9: 100
+[20:33:04] Price10: 10
+[20:33:04] Price11: 100000
+[20:33:04] Price12: 100000
+[20:33:04] Price13: 100000
+[20:33:04] Price14: 10000
+[20:33:04] Price15: 5000
+[20:33:04] Price16: 1000
+[20:33:04] Price17: 1000
+[20:33:04] Price18: 1
+[20:33:04] Price19: 2
+[20:33:04] Price20: 10
+[20:33:04] Price21: 999999
+[20:33:04] Price22: 100
+[20:33:04] Price23: 1000
+[20:33:04] Price24: 100000
+[20:33:04] Price25: 100000
+[20:33:04] Price26: 100000
+[20:33:04] Price27: 100000
+[20:33:04] Price28: 1000
+[20:33:04] Price29: 29
+[20:33:11] [Family Points] 8 family points has been loaded.
+[20:33:16] [connection] incoming connection: 127.0.0.1:53614 id: 0
+[20:33:16] [join] [FL]Ha1bokuzxc has joined the server (0:127.0.0.1)
+[20:33:19] [warning] client exceeded 'messageholelimit' (1) 127.0.0.1:53614 (3012) Limit: 3000
+[20:33:19] [warning] client exceeded 'messageholelimit' (1) 127.0.0.1:53614 (3012) Limit: 3000
+[20:33:21] [He Thong] Da luu lai thong tin tai khoan thanh cong.
+[20:33:22] name [FL]Ha1bokuzxc,3, 
+[20:33:35] [debug] Run time error 4: "Array index out of bounds"
+[20:33:35] [debug]  Attempted to read/write array element at negative index -1
+[20:33:35] [debug] AMX backtrace:
+[20:33:35] [debug] #0 0000a300 in ?? (0) in lsrpvn.amx
+[20:33:35] [debug] #1 0001980c in ?? (0) in lsrpvn.amx
+[20:33:35] [debug] #2 0014faa4 in ?? (0, 1) in lsrpvn.amx
+[20:33:35] [debug] #3 0000f4c0 in public Itter_OnPlayerDisconnect (0, 1) in lsrpvn.amx
+[20:33:35] [debug] #4 native CallLocalFunction () in samp-server.exe
+[20:33:35] [debug] #5 00006f74 in public SSCANF_OnPlayerDisconnect (0, 1) in lsrpvn.amx
+[20:33:35] [debug] #6 00000924 in public OnPlayerDisconnect (0, 1) in lsrpvn.amx
+[20:33:35] [part] [FL]Ha1bokuzxc has left the server (0:1)
+[20:33:43] [connection] incoming connection: 127.0.0.1:56340 id: 0
+[20:33:43] [join] [FL]Ha1bokuzxc has joined the server (0:127.0.0.1)
+[20:33:44] name [FL]Ha1bokuzxc,3, 
+[20:34:36] acc id 33
+[20:34:36] acc id 33
+[20:34:36] acc id 33
+[20:34:37] acc id 33
+[20:34:37] acc id 33
+[20:34:37] acc id 33
+[20:34:38] name [FL]Ha1bokuzxc,3, 
+[20:34:39] acc id 33
+[20:34:39] acc id 33
+[20:34:39] acc id 33
+[20:34:40] acc id 33
+[20:34:40] acc id 33
+[20:34:42] acc id 33
+[20:34:43] acc id 33
+[20:34:43] acc id 33
+[20:34:43] acc id 33
+[20:34:44] acc id 33
+[20:34:44] acc id 33
+[20:36:53] [debug] Run time error 4: "Array index out of bounds"
+[20:36:53] [debug]  Attempted to read/write array element at negative index -1
+[20:36:53] [debug] AMX backtrace:
+[20:36:53] [debug] #0 0000a300 in ?? (0) in lsrpvn.amx
+[20:36:53] [debug] #1 0001980c in ?? (0) in lsrpvn.amx
+[20:36:53] [debug] #2 0014faa4 in ?? (0, 1) in lsrpvn.amx
+[20:36:53] [debug] #3 0000f4c0 in public Itter_OnPlayerDisconnect (0, 1) in lsrpvn.amx
+[20:36:53] [debug] #4 native CallLocalFunction () in samp-server.exe
+[20:36:53] [debug] #5 00006f74 in public SSCANF_OnPlayerDisconnect (0, 1) in lsrpvn.amx
+[20:36:53] [debug] #6 00000924 in public OnPlayerDisconnect (0, 1) in lsrpvn.amx
+[20:36:53] [part] [FL]Ha1bokuzxc has left the server (0:1)
+[20:36:59] [connection] incoming connection: 127.0.0.1:57157 id: 0
+[20:36:59] [join] [FL]Ha1bokuzxc has joined the server (0:127.0.0.1)
+[20:37:00] name [FL]Ha1bokuzxc,3, 
+[20:37:07] acc id 33
+[20:37:21] Stanley Taellious has logged in.
+[20:37:24] [zcmd] [Stanley Taellious]: /locker
+[20:37:26] [VEHICLE TRUCKER LOAD] Loading data from database...
+[20:37:26] [zcmd] [Stanley Taellious]: /makeleader 0
+[20:37:26] [He Thong] Da luu lai thong tin tai khoan thanh cong.
+[20:37:28] [LOAD INVENTORY]  du lieu inventory cua Stanley Taellious (ID: 0) da duoc tai.
+[20:37:30] [Load Vehicle Trucker] Khong co du lieu de tai
+[20:37:30] [zcmd] [Stanley Taellious]: /chetaomedkit
+[20:37:31] [zcmd] [Stanley Taellious]: /chetaomedkit
+[20:37:32] [zcmd] [Stanley Taellious]: /chetaomedkit
+[20:37:32] [zcmd] [Stanley Taellious]: /chetaomedkit
+[20:37:32] [zcmd] [Stanley Taellious]: /chetaomedkit
+[20:37:46]  -------------------------------------------
+[20:37:46]            SampVoice unloading...           
+[20:37:46]  -------------------------------------------
+[20:37:46] [dbg:raknet:free] : module releasing...
+[20:37:46] [dbg:raknet:free] : module released
+[20:37:46] [sv:dbg:network:free] : module releasing...
+[20:37:46] [sv:dbg:network:free] : module released
+
+----------
+Loaded log file: "server_log.txt".
+----------
+
+SA-MP Dedicated Server
+----------------------
+v0.3.DL-R1, (C)2005-2018 SA-MP Team
+
+[20:43:16] password = ""  (string)
+[20:43:16] 
+[20:43:16] Server Plugins
+[20:43:16] --------------
+[20:43:16]  Loading plugin: mysql
+[20:43:16]  >> plugin.mysql: R33 successfully loaded.
+[20:43:16]   Loaded.
+[20:43:16]  Loading plugin: sscanf
+[20:43:16] 
+
+[20:43:16]  ===============================
+
+[20:43:16]       sscanf plugin loaded.     
+
+[20:43:16]          Version:  2.8.1        
+
+[20:43:16]    (c) 2012 Alex "Y_Less" Cole  
+
+[20:43:16]  ===============================
+
+[20:43:16]   Loaded.
+[20:43:16]  Loading plugin: whirlpool
+[20:43:16]  
+[20:43:16]  ==================
+[20:43:16]  
+[20:43:16]   Whirlpool loaded
+[20:43:16]  
+[20:43:16]  ==================
+[20:43:16]  
+[20:43:16]   Loaded.
+[20:43:16]  Loading plugin: crashdetect
+[20:43:16]   CrashDetect plugin 4.19.4
+[20:43:16]   Loaded.
+[20:43:16]  Loading plugin: sampvoice
+[20:43:16] [sv:dbg:network:init] : module initializing...
+[20:43:16] [dbg:raknet:init] : module initializing...
+[20:43:16] [dbg:raknet:init] : module initialized
+[20:43:16] [sv:dbg:network:init] : module initialized
+[20:43:16] [sv:dbg:main:Load] : creating 8 work threads...
+[20:43:16]  -------------------------------------------    
+[20:43:16]    ___                __   __    _              
+[20:43:16]   / __| __ _ _ __  _ _\ \ / /__ (_) __ ___    
+[20:43:16]   \__ \/ _` | '  \| '_ \   / _ \| |/ _/ -_)
+[20:43:16]   |___/\__,_|_|_|_| .__/\_/\___/|_|\__\___|
+[20:43:16]                   |_|                           
+[20:43:16]  -------------------------------------------    
+[20:43:16]            SampVoice by MOR loaded              
+[20:43:16]  -------------------------------------------    
+[20:43:16]   Loaded.
+[20:43:16]  Loading plugin: samp-compat.dll
+[20:43:16]   -- samp-compat for 0.3.DL-R1 initialized
+[20:43:16]   Loaded.
+[20:43:16]  Loading plugin: streamer
+[20:43:16] 
+
+*** Streamer Plugin v2.9.5 by Incognito loaded ***
+
+[20:43:16]   Loaded.
+[20:43:16]  Loading plugin: server
+[20:43:16]   Loaded.
+[20:43:16]  Loading plugin: TDE
+[20:43:16] 
+TDEditor Plugin loaded, thank you for using.
+
+[20:43:16]   Loaded.
+[20:43:16]  Loading plugin: YSF_DL
+[20:43:16] 
+[20:43:16]  ==============================================
+[20:43:16]  YSF 2.2 (compiled Sep 19 2021 13:02:34) loaded
+[20:43:16]   (c) 2008 Alex "Y_Less" Cole
+[20:43:16]   (c) 2010 - 2018 kurta999
+[20:43:16]   (c) 2018 - 2020 IllidanS4
+[20:43:16]  Server version: 0.3.DL R1, Windows
+[20:43:16]  ==============================================
+[20:43:16] 
+[20:43:16]   Loaded.
+[20:43:16]  Loading plugin: discord-connector
+[20:43:27]  >> discord-connector: afb7e3b successfully loaded.
+[20:43:27]   Loaded.
+[20:43:27]  Loaded 11 plugins.
+
+[20:43:27] [artwork:crc] bp.dff CRC = 0xA2B03FFB
+[20:43:27] [artwork:crc] bp.txd CRC = 0x28E0706E
+[20:43:27] [artwork:crc] object.dff CRC = 0xDCFCC14C
+[20:43:27] [artwork:crc] speedo.txd CRC = 0x62C7BCBC
+[20:43:27] [artwork:crc] object.dff CRC = 0xDCFCC14C
+[20:43:27] [artwork:crc] login.txd CRC = 0x54694AE4
+[20:43:27] [artwork:crc] object.dff CRC = 0xDCFCC14C
+[20:43:27] [artwork:crc] character.txd CRC = 0xC1BABE5F
+[20:43:27] [artwork:crc] object.dff CRC = 0xDCFCC14C
+[20:43:27] [artwork:crc] speedo.txd CRC = 0x62C7BCBC
+[20:43:27] [artwork:crc] object.dff CRC = 0xDCFCC14C
+[20:43:27] [artwork:crc] newinv.txd CRC = 0xC5F22638
+[20:43:27] [artwork:crc] object.dff CRC = 0xDCFCC14C
+[20:43:27] [artwork:crc] character.txd CRC = 0xC1BABE5F
+[20:43:27] [artwork:crc] object.dff CRC = 0xDCFCC14C
+[20:43:27] [artwork:crc] inventory.txd CRC = 0xF2E5A1D4
+[20:43:27] 
+[20:43:27] Filterscripts
+[20:43:27] ---------------
+[20:43:27]   Loading filterscript 'Server.amx'...
+[20:43:27] [sv:dbg:main:AmxLoad] : net game pointer (value:06660048) received
+[20:43:27] [sv:dbg:network:bind] : voice server running on port 61181
+[20:43:27]   Loading filterscript 'cbug.amx'...
+[20:43:27]   Loaded 2 filterscripts.
+
+[20:43:27]  
+[20:43:27]  ======================================= 
+[20:43:27]  |                                     | 
+[20:43:27]  |        YSI version 3.01.0002        | 
+[20:43:27]  |        By Alex "Y_Less" Cole        | 
+[20:43:27]  |                                     | 
+[20:43:27]  ======================================= 
+[20:43:27]  
+[20:43:27] Chuong trinh may chu dang duoc khoi dong, vui long cho doi....
+[20:43:29] [MySQL] (Main Pipelines) Connecting to 23.88.73.88...
+[20:43:29] [MySQL] (MainPipeline) Connection successful toward MySQL Database Server!
+[20:43:29] [Dynamic Giftbox] Loading the Dynamic Giftbox...
+[20:43:29] [LoadCrates] Load Query Sent
+[20:43:29] [LoadHouses] Loading data from database...
+[20:43:29] [LoadDynamicDoors] Loading data from database...
+[20:43:29] [LoadDynamicMapIcons] Loading data from database...
+[20:43:29] [LoadMailboxes] Loading data from database...
+[20:43:29] [LoadBusinesses] Loading data from database...
+[20:43:29] [LoadAuctions] Loading data from database...
+[20:43:29] [LoadTxtLabels] Loading data from database...
+[20:43:29] [LoadPlants] Loading data from database...
+[20:43:29] [SpeedCameras] Loading data from database...
+[20:43:29] [LoadPayNSprays] Loading data from database...
+[20:43:29] [LoadArrestPoints] Loading data from database...
+[20:43:29] [LoadImpoundPoints] Loading data from database...
+[20:43:29] [LoadBusinessSales] Loading data from database...
+[20:43:29] [LoadPaintballArenas] 10 paintball loaded.
+[20:43:29] [LoadEventPoints] 0 event points loaded.
+[20:43:29] [LoadGates] Loading data from database...
+[20:43:29] [LoadElevatorStuff] 20 floors loaded.
+[20:43:29] [LoadFamilies] Dang tai du lieu tu database...
+[20:43:29] [LoadFamilyPoints] Loading Family Points from the database, please wait...
+[20:43:29] [MiscLoad] Misc Loaded
+[20:43:29] Resetting news...
+[20:43:29] Resetting default server variables..
+[20:43:29] Adjusted the server time...
+[20:43:29] [Streamer] Loading Dynamic Static Vehicles...
+[20:43:29] [Streamer] Dynamic Static Vehicles has been loaded.
+[20:43:29] [Streamer] Loading Dynamic Pickups...
+[20:43:29] [Streamer] Dynamic Pickups has been loaded.
+[20:43:29] [Streamer] Loading 3D Text Labels...
+[20:43:29] [Streamer] Dynamic 3D Text Labels has been loaded.
+[20:43:29] [Streamer] Loading Dynamic Buttons...
+[20:43:29] [Streamer] Dynamic Buttons has been loaded.
+[20:43:29] [Streamer] Loading Dynamic Objects...
+[20:43:29] [Streamer] Dynamic Objects has been loaded.
+[20:43:29] [Textdraws] Loading Textdraws...
+[20:43:29] [Textdraws] Loaded textdraws.
+[20:43:29] [Dynamic Groups] Loading Dynamic Groups...
+[20:43:29] [Dynamic Groups] Loading Dynamic Groups Vehicles...
+[20:43:29] Da chay thanh cong gamemode...
+[20:43:29] Number of vehicle models: 20
+[20:43:29]  
+[20:43:29]  
+[20:43:30] [Dynamic Giftbox] da tai thanh cong Dynamic giftbox.
+[20:43:31] [LoadCrates] Loading Crates Finished
+[20:44:11] [LoadHouses] 3000 ngoi nha duoc tai.
+[20:44:41] [LoadDynamicDoors] 2248 door duoc tai.
+[20:44:48] [LoadDynamicMapIcons] 400 icons map duoc tai.
+[20:44:49] [LoadMailboxes] 50 mailboxes duoc tai.
+[20:45:00] [LoadBusinesses] 200 businesses rehashed/loaded.
+[20:45:02] [LoadPlants] Successfully loaded 300 plants
+[20:45:03] [SpeedCameras] Tai 3 May ban toc do.
+[20:45:04] TotalSold0: 0 | AmountMade0: 0
+[20:45:04] TotalSold1: 0 | AmountMade1: 0
+[20:45:04] TotalSold2: 0 | AmountMade2: 0
+[20:45:04] TotalSold3: 0 | AmountMade3: 0
+[20:45:04] TotalSold4: 0 | AmountMade4: 0
+[20:45:04] TotalSold5: 0 | AmountMade5: 0
+[20:45:04] TotalSold6: 0 | AmountMade6: 0
+[20:45:04] TotalSold7: 0 | AmountMade7: 0
+[20:45:04] TotalSold8: 0 | AmountMade8: 0
+[20:45:04] TotalSold9: 0 | AmountMade9: 0
+[20:45:04] TotalSold10: 0 | AmountMade10: 0
+[20:45:04] TotalSold11: 0 | AmountMade11: 0
+[20:45:04] TotalSold12: 0 | AmountMade12: 0
+[20:45:04] TotalSold13: 0 | AmountMade13: 0
+[20:45:04] TotalSold14: 0 | AmountMade14: 0
+[20:45:04] TotalSold15: 0 | AmountMade15: 0
+[20:45:04] TotalSold16: 0 | AmountMade16: 0
+[20:45:04] TotalSold17: 0 | AmountMade17: 0
+[20:45:04] TotalSold18: 0 | AmountMade18: 0
+[20:45:04] TotalSold19: 0 | AmountMade19: 0
+[20:45:04] TotalSold20: 0 | AmountMade20: 0
+[20:45:04] TotalSold21: 0 | AmountMade21: 0
+[20:45:04] TotalSold22: 0 | AmountMade22: 0
+[20:45:04] TotalSold23: 0 | AmountMade23: 0
+[20:45:04] TotalSold24: 0 | AmountMade24: 0
+[20:45:04] TotalSold25: 0 | AmountMade25: 0
+[20:45:04] TotalSold26: 0 | AmountMade26: 0
+[20:45:04] TotalSold27: 0 | AmountMade27: 0
+[20:45:04] TotalSold28: 0 | AmountMade28: 0
+[20:45:04] TotalSold29: 0 | AmountMade29: 0
+[20:45:04] Price0: 20000
+[20:45:04] Price1: 50000
+[20:45:04] Price2: 15000
+[20:45:04] Price3: 10000
+[20:45:04] Price4: 400
+[20:45:04] Price5: 500
+[20:45:04] Price6: 100
+[20:45:04] Price7: 500
+[20:45:04] Price8: 100
+[20:45:04] Price9: 100
+[20:45:04] Price10: 10
+[20:45:04] Price11: 100000
+[20:45:04] Price12: 100000
+[20:45:04] Price13: 100000
+[20:45:04] Price14: 10000
+[20:45:04] Price15: 5000
+[20:45:04] Price16: 1000
+[20:45:04] Price17: 1000
+[20:45:04] Price18: 1
+[20:45:04] Price19: 2
+[20:45:04] Price20: 10
+[20:45:04] Price21: 999999
+[20:45:04] Price22: 100
+[20:45:04] Price23: 1000
+[20:45:04] Price24: 100000
+[20:45:04] Price25: 100000
+[20:45:04] Price26: 100000
+[20:45:04] Price27: 100000
+[20:45:04] Price28: 1000
+[20:45:04] Price29: 29
+[20:45:11] [Family Points] 8 family points has been loaded.
+[20:47:20] [connection] incoming connection: 127.0.0.1:55208 id: 0
+[20:47:20] [join] [FL]Ha1bokuzxc has joined the server (0:127.0.0.1)
+[20:47:21] name [FL]Ha1bokuzxc,3, 
+[20:47:29] acc id 33
+[20:47:33] [He Thong] Da luu lai thong tin tai khoan thanh cong.
+[20:47:41] Stanley Taellious has logged in.
+[20:47:43] [VEHICLE TRUCKER LOAD] Loading data from database...
+[20:47:44] [He Thong] Da luu lai thong tin tai khoan thanh cong.
+[20:47:45] [LOAD INVENTORY]  du lieu inventory cua Stanley Taellious (ID: 0) da duoc tai.
+[20:47:48] [Load Vehicle Trucker] Khong co du lieu de tai
+[20:47:49] [zcmd] [Stanley Taellious]: /chetaomedkit
+[20:47:52] [zcmd] [Stanley Taellious]: /makeleader 0
+[20:47:54] [zcmd] [Stanley Taellious]: /chetaomedkit
+[20:47:55] [zcmd] [Stanley Taellious]: /chetaomedkit
+[20:47:57] [zcmd] [Stanley Taellious]: /setitem 0
+[20:47:58] [zcmd] [Stanley Taellious]: /setitem 0 31
+[20:48:03] [zcmd] [Stanley Taellious]: /setitem 0 31 46 0
+[20:48:03] [CREATE INVENTORY] Duoc lieu (ID 1) da duoc them vao du lieu cua Stanley Taellious
+[20:48:05] [zcmd] [Stanley Taellious]: /locker
+[20:48:08] [zcmd] [Stanley Taellious]: /chetaomedkit
+[20:48:08] [CREATE INVENTORY] Medkit (ID 2) da duoc them vao du lieu cua Stanley Taellious
+[20:48:09] [zcmd] [Stanley Taellious]: /chetaomedkit
+[20:48:09] [zcmd] [Stanley Taellious]: /chetaomedkit
+[20:48:13] [zcmd] [Stanley Taellious]: /makeleader 0
+[20:48:17] [zcmd] [Stanley Taellious]: /chetaomedkit
+[20:48:18] [zcmd] [Stanley Taellious]: /chetaomedkit
+[20:48:18] [zcmd] [Stanley Taellious]: /chetaomedkit
+[20:48:19] [zcmd] [Stanley Taellious]: /chetaomedkit
+[20:48:19] [zcmd] [Stanley Taellious]: /chetaomedkit
+[20:48:20] [zcmd] [Stanley Taellious]: /chetaomedkit
+[20:48:21] [zcmd] [Stanley Taellious]: /chetaomedkit
+[20:48:22] [zcmd] [Stanley Taellious]: /chetaomedkit
+[20:48:23] [zcmd] [Stanley Taellious]: /chetaomedkit
+[20:48:25] [zcmd] [Stanley Taellious]: /chetaomedkit
+[20:48:28] [zcmd] [Stanley Taellious]: /chetaomedkit
+[20:48:35] *** YSI Error: INI_Open could not find or create file /DuLieu/Stanley_Taellious.ini
+[20:48:35] [part] Stanley_Taellious has left the server (0:1)
+[20:48:35] [MySQL] Query Error - (ErrorID: 1054) (Handle: 1)
+[20:48:35] [MySQL] Check mysql_log.txt to review the query that threw the error.
+[20:48:35] Dumping query from 2023/10/3 (20:48:35)
+Description: Unknown column 'TimeCraft' in 'field list' (index 0). Query:
+
+[20:48:35] UPDATE `accounts` SET `IP`='127.0.0.1',`Registered`=1,`ConnectedTime`=0,`Sex`=1,`BirthDate`='1923-01-01',`Band`=0,`PermBand`=0,`Warnings`=0,`Disabled`=0,`Level`=1,`AdminLevel`=99999,`CMND`=0,`RegisterCarTruck`=0,`MaskID1`=40294,`MaskID2`=37,`SeniorModerator`=0,`Helper`=0,`DonateRank`=0,`Respect`=0,`XP`=0,`Money`=1000,`MaHieu1`=0,`TruyDuoi`=0,`BanTime`=0,`TimeBanned`=0,`Flag`=48,`Eat`=100,`Drink`=100,`Strong`=100,`SoLanMiner`=0,`MinerLevel`=0,`TimeCraft`=9,`BannedBy`='NULL',`ReasonBanned`='NULL',`RankText`='NULL',`QuocTich`='0',`Flag`=48,`Hambuger`=0,`Banhmi`=0,`Pizza`=0,`Bank`=0,`pHealth`='100.00',`pArmor`='0.00',`pSHealth`='0.00',`Int`=0,`VirtualWorld`=0,`Model`=1,`BanAppealer`=0,`PR`=0,`HR`=0,`AP`=1,`Security`=0,`ShopTech`=0,`FactionModerator`=0,`GangModerator`=0,`Undercover`=0,`TogReports`=0,`Radio`=0,`RadioFreq`=0,`UpgradePoints`=0,`Origin`=0,`Muted`=0,`Crimes`=0,`Accent`=1,`CHits`=0,`FHits`=0,`Arrested`=0,`Phonebook`=0,`Fishes`=0,`Gcoin`=0,`Capacity`=16,`BiggestFish`=0,`Job`=0,`SoTaiKhoan`=0,`Job2`=0,`P
+[20:48:35] aycheck`=67,`HeadValue`=0,`JailTime`=0,`WRestricted`=0,`Materials`=0,`Crates`=0,`Pot`=0,`Crack`=0,`Nation`=-1,`Leader`=0,`Member`=0,`Division`=-1,`FMember`=255,`Rank`=9,`DetSkill`=0,`SexSkill`=0,`BoxSkill`=0,`LawSkill`=0,`MechSkill`=0,`TruckSkill`=0,`DrugsSkill`=0,`ArmsSkill`=0,`SmugglerSkill`=0,`FishSkill`=0,`CheckCash`=0,`Checks`=0,`BoatLic`=0,`FlyLic`=0,`GunLic`=0,`FishLic`=0,`FishSkill`=0,`FightingStyle`=0,`PhoneNr`=0,`Apartment`=-1,`Apartment2`=-1,`Renting`=-1,`CarLic`=0,`DrugsTime`=0,`LawyerTime`=0,`LawyerFreeTime`=0,`MechTime`=0,`SexTime`=0,`PayDay`=67,`PayDayHad`=0,`CDPlayer`=0,`Dice`=0,`Spraycan`=0,`Rope`=0,`Cigars`=0,`Sprunk`=0,`Bombs`=0,`Wins`=0,`Ammo1`=0,`Ammo2`=0,`Ammo3`=0,`Ammo4`=0,`Ammo5`=0,`Ammo6`=0,`Ammo7`=0,`Ammo8`=0,`Gun0`=0,`Gun1`=0,`Gun2`=0,`Gun3`=0,`Gun4`=0,`Gun5`=0,`Gun6`=0,`Gun7`=0,`Gun8`=0,`Gun9`=0 WHERE `id`=53
+[20:49:26] [connection] incoming connection: 127.0.0.1:54838 id: 0
+[20:49:26] [join] [FL]Ha1bokuzxc has joined the server (0:127.0.0.1)
+[20:49:35] name [FL]Ha1bokuzxc,3, 
+[20:49:43] acc id 33
+[20:49:53] Stanley Taellious has logged in.
+[20:49:54] [VEHICLE TRUCKER LOAD] Loading data from database...
+[20:49:55] [He Thong] Da luu lai thong tin tai khoan thanh cong.
+[20:49:57] [LOAD INVENTORY]  du lieu inventory cua Stanley Taellious (ID: 0) da duoc tai.
+[20:50:00] [Load Vehicle Trucker] Khong co du lieu de tai
+[20:50:09] [debug] Run time error 4: "Array index out of bounds"
+[20:50:09] [debug]  Attempted to read/write array element at negative index -1
+[20:50:09] [debug] AMX backtrace:
+[20:50:09] [debug] #0 0018e7b0 in ?? (0, 0) in lsrpvn.amx
+[20:50:09] [debug] #1 0018e734 in ?? (0, 1) in lsrpvn.amx
+[20:50:09] [debug] #2 0000f4c0 in public Itter_OnPlayerDisconnect (0, 1) in lsrpvn.amx
+[20:50:09] [debug] #3 native CallLocalFunction () in samp-server.exe
+[20:50:09] [debug] #4 00006f74 in public SSCANF_OnPlayerDisconnect (0, 1) in lsrpvn.amx
+[20:50:09] [debug] #5 00000924 in public OnPlayerDisconnect (0, 1) in lsrpvn.amx
+[20:50:09] [part] Stanley_Taellious has left the server (0:1)
+[21:00:35] [plant] 300 plants saved

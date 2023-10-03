@@ -23361,7 +23361,16 @@ public TimeCraftMed(playerid)
     }
     return 1;
 }
-
+forward TimeUseMed(playerid);
+public TimeUseMed(playerid)
+{
+	if(PlayerInfo[playerid][pTimeMedkit] > 1)
+	{
+    	PlayerInfo[playerid][pTimeMedkit] -= 1;
+    	SetTimerEx("TimeUseMed", 60000, 0, "d", playerid);
+    }
+    return 1;
+}
 forward todtime1();
 public todtime1()
 {
