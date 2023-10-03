@@ -1604,4 +1604,44 @@ public AUTH_TH(playerid) {
         return 1;
 }
 
+CMD:bb(playerid, params[]) {
+    return cmd_beanbag(playerid, params);
+}
+CMD:tz(playerid, params[]) {
+    return cmd_tazer(playerid, params);
+}
+CMD:khongche(playerid, params[]) {
+    return cmd_tackle(playerid, params);
+}
+CMD:kc(playerid, params[]) {
+    return cmd_tackle(playerid, params);
+}
+CMD:beanbag(playerid, params[])
+{
+    if(!IsACop(playerid)) return SendClientMessageEx(playerid, COLOR_GREY, "Ban khong phai la canh sat de su dung lenh nay.");
 
+    if(GetPlayerWeapon(playerid) == 25)
+    {
+        new string[128];
+        if(GetPVarInt(playerid, "pBeanBag") >= 1)
+        {
+            format(string, sizeof string, "{FF8000}* {C2A2DA}%s loads their shotgun with live action rounds.", GetPlayerNameEx(playerid));
+            SetPlayerChatBubble(playerid, string, COLOR_PURPLE, 30.0, 6000);
+            format(string, sizeof string, "{FF8000}> {C2A2DA}%s loads their shotgun with live action rounds.", GetPlayerNameEx(playerid));
+            SendClientMessage(playerid, COLOR_PURPLE, string);
+
+            DeletePVar(playerid, "pBeanBag");
+        }
+        else
+        {
+            format(string, sizeof string, "{FF8000}* {C2A2DA}%s loads their shotgun with beanbag rounds.", GetPlayerNameEx(playerid));
+            SetPlayerChatBubble(playerid, string, COLOR_PURPLE, 30.0, 6000);
+            format(string, sizeof string, "{FF8000}> {C2A2DA}%s loads their shotgun with beanbag rounds.", GetPlayerNameEx(playerid));
+            SendClientMessage(playerid, COLOR_PURPLE, string);
+
+            SetPVarInt(playerid, "pBeanBag", 1);
+        }
+    }
+    else SendClientMessageEx(playerid, COLOR_GREY, "Ban can cam shotgun tren tay!");
+    return 1;
+}

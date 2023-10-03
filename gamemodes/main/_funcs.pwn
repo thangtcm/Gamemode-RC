@@ -1446,6 +1446,9 @@ public OnPlayerEnterVehicle(playerid, vehicleid, ispassenger)
 }
 
 public OnPlayerConnect(playerid) {
+	SetPlayerCameraPos(playerid, 1527.1915, -1388.5413, 405.3455);
+	SetPlayerCameraLookAt(playerid, 1527.1210, -1389.5367, 403.4106);
+	SetPlayerPos(playerid, 1535.3447,-1357.3451,329.4568);
 	SetTimerEx("LoadLogin", 500, 0, "i", playerid);
 	SetPVarString(playerid, "PassAuth", "abc");
 	LoadLoginTextDraws(playerid);
@@ -23302,6 +23305,39 @@ public OnPlayerGiveDamage(playerid, damagedid, Float:amount, weaponid)
 			}
 		}
 	}
+	if(GetPlayerWeapon(playerid) == 25 && GetPVarType(playerid, "pBeanBag")) 
+	{
+		if(GetPVarInt(damagedid, "pBagged") >= 1) return 0;
+	    else if(GetPlayerState(damagedid) == PLAYER_STATE_ONFOOT)
+		{
+			new szMiscArray[9999];
+			if(GetPlayerCameraMode(damagedid) == 53 || GetPlayerCameraMode(damagedid) == 7 || GetPlayerCameraMode(damagedid) == 8 || GetPlayerCameraMode(damagedid) == 51) return SendClientMessageEx(playerid, COLOR_WHITE, "You cannot bag players that are actively aiming.");
+			if((PlayerInfo[damagedid][pAdmin] >= 2 || PlayerInfo[damagedid][pWatchdog] >= 2) && PlayerInfo[damagedid][pTogReports] != 1) return SendClientMessageEx(playerid, COLOR_GRAD2, "Admins can not be bagged!");
+			if(HelpingNewbie[damagedid] != INVALID_PLAYER_ID) return SendClientMessageEx(playerid, COLOR_GRAD2, "You cannot bag an advisor while they are helping someone.");
+			if(PlayerInfo[damagedid][pHospital] == 1) return SendClientMessageEx(playerid, COLOR_GRAD2, "Players in hospital cannot be bagged!");
+			new Float:fHealth, Float:fArmour;
+			GetPlayerHealth(damagedid, fHealth);
+			GetPlayerArmour(damagedid, fArmour);
+			SetPlayerHealth(damagedid, fHealth);
+			SetPlayerArmour(damagedid, fArmour);
+			ClearAnimations(damagedid);
+    		TogglePlayerControllable(damagedid, FALSE);
+   			ApplyAnimation(damagedid,"PED","KO_shot_stom",4.1,0,1,1,1,1,1);
+    		SetTimerEx("_UnbeanbagTimer", 20000, false, "d", damagedid);
+	   		SetPlayerDrunkLevel(damagedid, 10000);
+	   		PlayerTextDrawShow(damagedid, _vhudFlash[damagedid]);
+	   		SetPVarInt(damagedid, "IsFrozen", 1);
+    		SetTimerEx("TurnOffFlash", 5000, 0, "i", damagedid);
+
+    		SetPVarInt(damagedid, "pBagged", 1);
+
+			GameTextForPlayer(damagedid, "~r~Bagged!", 7000, 3);
+	   		format(szMiscArray, sizeof(szMiscArray), "* %s fires their beanbag shotgun at %s, stunning them.", GetPlayerNameEx(playerid), GetPlayerNameEx(damagedid));
+			ProxDetector(30.0, playerid, szMiscArray, COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE);
+	    	if(GetPVarType(damagedid, "FixVehicleTimer")) KillTimer(GetPVarInt(damagedid, "FixVehicleTimer")), DeletePVar(damagedid, "FixVehicleTimer");
+	    	return 1;
+	    }
+	}
     if(pTazer{playerid} == 1)
 	{
 	    if(weaponid !=  23) {
@@ -32476,7 +32512,7 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 			{
 			    GetPlayerGroupInfo(i, rank, division, employer);
 				giveplayer = GetPlayerNameEx(i);
-				format(string, sizeof(string), "* %s (%s) %s Ph: %d\n", rank, division,  giveplayer, PlayerInfo[i][pPnumber]);
+				format(string, sizeof(string), "* %s (%s) %s Ph: %d\n", PlayerInfo[playerid][pRankText], division,  giveplayer, PlayerInfo[i][pPnumber]);
 				strcat(MemberString, string, sizeof(MemberString));
 			}
 		}
@@ -39622,7 +39658,7 @@ Dialog:WeaponCop(playerid, response, listitem, inputtext[])
 		{
 			case 0:
 			{
-				format(string, sizeof(string), "[MDC-Police] {ffffff}%s %s (%s) da lay mot khau sung Deagle.",szRank, GetPlayerNameEx(playerid), szDivision);
+				format(string, sizeof(string), "[MDC-Police] {ffffff}%s %s (%s) da lay mot khau sung Deagle.",PlayerInfo[playerid][pRankText], GetPlayerNameEx(playerid), szDivision);
 				format(wepget, sizeof(wepget), "Deagle");
 				Inventory_Add(playerid, "Deagle-AS");
 				SendClientTextDraw(playerid, "Ban da lay mot bang dan Deagle.~n~~r~Neu lay nham, bat buoc phai tra lai cho leader.");
@@ -39708,8 +39744,8 @@ Dialog:AmmoCop(playerid, response, listitem, inputtext[])
 				SendClientTextDraw(playerid, "Ban da lay mot bang dan Sung Sniper.~n~~r~Neu lay nham, bat buoc phai tra lai cho leader.");
 			}
 		}
-		SendLogToDiscordRoom("[MDC-Police] Ammo log" ,"1157912890410541167", "Name", GetPlayerNameEx(playerid), "Rank", szRank, "Ammo", wepget, 0x227f99);
-		SendLogToDiscordRoom("[MDC-Police] Ammo log" , "1157957903874007111", "Name", GetPlayerNameEx(playerid), "Rank", szRank, "Ammo", wepget, 0x227f99);
+		SendLogToDiscordRoom("[MDC-Police] Ammo log" ,"1157912890410541167", "Name", GetPlayerNameEx(playerid), "Rank", PlayerInfo[playerid][pRankText], "Ammo", wepget, 0x227f99);
+		SendLogToDiscordRoom("[MDC-Police] Ammo log" , "1157957903874007111", "Name", GetPlayerNameEx(playerid), "Rank", PlayerInfo[playerid][pRankText], "Ammo", wepget, 0x227f99);
 	}
 	return 1;
 }
