@@ -16858,8 +16858,8 @@ stock ShowStats(playerid,targetid)
 		Ngay sinh: %s\n\
 		Vi tri hien tai: %s (%0.2f, %0.2f, %0.2f)\n\
 		Da ket hon: %s\n\
-		Mau: %.1f\n\
-		Giap: %.1f\n\
+		Mau: %.1f/%.1f\n\
+		Giap: %.1f/%.1f\n\
 		Gio da choi: %s\n\
 		Diem nang cap: %s\n\
 		XP can thiet de nang cap: %s va $%s)\n\
@@ -16878,7 +16878,9 @@ stock ShowStats(playerid,targetid)
 		zone, px, py, pz,
 		PlayerInfo[targetid][pMarriedName],
 		health,
+		100+BonusHealth[targetid],
 		armor,
+		100+BonusArmour[targetid],
 		number_format(PlayerInfo[targetid][pConnectHours]),
 		number_format(PlayerInfo[targetid][gPupgrade]),
 		number_format(CheckXP(exp)),
