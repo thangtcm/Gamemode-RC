@@ -8,7 +8,7 @@ enum DrugLab {
 	Text3D:DLab_Label,
 	DLab_Family
 }
-new DrugLabInfo[MAX_DRUG_POINT][DrugLab] ,DrugTypeName[4][] = {"Codeine","Cocaine","Ecstasy","LSD"}, DownCountJobTime[MAX_PLAYERS], DownTimeUsed[MAX_PLAYERS][4],
+new DrugLabInfo[MAX_DRUG_POINT][DrugLab] ,DrugTypeName[4][] = {"Codeine","Cocaine","Ecstasy","LSD"}, DownCountJobTime[MAX_PLAYERS], DownTimeUsed[MAX_PLAYERS],
 Float:BonusHealth[MAX_PLAYERS],Float:BonusArmour[MAX_PLAYERS];
 timer DisableEfftects[30000](playerid) 
 {
@@ -61,8 +61,8 @@ stock UseDrug(playerid,drug_id,pItemId) {
 	if(GetPVarInt(playerid, "EffectsDrugs") == 1) return SendErrorMessage(playerid, "Ban dang bi phe da roi.");
 	switch(drug_id) {
 		case 0: {
-			if(DownTimeUsed[playerid][0] > gettime()) {
-                format(string, sizeof string, "Ban can phai doi %d giay moi co the tiep tuc su dung.",  DownTimeUsed[playerid][0] -gettime());
+			if(DownTimeUsed[playerid] > gettime()) {
+                format(string, sizeof string, "Ban can phai doi %d giay moi co the tiep tuc su dung.",  DownTimeUsed[playerid]-gettime());
                 SendClientMessage(playerid, COLOR_LIGHTRED, string);
 				return 1;
 			}
@@ -75,7 +75,7 @@ stock UseDrug(playerid,drug_id,pItemId) {
 			SetPlayerDrunkLevel(playerid, 40000); //  effects phe da
 			SetPVarInt(playerid, "EffectsDrugs", 1);
 			defer DisableEfftects[30000](playerid);
-			DownTimeUsed[playerid][0] += gettime() + 1200;
+			DownTimeUsed[playerid] += gettime() + 1200;
 
 			// REMOVE 
 			ApplyAnimation(playerid,"SMOKING","M_smkstnd_loop",2.1,0,0,0,0,0);
@@ -83,8 +83,8 @@ stock UseDrug(playerid,drug_id,pItemId) {
 		    Inventory_Remove(playerid, pItemId, 1);
 		}
 		case 1: {
-			if(DownTimeUsed[playerid][1] > gettime()) {
-                format(string, sizeof string, "Ban can phai doi %d giay moi co the tiep tuc su dung.",  DownTimeUsed[playerid][1] -gettime());
+			if(DownTimeUsed[playerid] > gettime()) {
+                format(string, sizeof string, "Ban can phai doi %d giay moi co the tiep tuc su dung.",  DownTimeUsed[playerid] -gettime());
                 SendClientMessage(playerid, COLOR_LIGHTRED, string);
 				return 1;
 			}
@@ -94,13 +94,13 @@ stock UseDrug(playerid,drug_id,pItemId) {
 			SetPlayerDrunkLevel(playerid, 40000); //  effects phe da
 			SetPVarInt(playerid, "EffectsDrugs", 1);
 			defer DisableEfftects[30000](playerid);
-			DownTimeUsed[playerid][1] += gettime() + 7200;
+			DownTimeUsed[playerid] += gettime() + 7200;
 			ApplyAnimation(playerid,"SMOKING","M_smkstnd_loop",2.1,0,0,0,0,0);
 			Inventory_Remove(playerid, pItemId, 1);
 		}
 		case 2: {
-			if(DownTimeUsed[playerid][2] > gettime()) {
-                format(string, sizeof string, "Ban can phai doi %d giay moi co the tiep tuc su dung.",  DownTimeUsed[playerid][2] -gettime());
+			if(DownTimeUsed[playerid] > gettime()) {
+                format(string, sizeof string, "Ban can phai doi %d giay moi co the tiep tuc su dung.",  DownTimeUsed[playerid] -gettime());
                 SendClientMessage(playerid, COLOR_LIGHTRED, string);
 				return 1;
 			}
@@ -108,33 +108,34 @@ stock UseDrug(playerid,drug_id,pItemId) {
 			GetPlayerArmour(playerid, old_armour);
 			if(old_armour >= 100 + BonusArmour[playerid]  ) return SendErrorMessage(playerid, "Ban da dat toi da trang thai tu Ecstasy ((>100 HP)).");
 			SetPlayerArmour(playerid, old_armour + 20);
-			format(string, sizeof string, "Ban dang su dung Ecstasy, ban dang rat sang khoai. (ban duoc tang 20 ar. Armour: %0f/%0f)",old_armour + 20,100 + BonusArmour[playerid]);
-			SendClientMessageEx(playerid, COLOR_WHITE, string);
 			SetPlayerDrunkLevel(playerid, 40000); //  effects phe da
 			SetPVarInt(playerid, "EffectsDrugs", 1);
 			defer DisableEfftects[30000](playerid);
-			DownTimeUsed[playerid][2] += gettime() + 1200;
-			if(old_armour + 20 >= 100) SetPlayerArmour(playerid, 100);
+			DownTimeUsed[playerid] += gettime() + 1200;
+			if(old_armour + 20 >= 100 + BonusArmour[playerid]) SetPlayerArmour(playerid, 100 + BonusArmour[playerid]);
+			GetPlayerArmour(playerid, old_armour);
+			format(string, sizeof string, "Ban dang su dung Ecstasy, ban dang rat sang khoai. (ban duoc tang 20 ar. Armour: %.1f/%.1f)",old_armour,100 + BonusArmour[playerid]);
+		    SendClientMessageEx(playerid, COLOR_WHITE, string);
 		    PlayerPlaySound(playerid, 42600, 0.0, 0.0, 0.0);
 		    ApplyAnimation(playerid,"SMOKING","M_smkstnd_loop",2.1,0,0,0,0,0);
 			Inventory_Remove(playerid, pItemId, 1);
 		}
 		case 3: {
-			if(DownTimeUsed[playerid][3] > gettime()) {
-                format(string, sizeof string, "Ban can phai doi %d giay moi co the tiep tuc su dung.",  DownTimeUsed[playerid][3] -gettime());
+			if(DownTimeUsed[playerid] > gettime()) {
+                format(string, sizeof string, "Ban can phai doi %d giay moi co the tiep tuc su dung.",  DownTimeUsed[playerid] -gettime());
                 SendClientMessage(playerid, COLOR_LIGHTRED, string);
 				return 1;
 			}
 			new Float:old_armour;
 			GetPlayerArmour(playerid, old_armour);
-			if(BonusArmour[playerid]  >= 100) return SendErrorMessage(playerid, "Ban da dat toi da trang thai tu Ecstasy ((>100 AR)).");
+			if(BonusArmour[playerid]  >= 100) return SendErrorMessage(playerid, "Ban da dat toi da trang thai tu LSD ((>100 AR)).");
 			BonusArmour[playerid] += 10;
-			format(string, sizeof string, "Ban dang su dung Ecstasy, ban dang rat sang khoai. (ban duoc tang 10 Bonus Armour. Armour: %0f/%0f)",old_armour,100 + BonusArmour[playerid]);
+			format(string, sizeof string, "Ban dang su dung LSD, ban dang rat sang khoai. (ban duoc tang 10 Bonus Armour. Armour: %0f/%0f)",old_armour,100 + BonusArmour[playerid]);
 			SendClientMessageEx(playerid, COLOR_WHITE, string);
 			SetPlayerDrunkLevel(playerid, 40000); //  effects phe da
 			SetPVarInt(playerid, "EffectsDrugs", 1);
 			defer DisableEfftects[30000](playerid);
-			DownTimeUsed[playerid][3] += gettime() + 1800;
+			DownTimeUsed[playerid] += gettime() + 1800;
 			Inventory_Remove(playerid, pItemId, 1);
 			ApplyAnimation(playerid,"SMOKING","M_smkstnd_loop",2.1,0,0,0,0,0);
 			Inventory_Remove(playerid, pItemId, 1);
@@ -155,6 +156,30 @@ hook OnPlayerKeyStateChange(playerid, newkeys, oldkeys) {
 		        		                                                                             #LSD\t8\t6", "Che tao", "Huy bo");
 			}
 		} 
+	}
+	if(newkeys & KEY_YES) {
+		if(IsPlayerInRangeOfPoint(playerid, 5.0, 2306.409179 ,-1569.672607, 1051.562988)) {
+			Dialog_Show(playerid, DIALOG_BUY_CHH, DIALOG_STYLE_TABLIST_HEADERS, "Mua chat hoa hoc", "#Loai\tGia ban\tso luong\n\
+		        	                                                                                 Chat hoa hoc I\t$0\t1\n\
+		        		                                                                             Chat hoa hoc II\t$0\t1", "Mua", "Huy bo");
+		}
+	}
+	return 1;
+}
+Dialog:DIALOG_BUY_CHH(playerid, response, listitem, inputtext[])
+{
+	if(response) {
+		if(listitem == 0 ) {
+			if(PlayerInfo[playerid][pCash] < 0) return SendClientMessage(playerid, -1, "Ban khong du tien de mua chat hoa hoc I ($0).");
+		    Inventory_Set(playerid, g_aInventoryItems[14][e_InventoryItem], 1, 60*24*2);
+		    SendClientMessage(playerid, -1, "Ban da mua thanh cong 1 chat hoa hoc I voi gia $0 .");
+		}
+		if(listitem == 1 ) {
+			if(PlayerInfo[playerid][pCash] < 0) return SendClientMessage(playerid, -1, "Ban khong du tien de mua chat hoa hoc I ($0).");
+		    Inventory_Set(playerid, g_aInventoryItems[15][e_InventoryItem], 1, 60*24*2);
+		    SendClientMessage(playerid, -1, "Ban da mua thanh cong 1 chat hoa hoc II voi gia $0 .");
+
+		}
 	}
 	return 1;
 }
@@ -197,4 +222,10 @@ Dialog:DIALOG_DRUGS_G(playerid, response, listitem, inputtext[])
 		}
 	}
 	return 1;
+}
+hook OnGameModeInit() {\
+	CreateDynamicPickup(1239, 23, 2306.409179 ,-1569.672607, 1051.562988, -1); // Drug Smuggler Job (TR)
+	CreateDynamic3DTextLabel("{FF0000} DRUG LAB \n{FFFFFF}(( BAM Y de mua chat hoa hoc.))", COLOR_WHITE, 2306.409179 ,-1569.672607, 1051.562988 + 0.5, 10.0);// Actor Trucker
+
+	 
 }
