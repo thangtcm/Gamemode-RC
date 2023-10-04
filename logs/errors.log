@@ -1138,3 +1138,4 @@
 [10/04/23 05:08:07] [plugins/discord-connector] Discord terminated websocket connection; reason: Not authenticated. (4003)
 [10/04/23 05:08:07] [plugins/discord-connector] Can't write to Discord websocket gateway: The I/O operation has been aborted because of either a thread exit or an application request (995)
 [10/04/23 05:09:07] [plugins/discord-connector] Can't write to Discord websocket gateway: The I/O operation has been aborted because of either a thread exit or an application request (995)
+[10/04/23 20:13:26] [plugins/discord-connector] Error while retrieving HTTP POST response from '/api/v10/channels/1158001303033757716/messages': end of stream

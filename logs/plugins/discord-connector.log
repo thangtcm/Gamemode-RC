@@ -66,3 +66,6 @@
 [10/04/23 05:13:43] [WARNING] Unknown gateway event 'GUILD_MEMBERS_CHUNK'
 [10/04/23 05:17:55] [WARNING] Unknown gateway event 'GUILD_MEMBERS_CHUNK'
 [10/04/23 05:21:07] [WARNING] Unknown gateway event 'GUILD_MEMBERS_CHUNK'
+[10/04/23 19:56:48] [WARNING] Unknown gateway event 'GUILD_MEMBERS_CHUNK'
+[10/04/23 20:04:30] [WARNING] Unknown gateway event 'GUILD_MEMBERS_CHUNK'
+[10/04/23 20:13:26] [ERROR] Error while retrieving HTTP POST response from '/api/v10/channels/1158001303033757716/messages': end of stream
