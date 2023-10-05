@@ -112,10 +112,9 @@ hook OnPlayerKeyStateChange(playerid, newkeys, oldkeys)
 
 stock CheckKeyInventory(playerid)
 {
-	//if(GetPVarInt(playerid, "SomeThing") == value) return 0;
-	if(!IsPlayerInRangeOfPoint(playerid, 2.5, 588.1791,866.1268,-42.4973) || !IsPlayerInRangeOfPoint(playerid, 2.5, 2126.8018,-76.6521,2.4721)
-	|| !IsPlayerInRangeOfPoint(playerid, 300.0, 588.1791,866.1268,-42.4973)) return true;
-	return false;
+	if(IsPlayerInRangeOfPoint(playerid, 2.5, 588.1791,866.1268,-42.4973) || IsPlayerInRangeOfPoint(playerid, 2.5, 2126.8018,-76.6521,2.4721)
+	|| IsPlayerInRangeOfPoint(playerid, 35.0, 588.1791,866.1268,-42.4973) || IsPlayerInRangeOfPoint(playerid, 5, 1938.4764,165.4624,37.2813)) return false;
+	return true;
 }
 
 stock Inventory_Load(playerid)

@@ -2,7 +2,6 @@
 ./system/drug/drug.pwn(228) : íåïðàâèëüíàÿ òàáóëÿöèÿ
 ./system/new_job/Trucking/Vehicle.pwn(58) : èäåíòèôèêàòîðó ïðèñâîåíî çíà÷åíèå, íî îí íå èñïîëüçóåòñÿ: "str"
 ./system/new_job/Trucking/Vehicle.pwn(145) : èäåíòèôèêàòîð íå èñïîëüçóåòñÿ: "pCarSlotID"
-./system/new_job/Trucking/cmd.pwn(227) : èäåíòèôèêàòîð íå èñïîëüçóåòñÿ: "playerid"
 ./system/drug/drug.pwn(11) : èäåíòèôèêàòîð íå èñïîëüçóåòñÿ: "DrugTypeName"
 C:\Users\PHATBENTRE\Desktop\Gamemode-RC\Gamemode-RC\gamemodes\lsrpvn.pwn(1624) : èäåíòèôèêàòîð íå èñïîëüçóåòñÿ: "GetXYInFrontOfVehicle"
 ./system/nametag.pwn(9) : èäåíòèôèêàòîð íå èñïîëüçóåòñÿ: "PlayerNameTag"
