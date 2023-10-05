@@ -446,7 +446,7 @@ stock UseAmmo(playerid,type_ammo,ammo) {
         }
         case 5: {
 			new weapon_g,ammos_g;
-			GetPlayerWeaponData(playerid, 5, weapon_g, ammos_g);
+			GetPlayerWeaponData(playerid, 6, weapon_g, ammos_g);
             if(weapon_g != 34 ) return SendClientMessage(playerid,-1,"Ban khong so huu vu khi 'Sung Sniper' tren nguoi.");
             GivePlayerAmmoEx(playerid, weapon_g, ammo);
             SetPlayerArmedWeapon(playerid, weapon_g);

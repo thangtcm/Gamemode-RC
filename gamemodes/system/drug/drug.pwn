@@ -29,7 +29,14 @@ CMD:editdruglab(playerid, params[])
 	{
 		SendClientMessageEx(playerid, COLOR_WHITE, "Ban da chinh sua type thanh cong.");
 		
-		DrugLabInfo[drl_id][DLab_Type] = choose;
+		new family = DrugLabInfo[drl_id][DLab_Family] ;
+		new type_namez[32];
+		switch(DrugLabInfo[drl_id][DLab_Type]) {
+			case 0: type_namez = "Drug Lab";
+			case 1: type_namez = "Weapon Lab";
+		}
+        format(string,sizeof string,"%s %d\nFamily: %s\n(Bam Y de thao tac)",type_namez,drl_id,FamilyInfo[family][FamilyName]);
+        UpdateDynamic3DTextLabelText(DrugLabInfo[drl_id][DLab_Label] , -1,string);
 	}
 	if (strcmp(choice, "Vitri", true) == 0)
 	{
@@ -54,6 +61,8 @@ CMD:editdruglab(playerid, params[])
 	return 1;
 }
 stock MoveDrugLab(playerid,drl_id) {
+	DestroyDynamicPickup( DrugLabInfo[drl_id][DLab_PickUP]);
+	DestroyDynamic3DTextLabel( DrugLabInfo[drl_id][DLab_Label]);
 	new Float:Pos_drl[3],string[129];
     GetPlayerPos(playerid, Pos_drl[0], Pos_drl[1], Pos_drl[2]);
     DrugLabInfo[drl_id][DLab_Postion][0] = Pos_drl[0];
