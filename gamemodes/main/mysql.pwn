@@ -364,6 +364,8 @@ public OnQueryFinish(resultid, extraid, handleid)
 					cache_get_field_content(row,  "RankText", PlayerInfo[extraid][pRankText], MainPipeline, 64);
 					cache_get_field_content(row,  "QuocTich", PlayerInfo[extraid][pQuocTich], MainPipeline, 30);
 					cache_get_field_content(row,  "Flag", PlayerInfo[extraid][pFlag]);
+					cache_get_field_content(row,  "CraftWeaponDeal", CraftWeaponDeal[extraid]);
+					cache_get_field_content(row,  "CraftWeaponDealTime", CraftWeaponDealTime[extraid]);
 					cache_get_field_content(row,  "Eat", szResult, MainPipeline); PlayerInfo[extraid][pEat] = strval(szResult);
 					cache_get_field_content(row,  "Drink", szResult, MainPipeline); PlayerInfo[extraid][pDrink] = strval(szResult);
 					cache_get_field_content(row,  "Strong", szResult, MainPipeline); PlayerInfo[extraid][pStrong] = strval(szResult);
@@ -2981,6 +2983,8 @@ stock g_mysql_SaveAccount(playerid)
     SavePlayerInteger(query, GetPlayerSQLId(playerid), "PermBand", PlayerInfo[playerid][pPermaBanned]);
     SavePlayerInteger(query, GetPlayerSQLId(playerid), "Warnings", PlayerInfo[playerid][pWarns]);
     SavePlayerInteger(query, GetPlayerSQLId(playerid), "Disabled", PlayerInfo[playerid][pDisabled]);
+    SavePlayerInteger(query, GetPlayerSQLId(playerid), "CraftWeaponDeal", CraftWeaponDeal[playerid]);
+    SavePlayerInteger(query, GetPlayerSQLId(playerid), "CraftWeaponDealTime", CraftWeaponDealTime[playerid]);
     SavePlayerInteger(query, GetPlayerSQLId(playerid), "Level", PlayerInfo[playerid][pLevel]);
     SavePlayerInteger(query, GetPlayerSQLId(playerid), "AdminLevel", PlayerInfo[playerid][pAdmin]); 
     SavePlayerInteger(query, GetPlayerSQLId(playerid), "CMND", PlayerInfo[playerid][pCMND]);

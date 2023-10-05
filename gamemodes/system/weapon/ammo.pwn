@@ -570,7 +570,7 @@ CMD:crafttest(playerid,params[]) {
 	return 1;
 }
 ShowMainCraft(playerid) {
-	Dialog_Show(playerid, CRAFT_MAIN, DIALOG_STYLE_TABLIST_HEADERS, "Che tao vu khi", "Xem don hang\nDat hang vu khi\nche tao dan","> Chon","Thoat");
+	Dialog_Show(playerid, CRAFT_MAIN, DIALOG_STYLE_LIST, "Che tao vu khi", "Xem don hang\nDat hang vu khi\nche tao dan","> Chon","Thoat");
 }
 Dialog:CRAFT_MAIN(playerid, response, listitem, inputtext[]) {
     if(response) {
@@ -604,7 +604,7 @@ stock ShowCraftWeapon(playerid) {
 		        		                                                #Shotgun\t30 Sat & 20 go & 25 vat lieu\t30p\n\
 		        		                                                #Spas 12\t60 sat & 10 go & 80 vat lieu\t30p\n\
 		                                                                #MP5\t50 Sat & 60 vat lieu\t40p\n\
-													     				#AK47\t60 Sat & 60 go & 150 vat lieu\t60p\
+													     				#AK47\t60 Sat & 60 go & 150 vat lieu\t60p\n\
 													                    #Sniper\t150 Sat & 40 go & 280 vat lieu\t120p", "Che tao", "Huy bo");
 }
 stock ShowCraftAmmo(playerid) {
@@ -651,8 +651,12 @@ Dialog:MY_DEALCRAFT(playerid, response, listitem, inputtext[]) {
 }
 Dialog:CRAFT_AMMO(playerid, response, listitem, inputtext[]) {
     if(response) {
+    	if(Inventory_Count(playerid, "Dong") < 0) return SendClientMessage(playerid, -1, "Ban khong du so luong Dong (1) (/inv de kiem tra).");
+    	if(Inventory_Count(playerid, "Thuoc sung") < 0) return SendClientMessage(playerid, -1, "Ban khong du so luong Thuoc sung (1) (/inv de kiem tra).");
     	if(listitem == 0 ) {
     		// craft colt 45 15 sat 10 vl , 15phut
+    		
+
     		if(Inventory_Count(playerid, "Dong") < 1) return SendClientMessage(playerid, -1, "Ban khong du so luong Dong (1) (/inv de kiem tra).");
     		if(Inventory_Count(playerid, "Thuoc sung") < 1) return SendClientMessage(playerid, -1, "Ban khong du so luong Thuoc sung (1) (/inv de kiem tra).");
     	    new pItemId = Inventory_GetItemID(playerid,"Dong");
@@ -717,6 +721,11 @@ Dialog:CRAFT_AMMO(playerid, response, listitem, inputtext[]) {
 Dialog:CRAFT_WEAPON(playerid, response, listitem, inputtext[]) {
     if(response) {
     	if(listitem == 0 ) {
+    		if(Inventory_Count(playerid, "Sat") < 0) return SendClientMessage(playerid, -1, "Ban khong du so luong sat (60) (/inv de kiem tra).");
+    		if(Inventory_Count(playerid, "Go") < 0) return SendClientMessage(playerid, -1, "Ban khong du so luong go (60) (/inv de kiem tra).");
+    		if(Inventory_Count(playerid, "Vat lieu") < 0) return SendClientMessage(playerid, -1, "Ban khong du so luong vat lieu (150) (/inv de kiem tra).");
+
+
     		// craft colt 45 15 sat 10 vl , 15phut
     		if(Inventory_Count(playerid, "Sat") < 15) return SendClientMessage(playerid, -1, "Ban khong du so luong sat (15) (/inv de kiem tra).");
     		if(Inventory_Count(playerid, "Vat lieu") < 10) return SendClientMessage(playerid, -1, "Ban khong du so luong vat lieu (10) (/inv de kiem tra).");
@@ -730,6 +739,11 @@ Dialog:CRAFT_WEAPON(playerid, response, listitem, inputtext[]) {
 		    CraftWeaponDealTime[playerid] = gettime() + ( 60 * 15 ) ; // 15p
     	}
         if(listitem == 1 ) {
+        	if(Inventory_Count(playerid, "Sat") < 0) return SendClientMessage(playerid, -1, "Ban khong du so luong sat (60) (/inv de kiem tra).");
+    		if(Inventory_Count(playerid, "Go") < 0) return SendClientMessage(playerid, -1, "Ban khong du so luong go (60) (/inv de kiem tra).");
+    		if(Inventory_Count(playerid, "Vat lieu") < 0) return SendClientMessage(playerid, -1, "Ban khong du so luong vat lieu (150) (/inv de kiem tra).");
+
+
     		// craft Deagle 35 sat 10 go 30 vl , 15phut
     		if(Inventory_Count(playerid, "Sat") < 35) return SendClientMessage(playerid, -1, "Ban khong du so luong sat (35) (/inv de kiem tra).");
     		if(Inventory_Count(playerid, "Go") < 10) return SendClientMessage(playerid, -1, "Ban khong du so luong go (10) (/inv de kiem tra).");
@@ -746,6 +760,11 @@ Dialog:CRAFT_WEAPON(playerid, response, listitem, inputtext[]) {
 		    CraftWeaponDealTime[playerid] = gettime() + ( 60 * 15 ) ; // 15p
     	}
     	if(listitem == 2 ) {
+    		if(Inventory_Count(playerid, "Sat") < 0) return SendClientMessage(playerid, -1, "Ban khong du so luong sat (60) (/inv de kiem tra).");
+    		if(Inventory_Count(playerid, "Go") < 0) return SendClientMessage(playerid, -1, "Ban khong du so luong go (60) (/inv de kiem tra).");
+    		if(Inventory_Count(playerid, "Vat lieu") < 0) return SendClientMessage(playerid, -1, "Ban khong du so luong vat lieu (150) (/inv de kiem tra).");
+
+
     		// craft Shotgun 30 sat 20 go 25 vl , 15phut
     		if(Inventory_Count(playerid, "Sat") < 30) return SendClientMessage(playerid, -1, "Ban khong du so luong sat (30) (/inv de kiem tra).");
     		if(Inventory_Count(playerid, "Go") < 20) return SendClientMessage(playerid, -1, "Ban khong du so luong go (20) (/inv de kiem tra).");
@@ -762,6 +781,11 @@ Dialog:CRAFT_WEAPON(playerid, response, listitem, inputtext[]) {
 		    CraftWeaponDealTime[playerid] = gettime() + ( 60 * 30 ) ; // 15p
     	}
     	if(listitem == 3 ) {
+    		if(Inventory_Count(playerid, "Sat") < 0) return SendClientMessage(playerid, -1, "Ban khong du so luong sat (60) (/inv de kiem tra).");
+    		if(Inventory_Count(playerid, "Go") < 0) return SendClientMessage(playerid, -1, "Ban khong du so luong go (60) (/inv de kiem tra).");
+    		if(Inventory_Count(playerid, "Vat lieu") < 0) return SendClientMessage(playerid, -1, "Ban khong du so luong vat lieu (150) (/inv de kiem tra).");
+
+
     		// craft Shotgun 30 sat 20 go 25 vl , 15phut
     		if(Inventory_Count(playerid, "Sat") < 60) return SendClientMessage(playerid, -1, "Ban khong du so luong sat (60) (/inv de kiem tra).");
     		if(Inventory_Count(playerid, "Go") < 10) return SendClientMessage(playerid, -1, "Ban khong du so luong go (10) (/inv de kiem tra).");
@@ -778,6 +802,11 @@ Dialog:CRAFT_WEAPON(playerid, response, listitem, inputtext[]) {
 		    CraftWeaponDealTime[playerid] = gettime() + ( 60 * 30 ) ; // 15p
     	}
     	if(listitem == 4 ) {
+    		if(Inventory_Count(playerid, "Sat") < 0) return SendClientMessage(playerid, -1, "Ban khong du so luong sat (60) (/inv de kiem tra).");
+    		if(Inventory_Count(playerid, "Go") < 0) return SendClientMessage(playerid, -1, "Ban khong du so luong go (60) (/inv de kiem tra).");
+    		if(Inventory_Count(playerid, "Vat lieu") < 0) return SendClientMessage(playerid, -1, "Ban khong du so luong vat lieu (150) (/inv de kiem tra).");
+
+
     		// craft Shotgun 30 sat 20 go 25 vl , 15phut
     		if(Inventory_Count(playerid, "Sat") < 50) return SendClientMessage(playerid, -1, "Ban khong du so luong sat (50) (/inv de kiem tra).");
     		if(Inventory_Count(playerid, "Vat lieu") < 60) return SendClientMessage(playerid, -1, "Ban khong du so luong vat lieu (60) (/inv de kiem tra).");
@@ -792,6 +821,10 @@ Dialog:CRAFT_WEAPON(playerid, response, listitem, inputtext[]) {
     	}
     	if(listitem == 5 ) {
     		// craft Shotgun 30 sat 20 go 25 vl , 15phut
+    		if(Inventory_Count(playerid, "Sat") < 0) return SendClientMessage(playerid, -1, "Ban khong du so luong sat (60) (/inv de kiem tra).");
+    		if(Inventory_Count(playerid, "Go") < 0) return SendClientMessage(playerid, -1, "Ban khong du so luong go (60) (/inv de kiem tra).");
+    		if(Inventory_Count(playerid, "Vat lieu") < 0) return SendClientMessage(playerid, -1, "Ban khong du so luong vat lieu (150) (/inv de kiem tra).");
+
     		if(Inventory_Count(playerid, "Sat") < 60) return SendClientMessage(playerid, -1, "Ban khong du so luong sat (60) (/inv de kiem tra).");
     		if(Inventory_Count(playerid, "Go") < 60) return SendClientMessage(playerid, -1, "Ban khong du so luong go (60) (/inv de kiem tra).");
     		if(Inventory_Count(playerid, "Vat lieu") < 150) return SendClientMessage(playerid, -1, "Ban khong du so luong vat lieu (150) (/inv de kiem tra).");

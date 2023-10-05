@@ -137,7 +137,6 @@ stock UseDrug(playerid,drug_id,pItemId) {
 			DownTimeUsed[playerid][3] += gettime() + 1800;
 			Inventory_Remove(playerid, pItemId, 1);
 			ApplyAnimation(playerid,"SMOKING","M_smkstnd_loop",2.1,0,0,0,0,0);
-			Inventory_Remove(playerid, pItemId, 1);
 		}
 	}
     return 1;
@@ -185,16 +184,18 @@ Dialog:DIALOG_BUY_CHH(playerid, response, listitem, inputtext[])
 Dialog:DIALOG_DRUGS_G(playerid, response, listitem, inputtext[])
 {
 	if(response) {
+		if(Inventory_Count(playerid, "Chat hoa hoc I") < 0) return SendClientMessage(playerid, -1, "Ban khong co du chat hoa hoc I.");
+		if(Inventory_Count(playerid, "Chat hoa hoc II") < 0) return SendClientMessage(playerid, -1, "Ban khong co du chat hoa hoc II.");
 		if(listitem == 0 ) {
 			if(Inventory_Count(playerid, "Chat hoa hoc I") < 2) return SendClientMessage(playerid, -1, "Ban khong co du 2 chat hoa hoc I.");
-			Inventory_Set(playerid, g_aInventoryItems[15][e_InventoryItem], 1, 60*24*2);
+			Inventory_Add(playerid, "Codeine", 1, 60*24*2);
             new pItemId = Inventory_GetItemID(playerid,"Chat hoa hoc I");
 			Inventory_Remove(playerid, pItemId, 2); //ID cua InventoryData
 			SendClientMessage(playerid, -1, "Ban da che tao thanh cong 1 Codeine va mat 2 Chat hoa hoc I.");
 		}
 		if(listitem == 1 ) {
 			if(Inventory_Count(playerid, "Chat hoa hoc I") < 4) return SendClientMessage(playerid, -1, "Ban khong co du 4 chat hoa hoc I.");
-			Inventory_Set(playerid, g_aInventoryItems[16][e_InventoryItem], 1, 60*24*2);
+			Inventory_Add(playerid, "Cocain", 1, 60*24*2);
             new pItemId = Inventory_GetItemID(playerid,"Chat hoa hoc I");
 			Inventory_Remove(playerid, pItemId, 4); //ID cua InventoryData
 			SendClientMessage(playerid, -1, "Ban da che tao thanh cong 1 Cocain va mat 4 Chat hoa hoc I.");
@@ -202,7 +203,10 @@ Dialog:DIALOG_DRUGS_G(playerid, response, listitem, inputtext[])
 		if(listitem == 2 ) {
 			if(Inventory_Count(playerid, "Chat hoa hoc I") < 4) return SendClientMessage(playerid, -1, "Ban khong co du 4 chat hoa hoc I.");
 			if(Inventory_Count(playerid, "Chat hoa hoc II") < 4) return SendClientMessage(playerid, -1, "Ban khong co du 4 chat hoa hoc II.");
-			Inventory_Set(playerid, g_aInventoryItems[17][e_InventoryItem], 1, 60*24*2);
+
+
+			Inventory_Add(playerid, "Ecstasy", 1, 60*24*2);
+
             new pItemId = Inventory_GetItemID(playerid,"Chat hoa hoc I");
 			Inventory_Remove(playerid, pItemId, 4); //ID cua InventoryData
 			pItemId = Inventory_GetItemID(playerid,"Chat hoa hoc II");
@@ -212,7 +216,7 @@ Dialog:DIALOG_DRUGS_G(playerid, response, listitem, inputtext[])
 		if(listitem == 3 ) {
 			if(Inventory_Count(playerid, "Chat hoa hoc I") < 8) return SendClientMessage(playerid, -1, "Ban khong co du 8 chat hoa hoc I.");
 			if(Inventory_Count(playerid, "Chat hoa hoc II") < 6) return SendClientMessage(playerid, -1, "Ban khong co du 6 chat hoa hoc II.");
-			Inventory_Set(playerid, g_aInventoryItems[18][e_InventoryItem], 1, 60*24*2);
+			Inventory_Add(playerid, "LSD", 1, 60*24*2);
             new pItemId = Inventory_GetItemID(playerid,"Chat hoa hoc I");
 			Inventory_Remove(playerid, pItemId, 8); //ID cua InventoryData
 			pItemId = Inventory_GetItemID(playerid,"Chat hoa hoc II");
