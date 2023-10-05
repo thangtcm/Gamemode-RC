@@ -4,7 +4,7 @@ hook OnPlayerKeyStateChange(playerid, newkeys, oldkeys)
     {
         new carid = GetPlayerVehicleID(playerid);
         new closestcar = GetClosestCar(playerid,carid);
-        if(!IsPlayerInRangeOfVehicle(playerid, closestcar, 9.0))
+        if(!IsPlayerInRangeOfVehicle(playerid, closestcar, 5.0))
             return 1;
         if(pLoadProduct[playerid] != -1)
         {
@@ -16,7 +16,7 @@ hook OnPlayerKeyStateChange(playerid, newkeys, oldkeys)
 					engine, lights, alarm, doors, bonnet, boot, objective;
 				GetVehicleParamsEx(PlayerVehicleInfo[playerid][v][pvId], engine, lights, alarm, doors, bonnet, boot, objective);
 				if(boot == VEHICLE_PARAMS_OFF || boot == VEHICLE_PARAMS_UNSET)
-					return SendClientMessageEx(playerid, COLOR_GRAD3, "Ban khong the cat hang hoa khi cop xe chua mo /car trunk de mo cop xe.");
+					return SendClientMessageEx(playerid, COLOR_GRAD3, "Ban khong the cat hang hoa khi cop xe chua mo /car copxe de mo cop xe.");
                 new MaxSlot = VehicleTruckerCount(playerid, PlayerVehicleInfo[playerid][v][pvSlotId]);
                 if (MaxSlot >= PlayerVehicleInfo[playerid][v][pvMaxSlotTrucker])
                 {
@@ -50,7 +50,7 @@ hook OnPlayerKeyStateChange(playerid, newkeys, oldkeys)
                     new MaxSlot = VehicleTruckerCount(playerid, PlayerVehicleInfo[i][v][pvSlotId]);
                     if (MaxSlot == 0 || PlayerVehicleInfo[i][v][pvIsRegisterTrucker] == -1)
                         return 1;
-                    if(v != PlayerInfo[playerid][pRegisterCarTruck] || GetPVarInt(playerid, "RobberyCarTruck") != v) SendErrorMessage(playerid, "Ban khong the lay hang chiec xe nay, tru khi ban phai thuc hien cuop hang (/truckergo rob)");
+                    if(v != PlayerInfo[playerid][pRegisterCarTruck] && GetPVarInt(playerid, "RobberyCarTruck") != v) SendErrorMessage(playerid, "Ban khong the lay hang chiec xe nay, tru khi ban phai thuc hien cuop hang (/truckergo rob)");
                     else
                     {      
                         new str[1000];

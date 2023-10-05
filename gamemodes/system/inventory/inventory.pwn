@@ -113,9 +113,9 @@ hook OnPlayerKeyStateChange(playerid, newkeys, oldkeys)
 stock CheckKeyInventory(playerid)
 {
 	//if(GetPVarInt(playerid, "SomeThing") == value) return 0;
-	if(!IsPlayerInRangeOfPoint(playerid, 2.5, 588.1791,866.1268,-42.4973) || !IsPlayerInRangeOfPoint(playerid, 2.5, 2126.8018,-76.6521,2.4721)
-	|| !IsPlayerInRangeOfPoint(playerid, 300.0, 588.1791,866.1268,-42.4973)) return true;
-	return false;
+	if(IsPlayerInRangeOfPoint(playerid, 2.5, 588.1791,866.1268,-42.4973) || IsPlayerInRangeOfPoint(playerid, 2.5, 2126.8018,-76.6521,2.4721)
+	|| IsPlayerInRangeOfPoint(playerid, 30.0, 588.1791,866.1268,-42.4973)) return false;
+	return true;
 }
 
 stock Inventory_Load(playerid)
@@ -479,10 +479,11 @@ public OnModelSelectionResponseInv(playerid, extraid, index, modelid[], response
 	else if((extraid == MODEL_SELECTION_RANSACK && response) && InventoryData[playerid][index][invExists])
 	{
 		new
-			name[48];
-		strunpack(name, InventoryData[playerid][index][invItem]);
-		PlayerInfo[playerid][pInventoryItem] = index;
-		format(name, sizeof(name), "%s (%d)", name, InventoryData[playerid][index][invQuantity]);
+			name[48], target = GetPVarInt(playerid, "GivePlayerid_Inventory");
+
+		strunpack(name, InventoryData[target][index][invItem]);
+		PlayerInfo[target][pInventoryItem] = index;
+		format(name, sizeof(name), "%s (%d)", name, InventoryData[target][index][invQuantity]);
 		Dialog_Show(playerid, Take_Inventory, DIALOG_STYLE_LIST, name, "Tich Thu", "Lua chon", "<");
 	}
 	return 1;
@@ -496,16 +497,20 @@ stock OpenInventory(playerid, bool:Ransack = false)
 		items[MAX_INVENTORY][64],
 		quantitys[MAX_INVENTORY],
 		itemName[MAX_INVENTORY][32],
-		expirys[MAX_INVENTORY];
+		expirys[MAX_INVENTORY],
+		target;
+	if(Ransack)
+		target = GetPVarInt(playerid, "GivePlayerid_Inventory");
+	else	target = playerid;
 
-	for(new i = 0; i < PlayerInfo[playerid][pCapacity]; i++)
+	for(new i = 0; i < PlayerInfo[target][pCapacity]; i++)
 	{
-		if (InventoryData[playerid][i][invExists])
+		if (InventoryData[target][i][invExists])
 		{
-			strcpy(items[i], InventoryData[playerid][i][invModel], 64);
-			quantitys[i] = InventoryData[playerid][i][invQuantity];
-			strcpy(itemName[i], InventoryData[playerid][i][invItem], 32);
-			expirys[i] = InventoryData[playerid][i][invTimer] == 0 ? 0 : InventoryData[playerid][i][invTimer] - gettime();
+			strcpy(items[i], InventoryData[target][i][invModel], 64);
+			quantitys[i] = InventoryData[target][i][invQuantity];
+			strcpy(itemName[i], InventoryData[target][i][invItem], 32);
+			expirys[i] = InventoryData[target][i][invTimer] == 0 ? 0 : InventoryData[target][i][invTimer] - gettime();
 		}
 		else
 		{
@@ -515,7 +520,7 @@ stock OpenInventory(playerid, bool:Ransack = false)
 			strcpy(itemName[i], "_", 32);
 		}
 	}
-	for(new i = PlayerInfo[playerid][pCapacity]; i < 120; i++)
+	for(new i = PlayerInfo[target][pCapacity]; i < 120; i++)
 	{
 		quantitys[i] = -1;
 		strcpy(itemName[i], "_", 32);
@@ -890,7 +895,7 @@ CMD:setinventory(playerid, params[])
 	if(sscanf(params, "dd", giveplayerid, capacity))
 		return SendClientMessageEx(playerid, COLOR_GRAD1, "/setinventory [playerid/name] [quantity]");
 
-	if(giveplayerid == INVALID_PLAYER_ID)
+	if(!IsPlayerConnected(giveplayerid) || giveplayerid == INVALID_PLAYER_ID)
 		return SendClientMessageEx(playerid, COLOR_LIGHTRED, "Nguoi choi khong hop le.");
 
 	if(capacity < 1 || capacity > MAX_INVENTORY)
@@ -949,7 +954,7 @@ CMD:checkinv(playerid, params[])
 		return SendClientMessageEx(playerid, COLOR_LIGHTRED, "Ban khong duoc phep su dung lenh nay.");
 	if(sscanf(params, "u", giveplayerid))
 		return SendClientMessageEx(playerid, COLOR_GRAD1, "/checkinv [playerid/name]");
-	OpenInventory(giveplayerid, true);
+	OpenInventory(playerid, true);
 	new str[128];
 	SetPVarInt(playerid, "GivePlayerid_Inventory", giveplayerid);
 	format(str, sizeof(str), "Ban dang xem tui do cua %s", GetPlayerNameEx(giveplayerid));
@@ -1066,18 +1071,18 @@ Dialog:Take_Inventory(playerid, response, listitem, inputtext[])
 	if(response)
 	{
 		new
-			itemId = PlayerInfo[playerid][pInventoryItem],
+			target = GetPVarInt(playerid, "GivePlayerid_Inventory"),
+			itemId = PlayerInfo[target][pInventoryItem],
 			itemName[64], str[128];
 
-		strunpack(itemName, InventoryData[playerid][itemId][invItem]);
+		strunpack(itemName, InventoryData[target][itemId][invItem]);
 
 		switch(listitem)
 		{
 			case 0:
 			{
-				new giveplayerid = GetPVarInt(playerid, "GivePlayerid_Inventory");
-				Inventory_Remove(giveplayerid, itemId, InventoryData[playerid][itemId][invQuantity]);
-				format(str, sizeof(str), "%s da tich thu vat pham %s cua %s.", GetPlayerNameEx(playerid), itemName, GetPlayerNameEx(giveplayerid));
+				Inventory_Remove(target, itemId, InventoryData[target][itemId][invQuantity]);
+				format(str, sizeof(str), "%s da tich thu vat pham %s cua %s.", GetPlayerNameEx(playerid), itemName, GetPlayerNameEx(target));
 				ProxDetector(30.0, playerid, str, COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE);
 			}
 		}
