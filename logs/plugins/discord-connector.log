@@ -85,3 +85,7 @@
 [10/04/23 21:45:16] [WARNING] Unknown gateway event 'VOICE_CHANNEL_STATUS_UPDATE'
 [10/05/23 15:00:17] [ERROR] Error while retrieving HTTP POST response from '/api/v10/channels/1158001303033757716/messages': end of stream
 [10/05/23 15:31:44] [ERROR] Error while retrieving HTTP POST response from '/api/v10/channels/1158001303033757716/messages': end of stream
+[10/05/23 16:00:53] [ERROR] can't serialize JSON: [json.exception.type_error.316] incomplete UTF-8 string; last byte: 0xBB
+[10/05/23 16:00:53] [ERROR] can't serialize JSON: [json.exception.type_error.316] incomplete UTF-8 string; last byte: 0xBB
+[10/05/23 16:32:03] [ERROR] Can't read from Discord websocket gateway: End of file (2)
+[10/05/23 16:32:03] [ERROR] Can't write to Discord websocket gateway: The I/O operation has been aborted because of either a thread exit or an application request (995)

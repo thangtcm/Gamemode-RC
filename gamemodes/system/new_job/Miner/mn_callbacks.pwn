@@ -123,7 +123,7 @@ public OnPlayerPickUpRock(playerid, rockIndex)
     	DestroyDynamicObject(RockObj[rockIndex]);
     	DestroyDynamic3DTextLabel(RockText[rockIndex]);
     	SetTimerEx("OnRockRespawn", 600000, false, "i", rockIndex);
-   		ApplyAnimation(playerid,"PED","BIKE_elbowL",4.0,1,1,1,1,1);
+   		ApplyAnimation(playerid,"BASEBALL","Bat_4",1.0,1,1,1,1,1);
 		SetPVarInt(playerid, #dangdaoda, 1);
 		TogglePlayerControllable(playerid, 0);
 		SetPlayerAttachedObject(playerid, 9, 2228, 6, 0.036999, 0.041, 0.21, 0.0, 172.8, -89.3, 0.805, 1.046, 0.789999);
@@ -141,7 +141,7 @@ public StartCountTime(playerid)
 			format(format_job, sizeof(format_job), "Ban dang dao da, vui long doi~p~ %d~w~ de dao xong.", timerdc[playerid]);
 			SendClientTextDraw(playerid, format_job);
 			SetTimerEx("StartCountTime", 1000, false, "i", playerid);
-			ApplyAnimation(playerid,"PED","BIKE_elbowL",4.0,1,1,1,1,1);
+			ApplyAnimation(playerid,"BASEBALL","Bat_4",1.0,1,1,1,1,1);
 		}
 		else
 		{

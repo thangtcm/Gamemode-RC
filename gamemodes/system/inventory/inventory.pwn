@@ -851,10 +851,22 @@ public OnPlayerUseItem(playerid, pItemId, name[])
 	{
 		if(PlayerInfo[playerid][pTimeMedkit] == 0)
 		{
-			new Float: HP;
+			new Float: HP, string[256];
+			new Float: HPz = BonusHealth[playerid];
+			new Float: HPx = HPz + 100.0;
 			GetPlayerHealth(playerid, HP);
 			SetPlayerHealth(playerid, HP+30);
+			if(HP >= HPx)
+			{
+				SetPlayerHealth(playerid, HPx);
+			}
+			PlayerInfo[playerid][pTimeMedkit] = 30;
 			SetTimerEx("TimeUseMed", 60000, 0, "d", playerid);
+            format(string, sizeof string, "{FF8000}* {C2A2DA}%s da su dung medkit.", GetPlayerNameEx(playerid));
+            SetPlayerChatBubble(playerid, string, COLOR_PURPLE, 30.0, 6000);
+            format(string, sizeof string, "{FF8000}> {C2A2DA}%s da su dung medkit.", GetPlayerNameEx(playerid));
+            SendClientMessage(playerid, COLOR_PURPLE, string);
+            ApplyAnimation(playerid,"BOMBER","BOM_Plant_Crouch_In", 4.0, 0, 0, 0, 0, 0, 1);
 		}
 		else return SendErrorMessage(playerid, " Ban vua su dung Medkit trong vong 30 phut truoc roi, vui long doi.");
 	}

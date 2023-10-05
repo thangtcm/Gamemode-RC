@@ -8,8 +8,7 @@ enum DrugLab {
 	Text3D:DLab_Label,
 	DLab_Family
 }
-new DrugLabInfo[MAX_DRUG_POINT][DrugLab] ,DrugTypeName[4][] = {"Codeine","Cocaine","Ecstasy","LSD"}, DownCountJobTime[MAX_PLAYERS], DownTimeUsed[MAX_PLAYERS][4],
-Float:BonusHealth[MAX_PLAYERS],Float:BonusArmour[MAX_PLAYERS];
+new DrugLabInfo[MAX_DRUG_POINT][DrugLab] ,DrugTypeName[4][] = {"Codeine","Cocaine","Ecstasy","LSD"}, DownCountJobTime[MAX_PLAYERS], DownTimeUsed[MAX_PLAYERS][4];
 timer DisableEfftects[30000](playerid) 
 {
 	SetPlayerDrunkLevel(playerid, 0); //  effects phe da

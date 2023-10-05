@@ -1134,7 +1134,7 @@ enum ptInfo
 	Float:ptScaleZ,
 };
 
-
+new Float:BonusHealth[MAX_PLAYERS],Float:BonusArmour[MAX_PLAYERS];
 new Text:BannerServer[2];
 
 enum hInfo

@@ -8522,6 +8522,7 @@ public OnPlayerLoad(playerid)
  	SetPlayerWeapons(playerid);
  	DestroyLog@_Reg(playerid);
  	SendClientMessageEx(playerid, COLOR_VANG, "Chao mung ban da tro lai may chu Los Santos Roleplay Vietnam.");
+ 	SetTimerEx("StartDownEatDrinkStrong", 100000, false, "i", playerid);
 	DeletePVar(playerid, "TextDrawCharacter");
  	GetHomeCount(playerid);
 	new rdName[MAX_PLAYER_NAME];

@@ -1147,3 +1147,7 @@
 [10/04/23 21:25:42] [plugins/discord-connector] Can't write to Discord websocket gateway: The I/O operation has been aborted because of either a thread exit or an application request (995)
 [10/05/23 15:00:17] [plugins/discord-connector] Error while retrieving HTTP POST response from '/api/v10/channels/1158001303033757716/messages': end of stream
 [10/05/23 15:31:44] [plugins/discord-connector] Error while retrieving HTTP POST response from '/api/v10/channels/1158001303033757716/messages': end of stream
+[10/05/23 16:00:53] [plugins/discord-connector] can't serialize JSON: [json.exception.type_error.316] incomplete UTF-8 string; last byte: 0xBB
+[10/05/23 16:00:53] [plugins/discord-connector] can't serialize JSON: [json.exception.type_error.316] incomplete UTF-8 string; last byte: 0xBB
+[10/05/23 16:32:03] [plugins/discord-connector] Can't read from Discord websocket gateway: End of file (2)
+[10/05/23 16:32:03] [plugins/discord-connector] Can't write to Discord websocket gateway: The I/O operation has been aborted because of either a thread exit or an application request (995)
