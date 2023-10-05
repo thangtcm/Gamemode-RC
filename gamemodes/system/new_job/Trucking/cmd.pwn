@@ -1,16 +1,7 @@
 
 CMD:thongtinnhamay(playerid, params[])
 {
-    new string[4096];
-    format(string, sizeof(string), "{FFFFFF}ID\t\tTen Nha May\t\tVi Tri\t\tMet");
-    new zone[MAX_ZONE_NAME],Float:Distance;
-    for(new i; i < sizeof(FactoryData); i++)
-    {
-        Distance = GetPlayerDistanceFromPoint(playerid, FactoryData[i][FactoryPos][0], FactoryData[i][FactoryPos][1], FactoryData[i][FactoryPos][2]);
-        Get3DZone(FactoryData[i][FactoryPos][0], FactoryData[i][FactoryPos][1], FactoryData[i][FactoryPos][2], zone, sizeof(zone));
-        format(string, sizeof(string),"%s\n%d\t\t%s\t\t%s\t\t%0.2f Met",string, i, FactoryData[i][FactoryName], zone, Distance);
-    }
-    Dialog_Show(playerid, DIALOG_LISTFACTORY ,DIALOG_STYLE_TABLIST_HEADERS, "Danh Sach Cac Nha May", string, "Xac nhan", "<");
+    FactoryInformation(playerid);
     return 1;
 }
 
@@ -48,44 +39,27 @@ CMD:cuophang(playerid, params[])
 CMD:goiynhamay(playerid, params[])
 {
     if(GetPVarInt(playerid, "MissionTruck") == 0)   return SendErrorMessage(playerid, "Chuc nang nay chi ap dung cho lam nhiem vu trucker.");
-    new numFoundFactories = 0,
-        MaxFactiory = sizeof(FactoryData), MaxExport;
-    for (new i = 0; i < MaxFactiory; i++) {
-        MaxExport = strlen(FactoryData[i][ProductName]);
-        for (new j = 0; j < MaxExport; j++) {
-            if(IsProductValid(playerid, FactoryData[i][ProductName][j])) {
-                PlayerTruckerData[playerid][SuggestFactory][numFoundFactories++] = i;
-                break;
-            }
-        }
-    }
-    new str[1200], zone[MAX_ZONE_NAME],Float:Distance;
-    format(str, sizeof(str), "Ten Nha May\t\tVi Tri\t\tKhoang cach");
-    for(new i; i < numFoundFactories;i++)
-    {
-        Distance = GetPlayerDistanceFromPoint(playerid, FactoryData[PlayerTruckerData[playerid][SuggestFactory][i]][FactoryPos][0], FactoryData[PlayerTruckerData[playerid][SuggestFactory][i]][FactoryPos][1], FactoryData[PlayerTruckerData[playerid][SuggestFactory][i]][FactoryPos][2]);
-        Get3DZone(FactoryData[PlayerTruckerData[playerid][SuggestFactory][i]][FactoryPos][0], FactoryData[PlayerTruckerData[playerid][SuggestFactory][i]][FactoryPos][1], FactoryData[PlayerTruckerData[playerid][SuggestFactory][i]][FactoryPos][2], zone, sizeof(zone));
-        format(str, sizeof(str), "%s\n%s\t\t%s\t\t%0.2f Met", str, FactoryData[PlayerTruckerData[playerid][SuggestFactory][i]][FactoryName], zone, Distance);
-    }
-    Dialog_Show(playerid, DIALOG_SUGGESTFACTORY, DIALOG_STYLE_TABLIST_HEADERS, "Cong viec Trucker", str, "Lua chon", "Huy bo");
+    FactorySuggest(playerid);
     return 1;
 }
 
 CMD:goiygiaohang(playerid, params[])
 {
     new numFoundFactories = 0,
-        MaxFactiory = sizeof(FactoryData), MaxExport;
+        MaxFactiory = sizeof(FactoryData), MaxImport;
 
     new d = PlayerInfo[playerid][pRegisterCarTruck];
     
     for (new i = 0; i < MaxFactiory; i++) {
-        MaxExport = strlen(FactoryData[i][ProductName]);
-        for (new j = 0; j < MaxExport; j++) {
+        MaxImport = strlen(FactoryData[i][ProductImportName]);
+        for (new j = 0; j < MaxImport; j++) {
             for(new index; index < MAX_OBJECTTRUCKER; index++)
             {
                 if(VehicleTruckerData[playerid][index][vtId] != -1 && VehicleTruckerData[playerid][index][vtSlotId] == PlayerVehicleInfo[playerid][d][pvSlotId]
-                    && VehicleTruckerData[playerid][index][vtProductID] == FactoryData[i][ProductName][j]){
+                    && VehicleTruckerData[playerid][index][vtProductID] == FactoryData[i][ProductImportName][j]){
                     PlayerTruckerData[playerid][SuggestFactory][numFoundFactories++] = i;
+                    printf("%d", i);
+                    j = MaxImport;
                     break;
                 }
             }
@@ -136,13 +110,13 @@ CMD:truckergo(playerid, params[])
     }
     else if(!strcmp(type, "mission", true))
 	{
-        if(GetPVarInt(playerid, "MissionTruck") == 1)
-        {
-            ShowMissionTrucker(playerid);
-            return SendErrorMessage(playerid, "Ban da nhan nhiem vu giao hang trucker, hay xem lai thong tin.");
-        } 
         if(IsPlayerInRangeOfPoint(playerid, 5.0, 58.5952,-292.2914,1.5781))
         {
+            if(GetPVarInt(playerid, "MissionTruck") == 1)
+            {
+                ShowMissionTrucker(playerid);
+                return SendErrorMessage(playerid, "Ban da nhan nhiem vu giao hang trucker, hay xem lai thong tin.");
+            } 
             Dialog_Show(playerid, DIALOG_STARTTRUCKER, DIALOG_STYLE_LIST, "Cong viec Trucker", "Nhan nhiem vu\nXem Huong Dan", "Lua chon", "Huy bo");
        }
     }
@@ -191,20 +165,30 @@ CMD:truckergo(playerid, params[])
             SetPVarInt(playerid, "Sell_ProductID", FactoryId);
             format(string, sizeof(string), "{FFFFFF}ID\t\tSan Pham\t\tGia");
             new count = 0;
-            for(new i; i < MAX_PLAYERPRODUCT; i++)
+            new MaxExport = strlen(FactoryData[FactoryId][ProductName]),
+                MaxImport = strlen(FactoryData[FactoryId][ProductImportName]);
+            new CheckValid = 0;
+            PlayerTruckerData[playerid][MAXPRODUCT] = 0;
+            PlayerTruckerData[playerid][MAXPRODUCTIMPORT] = 0;
+            for(new i; i < MaxExport; i++)
             {
-                PlayerTruckerData[playerid][SellProduct][i] = -1;
-                if(i < strlen(FactoryData[FactoryId][ProductName]))
+                if(i < MaxExport && CheckValid == 0)
                 {
+                    if(FactoryData[FactoryId][ProductName][i] == -1) {
+                        CheckValid = 1; 
+                        break;
+                    }
                     ProductId = FactoryData[FactoryId][ProductName][i];
                     PlayerTruckerData[playerid][SellProduct][count++] = i;
+                    PlayerTruckerData[playerid][MAXPRODUCT]++;
                     format(string, sizeof(string),"%s\n%d\t\t%s\t\t$%d",string, i, ProductData[ProductId][ProductName], FactoryData[FactoryId][ProductPrice][i]);
                 }
             }
-            for(new i; i < strlen(FactoryData[FactoryId][ProductImportName]); i++)
+            for(new i; i < MaxImport; i++)
             {
                 ProductId = FactoryData[FactoryId][ProductImportName][i];
                 PlayerTruckerData[playerid][SellProduct][count++] = i;
+                PlayerTruckerData[playerid][MAXPRODUCTIMPORT]++;
                 format(string, sizeof(string),"%s\n%d\t\t%s\t\t$%d",string, i, ProductData[ProductId][ProductName], FactoryData[FactoryId][ProductImportPrice][i]);
             }
             Dialog_Show(playerid, DIALOG_SELLPRODUCT,DIALOG_STYLE_TABLIST_HEADERS, "Danh Sach Cac San Pham", string, "Xac nhan", "<");
@@ -224,14 +208,28 @@ CMD:truckergo(playerid, params[])
     }
     return 1;
 }
-stock RandomName(playerid)
+stock RandomName()
 {
     new name[MAX_PLAYER_NAME];
-    for (new i = 0; i < MAX_PLAYER_NAME - 1; i++)
+    for (new i = 0; i < 15; i++)
     {
-        name[i] = random(26) + 'A'; 
+        if(i == 7)
+        {
+            name[i] = '_';
+        }
+        else
+        {
+            if (random(2)) 
+            {
+                name[i] = random(26) + 'A';
+            }
+            else
+            {
+                name[i] = random(26) + 'a';
+            }
+        }
     }
-    name[MAX_PLAYER_NAME-1] = '\0';
+    name[15] = '\0';
     return name;
 }
 
@@ -240,8 +238,8 @@ CMD:setnameinquery(playerid, params[])
 	new szName[MAX_PLAYER_NAME];
 	if(sscanf(params, "s[24]", szName)) return SendClientMessage(playerid, 0xFF0000AA, "USAGE: /setnameinquery <szName>");
     new str[128];
-    SetPlayerNameInServerQuery(playerid, RandomName(playerid));
-    format(str, sizeof(str), "SetPlayerName = '%s' -- %s ", szName, RandomName(playerid));
+    SetPlayerNameInServerQuery(playerid, RandomName());
+    format(str, sizeof(str), "SetPlayerName = '%s' -- %s ", szName, RandomName());
 	SendClientMessageEx(playerid, COLOR_YELLOW, str);
 	return 1;
 }

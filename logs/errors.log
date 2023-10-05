@@ -1138,3 +1138,47 @@
 [10/04/23 05:08:07] [plugins/discord-connector] Discord terminated websocket connection; reason: Not authenticated. (4003)
 [10/04/23 05:08:07] [plugins/discord-connector] Can't write to Discord websocket gateway: The I/O operation has been aborted because of either a thread exit or an application request (995)
 [10/04/23 05:09:07] [plugins/discord-connector] Can't write to Discord websocket gateway: The I/O operation has been aborted because of either a thread exit or an application request (995)
+[10/05/23 04:01:28] [plugins/discord-connector] Error while retrieving HTTP POST response from '/api/v10/channels/1157993235776557156/messages': end of stream
+[10/05/23 04:54:50] [plugins/discord-connector] Error while retrieving HTTP POST response from '/api/v10/channels/1157969051264503838/messages': end of stream
+[10/05/23 04:59:34] [plugins/discord-connector] can't update guild member presence: user id "1158603058767466558" not cached
+[10/05/23 05:02:19] [plugins/discord-connector] can't update guild member presence: user id "1158603058767466558" not cached
+[10/05/23 05:04:24] [plugins/discord-connector] Can't write to Discord websocket gateway: The I/O operation has been aborted because of either a thread exit or an application request (995)
+[10/05/23 05:24:10] [plugins/discord-connector] can't update guild member presence: user id "1158603058767466558" not cached
+[10/05/23 05:27:17] [plugins/discord-connector] can't update guild member presence: user id "1158603058767466558" not cached
+[10/05/23 06:52:41] [plugins/discord-connector] Error while retrieving HTTP POST response from '/api/v10/channels/1157993235776557156/messages': end of stream
+[10/05/23 06:58:00] [plugins/discord-connector] can't update guild member presence: user id "1005733696030134312" not cached
+[10/05/23 06:58:18] [plugins/discord-connector] can't update guild member presence: user id "1005733696030134312" not cached
+[10/05/23 07:38:07] [plugins/discord-connector] can't update guild member presence: user id "1005733696030134312" not cached
+[10/05/23 07:45:24] [plugins/discord-connector] can't update guild member presence: user id "1005733696030134312" not cached
+[10/05/23 07:48:00] [plugins/discord-connector] can't update guild member presence: user id "1005733696030134312" not cached
+[10/05/23 07:55:37] [plugins/discord-connector] Error while retrieving HTTP POST response from '/api/v10/channels/1157993235776557156/messages': end of stream
+[10/05/23 08:25:23] [plugins/discord-connector] can't update guild member presence: user id "1158603058767466558" not cached
+[10/05/23 08:30:05] [plugins/discord-connector] can't update guild member presence: user id "1158603058767466558" not cached
+[10/05/23 08:56:39] [plugins/discord-connector] Can't write to Discord websocket gateway: The I/O operation has been aborted because of either a thread exit or an application request (995)
+[10/05/23 08:56:40] [plugins/discord-connector] Error while retrieving HTTP GET response from '/api/oauth2/applications/@me': end of stream
+[10/05/23 09:36:23] [plugins/discord-connector] Can't write to Discord websocket gateway: The I/O operation has been aborted because of either a thread exit or an application request (995)
+[10/05/23 09:36:24] [plugins/discord-connector] Error while retrieving HTTP GET response from '/api/oauth2/applications/@me': end of stream
+[10/05/23 10:01:21] [plugins/discord-connector] Error while retrieving HTTP POST response from '/api/v10/channels/1157993235776557156/messages': end of stream
+[10/05/23 10:09:28] [plugins/discord-connector] can't update guild member presence: user id "1005733696030134312" not cached
+[10/05/23 10:11:34] [plugins/discord-connector] can't update guild member presence: user id "1005733696030134312" not cached
+[10/05/23 10:16:27] [plugins/discord-connector] can't update guild member presence: user id "1005733696030134312" not cached
+[10/05/23 10:16:37] [plugins/discord-connector] can't update guild member presence: user id "1005733696030134312" not cached
+[10/05/23 10:17:06] [plugins/discord-connector] can't update guild member presence: user id "1005733696030134312" not cached
+[10/05/23 10:18:54] [plugins/discord-connector] can't update guild member presence: user id "1005733696030134312" not cached
+[10/05/23 11:05:02] [plugins/discord-connector] Error while retrieving HTTP POST response from '/api/v10/channels/1157993235776557156/messages': end of stream
+[10/05/23 11:07:58] [plugins/discord-connector] Can't write to Discord websocket gateway: The I/O operation has been aborted because of either a thread exit or an application request (995)
+[10/05/23 11:18:56] [plugins/discord-connector] can't update guild member presence: user id "1158603058767466558" not cached
+[10/05/23 11:21:45] [plugins/discord-connector] can't update guild member presence: user id "1158603058767466558" not cached
+[10/05/23 11:23:38] [plugins/discord-connector] can't update guild member: user id "1005733696030134312" not cached
+[10/05/23 11:33:02] [plugins/discord-connector] can't update guild member presence: user id "1005733696030134312" not cached
+[10/05/23 11:33:45] [plugins/discord-connector] can't update guild member presence: user id "1005733696030134312" not cached
+[10/05/23 11:39:38] [plugins/discord-connector] can't update guild member presence: user id "1005733696030134312" not cached
+[10/05/23 11:57:48] [plugins/discord-connector] can't update guild member presence: user id "1158603058767466558" not cached
+[10/05/23 12:00:14] [plugins/discord-connector] can't update guild member presence: user id "1158603058767466558" not cached
+[10/05/23 12:01:02] [plugins/discord-connector] can't update guild member presence: user id "1158603058767466558" not cached
+[10/05/23 12:04:33] [plugins/discord-connector] can't update guild member presence: user id "1158603058767466558" not cached
+[10/05/23 12:04:51] [plugins/discord-connector] can't update guild member presence: user id "1158603058767466558" not cached
+[10/05/23 12:07:20] [plugins/discord-connector] can't update guild member presence: user id "1158603058767466558" not cached
+[10/05/23 12:08:29] [plugins/discord-connector] Error while retrieving HTTP POST response from '/api/v10/channels/1157993235776557156/messages': end of stream
+[10/05/23 12:11:08] [plugins/discord-connector] can't update guild member presence: user id "1158603058767466558" not cached
+[10/05/23 12:13:30] [plugins/discord-connector] can't update guild member presence: user id "1158603058767466558" not cached

@@ -4233,6 +4233,10 @@ public OnPlayerEnterCheckpoint(playerid)
 
 public OnPlayerKeyStateChange(playerid, newkeys, oldkeys)
 {
+	if(IsKeyJustDown(KEY_SPRINT,newkeys,oldkeys))
+	{
+	    StopLoopingAnim(playerid);
+    }
 	if(KeyPressed(KEY_SUBMISSION))
 	{
 		//if(IsBoat(GetPlayerVehicleID(playerid)) || IsPlane(GetPlayerVehicleID(playerid)) || IsHelicopter(GetPlayerVehicleID(playerid))) return true;
