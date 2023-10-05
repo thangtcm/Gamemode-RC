@@ -42565,12 +42565,12 @@ CMD:tackle(playerid, params[])
         if(GetPVarInt(playerid, "TackleMode") == 0)
         {
 	        SetPVarInt(playerid, "TackleMode", 1);
-	        return SendClientMessageEx(playerid, COLOR_LIGHTBLUE, "You've enabled tackling.  Aim at the suspect and hit enter to initiate the tackle.");
+	        return SendClientMessageEx(playerid, COLOR_LIGHTBLUE, "Ban da kich hoat che do khong che, hay target vao doi tuong va an 'Enter' hoac 'F'.");
 		}
 		else
 		{
 	        SetPVarInt(playerid, "TackleMode", 0);
-	        return SendClientMessageEx(playerid, COLOR_LIGHTBLUE, "You've disabled tackling. You may now unholster your weapon. (/holster)");
+	        return SendClientMessageEx(playerid, COLOR_LIGHTBLUE, "Ban da huy bo che do khong che.");
 		}
 	}
 	else return SendClientMessageEx(playerid, COLOR_GRAD2, "You're not Law Enforcement.");

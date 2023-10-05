@@ -79,7 +79,7 @@ timer UpdateNameTagTimer[500](playerid)
     {
         if(IsPlayerConnected(i))
         {
-            new nametag[388], Float:armour, Float:targetPos[3], Float:distance, bool:check = false;
+            new nametag[388], Float:armour, Float:targetPos[3], Float:distance, bool:Ischeck = false;
             GetPlayerArmour(i, armour);
 			GetPlayerPos(i, targetPos[0], targetPos[1], targetPos[2]);
 			distance = GetPlayerDistanceFromPoint(playerid, targetPos[0], targetPos[1], targetPos[2]);
@@ -87,16 +87,16 @@ timer UpdateNameTagTimer[500](playerid)
 			{
 				format(nametag, sizeof(nametag), "{%06x}[Mask %d_%d]{FFFFFF} (%d)", GetPlayerColor(i) >>> 8, PlayerInfo[i][pMaskID][0], PlayerInfo[i][pMaskID][1], i);
 			}
-			else if(distance > 6.0 && !PlayerInfo[i][pMaskOn] && check == false)
+			else if(distance > 6.0 && !PlayerInfo[i][pMaskOn])
 			{
             	format(nametag, sizeof(nametag), "{%06x}Stranger_%d_%d{FFFFFF} (%d)", GetPlayerColor(i) >>> 8, PlayerInfo[i][pMaskID][0], PlayerInfo[i][pMaskID][1], i);
-				check = true;
+				Ischeck = true;
 			}
-			else if(distance <= 6.0 && !PlayerInfo[i][pMaskOn] && check == false)
+			else if(distance <= 6.0 && !PlayerInfo[i][pMaskOn] && Ischeck == false)
 			{
 				format(nametag, sizeof(nametag), "{%06x}%s{FFFFFF} (%d)", GetPlayerColor(i) >>> 8, GetPlayerNameEx(i), i);
 			}
-			if(playerAFK[i] != 0 && playerAFK[i] > 60)
+			if(GetPlayerPausedTime(i) > 2)
 			{
 				format(nametag, sizeof(nametag), "{F81414}[AFK]{FFFFFF} %s", nametag);
 			}

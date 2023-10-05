@@ -570,7 +570,7 @@ CMD:crafttest(playerid,params[]) {
 	return 1;
 }
 ShowMainCraft(playerid) {
-	Dialog_Show(playerid, CRAFT_MAIN, DIALOG_STYLE_LIST, "Che tao vu khi", "Xem don hang\nDat hang vu khi\nche tao dan","> Chon","Thoat");
+	Dialog_Show(playerid, CRAFT_MAIN, DIALOG_STYLE_TABLIST_HEADERS, "Che tao vu khi", "Xem don hang\nDat hang vu khi\nche tao dan","> Chon","Thoat");
 }
 Dialog:CRAFT_MAIN(playerid, response, listitem, inputtext[]) {
     if(response) {

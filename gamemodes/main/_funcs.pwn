@@ -4233,10 +4233,6 @@ public OnPlayerEnterCheckpoint(playerid)
 
 public OnPlayerKeyStateChange(playerid, newkeys, oldkeys)
 {
-	if(IsKeyJustDown(KEY_SPRINT,newkeys,oldkeys))
-	{
-	    StopLoopingAnim(playerid);
-    }
 	if(KeyPressed(KEY_SUBMISSION))
 	{
 		//if(IsBoat(GetPlayerVehicleID(playerid)) || IsPlane(GetPlayerVehicleID(playerid)) || IsHelicopter(GetPlayerVehicleID(playerid))) return true;
@@ -4330,7 +4326,7 @@ public OnPlayerKeyStateChange(playerid, newkeys, oldkeys)
 					}
 					default: // fail
 					{
-						format(string, sizeof(string), "** %s leaps at %s attempting to tackle them but is not able.", GetPlayerNameEx(playerid), GetPlayerNameEx(GetPlayerTargetPlayer(playerid)));
+						format(string, sizeof(string), "** %s nhay ve phia %s va co gang khong che nhung that bai.", GetPlayerNameEx(playerid), GetPlayerNameEx(GetPlayerTargetPlayer(playerid)));
 						ProxDetector(30.0, playerid, string, COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE);
 						TogglePlayerControllable(playerid, 0);
 						SetTimerEx("CopGetUp", 2500, 0, "i", playerid);
@@ -23500,7 +23496,7 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 		else // resisting
 		{
 		    SetPVarInt(playerid, "TackledResisting", 2);
-		    format(string, sizeof(string), "** %s struggles with %s, attempting to escape.", GetPlayerNameEx(playerid), GetPlayerNameEx(GetPVarInt(playerid, "IsTackled")));
+		    format(string, sizeof(string), "** %s day %s ra, co gang thoat khoi.", GetPlayerNameEx(playerid), GetPlayerNameEx(GetPVarInt(playerid, "IsTackled")));
 			ProxDetector(30.0, playerid, string, COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE);
 		}
 	}
