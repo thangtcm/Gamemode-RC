@@ -4,16 +4,9 @@
 ./system/new_job/Trucking/Vehicle.pwn(145) : èäåíòèôèêàòîð íå èñïîëüçóåòñÿ: "pCarSlotID"
 ./system/new_job/Trucking/cmd.pwn(227) : èäåíòèôèêàòîð íå èñïîëüçóåòñÿ: "playerid"
 ./system/drug/drug.pwn(12) : èäåíòèôèêàòîð íå èñïîëüçóåòñÿ: "DrugTypeName"
-lsrpvn.pwn(1624) : èäåíòèôèêàòîð íå èñïîëüçóåòñÿ: "GetXYInFrontOfVehicle"
+C:\Users\PHATBENTRE\Desktop\Gamemode-RC\Gamemode-RC\gamemodes\lsrpvn.pwn(1624) : èäåíòèôèêàòîð íå èñïîëüçóåòñÿ: "GetXYInFrontOfVehicle"
 ./system/nametag.pwn(9) : èäåíòèôèêàòîð íå èñïîëüçóåòñÿ: "PlayerNameTag"
 ./system/nametag.pwn(10) : èäåíòèôèêàòîð íå èñïîëüçóåòñÿ: "PlayerNameTagType"
 ./system/new_job/Trucking/setting.pwn(34) : èäåíòèôèêàòîð íå èñïîëüçóåòñÿ: "UnitType"
 Pawn compiler 3.2.3664	 	 	Copyright (c) 1997-2016, ITB CompuPhase
 
-Ðàçìåð çàãîëîâêà:	   51592 áàéò
-Ðàçìåð êîäà:		 7345916 áàéò
-Ðàçìåð äàííûõ:		164639464 áàéò
-Ðàçìåð ñòýêà\êó÷è:	18000000 áàéò; Ïðèìåðíîå ìàêñ. èñïîëüçîâàíèå: Íåèçâåñòíî, èç-çà ðåêóðñèé
-Âñåãî òðåáóåòñÿ:	190036972 áàéò
-
-Ãîòîâî.

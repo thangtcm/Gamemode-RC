@@ -867,6 +867,7 @@ public OnPlayerUseItem(playerid, pItemId, name[])
             format(string, sizeof string, "{FF8000}> {C2A2DA}%s da su dung medkit.", GetPlayerNameEx(playerid));
             SendClientMessage(playerid, COLOR_PURPLE, string);
             ApplyAnimation(playerid,"BOMBER","BOM_Plant_Crouch_In", 4.0, 0, 0, 0, 0, 0, 1);
+            Inventory_Remove(playerid, pItemId, 1);
 		}
 		else return SendErrorMessage(playerid, " Ban vua su dung Medkit trong vong 30 phut truoc roi, vui long doi.");
 	}
