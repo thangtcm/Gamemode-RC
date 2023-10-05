@@ -5,6 +5,7 @@ enum DrugLab {
 	DLab_Int,
 	DLab_Vw,
 	DLab_PickUP,
+	DLab_Type, // 0 = drug , 1 = weapon
 	Text3D:DLab_Label,
 	DLab_Family
 }
@@ -21,8 +22,14 @@ CMD:editdruglab(playerid, params[])
 	if(sscanf(params, "s[32]ddd",  choice,drl_id,choose))
 	{
 		SendUsageMessage(playerid, " /editdruglab [option] [id] [choose]");
-		SendSelectMessage(playerid, " Vitri, FamilyID");
+		SendSelectMessage(playerid, " Vitri, FamilyID, Type ( 0 = Drug, 1 = Weapon )");
 		return 1;
+	}
+	if (strcmp(choice, "Type", true) == 0)
+	{
+		SendClientMessageEx(playerid, COLOR_WHITE, "Ban da chinh sua type thanh cong.");
+		
+		DrugLabInfo[drl_id][DLab_Type] = choose;
 	}
 	if (strcmp(choice, "Vitri", true) == 0)
 	{
@@ -31,11 +38,17 @@ CMD:editdruglab(playerid, params[])
 	}
 	if (strcmp(choice, "FamilyID", true) == 0)
 	{
+
 		format(string,sizeof string,"Ban da chinh sua FAMILY ID %d cho Drub lab %d",choose,drl_id);
 		SendClientMessageEx(playerid, COLOR_WHITE, string);
 		DrugLabInfo[drl_id][DLab_Family] = choose;
 		new family = DrugLabInfo[drl_id][DLab_Family] ;
-        format(string,sizeof string,"Drub Lab %d\nFamily: %s\n(Bam Y de thao tac)",drl_id,FamilyInfo[family][FamilyName]);
+		new type_namez[32];
+		switch(DrugLabInfo[drl_id][DLab_Type]) {
+			case 0: type_namez = "Drug Lab";
+			case 1: type_namez = "Weapon Lab";
+		}
+        format(string,sizeof string,"%s %d\nFamily: %s\n(Bam Y de thao tac)",type_namez,drl_id,FamilyInfo[family][FamilyName]);
         UpdateDynamic3DTextLabelText(DrugLabInfo[drl_id][DLab_Label] , -1,string);
 	}
 	return 1;
@@ -147,11 +160,18 @@ hook OnPlayerKeyStateChange(playerid, newkeys, oldkeys) {
 		for(new i = 0 ; i < MAX_DRUG_POINT; i++) {
 			if(IsPlayerInRangeOfPoint(playerid, 5 , DrugLabInfo[i][DLab_Postion][0], DrugLabInfo[i][DLab_Postion][1], DrugLabInfo[i][DLab_Postion][2])) {
 				if(DrugLabInfo[i][DLab_Family] != PlayerInfo[playerid][pFMember]) return SendErrorMessage(playerid,"Drug Lab khong phai cua Family ban.");
-		        Dialog_Show(playerid, DIALOG_DRUGS_G, DIALOG_STYLE_TABLIST_HEADERS, "Che tao Drug", "Drug Name\tY/C Chat Hoa hoc I\tY/C Chat Hoa hoc II\n\
+		        if(DrugLabInfo[i][DLab_Type] == 0 ) {
+		        	Dialog_Show(playerid, DIALOG_DRUGS_G, DIALOG_STYLE_TABLIST_HEADERS, "Che tao Drug", "Drug Name\tY/C Chat Hoa hoc I\tY/C Chat Hoa hoc II\n\
 		        	                                                                                 #Codeine\t2\t0\n\
 		        		                                                                             #Cocain\t4\t0\n\
 		        		                                                                             #Ecstasy\t4\t4\n\
 		        		                                                                             #LSD\t8\t6", "Che tao", "Huy bo");
+		        }
+		        else if(DrugLabInfo[i][DLab_Type] == 1 ) { 
+		        	ShowMainCraft(playerid);
+
+		        }
+		       
 			}
 		} 
 	}
@@ -228,7 +248,7 @@ Dialog:DIALOG_DRUGS_G(playerid, response, listitem, inputtext[])
 }
 hook OnGameModeInit() {\
 	CreateDynamicPickup(1239, 23, 2306.409179 ,-1569.672607, 1051.562988, -1); // Drug Smuggler Job (TR)
-	CreateDynamic3DTextLabel("{FF0000} DRUG LAB \n{FFFFFF}(( BAM Y de mua chat hoa hoc.))", COLOR_WHITE, 2306.409179 ,-1569.672607, 1051.562988 + 0.5, 10.0);// Actor Trucker
+	CreateDynamic3DTextLabel("{FF0000} DRUG LAB \n{FFFFFF}(( bam Y de mua chat hoa hoc.))", COLOR_WHITE, 2306.409179 ,-1569.672607, 1051.562988 + 0.5, 10.0);// Actor Trucker
 
 	 
 }

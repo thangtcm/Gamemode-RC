@@ -1,9 +1,9 @@
 ./system/weapon/ammo.pwn(865) : íåïðàâèëüíàÿ òàáóëÿöèÿ
-./system/drug/drug.pwn(231) : íåïðàâèëüíàÿ òàáóëÿöèÿ
+./system/drug/drug.pwn(251) : íåïðàâèëüíàÿ òàáóëÿöèÿ
 ./system/new_job/Trucking/Vehicle.pwn(58) : èäåíòèôèêàòîðó ïðèñâîåíî çíà÷åíèå, íî îí íå èñïîëüçóåòñÿ: "str"
 ./system/new_job/Trucking/Vehicle.pwn(145) : èäåíòèôèêàòîð íå èñïîëüçóåòñÿ: "pCarSlotID"
 ./system/new_job/Trucking/cmd.pwn(227) : èäåíòèôèêàòîð íå èñïîëüçóåòñÿ: "playerid"
-./system/drug/drug.pwn(11) : èäåíòèôèêàòîð íå èñïîëüçóåòñÿ: "DrugTypeName"
+./system/drug/drug.pwn(12) : èäåíòèôèêàòîð íå èñïîëüçóåòñÿ: "DrugTypeName"
 lsrpvn.pwn(1624) : èäåíòèôèêàòîð íå èñïîëüçóåòñÿ: "GetXYInFrontOfVehicle"
 ./system/nametag.pwn(9) : èäåíòèôèêàòîð íå èñïîëüçóåòñÿ: "PlayerNameTag"
 ./system/nametag.pwn(10) : èäåíòèôèêàòîð íå èñïîëüçóåòñÿ: "PlayerNameTagType"
@@ -11,9 +11,9 @@ lsrpvn.pwn(1624) : èäåíòèôèêàòîð íå èñïîëüçóåòñÿ: "Ge
 Pawn compiler 3.2.3664	 	 	Copyright (c) 1997-2016, ITB CompuPhase
 
 Ðàçìåð çàãîëîâêà:	   51592 áàéò
-Ðàçìåð êîäà:		 7345188 áàéò
-Ðàçìåð äàííûõ:		164639088 áàéò
+Ðàçìåð êîäà:		 7345916 áàéò
+Ðàçìåð äàííûõ:		164639464 áàéò
 Ðàçìåð ñòýêà\êó÷è:	18000000 áàéò; Ïðèìåðíîå ìàêñ. èñïîëüçîâàíèå: Íåèçâåñòíî, èç-çà ðåêóðñèé
-Âñåãî òðåáóåòñÿ:	190035868 áàéò
+Âñåãî òðåáóåòñÿ:	190036972 áàéò
 
 Ãîòîâî.
