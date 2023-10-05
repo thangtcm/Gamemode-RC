@@ -720,6 +720,7 @@ Dialog:CRAFT_AMMO(playerid, response, listitem, inputtext[]) {
 }
 Dialog:CRAFT_WEAPON(playerid, response, listitem, inputtext[]) {
     if(response) {
+    	if(CraftWeaponDeal[playerid] != 0) return SendClientMessage(playerid, -1, "Vui long doi don hang truoc hoan tat.");
     	if(listitem == 0 ) {
     		if(Inventory_Count(playerid, "Sat") < 0) return SendClientMessage(playerid, -1, "Ban khong du so luong sat (60) (/inv de kiem tra).");
     		if(Inventory_Count(playerid, "Go") < 0) return SendClientMessage(playerid, -1, "Ban khong du so luong go (60) (/inv de kiem tra).");
