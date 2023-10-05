@@ -28,20 +28,72 @@ public HijackTruck(playerid, target, pVehicleId)
 	return 1;
 }
 
-stock RemoveMissionProduct(playerid, productId)
+stock MissionProduct_Update(playerid, productId, IsAdd = 0)
 {
     for(new i; i < MAX_PLAYERPRODUCT; i++)
     {
-        if(GetPVarInt(playerid, "MissionTruck") == 1)
+        if(IsAdd && PlayerTruckerData[playerid][MissionProduct][i] == -1)
         {
-            if(PlayerTruckerData[playerid][MissionProduct][i] == productId)
-            {
-                PlayerTruckerData[playerid][MissionProduct][i] = -1;
-                return 1;
-            }
+            PlayerTruckerData[playerid][MissionProduct][i] = productId;
+            return 1;
+        }
+        else if(PlayerTruckerData[playerid][MissionProduct][i] == productId && IsAdd == 0)
+        {
+            PlayerTruckerData[playerid][MissionProduct][i] = -1;
+            return 1;
         }
     }
     return -1;
+}
+
+stock FactoryInformation(playerid)
+{
+    new string[4096];
+    format(string, sizeof(string), "{FFFFFF}ID\t\tTen Nha May\t\tVi Tri\t\tMet");
+    new zone[MAX_ZONE_NAME],Float:Distance;
+    SetPVarInt(playerid, "IsPlayerSuggest", 0);
+    for(new i; i < sizeof(FactoryData); i++)
+    {
+        PlayerTruckerData[playerid][SuggestFactory][i] = i;
+        Distance = GetPlayerDistanceFromPoint(playerid, FactoryData[i][FactoryPos][0], FactoryData[i][FactoryPos][1], FactoryData[i][FactoryPos][2]);
+        Get3DZone(FactoryData[i][FactoryPos][0], FactoryData[i][FactoryPos][1], FactoryData[i][FactoryPos][2], zone, sizeof(zone));
+        format(string, sizeof(string),"%s\n%d\t\t%s\t\t%s\t\t%0.2f Met",string, i, FactoryData[i][FactoryName], zone, Distance);
+    }
+    Dialog_Show(playerid, DIALOG_LISTFACTORY ,DIALOG_STYLE_TABLIST_HEADERS, "Danh Sach Cac Nha May", string, "Xac nhan", "<");
+}
+
+stock FactorySuggest(playerid)
+{
+    new numFoundFactories = 0,
+        MaxFactiory = sizeof(FactoryData), MaxExport;
+    SetPVarInt(playerid, "IsPlayerSuggest", 1);
+    for (new i = 0; i < MaxFactiory; i++) {
+        MaxExport = strlen(FactoryData[i][ProductName]);
+        for (new j = 0; j < MaxExport; j++) {
+            if(IsProductValid(playerid, FactoryData[i][ProductName][j])) {
+                PlayerTruckerData[playerid][SuggestFactory][numFoundFactories++] = i;
+                break;
+            }
+        }
+    }
+    new str[1200], zone[MAX_ZONE_NAME],Float:Distance;
+    format(str, sizeof(str), "Ten Nha May\t\tVi Tri\t\tKhoang cach");
+    for(new i; i < numFoundFactories;i++)
+    {
+        Distance = GetPlayerDistanceFromPoint(playerid, FactoryData[PlayerTruckerData[playerid][SuggestFactory][i]][FactoryPos][0], FactoryData[PlayerTruckerData[playerid][SuggestFactory][i]][FactoryPos][1], FactoryData[PlayerTruckerData[playerid][SuggestFactory][i]][FactoryPos][2]);
+        Get3DZone(FactoryData[PlayerTruckerData[playerid][SuggestFactory][i]][FactoryPos][0], FactoryData[PlayerTruckerData[playerid][SuggestFactory][i]][FactoryPos][1], FactoryData[PlayerTruckerData[playerid][SuggestFactory][i]][FactoryPos][2], zone, sizeof(zone));
+        format(str, sizeof(str), "%s\n%s\t\t%s\t\t%0.2f Met", str, FactoryData[PlayerTruckerData[playerid][SuggestFactory][i]][FactoryName], zone, Distance);
+    }
+    Dialog_Show(playerid, DIALOG_LISTFACTORY, DIALOG_STYLE_TABLIST_HEADERS, "Cong viec Trucker", str, "Lua chon", "Huy bo");
+}
+
+stock IsProductImport(FactoryId, ProductId)
+{
+    for(new i; i < strlen(FactoryData[FactoryId][ProductImportName]); i++)
+    {
+        if(FactoryData[FactoryId][ProductImportName][i] == ProductId)   return true;
+    }
+    return false;
 }
 
 stock AttachProductToVehicle(playerid, vehicleid, Product, pVehicleId)
@@ -188,6 +240,7 @@ stock ClearTrucker(playerid)
 {
     DeletePVar(playerid, "MissionTruck");
     DeletePVar(playerid, "BUY_FactoryID");
+    DeletePVar(playerid, "MaxMissionTruck");
     DeletePVar(playerid, "CarryProductToCar");
     DeletePVar(playerid, "Sell_ProductID");
     DeletePVar(playerid, "Sell_ProductID2");

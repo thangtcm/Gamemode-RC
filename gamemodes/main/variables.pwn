@@ -1460,6 +1460,7 @@ new Loaded[MAX_PLAYERS];
 new ChatGoActor;
 new ActorNV;
 new TruckActor;
+new ActorFarmer;
 enum 	e_labeltypes
 {
 	Text3D: TYPE_KEYPAD,
