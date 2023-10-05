@@ -69,3 +69,19 @@
 [10/04/23 19:56:48] [WARNING] Unknown gateway event 'GUILD_MEMBERS_CHUNK'
 [10/04/23 20:04:30] [WARNING] Unknown gateway event 'GUILD_MEMBERS_CHUNK'
 [10/04/23 20:13:26] [ERROR] Error while retrieving HTTP POST response from '/api/v10/channels/1158001303033757716/messages': end of stream
+[10/04/23 20:52:24] [WARNING] Unknown gateway event 'GUILD_MEMBERS_CHUNK'
+[10/04/23 20:53:34] [ERROR] can't update guild member presence: user id "1158603058767466558" not cached
+[10/04/23 20:53:37] [ERROR] Can't write to Discord websocket gateway: The I/O operation has been aborted because of either a thread exit or an application request (995)
+[10/04/23 20:57:56] [WARNING] Unknown gateway event 'GUILD_MEMBERS_CHUNK'
+[10/04/23 21:08:50] [ERROR] Can't read from Discord websocket gateway: End of file (2)
+[10/04/23 21:08:50] [ERROR] Can't write to Discord websocket gateway: The I/O operation has been aborted because of either a thread exit or an application request (995)
+[10/04/23 21:20:03] [WARNING] Unknown gateway event 'CHANNEL_TOPIC_UPDATE'
+[10/04/23 21:20:03] [WARNING] Unknown gateway event 'VOICE_CHANNEL_STATUS_UPDATE'
+[10/04/23 21:25:42] [ERROR] Can't read from Discord websocket gateway: End of file (2)
+[10/04/23 21:25:42] [ERROR] Can't write to Discord websocket gateway: The I/O operation has been aborted because of either a thread exit or an application request (995)
+[10/04/23 21:40:41] [WARNING] Unknown gateway event 'CHANNEL_TOPIC_UPDATE'
+[10/04/23 21:40:41] [WARNING] Unknown gateway event 'VOICE_CHANNEL_STATUS_UPDATE'
+[10/04/23 21:45:16] [WARNING] Unknown gateway event 'CHANNEL_TOPIC_UPDATE'
+[10/04/23 21:45:16] [WARNING] Unknown gateway event 'VOICE_CHANNEL_STATUS_UPDATE'
+[10/05/23 15:00:17] [ERROR] Error while retrieving HTTP POST response from '/api/v10/channels/1158001303033757716/messages': end of stream
+[10/05/23 15:31:44] [ERROR] Error while retrieving HTTP POST response from '/api/v10/channels/1158001303033757716/messages': end of stream

@@ -1139,3 +1139,11 @@
 [10/04/23 05:08:07] [plugins/discord-connector] Can't write to Discord websocket gateway: The I/O operation has been aborted because of either a thread exit or an application request (995)
 [10/04/23 05:09:07] [plugins/discord-connector] Can't write to Discord websocket gateway: The I/O operation has been aborted because of either a thread exit or an application request (995)
 [10/04/23 20:13:26] [plugins/discord-connector] Error while retrieving HTTP POST response from '/api/v10/channels/1158001303033757716/messages': end of stream
+[10/04/23 20:53:34] [plugins/discord-connector] can't update guild member presence: user id "1158603058767466558" not cached
+[10/04/23 20:53:37] [plugins/discord-connector] Can't write to Discord websocket gateway: The I/O operation has been aborted because of either a thread exit or an application request (995)
+[10/04/23 21:08:50] [plugins/discord-connector] Can't read from Discord websocket gateway: End of file (2)
+[10/04/23 21:08:50] [plugins/discord-connector] Can't write to Discord websocket gateway: The I/O operation has been aborted because of either a thread exit or an application request (995)
+[10/04/23 21:25:42] [plugins/discord-connector] Can't read from Discord websocket gateway: End of file (2)
+[10/04/23 21:25:42] [plugins/discord-connector] Can't write to Discord websocket gateway: The I/O operation has been aborted because of either a thread exit or an application request (995)
+[10/05/23 15:00:17] [plugins/discord-connector] Error while retrieving HTTP POST response from '/api/v10/channels/1158001303033757716/messages': end of stream
+[10/05/23 15:31:44] [plugins/discord-connector] Error while retrieving HTTP POST response from '/api/v10/channels/1158001303033757716/messages': end of stream

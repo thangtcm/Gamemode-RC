@@ -68,7 +68,7 @@ Dialog:banda(playerid, response, listitem, inputtext[])
 		{
 			return Dialog_Show(playerid, banda, DIALOG_STYLE_INPUT, "Ban {a8a7a7}DA", "{8f0a03}Hay nhap so luong hop le !", "Ban", "Huy");
 		}
-		else if(!Inventory_HasItem(playerid, "Da", strval(inputtext)))
+		else if(Inventory_Count(playerid, "Da") < strval(inputtext))
 		{
 			return Dialog_Show(playerid, banda, DIALOG_STYLE_INPUT, "Ban {a8a7a7}DA", "{8f0a03}Ban da nhap nhieu hon so {a8a7a7}DA{8f0a03} ma ban co trong tui do !", "Ban", "Huy");
 		}
@@ -99,7 +99,7 @@ Dialog:bandong(playerid, response, listitem, inputtext[])
 		{
 			return Dialog_Show(playerid, bandong, DIALOG_STYLE_INPUT, "Ban {c96c02}DONG", "{8f0a03}Hay nhap so luong hop le !", "Ban", "Huy");
 		}
-		else if(!Inventory_HasItem(playerid, "Dong", strval(inputtext)))
+		else if(Inventory_Count(playerid, "Dong") < strval(inputtext))
 		{
 			return Dialog_Show(playerid, bandong, DIALOG_STYLE_INPUT, "Ban {c96c02}DONG", "{8f0a03}Ban da nhap nhieu hon so {c96c02}DONG{8f0a03} ma ban co trong tui do !", "Ban", "Huy");
 		}
@@ -130,7 +130,7 @@ Dialog:bansat(playerid, response, listitem, inputtext[])
 		{
 			return Dialog_Show(playerid, bansat, DIALOG_STYLE_INPUT, "Ban {5c5c5c}SAT", "{8f0a03}Hay nhap so luong hop le !", "Ban", "Huy");
 		}
-		else if(!Inventory_HasItem(playerid, "Sat", strval(inputtext)))
+		else if(Inventory_Count(playerid, "Sat") < strval(inputtext))
 		{
 			return Dialog_Show(playerid, bansat, DIALOG_STYLE_INPUT, "Ban {5c5c5c}SAT", "{8f0a03}Ban da nhap nhieu hon so {5c5c5c}SAT{8f0a03} ma ban co trong tui do !", "Ban", "Huy");
 		}
@@ -161,7 +161,7 @@ Dialog:banvang(playerid, response, listitem, inputtext[])
 		{
 			return Dialog_Show(playerid, banvang, DIALOG_STYLE_INPUT, "Ban {f7ff05}VANG", "{8f0a03}Hay nhap so luong hop le !", "Ban", "Huy");
 		}
-		else if(!Inventory_HasItem(playerid, "Vang", strval(inputtext)))
+		else if(Inventory_Count(playerid, "Vang") < strval(inputtext))
 		{
 			return Dialog_Show(playerid, banvang, DIALOG_STYLE_INPUT, "Ban {f7ff05}VANG", "{8f0a03}Ban da nhap nhieu hon so {f7ff05}VANG{8f0a03} ma ban co trong tui do !", "Ban", "Huy");
 		}
@@ -186,7 +186,7 @@ Dialog:muapickaxedialog(playerid, response, listitem, inputtext[])
 {
 	if(response)
 	{
-		if(Inventory_HasItem(playerid, "Pickaxe", 1)) return SendErrorMessage(playerid, "Ban da mua Pickaxe roi, hay di tim nhung khoang san de dao");
+		if(Inventory_Count(playerid, "Pickaxe") >= 1) return SendErrorMessage(playerid, "Ban da mua Pickaxe roi, hay di tim nhung khoang san de dao");
 		PlayerInfo[playerid][pCash] -= 500;
 		Inventory_Add(playerid, "Pickaxe", 1, 60);
 		SendClientMessage(playerid, COLOR_LIGHTRED, "SERVER: {ffffff}Ban da mua thanh cong Pickaxe, hay di tim khoang san de dao");

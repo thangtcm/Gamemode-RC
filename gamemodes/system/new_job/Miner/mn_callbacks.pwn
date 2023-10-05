@@ -29,7 +29,7 @@ hook OnPlayerKeyStateChange(playerid, newkeys, oldkeys)
 					{
 						if(GetPlayerSkin(playerid) == 27)
 						{
-							if(Inventory_HasItem(playerid, "Pickaxe", 1))
+							if(Inventory_Count(playerid, "Pickaxe") >= 1)
 							{
 								if(timerdc[playerid] == 0)
 								{

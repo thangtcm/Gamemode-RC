@@ -505,6 +505,52 @@ Dialog:DIALOG_USEAMMO5(playerid, response, listitem, inputtext[]) {
     }  
     return 1; 
 }
+Dialog:DIALOG_USEAMMO1AS(playerid, response, listitem, inputtext[]) {
+    if(response) {
+    	if(Inventory_Count(playerid, "Dan sung luc SAAS") < strval(inputtext)) return SendClientMessage(playerid, -1, "Ban khong du so luong dan sung luc (/inv de kiem tra).");
+    	UseAmmo(playerid,1,strval(inputtext));
+    	new pItemId = Inventory_GetItemID(playerid,"Dan sung luc SAAS");
+		Inventory_Remove(playerid, pItemId, strval(inputtext)); //ID cua InventoryData
+    } 
+    return 1;  
+}
+
+Dialog:DIALOG_USEAMMO2AS(playerid, response, listitem, inputtext[]) {
+    if(response) {
+    	if(Inventory_Count(playerid, "Dan shotgun SAAS") < strval(inputtext)) return SendClientMessage(playerid, -1, "Ban khong du so luong dan Shotgun (/inv de kiem tra).");
+    	UseAmmo(playerid,2,strval(inputtext));
+    	new pItemId = Inventory_GetItemID(playerid,"Dan shotgun SAAS");
+		Inventory_Remove(playerid, pItemId, strval(inputtext)); //ID cua InventoryData
+    }
+    return 1;   
+}
+Dialog:DIALOG_USEAMMO3AS(playerid, response, listitem, inputtext[]) {
+    if(response) {
+    	if(Inventory_Count(playerid, "Dan tieu lien SAAS") < strval(inputtext)) return SendClientMessage(playerid, -1, "Ban khong du so luong dan tieu lien (/inv de kiem tra).");
+    	UseAmmo(playerid,3,strval(inputtext));
+    	new pItemId = Inventory_GetItemID(playerid,"Dan tieu lien SAAS");
+		Inventory_Remove(playerid, pItemId, strval(inputtext)); //ID cua InventoryData
+    } 
+    return 1;  
+}
+Dialog:DIALOG_USEAMMO4AS(playerid, response, listitem, inputtext[]) {
+    if(response) {
+    	if(Inventory_Count(playerid, "Dan sung truong SAAS") < strval(inputtext)) return SendClientMessage(playerid, -1, "Ban khong du so luong Dan sung truong (/inv de kiem tra).");
+    	UseAmmo(playerid,4,strval(inputtext));
+    	new pItemId = Inventory_GetItemID(playerid,"Dan sung truong SAAS");
+		Inventory_Remove(playerid, pItemId, strval(inputtext)); //ID cua InventoryData
+    } 
+    return 1;  
+}
+Dialog:DIALOG_USEAMMO5AS(playerid, response, listitem, inputtext[]) {
+    if(response) {
+    	if(Inventory_Count(playerid, "Dan sniper SAAS") < strval(inputtext)) return SendClientMessage(playerid, -1, "Ban khong du so luong Dan sniper (/inv de kiem tra).");
+    	UseAmmo(playerid,5,strval(inputtext));
+    	new pItemId = Inventory_GetItemID(playerid,"Dan sniper SAAS");
+		Inventory_Remove(playerid, pItemId, strval(inputtext)); //ID cua InventoryData
+    }  
+    return 1; 
+}
 stock GetOderName(type) {
 	new type_name[50];
 	switch(type) {

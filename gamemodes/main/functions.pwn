@@ -1607,7 +1607,7 @@ GetXYInFrontOfPlayer(playerid, &Float:x, &Float:y, Float:distance)
     x += (distance * floatsin(-a, degrees));
     y += (distance * floatcos(-a, degrees));
 }
-/*
+
 GetXYBehindPlayer(playerid, &Float:x, &Float:y, Float:distance)
 {
     new Float:a;
@@ -1628,7 +1628,7 @@ GetXYInFrontOfVehicle(playerid, &Float:x, &Float:y, Float:distance)
     GetVehicleZAngle(playerid, a);
     x += (distance * floatsin(-a, degrees));
     y += (distance * floatcos(-a, degrees));
-}*/
+}
 
 IsInRangeOfPoint(Float: fPosX, Float: fPosY, Float: fPosZ, Float: fPosX2, Float: fPosY2, Float: fPosZ2, Float: fDist) {
     fPosX -= fPosX2;

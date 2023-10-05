@@ -1607,6 +1607,12 @@ public AUTH_TH(playerid) {
 CMD:bb(playerid, params[]) {
     return cmd_beanbag(playerid, params);
 }
+CMD:bp(playerid, params[]) {
+    return cmd_backup(playerid, params);
+}
+CMD:td(playerid, params[]) {
+    return cmd_backup(playerid, params);
+}
 CMD:tz(playerid, params[]) {
     return cmd_tazer(playerid, params);
 }

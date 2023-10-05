@@ -25332,12 +25332,52 @@ CMD:r(playerid, params[]) {
 					format(string, sizeof(string), "(radio) %s", params);
 					SetPlayerChatBubble(playerid, string, COLOR_WHITE, 15.0, 5000);
 					GetPlayerGroupInfo(playerid, rank, division, employer);
-					format(string, sizeof(string), "**[%s-%d] %s %s: %s **",division,PlayerInfo[playerid][pMaHieu1],PlayerInfo[playerid][pRankText], GetPlayerNameEx(playerid), params);
+					format(string, sizeof(string), "**[S1:Dispatch] [%d] %s %s: %s **",PlayerInfo[playerid][pMaHieu1],PlayerInfo[playerid][pRankText], GetPlayerNameEx(playerid), params);
 					foreach(new i: Player)
 					{
 						if(GetPVarInt(i, "togRadio") == 0)
 						{
 							if(PlayerInfo[i][pMember] == iGroupID && iRank >= arrGroupData[iGroupID][g_iRadioAccess]) {
+								SendClientMessageEx(i, arrGroupData[iGroupID][g_hRadioColour] * 256 + 255, string);
+							}
+							if(GetPVarInt(i, "BigEar") == 4 && GetPVarInt(i, "BigEarGroup") == iGroupID) {
+								new szBigEar[128];
+								format(szBigEar, sizeof(szBigEar), "(BE) %s", string);
+								SendClientMessageEx(i, arrGroupData[iGroupID][g_hRadioColour] * 256 + 255, szBigEar);
+							}
+						}
+					}
+				}
+				else return SendUsageMessage(playerid, " (/r)adio [radio chat]");
+			}
+			else return SendErrorMessage(playerid, " Kenh radio cua ban hien dang tatt, su dung /togradio de lien lac tro lai.");
+		}
+		else return SendErrorMessage(playerid, " Ban khong co quyen truy cap tan so radio nay.");
+	}
+	else return SendErrorMessage(playerid, " Ban khong o trong nhom.");
+	return 1;
+}
+CMD:r2(playerid, params[]) {
+
+	new
+		iGroupID = PlayerInfo[playerid][pMember],
+		iRank = PlayerInfo[playerid][pRank];
+
+	if (0 <= iGroupID < MAX_GROUPS) {
+ 		if (iRank >= arrGroupData[iGroupID][g_iRadioAccess]) {
+			if(GetPVarInt(playerid, "togRadio") == 0) {
+				if(!isnull(params))
+				{
+					new string[128], employer[GROUP_MAX_NAME_LEN], rank[GROUP_MAX_RANK_LEN], division[GROUP_MAX_DIV_LEN];
+					format(string, sizeof(string), "(radio) %s", params);
+					SetPlayerChatBubble(playerid, string, COLOR_WHITE, 15.0, 5000);
+					GetPlayerGroupInfo(playerid, rank, division, employer);
+					format(string, sizeof(string), "**[S2: %s] [%d] %s %s: %s **", division,PlayerInfo[playerid][pMaHieu1],PlayerInfo[playerid][pRankText], GetPlayerNameEx(playerid), params);
+					foreach(new i: Player)
+					{
+						if(GetPVarInt(i, "togRadio") == 0)
+						{
+							if(PlayerInfo[i][pMember] == iGroupID && iRank >= arrGroupData[iGroupID][g_iRadioAccess] && PlayerInfo[i][pDivision] == PlayerInfo[playerid][pDivision]) {
 								SendClientMessageEx(i, arrGroupData[iGroupID][g_hRadioColour] * 256 + 255, string);
 							}
 							if(GetPVarInt(i, "BigEar") == 4 && GetPVarInt(i, "BigEarGroup") == iGroupID) {
@@ -50813,7 +50853,7 @@ CMD:setranktext(playerid, params[])
 			SendClientMessage(playerid, -1, string);
 			format(string, sizeof(string), "ranktext cua ban da duoc %s dat thanh %s", GetPlayerNameEx(playerid), ranktext);
 			SendClientMessage(giveplayerid, -1, string);
-			format(PlayerInfo[playerid][pRankText], 64, ranktext);
+			format(PlayerInfo[giveplayerid][pRankText], 64, ranktext);
 			return 1;
 		}
 	}

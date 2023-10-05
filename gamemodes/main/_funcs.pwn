@@ -4280,12 +4280,12 @@ public OnPlayerKeyStateChange(playerid, newkeys, oldkeys)
 	if(newkeys & KEY_SECONDARY_ATTACK)
 	{
 	    new string[128];
-	    if(!GetPVarType(playerid, "Tackling")) {
+	    if(!GetPVarType(playerid, "Tackling"))	{
 	        if(GetPVarInt(playerid, "TackleMode") == 1 && GetPlayerTargetPlayer(playerid) != INVALID_PLAYER_ID && PlayerCuffed[GetPlayerTargetPlayer(playerid)] == 0 && ProxDetectorS(4.0, playerid, GetPlayerTargetPlayer(playerid)) && !IsPlayerNPC(GetPlayerTargetPlayer(playerid)))
 	        {
 		        if(GetPVarInt(playerid, "CopTackleCooldown") != 0)
 		        {
-		            format(string, sizeof(string), "Ban dang kiet suc! Phai doi %d giay de co the tiep tuc lai.", GetPVarInt(playerid, "CopTackleCooldown"));
+		            format(string, sizeof(string), "You are exhausted! It will be %d seconds before you can tackle again.", GetPVarInt(playerid, "CopTackleCooldown"));
 		            return SendClientMessageEx(playerid, COLOR_GRAD2, string);
 		        }
 	            if(PlayerInfo[GetPlayerTargetPlayer(playerid)][pAdmin] >= 2 && PlayerInfo[GetPlayerTargetPlayer(playerid)][pTogReports] != 1)
@@ -4293,13 +4293,46 @@ public OnPlayerKeyStateChange(playerid, newkeys, oldkeys)
 					SendClientMessageEx(playerid, COLOR_GRAD2, "Admins can not be tackled!");
 					return 1;
 				}
+				if(IsPlayerInAnyVehicle(GetPlayerTargetPlayer(playerid)))
+				{
+					return SendClientMessageEx(playerid, COLOR_GRAD2, "You cannot tackle someone who is in a vehicle!");
+				}
+				if(IsPlayerInAnyVehicle(playerid))
+				{
+					return SendClientMessageEx(playerid, COLOR_GRAD2, "You cannot tackle someone while in a vehicle!");
+				}
+				if(GetPVarType(GetPlayerTargetPlayer(playerid), "IsTackled"))
+				{
+					return SendClientMessageEx(playerid, COLOR_GRAD2, "That person has already been tackled, stand next to them to assist!");
+				}
+				if(GetPVarInt(GetPlayerTargetPlayer(playerid), "CantBeTackledCount") > 0)
+				{
+					format(string, sizeof(string), "That player cannot be tackled for another %d seconds.", GetPVarInt(GetPlayerTargetPlayer(playerid), "CantBeTackledCount"));
+		            return SendClientMessageEx(playerid, COLOR_GRAD2, string);
+				}
 				#if defined zombiemode
 				if(GetPVarInt(GetPlayerTargetPlayer(playerid), "pIsZombie"))
 				{
 				    SendClientMessageEx(playerid, COLOR_GRAD2, "Zombies can not be tackled!");
 					return 1;
 				}
-				#endif        
+				#endif
+	            new tacklechance = random(10);
+				switch(tacklechance)
+				{
+					case 0..6: //success
+					{
+					    TacklePlayer(playerid, GetPlayerTargetPlayer(playerid));
+					}
+					default: // fail
+					{
+						format(string, sizeof(string), "** %s leaps at %s attempting to tackle them but is not able.", GetPlayerNameEx(playerid), GetPlayerNameEx(GetPlayerTargetPlayer(playerid)));
+						ProxDetector(30.0, playerid, string, COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE);
+						TogglePlayerControllable(playerid, 0);
+						SetTimerEx("CopGetUp", 2500, 0, "i", playerid);
+						ApplyAnimation(playerid, "SWEET", "Sweet_injuredloop", 4.0, 1, 1, 1, 1, 0, 1);
+					}
+	            }
 	        }
 		}
 	}
@@ -9591,20 +9624,7 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 				}
 			    case 1:
 			    {
-           			new
-						szDialog[(32 + 8) * (MAX_GROUP_WEAPONS+1)];
-
-					for(new i = 0; i != MAX_GROUP_WEAPONS; ++i) {
-						if(arrGroupData[iGroupID][g_iLockerGuns][i]) {
-							format(szDialog, sizeof szDialog, "%s\n(%i) %s", szDialog, arrGroupData[iGroupID][g_iLockerGuns][i], Weapon_ReturnName(arrGroupData[iGroupID][g_iLockerGuns][i]));
-							if (arrGroupData[iGroupID][g_iLockerCostType] == 2) format(szDialog, sizeof szDialog, "%s    $%d", szDialog, arrGroupData[iGroupID][g_iLockerCost][i]);
-						}
-						else strcat(szDialog, "\n(empty)");
-					}
-					strcat(szDialog, "\nAccessories");
-			        format(string, sizeof(string), "%s Weapon Locker", arrGroupData[iGroupID][g_szGroupName]);
-			    	ShowPlayerDialog(playerid, G_LOCKER_EQUIPMENT, DIALOG_STYLE_LIST, string, szDialog, "Chon", "Huy bo");
-
+			    	SendErrorMessage(playerid, " Tinh nang bi vo hieu hoa");
 			    }	   
 			    case 2:
 			    {
