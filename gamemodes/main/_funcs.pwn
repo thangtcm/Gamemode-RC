@@ -9557,7 +9557,7 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 						}
 						if(arrGroupData[iGroupID][g_iLockerStock] > 1 && arrGroupData[iGroupID][g_iLockerCostType] == 0)
 						{
-							SetPlayerArmor(playerid, 100);
+							SetPlayerArmor(playerid, 50);
 							arrGroupData[iGroupID][g_iLockerStock] -= 1;
 							new str[128], file[32];
 			                format(str, sizeof(str), "%s took a vest out of the %s locker at a cost of 1 HG Material.", GetPlayerNameEx(playerid), arrGroupData[iGroupID][g_szGroupName]);
@@ -9568,7 +9568,7 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 						}
 						else if(arrGroupData[iGroupID][g_iLockerCostType] != 0)
 						{
-						    SetPlayerArmor(playerid, 100.0);
+						    SetPlayerArmor(playerid, 50.0);
 						}
 						else
 						{
@@ -9622,7 +9622,7 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 			    {
 			        if(arrGroupData[iGroupID][g_iLockerStock] > 1 && arrGroupData[iGroupID][g_iLockerCostType] == 0)
 					{
-						SetPlayerArmor(playerid, 100);
+						SetPlayerArmor(playerid, 50);
 						SetPlayerHealth(playerid, 100.0);
 						arrGroupData[iGroupID][g_iLockerStock] -= 1;
 						new str[128], file[32];
@@ -9636,7 +9636,7 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 					{
 					    if(arrGroupData[iGroupID][g_iBudget] > 2500)
 					    {
-							SetPlayerArmor(playerid, 100);
+							SetPlayerArmor(playerid, 50);
 							SetPlayerHealth(playerid, 100.0);
 							arrGroupData[iGroupID][g_iBudget] -= 2500;
 							new str[128], file[32];
@@ -9652,7 +9652,7 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 					{
 					    if(GetPlayerCash(playerid) > 2500)
 					    {
-							SetPlayerArmor(playerid, 100);
+							SetPlayerArmor(playerid, 50);
 							SetPlayerHealth(playerid, 100.0);
 							GivePlayerCash(playerid, -2500);
 							new str[128], file[32];
@@ -24808,32 +24808,32 @@ Dialog:AmmoCop(playerid, response, listitem, inputtext[])
 		{
 			case 0:
 			{
-				format(wepget, sizeof(wepget), "Đạn súng lục");
-				Inventory_Add(playerid, "Dan sung luc SAAS");
+				format(wepget, sizeof(wepget), "30 Đạn súng lục");
+				Inventory_Add(playerid, "Dan sung luc SAAS", 30);
 				SendClientTextDraw(playerid, "Ban da lay mot bang dan Sung Luc.~n~~r~Neu lay nham, bat buoc phai tra lai cho leader.");
 			}
 			case 1:
 			{
-				format(wepget, sizeof(wepget), "Đạn shotgun");
-				Inventory_Add(playerid, "Dan shotgun SAAS");
+				format(wepget, sizeof(wepget), "30 Đạn shotgun");
+				Inventory_Add(playerid, "Dan shotgun SAAS", 30);
 				SendClientTextDraw(playerid, "Ban da lay mot bang dan Sung Shotgun.~n~~r~Neu lay nham, bat buoc phai tra lai cho leader.");
 			}
 			case 2:
 			{
-				format(wepget, sizeof(wepget), "Đạn tiểu liên");
-				Inventory_Add(playerid, "Dan tieu lien SAAS");
+				format(wepget, sizeof(wepget), "30 Đạn tiểu liên");
+				Inventory_Add(playerid, "Dan tieu lien SAAS", 30);
 				SendClientTextDraw(playerid, "Ban da lay mot bang dan Sung Tieu Lien.~n~~r~Neu lay nham, bat buoc phai tra lai cho leader.");
 			}
 			case 3:
 			{
-				format(wepget, sizeof(wepget), "Đạn súng trường");
-				Inventory_Add(playerid, "Dan sung truong SAAS");
+				format(wepget, sizeof(wepget), "30 Đạn súng trường");
+				Inventory_Add(playerid, "Dan sung truong SAAS", 30);
 				SendClientTextDraw(playerid, "Ban da lay mot bang dan Sung Truong.~n~~r~Neu lay nham, bat buoc phai tra lai cho leader.");
 			}
 			case 4:
 			{
-				format(wepget, sizeof(wepget), "Đạn Sniper");
-				Inventory_Add(playerid, "Dan sniper SAAS");
+				format(wepget, sizeof(wepget), "30 Đạn Sniper");
+				Inventory_Add(playerid, "Dan sniper SAAS", 30);
 				SendClientTextDraw(playerid, "Ban da lay mot bang dan Sung Sniper.~n~~r~Neu lay nham, bat buoc phai tra lai cho leader.");
 			}
 		}

@@ -45,17 +45,20 @@
 #include "./system/haha.pwn"
 #include "./system/danhba.pwn"
 #include "./system/driver_test.pwn"
-#include "./system/weapon/ammo.pwn"
+
 #include "./system/register_char.pwn"
 #include "./main/discord-bot.pwn"
 // Doi, no, suc khoe
 #include "./system/playerstatus.pwn"
 
 #include "./system/vehicle/vehicle_info.pwn"
-
+#include "./system/inventory/inventory.pwn"
+#include "./system/weapon/ammo.pwn"
+#include "./system/drug/drug.pwn"
 #include "./main/functions.pwn"
 
-#include "./system/inventory/inventory.pwn"
+
+
 #include "./system/speedo.pwn"
 #include "./system/gps_system.pwn"
 
@@ -77,7 +80,7 @@
 #include "./main/mysql.pwn"
 //#include "./system/login.pwn"
 //#include "./system/register.pwn"
-#include "./system/drug/drug.pwn"
+
 #include "./system/new_job/Trucking/textdrawanim.pwn"
 #include "./system/new_job/Trucking/main.pwn"
 #include "./system/new_job/Trucking/tutorial.pwn"

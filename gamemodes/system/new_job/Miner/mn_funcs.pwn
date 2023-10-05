@@ -46,11 +46,11 @@ Dialog:thuksdialog(playerid, response, listitem, inputtext[])
 			}
 			case 2:
 			{
-				Dialog_Show(playerid, bandong, DIALOG_STYLE_INPUT, "Ban {5c5c5c}SAT", "{ffffff}Hay nhap so luong ma ban muon ban", "Ban", "Huy");
+				Dialog_Show(playerid, bansat, DIALOG_STYLE_INPUT, "Ban {5c5c5c}SAT", "{ffffff}Hay nhap so luong ma ban muon ban", "Ban", "Huy");
 			}
 			case 3:
 			{
-				Dialog_Show(playerid, bandong, DIALOG_STYLE_INPUT, "Ban {f7ff05}VANG", "{ffffff}Hay nhap so luong ma ban muon ban", "Ban", "Huy");
+				Dialog_Show(playerid, banvang, DIALOG_STYLE_INPUT, "Ban {f7ff05}VANG", "{ffffff}Hay nhap so luong ma ban muon ban", "Ban", "Huy");
 			}
 		}
 	}
@@ -155,15 +155,15 @@ Dialog:banvang(playerid, response, listitem, inputtext[])
 	{
 		if(isnull(inputtext))
 		{
-			return Dialog_Show(playerid, bansat, DIALOG_STYLE_INPUT, "Ban {f7ff05}VANG", "{8f0a03}Hay nhap so luong hop le !", "Ban", "Huy");
+			return Dialog_Show(playerid, banvang, DIALOG_STYLE_INPUT, "Ban {f7ff05}VANG", "{8f0a03}Hay nhap so luong hop le !", "Ban", "Huy");
 		}
 		else if(strval(inputtext) < 1)
 		{
-			return Dialog_Show(playerid, bansat, DIALOG_STYLE_INPUT, "Ban {f7ff05}VANG", "{8f0a03}Hay nhap so luong hop le !", "Ban", "Huy");
+			return Dialog_Show(playerid, banvang, DIALOG_STYLE_INPUT, "Ban {f7ff05}VANG", "{8f0a03}Hay nhap so luong hop le !", "Ban", "Huy");
 		}
 		else if(!Inventory_HasItem(playerid, "Vang", strval(inputtext)))
 		{
-			return Dialog_Show(playerid, bansat, DIALOG_STYLE_INPUT, "Ban {f7ff05}VANG", "{8f0a03}Ban da nhap nhieu hon so {f7ff05}VANG{8f0a03} ma ban co trong tui do !", "Ban", "Huy");
+			return Dialog_Show(playerid, banvang, DIALOG_STYLE_INPUT, "Ban {f7ff05}VANG", "{8f0a03}Ban da nhap nhieu hon so {f7ff05}VANG{8f0a03} ma ban co trong tui do !", "Ban", "Huy");
 		}
 		else
 		{
@@ -186,13 +186,10 @@ Dialog:muapickaxedialog(playerid, response, listitem, inputtext[])
 {
 	if(response)
 	{
-		if(!Inventory_HasItem(playerid, "Pickaxe"))
-		{
-			PlayerInfo[playerid][pCash] -= 500;
-			Inventory_Add(playerid, "Pickaxe", 1, 60);
-			SendClientMessage(playerid, COLOR_LIGHTRED, "SERVER: {ffffff}Ban da mua thanh cong Pickaxe, hay di tim khoang san de dao");
-		}
-		else return SendErrorMessage(playerid, "Ban da mua Pickaxe roi, hay di tim nhung khoang san de dao");
+		if(Inventory_HasItem(playerid, "Pickaxe", 1)) return SendErrorMessage(playerid, "Ban da mua Pickaxe roi, hay di tim nhung khoang san de dao");
+		PlayerInfo[playerid][pCash] -= 500;
+		Inventory_Add(playerid, "Pickaxe", 1, 60);
+		SendClientMessage(playerid, COLOR_LIGHTRED, "SERVER: {ffffff}Ban da mua thanh cong Pickaxe, hay di tim khoang san de dao");
 	}
 	return 1;
 }
