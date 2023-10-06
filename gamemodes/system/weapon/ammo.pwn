@@ -860,9 +860,7 @@ Dialog:CRAFT_WEAPON(playerid, response, listitem, inputtext[]) {
     return 1; 
 }
 
-hook OnGameModeInit() {\
-	CreateDynamicPickup(1239, 23, 2306.409179 ,-1569.672607, 1051.562988, -1); // Drug Smuggler Job (TR)
-	CreateDynamic3DTextLabel("{FF0000} DRUG LAB \n{FFFFFF}(( BAM Y de mua chat hoa hoc.))", COLOR_WHITE, 2306.409179 ,-1569.672607, 1051.562988 + 0.5, 10.0);// Actor Trucker
+hook OnGameModeInit() {
 
 	 
 }
