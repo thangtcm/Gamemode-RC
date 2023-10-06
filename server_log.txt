@@ -1761,3 +1761,880 @@ Description: Unknown column 'TimeCraft' in 'field list' (index 0). Query:
 [16:37:34] [dbg:raknet:free] : module released
 [16:37:34] [sv:dbg:network:free] : module releasing...
 [16:37:34] [sv:dbg:network:free] : module released
+
+----------
+Loaded log file: "server_log.txt".
+----------
+
+SA-MP Dedicated Server
+----------------------
+v0.3.DL-R1, (C)2005-2018 SA-MP Team
+
+[18:11:07] password = ""  (string)
+[18:11:07] 
+[18:11:07] Server Plugins
+[18:11:07] --------------
+[18:11:07]  Loading plugin: mysql
+[18:11:07]  >> plugin.mysql: R33 successfully loaded.
+[18:11:07]   Loaded.
+[18:11:07]  Loading plugin: sscanf
+[18:11:07] 
+
+[18:11:07]  ===============================
+
+[18:11:07]       sscanf plugin loaded.     
+
+[18:11:07]          Version:  2.8.1        
+
+[18:11:07]    (c) 2012 Alex "Y_Less" Cole  
+
+[18:11:07]  ===============================
+
+[18:11:07]   Loaded.
+[18:11:07]  Loading plugin: whirlpool
+[18:11:07]  
+[18:11:07]  ==================
+[18:11:07]  
+[18:11:07]   Whirlpool loaded
+[18:11:07]  
+[18:11:07]  ==================
+[18:11:07]  
+[18:11:07]   Loaded.
+[18:11:07]  Loading plugin: crashdetect
+[18:11:07]   CrashDetect plugin 4.19.4
+[18:11:07]   Loaded.
+[18:11:07]  Loading plugin: sampvoice
+[18:11:07] [sv:dbg:network:init] : module initializing...
+[18:11:07] [dbg:raknet:init] : module initializing...
+[18:11:07] [dbg:raknet:init] : module initialized
+[18:11:07] [sv:dbg:network:init] : module initialized
+[18:11:07] [sv:dbg:main:Load] : creating 8 work threads...
+[18:11:07]  -------------------------------------------    
+[18:11:07]    ___                __   __    _              
+[18:11:07]   / __| __ _ _ __  _ _\ \ / /__ (_) __ ___    
+[18:11:07]   \__ \/ _` | '  \| '_ \   / _ \| |/ _/ -_)
+[18:11:07]   |___/\__,_|_|_|_| .__/\_/\___/|_|\__\___|
+[18:11:07]                   |_|                           
+[18:11:07]  -------------------------------------------    
+[18:11:07]            SampVoice by MOR loaded              
+[18:11:07]  -------------------------------------------    
+[18:11:07]   Loaded.
+[18:11:07]  Loading plugin: samp-compat.dll
+[18:11:07]   -- samp-compat for 0.3.DL-R1 initialized
+[18:11:07]   Loaded.
+[18:11:07]  Loading plugin: streamer
+[18:11:07] 
+
+*** Streamer Plugin v2.9.5 by Incognito loaded ***
+
+[18:11:07]   Loaded.
+[18:11:07]  Loading plugin: server
+[18:11:07]   Loaded.
+[18:11:07]  Loading plugin: TDE
+[18:11:07] 
+TDEditor Plugin loaded, thank you for using.
+
+[18:11:07]   Loaded.
+[18:11:07]  Loading plugin: YSF_DL
+[18:11:07] 
+[18:11:07]  ==============================================
+[18:11:07]  YSF 2.2 (compiled Sep 19 2021 13:02:34) loaded
+[18:11:07]   (c) 2008 Alex "Y_Less" Cole
+[18:11:07]   (c) 2010 - 2018 kurta999
+[18:11:07]   (c) 2018 - 2020 IllidanS4
+[18:11:07]  Server version: 0.3.DL R1, Windows
+[18:11:07]  ==============================================
+[18:11:07] 
+[18:11:07]   Loaded.
+[18:11:07]  Loading plugin: discord-connector
+[18:11:11]  >> discord-connector: afb7e3b successfully loaded.
+[18:11:11]   Loaded.
+[18:11:11]  Loaded 11 plugins.
+
+[18:11:11] [artwork:crc] bp.dff CRC = 0xA2B03FFB
+[18:11:11] [artwork:crc] bp.txd CRC = 0x28E0706E
+[18:11:11] [artwork:crc] object.dff CRC = 0xDCFCC14C
+[18:11:11] [artwork:crc] speedo.txd CRC = 0x62C7BCBC
+[18:11:11] [artwork:crc] object.dff CRC = 0xDCFCC14C
+[18:11:11] [artwork:crc] login.txd CRC = 0x54694AE4
+[18:11:11] [artwork:crc] object.dff CRC = 0xDCFCC14C
+[18:11:11] [artwork:crc] character.txd CRC = 0xC1BABE5F
+[18:11:11] [artwork:crc] object.dff CRC = 0xDCFCC14C
+[18:11:11] [artwork:crc] speedo.txd CRC = 0x62C7BCBC
+[18:11:11] [artwork:crc] object.dff CRC = 0xDCFCC14C
+[18:11:11] [artwork:crc] newinv.txd CRC = 0xC5F22638
+[18:11:11] [artwork:crc] object.dff CRC = 0xDCFCC14C
+[18:11:11] [artwork:crc] character.txd CRC = 0xC1BABE5F
+[18:11:12] [artwork:crc] object.dff CRC = 0xDCFCC14C
+[18:11:12] [artwork:crc] inventory.txd CRC = 0xC5298AB1
+[18:11:12] 
+[18:11:12] Filterscripts
+[18:11:12] ---------------
+[18:11:12]   Loading filterscript 'RCRPMap.amx'...
+[18:11:12] [sv:dbg:main:AmxLoad] : net game pointer (value:05BE0048) received
+[18:11:12] [sv:dbg:network:bind] : voice server running on port 51875
+[18:11:12]   Loading filterscript 'MAP.amx'...
+[18:11:12]   Loading filterscript 'cbug.amx'...
+[18:11:12]   Loaded 3 filterscripts.
+
+[18:11:12]  
+[18:11:12]  ======================================= 
+[18:11:12]  |                                     | 
+[18:11:12]  |        YSI version 3.01.0002        | 
+[18:11:12]  |        By Alex "Y_Less" Cole        | 
+[18:11:12]  |                                     | 
+[18:11:12]  ======================================= 
+[18:11:12]  
+[18:11:12] Chuong trinh may chu dang duoc khoi dong, vui long cho doi....
+[18:11:12] [MySQL] (Main Pipelines) Connecting to localhost...
+[18:11:12] [MySQL] (MainPipeline) Fatal Error! Could not connect to MySQL: Host localhost - DB: gta - User: root
+[18:11:12] [MySQL] Note: Make sure that you have provided the correct connection credentials.
+[18:11:12] [MySQL] Error number: 1045
+[18:11:12] [Dynamic Giftbox] Loading the Dynamic Giftbox...
+[18:11:12] [LoadCrates] Load Query Sent
+[18:11:12] [LoadHouses] Loading data from database...
+[18:11:12] [LoadDynamicDoors] Loading data from database...
+[18:11:12] [LoadDynamicMapIcons] Loading data from database...
+[18:11:12] [LoadMailboxes] Loading data from database...
+[18:11:12] [LoadBusinesses] Loading data from database...
+[18:11:12] [LoadAuctions] Loading data from database...
+[18:11:12] [LoadTxtLabels] Loading data from database...
+[18:11:12] [LoadPlants] Loading data from database...
+[18:11:12] [SpeedCameras] Loading data from database...
+[18:11:12] [LoadPayNSprays] Loading data from database...
+[18:11:12] [LoadArrestPoints] Loading data from database...
+[18:11:12] [LoadImpoundPoints] Loading data from database...
+[18:11:12] [LoadBusinessSales] Loading data from database...
+[18:11:12] [LoadPaintballArenas] 10 paintball loaded.
+[18:11:12] [LoadEventPoints] 0 event points loaded.
+[18:11:12] [LoadGates] Loading data from database...
+[18:11:12] [LoadElevatorStuff] 20 floors loaded.
+[18:11:12] [LoadFamilies] Dang tai du lieu tu database...
+[18:11:12] [LoadFamilyPoints] Loading Family Points from the database, please wait...
+[18:11:12] [MiscLoad] Misc Loaded
+[18:11:12] Resetting news...
+[18:11:12] Resetting default server variables..
+[18:11:12] Adjusted the server time...
+[18:11:12] [Streamer] Loading Dynamic Static Vehicles...
+[18:11:12] [Streamer] Dynamic Static Vehicles has been loaded.
+[18:11:12] [Streamer] Loading Dynamic Pickups...
+[18:11:12] [Streamer] Dynamic Pickups has been loaded.
+[18:11:12] [Streamer] Loading 3D Text Labels...
+[18:11:12] [Streamer] Dynamic 3D Text Labels has been loaded.
+[18:11:12] [Streamer] Loading Dynamic Buttons...
+[18:11:12] [Streamer] Dynamic Buttons has been loaded.
+[18:11:12] [Streamer] Loading Dynamic Objects...
+[18:11:12] [Streamer] Dynamic Objects has been loaded.
+[18:11:12] [Textdraws] Loading Textdraws...
+[18:11:12] [Textdraws] Loaded textdraws.
+[18:11:12] [Dynamic Groups] Loading Dynamic Groups...
+[18:11:12] [Dynamic Groups] Loading Dynamic Groups Vehicles...
+[18:11:12] Da chay thanh cong gamemode...
+[18:11:12] Number of vehicle models: 20
+[18:11:12] --- Server Shutting Down.
+[18:11:12] plugin.mysql: Unloading plugin...
+[18:11:17] plugin.mysql: Plugin unloaded.
+[18:11:17] 
+
+[18:11:17]  ===============================
+
+[18:11:17]      sscanf plugin unloaded.    
+
+[18:11:17]  ===============================
+
+[18:11:17]  
+[18:11:17]  ====================
+[18:11:17]  
+[18:11:17]   Whirlpool unloaded
+[18:11:17]  
+[18:11:17]  ====================
+[18:11:17]  
+[18:11:17]  -------------------------------------------
+[18:11:17]            SampVoice unloading...           
+[18:11:17]  -------------------------------------------
+[18:11:17] [dbg:raknet:free] : module releasing...
+
+----------
+Loaded log file: "server_log.txt".
+----------
+
+SA-MP Dedicated Server
+----------------------
+v0.3.DL-R1, (C)2005-2018 SA-MP Team
+
+[18:26:56] password = ""  (string)
+[18:26:56] 
+[18:26:56] Server Plugins
+[18:26:56] --------------
+[18:26:56]  Loading plugin: mysql
+[18:26:56]  >> plugin.mysql: R33 successfully loaded.
+[18:26:56]   Loaded.
+[18:26:56]  Loading plugin: sscanf
+[18:26:56] 
+
+[18:26:56]  ===============================
+
+[18:26:56]       sscanf plugin loaded.     
+
+[18:26:56]          Version:  2.8.1        
+
+[18:26:56]    (c) 2012 Alex "Y_Less" Cole  
+
+[18:26:56]  ===============================
+
+[18:26:56]   Loaded.
+[18:26:56]  Loading plugin: whirlpool
+[18:26:56]  
+[18:26:56]  ==================
+[18:26:56]  
+[18:26:56]   Whirlpool loaded
+[18:26:56]  
+[18:26:56]  ==================
+[18:26:56]  
+[18:26:56]   Loaded.
+[18:26:56]  Loading plugin: crashdetect
+[18:26:56]   CrashDetect plugin 4.19.4
+[18:26:56]   Loaded.
+[18:26:56]  Loading plugin: sampvoice
+[18:26:56] [sv:dbg:network:init] : module initializing...
+[18:26:56] [dbg:raknet:init] : module initializing...
+[18:26:56] [dbg:raknet:init] : module initialized
+[18:26:56] [sv:dbg:network:init] : module initialized
+[18:26:56] [sv:dbg:main:Load] : creating 8 work threads...
+[18:26:56]  -------------------------------------------    
+[18:26:56]    ___                __   __    _              
+[18:26:56]   / __| __ _ _ __  _ _\ \ / /__ (_) __ ___    
+[18:26:56]   \__ \/ _` | '  \| '_ \   / _ \| |/ _/ -_)
+[18:26:56]   |___/\__,_|_|_|_| .__/\_/\___/|_|\__\___|
+[18:26:56]                   |_|                           
+[18:26:56]  -------------------------------------------    
+[18:26:56]            SampVoice by MOR loaded              
+[18:26:56]  -------------------------------------------    
+[18:26:56]   Loaded.
+[18:26:56]  Loading plugin: samp-compat.dll
+[18:26:56]   -- samp-compat for 0.3.DL-R1 initialized
+[18:26:56]   Loaded.
+[18:26:56]  Loading plugin: streamer
+[18:26:56] 
+
+*** Streamer Plugin v2.9.5 by Incognito loaded ***
+
+[18:26:56]   Loaded.
+[18:26:56]  Loading plugin: server
+[18:26:56]   Loaded.
+[18:26:56]  Loading plugin: TDE
+[18:26:56] 
+TDEditor Plugin loaded, thank you for using.
+
+[18:26:56]   Loaded.
+[18:26:56]  Loading plugin: YSF_DL
+[18:26:56] 
+[18:26:57]  ==============================================
+[18:26:57]  YSF 2.2 (compiled Sep 19 2021 13:02:34) loaded
+[18:26:57]   (c) 2008 Alex "Y_Less" Cole
+[18:26:57]   (c) 2010 - 2018 kurta999
+[18:26:57]   (c) 2018 - 2020 IllidanS4
+[18:26:57]  Server version: 0.3.DL R1, Windows
+[18:26:57]  ==============================================
+[18:26:57] 
+[18:26:57]   Loaded.
+[18:26:57]  Loading plugin: discord-connector
+[18:27:01]  >> discord-connector: afb7e3b successfully loaded.
+[18:27:01]   Loaded.
+[18:27:01]  Loaded 11 plugins.
+
+[18:27:01] [artwork:crc] bp.dff CRC = 0xA2B03FFB
+[18:27:01] [artwork:crc] bp.txd CRC = 0x28E0706E
+[18:27:01] [artwork:crc] object.dff CRC = 0xDCFCC14C
+[18:27:01] [artwork:crc] speedo.txd CRC = 0x62C7BCBC
+[18:27:01] [artwork:crc] object.dff CRC = 0xDCFCC14C
+[18:27:01] [artwork:crc] login.txd CRC = 0x54694AE4
+[18:27:01] [artwork:crc] object.dff CRC = 0xDCFCC14C
+[18:27:01] [artwork:crc] character.txd CRC = 0xC1BABE5F
+[18:27:01] [artwork:crc] object.dff CRC = 0xDCFCC14C
+[18:27:01] [artwork:crc] speedo.txd CRC = 0x62C7BCBC
+[18:27:01] [artwork:crc] object.dff CRC = 0xDCFCC14C
+[18:27:01] [artwork:crc] newinv.txd CRC = 0xC5F22638
+[18:27:01] [artwork:crc] object.dff CRC = 0xDCFCC14C
+[18:27:01] [artwork:crc] character.txd CRC = 0xC1BABE5F
+[18:27:01] [artwork:crc] object.dff CRC = 0xDCFCC14C
+[18:27:02] [artwork:crc] inventory.txd CRC = 0xC5298AB1
+[18:27:02] 
+[18:27:02] Filterscripts
+[18:27:02] ---------------
+[18:27:02]   Loading filterscript 'RCRPMap.amx'...
+[18:27:02] [sv:dbg:main:AmxLoad] : net game pointer (value:05BF0048) received
+[18:27:02] [sv:dbg:network:bind] : voice server running on port 55237
+[18:27:02]   Loading filterscript 'MAP.amx'...
+[18:27:02]   Loading filterscript 'cbug.amx'...
+[18:27:02]   Loaded 3 filterscripts.
+
+[18:27:02]  
+[18:27:02]  ======================================= 
+[18:27:02]  |                                     | 
+[18:27:02]  |        YSI version 3.01.0002        | 
+[18:27:02]  |        By Alex "Y_Less" Cole        | 
+[18:27:02]  |                                     | 
+[18:27:02]  ======================================= 
+[18:27:02]  
+[18:27:02] Chuong trinh may chu dang duoc khoi dong, vui long cho doi....
+[18:27:02] [MySQL] (Main Pipelines) Connecting to localhost...
+[18:27:02] [MySQL] (MainPipeline) Fatal Error! Could not connect to MySQL: Host localhost - DB: gta - User: root
+[18:27:02] [MySQL] Note: Make sure that you have provided the correct connection credentials.
+[18:27:02] [MySQL] Error number: 1045
+[18:27:02] [Dynamic Giftbox] Loading the Dynamic Giftbox...
+[18:27:02] [LoadCrates] Load Query Sent
+[18:27:02] [LoadHouses] Loading data from database...
+[18:27:02] [LoadDynamicDoors] Loading data from database...
+[18:27:02] [LoadDynamicMapIcons] Loading data from database...
+[18:27:02] [LoadMailboxes] Loading data from database...
+[18:27:02] [LoadBusinesses] Loading data from database...
+[18:27:02] [LoadAuctions] Loading data from database...
+[18:27:02] [LoadTxtLabels] Loading data from database...
+[18:27:02] [LoadPlants] Loading data from database...
+[18:27:02] [SpeedCameras] Loading data from database...
+[18:27:02] [LoadPayNSprays] Loading data from database...
+[18:27:02] [LoadArrestPoints] Loading data from database...
+[18:27:02] [LoadImpoundPoints] Loading data from database...
+[18:27:02] [LoadBusinessSales] Loading data from database...
+[18:27:02] [LoadPaintballArenas] 10 paintball loaded.
+[18:27:02] [LoadEventPoints] 0 event points loaded.
+[18:27:02] [LoadGates] Loading data from database...
+[18:27:02] [LoadElevatorStuff] 20 floors loaded.
+[18:27:02] [LoadFamilies] Dang tai du lieu tu database...
+[18:27:02] [LoadFamilyPoints] Loading Family Points from the database, please wait...
+[18:27:02] [MiscLoad] Misc Loaded
+[18:27:02] Resetting news...
+[18:27:02] Resetting default server variables..
+[18:27:02] Adjusted the server time...
+[18:27:02] [Streamer] Loading Dynamic Static Vehicles...
+[18:27:02] [Streamer] Dynamic Static Vehicles has been loaded.
+[18:27:02] [Streamer] Loading Dynamic Pickups...
+[18:27:02] [Streamer] Dynamic Pickups has been loaded.
+[18:27:02] [Streamer] Loading 3D Text Labels...
+[18:27:02] [Streamer] Dynamic 3D Text Labels has been loaded.
+[18:27:02] [Streamer] Loading Dynamic Buttons...
+[18:27:02] [Streamer] Dynamic Buttons has been loaded.
+[18:27:02] [Streamer] Loading Dynamic Objects...
+[18:27:02] [Streamer] Dynamic Objects has been loaded.
+[18:27:02] [Textdraws] Loading Textdraws...
+[18:27:02] [Textdraws] Loaded textdraws.
+[18:27:02] [Dynamic Groups] Loading Dynamic Groups...
+[18:27:02] [Dynamic Groups] Loading Dynamic Groups Vehicles...
+[18:27:02] Da chay thanh cong gamemode...
+[18:27:02] Number of vehicle models: 20
+[18:27:02] --- Server Shutting Down.
+[18:27:02] plugin.mysql: Unloading plugin...
+[18:27:07] plugin.mysql: Plugin unloaded.
+[18:27:07] 
+
+[18:27:07]  ===============================
+
+[18:27:07]      sscanf plugin unloaded.    
+
+[18:27:07]  ===============================
+
+[18:27:07]  
+[18:27:07]  ====================
+[18:27:07]  
+[18:27:07]   Whirlpool unloaded
+[18:27:07]  
+[18:27:07]  ====================
+[18:27:07]  
+[18:27:07]  -------------------------------------------
+[18:27:07]            SampVoice unloading...           
+[18:27:07]  -------------------------------------------
+[18:27:07] [dbg:raknet:free] : module releasing...
+
+----------
+Loaded log file: "server_log.txt".
+----------
+
+SA-MP Dedicated Server
+----------------------
+v0.3.DL-R1, (C)2005-2018 SA-MP Team
+
+[18:29:59] password = ""  (string)
+[18:29:59] 
+[18:29:59] Server Plugins
+[18:29:59] --------------
+[18:29:59]  Loading plugin: mysql
+[18:29:59]  >> plugin.mysql: R33 successfully loaded.
+[18:29:59]   Loaded.
+[18:29:59]  Loading plugin: sscanf
+[18:29:59] 
+
+[18:29:59]  ===============================
+
+[18:29:59]       sscanf plugin loaded.     
+
+[18:29:59]          Version:  2.8.1        
+
+[18:29:59]    (c) 2012 Alex "Y_Less" Cole  
+
+[18:29:59]  ===============================
+
+[18:29:59]   Loaded.
+[18:29:59]  Loading plugin: whirlpool
+[18:29:59]  
+[18:29:59]  ==================
+[18:29:59]  
+[18:29:59]   Whirlpool loaded
+[18:29:59]  
+[18:29:59]  ==================
+[18:29:59]  
+[18:29:59]   Loaded.
+[18:29:59]  Loading plugin: crashdetect
+[18:29:59]   CrashDetect plugin 4.19.4
+[18:29:59]   Loaded.
+[18:29:59]  Loading plugin: sampvoice
+[18:29:59] [sv:dbg:network:init] : module initializing...
+[18:29:59] [dbg:raknet:init] : module initializing...
+[18:29:59] [dbg:raknet:init] : module initialized
+[18:29:59] [sv:dbg:network:init] : module initialized
+[18:29:59] [sv:dbg:main:Load] : creating 8 work threads...
+[18:29:59]  -------------------------------------------    
+[18:29:59]    ___                __   __    _              
+[18:29:59]   / __| __ _ _ __  _ _\ \ / /__ (_) __ ___    
+[18:29:59]   \__ \/ _` | '  \| '_ \   / _ \| |/ _/ -_)
+[18:29:59]   |___/\__,_|_|_|_| .__/\_/\___/|_|\__\___|
+[18:29:59]                   |_|                           
+[18:29:59]  -------------------------------------------    
+[18:29:59]            SampVoice by MOR loaded              
+[18:29:59]  -------------------------------------------    
+[18:29:59]   Loaded.
+[18:29:59]  Loading plugin: samp-compat.dll
+[18:30:00]   -- samp-compat for 0.3.DL-R1 initialized
+[18:30:00]   Loaded.
+[18:30:00]  Loading plugin: streamer
+[18:30:00] 
+
+*** Streamer Plugin v2.9.5 by Incognito loaded ***
+
+[18:30:00]   Loaded.
+[18:30:00]  Loading plugin: server
+[18:30:00]   Loaded.
+[18:30:00]  Loading plugin: TDE
+[18:30:00] 
+TDEditor Plugin loaded, thank you for using.
+
+[18:30:00]   Loaded.
+[18:30:00]  Loading plugin: YSF_DL
+[18:30:00] 
+[18:30:00]  ==============================================
+[18:30:00]  YSF 2.2 (compiled Sep 19 2021 13:02:34) loaded
+[18:30:00]   (c) 2008 Alex "Y_Less" Cole
+[18:30:00]   (c) 2010 - 2018 kurta999
+[18:30:00]   (c) 2018 - 2020 IllidanS4
+[18:30:00]  Server version: 0.3.DL R1, Windows
+[18:30:00]  ==============================================
+[18:30:00] 
+[18:30:00]   Loaded.
+[18:30:00]  Loading plugin: discord-connector
+[18:30:04]  >> discord-connector: afb7e3b successfully loaded.
+[18:30:04]   Loaded.
+[18:30:04]  Loaded 11 plugins.
+
+[18:30:04] [artwork:crc] bp.dff CRC = 0xA2B03FFB
+[18:30:04] [artwork:crc] bp.txd CRC = 0x28E0706E
+[18:30:04] [artwork:crc] object.dff CRC = 0xDCFCC14C
+[18:30:04] [artwork:crc] speedo.txd CRC = 0x62C7BCBC
+[18:30:04] [artwork:crc] object.dff CRC = 0xDCFCC14C
+[18:30:04] [artwork:crc] login.txd CRC = 0x54694AE4
+[18:30:04] [artwork:crc] object.dff CRC = 0xDCFCC14C
+[18:30:04] [artwork:crc] character.txd CRC = 0xC1BABE5F
+[18:30:04] [artwork:crc] object.dff CRC = 0xDCFCC14C
+[18:30:04] [artwork:crc] speedo.txd CRC = 0x62C7BCBC
+[18:30:04] [artwork:crc] object.dff CRC = 0xDCFCC14C
+[18:30:04] [artwork:crc] newinv.txd CRC = 0xC5F22638
+[18:30:04] [artwork:crc] object.dff CRC = 0xDCFCC14C
+[18:30:04] [artwork:crc] character.txd CRC = 0xC1BABE5F
+[18:30:04] [artwork:crc] object.dff CRC = 0xDCFCC14C
+[18:30:05] [artwork:crc] inventory.txd CRC = 0xC5298AB1
+[18:30:05] 
+[18:30:05] Filterscripts
+[18:30:05] ---------------
+[18:30:05]   Loading filterscript 'RCRPMap.amx'...
+[18:30:05] [sv:dbg:main:AmxLoad] : net game pointer (value:05BB0048) received
+[18:30:05] [sv:dbg:network:bind] : voice server running on port 59401
+[18:30:05]   Loading filterscript 'MAP.amx'...
+[18:30:05]   Loading filterscript 'cbug.amx'...
+[18:30:05]   Loaded 3 filterscripts.
+
+[18:30:05]  
+[18:30:05]  ======================================= 
+[18:30:05]  |                                     | 
+[18:30:05]  |        YSI version 3.01.0002        | 
+[18:30:05]  |        By Alex "Y_Less" Cole        | 
+[18:30:05]  |                                     | 
+[18:30:05]  ======================================= 
+[18:30:05]  
+[18:30:05] Chuong trinh may chu dang duoc khoi dong, vui long cho doi....
+[18:30:05] [MySQL] (Main Pipelines) Connecting to localhost...
+[18:30:05] [MySQL] (MainPipeline) Fatal Error! Could not connect to MySQL: Host localhost - DB: gta - User: root
+[18:30:05] [MySQL] Note: Make sure that you have provided the correct connection credentials.
+[18:30:05] [MySQL] Error number: 1045
+[18:30:05] [Dynamic Giftbox] Loading the Dynamic Giftbox...
+[18:30:05] [LoadCrates] Load Query Sent
+[18:30:05] [LoadHouses] Loading data from database...
+[18:30:05] [LoadDynamicDoors] Loading data from database...
+[18:30:05] [LoadDynamicMapIcons] Loading data from database...
+[18:30:05] [LoadMailboxes] Loading data from database...
+[18:30:05] [LoadBusinesses] Loading data from database...
+[18:30:05] [LoadAuctions] Loading data from database...
+[18:30:05] [LoadTxtLabels] Loading data from database...
+[18:30:05] [LoadPlants] Loading data from database...
+[18:30:05] [SpeedCameras] Loading data from database...
+[18:30:05] [LoadPayNSprays] Loading data from database...
+[18:30:05] [LoadArrestPoints] Loading data from database...
+[18:30:05] [LoadImpoundPoints] Loading data from database...
+[18:30:05] [LoadBusinessSales] Loading data from database...
+[18:30:05] [LoadPaintballArenas] 10 paintball loaded.
+[18:30:05] [LoadEventPoints] 0 event points loaded.
+[18:30:05] [LoadGates] Loading data from database...
+[18:30:05] [LoadElevatorStuff] 20 floors loaded.
+[18:30:05] [LoadFamilies] Dang tai du lieu tu database...
+[18:30:05] [LoadFamilyPoints] Loading Family Points from the database, please wait...
+[18:30:05] [MiscLoad] Misc Loaded
+[18:30:05] Resetting news...
+[18:30:05] Resetting default server variables..
+[18:30:05] Adjusted the server time...
+[18:30:05] [Streamer] Loading Dynamic Static Vehicles...
+[18:30:05] [Streamer] Dynamic Static Vehicles has been loaded.
+[18:30:05] [Streamer] Loading Dynamic Pickups...
+[18:30:05] [Streamer] Dynamic Pickups has been loaded.
+[18:30:05] [Streamer] Loading 3D Text Labels...
+[18:30:05] [Streamer] Dynamic 3D Text Labels has been loaded.
+[18:30:05] [Streamer] Loading Dynamic Buttons...
+[18:30:05] [Streamer] Dynamic Buttons has been loaded.
+[18:30:05] [Streamer] Loading Dynamic Objects...
+[18:30:05] [Streamer] Dynamic Objects has been loaded.
+[18:30:05] [Textdraws] Loading Textdraws...
+[18:30:05] [Textdraws] Loaded textdraws.
+[18:30:05] [Dynamic Groups] Loading Dynamic Groups...
+[18:30:05] [Dynamic Groups] Loading Dynamic Groups Vehicles...
+[18:30:05] Da chay thanh cong gamemode...
+[18:30:05] Number of vehicle models: 20
+[18:30:05] --- Server Shutting Down.
+[18:30:05] plugin.mysql: Unloading plugin...
+[18:30:10] plugin.mysql: Plugin unloaded.
+[18:30:10] 
+
+[18:30:10]  ===============================
+
+[18:30:10]      sscanf plugin unloaded.    
+
+[18:30:10]  ===============================
+
+[18:30:10]  
+[18:30:10]  ====================
+[18:30:10]  
+[18:30:10]   Whirlpool unloaded
+[18:30:10]  
+[18:30:10]  ====================
+[18:30:10]  
+[18:30:10]  -------------------------------------------
+[18:30:10]            SampVoice unloading...           
+[18:30:10]  -------------------------------------------
+[18:30:10] [dbg:raknet:free] : module releasing...
+
+----------
+Loaded log file: "server_log.txt".
+----------
+
+SA-MP Dedicated Server
+----------------------
+v0.3.DL-R1, (C)2005-2018 SA-MP Team
+
+[18:30:22] password = ""  (string)
+[18:30:22] 
+[18:30:22] Server Plugins
+[18:30:22] --------------
+[18:30:22]  Loading plugin: mysql
+[18:30:22]  >> plugin.mysql: R33 successfully loaded.
+[18:30:22]   Loaded.
+[18:30:22]  Loading plugin: sscanf
+[18:30:22] 
+
+[18:30:22]  ===============================
+
+[18:30:22]       sscanf plugin loaded.     
+
+[18:30:22]          Version:  2.8.1        
+
+[18:30:22]    (c) 2012 Alex "Y_Less" Cole  
+
+[18:30:22]  ===============================
+
+[18:30:22]   Loaded.
+[18:30:22]  Loading plugin: whirlpool
+[18:30:22]  
+[18:30:22]  ==================
+[18:30:22]  
+[18:30:22]   Whirlpool loaded
+[18:30:22]  
+[18:30:22]  ==================
+[18:30:22]  
+[18:30:22]   Loaded.
+[18:30:22]  Loading plugin: crashdetect
+[18:30:22]   CrashDetect plugin 4.19.4
+[18:30:22]   Loaded.
+[18:30:22]  Loading plugin: sampvoice
+[18:30:22] [sv:dbg:network:init] : module initializing...
+[18:30:22] [dbg:raknet:init] : module initializing...
+[18:30:22] [dbg:raknet:init] : module initialized
+[18:30:22] [sv:dbg:network:init] : module initialized
+[18:30:22] [sv:dbg:main:Load] : creating 8 work threads...
+[18:30:22]  -------------------------------------------    
+[18:30:22]    ___                __   __    _              
+[18:30:22]   / __| __ _ _ __  _ _\ \ / /__ (_) __ ___    
+[18:30:22]   \__ \/ _` | '  \| '_ \   / _ \| |/ _/ -_)
+[18:30:22]   |___/\__,_|_|_|_| .__/\_/\___/|_|\__\___|
+[18:30:22]                   |_|                           
+[18:30:22]  -------------------------------------------    
+[18:30:22]            SampVoice by MOR loaded              
+[18:30:22]  -------------------------------------------    
+[18:30:22]   Loaded.
+[18:30:22]  Loading plugin: samp-compat.dll
+[18:30:22]   -- samp-compat for 0.3.DL-R1 initialized
+[18:30:22]   Loaded.
+[18:30:22]  Loading plugin: streamer
+[18:30:22] 
+
+*** Streamer Plugin v2.9.5 by Incognito loaded ***
+
+[18:30:22]   Loaded.
+[18:30:22]  Loading plugin: server
+[18:30:22]   Loaded.
+[18:30:22]  Loading plugin: TDE
+[18:30:22] 
+TDEditor Plugin loaded, thank you for using.
+
+[18:30:22]   Loaded.
+[18:30:22]  Loading plugin: YSF_DL
+[18:30:22] 
+[18:30:22]  ==============================================
+[18:30:22]  YSF 2.2 (compiled Sep 19 2021 13:02:34) loaded
+[18:30:22]   (c) 2008 Alex "Y_Less" Cole
+[18:30:22]   (c) 2010 - 2018 kurta999
+[18:30:22]   (c) 2018 - 2020 IllidanS4
+[18:30:22]  Server version: 0.3.DL R1, Windows
+[18:30:22]  ==============================================
+[18:30:22] 
+[18:30:22]   Loaded.
+[18:30:22]  Loading plugin: discord-connector
+[18:30:26]  >> discord-connector: afb7e3b successfully loaded.
+[18:30:26]   Loaded.
+[18:30:27]  Loaded 11 plugins.
+
+[18:30:27] [artwork:crc] bp.dff CRC = 0xA2B03FFB
+[18:30:27] [artwork:crc] bp.txd CRC = 0x28E0706E
+[18:30:27] [artwork:crc] object.dff CRC = 0xDCFCC14C
+[18:30:27] [artwork:crc] speedo.txd CRC = 0x62C7BCBC
+[18:30:27] [artwork:crc] object.dff CRC = 0xDCFCC14C
+[18:30:27] [artwork:crc] login.txd CRC = 0x54694AE4
+[18:30:27] [artwork:crc] object.dff CRC = 0xDCFCC14C
+[18:30:27] [artwork:crc] character.txd CRC = 0xC1BABE5F
+[18:30:27] [artwork:crc] object.dff CRC = 0xDCFCC14C
+[18:30:27] [artwork:crc] speedo.txd CRC = 0x62C7BCBC
+[18:30:27] [artwork:crc] object.dff CRC = 0xDCFCC14C
+[18:30:27] [artwork:crc] newinv.txd CRC = 0xC5F22638
+[18:30:27] [artwork:crc] object.dff CRC = 0xDCFCC14C
+[18:30:27] [artwork:crc] character.txd CRC = 0xC1BABE5F
+[18:30:27] [artwork:crc] object.dff CRC = 0xDCFCC14C
+[18:30:27] [artwork:crc] inventory.txd CRC = 0xC5298AB1
+[18:30:27] 
+[18:30:27] Filterscripts
+[18:30:27] ---------------
+[18:30:27]   Loading filterscript 'RCRPMap.amx'...
+[18:30:28] [sv:dbg:main:AmxLoad] : net game pointer (value:05BC0048) received
+[18:30:28] [sv:dbg:network:bind] : voice server running on port 58777
+[18:30:28]   Loading filterscript 'MAP.amx'...
+[18:30:28]   Loading filterscript 'cbug.amx'...
+[18:30:28]   Loaded 3 filterscripts.
+
+[18:30:28]  
+[18:30:28]  ======================================= 
+[18:30:28]  |                                     | 
+[18:30:28]  |        YSI version 3.01.0002        | 
+[18:30:28]  |        By Alex "Y_Less" Cole        | 
+[18:30:28]  |                                     | 
+[18:30:28]  ======================================= 
+[18:30:28]  
+[18:30:28] Chuong trinh may chu dang duoc khoi dong, vui long cho doi....
+[18:30:28] [MySQL] (Main Pipelines) Connecting to localhost...
+[18:30:28] [MySQL] (MainPipeline) Fatal Error! Could not connect to MySQL: Host localhost - DB: gta - User: root
+[18:30:28] [MySQL] Note: Make sure that you have provided the correct connection credentials.
+[18:30:28] [MySQL] Error number: 1045
+[18:30:28] [Dynamic Giftbox] Loading the Dynamic Giftbox...
+[18:30:28] [LoadCrates] Load Query Sent
+[18:30:28] [LoadHouses] Loading data from database...
+[18:30:28] [LoadDynamicDoors] Loading data from database...
+[18:30:28] [LoadDynamicMapIcons] Loading data from database...
+[18:30:28] [LoadMailboxes] Loading data from database...
+[18:30:28] [LoadBusinesses] Loading data from database...
+[18:30:28] [LoadAuctions] Loading data from database...
+[18:30:28] [LoadTxtLabels] Loading data from database...
+[18:30:28] [LoadPlants] Loading data from database...
+[18:30:28] [SpeedCameras] Loading data from database...
+[18:30:28] [LoadPayNSprays] Loading data from database...
+[18:30:28] [LoadArrestPoints] Loading data from database...
+[18:30:28] [LoadImpoundPoints] Loading data from database...
+[18:30:28] [LoadBusinessSales] Loading data from database...
+[18:30:28] [LoadPaintballArenas] 10 paintball loaded.
+[18:30:28] [LoadEventPoints] 0 event points loaded.
+[18:30:28] [LoadGates] Loading data from database...
+[18:30:28] [LoadElevatorStuff] 20 floors loaded.
+[18:30:28] [LoadFamilies] Dang tai du lieu tu database...
+[18:30:28] [LoadFamilyPoints] Loading Family Points from the database, please wait...
+[18:30:28] [MiscLoad] Misc Loaded
+[18:30:28] Resetting news...
+[18:30:28] Resetting default server variables..
+[18:30:28] Adjusted the server time...
+[18:30:28] [Streamer] Loading Dynamic Static Vehicles...
+[18:30:28] [Streamer] Dynamic Static Vehicles has been loaded.
+[18:30:28] [Streamer] Loading Dynamic Pickups...
+[18:30:28] [Streamer] Dynamic Pickups has been loaded.
+[18:30:28] [Streamer] Loading 3D Text Labels...
+[18:30:28] [Streamer] Dynamic 3D Text Labels has been loaded.
+[18:30:28] [Streamer] Loading Dynamic Buttons...
+[18:30:28] [Streamer] Dynamic Buttons has been loaded.
+[18:30:28] [Streamer] Loading Dynamic Objects...
+[18:30:28] [Streamer] Dynamic Objects has been loaded.
+[18:30:28] [Textdraws] Loading Textdraws...
+[18:30:28] [Textdraws] Loaded textdraws.
+[18:30:28] [Dynamic Groups] Loading Dynamic Groups...
+[18:30:28] [Dynamic Groups] Loading Dynamic Groups Vehicles...
+[18:30:28] Da chay thanh cong gamemode...
+[18:30:28] Number of vehicle models: 20
+[18:30:28] --- Server Shutting Down.
+[18:30:28] plugin.mysql: Unloading plugin...
+[18:30:28] [debug] Server crashed due to an unknown error
+[18:30:28] [debug] Native backtrace:
+[18:30:28] [debug] #0 7798f5ae in ?? () in C:\WINDOWS\SYSTEM32\ntdll.dll
+[18:30:28] [debug] #1 779cffdd in ?? () in C:\WINDOWS\SYSTEM32\ntdll.dll
+[18:30:28] [debug] #2 7798ebf6 in ?? () in C:\WINDOWS\SYSTEM32\ntdll.dll
+[18:30:28] [debug] #3 1008d9ee in ?? () in LIBMYSQL.dll
+[18:30:28] [debug] #4 1003359a in ?? () in LIBMYSQL.dll
+[18:30:28] [debug] #5 100326ea in ?? () in LIBMYSQL.dll
+[18:30:28] [debug] #6 779cffdd in ?? () in C:\WINDOWS\SYSTEM32\ntdll.dll
+[18:30:28] [debug] #7 779cffdd in ?? () in C:\WINDOWS\SYSTEM32\ntdll.dll
+[18:30:28] [debug] #8 779d0004 in ?? () in C:\WINDOWS\SYSTEM32\ntdll.dll
+[18:30:28] [debug] Registers:
+[18:30:28] [debug] EAX: 00000000 EBX: 09280040 ECX: 021d0074 EDX: 021d00b4
+[18:30:28] [debug] ESI: 09291050 EDI: 021d0000 EBP: 00000000 ESP: 0019fd28
+[18:30:28] [debug] EIP: 779d0004 EFLAGS: 00210246
+[18:30:28] [debug] Stack:
+[18:30:28] [debug] ESP+00000000: 021d0fe0 021d0000 00858da0 005a0000
+[18:30:28] [debug] ESP+00000020: 00020048 0019fda4 779cfe35 779d0004
+[18:30:28] [debug] ESP+00000040: 0502b2c7 021d0000 050257b0 0019fd94
+[18:30:28] [debug] ESP+00000060: 00859790 021d0fe0 08028597 0019fdd4
+[18:30:28] [debug] ESP+00000080: ab5e611b 00859790 1022a5d8 00858da0
+[18:30:28] [debug] ESP+000000a0: 1008f880 bb4a42af fffffffe 1008da0d
+[18:30:28] [debug] ESP+000000c0: ab5e6727 10029193 00000000 7af4ef3f
+[18:30:28] [debug] ESP+000000e0: 004bf8a1 00000000 00858da0 0019fe90
+[18:30:28] [debug] ESP+00000100: 000023f0 0019ff74 0037e000 0000e1af
+[18:30:28] [debug] ESP+00000120: 00004088 05bc0048 656d6167 65646f6d
+[18:30:28] [debug] ESP+00000140: 004b1e20 0019fe5c 0019ff64 0019ff64
+[18:30:28] [debug] ESP+00000160: 004a1d71 004b1e20 0019ff64 004b1a1c
+[18:30:28] [debug] ESP+00000180: 008515c0 00000094 00000006 00000002
+[18:30:28] [debug] ESP+000001a0: 00000000 00000000 00000000 00000000
+[18:30:28] [debug] ESP+000001c0: 00000000 00000000 00000000 00000000
+[18:30:28] [debug] ESP+000001e0: 00000000 00000000 00000000 00000000
+[18:30:28] [debug] ESP+00000200: 00000000 00000000 00000000 00000000
+[18:30:28] [debug] ESP+00000220: 0037e000 00000000 00000000 c0000005
+[18:30:28] [debug] ESP+00000240: 004a3af4 004c0790 00000000 0019ff84
+[18:30:28] [debug] ESP+00000260: 779ab79b 0037e000 ddbf0718 00000000
+[18:30:28] [debug] ESP+00000280: 00000000 00000000 00000000 00000000
+[18:30:28] [debug] ESP+000002a0: 00000000 0019ffe4 779be900 aa03c204
+[18:30:28] [debug] ESP+000002c0: 779d89eb 00000000 00000000 004a3427
+[18:30:28] [debug] ESP+000002e0: 00000001 000032f4 000000dc 00000000
+[18:30:28] [debug] ESP+00000300: 00000007 00000034 0000017c 00000001
+[18:30:28] [debug] ESP+00000320: 00000000 00000002 1a26ef4e 00000298
+[18:30:28] [debug] ESP+00000340: f33271ba 00000534 0000004a 00000580
+[18:30:28] [debug] ESP+00000360: 00000032 000008ec 00000300 00000000
+[18:30:28] [debug] ESP+00000380: 00000330 00000000 38505fc8 00000f60
+[18:30:28] [debug] ESP+000003a0: b1280544 00001318 00000056 00001370
+[18:30:28] [debug] ESP+000003c0: 00000002 00000001 0000017c 000015b4
+[18:30:28] [debug] ESP+000003e0: 00000001 00000003 00001ed0 00000e8c
+[18:30:28] [debug] Loaded modules:
+[18:30:28] [debug] 00400000 - 0051f000 samp-server.exe
+[18:30:28] [debug] 77940000 - 77aef000 ntdll.dll
+[18:30:28] [debug] 76d50000 - 76e40000 KERNEL32.DLL
+[18:30:28] [debug] 75bb0000 - 75e23000 KERNELBASE.dll
+[18:30:28] [debug] 69260000 - 69306000 apphelp.dll
+[18:30:28] [debug] 7a420000 - 7a67a000 AcGenral.DLL
+[18:30:28] [debug] 764b0000 - 76574000 msvcrt.dll
+[18:30:28] [debug] 76a40000 - 76ac4000 sechost.dll
+[18:30:28] [debug] 77700000 - 7774b000 SHLWAPI.dll
+[18:30:28] [debug] 76070000 - 76218000 USER32.dll
+[18:30:28] [debug] 776e0000 - 776fa000 win32u.dll
+[18:30:28] [debug] 76580000 - 765a3000 GDI32.dll
+[18:30:28] [debug] 76670000 - 76751000 gdi32full.dll
+[18:30:28] [debug] 777b0000 - 77829000 msvcp_win.dll
+[18:30:28] [debug] 76ad0000 - 76be2000 ucrtbase.dll
+[18:30:28] [debug] 76220000 - 7636f000 ole32.dll
+[18:30:28] [debug] 767c0000 - 76a3c000 combase.dll
+[18:30:28] [debug] 76bf0000 - 76caa000 RPCRT4.dll
+[18:30:28] [debug] 75ea0000 - 75f3c000 OLEAUT32.dll
+[18:30:28] [debug] 755e0000 - 7565d000 advapi32.dll
+[18:30:28] [debug] 76370000 - 76431000 shcore.dll
+[18:30:28] [debug] 76e40000 - 774cf000 SHELL32.dll
+[18:30:28] [debug] 72d40000 - 72dbf000 UxTheme.dll
+[18:30:28] [debug] 74880000 - 748b1000 WINMM.dll
+[18:30:28] [debug] 5e870000 - 5e886000 samcli.dll
+[18:30:28] [debug] 69320000 - 69339000 MSACM32.dll
+[18:30:28] [debug] 73010000 - 73018000 VERSION.dll
+[18:30:28] [debug] 74840000 - 74864000 USERENV.dll
+[18:30:28] [debug] 72d10000 - 72d34000 dwmapi.dll
+[18:30:28] [debug] 6e9e0000 - 6eb82000 urlmon.dll
+[18:30:28] [debug] 5e7f0000 - 5e868000 WINSPOOL.DRV
+[18:30:28] [debug] 74da0000 - 74dc9000 ntmarta.dll
+[18:30:28] [debug] 72e80000 - 72e99000 MPR.dll
+[18:30:28] [debug] 6d0c0000 - 6d0e6000 SspiCli.dll
+[18:30:28] [debug] 6e740000 - 6e978000 iertutil.dll
+[18:30:28] [debug] 6f750000 - 6f76e000 srvcli.dll
+[18:30:28] [debug] 6f8c0000 - 6f8cb000 netutils.dll
+[18:30:28] [debug] 75b80000 - 75ba5000 IMM32.DLL
+[18:30:28] [debug] 696a0000 - 696a8000 WSOCK32.dll
+[18:30:28] [debug] 77750000 - 777af000 WS2_32.dll
+[18:30:28] [debug] 7af30000 - 7b004000 mysql.DLL
+[18:30:28] [debug] 10000000 - 1023e000 LIBMYSQL.dll
+[18:30:28] [debug] 7b320000 - 7b3f6000 MSVCR110.dll
+[18:30:28] [debug] 7aea0000 - 7af25000 MSVCP110.dll
+[18:30:28] [debug] 6f910000 - 6f922000 napinsp.dll
+[18:30:28] [debug] 6f8f0000 - 6f906000 pnrpnsp.dll
+[18:30:28] [debug] 6f840000 - 6f891000 mswsock.dll
+[18:30:28] [debug] 72dc0000 - 72e79000 DNSAPI.dll
+[18:30:28] [debug] 72fe0000 - 73004000 IPHLPAPI.DLL
+[18:30:28] [debug] 75660000 - 75667000 NSI.dll
+[18:30:28] [debug] 6f740000 - 6f74e000 winrnr.dll
+[18:30:28] [debug] 6f720000 - 6f731000 wshbth.dll
+[18:30:28] [debug] 6f700000 - 6f718000 nlansp_c.dll
+[18:30:28] [debug] 6cea0000 - 6cea8000 rasadhlp.dll
+[18:30:28] [debug] 00840000 - 0084d000 sscanf.DLL
+[18:30:28] [debug] 7b260000 - 7b31f000 MSVCR100.dll
+[18:30:28] [debug] 02150000 - 0215c000 whirlpool.DLL
+[18:30:28] [debug] 71990000 - 71a2b000 MSVCR80.dll
+[18:30:28] [debug] 7b010000 - 7b061000 crashdetect.DLL
+[18:30:28] [debug] 7b070000 - 7b0d9000 MSVCP100.dll
+[18:30:28] [debug] 795a0000 - 795cb000 sampvoice.DLL
+[18:30:28] [debug] 74aa0000 - 74b0d000 MSVCP140.dll
+[18:30:28] [debug] 74a80000 - 74a95000 VCRUNTIME140.dll
+[18:30:28] [debug] 74dd0000 - 74de3000 kernel.appcore.dll
+[18:30:28] [debug] 795d0000 - 795da000 samp-compat.dll
+[18:30:28] [debug] 7a960000 - 7a9cd000 streamer.DLL
+[18:30:28] [debug] 7a680000 - 7a931000 server.DLL
+[18:30:28] [debug] 75f40000 - 76043000 CRYPT32.dll
+[18:30:28] [debug] 74a50000 - 74a6a000 bcrypt.dll
+[18:30:28] [debug] 72140000 - 7214b000 CRYPTBASE.DLL
+[18:30:28] [debug] 76440000 - 764a2000 bcryptPrimitives.dll
+[18:30:28] [debug] 755d0000 - 755de000 MSASN1.dll
+[18:30:28] [debug] 7a940000 - 7a95b000 TDE.DLL
+[18:30:28] [debug] 7b0e0000 - 7b252000 MSVCR100D.dll
+[18:30:28] [debug] 04e70000 - 04f1a000 YSF_DL.DLL
+[18:30:28] [debug] 7a9d0000 - 7ae9d000 discord-connector.DLL
+[18:30:28] [debug] 7a3c0000 - 7a415000 log-core2.dll
+[18:30:28] [debug] 72180000 - 72195000 CRYPTSP.dll
+[18:30:28] [debug] 72150000 - 72180000 rsaenh.dll
+[18:30:28] [debug] 6b6a0000 - 6b6fe000 fwpuclnt.dll
