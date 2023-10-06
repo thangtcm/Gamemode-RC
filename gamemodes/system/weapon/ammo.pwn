@@ -642,7 +642,7 @@ Dialog:MY_DEALCRAFT(playerid, response, listitem, inputtext[]) {
     		    }
     		    new pItemId;
     		    pItemId = Inventory_GetItemID(playerid,pitem_add);
-		        Inventory_Set(playerid, g_aInventoryItems[pItemId][e_InventoryItem], 1, 60*24*2);
+		        Inventory_Add(playerid, g_aInventoryItems[pItemId][e_InventoryItem], 1, 60*24*2);
 		        CraftWeaponDeal[playerid] = 0;
     		}
     	}
@@ -663,8 +663,7 @@ Dialog:CRAFT_AMMO(playerid, response, listitem, inputtext[]) {
 		    Inventory_Remove(playerid, pItemId, 1); //ID cua InventoryData
 		    pItemId = Inventory_GetItemID(playerid,"Thuoc sung");
 		    Inventory_Remove(playerid, pItemId, 1); //ID cua InventoryData
-		    pItemId = Inventory_GetItemID(playerid,"Dan sung luc");
-		    Inventory_Set(playerid, g_aInventoryItems[pItemId][e_InventoryItem], 10, 60*24*2);
+		    Inventory_Add(playerid, "Dan sung luc", 10);
 		    SendClientMessage(playerid, COLOR_YELLOW, "> Ban da che tao thanh cong 10 vien dan sung luc (-1 dong , -1 thuoc sung).");
     	}
     	if(listitem == 1 ) {
@@ -675,8 +674,7 @@ Dialog:CRAFT_AMMO(playerid, response, listitem, inputtext[]) {
 		    Inventory_Remove(playerid, pItemId, 1); //ID cua InventoryData
 		    pItemId = Inventory_GetItemID(playerid,"Thuoc sung");
 		    Inventory_Remove(playerid, pItemId, 1); //ID cua InventoryData
-		    pItemId = Inventory_GetItemID(playerid,"Dan shotgun");
-		    Inventory_Set(playerid, g_aInventoryItems[pItemId][e_InventoryItem], 10, 60*24*2);
+		    Inventory_Add(playerid, "Dan shotgun", 10);
 		    SendClientMessage(playerid, COLOR_YELLOW, "> Ban da che tao thanh cong 10 vien dan shotgun (-1 dong , -1 thuoc sung).");
     	}
     	if(listitem == 2 ) {
@@ -687,8 +685,7 @@ Dialog:CRAFT_AMMO(playerid, response, listitem, inputtext[]) {
 		    Inventory_Remove(playerid, pItemId, 2); //ID cua InventoryData
 		    pItemId = Inventory_GetItemID(playerid,"Thuoc sung");
 		    Inventory_Remove(playerid, pItemId, 2); //ID cua InventoryData
-		    pItemId = Inventory_GetItemID(playerid,"Dan tieu lien");
-		    Inventory_Set(playerid, g_aInventoryItems[pItemId][e_InventoryItem], 10, 60*24*2);
+		    Inventory_Add(playerid,"Dan tieu lien", 10);
 		    SendClientMessage(playerid, COLOR_YELLOW, "> Ban da che tao thanh cong 10 vien Dan tieu lien (-2 dong , -2 thuoc sung).");
     	}
     	if(listitem == 3 ) {
@@ -699,8 +696,7 @@ Dialog:CRAFT_AMMO(playerid, response, listitem, inputtext[]) {
 		    Inventory_Remove(playerid, pItemId, 3); //ID cua InventoryData
 		    pItemId = Inventory_GetItemID(playerid,"Thuoc sung");
 		    Inventory_Remove(playerid, pItemId, 3); //ID cua InventoryData
-		    pItemId = Inventory_GetItemID(playerid,"Dan sung truong");
-		    Inventory_Set(playerid, g_aInventoryItems[pItemId][e_InventoryItem], 10, 60*24*2);
+		    Inventory_Add(playerid, "Dan sung truong", 10, 60*24*2);
 		    SendClientMessage(playerid, COLOR_YELLOW, "> Ban da che tao thanh cong 10 vien Dan sung truong (-3 dong , -3 thuoc sung).");
     	}
     	if(listitem == 4 ) {
@@ -711,8 +707,7 @@ Dialog:CRAFT_AMMO(playerid, response, listitem, inputtext[]) {
 		    Inventory_Remove(playerid, pItemId, 3); //ID cua InventoryData
 		    pItemId = Inventory_GetItemID(playerid,"Thuoc sung");
 		    Inventory_Remove(playerid, pItemId, 3); //ID cua InventoryData
-		    pItemId = Inventory_GetItemID(playerid,"Dan sniper");
-		    Inventory_Set(playerid, g_aInventoryItems[pItemId][e_InventoryItem], 10, 60*24*2);
+		    Inventory_Add(playerid, "Dan sniper", 10, 60*24*2);
 		    SendClientMessage(playerid, COLOR_YELLOW, "> Ban da che tao thanh cong 10 vien Dan sniper (-3 dong , -3 thuoc sung).");
     	}
     }
