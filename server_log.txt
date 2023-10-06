@@ -2638,3 +2638,96 @@ TDEditor Plugin loaded, thank you for using.
 [18:30:28] [debug] 72180000 - 72195000 CRYPTSP.dll
 [18:30:28] [debug] 72150000 - 72180000 rsaenh.dll
 [18:30:28] [debug] 6b6a0000 - 6b6fe000 fwpuclnt.dll
+
+----------
+Loaded log file: "server_log.txt".
+----------
+
+SA-MP Dedicated Server
+----------------------
+v0.3.DL-R1, (C)2005-2018 SA-MP Team
+
+[19:41:10] password = ""  (string)
+[19:41:10] 
+[19:41:10] Server Plugins
+[19:41:10] --------------
+[19:41:10]  Loading plugin: mysql
+[19:41:10]  >> plugin.mysql: R33 successfully loaded.
+[19:41:10]   Loaded.
+[19:41:10]  Loading plugin: sscanf
+[19:41:10] 
+
+[19:41:10]  ===============================
+
+[19:41:10]       sscanf plugin loaded.     
+
+[19:41:10]          Version:  2.8.1        
+
+[19:41:10]    (c) 2012 Alex "Y_Less" Cole  
+
+[19:41:10]  ===============================
+
+[19:41:10]   Loaded.
+[19:41:10]  Loading plugin: whirlpool
+[19:41:10]  
+[19:41:10]  ==================
+[19:41:10]  
+[19:41:10]   Whirlpool loaded
+[19:41:10]  
+[19:41:10]  ==================
+[19:41:10]  
+[19:41:10]   Loaded.
+[19:41:10]  Loading plugin: crashdetect
+[19:41:10]   CrashDetect plugin 4.19.4
+[19:41:10]   Loaded.
+[19:41:10]  Loading plugin: sampvoice
+[19:41:10] [sv:dbg:network:init] : module initializing...
+[19:41:10] [dbg:raknet:init] : module initializing...
+[19:41:10] [dbg:raknet:init] : module initialized
+[19:41:10] [sv:dbg:network:init] : module initialized
+[19:41:10] [sv:dbg:main:Load] : creating 8 work threads...
+[19:41:10]  -------------------------------------------    
+[19:41:10]    ___                __   __    _              
+[19:41:10]   / __| __ _ _ __  _ _\ \ / /__ (_) __ ___    
+[19:41:10]   \__ \/ _` | '  \| '_ \   / _ \| |/ _/ -_)
+[19:41:10]   |___/\__,_|_|_|_| .__/\_/\___/|_|\__\___|
+[19:41:10]                   |_|                           
+[19:41:10]  -------------------------------------------    
+[19:41:10]            SampVoice by MOR loaded              
+[19:41:10]  -------------------------------------------    
+[19:41:10]   Loaded.
+[19:41:10]  Loading plugin: samp-compat.dll
+[19:41:10]   -- samp-compat for 0.3.DL-R1 initialized
+[19:41:10]   Loaded.
+[19:41:10]  Loading plugin: streamer
+[19:41:10] 
+
+*** Streamer Plugin v2.9.5 by Incognito loaded ***
+
+[19:41:10]   Loaded.
+[19:41:10]  Loading plugin: server
+[19:41:10]   Loaded.
+[19:41:10]  Loading plugin: TDE
+[19:41:10] 
+TDEditor Plugin loaded, thank you for using.
+
+[19:41:10]   Loaded.
+[19:41:10]  Loading plugin: YSF_DL
+[19:41:10] 
+[19:41:10]  ==============================================
+[19:41:10]  YSF 2.2 (compiled Sep 19 2021 13:02:34) loaded
+[19:41:10]   (c) 2008 Alex "Y_Less" Cole
+[19:41:10]   (c) 2010 - 2018 kurta999
+[19:41:10]   (c) 2018 - 2020 IllidanS4
+[19:41:10]  Server version: 0.3.DL R1, Windows
+[19:41:10]  ==============================================
+[19:41:10] 
+[19:41:10]   Loaded.
+[19:41:10]  Loading plugin: discord-connector
+[19:41:12]  -------------------------------------------
+[19:41:12]            SampVoice unloading...           
+[19:41:12]  -------------------------------------------
+[19:41:12] [dbg:raknet:free] : module releasing...
+[19:41:12] [dbg:raknet:free] : module released
+[19:41:12] [sv:dbg:network:free] : module releasing...
+[19:41:12] [sv:dbg:network:free] : module released

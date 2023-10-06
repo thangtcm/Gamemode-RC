@@ -16,41 +16,6 @@ timer DisableEfftects[30000](playerid)
 	DeletePVar(playerid, "EffectsDrugs");
 }
 
-/* MYSQL DRUG LAB */
-stock LoadDrugLab() {
-	mysql_tquery(MainPipeline, "select * from drug_lab", "OnLoadDrugLab", "d", 0);
-}
-forward OnLoadDrugLab();
-public OnLoadDrugLab()
-{
-    new fields, rows, result[128];
-    cache_get_data(rows, fields, MainPipeline);
-
-    for( new index; index < rows; index++) {
-        cache_get_field_content(index, "DLab_Vw", result, MainPipeline); DrugLabInfo[index][DLab_Vw] = strval(result);
-        cache_get_field_content(index, "DLab_Int", result, MainPipeline); DrugLabInfo[index][DLab_Int] = strval(result);
-        cache_get_field_content(index, "DLab_Type", result, MainPipeline); DrugLabInfo[index][DLab_Type] = strval(result);
-        cache_get_field_content(index, "DLab_Family", result, MainPipeline); DrugLabInfo[index][DLab_Family] = strval(result);
-        cache_get_field_content(index, "DLab_Postion0", result, MainPipeline); DrugLabInfo[index][DLab_Postion][0] = floatstr(result);
-        cache_get_field_content(index, "DLab_Postion1", result, MainPipeline); DrugLabInfo[index][DLab_Postion][1] = floatstr(result);
-        cache_get_field_content(index, "DLab_Postion2", result, MainPipeline); DrugLabInfo[index][DLab_Postion][2] = floatstr(result);
-        
-        new Float:Pos_drl[6];
-        Pos_drl[0] = DrugLabInfo[index][DLab_Postion][0];
-        Pos_drl[1] = DrugLabInfo[index][DLab_Postion][1];
-        Pos_drl[2] = DrugLabInfo[index][DLab_Postion][2];
-
-       new string[129];
-       new family = DrugLabInfo[index][DLab_Family] ;
-       format(string,sizeof string,"Drub Lab %d\nFamily: %s\n(Bam Y de thao tac)",index,FamilyInfo[family][FamilyName]);
-       DrugLabInfo[index][DLab_Label] = CreateDynamic3DTextLabel(string, -1,  Pos_drl[0], Pos_drl[1], Pos_drl[2], 30.0, INVALID_PLAYER_ID,  INVALID_VEHICLE_ID,   0, DrugLabInfo[index][DLab_Vw], DrugLabInfo[index][DLab_Int]);
-       DrugLabInfo[index][DLab_PickUP] = CreateDynamicPickup(1577, 10,  Pos_drl[0], Pos_drl[1], Pos_drl[2],DrugLabInfo[index][DLab_Vw], DrugLabInfo[index][DLab_Int]);
-       printf("[Drug lab database] %d Druglab loaded.", index);
-
-    }
-
-    return 1;
-}
 
 stock SaveFurniture(uid)
 {
@@ -384,7 +349,8 @@ Dialog:DIALOG_DRUGS_G(playerid, response, listitem, inputtext[])
 	}
 	return 1;
 }
-hook OnGameModeInit() {\
+hook OnGameModeInit() {
+
 	CreateDynamicPickup(1239, 23, 2306.409179 ,-1569.672607, 1051.562988, -1); // Drug Smuggler Job (TR)
 	CreateDynamic3DTextLabel("{FF0000} DRUG LAB \n{FFFFFF}(( bam Y de mua chat hoa hoc.))", COLOR_WHITE, 2306.409179 ,-1569.672607, 1051.562988 + 0.5, 10.0);// Actor Trucker
 
