@@ -28,7 +28,7 @@ CMD:editdruglab(playerid, params[])
 	if (strcmp(choice, "Type", true) == 0)
 	{
 		SendClientMessageEx(playerid, COLOR_WHITE, "Ban da chinh sua type thanh cong.");
-		
+		DrugLabInfo[drl_id][DLab_Type] = choose;
 		new family = DrugLabInfo[drl_id][DLab_Family] ;
 		new type_namez[32];
 		switch(DrugLabInfo[drl_id][DLab_Type]) {
@@ -91,7 +91,7 @@ stock UseDrug(playerid,drug_id,pItemId) {
 			GetPlayerHealth(playerid, old_health);
 			if(BonusHealth[playerid]  >= 100) return SendErrorMessage(playerid, "Ban da dat toi da trang thai tu Ecstasy ((>100 HP)).");
 			BonusHealth[playerid] += 10;
-			format(string, sizeof string, "Ban dang su dung Codeine ( ban duoc tang 10 hp toi da. HP: %f)",old_health,100 + BonusHealth[playerid]);
+			format(string, sizeof string, "Ban dang su dung Codeine ( ban duoc tang 10 hp toi da. HP: %.1f/%.1f)",old_health,100 + BonusHealth[playerid]);
 			SendClientMessageEx(playerid, COLOR_WHITE, string);
 			SetPlayerDrunkLevel(playerid, 40000); //  effects phe da
 			SetPVarInt(playerid, "EffectsDrugs", 1);
@@ -135,7 +135,7 @@ stock UseDrug(playerid,drug_id,pItemId) {
 			DownTimeUsed[playerid][2] += gettime() + 1200;
 			if(old_armour + 20 >= 100 + BonusArmour[playerid]) SetPlayerArmour(playerid, 100 + BonusArmour[playerid]);
 			GetPlayerArmour(playerid, old_armour);
-			format(string, sizeof string, "Ban dang su dung Ecstasy, ban dang rat sang khoai. (ban duoc tang 20 ar. Armour: %.1f/%.1f)",old_armour,100 + BonusArmour[playerid]);
+			format(string, sizeof string, "Ban dang su dung Ecstasy, ban dang rat sang khoai. (ban duoc tang 20 ar. Armour: %.1f/%.1f)",old_armour + 20,100 + BonusArmour[playerid]);
 		    SendClientMessageEx(playerid, COLOR_WHITE, string);
 		    PlayerPlaySound(playerid, 42600, 0.0, 0.0, 0.0);
 		    ApplyAnimation(playerid,"SMOKING","M_smkstnd_loop",2.1,0,0,0,0,0);
@@ -221,6 +221,7 @@ Dialog:DIALOG_DRUGS_G(playerid, response, listitem, inputtext[])
             new pItemId = Inventory_GetItemID(playerid,"Chat hoa hoc I");
 			Inventory_Remove(playerid, pItemId, 2); //ID cua InventoryData
 			SendClientMessage(playerid, -1, "Ban da che tao thanh cong 1 Codeine va mat 2 Chat hoa hoc I.");
+			return 1;
 		}
 		if(listitem == 1 ) {
 			if(Inventory_Count(playerid, "Chat hoa hoc I") < 4) return SendClientMessage(playerid, -1, "Ban khong co du 4 chat hoa hoc I.");
@@ -228,6 +229,7 @@ Dialog:DIALOG_DRUGS_G(playerid, response, listitem, inputtext[])
             new pItemId = Inventory_GetItemID(playerid,"Chat hoa hoc I");
 			Inventory_Remove(playerid, pItemId, 4); //ID cua InventoryData
 			SendClientMessage(playerid, -1, "Ban da che tao thanh cong 1 Cocain va mat 4 Chat hoa hoc I.");
+			return 1;
 		}
 		if(listitem == 2 ) {
 			if(Inventory_Count(playerid, "Chat hoa hoc I") < 4) return SendClientMessage(playerid, -1, "Ban khong co du 4 chat hoa hoc I.");
@@ -241,6 +243,7 @@ Dialog:DIALOG_DRUGS_G(playerid, response, listitem, inputtext[])
 			pItemId = Inventory_GetItemID(playerid,"Chat hoa hoc II");
 			Inventory_Remove(playerid, pItemId, 4); //ID cua InventoryData
 			SendClientMessage(playerid, -1, "Ban da che tao thanh cong 1 Ecstasy va mat 4 Chat hoa hoc I & 4 chat hoa hoc II.");
+			return 1;
 		}
 		if(listitem == 3 ) {
 			if(Inventory_Count(playerid, "Chat hoa hoc I") < 8) return SendClientMessage(playerid, -1, "Ban khong co du 8 chat hoa hoc I.");
@@ -251,6 +254,7 @@ Dialog:DIALOG_DRUGS_G(playerid, response, listitem, inputtext[])
 			pItemId = Inventory_GetItemID(playerid,"Chat hoa hoc II");
 			Inventory_Remove(playerid, pItemId, 9); //ID cua InventoryData
 			SendClientMessage(playerid, -1, "Ban da che tao thanh cong 1 LSD va mat 8 Chat hoa hoc I & 6 chat hoa hoc II.");
+			return 1;
 		}
 	}
 	return 1;
