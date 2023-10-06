@@ -5,8 +5,8 @@ enum DrugLab {
 	DLab_Int,
 	DLab_Vw,
 	DLab_PickUP,
-	DLab_Type, // 0 = drug , 1 = weapon
 	Text3D:DLab_Label,
+	DLab_Type, // 0 = drug , 1 = weapon
 	DLab_Family
 }
 new DrugLabInfo[MAX_DRUG_POINT][DrugLab] ,DrugTypeName[4][] = {"Codeine","Cocaine","Ecstasy","LSD"}, DownCountJobTime[MAX_PLAYERS], DownTimeUsed[MAX_PLAYERS][4];
@@ -14,6 +14,82 @@ timer DisableEfftects[30000](playerid)
 {
 	SetPlayerDrunkLevel(playerid, 0); //  effects phe da
 	DeletePVar(playerid, "EffectsDrugs");
+}
+
+/* MYSQL DRUG LAB */
+stock LoadDrugLab() {
+	mysql_tquery(MainPipeline, "select * from drug_lab", "OnLoadDrugLab", "d", 0);
+}
+forward OnLoadDrugLab();
+public OnLoadDrugLab()
+{
+    new fields, rows, result[128];
+    cache_get_data(rows, fields, MainPipeline);
+
+    for( new index; index < rows; index++) {
+        cache_get_field_content(index, "DLab_Vw", result, MainPipeline); DrugLabInfo[index][DLab_Vw] = strval(result);
+        cache_get_field_content(index, "DLab_Int", result, MainPipeline); DrugLabInfo[index][DLab_Int] = strval(result);
+        cache_get_field_content(index, "DLab_Type", result, MainPipeline); DrugLabInfo[index][DLab_Type] = strval(result);
+        cache_get_field_content(index, "DLab_Family", result, MainPipeline); DrugLabInfo[index][DLab_Family] = strval(result);
+        cache_get_field_content(index, "DLab_Postion0", result, MainPipeline); DrugLabInfo[index][DLab_Postion][0] = floatstr(result);
+        cache_get_field_content(index, "DLab_Postion1", result, MainPipeline); DrugLabInfo[index][DLab_Postion][1] = floatstr(result);
+        cache_get_field_content(index, "DLab_Postion2", result, MainPipeline); DrugLabInfo[index][DLab_Postion][2] = floatstr(result);
+        
+        new Float:Pos_drl[6];
+        Pos_drl[0] = DrugLabInfo[index][DLab_Postion][0];
+        Pos_drl[1] = DrugLabInfo[index][DLab_Postion][1];
+        Pos_drl[2] = DrugLabInfo[index][DLab_Postion][2];
+
+       new string[129];
+       new family = DrugLabInfo[index][DLab_Family] ;
+       format(string,sizeof string,"Drub Lab %d\nFamily: %s\n(Bam Y de thao tac)",index,FamilyInfo[family][FamilyName]);
+       DrugLabInfo[index][DLab_Label] = CreateDynamic3DTextLabel(string, -1,  Pos_drl[0], Pos_drl[1], Pos_drl[2], 30.0, INVALID_PLAYER_ID,  INVALID_VEHICLE_ID,   0, DrugLabInfo[index][DLab_Vw], DrugLabInfo[index][DLab_Int]);
+       DrugLabInfo[index][DLab_PickUP] = CreateDynamicPickup(1577, 10,  Pos_drl[0], Pos_drl[1], Pos_drl[2],DrugLabInfo[index][DLab_Vw], DrugLabInfo[index][DLab_Int]);
+       printf("[Drug lab database] %d Druglab loaded.", index);
+
+    }
+
+    return 1;
+}
+
+stock SaveFurniture(uid)
+{
+    new szQuery[2048];
+    printf("saved drl %d",uid);
+    format(szQuery, sizeof(szQuery), "UPDATE `drug_lab` SET \
+        `DLab_Vw` = '%d', \
+        `DLab_Int` = '%d', \
+        `DLab_Type` = '%d', \
+        `DLab_Family` = '%d', \
+        `DLab_Postion0` = '%f', \
+        `DLab_Postion1` = '%f', \
+        `DLab_Postion2` = '%f' WHERE `drl_id` = %d",
+        DrugLabInfo[uid][DLab_Vw],
+        DrugLabInfo[uid][DLab_Int],
+        DrugLabInfo[uid][DLab_Type],
+        DrugLabInfo[uid][DLab_Family],
+        DrugLabInfo[uid][DLab_Postion][0],
+        DrugLabInfo[uid][DLab_Postion][1],
+        DrugLabInfo[uid][DLab_Postion][2],
+        uid);
+    mysql_tquery(MainPipeline, szQuery, "OnSaveDRL", "d", uid);
+}
+forward OnSaveDRL(pid);
+public OnSaveDRL(pid)
+{
+}
+CMD:startsetupdrl(playerid,params[]) {
+    for(new i =0; i < MAX_DRUG_POINT; i++) {
+    	InsertDRL(i);
+    }
+
+	return 1;
+}
+stock InsertDRL(uid) {
+    new szQuery[129];
+    format(szQuery, sizeof(szQuery), "INSERT INTO `drug_lab` (`drl_id`,`DLab_Postion0`,`DLab_Postion1`,`DLab_Postion2`) VALUES ('%d','0.0','0.0','0.0')",uid);
+    mysql_tquery(MainPipeline, szQuery, "OnInsertDRL", "d", uid);
+    return 1;
 }
 CMD:druglabnext(playerid, params[])
 {
@@ -29,6 +105,7 @@ CMD:druglabnext(playerid, params[])
 	SendClientMessageEx(playerid, COLOR_WHITE, string);
 	return 1;
 }
+
 CMD:editdruglab(playerid, params[])
 {
 	new string[128], drl_id,choose, choice[32];
@@ -46,6 +123,7 @@ CMD:editdruglab(playerid, params[])
 		DrugLabInfo[drl_id][DLab_Postion][0] = 0.0;
         DrugLabInfo[drl_id][DLab_Postion][1] = 0.0;
         DrugLabInfo[drl_id][DLab_Postion][2] = 0.0;
+        SaveFurniture(drl_id);
 	}
 	if (strcmp(choice, "Type", true) == 0)
 	{
@@ -60,11 +138,13 @@ CMD:editdruglab(playerid, params[])
 		}
         format(string,sizeof string,"%s %d\nFamily: %s\n(Bam Y de thao tac)",type_namez,drl_id,FamilyInfo[family][FamilyName]);
         UpdateDynamic3DTextLabelText(DrugLabInfo[drl_id][DLab_Label] , -1,string);
+        SaveFurniture(drl_id);
 	}
 	if (strcmp(choice, "Vitri", true) == 0)
 	{
 		SendClientMessageEx(playerid, COLOR_WHITE, "Ban da chinh sua vi tri thanh cong.");
 		MoveDrugLab(playerid,drl_id);
+		SaveFurniture(drl_id);
 	}
 	if (strcmp(choice, "FamilyID", true) == 0)
 	{
@@ -80,6 +160,7 @@ CMD:editdruglab(playerid, params[])
 		}
         format(string,sizeof string,"%s %d\nFamily: %s\n(Bam Y de thao tac)",type_namez,drl_id,FamilyInfo[family][FamilyName]);
         UpdateDynamic3DTextLabelText(DrugLabInfo[drl_id][DLab_Label] , -1,string);
+        SaveFurniture(drl_id);
 	}
 	return 1;
 }
