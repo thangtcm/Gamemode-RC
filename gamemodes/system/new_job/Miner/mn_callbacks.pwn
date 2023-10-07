@@ -231,6 +231,7 @@ public StartCountTime(playerid)
 					}
 				}
 			}
+			StopLoopingAnim(playerid);
 			PlayerInfo[playerid][pSoLanMiner]++;
 			if(PlayerInfo[playerid][pMinerLevel] == 0 && PlayerInfo[playerid][pSoLanMiner] == 500)
 			{

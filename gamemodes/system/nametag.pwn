@@ -96,7 +96,7 @@ timer UpdateNameTagTimer[500](playerid)
 			{
 				format(nametag, sizeof(nametag), "{%06x}%s{FFFFFF} (%d)", GetPlayerColor(i) >>> 8, GetPlayerNameEx(i), i);
 			}
-			if(GetPlayerPausedTime(i) > 2)
+			if(playerAFK[i] != 0 && playerAFK[i] > 60)
 			{
 				format(nametag, sizeof(nametag), "{F81414}[AFK]{FFFFFF} %s", nametag);
 			}

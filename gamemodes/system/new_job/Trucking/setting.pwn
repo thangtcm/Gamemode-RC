@@ -158,7 +158,7 @@ new FactoryData[][FactoryInfo] = {
     },
     {//5
         false,
-        "The Impounder’s Farm", 
+        "The Impounder's Farm", 
         {15, 21, 7}, 
         {30, 30, 70},
         {15, 15, 8}, 
@@ -482,7 +482,7 @@ new FactoryData[][FactoryInfo] = {
         {2771.0579,-2421.7144,13.6543},
         {5, 24, 2, 18, 8, 4, 20}, 
         {2000, 360, 360, 360, 1500, 360, 360, 410},
-        {0, 0, 0, 0, 0, 0, 0}, 
+        {1, 1, 1, 1, 1, 1, 1}, 
         {0, 0, 0, 0, 0, 0, 0},
         {20, 500, 500, 500, 20, 500, 500, 500},
     }
@@ -494,7 +494,9 @@ enum PlayerTruckerInfo{
     ClaimProduct[MAX_PLAYERPRODUCT],
     MissionBuy[MAX_PLAYERPRODUCT],
     ClaimFromCar[MAX_PLAYERPRODUCT],
-    SellProduct[MAX_PLAYERPRODUCT]
+    SellProduct[MAX_PLAYERPRODUCT],
+    MAXPRODUCT,
+    MAXPRODUCTIMPORT
 };
 new PlayerTruckerData[MAX_PLAYERS][PlayerTruckerInfo];
 new pLoadProduct[MAX_PLAYERS];

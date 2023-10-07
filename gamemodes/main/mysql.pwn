@@ -8569,8 +8569,7 @@ public OnPlayerLoad(playerid)
 	DeletePVar(playerid, "TextDrawCharacter");
  	GetHomeCount(playerid);
 	new rdName[MAX_PLAYER_NAME];
-	rdName = RandomName(playerid);
-	printf("%s", rdName);
+	rdName = RandomName();
 	SetPlayerNameInServerQuery(playerid, rdName);
 	return 1;
 }

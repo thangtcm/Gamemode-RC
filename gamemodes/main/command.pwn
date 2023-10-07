@@ -23863,7 +23863,7 @@ CMD:carcatsung(playerid, params[])
 	if(pvid == -1) return SendClientMessageEx(playerid,COLOR_GREY,"You are not near any vehicle that you own.");
 	new engine,lights,alarm,doors,bonnet,boot,objective;
 	GetVehicleParamsEx(PlayerVehicleInfo[playerid][pvid][pvId],engine,lights,alarm,doors,bonnet,boot,objective);
-	if(boot == VEHICLE_PARAMS_OFF || boot == VEHICLE_PARAMS_UNSET) return SendClientMessageEx(playerid, COLOR_GRAD3, "You can't take/put stuff inside the trunk if it's closed!(/car trunk to open it)");
+	if(boot == VEHICLE_PARAMS_OFF || boot == VEHICLE_PARAMS_UNSET) return SendClientMessageEx(playerid, COLOR_GRAD3, "You can't take/put stuff inside the trunk if it's closed!(/car copxe to open it)");
 	if(GetVehicleModel(PlayerVehicleInfo[playerid][pvid][pvId]) == 481 || GetVehicleModel(PlayerVehicleInfo[playerid][pvid][pvId]) == 510)  return SendClientMessageEx(playerid,COLOR_GREY,"That vehicle doesn't have a trunk.");
 
 	new Float: Health;
@@ -24179,7 +24179,7 @@ CMD:carlaysung(playerid, params[]) {
 				GetVehicleParamsEx(PlayerVehicleInfo[playerid][d][pvId], engine, lights, alarm, doors, bonnet, boot, objective);
 
 				if(boot == VEHICLE_PARAMS_OFF || boot == VEHICLE_PARAMS_UNSET) {
-					return SendClientMessageEx(playerid, COLOR_GRAD3, "Ban khong the lay vu khi khi cop xe chua mo /car trunk de mo cop xe.");
+					return SendClientMessageEx(playerid, COLOR_GRAD3, "Ban khong the lay vu khi khi cop xe chua mo /car copxe de mo cop xe.");
 				}
 				else if(!(1 <= iWeaponSlot <= PlayerVehicleInfo[playerid][d][pvWepUpgrade] + 1)) {
 					return SendErrorMessage(playerid, " Slot Khong hop le specified.");

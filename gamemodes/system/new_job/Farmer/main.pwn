@@ -13,7 +13,7 @@ SendFarmerJob(playerid, msg_job[])
 	SendClientMessage(playerid, -1, format_job);
 	return 1;
 }
-new ActorFarmer;
+
 hook OnPlayerConnect(playerid)
 {
 	RemoveBuildingFarmMap(playerid);
@@ -21,8 +21,7 @@ hook OnPlayerConnect(playerid)
 hook OnGameModeInit()
 {
 	CreateFarmMap(); 
-	ActorFarmer = CreateActor(158, -382.8567,-1430.5543,25.7266, -90);
-	ApplyActorAnimation(ActorFarmer, "PED", "IDLE_CHAT", 4.0, 1, 0, 0, 0, 0);
+	
 	return 1;
 }
 CMD:farmer(playerid, params[])
