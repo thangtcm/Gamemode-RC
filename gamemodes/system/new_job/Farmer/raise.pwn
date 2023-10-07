@@ -1,4 +1,4 @@
-#include <YSI_Coding\y_hooks>
+#include <YSI\y_hooks>
 #define MAX_CATTLES 16
 #define CATTLE_DEFAULT_STATUS 0
 #define ROW_1_POS_X -1424
@@ -29,7 +29,7 @@ new RaiseCattleInfo[MAX_CATTLES][CATTLE_INFO];
 new CountCattle = 0;
 new CattleTimeChange = 120;
 hook OnGameModeInit()
-{
+{	
 	for(new i = 0; i < MAX_CATTLES; i++){
 		RaiseCattleInfo[i][c_ID] = -1;
 	}
@@ -285,7 +285,7 @@ public OnRaiseCattle(cattle_id)
 		RaiseCattleInfo[cattle_id][c_ID],
 		RS_GetName(RaiseCattleInfo[cattle_id][c_Owner]),
 		RS_CattleStatus(RaiseCattleInfo[cattle_id][c_Status]),
-		GetPlayerNameEx(playerid),
+		GetPlayerNameEx(RaiseCattleInfo[cattle_id][c_Owner]),
 		RaiseCattleInfo[cattle_id][c_ID]);
 		UpdateDynamic3DTextLabelText(RaiseCattleInfo[cattle_id][c_CattleLabel], -1, rs_cattleinfo);
 	}

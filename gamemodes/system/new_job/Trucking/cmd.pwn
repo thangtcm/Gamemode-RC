@@ -111,8 +111,8 @@ CMD:truckergo(playerid, params[])
 	{
         if(GetPVarInt(playerid, "MissionTruck") == 1)
         {
-            ShowMissionTrucker(playerid);
-            return SendErrorMessage(playerid, "Ban da nhan nhiem vu giao hang trucker, hay xem lai thong tin.");
+            // ShowMissionTrucker(playerid);
+            // return SendErrorMessage(playerid, "Ban da nhan nhiem vu giao hang trucker, hay xem lai thong tin.");
         } 
         else if(IsPlayerInRangeOfPoint(playerid, 5.0, 58.5952,-292.2914,1.5781))
         {

@@ -436,7 +436,6 @@ stock Inventory_Remove(playerid, pItemId, quantity = 1) //ID cua InventoryData
 		}
 		else if(quantity != -1 && InventoryData[playerid][pItemId][invQuantity] > 0)
 		{
-			InventoryData[playerid][pItemId][invQuantity] -= quantity;
 			format(string, sizeof(string), "UPDATE `inventory` SET `invQuantity` = `invQuantity` - %d WHERE `ID` = '%d' AND `invID` = '%d'", quantity, PlayerSQLId, InventoryData[playerid][pItemId][invID]);
 			mysql_function_query(MainPipeline, string, false, "OnQueryFinish", "i", SENDDATA_THREAD);
 		}
