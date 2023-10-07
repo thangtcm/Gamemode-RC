@@ -7444,7 +7444,7 @@ public LoadStreamerDynamic3DTextLabels()
 	CreateDynamic3DTextLabel("Su dung /layvatlieu tu mot chiec thuyen \nde co duoc vat lieu",COLOR_YELLOW,2102.71,-103.97,2.28+0.5,8.0);// Deliver
     CreateDynamic3DTextLabel("Su Dung /laybanh de nhan banh \nDe co Pizza giao hang!",COLOR_YELLOW,0,0,0, 4.0); //getpizza
     CreateDynamic3DTextLabel("Go /laybanh tu nguoi ban pizza \nde nhan banh va giao hang!",COLOR_YELLOW,-1713.961425, 1348.545166, 7.180452, 4.0); //laybanh LS
-	CreateDynamic3DTextLabel("Noi Mua Bang Lai\n\n/muabanglai De Mua Nhe",COLOR_YELLOW,366.54,159.09,1008.38+0.5,8.0);// Licenses.
+	CreateDynamic3DTextLabel("Noi Mua Bang Lai\n\n/muabanglai",COLOR_YELLOW,1222.7645,243.7523,19.5469,8.0);// Licenses.
 	CreateDynamic3DTextLabel("Noi Thay Trang Phuc\n\n/muatrangphuc De Thay Trang Phuc nhe",COLOR_YELLOW, 207.0798, -129.1775, 1003.5078+0.7, 6.0);
 
 
