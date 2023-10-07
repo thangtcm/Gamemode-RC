@@ -175,7 +175,7 @@ stock Inventory_Clear(playerid)
 	return mysql_function_query(MainPipeline, string, false, "OnQueryFinish", "i", SENDDATA_THREAD);
 }
 
-stock Inventory_Set(playerid, item[], quantity, timer)
+stock Inventory_Set(playerid, item[], quantity, timer = 0)
 {
 	new pItemId = Inventory_GetItemID(playerid, item);
 	if(pItemId == -1 && quantity > 0)
