@@ -7281,6 +7281,7 @@ public LoadStreamerDynamicPickups()
 	CreateDynamicPickup(1239, 23, -21.1862, 81.3918, 3.1096);
 	CreateDynamicPickup(1239, 23, 1938.3217, 166.3846, 19.8281);
 	CreateDynamicPickup(1239, 23, -1092.4702, -1622.1119, 76.3672);
+
 	// The Hilltop Farm
 	CreateDynamicPickup(1239, 23, 1059.6445, -345.3934, 73.9922);
 	CreateDynamic3DTextLabel("{FF0000} The Hilltop Farm \n{FFFFFF}((/truckergo [buy/sell] de mua hoac ban san pham.))", COLOR_WHITE, 1059.6445, -345.3934, 73.9922 + 0.5, 10.0);// Actor Trucker
