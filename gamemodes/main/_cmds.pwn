@@ -1247,8 +1247,8 @@ stock JoinGame(playerid) {
 	    TextDrawHideForPlayer(playerid, BannerServer[1]);
 		SetPlayerVirtualWorld(playerid, 0);
 		SetPlayerInterior(playerid,0);
-		Streamer_UpdateEx(playerid,1319.7906,275.6697,20.9252);
-		SetPlayerPos(playerid,1319.7906,275.6697,20.9252);
+		Streamer_UpdateEx(playerid,1223.4490,247.0872,19.5469);
+		SetPlayerPos(playerid,1223.4490,247.0872,19.5469);
 		SetPlayerFacingAngle(playerid, 247.5060);
 		PlayerInfo[playerid][pVW] = 0;
 		PlayerInfo[playerid][pDoiBung] = 100;
@@ -1257,7 +1257,7 @@ stock JoinGame(playerid) {
         PlayerInfo[playerid][pDrink] = 100;
         PlayerInfo[playerid][pStrong] = 100;
         ClearChatbox(playerid);
-        SendClientMessageEx(playerid,COLOR_VANG,"Chao mung ban da den voi may chu LS-RP Viet nam.");
+        SendClientMessageEx(playerid,COLOR_VANG,"Chao mung ban da den voi may chu RC-RP.");
       //  SendClientMessageEx(playerid,COLOR_VANG,"(HUONG DAN) Hay di vao Market tim cua hang dien tu mua mot cai GPS nhe.");
         SetPlayerCheckpoint(playerid, 1836.0756,-1862.5111,13.3828, 3);
 		return 1;

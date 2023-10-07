@@ -8088,3 +8088,570 @@ Description: Unknown column 'CraftWeaponDeal' in 'field list' (index 0). Query:
 [01:14:00] [dbg:raknet:free] : module released
 [01:14:00] [sv:dbg:network:free] : module releasing...
 [01:14:00] [sv:dbg:network:free] : module released
+
+----------
+Loaded log file: "server_log.txt".
+----------
+
+SA-MP Dedicated Server
+----------------------
+v0.3.DL-R1, (C)2005-2018 SA-MP Team
+
+[01:14:16] password = ""  (string)
+[01:14:16] 
+[01:14:16] Server Plugins
+[01:14:16] --------------
+[01:14:16]  Loading plugin: mysql
+[01:14:16]  >> plugin.mysql: R33 successfully loaded.
+[01:14:16]   Loaded.
+[01:14:16]  Loading plugin: sscanf
+[01:14:16] 
+
+[01:14:16]  ===============================
+
+[01:14:16]       sscanf plugin loaded.     
+
+[01:14:16]          Version:  2.8.1        
+
+[01:14:16]    (c) 2012 Alex "Y_Less" Cole  
+
+[01:14:16]  ===============================
+
+[01:14:16]   Loaded.
+[01:14:16]  Loading plugin: whirlpool
+[01:14:16]  
+[01:14:16]  ==================
+[01:14:16]  
+[01:14:16]   Whirlpool loaded
+[01:14:16]  
+[01:14:16]  ==================
+[01:14:16]  
+[01:14:16]   Loaded.
+[01:14:16]  Loading plugin: crashdetect
+[01:14:16]   CrashDetect plugin 4.19.4
+[01:14:16]   Loaded.
+[01:14:16]  Loading plugin: sampvoice
+[01:14:16] [sv:dbg:network:init] : module initializing...
+[01:14:16] [dbg:raknet:init] : module initializing...
+[01:14:16] [dbg:raknet:init] : module initialized
+[01:14:16] [sv:dbg:network:init] : module initialized
+[01:14:16] [sv:dbg:main:Load] : creating 8 work threads...
+[01:14:16]  -------------------------------------------    
+[01:14:16]    ___                __   __    _              
+[01:14:16]   / __| __ _ _ __  _ _\ \ / /__ (_) __ ___    
+[01:14:16]   \__ \/ _` | '  \| '_ \   / _ \| |/ _/ -_)
+[01:14:16]   |___/\__,_|_|_|_| .__/\_/\___/|_|\__\___|
+[01:14:16]                   |_|                           
+[01:14:16]  -------------------------------------------    
+[01:14:16]            SampVoice by MOR loaded              
+[01:14:16]  -------------------------------------------    
+[01:14:16]   Loaded.
+[01:14:16]  Loading plugin: samp-compat.dll
+[01:14:16]   -- samp-compat for 0.3.DL-R1 initialized
+[01:14:16]   Loaded.
+[01:14:16]  Loading plugin: streamer
+[01:14:16] 
+
+*** Streamer Plugin v2.9.5 by Incognito loaded ***
+
+[01:14:16]   Loaded.
+[01:14:16]  Loading plugin: server
+[01:14:17]   Loaded.
+[01:14:17]  Loading plugin: TDE
+[01:14:17] 
+TDEditor Plugin loaded, thank you for using.
+
+[01:14:17]   Loaded.
+[01:14:17]  Loading plugin: YSF_DL
+[01:14:17] 
+[01:14:17]  ==============================================
+[01:14:17]  YSF 2.2 (compiled Sep 19 2021 13:02:34) loaded
+[01:14:17]   (c) 2008 Alex "Y_Less" Cole
+[01:14:17]   (c) 2010 - 2018 kurta999
+[01:14:17]   (c) 2018 - 2020 IllidanS4
+[01:14:17]  Server version: 0.3.DL R1, Windows
+[01:14:17]  ==============================================
+[01:14:17] 
+[01:14:17]   Loaded.
+[01:14:17]  Loading plugin: discord-connector
+[01:14:20]  >> discord-connector: afb7e3b successfully loaded.
+[01:14:20]   Loaded.
+[01:14:20]  Loaded 11 plugins.
+
+[01:14:20] [artwork:crc] bp.dff CRC = 0xA2B03FFB
+[01:14:20] [artwork:crc] bp.txd CRC = 0x28E0706E
+[01:14:20] [artwork:crc] object.dff CRC = 0xDCFCC14C
+[01:14:20] [artwork:crc] speedo.txd CRC = 0x62C7BCBC
+[01:14:20] [artwork:crc] object.dff CRC = 0xDCFCC14C
+[01:14:20] [artwork:crc] login.txd CRC = 0x54694AE4
+[01:14:20] [artwork:crc] object.dff CRC = 0xDCFCC14C
+[01:14:20] [artwork:crc] character.txd CRC = 0xC1BABE5F
+[01:14:20] [artwork:crc] object.dff CRC = 0xDCFCC14C
+[01:14:20] [artwork:crc] speedo.txd CRC = 0x62C7BCBC
+[01:14:20] [artwork:crc] object.dff CRC = 0xDCFCC14C
+[01:14:20] [artwork:crc] newinv.txd CRC = 0xC5F22638
+[01:14:20] [artwork:crc] object.dff CRC = 0xDCFCC14C
+[01:14:21] [artwork:crc] character.txd CRC = 0xC1BABE5F
+[01:14:21] [artwork:crc] object.dff CRC = 0xDCFCC14C
+[01:14:21] [artwork:crc] inventory.txd CRC = 0xC5298AB1
+[01:14:21] 
+[01:14:21] Filterscripts
+[01:14:21] ---------------
+[01:14:21]   Loading filterscript 'RCRPMap.amx'...
+[01:14:21] [sv:dbg:main:AmxLoad] : net game pointer (value:065B0048) received
+[01:14:21] [sv:dbg:network:bind] : voice server running on port 65250
+[01:14:21]   Loading filterscript 'MAP.amx'...
+[01:14:21]   Loading filterscript 'cbug.amx'...
+[01:14:21]   Loaded 3 filterscripts.
+
+[01:14:21]  
+[01:14:21]  ======================================= 
+[01:14:21]  |                                     | 
+[01:14:21]  |        YSI version 3.01.0002        | 
+[01:14:21]  |        By Alex "Y_Less" Cole        | 
+[01:14:21]  |                                     | 
+[01:14:21]  ======================================= 
+[01:14:21]  
+[01:14:21] Chuong trinh may chu dang duoc khoi dong, vui long cho doi....
+[01:14:21] [MySQL] (Main Pipelines) Connecting to localhost...
+[01:14:21] [MySQL] (MainPipeline) Connection successful toward MySQL Database Server!
+[01:14:21] [Dynamic Giftbox] Loading the Dynamic Giftbox...
+[01:14:21] [LoadCrates] Load Query Sent
+[01:14:21] [LoadHouses] Loading data from database...
+[01:14:21] [LoadDynamicDoors] Loading data from database...
+[01:14:21] [LoadDynamicMapIcons] Loading data from database...
+[01:14:21] [LoadMailboxes] Loading data from database...
+[01:14:21] [LoadBusinesses] Loading data from database...
+[01:14:21] [LoadAuctions] Loading data from database...
+[01:14:21] [LoadTxtLabels] Loading data from database...
+[01:14:21] [LoadPlants] Loading data from database...
+[01:14:21] [SpeedCameras] Loading data from database...
+[01:14:21] [LoadPayNSprays] Loading data from database...
+[01:14:21] [LoadArrestPoints] Loading data from database...
+[01:14:21] [LoadImpoundPoints] Loading data from database...
+[01:14:21] [LoadBusinessSales] Loading data from database...
+[01:14:21] [LoadPaintballArenas] 10 paintball loaded.
+[01:14:21] [LoadEventPoints] 0 event points loaded.
+[01:14:21] [LoadGates] Loading data from database...
+[01:14:21] [LoadElevatorStuff] 20 floors loaded.
+[01:14:21] [LoadFamilies] Dang tai du lieu tu database...
+[01:14:21] [LoadFamilyPoints] Loading Family Points from the database, please wait...
+[01:14:21] [MiscLoad] Misc Loaded
+[01:14:21] Resetting news...
+[01:14:21] Resetting default server variables..
+[01:14:21] Adjusted the server time...
+[01:14:21] [Streamer] Loading Dynamic Static Vehicles...
+[01:14:21] [Streamer] Dynamic Static Vehicles has been loaded.
+[01:14:21] [Streamer] Loading Dynamic Pickups...
+[01:14:21] [Streamer] Dynamic Pickups has been loaded.
+[01:14:21] [Streamer] Loading 3D Text Labels...
+[01:14:21] [Streamer] Dynamic 3D Text Labels has been loaded.
+[01:14:21] [Streamer] Loading Dynamic Buttons...
+[01:14:21] [Streamer] Dynamic Buttons has been loaded.
+[01:14:21] [Streamer] Loading Dynamic Objects...
+[01:14:21] [Streamer] Dynamic Objects has been loaded.
+[01:14:21] [Textdraws] Loading Textdraws...
+[01:14:21] [Textdraws] Loaded textdraws.
+[01:14:21] [Dynamic Groups] Loading Dynamic Groups...
+[01:14:21] [Dynamic Groups] Loading Dynamic Groups Vehicles...
+[01:14:21] Da chay thanh cong gamemode...
+[01:14:21] Number of vehicle models: 20
+[01:14:21] [Dynamic Giftbox] da tai thanh cong Dynamic giftbox.
+[01:14:21] [LoadCrates] Loading Crates Finished
+[01:14:21] [LoadHouses] 3000 ngoi nha duoc tai.
+[01:14:21] [LoadDynamicDoors] 2248 door duoc tai.
+[01:14:21] [LoadDynamicMapIcons] 400 icons map duoc tai.
+[01:14:21] [LoadMailboxes] 50 mailboxes duoc tai.
+[01:14:21] [LoadBusinesses] 200 businesses rehashed/loaded.
+[01:14:21] [LoadPlants] Successfully loaded 300 plants
+[01:14:21] [SpeedCameras] Tai 3 May ban toc do.
+[01:14:21] TotalSold0: 0 | AmountMade0: 0
+[01:14:21] TotalSold1: 0 | AmountMade1: 0
+[01:14:21] TotalSold2: 0 | AmountMade2: 0
+[01:14:21] TotalSold3: 0 | AmountMade3: 0
+[01:14:21] TotalSold4: 0 | AmountMade4: 0
+[01:14:21] TotalSold5: 0 | AmountMade5: 0
+[01:14:21] TotalSold6: 0 | AmountMade6: 0
+[01:14:21] TotalSold7: 0 | AmountMade7: 0
+[01:14:21] TotalSold8: 0 | AmountMade8: 0
+[01:14:21] TotalSold9: 0 | AmountMade9: 0
+[01:14:21] TotalSold10: 0 | AmountMade10: 0
+[01:14:21] TotalSold11: 0 | AmountMade11: 0
+[01:14:21] TotalSold12: 0 | AmountMade12: 0
+[01:14:21] TotalSold13: 0 | AmountMade13: 0
+[01:14:21] TotalSold14: 0 | AmountMade14: 0
+[01:14:21] TotalSold15: 0 | AmountMade15: 0
+[01:14:21] TotalSold16: 0 | AmountMade16: 0
+[01:14:21] TotalSold17: 0 | AmountMade17: 0
+[01:14:21] TotalSold18: 0 | AmountMade18: 0
+[01:14:21] TotalSold19: 0 | AmountMade19: 0
+[01:14:21] TotalSold20: 0 | AmountMade20: 0
+[01:14:21] TotalSold21: 0 | AmountMade21: 0
+[01:14:21] TotalSold22: 0 | AmountMade22: 0
+[01:14:21] TotalSold23: 0 | AmountMade23: 0
+[01:14:21] TotalSold24: 0 | AmountMade24: 0
+[01:14:21] TotalSold25: 0 | AmountMade25: 0
+[01:14:21] TotalSold26: 0 | AmountMade26: 0
+[01:14:21] TotalSold27: 0 | AmountMade27: 0
+[01:14:21] TotalSold28: 0 | AmountMade28: 0
+[01:14:21] TotalSold29: 0 | AmountMade29: 0
+[01:14:21] Price0: 20000
+[01:14:21] Price1: 50000
+[01:14:21] Price2: 15000
+[01:14:21] Price3: 10000
+[01:14:21] Price4: 400
+[01:14:21] Price5: 500
+[01:14:21] Price6: 100
+[01:14:21] Price7: 500
+[01:14:21] Price8: 100
+[01:14:21] Price9: 100
+[01:14:21] Price10: 10
+[01:14:21] Price11: 100000
+[01:14:21] Price12: 100000
+[01:14:21] Price13: 100000
+[01:14:21] Price14: 10000
+[01:14:21] Price15: 5000
+[01:14:21] Price16: 1000
+[01:14:21] Price17: 1000
+[01:14:21] Price18: 1
+[01:14:21] Price19: 2
+[01:14:21] Price20: 10
+[01:14:21] Price21: 999999
+[01:14:21] Price22: 100
+[01:14:21] Price23: 1000
+[01:14:21] Price24: 100000
+[01:14:21] Price25: 100000
+[01:14:21] Price26: 100000
+[01:14:21] Price27: 100000
+[01:14:21] Price28: 1000
+[01:14:21] Price29: 29
+[01:14:21] [Family Points] 8 family points has been loaded.
+[01:14:21]  
+[01:14:21]  
+[01:14:33] [connection] incoming connection: 127.0.0.1:54407 id: 0
+[01:14:33] [join] [FL]Ha1boku has joined the server (0:127.0.0.1)
+[01:14:33] name [FL]Ha1boku,4, 
+[01:14:36] [debug] Run time error 4: "Array index out of bounds"
+[01:14:36] [debug]  Attempted to read/write array element at negative index -1
+[01:14:36] [debug] AMX backtrace:
+[01:14:36] [debug] #0 0000a300 in ?? (0) in lsrpvn.amx
+[01:14:36] [debug] #1 0001980c in ?? (0) in lsrpvn.amx
+[01:14:36] [debug] #2 00055744 in ?? (0, 1) in lsrpvn.amx
+[01:14:36] [debug] #3 0000f4c0 in public Itter_OnPlayerDisconnect (0, 1) in lsrpvn.amx
+[01:14:36] [debug] #4 native CallLocalFunction () in samp-server.exe
+[01:14:36] [debug] #5 00006f74 in public SSCANF_OnPlayerDisconnect (0, 1) in lsrpvn.amx
+[01:14:36] [debug] #6 00000924 in public OnPlayerDisconnect (0, 1) in lsrpvn.amx
+[01:14:36] [part] [FL]Ha1boku has left the server (0:1)
+[01:17:46] [connection] incoming connection: 127.0.0.1:59948 id: 0
+[01:17:46] [join] [FL]Ha1boku has joined the server (0:127.0.0.1)
+[01:17:46] name [FL]Ha1boku,4, 
+[01:17:52] acc id 24
+[01:17:52] [He Thong] Da luu lai thong tin tai khoan thanh cong.
+[01:17:56] ZXC ZXZ has logged in.
+[01:17:56] ACTLAUHMQNRQYWLFSSDPABQ
+[01:17:56] [VEHICLE TRUCKER LOAD] Loading data from database...
+[01:17:56] [He Thong] Da luu lai thong tin tai khoan thanh cong.
+[01:17:56] [Load Vehicle Trucker] Khong co du lieu de tai
+[01:18:04] [connection] incoming connection: 127.0.0.1:58845 id: 1
+[01:18:04] [join] [FL]Ha1bokuz has joined the server (1:127.0.0.1)
+[01:18:04] name [FL]Ha1bokuz,0, 
+[01:18:10] acc id 40
+[01:18:14] Phat ZXCXZC has logged in.
+[01:18:14] MNBXGPMARGBCDDRSEXWDOLQ
+[01:18:14] [VEHICLE TRUCKER LOAD] Loading data from database...
+[01:18:14] [Load Vehicle Trucker] Khong co du lieu de tai
+[01:18:14] [MySQL] Query Error - (ErrorID: 1054) (Handle: 1)
+[01:18:14] [MySQL] Check mysql_log.txt to review the query that threw the error.
+[01:18:14] Dumping query from 2023/10/8 (1:18:14)
+Description: Unknown column 'CraftWeaponDeal' in 'field list' (index 0). Query:
+
+[01:18:14] UPDATE `accounts` SET `IP`='127.0.0.1',`Registered`=1,`ConnectedTime`=10000,`Sex`=1,`BirthDate`='1923-01-01',`Band`=0,`PermBand`=0,`Warnings`=0,`Disabled`=0,`CraftWeaponDeal`=0,`CraftWeaponDealTime`=0,`Level`=1,`AdminLevel`=99999,`CMND`=14275757,`MaskID1`=56969,`MaskID2`=21,`SeniorModerator`=0,`Helper`=0,`DonateRank`=0,`Respect`=2,`XP`=100,`Money`=4588,`MaHieu1`=0,`TruyDuoi`=0,`BanTime`=0,`TimeBanned`=0,`Flag`=53,`Eat`=1,`Drink`=1,`Strong`=1,`SoLanMiner`=0,`MinerLevel`=0,`TimeCraft`=0,`TimeMedkit`=0,`BannedBy`='NULL',`ReasonBanned`='NULL',`RankText`='NULL',`QuocTich`='0',`Flag`=53,`Hambuger`=0,`Banhmi`=0,`Pizza`=0,`Bank`=0,`pHealth`='100.00',`pArmor`='100.00',`pSHealth`='0.00',`Int`=0,`VirtualWorld`=0,`Model`=149,`BanAppealer`=0,`PR`=0,`HR`=0,`AP`=1,`Security`=0,`ShopTech`=0,`FactionModerator`=0,`GangModerator`=0,`Undercover`=0,`TogReports`=0,`Radio`=0,`RadioFreq`=0,`UpgradePoints`=0,`Origin`=0,`Muted`=0,`Crimes`=0,`Accent`=1,`CHits`=0,`FHits`=0,`Arrested`=0,`Phonebook`=0,`Fishes`=0,`Gcoin`=0,`Capacity`=30,`
+[01:18:14] BiggestFish`=0,`Job`=0,`SoTaiKhoan`=0,`Job2`=0,`Paycheck`=2666,`HeadValue`=0,`JailTime`=0,`WRestricted`=9998,`Materials`=0,`Crates`=0,`Pot`=0,`Crack`=0,`Nation`=-1,`Leader`=0,`Member`=0,`Division`=-1,`FMember`=255,`Rank`=9,`DetSkill`=0,`SexSkill`=0,`BoxSkill`=0,`LawSkill`=0,`MechSkill`=0,`TruckSkill`=0,`DrugsSkill`=0,`ArmsSkill`=0,`SmugglerSkill`=0,`FishSkill`=0,`CheckCash`=0,`Checks`=0,`BoatLic`=0,`FlyLic`=0,`GunLic`=0,`FishLic`=0,`FishSkill`=0,`FightingStyle`=0,`PhoneNr`=0,`Apartment`=-1,`Apartment2`=-1,`Renting`=-1,`CarLic`=0,`DrugsTime`=0,`LawyerTime`=0,`LawyerFreeTime`=0,`MechTime`=0,`SexTime`=0,`PayDay`=2666,`PayDayHad`=0,`CDPlayer`=0,`Dice`=0,`Spraycan`=0,`Rope`=0,`Cigars`=0,`Sprunk`=0,`Bombs`=0,`Wins`=0,`Ammo1`=0,`Ammo2`=0,`Ammo3`=0,`Ammo4`=9948,`Ammo5`=0,`Ammo6`=0,`Ammo7`=0,`Ammo8`=0,`Gun0`=0,`Gun1`=0,`Gun2`=23 WHERE `id`=28
+[01:18:17] [zcmd] [ZXC ZXZ]: /gethere 1
+[01:18:20] [zcmd] [ZXC ZXZ]: /gethere 1
+[01:18:22] [zcmd] [ZXC ZXZ]: /hospital 1
+[01:18:22] [zcmd] [ZXC ZXZ]: /gethere 1
+[01:18:28] [zcmd] [ZXC ZXZ]: /khongche
+[01:18:43] [zcmd] [ZXC ZXZ]: /khongche
+[01:19:03] [zcmd] [Phat ZXCXZC]: /arrestnext
+[01:19:04] [zcmd] [Phat ZXCXZC]: /arrest
+[01:19:05] [zcmd] [Phat ZXCXZC]: /mak
+[01:19:08] [zcmd] [ZXC ZXZ]: /arrestnext
+[01:19:09] [zcmd] [ZXC ZXZ]: /arresttedit
+[01:19:12] [zcmd] [ZXC ZXZ]: /arrestedit
+[01:19:16] [zcmd] [ZXC ZXZ]: /arrestedit position 1 1
+[01:19:19] [zcmd] [ZXC ZXZ]: /batgiam 1
+[01:19:20] [zcmd] [ZXC ZXZ]: /batgiam 1 1
+[01:19:26] [zcmd] [ZXC ZXZ]: /batgiam 1 1
+[01:19:27] [zcmd] [ZXC ZXZ]: /batgiam 1 1
+[01:19:27] [zcmd] [ZXC ZXZ]: /batgiam 1 1
+[01:19:29] [zcmd] [ZXC ZXZ]: /handcuff 1
+[01:19:31] [zcmd] [ZXC ZXZ]: /batgiam 1 1
+[01:19:34] [zcmd] [ZXC ZXZ]: /batgiam
+[01:19:35] [zcmd] [ZXC ZXZ]: /arrest
+[01:19:36] [zcmd] [ZXC ZXZ]: /arrest
+[01:19:37] [zcmd] [ZXC ZXZ]: /drag
+[01:19:40] [zcmd] [ZXC ZXZ]: /cuff 1
+[01:19:42] [zcmd] [ZXC ZXZ]: /editgroup
+[01:19:49] [zcmd] [ZXC ZXZ]: /lcoekr
+[01:19:50] [zcmd] [ZXC ZXZ]: /lcoekr
+[01:19:51] [zcmd] [ZXC ZXZ]: /locker
+[01:19:53] [zcmd] [ZXC ZXZ]: /locker
+[01:19:57] [zcmd] [Phat ZXCXZC]: /makeadmin 1 1
+[01:19:59] [zcmd] [Phat ZXCXZC]: /makeadmin 1 99999
+[01:20:03] [zcmd] [Phat ZXCXZC]: /makeadmin 0 0
+[01:20:05] [zcmd] [Phat ZXCXZC]: /locker
+[01:20:06] [zcmd] [Phat ZXCXZC]: /makeleader 0
+[01:20:08] [zcmd] [Phat ZXCXZC]: /makeleader 1
+[01:20:10] [zcmd] [Phat ZXCXZC]: /locker
+[01:20:13] [zcmd] [Phat ZXCXZC]: /tazer
+[01:20:15] [zcmd] [Phat ZXCXZC]: /tazer
+[01:20:18] [zcmd] [Phat ZXCXZC]: /locker
+[01:20:20] [zcmd] [Phat ZXCXZC]: /handcuff 0
+[01:20:22] [zcmd] [Phat ZXCXZC]: /drag 
+[01:20:23] [zcmd] [Phat ZXCXZC]: /drag 0
+[01:20:24] [debug] Run time error 4: "Array index out of bounds"
+[01:20:24] [debug]  Attempted to read/write array element at index 65535 in array of size 100
+[01:20:24] [debug] AMX backtrace:
+[01:20:24] [debug] #0 000c722c in ?? (65535) in lsrpvn.amx
+[01:20:24] [debug] #1 003e9684 in public S@@_OnPlayerKeyStateChange (1, 4, 0, 114) in lsrpvn.amx
+[01:20:24] [debug] #2 native CallLocalFunction () in samp-server.exe
+[01:20:24] [debug] #3 000162bc in public OnPlayerKeyStateChange (1, 4, 0) in lsrpvn.amx
+[01:20:26] [zcmd] [Phat ZXCXZC]: /batgiam
+[01:20:28] [zcmd] [Phat ZXCXZC]: /batgiam 200 20
+[01:20:32] [zcmd] [Phat ZXCXZC]: /batgiam 1
+[01:20:33] [zcmd] [Phat ZXCXZC]: /batgiam 1 1 1
+[01:20:34] [zcmd] [Phat ZXCXZC]: /batgiam 1 1 1 1
+[01:20:38] [zcmd] [Phat ZXCXZC]: /batgiam 0 1 1 1
+[01:20:42] [zcmd] [Phat ZXCXZC]: /batgiam 0 1 1 2
+[01:20:44] [zcmd] [Phat ZXCXZC]: /batgiam 0 1 2 2
+[01:20:46] [zcmd] [Phat ZXCXZC]: /batgiam 0 2 2 2
+[01:20:48] [zcmd] [Phat ZXCXZC]: /batgiam 0 5 5 5 
+[01:20:54] [zcmd] [Phat ZXCXZC]: /batgiam 1 1 1 1
+[01:20:55] [zcmd] [Phat ZXCXZC]: /batgiam 1 1 1 0
+[01:20:58] [zcmd] [Phat ZXCXZC]: /batgiam 1 1 0 1
+[01:21:01] [zcmd] [Phat ZXCXZC]: /batgiam 1 0  0 1
+[01:21:02] [zcmd] [Phat ZXCXZC]: /batgiam 1 0 0 1
+[01:21:04] [zcmd] [Phat ZXCXZC]: /batgiam 1 0 1
+[01:21:06] [zcmd] [Phat ZXCXZC]: /docarrest
+[01:21:09] [zcmd] [Phat ZXCXZC]: /docbatgiam
+[01:21:20] [zcmd] [Phat ZXCXZC]: /batgiam
+[01:21:22] [zcmd] [Phat ZXCXZC]: /batgiam 0 1 1
+[01:21:24] [zcmd] [Phat ZXCXZC]: /batgiam 0
+[01:21:28] [zcmd] [Phat ZXCXZC]: /su
+[01:21:29] [zcmd] [Phat ZXCXZC]: /su 0
+[01:21:31] [zcmd] [Phat ZXCXZC]: /su 0
+[01:21:33] [zcmd] [Phat ZXCXZC]: /groupkick 0
+[01:21:35] [zcmd] [Phat ZXCXZC]: /su 0
+[01:21:38] [zcmd] [Phat ZXCXZC]: /batigam
+[01:21:40] [zcmd] [Phat ZXCXZC]: /batgiam 0 0 0 0
+[01:21:43] [zcmd] [Phat ZXCXZC]: /batgiam 0 1 1 1
+[01:21:46] [zcmd] [Phat ZXCXZC]: /batgiam 1 1 1 1
+[01:22:06] [zcmd] [ZXC ZXZ]: /goto ls
+[01:24:01] [zcmd] [ZXC ZXZ]: /gotoco
+[01:24:10] [zcmd] [Phat ZXCXZC]: /gotoco 1363.1202 1567.8246 1468.7877 0
+[01:24:11] [zcmd] [Phat ZXCXZC]: /gotoco 1363.1202 1567.8246 1468.7877 0
+[01:24:26] [zcmd] [Phat ZXCXZC]: /gotoco 1359.8751 1581.7141 1468.7867
+[01:24:28] [zcmd] [Phat ZXCXZC]: /gotoco 1359.8751 1581.7141 1468.7867 0 0
+[01:24:29] [zcmd] [Phat ZXCXZC]: /gotoco 1359.8751 1581.7141 1468.7867 0 
+[01:24:32] [zcmd] [Phat ZXCXZC]: /lt
+[01:24:33] [zcmd] [Phat ZXCXZC]: /lt
+[01:24:37] [zcmd] [Phat ZXCXZC]: /rt
+[01:24:38] [zcmd] [Phat ZXCXZC]: /rt
+[01:24:39] [zcmd] [Phat ZXCXZC]: /rt
+[01:24:44] [zcmd] [Phat ZXCXZC]: /ft
+[01:24:46] [zcmd] [Phat ZXCXZC]: /front
+[01:24:48] [zcmd] [Phat ZXCXZC]: /b
+[01:24:49] [zcmd] [Phat ZXCXZC]: /bk
+[01:24:59] [zcmd] [Phat ZXCXZC]: /bk
+[01:25:02] [zcmd] [Phat ZXCXZC]: /rt
+[01:25:09] [zcmd] [Phat ZXCXZC]: /rt
+[01:25:11] [zcmd] [Phat ZXCXZC]: /lt
+[01:25:14] [zcmd] [Phat ZXCXZC]: /rt
+[01:25:31] [zcmd] [Phat ZXCXZC]: /lt
+[01:25:45] [zcmd] [Phat ZXCXZC]: /rt
+[01:25:48] [zcmd] [Phat ZXCXZC]: /lt
+[01:25:50] [zcmd] [Phat ZXCXZC]: /bkl
+[01:25:52] [zcmd] [Phat ZXCXZC]: /bk
+[01:25:54] [zcmd] [Phat ZXCXZC]: /ft
+[01:26:14] [zcmd] [Phat ZXCXZC]: /be
+[01:26:15] [zcmd] [Phat ZXCXZC]: /bt
+[01:26:17] [zcmd] [Phat ZXCXZC]: /up
+[01:26:23] [zcmd] [Phat ZXCXZC]: /dn
+[01:26:33] [zcmd] [Phat ZXCXZC]: /lt
+[01:26:34] [zcmd] [Phat ZXCXZC]: /lt
+[01:26:41] [zcmd] [Phat ZXCXZC]: /bk
+[01:29:37] [zcmd] [Phat ZXCXZC]: /gotoco -1873.1696 2670.3745 3.5894 1
+[01:29:40] [zcmd] [Phat ZXCXZC]: /gotoco -1873.1696 2670.3745 3.5894 1
+[01:30:57] [MySQL] Query Error - (ErrorID: 1054) (Handle: 1)
+[01:30:57] [MySQL] Check mysql_log.txt to review the query that threw the error.
+[01:30:57] Dumping query from 2023/10/8 (1:30:57)
+Description: Unknown column 'CraftWeaponDeal' in 'field list' (index 0). Query:
+
+[01:30:57] UPDATE `accounts` SET `IP`='127.0.0.1',`Registered`=1,`ConnectedTime`=10000,`Sex`=1,`BirthDate`='1923-01-01',`Band`=0,`PermBand`=0,`Warnings`=0,`Disabled`=0,`CraftWeaponDeal`=0,`CraftWeaponDealTime`=0,`Level`=1,`AdminLevel`=0,`CMND`=14275757,`MaskID1`=56969,`MaskID2`=21,`SeniorModerator`=0,`Helper`=0,`DonateRank`=0,`Respect`=2,`XP`=100,`Money`=4088,`MaHieu1`=0,`TruyDuoi`=0,`BanTime`=0,`TimeBanned`=0,`Flag`=53,`Eat`=1,`Drink`=1,`Strong`=1,`SoLanMiner`=0,`MinerLevel`=0,`TimeCraft`=0,`TimeMedkit`=0,`BannedBy`='NULL',`ReasonBanned`='NULL',`RankText`='NULL',`QuocTich`='0',`Flag`=53,`Hambuger`=0,`Banhmi`=0,`Pizza`=0,`Bank`=0,`pHealth`='70.00',`pArmor`='100.00',`pSHealth`='0.00',`Int`=0,`VirtualWorld`=0,`Model`=149,`BanAppealer`=0,`PR`=0,`HR`=0,`AP`=1,`Security`=0,`ShopTech`=0,`FactionModerator`=0,`GangModerator`=0,`Undercover`=0,`TogReports`=0,`Radio`=0,`RadioFreq`=0,`UpgradePoints`=0,`Origin`=0,`Muted`=0,`Crimes`=1,`Accent`=1,`CHits`=0,`FHits`=0,`Arrested`=1,`Phonebook`=0,`Fishes`=0,`Gcoin`=0,`Capacity`=30,`Bigge
+[01:30:57] stFish`=0,`Job`=0,`SoTaiKhoan`=0,`Job2`=0,`Paycheck`=3351,`HeadValue`=0,`JailTime`=0,`WRestricted`=9998,`Materials`=0,`Crates`=0,`Pot`=0,`Crack`=0,`Nation`=-1,`Leader`=-1,`Member`=-1,`Division`=-1,`FMember`=255,`Rank`=255,`DetSkill`=0,`SexSkill`=0,`BoxSkill`=0,`LawSkill`=0,`MechSkill`=0,`TruckSkill`=0,`DrugsSkill`=0,`ArmsSkill`=0,`SmugglerSkill`=0,`FishSkill`=0,`CheckCash`=0,`Checks`=0,`BoatLic`=0,`FlyLic`=0,`GunLic`=0,`FishLic`=0,`FishSkill`=0,`FightingStyle`=0,`PhoneNr`=0,`Apartment`=-1,`Apartment2`=-1,`Renting`=-1,`CarLic`=0,`DrugsTime`=0,`LawyerTime`=0,`LawyerFreeTime`=0,`MechTime`=0,`SexTime`=0,`PayDay`=3351,`PayDayHad`=0,`CDPlayer`=0,`Dice`=0,`Spraycan`=0,`Rope`=0,`Cigars`=0,`Sprunk`=0,`Bombs`=0,`Wins`=0,`Ammo1`=0,`Ammo2`=0,`Ammo3`=0,`Ammo4`=0,`Ammo5`=0,`Ammo6`=0,`Ammo7`=0,`Ammo8`=0,`Gun0`=0,`Gun1`=0,`Gun2`=0 WHERE `id`=28
+[01:31:22] [zcmd] [Phat ZXCXZC]: /gotoco -1873.1696 2670.3745 3.5894 1
+[01:33:01] [zcmd] [Phat ZXCXZC]: /got ols
+[01:33:03] [zcmd] [Phat ZXCXZC]: /goot lv
+[01:33:04] [zcmd] [Phat ZXCXZC]: /goto lv
+[01:33:08] [zcmd] [Phat ZXCXZC]: /fly
+[01:33:11] [zcmd] [Phat ZXCXZC]: /fly
+[01:35:25] *** YSI Error: INI_Open could not find or create file /DuLieu/ZXC_ZXZ.ini
+[01:35:25] [part] ZXC_ZXZ has left the server (0:2)
+[01:35:25] [debug] Run time error 4: "Array index out of bounds"
+[01:35:25] [debug]  Attempted to read/write array element at index 1001 in array of size 100
+[01:35:25] [debug] AMX backtrace:
+[01:35:25] [debug] #0 0017d40c in public AFKUpdate () in lsrpvn.amx
+[01:35:25] [MySQL] Query Error - (ErrorID: 1054) (Handle: 1)
+[01:35:25] [MySQL] Check mysql_log.txt to review the query that threw the error.
+[01:35:25] Dumping query from 2023/10/8 (1:35:25)
+Description: Unknown column 'CraftWeaponDeal' in 'field list' (index 0). Query:
+
+[01:35:25] UPDATE `accounts` SET `IP`='127.0.0.1',`Registered`=1,`ConnectedTime`=10000,`Sex`=1,`BirthDate`='1923-01-01',`Band`=0,`PermBand`=0,`Warnings`=0,`Disabled`=0,`CraftWeaponDeal`=0,`CraftWeaponDealTime`=0,`Level`=1,`AdminLevel`=0,`CMND`=14275757,`MaskID1`=56969,`MaskID2`=21,`SeniorModerator`=0,`Helper`=0,`DonateRank`=0,`Respect`=2,`XP`=100,`Money`=4088,`MaHieu1`=0,`TruyDuoi`=0,`BanTime`=0,`TimeBanned`=0,`Flag`=53,`Eat`=1,`Drink`=1,`Strong`=1,`SoLanMiner`=0,`MinerLevel`=0,`TimeCraft`=0,`TimeMedkit`=0,`BannedBy`='NULL',`ReasonBanned`='NULL',`RankText`='NULL',`QuocTich`='0',`Flag`=53,`Hambuger`=0,`Banhmi`=0,`Pizza`=0,`Bank`=0,`pHealth`='70.00',`pArmor`='100.00',`pSHealth`='0.00',`Int`=0,`VirtualWorld`=0,`Model`=149,`BanAppealer`=0,`PR`=0,`HR`=0,`AP`=1,`Security`=0,`ShopTech`=0,`FactionModerator`=0,`GangModerator`=0,`Undercover`=0,`TogReports`=0,`Radio`=0,`RadioFreq`=0,`UpgradePoints`=0,`Origin`=0,`Muted`=0,`Crimes`=1,`Accent`=1,`CHits`=0,`FHits`=0,`Arrested`=1,`Phonebook`=0,`Fishes`=0,`Gcoin`=0,`Capacity`=30,`Bigge
+[01:35:25] stFish`=0,`Job`=0,`SoTaiKhoan`=0,`Job2`=0,`Paycheck`=3591,`HeadValue`=0,`JailTime`=0,`WRestricted`=9998,`Materials`=0,`Crates`=0,`Pot`=0,`Crack`=0,`Nation`=-1,`Leader`=-1,`Member`=-1,`Division`=-1,`FMember`=255,`Rank`=255,`DetSkill`=0,`SexSkill`=0,`BoxSkill`=0,`LawSkill`=0,`MechSkill`=0,`TruckSkill`=0,`DrugsSkill`=0,`ArmsSkill`=0,`SmugglerSkill`=0,`FishSkill`=0,`CheckCash`=0,`Checks`=0,`BoatLic`=0,`FlyLic`=0,`GunLic`=0,`FishLic`=0,`FishSkill`=0,`FightingStyle`=0,`PhoneNr`=0,`Apartment`=-1,`Apartment2`=-1,`Renting`=-1,`CarLic`=0,`DrugsTime`=0,`LawyerTime`=0,`LawyerFreeTime`=0,`MechTime`=0,`SexTime`=0,`PayDay`=3591,`PayDayHad`=0,`CDPlayer`=0,`Dice`=0,`Spraycan`=0,`Rope`=0,`Cigars`=0,`Sprunk`=0,`Bombs`=0,`Wins`=0,`Ammo1`=0,`Ammo2`=0,`Ammo3`=0,`Ammo4`=0,`Ammo5`=0,`Ammo6`=0,`Ammo7`=0,`Ammo8`=0,`Gun0`=0,`Gun1`=0,`Gun2`=0 WHERE `id`=28
+[01:35:59] [zcmd] [Phat ZXCXZC]: /gotoco 1222.5018 243.8309 19.5469  0
+[01:36:00] [zcmd] [Phat ZXCXZC]: /gotoco 1222.5018 243.8309 19.5469 
+[01:36:01] [zcmd] [Phat ZXCXZC]: /gotoco 1222.5018 243.8309 19.5469 1
+[01:36:02] [zcmd] [Phat ZXCXZC]: /gotoco 1222.5018 243.8309 19.5469 1
+[01:36:03] [zcmd] [Phat ZXCXZC]: /gotoco 1222.5018 243.8309 19.5469 0
+[01:36:05] [zcmd] [Phat ZXCXZC]: /gotoco 1222.5018 243.8309 19.5469 0
+[01:37:29] [zcmd] [Phat ZXCXZC]: /gotoco 1223.4490 247.0872 19.5469
+[01:37:30] [zcmd] [Phat ZXCXZC]: /gotoco 1223.4490 247.0872 19.5469 0
+[01:37:31] [zcmd] [Phat ZXCXZC]: /gotoco 1223.4490 247.0872 19.5469 0
+[01:37:32] [zcmd] [Phat ZXCXZC]: /gotoco 1223.4490 247.0872 19.5469 0
+[01:37:33] [zcmd] [Phat ZXCXZC]: /gotoco 1223.4490 247.0872 19.5469 0
+[01:37:35] [zcmd] [Phat ZXCXZC]: /gotoco 1223.4490 247.0872 19.5469 0
+[01:37:36] [zcmd] [Phat ZXCXZC]: /gotoco 1223.4490 247.0872 19.5469 0
+[01:37:37] [zcmd] [Phat ZXCXZC]: /gotoco 1223.4490 247.0872 19.5469 0
+[01:37:51] *** YSI Error: INI_Open could not find or create file /DuLieu/Phat_ZXCXZC.ini
+[01:37:51] [part] Phat_ZXCXZC has left the server (1:1)
+[01:37:51] [MySQL] Query Error - (ErrorID: 1054) (Handle: 1)
+[01:37:51] [MySQL] Check mysql_log.txt to review the query that threw the error.
+[01:37:51] Dumping query from 2023/10/8 (1:37:51)
+Description: Unknown column 'CraftWeaponDeal' in 'field list' (index 0). Query:
+
+[01:37:51] UPDATE `accounts` SET `IP`='127.0.0.1',`Registered`=1,`ConnectedTime`=0,`Sex`=1,`BirthDate`='1924-01-01',`Band`=0,`PermBand`=0,`Warnings`=0,`Disabled`=0,`CraftWeaponDeal`=0,`CraftWeaponDealTime`=0,`Level`=1,`AdminLevel`=99999,`CMND`=0,`MaskID1`=64386,`MaskID2`=36,`SeniorModerator`=0,`Helper`=0,`DonateRank`=0,`Respect`=0,`XP`=0,`Money`=950,`MaHieu1`=0,`TruyDuoi`=0,`BanTime`=0,`TimeBanned`=0,`Flag`=48,`Eat`=90,`Drink`=90,`Strong`=91,`SoLanMiner`=105,`MinerLevel`=101,`TimeCraft`=0,`TimeMedkit`=0,`BannedBy`='NULL',`ReasonBanned`='NULL',`RankText`='NULL',`QuocTich`='0ie',`Flag`=48,`Hambuger`=0,`Banhmi`=0,`Pizza`=0,`Bank`=0,`pHealth`='95.00',`pArmor`='100.00',`pSHealth`='0.00',`Int`=0,`VirtualWorld`=0,`Model`=1,`BanAppealer`=0,`PR`=0,`HR`=0,`AP`=1,`Security`=0,`ShopTech`=0,`FactionModerator`=0,`GangModerator`=0,`Undercover`=0,`TogReports`=0,`Radio`=0,`RadioFreq`=0,`UpgradePoints`=0,`Origin`=0,`Muted`=0,`Crimes`=0,`Accent`=1,`CHits`=0,`FHits`=0,`Arrested`=0,`Phonebook`=0,`Fishes`=0,`Gcoin`=0,`Capacity`=16,`BiggestF
+[01:37:51] ish`=0,`Job`=0,`SoTaiKhoan`=0,`Job2`=0,`Paycheck`=1109,`HeadValue`=0,`JailTime`=0,`WRestricted`=0,`Materials`=0,`Crates`=0,`Pot`=0,`Crack`=0,`Nation`=-1,`Leader`=0,`Member`=0,`Division`=-1,`FMember`=255,`Rank`=9,`DetSkill`=0,`SexSkill`=0,`BoxSkill`=0,`LawSkill`=0,`MechSkill`=0,`TruckSkill`=0,`DrugsSkill`=0,`ArmsSkill`=0,`SmugglerSkill`=0,`FishSkill`=0,`CheckCash`=0,`Checks`=0,`BoatLic`=0,`FlyLic`=0,`GunLic`=0,`FishLic`=0,`FishSkill`=0,`FightingStyle`=0,`PhoneNr`=0,`Apartment`=-1,`Apartment2`=-1,`Renting`=-1,`CarLic`=0,`DrugsTime`=0,`LawyerTime`=0,`LawyerFreeTime`=0,`MechTime`=0,`SexTime`=0,`PayDay`=1109,`PayDayHad`=0,`CDPlayer`=0,`Dice`=0,`Spraycan`=0,`Rope`=0,`Cigars`=0,`Sprunk`=0,`Bombs`=0,`Wins`=0,`Ammo1`=0,`Ammo2`=0,`Ammo3`=0,`Ammo4`=0,`Ammo5`=0,`Ammo6`=0,`Ammo7`=0,`Ammo8`=0,`Gun0`=0,`Gun1`=0,`Gun2`=0,`Gun3`=0,`Gun4`=0 WHERE `id`=48
+[01:38:03] [connection] incoming connection: 127.0.0.1:56997 id: 0
+[01:38:03] [join] [FL]Ha1bokuzcx has joined the server (0:127.0.0.1)
+[01:38:12] acc id 51
+[01:38:12] Khong tai duoc tai khoan chinh cua ban
+[01:40:05] LSD ASDA has logged in.
+[01:40:05] JVNKNHCMRSHTXTXGOFJQZGD
+[01:40:05] [VEHICLE TRUCKER LOAD] Loading data from database...
+[01:40:05] [He Thong] Da luu lai thong tin tai khoan thanh cong.
+[01:40:05] [Load Vehicle Trucker] Khong co du lieu de tai
+[01:40:46] [debug] Run time error 4: "Array index out of bounds"
+[01:40:46] [debug]  Attempted to read/write array element at negative index -1
+[01:40:46] [debug] AMX backtrace:
+[01:40:46] [debug] #0 0019500c in ?? (0, 0) in lsrpvn.amx
+[01:40:46] [debug] #1 00194f90 in ?? (0, 1) in lsrpvn.amx
+[01:40:46] [debug] #2 0000f4c0 in public Itter_OnPlayerDisconnect (0, 1) in lsrpvn.amx
+[01:40:46] [debug] #3 native CallLocalFunction () in samp-server.exe
+[01:40:46] [debug] #4 00006f74 in public SSCANF_OnPlayerDisconnect (0, 1) in lsrpvn.amx
+[01:40:46] [debug] #5 00000924 in public OnPlayerDisconnect (0, 1) in lsrpvn.amx
+[01:40:46] [part] LSD_ASDA has left the server (0:1)
+[01:41:00] [connection] incoming connection: 127.0.0.1:51630 id: 0
+[01:41:00] [join] [FL]Ha1bokuzcx has joined the server (0:127.0.0.1)
+[01:41:00] name [FL]Ha1bokuzcx,1, 
+[01:41:09] acc id 51
+[01:41:13] acc id 51
+[01:41:17] acc id 51
+[01:41:21] acc id 51
+[01:41:21] [debug] Run time error 4: "Array index out of bounds"
+[01:41:21] [debug]  Attempted to read/write array element at negative index -1
+[01:41:21] [debug] AMX backtrace:
+[01:41:21] [debug] #0 0000a300 in ?? (0) in lsrpvn.amx
+[01:41:21] [debug] #1 0001980c in ?? (0) in lsrpvn.amx
+[01:41:21] [debug] #2 00055744 in ?? (0, 2) in lsrpvn.amx
+[01:41:21] [debug] #3 0000f4c0 in public Itter_OnPlayerDisconnect (0, 2) in lsrpvn.amx
+[01:41:21] [debug] #4 native CallLocalFunction () in samp-server.exe
+[01:41:21] [debug] #5 00006f74 in public SSCANF_OnPlayerDisconnect (0, 2) in lsrpvn.amx
+[01:41:21] [debug] #6 00000924 in public OnPlayerDisconnect (0, 2) in lsrpvn.amx
+[01:41:21] [debug] #7 native Kick () in samp-server.exe
+[01:41:21] [debug] #8 004fcaa4 in public LOGIN_TH (0) in lsrpvn.amx
+[01:41:21] [part] [FL]Ha1bokuzcx has left the server (0:2)
+[01:41:36] [connection] incoming connection: 127.0.0.1:56690 id: 0
+[01:41:36] [join] [FL]Ha1boku has joined the server (0:127.0.0.1)
+[01:41:36] name [FL]Ha1boku,4, 
+[01:41:40] acc id 24
+[01:41:44] ABC CBA has logged in.
+[01:41:44] YCAMYLHUASGBRLYULFATAAN
+[01:41:44] [VEHICLE TRUCKER LOAD] Loading data from database...
+[01:41:44] [He Thong] Da luu lai thong tin tai khoan thanh cong.
+[01:41:44] [LOAD INVENTORY]  du lieu inventory cua ABC CBA (ID: 0) da duoc tai.
+[01:41:44] [Load Vehicle Trucker] Khong co du lieu de tai
+[01:41:45] [debug] Run time error 4: "Array index out of bounds"
+[01:41:45] [debug]  Attempted to read/write array element at negative index -1
+[01:41:45] [debug] AMX backtrace:
+[01:41:45] [debug] #0 0019500c in ?? (0, 0) in lsrpvn.amx
+[01:41:45] [debug] #1 00194f90 in ?? (0, 1) in lsrpvn.amx
+[01:41:45] [debug] #2 0000f4c0 in public Itter_OnPlayerDisconnect (0, 1) in lsrpvn.amx
+[01:41:45] [debug] #3 native CallLocalFunction () in samp-server.exe
+[01:41:45] [debug] #4 00006f74 in public SSCANF_OnPlayerDisconnect (0, 1) in lsrpvn.amx
+[01:41:45] [debug] #5 00000924 in public OnPlayerDisconnect (0, 1) in lsrpvn.amx
+[01:41:45] [part] ABC_CBA has left the server (0:1)
+[01:41:57] [connection] incoming connection: 127.0.0.1:54261 id: 0
+[01:41:57] [join] [FL]Ha1bokuzxc has joined the server (0:127.0.0.1)
+[01:41:57] name [FL]Ha1bokuzxc,3, 
+[01:42:04] acc id 33
+[01:42:08] vzxcv zxc has logged in.
+[01:42:08] JRCCBLWFKINAIVKCKXDIRGT
+[01:42:08] [VEHICLE TRUCKER LOAD] Loading data from database...
+[01:42:08] [He Thong] Da luu lai thong tin tai khoan thanh cong.
+[01:42:08] [LOAD INVENTORY]  du lieu inventory cua vzxcv zxc (ID: 0) da duoc tai.
+[01:42:08] [Load Vehicle Trucker] Khong co du lieu de tai
+[01:42:09] [debug] Run time error 4: "Array index out of bounds"
+[01:42:09] [debug]  Attempted to read/write array element at negative index -1
+[01:42:09] [debug] AMX backtrace:
+[01:42:09] [debug] #0 0019500c in ?? (0, 0) in lsrpvn.amx
+[01:42:09] [debug] #1 00194f90 in ?? (0, 1) in lsrpvn.amx
+[01:42:09] [debug] #2 0000f4c0 in public Itter_OnPlayerDisconnect (0, 1) in lsrpvn.amx
+[01:42:09] [debug] #3 native CallLocalFunction () in samp-server.exe
+[01:42:09] [debug] #4 00006f74 in public SSCANF_OnPlayerDisconnect (0, 1) in lsrpvn.amx
+[01:42:09] [debug] #5 00000924 in public OnPlayerDisconnect (0, 1) in lsrpvn.amx
+[01:42:09] [part] vzxcv_zxc has left the server (0:1)
+[01:42:23] [connection] incoming connection: 127.0.0.1:50355 id: 0
+[01:42:23] [join] [FL]Ha1bokuzxc has joined the server (0:127.0.0.1)
+[01:42:23] name [FL]Ha1bokuzxc,3, 
+[01:42:29] acc id 33
+[01:42:34] Stanley Taellious has logged in.
+[01:42:34] XTQXOVUGQGHGMVKLZTEKXRJ
+[01:42:34] [VEHICLE TRUCKER LOAD] Loading data from database...
+[01:42:34] [He Thong] Da luu lai thong tin tai khoan thanh cong.
+[01:42:34] [LOAD INVENTORY]  du lieu inventory cua Stanley Taellious (ID: 0) da duoc tai.
+[01:42:34] [Load Vehicle Trucker] Khong co du lieu de tai
+[01:42:37] [debug] Run time error 4: "Array index out of bounds"
+[01:42:37] [debug]  Attempted to read/write array element at negative index -1
+[01:42:37] [debug] AMX backtrace:
+[01:42:37] [debug] #0 0019500c in ?? (0, 0) in lsrpvn.amx
+[01:42:37] [debug] #1 00194f90 in ?? (0, 1) in lsrpvn.amx
+[01:42:37] [debug] #2 0000f4c0 in public Itter_OnPlayerDisconnect (0, 1) in lsrpvn.amx
+[01:42:37] [debug] #3 native CallLocalFunction () in samp-server.exe
+[01:42:37] [debug] #4 00006f74 in public SSCANF_OnPlayerDisconnect (0, 1) in lsrpvn.amx
+[01:42:37] [debug] #5 00000924 in public OnPlayerDisconnect (0, 1) in lsrpvn.amx
+[01:42:37] [part] Stanley_Taellious has left the server (0:1)
+[01:42:48] [connection] incoming connection: 127.0.0.1:54631 id: 0
+[01:42:48] [join] [FL]Ha1bokuzxczx has joined the server (0:127.0.0.1)
+[01:42:54] [warning] client exceeded 'messageholelimit' (1) 127.0.0.1:54631 (3006) Limit: 3000
+[01:42:54] [warning] client exceeded 'messageholelimit' (1) 127.0.0.1:54631 (3006) Limit: 3000
+[01:42:54] [warning] client exceeded 'messageholelimit' (1) 127.0.0.1:54631 (3006) Limit: 3000
+[01:42:54] [warning] client exceeded 'messageholelimit' (1) 127.0.0.1:54631 (3006) Limit: 3000
+[01:42:54] [warning] client exceeded 'messageholelimit' (1) 127.0.0.1:54631 (3006) Limit: 3000
+[01:42:54] [warning] client exceeded 'messageholelimit' (1) 127.0.0.1:54631 (3006) Limit: 3000
+[01:42:57] acc id 52
+[01:42:57] Khong tai duoc tai khoan chinh cua ban
+[01:43:04] OASDAS ZX has logged in.
+[01:43:04] QNSOJKCHRBYCRFDEIRPHNFW
+[01:43:04] [VEHICLE TRUCKER LOAD] Loading data from database...
+[01:43:04] [He Thong] Da luu lai thong tin tai khoan thanh cong.
+[01:43:04] [Load Vehicle Trucker] Khong co du lieu de tai
+[01:46:06] [zcmd] [OASDAS ZX]: /gotoco 1223.4490 247.0872 19.5469 0
+[01:46:07] [zcmd] [OASDAS ZX]: /gotoco 1223.4490 247.0872 19.5469 
+[01:46:09] [zcmd] [OASDAS ZX]: /gotoco 1223.4490 247.0872 19.5469
+[01:46:12] [zcmd] [OASDAS ZX]: /makeadmin 0 99999
+[01:46:13] [zcmd] [OASDAS ZX]: /gotoco 1223.4490 247.0872 19.5469
+[01:46:14] [zcmd] [OASDAS ZX]: /gotoco 1223.4490 247.0872 19.5469 0
+[01:46:15] [zcmd] [OASDAS ZX]: /gotoco 1223.4490 247.0872 19.5469 0
+[01:46:16] [zcmd] [OASDAS ZX]: /gotoco 1223.4490 247.0872 19.5469 0
+[01:46:18] [zcmd] [OASDAS ZX]: /gotoco 1223.4490 247.0872 19.5469 0
