@@ -1447,11 +1447,9 @@ public OnPlayerEnterVehicle(playerid, vehicleid, ispassenger)
 }
 
 public OnPlayerConnect(playerid) {
+	TogglePlayerSpectating(playerid, true);
 	SetTimerEx("TimeUseMed", 60000, 0, "d", playerid);
 	SetTimerEx("TimeCraftMed", 60000, 0, "d", playerid);
-	SetPlayerCameraPos(playerid, 1527.1915, -1388.5413, 405.3455);
-	SetPlayerCameraLookAt(playerid, 1527.1210, -1389.5367, 403.4106);
-	SetPlayerPos(playerid, 1535.3447,-1357.3451,329.4568);
 	SetTimerEx("LoadLogin", 500, 0, "i", playerid);
 	SetPVarString(playerid, "PassAuth", "abc");
 	LoadLoginTextDraws(playerid);
@@ -6625,6 +6623,12 @@ stock LoadLogin(playerid)
 	PlayerTextDrawShow(playerid, LoginTD[playerid][3]);
 	PlayerTextDrawShow(playerid, LoginTD[playerid][4]);
 	SelectTextDraw(playerid, 0xe1dfa2FF);
+	switch(random(3))
+	{
+		case 0: InterpolateCameraPos(playerid, 1532.3927,357.1458,78.8630, 1228.4036,155.1032,45.7313, 120000, CAMERA_CUT);
+		case 1: InterpolateCameraPos(playerid, 2433.3809,-66.7512,76.6627, 2167.8020,96.4188,42.4985, 120000, CAMERA_CUT);
+		case 2: InterpolateCameraPos(playerid, -214.2948,-74.1664,39.5735, 120.3837,-7.4578,26.9301, 120000, CAMERA_CUT);
+	}
 	return 1;
 }
 
@@ -9556,9 +9560,6 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 				SetPlayerVirtualWorld(playerid, 0);
 				SetPlayerInterior(playerid, 0);
 				Streamer_UpdateEx(playerid,1716.1129,-1880.0715,22.0264);
-				SetPlayerPos(playerid,1716.1129,-1880.0715,-10.0);
-				SetPlayerCameraPos(playerid,1755.0413,-1824.8710,20.2100);
-				SetPlayerCameraLookAt(playerid,1716.1129,-1880.0715,22.0264);
 			}
 		}
 	}
@@ -14484,9 +14485,6 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 		        GetPlayerIp(playerid, ip, 32);
 		        format(string,sizeof (string),"\n\nDia chi IP cua ban: %s\n\nTai khoan ban chua dang ky, hay nhap mat khau de dang ky\n\n",ip);
 			    ShowPlayerDialog(playerid,DANGKY,DIALOG_STYLE_PASSWORD,"Dang ky",string,"Dang ky","Thoat");
-			    SetPlayerCameraPos(playerid, 1527.1915, -1388.5413, 405.3455);
-			    SetPlayerCameraLookAt(playerid, 1527.1210, -1389.5367, 403.4106);
-			    SetPlayerPos(playerid, 1535.3447,-1357.3451,329.4568);
 		    }
 		}
 	}
@@ -14515,9 +14513,6 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 			    GetPlayerIp(playerid, ip, 32);
 			    format(string,sizeof (string),"\n\nDia chi IP cua ban: %s\n\nLan dang nhap cua tai khoan: %s\n\nThoi gian tao tai khoan: %s\n",ip,MasterInfo[playerid][acc_lastlogin],MasterInfo[playerid][acc_regidate]);
 			    ShowPlayerDialog(playerid,DANGNHAP,DIALOG_STYLE_PASSWORD,"Dang nhap",string,"Dang nhap","Thoat");
-			    SetPlayerCameraPos(playerid, 1527.1915, -1388.5413, 405.3455);
-			    SetPlayerCameraLookAt(playerid, 1527.1210, -1389.5367, 403.4106);
-			    SetPlayerPos(playerid, 1535.3447,-1357.3451,329.4568);
     		   // SendClientMessage(playerid, 0xa5bbd0FF, "(REGISTER) Ban da dang ky thanh cong hay dang nhap de tiep tuc.");   
 		    }
 		}	  

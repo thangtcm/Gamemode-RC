@@ -207,7 +207,7 @@ public StartDownEatDrinkStrong(playerid)
 			if(GetPVarInt(playerid, #HPDown) == 0)
 			{
 				SetPVarInt(playerid, #HPDown, 1);
-				SetTimerEx("DownHP", 100, false, "i", playerid);
+				SetTimerEx("DownHP", 300000, false, "i", playerid);
 			}
 		}
 		if(PlayerInfo[playerid][pDrink] > 25)
@@ -223,7 +223,7 @@ public StartDownEatDrinkStrong(playerid)
 			if(GetPVarInt(playerid, #HPDown) == 0)
 			{
 				SetPVarInt(playerid, #HPDown, 1);
-				SetTimerEx("DownHP", 100, false, "i", playerid);
+				SetTimerEx("DownHP", 300000, false, "i", playerid);
 			}
 		}
 	}
@@ -241,7 +241,7 @@ public StartDownEatDrinkStrong(playerid)
 			if(GetPVarInt(playerid, #HPDown) == 0)
 			{
 				SetPVarInt(playerid, #HPDown, 1);
-				SetTimerEx("DownHP", 100, false, "i", playerid);
+				SetTimerEx("DownHP", 300000, false, "i", playerid);
 			}
 		}
 		if(PlayerInfo[playerid][pDrink] > 25)
@@ -256,7 +256,7 @@ public StartDownEatDrinkStrong(playerid)
 			if(GetPVarInt(playerid, #HPDown) == 0)
 			{
 				SetPVarInt(playerid, #HPDown, 1);
-				SetTimerEx("DownHP", 100, false, "i", playerid);
+				SetTimerEx("DownHP", 300000, false, "i", playerid);
 			}
 		}
 	}

@@ -95,3 +95,5 @@
 [10/07/23 23:00:46] [ERROR] can't serialize JSON: [json.exception.type_error.316] incomplete UTF-8 string; last byte: 0xBB
 [10/07/23 23:32:50] [WARNING] Unknown gateway event 'CHANNEL_TOPIC_UPDATE'
 [10/07/23 23:32:50] [WARNING] Unknown gateway event 'VOICE_CHANNEL_STATUS_UPDATE'
+[10/08/23 00:55:34] [WARNING] Unknown gateway event 'CHANNEL_TOPIC_UPDATE'
+[10/08/23 00:55:34] [WARNING] Unknown gateway event 'VOICE_CHANNEL_STATUS_UPDATE'
