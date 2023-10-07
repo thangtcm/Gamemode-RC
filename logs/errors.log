@@ -1151,3 +1151,5 @@
 [10/05/23 16:00:53] [plugins/discord-connector] can't serialize JSON: [json.exception.type_error.316] incomplete UTF-8 string; last byte: 0xBB
 [10/05/23 16:32:03] [plugins/discord-connector] Can't read from Discord websocket gateway: End of file (2)
 [10/05/23 16:32:03] [plugins/discord-connector] Can't write to Discord websocket gateway: The I/O operation has been aborted because of either a thread exit or an application request (995)
+[10/07/23 23:00:46] [plugins/discord-connector] can't serialize JSON: [json.exception.type_error.316] incomplete UTF-8 string; last byte: 0xBB
+[10/07/23 23:00:46] [plugins/discord-connector] can't serialize JSON: [json.exception.type_error.316] incomplete UTF-8 string; last byte: 0xBB

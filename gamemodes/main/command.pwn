@@ -50777,66 +50777,25 @@ CMD:pm(playerid, params[])
     else if(BlockChat[PID] == 1) return SendClientTextDraw(playerid, "Nguoi choi nay da tat che do PM");
     else if(BlockChat[playerid] == 1) return SendClientTextDraw(playerid, "Ban da tat kenh PM, '~y~/block~w~' de mo lai");
 
-	if(strlen(params) > 64)
+	if(PlayerInfo[playerid][pAdmin] >= 1)
 	{
-		new text1[128],
-			text2[128];
-
-		strmid(text2, message, 64, 128);
-		strmid(text1, message, 0, 64);
-		
-		if(PlayerInfo[PID][pAdmin] >= 1)
-		{
-			format(string, 128, "(( PM gui den {E88707}%s{FFE661} (%d): %s ))", GetPlayerNameExt(PID), PID, text1);
-		}
-		else if(PlayerInfo[PID][pAdmin] == 0)
-		{
-			format(string, 128, "(( PM gui den %s (%d): %s ))", GetPlayerNameExt(PID), PID, text1);
-		}
-		SendClientMessage(playerid, 0xFFE661FF, string);
-		format(string, 128, "... %s ))", text2);
-		SendClientMessage(playerid, 0xFFE661FF, string);
-
-		if(PlayerInfo[playerid][pAdmin] >= 1)
-		{
-			format(string, 128, "(( PM nhan tu {E88707}%s{FFDB18} (%d): %s ))", GetPlayerNameExt(playerid), playerid, text1);
-		}
-		else if(PlayerInfo[playerid][pAdmin] == 0)
-		{
-			format(string, 128, "(( PM nhan tu %s (%d): %s ))", GetPlayerNameExt(playerid), playerid, text1);
-		}
-		SendClientMessage(PID, COLOR_RECEIVEPM, string);
-		format(string, 128, "... %s ))", text2);
-		SendClientMessage(PID, COLOR_RECEIVEPM, string);
-
+		format(string, sizeof(string), "(( PM nhan tu {E88707}%s{FFDB18} (%d): %s ))", GetPlayerNameExt(playerid), playerid, message);
 	}
-	else
+	else if(PlayerInfo[playerid][pAdmin] == 0)
 	{
-		if(PlayerInfo[playerid][pAdmin] >= 1)
-		{
-			format(string, sizeof(string), "(( PM nhan tu {E88707}%s{FFDB18} (%d): %s ))", GetPlayerNameExt(playerid), playerid, message);
-		}
-		else if(PlayerInfo[playerid][pAdmin] == 0)
-		{
-			format(string, sizeof(string), "(( PM nhan tu %s (%d): %s ))", GetPlayerNameExt(playerid), playerid, message);
-		}
-		SendClientMessage(PID, COLOR_RECEIVEPM, string);
-		new pmne[128];
-		format(pmne, sizeof(pmne), "(( %s noi %s: %s ))", GetPlayerNameExt(playerid), GetPlayerNameExt(PID),message);
-		foreach(new i : Player)
-		{
-			SendClientMessage(i, COLOR_RECEIVEPM, pmne);
-		}
-		if(PlayerInfo[PID][pAdmin] >= 1)
-		{
-			format(string, 128, "(( PM gui den {E88707}%s{FFE661} (%d): %s ))", GetPlayerNameExt(PID), PID, message);
-		}
-		else if(PlayerInfo[PID][pAdmin] == 0)
-		{
-			format(string, 128, "(( PM gui den %s (%d): %s ))", GetPlayerNameExt(PID), PID, message);
-		}
-		SendClientMessage(playerid, 0xFFE661FF, string);
+		format(string, sizeof(string), "(( PM nhan tu %s (%d): %s ))", GetPlayerNameExt(playerid), playerid, message);
 	}
+	SendClientMessage(PID, COLOR_RECEIVEPM, string);
+	new pmne[128];
+	if(PlayerInfo[PID][pAdmin] >= 1)
+	{
+		format(string, 128, "(( PM gui den {E88707}%s{FFE661} (%d): %s ))", GetPlayerNameExt(PID), PID, message);
+	}
+	else if(PlayerInfo[PID][pAdmin] == 0)
+	{
+		format(string, 128, "(( PM gui den %s (%d): %s ))", GetPlayerNameExt(PID), PID, message);
+	}
+	SendClientMessage(playerid, 0xFFE661FF, string);
 	return 1;
 }
 
