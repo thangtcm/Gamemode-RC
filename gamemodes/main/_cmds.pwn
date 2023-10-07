@@ -1611,7 +1611,7 @@ CMD:bp(playerid, params[]) {
     return cmd_backup(playerid, params);
 }
 CMD:td(playerid, params[]) {
-    return cmd_backup(playerid, params);
+    return cmd_truyduoi(playerid, params);
 }
 CMD:tz(playerid, params[]) {
     return cmd_tazer(playerid, params);
