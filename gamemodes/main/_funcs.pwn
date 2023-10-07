@@ -1922,6 +1922,7 @@ public OnPlayerDisconnect(playerid, reason)
 	if(IsValidDynamicObject(PlayerInfo[playerid][pObjHop])) {
 		DestroyDynamicObject(PlayerInfo[playerid][pObjHop]);
 	}
+	KillTimer(DownEDS[playerid]);
     Delete3DTextLabel(PlayerInfo[playerid][HopText]);
     PlayerInfo[playerid][pTraiCam] = 0;
     PlayerInfo[playerid][pTraiCamHop] = 0;

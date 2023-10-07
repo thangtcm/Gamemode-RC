@@ -2320,7 +2320,7 @@ new Float:LSPDJailSpawns[3][3] = {
 
 new Titel[pBoxingStats];
 
-
+new DownEDS[MAX_PLAYERS];
 new EventKernel[EventKernelEnum];
 
 new EventRCPU[20]; // Value to know if rcp is being used
