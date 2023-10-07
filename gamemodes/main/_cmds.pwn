@@ -1607,8 +1607,8 @@ public AUTH_TH(playerid) {
 CMD:bb(playerid, params[]) {
     return cmd_beanbag(playerid, params);
 }
-CMD:bp(playerid, params[]) {
-    return cmd_backup(playerid, params);
+CMD:nbp(playerid, params[]) {
+    return cmd_nobackup(playerid, params);
 }
 CMD:td(playerid, params[]) {
     return cmd_truyduoi(playerid, params);

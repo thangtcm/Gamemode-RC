@@ -18013,7 +18013,90 @@ CMD:emergencybutton(playerid, params[]) {
 	}
 	return 1;
 }
-
+CMD:bp3(playerid, params[])
+{
+	if(Backup[playerid] == 0)
+	{
+	    if(IsACop(playerid) || IsAMedic(playerid))
+		{
+		    new code[10],
+			zone[MAX_ZONE_NAME],
+			string[128];
+		    GetPlayer3DZone(playerid, zone, sizeof(zone));
+			format(string, sizeof(string), "* %s yeu cau backup tren radio cua ho.", GetPlayerNameEx(playerid));
+			ProxDetector(30.0, playerid, string, COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE);
+			format(string, sizeof(string), "* %s yeu cau backup tai %s. {AA3333}Dap ung Code 3 [Lights and Sirens].", GetPlayerNameEx(playerid), zone);
+	        ShowBackupActiveForPlayer(playerid);
+			Backup[playerid] = 1;
+			foreach(Player, i)
+			{
+				if(PlayerInfo[playerid][pMember] == PlayerInfo[i][pMember])
+				{
+	      			SetPlayerMarkerForPlayer(i, playerid, 0x2641FEAA);
+					SendClientMessageEx(i, arrGroupData[PlayerInfo[playerid][pMember]][g_hRadioColour] * 256 + 255, string);
+				}
+			}
+			SendServerMessage(playerid, " Su dung /backup mot lan nua de ha thap yeu cau backup cua ban xuong code 2.");
+			SendServerMessage(playerid, " Su dung /nobackup de xoa yeu cau backup.");
+			if(BackupClearTimer[playerid] != 0)
+			{
+				KillTimer(BackupClearTimer[playerid]);
+				BackupClearTimer[playerid] = 0;
+			}
+			BackupClearTimer[playerid] = SetTimerEx("BackupClear", 300000, false, "ii", playerid, 1);
+		}
+		else
+		{
+			SendErrorMessage(playerid, "    Ban khong phai nhan vien thuc thi phap luat hoac bac si!");
+		}
+	} else return SendErrorMessage(playerid, " Ban dang bat backup roi, vui long /nobackup (/nbp) de tat.");
+	return 1;
+}
+CMD:bp2(playerid, params[])
+{
+	if(Backup[playerid] == 0)
+	{
+	    if(IsACop(playerid) || IsAMedic(playerid))
+		{
+		    new code[10],
+			zone[MAX_ZONE_NAME],
+			string[128];
+		    GetPlayer3DZone(playerid, zone, sizeof(zone));
+			format(string, sizeof(string), "* %s yeu cau backup tren radio cua ho.", GetPlayerNameEx(playerid));
+			ProxDetector(30.0, playerid, string, COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE);
+			format(string, sizeof(string), "* %s yeu cau backup tai %s. {00FF33}Dap ung Code 2 [No Lights and Sirens].", GetPlayerNameEx(playerid), zone);
+	        ShowBackupActiveForPlayer(playerid);
+			Backup[playerid] = 2;
+			foreach(Player, i)
+			{
+				if(PlayerInfo[playerid][pMember] == PlayerInfo[i][pMember])
+				{
+	  				SetPlayerMarkerForPlayer(i, playerid, 0x00FF33AA);
+					SendClientMessageEx(i,  arrGroupData[PlayerInfo[playerid][pMember]][g_hRadioColour] * 256 + 255, string);
+				}
+			}
+			SendServerMessage(playerid, " Su dung /backup mot lan nua de nang yeu cau backup cua ban len code 3.");
+			SendServerMessage(playerid, " Su dung /nobackup de xoa yeu cau backup.");
+			if(BackupClearTimer[playerid] != 0)
+			{
+				KillTimer(BackupClearTimer[playerid]);
+				BackupClearTimer[playerid] = 0;
+			}
+			BackupClearTimer[playerid] = SetTimerEx("BackupClear", 300000, false, "ii", playerid, 1);
+		}
+		else
+		{
+			SendErrorMessage(playerid, "    Ban khong phai nhan vien thuc thi phap luat hoac bac si!");
+		}
+	} else return SendErrorMessage(playerid, " Ban dang bat backup roi, vui long /nobackup (/nbp) de tat.");
+	return 1;
+}
+CMD:backup(playerid, params[])
+{
+	SendClientMessage(playerid, COLOR_LIGHTRED, "[SERVER] {ffffff}lenh da duoc doi thanh /bp2, /bp3, /nbp");
+	return 1;
+}
+/*
 CMD:backup(playerid, params[])
 {
     if(IsACop(playerid) || IsAMedic(playerid))
@@ -18085,7 +18168,7 @@ CMD:backup(playerid, params[])
 		SendErrorMessage(playerid, "    Ban khong phai nhan vien thuc thi phap luat hoac bac si!");
 	}
 	return 1;
-}
+}*/
 
 CMD:backupall(playerid, params[])
 {
@@ -25332,7 +25415,7 @@ CMD:r(playerid, params[]) {
 					format(string, sizeof(string), "(radio) %s", params);
 					SetPlayerChatBubble(playerid, string, COLOR_WHITE, 15.0, 5000);
 					GetPlayerGroupInfo(playerid, rank, division, employer);
-					format(string, sizeof(string), "**[S1:Dispatch] [%d] %s %s: %s **",PlayerInfo[playerid][pMaHieu1],PlayerInfo[playerid][pRankText], GetPlayerNameEx(playerid), params);
+					format(string, sizeof(string), "**[CH: 911, S: 1] [%d] %s %s: %s **",PlayerInfo[playerid][pMaHieu1],PlayerInfo[playerid][pRankText], GetPlayerNameEx(playerid), params);
 					foreach(new i: Player)
 					{
 						if(GetPVarInt(i, "togRadio") == 0)
@@ -25372,7 +25455,7 @@ CMD:r2(playerid, params[]) {
 					format(string, sizeof(string), "(radio) %s", params);
 					SetPlayerChatBubble(playerid, string, COLOR_WHITE, 15.0, 5000);
 					GetPlayerGroupInfo(playerid, rank, division, employer);
-					format(string, sizeof(string), "**[S2: %s] [%d] %s %s: %s **", division,PlayerInfo[playerid][pMaHieu1],PlayerInfo[playerid][pRankText], GetPlayerNameEx(playerid), params);
+					format(string, sizeof(string), "**[CH: 911, S: %s] [%d] %s %s: %s **", division,PlayerInfo[playerid][pMaHieu1],PlayerInfo[playerid][pRankText], GetPlayerNameEx(playerid), params);
 					foreach(new i: Player)
 					{
 						if(GetPVarInt(i, "togRadio") == 0)

@@ -111,3 +111,5 @@
 [10/04/23 21:45:16] [plugins/discord-connector] Unknown gateway event 'VOICE_CHANNEL_STATUS_UPDATE'
 [10/07/23 22:50:29] [plugins/discord-connector] Unknown gateway event 'CHANNEL_TOPIC_UPDATE'
 [10/07/23 22:50:29] [plugins/discord-connector] Unknown gateway event 'VOICE_CHANNEL_STATUS_UPDATE'
+[10/07/23 23:32:50] [plugins/discord-connector] Unknown gateway event 'CHANNEL_TOPIC_UPDATE'
+[10/07/23 23:32:50] [plugins/discord-connector] Unknown gateway event 'VOICE_CHANNEL_STATUS_UPDATE'

@@ -3322,3 +3322,757 @@ Description: Unknown column 'CraftWeaponDeal' in 'field list' (index 0). Query:
 [23:09:56] [debug] #4 00006f74 in public SSCANF_OnPlayerDisconnect (0, 1) in lsrpvn.amx
 [23:09:56] [debug] #5 00000924 in public OnPlayerDisconnect (0, 1) in lsrpvn.amx
 [23:09:56] [part] Hidan_Sebastian has left the server (0:1)
+
+----------
+Loaded log file: "server_log.txt".
+----------
+
+SA-MP Dedicated Server
+----------------------
+v0.3.DL-R1, (C)2005-2018 SA-MP Team
+
+[23:16:22] password = ""  (string)
+[23:16:22] 
+[23:16:22] Server Plugins
+[23:16:22] --------------
+[23:16:22]  Loading plugin: mysql
+[23:16:22]  >> plugin.mysql: R33 successfully loaded.
+[23:16:22]   Loaded.
+[23:16:22]  Loading plugin: sscanf
+[23:16:22] 
+
+[23:16:22]  ===============================
+
+[23:16:22]       sscanf plugin loaded.     
+
+[23:16:22]          Version:  2.8.1        
+
+[23:16:22]    (c) 2012 Alex "Y_Less" Cole  
+
+[23:16:22]  ===============================
+
+[23:16:22]   Loaded.
+[23:16:22]  Loading plugin: whirlpool
+[23:16:22]  
+[23:16:22]  ==================
+[23:16:22]  
+[23:16:22]   Whirlpool loaded
+[23:16:22]  
+[23:16:22]  ==================
+[23:16:22]  
+[23:16:22]   Loaded.
+[23:16:22]  Loading plugin: crashdetect
+[23:16:22]   CrashDetect plugin 4.19.4
+[23:16:22]   Loaded.
+[23:16:22]  Loading plugin: sampvoice
+[23:16:22] [sv:dbg:network:init] : module initializing...
+[23:16:22] [dbg:raknet:init] : module initializing...
+[23:16:22] [dbg:raknet:init] : module initialized
+[23:16:22] [sv:dbg:network:init] : module initialized
+[23:16:22] [sv:dbg:main:Load] : creating 8 work threads...
+[23:16:22]  -------------------------------------------    
+[23:16:22]    ___                __   __    _              
+[23:16:22]   / __| __ _ _ __  _ _\ \ / /__ (_) __ ___    
+[23:16:22]   \__ \/ _` | '  \| '_ \   / _ \| |/ _/ -_)
+[23:16:22]   |___/\__,_|_|_|_| .__/\_/\___/|_|\__\___|
+[23:16:22]                   |_|                           
+[23:16:22]  -------------------------------------------    
+[23:16:22]            SampVoice by MOR loaded              
+[23:16:22]  -------------------------------------------    
+[23:16:22]   Loaded.
+[23:16:22]  Loading plugin: samp-compat.dll
+[23:16:22]   -- samp-compat for 0.3.DL-R1 initialized
+[23:16:22]   Loaded.
+[23:16:22]  Loading plugin: streamer
+[23:16:22] 
+
+*** Streamer Plugin v2.9.5 by Incognito loaded ***
+
+[23:16:22]   Loaded.
+[23:16:22]  Loading plugin: server
+[23:16:22] [debug] Server crashed due to an unknown error
+[23:16:22] [debug] Native backtrace:
+[23:16:22] [debug] #0 770390e2 in ?? () in C:\Windows\System32\KERNELBASE.dll
+[23:16:22] [debug] #1 502e3c70 in ?? () in plugins\server.DLL
+[23:16:22] [debug] #2 501b53fe in ?? () in plugins\server.DLL
+[23:16:22] [debug] #3 502a27e9 in ?? () in plugins\server.DLL
+[23:16:22] [debug] #4 502a2749 in ?? () in plugins\server.DLL
+[23:16:22] [debug] #5 50271784 in ?? () in plugins\server.DLL
+[23:16:22] [debug] #6 5028231f in ?? () in plugins\server.DLL
+[23:16:22] [debug] #7 0046a66b in ?? () in samp-server.exe
+[23:16:22] [debug] #8 0046a83c in ?? () in samp-server.exe
+[23:16:22] [debug] #9 0019fd18 in ?? ()
+[23:16:22] [debug] #10 4bba9068 in ?? () in samp-server.exe
+[23:16:22] [debug] #11 6805eb00 in ?? () in samp-server.exe
+[23:16:22] [debug] #12 004bba84 in ?? () in samp-server.exe
+[23:16:22] [debug] #13 02774fe8 in ?? ()
+[23:16:22] [debug] #14 64656c69 in ?? () in samp-server.exe
+[23:16:22] [debug] Registers:
+[23:16:22] [debug] EAX: 0019ed88 EBX: 19930520 ECX: 00000003 EDX: 00000000
+[23:16:22] [debug] ESI: 503402d8 EDI: 5038cf78 EBP: 61462020 ESP: 004bba8c
+[23:16:22] [debug] EIP: 64656c69 EFLAGS: 00000216
+[23:16:22] [debug] Stack:
+[23:16:22] [debug] ESP+00000000: 0000002e 6f4c2020 64656461 0000002e
+[23:16:22] [debug] ESP+00000020: 00732520 67756c70 00736e69 2d2d2d2d
+[23:16:22] [debug] ESP+00000040: 50207265 6967756c 0000736e 0000005c
+[23:16:22] [debug] ESP+00000060: 00007469 6c696146 74206465 6f6c206f
+[23:16:22] [debug] ESP+00000080: 63737265 74706972 0000002e 746c6966
+[23:16:22] [debug] ESP+000000a0: 00000000 69466e4f 7265746c 69726353
+[23:16:22] [debug] ESP+000000c0: 6e6e6f43 00746365 6c506e4f 72657961
+[23:16:22] [debug] ESP+000000e0: 6f4d656d 6e496564 00007469 61476e4f
+[23:16:22] [debug] ESP+00000100: 72657961 77617053 0000006e 6c506e4f
+[23:16:22] [debug] ESP+00000120: 6c636968 61705365 00006e77 65566e4f
+[23:16:22] [debug] ESP+00000140: 72657961 74786554 00000000 6c506e4f
+[23:16:22] [debug] ESP+00000160: 6c506e4f 72657961 75716552 43747365
+[23:16:22] [debug] ESP+00000180: 75716552 53747365 6e776170 00000000
+[23:16:22] [debug] ESP+000001a0: 656c6369 00000000 6c506e4f 72657961
+[23:16:22] [debug] ESP+000001c0: 72657961 74617453 61684365 0065676e
+[23:16:22] [debug] ESP+000001e0: 6e616843 00006567 6c506e4f 72657961
+[23:16:22] [debug] ESP+00000200: 6c506e4f 72657961 7661654c 65684365
+[23:16:22] [debug] ESP+00000220: 65746e45 63615272 65684365 6f706b63
+[23:16:22] [debug] ESP+00000240: 63615265 65684365 6f706b63 00746e69
+[23:16:22] [debug] ESP+00000260: 6e616843 00006567 63526e4f 6f436e6f
+[23:16:22] [debug] ESP+00000280: 65766f4d 00000064 6c506e4f 72657961
+[23:16:22] [debug] ESP+000002a0: 72657961 6b636950 69507055 70756b63
+[23:16:22] [debug] ESP+000002c0: 654d6465 0000756e 6c506e4f 72657961
+[23:16:22] [debug] ESP+000002e0: 65566e4f 6c636968 73655265 79617270
+[23:16:22] [debug] ESP+00000300: 00000000 6e456e4f 45726574 4d746978
+[23:16:22] [debug] ESP+00000320: 69615065 6f6a746e 00000062 63536e4f
+[23:16:22] [debug] ESP+00000340: 6f4c6e6f 416e6967 6d657474 00007470
+[23:16:22] [debug] ESP+00000360: 6c506e4f 72657961 65727453 6e496d61
+[23:16:22] [debug] ESP+00000380: 754f6d61 00000074 65566e4f 6c636968
+[23:16:22] [debug] ESP+000003a0: 6c636968 72745365 4f6d6165 00007475
+[23:16:22] [debug] ESP+000003c0: 63416e4f 53726f74 61657274 74754f6d
+[23:16:22] [debug] ESP+000003e0: 65736e6f 00000000 6c506e4f 72657961
+[23:16:22] [debug] Loaded modules:
+[23:16:22] [debug] 00400000 - 0051f000 samp-server.exe
+[23:16:22] [debug] 779b0000 - 77b61000 ntdll.dll
+[23:16:22] [debug] 76420000 - 76510000 KERNEL32.DLL
+[23:16:22] [debug] 76ef0000 - 77164000 KERNELBASE.dll
+[23:16:22] [debug] 76760000 - 76df5000 SHELL32.dll
+[23:16:22] [debug] 777a0000 - 77819000 msvcp_win.dll
+[23:16:22] [debug] 761a0000 - 762b2000 ucrtbase.dll
+[23:16:22] [debug] 75640000 - 757e8000 USER32.dll
+[23:16:22] [debug] 77540000 - 7755a000 win32u.dll
+[23:16:22] [debug] 77430000 - 77453000 GDI32.dll
+[23:16:22] [debug] 76e00000 - 76ee2000 gdi32full.dll
+[23:16:22] [debug] 70a10000 - 70a41000 WINMM.dll
+[23:16:22] [debug] 6d270000 - 6d278000 WSOCK32.dll
+[23:16:22] [debug] 75b40000 - 75c04000 msvcrt.dll
+[23:16:22] [debug] 775f0000 - 7764f000 ws2_32.DLL
+[23:16:22] [debug] 75c30000 - 75cea000 RPCRT4.dll
+[23:16:22] [debug] 778f0000 - 77915000 IMM32.DLL
+[23:16:22] [debug] 50720000 - 507f4000 mysql.DLL
+[23:16:22] [debug] 50640000 - 50716000 MSVCR110.dll
+[23:16:22] [debug] 10000000 - 1023e000 LIBMYSQL.dll
+[23:16:22] [debug] 77920000 - 7799d000 ADVAPI32.dll
+[23:16:22] [debug] 77710000 - 77794000 sechost.dll
+[23:16:22] [debug] 505b0000 - 50635000 MSVCP110.dll
+[23:16:22] [debug] 6fb10000 - 6fb22000 napinsp.dll
+[23:16:22] [debug] 6fae0000 - 6faf6000 pnrpnsp.dll
+[23:16:22] [debug] 74100000 - 74151000 mswsock.dll
+[23:16:22] [debug] 70a50000 - 70b0c000 DNSAPI.dll
+[23:16:22] [debug] 75110000 - 75134000 IPHLPAPI.DLL
+[23:16:22] [debug] 75c10000 - 75c17000 NSI.dll
+[23:16:22] [debug] 6fad0000 - 6fade000 winrnr.dll
+[23:16:22] [debug] 6fab0000 - 6fac1000 wshbth.dll
+[23:16:22] [debug] 6fa90000 - 6faa8000 nlansp_c.dll
+[23:16:22] [debug] 6fa80000 - 6fa88000 rasadhlp.dll
+[23:16:22] [debug] 02430000 - 0243d000 sscanf.DLL
+[23:16:22] [debug] 504f0000 - 505af000 MSVCR100.dll
+[23:16:22] [debug] 025a0000 - 025ac000 whirlpool.DLL
+[23:16:22] [debug] 72a60000 - 72afb000 MSVCR80.dll
+[23:16:22] [debug] 50490000 - 504e1000 crashdetect.DLL
+[23:16:22] [debug] 50420000 - 50489000 MSVCP100.dll
+[23:16:22] [debug] 5da80000 - 5daab000 sampvoice.DLL
+[23:16:22] [debug] 6eef0000 - 6ef5d000 MSVCP140.dll
+[23:16:22] [debug] 6ef60000 - 6ef75000 VCRUNTIME140.dll
+[23:16:22] [debug] 74810000 - 74823000 kernel.appcore.dll
+[23:16:22] [debug] 6f630000 - 6f63a000 samp-compat.dll
+[23:16:22] [debug] 503b0000 - 5041d000 streamer.DLL
+[23:16:22] [debug] 500f0000 - 503a1000 server.DLL
+[23:16:22] [debug] 765b0000 - 766b3000 CRYPT32.dll
+[23:16:22] [debug] 73af0000 - 73b0a000 bcrypt.dll
+[23:16:22] [debug] 73f40000 - 73f4b000 CRYPTBASE.DLL
+[23:16:22] [debug] 77480000 - 774e2000 bcryptPrimitives.dll
+[23:16:22] [debug] 6f7b0000 - 6f7be000 MSASN1.dll
+
+----------
+Loaded log file: "server_log.txt".
+----------
+
+SA-MP Dedicated Server
+----------------------
+v0.3.DL-R1, (C)2005-2018 SA-MP Team
+
+[23:16:45] password = ""  (string)
+[23:16:45] 
+[23:16:45] Server Plugins
+[23:16:45] --------------
+[23:16:45]  Loading plugin: mysql
+[23:16:45]  >> plugin.mysql: R33 successfully loaded.
+[23:16:45]   Loaded.
+[23:16:45]  Loading plugin: sscanf
+[23:16:45] 
+
+[23:16:45]  ===============================
+
+[23:16:45]       sscanf plugin loaded.     
+
+[23:16:45]          Version:  2.8.1        
+
+[23:16:45]    (c) 2012 Alex "Y_Less" Cole  
+
+[23:16:45]  ===============================
+
+[23:16:45]   Loaded.
+[23:16:45]  Loading plugin: whirlpool
+[23:16:45]  
+[23:16:45]  ==================
+[23:16:45]  
+[23:16:45]   Whirlpool loaded
+[23:16:45]  
+[23:16:45]  ==================
+[23:16:45]  
+[23:16:45]   Loaded.
+[23:16:45]  Loading plugin: crashdetect
+[23:16:45]   CrashDetect plugin 4.19.4
+[23:16:45]   Loaded.
+[23:16:45]  Loading plugin: sampvoice
+[23:16:45] [sv:dbg:network:init] : module initializing...
+[23:16:45] [dbg:raknet:init] : module initializing...
+[23:16:45] [dbg:raknet:init] : module initialized
+[23:16:45] [sv:dbg:network:init] : module initialized
+[23:16:45] [sv:dbg:main:Load] : creating 8 work threads...
+[23:16:45]  -------------------------------------------    
+[23:16:45]    ___                __   __    _              
+[23:16:45]   / __| __ _ _ __  _ _\ \ / /__ (_) __ ___    
+[23:16:45]   \__ \/ _` | '  \| '_ \   / _ \| |/ _/ -_)
+[23:16:45]   |___/\__,_|_|_|_| .__/\_/\___/|_|\__\___|
+[23:16:45]                   |_|                           
+[23:16:45]  -------------------------------------------    
+[23:16:45]            SampVoice by MOR loaded              
+[23:16:45]  -------------------------------------------    
+[23:16:45]   Loaded.
+[23:16:45]  Loading plugin: samp-compat.dll
+[23:16:45]   -- samp-compat for 0.3.DL-R1 initialized
+[23:16:45]   Loaded.
+[23:16:45]  Loading plugin: streamer
+[23:16:45] 
+
+*** Streamer Plugin v2.9.5 by Incognito loaded ***
+
+[23:16:45]   Loaded.
+[23:16:45]  Loading plugin: server
+[23:16:45] [debug] Server crashed due to an unknown error
+[23:16:45] [debug] Native backtrace:
+[23:16:45] [debug] #0 770390e2 in ?? () in C:\Windows\System32\KERNELBASE.dll
+[23:16:45] [debug] #1 502e3c70 in ?? () in plugins\server.DLL
+[23:16:45] [debug] #2 501b53fe in ?? () in plugins\server.DLL
+[23:16:45] [debug] #3 502a27e9 in ?? () in plugins\server.DLL
+[23:16:45] [debug] #4 502a2749 in ?? () in plugins\server.DLL
+[23:16:45] [debug] #5 50271784 in ?? () in plugins\server.DLL
+[23:16:45] [debug] #6 5028231f in ?? () in plugins\server.DLL
+[23:16:45] [debug] #7 0046a66b in ?? () in samp-server.exe
+[23:16:45] [debug] #8 0046a83c in ?? () in samp-server.exe
+[23:16:45] [debug] #9 0019fd18 in ?? ()
+[23:16:45] [debug] #10 4bba9068 in ?? () in samp-server.exe
+[23:16:45] [debug] #11 6805eb00 in ?? () in samp-server.exe
+[23:16:45] [debug] #12 004bba84 in ?? () in samp-server.exe
+[23:16:45] [debug] #13 02774fe8 in ?? ()
+[23:16:45] [debug] #14 64656c69 in ?? () in samp-server.exe
+[23:16:45] [debug] Registers:
+[23:16:45] [debug] EAX: 0019ed88 EBX: 19930520 ECX: 00000003 EDX: 00000000
+[23:16:45] [debug] ESI: 503402d8 EDI: 5038cf78 EBP: 61462020 ESP: 004bba8c
+[23:16:45] [debug] EIP: 64656c69 EFLAGS: 00000216
+[23:16:45] [debug] Stack:
+[23:16:45] [debug] ESP+00000000: 0000002e 6f4c2020 64656461 0000002e
+[23:16:45] [debug] ESP+00000020: 00732520 67756c70 00736e69 2d2d2d2d
+[23:16:45] [debug] ESP+00000040: 50207265 6967756c 0000736e 0000005c
+[23:16:45] [debug] ESP+00000060: 00007469 6c696146 74206465 6f6c206f
+[23:16:45] [debug] ESP+00000080: 63737265 74706972 0000002e 746c6966
+[23:16:45] [debug] ESP+000000a0: 00000000 69466e4f 7265746c 69726353
+[23:16:45] [debug] ESP+000000c0: 6e6e6f43 00746365 6c506e4f 72657961
+[23:16:45] [debug] ESP+000000e0: 6f4d656d 6e496564 00007469 61476e4f
+[23:16:45] [debug] ESP+00000100: 72657961 77617053 0000006e 6c506e4f
+[23:16:45] [debug] ESP+00000120: 6c636968 61705365 00006e77 65566e4f
+[23:16:45] [debug] ESP+00000140: 72657961 74786554 00000000 6c506e4f
+[23:16:45] [debug] ESP+00000160: 6c506e4f 72657961 75716552 43747365
+[23:16:45] [debug] ESP+00000180: 75716552 53747365 6e776170 00000000
+[23:16:45] [debug] ESP+000001a0: 656c6369 00000000 6c506e4f 72657961
+[23:16:45] [debug] ESP+000001c0: 72657961 74617453 61684365 0065676e
+[23:16:45] [debug] ESP+000001e0: 6e616843 00006567 6c506e4f 72657961
+[23:16:45] [debug] ESP+00000200: 6c506e4f 72657961 7661654c 65684365
+[23:16:45] [debug] ESP+00000220: 65746e45 63615272 65684365 6f706b63
+[23:16:45] [debug] ESP+00000240: 63615265 65684365 6f706b63 00746e69
+[23:16:45] [debug] ESP+00000260: 6e616843 00006567 63526e4f 6f436e6f
+[23:16:45] [debug] ESP+00000280: 65766f4d 00000064 6c506e4f 72657961
+[23:16:45] [debug] ESP+000002a0: 72657961 6b636950 69507055 70756b63
+[23:16:45] [debug] ESP+000002c0: 654d6465 0000756e 6c506e4f 72657961
+[23:16:45] [debug] ESP+000002e0: 65566e4f 6c636968 73655265 79617270
+[23:16:45] [debug] ESP+00000300: 00000000 6e456e4f 45726574 4d746978
+[23:16:45] [debug] ESP+00000320: 69615065 6f6a746e 00000062 63536e4f
+[23:16:45] [debug] ESP+00000340: 6f4c6e6f 416e6967 6d657474 00007470
+[23:16:45] [debug] ESP+00000360: 6c506e4f 72657961 65727453 6e496d61
+[23:16:45] [debug] ESP+00000380: 754f6d61 00000074 65566e4f 6c636968
+[23:16:45] [debug] ESP+000003a0: 6c636968 72745365 4f6d6165 00007475
+[23:16:45] [debug] ESP+000003c0: 63416e4f 53726f74 61657274 74754f6d
+[23:16:45] [debug] ESP+000003e0: 65736e6f 00000000 6c506e4f 72657961
+[23:16:45] [debug] Loaded modules:
+[23:16:45] [debug] 00400000 - 0051f000 samp-server.exe
+[23:16:45] [debug] 779b0000 - 77b61000 ntdll.dll
+[23:16:45] [debug] 76420000 - 76510000 KERNEL32.DLL
+[23:16:45] [debug] 76ef0000 - 77164000 KERNELBASE.dll
+[23:16:45] [debug] 76760000 - 76df5000 SHELL32.dll
+[23:16:45] [debug] 777a0000 - 77819000 msvcp_win.dll
+[23:16:45] [debug] 761a0000 - 762b2000 ucrtbase.dll
+[23:16:45] [debug] 75640000 - 757e8000 USER32.dll
+[23:16:45] [debug] 77540000 - 7755a000 win32u.dll
+[23:16:45] [debug] 77430000 - 77453000 GDI32.dll
+[23:16:45] [debug] 76e00000 - 76ee2000 gdi32full.dll
+[23:16:45] [debug] 6d270000 - 6d278000 WSOCK32.dll
+[23:16:45] [debug] 70a10000 - 70a41000 WINMM.dll
+[23:16:45] [debug] 75b40000 - 75c04000 msvcrt.dll
+[23:16:45] [debug] 775f0000 - 7764f000 ws2_32.DLL
+[23:16:45] [debug] 75c30000 - 75cea000 RPCRT4.dll
+[23:16:45] [debug] 778f0000 - 77915000 IMM32.DLL
+[23:16:45] [debug] 50720000 - 507f4000 mysql.DLL
+[23:16:45] [debug] 50640000 - 50716000 MSVCR110.dll
+[23:16:45] [debug] 10000000 - 1023e000 LIBMYSQL.dll
+[23:16:45] [debug] 505b0000 - 50635000 MSVCP110.dll
+[23:16:45] [debug] 77920000 - 7799d000 ADVAPI32.dll
+[23:16:45] [debug] 77710000 - 77794000 sechost.dll
+[23:16:45] [debug] 6fb10000 - 6fb22000 napinsp.dll
+[23:16:45] [debug] 6fae0000 - 6faf6000 pnrpnsp.dll
+[23:16:45] [debug] 74100000 - 74151000 mswsock.dll
+[23:16:45] [debug] 70a50000 - 70b0c000 DNSAPI.dll
+[23:16:45] [debug] 75110000 - 75134000 IPHLPAPI.DLL
+[23:16:45] [debug] 75c10000 - 75c17000 NSI.dll
+[23:16:45] [debug] 6fad0000 - 6fade000 winrnr.dll
+[23:16:45] [debug] 6fab0000 - 6fac1000 wshbth.dll
+[23:16:45] [debug] 6fa90000 - 6faa8000 nlansp_c.dll
+[23:16:45] [debug] 6fa80000 - 6fa88000 rasadhlp.dll
+[23:16:45] [debug] 02580000 - 0258d000 sscanf.DLL
+[23:16:45] [debug] 504f0000 - 505af000 MSVCR100.dll
+[23:16:45] [debug] 025b0000 - 025bc000 whirlpool.DLL
+[23:16:45] [debug] 72a60000 - 72afb000 MSVCR80.dll
+[23:16:45] [debug] 50490000 - 504e1000 crashdetect.DLL
+[23:16:45] [debug] 50420000 - 50489000 MSVCP100.dll
+[23:16:45] [debug] 5da80000 - 5daab000 sampvoice.DLL
+[23:16:45] [debug] 6eef0000 - 6ef5d000 MSVCP140.dll
+[23:16:45] [debug] 6ef60000 - 6ef75000 VCRUNTIME140.dll
+[23:16:45] [debug] 74810000 - 74823000 kernel.appcore.dll
+[23:16:45] [debug] 6f630000 - 6f63a000 samp-compat.dll
+[23:16:45] [debug] 503b0000 - 5041d000 streamer.DLL
+[23:16:45] [debug] 500f0000 - 503a1000 server.DLL
+[23:16:45] [debug] 765b0000 - 766b3000 CRYPT32.dll
+[23:16:45] [debug] 73af0000 - 73b0a000 bcrypt.dll
+[23:16:45] [debug] 73f40000 - 73f4b000 CRYPTBASE.DLL
+[23:16:45] [debug] 77480000 - 774e2000 bcryptPrimitives.dll
+[23:16:45] [debug] 6f7b0000 - 6f7be000 MSASN1.dll
+[23:16:47]  -------------------------------------------
+[23:16:47]            SampVoice unloading...           
+[23:16:47]  -------------------------------------------
+[23:16:47] [dbg:raknet:free] : module releasing...
+[23:16:47] [dbg:raknet:free] : module released
+[23:16:47] [sv:dbg:network:free] : module releasing...
+[23:16:47] [sv:dbg:network:free] : module released
+
+----------
+Loaded log file: "server_log.txt".
+----------
+
+SA-MP Dedicated Server
+----------------------
+v0.3.DL-R1, (C)2005-2018 SA-MP Team
+
+[23:16:48] password = ""  (string)
+[23:16:48] 
+[23:16:48] Server Plugins
+[23:16:48] --------------
+[23:16:48]  Loading plugin: mysql
+[23:16:48]  >> plugin.mysql: R33 successfully loaded.
+[23:16:48]   Loaded.
+[23:16:48]  Loading plugin: sscanf
+[23:16:48] 
+
+[23:16:48]  ===============================
+
+[23:16:48]       sscanf plugin loaded.     
+
+[23:16:48]          Version:  2.8.1        
+
+[23:16:48]    (c) 2012 Alex "Y_Less" Cole  
+
+[23:16:48]  ===============================
+
+[23:16:48]   Loaded.
+[23:16:48]  Loading plugin: whirlpool
+[23:16:48]  
+[23:16:48]  ==================
+[23:16:48]  
+[23:16:48]   Whirlpool loaded
+[23:16:48]  
+[23:16:48]  ==================
+[23:16:48]  
+[23:16:48]   Loaded.
+[23:16:48]  Loading plugin: crashdetect
+[23:16:48]   CrashDetect plugin 4.19.4
+[23:16:48]   Loaded.
+[23:16:48]  Loading plugin: sampvoice
+[23:16:48] [sv:dbg:network:init] : module initializing...
+[23:16:48] [dbg:raknet:init] : module initializing...
+[23:16:48] [dbg:raknet:init] : module initialized
+[23:16:48] [sv:dbg:network:init] : module initialized
+[23:16:48] [sv:dbg:main:Load] : creating 8 work threads...
+[23:16:48]  -------------------------------------------    
+[23:16:48]    ___                __   __    _              
+[23:16:48]   / __| __ _ _ __  _ _\ \ / /__ (_) __ ___    
+[23:16:48]   \__ \/ _` | '  \| '_ \   / _ \| |/ _/ -_)
+[23:16:48]   |___/\__,_|_|_|_| .__/\_/\___/|_|\__\___|
+[23:16:48]                   |_|                           
+[23:16:48]  -------------------------------------------    
+[23:16:48]            SampVoice by MOR loaded              
+[23:16:48]  -------------------------------------------    
+[23:16:48]   Loaded.
+[23:16:48]  Loading plugin: samp-compat.dll
+[23:16:48]   -- samp-compat for 0.3.DL-R1 initialized
+[23:16:48]   Loaded.
+[23:16:48]  Loading plugin: streamer
+[23:16:48] 
+
+*** Streamer Plugin v2.9.5 by Incognito loaded ***
+
+[23:16:48]   Loaded.
+[23:16:48]  Loading plugin: server
+[23:16:48]   Loaded.
+[23:16:48]  Loading plugin: TDE
+[23:16:48] 
+TDEditor Plugin loaded, thank you for using.
+
+[23:16:48]   Loaded.
+[23:16:48]  Loading plugin: YSF_DL
+[23:16:48] 
+[23:16:48]  ==============================================
+[23:16:48]  YSF 2.2 (compiled Sep 19 2021 13:02:34) loaded
+[23:16:48]   (c) 2008 Alex "Y_Less" Cole
+[23:16:48]   (c) 2010 - 2018 kurta999
+[23:16:48]   (c) 2018 - 2020 IllidanS4
+[23:16:48]  Server version: 0.3.DL R1, Windows
+[23:16:48]  ==============================================
+[23:16:48] 
+[23:16:48]   Loaded.
+[23:16:48]  Loading plugin: discord-connector
+[23:16:52]  >> discord-connector: afb7e3b successfully loaded.
+[23:16:52]   Loaded.
+[23:16:52]  Loaded 11 plugins.
+
+[23:16:52] [artwork:crc] bp.dff CRC = 0xA2B03FFB
+[23:16:52] [artwork:crc] bp.txd CRC = 0x28E0706E
+[23:16:52] [artwork:crc] object.dff CRC = 0xDCFCC14C
+[23:16:52] [artwork:crc] speedo.txd CRC = 0x62C7BCBC
+[23:16:52] [artwork:crc] object.dff CRC = 0xDCFCC14C
+[23:16:52] [artwork:crc] login.txd CRC = 0x54694AE4
+[23:16:52] [artwork:crc] object.dff CRC = 0xDCFCC14C
+[23:16:52] [artwork:crc] character.txd CRC = 0xC1BABE5F
+[23:16:52] [artwork:crc] object.dff CRC = 0xDCFCC14C
+[23:16:52] [artwork:crc] speedo.txd CRC = 0x62C7BCBC
+[23:16:52] [artwork:crc] object.dff CRC = 0xDCFCC14C
+[23:16:52] [artwork:crc] newinv.txd CRC = 0xC5F22638
+[23:16:52] [artwork:crc] object.dff CRC = 0xDCFCC14C
+[23:16:52] [artwork:crc] character.txd CRC = 0xC1BABE5F
+[23:16:52] [artwork:crc] object.dff CRC = 0xDCFCC14C
+[23:16:52] [artwork:crc] inventory.txd CRC = 0xC5298AB1
+[23:16:52] 
+[23:16:52] Filterscripts
+[23:16:52] ---------------
+[23:16:52]   Loading filterscript 'RCRPMap.amx'...
+[23:16:52] [sv:dbg:main:AmxLoad] : net game pointer (value:06590048) received
+[23:16:52] [sv:dbg:network:bind] : voice server running on port 50214
+[23:16:52]   Loading filterscript 'MAP.amx'...
+[23:16:52]   Loading filterscript 'cbug.amx'...
+[23:16:52]   Loaded 3 filterscripts.
+
+[23:16:52]  
+[23:16:52]  ======================================= 
+[23:16:52]  |                                     | 
+[23:16:52]  |        YSI version 3.01.0002        | 
+[23:16:52]  |        By Alex "Y_Less" Cole        | 
+[23:16:52]  |                                     | 
+[23:16:52]  ======================================= 
+[23:16:52]  
+[23:16:52] Chuong trinh may chu dang duoc khoi dong, vui long cho doi....
+[23:16:52] [MySQL] (Main Pipelines) Connecting to localhost...
+[23:16:52] [MySQL] (MainPipeline) Connection successful toward MySQL Database Server!
+[23:16:52] [Dynamic Giftbox] Loading the Dynamic Giftbox...
+[23:16:52] [LoadCrates] Load Query Sent
+[23:16:52] [LoadHouses] Loading data from database...
+[23:16:52] [LoadDynamicDoors] Loading data from database...
+[23:16:52] [LoadDynamicMapIcons] Loading data from database...
+[23:16:52] [LoadMailboxes] Loading data from database...
+[23:16:52] [LoadBusinesses] Loading data from database...
+[23:16:52] [LoadAuctions] Loading data from database...
+[23:16:52] [LoadTxtLabels] Loading data from database...
+[23:16:52] [LoadPlants] Loading data from database...
+[23:16:52] [SpeedCameras] Loading data from database...
+[23:16:52] [LoadPayNSprays] Loading data from database...
+[23:16:52] [LoadArrestPoints] Loading data from database...
+[23:16:52] [LoadImpoundPoints] Loading data from database...
+[23:16:52] [LoadBusinessSales] Loading data from database...
+[23:16:52] [LoadPaintballArenas] 10 paintball loaded.
+[23:16:52] [LoadEventPoints] 0 event points loaded.
+[23:16:52] [LoadGates] Loading data from database...
+[23:16:52] [LoadElevatorStuff] 20 floors loaded.
+[23:16:52] [LoadFamilies] Dang tai du lieu tu database...
+[23:16:52] [LoadFamilyPoints] Loading Family Points from the database, please wait...
+[23:16:52] [MiscLoad] Misc Loaded
+[23:16:52] Resetting news...
+[23:16:52] Resetting default server variables..
+[23:16:52] Adjusted the server time...
+[23:16:52] [Streamer] Loading Dynamic Static Vehicles...
+[23:16:52] [Streamer] Dynamic Static Vehicles has been loaded.
+[23:16:52] [Streamer] Loading Dynamic Pickups...
+[23:16:52] [Streamer] Dynamic Pickups has been loaded.
+[23:16:52] [Streamer] Loading 3D Text Labels...
+[23:16:52] [Streamer] Dynamic 3D Text Labels has been loaded.
+[23:16:52] [Streamer] Loading Dynamic Buttons...
+[23:16:52] [Streamer] Dynamic Buttons has been loaded.
+[23:16:52] [Streamer] Loading Dynamic Objects...
+[23:16:52] [Streamer] Dynamic Objects has been loaded.
+[23:16:52] [Textdraws] Loading Textdraws...
+[23:16:52] [Textdraws] Loaded textdraws.
+[23:16:52] [Dynamic Groups] Loading Dynamic Groups...
+[23:16:52] [Dynamic Groups] Loading Dynamic Groups Vehicles...
+[23:16:52] Da chay thanh cong gamemode...
+[23:16:52] Number of vehicle models: 20
+[23:16:52] [Dynamic Giftbox] da tai thanh cong Dynamic giftbox.
+[23:16:52] [LoadCrates] Loading Crates Finished
+[23:16:53] [LoadHouses] 3000 ngoi nha duoc tai.
+[23:16:53] [LoadDynamicDoors] 2248 door duoc tai.
+[23:16:53] [LoadDynamicMapIcons] 400 icons map duoc tai.
+[23:16:53] [LoadMailboxes] 50 mailboxes duoc tai.
+[23:16:53] [LoadBusinesses] 200 businesses rehashed/loaded.
+[23:16:53] [LoadPlants] Successfully loaded 300 plants
+[23:16:53] [SpeedCameras] Tai 3 May ban toc do.
+[23:16:53] TotalSold0: 0 | AmountMade0: 0
+[23:16:53] TotalSold1: 0 | AmountMade1: 0
+[23:16:53] TotalSold2: 0 | AmountMade2: 0
+[23:16:53] TotalSold3: 0 | AmountMade3: 0
+[23:16:53] TotalSold4: 0 | AmountMade4: 0
+[23:16:53] TotalSold5: 0 | AmountMade5: 0
+[23:16:53] TotalSold6: 0 | AmountMade6: 0
+[23:16:53] TotalSold7: 0 | AmountMade7: 0
+[23:16:53] TotalSold8: 0 | AmountMade8: 0
+[23:16:53] TotalSold9: 0 | AmountMade9: 0
+[23:16:53] TotalSold10: 0 | AmountMade10: 0
+[23:16:53] TotalSold11: 0 | AmountMade11: 0
+[23:16:53] TotalSold12: 0 | AmountMade12: 0
+[23:16:53] TotalSold13: 0 | AmountMade13: 0
+[23:16:53] TotalSold14: 0 | AmountMade14: 0
+[23:16:53] TotalSold15: 0 | AmountMade15: 0
+[23:16:53] TotalSold16: 0 | AmountMade16: 0
+[23:16:53] TotalSold17: 0 | AmountMade17: 0
+[23:16:53] TotalSold18: 0 | AmountMade18: 0
+[23:16:53] TotalSold19: 0 | AmountMade19: 0
+[23:16:53] TotalSold20: 0 | AmountMade20: 0
+[23:16:53] TotalSold21: 0 | AmountMade21: 0
+[23:16:53] TotalSold22: 0 | AmountMade22: 0
+[23:16:53] TotalSold23: 0 | AmountMade23: 0
+[23:16:53] TotalSold24: 0 | AmountMade24: 0
+[23:16:53] TotalSold25: 0 | AmountMade25: 0
+[23:16:53] TotalSold26: 0 | AmountMade26: 0
+[23:16:53] TotalSold27: 0 | AmountMade27: 0
+[23:16:53] TotalSold28: 0 | AmountMade28: 0
+[23:16:53] TotalSold29: 0 | AmountMade29: 0
+[23:16:53] Price0: 20000
+[23:16:53] Price1: 50000
+[23:16:53] Price2: 15000
+[23:16:53] Price3: 10000
+[23:16:53] Price4: 400
+[23:16:53] Price5: 500
+[23:16:53] Price6: 100
+[23:16:53] Price7: 500
+[23:16:53] Price8: 100
+[23:16:53] Price9: 100
+[23:16:53] Price10: 10
+[23:16:53] Price11: 100000
+[23:16:53] Price12: 100000
+[23:16:53] Price13: 100000
+[23:16:53] Price14: 10000
+[23:16:53] Price15: 5000
+[23:16:53] Price16: 1000
+[23:16:53] Price17: 1000
+[23:16:53] Price18: 1
+[23:16:53] Price19: 2
+[23:16:53] Price20: 10
+[23:16:53] Price21: 999999
+[23:16:53] Price22: 100
+[23:16:53] Price23: 1000
+[23:16:53] Price24: 100000
+[23:16:53] Price25: 100000
+[23:16:53] Price26: 100000
+[23:16:53] Price27: 100000
+[23:16:53] Price28: 1000
+[23:16:53] Price29: 29
+[23:16:53] [Family Points] 8 family points has been loaded.
+[23:16:53]  
+[23:16:53]  
+[23:17:06] [connection] incoming connection: 127.0.0.1:61480 id: 0
+[23:17:06] [join] [FL]Ha1bokuzxzxz has joined the server (0:127.0.0.1)
+[23:17:06] name [FL]Ha1bokuzxzxz,0, 
+[23:17:11] acc id 50
+[23:17:11] [He Thong] Da luu lai thong tin tai khoan thanh cong.
+[23:17:19] zxc zx has logged in.
+[23:17:19] VESIMXPWEWZJOPXUAGMXCPT
+[23:17:19] [VEHICLE TRUCKER LOAD] Loading data from database...
+[23:17:19] [He Thong] Da luu lai thong tin tai khoan thanh cong.
+[23:17:19] [Load Vehicle Trucker] Khong co du lieu de tai
+[23:17:28] [zcmd] [zxc zx]: /makeadmin 0
+[23:17:31] [zcmd] [zxc zx]: /makeadmin 0 99999
+[23:17:32] [zcmd] [zxc zx]: /makeleader 0
+[23:17:35] [zcmd] [zxc zx]: /editgroup
+[23:17:41] [zcmd] [zxc zx]: /locker
+[23:17:44] [zcmd] [zxc zx]: /locker
+[23:17:48] [zcmd] [zxc zx]: /sethp 0 5
+[23:17:50] [zcmd] [zxc zx]: /locker
+[23:17:54] [zcmd] [zxc zx]: /sethp 0 5
+[23:17:54] [zcmd] [zxc zx]: /locker
+[23:17:57] [zcmd] [zxc zx]: /locker
+[23:17:59] [zcmd] [zxc zx]: /locker
+[23:18:01] [zcmd] [zxc zx]: /locker
+[23:18:03] [zcmd] [zxc zx]: /locker
+[23:18:14] [zcmd] [zxc zx]: /placekit
+[23:18:15] [zcmd] [zxc zx]: /placekitcar
+[23:18:17] [zcmd] [zxc zx]: /placekit
+[23:18:19] [zcmd] [zxc zx]: /locker
+[23:18:22] [zcmd] [zxc zx]: /setarmor 0 0
+[23:18:23] [zcmd] [zxc zx]: /locker
+[23:18:50] [zcmd] [zxc zx]: /arrestedit
+[23:18:53] [zcmd] [zxc zx]: /goto 
+[23:18:54] [zcmd] [zxc zx]: /fly
+[23:19:14] [zcmd] [zxc zx]: /gotodoor 1
+[23:19:15] [zcmd] [zxc zx]: /gotodoor 2
+[23:19:15] [zcmd] [zxc zx]: /gotodoor 3
+[23:19:17] [zcmd] [zxc zx]: /gotodoor 500
+[23:19:19] [zcmd] [zxc zx]: /fly
+[23:19:20] [zcmd] [zxc zx]: /ddnext
+[23:19:22] [zcmd] [zxc zx]: /gotodoor 6
+[23:19:23] [zcmd] [zxc zx]: /gotodoor 7
+[23:19:24] [zcmd] [zxc zx]: /gotodoor 8
+[23:19:26] [zcmd] [zxc zx]: /gotodoor 8
+[23:19:33] [zcmd] [zxc zx]: /ra
+[23:19:34] [zcmd] [zxc zx]: /vao
+[23:19:39] [zcmd] [zxc zx]: /editgroup
+[23:19:52] [zcmd] [zxc zx]: /gotodoor 9
+[23:19:53] [warning] client exceeded 'messageholelimit' (1) 127.0.0.1:61480 (3006) Limit: 3000
+[23:19:54] [zcmd] [zxc zx]: /gotodoor 25
+[23:19:56] [zcmd] [zxc zx]: /dd
+[23:19:58] [zcmd] [zxc zx]: /dd
+[23:20:16] [zcmd] [zxc zx]: /r2
+[23:20:17] [zcmd] [zxc zx]: /r2 a
+[23:20:28] [zcmd] [zxc zx]: /setdiv 0 a
+[23:20:29] [zcmd] [zxc zx]: /setdiv 0 2
+[23:20:30] [zcmd] [zxc zx]: /r a
+[23:20:33] [zcmd] [zxc zx]: /r a2
+[23:20:35] [zcmd] [zxc zx]: /r2 a
+[23:21:01] [zcmd] [zxc zx]: /r a
+[23:21:06] *** YSI Error: INI_Open could not find or create file /DuLieu/zxc_zx.ini
+[23:21:06] [part] zxc_zx has left the server (0:1)
+[23:21:06] [MySQL] Query Error - (ErrorID: 1054) (Handle: 1)
+[23:21:06] [MySQL] Check mysql_log.txt to review the query that threw the error.
+[23:21:06] Dumping query from 2023/10/7 (23:21:6)
+Description: Unknown column 'CraftWeaponDeal' in 'field list' (index 0). Query:
+
+[23:21:06] UPDATE `accounts` SET `IP`='127.0.0.1',`Registered`=1,`ConnectedTime`=0,`Sex`=1,`BirthDate`='1923-01-01',`Band`=0,`PermBand`=0,`Warnings`=0,`Disabled`=0,`CraftWeaponDeal`=0,`CraftWeaponDealTime`=0,`Level`=1,`AdminLevel`=99999,`CMND`=0,`MaskID1`=40079,`MaskID2`=71,`SeniorModerator`=0,`Helper`=0,`DonateRank`=0,`Respect`=0,`XP`=0,`Money`=1000,`MaHieu1`=0,`TruyDuoi`=0,`BanTime`=0,`TimeBanned`=0,`Flag`=0,`Eat`=98,`Drink`=98,`Strong`=99,`SoLanMiner`=0,`MinerLevel`=0,`TimeCraft`=0,`TimeMedkit`=0,`BannedBy`='NULL',`ReasonBanned`='NULL',`RankText`='NULL',`QuocTich`='',`Flag`=0,`Hambuger`=0,`Banhmi`=0,`Pizza`=0,`Bank`=0,`pHealth`='100.00',`pArmor`='100.00',`pSHealth`='0.00',`Int`=2,`VirtualWorld`=6753,`Model`=1,`BanAppealer`=0,`PR`=0,`HR`=0,`AP`=1,`Security`=0,`ShopTech`=0,`FactionModerator`=0,`GangModerator`=0,`Undercover`=0,`TogReports`=0,`Radio`=0,`RadioFreq`=0,`UpgradePoints`=0,`Origin`=0,`Muted`=0,`Crimes`=0,`Accent`=1,`CHits`=0,`FHits`=0,`Arrested`=0,`Phonebook`=0,`Fishes`=0,`Gcoin`=0,`Capacity`=16,`BiggestFish
+[23:21:06] `=0,`Job`=0,`SoTaiKhoan`=0,`Job2`=0,`Paycheck`=203,`HeadValue`=0,`JailTime`=0,`WRestricted`=0,`Materials`=0,`Crates`=0,`Pot`=0,`Crack`=0,`Nation`=-1,`Leader`=0,`Member`=0,`Division`=1,`FMember`=255,`Rank`=9,`DetSkill`=0,`SexSkill`=0,`BoxSkill`=0,`LawSkill`=0,`MechSkill`=0,`TruckSkill`=0,`DrugsSkill`=0,`ArmsSkill`=0,`SmugglerSkill`=0,`FishSkill`=0,`CheckCash`=0,`Checks`=0,`BoatLic`=0,`FlyLic`=0,`GunLic`=0,`FishLic`=0,`FishSkill`=0,`FightingStyle`=0,`PhoneNr`=0,`Apartment`=-1,`Apartment2`=-1,`Renting`=-1,`CarLic`=0,`DrugsTime`=0,`LawyerTime`=0,`LawyerFreeTime`=0,`MechTime`=0,`SexTime`=0,`PayDay`=203,`PayDayHad`=0,`CDPlayer`=0,`Dice`=0,`Spraycan`=0,`Rope`=0,`Cigars`=0,`Sprunk`=0,`Bombs`=0,`Wins`=0,`Ammo1`=0,`Ammo2`=0,`Ammo3`=0,`Ammo4`=0,`Ammo5`=0,`Ammo6`=0,`Ammo7`=0,`Ammo8`=0,`Gun0`=0,`Gun1`=0,`Gun2`=0,`Gun3`=0,`Gun4`=0 WHERE `id`=60
+[23:23:05] [connection] incoming connection: 127.0.0.1:58217 id: 0
+[23:23:05] [join] [FL]Ha1bokuzxzxz has joined the server (0:127.0.0.1)
+[23:23:05] name [FL]Ha1bokuzxzxz,0, 
+[23:23:14] acc id 50
+[23:23:19] zxc zx has logged in.
+[23:23:19] HYLYILAFBMCXNNKWGKBUMHW
+[23:23:19] [VEHICLE TRUCKER LOAD] Loading data from database...
+[23:23:19] [He Thong] Da luu lai thong tin tai khoan thanh cong.
+[23:23:19] [Load Vehicle Trucker] Khong co du lieu de tai
+[23:23:39] [connection] incoming connection: 127.0.0.1:51999 id: 1
+[23:23:39] [join] [FL]Ha1boku has joined the server (1:127.0.0.1)
+[23:23:39] name [FL]Ha1boku,4, 
+[23:23:58] acc id 24
+[23:24:06] ZXC ZXZ has logged in.
+[23:24:06] YIMAHYNBWERMBUDWOIPPCRM
+[23:24:06] [VEHICLE TRUCKER LOAD] Loading data from database...
+[23:24:06] [Load Vehicle Trucker] Khong co du lieu de tai
+[23:24:06] [MySQL] Query Error - (ErrorID: 1054) (Handle: 1)
+[23:24:06] [MySQL] Check mysql_log.txt to review the query that threw the error.
+[23:24:06] Dumping query from 2023/10/7 (23:24:6)
+Description: Unknown column 'CraftWeaponDeal' in 'field list' (index 0). Query:
+
+[23:24:06] UPDATE `accounts` SET `IP`='127.0.0.1',`Registered`=1,`ConnectedTime`=0,`Sex`=1,`BirthDate`='1923-01-01',`Band`=0,`PermBand`=0,`Warnings`=0,`Disabled`=0,`CraftWeaponDeal`=0,`CraftWeaponDealTime`=0,`Level`=1,`AdminLevel`=0,`CMND`=0,`MaskID1`=63869,`MaskID2`=74,`SeniorModerator`=0,`Helper`=0,`DonateRank`=0,`Respect`=0,`XP`=0,`Money`=1000,`MaHieu1`=0,`TruyDuoi`=0,`BanTime`=0,`TimeBanned`=0,`Flag`=0,`Eat`=100,`Drink`=100,`Strong`=100,`SoLanMiner`=0,`MinerLevel`=0,`TimeCraft`=0,`TimeMedkit`=0,`BannedBy`='NULL',`ReasonBanned`='NULL',`RankText`='NULL',`QuocTich`='0',`Flag`=0,`Hambuger`=0,`Banhmi`=0,`Pizza`=0,`Bank`=0,`pHealth`='95.00',`pArmor`='0.00',`pSHealth`='0.00',`Int`=0,`VirtualWorld`=0,`Model`=1,`BanAppealer`=0,`PR`=0,`HR`=0,`AP`=1,`Security`=0,`ShopTech`=0,`FactionModerator`=0,`GangModerator`=0,`Undercover`=0,`TogReports`=0,`Radio`=0,`RadioFreq`=0,`UpgradePoints`=0,`Origin`=0,`Muted`=0,`Crimes`=0,`Accent`=1,`CHits`=0,`FHits`=0,`Arrested`=0,`Phonebook`=0,`Fishes`=0,`Gcoin`=0,`Capacity`=16,`BiggestFish`=0,`Jo
+[23:24:06] b`=0,`SoTaiKhoan`=0,`Job2`=0,`Paycheck`=43,`HeadValue`=0,`JailTime`=0,`WRestricted`=0,`Materials`=0,`Crates`=0,`Pot`=0,`Crack`=0,`Nation`=-1,`Leader`=-1,`Member`=-1,`Division`=-1,`FMember`=255,`Rank`=255,`DetSkill`=0,`SexSkill`=0,`BoxSkill`=0,`LawSkill`=0,`MechSkill`=0,`TruckSkill`=0,`DrugsSkill`=0,`ArmsSkill`=0,`SmugglerSkill`=0,`FishSkill`=0,`CheckCash`=0,`Checks`=0,`BoatLic`=0,`FlyLic`=0,`GunLic`=0,`FishLic`=0,`FishSkill`=0,`FightingStyle`=0,`PhoneNr`=0,`Apartment`=-1,`Apartment2`=-1,`Renting`=-1,`CarLic`=0,`DrugsTime`=0,`LawyerTime`=0,`LawyerFreeTime`=0,`MechTime`=0,`SexTime`=0,`PayDay`=43,`PayDayHad`=0,`CDPlayer`=0,`Dice`=0,`Spraycan`=0,`Rope`=0,`Cigars`=0,`Sprunk`=0,`Bombs`=0,`Wins`=0,`Ammo1`=0,`Ammo2`=0,`Ammo3`=0,`Ammo4`=0,`Ammo5`=0,`Ammo6`=0,`Ammo7`=0,`Ammo8`=0,`Gun0`=0,`Gun1`=0,`Gun2`=0,`Gun3`=0,`Gun4`=0,`Gun5`=0 WHERE `id`=60
+[23:24:09] [zcmd] [ZXC ZXZ]: /setdiv 1
+[23:24:09] [zcmd] [ZXC ZXZ]: /setdiv 1 0
+[23:24:11] [zcmd] [ZXC ZXZ]: /setdiv 1 0
+[23:24:12] [zcmd] [ZXC ZXZ]: /r a
+[23:24:13] [zcmd] [ZXC ZXZ]: /r2 a
+[23:24:17] [zcmd] [zxc zx]: /r
+[23:24:21] [zcmd] [ZXC ZXZ]: /makeleader
+[23:24:23] [zcmd] [ZXC ZXZ]: /makeleader 0 1
+[23:24:26] [zcmd] [ZXC ZXZ]: /r a
+[23:24:28] [zcmd] [ZXC ZXZ]: /r a2 a
+[23:24:34] [zcmd] [ZXC ZXZ]: /r2 a
+[23:24:38] [zcmd] [zxc zx]: /setdiv
+[23:24:40] [zcmd] [zxc zx]: /setdiv 0 1
+[23:24:42] [zcmd] [ZXC ZXZ]: /r2 a
+[23:24:46] [zcmd] [zxc zx]: /r2 a
+[23:24:48] [zcmd] [zxc zx]: /setdiv
+[23:24:50] [zcmd] [zxc zx]: /setdiv 1 2
+[23:24:51] [zcmd] [zxc zx]: /setdiv 1 1
+[23:24:53] [zcmd] [zxc zx]: /r2 a
+[23:25:47] [zcmd] [zxc zx]: /backup
+[23:25:48] [zcmd] [zxc zx]: /backup
+[23:25:49] [zcmd] [zxc zx]: /backup
+[23:25:50] [zcmd] [zxc zx]: /backup
+[23:25:56] [zcmd] [zxc zx]: /backup1
+[23:25:57] [zcmd] [zxc zx]: /backup2
+[23:25:57] [zcmd] [zxc zx]: /backup
+[23:25:58] [zcmd] [zxc zx]: /backup 2
+[23:25:58] [zcmd] [zxc zx]: /backup 2
+[23:25:59] [zcmd] [zxc zx]: /backup 1
+[23:26:01] [zcmd] [zxc zx]: /backup 
+[23:26:04] [zcmd] [zxc zx]: /backup code2
+[23:32:00] [debug] Run time error 4: "Array index out of bounds"
+[23:32:00] [debug]  Attempted to read/write array element at negative index -1
+[23:32:00] [debug] AMX backtrace:
+[23:32:00] [debug] #0 0019541c in ?? (0, 0) in lsrpvn.amx
+[23:32:00] [debug] #1 001953a0 in ?? (0, 2) in lsrpvn.amx
+[23:32:00] [debug] #2 0000f4c0 in public Itter_OnPlayerDisconnect (0, 2) in lsrpvn.amx
+[23:32:00] [debug] #3 native CallLocalFunction () in samp-server.exe
+[23:32:00] [debug] #4 00006f74 in public SSCANF_OnPlayerDisconnect (0, 2) in lsrpvn.amx
+[23:32:00] [debug] #5 00000924 in public OnPlayerDisconnect (0, 2) in lsrpvn.amx
+[23:32:00] [debug] #6 native Kick () in samp-server.exe
+[23:32:00] [debug] #7 0017d940 in public AFKUpdate () in lsrpvn.amx
+[23:32:00] [part] zxc_zx has left the server (0:2)
+[23:32:00] [debug] Run time error 4: "Array index out of bounds"
+[23:32:00] [debug]  Attempted to read/write array element at index 1001 in array of size 100
+[23:32:00] [debug] AMX backtrace:
+[23:32:00] [debug] #0 0017d81c in public AFKUpdate () in lsrpvn.amx
+[23:33:31] [MySQL] Query Error - (ErrorID: 1054) (Handle: 1)
+[23:33:31] [MySQL] Check mysql_log.txt to review the query that threw the error.
+[23:33:31] Dumping query from 2023/10/7 (23:33:31)
+Description: Unknown column 'CraftWeaponDeal' in 'field list' (index 0). Query:
+
+[23:33:31] UPDATE `accounts` SET `IP`='127.0.0.1',`Registered`=1,`ConnectedTime`=10000,`Sex`=1,`BirthDate`='1923-01-01',`Band`=0,`PermBand`=0,`Warnings`=0,`Disabled`=0,`CraftWeaponDeal`=0,`CraftWeaponDealTime`=0,`Level`=1,`AdminLevel`=99999,`CMND`=14275757,`MaskID1`=56969,`MaskID2`=21,`SeniorModerator`=0,`Helper`=0,`DonateRank`=0,`Respect`=2,`XP`=100,`Money`=4588,`MaHieu1`=0,`TruyDuoi`=0,`BanTime`=0,`TimeBanned`=0,`Flag`=53,`Eat`=1,`Drink`=1,`Strong`=1,`SoLanMiner`=0,`MinerLevel`=0,`TimeCraft`=0,`TimeMedkit`=0,`BannedBy`='NULL',`ReasonBanned`='NULL',`RankText`='NULL',`QuocTich`='0',`Flag`=53,`Hambuger`=0,`Banhmi`=0,`Pizza`=0,`Bank`=0,`pHealth`='70.00',`pArmor`='100.00',`pSHealth`='0.00',`Int`=0,`VirtualWorld`=0,`Model`=149,`BanAppealer`=0,`PR`=0,`HR`=0,`AP`=1,`Security`=0,`ShopTech`=0,`FactionModerator`=0,`GangModerator`=0,`Undercover`=0,`TogReports`=0,`Radio`=0,`RadioFreq`=0,`UpgradePoints`=0,`Origin`=0,`Muted`=0,`Crimes`=0,`Accent`=1,`CHits`=0,`FHits`=0,`Arrested`=0,`Phonebook`=0,`Fishes`=0,`Gcoin`=0,`Capacity`=30,`B
+[23:33:31] iggestFish`=0,`Job`=0,`SoTaiKhoan`=0,`Job2`=0,`Paycheck`=3155,`HeadValue`=0,`JailTime`=0,`WRestricted`=9998,`Materials`=0,`Crates`=0,`Pot`=0,`Crack`=0,`Nation`=-1,`Leader`=0,`Member`=0,`Division`=0,`FMember`=255,`Rank`=9,`DetSkill`=0,`SexSkill`=0,`BoxSkill`=0,`LawSkill`=0,`MechSkill`=0,`TruckSkill`=0,`DrugsSkill`=0,`ArmsSkill`=0,`SmugglerSkill`=0,`FishSkill`=0,`CheckCash`=0,`Checks`=0,`BoatLic`=0,`FlyLic`=0,`GunLic`=0,`FishLic`=0,`FishSkill`=0,`FightingStyle`=0,`PhoneNr`=0,`Apartment`=-1,`Apartment2`=-1,`Renting`=-1,`CarLic`=0,`DrugsTime`=0,`LawyerTime`=0,`LawyerFreeTime`=0,`MechTime`=0,`SexTime`=0,`PayDay`=3155,`PayDayHad`=0,`CDPlayer`=0,`Dice`=0,`Spraycan`=0,`Rope`=0,`Cigars`=0,`Sprunk`=0,`Bombs`=0,`Wins`=0,`Ammo1`=0,`Ammo2`=0,`Ammo3`=0,`Ammo4`=9948,`Ammo5`=0,`Ammo6`=0,`Ammo7`=0,`Ammo8`=0,`Gun0`=0,`Gun1`=0,`Gun2`=23 WHERE `id`=28
+[23:34:52] [zcmd] [ZXC ZXZ]: /g á
+[23:38:09] [zcmd] [ZXC ZXZ]: /backup
+[23:38:19] [zcmd] [ZXC ZXZ]: /backup
+[23:38:21] [zcmd] [ZXC ZXZ]: /backupall
+[23:38:23] *** YSI Error: INI_Open could not find or create file /DuLieu/ZXC_ZXZ.ini
+[23:38:23] [part] ZXC_ZXZ has left the server (1:1)
+[23:38:23] [MySQL] Query Error - (ErrorID: 1054) (Handle: 1)
+[23:38:23] [MySQL] Check mysql_log.txt to review the query that threw the error.
+[23:38:23] Dumping query from 2023/10/7 (23:38:23)
+Description: Unknown column 'CraftWeaponDeal' in 'field list' (index 0). Query:
+
+[23:38:23] UPDATE `accounts` SET `IP`='127.0.0.1',`Registered`=1,`ConnectedTime`=10000,`Sex`=1,`BirthDate`='1923-01-01',`Band`=0,`PermBand`=0,`Warnings`=0,`Disabled`=0,`CraftWeaponDeal`=0,`CraftWeaponDealTime`=0,`Level`=1,`AdminLevel`=99999,`CMND`=14275757,`MaskID1`=56969,`MaskID2`=21,`SeniorModerator`=0,`Helper`=0,`DonateRank`=0,`Respect`=2,`XP`=100,`Money`=4588,`MaHieu1`=0,`TruyDuoi`=0,`BanTime`=0,`TimeBanned`=0,`Flag`=53,`Eat`=1,`Drink`=1,`Strong`=1,`SoLanMiner`=0,`MinerLevel`=0,`TimeCraft`=0,`TimeMedkit`=0,`BannedBy`='NULL',`ReasonBanned`='NULL',`RankText`='NULL',`QuocTich`='0',`Flag`=53,`Hambuger`=0,`Banhmi`=0,`Pizza`=0,`Bank`=0,`pHealth`='40.00',`pArmor`='100.00',`pSHealth`='0.00',`Int`=0,`VirtualWorld`=0,`Model`=149,`BanAppealer`=0,`PR`=0,`HR`=0,`AP`=1,`Security`=0,`ShopTech`=0,`FactionModerator`=0,`GangModerator`=0,`Undercover`=0,`TogReports`=0,`Radio`=0,`RadioFreq`=0,`UpgradePoints`=0,`Origin`=0,`Muted`=0,`Crimes`=0,`Accent`=1,`CHits`=0,`FHits`=0,`Arrested`=0,`Phonebook`=0,`Fishes`=0,`Gcoin`=0,`Capacity`=30,`B
+[23:38:23] iggestFish`=0,`Job`=0,`SoTaiKhoan`=0,`Job2`=0,`Paycheck`=3417,`HeadValue`=0,`JailTime`=0,`WRestricted`=9998,`Materials`=0,`Crates`=0,`Pot`=0,`Crack`=0,`Nation`=-1,`Leader`=0,`Member`=0,`Division`=0,`FMember`=255,`Rank`=9,`DetSkill`=0,`SexSkill`=0,`BoxSkill`=0,`LawSkill`=0,`MechSkill`=0,`TruckSkill`=0,`DrugsSkill`=0,`ArmsSkill`=0,`SmugglerSkill`=0,`FishSkill`=0,`CheckCash`=0,`Checks`=0,`BoatLic`=0,`FlyLic`=0,`GunLic`=0,`FishLic`=0,`FishSkill`=0,`FightingStyle`=0,`PhoneNr`=0,`Apartment`=-1,`Apartment2`=-1,`Renting`=-1,`CarLic`=0,`DrugsTime`=0,`LawyerTime`=0,`LawyerFreeTime`=0,`MechTime`=0,`SexTime`=0,`PayDay`=3417,`PayDayHad`=0,`CDPlayer`=0,`Dice`=0,`Spraycan`=0,`Rope`=0,`Cigars`=0,`Sprunk`=0,`Bombs`=0,`Wins`=0,`Ammo1`=0,`Ammo2`=0,`Ammo3`=0,`Ammo4`=9930,`Ammo5`=0,`Ammo6`=0,`Ammo7`=0,`Ammo8`=0,`Gun0`=0,`Gun1`=0,`Gun2`=23 WHERE `id`=28
