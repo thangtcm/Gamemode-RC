@@ -294,7 +294,7 @@ public DownHP(playerid)
 				SetPlayerHealth(playerid, 0);
 				SendClientMessage(playerid, COLOR_LIGHTRED, "[SERVER] {ffffff}Ban chet vi doi bung.");
 			}
-			SetTimerEx("DownHP", 120000, false, "i", playerid);
+			SetTimerEx("DownHP", 300000, false, "i", playerid);
 		}
 		else if(PlayerInfo[playerid][pEat] > 25)
 		{
@@ -314,7 +314,7 @@ public DownHP(playerid)
 				SetPlayerHealth(playerid, 0);
 				SendClientMessage(playerid, COLOR_REALRED, "[SERVER] {ffffff}Ban da chet vi doi bung.");
 			}
-			SetTimerEx("DownHP", 120000, false, "i", playerid);
+			SetTimerEx("DownHP", 300000, false, "i", playerid);
 		}
 		if(PlayerInfo[playerid][pDrink] >= 10 && PlayerInfo[playerid][pDrink] <= 25)
 		{
@@ -330,7 +330,7 @@ public DownHP(playerid)
 				SetPlayerHealth(playerid, 0);
 				SendClientMessage(playerid, COLOR_LIGHTRED, "[SERVER] {ffffff}Ban da chet vi khat nuoc.");
 			}
-			SetTimerEx("DownHP", 120000, false, "i", playerid);
+			SetTimerEx("DownHP", 300000, false, "i", playerid);
 		}
 		else if(PlayerInfo[playerid][pDrink] > 25)
 		{
@@ -350,7 +350,7 @@ public DownHP(playerid)
 				SetPlayerHealth(playerid, 0);
 				SendClientMessage(playerid, COLOR_REALRED, "[SERVER] {ffffff}Ban da chet vi khat nuoc.");
 			}
-			SetTimerEx("DownHP", 120000, false, "i", playerid);
+			SetTimerEx("DownHP", 300000, false, "i", playerid);
 		}
 	}
 	return 1;
