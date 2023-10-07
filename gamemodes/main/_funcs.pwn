@@ -6625,9 +6625,9 @@ stock LoadLogin(playerid)
 	SelectTextDraw(playerid, 0xe1dfa2FF);
 	switch(random(3))
 	{
-		case 0: InterpolateCameraPos(playerid, 1532.3927,357.1458,78.8630, 1228.4036,155.1032,45.7313, 120000, CAMERA_CUT);
-		case 1: InterpolateCameraPos(playerid, 2433.3809,-66.7512,76.6627, 2167.8020,96.4188,42.4985, 120000, CAMERA_CUT);
-		case 2: InterpolateCameraPos(playerid, -214.2948,-74.1664,39.5735, 120.3837,-7.4578,26.9301, 120000, CAMERA_CUT);
+		case 0: InterpolateCameraPos(playerid, 1532.3927,357.1458,78.8630, 1228.4036,155.1032,45.7313, 80000, CAMERA_CUT);
+		case 1: InterpolateCameraPos(playerid, 2433.3809,-66.7512,76.6627, 2167.8020,96.4188,42.4985, 80000, CAMERA_CUT);
+		case 2: InterpolateCameraPos(playerid, -214.2948,-74.1664,39.5735, 120.3837,-7.4578,26.9301, 80000, CAMERA_CUT);
 	}
 	return 1;
 }

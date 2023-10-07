@@ -10750,9 +10750,9 @@ stock HospitalSpawn(playerid)
 				Misc_Save();
 				SendClientMessageEx(playerid, 0xb4b486FF, "[HOSPITAL] Ban ton $25 cho tien vien phi");
 				PlayerInfo[playerid][pVW] = 0;
-				SetPlayerPos(playerid, 1153.7006, -1330.3177, -41.9554);
-				Streamer_UpdateEx(playerid, 1153.7006, -1330.3177, -41.9554);
-				Player_StreamPrep(playerid, 1153.7006, -1330.3177, -41.9554,FREEZE_TIME);
+				SetPlayerPos(playerid, 1245.2665,334.1407,19.5547);
+				Streamer_UpdateEx(playerid, 1245.2665,334.1407,19.5547);
+				Player_StreamPrep(playerid, 1245.2665,334.1407,19.5547,FREEZE_TIME);
 				SetPlayerFacingAngle(playerid, 179.4258);
 				PlayerInfo[playerid][pHospital] = 0;
 				SetCameraBehindPlayer(playerid);
@@ -11395,10 +11395,23 @@ stock SetPlayerSpawn(playerid)
 			}
 			else if(PlayerInfo[playerid][pInsurance] == 1)
 			{
-				SetPlayerCameraPos(playerid, 1155.9202, -1310.7156, -42.7173);//SF
-				SetPlayerCameraLookAt(playerid, 1155.9202, -1310.7156, -42.7173);
-				SetPlayerPos(playerid, 1155.9202, -1310.7156, -42.7173);
-				PlayerInfo[playerid][pHospital] = 2;
+				switch(random(2))
+				{
+					case 0:
+					{
+						SetPlayerCameraPos(playerid, 1251.1318,-1305.1705,1061.8671);
+						SetPlayerCameraLookAt(playerid, 1251.1318,-1305.1705,1061.8671);
+						SetPlayerPos(playerid, 1251.1318,-1305.1705,1061.8671);
+						PlayerInfo[playerid][pHospital] = 2;
+					}
+					case 1:
+					{
+						SetPlayerCameraPos(playerid, 1248.3254,-1305.2551,1061.8671);
+						SetPlayerCameraLookAt(playerid, 1248.3254,-1305.2551,1061.8671);
+						SetPlayerPos(playerid, 1248.3254,-1305.2551,1061.8671);
+						PlayerInfo[playerid][pHospital] = 2;
+					}
+				}
 			}
 			else if(PlayerInfo[playerid][pInsurance] == 2)
 			{
