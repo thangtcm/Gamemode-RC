@@ -42558,10 +42558,6 @@ CMD:tackle(playerid, params[])
 	#endif
 	if(IsACop(playerid))
 	{
-		if(GetPVarInt(playerid, "WeaponsHolstered") == 0)
-	    {
-	        cmd_holster(playerid, params);
-		}
         if(GetPVarInt(playerid, "TackleMode") == 0)
         {
 	        SetPVarInt(playerid, "TackleMode", 1);
