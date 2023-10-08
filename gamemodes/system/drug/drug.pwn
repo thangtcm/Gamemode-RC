@@ -17,7 +17,7 @@ timer DisableEfftects[30000](playerid)
 }
 
 
-stock SaveFurniture(uid)
+stock SaveDrug(uid)
 {
     new szQuery[2048];
     printf("saved drl %d",uid);
@@ -88,7 +88,7 @@ CMD:editdruglab(playerid, params[])
 		DrugLabInfo[drl_id][DLab_Postion][0] = 0.0;
         DrugLabInfo[drl_id][DLab_Postion][1] = 0.0;
         DrugLabInfo[drl_id][DLab_Postion][2] = 0.0;
-        SaveFurniture(drl_id);
+        SaveDrug(drl_id);
 	}
 	if (strcmp(choice, "Type", true) == 0)
 	{
@@ -102,13 +102,13 @@ CMD:editdruglab(playerid, params[])
 		}
         format(string,sizeof string,"%s %d\nFamily: %s\n(Bam Y de thao tac)",type_namez,drl_id,FamilyInfo[family][FamilyName]);
         UpdateDynamic3DTextLabelText(DrugLabInfo[drl_id][DLab_Label] , -1,string);
-        SaveFurniture(drl_id);
+        SaveDrug(drl_id);
 	}
 	if (strcmp(choice, "Vitri", true) == 0)
 	{
 		SendClientMessageEx(playerid, COLOR_WHITE, "Ban da chinh sua vi tri thanh cong.");
 		MoveDrugLab(playerid,drl_id);
-		SaveFurniture(drl_id);
+		SaveDrug(drl_id);
 	}
 	if (strcmp(choice, "FamilyID", true) == 0)
 	{
@@ -124,7 +124,7 @@ CMD:editdruglab(playerid, params[])
 		}
         format(string,sizeof string,"%s %d\nFamily: %s\n(Bam Y de thao tac)",type_namez,drl_id,FamilyInfo[family][FamilyName]);
         UpdateDynamic3DTextLabelText(DrugLabInfo[drl_id][DLab_Label] , -1,string);
-        SaveFurniture(drl_id);
+        SaveDrug(drl_id);
 	}
 	return 1;
 }
@@ -159,11 +159,10 @@ stock UseDrug(playerid,drug_id,pItemId) {
 			GetPlayerHealth(playerid, old_health);
 			if(BonusHealth[playerid]  >= 100) return SendErrorMessage(playerid, "Ban da dat toi da trang thai tu Codeine ((>100 HP)).");
 			BonusHealth[playerid] += 10;
-<<<<<<< HEAD
+
 			format(string, sizeof string, "Ban dang su dung Codeine ( ban duoc tang 10 hp toi da. HP: %.1f/%1.f)",old_health,100 + BonusHealth[playerid]);
-=======
-			format(string, sizeof string, "Ban dang su dung Codeine ( ban duoc tang 10 hp toi da. HP: %.1f/%.1f)",old_health,100 + BonusHealth[playerid]);
->>>>>>> main
+
+
 			SendClientMessageEx(playerid, COLOR_WHITE, string);
 			SetPlayerDrunkLevel(playerid, 40000); //  effects phe da
 			SetPVarInt(playerid, "EffectsDrugs", 1);
@@ -297,24 +296,13 @@ Dialog:DIALOG_BUY_CHH(playerid, response, listitem, inputtext[])
 {
 	if(response) {
 		if(listitem == 0 ) {
-<<<<<<< HEAD
+
 			Dialog_Show(playerid, DIALOG_BUY_CHHI, DIALOG_STYLE_INPUT, "Mua chat hoa hoc I", "Vui long nhap so luong ban muon mua ( gia $1/ 1CHH)", "Mua", "Huy bo");
 		
 		}
 		if(listitem == 1 ) {
 			Dialog_Show(playerid, DIALOG_BUY_CHHII, DIALOG_STYLE_INPUT, "Mua chat hoa hoc II", "Vui long nhap so luong ban muon mua ( gia $2/ 1CHH)", "Mua", "Huy bo");
-=======
-			if(PlayerInfo[playerid][pCash] < 0) return SendClientMessage(playerid, -1, "Ban khong du tien de mua chat hoa hoc I ($0).");
-		    Inventory_Set(playerid, g_aInventoryItems[14][e_InventoryItem], 1, 60*24*2);
-		    SendClientMessage(playerid, -1, "Ban da mua thanh cong 1 chat hoa hoc I voi gia $0 .");
-		}
-		if(listitem == 1 ) {
-			if(PlayerInfo[playerid][pCash] < 0) return SendClientMessage(playerid, -1, "Ban khong du tien de mua chat hoa hoc I ($0).");
-		    Inventory_Set(playerid, g_aInventoryItems[15][e_InventoryItem], 1, 60*24*2);
-		    SendClientMessage(playerid, -1, "Ban da mua thanh cong 1 chat hoa hoc II voi gia $0 .");
->>>>>>> main
-
-		}
+        }
 	}
 	return 1;
 }
