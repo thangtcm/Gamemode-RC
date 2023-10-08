@@ -641,9 +641,7 @@ Dialog:MY_DEALCRAFT(playerid, response, listitem, inputtext[]) {
 		            case 6: pitem_add = "AK47";
 		            case 7: pitem_add = "Sniper";
     		    }
-    		    new pItemId;
-    		    pItemId = Inventory_GetItemID(playerid,pitem_add);
-		        Inventory_Add(playerid, g_aInventoryItems[pItemId][e_InventoryItem], 1);
+		        Inventory_Add(playerid,pitem_add, 1);
 		        CraftWeaponDeal[playerid] = 0;
     		}
     	}
