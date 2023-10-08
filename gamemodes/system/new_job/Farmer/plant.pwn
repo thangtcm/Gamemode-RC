@@ -15,12 +15,57 @@ enum PLANT_INFO{
 	Float:pi_PosZ,
 }
 new PlantTreeInfo[MAX_PLAYERS][MAX_PLAYER_PLANT][PLANT_INFO];
+new CostTree = 1000;
+new CostCow = 7000, CostDeer = 5000;
+SendFarmerJob(playerid, const msg_job[])
+{
+	new format_job[1280];
+	format(format_job, sizeof(format_job), "{212c59}[FARMER]{FFFFFF}: %s", msg_job);
+	SendClientMessage(playerid, COLOR_WHITE, format_job);
+	return 1;
+}
 hook OnPlayerConnect(playerid)
 {
+	RemoveBuildingFarmMap(playerid);
 	for(new i = 0; i < MAX_PLAYER_PLANT; i++) {
 		PlantTreeInfo[playerid][i][pi_ID] = -1;
 	}
 }
+hook OnGameModeInit()
+{
+	CreateFarmMap(); 
+	return 1;
+}
+CMD:farmpos1(playerid, params[])
+{
+	SetPlayerPos(playerid, -382.8567,-1430.5543,25.7266);
+	return 1;
+}
+CMD:farmpos2(playerid, params[])
+{
+	SetPlayerPos(playerid, -1420.0443,-1474.9486,101.6293);
+	return 1;
+}
+CMD:farmer(playerid, params[])
+{
+	new Float:x,
+            Float:y,
+            Float:z;
+	GetDynamicActorPos(ActorFarmer, x, y, z);
+
+	if(IsPlayerInRangeOfPoint(playerid, 5.0, x, y, z) || IsPlayerInRangeOfPoint(playerid, 5.0, -382.8567,-1430.5543,25.7266))
+	{
+		SetPVarInt(playerid, #RangeFarm, 1);
+		Dialog_Show(playerid, FARMER_MENU, DIALOG_STYLE_LIST, "Cong viec", "Xin viec\nNghi viec (1)\nNghi viec (2)\nThay dong phuc\nMua cay giong", "Chon", "Huy");
+	}
+	else if(IsPlayerInRangeOfPoint(playerid, 5.0, -1420.0443,-1474.9486,101.6293)){
+		SetPVarInt(playerid, #RangeFarm, 2);
+		Dialog_Show(playerid, FARMER_MENU, DIALOG_STYLE_LIST, "Cong viec", "Xin viec\nNghi viec (1)\nNghi viec (2)\nThay dong phuc\nMua gia suc", "Chon", "Huy");
+	}
+	else SendFarmerJob(playerid, "Ban khong o gan NPC Farmer");
+	return 1;
+}
+
 FreePlantID(playerid)
 {
 	if(CountPlayerPlant[playerid] >= MAX_PLAYER_PLANT) return -1;

@@ -585,11 +585,12 @@ stock ShowDealCraft(playerid) {
 	}
 	else if(CraftWeaponDeal[playerid] != 0) {
 		new string[129],button[30];
-		format(string,sizeof(string),"Don hang cua ban la: %s\nThoi gian hoan tat don hang: %d giay",GetOderName(CraftWeaponDeal[playerid]), CraftWeaponDealTime[playerid]-gettime() );
 		if(gettime() >= CraftWeaponDealTime[playerid]) {
 			button = "Nhan hang";
+			format(string,sizeof(string),"Don hang cua ban la: %s\nDon hang da hoan tat, bam 'nhan hang' de lay vu khi da dat",GetOderName(CraftWeaponDeal[playerid]));
 		}
 		else {
+			format(string,sizeof(string),"Don hang cua ban la: %s\nThoi gian hoan tat don hang: %d giay",GetOderName(CraftWeaponDeal[playerid]), CraftWeaponDealTime[playerid]-gettime() );
 			format(button,sizeof(button),"> %d giay", CraftWeaponDealTime[playerid]-gettime());
 		}
 		
@@ -626,7 +627,7 @@ Dialog:MY_DEALCRAFT(playerid, response, listitem, inputtext[]) {
     			SendClientMessage(playerid, -1, string);
     			return 1;
     		}
-    		else if(gettime() < CraftWeaponDealTime[playerid]) {
+    		else if(gettime() > CraftWeaponDealTime[playerid]) {
     		    format(string,sizeof(string),"Ban da lay don hang %s thanh cong",GetOderName(CraftWeaponDeal[playerid])  );
     		    SendClientMessage(playerid, -1, string);
     		    new pitem_add[30];
@@ -642,7 +643,7 @@ Dialog:MY_DEALCRAFT(playerid, response, listitem, inputtext[]) {
     		    }
     		    new pItemId;
     		    pItemId = Inventory_GetItemID(playerid,pitem_add);
-		        Inventory_Set(playerid, g_aInventoryItems[pItemId][e_InventoryItem], 1, 60*24*2);
+		        Inventory_Add(playerid, g_aInventoryItems[pItemId][e_InventoryItem], 1);
 		        CraftWeaponDeal[playerid] = 0;
     		}
     	}
@@ -663,8 +664,7 @@ Dialog:CRAFT_AMMO(playerid, response, listitem, inputtext[]) {
 		    Inventory_Remove(playerid, pItemId, 1); //ID cua InventoryData
 		    pItemId = Inventory_GetItemID(playerid,"Thuoc sung");
 		    Inventory_Remove(playerid, pItemId, 1); //ID cua InventoryData
-		    pItemId = Inventory_GetItemID(playerid,"Dan sung luc");
-		    Inventory_Set(playerid, g_aInventoryItems[pItemId][e_InventoryItem], 10, 60*24*2);
+		    Inventory_Add(playerid, "Dan sung luc", 10);
 		    SendClientMessage(playerid, COLOR_YELLOW, "> Ban da che tao thanh cong 10 vien dan sung luc (-1 dong , -1 thuoc sung).");
     	}
     	if(listitem == 1 ) {
@@ -675,8 +675,7 @@ Dialog:CRAFT_AMMO(playerid, response, listitem, inputtext[]) {
 		    Inventory_Remove(playerid, pItemId, 1); //ID cua InventoryData
 		    pItemId = Inventory_GetItemID(playerid,"Thuoc sung");
 		    Inventory_Remove(playerid, pItemId, 1); //ID cua InventoryData
-		    pItemId = Inventory_GetItemID(playerid,"Dan shotgun");
-		    Inventory_Set(playerid, g_aInventoryItems[pItemId][e_InventoryItem], 10, 60*24*2);
+		    Inventory_Add(playerid, "Dan shotgun", 10);
 		    SendClientMessage(playerid, COLOR_YELLOW, "> Ban da che tao thanh cong 10 vien dan shotgun (-1 dong , -1 thuoc sung).");
     	}
     	if(listitem == 2 ) {
@@ -687,8 +686,7 @@ Dialog:CRAFT_AMMO(playerid, response, listitem, inputtext[]) {
 		    Inventory_Remove(playerid, pItemId, 2); //ID cua InventoryData
 		    pItemId = Inventory_GetItemID(playerid,"Thuoc sung");
 		    Inventory_Remove(playerid, pItemId, 2); //ID cua InventoryData
-		    pItemId = Inventory_GetItemID(playerid,"Dan tieu lien");
-		    Inventory_Set(playerid, g_aInventoryItems[pItemId][e_InventoryItem], 10, 60*24*2);
+		    Inventory_Add(playerid,"Dan tieu lien", 10);
 		    SendClientMessage(playerid, COLOR_YELLOW, "> Ban da che tao thanh cong 10 vien Dan tieu lien (-2 dong , -2 thuoc sung).");
     	}
     	if(listitem == 3 ) {
@@ -699,8 +697,7 @@ Dialog:CRAFT_AMMO(playerid, response, listitem, inputtext[]) {
 		    Inventory_Remove(playerid, pItemId, 3); //ID cua InventoryData
 		    pItemId = Inventory_GetItemID(playerid,"Thuoc sung");
 		    Inventory_Remove(playerid, pItemId, 3); //ID cua InventoryData
-		    pItemId = Inventory_GetItemID(playerid,"Dan sung truong");
-		    Inventory_Set(playerid, g_aInventoryItems[pItemId][e_InventoryItem], 10, 60*24*2);
+		    Inventory_Add(playerid, "Dan sung truong", 10);
 		    SendClientMessage(playerid, COLOR_YELLOW, "> Ban da che tao thanh cong 10 vien Dan sung truong (-3 dong , -3 thuoc sung).");
     	}
     	if(listitem == 4 ) {
@@ -711,8 +708,7 @@ Dialog:CRAFT_AMMO(playerid, response, listitem, inputtext[]) {
 		    Inventory_Remove(playerid, pItemId, 3); //ID cua InventoryData
 		    pItemId = Inventory_GetItemID(playerid,"Thuoc sung");
 		    Inventory_Remove(playerid, pItemId, 3); //ID cua InventoryData
-		    pItemId = Inventory_GetItemID(playerid,"Dan sniper");
-		    Inventory_Set(playerid, g_aInventoryItems[pItemId][e_InventoryItem], 10, 60*24*2);
+		    Inventory_Add(playerid, "Dan sniper", 10);
 		    SendClientMessage(playerid, COLOR_YELLOW, "> Ban da che tao thanh cong 10 vien Dan sniper (-3 dong , -3 thuoc sung).");
     	}
     }
@@ -860,9 +856,7 @@ Dialog:CRAFT_WEAPON(playerid, response, listitem, inputtext[]) {
     return 1; 
 }
 
-hook OnGameModeInit() {\
-	CreateDynamicPickup(1239, 23, 2306.409179 ,-1569.672607, 1051.562988, -1); // Drug Smuggler Job (TR)
-	CreateDynamic3DTextLabel("{FF0000} DRUG LAB \n{FFFFFF}(( BAM Y de mua chat hoa hoc.))", COLOR_WHITE, 2306.409179 ,-1569.672607, 1051.562988 + 0.5, 10.0);// Actor Trucker
+hook OnGameModeInit() {
 
 	 
 }

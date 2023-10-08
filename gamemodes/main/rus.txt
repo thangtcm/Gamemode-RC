@@ -1,12 +1,9 @@
-C:\Users\PHATBENTRE\Desktop\Gamemode-RC\Gamemode-RC\gamemodes\main\_funcs.pwn(2) : ïðåäóïðåæäåíèå 235: public-ôóíêöèÿ íóæäàåòñÿ â îïåðåæàþùåì îáúÿâëåíèè (èäåíòèôèêàòîð "OnPlayerLeaveRaceCheckpoint")
-C:\Users\PHATBENTRE\Desktop\Gamemode-RC\Gamemode-RC\gamemodes\main\_funcs.pwn(6) : ïðåäóïðåæäåíèå 235: public-ôóíêöèÿ íóæäàåòñÿ â îïåðåæàþùåì îáúÿâëåíèè (èäåíòèôèêàòîð "OnPlayerPickUpPickup")
-C:\Users\PHATBENTRE\Desktop\Gamemode-RC\Gamemode-RC\gamemodes\main\_funcs.pwn(10) : ïðåäóïðåæäåíèå 235: public-ôóíêöèÿ íóæäàåòñÿ â îïåðåæàþùåì îáúÿâëåíèè (èäåíòèôèêàòîð "OnPlayerUpdate")
-C:\Users\PHATBENTRE\Desktop\Gamemode-RC\Gamemode-RC\gamemodes\main\_funcs.pwn(12) : îøèáêà 017: íåîáúÿâëåííûé ñèìâîë "MAX_SZ"
-C:\Users\PHATBENTRE\Desktop\Gamemode-RC\Gamemode-RC\gamemodes\main\_funcs.pwn(14) : îøèáêà 017: íåîáúÿâëåííûé ñèìâîë "IsACop"
-C:\Users\PHATBENTRE\Desktop\Gamemode-RC\Gamemode-RC\gamemodes\main\_funcs.pwn(14) : ïðåäóïðåæäåíèå 215: âûðàæåíèå íå èìååò ýôôåêòà
-C:\Users\PHATBENTRE\Desktop\Gamemode-RC\Gamemode-RC\gamemodes\main\_funcs.pwn(14) : îøèáêà 001: îæèäàëñÿ òîêåí ";", íî íàéäåí "]"
-C:\Users\PHATBENTRE\Desktop\Gamemode-RC\Gamemode-RC\gamemodes\main\_funcs.pwn(14) : îøèáêà 029: íåïðàâèëüíîå âûðàæåíèå, ïðèíÿò íîëü
-C:\Users\PHATBENTRE\Desktop\Gamemode-RC\Gamemode-RC\gamemodes\main\_funcs.pwn(14) : ôàòàëüíàÿ îøèáêà 107: ñëèøêîì ìíîãî îøèáîê íà îäíîé ñòðîêå
+mysql.pwn(8) : îøèáêà 004: ôóíêöèÿ "cache_get_data" íå ðåàëèçîâàíà
+mysql.pwn(11) : îøèáêà 004: ôóíêöèÿ "cache_get_field_content" íå ðåàëèçîâàíà
+mysql.pwn(11) : îøèáêà 017: íåîáúÿâëåííûé ñèìâîë "DrugLabInfo"
+mysql.pwn(11) : ïðåäóïðåæäåíèå 215: âûðàæåíèå íå èìååò ýôôåêòà
+mysql.pwn(11) : îøèáêà 001: îæèäàëñÿ òîêåí ";", íî íàéäåí "]"
+mysql.pwn(11) : ôàòàëüíàÿ îøèáêà 107: ñëèøêîì ìíîãî îøèáîê íà îäíîé ñòðîêå
 
 Êîìïèëÿöèÿ îñòàíîâëåíà.
 

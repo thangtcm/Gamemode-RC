@@ -731,6 +731,8 @@ new MasterInfo[MAX_PLAYERS][master];
 new TruckerVehicles[20];
 enum pInfo
 {
+	pNai,
+	pBo,
 	pRansack,
 	Text3D:pNameTag,
 	pMaskID[2],
@@ -1460,6 +1462,7 @@ new Loaded[MAX_PLAYERS];
 new ChatGoActor;
 new ActorNV;
 new TruckActor;
+new ActorFarmer;
 enum 	e_labeltypes
 {
 	Text3D: TYPE_KEYPAD,
