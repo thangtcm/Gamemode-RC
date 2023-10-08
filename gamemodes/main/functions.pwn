@@ -70,16 +70,12 @@ NationSel_SetupSelectedNation(playerid)
 
 	if(PlayerNationSelection[playerid] == NATION_SAN_ANDREAS) {
 		SetPlayerInterior(playerid,0);
-   		SetPlayerCameraPos(playerid,1630.6136,-2286.0298,110.0);
-		SetPlayerCameraLookAt(playerid,1887.6034,-1682.1442,47.6167);
 
 		TextDrawShowForPlayer(playerid,txtSanAndreas);
 		TextDrawHideForPlayer(playerid,txtTierraRobada);
 	}
 	else if(PlayerNationSelection[playerid] == NATION_TIERRA_ROBADA) {
 		SetPlayerInterior(playerid,0);
-   		SetPlayerCameraPos(playerid,-1846.606201,1509.823120,123.755050);
-		SetPlayerCameraLookAt(playerid,-1790.602783,892.187805,42.851142);
 
 		TextDrawHideForPlayer(playerid,txtSanAndreas);
 		TextDrawShowForPlayer(playerid,txtTierraRobada);
@@ -6845,9 +6841,6 @@ stock ShowMainMenuDialog(playerid, frame)
 		{
 			format(string, sizeof(string), "{B4B5B7}Ten tai khoan: %s\n\nDia chi IP: %s\n\nLan cuoi dang nhap luc: %s\n\nThoi gian tao tai khoan: %s\n\nTai khoan cua ban da duoc dang ky, xin nhap mat khau de dang nhap:", GetPlayerNameEx(playerid), GetPlayerIpEx(playerid),PlayerInfo[playerid][LastLogin],PlayerInfo[playerid][RegiDate]);
 			ShowPlayerDialog(playerid,MAINMENU,DIALOG_STYLE_PASSWORD,"Dang nhap tai khoan",string,"Dang Nhap","Thoat");
-			SetPlayerCameraPos(playerid, 2301.3403, -1301.3948, 52.4688);
-			SetPlayerCameraLookAt(playerid, 2300.3408, -1301.4949, 52.1188);
-			SetPlayerPos(playerid, 2234.2881,-1329.2982,24.5313);
 			SetPlayerVirtualWorld(playerid, 0);
 			PlayerInfo[playerid][pVW] = 0;
 		}
@@ -6855,9 +6848,6 @@ stock ShowMainMenuDialog(playerid, frame)
 		{
 			format(string, sizeof(string), "{B4B5B7}Chao mung ban den voi may chu, %s.\n\nDia chi IP: %s\n\nTai khoan chua duoc dang ky , hay nhap mat khau de dang ky:", GetPlayerNameEx(playerid), GetPlayerIpEx(playerid));
 			ShowPlayerDialog(playerid,MAINMENU2,DIALOG_STYLE_PASSWORD,"Dang Ki tai khoan",string,"Dang ki","Thoat");
-			SetPlayerCameraPos(playerid, 2183.9360, -1748.5735, 57.1525);
-			SetPlayerCameraLookAt(playerid, 2182.9751, -1748.8673, 56.6776);
-			SetPlayerPos(playerid, 2151.0425,-1786.4374,13.5093);
 			SetPlayerVirtualWorld(playerid, 0);
 			PlayerInfo[playerid][pVW] = 0;
 		}
@@ -6865,9 +6855,6 @@ stock ShowMainMenuDialog(playerid, frame)
 		{
 			format(string, sizeof(string), "{c94848}Mat khau ban vua nhap khong chinh xac, hay kiem tra lai!{B4B5B7}\n\nTen tai khoan: %s\n\nDia chi IP: %s\n\nLan cuoi dang nhap luc: %s\n\nThoi gian tao tai khoan: %s\n\nTai khoan cua ban da duoc dang ky, xin nhap mat khau de dang nhap:", GetPlayerNameEx(playerid), GetPlayerIpEx(playerid),PlayerInfo[playerid][LastLogin],PlayerInfo[playerid][RegiDate]);
 			ShowPlayerDialog(playerid,MAINMENU,DIALOG_STYLE_PASSWORD,"Loi dang nhap",string,"Dang nhap","Thoat");
-			SetPlayerCameraPos(playerid, 2301.3403, -1301.3948, 52.4688);
-			SetPlayerCameraLookAt(playerid, 2300.3408, -1301.4949, 52.1188);
-			SetPlayerPos(playerid, 2234.2881,-1329.2982,24.5313);
 			SetPlayerVirtualWorld(playerid, 0);
 			PlayerInfo[playerid][pVW] = 0;
 		}
@@ -6876,9 +6863,6 @@ stock ShowMainMenuDialog(playerid, frame)
 			format(titlestring, sizeof(titlestring), "{3399FF}Tai khoan dang tham gia - %s", GetPlayerNameEx(playerid));
 			format(string, sizeof(string), "{FFFFFF}Co so du lieu cua chung toi chi ra rang %s hien dang dang nhap, neu khong phai la ban vui long lien he mot quan tri administrator de duoc giai quyet.", GetPlayerNameEx(playerid));
 			ShowPlayerDialog(playerid,MAINMENU3,DIALOG_STYLE_MSGBOX,titlestring,string,"Thoat","");
-			SetPlayerCameraPos(playerid, 2301.3403, -1301.3948, 52.4688);
-			SetPlayerCameraLookAt(playerid, 2300.3408, -1301.4949, 52.1188);
-			SetPlayerPos(playerid, 2234.2881,-1329.2982,24.5313);
 			SetPlayerVirtualWorld(playerid, 0);
 			PlayerInfo[playerid][pVW] = 0;
 		}
@@ -6891,9 +6875,6 @@ stock SafeLogin(playerid, type)
                 case 1: // Account Exists
                 {
                 	LoadLogin(playerid);
-                    SetPlayerCameraPos(playerid, 1313.2040,355.5530,77.3809);
-                    SetPlayerCameraLookAt(playerid, 1346.9469,279.9837,27.8488);
-                    SetPlayerPos(playerid, 1392.9966,420.9134,28.7555);
                 }
                 case 2: // No Account Exists
                 {
@@ -6904,9 +6885,6 @@ stock SafeLogin(playerid, type)
                     Dia chi IP cua ban: %s\n\n\
                     Tai khoan ban chua dang ky, hay nhap mat khau de dang ky\n\n",GetPlayerNameEx(playerid),ip);
                     ShowPlayerDialog(playerid,DANGKY,DIALOG_STYLE_PASSWORD,"Dang ky",string,"Dang ky","Thoat");
-                    SetPlayerCameraPos(playerid, 1527.1915, -1388.5413, 405.3455);
-                    SetPlayerCameraLookAt(playerid, 1527.1210, -1389.5367, 403.4106);
-                    SetPlayerPos(playerid, 1535.3447,-1357.3451,329.4568);
                 }
         }
 }
@@ -10773,9 +10751,9 @@ stock HospitalSpawn(playerid)
 				Misc_Save();
 				SendClientMessageEx(playerid, 0xb4b486FF, "[HOSPITAL] Ban ton $25 cho tien vien phi");
 				PlayerInfo[playerid][pVW] = 0;
-				SetPlayerPos(playerid, 1153.7006, -1330.3177, -41.9554);
-				Streamer_UpdateEx(playerid, 1153.7006, -1330.3177, -41.9554);
-				Player_StreamPrep(playerid, 1153.7006, -1330.3177, -41.9554,FREEZE_TIME);
+				SetPlayerPos(playerid, 1245.2665,334.1407,19.5547);
+				Streamer_UpdateEx(playerid, 1245.2665,334.1407,19.5547);
+				Player_StreamPrep(playerid, 1245.2665,334.1407,19.5547,FREEZE_TIME);
 				SetPlayerFacingAngle(playerid, 179.4258);
 				PlayerInfo[playerid][pHospital] = 0;
 				SetCameraBehindPlayer(playerid);
@@ -11418,10 +11396,23 @@ stock SetPlayerSpawn(playerid)
 			}
 			else if(PlayerInfo[playerid][pInsurance] == 1)
 			{
-				SetPlayerCameraPos(playerid, 1155.9202, -1310.7156, -42.7173);//SF
-				SetPlayerCameraLookAt(playerid, 1155.9202, -1310.7156, -42.7173);
-				SetPlayerPos(playerid, 1155.9202, -1310.7156, -42.7173);
-				PlayerInfo[playerid][pHospital] = 2;
+				switch(random(2))
+				{
+					case 0:
+					{
+						SetPlayerCameraPos(playerid, 1251.1318,-1305.1705,1061.8671);
+						SetPlayerCameraLookAt(playerid, 1251.1318,-1305.1705,1061.8671);
+						SetPlayerPos(playerid, 1251.1318,-1305.1705,1061.8671);
+						PlayerInfo[playerid][pHospital] = 2;
+					}
+					case 1:
+					{
+						SetPlayerCameraPos(playerid, 1248.3254,-1305.2551,1061.8671);
+						SetPlayerCameraLookAt(playerid, 1248.3254,-1305.2551,1061.8671);
+						SetPlayerPos(playerid, 1248.3254,-1305.2551,1061.8671);
+						PlayerInfo[playerid][pHospital] = 2;
+					}
+				}
 			}
 			else if(PlayerInfo[playerid][pInsurance] == 2)
 			{

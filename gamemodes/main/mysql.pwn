@@ -1349,9 +1349,6 @@ forward OnCreateCharacter(playerid);
 public OnCreateCharacter(playerid)
 {
     if(cache_affected_rows()) {
-    	SetPlayerCameraPos(playerid, 1527.1915, -1388.5413, 405.3455);
-		SetPlayerCameraLookAt(playerid, 1527.1210, -1389.5367, 403.4106);
-		SetPlayerPos(playerid, 1535.3447,-1357.3451,329.4568);
     	ShowPlayerDialog(playerid, NOTHINGB, DIALOG_STYLE_MSGBOX, "Dang ky", "Dang ky thanh cong hay dang nhap de tiep tuc", "Tiep tuc", "");
     	SendClientMessage(playerid, 0xa5bbd0FF, "[REGISTER] Ban da dang ky thanh cong hay dang nhap de tiep tuc!");             
     } else {
@@ -1394,9 +1391,6 @@ public LOGIN_TH(playerid) {
 					GetPlayerIp(playerid, ip, 32);
 					format(string,sizeof (string),"\n\nDang nhap that bai: %d/3\n\n\nDia chi IP cua ban: %s\n\nLan dang nhap cua tai khoan: %s\n\nThoi gian tao tai khoan: %s\n\nTai khoan ban da dang ky hay nhap mat khau de dang nhap\n\n\n",gPlayerLogTries[playerid]+1,ip,MasterInfo[playerid][acc_lastlogin],MasterInfo[playerid][acc_regidate]);
 					ShowPlayerDialog(playerid,DANGNHAP,DIALOG_STYLE_PASSWORD,"Dang nhap",string,"Dang nhap","Thoat");
-					SetPlayerCameraPos(playerid, 1527.1915, -1388.5413, 405.3455);
-					SetPlayerCameraLookAt(playerid, 1527.1210, -1389.5367, 403.4106);
-					SetPlayerPos(playerid, 1535.3447,-1357.3451,329.4568);					
 					HideNoticeGUIFrame(playerid);
 
 					if(++gPlayerLogTries[playerid] == 4)
@@ -8564,8 +8558,8 @@ public OnPlayerLoad(playerid)
  	}  
  	SetPlayerWeapons(playerid);
  	DestroyLog@_Reg(playerid);
- 	SendClientMessageEx(playerid, COLOR_VANG, "Chao mung ban da tro lai may chu Los Santos Roleplay Vietnam.");
- 	SetTimerEx("StartDownEatDrinkStrong", 100000, false, "i", playerid);
+ 	SendClientMessageEx(playerid, COLOR_VANG, "Chao mung ban da tro lai may chu Red County Roleplay.");
+ 	DownEDS[playerid] = SetTimerEx("StartDownEatDrinkStrong", 100000, false, "i", playerid);
 	DeletePVar(playerid, "TextDrawCharacter");
  	GetHomeCount(playerid);
 	new rdName[MAX_PLAYER_NAME];

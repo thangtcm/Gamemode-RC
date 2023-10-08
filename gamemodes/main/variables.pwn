@@ -2314,14 +2314,16 @@ new Float:DocPrison[3][3] = {
 };
 
 new Float:LSPDJailSpawns[3][3] = {
-	{-1968.6301, 309.3106, 1556.8120},//O Giua
-	{-1976.3154, 323.3618, 1557.2067},//O Trai
-	{-1960.2242, 323.5970, 1557.2098}//O Phai
+	{1366.1117,1571.8075,1468.7877},//O Giua
+	{1366.6022,1575.6224,1468.7877},//O Trai
+	{1366.6973,1579.0037,1468.7877},
+	{1363.4543,1581.8207,1468.7877},
+	{1359.8464,1581.7192,1468.7867}
 };
 
 new Titel[pBoxingStats];
 
-
+new DownEDS[MAX_PLAYERS];
 new EventKernel[EventKernelEnum];
 
 new EventRCPU[20]; // Value to know if rcp is being used
