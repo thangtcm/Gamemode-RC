@@ -16944,7 +16944,7 @@ CMD:dvrespawn(playerid, params[])
 		iGroupID = PlayerInfo[playerid][pMember],
 	    iFamilyID = PlayerInfo[playerid][pFMember];
 
-    if(PlayerInfo[playerid][pAdmin] >= 4 || PlayerInfo[playerid][pFactionModerator] >= 1 || PlayerInfo[playerid][pGangModerator] >= 1)
+    if( 0 <= PlayerInfo[playerid][pLeader] < MAX_GROUPS || PlayerInfo[playerid][pAdmin] >= 4 || PlayerInfo[playerid][pFactionModerator] >= 1 || PlayerInfo[playerid][pGangModerator] >= 1)
     {
 		if((0 <= iGroupID <= MAX_GROUPS))
 		{
@@ -18013,7 +18013,90 @@ CMD:emergencybutton(playerid, params[]) {
 	}
 	return 1;
 }
-
+CMD:bp3(playerid, params[])
+{
+	if(Backup[playerid] == 0)
+	{
+	    if(IsACop(playerid) || IsAMedic(playerid))
+		{
+		    new code[10],
+			zone[MAX_ZONE_NAME],
+			string[128];
+		    GetPlayer3DZone(playerid, zone, sizeof(zone));
+			format(string, sizeof(string), "* %s yeu cau backup tren radio cua ho.", GetPlayerNameEx(playerid));
+			ProxDetector(30.0, playerid, string, COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE);
+			format(string, sizeof(string), "* %s yeu cau backup tai %s. {AA3333}Dap ung Code 3 [Lights and Sirens].", GetPlayerNameEx(playerid), zone);
+	        ShowBackupActiveForPlayer(playerid);
+			Backup[playerid] = 1;
+			foreach(Player, i)
+			{
+				if(PlayerInfo[playerid][pMember] == PlayerInfo[i][pMember])
+				{
+	      			SetPlayerMarkerForPlayer(i, playerid, 0x2641FEAA);
+					SendClientMessageEx(i, arrGroupData[PlayerInfo[playerid][pMember]][g_hRadioColour] * 256 + 255, string);
+				}
+			}
+			SendServerMessage(playerid, " Su dung /backup mot lan nua de ha thap yeu cau backup cua ban xuong code 2.");
+			SendServerMessage(playerid, " Su dung /nobackup de xoa yeu cau backup.");
+			if(BackupClearTimer[playerid] != 0)
+			{
+				KillTimer(BackupClearTimer[playerid]);
+				BackupClearTimer[playerid] = 0;
+			}
+			BackupClearTimer[playerid] = SetTimerEx("BackupClear", 300000, false, "ii", playerid, 1);
+		}
+		else
+		{
+			SendErrorMessage(playerid, "    Ban khong phai nhan vien thuc thi phap luat hoac bac si!");
+		}
+	} else return SendErrorMessage(playerid, " Ban dang bat backup roi, vui long /nobackup (/nbp) de tat.");
+	return 1;
+}
+CMD:bp2(playerid, params[])
+{
+	if(Backup[playerid] == 0)
+	{
+	    if(IsACop(playerid) || IsAMedic(playerid))
+		{
+		    new code[10],
+			zone[MAX_ZONE_NAME],
+			string[128];
+		    GetPlayer3DZone(playerid, zone, sizeof(zone));
+			format(string, sizeof(string), "* %s yeu cau backup tren radio cua ho.", GetPlayerNameEx(playerid));
+			ProxDetector(30.0, playerid, string, COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE);
+			format(string, sizeof(string), "* %s yeu cau backup tai %s. {00FF33}Dap ung Code 2 [No Lights and Sirens].", GetPlayerNameEx(playerid), zone);
+	        ShowBackupActiveForPlayer(playerid);
+			Backup[playerid] = 2;
+			foreach(Player, i)
+			{
+				if(PlayerInfo[playerid][pMember] == PlayerInfo[i][pMember])
+				{
+	  				SetPlayerMarkerForPlayer(i, playerid, 0x00FF33AA);
+					SendClientMessageEx(i,  arrGroupData[PlayerInfo[playerid][pMember]][g_hRadioColour] * 256 + 255, string);
+				}
+			}
+			SendServerMessage(playerid, " Su dung /backup mot lan nua de nang yeu cau backup cua ban len code 3.");
+			SendServerMessage(playerid, " Su dung /nobackup de xoa yeu cau backup.");
+			if(BackupClearTimer[playerid] != 0)
+			{
+				KillTimer(BackupClearTimer[playerid]);
+				BackupClearTimer[playerid] = 0;
+			}
+			BackupClearTimer[playerid] = SetTimerEx("BackupClear", 300000, false, "ii", playerid, 1);
+		}
+		else
+		{
+			SendErrorMessage(playerid, "    Ban khong phai nhan vien thuc thi phap luat hoac bac si!");
+		}
+	} else return SendErrorMessage(playerid, " Ban dang bat backup roi, vui long /nobackup (/nbp) de tat.");
+	return 1;
+}
+CMD:backup(playerid, params[])
+{
+	SendClientMessage(playerid, COLOR_LIGHTRED, "[SERVER] {ffffff}lenh da duoc doi thanh /bp2, /bp3, /nbp");
+	return 1;
+}
+/*
 CMD:backup(playerid, params[])
 {
     if(IsACop(playerid) || IsAMedic(playerid))
@@ -18085,7 +18168,7 @@ CMD:backup(playerid, params[])
 		SendErrorMessage(playerid, "    Ban khong phai nhan vien thuc thi phap luat hoac bac si!");
 	}
 	return 1;
-}
+}*/
 
 CMD:backupall(playerid, params[])
 {
@@ -25332,7 +25415,7 @@ CMD:r(playerid, params[]) {
 					format(string, sizeof(string), "(radio) %s", params);
 					SetPlayerChatBubble(playerid, string, COLOR_WHITE, 15.0, 5000);
 					GetPlayerGroupInfo(playerid, rank, division, employer);
-					format(string, sizeof(string), "**[S1:Dispatch] [%d] %s %s: %s **",PlayerInfo[playerid][pMaHieu1],PlayerInfo[playerid][pRankText], GetPlayerNameEx(playerid), params);
+					format(string, sizeof(string), "**[CH: 911, S: 1] [%d] %s %s: %s **",PlayerInfo[playerid][pMaHieu1],PlayerInfo[playerid][pRankText], GetPlayerNameEx(playerid), params);
 					foreach(new i: Player)
 					{
 						if(GetPVarInt(i, "togRadio") == 0)
@@ -25372,7 +25455,7 @@ CMD:r2(playerid, params[]) {
 					format(string, sizeof(string), "(radio) %s", params);
 					SetPlayerChatBubble(playerid, string, COLOR_WHITE, 15.0, 5000);
 					GetPlayerGroupInfo(playerid, rank, division, employer);
-					format(string, sizeof(string), "**[S2: %s] [%d] %s %s: %s **", division,PlayerInfo[playerid][pMaHieu1],PlayerInfo[playerid][pRankText], GetPlayerNameEx(playerid), params);
+					format(string, sizeof(string), "**[CH: 911, S: %s] [%d] %s %s: %s **", division,PlayerInfo[playerid][pMaHieu1],PlayerInfo[playerid][pRankText], GetPlayerNameEx(playerid), params);
 					foreach(new i: Player)
 					{
 						if(GetPVarInt(i, "togRadio") == 0)
@@ -35174,7 +35257,7 @@ CMD:muabanglai(playerid, params[]) {
 
 CMD:getlicense(playerid, params[])
 {
-	if (!IsPlayerInRangeOfPoint(playerid,2.0,366.54, 159.09, 1008.38)) { return 1; }
+	if (!IsPlayerInRangeOfPoint(playerid,2.0,1222.7645,243.7523,19.5469)) { return 1; }
 	if (PlayerInfo[playerid][pWantedLevel] > 0) return SendClientMessageEx(playerid, COLOR_LIGHTRED, "Ban da co mot lenh bat giu - mua lai giay phep deu bi cam.");
 	ShowPlayerDialog(playerid, DIALOG_LICENSE_BUY, DIALOG_STYLE_LIST, "Chon loai giay phep ban muon mua.", "Giay phep lai xe ($200)\r\nGiay phep lai thuyen ($500)\r\nGiay phep lai may bay ($1000)\r\nGiay phep lai taxi ($500)", "Mua", "Huy bo");
 	return 1;
@@ -42558,10 +42641,6 @@ CMD:tackle(playerid, params[])
 	#endif
 	if(IsACop(playerid))
 	{
-		if(GetPVarInt(playerid, "WeaponsHolstered") == 0)
-	    {
-	        cmd_holster(playerid, params);
-		}
         if(GetPVarInt(playerid, "TackleMode") == 0)
         {
 	        SetPVarInt(playerid, "TackleMode", 1);
@@ -50777,66 +50856,25 @@ CMD:pm(playerid, params[])
     else if(BlockChat[PID] == 1) return SendClientTextDraw(playerid, "Nguoi choi nay da tat che do PM");
     else if(BlockChat[playerid] == 1) return SendClientTextDraw(playerid, "Ban da tat kenh PM, '~y~/block~w~' de mo lai");
 
-	if(strlen(params) > 64)
+	if(PlayerInfo[playerid][pAdmin] >= 1)
 	{
-		new text1[128],
-			text2[128];
-
-		strmid(text2, message, 64, 128);
-		strmid(text1, message, 0, 64);
-		
-		if(PlayerInfo[PID][pAdmin] >= 1)
-		{
-			format(string, 128, "(( PM gui den {E88707}%s{FFE661} (%d): %s ))", GetPlayerNameExt(PID), PID, text1);
-		}
-		else if(PlayerInfo[PID][pAdmin] == 0)
-		{
-			format(string, 128, "(( PM gui den %s (%d): %s ))", GetPlayerNameExt(PID), PID, text1);
-		}
-		SendClientMessage(playerid, 0xFFE661FF, string);
-		format(string, 128, "... %s ))", text2);
-		SendClientMessage(playerid, 0xFFE661FF, string);
-
-		if(PlayerInfo[playerid][pAdmin] >= 1)
-		{
-			format(string, 128, "(( PM nhan tu {E88707}%s{FFDB18} (%d): %s ))", GetPlayerNameExt(playerid), playerid, text1);
-		}
-		else if(PlayerInfo[playerid][pAdmin] == 0)
-		{
-			format(string, 128, "(( PM nhan tu %s (%d): %s ))", GetPlayerNameExt(playerid), playerid, text1);
-		}
-		SendClientMessage(PID, COLOR_RECEIVEPM, string);
-		format(string, 128, "... %s ))", text2);
-		SendClientMessage(PID, COLOR_RECEIVEPM, string);
-
+		format(string, sizeof(string), "(( PM nhan tu {E88707}%s{FFDB18} (%d): %s ))", GetPlayerNameExt(playerid), playerid, message);
 	}
-	else
+	else if(PlayerInfo[playerid][pAdmin] == 0)
 	{
-		if(PlayerInfo[playerid][pAdmin] >= 1)
-		{
-			format(string, sizeof(string), "(( PM nhan tu {E88707}%s{FFDB18} (%d): %s ))", GetPlayerNameExt(playerid), playerid, message);
-		}
-		else if(PlayerInfo[playerid][pAdmin] == 0)
-		{
-			format(string, sizeof(string), "(( PM nhan tu %s (%d): %s ))", GetPlayerNameExt(playerid), playerid, message);
-		}
-		SendClientMessage(PID, COLOR_RECEIVEPM, string);
-		new pmne[128];
-		format(pmne, sizeof(pmne), "(( %s noi %s: %s ))", GetPlayerNameExt(playerid), GetPlayerNameExt(PID),message);
-		foreach(new i : Player)
-		{
-			SendClientMessage(i, COLOR_RECEIVEPM, pmne);
-		}
-		if(PlayerInfo[PID][pAdmin] >= 1)
-		{
-			format(string, 128, "(( PM gui den {E88707}%s{FFE661} (%d): %s ))", GetPlayerNameExt(PID), PID, message);
-		}
-		else if(PlayerInfo[PID][pAdmin] == 0)
-		{
-			format(string, 128, "(( PM gui den %s (%d): %s ))", GetPlayerNameExt(PID), PID, message);
-		}
-		SendClientMessage(playerid, 0xFFE661FF, string);
+		format(string, sizeof(string), "(( PM nhan tu %s (%d): %s ))", GetPlayerNameExt(playerid), playerid, message);
 	}
+	SendClientMessage(PID, COLOR_RECEIVEPM, string);
+	new pmne[128];
+	if(PlayerInfo[PID][pAdmin] >= 1)
+	{
+		format(string, 128, "(( PM gui den {E88707}%s{FFE661} (%d): %s ))", GetPlayerNameExt(PID), PID, message);
+	}
+	else if(PlayerInfo[PID][pAdmin] == 0)
+	{
+		format(string, 128, "(( PM gui den %s (%d): %s ))", GetPlayerNameExt(PID), PID, message);
+	}
+	SendClientMessage(playerid, 0xFFE661FF, string);
 	return 1;
 }
 
