@@ -874,24 +874,6 @@ public OnVehicleRespray(playerid, vehicleid, color1, color2)
 
 public OnPlayerClickTextDraw(playerid, Text:clickedid)
 {
-	/*if(GetPVarInt(playerid,"OpenNoiThat") == 1) {
-		if(clickedid == Text:INVALID_TEXT_DRAW) { 
-			HideNoiThatTD(playerid);
-		}
-	}*/
-	/*	
-	if(_:clickedid != INVALID_TEXT_DRAW)
-    {
-    	if(clickedid == ButtonCharacter[1]) {
-    		HideTDCharacter(playerid);
-    		LoaderStarting(playerid, LOAD_CHARACTERLOGIN, "Dang tai du lieu game...", 2);       
-    	}
-    }*/
-    // if(GetPVarInt(playerid, "OpenInventory") == 1) { 
-    //     if(clickedid == Text:INVALID_TEXT_DRAW) { 
-    //     	HideInventory(playerid);
-    //     }
-    // }
 	return 0;
 }
 stock GetWeaponIDWithItem(itemid) {
@@ -1911,9 +1893,6 @@ public OnPlayerConnect(playerid) {
 	SyncPlayerTime(playerid);
 	MainMenuUpdateForPlayer(playerid);
 	g_mysql_AccountAuthCheck(playerid);
-	//SafeLogin(playerid, 1);
-//	}
-
 	return 1;
 }
 
@@ -1931,7 +1910,7 @@ public OnPlayerDisconnect(playerid, reason)
     PlayerInfo[playerid][pPosHop][0] = 0;
     DeletePVar(playerid, "DangHaiTr");
 	RemovePlayerAttachedObject(playerid, 1);
-
+	OnPlayerStatsUpdate(playerid);
     if(!isnull(unbanip[playerid]))
 	{
 	    new string[26];

@@ -87,12 +87,12 @@ timer UpdateNameTagTimer[500](playerid)
 			{
 				format(nametag, sizeof(nametag), "{%06x}[Mask %d_%d]{FFFFFF} (%d)", GetPlayerColor(i) >>> 8, PlayerInfo[i][pMaskID][0], PlayerInfo[i][pMaskID][1], i);
 			}
-			else if(distance > 6.0 && !PlayerInfo[i][pMaskOn])
-			{
-            	format(nametag, sizeof(nametag), "{%06x}Stranger_%d_%d{FFFFFF} (%d)", GetPlayerColor(i) >>> 8, PlayerInfo[i][pMaskID][0], PlayerInfo[i][pMaskID][1], i);
-				Ischeck = true;
-			}
-			else if(distance <= 6.0 && !PlayerInfo[i][pMaskOn] && Ischeck == false)
+			// else if(distance > 6.0 && !PlayerInfo[i][pMaskOn])
+			// {
+            // 	format(nametag, sizeof(nametag), "{%06x}Stranger_%d_%d{FFFFFF} (%d)", GetPlayerColor(i) >>> 8, PlayerInfo[i][pMaskID][0], PlayerInfo[i][pMaskID][1], i);
+			// 	Ischeck = true;
+			// }
+			if(distance <= 6.0 && !PlayerInfo[i][pMaskOn])
 			{
 				format(nametag, sizeof(nametag), "{%06x}%s{FFFFFF} (%d)", GetPlayerColor(i) >>> 8, GetPlayerNameEx(i), i);
 			}

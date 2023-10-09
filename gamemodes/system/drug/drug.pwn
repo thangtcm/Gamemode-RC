@@ -159,10 +159,14 @@ stock UseDrug(playerid,drug_id,pItemId) {
 			GetPlayerHealth(playerid, old_health);
 			if(BonusHealth[playerid]  >= 100) return SendErrorMessage(playerid, "Ban da dat toi da trang thai tu Codeine ((>100 HP)).");
 			BonusHealth[playerid] += 10;
+<<<<<<< HEAD
+			format(string, sizeof string, "Ban dang su dung Codeine ( ban duoc tang 10 hp toi da. HP: %.1f/%1.f)",old_health,100 + BonusHealth[playerid]);
+=======
 
 			format(string, sizeof string, "Ban dang su dung Codeine ( ban duoc tang 10 hp toi da. HP: %.1f/%1.f)",old_health,100 + BonusHealth[playerid]);
 
 
+>>>>>>> main
 			SendClientMessageEx(playerid, COLOR_WHITE, string);
 			SetPlayerDrunkLevel(playerid, 40000); //  effects phe da
 			SetPVarInt(playerid, "EffectsDrugs", 1);
@@ -296,13 +300,21 @@ Dialog:DIALOG_BUY_CHH(playerid, response, listitem, inputtext[])
 {
 	if(response) {
 		if(listitem == 0 ) {
+<<<<<<< HEAD
+=======
 
+>>>>>>> main
 			Dialog_Show(playerid, DIALOG_BUY_CHHI, DIALOG_STYLE_INPUT, "Mua chat hoa hoc I", "Vui long nhap so luong ban muon mua ( gia $1/ 1CHH)", "Mua", "Huy bo");
 		
 		}
 		if(listitem == 1 ) {
 			Dialog_Show(playerid, DIALOG_BUY_CHHII, DIALOG_STYLE_INPUT, "Mua chat hoa hoc II", "Vui long nhap so luong ban muon mua ( gia $2/ 1CHH)", "Mua", "Huy bo");
+<<<<<<< HEAD
+
+		}
+=======
         }
+>>>>>>> main
 	}
 	return 1;
 }

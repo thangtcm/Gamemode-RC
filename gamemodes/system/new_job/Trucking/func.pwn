@@ -198,13 +198,11 @@ stock GetUnitType(index) //CarTruckWorking
     new arr[7], count = 0;
     for(new i; i < 7; i++)
     {
-        if(CarTruckWorking[index][CarUnitType][i] != -1)
-        {
-            arr[count++] = CarTruckWorking[index][CarUnitType][i];
-        }
+        if(CarTruckWorking[index][CarUnitType][i] == -1)
+            break;
+        count++;
     }
-    new rand = random(count);
-    return arr[rand];
+    return random(count);
 }
 
 stock CheckProductCar(CarTruckID, Unit)

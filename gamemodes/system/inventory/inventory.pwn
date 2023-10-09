@@ -1,5 +1,7 @@
 #include <YSI_Coding\y_hooks>
 #define MAX_INVENTORY (120)
+#define MAX_INVENTORYCAR (30)
+#define MAX_INVENTORYHOUSE (30)
 #define MODEL_SELECTION_INVENTORY (1)
 #define MODEL_SELECTION_RANSACK (2)
 
@@ -10,6 +12,10 @@ enum inventoryData
 	invItem[32],
 	invModel[64],
 	invQuantity,
+	pvSQLID,// ID xe sql sở hữu
+	pvGameID, // ID xe của người chơi tại sv, lấy dữ liệu lúc connect để giảm thiếu tính toán
+	hSQLID, //ID House
+	hGameID, // ID nhà của người chơi tại sv, lấy dữ liệu lúc connect để giảm thiếu tính toán
 	invTimer
 };
 
@@ -135,6 +141,7 @@ public OnLoadInventory(playerid)
 		InventoryData[playerid][pItemId][invExists] = false;
 		InventoryData[playerid][pItemId][invQuantity] = 0;
 		InventoryData[playerid][pItemId][invTimer] = 0;
+		InventoryData[playerid][pItemId][pvSQLID] = 0;
 	}
     while(i < rows)
     {
@@ -143,6 +150,7 @@ public OnLoadInventory(playerid)
         cache_get_field_content(i, "invQuantity", tmp, MainPipeline); InventoryData[playerid][i][invQuantity] = strval(tmp);
 		cache_get_field_content(i, "invTimer", tmp, MainPipeline); InventoryData[playerid][i][invTimer] = strval(tmp);
         cache_get_field_content(i, "invItem", InventoryData[playerid][i][invItem], MainPipeline, 32); 
+		cache_get_field_content(i, "pvSQLID", tmp, MainPipeline); InventoryData[playerid][i][pvSQLID] = strval(tmp);
         InventoryData[playerid][i][invExists] = true;
         i++;
     }
@@ -206,7 +214,7 @@ stock Inventory_GetItemID(playerid, item[], quantity = -1)
 	return -1;
 }
 
-stock Get_GInventoryItem(item[])
+stock Inventory_GetModel(item[])
 {
 	for(new i = 0; i < sizeof(g_aInventoryItems); i++)
 	{
@@ -291,7 +299,7 @@ stock Inventory_Add(playerid, item[], quantity = 1, timer = 0) //timer là dữ 
 		string[250],
         PlayerSQLId = GetPlayerSQLId(playerid),
 		model[64];
-	strcpy(model, g_aInventoryItems[Get_GInventoryItem(item)][e_InventoryModel], 64);
+	strcpy(model, g_aInventoryItems[Inventory_GetModel(item)][e_InventoryModel], 64);
 	if(pItemId == -1 || timer != 0)
 	{
 		pItemId = Inventory_GetFreeID(playerid);
@@ -531,6 +539,43 @@ stock OpenInventory(playerid, bool:Ransack = false)
 	new str[128];
 	format(str, sizeof(str), "Tui do cua %s", GetPlayerNameEx(playerid));
 	return ShowModelSelectionInventory(playerid, str ,MODEL_SELECTION_RANSACK, items, sizeof(items), true, quantitys, itemName, true, expirys);
+}
+
+stock OpenInventoryCarHouse(playerid)
+{
+	if(!IsPlayerConnected(playerid))
+		return 0;
+	new
+		items[MAX_INVENTORY][64],
+		quantitys[MAX_INVENTORY],
+		itemName[MAX_INVENTORY][32],
+		expirys[MAX_INVENTORY];
+
+	for(new i = 0; i < MAX_INVENTORYCAR; i++)
+	{
+		if (InventoryData[playerid][i][invExists])
+		{
+			strcpy(items[i], InventoryData[playerid][i][invModel], 64);
+			quantitys[i] = InventoryData[playerid][i][invQuantity];
+			strcpy(itemName[i], InventoryData[playerid][i][invItem], 32);
+			expirys[i] = InventoryData[playerid][i][invTimer] == 0 ? 0 : InventoryData[playerid][i][invTimer] - gettime();
+		}
+		else
+		{
+			strcpy(items[i], "_", 64);
+			quantitys[i] = -1;
+			expirys[i] = 0;
+			strcpy(itemName[i], "_", 32);
+		}
+	}
+	for(new i = MAX_INVENTORYCAR; i < 120; i++)
+	{
+		quantitys[i] = -1;
+		strcpy(itemName[i], "_", 32);
+		expirys[i] = 0;
+		strcpy(items[i], "_", 64);
+	}
+	return ShowModelSelectionInvCarHouse(playerid, "INVENTORY CAR" ,MODEL_SELECTION_INVENTORY, items, sizeof(items), true, quantitys, itemName, true, expirys);
 }
 
 forward OnPlayerUseItem(playerid, pItemId, name[]);
@@ -945,6 +990,18 @@ CMD:inv(playerid, params[])
 	return 1;
 }
 
+CMD:invch(playerid, params[])
+{
+	if(PlayerInfo[playerid][pHospital])
+		return SendClientMessageEx(playerid, COLOR_LIGHTRED, "Ban khong the mo tui do ngay bay gio.");
+
+	if(PlayerInfo[playerid][pJailTime] > 0)
+		return SendClientMessageEx(playerid, COLOR_LIGHTRED, "Ban khong the mo tui do khi ban dang trong tu.");
+
+	OpenInventoryCarHouse(playerid);
+	return 1;
+}
+
 CMD:checkinv(playerid, params[])
 {
 	new
@@ -1110,7 +1167,12 @@ Dialog:DropItem(playerid, response, listitem, inputtext[])
 			format(string, sizeof(string), "So luong khong hop le.\n\nItem: %s - So luong: %d\n\nXin vui long nhap so luong ban muon vut item nay:", itemName, InventoryData[playerid][itemId][invQuantity]);
 			return Dialog_Show(playerid, DropItem, DIALOG_STYLE_INPUT, "Vut item", string, "Vut", "Huy bo");
 		}
-		SendClientMessageEx(playerid, COLOR_YELLOW, "Chuc nang nay dang duoc bao tri, item cua ban se khong bi anh huong.");
+		else
+		{
+			Inventory_Remove(playerid, itemId, strval(inputtext));
+			format(string, sizeof(string), "* %s da vut %d vat pham \"%s\" ra khoi tui do cua ho.", GetPlayerNameEx(playerid), strval(inputtext), itemName);
+			ProxDetector(30.0, playerid, string, COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE);
+		}
 	}
 	return 1;
 }

@@ -30,10 +30,10 @@ stock IsValidCarTrucker(playerid)
     return false;
 }
 
-stock GetPlayerCarID(playerid, pvSQLID)
+stock GetPlayerCarID(playerid, PlayerVehicleID) //SQL ID
 {
     for(new d = 0 ; d < MAX_PLAYERVEHICLES; d++)
-        if(PlayerVehicleInfo[playerid][d][pvSlotId] == pvSQLID)
+        if(PlayerVehicleInfo[playerid][d][pvSlotId] == PlayerVehicleID)
             return d;
     return -1;
 }

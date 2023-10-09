@@ -18,6 +18,7 @@
 #include <easyDialog>
 #include <mSelection>
 #include <eInventory>
+#include <eInvCarHouse>
 #include <stamina>
 #include <YSF>
 #include <discord-connector>

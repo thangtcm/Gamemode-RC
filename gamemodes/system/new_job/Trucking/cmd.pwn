@@ -17,7 +17,7 @@ CMD:cuophang(playerid, params[])
                 new v = GetPlayerVehicle(i, vehicleid);
                 if(v != -1)
                 {
-                    if(!PlayerVehicleInfo[playerid][v][pvIsRegisterTrucker]) return 1;
+                    if(!PlayerVehicleInfo[i][v][pvIsRegisterTrucker]) return 1;
                     if(GetPVarInt(playerid, "LoadTruckTime") > 0)
                     {
                         SendServerMessage(playerid, " Ban dang trong qua trinh cuop hang hoa tren xe nay!");
@@ -140,6 +140,7 @@ CMD:truckergo(playerid, params[])
                             PlayerTruckerData[playerid][MissionBuy][BuyProductLenght++] =  j;
                             ProductId = FactoryData[FactoryId][ProductName][j];
                             format(string, sizeof(string),"%s\n%d\t\t%s\t\t$%d",string, i, ProductData[ProductId][ProductName], FactoryData[FactoryId][ProductPrice][j]);
+                            break;
                        }
                     }
                 }
