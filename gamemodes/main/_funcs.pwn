@@ -1910,7 +1910,6 @@ public OnPlayerDisconnect(playerid, reason)
     PlayerInfo[playerid][pPosHop][0] = 0;
     DeletePVar(playerid, "DangHaiTr");
 	RemovePlayerAttachedObject(playerid, 1);
-	OnPlayerStatsUpdate(playerid);
     if(!isnull(unbanip[playerid]))
 	{
 	    new string[26];
@@ -6187,6 +6186,23 @@ public OnPlayerEditDynamicObject(playerid, objectid, response, Float:x, Float:y,
 	if(response == EDIT_RESPONSE_FINAL)
 	{
 		new string[128];
+		if(GetPVarInt(playerid, "EditGasDump") == 1)
+		{
+			new iBusiness = GetPVarInt(playerid, "iBusinessID"),
+				iPump = GetPVarInt(playerid, "iPumpID");
+			if (IsValidDynamicObject(Businesses[iBusiness][GasPumpObjectID][iPump])) 
+			{
+				Businesses[iBusiness][GasPumpPosX][iPump] = x;
+				Businesses[iBusiness][GasPumpPosY][iPump] = y;
+				Businesses[iBusiness][GasPumpPosZ][iPump] = z;
+				Businesses[iBusiness][GasPumpAngle][iPump] = rz;
+				SendServerMessage(playerid, "Chinh gas pump thanh cong.");
+			}
+			DeletePVar(playerid, "iBusinessID");
+			DeletePVar(playerid, "iPumpID");
+			DeletePVar(playerid, "EditGasDump");
+			return 1;
+		}
 		if(GetPVarInt(playerid, "TestAddVehicle") == 1)
 		{
 			if (IsValidDynamicObject(objectTest[objectTestindex])) 
@@ -6209,7 +6225,6 @@ public OnPlayerEditDynamicObject(playerid, objectid, response, Float:x, Float:y,
 				return 1;
 			}
 		}
-        print("ccasdasdas");
 	    if(GetPVarInt(playerid,"EditNoiThat") == 1) {
 		    new i = GetPVarInt(playerid,"nt_ObjectSelect");
 		    SendClientMessage(playerid, -1, "Chinh sua noi that thanh cong.");
@@ -6218,7 +6233,6 @@ public OnPlayerEditDynamicObject(playerid, objectid, response, Float:x, Float:y,
             DeletePVar(playerid, "EditNoiThat");
             SaveNoiThat(i);
 	    }
-	    print("ccasdasdas");
 	    if(GetPVarInt(playerid,"CreateNewNT") == 1) {
 	    	print("ccasdasdas");
 	    	new i = GetPVarInt(playerid,"nt_ObjectSelect");
@@ -6233,7 +6247,6 @@ public OnPlayerEditDynamicObject(playerid, objectid, response, Float:x, Float:y,
        	    mysql_tquery(MainPipeline, query, "NoiThatCreate", "d", playerid);
        	    DeletePVar(playerid, "CreateNewNT");
 	    }
-	    print("ccasdasdas");
 		if(GetPVarInt(playerid, "gEdit") == 1)
 		{
 			if(PlayerInfo[playerid][pAdmin] < 4) return SendErrorMessage(playerid, " [System]: Ban Khong duoc su dung lenh nay nhe !!");

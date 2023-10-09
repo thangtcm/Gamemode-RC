@@ -108,6 +108,7 @@ public OnGameModeInit()
 	DCC_SetBotActivity("RC:RPvn");
 	DCC_SetBotPresenceStatus(DO_NOT_DISTURB);
 	ShowNameTags(0);
+	DisableNameTagLOS();
 	print("Chuong trinh may chu dang duoc khoi dong, vui long cho doi....");
 	g_mysql_Init();
 	return 1;

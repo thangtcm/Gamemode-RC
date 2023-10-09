@@ -13492,15 +13492,15 @@ stock OnPlayerStatsUpdate(playerid)
 {
 	if(!GetPVarType(playerid, "TempName") && !GetPVarInt(playerid, "EventToken") && GetPVarInt(playerid, "IsInArena") == -1)
 	{
-	    new Float: Pos[4], Float: Health[2];
+	    new Float: Health[2];
 		GetPlayerHealth(playerid, Health[0]);
 		GetPlayerArmour(playerid, Health[1]);
 
 		PlayerInfo[playerid][pInt] = GetPlayerInterior(playerid);
 		PlayerInfo[playerid][pVW] = GetPlayerVirtualWorld(playerid);
 
-		GetPlayerPos(playerid, Pos[0], Pos[1], Pos[2]);
-		GetPlayerFacingAngle(playerid, Pos[3]);
+		GetPlayerPos(playerid, PlayerInfo[playerid][pPos_x], PlayerInfo[playerid][pPos_y], PlayerInfo[playerid][pPos_z]);
+		GetPlayerFacingAngle(playerid, PlayerInfo[playerid][pPos_r]);
 
 		PlayerInfo[playerid][pHealth] = FormatFloat(Health[0]);
 		PlayerInfo[playerid][pArmor] = FormatFloat(Health[1]);

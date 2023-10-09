@@ -1,7 +1,2 @@
-C:\Users\PHATBENTRE\Desktop\Gamemode-RC\Gamemode-RC\filterscripts\MAP.pwn(537) : íåïðàâèëüíàÿ òàáóëÿöèÿ
-C:\Users\PHATBENTRE\Desktop\Gamemode-RC\Gamemode-RC\filterscripts\MAP.pwn(668) : íåïðàâèëüíàÿ òàáóëÿöèÿ
-C:\Users\PHATBENTRE\Desktop\Gamemode-RC\Gamemode-RC\filterscripts\MAP.pwn(2109) : íåïðàâèëüíàÿ òàáóëÿöèÿ
-C:\Users\PHATBENTRE\Desktop\Gamemode-RC\Gamemode-RC\filterscripts\MAP.pwn(2129) : íåïðàâèëüíàÿ òàáóëÿöèÿ
-C:\Users\PHATBENTRE\Desktop\Gamemode-RC\Gamemode-RC\filterscripts\MAP.pwn(2147) : íåïðàâèëüíàÿ òàáóëÿöèÿ
 Pawn compiler 3.2.3664	 	 	Copyright (c) 1997-2016, ITB CompuPhase
 

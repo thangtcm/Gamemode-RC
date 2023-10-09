@@ -134,7 +134,7 @@ Dialog:DIALOG_BUYPRODUCT(playerid, response, listitem, inputtext[])
         if(GetPVarInt(playerid, "MissionTruck") == 1)  {
             MissionProduct_Update(playerid, productID);
         } 
-        
+        PlayerTruckerData[playerid][ClaimFactoryID] = factoryID;
         format(str, sizeof(str), "Mua san pham %s thanh cong.", ProductData[productID][ProductName]);
         
         FactoryData[factoryID][WareHouse][index] -= FactoryData[factoryID][Productivity][index];

@@ -169,20 +169,24 @@ CMD:truckergo(playerid, params[])
             new CheckValid = 0, count=0;
             PlayerTruckerData[playerid][MAXPRODUCT] = 0;
             PlayerTruckerData[playerid][MAXPRODUCTIMPORT] = 0;
-            for(new i; i < MaxExport; i++)
+            if(PlayerTruckerData[playerid][ClaimFactoryID] == FactoryId)
             {
-                if(i < MaxExport && CheckValid == 0)
+                for(new i; i < MaxExport; i++)
                 {
-                    if(FactoryData[FactoryId][ProductName][i] == -1) {
-                        CheckValid = 1; 
-                        break;
+                    if(i < MaxExport && CheckValid == 0)
+                    {
+                        if(FactoryData[FactoryId][ProductName][i] == -1) {
+                            CheckValid = 1; 
+                            break;
+                        }
+                        ProductId = FactoryData[FactoryId][ProductName][i];
+                        PlayerTruckerData[playerid][SellProduct][count++] = i;
+                        PlayerTruckerData[playerid][MAXPRODUCT]++;
+                        format(string, sizeof(string),"%s\n%d\t\t%s\t\t$%d",string, i, ProductData[ProductId][ProductName], FactoryData[FactoryId][ProductPrice][i]);
                     }
-                    ProductId = FactoryData[FactoryId][ProductName][i];
-                    PlayerTruckerData[playerid][SellProduct][count++] = i;
-                    PlayerTruckerData[playerid][MAXPRODUCT]++;
-                    format(string, sizeof(string),"%s\n%d\t\t%s\t\t$%d",string, i, ProductData[ProductId][ProductName], FactoryData[FactoryId][ProductPrice][i]);
                 }
             }
+            
             for(new i; i < MaxImport; i++)
             {
                 ProductId = FactoryData[FactoryId][ProductImportName][i];
