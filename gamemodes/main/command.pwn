@@ -47361,7 +47361,7 @@ CMD:editgaspump(playerid, params[])
 
 	if(sscanf(params, "dds[9]F(0)", iBusinessID, iPumpID, szName, fValue)) {
 		SendUsageMessage(playerid, " /editgaspump [business id] [pump id] [name] [value]");
-		SendSelectMessage(playerid, " Capacity, Gas, Position");
+		SendSelectMessage(playerid, " Capacity, Gas, Position, Edit");
 	}
 
 	if (!(0 <= iBusinessID < MAX_BUSINESSES))
@@ -47387,7 +47387,16 @@ CMD:editgaspump(playerid, params[])
 		DestroyDynamicGasPump(iBusinessID, iPumpID);
 		CreateDynamicGasPump(playerid, iBusinessID, iPumpID);
 		SaveBusiness(iBusinessID);
-
+	}
+	else if(!strcmp(szName, "Edit", true)) 
+	{
+		if(IsValidDynamicObject(Businesses[iBusinessID][GasPumpObjectID][iPumpID]))
+		{
+			SetPVarInt(playerid, "EditGasDump", 1);
+			SetPVarInt(playerid, "iBusinessID", iBusinessID);
+			SetPVarInt(playerid, "iPumpID", iPumpID);
+			EditDynamicObject(playerid, Businesses[iBusinessID][GasPumpObjectID][iPumpID]);
+		}
 	}
 	else if(!strcmp(szName, "gas", true))
 	{
@@ -47406,7 +47415,6 @@ CMD:editgaspump(playerid, params[])
 		SendServerMessage(playerid, " Ban da chinh sua cong suat bom gas!");
 		format(szLog, sizeof(szLog), "%s da thay doi cong suat tram gas %d cho %s (%d) den %.2f", GetPlayerNameEx(playerid), iPumpID, Businesses[iBusinessID][bName], iBusinessID, fValue);
 	}
-
 	SaveBusiness(iBusinessID);
 	Log("logs/bedit.log", szLog);
 	return 1;

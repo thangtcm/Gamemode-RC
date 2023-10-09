@@ -3,6 +3,7 @@
 #define MAX_INVENTORYCAR (30)
 #define MAX_INVENTORYHOUSE (30)
 #define MODEL_SELECTION_INVENTORY (1)
+#define MODEL_SELECTION_INVENTORYCH (1)
 #define MODEL_SELECTION_RANSACK (2)
 
 enum inventoryData
@@ -13,9 +14,7 @@ enum inventoryData
 	invModel[64],
 	invQuantity,
 	pvSQLID,// ID xe sql sở hữu
-	pvGameID, // ID xe của người chơi tại sv, lấy dữ liệu lúc connect để giảm thiếu tính toán
 	hSQLID, //ID House
-	hGameID, // ID nhà của người chơi tại sv, lấy dữ liệu lúc connect để giảm thiếu tính toán
 	invTimer
 };
 
@@ -106,15 +105,15 @@ hook OnPlayerConnect(playerid)
 	return 1;
 }
 
-hook OnPlayerKeyStateChange(playerid, newkeys, oldkeys)
-{
-	if(newkeys == 0) return 1;
-	if ((newkeys & KEY_YES) && CheckKeyInventory(playerid)) //Nhớ bổ sung các trường hợp sử dụng key Y để không bật inventory, ví dụ như Pizza
-    {
-		return cmd_inv(playerid, "\1"); 
-	}
-	return 1;
-}
+// hook OnPlayerKeyStateChange(playerid, newkeys, oldkeys)
+// {
+// 	if(newkeys == 0) return 1;
+// 	if ((newkeys & KEY_YES) && CheckKeyInventory(playerid)) //Nhớ bổ sung các trường hợp sử dụng key Y để không bật inventory, ví dụ như Pizza
+//     {
+// 		return cmd_inv(playerid, "\1"); 
+// 	}
+// 	return 1;
+// }
 
 stock CheckKeyInventory(playerid)
 {
@@ -142,6 +141,7 @@ public OnLoadInventory(playerid)
 		InventoryData[playerid][pItemId][invQuantity] = 0;
 		InventoryData[playerid][pItemId][invTimer] = 0;
 		InventoryData[playerid][pItemId][pvSQLID] = 0;
+		InventoryData[playerid][pItemId][hSQLID] = 0;
 	}
     while(i < rows)
     {
@@ -151,6 +151,7 @@ public OnLoadInventory(playerid)
 		cache_get_field_content(i, "invTimer", tmp, MainPipeline); InventoryData[playerid][i][invTimer] = strval(tmp);
         cache_get_field_content(i, "invItem", InventoryData[playerid][i][invItem], MainPipeline, 32); 
 		cache_get_field_content(i, "pvSQLID", tmp, MainPipeline); InventoryData[playerid][i][pvSQLID] = strval(tmp);
+		cache_get_field_content(i, "hSQLID", tmp, MainPipeline); InventoryData[playerid][i][hSQLID] = strval(tmp);
         InventoryData[playerid][i][invExists] = true;
         i++;
     }
@@ -177,6 +178,8 @@ stock Inventory_Clear(playerid)
 			InventoryData[playerid][i][invExists] = false;
 			InventoryData[playerid][i][invQuantity] = 0;
 			InventoryData[playerid][i][invTimer] = 0;
+			InventoryData[playerid][i][pvSQLID] = 0;
+			InventoryData[playerid][i][hSQLID] = 0;
 		}
 	}
 	format(string, sizeof(string), "DELETE FROM `inventory` WHERE `ID` = '%d'", PlayerSQLId);
@@ -307,9 +310,11 @@ stock Inventory_Add(playerid, item[], quantity = 1, timer = 0) //timer là dữ 
 		{
 			strcpy(InventoryData[playerid][pItemId][invModel], model);
 			InventoryData[playerid][pItemId][invQuantity] = quantity;
+			InventoryData[playerid][pItemId][pvSQLID] = 0;
+			InventoryData[playerid][pItemId][hSQLID] = 0;
 			InventoryData[playerid][pItemId][invTimer] = timer == 0 ? 0 : gettime() + timer*60;
 			strcpy(InventoryData[playerid][pItemId][invItem], item, 32);
-            format(string, sizeof(string), "INSERT INTO `inventory` (`ID`, `invItem`, `invModel`, `invQuantity`, `invTimer`) VALUES('%d', '%s', '%s', '%d', '%d')", 
+            format(string, sizeof(string), "INSERT INTO `inventory` (`ID`, `invItem`, `invModel`, `invQuantity`, `invTimer`, `pvSQLID`, `hSQLID`) VALUES('%d', '%s', '%s', '%d', '%d', 0, 0)", 
 				PlayerSQLId, g_mysql_ReturnEscaped(item, MainPipeline), g_mysql_ReturnEscaped(model, MainPipeline), quantity, InventoryData[playerid][pItemId][invTimer]);
 			mysql_function_query(MainPipeline, string, false, "OnInventoryAdd", "iii", playerid, pItemId, timer);
 			printf("[CREATE INVENTORY] %s (ID %d) da duoc them vao du lieu cua %s", InventoryData[playerid][pItemId][invItem], pItemId, GetPlayerNameEx(playerid));
@@ -333,6 +338,40 @@ stock Inventory_Add(playerid, item[], quantity = 1, timer = 0) //timer là dữ 
 		SendLogToDiscordRoom4("LOG ADD VẬT PHẨM", "1158001303033757716", "Name", GetPlayerNameEx(playerid), "ADDED", InventoryData[playerid][pItemId][invItem], "Số lượng", itemidzxcv, "ITEMID", itemidzxc, 0x25b807);
 	}
 	return pItemId;
+}
+
+stock Inventory_Update(playerid, pItemId, pVehicleId = -1, pHouseId = -1)
+{
+	new PlayerSQLId = GetPlayerSQLId(playerid), string[560];
+	if(InventoryData[playerid][pItemId][invExists])
+	{
+		if(pVehicleId == -1 && pHouseId == -1)
+		{
+			InventoryData[playerid][pItemId][pvSQLID] = 0;
+			InventoryData[playerid][pItemId][hSQLID] = 0;
+			format(string, sizeof(string), "UPDATE `inventory` SET `hSQLID` = 0, `pvSQLID` = 0 WHERE `ID` = '%d' AND `invID` = '%d'", PlayerSQLId, InventoryData[playerid][pItemId][invID]);
+			mysql_function_query(MainPipeline, string, false, "OnQueryFinish", "i", SENDDATA_THREAD);
+			printf("[UPDATE INVENTORY] %s (ID %d) da duoc go bo House/Car ra khoi inv cua %s", InventoryData[playerid][pItemId][invItem], pItemId, GetPlayerNameEx(playerid));
+		}
+		else if(pVehicleId != -1)
+		{
+			InventoryData[playerid][pItemId][pvSQLID] = PlayerVehicleInfo[playerid][pVehicleId][pvSlotId];
+			InventoryData[playerid][pItemId][hSQLID] = 0;
+			format(string, sizeof(string), "UPDATE `inventory` SET `hSQLID` = 0, `pvSQLID` = %d WHERE `ID` = '%d' AND `invID` = '%d'", PlayerVehicleInfo[playerid][pVehicleId][pvSlotId], PlayerSQLId, InventoryData[playerid][pItemId][invID]);
+			mysql_function_query(MainPipeline, string, false, "OnQueryFinish", "i", SENDDATA_THREAD);
+			printf("%s", string);
+			printf("[UPDATE INVENTORY] %s (ID %d) da duoc cap nhat vao INV CAR (%d  - SQL :%d) cua %s", InventoryData[playerid][pItemId][invItem], pItemId, pVehicleId, PlayerVehicleInfo[playerid][pVehicleId][pvSlotId], GetPlayerNameEx(playerid));
+		}
+		else if(pHouseId != -1)
+		{
+			InventoryData[playerid][pItemId][pvSQLID] = 0;
+			InventoryData[playerid][pItemId][hSQLID] = HouseInfo[pHouseId][hSQLId];
+			format(string, sizeof(string), "UPDATE `inventory` SET `hSQLID` = %d, `pvSQLID` = 0 WHERE `ID` = '%d' AND `invID` = '%d'", HouseInfo[pHouseId][hSQLId], PlayerSQLId, InventoryData[playerid][pItemId][invID]);
+			mysql_function_query(MainPipeline, string, false, "OnQueryFinish", "i", SENDDATA_THREAD);
+			printf("[UPDATE INVENTORY] %s (ID %d) da duoc cap nhat vao INV House (%d  - SQL :%d) cua %s", InventoryData[playerid][pItemId][invItem], pItemId, pHouseId, HouseInfo[pHouseId][hSQLId], GetPlayerNameEx(playerid));
+		}
+	}
+	return 1;
 }
 
 stock Inventory_RemoveTimer(playerid, item[], quantity)
@@ -471,17 +510,55 @@ public OnModelSelectionMenuInv(playerid, extraid, selectType, response)
 	return 1;
 }
 
-public OnModelSelectionResponseInv(playerid, extraid, index, modelid[], response)
+public OnModelSelectionResponseInvCH(playerid, extraid, index, modelid[], response)
 {
-	if((extraid == MODEL_SELECTION_INVENTORY && response) && InventoryData[playerid][index][invExists])
+	if((extraid == MODEL_SELECTION_INVENTORYCH && response) && InventoryData[playerid][index][invExists])
 	{
 		new
 			name[48];
 		strunpack(name, InventoryData[playerid][index][invItem]);
 		PlayerInfo[playerid][pInventoryItem] = index;
+		format(name, sizeof(name), "%s (%d)", name, InventoryData[playerid][index][invQuantity]);
+		Dialog_Show(playerid, InventoryCar, DIALOG_STYLE_LIST, name, "Lay ra", "Lua chon", "<");
+	}
+	return 1;
+}
+
+public OnModelSelectionResponseInv(playerid, extraid, index, modelid[], response)
+{
+	if((extraid == MODEL_SELECTION_INVENTORY && response) && InventoryData[playerid][index][invExists])
+	{
+		new
+			name[48],
+			menu[228];
+		strunpack(name, InventoryData[playerid][index][invItem]);
+		PlayerInfo[playerid][pInventoryItem] = index;
 
 		format(name, sizeof(name), "%s (%d)", name, InventoryData[playerid][index][invQuantity]);
-		Dialog_Show(playerid, Inventory, DIALOG_STYLE_LIST, name, "Su dung\nCho item\nVut item", "Lua chon", "<");
+		format(menu, sizeof(menu), "Su dung\nCho item\nVut item");
+		new carid = GetPlayerVehicleID(playerid);
+        new closestcar = GetClosestCar(playerid,carid);
+        if(IsPlayerInRangeOfVehicle(playerid, closestcar, 5.0))
+		{
+			new v = GetPlayerVehicle(playerid, closestcar);
+            if(v != -1)
+            {
+				SetPVarInt(playerid, "InvPlayerVehicle", v);
+				format(menu, sizeof(menu), "%s\nCat vao xe", menu);
+			}
+		}
+		if(Homes[playerid] > 0)
+		{
+			for(new i; i < MAX_HOUSES; i++)
+			{
+				if(GetPlayerSQLId(playerid) == HouseInfo[i][hOwnerID] && IsPlayerInRangeOfPoint(playerid, 50, HouseInfo[i][hInteriorX], HouseInfo[i][hInteriorY], HouseInfo[i][hInteriorZ]) && GetPlayerVirtualWorld(playerid) == HouseInfo[i][hIntVW] && GetPlayerInterior(playerid) == HouseInfo[i][hIntIW])
+				{
+					SetPVarInt(playerid, "InvPlayerHouse", i);
+					format(menu, sizeof(menu), "%s\nCat vao nha", menu);
+				}
+			}
+		}
+		Dialog_Show(playerid, Inventory, DIALOG_STYLE_LIST, name, menu, "Lua chon", "<");
 	}
 	else if((extraid == MODEL_SELECTION_RANSACK && response) && InventoryData[playerid][index][invExists])
 	{
@@ -512,7 +589,7 @@ stock OpenInventory(playerid, bool:Ransack = false)
 
 	for(new i = 0; i < PlayerInfo[target][pCapacity]; i++)
 	{
-		if (InventoryData[target][i][invExists])
+		if (InventoryData[target][i][invExists] && (InventoryData[playerid][i][pvSQLID] == 0 && InventoryData[playerid][i][hSQLID] == 0))
 		{
 			strcpy(items[i], InventoryData[target][i][invModel], 64);
 			quantitys[i] = InventoryData[target][i][invQuantity];
@@ -537,23 +614,23 @@ stock OpenInventory(playerid, bool:Ransack = false)
 	if(!Ransack)
 		return ShowModelSelectionInventory(playerid, "INVENTORY" ,MODEL_SELECTION_INVENTORY, items, sizeof(items), true, quantitys, itemName, true, expirys);
 	new str[128];
-	format(str, sizeof(str), "Tui do cua %s", GetPlayerNameEx(playerid));
+	format(str, sizeof(str), "Tui do cua %s", GetPlayerNameEx(target));
 	return ShowModelSelectionInventory(playerid, str ,MODEL_SELECTION_RANSACK, items, sizeof(items), true, quantitys, itemName, true, expirys);
 }
 
-stock OpenInventoryCarHouse(playerid)
+stock OpenInventoryCarHouse(playerid, const header[])
 {
 	if(!IsPlayerConnected(playerid))
 		return 0;
 	new
-		items[MAX_INVENTORY][64],
-		quantitys[MAX_INVENTORY],
-		itemName[MAX_INVENTORY][32],
-		expirys[MAX_INVENTORY];
+		items[MAX_MENU_ITEMCHS][64],
+		quantitys[MAX_MENU_ITEMCHS],
+		itemName[MAX_MENU_ITEMCHS][32],
+		expirys[MAX_MENU_ITEMCHS];
 
-	for(new i = 0; i < MAX_INVENTORYCAR; i++)
+	for(new i = 0; i < MAX_MENU_ITEMCHS; i++)
 	{
-		if (InventoryData[playerid][i][invExists])
+		if (InventoryData[playerid][i][invExists] && (InventoryData[playerid][i][pvSQLID] != 0 || InventoryData[playerid][i][hSQLID] != 0))
 		{
 			strcpy(items[i], InventoryData[playerid][i][invModel], 64);
 			quantitys[i] = InventoryData[playerid][i][invQuantity];
@@ -568,14 +645,9 @@ stock OpenInventoryCarHouse(playerid)
 			strcpy(itemName[i], "_", 32);
 		}
 	}
-	for(new i = MAX_INVENTORYCAR; i < 120; i++)
-	{
-		quantitys[i] = -1;
-		strcpy(itemName[i], "_", 32);
-		expirys[i] = 0;
-		strcpy(items[i], "_", 64);
-	}
-	return ShowModelSelectionInvCarHouse(playerid, "INVENTORY CAR" ,MODEL_SELECTION_INVENTORY, items, sizeof(items), true, quantitys, itemName, true, expirys);
+	new str[128];
+	format(str, sizeof str, "%s", header);
+	return ShowModelSelectionInvCarHouse(playerid, str ,MODEL_SELECTION_INVENTORYCH, items, sizeof(items), true, quantitys, itemName, true, expirys);
 }
 
 forward OnPlayerUseItem(playerid, pItemId, name[]);
@@ -997,8 +1069,31 @@ CMD:invch(playerid, params[])
 
 	if(PlayerInfo[playerid][pJailTime] > 0)
 		return SendClientMessageEx(playerid, COLOR_LIGHTRED, "Ban khong the mo tui do khi ban dang trong tu.");
-
-	OpenInventoryCarHouse(playerid);
+	new carid = GetPlayerVehicleID(playerid);
+	new closestcar = GetClosestCar(playerid,carid);
+	new str[128];
+	if(IsPlayerInRangeOfVehicle(playerid, closestcar, 5.0))
+	{
+		new v = GetPlayerVehicle(playerid, closestcar);
+		if(v != -1)
+		{
+			SetPVarInt(playerid, "InvPlayerVehicle", v);
+			OpenInventoryCarHouse(playerid, "INV CAR");
+			return 1;
+		}
+	}
+	if(Homes[playerid] > 0)
+	{
+		for(new i; i < MAX_HOUSES; i++)
+		{
+			if(GetPlayerSQLId(playerid) == HouseInfo[i][hOwnerID] && IsPlayerInRangeOfPoint(playerid, 50, HouseInfo[i][hInteriorX], HouseInfo[i][hInteriorY], HouseInfo[i][hInteriorZ]) && GetPlayerVirtualWorld(playerid) == HouseInfo[i][hIntVW] && GetPlayerInterior(playerid) == HouseInfo[i][hIntIW])
+			{
+				SetPVarInt(playerid, "InvPlayerHouse", i);
+				OpenInventoryCarHouse(playerid, "INV HOUSE");
+				return 1;
+			}
+		}
+	}
 	return 1;
 }
 
@@ -1085,6 +1180,35 @@ Dialog:ShowOnly(playerid, response, listitem, inputtext[])
 	inputtext[0] = '\0';
 }
 
+Dialog:InventoryCar(playerid, response, listitem, inputtext[])
+{
+	if(response)
+	{
+		new
+			itemId = PlayerInfo[playerid][pInventoryItem],
+			itemName[64], str[128];
+
+		strunpack(itemName, InventoryData[playerid][itemId][invItem]);
+		printf("%d", GetPVarInt(playerid, "InvPlayerVehicle"));
+		if(GetPVarInt(playerid, "InvPlayerVehicle") != -1)
+		{
+			printf("runnn");
+			Inventory_Update(playerid, itemId);
+			format(str, sizeof(str), "Ban da lay vat pham %s tu chiec xe vao tui do cua ban.", itemName);
+			SendClientMessageEx(playerid, COLOR_MAIN, str);
+		}
+		else if(GetPVarInt(playerid, "InvPlayerHouse") != -1)
+		{
+			Inventory_Update(playerid, itemId);
+			format(str, sizeof(str), "Ban da lay vat pham %s tu chiec xe vao tui do cua ban.", itemName);
+			SendClientMessageEx(playerid, COLOR_MAIN, str);
+		}
+	}
+	DeletePVar(playerid, "InvPlayerHouse");
+	DeletePVar(playerid, "InvPlayerVehicle");
+	return 1;
+}
+
 Dialog:Inventory(playerid, response, listitem, inputtext[])
 {
 	if(response)
@@ -1097,18 +1221,15 @@ Dialog:Inventory(playerid, response, listitem, inputtext[])
 
 		switch(listitem)
 		{
-			case 0:
-			{
+			case 0:{
 
 				CallLocalFunction("OnPlayerUseItem", "dds", playerid, itemId, itemName);
 			}
-			case 1:
-			{
+			case 1:{
 				PlayerInfo[playerid][pInventoryItem] = itemId;
 				Dialog_Show(playerid, GiveItem, DIALOG_STYLE_INPUT, "Cho item", "Xin vui long nhap ten nguoi choi hoac ID:", "Xac nhan", "Huy bo");
 			}
-			case 2:
-			{
+			case 2:{
 				if(IsPlayerInAnyVehicle(playerid))
 					return SendClientMessageEx(playerid, COLOR_LIGHTRED, "Ban khong the vut item ngay bay gio.");
 				else
@@ -1117,8 +1238,20 @@ Dialog:Inventory(playerid, response, listitem, inputtext[])
 					Dialog_Show(playerid, DropItem, DIALOG_STYLE_INPUT, "Vut Item", str, "Vut", "Huy bo");
 				}
 			}
+			case 3:{
+				Inventory_Update(playerid, itemId, GetPVarInt(playerid, "InvPlayerVehicle"));
+				format(str, sizeof(str), "Ban da cat vat pham %s vao chiec xe cua ban.", itemName);
+				SendClientMessageEx(playerid, COLOR_MAIN, str);
+			}
+			case 4:{
+				Inventory_Update(playerid, itemId, GetPVarInt(playerid, "InvPlayerHouse"));
+				format(str, sizeof(str), "Ban da cat vat pham %s vao ngoi nha cua ban.", itemName);
+				SendClientMessageEx(playerid, COLOR_MAIN, str);
+			}
 		}
 	}
+	DeletePVar(playerid, "InvPlayerHouse");
+	DeletePVar(playerid, "InvPlayerVehicle");
 	return 1;
 }
 
