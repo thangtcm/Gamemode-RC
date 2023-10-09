@@ -35250,6 +35250,10 @@ CMD:ch(playerid, params[])
 	if (PlayerInfo[playerid][pHelper] >= 1) SendClientMessageEx(playerid, COLOR_GREEN,"_______________________________________");
 	return 1;
 }
+CMD:resetxe(playerid, params[]) {
+	return cmd_dvrespawn(playerid, params);
+}
+
 /*
 CMD:muabanglai(playerid, params[]) {
 	return cmd_getlicense(playerid, params);
