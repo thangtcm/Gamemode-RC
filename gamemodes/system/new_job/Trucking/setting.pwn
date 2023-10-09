@@ -1,7 +1,7 @@
 #define MAX_PRODUCT         (24)
 #define MAX_CARTRUCK        (30)
 #define MAX_FACTORY         (30)
-#define MAX_PLAYERPRODUCT   (7)
+#define MAX_PLAYERPRODUCT   (18)
 #define MAX_OBJECTTRUCKER   (100)
 forward VEHICLETRUCKER_LOAD(playerid);
 forward OnAddVehicleTruckerFinish(playerid, index);
@@ -240,7 +240,7 @@ new FactoryData[][FactoryInfo] = {
         false,
         "Blueberry Distribution Hub", 
         {13, 10, 23, 6, 20, 19, 8}, 
-        {50, 50, 700, 165, 340, 170, 245},
+        {50, 50, 117, 165, 340, 170, 245},
         {100, 100, 100, 100, 100, 100, 100}, 
         {500, 1000, 1000, 1000, 1000, 1000, 1000},
         {500, 1000, 1000, 1000, 1000, 1000, 1000},

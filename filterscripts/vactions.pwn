@@ -127,7 +127,8 @@ public OnPlayerKeyStateChange(playerid, newkeys, oldkeys)
 	if(GetPVarInt(playerid, "Injured") != 0) return;
 	if(!gPlayerUsingLoopingAnim[playerid]) return;
 
-	if(IsKeyJustDown(KEY_SPRINT,newkeys,oldkeys))
+	if(IsKeyJustDown(KEY_SPRINT,newkeys,oldkeys) && 
+		!(GetPVarType(playerid, "PlayerCuffed") || GetPVarType(playerid, "Injured") || GetPVarType(playerid, "IsFrozen") || PlayerInfo[playerid][pHospital] || PlayerInfo[playerid][pJailTime] > 0 || GetPVarInt(playerid, "EventToken") == 1 || GetPVarInt(playerid, "IsInArena") >= 0))
 	{
 	    StopLoopingAnim(playerid);
     }

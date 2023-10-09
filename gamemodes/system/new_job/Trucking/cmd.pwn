@@ -17,7 +17,7 @@ CMD:cuophang(playerid, params[])
                 new v = GetPlayerVehicle(i, vehicleid);
                 if(v != -1)
                 {
-                    if(!PlayerVehicleInfo[playerid][v][pvIsRegisterTrucker]) return 1;
+                    if(!PlayerVehicleInfo[i][v][pvIsRegisterTrucker]) return 1;
                     if(GetPVarInt(playerid, "LoadTruckTime") > 0)
                     {
                         SendServerMessage(playerid, " Ban dang trong qua trinh cuop hang hoa tren xe nay!");
@@ -109,12 +109,12 @@ CMD:truckergo(playerid, params[])
     }
     else if(!strcmp(type, "mission", true))
 	{
-        if(GetPVarInt(playerid, "MissionTruck") == 1)
-        {
-            // ShowMissionTrucker(playerid);
-            // return SendErrorMessage(playerid, "Ban da nhan nhiem vu giao hang trucker, hay xem lai thong tin.");
-        } 
-        else if(IsPlayerInRangeOfPoint(playerid, 5.0, 58.5952,-292.2914,1.5781))
+        // if(GetPVarInt(playerid, "MissionTruck") == 1)
+        // {
+        //     // ShowMissionTrucker(playerid);
+        //     // return SendErrorMessage(playerid, "Ban da nhan nhiem vu giao hang trucker, hay xem lai thong tin.");
+        // } 
+        if(IsPlayerInRangeOfPoint(playerid, 5.0, 58.5952,-292.2914,1.5781))
         {
             Dialog_Show(playerid, DIALOG_STARTTRUCKER, DIALOG_STYLE_LIST, "Cong viec Trucker", "Nhan nhiem vu\nXem Huong Dan", "Lua chon", "Huy bo");
        }
@@ -140,6 +140,7 @@ CMD:truckergo(playerid, params[])
                             PlayerTruckerData[playerid][MissionBuy][BuyProductLenght++] =  j;
                             ProductId = FactoryData[FactoryId][ProductName][j];
                             format(string, sizeof(string),"%s\n%d\t\t%s\t\t$%d",string, i, ProductData[ProductId][ProductName], FactoryData[FactoryId][ProductPrice][j]);
+                            break;
                        }
                     }
                 }

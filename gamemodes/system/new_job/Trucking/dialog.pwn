@@ -5,7 +5,6 @@ Dialog:DIALOG_LISTFACTORY(playerid, response, listitem, inputtext[])
 		new string[5000], szString[100], strImport[1000], checkMax, islocker[50], strExport[1000], 
             index = PlayerTruckerData[playerid][SuggestFactory][listitem];
         SetPVarInt(playerid, "SelectFactoryID", index);
-        SetPVarInt(playerid, "IsPlayerSuggest", 1);
         format(szString, sizeof(szString), "{FFFFFF}Thong tin nha may - {FF8000}%s (ID: %d)", FactoryData[index][FactoryName], index);
         islocker = FactoryData[index][IsLocked] == 0 ? "Dang mo cua" : "Dong Cua"; 
         format(string, sizeof(string), "Chao mung ban den voi {69FF00}%s {00E0FF}(%s)", FactoryData[index][FactoryName], islocker);
@@ -75,7 +74,7 @@ Dialog:DIALOG_STARTTRUCKER(playerid, response, listitem, inputtext[])
 {
     if(response)
 	{
-        new str[256];
+        new str[1065];
         switch(listitem)
         {
             case 0:{
@@ -98,9 +97,10 @@ Dialog:DIALOG_STARTTRUCKER(playerid, response, listitem, inputtext[])
                 }
                 if (numMatchingProducts == 0)
                 {
-                    return -1;
+                    return 1;
                 }
                 SetPVarInt(playerid, "MaxMissionTruck", CarTruckWorking[CarTruckID][Weight]);
+                printf("RNNNN");
                 for(new i; i < CarTruckWorking[CarTruckID][Weight]; i++)
                 {
                     PlayerTruckerData[playerid][MissionProduct][i] = matchingProducts[random(numMatchingProducts)];
@@ -147,9 +147,15 @@ Dialog:DIALOG_BUYPRODUCT(playerid, response, listitem, inputtext[])
         GivePlayerCash(playerid, money*-1);
         pLoadProduct[playerid] = productID;
         SendClientMessageEx(playerid, COLOR_MAIN, str);
-        SetPlayerAttachedObject(playerid, PIZZA_INDEX, 1271, 5, 0.137832, 0.176979, 0.151424, 96.305931, 185.363006, 20.328088, 0.699999, 0.800000, 0.699999);
-        SetPlayerSpecialAction(playerid, SPECIAL_ACTION_CARRY);
-        ApplyAnimation(playerid, "CARRY", "liftup", 4.1, 0, 0, 0, 0, 0, 1);
+        switch(ProductData[productID][ProductUnitID])
+        {
+            case 0, 6:
+            {
+                SetPlayerAttachedObject(playerid, PIZZA_INDEX, 1271, 5, 0.137832, 0.176979, 0.151424, 96.305931, 185.363006, 20.328088, 0.699999, 0.800000, 0.699999);
+                SetPlayerSpecialAction(playerid, SPECIAL_ACTION_CARRY);
+                ApplyAnimation(playerid, "CARRY", "liftup", 4.1, 0, 0, 0, 0, 0, 1);
+            }
+        }
         SetPVarInt(playerid, "CarryProductToCar", 1);
     }
     return 1;
@@ -232,9 +238,15 @@ Dialog:DIALOG_CARCLAIMPRODUCT(playerid, response, listitem, inputtext[])
             }
         }
         VEHICLETRUCKER_DELETE(playerid, index);
-        SetPlayerAttachedObject(playerid, PIZZA_INDEX, 1271, 5, 0.137832, 0.176979, 0.151424, 96.305931, 185.363006, 20.328088, 0.699999, 0.800000, 0.699999);
-        SetPlayerSpecialAction(playerid, SPECIAL_ACTION_CARRY);
-        ApplyAnimation(playerid, "CARRY", "liftup", 4.1, 0, 0, 0, 0, 0, 1);
+        switch(ProductData[ProductId][ProductUnitID])
+        {
+            case 0, 6:
+            {
+                SetPlayerAttachedObject(playerid, PIZZA_INDEX, 1271, 5, 0.137832, 0.176979, 0.151424, 96.305931, 185.363006, 20.328088, 0.699999, 0.800000, 0.699999);
+                SetPlayerSpecialAction(playerid, SPECIAL_ACTION_CARRY);
+                ApplyAnimation(playerid, "CARRY", "liftup", 4.1, 0, 0, 0, 0, 0, 1);
+            }
+        }
         new string[MAX_PLAYER_NAME + 44];
         format(string, sizeof(string), "* %s da lay thung hang %s tren xe xuong.", GetPlayerNameEx(playerid), ProductData[ProductId][ProductName]);
         ProxDetector(20.0, playerid, string, COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE);
