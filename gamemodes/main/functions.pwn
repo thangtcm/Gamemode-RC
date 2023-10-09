@@ -2782,6 +2782,7 @@ public InitiateGamemode()
 	SetTimer("WarmupLock", 15000, 0);
 	SetTimer("MailDeliveryTimer", 60000, 1);
     SetTimer("AntiSpeed", 3000, true);
+    LoadDrugLab();
 	SkinList = LoadModelSelectionMenu("SkinList.txt");
 	//Island for crate system
     MAXCRATES = 10; // Sets Default Max Crates
