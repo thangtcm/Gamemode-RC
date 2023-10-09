@@ -1429,11 +1429,9 @@ public OnPlayerEnterVehicle(playerid, vehicleid, ispassenger)
 }
 
 public OnPlayerConnect(playerid) {
+	TogglePlayerSpectating(playerid, true);
 	SetTimerEx("TimeUseMed", 60000, 0, "d", playerid);
 	SetTimerEx("TimeCraftMed", 60000, 0, "d", playerid);
-	SetPlayerCameraPos(playerid, 1527.1915, -1388.5413, 405.3455);
-	SetPlayerCameraLookAt(playerid, 1527.1210, -1389.5367, 403.4106);
-	SetPlayerPos(playerid, 1535.3447,-1357.3451,329.4568);
 	SetTimerEx("LoadLogin", 500, 0, "i", playerid);
 	SetPVarString(playerid, "PassAuth", "abc");
 	LoadLoginTextDraws(playerid);
@@ -1903,6 +1901,7 @@ public OnPlayerDisconnect(playerid, reason)
 	if(IsValidDynamicObject(PlayerInfo[playerid][pObjHop])) {
 		DestroyDynamicObject(PlayerInfo[playerid][pObjHop]);
 	}
+	KillTimer(DownEDS[playerid]);
     Delete3DTextLabel(PlayerInfo[playerid][HopText]);
     PlayerInfo[playerid][pTraiCam] = 0;
     PlayerInfo[playerid][pTraiCamHop] = 0;
@@ -6604,6 +6603,12 @@ stock LoadLogin(playerid)
 	PlayerTextDrawShow(playerid, LoginTD[playerid][3]);
 	PlayerTextDrawShow(playerid, LoginTD[playerid][4]);
 	SelectTextDraw(playerid, 0xe1dfa2FF);
+	switch(random(3))
+	{
+		case 0: InterpolateCameraPos(playerid, 1532.3927,357.1458,78.8630, 1228.4036,155.1032,45.7313, 50000, CAMERA_CUT);
+		case 1: InterpolateCameraPos(playerid, 2433.3809,-66.7512,76.6627, 2167.8020,96.4188,42.4985, 50000, CAMERA_CUT);
+		case 2: InterpolateCameraPos(playerid, -214.2948,-74.1664,39.5735, 120.3837,-7.4578,26.9301, 50000, CAMERA_CUT);
+	}
 	return 1;
 }
 
@@ -7256,6 +7261,9 @@ public LoadStreamerDynamicPickups()
 	CreateDynamicPickup(1239, 23, -21.1862, 81.3918, 3.1096);
 	CreateDynamicPickup(1239, 23, 1938.3217, 166.3846, 19.8281);
 	CreateDynamicPickup(1239, 23, -1092.4702, -1622.1119, 76.3672);
+	CreateDynamicPickup(1239, 23, 1873.1696,2670.3745,3.5894);
+	CreateDynamic3DTextLabel("{FF0000} Dang ky CMND \n{FFFFFF}((/dangkycmnd de dang ky cmnd.))", COLOR_WHITE, 1873.1696,2670.3745,3.5894, 10.0);// Actor Trucker
+
 	// The Hilltop Farm
 	CreateDynamicPickup(1239, 23, 1059.6445, -345.3934, 73.9922);
 	CreateDynamic3DTextLabel("{FF0000} The Hilltop Farm \n{FFFFFF}((/truckergo [buy/sell] de mua hoac ban san pham.))", COLOR_WHITE, 1059.6445, -345.3934, 73.9922 + 0.5, 10.0);// Actor Trucker
@@ -7416,7 +7424,7 @@ public LoadStreamerDynamic3DTextLabels()
 	CreateDynamic3DTextLabel("Su dung /layvatlieu tu mot chiec thuyen \nde co duoc vat lieu",COLOR_YELLOW,2102.71,-103.97,2.28+0.5,8.0);// Deliver
     CreateDynamic3DTextLabel("Su Dung /laybanh de nhan banh \nDe co Pizza giao hang!",COLOR_YELLOW,0,0,0, 4.0); //getpizza
     CreateDynamic3DTextLabel("Go /laybanh tu nguoi ban pizza \nde nhan banh va giao hang!",COLOR_YELLOW,-1713.961425, 1348.545166, 7.180452, 4.0); //laybanh LS
-	CreateDynamic3DTextLabel("Noi Mua Bang Lai\n\n/muabanglai De Mua Nhe",COLOR_YELLOW,366.54,159.09,1008.38+0.5,8.0);// Licenses.
+	CreateDynamic3DTextLabel("Noi Mua Bang Lai\n\n/muabanglai",COLOR_YELLOW,1222.7645,243.7523,19.5469,8.0);// Licenses.
 	CreateDynamic3DTextLabel("Noi Thay Trang Phuc\n\n/muatrangphuc De Thay Trang Phuc nhe",COLOR_YELLOW, 207.0798, -129.1775, 1003.5078+0.7, 6.0);
 
 
@@ -9535,9 +9543,6 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 				SetPlayerVirtualWorld(playerid, 0);
 				SetPlayerInterior(playerid, 0);
 				Streamer_UpdateEx(playerid,1716.1129,-1880.0715,22.0264);
-				SetPlayerPos(playerid,1716.1129,-1880.0715,-10.0);
-				SetPlayerCameraPos(playerid,1755.0413,-1824.8710,20.2100);
-				SetPlayerCameraLookAt(playerid,1716.1129,-1880.0715,22.0264);
 			}
 		}
 	}
@@ -14463,9 +14468,6 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 		        GetPlayerIp(playerid, ip, 32);
 		        format(string,sizeof (string),"\n\nDia chi IP cua ban: %s\n\nTai khoan ban chua dang ky, hay nhap mat khau de dang ky\n\n",ip);
 			    ShowPlayerDialog(playerid,DANGKY,DIALOG_STYLE_PASSWORD,"Dang ky",string,"Dang ky","Thoat");
-			    SetPlayerCameraPos(playerid, 1527.1915, -1388.5413, 405.3455);
-			    SetPlayerCameraLookAt(playerid, 1527.1210, -1389.5367, 403.4106);
-			    SetPlayerPos(playerid, 1535.3447,-1357.3451,329.4568);
 		    }
 		}
 	}
@@ -14494,9 +14496,6 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 			    GetPlayerIp(playerid, ip, 32);
 			    format(string,sizeof (string),"\n\nDia chi IP cua ban: %s\n\nLan dang nhap cua tai khoan: %s\n\nThoi gian tao tai khoan: %s\n",ip,MasterInfo[playerid][acc_lastlogin],MasterInfo[playerid][acc_regidate]);
 			    ShowPlayerDialog(playerid,DANGNHAP,DIALOG_STYLE_PASSWORD,"Dang nhap",string,"Dang nhap","Thoat");
-			    SetPlayerCameraPos(playerid, 1527.1915, -1388.5413, 405.3455);
-			    SetPlayerCameraLookAt(playerid, 1527.1210, -1389.5367, 403.4106);
-			    SetPlayerPos(playerid, 1535.3447,-1357.3451,329.4568);
     		   // SendClientMessage(playerid, 0xa5bbd0FF, "(REGISTER) Ban da dang ky thanh cong hay dang nhap de tiep tuc.");   
 		    }
 		}	  
