@@ -35250,19 +35250,23 @@ CMD:ch(playerid, params[])
 	if (PlayerInfo[playerid][pHelper] >= 1) SendClientMessageEx(playerid, COLOR_GREEN,"_______________________________________");
 	return 1;
 }
+CMD:resetxe(playerid, params[]) {
+	return cmd_dvrespawn(playerid, params);
+}
 
+/*
 CMD:muabanglai(playerid, params[]) {
 	return cmd_getlicense(playerid, params);
 }
 
 CMD:getlicense(playerid, params[])
 {
-	if (!IsPlayerInRangeOfPoint(playerid,2.0,1222.7645,243.7523,19.5469)) { return 1; }
+	if (!IsPlayerInRangeOfPoint(playerid,2.0,366.54, 159.09, 1008.38)) { return 1; }
 	if (PlayerInfo[playerid][pWantedLevel] > 0) return SendClientMessageEx(playerid, COLOR_LIGHTRED, "Ban da co mot lenh bat giu - mua lai giay phep deu bi cam.");
 	ShowPlayerDialog(playerid, DIALOG_LICENSE_BUY, DIALOG_STYLE_LIST, "Chon loai giay phep ban muon mua.", "Giay phep lai xe ($200)\r\nGiay phep lai thuyen ($500)\r\nGiay phep lai may bay ($1000)\r\nGiay phep lai taxi ($500)", "Mua", "Huy bo");
 	return 1;
 }
-
+*/
 CMD:tichthubanglai(playerid, params[]) {
 	return cmd_revokelicense(playerid, params);
 }
