@@ -8559,7 +8559,9 @@ public OnPlayerLoad(playerid)
  	SetPlayerWeapons(playerid);
  	DestroyLog@_Reg(playerid);
  	SendClientMessageEx(playerid, COLOR_VANG, "Chao mung ban da tro lai may chu Red County Roleplay.");
- 	DownEDS[playerid] = SetTimerEx("StartDownEatDrinkStrong", 100000, false, "i", playerid);
+ 	DownEDS[playerid] = SetTimerEx("StartDownEatDrinkStrong", 100000, true, "i", playerid);
+ 	DownS[playerid] = SetTimerEx("DownStrong", 200000, true, "i", playerid);
+ 	DownPHP[playerid] = SetTimerEx("DownHP", 100000, true, "i", playerid);
 	DeletePVar(playerid, "TextDrawCharacter");
  	GetHomeCount(playerid);
 	new rdName[MAX_PLAYER_NAME];

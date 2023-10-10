@@ -50898,3 +50898,8 @@ CMD:setranktext(playerid, params[])
 	else SendServerMessage(playerid, " Ban khong the su dung lenh nay.");
 	return 1;
 }
+CMD:testeat(playerid, params[])
+{
+	PlayerInfo[playerid][pEat] = 26;
+	return 1;
+}
