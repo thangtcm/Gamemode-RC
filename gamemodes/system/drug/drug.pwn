@@ -258,8 +258,8 @@ hook OnPlayerKeyStateChange(playerid, newkeys, oldkeys) {
 	if(newkeys & KEY_YES) {
 		if(IsPlayerInRangeOfPoint(playerid, 5.0, 2306.409179 ,-1569.672607, 1051.562988)) {
 			Dialog_Show(playerid, DIALOG_BUY_CHH, DIALOG_STYLE_TABLIST_HEADERS, "Mua chat hoa hoc", "#Loai\tGia ban\tso luong\n\
-		        	                                                                                 Chat hoa hoc I\t$0\t1\n\
-		        		                                                                             Chat hoa hoc II\t$0\t1", "Mua", "Huy bo");
+		        	                                                                                 Chat hoa hoc I\t$1\t1\n\
+		        		                                                                             Chat hoa hoc II\t$2\t1", "Mua", "Huy bo");
 		}
 	}
 	return 1;
@@ -362,4 +362,7 @@ hook OnGameModeInit() {
 	CreateDynamic3DTextLabel("{FF0000} DRUG LAB \n{FFFFFF}(( bam Y de mua chat hoa hoc.))", COLOR_WHITE, 2306.409179 ,-1569.672607, 1051.562988 + 0.5, 10.0);// Actor Trucker
 
 	 
+}
+hook OnPlayerDeath(playerid, killerid, reason) {
+	BonusHealth[playerid] = 0;
 }

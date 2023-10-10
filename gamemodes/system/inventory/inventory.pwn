@@ -112,8 +112,13 @@ hook OnPlayerKeyStateChange(playerid, newkeys, oldkeys)
 
 stock CheckKeyInventory(playerid)
 {
+	for(new i = 0 ; i < MAX_DRUG_POINT; i++) {
+		if(IsPlayerInRangeOfPoint(playerid, 5 , DrugLabInfo[i][DLab_Postion][0], DrugLabInfo[i][DLab_Postion][1], DrugLabInfo[i][DLab_Postion][2])) {
+			return false;
+		}
+	}
 	//if(GetPVarInt(playerid, "SomeThing") == value) return 0;
-	if(IsPlayerInRangeOfPoint(playerid, 2.5, 588.1791,866.1268,-42.4973) || IsPlayerInRangeOfPoint(playerid, 2.5, 2126.8018,-76.6521,2.4721)
+	if(IsPlayerInRangeOfPoint(playerid, 2.5, 306.409179 ,-1569.672607, 1051.562988) || IsPlayerInRangeOfPoint(playerid, 2.5, 588.1791,866.1268,-42.4973) || IsPlayerInRangeOfPoint(playerid, 2.5, 2126.8018,-76.6521,2.4721)
 	|| IsPlayerInRangeOfPoint(playerid, 30.0, 588.1791,866.1268,-42.4973)) return false;
 	return true;
 }
