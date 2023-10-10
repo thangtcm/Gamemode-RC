@@ -24893,24 +24893,14 @@ Dialog:DialogHelpFac(playerid, response, listitem, inputtext[])
 			}
 			case 1:
 			{
-    	        	ShowPlayerDialog(playerid, DIALOG_NOTHING, DIALOG_STYLE_MSGBOX, "Tro giup - Canh sat", "(/r)adio /dept (/m)egaphone (/su)spect /locker /mdc /dualenxe /batgiam /warrantarrest /wanted /cuff /tazer\n\
-    	        		\\c/bug /listbugs /clearbugs /hfind\n\
-    	        		\\c/flares /cones /wants /batgiam /siren /destroyplant /radargun /searchcar /dvsiren /vradar\n\
-    	        		\\c/spikes /tichthubanglai /vcheck /vmdc /vticket /tow /untow /impound /dmvrelease /gdonate /togradio /togdept\n\
-    	        		\\c/lucsoat /take /ticket (/gov)ernment /clothes /ram /invite /giverank /deploy /destroy /pddoor /pdcell\n\
-    	        		\\c/loadkit /usekit /backup (code2) /backupall /calls /a(ccept)c(all) /i(gnore)c(all)\n\
-    	        		\\c/handcuff /handcuff1 /handcuff2 /unhandcuff /beanbag /khongche /bp1 /bp2 /nbp", "Dong", "");
+    	        	ShowPlayerDialog(playerid, DIALOG_NOTHING, DIALOG_STYLE_MSGBOX, "Tro giup - Bac si", "(/r)adio /dept (/m)egaphone /heal /clothes /invite /giverank /tudo /gdonate\n\
+    	        		\\c/getpt /movept /loadpt /deliverpt /destroyplant /calls /a(ccept)c(all) /i(gnore)c(all)", "Dong", "");
 			}
 			case 2:
 			{
-    	        	ShowPlayerDialog(playerid, DIALOG_NOTHING, DIALOG_STYLE_MSGBOX, "Tro giup - Canh sat", "(/r)adio /dept (/m)egaphone (/su)spect /locker /mdc /dualenxe /batgiam /warrantarrest /wanted /cuff /tazer\n\
-    	        		\\c/bug /listbugs /clearbugs /hfind\n\
-    	        		\\c/flares /cones /wants /batgiam /siren /destroyplant /radargun /searchcar /dvsiren /vradar\n\
-    	        		\\c/spikes /tichthubanglai /vcheck /vmdc /vticket /tow /untow /impound /dmvrelease /gdonate /togradio /togdept\n\
-    	        		\\c/lucsoat /take /ticket (/gov)ernment /clothes /ram /invite /giverank /deploy /destroy /pddoor /pdcell\n\
-    	        		\\c/loadkit /usekit /backup (code2) /backupall /calls /a(ccept)c(all) /i(gnore)c(all)\n\
-    	        		\\c/handcuff /handcuff1 /handcuff2 /unhandcuff /beanbag /khongche /bp1 /bp2 /nbp", "Dong", "");
-
+    	        	ShowPlayerDialog(playerid, DIALOG_NOTHING, DIALOG_STYLE_MSGBOX, "Tro giup - Canh sat", "/invite /uninvite /ouninvite /setdiv /giverank /online\n\
+    	        		\\c/viewbudget /grepocars /gvbuyback /gdonate /ordercrates /dvtrackcar /gwithdraw, /dvstorage\n\
+    	        		\\c/setranktext", "Dong", "");
 			}
 		}
 	}
