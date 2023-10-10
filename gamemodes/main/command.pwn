@@ -5837,7 +5837,7 @@ CMD:trogiup(playerid, params[]) {
 	return cmd_help(playerid, params);
 }
 CMD:help(playerid,params[]) {
-	ShowPlayerDialog(playerid, DIALOG_HELP, DIALOG_STYLE_LIST, "Ban can ho tro gi?", "General\nJob\nHouse/Door/Bizz\nVehicles\nBank", "Chon", "huy bo");
+	ShowPlayerDialog(playerid, DIALOG_HELP, DIALOG_STYLE_LIST, "Ban can ho tro gi?", "Chung\nJob\nHouse/Door/Bizz\nVehicles\nBank\nToy\nGroup", "Chon", "huy bo");
     return 1;
 }
 /*
