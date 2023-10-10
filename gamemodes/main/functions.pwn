@@ -11396,23 +11396,11 @@ stock SetPlayerSpawn(playerid)
 			}
 			else if(PlayerInfo[playerid][pInsurance] == 1)
 			{
-				switch(random(2))
-				{
-					case 0:
-					{
-						SetPlayerCameraPos(playerid, 1251.1318,-1305.1705,1061.8671);
-						SetPlayerCameraLookAt(playerid, 1251.1318,-1305.1705,1061.8671);
-						SetPlayerPos(playerid, 1251.1318,-1305.1705,1061.8671);
-						PlayerInfo[playerid][pHospital] = 2;
-					}
-					case 1:
-					{
-						SetPlayerCameraPos(playerid, 1248.3254,-1305.2551,1061.8671);
-						SetPlayerCameraLookAt(playerid, 1248.3254,-1305.2551,1061.8671);
-						SetPlayerPos(playerid, 1248.3254,-1305.2551,1061.8671);
-						PlayerInfo[playerid][pHospital] = 2;
-					}
-				}
+				new randum = random(sizeof(HospitalSpawnXYZ));
+				SetPlayerCameraPos(playerid, HospitalSpawnXYZ[randum][0],HospitalSpawnXYZ[randum][1],HospitalSpawnXYZ[randum][2]);
+				SetPlayerCameraLookAt(playerid, HospitalSpawnXYZ[randum][0],HospitalSpawnXYZ[randum][1],HospitalSpawnXYZ[randum][2]);
+				SetPlayerPos(playerid, HospitalSpawnXYZ[randum][0],HospitalSpawnXYZ[randum][1],HospitalSpawnXYZ[randum][2]);
+				PlayerInfo[playerid][pHospital] = 2;
 			}
 			else if(PlayerInfo[playerid][pInsurance] == 2)
 			{
