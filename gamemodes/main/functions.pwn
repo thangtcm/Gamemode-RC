@@ -19282,7 +19282,7 @@ stock IsAnAmbulance(carid)
 	    new iDvSlotID = DynVeh[carid], iGroupID = DynVehicleInfo[iDvSlotID][gv_igID];
 	    if((0 <= iGroupID < MAX_GROUPS))
 	    {
-	    	if(arrGroupData[iGroupID][g_iGroupType] == 17) return 1;
+	    	if(arrGroupData[iGroupID][g_iGroupType] == 2) return 1;
 		}
 	}
 	return 0;
