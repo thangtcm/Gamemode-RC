@@ -1,0 +1,20 @@
+./main/command.pwn(18022) : èäåíòèôèêàòîðó ïðèñâîåíî çíà÷åíèå, íî îí íå èñïîëüçóåòñÿ: "code"
+./main/command.pwn(18061) : èäåíòèôèêàòîðó ïðèñâîåíî çíà÷åíèå, íî îí íå èñïîëüçóåòñÿ: "code"
+./main/command.pwn(50868) : èäåíòèôèêàòîðó ïðèñâîåíî çíà÷åíèå, íî îí íå èñïîëüçóåòñÿ: "pmne"
+./main/mysql.pwn(24) : íåïðàâèëüíàÿ òàáóëÿöèÿ
+./system/new_job/Trucking/Vehicle.pwn(58) : èäåíòèôèêàòîðó ïðèñâîåíî çíà÷åíèå, íî îí íå èñïîëüçóåòñÿ: "str"
+./system/new_job/Trucking/Vehicle.pwn(145) : èäåíòèôèêàòîð íå èñïîëüçóåòñÿ: "pCarSlotID"
+./system/drug/drug.pwn(12) : èäåíòèôèêàòîð íå èñïîëüçóåòñÿ: "DrugTypeName"
+lsrpvn.pwn(1620) : èäåíòèôèêàòîð íå èñïîëüçóåòñÿ: "GetXYInFrontOfVehicle"
+./system/nametag.pwn(9) : èäåíòèôèêàòîð íå èñïîëüçóåòñÿ: "PlayerNameTag"
+./system/nametag.pwn(10) : èäåíòèôèêàòîð íå èñïîëüçóåòñÿ: "PlayerNameTagType"
+./system/new_job/Trucking/setting.pwn(34) : èäåíòèôèêàòîð íå èñïîëüçóåòñÿ: "UnitType"
+Pawn compiler 3.2.3664	 	 	Copyright (c) 1997-2016, ITB CompuPhase
+
+Ðàçìåð çàãîëîâêà:	   52096 áàéò
+Ðàçìåð êîäà:		 7373804 áàéò
+Ðàçìåð äàííûõ:		164660024 áàéò
+Ðàçìåð ñòýêà\êó÷è:	18000000 áàéò; Ïðèìåðíîå ìàêñ. èñïîëüçîâàíèå: Íåèçâåñòíî, èç-çà ðåêóðñèé
+Âñåãî òðåáóåòñÿ:	190085924 áàéò
+
+Ãîòîâî.
