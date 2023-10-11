@@ -1463,6 +1463,9 @@ new Loaded[MAX_PLAYERS];
 new ChatGoActor;
 new ActorNV;
 new TruckActor;
+new MinerActor[2];
+new PizzaActor;
+
 new ActorFarmer;
 enum 	e_labeltypes
 {
