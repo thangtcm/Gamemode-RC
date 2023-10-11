@@ -111,7 +111,7 @@ CMD:handcuff2(playerid, params[])
                     SetPlayerAttachedObject(giveplayerid, 7, 19418, 6, -0.011, 0.028, -0.022, -15.600012, -33.699977, -81.700035, 1.0, 1.0, 1.0);
 					HandCuff[giveplayerid] = 2;
 					DeletePVar(giveplayerid, "IsFrozen");
-					PlayAnimEx(giveplayerid, "ped", "FLOOR_hit_f", 4.0, 0, 1, 1, 1, 0, 1);
+					ApplyAnimationEx(giveplayerid, "ped", "FLOOR_hit_f", 4.0, 0, 1, 1, 1, 0, 1);
 				//TogglePlayerControllable(giveplayerid, 1);
 				}
 			}
