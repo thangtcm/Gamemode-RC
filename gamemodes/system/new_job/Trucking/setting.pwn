@@ -1,7 +1,7 @@
 #define MAX_PRODUCT         (24)
 #define MAX_CARTRUCK        (30)
 #define MAX_FACTORY         (30)
-#define MAX_PLAYERPRODUCT   (7)
+#define MAX_PLAYERPRODUCT   (18)
 #define MAX_OBJECTTRUCKER   (100)
 forward VEHICLETRUCKER_LOAD(playerid);
 forward OnAddVehicleTruckerFinish(playerid, index);
@@ -14,7 +14,7 @@ enum VehicleTruckerInfo{
     vtObject,
     Float:vtPos[6],
     vtProductID, //ID PRODUCTDATA
-    IsMission
+    vtFactoryID
 };
 
 new VehicleTruckerData[MAX_PLAYERS][MAX_OBJECTTRUCKER][VehicleTruckerInfo];
@@ -240,7 +240,7 @@ new FactoryData[][FactoryInfo] = {
         false,
         "Blueberry Distribution Hub", 
         {13, 10, 23, 6, 20, 19, 8}, 
-        {50, 50, 700, 165, 340, 170, 245},
+        {50, 50, 117, 165, 340, 170, 245},
         {100, 100, 100, 100, 100, 100, 100}, 
         {500, 1000, 1000, 1000, 1000, 1000, 1000},
         {500, 1000, 1000, 1000, 1000, 1000, 1000},
@@ -480,11 +480,11 @@ new FactoryData[][FactoryInfo] = {
         {-1},
         {-1},
         {2771.0579,-2421.7144,13.6543},
-        {5, 24, 2, 18, 8, 4, 20}, 
-        {2000, 360, 360, 360, 1500, 360, 360, 410},
-        {1, 1, 1, 1, 1, 1, 1}, 
-        {0, 0, 0, 0, 0, 0, 0},
-        {20, 500, 500, 500, 20, 500, 500, 500},
+        {5, 24, 2, 18, 8, 4, 20, 3}, 
+        {2000, 360, 360, 360, 1500, 360, 360, 410, 400},
+        {1, 1, 1, 1, 1, 1, 1, 1}, 
+        {0, 0, 0, 0, 0, 0, 0, 0},
+        {20, 500, 500, 500, 20, 500, 500, 500, 500},
     }
 };
 
@@ -496,7 +496,8 @@ enum PlayerTruckerInfo{
     ClaimFromCar[MAX_PLAYERPRODUCT],
     SellProduct[MAX_PLAYERPRODUCT],
     MAXPRODUCT,
-    MAXPRODUCTIMPORT
+    MAXPRODUCTIMPORT,
+    ClaimFactoryID
 };
 new PlayerTruckerData[MAX_PLAYERS][PlayerTruckerInfo];
 new pLoadProduct[MAX_PLAYERS];

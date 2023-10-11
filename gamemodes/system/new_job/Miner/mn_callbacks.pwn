@@ -232,6 +232,7 @@ public StartCountTime(playerid)
 				}
 			}
 			StopLoopingAnim(playerid);
+			RemovePlayerAttachedObject(playerid, 9);
 			PlayerInfo[playerid][pSoLanMiner]++;
 			if(PlayerInfo[playerid][pMinerLevel] == 0 && PlayerInfo[playerid][pSoLanMiner] == 500)
 			{

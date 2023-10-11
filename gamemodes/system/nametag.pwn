@@ -1,13 +1,5 @@
-
-
 #include <a_samp>
 #include <YSI_Coding\y_hooks>
-
-
-//new Text3D:cNametag[MAX_PLAYERS];
-// new Text3D:Player3DText[MAX_PLAYERS];
-new PlayerNameTag[MAX_PLAYERS][MAX_PLAYERS][128];
-new PlayerNameTagType[MAX_PLAYERS][MAX_PLAYERS];
 new Timer:myNameTagTimer[MAX_PLAYERS] = {Timer:-1, ...};
 stock GetHealthDots(playerid)
 {
@@ -73,40 +65,45 @@ stock GetArmorDots(playerid)
 
     return dots;
 }
+
+hook OnPlayerTakeDamage(playerid, issuerid, Float:amount, weaponid, bodypart)
+{
+    SetPVarInt(playerid,"TakeNameTagDMG",gettime() + 8);
+}
+
 timer UpdateNameTagTimer[500](playerid)
 {
     foreach(new i: Player)
     {
         if(IsPlayerConnected(i))
         {
-            new nametag[388], Float:armour, Float:targetPos[3], Float:distance, bool:Ischeck = false;
+            new nametag[388], Float:armour;
             GetPlayerArmour(i, armour);
-			GetPlayerPos(i, targetPos[0], targetPos[1], targetPos[2]);
-			distance = GetPlayerDistanceFromPoint(playerid, targetPos[0], targetPos[1], targetPos[2]);
-			if(PlayerInfo[i][pMaskOn])
+			if(gettime() < GetPVarInt(i, "TakeNameTagDMG") ) 
 			{
-				format(nametag, sizeof(nametag), "{%06x}[Mask %d_%d]{FFFFFF} (%d)", GetPlayerColor(i) >>> 8, PlayerInfo[i][pMaskID][0], PlayerInfo[i][pMaskID][1], i);
-			}
-			else if(distance > 6.0 && !PlayerInfo[i][pMaskOn])
-			{
-            	format(nametag, sizeof(nametag), "{%06x}Stranger_%d_%d{FFFFFF} (%d)", GetPlayerColor(i) >>> 8, PlayerInfo[i][pMaskID][0], PlayerInfo[i][pMaskID][1], i);
-				Ischeck = true;
-			}
-			else if(distance <= 6.0 && !PlayerInfo[i][pMaskOn] && Ischeck == false)
-			{
-				format(nametag, sizeof(nametag), "{%06x}%s{FFFFFF} (%d)", GetPlayerColor(i) >>> 8, GetPlayerNameEx(i), i);
-			}
-			if(playerAFK[i] != 0 && playerAFK[i] > 60)
-			{
-				format(nametag, sizeof(nametag), "{F81414}[AFK]{FFFFFF} %s", nametag);
-			}
-			if(armour > 1.0)
-			{
-				format(nametag, sizeof(nametag), "%s\n{FFFFFF}%s\n{FF0000}%s", nametag, GetArmorDots(i), GetHealthDots(i));
-			}
-			else
-			{
-				format(nametag, sizeof(nametag), "%s\n{FF0000}%s", nametag, GetHealthDots(i));
+				if(playerAFK[i] != 0 && playerAFK[i] > 60)
+				{
+					format(nametag, sizeof(nametag), "{F81414}[AFK]{FFFFFF} %s (%d)", nametag, i);
+				}
+				else
+				{
+					if(PlayerInfo[i][pMaskOn])
+					{
+						format(nametag, sizeof(nametag), "{%06x}[Mask %d_%d]{FFFFFF} (%d)", GetPlayerColor(i) >>> 8, PlayerInfo[i][pMaskID][0], PlayerInfo[i][pMaskID][1], i);
+					}
+					else
+					{
+						format(nametag, sizeof(nametag), "{%06x}%s{FFFFFF} (%d)", GetPlayerColor(i) >>> 8, GetPlayerNameEx(i), i);
+					}
+				}
+				if(armour > 1.0)
+				{
+					format(nametag, sizeof(nametag), "%s\n{FFFFFF}%s\n{FF0000}%s", nametag, GetArmorDots(i), GetHealthDots(i));
+				}
+				else
+				{
+					format(nametag, sizeof(nametag), "%s\n{FF0000}%s", nametag, GetHealthDots(i));
+				}
 			}
 			UpdateDynamic3DTextLabelText(PlayerInfo[i][pNameTag], COLOR_WHITE, nametag);
         }
@@ -115,7 +112,7 @@ timer UpdateNameTagTimer[500](playerid)
 }
 
 hook OnPlayerConnect(playerid) {
-    PlayerInfo[playerid][pNameTag] = CreateDynamic3DTextLabel("Loading nametag...", 0x008080FF, 0.0, 0.0, 0.1, 25.0, .attachedplayer = playerid, .testlos = 1);
+    PlayerInfo[playerid][pNameTag] = CreateDynamic3DTextLabel("Loading nametag...", 0x008080FF, 0.0, 0.0, 0.1, 10.0, .attachedplayer = playerid, .testlos = 1);
 	myNameTagTimer[playerid] = repeat UpdateNameTagTimer(playerid);
 	PlayerInfo[playerid][pMaskOn] = 0;
 	return 1;

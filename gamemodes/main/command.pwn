@@ -35250,19 +35250,23 @@ CMD:ch(playerid, params[])
 	if (PlayerInfo[playerid][pHelper] >= 1) SendClientMessageEx(playerid, COLOR_GREEN,"_______________________________________");
 	return 1;
 }
+CMD:resetxe(playerid, params[]) {
+	return cmd_dvrespawn(playerid, params);
+}
 
+/*
 CMD:muabanglai(playerid, params[]) {
 	return cmd_getlicense(playerid, params);
 }
 
 CMD:getlicense(playerid, params[])
 {
-	if (!IsPlayerInRangeOfPoint(playerid,2.0,1222.7645,243.7523,19.5469)) { return 1; }
+	if (!IsPlayerInRangeOfPoint(playerid,2.0,366.54, 159.09, 1008.38)) { return 1; }
 	if (PlayerInfo[playerid][pWantedLevel] > 0) return SendClientMessageEx(playerid, COLOR_LIGHTRED, "Ban da co mot lenh bat giu - mua lai giay phep deu bi cam.");
 	ShowPlayerDialog(playerid, DIALOG_LICENSE_BUY, DIALOG_STYLE_LIST, "Chon loai giay phep ban muon mua.", "Giay phep lai xe ($200)\r\nGiay phep lai thuyen ($500)\r\nGiay phep lai may bay ($1000)\r\nGiay phep lai taxi ($500)", "Mua", "Huy bo");
 	return 1;
 }
-
+*/
 CMD:tichthubanglai(playerid, params[]) {
 	return cmd_revokelicense(playerid, params);
 }
@@ -47361,7 +47365,7 @@ CMD:editgaspump(playerid, params[])
 
 	if(sscanf(params, "dds[9]F(0)", iBusinessID, iPumpID, szName, fValue)) {
 		SendUsageMessage(playerid, " /editgaspump [business id] [pump id] [name] [value]");
-		SendSelectMessage(playerid, " Capacity, Gas, Position");
+		SendSelectMessage(playerid, " Capacity, Gas, Position, Edit");
 	}
 
 	if (!(0 <= iBusinessID < MAX_BUSINESSES))
@@ -47387,7 +47391,16 @@ CMD:editgaspump(playerid, params[])
 		DestroyDynamicGasPump(iBusinessID, iPumpID);
 		CreateDynamicGasPump(playerid, iBusinessID, iPumpID);
 		SaveBusiness(iBusinessID);
-
+	}
+	else if(!strcmp(szName, "Edit", true)) 
+	{
+		if(IsValidDynamicObject(Businesses[iBusinessID][GasPumpObjectID][iPumpID]))
+		{
+			SetPVarInt(playerid, "EditGasDump", 1);
+			SetPVarInt(playerid, "iBusinessID", iBusinessID);
+			SetPVarInt(playerid, "iPumpID", iPumpID);
+			EditDynamicObject(playerid, Businesses[iBusinessID][GasPumpObjectID][iPumpID]);
+		}
 	}
 	else if(!strcmp(szName, "gas", true))
 	{
@@ -47406,7 +47419,6 @@ CMD:editgaspump(playerid, params[])
 		SendServerMessage(playerid, " Ban da chinh sua cong suat bom gas!");
 		format(szLog, sizeof(szLog), "%s da thay doi cong suat tram gas %d cho %s (%d) den %.2f", GetPlayerNameEx(playerid), iPumpID, Businesses[iBusinessID][bName], iBusinessID, fValue);
 	}
-
 	SaveBusiness(iBusinessID);
 	Log("logs/bedit.log", szLog);
 	return 1;

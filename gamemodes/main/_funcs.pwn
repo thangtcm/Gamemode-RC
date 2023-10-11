@@ -874,24 +874,6 @@ public OnVehicleRespray(playerid, vehicleid, color1, color2)
 
 public OnPlayerClickTextDraw(playerid, Text:clickedid)
 {
-	/*if(GetPVarInt(playerid,"OpenNoiThat") == 1) {
-		if(clickedid == Text:INVALID_TEXT_DRAW) { 
-			HideNoiThatTD(playerid);
-		}
-	}*/
-	/*	
-	if(_:clickedid != INVALID_TEXT_DRAW)
-    {
-    	if(clickedid == ButtonCharacter[1]) {
-    		HideTDCharacter(playerid);
-    		LoaderStarting(playerid, LOAD_CHARACTERLOGIN, "Dang tai du lieu game...", 2);       
-    	}
-    }*/
-    // if(GetPVarInt(playerid, "OpenInventory") == 1) { 
-    //     if(clickedid == Text:INVALID_TEXT_DRAW) { 
-    //     	HideInventory(playerid);
-    //     }
-    // }
 	return 0;
 }
 stock GetWeaponIDWithItem(itemid) {
@@ -1911,9 +1893,6 @@ public OnPlayerConnect(playerid) {
 	SyncPlayerTime(playerid);
 	MainMenuUpdateForPlayer(playerid);
 	g_mysql_AccountAuthCheck(playerid);
-	//SafeLogin(playerid, 1);
-//	}
-
 	return 1;
 }
 
@@ -1931,7 +1910,6 @@ public OnPlayerDisconnect(playerid, reason)
     PlayerInfo[playerid][pPosHop][0] = 0;
     DeletePVar(playerid, "DangHaiTr");
 	RemovePlayerAttachedObject(playerid, 1);
-
     if(!isnull(unbanip[playerid]))
 	{
 	    new string[26];
@@ -6208,6 +6186,23 @@ public OnPlayerEditDynamicObject(playerid, objectid, response, Float:x, Float:y,
 	if(response == EDIT_RESPONSE_FINAL)
 	{
 		new string[128];
+		if(GetPVarInt(playerid, "EditGasDump") == 1)
+		{
+			new iBusiness = GetPVarInt(playerid, "iBusinessID"),
+				iPump = GetPVarInt(playerid, "iPumpID");
+			if (IsValidDynamicObject(Businesses[iBusiness][GasPumpObjectID][iPump])) 
+			{
+				Businesses[iBusiness][GasPumpPosX][iPump] = x;
+				Businesses[iBusiness][GasPumpPosY][iPump] = y;
+				Businesses[iBusiness][GasPumpPosZ][iPump] = z;
+				Businesses[iBusiness][GasPumpAngle][iPump] = rz;
+				SendServerMessage(playerid, "Chinh gas pump thanh cong.");
+			}
+			DeletePVar(playerid, "iBusinessID");
+			DeletePVar(playerid, "iPumpID");
+			DeletePVar(playerid, "EditGasDump");
+			return 1;
+		}
 		if(GetPVarInt(playerid, "TestAddVehicle") == 1)
 		{
 			if (IsValidDynamicObject(objectTest[objectTestindex])) 
@@ -6230,7 +6225,6 @@ public OnPlayerEditDynamicObject(playerid, objectid, response, Float:x, Float:y,
 				return 1;
 			}
 		}
-        print("ccasdasdas");
 	    if(GetPVarInt(playerid,"EditNoiThat") == 1) {
 		    new i = GetPVarInt(playerid,"nt_ObjectSelect");
 		    SendClientMessage(playerid, -1, "Chinh sua noi that thanh cong.");
@@ -6239,7 +6233,6 @@ public OnPlayerEditDynamicObject(playerid, objectid, response, Float:x, Float:y,
             DeletePVar(playerid, "EditNoiThat");
             SaveNoiThat(i);
 	    }
-	    print("ccasdasdas");
 	    if(GetPVarInt(playerid,"CreateNewNT") == 1) {
 	    	print("ccasdasdas");
 	    	new i = GetPVarInt(playerid,"nt_ObjectSelect");
@@ -6254,7 +6247,6 @@ public OnPlayerEditDynamicObject(playerid, objectid, response, Float:x, Float:y,
        	    mysql_tquery(MainPipeline, query, "NoiThatCreate", "d", playerid);
        	    DeletePVar(playerid, "CreateNewNT");
 	    }
-	    print("ccasdasdas");
 		if(GetPVarInt(playerid, "gEdit") == 1)
 		{
 			if(PlayerInfo[playerid][pAdmin] < 4) return SendErrorMessage(playerid, " [System]: Ban Khong duoc su dung lenh nay nhe !!");
@@ -7283,7 +7275,6 @@ public LoadStreamerDynamicPickups()
 	CreateDynamicPickup(1239, 23, 1938.3217, 166.3846, 19.8281);
 	CreateDynamicPickup(1239, 23, -1092.4702, -1622.1119, 76.3672);
 	CreateDynamicPickup(1239, 23, 1873.1696,2670.3745,3.5894);
-	CreateDynamic3DTextLabel("{FF0000} Dang ky CMND \n{FFFFFF}((/dangkycmnd de dang ky cmnd.))", COLOR_WHITE, 1873.1696,2670.3745,3.5894, 10.0);// Actor Trucker
 
 	// The Hilltop Farm
 	CreateDynamicPickup(1239, 23, 1059.6445, -345.3934, 73.9922);
@@ -7445,7 +7436,6 @@ public LoadStreamerDynamic3DTextLabels()
 	CreateDynamic3DTextLabel("Su dung /layvatlieu tu mot chiec thuyen \nde co duoc vat lieu",COLOR_YELLOW,2102.71,-103.97,2.28+0.5,8.0);// Deliver
     CreateDynamic3DTextLabel("Su Dung /laybanh de nhan banh \nDe co Pizza giao hang!",COLOR_YELLOW,0,0,0, 4.0); //getpizza
     CreateDynamic3DTextLabel("Go /laybanh tu nguoi ban pizza \nde nhan banh va giao hang!",COLOR_YELLOW,-1713.961425, 1348.545166, 7.180452, 4.0); //laybanh LS
-	CreateDynamic3DTextLabel("Noi Mua Bang Lai\n\n/muabanglai",COLOR_YELLOW,1222.7645,243.7523,19.5469,8.0);// Licenses.
 	CreateDynamic3DTextLabel("Noi Thay Trang Phuc\n\n/muatrangphuc De Thay Trang Phuc nhe",COLOR_YELLOW, 207.0798, -129.1775, 1003.5078+0.7, 6.0);
 
 
