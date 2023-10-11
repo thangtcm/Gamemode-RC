@@ -726,11 +726,12 @@ enum master {
 
 }
 new MasterInfo[MAX_PLAYERS][master];
-
+new Chatting[MAX_PLAYERS];
 
 new TruckerVehicles[20];
 enum pInfo
 {
+	pChatStyle,
 	pNai,
 	pBo,
 	pRansack,

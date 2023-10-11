@@ -1079,6 +1079,7 @@ CMD:invch(playerid, params[])
 		{
 			SetPVarInt(playerid, "InvPlayerVehicle", v);
 			OpenInventoryCarHouse(playerid, "INV CAR");
+			OpenInventory(playerid);
 			return 1;
 		}
 	}
@@ -1196,12 +1197,20 @@ Dialog:InventoryCar(playerid, response, listitem, inputtext[])
 			Inventory_Update(playerid, itemId);
 			format(str, sizeof(str), "Ban da lay vat pham %s tu chiec xe vao tui do cua ban.", itemName);
 			SendClientMessageEx(playerid, COLOR_MAIN, str);
+			format(str, sizeof(str), "* %s da lay vat pham \"%s\" ra khoi chiec xe.", GetPlayerNameEx(playerid), itemName);
+			ProxDetector(20.0, playerid, str, COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE);
+			OpenInventoryCarHouse(playerid, "Inventory Car");
+			OpenInventory(playerid);
 		}
 		else if(GetPVarInt(playerid, "InvPlayerHouse") != -1)
 		{
 			Inventory_Update(playerid, itemId);
 			format(str, sizeof(str), "Ban da lay vat pham %s tu chiec xe vao tui do cua ban.", itemName);
 			SendClientMessageEx(playerid, COLOR_MAIN, str);
+			format(str, sizeof(str), "* %s da lay vat pham \"%s\" ra khoi chiec xe.", GetPlayerNameEx(playerid), itemName);
+			ProxDetector(20.0, playerid, str, COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE);
+			OpenInventoryCarHouse(playerid, "Inventory House");
+			OpenInventory(playerid);
 		}
 	}
 	DeletePVar(playerid, "InvPlayerHouse");

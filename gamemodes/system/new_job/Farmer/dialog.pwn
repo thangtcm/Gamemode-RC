@@ -47,7 +47,7 @@ Dialog:FARMER_MENU(playerid, response, listitem, inputtext[]){
 				}
 				else if(GetPVarInt(playerid, #RangeFarm) == 2)
 				{
-					Dialog_Show(playerid, BUYER_FARM_DIALOG, DIALOG_STYLE_INPUT, "Mua gia suc", "Bo\nNai", ">>", "<<");
+					Dialog_Show(playerid, BUYER_FARM_DIALOG, DIALOG_STYLE_LIST, "Mua gia suc", "Bo\nNai", ">>", "<<");
 				}
 				else SendFarmerJob(playerid, "ERROR FARM RANGE");
 			}

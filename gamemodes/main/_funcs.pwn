@@ -1905,7 +1905,6 @@ public OnPlayerDisconnect(playerid, reason)
     Delete3DTextLabel(PlayerInfo[playerid][HopText]);
     PlayerInfo[playerid][pTraiCam] = 0;
     PlayerInfo[playerid][pTraiCamHop] = 0;
-    PlayerInfo[playerid][pTraiCam] = 0;
     PlayerInfo[playerid][pHop] = 0;
     PlayerInfo[playerid][pPosHop][0] = 0;
     DeletePVar(playerid, "DangHaiTr");
@@ -1916,6 +1915,7 @@ public OnPlayerDisconnect(playerid, reason)
 	    format(string, sizeof(string), "unbanip %s", unbanip[playerid]);
 	    SendRconCommand(string);
 	}
+	printf("1");
 	if(PlayerInfo[playerid][pTruyDuoi] >= 1)
     {
             new string[128];
@@ -1940,6 +1940,7 @@ public OnPlayerDisconnect(playerid, reason)
             SetPlayerColor(playerid, TEAM_APRISON_COLOR);
     }
 	KillTimer(logincheck[playerid]);
+	printf("2");
 	foreach(new i: Player) {
 		if(Spectating[i] > 0 && Spectate[i] == playerid)
 		{
@@ -1955,6 +1956,7 @@ public OnPlayerDisconnect(playerid, reason)
 			SendClientMessageEx(i, COLOR_WHITE, "Nguoi choi ban dang kiem tra da thoat khoi may chu.");
 		}
 	}
+	printf("3");
 	// Why save on people who haven't logged in!
 	if(gPlayerLogged{playerid} == 1)
 	{
@@ -2574,11 +2576,11 @@ public OnPlayerDisconnect(playerid, reason)
 	DeletePVar(playerid, "NullEmail");
 	DeletePVar(playerid, "ViewedPMOTD");
 	gPlayerLogged{playerid} = 0;
-	new INI:File = INI_Open(UserPath(playerid));
-	INI_SetTag(File,"data");
-	INI_WriteInt(File,"dlish",PlayerInfodl[playerid][dlish]);
-	INI_WriteInt(File,"dlgetumd",PlayerInfodl[playerid][dlgetumd]);
-	INI_Close(File);
+	// new INI:File = INI_Open(UserPath(playerid));
+	// INI_SetTag(File,"data");
+	// INI_WriteInt(File,"dlish",PlayerInfodl[playerid][dlish]);
+	// INI_WriteInt(File,"dlgetumd",PlayerInfodl[playerid][dlgetumd]);
+	// INI_Close(File);
 	return 1;
 }
 
@@ -4943,6 +4945,9 @@ public OnPlayerKeyStateChange(playerid, newkeys, oldkeys)
 			}
 		}
     }
+	else if(IsKeyJustDown(KEY_SPRINT,newkeys,oldkeys) && gPlayerUsingLoopingAnim[playerid] == 1)
+		if(!(GetPVarType(playerid, "PlayerCuffed") || GetPVarType(playerid, "Injured") || GetPVarType(playerid, "IsFrozen") || PlayerInfo[playerid][pHospital]))
+	    	StopLoopingAnim(playerid);
 	return 1;
 }
 
@@ -5579,23 +5584,15 @@ public OnPlayerText(playerid, text[])
        SendClientMessageEx(playerid, COLOR_RED, "Ban khong dang nhap.");
        return 0;
     }
-    new reply = GetPVarInt(playerid, "ReplyCall");
-    new playercall = GetPVarInt(playerid, "PlayerCallToMe");
 
-    if(reply == 2)
-    {
-        new string1[129];
-        format(string1, sizeof string1, "[Phone] %s ", text);
-        SendClientMessage(playercall, 0xF7CC50FF, string1);
-        SendClientMessage(playerid, -1, string1);
-    }
+	if(GetPVarType(playerid, "Injured") || PlayerInfo[playerid][pHospital])
+		return SendErrorMessage(playerid, "Ban ~r~khong the tro chuyen~w~ ngay luc nay, hay su dung ~y~/low~w~.");
 
+	printf("[Player Chat] [%s-%d]: %s", GetPlayerNameEx(playerid), GetPlayerSQLId(playerid), text);
 	new sendername[MAX_PLAYER_NAME];
 	new giveplayer[MAX_PLAYER_NAME];
 	new string[128];
 	playerLastTyped[playerid] = 0;
-
-
 
 	if(TextSpamUnmute[playerid] != 0)
 	{
@@ -5617,25 +5614,6 @@ public OnPlayerText(playerid, text[])
 			return 0;
 		}
 	}
-
-
- 	/*Compares last string with current, if the same, alert the staff only on the 3rd command. (Expires after 5 secs)
-	if(PlayerInfo[playerid][pAdmin] < 2) {
-		new laststring[128];
-		if(GetPVarString(playerid, "LastText", laststring, 128)) {
-			if(!strcmp(laststring, text, true)) {
-				TextSpamTimes[playerid]++;
-
-				if(TextSpamTimes[playerid] == 2) {
-					TextSpamTimer[playerid] = 30;
-					TextSpamTimes[playerid] = 0;
-					format(string, sizeof(string), "{AA3333}AdmWarning{FFFF00}: %s (ID %d) is spamming with: %s", GetPlayerNameEx(playerid), playerid, text);
-					ABroadCast(COLOR_YELLOW, string, 2);
-				}
-			}
-		}
-		SetPVarString(playerid, "LastText", text);
-	}*/
 
 	if(strfind(text, "|", true) != -1) {
 	    SendClientMessageEx(playerid, COLOR_RED, "Ban khong the su dung '|' nhan vat trong van ban.");
@@ -5919,7 +5897,7 @@ public OnPlayerText(playerid, text[])
 	}
 	if(Mobile[playerid] != INVALID_PLAYER_ID)
 	{
-		format(string, sizeof(string), "(cellphone) %s noi: %s", GetPlayerNameEx(playerid), text);
+		format(string, sizeof(string), "(Dien Thoai) %s noi: %s", GetPlayerNameEx(playerid), text);
 		ProxDetector(20.0, playerid, string,COLOR_FADE1,COLOR_FADE2,COLOR_FADE3,COLOR_FADE4,COLOR_FADE5);
 		if(IsPlayerConnected(Mobile[playerid]))
 		{
@@ -5927,7 +5905,7 @@ public OnPlayerText(playerid, text[])
 			{
 				if(PlayerInfo[Mobile[playerid]][pSpeakerPhone] != 0)
 				{
-				    format(string, sizeof(string), "(speakerphone) %s noi: %s", GetPlayerNameEx(playerid), text);
+				    format(string, sizeof(string), "(Dien Thoai) %s noi: %s", GetPlayerNameEx(playerid), text);
 					ProxDetector(20.0, Mobile[playerid], string,COLOR_FADE1,COLOR_FADE2,COLOR_FADE3,COLOR_FADE4,COLOR_FADE5);
 				}
 				else
@@ -6015,56 +5993,106 @@ public OnPlayerText(playerid, text[])
 		new Float: f_playerPos[3];
 		GetPlayerPos(playerid, f_playerPos[0], f_playerPos[1], f_playerPos[2]);
 		new str[128];
-		foreach(new i: Player)
+		if(IsPlayerInAnyVehicle(playerid))
 		{
-			if((InsidePlane[playerid] == GetPlayerVehicleID(i) && GetPlayerState(i) == 2) || (InsidePlane[i] == GetPlayerVehicleID(playerid) && GetPlayerState(playerid) == 2) || (InsidePlane[playerid] != INVALID_VEHICLE_ID && InsidePlane[playerid] == InsidePlane[i])) {
-				/*if(PlayerInfo[playerid][pDuty] || IsAHitman(playerid)) format(string, sizeof(string), "%s{%06x}%s{E6E6E6} noi: %s", accent, GetPlayerColor(playerid) >>> 8, sendername, text);*/
-				format(string, sizeof(string), "%s%s noi: %s", accent, sendername, text);
-				SendClientMessageEx(i, COLOR_FADE1, string);
+			if(strlen(text) > 64)
+			{
+				SendNearbyMessage(playerid, 20.0, COLOR_WHITE, "{BBFFEE}[Trong xe]{FFFFFF} %s noi: %s %.64s", GetPlayerNameEx(playerid), text);
+				SendNearbyMessage(playerid, 20.0, COLOR_WHITE, "{BBFFEE}[Trong xe]{FFFFFF} %s noi: ...%s", GetPlayerNameEx(playerid), text[64]);
 			}
-			else if(GetPlayerVirtualWorld(i) == GetPlayerVirtualWorld(playerid)) {
-				if(IsPlayerInRangeOfPoint(i, 20.0 * 0.6, f_playerPos[0], f_playerPos[1], f_playerPos[2]) && PlayerInfo[i][pBugged] >= 0 && PlayerInfo[playerid][pAdmin] < 2 && PlayerInfo[i][pAdmin] < 2)
-				{
-				    if(playerid == i)
-				    {
-						format(string, sizeof(string), "%s%s noi: %s", accent, sendername, text);
-				    	format(str, sizeof(str), "{8D8DFF}(BUGGED) {CBCCCE}%s", string);
-				    }
-				    else {
-						format(string, sizeof(string), "%s%s noi: %s", accent, sendername, text);
-				    	format(str, sizeof(str), "{8D8DFF}(BUG ID %d) {CBCCCE}%s", i,string);
-				    }
-				    SendBugMessage(PlayerInfo[i][pBugged], str);
-				}
-
-				if(IsPlayerInRangeOfPoint(i, 20.0 / 16, f_playerPos[0], f_playerPos[1], f_playerPos[2])) {
-					format(string, sizeof(string), "%s%s noi: %s", accent, sendername, text);
-					SendClientMessageEx(i, COLOR_FADE1, string);
-				}
-				else if(IsPlayerInRangeOfPoint(i, 20.0 / 8, f_playerPos[0], f_playerPos[1], f_playerPos[2])) {
-					format(string, sizeof(string), "%s%s noi: %s", accent, sendername, text);
-					SendClientMessageEx(i, COLOR_FADE2, string);
-				}
-				else if(IsPlayerInRangeOfPoint(i, 20.0 / 4, f_playerPos[0], f_playerPos[1], f_playerPos[2])) {
-					format(string, sizeof(string), "%s%s noi: %s", accent, sendername, text);
-					SendClientMessageEx(i, COLOR_FADE3, string);
-				}
-				else if(IsPlayerInRangeOfPoint(i, 20.0 / 2, f_playerPos[0], f_playerPos[1], f_playerPos[2])) {
-					format(string, sizeof(string), "%s%s noi: %s", accent, sendername, text);
-					SendClientMessageEx(i, COLOR_FADE4, string);
-				}
-				else if(IsPlayerInRangeOfPoint(i, 20.0, f_playerPos[0], f_playerPos[1], f_playerPos[2])) {
-					format(string, sizeof(string), "%s%s noi: %s", accent, sendername, text);
-					SendClientMessageEx(i, COLOR_FADE5, string);
-				}
-			}
-			if(GetPVarInt(i, "BigEar") == 1 || GetPVarInt(i, "BigEar") == 6 && GetPVarInt(i, "BigEarPlayer") == playerid) {
-				format(string, sizeof(string), "%s%s noi: %s", accent, sendername, text);
-				new string2[128] = "(BE) ";
-				strcat(string2,string, sizeof(string2));
-				SendClientMessageEx(i, COLOR_FADE1, string);
+			else
+			{
+				SendNearbyMessage(playerid, 20.0, COLOR_WHITE, "{BBFFEE}[Trong xe]{FFFFFF} %s noi: %s", GetPlayerNameEx(playerid), text);
 			}
 		}
+		else
+		{
+			if(strlen(text) > 64)
+			{
+				SendNearbyMessage(playerid, 20.0, COLOR_WHITE, "%s noi: %s %.64s", GetPlayerNameEx(playerid), text);
+				SendNearbyMessage(playerid, 20.0, COLOR_WHITE, "%s noi: ...%s", GetPlayerNameEx(playerid), text[64]);
+			}
+			else
+			{
+				SendNearbyMessage(playerid, 20.0, COLOR_WHITE, "%s noi: %s", GetPlayerNameEx(playerid), text);
+			}
+			if(!IsPlayerInAnyVehicle(playerid) && !gPlayerUsingLoopingAnim[playerid] && GetPlayerSpecialAction(playerid) != SPECIAL_ACTION_USECELLPHONE &&
+				GetPVarType(playerid, "PlayerCuffed") == 0 && GetPVarType(playerid, "Injured") == 0 && GetPVarType(playerid, "IsFrozen") == 0 && PlayerInfo[playerid][pHospital] == 0)
+			{
+				if(Chatting[playerid] == 0)
+				{
+					new AnimLib[32], AnimName[32];
+					GetAnimationName(GetPlayerAnimationIndex(playerid), AnimLib, 32, AnimName, 32);
+					if(!strcmp(AnimName, "IDLE_STANCE", true))
+					{
+						switch(PlayerInfo[playerid][pChatStyle])
+						{
+							case 1: ApplyAnimation(playerid, "GANGS", "prtial_gngtlkA", 4.1, 1, 0, 0, 1, 1);
+							case 2: ApplyAnimation(playerid, "GANGS", "prtial_gngtlkB", 4.1, 1, 0, 0, 1, 1);
+							case 3: ApplyAnimation(playerid, "GANGS", "prtial_gngtlkC", 4.1, 1, 0, 0, 1, 1);
+							case 4: ApplyAnimation(playerid, "GANGS", "prtial_gngtlkD", 4.1, 1, 0, 0, 1, 1);
+							case 5: ApplyAnimation(playerid, "GANGS", "prtial_gngtlkE", 4.1, 1, 0, 0, 1, 1);
+							case 6: ApplyAnimation(playerid, "GANGS", "prtial_gngtlkF", 4.1, 1, 0, 0, 1, 1);
+							case 7: ApplyAnimation(playerid, "GANGS", "prtial_gngtlkG", 4.1, 1, 0, 0, 1, 1);
+							case 8: ApplyAnimation(playerid, "GANGS", "prtial_gngtlkH", 4.1, 1, 0, 0, 1, 1);
+							default: ApplyAnimation(playerid, "GANGS", "prtial_gngtlkC", 4.1, 1, 0, 0, 1, 1);
+						}
+						Chatting[playerid] = 1;
+						SetTimerEx("StopChatting", strlen(text) * 100, 0, "d", playerid);
+					}
+				}
+			}
+		}
+		// foreach(new i: Player)
+		// {
+		// 	if((InsidePlane[playerid] == GetPlayerVehicleID(i) && GetPlayerState(i) == 2) || (InsidePlane[i] == GetPlayerVehicleID(playerid) && GetPlayerState(playerid) == 2) || (InsidePlane[playerid] != INVALID_VEHICLE_ID && InsidePlane[playerid] == InsidePlane[i])) {
+		// 		/*if(PlayerInfo[playerid][pDuty] || IsAHitman(playerid)) format(string, sizeof(string), "%s{%06x}%s{E6E6E6} noi: %s", accent, GetPlayerColor(playerid) >>> 8, sendername, text);*/
+		// 		format(string, sizeof(string), "%s%s noi: %s", accent, sendername, text);
+		// 		SendClientMessageEx(i, COLOR_FADE1, string);
+		// 	}
+		// 	else if(GetPlayerVirtualWorld(i) == GetPlayerVirtualWorld(playerid)) {
+		// 		if(IsPlayerInRangeOfPoint(i, 20.0 * 0.6, f_playerPos[0], f_playerPos[1], f_playerPos[2]) && PlayerInfo[i][pBugged] >= 0 && PlayerInfo[playerid][pAdmin] < 2 && PlayerInfo[i][pAdmin] < 2)
+		// 		{
+		// 		    if(playerid == i)
+		// 		    {
+		// 				format(string, sizeof(string), "%s%s noi: %s", accent, sendername, text);
+		// 		    	format(str, sizeof(str), "{8D8DFF}(BUGGED) {CBCCCE}%s", string);
+		// 		    }
+		// 		    else {
+		// 				format(string, sizeof(string), "%s%s noi: %s", accent, sendername, text);
+		// 		    	format(str, sizeof(str), "{8D8DFF}(BUG ID %d) {CBCCCE}%s", i,string);
+		// 		    }
+		// 		    SendBugMessage(PlayerInfo[i][pBugged], str);
+		// 		}
+
+		// 		if(IsPlayerInRangeOfPoint(i, 20.0 / 16, f_playerPos[0], f_playerPos[1], f_playerPos[2])) {
+		// 			format(string, sizeof(string), "%s%s noi: %s", accent, sendername, text);
+		// 			SendClientMessageEx(i, COLOR_FADE1, string);
+		// 		}
+		// 		else if(IsPlayerInRangeOfPoint(i, 20.0 / 8, f_playerPos[0], f_playerPos[1], f_playerPos[2])) {
+		// 			format(string, sizeof(string), "%s%s noi: %s", accent, sendername, text);
+		// 			SendClientMessageEx(i, COLOR_FADE2, string);
+		// 		}
+		// 		else if(IsPlayerInRangeOfPoint(i, 20.0 / 4, f_playerPos[0], f_playerPos[1], f_playerPos[2])) {
+		// 			format(string, sizeof(string), "%s%s noi: %s", accent, sendername, text);
+		// 			SendClientMessageEx(i, COLOR_FADE3, string);
+		// 		}
+		// 		else if(IsPlayerInRangeOfPoint(i, 20.0 / 2, f_playerPos[0], f_playerPos[1], f_playerPos[2])) {
+		// 			format(string, sizeof(string), "%s%s noi: %s", accent, sendername, text);
+		// 			SendClientMessageEx(i, COLOR_FADE4, string);
+		// 		}
+		// 		else if(IsPlayerInRangeOfPoint(i, 20.0, f_playerPos[0], f_playerPos[1], f_playerPos[2])) {
+		// 			format(string, sizeof(string), "%s%s noi: %s", accent, sendername, text);
+		// 			SendClientMessageEx(i, COLOR_FADE5, string);
+		// 		}
+		// 	}
+		// 	if(GetPVarInt(i, "BigEar") == 1 || GetPVarInt(i, "BigEar") == 6 && GetPVarInt(i, "BigEarPlayer") == playerid) {
+		// 		format(string, sizeof(string), "%s%s noi: %s", accent, sendername, text);
+		// 		new string2[128] = "(BE) ";
+		// 		strcat(string2,string, sizeof(string2));
+		// 		SendClientMessageEx(i, COLOR_FADE1, string);
+		// 	}
+		// }
 	}
 	SetPlayerChatBubble(playerid,text,COLOR_WHITE,20.0,5000);
 
@@ -6083,6 +6111,14 @@ public OnPlayerText(playerid, text[])
 forward OnPlayerModelSelection(playerid, response, listid, modelid);
 forward OnPlayerModelSelectionEx(playerid, response, extraid, modelid);
 //forward strfind(const string[],const sub[],bool:ignorecase=false,pos=0);
+
+forward StopChatting(playerid);
+public StopChatting(playerid)
+{
+	Chatting[playerid] = 0;
+    ApplyAnimation(playerid, "CARRY", "crry_prtial", 4.0, 0, 0, 0, 0, 0);
+    return 1;
+}
 
 forward OnVehicleStreamOut(vehicleid, forplayerid);
 public OnVehicleStreamOut(vehicleid, forplayerid)
@@ -8022,9 +8058,6 @@ forward LoadStreamerDynamicObjects();
 public LoadStreamerDynamicObjects()
 {
 	MapCam();
-
-
-	SetTimer("UpdateNametag", 500, true);
     CrateLoad = CreateDynamicObject(964,-2114.1, -1723.5, 11984.5, 0, 0, 337.994, .worldid = 0, .interiorid = 1, .streamdistance = 200); //object(cj_metal_crate) (1)
 	IslandGate = CreateDynamicObject(16773,-1083.90002441,4289.70019531,14.10000038,0.00000000,0.00000000,0.00000000, .streamdistance = 400); //object(door_savhangr1) (5)
 

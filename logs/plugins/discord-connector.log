@@ -1,0 +1,13 @@
+[10/11/23 21:41:38] [WARNING] Unknown gateway event 'CHANNEL_TOPIC_UPDATE'
+[10/11/23 21:41:38] [WARNING] Unknown gateway event 'VOICE_CHANNEL_STATUS_UPDATE'
+[10/11/23 21:42:17] [WARNING] Unknown gateway event 'CHANNEL_TOPIC_UPDATE'
+[10/11/23 21:42:17] [WARNING] Unknown gateway event 'VOICE_CHANNEL_STATUS_UPDATE'
+[10/11/23 22:32:46] [ERROR] Error while retrieving HTTP POST response from '/api/v10/channels/1158001303033757716/messages': end of stream
+[10/11/23 22:57:37] [ERROR] Can't read from Discord websocket gateway: End of file (2)
+[10/11/23 22:57:37] [ERROR] Can't write to Discord websocket gateway: The I/O operation has been aborted because of either a thread exit or an application request (995)
+[10/11/23 23:15:22] [ERROR] Error while retrieving HTTP POST response from '/api/v10/channels/1157993235776557156/messages': end of stream
+[10/11/23 23:22:55] [ERROR] Can't read from Discord websocket gateway: End of file (2)
+[10/11/23 23:22:55] [ERROR] Can't write to Discord websocket gateway: The I/O operation has been aborted because of either a thread exit or an application request (995)
+[10/11/23 23:34:37] [WARNING] Unknown gateway event 'GUILD_MEMBERS_CHUNK'
+[10/11/23 23:47:02] [WARNING] Unknown gateway event 'GUILD_MEMBERS_CHUNK'
+[10/11/23 23:47:09] [WARNING] Unknown gateway event 'GUILD_MEMBERS_CHUNK'
