@@ -18,6 +18,7 @@
 #include <easyDialog>
 #include <mSelection>
 #include <eInventory>
+#include <eInvCarHouse>
 #include <stamina>
 #include <YSF>
 #include <discord-connector>
@@ -53,9 +54,10 @@
 #include "./system/playerstatus.pwn"
 
 #include "./system/vehicle/vehicle_info.pwn"
+#include "./system/drug/drug.pwn"
 #include "./system/inventory/inventory.pwn"
 #include "./system/weapon/ammo.pwn"
-#include "./system/drug/drug.pwn"
+
 #include "./main/functions.pwn"
 
 
@@ -107,6 +109,7 @@ public OnGameModeInit()
 	DCC_SetBotActivity("RC:RPvn");
 	DCC_SetBotPresenceStatus(DO_NOT_DISTURB);
 	ShowNameTags(0);
+	DisableNameTagLOS();
 	print("Chuong trinh may chu dang duoc khoi dong, vui long cho doi....");
 	g_mysql_Init();
 	return 1;

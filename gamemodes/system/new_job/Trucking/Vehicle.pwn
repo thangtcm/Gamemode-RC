@@ -30,10 +30,10 @@ stock IsValidCarTrucker(playerid)
     return false;
 }
 
-stock GetPlayerCarID(playerid, pvSQLID)
+stock GetPlayerCarID(playerid, PlayerVehicleID) //SQL ID
 {
     for(new d = 0 ; d < MAX_PLAYERVEHICLES; d++)
-        if(PlayerVehicleInfo[playerid][d][pvSlotId] == pvSQLID)
+        if(PlayerVehicleInfo[playerid][d][pvSlotId] == PlayerVehicleID)
             return d;
     return -1;
 }
@@ -54,6 +54,7 @@ public VEHICLETRUCKER_LOAD(playerid)
         VehicleTruckerData[playerid][j][vtId] = -1;
         VehicleTruckerData[playerid][j][vtObject] = INVALID_OBJECT_ID;
         VehicleTruckerData[playerid][j][vtProductID] = -1;
+        VehicleTruckerData[playerid][j][vtFactoryID] = -1;
     }
 	new i, rows, fields, tmp[128], str[128];
 	cache_get_data(rows, fields, MainPipeline);
@@ -62,6 +63,7 @@ public VEHICLETRUCKER_LOAD(playerid)
 		cache_get_field_content(i, "vtId", tmp, MainPipeline); VehicleTruckerData[playerid][i][vtId] = strval(tmp);
 		cache_get_field_content(i, "vtSlotId", tmp, MainPipeline); VehicleTruckerData[playerid][i][vtSlotId] = strval(tmp);
 		cache_get_field_content(i, "vtProductID", tmp, MainPipeline); VehicleTruckerData[playerid][i][vtProductID] = strval(tmp);
+		cache_get_field_content(i, "vtFactoryID", tmp, MainPipeline); VehicleTruckerData[playerid][i][vtFactoryID] = strval(tmp);
         cache_get_field_content(i, "vtPos1", tmp, MainPipeline); VehicleTruckerData[playerid][i][vtPos][0] = floatstr(tmp);
         cache_get_field_content(i, "vtPos2", tmp, MainPipeline); VehicleTruckerData[playerid][i][vtPos][1] = floatstr(tmp);
         cache_get_field_content(i, "vtPos3", tmp, MainPipeline); VehicleTruckerData[playerid][i][vtPos][2] = floatstr(tmp);
@@ -82,9 +84,11 @@ stock VEHICLETRUCKER_UPDATE(playerid, index)
         format(string, sizeof(string), "UPDATE `vehicletrucker` SET \
         `vtSlotId`=%d, \
         `vtProductID`='%d', \
+        `vtFactoryID`='%d', \
         WHERE `vtId`=%d AND `vtPSQL`=%d",
         VehicleTruckerData[playerid][index][vtSlotId],
         VehicleTruckerData[playerid][index][vtProductID],
+        VehicleTruckerData[playerid][index][vtFactoryID],
         VehicleTruckerData[playerid][index][vtId],
         GetPlayerId
     );
@@ -112,6 +116,7 @@ stock VEHICLETRUCKER_ADD(playerid, vehicleid, modelid, pCarSlotID, ProductID, Fl
     VehicleTruckerData[playerid][index][vtPos][3] = ox,
     VehicleTruckerData[playerid][index][vtPos][4] = oy,
     VehicleTruckerData[playerid][index][vtPos][5] = oz,
+    VehicleTruckerData[playerid][index][vtFactoryID] = PlayerTruckerData[playerid][ClaimFactoryID];
 
     format(string, sizeof(string), "INSERT INTO `vehicletrucker` (`vtSlotId`, `vtProductID`, `vtPSQL`,`vtPos1`,`vtPos2`,`vtPos3`,`vtPos4`,`vtPos5`,`vtPos6`)\
 		VALUES ('%d', '%d', '%d', '%f', '%f', '%f', '%f', '%f', '%f')",  pCarSlotID, ProductID, GetPlayerId, x, y, z, ox, oy, oz);
@@ -139,6 +144,8 @@ stock VEHICLETRUCKER_DELETE(playerid, index)
     VehicleTruckerData[playerid][index][vtObject] = INVALID_OBJECT_ID;
     VehicleTruckerData[playerid][index][vtId] = -1;
     VehicleTruckerData[playerid][index][vtProductID] = -1;
+    PlayerTruckerData[playerid][ClaimFactoryID] = VehicleTruckerData[playerid][index][vtFactoryID];
+    VehicleTruckerData[playerid][index][vtFactoryID] = -1;
 	return 1;
 }
 

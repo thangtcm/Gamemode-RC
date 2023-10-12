@@ -687,10 +687,14 @@ public OnPlayerClickPlayerTextDraw(playerid, PlayerText:playertextid)
 #endif
 
 #define OnPlayerClickTextDraw MS_OnPlayerClickTextDraw
-#define OnPlayerClickPlayerTextDraw MS_OnPlayerClickPlayerTextDraw
+#if defined MS_OnPlayerClickTextDraw
+	forward MS_OnPlayerClickTextDraw(playerid, Text:clickedid);
+#endif
 
-forward MS_OnPlayerClickTextDraw(playerid, Text:clickedid);
-forward MS_OnPlayerClickPlayerTextDraw(playerid, PlayerText:playertextid);
+#define OnPlayerClickPlayerTextDraw MS_OnPlayerClickPlayerTextDraw
+#if defined MS_OnPlayerClickPlayerTextDraw
+	forward MS_OnPlayerClickPlayerTextDraw(playerid, PlayerText:playertextid);
+#endif
 
 forward OnModelSelectionResponseInv(playerid, extraid, index, modelid[], response);
 forward OnModelSelectionMenuInv(playerid, extraid, selectType, response);

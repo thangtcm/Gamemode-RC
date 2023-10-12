@@ -415,7 +415,6 @@ hook OnPlayerKeyStateChange(playerid, newkeys, oldkeys) {
             if(PlayerSeed[playerid][ps_OwnerID][j] != 0) {
         	    new i = PlayerSeed[playerid][ps_OwnerID][j];
         	    if(IsPlayerInRangeOfPoint(playerid, 1, seeds_info[i][s_pos][0] ,seeds_info[i][s_pos][1],seeds_info[i][s_pos][2])) {
-                    printf("alo 2");
                     SetPVarInt(playerid, "SelectCay", i);
                     new hastr[120];
                     format(hastr, sizeof(hastr), "Thao tac > {f9ef1e}%s{ffffff}({6dfd34}%d{ffffff})", getseed_name(seeds_info[i][s_Type]),i);

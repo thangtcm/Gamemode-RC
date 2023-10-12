@@ -41,14 +41,13 @@ Dialog:FARMER_MENU(playerid, response, listitem, inputtext[]){
 				SendClientTextDraw(playerid, "Ban da thay trang phuc hay bat dau lam viec");
 			}
 			case 4:{
-				printf("RUNN %d", GetPVarInt(playerid, #RangeFarm));
 				if(GetPVarInt(playerid, #RangeFarm) == 1)
 				{
 					Dialog_Show(playerid, BUYER_FARM_DIALOG, DIALOG_STYLE_INPUT, "Mua cay giong", "Nhap so luong", ">>", "<<");
 				}
 				else if(GetPVarInt(playerid, #RangeFarm) == 2)
 				{
-					Dialog_Show(playerid, BUYER_FARM_DIALOG, DIALOG_STYLE_INPUT, "Mua gia suc", "Bo\nNai", ">>", "<<");
+					Dialog_Show(playerid, BUYER_FARM_DIALOG, DIALOG_STYLE_LIST, "Mua gia suc", "Bo\nNai", ">>", "<<");
 				}
 				else SendFarmerJob(playerid, "ERROR FARM RANGE");
 			}

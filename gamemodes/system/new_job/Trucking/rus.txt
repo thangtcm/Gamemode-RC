@@ -1,11 +1,10 @@
-d:\Gamemode Samp\Gamemode-RC\gamemodes\system\new_job\Trucking\dialog.pwn(137) : èäåíòèôèêàòîð íå èñïîëüçóåòñÿ: "DIALOG_BUYPRODUCT"
-d:\Gamemode Samp\Gamemode-RC\gamemodes\system\new_job\Trucking\dialog.pwn(205) : èäåíòèôèêàòîð íå èñïîëüçóåòñÿ: "DIALOG_CARCLAIMPRODUCT"
-d:\Gamemode Samp\Gamemode-RC\gamemodes\system\new_job\Trucking\dialog.pwn(1) : èäåíòèôèêàòîð íå èñïîëüçóåòñÿ: "DIALOG_LISTFACTORY"
-d:\Gamemode Samp\Gamemode-RC\gamemodes\system\new_job\Trucking\dialog.pwn(167) : èäåíòèôèêàòîð íå èñïîëüçóåòñÿ: "DIALOG_SELLPRODUCT"
-d:\Gamemode Samp\Gamemode-RC\gamemodes\system\new_job\Trucking\dialog.pwn(78) : èäåíòèôèêàòîð íå èñïîëüçóåòñÿ: "DIALOG_SETPOINTFACTORY"
-d:\Gamemode Samp\Gamemode-RC\gamemodes\system\new_job\Trucking\dialog.pwn(89) : èäåíòèôèêàòîð íå èñïîëüçóåòñÿ: "DIALOG_STARTTRUCKER"
-d:\Gamemode Samp\Gamemode-RC\gamemodes\system\new_job\Trucking\dialog.pwn(36) : èäåíòèôèêàòîð íå èñïîëüçóåòñÿ: "DIALOG_SUGGESTFACTORY"
-d:\Gamemode Samp\Gamemode-RC\gamemodes\system\new_job\Trucking\dialog.pwn(36) -- (230) : îøèáêà 013: îòñóòñòâóåò òî÷êà âõîäà (íåò public-ôóíêöèé)
+d:\Gamemode Samp\Gamemode-RC\gamemodes\system\new_job\Trucking\cmd.pwn(8) : èäåíòèôèêàòîð íå èñïîëüçóåòñÿ: "cuophang"
+d:\Gamemode Samp\Gamemode-RC\gamemodes\system\new_job\Trucking\cmd.pwn(46) : èäåíòèôèêàòîð íå èñïîëüçóåòñÿ: "goiygiaohang"
+d:\Gamemode Samp\Gamemode-RC\gamemodes\system\new_job\Trucking\cmd.pwn(39) : èäåíòèôèêàòîð íå èñïîëüçóåòñÿ: "goiynhamay"
+d:\Gamemode Samp\Gamemode-RC\gamemodes\system\new_job\Trucking\cmd.pwn(235) : èäåíòèôèêàòîð íå èñïîëüçóåòñÿ: "setnameinquery"
+d:\Gamemode Samp\Gamemode-RC\gamemodes\system\new_job\Trucking\cmd.pwn(2) : èäåíòèôèêàòîð íå èñïîëüçóåòñÿ: "thongtinnhamay"
+d:\Gamemode Samp\Gamemode-RC\gamemodes\system\new_job\Trucking\cmd.pwn(79) : èäåíòèôèêàòîð íå èñïîëüçóåòñÿ: "truckergo"
+d:\Gamemode Samp\Gamemode-RC\gamemodes\system\new_job\Trucking\cmd.pwn(79) -- (241) : îøèáêà 013: îòñóòñòâóåò òî÷êà âõîäà (íåò public-ôóíêöèé)
 Pawn compiler 3.2.3664	 	 	Copyright (c) 1997-2016, ITB CompuPhase
 
 
