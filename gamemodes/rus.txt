@@ -1,0 +1,16 @@
+./system/inventory/inventory.pwn(1079) : èäåíòèôèêàòîðó ïðèñâîåíî çíà÷åíèå, íî îí íå èñïîëüçóåòñÿ: "str"
+./system/gps_system.pwn(87) : èäåíòèôèêàòîðó ïðèñâîåíî çíà÷åíèå, íî îí íå èñïîëüçóåòñÿ: "string"
+./system/gps_system.pwn(87) : èäåíòèôèêàòîðó ïðèñâîåíî çíà÷åíèå, íî îí íå èñïîëüçóåòñÿ: "wepget"
+./main/command.pwn(18081) : èäåíòèôèêàòîðó ïðèñâîåíî çíà÷åíèå, íî îí íå èñïîëüçóåòñÿ: "code"
+./main/command.pwn(18120) : èäåíòèôèêàòîðó ïðèñâîåíî çíà÷åíèå, íî îí íå èñïîëüçóåòñÿ: "code"
+./main/command.pwn(50939) : èäåíòèôèêàòîðó ïðèñâîåíî çíà÷åíèå, íî îí íå èñïîëüçóåòñÿ: "pmne"
+./main/_funcs.pwn(5997) : èäåíòèôèêàòîðó ïðèñâîåíî çíà÷åíèå, íî îí íå èñïîëüçóåòñÿ: "str"
+./main/mysql.pwn(24) : íåïðàâèëüíàÿ òàáóëÿöèÿ
+./system/new_job/Trucking/Vehicle.pwn(59) : èäåíòèôèêàòîðó ïðèñâîåíî çíà÷åíèå, íî îí íå èñïîëüçóåòñÿ: "str"
+./system/new_job/Trucking/Vehicle.pwn(152) : èäåíòèôèêàòîð íå èñïîëüçóåòñÿ: "pCarSlotID"
+./system/new_job/Trucking/func.pwn(188) : èäåíòèôèêàòîðó ïðèñâîåíî çíà÷åíèå, íî îí íå èñïîëüçóåòñÿ: "arr"
+./system/drug/drug.pwn(12) : èäåíòèôèêàòîð íå èñïîëüçóåòñÿ: "DrugTypeName"
+d:\Gamemode Samp\UP GM\Gamemode-RC\gamemodes\lsrpvn.pwn(1620) : èäåíòèôèêàòîð íå èñïîëüçóåòñÿ: "GetXYInFrontOfVehicle"
+./system/new_job/Trucking/setting.pwn(34) : èäåíòèôèêàòîð íå èñïîëüçóåòñÿ: "UnitType"
+Pawn compiler 3.2.3664	 	 	Copyright (c) 1997-2016, ITB CompuPhase
+
