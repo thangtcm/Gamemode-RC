@@ -1,0 +1,5 @@
+[10/10/23 20:10:11] [plugins/discord-connector] Error while retrieving HTTP POST response from '/api/v10/channels/1158001303033757716/messages': end of stream
+[10/10/23 20:49:20] [plugins/discord-connector] Error while retrieving HTTP POST response from '/api/v10/channels/1157993235776557156/messages': end of stream
+[10/10/23 21:37:00] [plugins/discord-connector] Can't write to Discord websocket gateway: The I/O operation has been aborted because of either a thread exit or an application request (995)
+[10/10/23 21:37:01] [plugins/discord-connector] Error while retrieving HTTP GET response from '/api/oauth2/applications/@me': end of stream
+[10/10/23 21:56:25] [plugins/discord-connector] Error while retrieving HTTP POST response from '/api/v10/channels/1157993235776557156/messages': end of stream

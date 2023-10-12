@@ -1902,6 +1902,8 @@ public OnPlayerDisconnect(playerid, reason)
 		DestroyDynamicObject(PlayerInfo[playerid][pObjHop]);
 	}
 	KillTimer(DownEDS[playerid]);
+	KillTimer(DownPHP[playerid]);
+	KillTimer(DownS[playerid]);
     Delete3DTextLabel(PlayerInfo[playerid][HopText]);
     PlayerInfo[playerid][pTraiCam] = 0;
     PlayerInfo[playerid][pTraiCamHop] = 0;
@@ -8955,23 +8957,25 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
         case DIALOG_HELP: {
     	    switch(listitem) {
     		    case 0:  {
-    		    	ShowPlayerDialog(playerid, DIALOG_NOTHING, DIALOG_STYLE_MSGBOX, "Tro giup - General", "\\c/newb- Dat cau hoi cho helper\n\
-    		    	\\c/yeucautrogiup - Yeu cau su ho tro cua Advisor\n\
-    		    	\\c/GPS - Dung de tim vi tri, viec lam, dia diem \n\
-       		    	\\c/my inventory - De bat tui do\n\
-       		    	\\c/my car - De xem kho xe \n\
-       		    	\\c/my stats - xem thong tin co ban \n\
-       		    	\\c/my item - de xem cac vat pham khac ngoai tui do \n\
-       		    	\\c/baocao - de gui bao cao den Admin\n\
-       		    	\\c/phone - Dung de mo giao dien dien thoai", "Dong", "");
+    		    	ShowPlayerDialog(playerid, DIALOG_NOTHING, DIALOG_STYLE_MSGBOX, "Tro giup - General", "\\c/newb- Dat cau hoi cho QTV.\n\
+    		    	\\c/newb- Dat cau hoi cho QTV.\n\
+    		    	\\c/yeucautrogiup - Yeu cau su tro giup cua QTV.\n\
+    		    	\\c/GPS - Tim vi tri cac diem quan trong tai thi tran.\n\
+       		    	\\c/inv - Dung de mo tui do. \n\
+       		    	\\c/baocao - De gui bao cao vi pham luat den QTV.\n\
+       		    	\\c/phone - De su dung dien thoai", "Dong", "");
        		    }
     	        case 1: {
-    	        	ShowPlayerDialog(playerid, DIALOG_NOTHING, DIALOG_STYLE_MSGBOX, "Tro giup - Cong viec", "\\c/GPS > Tim cong viec - de tim dia diem lam viec\n\
-    	        		\\c/pizza - De thao tac cong viec Pizza\n\
-    	        		\\c/truck - De thao tac cong viec Pizza\n\
-    	        		\\c/chatgo - De thao tac cong viec Pizza\n\
-    	        		\\c/ngudan - De mua dung cu danh ca\n\
-    	        		\\c/jobhelp de xem toan bo lenh cua cong viec", "Dong", "");
+    	        	ShowPlayerDialog(playerid, DIALOG_NOTHING, DIALOG_STYLE_MSGBOX, "Tro giup - Cong viec", "\\cTrucker\n\
+    	        		\\c/truckergo mission, car, ship. /truckergo Buy/sell.\n\
+    	        		\\cBam 'N' de boc va go hang.\n\
+    	        		\\cFarmer\n\
+    	        		\\c/farmer /farm.\n\
+    	        		\\cMiner\n\
+    	        		\\cMua Pickaxe tai NPC va an 'Y' de dao da.\n\
+    	        		\\cNeu muon ban hay tim nguoi thu mua tai Palomino Creek hoac giu lai de che tao.\n\
+    	        		\\cHai trai cay\n\
+    	        		\\cABC", "Dong", "");
                 }
                 case 2: ShowPlayerDialog(playerid, DIALOG_NOTHING, DIALOG_STYLE_MSGBOX, "Tro giup - House/Door/Biz", "Bam Alt de ra vao door/house/biz\n/muanha /muabiz /muahouse de mua house door biz\n/househelp de xem lenh cua house\n/bhelp de xem toan bo lenh Biz", "Dong", "");
     	        case 3: {
@@ -8985,6 +8989,19 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
     	        		\\c/carhelp de xem toan bo lenh cua phuong tien", "Dong", "");
     	        }
     	        case 4: ShowPlayerDialog(playerid, DIALOG_NOTHING, DIALOG_STYLE_MSGBOX, "Tro giup - Ngan hang", "/bank de tuong tac ngan hang\nGioi thieu he thong: he thong chuyen tien bang STK ngay ca khi nguoi choi OFFLINE, hay nhap stk cua nguoi ban can chuyen va giao dich", "Dong", "");
+    	    	case 5:
+    	    	{
+    	        	ShowPlayerDialog(playerid, DIALOG_NOTHING, DIALOG_STYLE_MSGBOX, "Tro giup - Toy", "De mua trang bi! Hay den cua hang quan ao va go {AA3333}/buytoys\n\
+    	        		\\cDe mac,thao hoac xoa! Ban co the su dung lenh {AA3333}/toys\n\
+    	        		\\cDe mat tat ca trang bi mot cach nhanh chong, go {AA3333}/wat\n\
+    	        		\\cDe thao tat ca trang bi mot cach nhanh chong, go {AA3333}/dat\n\
+    	        		\\cDe chon mot trang bi nao do nhanh hon, go {AA3333}/wt [toyslot]\n\
+    	        		\\cDe thao mot trang bi nao do nhanh hon, go {AA3333}/dt [toyslot]", "Dong", "");
+    	    	}
+    	    	case 6:
+    	    	{
+    	    		Dialog_Show(playerid, DialogHelpFac, DIALOG_STYLE_LIST, "Tro giup - Faction", "Canh sat\nBac si\nFaction Illegal", "Lua chon", "Huy bo");
+    	    	}
     	    }
         }
     	case DANGKYBANK: {
@@ -24877,6 +24894,38 @@ Dialog:AmmoCop(playerid, response, listitem, inputtext[])
 		}
 		SendLogToDiscordRoom("[MDC-Police] Ammo log" ,"1157912890410541167", "Name", GetPlayerNameEx(playerid), "Rank", PlayerInfo[playerid][pRankText], "Ammo", wepget, 0x227f99);
 		SendLogToDiscordRoom("[MDC-Police] Ammo log" , "1157957903874007111", "Name", GetPlayerNameEx(playerid), "Rank", PlayerInfo[playerid][pRankText], "Ammo", wepget, 0x227f99);
+	}
+	return 1;
+}
+
+Dialog:DialogHelpFac(playerid, response, listitem, inputtext[])
+{
+	if(response)
+	{
+		switch(listitem)
+		{
+			case 0:
+			{
+    	        	ShowPlayerDialog(playerid, DIALOG_NOTHING, DIALOG_STYLE_MSGBOX, "Tro giup - Canh sat", "(/r)adio /dept (/m)egaphone (/su)spect /locker /mdc /dualenxe /batgiam /warrantarrest /wanted /cuff /tazer\n\
+    	        		\\c/bug /listbugs /clearbugs /hfind\n\
+    	        		\\c/flares /cones /wants /batgiam /siren /destroyplant /radargun /searchcar /dvsiren /vradar\n\
+    	        		\\c/spikes /tichthubanglai /vcheck /vmdc /vticket /tow /untow /impound /dmvrelease /gdonate /togradio /togdept\n\
+    	        		\\c/lucsoat /take /ticket (/gov)ernment /clothes /ram /invite /giverank /deploy /destroy /pddoor /pdcell\n\
+    	        		\\c/loadkit /usekit /backup (code2) /backupall /calls /a(ccept)c(all) /i(gnore)c(all)\n\
+    	        		\\c/handcuff /handcuff1 /handcuff2 /unhandcuff /beanbag /khongche /bp1 /bp2 /nbp", "Dong", "");
+			}
+			case 1:
+			{
+    	        	ShowPlayerDialog(playerid, DIALOG_NOTHING, DIALOG_STYLE_MSGBOX, "Tro giup - Bac si", "(/r)adio /dept (/m)egaphone /heal /clothes /invite /giverank /tudo /gdonate\n\
+    	        		\\c/getpt /movept /loadpt /deliverpt /destroyplant /calls /a(ccept)c(all) /i(gnore)c(all)", "Dong", "");
+			}
+			case 2:
+			{
+    	        	ShowPlayerDialog(playerid, DIALOG_NOTHING, DIALOG_STYLE_MSGBOX, "Tro giup - Canh sat", "/invite /uninvite /ouninvite /setdiv /giverank /online\n\
+    	        		\\c/viewbudget /grepocars /gvbuyback /gdonate /ordercrates /dvtrackcar /gwithdraw, /dvstorage\n\
+    	        		\\c/setranktext", "Dong", "");
+			}
+		}
 	}
 	return 1;
 }

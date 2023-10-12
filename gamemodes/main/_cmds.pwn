@@ -1259,7 +1259,6 @@ stock JoinGame(playerid) {
         ClearChatbox(playerid);
         SendClientMessageEx(playerid,COLOR_VANG,"Chao mung ban da den voi may chu RC-RP.");
       //  SendClientMessageEx(playerid,COLOR_VANG,"(HUONG DAN) Hay di vao Market tim cua hang dien tu mua mot cai GPS nhe.");
-        SetPlayerCheckpoint(playerid, 1836.0756,-1862.5111,13.3828, 3);
 		return 1;
 }
 CMD:vwcuatao(playerid, params[]) {
@@ -1526,7 +1525,7 @@ CMD:xemthue(playerid, params[]) {
 CMD:phone(playerid,params[]) return ShowPlayerDialog(playerid, DIALOG_PHONE, DIALOG_STYLE_LIST, "Phone - Main", "Goi dien\nNhan tin\nLog SMS\nDanh ba\nChuyen tien", "Chon", "Huy bo");
 CMD:dangkycmnd(playerid,params[]) {
     new string[129];
-    if(!IsPlayerInRangeOfPoint(playerid, 5, 1873.1696,2670.3745,3.5894)) return SendErrorMessage(playerid," Ban khong o gan city hall khong the dang ky CMND.");
+    if(!IsPlayerInRangeOfPoint(playerid, 5, -1872.7721,2671.1101,3.5904)) return SendErrorMessage(playerid," Ban khong o gan city hall khong the dang ky CMND.");
     if(PlayerInfo[playerid][pCMND] < 10) {
         new cmnd;
         cmnd = 10000000 + random(99999999);
