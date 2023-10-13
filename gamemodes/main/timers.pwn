@@ -1070,7 +1070,7 @@ task ServerHeartbeat[1000]() {
 					PlayerInfo[i][pInt] = 0;
 					SetPlayerVirtualWorld(i, 0);
 					PlayerInfo[i][pVW] = 0;
-					SetPlayerPos(i, -2047.3228, -89.7949, 35.1641);
+					SetPlayerPos(i, 631.7688,-571.7535,16.3359);
 				}
 				else
 				{
@@ -1078,7 +1078,7 @@ task ServerHeartbeat[1000]() {
 					PlayerInfo[i][pInt] = 0;
 					SetPlayerVirtualWorld(i, 0);
 					PlayerInfo[i][pVW] = 0;
-	    			SetPlayerPos(i, -2047.3228, -89.7949, 35.1641);
+	    			SetPlayerPos(i, 1224.6759,244.8446,19.5547);
 				}
 				SetPlayerHealth(i, 100);
 				PlayerInfo[i][pJailTime] = 0;

@@ -5837,7 +5837,7 @@ CMD:trogiup(playerid, params[]) {
 	return cmd_help(playerid, params);
 }
 CMD:help(playerid,params[]) {
-	ShowPlayerDialog(playerid, DIALOG_HELP, DIALOG_STYLE_LIST, "Ban can ho tro gi?", "General\nJob\nHouse/Door/Bizz\nVehicles\nBank", "Chon", "huy bo");
+	ShowPlayerDialog(playerid, DIALOG_HELP, DIALOG_STYLE_LIST, "Ban can ho tro gi?", "Chung\nJob\nHouse/Door/Bizz\nVehicles\nBank\nToy\nGroup", "Chon", "huy bo");
     return 1;
 }
 /*
@@ -7144,21 +7144,80 @@ CMD:goto(playerid, params[])
 		 	if (GetPlayerState(playerid) == 2)
 			{
 				new tmpcar = GetPlayerVehicleID(playerid);
-				SetVehiclePos(tmpcar, 1253.70, 343.73, 19.41);
+				SetVehiclePos(tmpcar, 1289.2391,248.9346,19.4063);
 				LinkVehicleToInterior(tmpcar, 0);
 				SetVehicleVirtualWorld(tmpcar, 0);
 				fVehSpeed[playerid] = 0.0;
 			}
 			else
 			{
-				SetPlayerPos(playerid, 1253.70, 343.73, 19.41);
+				SetPlayerPos(playerid, 1289.2391,248.9346,19.4063);
 			}
 			SendServerMessage(playerid, "    Ban da duoc dich chuyen!");
 			SetPlayerInterior(playerid,0);
 			PlayerInfo[playerid][pInt] = 0;
 			SetPlayerVirtualWorld(playerid, 0);
 			PlayerInfo[playerid][pVW] = 0;
-
+   		}
+  		else if(strcmp(params,"bb",true) == 0)
+		{
+		 	if (GetPlayerState(playerid) == 2)
+			{
+				new tmpcar = GetPlayerVehicleID(playerid);
+				SetVehiclePos(tmpcar, 233.1081,-211.2786,1.4300);
+				LinkVehicleToInterior(tmpcar, 0);
+				SetVehicleVirtualWorld(tmpcar, 0);
+				fVehSpeed[playerid] = 0.0;
+			}
+			else
+			{
+				SetPlayerPos(playerid, 233.1081,-211.2786,1.4300);
+			}
+			SendServerMessage(playerid, "    Ban da duoc dich chuyen!");
+			SetPlayerInterior(playerid,0);
+			PlayerInfo[playerid][pInt] = 0;
+			SetPlayerVirtualWorld(playerid, 0);
+			PlayerInfo[playerid][pVW] = 0;
+   		}
+  		else if(strcmp(params,"dm",true) == 0)
+		{
+		 	if (GetPlayerState(playerid) == 2)
+			{
+				new tmpcar = GetPlayerVehicleID(playerid);
+				SetVehiclePos(tmpcar, 682.8105,-529.9641,16.1883);
+				LinkVehicleToInterior(tmpcar, 0);
+				SetVehicleVirtualWorld(tmpcar, 0);
+				fVehSpeed[playerid] = 0.0;
+			}
+			else
+			{
+				SetPlayerPos(playerid, 682.8105,-529.9641,16.1883);
+			}
+			SendServerMessage(playerid, "    Ban da duoc dich chuyen!");
+			SetPlayerInterior(playerid,0);
+			PlayerInfo[playerid][pInt] = 0;
+			SetPlayerVirtualWorld(playerid, 0);
+			PlayerInfo[playerid][pVW] = 0;
+   		}
+  		else if(strcmp(params,"pc",true) == 0)
+		{
+		 	if (GetPlayerState(playerid) == 2)
+			{
+				new tmpcar = GetPlayerVehicleID(playerid);
+				SetVehiclePos(tmpcar, 2343.8049,90.8922,26.3327);
+				LinkVehicleToInterior(tmpcar, 0);
+				SetVehicleVirtualWorld(tmpcar, 0);
+				fVehSpeed[playerid] = 0.0;
+			}
+			else
+			{
+				SetPlayerPos(playerid, 2343.8049,90.8922,26.3327);
+			}
+			SendServerMessage(playerid, "    Ban da duoc dich chuyen!");
+			SetPlayerInterior(playerid,0);
+			PlayerInfo[playerid][pInt] = 0;
+			SetPlayerVirtualWorld(playerid, 0);
+			PlayerInfo[playerid][pVW] = 0;
    		}
      	else if(strcmp(params,"lsvip",true) == 0)
 		{
@@ -50908,5 +50967,10 @@ CMD:setranktext(playerid, params[])
 		}
 	}
 	else SendServerMessage(playerid, " Ban khong the su dung lenh nay.");
+	return 1;
+}
+CMD:testeat(playerid, params[])
+{
+	PlayerInfo[playerid][pEat] = 26;
 	return 1;
 }
