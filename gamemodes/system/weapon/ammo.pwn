@@ -205,79 +205,178 @@ hook OnPlayerWeaponShot(playerid, weaponid, hittype, hitid, Float:fX, Float:fY, 
 }
 
 
-stock GivePlayerValidWeapon( playerid, WeaponID, Ammo )
+stock GivePlayerValidWeapon( playerid, WeaponID, Ammo, IsAS = false)
 {
     #if defined zombiemode
    	if(zombieevent == 1 && GetPVarType(playerid, "pIsZombie")) return SendClientMessageEx(playerid, COLOR_GREY, "Zombies can't have guns.");
 	#endif
+	if(IsAS)
+	{
+		switch( WeaponID )
+		{
+			case 0, 1:
+			{
+				PlayerInfo[playerid][PASGuns][ 0 ] = WeaponID;
+				PlayerInfo[playerid][pGuns][ 0 ] = 0;
+				GivePlayerWeapon( playerid, WeaponID, Ammo );
+			}
+			case 2, 3, 4, 5, 6, 7, 8, 9:
+			{
+				PlayerInfo[playerid][PASGuns][ 1 ] = WeaponID;
+				PlayerInfo[playerid][pGuns][ 1 ] = 0;
+				GivePlayerWeapon( playerid, WeaponID, Ammo );
+			}
+			case 22, 23, 24:
+			{
+				PlayerInfo[playerid][PASGuns][ 2 ] = WeaponID;
+				PlayerAmmo[playerid][ 1 ] = Ammo;
+				PlayerInfo[playerid][pGuns][ 2 ] = 0;
+				GivePlayerWeapon( playerid, WeaponID, Ammo );
+			}
+			case 25, 26, 27:
+			{
+				PlayerInfo[playerid][PASGuns][ 3 ] = WeaponID;
+				PlayerAmmo[playerid][ 2 ] = Ammo;
+				PlayerInfo[playerid][pGuns][ 3 ] = 0;
+				GivePlayerWeapon( playerid, WeaponID, Ammo );
+			}
+			case 28, 29, 32:
+			{
+				PlayerInfo[playerid][PASGuns][ 4 ] = WeaponID;
+				PlayerAmmo[playerid][ 3 ] = Ammo;
+				PlayerInfo[playerid][pGuns][ 4 ] = 0;
+				GivePlayerWeapon( playerid, WeaponID, Ammo );
+			}
+			case 30, 31:
+			{
+				PlayerInfo[playerid][PASGuns][ 5 ] = WeaponID;
+				PlayerInfo[playerid][pGuns][ 5 ] = 0;
+				PlayerAmmo[playerid][ 4 ] = Ammo;
+				GivePlayerWeapon( playerid, WeaponID, Ammo );
+			}
+			case 33, 34:
+			{
+				PlayerInfo[playerid][PASGuns][ 6 ] = WeaponID;
+				PlayerInfo[playerid][pGuns][ 6 ] = 0;
+				PlayerAmmo[playerid][ 5 ] = Ammo;
+				GivePlayerWeapon( playerid, WeaponID, Ammo );
+			}
+			case 35, 36, 37, 38:
+			{
+				PlayerInfo[playerid][PASGuns][ 7 ] = WeaponID;
+				PlayerInfo[playerid][pGuns][ 7 ] = 0;
+				PlayerAmmo[playerid][ 6 ] = Ammo;
+				GivePlayerWeapon( playerid, WeaponID, Ammo );
+			}
+			case 16, 17, 18, 39, 40:
+			{
+				PlayerInfo[playerid][PASGuns][ 8 ] = WeaponID;
+				PlayerInfo[playerid][pGuns][ 8 ] = 0;
+				PlayerAmmo[playerid][ 7 ] = Ammo;
+				GivePlayerWeapon( playerid, WeaponID, Ammo );
+			}
+			case 41, 42, 43:
+			{
+				PlayerInfo[playerid][PASGuns][ 9 ] = WeaponID;
+				PlayerInfo[playerid][pGuns][ 9 ] = 0;
+				PlayerAmmo[playerid][ 8 ] = Ammo;
+				GivePlayerWeapon( playerid, WeaponID, Ammo );
+			}
+			case 10, 11, 12, 13, 14, 15:
+			{
+				PlayerInfo[playerid][PASGuns][ 10 ] = WeaponID;
+				PlayerInfo[playerid][pGuns][ 10 ] = 0;
+				GivePlayerWeapon( playerid, WeaponID, Ammo );
+			}
+			case 44, 45, 46:
+			{
+				PlayerInfo[playerid][PASGuns][ 11 ] = WeaponID;
+				PlayerInfo[playerid][pGuns][ 11 ] = 0;
+				GivePlayerWeapon( playerid, WeaponID, Ammo );
+			}
+		}
+		return 1;
+	}
 	switch( WeaponID )
 	{
   		case 0, 1:
 		{
 			PlayerInfo[playerid][pGuns][ 0 ] = WeaponID;
+			PlayerInfo[playerid][PASGuns][ 0 ] = 0;
 			GivePlayerWeapon( playerid, WeaponID, Ammo );
 		}
 		case 2, 3, 4, 5, 6, 7, 8, 9:
 		{
 			PlayerInfo[playerid][pGuns][ 1 ] = WeaponID;
+			PlayerInfo[playerid][PASGuns][ 1 ] = 0;
 			GivePlayerWeapon( playerid, WeaponID, Ammo );
 		}
 		case 22, 23, 24:
 		{
 			PlayerInfo[playerid][pGuns][ 2 ] = WeaponID;
+			PlayerInfo[playerid][PASGuns][ 2 ] = 0;
 			PlayerAmmo[playerid][ 1 ] = Ammo;
 			GivePlayerWeapon( playerid, WeaponID, Ammo );
 		}
 		case 25, 26, 27:
 		{
 			PlayerInfo[playerid][pGuns][ 3 ] = WeaponID;
+			PlayerInfo[playerid][PASGuns][ 3 ] = 0;
 			PlayerAmmo[playerid][ 2 ] = Ammo;
 			GivePlayerWeapon( playerid, WeaponID, Ammo );
 		}
 		case 28, 29, 32:
 		{
 			PlayerInfo[playerid][pGuns][ 4 ] = WeaponID;
+			PlayerInfo[playerid][PASGuns][ 4 ] = 0;
 			PlayerAmmo[playerid][ 3 ] = Ammo;
 			GivePlayerWeapon( playerid, WeaponID, Ammo );
 		}
 		case 30, 31:
 		{
 			PlayerInfo[playerid][pGuns][ 5 ] = WeaponID;
+			PlayerInfo[playerid][PASGuns][ 5 ] = 0;
 		    PlayerAmmo[playerid][ 4 ] = Ammo;
 			GivePlayerWeapon( playerid, WeaponID, Ammo );
 		}
 		case 33, 34:
 		{
 			PlayerInfo[playerid][pGuns][ 6 ] = WeaponID;
+			PlayerInfo[playerid][PASGuns][ 6 ] = 0;
 			PlayerAmmo[playerid][ 5 ] = Ammo;
 			GivePlayerWeapon( playerid, WeaponID, Ammo );
 		}
 		case 35, 36, 37, 38:
 		{
 			PlayerInfo[playerid][pGuns][ 7 ] = WeaponID;
+			PlayerInfo[playerid][PASGuns][ 7 ] = 0;
 			PlayerAmmo[playerid][ 6 ] = Ammo;
 			GivePlayerWeapon( playerid, WeaponID, Ammo );
 		}
 		case 16, 17, 18, 39, 40:
 		{
 			PlayerInfo[playerid][pGuns][ 8 ] = WeaponID;
+			PlayerInfo[playerid][PASGuns][ 8 ] = 0;
 			PlayerAmmo[playerid][ 7 ] = Ammo;
 			GivePlayerWeapon( playerid, WeaponID, Ammo );
 		}
 		case 41, 42, 43:
 		{
 			PlayerInfo[playerid][pGuns][ 9 ] = WeaponID;
+			PlayerInfo[playerid][PASGuns][ 9 ] = 0;
 			PlayerAmmo[playerid][ 8 ] = Ammo;
 			GivePlayerWeapon( playerid, WeaponID, Ammo );
 		}
 		case 10, 11, 12, 13, 14, 15:
 		{
 			PlayerInfo[playerid][pGuns][ 10 ] = WeaponID;
+			PlayerInfo[playerid][PASGuns][ 10 ] = 0;
 			GivePlayerWeapon( playerid, WeaponID, Ammo );
 		}
 		case 44, 45, 46:
 		{
 			PlayerInfo[playerid][pGuns][ 11 ] = WeaponID;
+			PlayerInfo[playerid][PASGuns][ 11 ] = 0;
 			GivePlayerWeapon( playerid, WeaponID, Ammo );
 		}
 	}

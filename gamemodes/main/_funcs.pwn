@@ -1429,6 +1429,7 @@ public OnPlayerEnterVehicle(playerid, vehicleid, ispassenger)
 }
 
 public OnPlayerConnect(playerid) {
+	DownS[playerid] = false;
 	TogglePlayerSpectating(playerid, true);
 	SetTimerEx("TimeUseMed", 60000, 0, "d", playerid);
 	SetTimerEx("TimeCraftMed", 60000, 0, "d", playerid);
@@ -1898,13 +1899,8 @@ public OnPlayerConnect(playerid) {
 
 public OnPlayerDisconnect(playerid, reason)
 {
+	printf("0");
 	KillTimer(DownEDS[playerid]);
-<<<<<<< HEAD
-=======
-	KillTimer(DownPHP[playerid]);
-	KillTimer(DownS[playerid]);
-	RemovePlayerAttachedObject(playerid, 1);
->>>>>>> main
     if(!isnull(unbanip[playerid]))
 	{
 	    new string[26];

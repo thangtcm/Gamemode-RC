@@ -240,22 +240,13 @@ public StartDownEatDrinkStrong(playerid)
 			PlayerInfo[playerid][pDrink]--;
 		}
 	}
-	return 1;
-}
-
-forward DownStrong(playerid);
-public DownStrong(playerid)
-{
-	if(PlayerInfo[playerid][pStrong] > 1)
+	if(PlayerInfo[playerid][pStrong] > 1 && DownS[playerid])
 	{
 		PlayerInfo[playerid][pStrong]--;
+		DownS[playerid] = false;
 	}
-	else return SendClientMessage(playerid, COLOR_LIGHTRED, "[SERVER] {ffffff}Ban da bi kiet suc, khong the di lam hay an uong gi do");
-	return 1;
-}
-forward DownHP(playerid);
-public DownHP(playerid)
-{
+	else SendClientMessage(playerid, COLOR_LIGHTRED, "[SERVER] {ffffff}Ban da bi kiet suc, khong the di lam hay an uong gi do");
+	DownS[playerid] = true;
 	if(GetPVarInt(playerid, "Injured") == 0)
 	{
 		if(PlayerInfo[playerid][pEat] >= 10 && PlayerInfo[playerid][pEat] <= 25)
@@ -288,6 +279,7 @@ public DownHP(playerid)
 				SendClientMessage(playerid, COLOR_REALRED, "[SERVER] {ffffff}Ban da chet vi doi bung.");
 			}
 		}
+		//
 		if(PlayerInfo[playerid][pDrink] >= 10 && PlayerInfo[playerid][pDrink] <= 25)
 		{
 			new Float: hpz;

@@ -794,7 +794,7 @@ public OnPlayerUseItem(playerid, pItemId, name[])
 		new weapon_g,ammos_g;
 		GetPlayerWeaponData(playerid, 2, weapon_g, ammos_g);
         if(weapon_g == 22 || weapon_g == 23 || weapon_g == 24) return SendClientMessage(playerid,-1,"Ban da trang bi mot loai vu khi tuong tu.");
-        GivePlayerValidWeapon(playerid, 24, 1);
+        GivePlayerValidWeapon(playerid, 24, 1, true);
         SendClientTextDraw(playerid, "Ban da trang bi thanh cong vu khi ~r~Deagle~w~ voi ~r~1 vien dan");
         Inventory_Remove(playerid, pItemId, 1);
 	}
@@ -812,7 +812,7 @@ public OnPlayerUseItem(playerid, pItemId, name[])
 		new weapon_g,ammos_g;
 		GetPlayerWeaponData(playerid, 3, weapon_g, ammos_g);
         if(weapon_g == 25 || weapon_g == 26 || weapon_g == 27) return SendClientMessage(playerid,-1,"Ban da trang bi mot loai vu khi tuong tu.");
-        GivePlayerValidWeapon(playerid, 27, 1);
+        GivePlayerValidWeapon(playerid, 27, 1, true);
         SendClientTextDraw(playerid, "Ban da trang bi thanh cong vu khi ~r~Spas-12~w~ voi ~r~1 vien dan");
         Inventory_Remove(playerid, pItemId, 1);
 	}
@@ -830,7 +830,7 @@ public OnPlayerUseItem(playerid, pItemId, name[])
 		new weapon_g,ammos_g;
 		GetPlayerWeaponData(playerid, 3, weapon_g, ammos_g);
         if(weapon_g == 25 || weapon_g == 26 || weapon_g == 27) return SendClientMessage(playerid,-1,"Ban da trang bi mot loai vu khi tuong tu.");
-        GivePlayerValidWeapon(playerid, 25, 1);
+        GivePlayerValidWeapon(playerid, 25, 1, true);
         SendClientTextDraw(playerid, "Ban da trang bi thanh cong vu khi ~r~Shotgun~w~ voi ~r~1 vien dan");
         Inventory_Remove(playerid, pItemId, 1);
 	}
@@ -848,7 +848,7 @@ public OnPlayerUseItem(playerid, pItemId, name[])
 		new weapon_g,ammos_g;
 		GetPlayerWeaponData(playerid, 4, weapon_g, ammos_g);
         if(weapon_g == 29 ) return SendClientMessage(playerid,-1,"Ban da trang bi mot loai vu khi tuong tu.");
-        GivePlayerValidWeapon(playerid, 29, 1);
+        GivePlayerValidWeapon(playerid, 29, 1, true);
         SendClientTextDraw(playerid, "Ban da trang bi thanh cong vu khi ~r~MP5~w~ voi ~r~1 vien dan");
         Inventory_Remove(playerid, pItemId, 1);
 	}
@@ -875,7 +875,7 @@ public OnPlayerUseItem(playerid, pItemId, name[])
 		new weapon_g,ammos_g;
 		GetPlayerWeaponData(playerid, 5, weapon_g, ammos_g);
         if(weapon_g == 30 || weapon_g == 31) return SendClientMessage(playerid,-1,"Ban da trang bi mot loai vu khi tuong tu.");
-        GivePlayerValidWeapon(playerid, 31, 1);
+        GivePlayerValidWeapon(playerid, 31, 1, true);
         SendClientTextDraw(playerid, "Ban da trang bi thanh cong vu khi ~r~M4~w~ voi ~r~1 vien dan");
         Inventory_Remove(playerid, pItemId, 1);
 	}
@@ -893,7 +893,7 @@ public OnPlayerUseItem(playerid, pItemId, name[])
 		new weapon_g,ammos_g;
 		GetPlayerWeaponData(playerid, 6, weapon_g, ammos_g);
         if(weapon_g == 34 ) return SendClientMessage(playerid,-1,"Ban da trang bi mot loai vu khi tuong tu.");
-        GivePlayerValidWeapon(playerid, 34, 1);
+        GivePlayerValidWeapon(playerid, 34, 1, true);
         SendClientTextDraw(playerid, "Ban da trang bi thanh cong vu khi ~r~Sniper~w~ voi ~r~1 vien dan");
         Inventory_Remove(playerid, pItemId, 1);
 	}
@@ -902,7 +902,7 @@ public OnPlayerUseItem(playerid, pItemId, name[])
 		new weapon_g,ammos_g;
 		GetPlayerWeaponData(playerid, 6, weapon_g, ammos_g);
         if(weapon_g == 33 ) return SendClientMessage(playerid,-1,"Ban da trang bi mot loai vu khi tuong tu.");
-        GivePlayerValidWeapon(playerid, 33, 1);
+        GivePlayerValidWeapon(playerid, 33, 1, true);
         SendClientTextDraw(playerid, "Ban da trang bi thanh cong vu khi ~r~Sniper~w~ voi ~r~1 vien dan");
         Inventory_Remove(playerid, pItemId, 1);
 	}

@@ -514,6 +514,9 @@ public OnQueryFinish(resultid, extraid, handleid)
 						format(szField, sizeof(szField), "Gun%d", i);
 						cache_get_field_content(row,  szField, szResult, MainPipeline);
 						PlayerInfo[extraid][pGuns][i] = strval(szResult);
+						format(szField, sizeof(szField), "ASGun%d", i);
+						cache_get_field_content(row,  szField, szResult, MainPipeline);
+						PlayerInfo[extraid][PASGuns][i] = strval(szResult);
 					}				
 					cache_get_field_content(row,  "DrugsTime", szResult, MainPipeline); PlayerInfo[extraid][pDrugsTime] = strval(szResult);
 					cache_get_field_content(row,  "LawyerTime", szResult, MainPipeline); PlayerInfo[extraid][pLawyerTime] = strval(szResult);
@@ -8560,8 +8563,6 @@ public OnPlayerLoad(playerid)
  	DestroyLog@_Reg(playerid);
  	SendClientMessageEx(playerid, COLOR_VANG, "Chao mung ban da tro lai may chu Red County Roleplay.");
  	DownEDS[playerid] = SetTimerEx("StartDownEatDrinkStrong", 100000, true, "i", playerid);
- 	DownS[playerid] = SetTimerEx("DownStrong", 200000, true, "i", playerid);
- 	DownPHP[playerid] = SetTimerEx("DownHP", 100000, true, "i", playerid);
 	DeletePVar(playerid, "TextDrawCharacter");
  	GetHomeCount(playerid);
 	new rdName[MAX_PLAYER_NAME];

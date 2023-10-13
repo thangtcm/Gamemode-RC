@@ -898,6 +898,7 @@ enum pInfo
 	pGunLic,
 	pGuns[12],
 	pAGuns[12],
+	PASGuns[12],
 	pConnectSeconds,
 	pPayDayHad,
 	pCDPlayer,
