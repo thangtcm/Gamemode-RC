@@ -5,7 +5,7 @@ CMD:clearbugs(playerid, params[])
 	{
 		if(PlayerInfo[playerid][pLeader] == PlayerInfo[playerid][pMember] && PlayerInfo[playerid][pRank] >= arrGroupData[PlayerInfo[playerid][pMember]][g_iBugAccess]) // has leader flag
 		{
-			SendErrorMessage(playerid, " Tat ca bug da duoc an toan.");
+			SendErrorMessage(playerid, " Tat ca bug da duoc a	n toan.");
 			foreach(new i : Player)
 			{
 				if(PlayerInfo[i][pBugged] == PlayerInfo[playerid][pMember]){
@@ -133,7 +133,7 @@ CMD:usekit(playerid, params[]) {
 	}
 	return 1;
 }
-
+/*
 CMD:crates(playerid, params[]) {
 	if(IsACop(playerid))
 	{
@@ -555,6 +555,7 @@ CMD:unloadcrate(playerid, params[]) {
 	return 1;
 }
 
+
 CMD:loadplane(playerid, params[]) {
 	new vehicleid = GetPlayerVehicleID(playerid);
 	if(GetVehicleModel(vehicleid) == 530)
@@ -874,7 +875,8 @@ CMD:cratelimit(playerid, params[]) {
 	}
 	return 1;
 }
-
+*/
+/*
 CMD:igps(playerid, params[]) {
 	return cmd_islandgps(playerid, params);
 }
@@ -893,7 +895,8 @@ CMD:islandgps(playerid, params[]) {
 	}
 	return 1;
 }
-
+*/
+/*
 CMD:announcetakeoff(playerid, params[]) {
 	new engine,lights,alarm,doors,bonnet,boot,objective,vehicleid, callsign[24], string[128], zone[64],
 	Float:X, Float:Y, Float:Z;
@@ -934,7 +937,8 @@ CMD:announcetakeoff(playerid, params[]) {
 	}
 	return 1;
 }
-
+*/
+/*
 CMD:cgun(playerid, params[]) {
     if(servernumber == 2)
 	{
@@ -988,7 +992,7 @@ CMD:cgun(playerid, params[]) {
     }
     return 1;
 }
-
+*/
 /*CMD:lockdown(playerid, params[]) {
 	new iGroupID = PlayerInfo[playerid][pMember];
     if(PlayerInfo[playerid][pRank] >= arrGroupData[iGroupID][g_iCrateIsland])
@@ -1021,7 +1025,7 @@ CMD:cgun(playerid, params[]) {
 	}
 	return 1;
 }*/
-
+/*
 CMD:alockdown(playerid, params[]) {
     if(PlayerInfo[playerid][pAdmin] >= 4)
     {
@@ -1054,7 +1058,7 @@ CMD:alockdown(playerid, params[]) {
 	}
 	return 1;
 }
-
+*/
 CMD:areloadpb(playerid, params[])
 {
     if(PlayerInfo[playerid][pAdmin] >= 1337)
@@ -1063,7 +1067,7 @@ CMD:areloadpb(playerid, params[])
 		SendClientMessageEx(playerid, COLOR_RED, " Paintball Arenas dang tai tu he thong. ");
     }
 }
-
+/*
 CMD:viewflags(playerid, params[])
 {
 	if(PlayerInfo[playerid][pAdmin] >= 2)
@@ -1110,7 +1114,7 @@ CMD:viewflag(playerid, params[])
 	}
 	return 1;
 }
-
+*/
 CMD:businessdate(playerid, params[]) {
 	new giveplayerid;
 	if(PlayerInfo[playerid][pAdmin] < 2)
@@ -1133,7 +1137,7 @@ CMD:businessdate(playerid, params[]) {
 	else SendErrorMessage(playerid, " Ban khong thue cua hang nao ca.");
 	return 1;
 }
-
+/*
 CMD:vipdate(playerid, params[]) {
 	new giveplayerid;
 	if(PlayerInfo[playerid][pAdmin] < 2)
@@ -1179,7 +1183,7 @@ CMD:rewards(playerid, params[]) {
 	}
 	return 1;
 }
-
+*/
 CMD:hhc(playerid, params[]) {
 	return cmd_hhcheck(playerid, params);
 }
@@ -1493,7 +1497,7 @@ CMD:setarmor(playerid, params[])
     }
     return 1;
 }
-
+/*
 CMD:hackwarnings(playerid, params[])
 {
 	if(PlayerInfo[playerid][pAdmin] >= 2) {
@@ -1513,8 +1517,10 @@ CMD:hackwarnings(playerid, params[])
 	}
 	return 1;
 }
+*/
 
 #if defined zombiemode
+
 CMD:zombiehelp(playerid, params[])
 {
 	SendErrorMessage(playerid, " Commands: /buycure /bite /curevirus /getvials (For Medics)");
@@ -1822,6 +1828,7 @@ CMD:curevirus(playerid, params[])
 	}
 	return 1;
 }
+
 #endif
 
 
@@ -2924,7 +2931,7 @@ CMD:takecarweapons(playerid, params[])
 	GetVehicleParamsEx(closestcar,engine,lights,alarm,doors,bonnet,boot,objective);
 	if(boot == VEHICLE_PARAMS_OFF || boot == VEHICLE_PARAMS_UNSET)
 	{
-		SendServerMessage(playerid, " Cop xe phai mo moi co the kiem tra.");
+		SendServerMessage(playerid, "Cop xe phai mo moi co the kiem tra.");
 		return 1;
 	}
     foreach(new i: Player)
@@ -2934,7 +2941,7 @@ CMD:takecarweapons(playerid, params[])
 		{
 		    if (!PlayerVehicleInfo[i][v][pvWeapons][0] && !PlayerVehicleInfo[i][v][pvWeapons][1] && !PlayerVehicleInfo[i][v][pvWeapons][2])
 	 		{
-		 		SendClientMessageEx(playerid, COLOR_WHITE,  "Khong co vu khi tren xe.");
+		 		SendClientMessageEx(playerid, COLOR_WHITE, "Khong co vu khi tren xe.");
 		 		return 1;
 			}
 			else
@@ -2945,7 +2952,7 @@ CMD:takecarweapons(playerid, params[])
 				PlayerVehicleInfo[i][v][pvAmmos][0] = 0;
 				PlayerVehicleInfo[i][v][pvAmmos][1] = 0;
 				PlayerVehicleInfo[i][v][pvAmmos][2] = 0;
-				SendClientMessageEx(playerid, COLOR_WHITE,  "Tat ca vu khi da bi chuyen ra khoi xe nay.");
+				SendClientMessageEx(playerid, COLOR_WHITE, "Tat ca vu khi da bi chuyen ra khoi xe nay.");
 	    		new string[MAX_PLAYER_NAME + 44];
 				format(string, sizeof(string), "* %s da chuyen cac vu khi ra khoi xe.", GetPlayerNameEx(playerid));
 				ProxDetector(20.0, playerid, string, COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE);
@@ -2973,7 +2980,7 @@ CMD:phoneprivacy(playerid, params[])
     }
     else
 	{
-        SendServerMessage(playerid, " Ban khong co dien thoai hoac  khong phai VIP bac.");
+        SendServerMessage(playerid, " Ban khong co dien thoai hoac khong phai VIP bac.");
     }
     return 1;
 }
@@ -2999,7 +3006,7 @@ CMD:speakerphone(playerid, params[])
     }
     return 1;
 }
-
+/*
 CMD:lawyerduty(playerid, params[])
 {
 	if(PlayerInfo[playerid][pJob] == 2 || PlayerInfo[playerid][pJob2] == 2)
@@ -3023,7 +3030,7 @@ CMD:lawyerduty(playerid, params[])
     }
     return 1;
 }
-
+*/
 CMD:mechduty(playerid, params[])
 {
     if(PlayerInfo[playerid][pJob] == 7 || PlayerInfo[playerid][pJob2] == 7)
@@ -3080,14 +3087,14 @@ CMD:cduty(playerid, params[])
 	{
         if(GetPVarInt(playerid, "AdvisorDuty") == 1)
 		{
-            SendClientMessageEx(playerid, COLOR_LIGHTBLUE, "* Ban hi? dang tat nhi? vu Advisor! Ban se kh?g nh? duoc b?' cu' cu?' tro. gi?p n? nua!.");
+            SendClientMessageEx(playerid, COLOR_LIGHTBLUE, "* Ban hien dang tat nhiem vu Advisor! Ban se khong nhan duoc yeu cau tro giup nua!");
             DeletePVar(playerid, "AdvisorDuty");
             SetPlayerColor(playerid,TEAM_HIT_COLOR);
             Advisors -= 1;
         }
         else
 		{
-            SendClientMessageEx(playerid, COLOR_LIGHTBLUE, "* Ban hi? dang b? nhi? vu Advisor! Ban se nh? duoc. c? cu? tro gi?p t? nguoi` kh?! .");
+            SendClientMessageEx(playerid, COLOR_LIGHTBLUE, "* Ban hien dang bat nhiem vu Advisor! Ban se nhan duoc cac yeu cau tro giup tu nguoi khac!");
             SetPVarInt(playerid, "AdvisorDuty", 1);
             SetPlayerColor(playerid,COLOR_CYAN);
             SetPlayerArmour(playerid, 0);
@@ -3096,12 +3103,12 @@ CMD:cduty(playerid, params[])
     }
     else
 	{
-        SendServerMessage(playerid, "    Ban khong phai la Team Advisor!");
+        SendServerMessage(playerid, "Ban khong phai la Team Advisor!");
     }
     return 1;
 }
 
-
+/*
 CMD:contracts(playerid, params[])
 {
     if(IsAHitman(playerid) || PlayerInfo[playerid][pAdmin] >= 4)
@@ -3109,7 +3116,7 @@ CMD:contracts(playerid, params[])
         SearchingHit(playerid);
     }
     return 1;
-}
+}*/
 
 CMD:gate(playerid, params[])
 {
@@ -3232,7 +3239,7 @@ CMD:mdc(playerid, params[])
     }
     return 1;
 }
-
+/*
 CMD:flipcoin(playerid, params[]) {
 
     new
@@ -3246,7 +3253,7 @@ CMD:flipcoin(playerid, params[]) {
     }
     return ProxDetector(5.0, playerid, szMessage, COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE);
 }
-
+*/
 CMD:dice(playerid, params[])
 {
     new string[84];
@@ -4043,7 +4050,7 @@ CMD:adestroymailbox(playerid, params[])
 
 	return 1;
 }
-
+/*
 CMD:postdirectory(playerid, params[])
 {
 	if (!IsAtPostOffice(playerid)) {
@@ -4062,7 +4069,7 @@ CMD:postdirectory(playerid, params[])
     }
 	return 1;
 }
-
+*/
 CMD:muabaohiem(playerid, params[])
 {
 	if(IsPlayerInRangeOfPoint(playerid,2.0, 1171.7323, -1319.0518, -44.2836) && PlayerInfo[playerid][pVW] == 0)//San Fierro
@@ -4276,12 +4283,12 @@ CMD:togbr(playerid, params[])
 		if (gBug{playerid} == 0)
 		{
 			gBug{playerid} = 1;
-			SendErrorMessage(playerid, " Kenh  CHAT  BUGd duoc kich hoat, bay gio ban co the thay duoc cac loi duoc phat hien.");
+			SendErrorMessage(playerid, " Kenh CHAT BUG duoc kich hoat, bay gio ban co the thay duoc cac loi duoc phat hien.");
 		}
 		else
 		{
 			gBug{playerid} = 0;
-			SendErrorMessage(playerid, " Kenh CHAT BUG dang tat .");
+			SendErrorMessage(playerid, " Kenh CHAT BUG dang tat.");
 		}
 	}
 	return 1;
@@ -4323,7 +4330,7 @@ CMD:prisonaccount(playerid, params[])
 		{
 			if(PlayerInfo[giveplayerid][pAdmin] >= PlayerInfo[playerid][pAdmin])
 			{
-				SendServerMessage(playerid, " Ban Co The't perform this action on an equal or higher level administrator.");
+				SendServerMessage(playerid, "You can't perform this action on an equal or higher level administrator.");
 				return 1;
 			}
 			SetPlayerArmedWeapon(giveplayerid, 0);
@@ -5031,7 +5038,7 @@ CMD:togphone(playerid, params[])
 {
 	if(PlayerInfo[playerid][pJailTime] > 0)
 	{
-		SendErrorMessage(playerid, " Ban khong the  su dung dien thoai trong tu");
+		SendErrorMessage(playerid, " Ban khong the su dung dien thoai trong tu");
 		return 1;
 	}
 	if (!PhoneOnline[playerid])
@@ -5064,7 +5071,7 @@ CMD:togstaff(playerid, params[])
 	}
 	else
 	{
-		SendErrorMessage(playerid, "    Ban khong phai lallowed de su dung lenh nay!");
+		SendErrorMessage(playerid, "    Ban khong phai staff de su dung lenh nay!");
 		return 1;
 	}
 	return 1;
@@ -5347,7 +5354,7 @@ CMD:resetupgrades(playerid, params[]) {
 	}
 	return 1;
 }
-
+/*
 CMD:luatchoi(playerid, params[]) return cmd_quydinh(playerid, params);
 CMD:quydinh(playerid, params[])
 {
@@ -5369,7 +5376,7 @@ CMD:quydinh(playerid, params[])
 CMD:hoidap(playerid, params[]) {
 	return ShowPlayerDialog(playerid, FAQMENU, DIALOG_STYLE_LIST, "Cau hoi thuong gap","Locks\nSkins & Toys\nATMs\nFactions\nGangs\nHitmen\nWebsite, Teamspeak and Other Information\nFurther Help", "Lua chon", "Huy bo");
 }
-
+*/
 CMD:fgstats(playerid, params[]) {
 	if(PlayerInfo[playerid][pAdmin] < 4) {
 		SendErrorMessage(playerid, " Ban khong the duoc phep su dung lenh nay.");
@@ -5528,6 +5535,7 @@ CMD:buylevel(playerid, params[])
 	}
 	return 1;
 }
+/*
 CMD:nangcap(playerid, params[]) {
 	return cmd_upgrade(playerid, params);
 }
@@ -5820,7 +5828,7 @@ CMD:upgrade(playerid, params[])
 		return 1;
 	}
 	return 1;
-}
+}*/
 CMD:doimatkhau(playerid, params[]) {
 	return cmd_changepass(playerid, params);
 }
@@ -6337,7 +6345,7 @@ CMD:wepreset(playerid, params[])
 		    }
 		    else
 		    {
-		        SendServerMessage(playerid, " Vu khi cua ho khong bi gioi hang!");
+		        SendServerMessage(playerid, " Vu khi cua ho khong bi gioi han!");
 			}
 		}
 		else
@@ -11316,7 +11324,7 @@ CMD:doorpass(playerid, params[])
 	}
 	return 1;
 }
-
+/*
 CMD:carol(playerid, params[]) // Christmas Event
 {
 	new year, month, day, string[256], cstring[32];
@@ -11438,7 +11446,7 @@ CMD:trickortreat(playerid, params[])
 	else SendErrorMessage(playerid, " It isn't Halloween!");
 	return 1;
 }
-
+*/
 CMD:vao(playerid, parmas[])
 {
 	return cmd_enter(playerid, parmas);
@@ -12542,7 +12550,7 @@ CMD:gotojet(playerid, params[])
     }
     return 1;
 }
-
+/*
 CMD:eventstafflol(playerid, params[])
 {
 	new Float:health, Float:armor;
@@ -12884,7 +12892,7 @@ CMD:approveevent(playerid, params[])
     }
     return 1;
 }
-
+*/
 CMD:god(playerid, params[])
 {
     if(PlayerInfo[playerid][pAdmin] >= 2)
@@ -13592,7 +13600,7 @@ CMD:sdm(playerid, params[])
 		SendErrorMessage(playerid, " Ban khong duoc phep su dung lenh nay.");
 	}	return 1;
 }
-
+/*
 CMD:present(playerid, params[])
 {
   	if(IsAJudge(playerid))
@@ -13644,7 +13652,7 @@ CMD:offerappeal(playerid, params[])
 	}
 	return 1;
 }
-
+*/
 /*CMD:nchange(playerid, params[]) return cmd_namechanges(playerid, params);
 
 CMD:namechanges(playerid, params[])
@@ -13695,7 +13703,7 @@ CMD:0918951443doiten(playerid, params[])
 	}
 	return 1;
 }
-
+/*
 CMD:finishappeal(playerid, params[])
 {
     if(PlayerInfo[playerid][pJob] == 2 || PlayerInfo[playerid][pJob2] == 2)
@@ -14117,9 +14125,9 @@ CMD:jarrest(playerid, params[])
 	}
 	return 1;
 }
+*/
 
-
-
+/*
 IsPlayerInArea(playerid, Float:minx, Float:maxx, Float:miny, Float:maxy)
 {
     new Float:x, Float:y, Float:z;
@@ -14531,7 +14539,7 @@ CMD:search(playerid, params[])
     }
 	return 1;
 }
-
+*/
 CMD:pay(playerid, params[])
 {
 	new id, storageid, amount;
@@ -14652,7 +14660,7 @@ CMD:eventhelp(playerid, params[])
 	}
 	return 1;
 }
-
+/*
 CMD:kynang(playerid, params[]) {
 	return cmd_skill(playerid, params);
 }
@@ -14776,7 +14784,7 @@ CMD:skill(playerid, params[])
 	}
 	return 1;
 }
-
+*/
 CMD:checkcargo(playerid, params[]) {
 	return cmd_kiemtrahang(playerid, params);
 }
@@ -15046,7 +15054,7 @@ CMD:layhangremovesss(playerid, params[])
 	else return SendErrorMessage(playerid, " Ban khong phai la trucker");
 	return 1;
 }
-
+/*
 CMD:useheroin(playerid, params[])
 {
 	if(PlayerInfo[playerid][pHeroin] < 10)
@@ -15451,7 +15459,7 @@ CMD:destroyplant(playerid, params[])
 					    {
 							format(szMessage, sizeof(szMessage), "* Ban da thu giu mot cay can sa co trong luong %d grams.", Plants[i][pGrowth]);
 							SendClientMessageEx(playerid, COLOR_GREY, szMessage);
-							format(szMessage, sizeof(szMessage), "* %s da thu giu cay can xa.", GetPlayerNameEx(playerid), GetPlayerNameEx(i));
+							format(szMessage, sizeof(szMessage), "* %s da thu giu cay can sa.", GetPlayerNameEx(playerid), GetPlayerNameEx(i));
 							ProxDetector(25.0, playerid, szMessage, COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE);
 							foreach(new z : Player)
 							{
@@ -15498,7 +15506,7 @@ CMD:destroyplant(playerid, params[])
 	}
 	return 1;
 }
-
+*/
 CMD:levelones(playerid, params[]) {
 	if(PlayerInfo[playerid][pAdmin] >= 2)
 	{
@@ -37760,7 +37768,7 @@ CMD:st(playerid, params[])
 		ABroadCast(COLOR_ORANGE, string, 2);
 		format(string, sizeof(string), "%s da xem xet bao cao cua ban va xac dinh no can phai duoc xu ly boi mot cua hang cong nghe.", GetPlayerNameEx(playerid));
 		SendClientMessageEx(Reports[reportid][ReportFrom], COLOR_WHITE, string);
-		SendClientMessageEx(Reports[reportid][ReportFrom], COLOR_WHITE, "Vui long su dung /shoporder de co the duoc don hang cua ban duoc xu ly boi mot cua hang cong n ghe.");
+		SendClientMessageEx(Reports[reportid][ReportFrom], COLOR_WHITE, "Vui long su dung /shoporder de co the duoc don hang cua ban duoc xu ly boi mot cua hang cong nghe.");
         DeletePVar(Reports[reportid][ReportFrom], "HasReport");
 		DeletePVar(Reports[reportid][ReportFrom], "_rAutoM");
 		DeletePVar(Reports[reportid][ReportFrom], "_rRepID");			Reports[reportid][ReportFrom] = INVALID_PLAYER_ID;
@@ -44130,7 +44138,7 @@ CMD:usecraczxzczxfsafasfk(playerid, params[])
 			case 3:
 			{
 				SetPVarInt(playerid, "STD", 2);
-				SendClientMessageEx(playerid, COLOR_LIGHTBLUE, "* Ban giam STI den  benh lau cua do tac dung cua loai thuoc!");
+				SendClientMessageEx(playerid, COLOR_LIGHTBLUE, "* Ban giam STI den benh lau cua do tac dung cua loai thuoc!");
 			}
 		}
 	return 1;
@@ -47745,7 +47753,7 @@ CMD:resupply(playerid, params[])
 		return SendErrorMessage(playerid, " Cua hang nay khong co dia diem dua hang cho Nguoi dua hang's.");
 	}
 	if (Businesses[iBusiness][bInventory] >= Businesses[iBusiness][bInventoryCapacity]) {
-		return SendErrorMessage(playerid, " Han trong kho cua ban da het.");
+		return SendErrorMessage(playerid, " Hang trong kho cua ban da het.");
 	}
 	if(Businesses[iBusiness][bInventory] + amount > Businesses[iBusiness][bInventoryCapacity])
 	{
@@ -48838,7 +48846,7 @@ CMD:fps(playerid, params[])
 	}
 	return true;
 }
-
+/*
 CMD:toghalloweenshop(playerid, params[])
 {
 	if(PlayerInfo[playerid][pAdmin] > 1337 || PlayerInfo[playerid][pPR] == 2 || PlayerInfo[playerid][pShopTech] == 3)
@@ -48878,7 +48886,7 @@ CMD:setpumpkinstock(playerid, params[])
 	}
 	return 1;
 }
-
+*/
 CMD:pddoor(playerid, params[])
 {
 	new string[128];
