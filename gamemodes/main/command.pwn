@@ -20145,7 +20145,7 @@ CMD:loadpt(playerid, params[])
                     if(giveplayerid == playerid) { SendErrorMessage(playerid, " Ban khong the tai benh nhan!"); return 1; }
                     if(PlayerInfo[giveplayerid][pJailTime] > 0) return SendErrorMessage(playerid, " Ban khong the su dung lenh nay voi nguoi choi dang o tu");
                     new carid = gLastCar[playerid];
-                    if(IsAnAmbulance(carid))
+                    if(IsSeatAvailable(carid, seat))
 					{
                         if(IsVehicleOccupiedEx(carid, seat)) {
 							SendErrorMessage(playerid, " Nghe do dang co nguoi dung.");

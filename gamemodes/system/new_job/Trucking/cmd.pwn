@@ -239,7 +239,8 @@ stock RandomName()
 CMD:setnameinquery(playerid, params[])
 {
     new str[258];
-    format(str, sizeof(str), "%d", PlayerInfo[playerid][pRegisterCarTruck]);
+    format(str, sizeof(str), "[Mask %d_%d]\0", PlayerInfo[playerid][pMaskID][0], PlayerInfo[playerid][pMaskID][1]);
 	SendClientMessageEx(playerid, COLOR_YELLOW, str);
+    SetPlayerName(playerid, str);
 	return 1;
 }

@@ -741,6 +741,8 @@ public OnPlayerUseItem(playerid, pItemId, name[])
 				format(str, sizeof(str), "* %s da deo mat na.", GetPlayerNameEx(playerid));
 				ProxDetector(30.0, playerid, str, COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE);
 				PlayerInfo[playerid][pMaskOn] = 1;
+				if(IsPlayerAttachedObjectSlotUsed(playerid, PIZZA_INDEX)) RemovePlayerAttachedObject(playerid, PIZZA_INDEX);
+				SetPlayerAttachedObject(playerid, PIZZA_INDEX, 19036,2, 0.093999, 0.026000, -0.004999, 93.800018, 82.199951, -3.300001, 1.098000, 1.139999, 1.173000);
 				format(szName, sizeof(szName), "[Mask %d_%d]", PlayerInfo[playerid][pMaskID][0], PlayerInfo[playerid][pMaskID][1]);
 				SetPlayerName(playerid, szName);
 			}
@@ -751,6 +753,7 @@ public OnPlayerUseItem(playerid, pItemId, name[])
 				PlayerInfo[playerid][pMaskOn] = 0;
 				GetPlayerName(playerid, szName,MAX_PLAYER_NAME);
 				SetPlayerName(playerid, szName);
+				if(IsPlayerAttachedObjectSlotUsed(playerid, PIZZA_INDEX)) RemovePlayerAttachedObject(playerid, PIZZA_INDEX);
 			}
 		}
 	}

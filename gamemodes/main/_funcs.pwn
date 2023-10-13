@@ -1898,17 +1898,7 @@ public OnPlayerConnect(playerid) {
 
 public OnPlayerDisconnect(playerid, reason)
 {
-	if(IsValidDynamicObject(PlayerInfo[playerid][pObjHop])) {
-		DestroyDynamicObject(PlayerInfo[playerid][pObjHop]);
-	}
 	KillTimer(DownEDS[playerid]);
-    Delete3DTextLabel(PlayerInfo[playerid][HopText]);
-    PlayerInfo[playerid][pTraiCam] = 0;
-    PlayerInfo[playerid][pTraiCamHop] = 0;
-    PlayerInfo[playerid][pHop] = 0;
-    PlayerInfo[playerid][pPosHop][0] = 0;
-    DeletePVar(playerid, "DangHaiTr");
-	RemovePlayerAttachedObject(playerid, 1);
     if(!isnull(unbanip[playerid]))
 	{
 	    new string[26];
@@ -5586,7 +5576,10 @@ public OnPlayerText(playerid, text[])
     }
 
 	if(GetPVarType(playerid, "Injured") || PlayerInfo[playerid][pHospital])
-		return SendErrorMessage(playerid, "Ban ~r~khong the tro chuyen~w~ ngay luc nay, hay su dung ~y~/low~w~.");
+	{
+		SendClientTextDraw(playerid, "Ban ~r~khong the tro chuyen~w~ ngay luc nay, hay su dung ~y~/low~w~.");
+		return 0;
+	}
 
 	printf("[Player Chat] [%s-%d]: %s", GetPlayerNameEx(playerid), GetPlayerSQLId(playerid), text);
 	new sendername[MAX_PLAYER_NAME];
@@ -7132,11 +7125,6 @@ public LoadStreamerStaticVehicles()
 	VIPVehicles[47] = AddStaticVehicleEx(560,-4358.66015625,888.96386719,986.18530273,180.00000000,-1,-1,180); //Sultan
 	VIPVehicles[48] = AddStaticVehicleEx(560,-4354.67675781,888.44500732,986.18530273,180.00000000,-1,-1,180); //Sultan
 	VIPVehicles[49] = AddStaticVehicleEx(560,-4362.83789062,889.30908203,986.18530273,180.00000000,-1,-1,180); //Sultan
-	//FDSA By Mr Son
-	FDSAVehicles[0] = AddStaticVehicleEx(416, -2544.1797, 610.5443, 14.5426, 90.9600, 1, 3, VEHICLE_RESPAWN);
-	FDSAVehicles[1] = AddStaticVehicleEx(416, -2544.2434, 604.7028, 14.5426, 90.6600, 1, 3, VEHICLE_RESPAWN);
-	FDSAVehicles[2] = AddStaticVehicleEx(416, -2544.3130, 598.8009, 14.5426, 90.6600, 1, 3, VEHICLE_RESPAWN);
-	FDSAVehicles[3] = AddStaticVehicleEx(416, -2544.2673, 592.8217, 14.5426, 90.6600, 1, 3, VEHICLE_RESPAWN);
 	//Sultan
 	FamedVehicles[0] = AddStaticVehicleEx(560,2515.6797,2381.6501,3.9175,90.5219,-1,-1,180);
 	FamedVehicles[1] = AddStaticVehicleEx(560,2515.9753,2372.6431,3.9167,89.3516,-1,-1,180);
