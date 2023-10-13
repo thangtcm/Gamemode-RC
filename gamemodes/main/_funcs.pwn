@@ -1433,6 +1433,7 @@ public OnPlayerConnect(playerid) {
 	SetTimerEx("TimeUseMed", 60000, 0, "d", playerid);
 	SetTimerEx("TimeCraftMed", 60000, 0, "d", playerid);
 	SetTimerEx("LoadLogin", 500, 0, "i", playerid);
+	DownS[playerid] = 0;
 	SetPVarString(playerid, "PassAuth", "abc");
 	LoadLoginTextDraws(playerid);
 	CreateLoading(playerid);
@@ -1899,12 +1900,6 @@ public OnPlayerConnect(playerid) {
 public OnPlayerDisconnect(playerid, reason)
 {
 	KillTimer(DownEDS[playerid]);
-<<<<<<< HEAD
-=======
-	KillTimer(DownPHP[playerid]);
-	KillTimer(DownS[playerid]);
-	RemovePlayerAttachedObject(playerid, 1);
->>>>>>> main
     if(!isnull(unbanip[playerid]))
 	{
 	    new string[26];
