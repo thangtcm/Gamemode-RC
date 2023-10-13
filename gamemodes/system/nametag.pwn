@@ -118,7 +118,9 @@ timer UpdateNameTagTimer[500](playerid)
 }
 
 hook OnPlayerConnect(playerid) {
-    PlayerInfo[playerid][pNameTag] = CreateDynamic3DTextLabel("Loading nametag...", 0x008080FF, 0.0, 0.0, 0.1, 10.0, .attachedplayer = playerid, .testlos = 1);
+	if(IsValidDynamic3DTextLabel(PlayerInfo[playerid][pNameTag]))
+        DestroyDynamic3DTextLabel(PlayerInfo[playerid][pNameTag]);
+    PlayerInfo[playerid][pNameTag] = CreateDynamic3DTextLabel("Loading nametag...", 0x008080FF, 0.0, 0.0, 0.1, NT_DISTANCE, .attachedplayer = playerid, .testlos = 1);
 	myNameTagTimer[playerid] = repeat UpdateNameTagTimer(playerid);
 	PlayerInfo[playerid][pMaskOn] = 0;
 	return 1;
@@ -126,7 +128,7 @@ hook OnPlayerConnect(playerid) {
 hook OnPlayerDisconnect(playerid, reason) {
     if(IsValidDynamic3DTextLabel(PlayerInfo[playerid][pNameTag]))
         DestroyDynamic3DTextLabel(PlayerInfo[playerid][pNameTag]);
-
+	PlayerInfo[playerid][pNameTag] = INVALID_3DTEXT_ID;
     stop myNameTagTimer[playerid];
     myNameTagTimer[playerid] = Timer:-1;
     return 1;
