@@ -1434,6 +1434,7 @@ public OnPlayerConnect(playerid) {
 	SetTimerEx("TimeUseMed", 60000, 0, "d", playerid);
 	SetTimerEx("TimeCraftMed", 60000, 0, "d", playerid);
 	SetTimerEx("LoadLogin", 500, 0, "i", playerid);
+	DownS[playerid] = 0;
 	SetPVarString(playerid, "PassAuth", "abc");
 	LoadLoginTextDraws(playerid);
 	CreateLoading(playerid);

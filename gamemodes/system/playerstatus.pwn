@@ -240,7 +240,11 @@ public StartDownEatDrinkStrong(playerid)
 			PlayerInfo[playerid][pDrink]--;
 		}
 	}
+<<<<<<< HEAD
 	if(PlayerInfo[playerid][pStrong] > 1 && DownS[playerid])
+=======
+	if(PlayerInfo[playerid][pStrong] > 1 && DownS[playerid] == true)
+>>>>>>> Thắng
 	{
 		PlayerInfo[playerid][pStrong]--;
 		DownS[playerid] = false;
