@@ -39,7 +39,6 @@ CMD:laybanh(playerid,params[]) {
 	return 1;
 }
 CMD:pizza(playerid,params[]) {
-	if(CMND < 1) return SendErrorMessage(playerid,"Ban khong co CMND khong the xin viec.");
 	if(LamViec[playerid] == 0) { 
 		CP[playerid] = 0;
 		ShowPlayerDialog(playerid, PIZZABOY_MENU, DIALOG_STYLE_LIST, "Pizza Boy", "Lam viec\nLay banh\nGiao banh\nVut bo banh", "Lua chon", "Thoat");
@@ -120,8 +119,8 @@ hook OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 	        			format(zzstr, sizeof zzstr, "Xe Pizza cua: {2791FF}%s{ffffff}\nBanh trong xe: {2791FF}%d/5{ffffff}", GetPlayerNameEx(playerid),BanhPizzaInCar[playerid]);
 	        			PizzaTextInfo[playerid] = Create3DTextLabel(zzstr, COLOR_WHITE, 0.0, 0.0, 0.0, 50.0, 0, 1);
            				Attach3DTextLabelToVehicle(PizzaTextInfo[playerid], PizzaCar[playerid], 0.0, 0.0, 2.0); // Attaching Text Label To Vehicle.
-           				SendClientMessageEx(playerid,COLOR_VANG,"Ban da bat dau lam viec 'Pizza Boy' hay di den pickup lay banh va chat len xe (Press 'Y' de lay banh/cat banh vao xe)");
-	    				SendClientMessageEx(playerid,COLOR_VANG,"Bam 'N' chon giao banh de bat dau di giao");
+           				SendClientMessageEx(playerid,COLOR_VANG,"Ban da bat dau lam viec 'Pizza Boy' hay di den pickup lay banh va chat len xe (Press 'H' de lay banh/cat banh vao xe)");
+	    				SendClientMessageEx(playerid,COLOR_VANG,"Bam 'H' chon giao banh de bat dau di giao");
 	    				SetPVarInt(playerid, #danglamviec, 1);
 	        			return 1;
 	    			}
@@ -186,6 +185,7 @@ hook OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 	return 1;
 }
 hook OnPlayerEnterCheckpoint(playerid) {
+
 	if(GetPVarInt(playerid, "giaobanh_Pizza") == 1) 
 	{
 		if(IsPlayerInAnyVehicle(playerid)) return SendErrorMessage(playerid, " Vui long xuong xe de giao banh.");
@@ -205,7 +205,7 @@ hook OnPlayerEnterCheckpoint(playerid) {
         DisablePlayerCheckpoint(playerid);	
 		BanhPizzaInFoot[playerid] = 0;
 		if(GetPVarInt(playerid, "giaobanh_Pizza") == 1) return 1;
-		if(LamViec[playerid] != 1) return 1;
+	//	if(LamViec[playerid] != 1) return 1;
 		new postrandom = random(9);
 		new zone[MAX_ZONE_NAME];
 		Get3DZone(pizza_postion[postrandom][0],pizza_postion[postrandom][1],pizza_postion[postrandom][2], zone, sizeof(zone));
@@ -220,15 +220,15 @@ hook OnPlayerEnterCheckpoint(playerid) {
 hook OnPlayerKeyStateChange(playerid, newkeys, oldkeys) {
 	if(IsPlayerInRangeOfPoint(playerid, 5, 1362.9523,253.9632,19.5669))
 	{
-	    if(PRESSED(KEY_YES))
-	    {
+	    if(newkeys & KEY_CTRL_BACK)
+	    { 
 	    	return cmd_pizza(playerid, "/1"); 
 	    }
 	}
 	if(LamViec[playerid] == 1)
     {
 
-    	if(newkeys == KEY_YES)
+    	if(newkeys & KEY_CTRL_BACK)
 	    { 
 	    	if(!IsPlayerInRangeOfVehicle(playerid, PizzaCar[playerid], 3)) return 1;
 			if(IsPlayerInAnyVehicle(playerid)) return 1;
