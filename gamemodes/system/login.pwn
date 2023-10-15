@@ -133,14 +133,14 @@ public logingametd(playerid)
 		banned = cache_get_field_content_int(i, "acc_ban", MainPipeline);
 		printf("acc id %d", MasterInfo[playerid][acc_id]);
 		cache_get_field_content(i, "acc_email", szEmail, MainPipeline);
-		cache_get_field_content(i, "acc_pass", szResult, MainPipeline);
+		cache_get_field_content(i, "acc_pass", MasterInfo[playerid][acc_pass], MainPipeline);
 
 
-		GetPVarString(playerid, "enter_password", szBuffer, sizeof(szBuffer));
+		GetPVarString(playerid, "PassAuth", szBuffer, sizeof(szBuffer));
 
 		if (isnull(szEmail)) SetPVarInt(playerid, "NullEmail", 1);
 
-		if (strcmp(szBuffer, szResult) != 0)
+		if (bcrypt_check(szBuffer, MasterInfo[playerid][acc_pass], "OnPasswordChecked", "d", playerid);)
 		{
 			PlayerTextDrawShow(playerid, LoginTD[playerid][0]);
 			PlayerTextDrawShow(playerid, LoginTD[playerid][1]);

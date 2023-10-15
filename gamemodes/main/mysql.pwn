@@ -1338,12 +1338,10 @@ stock g_mysql_ReturnEscaped(unEscapedString[], connectionHandle)
 	return EscapedString;
 }
 
-// g_mysql_AccountLoginCheck(playerid)
-stock g_mysql_AccountLoginCheckzz(playerid)
+stock g_mysql_AccountLoginCheck(playerid)
 {
 	new string[128];
 	format(string, sizeof(string), "SELECT `acc_name`,`acc_id`,`acc_pass` from masterdb WHERE acc_name = '%s'", GetPlayerNameExt(playerid));
-	//mysql_function_query(MainPipeline, string, true, "OnQueryFinish", "iii", LOGIN_THREAD, playerid, g_arrQueryHandle{playerid});
 	mysql_tquery(MainPipeline, string, "LOGIN_TH", "d", playerid);
 	return 1;
 }
@@ -1362,71 +1360,38 @@ public OnCreateCharacter(playerid)
 }
 forward LOGIN_TH(playerid);
 public LOGIN_TH(playerid) {
-	        new rows = cache_num_rows();
-	        for(new i;i < rows;i++)
-			{
-				new
-					szResult[129],
-					szBuffer[129],
-					szEmail[256];
+	new rows = cache_num_rows();
+	for(new i;i < rows;i++)
+	{
+		new
+			szResult[129],
+			szBuffer[129],
+			szEmail[256];
 
-				cache_get_field_content(i, "acc_name", szResult, MainPipeline);
-				if(strcmp(szResult, GetPlayerNameExt(playerid), true) != 0)
-				{
-					//g_mysql_AccountAuthCheck(extraid);
-
-					return 1;
-				}
-
-                MasterInfo[playerid][acc_id] = cache_get_field_content_int(i, "acc_id", MainPipeline);
-
-                printf("acc id %d",MasterInfo[playerid][acc_id]);
-				cache_get_field_content(i, "acc_email", szEmail, MainPipeline);
-				cache_get_field_content(i, "acc_pass", szResult, MainPipeline);
-				GetPVarString(playerid, "PassAuth", szBuffer, sizeof(szBuffer));
-
-				if(isnull(szEmail)) SetPVarInt(playerid, "NullEmail", 1);
-
-				if(strcmp(szBuffer, szResult) != 0)
-				{
-					// Invalid Password - Try Again!
-					new string[229],ip[32];
-					GetPlayerIp(playerid, ip, 32);
-					format(string,sizeof (string),"\n\nDang nhap that bai: %d/3\n\n\nDia chi IP cua ban: %s\n\nLan dang nhap cua tai khoan: %s\n\nThoi gian tao tai khoan: %s\n\nTai khoan ban da dang ky hay nhap mat khau de dang nhap\n\n\n",gPlayerLogTries[playerid]+1,ip,MasterInfo[playerid][acc_lastlogin],MasterInfo[playerid][acc_regidate]);
-					ShowPlayerDialog(playerid,DANGNHAP,DIALOG_STYLE_PASSWORD,"Dang nhap",string,"Dang nhap","Thoat");
-					HideNoticeGUIFrame(playerid);
-
-					if(++gPlayerLogTries[playerid] == 4)
-					{
-						SendClientMessage(playerid, COLOR_RED, "(SERVER) Sai mat khau, ban tu dong bi kich ra khoi may chu.");
-						Kick(playerid);
-					}
-					return 1;
-				}
-				DeletePVar(playerid, "PassAuth");
-				break;
-			}
-			HideNoticeGUIFrame(playerid);
-		//	g_mysql_LoadAccount(playerid);
-			SendClientMessage(playerid, 0xa5bbd0FF, "(LOGIN) Ban da dang nhap thanh cong hay chon nhan vat de tham gia game!.");
-			HideLoginTD(playerid);
-			LoadTempCharacters(playerid);
-			new years,month,day,hourz,minz,sec,time[50];
-			getdate(years,month,day);
-			gettime(hourz,minz,sec);
-			format(time, sizeof time , "%d/%d/%d %d:%d:%d",day,month,years,hourz,minz,sec);
-			if(sec < 10) {
-				format(time, sizeof time , "%d/%d/%d %d:%d:0%d",day,month,years,hourz,minz,sec);
-			}
-			new query[300];
-			format(query, sizeof(query), "UPDATE `masterdb` SET `acc_lastlogin` = '%s' WHERE `acc_id` = '%d'", time, MasterInfo[playerid][acc_id]);
-	        mysql_function_query(MainPipeline, query, false, "OnQueryFinish", "i", SENDDATA_THREAD);
+		cache_get_field_content(i, "acc_name", szResult, MainPipeline);
+		if(strcmp(szResult, GetPlayerNameExt(playerid), true) != 0)
+		{
 			return 1;
+		}
+
+		MasterInfo[playerid][acc_id] = cache_get_field_content_int(i, "acc_id", MainPipeline);
+
+		cache_get_field_content(i, "acc_email", szEmail, MainPipeline);
+		cache_get_field_content(i, "acc_pass", MasterInfo[playerid][acc_pass], MainPipeline, 61);
+
+		if(isnull(szEmail)) SetPVarInt(playerid, "NullEmail", 1);
+		GetPVarString(playerid, "PassAuth", szBuffer, sizeof(szBuffer));
+		printf("%s", szBuffer);
+		printf("%s", MasterInfo[playerid][acc_pass]);
+		bcrypt_check(szBuffer, MasterInfo[playerid][acc_pass], "OnPasswordChecked", "d", playerid);
+	}
+	return 1;
 }
 
 LoadTempCharacters(playerid)
 {
     new query[128]; // SPos_x , SPos_y, SPos_z,
+	printf("%d",MasterInfo[playerid][acc_id] );
     mysql_format(MainPipeline,query, sizeof query, "SELECT * from accounts where `master_id`= '%d'", MasterInfo[playerid][acc_id]);
     mysql_tquery(MainPipeline, query, "OnLoadTempCharacters", "d", playerid);
 
@@ -1467,68 +1432,13 @@ public OnLoadTempCharacters(playerid) {
     else
     {
     	ShowPlayerCharacter(playerid);
+		new str[256];
+		SendServerMessage(playerid, "Ten nay da ton tai hoac khong hop le (Name_Name).");
     	print("Khong tai duoc tai khoan chinh cua ban");
 
     }
-}/*
-stock ShowPlayerCharacter(playerid) {
-	new string[300];
-	for(new i = 0 ; i < 4 ; i++) {
-		if(TempCharacter[playerid][i][IsCreated])
-    	{
-    		format(string, sizeof(string), "%s\n[Character %d] %s", string,i,TempCharacter[playerid][i][Name]);
-    	}
-    	else if(!TempCharacter[playerid][i][IsCreated]) {
-    		new sgb[32];
-    		format(sgb, sizeof(sgb), "\n[Character %d] Chua khoi tao",i);
-    		strcat(string, sgb);
-    	}
-	}
-	SetPlayerCameraPos(playerid, 2301.3403, -1301.3948, 52.4688);
-	SetPlayerCameraLookAt(playerid, 2300.3408, -1301.4949, 52.1188);
-	SetPlayerPos(playerid, 2234.2881,-1329.2982,24.5313);
-	ShowPlayerDialog(playerid, DIALOG_NHANVAT, DIALOG_STYLE_LIST, "Hay chon nhan vat cua ban", string, "Tuy chon", "Huy bo");
 }
 
-*/
-// g_mysql_AccountAuthCheck(playerid)
-/*
-g_mysql_AccountAuthCheck(playerid)
-{
-	new string[128];
-	format(string, sizeof(string), "SELECT * FROM masterdb WHERE acc_name = '%s'", GetPlayerNameExt(playerid));
-	mysql_tquery(MainPipeline, string, "AUTH_TH", "d", playerid);
-	ClearChatbox(playerid);
-	SetPlayerVirtualWorld(playerid, 0);
-	return 1;
-}
-forward AUTH_TH(playerid);
-public AUTH_TH(playerid) {
-	new name[24];
-	new rows = cache_num_rows();
-	for(new i;i < rows;i++)
-	{
-		cache_get_field_content(i, "acc_name", name, MainPipeline, MAX_PLAYER_NAME);
-		cache_get_field_content(i,  "acc_pass", MasterInfo[playerid][acc_id], MainPipeline, 24);
-		cache_get_field_content(i,  "acc_lastlogin", MasterInfo[playerid][acc_lastlogin], MainPipeline, 24);
-		cache_get_field_content(i,  "acc_regidate", MasterInfo[playerid][acc_regidate], MainPipeline, 24);
-		printf("name %s,%s",name, MasterInfo[playerid][acc_lastlogin]);
-		if(strcmp(name, GetPlayerNameExt(playerid), true) == 0)
-		{
-			HideNoticeGUIFrame(playerid);
-			SafeLogin(playerid, 1);
-
-			return 1;
-		}
-		else
-		{
-			return 1;
-		}
-	}
-	HideNoticeGUIFrame(playerid);
-	SafeLogin(playerid, 2);
-	return 1;
-}*/
 // g_mysql_AccountOnline(int playerid, int stateid)
 stock g_mysql_AccountOnline(playerid, stateid)
 {
@@ -1546,37 +1456,13 @@ stock g_mysql_AccountOnlineReset()
 	return 1;
 }
 
-// g_mysql_CreateAccount(int playerid, string accountPassword[])
-// Description: Creates a new account in the database.
-stock g_mysql_CreateAccountzz(playerid, name[])
+stock g_mysql_CreateAccount(playerid, name[])
 {
 	new string[256];
-	new passbuffer[129];
-    passbuffer = "lsrvn";
-	format(string, sizeof(string), "INSERT INTO `accounts` (`master_id`,`RegiDate`, `LastLogin`, `Username`, `Key`) VALUES ('%d', NOW(), NOW(), '%s','%s')",MasterInfo[playerid][acc_id],name, passbuffer);
+	format(string, sizeof(string), "INSERT INTO `accounts` (`master_id`,`RegiDate`, `LastLogin`, `Username`, `Key`) VALUES ('%d', NOW(), NOW(), '%s','%s')",MasterInfo[playerid][acc_id],name, MasterInfo[playerid][acc_pass]);
 	mysql_function_query(MainPipeline, string, false, "OnQueryFinish", "iii", REGISTER_THREAD, playerid, g_arrQueryHandle{playerid});
 	return 1;
-}/*
-stock g_mysql_CreateAccount(playerid, accountPassword[])
-{
-	new string[256];
-	new passbuffer[129];
-//	WP_Hash(passbuffer, sizeof(passbuffer), accountPassword);
-
-	format(string, sizeof(string), "INSERT INTO `accounts` (`RegiDate`, `LastLogin`, `Username`, `Key`) VALUES (NOW(), NOW(), '%s','%s')", GetPlayerNameExt(playerid), passbuffer);
-	mysql_function_query(MainPipeline, string, false, "OnQueryFinish", "iii", REGISTER_THREAD, playerid, g_arrQueryHandle{playerid});
-	new ip[32], vuadangky[240];
-	GetPlayerIp(playerid, ip, sizeof(ip));
-	format(vuadangky, sizeof(vuadangky), "Luu Y: %s (ID: %d, IP: %s) vua dang ky tham gia game", GetPlayerNameEx(playerid), playerid, ip);
-	foreach(new i: Player)
-	{
- 		if(PlayerInfo[i][pAdmin] >= 2)
-   		{
-     		SendClientMessage(i, COLOR_YELLOW, vuadangky);
-	    }
-	}
-	return 1;
-}*/
+}
 
 stock g_mysql_LoadPVehicles(playerid)
 {
@@ -1586,8 +1472,6 @@ stock g_mysql_LoadPVehicles(playerid)
 	return 1;
 }
 
-// g_mysql_LoadPVehiclePositions(playerid)
-// Description: Loads vehicle positions if person has timed out.
 stock g_mysql_LoadPVehiclePositions(playerid)
 {
 	new string[128];
@@ -7689,8 +7573,8 @@ public ExecuteShopQueue(playerid, id)
 					}
 
 					PlayerInfo[playerid][pCredits] -= tmp[7];
-					format(query, sizeof(query), "UPDATE `shop_orders` SET `status` = 1 WHERE `id` = %d", tmp[0]);
-					mysql_function_query(MainPipeline, query, false, "OnQueryFinish", "i", SENDDATA_THREAD);
+					// format(query, sizeof(query), "UPDATE `shop_orders` SET `status` = 1 WHERE `id` = %d", tmp[0]);
+					// mysql_function_query(MainPipeline, query, false, "OnQueryFinish", "i", SENDDATA_THREAD);
 					OnPlayerStatsUpdate(playerid);
 					return SendClientMessageEx(playerid, COLOR_CYAN, "* Su dung /myvouchers de kiem tra va su dung vouchers cua ban bat cu luc nap!");
 				}
@@ -8562,7 +8446,7 @@ public OnPlayerLoad(playerid)
  	SetPlayerWeapons(playerid);
  	DestroyLog@_Reg(playerid);
  	SendClientMessageEx(playerid, COLOR_VANG, "Chao mung ban da tro lai may chu Red County Roleplay.");
- 	DownEDS[playerid] = SetTimerEx("StartDownEatDrinkStrong", 100000, true, "i", playerid);
+ 	DownEDS[playerid] = SetTimerEx("StartDownEatDrinkStrong", 180000, true, "i", playerid);
 	DeletePVar(playerid, "TextDrawCharacter");
  	GetHomeCount(playerid);
 	new rdName[MAX_PLAYER_NAME];
