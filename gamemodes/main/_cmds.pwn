@@ -102,7 +102,7 @@ CMD:newb(playerid, params[])
 	}
 	return 1;
 }
-
+/*
 CMD:bango(playerid, params[])
 {
 	ShowPlayerDialog(playerid, BANGO, DIALOG_STYLE_LIST, "Danh Sach Gia Go","20KG Go, Gia 200$\n40KG Go, Gia 450$\n100KG Go, Gia 1.200$", "Ban Go", "Khong Ban");
@@ -131,7 +131,7 @@ CMD:credits(playerid, params[])
     ShowPlayerDialog(playerid, DIALOG_NOTHING, DIALOG_STYLE_MSGBOX, name, str, "Dong Lai", "");
     return 1;
 }
-
+*/
 
 CMD:g(playerid, params[]) {
 
@@ -173,6 +173,7 @@ CMD:g(playerid, params[]) {
 	else return SendErrorMessage(playerid," Ban khong o trong nhom.");
 	return 1;
 }
+/*
 CMD:banvukhi(playerid, params[])
 {
 	return cmd_sellgun(playerid, params);
@@ -491,7 +492,7 @@ CMD:sellgun(playerid, params[])
     }
 	return 1;
 }
-
+/*
 CMD:muatoken(playerid, params[])
 {
 	if(IsPlayerInRangeOfPoint(playerid,3.0,2561.3586,1403.9874,7699.5845))
@@ -601,7 +602,7 @@ CMD:szdelete(playerid, params[])
 	format(string, sizeof(string), "%s da xoa Khu An Toan (ID %d).", GetPlayerNameEx(playerid), h);
 	Log("logs/khuantoan.log", string);
 	return 1;
-}
+}*/
 CMD:capmaphuhieu(playerid, params[])
 {
     if(PlayerInfo[playerid][pLeader] >= 0 || PlayerInfo[playerid][pFactionModerator] >= 1)
@@ -789,7 +790,7 @@ CMD:dungtruyduoi(playerid, params[])
 	}
 	return 1;
 }
-
+/*
 CMD:sudungbanh(playerid, params[])
 {
 	if(GetPVarType(playerid, "PlayerCuffed") || GetPVarType(playerid, "Injured") || GetPVarType(playerid, "IsFrozen") || PlayerInfo[playerid][pHospital]) {
@@ -1104,7 +1105,7 @@ CMD:finegcoin(playerid, params[])
 		SendClientMessageEx(playerid, COLOR_WHITE, "You're not a level three admin.");
 	}
 	return 1;
-}
+}*/
 CMD:makiemsoat(playerid,params[])
 {
 
@@ -1261,12 +1262,13 @@ stock JoinGame(playerid) {
       //  SendClientMessageEx(playerid,COLOR_VANG,"(HUONG DAN) Hay di vao Market tim cua hang dien tu mua mot cai GPS nhe.");
 		return 1;
 }
+/*
 CMD:vwcuatao(playerid, params[]) {
 	printf("vw cua may la %d",GetPlayerVirtualWorld(playerid));
 	return 1;
 }
 CMD:hihi(playerid, params[]) return   SetPlayerSpecialAction(playerid, SPECIAL_ACTION_CARRY);
-
+*/
 forward UpdateTK(playerid);
 public UpdateTK(playerid) {
 	new namez[24],bank;

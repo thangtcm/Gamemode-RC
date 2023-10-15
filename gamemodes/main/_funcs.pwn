@@ -1297,7 +1297,7 @@ public OnPlayerEnterVehicle(playerid, vehicleid, ispassenger)
 				}
 				if(TruckDeliveringTo[vehicleid] != INVALID_BUSINESS_ID && TruckUsed[playerid] == INVALID_VEHICLE_ID)
 				{
-					SendClientMessageEx(playerid, COLOR_YELLOW, "Tai Xe Trucker JOB: De cung cap cac  hang hoa,su dung /hijackcargo cho tai xe.");
+					SendClientMessageEx(playerid, COLOR_YELLOW, "Tai Xe Trucker JOB: De cung cap cac hang hoa,su dung /hijackcargo cho tai xe.");
 				}
 				else if(TruckUsed[playerid] == INVALID_VEHICLE_ID)
 				{
