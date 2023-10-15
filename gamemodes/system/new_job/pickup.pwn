@@ -9,6 +9,7 @@ stock LoadTextUpJob() {
 	CreateDynamic3DTextLabel("Khu vuc {2791FF}Trucker{ffffff}\n{2791FF}/truck{ffffff} de bat dau xin viec/lamviec", -1, 2507.7554,-2120.0732,13.546, 30);
 	CreateDynamic3DTextLabel("Khu vuc {2791FF}dang ky CMND{ffffff}\n{2791FF}/dangkycmnd{ffffff} de dang ky CMND", -1, -1872.7721,2671.1101,3.5904, 30);
 	CreateDynamic3DTextLabel("Khu vuc {2791FF}Thi bang lai{ffffff}\n{2791FF}/thibanglai{ffffff} de thi bang lai xe", -1, 1222.5018,243.8309,19.5469, 30);
+	CreateDynamic3DTextLabel("Khu vuc {FF0000}dang ky CMND{ffffff}\n{FF0000}/dangkycmnd{ffffff} de dang ky CMND", -1, 1873.1696,2670.3745,3.5894, 15);
 	Create3DTextLabel("Cua hang do tien dung\nChuyen buon ban cac vat pham", COLOR_VANG, 1103.4659,-1433.9872,15.7969, 20, 0, 0);
 	Create3DTextLabel("Cua hang quan ao nam\nBan trang phuc danh cho nam", COLOR_VANG, 1102.7621,-1445.4734,15.7969, 20, 0, 0);
 	Create3DTextLabel("Cua hang quan ao nu\n/Ban trang phuc danh cho Nu", COLOR_VANG,1103.2670,-1452.7322,15.7969, 20, 0, 0);
