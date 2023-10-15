@@ -719,18 +719,20 @@ enum tempcharacters {
 new TempCharacter[MAX_PLAYERS][4][tempcharacters];
 
 enum master {
-	acc_name[32],
+	acc_name[MAX_PLAYER_NAME],
 	acc_id,
 	acc_lastlogin[32],
 	acc_regidate[32],
-
+	acc_pass[BCRYPT_HASH_LENGTH],
+	acc_confirm
 }
 new MasterInfo[MAX_PLAYERS][master];
-
+new Chatting[MAX_PLAYERS];
 
 new TruckerVehicles[20];
 enum pInfo
 {
+	pChatStyle,
 	pNai,
 	pBo,
 	pRansack,
@@ -897,6 +899,7 @@ enum pInfo
 	pGunLic,
 	pGuns[12],
 	pAGuns[12],
+	PASGuns[12],
 	pConnectSeconds,
 	pPayDayHad,
 	pCDPlayer,
@@ -2018,6 +2021,7 @@ new RegistrationStep[MAX_PLAYERS];
 new playerSeconds[MAX_PLAYERS];
 new playerTabbed[MAX_PLAYERS];
 new playerAFK[MAX_PLAYERS];
+new playerAFKTimer[MAX_PLAYERS];
 new playerLastTyped[MAX_PLAYERS];
 new UsedFind[MAX_PLAYERS];
 new Spectating[MAX_PLAYERS];
@@ -2304,10 +2308,27 @@ new Float:WarrantJail[2][3] = {
 {1410.06, -1780.85, 7308.95}
 };
 
-new Float:OOCPrisonSpawns[3][3] = {
-	{-1968.6301, 309.3106, 1556.8120},
-	{-1968.6301, 309.3106, 1556.8120},
-	{-1968.6301, 309.3106, 1556.8120}
+new Float:OOCPrisonSpawns[20][3] = {
+	{559.2460,1444.2885,6000.4751},
+	{563.3038,1443.7559,6000.4751},
+	{567.2679,1443.9452,6000.4751},
+	{556.0255,1444.8304,6000.4751},
+	{551.9323,1444.1869,6000.4751},
+	{548.8228,1444.1123,6000.4751},
+	{544.8386,1443.7172,6000.4751},
+	{540.7290,1447.1171,6000.4751},
+	{540.4557,1450.8053,6000.4751},
+	{540.8330,1454.4130,6000.4751},
+	{540.8926,1458.0571,6000.4751},
+	{543.4923,1463.8638,6000.4751},
+	{547.6946,1464.3203,6000.4751},
+	{550.9280,1464.2814,6000.4751},
+	{557.5087,1464.1431,6000.4751},
+	{557.0340,1464.1437,6004.4946},
+	{551.0943,1463.9194,6004.4946},
+	{547.5723,1464.2659,6004.4946},
+	{543.8060,1464.2694,6004.4946},
+	{540.8929,1457.9114,6004.4946}
 };
 
 new Float:DocPrison[3][3] = {
@@ -2317,16 +2338,27 @@ new Float:DocPrison[3][3] = {
 };
 
 new Float:LSPDJailSpawns[5][3] = {
-	{1366.1117,1571.8075,1468.7877},//O Giua
-	{1366.6022,1575.6224,1468.7877},//O Trai
-	{1366.6973,1579.0037,1468.7877},
-	{1363.4543,1581.8207,1468.7877},
-	{1359.8464,1581.7192,1468.7867}
+	{1359.8751,1581.7141,1468.7867},//O Giua
+	{1363.5184,1582.2043,1468.7877},//O Trai
+	{1363.3958,1582.0024,1468.7877},
+	{1365.7126,1575.4314,1468.7877},
+	{1366.6805,1571.6501,1468.7877}
+};
+new Float:HospitalSpawnXYZ[7][3] = {
+	{1251.1318,-1305.1705,1061.8671},
+	{1248.3254,-1305.2551,1061.8671},
+	{1248.3925,-1299.0492,1061.8671},
+	{1251.0382,-1299.2942,1061.8671},
+	{1253.6729,-1299.8623,1061.8671},
+	{1256.2766,-1298.8246,1061.8671},
+	{1258.8730,-1299.6099,1061.8671}
 };
 
 new Titel[pBoxingStats];
 
 new DownEDS[MAX_PLAYERS];
+new DownS[MAX_PLAYERS];
+new DownPHP[MAX_PLAYERS];
 new EventKernel[EventKernelEnum];
 
 new EventRCPU[20]; // Value to know if rcp is being used

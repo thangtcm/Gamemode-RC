@@ -170,30 +170,6 @@ timer NOPCheck[5000](playerid)
 	return 1;
 }
 
-task AFKUpdate[10000]()
-{
-/*	for(new i = 1;i < MAX_NOITHAT; i++) {
-		if(NoiThatInfo[i][nt_ID] != 0 ) {
-		    SaveNoiThat(i);
-	    }
-	}*/  
-	if(Iter_Count(Player) > MAX_PLAYERS - 100)
-	{
-		foreach(new i: Player)
-		{
-			if((playerTabbed[i] > 300 || playerAFK[i] > 300) && PlayerInfo[i][pShopTech] < 1 && PlayerInfo[i][pAdmin] < 4)
-			{
-				Kick(i);
-			}
-		}
-	}
-	return 1;
-}
-task ActorUPdate[25000]()
-{
-	SetActorPos(ActorNV, -2415.4856,477.7157,29.8328);
-	return 1;
-}
 new dd[129]; // 21600000
 task Server[21600000]() { 
 	for(new i = 0; i < sizeof(Businesses); i++)
@@ -433,78 +409,6 @@ task ProductionUpdate[300000]()
 	SaveFamilies();
 }
 
-
-// Timer Name: playerTabbedLoop()
-// TickRate: 1 secs.
-task playerTabbedLoop[1000]() {
-
-	new
-		iTick = gettime() - 1;
-
-	foreach(new x: Player)
-	{
-		        		
-		if(!IsPlayerInAnyVehicle(x)) 
-		{
-    	 	PlayerTextDrawHide(x, SpeedoTD[x][0]);
-    	 	PlayerTextDrawHide(x, SpeedoTD[x][1]); 
-    	 	PlayerTextDrawHide(x, SpeedoTD[x][2]); 
-    	 	PlayerTextDrawHide(x, SpeedoTD[x][3]);
-    	 	PlayerTextDrawHide(x, SpeedoTD[x][4]); 
-    	 	PlayerTextDrawHide(x, SpeedoTD[x][5]); 
-    	 	PlayerTextDrawHide(x, SpeedoTD[x][6]);
-    	 	PlayerTextDrawHide(x, SpeedoTD[x][7]);
-     	}
-	
-		if(PlayerInfo[x][pThungHang] != 0 ) {
-			PlayerInfo[x][pThungHangTime] -= 1;
-			if(PlayerInfo[x][pThungHangTime] <= 0) {
-				SendClientMessageEx(x,COLOR_YELLOW,"do thung hang khong duoc bao quan nen da bi hu");
-				RemovePlayerAttachedObject(x, 0);
-				PlayerInfo[x][pThungHang] = 0;
-				SetPlayerSpecialAction(x, SPECIAL_ACTION_NONE);
-			}
-		}
-		if(gPlayerLogged{x})
-        {
-		    if(GetPVarInt(x, "togRadio") == 1 || PlayerInfo[x][pRadio] == 0)
-    	    {
-    		    PlayerTextDrawHide(x, RadioInfo[x]);
-	 		    PlayerTextDrawHide(x, ChannelInfo[x]);
-	 		    PlayerTextDrawHide(x, SlotInfo[x]);
-    	    }
-    	    else {
-    		    UpdateRadio(x);
-    	    }
-    
-		 //   show_update_hunger(x);
-         //   UpdateBanDo(x);
-        }
-    //    HutPot(x);
-		if(1 <= GetPlayerState(x) <= 3) {
-			if(playerTabbed[x] >= 1) {
-				if(++playerTabbed[x] >= 1200 && PlayerInfo[x][pAdmin] < 2) {
-				    SendClientMessageEx(x, COLOR_WHITE, "Ban da tu dong bi kick khoi may chu do treo may qua lau.");
-	    			return Disconnect(x);
-				}
-			}
-		    else if(++playerSeconds[x] < iTick && playerTabbed[x] == 0) {
-		        playerTabbed[x] = 1;
-		    }
-			else if((IsPlayerInRangeOfPoint(x, 2.0, PlayerPos[x][0], PlayerPos[x][1], PlayerPos[x][2]) || InsidePlane[x] != INVALID_PLAYER_ID) && ++playerLastTyped[x] >= 10) {
-				if(++playerAFK[x] >= 1200 && PlayerInfo[x][pAdmin] < 2) {
-				    SendClientMessageEx(x, COLOR_WHITE, "Ban da tu dong bi kick khoi may chu do mat ket noi");
-					return Disconnect(x);
-				}
-			}
-			else playerAFK[x] = 0;
-			GetPlayerPos(x, PlayerPos[x][0], PlayerPos[x][1], PlayerPos[x][2]);
-		}
-	}
-	return 1;
-}
-
-
 // Timer Name: MoneyUpdate()
 // TickRate: 1 secs.
 task MoneyUpdate[1000]()
@@ -611,24 +515,8 @@ task MoneyUpdate[1000]()
 	{
 		if(gPlayerLogged{i})
 		{
-			if(IsSpawned[i] == 0)
-			{
-				SpawnKick[i]++;
-				if(SpawnKick[i] >= 120)
-				{
-					IsSpawned[i] = 1;
-					SpawnKick[i] = 0;
-					new string[128];
-					SendClientMessageEx(i, COLOR_WHITE, "HE THONG: Ban da bi kick khoi server vi AFK.");
-					format(string, sizeof(string), " %s (ID: %d) (IP: %s) da bi he thong tu dong kick ra khoi may chu vi treo may qua 2 phut.", GetPlayerNameEx(i), i, GetPlayerIpEx(i));
-					Log("logs/spawnafk.log", string);
-					SetTimerEx("KickEx", 1000, 0, "i", i);
-				}
-			}
-			if(IsSpawned[i] > 0 && SpawnKick[i] > 0)
-			{
-				SpawnKick[i] = 0;
-			}
+			AFKCheck(i);
+			UpdateProgressStat(i);
 		    if(GetPlayerPing(i) > MAX_PING)
 		    {
 		        if(playerTabbed[i] == 0)
@@ -650,6 +538,26 @@ task MoneyUpdate[1000]()
 					}
 				}
 		    }
+			if(!IsPlayerInAnyVehicle(i)) 
+			{
+				PlayerTextDrawHide(i, SpeedoTD[i][0]);
+				PlayerTextDrawHide(i, SpeedoTD[i][1]); 
+				PlayerTextDrawHide(i, SpeedoTD[i][2]); 
+				PlayerTextDrawHide(i, SpeedoTD[i][3]);
+				PlayerTextDrawHide(i, SpeedoTD[i][4]); 
+				PlayerTextDrawHide(i, SpeedoTD[i][5]); 
+				PlayerTextDrawHide(i, SpeedoTD[i][6]);
+				PlayerTextDrawHide(i, SpeedoTD[i][7]);
+			}
+			if(GetPVarInt(i, "togRadio") == 1 || PlayerInfo[i][pRadio] == 0)
+    	    {
+    		    PlayerTextDrawHide(i, RadioInfo[i]);
+	 		    PlayerTextDrawHide(i, ChannelInfo[i]);
+	 		    PlayerTextDrawHide(i, SlotInfo[i]);
+    	    }
+    	    else {
+    		    UpdateRadio(i);
+    	    }
  		    if(PlayerInfo[i][pBuddyInvited] == 1 && --PlayerInfo[i][pTempVIP] <= 0)
 			{
 				PlayerInfo[i][pTempVIP] = 0;
@@ -737,13 +645,6 @@ task MoneyUpdate[1000]()
 			}
 			if(PlayerInfo[i][pCash] != GetPlayerMoney(i))
 			{
-			    /*if((GetPlayerAnimationIndex(i) == 1660) && ((PlayerInfo[i][pCash] - GetPlayerMoney(i)) == 1))
-			    {
-					new Float:hp;
-					GetPlayerHealth(i, hp);
-					if(hp + 35 >= 100.0) pSSHealth[i] = 100.0;
-					else pSSHealth[i] = hp + 35.0;
-				}*/
 				ResetPlayerMoney(i);
 				GivePlayerMoney(i, PlayerInfo[i][pCash]);
 			}
@@ -758,25 +659,6 @@ task MoneyUpdate[1000]()
 			if(PlayerCuffed[i] > 1) {
 				SetPlayerHealth(i, 1000);
 				SetPlayerArmor(i, GetPVarFloat(i, "cuffarmor"));
-			}
-			if(IsPlayerInAnyVehicle(i) && TruckUsed[i] != INVALID_VEHICLE_ID)
-			{
-			    if(TruckUsed[i] == GetPlayerVehicleID(i) && GetPVarInt(i, "Gas_TrailerID") != 0)
-			    {
-					if(Businesses[TruckDeliveringTo[TruckUsed[i]]][bType] == BUSINESS_TYPE_GASSTATION)
-					{
-					    if(GetVehicleTrailer(GetPlayerVehicleID(i)) != GetPVarInt(i, "Gas_TrailerID"))
-					    {
-							SetPVarInt(i, "GasWarnings", GetPVarInt(i, "GasWarnings") + 1);
-							if(GetPVarInt(i, "GasWarnings") > 10)
-							{
-						    	CancelTruckDelivery(i);
-						    	DeletePVar(i, "GasWarnings");
-						    	SendClientMessageEx(i, COLOR_REALRED, "Ban da giao hang that bai khi mat tai hang hoa len xe!");
-							}
-						}
-					}
-				}
 			}
 		}
 	}
@@ -1070,7 +952,7 @@ task ServerHeartbeat[1000]() {
 					PlayerInfo[i][pInt] = 0;
 					SetPlayerVirtualWorld(i, 0);
 					PlayerInfo[i][pVW] = 0;
-					SetPlayerPos(i, -2047.3228, -89.7949, 35.1641);
+					SetPlayerPos(i, 631.7688,-571.7535,16.3359);
 				}
 				else
 				{
@@ -1078,7 +960,7 @@ task ServerHeartbeat[1000]() {
 					PlayerInfo[i][pInt] = 0;
 					SetPlayerVirtualWorld(i, 0);
 					PlayerInfo[i][pVW] = 0;
-	    			SetPlayerPos(i, -2047.3228, -89.7949, 35.1641);
+	    			SetPlayerPos(i, 1224.6759,244.8446,19.5547);
 				}
 				SetPlayerHealth(i, 100);
 				PlayerInfo[i][pJailTime] = 0;
@@ -2184,23 +2066,23 @@ task fpsCounterUpdate[500]()
 	return true;
 }
 
-// Timer Name: ShopItemQueue()
-// TickRate: 30 Seconds
-task ShopItemQueue[30000]()
-{
-	new string[128];
-	foreach(new i: Player)
-	{
+// // Timer Name: ShopItemQueue()
+// // TickRate: 30 Seconds
+// task ShopItemQueue[30000]()
+// {
+// 	new string[128];
+// 	foreach(new i: Player)
+// 	{
 		
-		if(IsPlayerConnected(i))
-		{
-			format(string, sizeof(string), "SELECT * FROM `shop_orders` WHERE `user_id` = %d AND `status` = 0", GetPlayerSQLId(i));
-			mysql_function_query(MainPipeline, string, true, "ExecuteShopQueue", "ii", i, 0);
-			if(ShopToggle == 1)
-			{
-				format(string, sizeof(string), "SELECT * FROM `order_delivery_status` WHERE `player_id` = %d AND `status` = 0", GetPlayerSQLId(i));
-				mysql_function_query(ShopPipeline, string, true, "ExecuteShopQueue", "ii", i, 1);
-			}
-		}
-	}
-}
+// 		if(IsPlayerConnected(i))
+// 		{
+// 			format(string, sizeof(string), "SELECT * FROM `shop_orders` WHERE `user_id` = %d AND `status` = 0", GetPlayerSQLId(i));
+// 			mysql_function_query(MainPipeline, string, true, "ExecuteShopQueue", "ii", i, 0);
+// 			if(ShopToggle == 1)
+// 			{
+// 				format(string, sizeof(string), "SELECT * FROM `order_delivery_status` WHERE `player_id` = %d AND `status` = 0", GetPlayerSQLId(i));
+// 				mysql_function_query(ShopPipeline, string, true, "ExecuteShopQueue", "ii", i, 1);
+// 			}
+// 		}
+// 	}
+// }

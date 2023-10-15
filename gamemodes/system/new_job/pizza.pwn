@@ -75,6 +75,7 @@ hook OnPlayerConnect(playerid)
 
 hook OnPlayerDisconnect(playerid, reason)
 {
+	printf("PizzaCar");
 	DestroyVehicle(PizzaCar[playerid]);
 	PizzaCar[playerid] = INVALID_VEHICLE_ID;
 	return 1;

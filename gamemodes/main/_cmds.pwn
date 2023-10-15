@@ -1259,7 +1259,6 @@ stock JoinGame(playerid) {
         ClearChatbox(playerid);
         SendClientMessageEx(playerid,COLOR_VANG,"Chao mung ban da den voi may chu RC-RP.");
       //  SendClientMessageEx(playerid,COLOR_VANG,"(HUONG DAN) Hay di vao Market tim cua hang dien tu mua mot cai GPS nhe.");
-        SetPlayerCheckpoint(playerid, 1836.0756,-1862.5111,13.3828, 3);
 		return 1;
 }
 CMD:vwcuatao(playerid, params[]) {
@@ -1526,7 +1525,7 @@ CMD:xemthue(playerid, params[]) {
 CMD:phone(playerid,params[]) return ShowPlayerDialog(playerid, DIALOG_PHONE, DIALOG_STYLE_LIST, "Phone - Main", "Goi dien\nNhan tin\nLog SMS\nDanh ba\nChuyen tien", "Chon", "Huy bo");
 CMD:dangkycmnd(playerid,params[]) {
     new string[129];
-    if(!IsPlayerInRangeOfPoint(playerid, 5, 1873.1696,2670.3745,3.5894)) return SendErrorMessage(playerid," Ban khong o gan city hall khong the dang ky CMND.");
+    if(!IsPlayerInRangeOfPoint(playerid, 5, -1872.7721,2671.1101,3.5904)) return SendErrorMessage(playerid," Ban khong o gan city hall khong the dang ky CMND.");
     if(PlayerInfo[playerid][pCMND] < 10) {
         new cmnd;
         cmnd = 10000000 + random(99999999);
@@ -1577,31 +1576,35 @@ g_mysql_AccountAuthCheck(playerid)
 }
 forward AUTH_TH(playerid);
 public AUTH_TH(playerid) {
-        new name[24];
-        new rows = cache_num_rows();
-        for(new i;i < rows;i++)
+    new rows, fields, tmp[128];
+    cache_get_data(rows, fields, MainPipeline);
+    for(new i;i < rows;i++)
+    {
+        cache_get_field_content(i, "acc_name", MasterInfo[playerid][acc_name], MainPipeline, MAX_PLAYER_NAME);
+        cache_get_field_content(i, "acc_pass", MasterInfo[playerid][acc_pass], MainPipeline, 61);
+        cache_get_field_content(i, "acc_lastlogin", MasterInfo[playerid][acc_lastlogin], MainPipeline, 24);
+        cache_get_field_content(i, "acc_regidate", MasterInfo[playerid][acc_regidate], MainPipeline, 24);
+        cache_get_field_content(i, "acc_id", tmp, MainPipeline); MasterInfo[playerid][acc_id] = strval(tmp);
+        cache_get_field_content(i, "IsConfirm", tmp, MainPipeline); MasterInfo[playerid][acc_confirm] = strval(tmp);
+        if(MasterInfo[playerid][acc_confirm] != 1)
         {
-                cache_get_field_content(i, "acc_name", name, MainPipeline, MAX_PLAYER_NAME);
-                cache_get_field_content(i,  "acc_pass", MasterInfo[playerid][acc_id], MainPipeline, 24);
-                cache_get_field_content(i,  "acc_lastlogin", MasterInfo[playerid][acc_lastlogin], MainPipeline, 24);
-                cache_get_field_content(i,  "acc_regidate", MasterInfo[playerid][acc_regidate], MainPipeline, 24);
-                cache_get_field_content(i,  "acc_id", MasterInfo[playerid][acc_id], MainPipeline, 24);
-                printf("name %s,%s, ",name, MasterInfo[playerid][acc_lastlogin]);
-                if(strcmp(name, GetPlayerNameExt(playerid), true) == 0)
-                {
-                        HideNoticeGUIFrame(playerid);
-                        SafeLogin(playerid, 1);
-
-                        return 1;
-                }
-                else
-                {
-                        return 1;
-                }
+            SafeLogin(playerid, 1);
+            return 1;
         }
-        HideNoticeGUIFrame(playerid);
-        SafeLogin(playerid, 2);
-        return 1;
+        if(strcmp(MasterInfo[playerid][acc_name], GetPlayerNameExt(playerid), true) == 0)
+        {
+                HideNoticeGUIFrame(playerid);
+                SafeLogin(playerid, 1);
+                return 1;
+        }
+        else
+        {
+                return 1;
+        }
+    }
+    HideNoticeGUIFrame(playerid);
+    SafeLogin(playerid, 2);
+    return 1;
 }
 
 CMD:bb(playerid, params[]) {

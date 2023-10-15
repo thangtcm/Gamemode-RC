@@ -94,8 +94,12 @@ new const g_aInventoryItems[][e_InventoryItems] =
 
 hook OnPlayerDisconnect(playerid, reason)
 {
-    stop myItemTimer[playerid];
-    myItemTimer[playerid] = Timer:-1;
+		printf("myItemTimer");
+	if(myItemTimer[playerid] != Timer:-1)
+	{
+		stop myItemTimer[playerid];
+    	myItemTimer[playerid] = Timer:-1;
+	}
     return 1;
 }
 
@@ -746,6 +750,8 @@ public OnPlayerUseItem(playerid, pItemId, name[])
 				format(str, sizeof(str), "* %s da deo mat na.", GetPlayerNameEx(playerid));
 				ProxDetector(30.0, playerid, str, COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE);
 				PlayerInfo[playerid][pMaskOn] = 1;
+				if(IsPlayerAttachedObjectSlotUsed(playerid, PIZZA_INDEX)) RemovePlayerAttachedObject(playerid, PIZZA_INDEX);
+				SetPlayerAttachedObject(playerid, PIZZA_INDEX, 19036,2, 0.093999, 0.026000, -0.004999, 93.800018, 82.199951, -3.300001, 1.098000, 1.139999, 1.173000);
 				format(szName, sizeof(szName), "[Mask %d_%d]", PlayerInfo[playerid][pMaskID][0], PlayerInfo[playerid][pMaskID][1]);
 				SetPlayerName(playerid, szName);
 			}
@@ -756,6 +762,7 @@ public OnPlayerUseItem(playerid, pItemId, name[])
 				PlayerInfo[playerid][pMaskOn] = 0;
 				GetPlayerName(playerid, szName,MAX_PLAYER_NAME);
 				SetPlayerName(playerid, szName);
+				if(IsPlayerAttachedObjectSlotUsed(playerid, PIZZA_INDEX)) RemovePlayerAttachedObject(playerid, PIZZA_INDEX);
 			}
 		}
 	}
@@ -791,7 +798,7 @@ public OnPlayerUseItem(playerid, pItemId, name[])
 		new weapon_g,ammos_g;
 		GetPlayerWeaponData(playerid, 2, weapon_g, ammos_g);
         if(weapon_g == 22 || weapon_g == 23 || weapon_g == 24) return SendClientMessage(playerid,-1,"Ban da trang bi mot loai vu khi tuong tu.");
-        GivePlayerValidWeapon(playerid, 24, 1);
+        GivePlayerValidWeapon(playerid, 24, 1, true);
         SendClientTextDraw(playerid, "Ban da trang bi thanh cong vu khi ~r~Deagle~w~ voi ~r~1 vien dan");
         Inventory_Remove(playerid, pItemId, 1);
 	}
@@ -809,7 +816,7 @@ public OnPlayerUseItem(playerid, pItemId, name[])
 		new weapon_g,ammos_g;
 		GetPlayerWeaponData(playerid, 3, weapon_g, ammos_g);
         if(weapon_g == 25 || weapon_g == 26 || weapon_g == 27) return SendClientMessage(playerid,-1,"Ban da trang bi mot loai vu khi tuong tu.");
-        GivePlayerValidWeapon(playerid, 27, 1);
+        GivePlayerValidWeapon(playerid, 27, 1, true);
         SendClientTextDraw(playerid, "Ban da trang bi thanh cong vu khi ~r~Spas-12~w~ voi ~r~1 vien dan");
         Inventory_Remove(playerid, pItemId, 1);
 	}
@@ -827,7 +834,7 @@ public OnPlayerUseItem(playerid, pItemId, name[])
 		new weapon_g,ammos_g;
 		GetPlayerWeaponData(playerid, 3, weapon_g, ammos_g);
         if(weapon_g == 25 || weapon_g == 26 || weapon_g == 27) return SendClientMessage(playerid,-1,"Ban da trang bi mot loai vu khi tuong tu.");
-        GivePlayerValidWeapon(playerid, 25, 1);
+        GivePlayerValidWeapon(playerid, 25, 1, true);
         SendClientTextDraw(playerid, "Ban da trang bi thanh cong vu khi ~r~Shotgun~w~ voi ~r~1 vien dan");
         Inventory_Remove(playerid, pItemId, 1);
 	}
@@ -845,7 +852,7 @@ public OnPlayerUseItem(playerid, pItemId, name[])
 		new weapon_g,ammos_g;
 		GetPlayerWeaponData(playerid, 4, weapon_g, ammos_g);
         if(weapon_g == 29 ) return SendClientMessage(playerid,-1,"Ban da trang bi mot loai vu khi tuong tu.");
-        GivePlayerValidWeapon(playerid, 29, 1);
+        GivePlayerValidWeapon(playerid, 29, 1, true);
         SendClientTextDraw(playerid, "Ban da trang bi thanh cong vu khi ~r~MP5~w~ voi ~r~1 vien dan");
         Inventory_Remove(playerid, pItemId, 1);
 	}
@@ -872,7 +879,7 @@ public OnPlayerUseItem(playerid, pItemId, name[])
 		new weapon_g,ammos_g;
 		GetPlayerWeaponData(playerid, 5, weapon_g, ammos_g);
         if(weapon_g == 30 || weapon_g == 31) return SendClientMessage(playerid,-1,"Ban da trang bi mot loai vu khi tuong tu.");
-        GivePlayerValidWeapon(playerid, 31, 1);
+        GivePlayerValidWeapon(playerid, 31, 1, true);
         SendClientTextDraw(playerid, "Ban da trang bi thanh cong vu khi ~r~M4~w~ voi ~r~1 vien dan");
         Inventory_Remove(playerid, pItemId, 1);
 	}
@@ -890,7 +897,7 @@ public OnPlayerUseItem(playerid, pItemId, name[])
 		new weapon_g,ammos_g;
 		GetPlayerWeaponData(playerid, 6, weapon_g, ammos_g);
         if(weapon_g == 34 ) return SendClientMessage(playerid,-1,"Ban da trang bi mot loai vu khi tuong tu.");
-        GivePlayerValidWeapon(playerid, 34, 1);
+        GivePlayerValidWeapon(playerid, 34, 1, true);
         SendClientTextDraw(playerid, "Ban da trang bi thanh cong vu khi ~r~Sniper~w~ voi ~r~1 vien dan");
         Inventory_Remove(playerid, pItemId, 1);
 	}
@@ -899,7 +906,7 @@ public OnPlayerUseItem(playerid, pItemId, name[])
 		new weapon_g,ammos_g;
 		GetPlayerWeaponData(playerid, 6, weapon_g, ammos_g);
         if(weapon_g == 33 ) return SendClientMessage(playerid,-1,"Ban da trang bi mot loai vu khi tuong tu.");
-        GivePlayerValidWeapon(playerid, 33, 1);
+        GivePlayerValidWeapon(playerid, 33, 1, true);
         SendClientTextDraw(playerid, "Ban da trang bi thanh cong vu khi ~r~Sniper~w~ voi ~r~1 vien dan");
         Inventory_Remove(playerid, pItemId, 1);
 	}
@@ -1076,7 +1083,6 @@ CMD:invch(playerid, params[])
 		return SendClientMessageEx(playerid, COLOR_LIGHTRED, "Ban khong the mo tui do khi ban dang trong tu.");
 	new carid = GetPlayerVehicleID(playerid);
 	new closestcar = GetClosestCar(playerid,carid);
-	new str[128];
 	if(IsPlayerInRangeOfVehicle(playerid, closestcar, 5.0))
 	{
 		new v = GetPlayerVehicle(playerid, closestcar);
@@ -1084,6 +1090,7 @@ CMD:invch(playerid, params[])
 		{
 			SetPVarInt(playerid, "InvPlayerVehicle", v);
 			OpenInventoryCarHouse(playerid, "INV CAR");
+			OpenInventory(playerid);
 			return 1;
 		}
 	}
@@ -1201,12 +1208,20 @@ Dialog:InventoryCar(playerid, response, listitem, inputtext[])
 			Inventory_Update(playerid, itemId);
 			format(str, sizeof(str), "Ban da lay vat pham %s tu chiec xe vao tui do cua ban.", itemName);
 			SendClientMessageEx(playerid, COLOR_MAIN, str);
+			format(str, sizeof(str), "* %s da lay vat pham \"%s\" ra khoi chiec xe.", GetPlayerNameEx(playerid), itemName);
+			ProxDetector(20.0, playerid, str, COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE);
+			OpenInventoryCarHouse(playerid, "Inventory Car");
+			OpenInventory(playerid);
 		}
 		else if(GetPVarInt(playerid, "InvPlayerHouse") != -1)
 		{
 			Inventory_Update(playerid, itemId);
 			format(str, sizeof(str), "Ban da lay vat pham %s tu chiec xe vao tui do cua ban.", itemName);
 			SendClientMessageEx(playerid, COLOR_MAIN, str);
+			format(str, sizeof(str), "* %s da lay vat pham \"%s\" ra khoi chiec xe.", GetPlayerNameEx(playerid), itemName);
+			ProxDetector(20.0, playerid, str, COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE);
+			OpenInventoryCarHouse(playerid, "Inventory House");
+			OpenInventory(playerid);
 		}
 	}
 	DeletePVar(playerid, "InvPlayerHouse");

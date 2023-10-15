@@ -5352,7 +5352,7 @@ CMD:luatchoi(playerid, params[]) return cmd_quydinh(playerid, params);
 CMD:quydinh(playerid, params[])
 {
 	SendClientMessageEx(playerid, COLOR_WHITE,"*** Quy dinh cua Server ***");
-	SendClientMessageEx(playerid, COLOR_GRAD1,"Luon luon ROLEPLAY tai server {7ED9B7}SV.EL-RP.COM{FFFFFF}, hanh vi nhan vat can phai duoc nhu thuc te, va gan gui voi cuoc song cang tot!");
+	SendClientMessageEx(playerid, COLOR_GRAD1,"Luon luon ROLEPLAY tai server {7ED9B7}SV.RCRP.VN{FFFFFF}, hanh vi nhan vat can phai duoc nhu thuc te, va gan gui voi cuoc song cang tot!");
 	SendClientMessageEx(playerid, COLOR_GRAD1,"Khong metaming! Khong ket hop ky tu (IC)va cua ky tu (OOC) chat/thong tin. IC chat la chat mac dinh bang cach go~ /b!");
 	SendClientMessageEx(playerid, COLOR_GRAD2,"Khong killing on sight (KOS). No luc de giet mot nguoi choi tren man hinh mac da roleplay!");
 	SendClientMessageEx(playerid, COLOR_GRAD2,"Khong Tra Thu(RK)). Neu ban quay lai tan cong mot nguoi choi da giet ban. Tu khi chet sau 30 phut ban khong duoc quay lai tan cong,neu tra thu ban se vao tu!");
@@ -5360,7 +5360,7 @@ CMD:quydinh(playerid, params[])
 	SendClientMessageEx(playerid, COLOR_GRAD3,"Khong driver drive-by (DDB). Ban ra cua so trong khi mot la mot nguoi lai xe,chi ban ra khi ban la mot hanh khach tren xe.");
 	SendClientMessageEx(playerid, COLOR_GRAD4,"Khong tung nguoi va dau xe! Dung lap di lap lai nhieu lan nguoi khac,ban co the tra gia vi dieu nay!");
 	SendClientMessageEx(playerid, COLOR_GRAD4,"Khong thoat de tron tranh! Khong bao gio Thoat hoac AFK de tron tranh nhu bi bat,giet,giam ban cung co the bi Giam nang gap doi vi dieu nay!");
-	SendClientMessageEx(playerid, COLOR_WHITE,"*** Day chi la mot phan duoc rut ngan quy dinh, hay xem day du tren SV.EL-RP.COM se thong ke day du hon! ***");
+	SendClientMessageEx(playerid, COLOR_WHITE,"*** Day chi la mot phan duoc rut ngan quy dinh, hay xem day du tren SV.RCRP.VN se thong ke day du hon! ***");
 	SendClientMessageEx(playerid, COLOR_GREEN,"____________________________________________________________________________________________________________________________________________________________");
 	return 1;
 }
@@ -5837,7 +5837,7 @@ CMD:trogiup(playerid, params[]) {
 	return cmd_help(playerid, params);
 }
 CMD:help(playerid,params[]) {
-	ShowPlayerDialog(playerid, DIALOG_HELP, DIALOG_STYLE_LIST, "Ban can ho tro gi?", "General\nJob\nHouse/Door/Bizz\nVehicles\nBank", "Chon", "huy bo");
+	ShowPlayerDialog(playerid, DIALOG_HELP, DIALOG_STYLE_LIST, "Ban can ho tro gi?", "Chung\nJob\nHouse/Door/Bizz\nVehicles\nBank\nToy\nGroup", "Chon", "huy bo");
     return 1;
 }
 /*
@@ -7144,21 +7144,80 @@ CMD:goto(playerid, params[])
 		 	if (GetPlayerState(playerid) == 2)
 			{
 				new tmpcar = GetPlayerVehicleID(playerid);
-				SetVehiclePos(tmpcar, 1253.70, 343.73, 19.41);
+				SetVehiclePos(tmpcar, 1289.2391,248.9346,19.4063);
 				LinkVehicleToInterior(tmpcar, 0);
 				SetVehicleVirtualWorld(tmpcar, 0);
 				fVehSpeed[playerid] = 0.0;
 			}
 			else
 			{
-				SetPlayerPos(playerid, 1253.70, 343.73, 19.41);
+				SetPlayerPos(playerid, 1289.2391,248.9346,19.4063);
 			}
 			SendServerMessage(playerid, "    Ban da duoc dich chuyen!");
 			SetPlayerInterior(playerid,0);
 			PlayerInfo[playerid][pInt] = 0;
 			SetPlayerVirtualWorld(playerid, 0);
 			PlayerInfo[playerid][pVW] = 0;
-
+   		}
+  		else if(strcmp(params,"bb",true) == 0)
+		{
+		 	if (GetPlayerState(playerid) == 2)
+			{
+				new tmpcar = GetPlayerVehicleID(playerid);
+				SetVehiclePos(tmpcar, 233.1081,-211.2786,1.4300);
+				LinkVehicleToInterior(tmpcar, 0);
+				SetVehicleVirtualWorld(tmpcar, 0);
+				fVehSpeed[playerid] = 0.0;
+			}
+			else
+			{
+				SetPlayerPos(playerid, 233.1081,-211.2786,1.4300);
+			}
+			SendServerMessage(playerid, "    Ban da duoc dich chuyen!");
+			SetPlayerInterior(playerid,0);
+			PlayerInfo[playerid][pInt] = 0;
+			SetPlayerVirtualWorld(playerid, 0);
+			PlayerInfo[playerid][pVW] = 0;
+   		}
+  		else if(strcmp(params,"dm",true) == 0)
+		{
+		 	if (GetPlayerState(playerid) == 2)
+			{
+				new tmpcar = GetPlayerVehicleID(playerid);
+				SetVehiclePos(tmpcar, 682.8105,-529.9641,16.1883);
+				LinkVehicleToInterior(tmpcar, 0);
+				SetVehicleVirtualWorld(tmpcar, 0);
+				fVehSpeed[playerid] = 0.0;
+			}
+			else
+			{
+				SetPlayerPos(playerid, 682.8105,-529.9641,16.1883);
+			}
+			SendServerMessage(playerid, "    Ban da duoc dich chuyen!");
+			SetPlayerInterior(playerid,0);
+			PlayerInfo[playerid][pInt] = 0;
+			SetPlayerVirtualWorld(playerid, 0);
+			PlayerInfo[playerid][pVW] = 0;
+   		}
+  		else if(strcmp(params,"pc",true) == 0)
+		{
+		 	if (GetPlayerState(playerid) == 2)
+			{
+				new tmpcar = GetPlayerVehicleID(playerid);
+				SetVehiclePos(tmpcar, 2343.8049,90.8922,26.3327);
+				LinkVehicleToInterior(tmpcar, 0);
+				SetVehicleVirtualWorld(tmpcar, 0);
+				fVehSpeed[playerid] = 0.0;
+			}
+			else
+			{
+				SetPlayerPos(playerid, 2343.8049,90.8922,26.3327);
+			}
+			SendServerMessage(playerid, "    Ban da duoc dich chuyen!");
+			SetPlayerInterior(playerid,0);
+			PlayerInfo[playerid][pInt] = 0;
+			SetPlayerVirtualWorld(playerid, 0);
+			PlayerInfo[playerid][pVW] = 0;
    		}
      	else if(strcmp(params,"lsvip",true) == 0)
 		{
@@ -15559,8 +15618,8 @@ CMD:afk(playerid, params[]) {
 	    SendClientMessageEx(playerid,COLOR_WHITE,"Danh sach dang AFK...");
 	    foreach(new i: Player)
 		{
-			if(playerAFK[i] != 0 && playerAFK[i] > 60) {
-				format(szMessage,sizeof(szMessage),"* %s (ID %d), AFK %d phut.", GetPlayerNameEx(i), i, playerAFK[i] / 60);
+			if(playerAFK[i] != 0 && playerAFKTimer[i] > 60) {
+				format(szMessage,sizeof(szMessage),"* %s (ID %d), AFK %d phut.", GetPlayerNameEx(i), i, playerAFKTimer[i] / 60);
 				if(PlayerInfo[i][pAdmin] >= 2) SendClientMessageEx(playerid,COLOR_RED,szMessage);
 				else SendClientMessageEx(playerid,COLOR_GREY,szMessage);
 			}
@@ -18019,7 +18078,7 @@ CMD:bp3(playerid, params[])
 	{
 	    if(IsACop(playerid) || IsAMedic(playerid))
 		{
-		    new code[10],
+		    new 
 			zone[MAX_ZONE_NAME],
 			string[128];
 		    GetPlayer3DZone(playerid, zone, sizeof(zone));
@@ -18058,7 +18117,7 @@ CMD:bp2(playerid, params[])
 	{
 	    if(IsACop(playerid) || IsAMedic(playerid))
 		{
-		    new code[10],
+		    new 
 			zone[MAX_ZONE_NAME],
 			string[128];
 		    GetPlayer3DZone(playerid, zone, sizeof(zone));
@@ -20145,7 +20204,7 @@ CMD:loadpt(playerid, params[])
                     if(giveplayerid == playerid) { SendErrorMessage(playerid, " Ban khong the tai benh nhan!"); return 1; }
                     if(PlayerInfo[giveplayerid][pJailTime] > 0) return SendErrorMessage(playerid, " Ban khong the su dung lenh nay voi nguoi choi dang o tu");
                     new carid = gLastCar[playerid];
-                    if(IsAnAmbulance(carid))
+                    if(IsSeatAvailable(carid, seat))
 					{
                         if(IsVehicleOccupiedEx(carid, seat)) {
 							SendErrorMessage(playerid, " Nghe do dang co nguoi dung.");
@@ -35654,9 +35713,9 @@ CMD:families(playerid, params[])
 				{
 					format(string, sizeof(string), "* %s: %s | Rank: %s | Division: %s.",FamilyInfo[familyid][FamilyName],GetPlayerNameEx(i),FamilyRankInfo[familyid][0], division);
 				}
-				if(PlayerInfo[playerid][pFMember] == familyid && PlayerInfo[playerid][pRank] >= 5 && playerAFK[i] != 0 && playerAFK[i] > 60)
+				if(PlayerInfo[playerid][pFMember] == familyid && PlayerInfo[playerid][pRank] >= 5 && playerAFK[i] && playerAFKTimer[i] > 60)
 				{
-					format(string, sizeof(string), "%s (AFK: %d phut)", string, playerAFK[i] / 60);
+					format(string, sizeof(string), "%s (AFK: %d phut)", string, playerAFKTimer[i] / 60);
 				}
 				SendClientMessageEx(playerid, COLOR_GREY, string);
 			}
@@ -50877,7 +50936,6 @@ CMD:pm(playerid, params[])
 		format(string, sizeof(string), "(( PM nhan tu %s (%d): %s ))", GetPlayerNameExt(playerid), playerid, message);
 	}
 	SendClientMessage(PID, COLOR_RECEIVEPM, string);
-	new pmne[128];
 	if(PlayerInfo[PID][pAdmin] >= 1)
 	{
 		format(string, 128, "(( PM gui den {E88707}%s{FFE661} (%d): %s ))", GetPlayerNameExt(PID), PID, message);
@@ -50908,5 +50966,10 @@ CMD:setranktext(playerid, params[])
 		}
 	}
 	else SendServerMessage(playerid, " Ban khong the su dung lenh nay.");
+	return 1;
+}
+CMD:testeat(playerid, params[])
+{
+	PlayerInfo[playerid][pEat] = 26;
 	return 1;
 }

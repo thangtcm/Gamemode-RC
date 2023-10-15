@@ -914,5 +914,9 @@
 // GivePlayerCashEx Types
 #define			TYPE_BANK						1
 #define			TYPE_ONHAND						2
-#define NT_DISTANCE 25.0
+#define NT_DISTANCE 10.0
 #define MAX_NONGTRAI 100
+#define BCRYPT_COST 12
+
+forward OnPasswordHashed(playerid, timeNow[]);
+forward OnPasswordChecked(playerid);

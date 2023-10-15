@@ -62,10 +62,10 @@ public LoadingProgress(playerid,loadingid,speed) {
     loading_bar = ( Loading_Progess[playerid] *  1.27 );
     switch(loadingid) {
         case LoadingDaoDa: ApplyAnimation(playerid,"PED","BIKE_elbowL",4.0,0,0,0,0,0);
-        case LOAD_XITTHUOC: PlayAnimEx(playerid, "POOL", "POOL_Idle_Stance", 4.1, 0, 1, 1, 1, 1, 1);  
-        case LOAD_TUOINUOC: PlayAnimEx(playerid, "POOL", "POOL_Idle_Stance", 4.1, 0, 1, 1, 1, 1, 1);
+        case LOAD_XITTHUOC: ApplyAnimationEx(playerid, "POOL", "POOL_Idle_Stance", 4.1, 0, 1, 1, 1, 1, 1);  
+        case LOAD_TUOINUOC: ApplyAnimationEx(playerid, "POOL", "POOL_Idle_Stance", 4.1, 0, 1, 1, 1, 1, 1);
         case LOAD_BONPHAN: PlayAnim(playerid, "GRENADE", "WEAPON_throw", 4.0, 0, 0, 0, 0, 0, 1);
-        case LOAD_BATSAU: PlayAnimEx(playerid, "BD_FIRE", "wash_up", 4.0, 1, 0, 0, 0, 0, 1);
+        case LOAD_BATSAU: ApplyAnimationEx(playerid, "BD_FIRE", "wash_up", 4.0, 1, 0, 0, 0, 0, 1);
     }
   //  loading_bar = (385 < 257.000000 + loading_bar) ? 117 : loading_bar;
     PlayerTextDrawTextSize(playerid, Loader[playerid][2], 257.000000 + loading_bar, 0.000000);
