@@ -51,17 +51,20 @@ CMD:goiygiaohang(playerid, params[])
     new d = PlayerInfo[playerid][pRegisterCarTruck];
     
     for (new i = 0; i < MaxFactiory; i++) {
-        MaxImport = strlen(FactoryData[i][ProductImportName]);
-        for (new j = 0; j < MaxImport; j++) {
-            for(new index; index < MAX_OBJECTTRUCKER; index++)
+        for (new j = 0; j < MAX_PRODUCT; j++) {
+            if(FactoryData[i][ProductImportName][j] != -1)
             {
-                if(VehicleTruckerData[playerid][index][vtId] != -1 && VehicleTruckerData[playerid][index][vtSlotId] == PlayerVehicleInfo[playerid][d][pvSlotId]
-                    && VehicleTruckerData[playerid][index][vtProductID] == FactoryData[i][ProductImportName][j]){
-                    PlayerTruckerData[playerid][SuggestFactory][numFoundFactories++] = i;
-                    j = MaxImport;
-                    break;
+                for(new index; index < MAX_OBJECTTRUCKER; index++)
+                {
+                    if(VehicleTruckerData[playerid][index][vtId] != -1 && VehicleTruckerData[playerid][index][vtSlotId] == PlayerVehicleInfo[playerid][d][pvSlotId]
+                        && VehicleTruckerData[playerid][index][vtProductID] == FactoryData[i][ProductImportName][j]){
+                        PlayerTruckerData[playerid][SuggestFactory][numFoundFactories++] = i;
+                        j = MaxImport;
+                        break;
+                    }
                 }
             }
+            else break;
         }
     }
     new str[1200], zone[MAX_ZONE_NAME],Float:Distance;
@@ -111,8 +114,8 @@ CMD:truckergo(playerid, params[])
 	{
         if(GetPVarInt(playerid, "MissionTruck") == 1)
         {
-            // ShowMissionTrucker(playerid);
-            // return SendErrorMessage(playerid, "Ban da nhan nhiem vu giao hang trucker, hay xem lai thong tin.");
+            ShowMissionTrucker(playerid);
+            return SendErrorMessage(playerid, "Ban da nhan nhiem vu giao hang trucker, hay xem lai thong tin.");
         } 
         else if(IsPlayerInRangeOfPoint(playerid, 5.0, 58.5952,-292.2914,1.5781))
         {
@@ -132,9 +135,9 @@ CMD:truckergo(playerid, params[])
                 for(new i; i < MAX_PLAYERPRODUCT; i++)
                 {
                     if(PlayerTruckerData[playerid][MissionProduct][i] == -1) continue;
-                    new MaxProductName = strlen(FactoryData[FactoryId][ProductName]);
-                    for(new j; j < MaxProductName; j++)
+                    for(new j; j < MAX_PRODUCT; j++)
                     {
+                        if(FactoryData[FactoryId][ProductName][j] == -1) break;
                         if(FactoryData[FactoryId][ProductName][j] == PlayerTruckerData[playerid][MissionProduct][i])
                         {
                             PlayerTruckerData[playerid][MissionBuy][BuyProductLenght++] =  j;
@@ -148,8 +151,9 @@ CMD:truckergo(playerid, params[])
             }
             else
             {
-                for(new i; i < strlen(FactoryData[FactoryId][ProductName]); i++)
+                for(new i; i < MAX_PRODUCT; i++)
                 {
+                    if(FactoryData[FactoryId][ProductName][i] == -1) break;
                     PlayerTruckerData[playerid][MissionBuy][BuyProductLenght++] =  i;
                     ProductId = FactoryData[FactoryId][ProductName][i];
                     format(string, sizeof(string),"%s\n%d\t\t%s\t\t$%d",string, i, ProductData[ProductId][ProductName], FactoryData[FactoryId][ProductPrice][i]);
@@ -164,31 +168,25 @@ CMD:truckergo(playerid, params[])
         {
             SetPVarInt(playerid, "Sell_ProductID", FactoryId);
             format(string, sizeof(string), "{FFFFFF}ID\t\tSan Pham\t\tGia");
-            new MaxExport = strlen(FactoryData[FactoryId][ProductName]),
-                MaxImport = strlen(FactoryData[FactoryId][ProductImportName]);
             new CheckValid = 0, count=0;
             PlayerTruckerData[playerid][MAXPRODUCT] = 0;
             PlayerTruckerData[playerid][MAXPRODUCTIMPORT] = 0;
             if(PlayerTruckerData[playerid][ClaimFactoryID] == FactoryId)
             {
-                for(new i; i < MaxExport; i++)
+                for(new i; i < MAX_PRODUCT; i++)
                 {
-                    if(i < MaxExport && CheckValid == 0)
-                    {
-                        if(FactoryData[FactoryId][ProductName][i] == -1) {
-                            CheckValid = 1; 
-                            break;
-                        }
-                        ProductId = FactoryData[FactoryId][ProductName][i];
-                        PlayerTruckerData[playerid][SellProduct][count++] = i;
-                        PlayerTruckerData[playerid][MAXPRODUCT]++;
-                        format(string, sizeof(string),"%s\n%d\t\t%s\t\t$%d",string, i, ProductData[ProductId][ProductName], FactoryData[FactoryId][ProductPrice][i]);
-                    }
+                    if(FactoryData[FactoryId][ProductName][i] == -1)
+                        break;
+                    ProductId = FactoryData[FactoryId][ProductName][i];
+                    PlayerTruckerData[playerid][SellProduct][count++] = i;
+                    PlayerTruckerData[playerid][MAXPRODUCT]++;
+                    format(string, sizeof(string),"%s\n%d\t\t%s\t\t$%d",string, i, ProductData[ProductId][ProductName], FactoryData[FactoryId][ProductPrice][i]);
                 }
             }
             
-            for(new i; i < MaxImport; i++)
+            for(new i; i < MAX_PRODUCT; i++)
             {
+                if(FactoryData[FactoryId][ProductImportName][i] == -1) break;
                 ProductId = FactoryData[FactoryId][ProductImportName][i];
                 PlayerTruckerData[playerid][SellProduct][count++] = i;
                 PlayerTruckerData[playerid][MAXPRODUCTIMPORT]++;
@@ -239,7 +237,24 @@ stock RandomName()
 CMD:setnameinquery(playerid, params[])
 {
     new str[258];
-    format(str, sizeof(str), "%d", PlayerInfo[playerid][pRegisterCarTruck]);
+    format(str, sizeof(str), "[Mask %d %d]", PlayerInfo[playerid][pMaskID][0], PlayerInfo[playerid][pMaskID][1]);
 	SendClientMessageEx(playerid, COLOR_YELLOW, str);
+    SetPlayerName(playerid, str);
 	return 1;
+}
+
+CMD:testhash(playerid, params[])
+{
+    new pass[24];
+    if(sscanf(params, "s[24]", pass))   return 1;
+    bcrypt_hash(pass, BCRYPT_COST, "OnPasswordHashed", "d", playerid);
+    return 1;
+}
+
+CMD:testrehash(playerid, params[])
+{
+    new pass[24];
+    if(sscanf(params, "s[24]", pass))   return 1;
+    bcrypt_check(pass, codehash, "OnPasswordChecked", "d", playerid);
+    return 1;
 }

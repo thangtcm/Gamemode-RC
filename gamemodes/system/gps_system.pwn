@@ -115,7 +115,7 @@ Dialog:GPSPosition(playerid, response, listitem, inputtext[])
 {
 	if(response)
 	{
-		new wepget[20], string[256], szEmployer[GROUP_MAX_NAME_LEN], szRank[GROUP_MAX_RANK_LEN], szDivision[GROUP_MAX_DIV_LEN];
+		new szEmployer[GROUP_MAX_NAME_LEN], szRank[GROUP_MAX_RANK_LEN], szDivision[GROUP_MAX_DIV_LEN];
 		GetPlayerGroupInfo(playerid, szRank, szDivision, szEmployer);
 		switch(listitem)
 		{

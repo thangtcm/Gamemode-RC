@@ -102,7 +102,7 @@ CMD:newb(playerid, params[])
 	}
 	return 1;
 }
-
+/*
 CMD:bango(playerid, params[])
 {
 	ShowPlayerDialog(playerid, BANGO, DIALOG_STYLE_LIST, "Danh Sach Gia Go","20KG Go, Gia 200$\n40KG Go, Gia 450$\n100KG Go, Gia 1.200$", "Ban Go", "Khong Ban");
@@ -131,7 +131,7 @@ CMD:credits(playerid, params[])
     ShowPlayerDialog(playerid, DIALOG_NOTHING, DIALOG_STYLE_MSGBOX, name, str, "Dong Lai", "");
     return 1;
 }
-
+*/
 
 CMD:g(playerid, params[]) {
 
@@ -173,6 +173,7 @@ CMD:g(playerid, params[]) {
 	else return SendErrorMessage(playerid," Ban khong o trong nhom.");
 	return 1;
 }
+/*
 CMD:banvukhi(playerid, params[])
 {
 	return cmd_sellgun(playerid, params);
@@ -491,7 +492,7 @@ CMD:sellgun(playerid, params[])
     }
 	return 1;
 }
-
+/*
 CMD:muatoken(playerid, params[])
 {
 	if(IsPlayerInRangeOfPoint(playerid,3.0,2561.3586,1403.9874,7699.5845))
@@ -601,7 +602,7 @@ CMD:szdelete(playerid, params[])
 	format(string, sizeof(string), "%s da xoa Khu An Toan (ID %d).", GetPlayerNameEx(playerid), h);
 	Log("logs/khuantoan.log", string);
 	return 1;
-}
+}*/
 CMD:capmaphuhieu(playerid, params[])
 {
     if(PlayerInfo[playerid][pLeader] >= 0 || PlayerInfo[playerid][pFactionModerator] >= 1)
@@ -789,7 +790,7 @@ CMD:dungtruyduoi(playerid, params[])
 	}
 	return 1;
 }
-
+/*
 CMD:sudungbanh(playerid, params[])
 {
 	if(GetPVarType(playerid, "PlayerCuffed") || GetPVarType(playerid, "Injured") || GetPVarType(playerid, "IsFrozen") || PlayerInfo[playerid][pHospital]) {
@@ -1104,7 +1105,7 @@ CMD:finegcoin(playerid, params[])
 		SendClientMessageEx(playerid, COLOR_WHITE, "You're not a level three admin.");
 	}
 	return 1;
-}
+}*/
 CMD:makiemsoat(playerid,params[])
 {
 
@@ -1261,12 +1262,13 @@ stock JoinGame(playerid) {
       //  SendClientMessageEx(playerid,COLOR_VANG,"(HUONG DAN) Hay di vao Market tim cua hang dien tu mua mot cai GPS nhe.");
 		return 1;
 }
+/*
 CMD:vwcuatao(playerid, params[]) {
 	printf("vw cua may la %d",GetPlayerVirtualWorld(playerid));
 	return 1;
 }
 CMD:hihi(playerid, params[]) return   SetPlayerSpecialAction(playerid, SPECIAL_ACTION_CARRY);
-
+*/
 forward UpdateTK(playerid);
 public UpdateTK(playerid) {
 	new namez[24],bank;
@@ -1576,31 +1578,35 @@ g_mysql_AccountAuthCheck(playerid)
 }
 forward AUTH_TH(playerid);
 public AUTH_TH(playerid) {
-        new name[24];
-        new rows = cache_num_rows();
-        for(new i;i < rows;i++)
+    new rows, fields, tmp[128];
+    cache_get_data(rows, fields, MainPipeline);
+    for(new i;i < rows;i++)
+    {
+        cache_get_field_content(i, "acc_name", MasterInfo[playerid][acc_name], MainPipeline, MAX_PLAYER_NAME);
+        cache_get_field_content(i, "acc_pass", MasterInfo[playerid][acc_pass], MainPipeline, 61);
+        cache_get_field_content(i, "acc_lastlogin", MasterInfo[playerid][acc_lastlogin], MainPipeline, 24);
+        cache_get_field_content(i, "acc_regidate", MasterInfo[playerid][acc_regidate], MainPipeline, 24);
+        cache_get_field_content(i, "acc_id", tmp, MainPipeline); MasterInfo[playerid][acc_id] = strval(tmp);
+        cache_get_field_content(i, "IsConfirm", tmp, MainPipeline); MasterInfo[playerid][acc_confirm] = strval(tmp);
+        if(MasterInfo[playerid][acc_confirm] != 1)
         {
-                cache_get_field_content(i, "acc_name", name, MainPipeline, MAX_PLAYER_NAME);
-                cache_get_field_content(i,  "acc_pass", MasterInfo[playerid][acc_id], MainPipeline, 24);
-                cache_get_field_content(i,  "acc_lastlogin", MasterInfo[playerid][acc_lastlogin], MainPipeline, 24);
-                cache_get_field_content(i,  "acc_regidate", MasterInfo[playerid][acc_regidate], MainPipeline, 24);
-                cache_get_field_content(i,  "acc_id", MasterInfo[playerid][acc_id], MainPipeline, 24);
-                printf("name %s,%s, ",name, MasterInfo[playerid][acc_lastlogin]);
-                if(strcmp(name, GetPlayerNameExt(playerid), true) == 0)
-                {
-                        HideNoticeGUIFrame(playerid);
-                        SafeLogin(playerid, 1);
-
-                        return 1;
-                }
-                else
-                {
-                        return 1;
-                }
+            SafeLogin(playerid, 1);
+            return 1;
         }
-        HideNoticeGUIFrame(playerid);
-        SafeLogin(playerid, 2);
-        return 1;
+        if(strcmp(MasterInfo[playerid][acc_name], GetPlayerNameExt(playerid), true) == 0)
+        {
+                HideNoticeGUIFrame(playerid);
+                SafeLogin(playerid, 1);
+                return 1;
+        }
+        else
+        {
+                return 1;
+        }
+    }
+    HideNoticeGUIFrame(playerid);
+    SafeLogin(playerid, 2);
+    return 1;
 }
 
 CMD:bb(playerid, params[]) {

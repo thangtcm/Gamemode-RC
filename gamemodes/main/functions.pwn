@@ -6883,11 +6883,60 @@ stock SafeLogin(playerid, type)
                     GetPlayerIp(playerid, ip, 32);
                     format(string,sizeof (string),"Tai khoan: %s\n\n\
                     Dia chi IP cua ban: %s\n\n\
-                    Tai khoan ban chua dang ky, hay nhap mat khau de dang ky\n\n",GetPlayerNameEx(playerid),ip);
-                    ShowPlayerDialog(playerid,DANGKY,DIALOG_STYLE_PASSWORD,"Dang ky",string,"Dang ky","Thoat");
+                    Tai khoan ban chua dang ky, hay vao trang web : UCP.RCRP.VN de dang ky tai khoan\n\n",GetPlayerNameEx(playerid),ip);
+                    ShowPlayerDialog(playerid,DIALOG_NOTHING, DIALOG_STYLE_MSGBOX,"ERROR",string,"<","");
                 }
         }
 }
+new codehash[BCRYPT_HASH_LENGTH];
+
+public OnPasswordHashed(playerid, timeNow[])
+{
+	new hash[BCRYPT_HASH_LENGTH], query[229];
+	bcrypt_get_hash(hash);
+	MasterInfo[playerid][acc_pass] = hash;
+	printf("Password hashed for player %d: %s", playerid, MasterInfo[playerid][acc_pass]);
+	mysql_format(MainPipeline, query, sizeof query, "insert into masterdb (`acc_name` ,`acc_pass`,`acc_lastlogin`,`acc_regidate`) values ('%e','%s','%e','%e')",GetPlayerNameExt(playerid),MasterInfo[playerid][acc_pass],timeNow,timeNow );
+	mysql_tquery(MainPipeline, query, "OnCreateCharacter", "d", playerid);
+	return 1;
+}
+public OnPasswordChecked(playerid)
+{
+	new bool:isvalid = bcrypt_is_equal();
+	new str[256];
+	DeletePVar(playerid, "PassAuth");
+	printf("%d", isvalid);
+	if(isvalid)
+	{
+		HideNoticeGUIFrame(playerid);
+		SendClientMessage(playerid, 0xa5bbd0FF, "(LOGIN) Ban da dang nhap thanh cong hay chon nhan vat de tham gia game!.");
+		HideLoginTD(playerid);
+		LoadTempCharacters(playerid);
+		new years,month,day,hourz,minz,sec,time[50];
+		getdate(years,month,day);
+		gettime(hourz,minz,sec);
+		format(time, sizeof time , "%d/%d/%d %d:%d:%d",day,month,years,hourz,minz,sec);
+		if(sec < 10) {
+			format(time, sizeof time , "%d/%d/%d %d:%d:0%d",day,month,years,hourz,minz,sec);
+		}
+		new query[300];
+		format(query, sizeof(query), "UPDATE `masterdb` SET `acc_lastlogin` = '%s' WHERE `acc_id` = '%d'", time, MasterInfo[playerid][acc_id]);
+		mysql_function_query(MainPipeline, query, false, "OnQueryFinish", "i", SENDDATA_THREAD);
+		return 1;
+	}
+	new string[229],ip[32];
+	GetPlayerIp(playerid, ip, 32);
+	format(string,sizeof (string),"\n\nDang nhap that bai: %d/3\n\n\nDia chi IP cua ban: %s\n\nLan dang nhap cua tai khoan: %s\n\nThoi gian tao tai khoan: %s\n\nTai khoan ban da dang ky hay nhap mat khau de dang nhap\n\n\n",gPlayerLogTries[playerid]+1,ip,MasterInfo[playerid][acc_lastlogin],MasterInfo[playerid][acc_regidate]);
+	ShowPlayerDialog(playerid,DANGNHAP,DIALOG_STYLE_PASSWORD,"Dang nhap",string,"Dang nhap","Thoat");
+	HideNoticeGUIFrame(playerid);
+	if(++gPlayerLogTries[playerid] == 3)
+	{
+		SendClientMessage(playerid, COLOR_RED, "(SERVER) Sai mat khau, ban tu dong bi kich ra khoi may chu.");
+		Kick(playerid);
+	}
+	return 1;
+}
+
 stock InvalidNameCheck(playerid) {
 
 	new
@@ -23230,6 +23279,7 @@ stock UpdateRadio(playerid) {
 	PlayerTextDrawShow(playerid, SlotInfo[playerid]);
 	return 1;
 }
+
 forward CopGetUp(playerid);
 public CopGetUp(playerid)
 {

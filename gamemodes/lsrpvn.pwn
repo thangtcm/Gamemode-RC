@@ -12,8 +12,6 @@
 #include <YSI\y_timers>
 #include <YSI\y_utils>
 #include <YSI\y_ini>
-#include <crashdetect>
-#include <DialogCenter>
 #include <compat>
 #include <easyDialog>
 #include <mSelection>
@@ -23,6 +21,7 @@
 #include <YSF>
 #include <discord-connector>
 #include <discord-cmd>
+#include <bcrypt>
 #if defined SOCKET_ENABLED
 
 
@@ -71,8 +70,7 @@
 //#include "./system/hunger.pwn"
 #include "./main/timers.pwn"
 
-
-#include "./system/sell_car.pwn"
+// #include "./system/sell_car.pwn"
 #include "./main/command.pwn"
 #include "./system/chat.pwn"
 #include "./main/area.pwn"

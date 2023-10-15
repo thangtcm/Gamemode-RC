@@ -45,7 +45,10 @@ CMD:thibanglai(playerid,parmas[]) {
 	if(PlayerInfo[playerid][pCarLic]) return SendErrorMessage(playerid, " Ban da co bang lai xe roi."); 
 	if(GetPVarInt(playerid, "is_DriverTest") == 1) return SendErrorMessage(playerid, " Ban dang thi bang lai roi khong the tiep tuc.");
 	if(!IsPlayerInRangeOfPoint(playerid, 3, 1222.5018,243.8309,19.5469)) return SendErrorMessage(playerid," Ban khong o gan noi thi bang lai.");
+<<<<<<< HEAD
 	if(!IsPlayerInRangeOfPoint(playerid, 3, 1222.7645,243.7523,19.5469)) return SendErrorMessage(playerid," Ban khong o gan noi thi bang lai.");
+=======
+>>>>>>> main
     SendClientMessageEx(playerid, COLOR_YELLOW, "Ban dang bat dau thi bang lai, hay thuc hien hoan thanh bai kiem tra thuc hanh nhe.");
     SendClientMessageEx(playerid, COLOR_YELLOW, "Dieu kien de hoan thanh: khong vuot qua 70 km/h, phuong tien khong bi hu hong.");
     new pos = random(13);

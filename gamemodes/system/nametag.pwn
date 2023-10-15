@@ -1,6 +1,15 @@
 #include <a_samp>
 #include <YSI_Coding\y_hooks>
 new Timer:myNameTagTimer[MAX_PLAYERS] = {Timer:-1, ...};
+enum E_AFK_TIMER_DATA
+{
+    Float:plpX,
+    Float:plpY,
+    Float:plpZ,
+}
+new 
+	PlayerLastPos[MAX_PLAYERS][E_AFK_TIMER_DATA],
+	PlayerCurrentPos[MAX_PLAYERS][E_AFK_TIMER_DATA];
 stock GetHealthDots(playerid)
 {
     new dots[64];
@@ -79,9 +88,9 @@ timer UpdateNameTagTimer[500](playerid)
 		{
 			new nametag[388], Float:armour;
 			GetPlayerArmour(playerid, armour);
-			if(GetPlayerPausedTime(playerid) > 5)
+			if(playerAFK[playerid] > 10)
 			{
-				format(nametag, sizeof(nametag), "{F81414}[AFK]{FFFFFF} %s (%d)", nametag, GetPlayerNameEx(playerid), playerid);
+				format(nametag, sizeof(nametag), "{F81414}[AFK]{FFFFFF} %s (%d)", GetPlayerNameEx(playerid), playerid);
 			}
 			else
 			{
@@ -118,16 +127,56 @@ timer UpdateNameTagTimer[500](playerid)
 }
 
 hook OnPlayerConnect(playerid) {
-    PlayerInfo[playerid][pNameTag] = CreateDynamic3DTextLabel("Loading nametag...", 0x008080FF, 0.0, 0.0, 0.1, 10.0, .attachedplayer = playerid, .testlos = 1);
+	if(IsValidDynamic3DTextLabel(PlayerInfo[playerid][pNameTag]))
+        DestroyDynamic3DTextLabel(PlayerInfo[playerid][pNameTag]);
+    PlayerInfo[playerid][pNameTag] = CreateDynamic3DTextLabel("Loading nametag...", 0x008080FF, 0.0, 0.0, 0.1, NT_DISTANCE, .attachedplayer = playerid, .testlos = 1);
 	myNameTagTimer[playerid] = repeat UpdateNameTagTimer(playerid);
 	PlayerInfo[playerid][pMaskOn] = 0;
 	return 1;
 }
 hook OnPlayerDisconnect(playerid, reason) {
+	printf("pNameTag");
     if(IsValidDynamic3DTextLabel(PlayerInfo[playerid][pNameTag]))
         DestroyDynamic3DTextLabel(PlayerInfo[playerid][pNameTag]);
-
+	PlayerInfo[playerid][pNameTag] = INVALID_3DTEXT_ID;
     stop myNameTagTimer[playerid];
     myNameTagTimer[playerid] = Timer:-1;
     return 1;
+}
+
+CMD:ispaused(playerid, params[])
+{
+	new
+		targetid;
+
+	if(sscanf(params, "u", targetid)) return SendClientMessage(playerid, -1, "Syntax: /ispaused [Player ID/Player Name/Part of Player Name]");
+	if(!IsPlayerConnected(targetid) && targetid == INVALID_PLAYER_ID) return SendClientMessage(playerid, -1, "That player isn't connected!");
+
+	switch(IsPlayerPaused(targetid))
+	{
+		case 0: SendClientMessage(playerid, -1, "Not-PAUSED!");
+		case 1: SendClientMessage(playerid, -1, "PAUSED!");
+	}
+
+	return 1;
+}
+
+stock AFKCheck(playerid)
+{
+	if(!IsPlayerConnected(playerid))
+		return 0;
+		
+	if(PlayerInfo[playerid][pAdmin] > 2)
+		return 1;
+		
+    GetPlayerPos(playerid, PlayerCurrentPos[playerid][plpX], PlayerCurrentPos[playerid][plpY], PlayerCurrentPos[playerid][plpZ]);
+    if(!floatcmp(PlayerCurrentPos[playerid][plpX], PlayerLastPos[playerid][plpX]) && !floatcmp(PlayerCurrentPos[playerid][plpY], PlayerLastPos[playerid][plpY]))
+		playerAFK[playerid]++;
+	else
+        playerAFK[playerid] = 0;
+	
+ 	PlayerLastPos[playerid][plpX] = PlayerCurrentPos[playerid][plpX];
+	PlayerLastPos[playerid][plpY] = PlayerCurrentPos[playerid][plpY];
+	PlayerLastPos[playerid][plpZ] = PlayerCurrentPos[playerid][plpZ];
+	return 1;
 }

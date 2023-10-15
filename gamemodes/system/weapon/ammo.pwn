@@ -26,27 +26,27 @@ stock GivePlayerAmmoEx(playerid, weapon, Ammo)
     switch(weapon)
     {
     	case 22,23,24: {
-    	    PlayerAmmo[playerid][ 1 ] = Ammo;
+    	    PlayerAmmo[playerid][ 1 ] += Ammo;
     	    SetPlayerAmmo(playerid, weapon, PlayerAmmo[playerid][ 1 ]);
     	  
     	}
     	case 25,27: {
-    	    PlayerAmmo[playerid][ 2 ] = Ammo;
+    	    PlayerAmmo[playerid][ 2 ] += Ammo;
     	    SetPlayerAmmo(playerid, weapon, PlayerAmmo[playerid][ 2 ]);
     	  
     	}
     	case 29: {
-    	    PlayerAmmo[playerid][ 3 ] = Ammo;
+    	    PlayerAmmo[playerid][ 3 ] += Ammo;
     	    SetPlayerAmmo(playerid, weapon, PlayerAmmo[playerid][ 3 ]);
     	 
     	}
     	case 30,31: {
-    	    PlayerAmmo[playerid][ 4 ] = Ammo;
+    	    PlayerAmmo[playerid][ 4 ] += Ammo;
     	    SetPlayerAmmo(playerid, weapon, PlayerAmmo[playerid][ 4 ]);
     	
     	}
     	case 34: {
-    	    PlayerAmmo[playerid][ 5 ] = Ammo;
+    	    PlayerAmmo[playerid][ 5 ] += Ammo;
     	    SetPlayerAmmo(playerid, weapon, PlayerAmmo[playerid][ 5 ]);
     	
     	}
@@ -205,79 +205,178 @@ hook OnPlayerWeaponShot(playerid, weaponid, hittype, hitid, Float:fX, Float:fY, 
 }
 
 
-stock GivePlayerValidWeapon( playerid, WeaponID, Ammo )
+stock GivePlayerValidWeapon( playerid, WeaponID, Ammo, IsAS = false)
 {
     #if defined zombiemode
    	if(zombieevent == 1 && GetPVarType(playerid, "pIsZombie")) return SendClientMessageEx(playerid, COLOR_GREY, "Zombies can't have guns.");
 	#endif
+	if(IsAS)
+	{
+		switch( WeaponID )
+		{
+			case 0, 1:
+			{
+				PlayerInfo[playerid][PASGuns][ 0 ] = WeaponID;
+				PlayerInfo[playerid][pGuns][ 0 ] = 0;
+				GivePlayerWeapon( playerid, WeaponID, Ammo );
+			}
+			case 2, 3, 4, 5, 6, 7, 8, 9:
+			{
+				PlayerInfo[playerid][PASGuns][ 1 ] = WeaponID;
+				PlayerInfo[playerid][pGuns][ 1 ] = 0;
+				GivePlayerWeapon( playerid, WeaponID, Ammo );
+			}
+			case 22, 23, 24:
+			{
+				PlayerInfo[playerid][PASGuns][ 2 ] = WeaponID;
+				PlayerAmmo[playerid][ 1 ] = Ammo;
+				PlayerInfo[playerid][pGuns][ 2 ] = 0;
+				GivePlayerWeapon( playerid, WeaponID, Ammo );
+			}
+			case 25, 26, 27:
+			{
+				PlayerInfo[playerid][PASGuns][ 3 ] = WeaponID;
+				PlayerAmmo[playerid][ 2 ] = Ammo;
+				PlayerInfo[playerid][pGuns][ 3 ] = 0;
+				GivePlayerWeapon( playerid, WeaponID, Ammo );
+			}
+			case 28, 29, 32:
+			{
+				PlayerInfo[playerid][PASGuns][ 4 ] = WeaponID;
+				PlayerAmmo[playerid][ 3 ] = Ammo;
+				PlayerInfo[playerid][pGuns][ 4 ] = 0;
+				GivePlayerWeapon( playerid, WeaponID, Ammo );
+			}
+			case 30, 31:
+			{
+				PlayerInfo[playerid][PASGuns][ 5 ] = WeaponID;
+				PlayerInfo[playerid][pGuns][ 5 ] = 0;
+				PlayerAmmo[playerid][ 4 ] = Ammo;
+				GivePlayerWeapon( playerid, WeaponID, Ammo );
+			}
+			case 33, 34:
+			{
+				PlayerInfo[playerid][PASGuns][ 6 ] = WeaponID;
+				PlayerInfo[playerid][pGuns][ 6 ] = 0;
+				PlayerAmmo[playerid][ 5 ] = Ammo;
+				GivePlayerWeapon( playerid, WeaponID, Ammo );
+			}
+			case 35, 36, 37, 38:
+			{
+				PlayerInfo[playerid][PASGuns][ 7 ] = WeaponID;
+				PlayerInfo[playerid][pGuns][ 7 ] = 0;
+				PlayerAmmo[playerid][ 6 ] = Ammo;
+				GivePlayerWeapon( playerid, WeaponID, Ammo );
+			}
+			case 16, 17, 18, 39, 40:
+			{
+				PlayerInfo[playerid][PASGuns][ 8 ] = WeaponID;
+				PlayerInfo[playerid][pGuns][ 8 ] = 0;
+				PlayerAmmo[playerid][ 7 ] = Ammo;
+				GivePlayerWeapon( playerid, WeaponID, Ammo );
+			}
+			case 41, 42, 43:
+			{
+				PlayerInfo[playerid][PASGuns][ 9 ] = WeaponID;
+				PlayerInfo[playerid][pGuns][ 9 ] = 0;
+				PlayerAmmo[playerid][ 8 ] = Ammo;
+				GivePlayerWeapon( playerid, WeaponID, Ammo );
+			}
+			case 10, 11, 12, 13, 14, 15:
+			{
+				PlayerInfo[playerid][PASGuns][ 10 ] = WeaponID;
+				PlayerInfo[playerid][pGuns][ 10 ] = 0;
+				GivePlayerWeapon( playerid, WeaponID, Ammo );
+			}
+			case 44, 45, 46:
+			{
+				PlayerInfo[playerid][PASGuns][ 11 ] = WeaponID;
+				PlayerInfo[playerid][pGuns][ 11 ] = 0;
+				GivePlayerWeapon( playerid, WeaponID, Ammo );
+			}
+		}
+		return 1;
+	}
 	switch( WeaponID )
 	{
   		case 0, 1:
 		{
 			PlayerInfo[playerid][pGuns][ 0 ] = WeaponID;
+			PlayerInfo[playerid][PASGuns][ 0 ] = 0;
 			GivePlayerWeapon( playerid, WeaponID, Ammo );
 		}
 		case 2, 3, 4, 5, 6, 7, 8, 9:
 		{
 			PlayerInfo[playerid][pGuns][ 1 ] = WeaponID;
+			PlayerInfo[playerid][PASGuns][ 1 ] = 0;
 			GivePlayerWeapon( playerid, WeaponID, Ammo );
 		}
 		case 22, 23, 24:
 		{
 			PlayerInfo[playerid][pGuns][ 2 ] = WeaponID;
+			PlayerInfo[playerid][PASGuns][ 2 ] = 0;
 			PlayerAmmo[playerid][ 1 ] = Ammo;
 			GivePlayerWeapon( playerid, WeaponID, Ammo );
 		}
 		case 25, 26, 27:
 		{
 			PlayerInfo[playerid][pGuns][ 3 ] = WeaponID;
+			PlayerInfo[playerid][PASGuns][ 3 ] = 0;
 			PlayerAmmo[playerid][ 2 ] = Ammo;
 			GivePlayerWeapon( playerid, WeaponID, Ammo );
 		}
 		case 28, 29, 32:
 		{
 			PlayerInfo[playerid][pGuns][ 4 ] = WeaponID;
+			PlayerInfo[playerid][PASGuns][ 4 ] = 0;
 			PlayerAmmo[playerid][ 3 ] = Ammo;
 			GivePlayerWeapon( playerid, WeaponID, Ammo );
 		}
 		case 30, 31:
 		{
 			PlayerInfo[playerid][pGuns][ 5 ] = WeaponID;
+			PlayerInfo[playerid][PASGuns][ 5 ] = 0;
 		    PlayerAmmo[playerid][ 4 ] = Ammo;
 			GivePlayerWeapon( playerid, WeaponID, Ammo );
 		}
 		case 33, 34:
 		{
 			PlayerInfo[playerid][pGuns][ 6 ] = WeaponID;
+			PlayerInfo[playerid][PASGuns][ 6 ] = 0;
 			PlayerAmmo[playerid][ 5 ] = Ammo;
 			GivePlayerWeapon( playerid, WeaponID, Ammo );
 		}
 		case 35, 36, 37, 38:
 		{
 			PlayerInfo[playerid][pGuns][ 7 ] = WeaponID;
+			PlayerInfo[playerid][PASGuns][ 7 ] = 0;
 			PlayerAmmo[playerid][ 6 ] = Ammo;
 			GivePlayerWeapon( playerid, WeaponID, Ammo );
 		}
 		case 16, 17, 18, 39, 40:
 		{
 			PlayerInfo[playerid][pGuns][ 8 ] = WeaponID;
+			PlayerInfo[playerid][PASGuns][ 8 ] = 0;
 			PlayerAmmo[playerid][ 7 ] = Ammo;
 			GivePlayerWeapon( playerid, WeaponID, Ammo );
 		}
 		case 41, 42, 43:
 		{
 			PlayerInfo[playerid][pGuns][ 9 ] = WeaponID;
+			PlayerInfo[playerid][PASGuns][ 9 ] = 0;
 			PlayerAmmo[playerid][ 8 ] = Ammo;
 			GivePlayerWeapon( playerid, WeaponID, Ammo );
 		}
 		case 10, 11, 12, 13, 14, 15:
 		{
 			PlayerInfo[playerid][pGuns][ 10 ] = WeaponID;
+			PlayerInfo[playerid][PASGuns][ 10 ] = 0;
 			GivePlayerWeapon( playerid, WeaponID, Ammo );
 		}
 		case 44, 45, 46:
 		{
 			PlayerInfo[playerid][pGuns][ 11 ] = WeaponID;
+			PlayerInfo[playerid][PASGuns][ 11 ] = 0;
 			GivePlayerWeapon( playerid, WeaponID, Ammo );
 		}
 	}
@@ -435,7 +534,7 @@ stock UseAmmo(playerid,type_ammo,ammo) {
         }
         case 4: {
 			new weapon_g,ammos_g;
-			GetPlayerWeaponData(playerid, 4, weapon_g, ammos_g);
+			GetPlayerWeaponData(playerid, 5, weapon_g, ammos_g);
             if(weapon_g != 30 && weapon_g != 31) return SendClientMessage(playerid,-1,"Ban khong so huu vu khi 'Sung truong' tren nguoi.");
             GivePlayerAmmoEx(playerid, weapon_g, ammo);
             SetPlayerArmedWeapon(playerid, weapon_g);
@@ -892,8 +991,16 @@ Dialog:DIALOG_PUT_GUN(playerid, response, listitem, inputtext[])
             if(weapon_g != 22) return SendClientMessage(playerid,-1,"Ban khong so huu vu khi 'Sung 9mm' tren nguoi.");
 			RemovePlayerWeapon(playerid, 22);
 			SendClientMessage(playerid,COLOR_YELLOW,"Ban da cat vu khi 9mm vao tui do thanh cong.");
-			Inventory_Add(playerid,"9mm", 1);
-			Inventory_Add(playerid,"Dan sung luc", ammos_g);
+		    if (IsACop(playerid))
+            {
+            	Inventory_Add(playerid,"9mm-AS", 1);
+			    Inventory_Add(playerid,"Dan sung luc SAAS", ammos_g);
+            }
+            else if (!IsACop(playerid)) {
+                Inventory_Add(playerid,"9mm", 1);
+			    Inventory_Add(playerid,"Dan sung luc", ammos_g);	
+            }
+			
 		}
 		if(strcmp(inputtext, "Silenced 9mm", true) == 0) 
 		{
@@ -901,17 +1008,34 @@ Dialog:DIALOG_PUT_GUN(playerid, response, listitem, inputtext[])
             if(weapon_g != 23) return SendClientMessage(playerid,-1,"Ban khong so huu vu khi 'Sung Sdpistol' tren nguoi.");
 			RemovePlayerWeapon(playerid, 23);
 			SendClientMessage(playerid,COLOR_YELLOW,"Ban da cat vu khi Silenced 9mm vao tui do thanh cong.");
-			Inventory_Add(playerid,"Sdpistol", 1);
-			Inventory_Add(playerid,"Dan sung luc", ammos_g);
+			if (IsACop(playerid))
+            {
+            	Inventory_Add(playerid,"Sdpistol-AS", 1);
+			    Inventory_Add(playerid,"Dan sung luc SAAS", ammos_g);
+            }
+            else if (!IsACop(playerid)) {
+                Inventory_Add(playerid,"Sdpistol", 1);
+			    Inventory_Add(playerid,"Dan sung luc", ammos_g);
+            }
+
 		}
 		if(strcmp(inputtext, "Desert Eagle", true) == 0) 
 		{
+
 			GetPlayerWeaponData(playerid, 2, weapon_g, ammos_g);
             if(weapon_g != 24) return SendClientMessage(playerid,-1,"Ban khong so huu vu khi 'Sung Deagle' tren nguoi.");
 			RemovePlayerWeapon(playerid, 24);
 			SendClientMessage(playerid,COLOR_YELLOW,"Ban da cat vu khi Desert Eagle vao tui do thanh cong.");
-			Inventory_Add(playerid,"Deagle", 1);
-			Inventory_Add(playerid,"Dan sung luc", ammos_g);
+			if (IsACop(playerid))
+            {
+            	Inventory_Add(playerid,"Deagle-AS", 1);
+			    Inventory_Add(playerid,"Dan sung luc SAAS", ammos_g);
+            }
+            else if (!IsACop(playerid)) {
+                Inventory_Add(playerid,"Deagle", 1);
+			    Inventory_Add(playerid,"Dan sung luc", ammos_g);
+            }
+
 		}
 		if(strcmp(inputtext, "Shotgun", true) == 0) 
 		{
@@ -919,8 +1043,16 @@ Dialog:DIALOG_PUT_GUN(playerid, response, listitem, inputtext[])
             if(weapon_g != 25) return SendClientMessage(playerid,-1,"Ban khong so huu vu khi 'Sung Shotgun' tren nguoi.");
 			RemovePlayerWeapon(playerid, 25);
 			SendClientMessage(playerid,COLOR_YELLOW,"Ban da cat vu khi Shotgun vao tui do thanh cong.");
-			Inventory_Add(playerid,"Shotgun", 1);
-			Inventory_Add(playerid,"Dan shotgun", ammos_g);
+			if (IsACop(playerid))
+            {
+            	Inventory_Add(playerid,"Shotgun-AS", 1);
+			    Inventory_Add(playerid,"Dan shotgun SAAS", ammos_g);
+            }
+            else if (!IsACop(playerid)) {
+                Inventory_Add(playerid,"Shotgun", 1);
+			    Inventory_Add(playerid,"Dan shotgun", ammos_g);
+            }
+
 		}
 		if(strcmp(inputtext, "Combat Shotgun", true) == 0) 
 		{
@@ -928,8 +1060,17 @@ Dialog:DIALOG_PUT_GUN(playerid, response, listitem, inputtext[])
             if(weapon_g != 27) return SendClientMessage(playerid,-1,"Ban khong so huu vu khi 'Combat Shotgun' tren nguoi.");
 			RemovePlayerWeapon(playerid, 27);
 			SendClientMessage(playerid,COLOR_YELLOW,"Ban da cat vu khi Combat Shotgun vao tui do thanh cong.");
-			Inventory_Add(playerid,"Spas", 1);
-			Inventory_Add(playerid,"Dan shotgun", ammos_g);
+			if (IsACop(playerid))
+            {
+            	Inventory_Add(playerid,"Spas-SA", 1);
+			    Inventory_Add(playerid,"Dan shotgun SAAS", ammos_g);
+            }
+            else if (!IsACop(playerid)) {
+                Inventory_Add(playerid,"Spas", 1);
+			    Inventory_Add(playerid,"Dan shotgun", ammos_g);
+            }
+
+
 		}
 		if(strcmp(inputtext, "MP5", true) == 0) 
 		{
@@ -937,8 +1078,16 @@ Dialog:DIALOG_PUT_GUN(playerid, response, listitem, inputtext[])
             if(weapon_g != 29) return SendClientMessage(playerid,-1,"Ban khong so huu vu khi 'MP5' tren nguoi.");
 			RemovePlayerWeapon(playerid, 29);
 			SendClientMessage(playerid,COLOR_YELLOW,"Ban da cat vu khi MP5 vao tui do thanh cong.");
-			Inventory_Add(playerid,"MP5", 1);
-			Inventory_Add(playerid,"Dan tieu lien", ammos_g);
+			if (IsACop(playerid))
+            {
+            	Inventory_Add(playerid,"MP5-AS", 1);
+			    Inventory_Add(playerid,"Dan tieu lien SAAS", ammos_g);
+            }
+            else if (!IsACop(playerid)) {
+                Inventory_Add(playerid,"MP5", 1);
+			    Inventory_Add(playerid,"Dan tieu lien", ammos_g);
+            }
+
 		}
 		if(strcmp(inputtext, "AK47", true) == 0) 
 		{
@@ -946,8 +1095,16 @@ Dialog:DIALOG_PUT_GUN(playerid, response, listitem, inputtext[])
             if(weapon_g != 30) return SendClientMessage(playerid,-1,"Ban khong so huu vu khi 'AK47' tren nguoi.");
 			RemovePlayerWeapon(playerid, 30);
 			SendClientMessage(playerid,COLOR_YELLOW,"Ban da cat vu khi AK47 vao tui do thanh cong.");
-			Inventory_Add(playerid,"AK47", 1);
-			Inventory_Add(playerid,"Dan sung truong", ammos_g);
+			if (IsACop(playerid))
+            {
+            	Inventory_Add(playerid,"AK47-AS", 1);
+			    Inventory_Add(playerid,"Dan sung truong SAAS", ammos_g);
+            }
+            else if (!IsACop(playerid)) {
+                Inventory_Add(playerid,"AK47", 1);
+			    Inventory_Add(playerid,"Dan sung truong", ammos_g);
+            }
+
 		}
 		if(strcmp(inputtext, "M4", true) == 0) 
 		{
@@ -955,8 +1112,16 @@ Dialog:DIALOG_PUT_GUN(playerid, response, listitem, inputtext[])
             if(weapon_g != 31) return SendClientMessage(playerid,-1,"Ban khong so huu vu khi 'm4' tren nguoi.");
 			RemovePlayerWeapon(playerid, 31);
 			SendClientMessage(playerid,COLOR_YELLOW,"Ban da cat vu khi M4 vao tui do thanh cong.");
-			Inventory_Add(playerid,"M4", 1);
-			Inventory_Add(playerid,"Dan sung truong", ammos_g);
+			if (IsACop(playerid))
+            {
+            	Inventory_Add(playerid,"M4-AS", 1);
+		    	Inventory_Add(playerid,"Dan sung truong SAAS", ammos_g);
+            }
+            else if (!IsACop(playerid)) {
+                Inventory_Add(playerid,"M4", 1);
+		    	Inventory_Add(playerid,"Dan sung truong", ammos_g);
+            }
+
 		}
 		if(strcmp(inputtext, "Sniper Rifle", true) == 0) 
 		{
@@ -964,8 +1129,16 @@ Dialog:DIALOG_PUT_GUN(playerid, response, listitem, inputtext[])
             if(weapon_g != 29) return SendClientMessage(playerid,-1,"Ban khong so huu vu khi 'Sniper' tren nguoi.");
 			RemovePlayerWeapon(playerid, 34);
 			SendClientMessage(playerid,COLOR_YELLOW,"Ban da cat vu khi Sniper vao tui do thanh cong.");
-			Inventory_Add(playerid,"Sniper", 1);
-			Inventory_Add(playerid,"Dan sniper", ammos_g);
+			if (IsACop(playerid))
+            {
+            	Inventory_Add(playerid,"Sniper-AS", 1);
+			    Inventory_Add(playerid,"Dan sniper-SAAS", ammos_g);
+            }
+            else if (!IsACop(playerid)) {
+                Inventory_Add(playerid,"Sniper", 1);
+			    Inventory_Add(playerid,"Dan sniper", ammos_g);
+            }
+
 		}
 	}
 	return 1;
