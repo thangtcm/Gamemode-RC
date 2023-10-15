@@ -68,8 +68,8 @@ stock FactorySuggest(playerid)
         MaxFactiory = sizeof(FactoryData), MaxExport;
     SetPVarInt(playerid, "IsPlayerSuggest", 1);
     for (new i = 0; i < MaxFactiory; i++) {
-        MaxExport = strlen(FactoryData[i][ProductName]);
-        for (new j = 0; j < MaxExport; j++) {
+        for (new j = 0; j < MAX_PRODUCT; j++) {
+            if(FactoryData[i][ProductName][j] == -1) break;
             if(IsProductValid(playerid, FactoryData[i][ProductName][j])) {
                 PlayerTruckerData[playerid][SuggestFactory][numFoundFactories++] = i;
                 break;
@@ -89,8 +89,9 @@ stock FactorySuggest(playerid)
 
 stock IsProductImport(FactoryId, ProductId)
 {
-    for(new i; i < strlen(FactoryData[FactoryId][ProductImportName]); i++)
+    for(new i; i < MAX_PRODUCT; i++)
     {
+        if(FactoryData[FactoryId][ProductImportName][i] == -1) return false;
         if(FactoryData[FactoryId][ProductImportName][i] == ProductId)   return true;
     }
     return false;

@@ -119,8 +119,10 @@ stock DestroyCayTrong(i) {
     seeds_info[i][s_want] = 0;
     seeds_info[i][s_owner] = -1;
     seeds_info[i][s_Type] = -1;
-    DestroyDynamicObject(seeds_info[i][s_Object]);
-    DestroyDynamic3DTextLabel(seeds_info[i][s_Text]);
+	if(IsValidDynamicObject(seeds_info[i][s_Object]))
+    	DestroyDynamicObject(seeds_info[i][s_Object]);
+	if(IsValidDynamic3DTextLabel(seeds_info[i][s_Text]))
+    	DestroyDynamic3DTextLabel(seeds_info[i][s_Text]);
     seeds_info[i][s_pos][0] = 0,seeds_info[i][s_pos][1] = 0,seeds_info[i][s_pos][2] = 0;
     return 1;
 }
@@ -401,6 +403,7 @@ hook OnGameModeInit()
 }
 
 hook OnPlayerDisconnect(playerid, reason) {
+	printf("MAX_CAYTRPLAYER");
 	for(new i = 0 ; i < MAX_CAYTRPLAYER ; i++) {
         if(PlayerSeed[playerid][ps_OwnerID][i] > 0) {
         	DestroyCayTrong(PlayerSeed[playerid][ps_OwnerID][i]);

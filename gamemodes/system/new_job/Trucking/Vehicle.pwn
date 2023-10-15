@@ -56,7 +56,7 @@ public VEHICLETRUCKER_LOAD(playerid)
         VehicleTruckerData[playerid][j][vtProductID] = -1;
         VehicleTruckerData[playerid][j][vtFactoryID] = -1;
     }
-	new i, rows, fields, tmp[128], str[128];
+	new i, rows, fields, tmp[128];
 	cache_get_data(rows, fields, MainPipeline);
 	while(i < rows)
 	{
@@ -100,7 +100,7 @@ stock VEHICLETRUCKER_ADD(playerid, vehicleid, modelid, pCarSlotID, ProductID, Fl
 {
 	new string[2048],
         GetPlayerId = GetPlayerSQLId(playerid),
-        index = GetVehicleTruckerFree(playerid, pCarSlotID);
+        index = GetVehicleTruckerFree(playerid);
     if(index == -1) return SendErrorMessage(playerid, "Xe cua ban da chat day hang, khong the chat them hang hoa len xe.");
     new Float:playerPos[3];
     GetPlayerPos(playerid, playerPos[0], playerPos[1], playerPos[2]);
@@ -149,7 +149,7 @@ stock VEHICLETRUCKER_DELETE(playerid, index)
 	return 1;
 }
 
-stock GetVehicleTruckerFree(playerid, pCarSlotID)
+stock GetVehicleTruckerFree(playerid)
 {
     for(new i; i < MAX_OBJECTTRUCKER; i++)
     {

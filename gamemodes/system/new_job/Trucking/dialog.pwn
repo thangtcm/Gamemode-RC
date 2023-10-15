@@ -2,45 +2,42 @@ Dialog:DIALOG_LISTFACTORY(playerid, response, listitem, inputtext[])
 {
 	if(response)
 	{
-		new string[5000], szString[100], strImport[1000], checkMax, islocker[50], strExport[1000], 
+		new string[5000], szString[100], strImport[1000], strIheader[256], strEheader[256], checkMax, islocker[50], strExport[1000], 
             index = PlayerTruckerData[playerid][SuggestFactory][listitem];
         SetPVarInt(playerid, "SelectFactoryID", index);
         format(szString, sizeof(szString), "{FFFFFF}Thong tin nha may - {FF8000}%s (ID: %d)", FactoryData[index][FactoryName], index);
         islocker = FactoryData[index][IsLocked] == 0 ? "Dang mo cua" : "Dong Cua"; 
         format(string, sizeof(string), "Chao mung ban den voi {69FF00}%s {00E0FF}(%s)", FactoryData[index][FactoryName], islocker);
-        new MaxExport = strlen(FactoryData[index][ProductName]),
-            MaxImport = strlen(FactoryData[index][ProductImportName]);
-        if(MaxExport > 0){
-            format(strExport, sizeof(strExport), "{69FF00}Xuat Khau:\nMat Hang\t\tGia\t\tNang Suat/Gio\t\tKho Hang");
-        }
-        if(MaxImport > 0){
-            format(strImport, sizeof(strImport), "{69FF00}Nhap Khau:\nMat Hang\t\tGia\t\tNang Suat/Gio\t\tKho Hang");
-        }
-        if(MaxExport > MaxImport)   checkMax = MaxExport;
-        else    checkMax = MaxImport;
-        new CheckValid = 0;
-        for(new i; i < checkMax; i++){
-            if(i < MaxExport && CheckValid == 0)
+        new MaxExport = 0,
+            MaxImport = 0,
+            Echeck = 0,
+            Icheck = 0;
+        
+        for(new i = 0; i < MAX_PRODUCT; i++){
+            if(FactoryData[index][ProductName][i] == -1) Echeck = true;
+            if(Echeck == 0)
             {
-                if(FactoryData[index][ProductName][i] != -1)
-                {
-                    format(strExport, sizeof(strExport), "%s\n{FFFFFF}%s\t\t$%d\t\t%d\t\t%d/%d{FFFFFF}", strExport, 
-                    ProductData[FactoryData[index][ProductName][i]][ProductName], 
-                    FactoryData[index][ProductPrice][i], FactoryData[index][Productivity][i], 
-                    FactoryData[index][WareHouse][i], FactoryData[index][MaxWareHouse][i]);
-                }
-                else
-                {
-                    CheckValid = 1;
-                }
+                MaxExport++;
+                format(strExport, sizeof(strExport), "%s\n{FFFFFF}%s\t\t$%d\t\t%d\t\t%d/%d{FFFFFF}", strExport, 
+                ProductData[FactoryData[index][ProductName][i]][ProductName], 
+                FactoryData[index][ProductPrice][i], FactoryData[index][Productivity][i], 
+                FactoryData[index][WareHouse][i], FactoryData[index][MaxWareHouse][i]);
             }
-            if(i < MaxImport)
+            if(FactoryData[index][ProductImportName][i] == -1) Icheck = true;
+            if(Icheck == 0)
             {
+                MaxImport++;
                 format(strImport, sizeof(strImport), "%s\n{FFFFFF}%s\t\t$%d\t\t%d\t\t%d/%d{FFFFFF}", strImport, 
                     ProductData[FactoryData[index][ProductImportName][i]][ProductName], 
                     FactoryData[index][ProductImportPrice][i], FactoryData[index][ProductImport][i], 
                     FactoryData[index][ImportWareHouse][i], FactoryData[index][ImportMaxWareHouse][i]);
             }
+        }
+        if(MaxExport > 0){
+            format(strExport, sizeof(strExport), "{69FF00}Xuat Khau:\nMat Hang\t\tGia\t\tNang Suat/Gio\t\tKho Hang\n%s",strExport);
+        }
+        if(MaxImport > 0){
+            format(strImport, sizeof(strImport), "{69FF00}Nhap Khau:\nMat Hang\t\tGia\t\tNang Suat/Gio\t\tKho Hang\n%s", strImport);
         }
         format(string, sizeof(string), "%s\n\n%s\n\n%s", string, strExport, strImport);
         Dialog_Show(playerid, DIALOG_SETPOINTFACTORY, DIALOG_STYLE_MSGBOX, szString, string, "Toi Dia Diem", "<");
@@ -100,7 +97,6 @@ Dialog:DIALOG_STARTTRUCKER(playerid, response, listitem, inputtext[])
                     return 1;
                 }
                 SetPVarInt(playerid, "MaxMissionTruck", CarTruckWorking[CarTruckID][Weight]);
-                printf("RNNNN");
                 for(new i; i < CarTruckWorking[CarTruckID][Weight]; i++)
                 {
                     PlayerTruckerData[playerid][MissionProduct][i] = matchingProducts[random(numMatchingProducts)];
@@ -125,7 +121,6 @@ Dialog:DIALOG_BUYPRODUCT(playerid, response, listitem, inputtext[])
         new factoryID = GetPVarInt(playerid, "BUY_FactoryID"), index = PlayerTruckerData[playerid][MissionBuy][listitem], 
             money, str[256], productID;
         money = FactoryData[factoryID][ProductPrice][index];
-        printf("%d -- money %d", GetPlayerCash(playerid), money);
         if(GetPlayerCash(playerid) < money) return SendErrorMessage(playerid, "Ban khong du tien de mua thung hang nay.");
         if(FactoryData[factoryID][WareHouse][index] <= 0) return SendErrorMessage(playerid, "Nha may nay khong du so luong san pham de ban cho ban.");
         

@@ -94,8 +94,12 @@ new const g_aInventoryItems[][e_InventoryItems] =
 
 hook OnPlayerDisconnect(playerid, reason)
 {
-    stop myItemTimer[playerid];
-    myItemTimer[playerid] = Timer:-1;
+		printf("myItemTimer");
+	if(myItemTimer[playerid] != Timer:-1)
+	{
+		stop myItemTimer[playerid];
+    	myItemTimer[playerid] = Timer:-1;
+	}
     return 1;
 }
 
@@ -1079,7 +1083,6 @@ CMD:invch(playerid, params[])
 		return SendClientMessageEx(playerid, COLOR_LIGHTRED, "Ban khong the mo tui do khi ban dang trong tu.");
 	new carid = GetPlayerVehicleID(playerid);
 	new closestcar = GetClosestCar(playerid,carid);
-	new str[128];
 	if(IsPlayerInRangeOfVehicle(playerid, closestcar, 5.0))
 	{
 		new v = GetPlayerVehicle(playerid, closestcar);
