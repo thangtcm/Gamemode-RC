@@ -122,7 +122,7 @@ public DangChatGo(playerid)
 	SetPlayerSpecialAction(playerid, SPECIAL_ACTION_CARRY);
 	return 1;
 }
-
+*/
 CMD:credits(playerid, params[])
 {
     new str[2460], name[1280];
@@ -131,7 +131,7 @@ CMD:credits(playerid, params[])
     ShowPlayerDialog(playerid, DIALOG_NOTHING, DIALOG_STYLE_MSGBOX, name, str, "Dong Lai", "");
     return 1;
 }
-*/
+
 
 CMD:g(playerid, params[]) {
 
@@ -492,7 +492,7 @@ CMD:sellgun(playerid, params[])
     }
 	return 1;
 }
-/*
+
 CMD:muatoken(playerid, params[])
 {
 	if(IsPlayerInRangeOfPoint(playerid,3.0,2561.3586,1403.9874,7699.5845))
@@ -508,7 +508,7 @@ CMD:muatoken(playerid, params[])
 
 
 
-
+*/
 CMD:lockjob(playerid, params[])
 {
 	if(PlayerInfo[playerid][pAdmin] >= 2)
@@ -602,7 +602,7 @@ CMD:szdelete(playerid, params[])
 	format(string, sizeof(string), "%s da xoa Khu An Toan (ID %d).", GetPlayerNameEx(playerid), h);
 	Log("logs/khuantoan.log", string);
 	return 1;
-}*/
+}
 CMD:capmaphuhieu(playerid, params[])
 {
     if(PlayerInfo[playerid][pLeader] >= 0 || PlayerInfo[playerid][pFactionModerator] >= 1)
@@ -1077,6 +1077,7 @@ public GhepXe(playerid)
 	}
 	return 1;
 }
+*/
 CMD:finegcoin(playerid, params[])
 {
 	new string[128], giveplayerid, amount, reason[64];
@@ -1105,7 +1106,7 @@ CMD:finegcoin(playerid, params[])
 		SendClientMessageEx(playerid, COLOR_WHITE, "You're not a level three admin.");
 	}
 	return 1;
-}*/
+}
 CMD:makiemsoat(playerid,params[])
 {
 
@@ -1260,16 +1261,15 @@ stock JoinGame(playerid) {
         ClearChatbox(playerid);
         SendClientMessageEx(playerid,COLOR_VANG,"Chao mung ban da den voi may chu RC-RP.");
       //  SendClientMessageEx(playerid,COLOR_VANG,"(HUONG DAN) Hay di vao Market tim cua hang dien tu mua mot cai GPS nhe.");
-        SetPlayerCheckpoint(playerid, 1836.0756,-1862.5111,13.3828, 3);
 		return 1;
 }
-/*
 CMD:vwcuatao(playerid, params[]) {
 	printf("vw cua may la %d",GetPlayerVirtualWorld(playerid));
 	return 1;
 }
+/*
 CMD:hihi(playerid, params[]) return   SetPlayerSpecialAction(playerid, SPECIAL_ACTION_CARRY);
-*/
+
 forward UpdateTK(playerid);
 public UpdateTK(playerid) {
 	new namez[24],bank;
@@ -1316,6 +1316,7 @@ public STK_check(playerid) {
  		ShowPlayerDialog(playerid, DIALOG_CHUYENTIEN, DIALOG_STYLE_INPUT, "Chuyen tien", "So tai khoan khong ton tai !\nVui long nhap so tai khoan de tiep tuc giao dich", "Tuy chon", "Thoat");	    	
     }
 }
+*/
 CMD:atm(playerid, params[]) {
 	if(!IsAtATM(playerid))
 	{
@@ -1358,6 +1359,7 @@ CMD:datthung(playerid,params[]) {
     RemovePlayerAttachedObject(playerid, 1);
     return 1;
 }
+
 CMD:layhopz(playerid,params[]) return PlayerInfo[playerid][pHop] = 1;
 CMD:laythung(playerid,params[]) {
 	if(GetPVarInt(playerid,"CamHop") == 1) return  SendErrorMessage(playerid," Khong the thao tac.");
@@ -1485,9 +1487,10 @@ CMD:my(playerid, params[])
     else if(strcmp(choice,"giayto",true) == 0) {
         ShowPlayerDialog(playerid, XEMGIAYTO, DIALOG_STYLE_LIST, "Giay to tuy than", "CMND\nGiay to xe\nBang lai xe", "Chon", "Huy bo");
     }
-    else if(strcmp(choice,"Item",true) == 0) {
+  /*  else if(strcmp(choice,"Item",true) == 0) {
         cmd_invzz(playerid,"");
     }
+    */
     else if(strcmp(choice,"lincense",true) == 0) {
         new string[260], text1[50], text2[50], text3[50], text4[50];
         if(PlayerInfo[playerid][pCarLic]) { text1 = "{5db278}Da dang ky{ffffff}"; } else { text1 = "{b45151}Chua dang ky{ffffff}"; }
@@ -1528,7 +1531,7 @@ CMD:xemthue(playerid, params[]) {
 CMD:phone(playerid,params[]) return ShowPlayerDialog(playerid, DIALOG_PHONE, DIALOG_STYLE_LIST, "Phone - Main", "Goi dien\nNhan tin\nLog SMS\nDanh ba\nChuyen tien", "Chon", "Huy bo");
 CMD:dangkycmnd(playerid,params[]) {
     new string[129];
-    if(!IsPlayerInRangeOfPoint(playerid, 5, 1873.1696,2670.3745,3.5894)) return SendErrorMessage(playerid," Ban khong o gan city hall khong the dang ky CMND.");
+    if(!IsPlayerInRangeOfPoint(playerid, 5, -1872.7721,2671.1101,3.5904)) return SendErrorMessage(playerid," Ban khong o gan city hall khong the dang ky CMND.");
     if(PlayerInfo[playerid][pCMND] < 10) {
         new cmnd;
         cmnd = 10000000 + random(99999999);

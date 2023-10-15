@@ -25,12 +25,13 @@ stock PlayAnim(playerid, animlib[], animname[], Float:fDelta, loop, lockx, locky
 	ApplyAnimation(playerid, animlib, animname, fDelta, loop, lockx, locky, freeze, time, forcesync);
 }
 
-stock PlayAnimEx(playerid, animlib[], animname[], Float:fDelta, loop, lockx, locky, freeze, time, forcesync)
+stock ApplyAnimationEx(playerid, animlib[], animname[], Float:fDelta, loop, lockx, locky, freeze, time, forcesync)
 {
 	gPlayerUsingLoopingAnim[playerid] = 1;
 	pLoopAnim[playerid] = true;
 //	TextDrawShowForPlayer(playerid,txtAnimHelper);
 	ApplyAnimation(playerid, animlib, animname, fDelta, loop, lockx, locky, freeze, time, forcesync);
+	SendClientTextDraw(playerid,"Su dung nut ~y~SPACE~w~ de dung hanh dong.");
 }
 
 stock StopLoopingAnim(playerid)
@@ -52,12 +53,12 @@ CMD:office(playerid, params[])
 	if (type < 1 || type > 6)
 	    return SendClientMessage(playerid, COLOR_GREY," So ban chon khong hop le.");
 	switch (type) {
-		case 1: PlayAnimEx(playerid, "INT_OFFICE", "OFF_Sit_Bored_Loop", 4.1, 1, 0, 0, 0, 0, 1);
-		case 2: PlayAnimEx(playerid, "INT_OFFICE", "OFF_Sit_Crash", 4.1, 1, 0, 0, 0, 0, 1);
-		case 3: PlayAnimEx(playerid, "INT_OFFICE", "OFF_Sit_Drink", 4.1, 1, 0, 0, 0, 0, 1);
-		case 4: PlayAnimEx(playerid, "INT_OFFICE", "OFF_Sit_Read", 4.1, 1, 0, 0, 0, 0, 1);
-		case 5: PlayAnimEx(playerid, "INT_OFFICE", "OFF_Sit_Type_Loop", 4.1, 1, 0, 0, 0, 0, 1);
-		case 6: PlayAnimEx(playerid, "INT_OFFICE", "OFF_Sit_Watch", 4.1, 1, 0, 0, 0, 0, 1);
+		case 1: ApplyAnimationEx(playerid, "INT_OFFICE", "OFF_Sit_Bored_Loop", 4.1, 1, 0, 0, 0, 0, 1);
+		case 2: ApplyAnimationEx(playerid, "INT_OFFICE", "OFF_Sit_Crash", 4.1, 1, 0, 0, 0, 0, 1);
+		case 3: ApplyAnimationEx(playerid, "INT_OFFICE", "OFF_Sit_Drink", 4.1, 1, 0, 0, 0, 0, 1);
+		case 4: ApplyAnimationEx(playerid, "INT_OFFICE", "OFF_Sit_Read", 4.1, 1, 0, 0, 0, 0, 1);
+		case 5: ApplyAnimationEx(playerid, "INT_OFFICE", "OFF_Sit_Type_Loop", 4.1, 1, 0, 0, 0, 0, 1);
+		case 6: ApplyAnimationEx(playerid, "INT_OFFICE", "OFF_Sit_Watch", 4.1, 1, 0, 0, 0, 0, 1);
 	}
 	return 1;
 }
@@ -82,13 +83,13 @@ CMD:seat(playerid, params[])
     if(!CheckAnimation(playerid)) return 1;
     switch(strval(params))
     {
-    case 1: PlayAnimEx(playerid, "ped", "SEAT_idle", 4.0, 1, 0, 0, 0, 0, 1);
-    case 2: PlayAnimEx(playerid, "ped", "SEAT_up", 4.0, 0, 0, 0, 0, 0, 1);
-    case 3: PlayAnimEx(playerid, "Attractors", "Stepsit_in", 4.1, 0, 0, 0, 0, 0, 1);
-    case 4: PlayAnimEx(playerid, "Attractors", "Stepsit_out", 4.1, 0, 0, 0, 0, 0, 1);
-    case 5: PlayAnimEx(playerid, "PED", "SEAT_down", 4.1, 0, 0, 0, 0, 0, 1);
-    case 6: PlayAnimEx(playerid, "INT_HOUSE", "LOU_In", 4.1, 0, 0, 0, 0, 0, 1);
-    case 7: PlayAnimEx(playerid, "MISC", "SEAT_LR", 4.1, 0, 0, 0, 0, 0, 1);
+    case 1: ApplyAnimationEx(playerid, "ped", "SEAT_idle", 4.0, 1, 0, 0, 0, 0, 1);
+    case 2: ApplyAnimationEx(playerid, "ped", "SEAT_up", 4.0, 0, 0, 0, 0, 0, 1);
+    case 3: ApplyAnimationEx(playerid, "Attractors", "Stepsit_in", 4.1, 0, 0, 0, 0, 0, 1);
+    case 4: ApplyAnimationEx(playerid, "Attractors", "Stepsit_out", 4.1, 0, 0, 0, 0, 0, 1);
+    case 5: ApplyAnimationEx(playerid, "PED", "SEAT_down", 4.1, 0, 0, 0, 0, 0, 1);
+    case 6: ApplyAnimationEx(playerid, "INT_HOUSE", "LOU_In", 4.1, 0, 0, 0, 0, 0, 1);
+    case 7: ApplyAnimationEx(playerid, "MISC", "SEAT_LR", 4.1, 0, 0, 0, 0, 0, 1);
     default: SendClientMessage(playerid, COLOR_LIGHTRED, "SU DUNG:{FFFFFF} /seat [1-7]");
     }
     return 1;
@@ -97,7 +98,7 @@ CMD:seat(playerid, params[])
 CMD:angry(playerid, params[])
 {
     if(!CheckAnimation(playerid)) return 1;
-    PlayAnimEx(playerid, "RIOT", "RIOT_ANGRY", 4.0, 0, 0, 0, 0, 0, 1);
+    ApplyAnimationEx(playerid, "RIOT", "RIOT_ANGRY", 4.0, 0, 0, 0, 0, 0, 1);
     return 1;
 }
 
@@ -106,9 +107,9 @@ CMD:shake(playerid, params[])
     if(!CheckAnimation(playerid)) return 1;
     switch(strval(params))
     {
-    case 1: PlayAnimEx(playerid, "GANGS", "hndshkaa", 4.0, 0, 0, 0, 0, 0, 1);
-    case 2: PlayAnimEx(playerid, "GANGS", "hndshkba", 4.0, 0, 0, 0, 0, 0, 1);
-    case 3: PlayAnimEx(playerid, "GANGS", "hndshkfa", 4.0, 0, 0, 0, 0, 0, 1);
+    case 1: ApplyAnimationEx(playerid, "GANGS", "hndshkaa", 4.0, 0, 0, 0, 0, 0, 1);
+    case 2: ApplyAnimationEx(playerid, "GANGS", "hndshkba", 4.0, 0, 0, 0, 0, 0, 1);
+    case 3: ApplyAnimationEx(playerid, "GANGS", "hndshkfa", 4.0, 0, 0, 0, 0, 0, 1);
     default: SendClientMessage(playerid, COLOR_LIGHTRED, "SU DUNG:{FFFFFF} /shake [1-3]");
     }
     return 1;
@@ -119,9 +120,9 @@ CMD:run(playerid, params[])
     if(!CheckAnimation(playerid)) return 1;
     switch(strval(params))
     {
-    case 1: PlayAnimEx(playerid, "PED", "run_civi", 4.1, 1, 1, 1, 1, 1, 1);
-    case 2: PlayAnimEx(playerid, "PED", "run_gang1", 4.1, 1, 1, 1, 1, 1, 1);
-    case 3: PlayAnimEx(playerid, "PED", "run_old", 4.1, 1, 1, 1, 1, 1, 1);
+    case 1: ApplyAnimationEx(playerid, "PED", "run_civi", 4.1, 1, 1, 1, 1, 1, 1);
+    case 2: ApplyAnimationEx(playerid, "PED", "run_gang1", 4.1, 1, 1, 1, 1, 1, 1);
+    case 3: ApplyAnimationEx(playerid, "PED", "run_old", 4.1, 1, 1, 1, 1, 1, 1);
     default: SendClientMessage(playerid, COLOR_LIGHTRED, "SU DUNG:{FFFFFF} /shake [1-3]");
     }
     return 1;
@@ -210,7 +211,7 @@ CMD:piss(playerid, params[])
 CMD:sneak(playerid, params[])
 {
 	if(!CheckAnimation(playerid)) return 1;
-	PlayAnimEx(playerid, "PED", "Player_Sneak", 4.1, 1, 1, 1, 1, 1, 1);
+	ApplyAnimationEx(playerid, "PED", "Player_Sneak", 4.1, 1, 1, 1, 1, 1, 1);
 	
 	return 1;
 }
@@ -218,7 +219,7 @@ CMD:sneak(playerid, params[])
 CMD:drunk(playerid, params[])
 {
 	if(!CheckAnimation(playerid)) return 1;
-   	PlayAnimEx(playerid, "PED", "WALK_DRUNK", 4.0, 1, 1, 1, 1, 1, 1);
+   	ApplyAnimationEx(playerid, "PED", "WALK_DRUNK", 4.0, 1, 1, 1, 1, 1, 1);
    	
     return 1;
 }
@@ -234,7 +235,7 @@ CMD:bomb(playerid, params[])
 CMD:rob(playerid, params[])
 {
 	if(!CheckAnimation(playerid)) return 1;
-	PlayAnimEx(playerid, "ped", "ARRESTgun", 4.0, 0, 1, 1, 1, 1, 1);
+	ApplyAnimationEx(playerid, "ped", "ARRESTgun", 4.0, 0, 1, 1, 1, 1, 1);
 	
 	return 1;
 }
@@ -242,7 +243,7 @@ CMD:rob(playerid, params[])
 CMD:laugh(playerid, params[])
 {
 	if(!CheckAnimation(playerid)) return 1;
-	PlayAnimEx(playerid, "RAPPING", "Laugh_01", 4.0, 1, 0, 0, 0, 0, 1);
+	ApplyAnimationEx(playerid, "RAPPING", "Laugh_01", 4.0, 1, 0, 0, 0, 0, 1);
 	
 	return 1;
 }
@@ -258,7 +259,7 @@ CMD:lookout(playerid, params[])
 CMD:robman(playerid, params[])
 {
 	if(!CheckAnimation(playerid)) return 1;
-    PlayAnimEx(playerid, "SHOP", "ROB_Loop_Threat", 4.0, 1, 0, 0, 0, 0, 1);
+    ApplyAnimationEx(playerid, "SHOP", "ROB_Loop_Threat", 4.0, 1, 0, 0, 0, 0, 1);
     
     return 1;
 }
@@ -266,7 +267,7 @@ CMD:robman(playerid, params[])
 CMD:hide(playerid, params[])
 {
 	if(!CheckAnimation(playerid)) return 1;
-    PlayAnimEx(playerid, "ped", "cower", 3.0, 1, 0, 0, 0, 0, 1);
+    ApplyAnimationEx(playerid, "ped", "cower", 3.0, 1, 0, 0, 0, 0, 1);
     
     return 1;
 }
@@ -274,7 +275,7 @@ CMD:hide(playerid, params[])
 CMD:vomit(playerid, params[])
 {
 	if(!CheckAnimation(playerid)) return 1;
-    PlayAnimEx(playerid, "FOOD", "EAT_Vomit_P", 3.0, 1, 0, 0, 0, 0, 1);
+    ApplyAnimationEx(playerid, "FOOD", "EAT_Vomit_P", 3.0, 1, 0, 0, 0, 0, 1);
     
     return 1;
 }
@@ -282,7 +283,7 @@ CMD:vomit(playerid, params[])
 CMD:eat(playerid, params[])
 {
 	if(!CheckAnimation(playerid)) return 1;
-    PlayAnimEx(playerid, "FOOD", "EAT_Burger", 3.0, 1, 0, 0, 0, 0, 1);
+    ApplyAnimationEx(playerid, "FOOD", "EAT_Burger", 3.0, 1, 0, 0, 0, 0, 1);
     
     return 1;
 }
@@ -307,10 +308,10 @@ CMD:bed(playerid, params[])
 	if(!CheckAnimation(playerid)) return 1;
     switch(strval(params))
     {
-    	case 1: PlayAnimEx(playerid, "INT_HOUSE","BED_In_L", 4.1, 0, 1, 1, 1, 0, 1);
-        case 2: PlayAnimEx(playerid, "INT_HOUSE","BED_In_R", 4.1, 0, 1, 1, 1, 0, 1);
-        case 3: PlayAnimEx(playerid, "INT_HOUSE","BED_Loop_L", 4.1, 1, 0, 0, 0, 0, 1);
-        case 4: PlayAnimEx(playerid, "INT_HOUSE","BED_Loop_R", 4.1, 1, 0, 0, 0, 0, 1);
+    	case 1: ApplyAnimationEx(playerid, "INT_HOUSE","BED_In_L", 4.1, 0, 1, 1, 1, 0, 1);
+        case 2: ApplyAnimationEx(playerid, "INT_HOUSE","BED_In_R", 4.1, 0, 1, 1, 1, 0, 1);
+        case 3: ApplyAnimationEx(playerid, "INT_HOUSE","BED_Loop_L", 4.1, 1, 0, 0, 0, 0, 1);
+        case 4: ApplyAnimationEx(playerid, "INT_HOUSE","BED_Loop_R", 4.1, 1, 0, 0, 0, 0, 1);
         default: SendClientMessage(playerid, COLOR_GREY, "HIND: /bed [1-4]");
     }
     return 1;
@@ -321,13 +322,13 @@ CMD:gym(playerid, params[])
 	if(!CheckAnimation(playerid)) return 1;
     switch(strval(params))
     {
-    	case 1: PlayAnimEx(playerid, "benchpress", "gym_bp_celebrate", 4.1, 0, 0, 0, 0, 0, 1);
-        case 2: PlayAnimEx(playerid, "benchpress", "gym_bp_down", 4.1, 0, 0, 0, 1, 0, 1);
-        case 3: PlayAnimEx(playerid, "benchpress", "gym_bp_getoff", 4.1, 0, 0, 0, 0, 0, 1);
-        case 4: PlayAnimEx(playerid, "benchpress", "gym_bp_geton", 4.1, 0, 0, 0, 1, 0, 1);
-        case 5: PlayAnimEx(playerid, "benchpress", "gym_bp_up_A", 4.1, 0, 0, 0, 1, 0, 1);
-        case 6: PlayAnimEx(playerid, "benchpress", "gym_bp_up_B", 4.1, 0, 0, 0, 1, 0, 1);
-        case 7: PlayAnimEx(playerid,"benchpress", "gym_bp_up_smooth", 4.1, 0, 0, 0, 1, 0, 1);
+    	case 1: ApplyAnimationEx(playerid, "benchpress", "gym_bp_celebrate", 4.1, 0, 0, 0, 0, 0, 1);
+        case 2: ApplyAnimationEx(playerid, "benchpress", "gym_bp_down", 4.1, 0, 0, 0, 1, 0, 1);
+        case 3: ApplyAnimationEx(playerid, "benchpress", "gym_bp_getoff", 4.1, 0, 0, 0, 0, 0, 1);
+        case 4: ApplyAnimationEx(playerid, "benchpress", "gym_bp_geton", 4.1, 0, 0, 0, 1, 0, 1);
+        case 5: ApplyAnimationEx(playerid, "benchpress", "gym_bp_up_A", 4.1, 0, 0, 0, 1, 0, 1);
+        case 6: ApplyAnimationEx(playerid, "benchpress", "gym_bp_up_B", 4.1, 0, 0, 0, 1, 0, 1);
+        case 7: ApplyAnimationEx(playerid,"benchpress", "gym_bp_up_smooth", 4.1, 0, 0, 0, 1, 0, 1);
         default: SendClientMessage(playerid, COLOR_GREY, "HIND: /gym [1-7]");
     }
     return 1;
@@ -347,10 +348,10 @@ CMD:crack(playerid, params[])
 	if(!CheckAnimation(playerid)) return 1;
     switch(strval(params))
     {
-    	case 1: PlayAnimEx(playerid, "CRACK", "crckdeth2", 4.0, 1, 0, 0, 0, 0, 1);
-        case 2: PlayAnimEx(playerid,"CRACK", "crckidle1", 4.0, 1, 0, 0, 0, 0, 1);
-        case 3: PlayAnimEx(playerid,"CRACK","crckidle3", 4.0, 1, 0, 0, 0, 0, 1);
-        case 4: PlayAnimEx(playerid,"CRACK","crckdeth3", 4.0, 0, 0, 0, 0, 0, 1);
+    	case 1: ApplyAnimationEx(playerid, "CRACK", "crckdeth2", 4.0, 1, 0, 0, 0, 0, 1);
+        case 2: ApplyAnimationEx(playerid,"CRACK", "crckidle1", 4.0, 1, 0, 0, 0, 0, 1);
+        case 3: ApplyAnimationEx(playerid,"CRACK","crckidle3", 4.0, 1, 0, 0, 0, 0, 1);
+        case 4: ApplyAnimationEx(playerid,"CRACK","crckdeth3", 4.0, 0, 0, 0, 0, 0, 1);
         default: SendClientMessage(playerid, COLOR_GREY, "HIND: /crack [1-4]");
     }
     return 1;
@@ -359,7 +360,7 @@ CMD:crack(playerid, params[])
 CMD:taichi(playerid, params[])
 {
 	if(!CheckAnimation(playerid)) return 1;
-    PlayAnimEx(playerid, "PARK", "Tai_Chi_Loop", 4.0, 1, 0, 0, 0, 0, 1);
+    ApplyAnimationEx(playerid, "PARK", "Tai_Chi_Loop", 4.0, 1, 0, 0, 0, 0, 1);
     
     return 1;
 }
@@ -367,7 +368,7 @@ CMD:taichi(playerid, params[])
 CMD:drinkwater(playerid, params[])
 {
 	if(!CheckAnimation(playerid)) return 1;
-    PlayAnimEx(playerid, "BAR", "dnk_stndF_loop", 4.0, 1, 0, 0, 0, 0, 1);
+    ApplyAnimationEx(playerid, "BAR", "dnk_stndF_loop", 4.0, 1, 0, 0, 0, 0, 1);
     
     return 1;
 }
@@ -375,21 +376,21 @@ CMD:drinkwater(playerid, params[])
 CMD:tapcig(playerid, params[])
 {
 	if(!CheckAnimation(playerid)) return 1;
-    PlayAnimEx(playerid,"SMOKING","M_smk_tap",3.0,0,0,0,0,0,1);
+    ApplyAnimationEx(playerid,"SMOKING","M_smk_tap",3.0,0,0,0,0,0,1);
     
     return 1;
 }
 CMD:namxuong(playerid, params[])
 {
 	if(!CheckAnimation(playerid)) return 1;
-    PlayAnimEx(playerid, "ped", "FLOOR_hit_f", 4.0, 0, 1, 1, 1, 0, 1);
+    ApplyAnimationEx(playerid, "ped", "FLOOR_hit_f", 4.0, 0, 1, 1, 1, 0, 1);
     return 1;
 }
 
 CMD:fallfront(playerid, params[])
 {
 	if(!CheckAnimation(playerid)) return 1;
-    PlayAnimEx(playerid, "ped", "FLOOR_hit_f", 4.0, 0, 1, 1, 1, 0, 1);
+    ApplyAnimationEx(playerid, "ped", "FLOOR_hit_f", 4.0, 0, 1, 1, 1, 0, 1);
     return 1;
 }
 
@@ -406,8 +407,8 @@ CMD:sleep(playerid, params[])
 	if(!CheckAnimation(playerid)) return 1;
 	switch(strval(params))
     {
-    	case 1: PlayAnimEx(playerid, "CRACK", "crckdeth4", 4.0, 0, 1, 1, 1, 0, 1);
-        case 2: PlayAnimEx(playerid, "CRACK", "crckidle4", 4.1, 0, 1, 1, 1, 0, 1);
+    	case 1: ApplyAnimationEx(playerid, "CRACK", "crckdeth4", 4.0, 0, 1, 1, 1, 0, 1);
+        case 2: ApplyAnimationEx(playerid, "CRACK", "crckidle4", 4.1, 0, 1, 1, 1, 0, 1);
         default: SendClientMessage(playerid, COLOR_GREY, "HIND: /sleep [1-2]");
     }
     return 1;
@@ -416,7 +417,7 @@ CMD:sleep(playerid, params[])
 CMD:blob(playerid, params[])
 {
 	if(!CheckAnimation(playerid)) return 1;
-    PlayAnimEx(playerid, "CRACK", "crckidle1", 4.0, 0, 1, 1, 1, 0, 1);
+    ApplyAnimationEx(playerid, "CRACK", "crckidle1", 4.0, 0, 1, 1, 1, 0, 1);
     
     return 1;
 }
@@ -448,14 +449,14 @@ CMD:cpr(playerid, params[])
 CMD:dive(playerid, params[])
 {
 	if(!CheckAnimation(playerid)) return 1;
-    PlayAnimEx(playerid, "DODGE", "Crush_Jump", 4.0, 0, 1, 1, 1, 0, 1);
+    ApplyAnimationEx(playerid, "DODGE", "Crush_Jump", 4.0, 0, 1, 1, 1, 0, 1);
     return 1;
 }
 
 CMD:showoff(playerid, params[])
 {
 	if(!CheckAnimation(playerid)) return 1;
-    PlayAnimEx(playerid, "Freeweights", "gym_free_celebrate", 4.0, 1, 0, 0, 0, 0, 1);
+    ApplyAnimationEx(playerid, "Freeweights", "gym_free_celebrate", 4.0, 1, 0, 0, 0, 0, 1);
     return 1;
 }
 
@@ -471,8 +472,8 @@ CMD:cry(playerid, params[])
 	if(!CheckAnimation(playerid)) return 1;
     switch(strval(params))
     {
-    	case 1: PlayAnimEx(playerid, "GRAVEYARD", "mrnF_loop", 4.0, 1, 0, 0, 0, 0, 1);
-        case 2: PlayAnimEx(playerid, "GRAVEYARD", "mrnM_loop", 4.0, 1, 0, 0, 0, 0, 1);
+    	case 1: ApplyAnimationEx(playerid, "GRAVEYARD", "mrnF_loop", 4.0, 1, 0, 0, 0, 0, 1);
+        case 2: ApplyAnimationEx(playerid, "GRAVEYARD", "mrnM_loop", 4.0, 1, 0, 0, 0, 0, 1);
         default: SendClientMessage(playerid, COLOR_GREY, "HIND: /cry [1-2]");
     }
     return 1;
@@ -488,63 +489,63 @@ CMD:throw(playerid, params[])
 CMD:robbed(playerid, params[])
 {
 	if(!CheckAnimation(playerid)) return 1;
-    PlayAnimEx(playerid, "SHOP", "SHP_Rob_GiveCash", 4.0, 1, 0, 0, 0, 0, 1);
+    ApplyAnimationEx(playerid, "SHOP", "SHP_Rob_GiveCash", 4.0, 1, 0, 0, 0, 0, 1);
     return 1;
 }
 
 CMD:hurt(playerid, params[])
 {
 	if(!CheckAnimation(playerid)) return 1;
-    PlayAnimEx(playerid, "SWAT", "gnstwall_injurd", 4.0, 1, 0, 0, 0, 0, 1);
+    ApplyAnimationEx(playerid, "SWAT", "gnstwall_injurd", 4.0, 1, 0, 0, 0, 0, 1);
     return 1;
 }
 
 CMD:camera1(playerid, params[])
 {
     if(!CheckAnimation(playerid)) return 1;
-    PlayAnimEx(playerid, "CAMERA","camcrch_cmon", 4.0, 1, 0, 0, 1, 0, 1);
+    ApplyAnimationEx(playerid, "CAMERA","camcrch_cmon", 4.0, 1, 0, 0, 1, 0, 1);
     return 1;
 }
 
 CMD:box(playerid, params[])
 {
 	if(!CheckAnimation(playerid)) return 1;
-    PlayAnimEx(playerid, "GYMNASIUM", "GYMshadowbox", 4.0, 1, 0, 0, 0, 0, 1);
+    ApplyAnimationEx(playerid, "GYMNASIUM", "GYMshadowbox", 4.0, 1, 0, 0, 0, 0, 1);
     return 1;
 }
 
 CMD:washhands(playerid, params[])
 {
 	if(!CheckAnimation(playerid)) return 1;
-    PlayAnimEx(playerid, "BD_FIRE", "wash_up", 4.0, 1, 0, 0, 0, 0, 1);
+    ApplyAnimationEx(playerid, "BD_FIRE", "wash_up", 4.0, 1, 0, 0, 0, 0, 1);
     return 1;
 }
 
 CMD:crabs(playerid, params[])
 {
 	if(!CheckAnimation(playerid)) return 1;
-    PlayAnimEx(playerid, "MISC", "Scratchballs_01", 4.0, 1, 0, 0, 0, 0, 1);
+    ApplyAnimationEx(playerid, "MISC", "Scratchballs_01", 4.0, 1, 0, 0, 0, 0, 1);
     return 1;
 }
 
 CMD:salute(playerid, params[])
 {
 	if(!CheckAnimation(playerid)) return 1;
-    PlayAnimEx(playerid, "ON_LOOKERS", "Pointup_loop", 4.0, 1, 0, 0, 0, 0, 1);
+    ApplyAnimationEx(playerid, "ON_LOOKERS", "Pointup_loop", 4.0, 1, 0, 0, 0, 0, 1);
     return 1;
 }
 
 CMD:jerkoff(playerid, params[])
 {
 	if(!CheckAnimation(playerid)) return 1;
-    PlayAnimEx(playerid, "PAULNMAC", "wank_out", 4.0, 1, 0, 0, 0, 0, 1);
+    ApplyAnimationEx(playerid, "PAULNMAC", "wank_out", 4.0, 1, 0, 0, 0, 0, 1);
     return 1;
 }
 
 CMD:stop(playerid, params[])
 {
 	if(!CheckAnimation(playerid)) return 1;
-    PlayAnimEx(playerid, "PED", "endchat_01", 4.0, 1, 0, 0, 0, 0, 1);
+    ApplyAnimationEx(playerid, "PED", "endchat_01", 4.0, 1, 0, 0, 0, 0, 1);
     return 1;
 }
 
@@ -552,7 +553,7 @@ CMD:stop(playerid, params[])
 CMD:liftcase(playerid, params[])
 {
 	if(!CheckAnimation(playerid)) return 1;
-    PlayAnimEx(playerid, "MISC", "Case_pickup", 4.0, 0, 0, 0, 0, 0,1);
+    ApplyAnimationEx(playerid, "MISC", "Case_pickup", 4.0, 0, 0, 0, 0, 0,1);
     return 1;
 }
 /*
@@ -562,14 +563,14 @@ CMD:bye(playerid, params[])
 	if(!CheckAnimation(playerid)) return 1;
 	switch(strval(params))
 	{
-		case 1: PlayAnimEx(playerid, "KISSING", 		"BD_GF_Wave", 	4.0, 0, 0, 1, 0, 0);
-		case 2: PlayAnimEx(playerid, "ON_LOOKERS", 	"wave_in", 		4.0, 0, 0, 1, 0, 0);
-		case 3: PlayAnimEx(playerid, "ON_LOOKERS", 	"wave_loop", 	4.0, 0, 0, 1, 0, 0);
-		case 4: PlayAnimEx(playerid, "ON_LOOKERS", 	"wave_out", 	4.0, 0, 0, 1, 0, 0);
-		case 5: PlayAnimEx(playerid, "BD_FIRE",		"BD_GF_Wave", 	4.0, 0, 0, 1, 0, 0);
-		case 6: PlayAnimEx(playerid, "ped", 			"endchat_01", 	4.0, 0, 0, 1, 0, 0);
-		case 7: PlayAnimEx(playerid, "ped", 			"endchat_02", 	4.0, 0, 0, 1, 0, 0);
-		case 8: PlayAnimEx(playerid, "ped", 			"endchat_03", 	4.0, 0, 0, 1, 0, 0);
+		case 1: ApplyAnimationEx(playerid, "KISSING", 		"BD_GF_Wave", 	4.0, 0, 0, 1, 0, 0);
+		case 2: ApplyAnimationEx(playerid, "ON_LOOKERS", 	"wave_in", 		4.0, 0, 0, 1, 0, 0);
+		case 3: ApplyAnimationEx(playerid, "ON_LOOKERS", 	"wave_loop", 	4.0, 0, 0, 1, 0, 0);
+		case 4: ApplyAnimationEx(playerid, "ON_LOOKERS", 	"wave_out", 	4.0, 0, 0, 1, 0, 0);
+		case 5: ApplyAnimationEx(playerid, "BD_FIRE",		"BD_GF_Wave", 	4.0, 0, 0, 1, 0, 0);
+		case 6: ApplyAnimationEx(playerid, "ped", 			"endchat_01", 	4.0, 0, 0, 1, 0, 0);
+		case 7: ApplyAnimationEx(playerid, "ped", 			"endchat_02", 	4.0, 0, 0, 1, 0, 0);
+		case 8: ApplyAnimationEx(playerid, "ped", 			"endchat_03", 	4.0, 0, 0, 1, 0, 0);
 		default: SendClientMessage(playerid, COLOR_LIGHTRED, "SU DUNG:{FFFFFF} /bye [1-8]");
 	}
 	return 1;
@@ -580,9 +581,9 @@ CMD:rap(playerid, params[])
 	if(!CheckAnimation(playerid)) return 1;
 	switch(strval(params))
 	{
-	case 1: PlayAnimEx(playerid, "RAPPING", "RAP_A_Loop", 4.0, 1, 0, 0, 0, 0, 1);
-	case 2: PlayAnimEx(playerid, "RAPPING", "RAP_B_Loop", 4.0, 1, 0, 0, 0, 0, 1);
-	case 3: PlayAnimEx(playerid, "RAPPING", "RAP_C_Loop", 4.0, 1, 0, 0, 0, 0, 1);
+	case 1: ApplyAnimationEx(playerid, "RAPPING", "RAP_A_Loop", 4.0, 1, 0, 0, 0, 0, 1);
+	case 2: ApplyAnimationEx(playerid, "RAPPING", "RAP_B_Loop", 4.0, 1, 0, 0, 0, 0, 1);
+	case 3: ApplyAnimationEx(playerid, "RAPPING", "RAP_C_Loop", 4.0, 1, 0, 0, 0, 0, 1);
 	default: SendClientMessage(playerid, COLOR_LIGHTRED, "SU DUNG:{FFFFFF} /rap [1-3]");
 	}
 	return 1;
@@ -593,13 +594,13 @@ CMD:chat(playerid, params[])
 	if(!CheckAnimation(playerid)) return 1;
 	switch(strval(params))
 	{
-		case 1: PlayAnimEx(playerid, "PED", "IDLE_CHAT", 4.0, 1, 0, 0, 0, 0, 1);
-		case 2: PlayAnimEx(playerid, "GANGS", "prtial_gngtlkA", 4.0, 1, 0, 0, 0, 0, 1);
-		case 3:	PlayAnimEx(playerid, "GANGS", "prtial_gngtlkB", 4.0, 1, 0, 0, 0, 0, 1);
-		case 4: PlayAnimEx(playerid, "GANGS", "prtial_gngtlkE", 4.0, 1, 0, 0, 0, 0, 1);
-		case 5: PlayAnimEx(playerid, "GANGS", "prtial_gngtlkF", 4.0, 1, 0, 0, 0, 0, 1);
-		case 6: PlayAnimEx(playerid, "GANGS", "prtial_gngtlkG", 4.0, 1, 0, 0, 0, 0, 1);
-		case 7:	PlayAnimEx(playerid, "GANGS", "prtial_gngtlkH", 4.0, 1, 0, 0, 0, 0, 1);
+		case 1: ApplyAnimationEx(playerid, "PED", "IDLE_CHAT", 4.0, 1, 0, 0, 0, 0, 1);
+		case 2: ApplyAnimationEx(playerid, "GANGS", "prtial_gngtlkA", 4.0, 1, 0, 0, 0, 0, 1);
+		case 3:	ApplyAnimationEx(playerid, "GANGS", "prtial_gngtlkB", 4.0, 1, 0, 0, 0, 0, 1);
+		case 4: ApplyAnimationEx(playerid, "GANGS", "prtial_gngtlkE", 4.0, 1, 0, 0, 0, 0, 1);
+		case 5: ApplyAnimationEx(playerid, "GANGS", "prtial_gngtlkF", 4.0, 1, 0, 0, 0, 0, 1);
+		case 6: ApplyAnimationEx(playerid, "GANGS", "prtial_gngtlkG", 4.0, 1, 0, 0, 0, 0, 1);
+		case 7:	ApplyAnimationEx(playerid, "GANGS", "prtial_gngtlkH", 4.0, 1, 0, 0, 0, 0, 1);
 		default: SendClientMessage(playerid, COLOR_LIGHTRED, "SU DUNG:{FFFFFF} /chat [1-7]");
 	}
 	return 1;
@@ -639,15 +640,15 @@ CMD:lay(playerid, params[])
 	if(!CheckAnimation(playerid)) return 1;
 	switch(strval(params))
 	{
-	case 1: PlayAnimEx(playerid, "BEACH", "bather", 4.0, 1, 0, 0, 0, 0, 1);
-	case 2: PlayAnimEx(playerid, "BEACH", "Lay_Bac_Loop", 4.0, 1, 0, 0, 0, 0, 1);
-	case 3: PlayAnimEx(playerid, "BEACH", "SitnWait_loop_W", 4.0, 1, 0, 0, 0, 0, 1);
-	case 4: PlayAnimEx(playerid,"BEACH", "parksit_w_loop", 4.0, 1, 0, 0, 0, 0, 1);
-	case 5: PlayAnimEx(playerid,"BEACH","parksit_m_loop", 4.0, 1, 0, 0, 0, 0, 1);
-	case 6: PlayAnimEx(playerid,"SUNBATHE","Lay_Bac_in",3.0, 1, 0, 0, 0, 0, 1);
-	case 7: PlayAnimEx(playerid,"SUNBATHE","batherdown",3.0, 1, 0, 0, 0, 0, 1);
-	case 8: PlayAnimEx(playerid,"SUNBATHE","parksit_m_in",3.0, 1, 0, 0, 0, 0, 1);
-	case 9: PlayAnimEx(playerid,"CAR", "Fixn_Car_Loop", 4.0, 1, 0, 0, 0, 0, 1);
+	case 1: ApplyAnimationEx(playerid, "BEACH", "bather", 4.0, 1, 0, 0, 0, 0, 1);
+	case 2: ApplyAnimationEx(playerid, "BEACH", "Lay_Bac_Loop", 4.0, 1, 0, 0, 0, 0, 1);
+	case 3: ApplyAnimationEx(playerid, "BEACH", "SitnWait_loop_W", 4.0, 1, 0, 0, 0, 0, 1);
+	case 4: ApplyAnimationEx(playerid,"BEACH", "parksit_w_loop", 4.0, 1, 0, 0, 0, 0, 1);
+	case 5: ApplyAnimationEx(playerid,"BEACH","parksit_m_loop", 4.0, 1, 0, 0, 0, 0, 1);
+	case 6: ApplyAnimationEx(playerid,"SUNBATHE","Lay_Bac_in",3.0, 1, 0, 0, 0, 0, 1);
+	case 7: ApplyAnimationEx(playerid,"SUNBATHE","batherdown",3.0, 1, 0, 0, 0, 0, 1);
+	case 8: ApplyAnimationEx(playerid,"SUNBATHE","parksit_m_in",3.0, 1, 0, 0, 0, 0, 1);
+	case 9: ApplyAnimationEx(playerid,"CAR", "Fixn_Car_Loop", 4.0, 1, 0, 0, 0, 0, 1);
 	default: SendClientMessage(playerid, COLOR_LIGHTRED, "SU DUNG:{FFFFFF} /lay [1-9]");
 	}
 	return 1;
@@ -658,11 +659,11 @@ CMD:wave(playerid, params[])
 	if(!CheckAnimation(playerid)) return 1;
 	switch(strval(params))
 	{
-	case 1: PlayAnimEx(playerid, "ON_LOOKERS", "wave_loop", 4.0, 1, 0, 0, 0, 0, 1);
-	case 2: PlayAnimEx(playerid, "KISSING", "gfwave2", 4.0, 1, 0, 0, 0, 0, 1);
-	case 3: PlayAnimEx(playerid, "PED", "endchat_03", 4.0, 1, 0, 0, 0, 0, 1);
-	case 4: PlayAnimEx(playerid,"BD_Fire", "BD_GF_Wave", 4.0, 0, 0, 0, 0, 0, 1);
-	case 5: PlayAnimEx(playerid,"WUZI", "Wuzi_Follow", 5.0, 0, 0, 0, 0, 0, 1);
+	case 1: ApplyAnimationEx(playerid, "ON_LOOKERS", "wave_loop", 4.0, 1, 0, 0, 0, 0, 1);
+	case 2: ApplyAnimationEx(playerid, "KISSING", "gfwave2", 4.0, 1, 0, 0, 0, 0, 1);
+	case 3: ApplyAnimationEx(playerid, "PED", "endchat_03", 4.0, 1, 0, 0, 0, 0, 1);
+	case 4: ApplyAnimationEx(playerid,"BD_Fire", "BD_GF_Wave", 4.0, 0, 0, 0, 0, 0, 1);
+	case 5: ApplyAnimationEx(playerid,"WUZI", "Wuzi_Follow", 5.0, 0, 0, 0, 0, 0, 1);
 	default: SendClientMessage(playerid, COLOR_LIGHTRED, "SU DUNG:{FFFFFF} /wave [1-5]");
 	}
 	
@@ -674,8 +675,8 @@ CMD:signal(playerid, params[])
 	if(!CheckAnimation(playerid)) return 1;
 	switch(strval(params))
 	{
-	case 1: PlayAnimEx(playerid, "POLICE", "CopTraf_Come", 4.0, 1, 0, 0, 0, 0, 1);
-	case 2: PlayAnimEx(playerid, "POLICE", "CopTraf_Stop", 4.0, 1, 0, 0, 0, 0, 1);
+	case 1: ApplyAnimationEx(playerid, "POLICE", "CopTraf_Come", 4.0, 1, 0, 0, 0, 0, 1);
+	case 2: ApplyAnimationEx(playerid, "POLICE", "CopTraf_Stop", 4.0, 1, 0, 0, 0, 0, 1);
 	default: SendClientMessage(playerid, COLOR_LIGHTRED, "SU DUNG:{FFFFFF} /signal [1-2]");
 	}
 	
@@ -687,9 +688,9 @@ CMD:nobreath(playerid, params[])
 	if(!CheckAnimation(playerid)) return 1;
 	switch(strval(params))
 	{
-	case 1: PlayAnimEx(playerid, "SWEET", "Sweet_injuredloop", 4.0, 1, 0, 0, 0, 0, 1);
-	case 2: PlayAnimEx(playerid, "PED", "IDLE_tired", 4.0, 1, 0, 0, 0, 0, 1);
-	case 3: PlayAnimEx(playerid, "FAT", "IDLE_tired", 4.0, 1, 0, 0, 0, 0, 1);
+	case 1: ApplyAnimationEx(playerid, "SWEET", "Sweet_injuredloop", 4.0, 1, 0, 0, 0, 0, 1);
+	case 2: ApplyAnimationEx(playerid, "PED", "IDLE_tired", 4.0, 1, 0, 0, 0, 0, 1);
+	case 3: ApplyAnimationEx(playerid, "FAT", "IDLE_tired", 4.0, 1, 0, 0, 0, 0, 1);
 	default: SendClientMessage(playerid, COLOR_LIGHTRED, "SU DUNG:{FFFFFF} /nobreath [1-3]");
 	}
 	
@@ -701,32 +702,32 @@ CMD:pedmove(playerid, params[])
 	if(!CheckAnimation(playerid)) return 1;
 	switch(strval(params))
 	{
-	case 1: PlayAnimEx(playerid, "PED", "JOG_femaleA", 4.0, 1, 1, 1, 1, 1, 1);
-	case 2: PlayAnimEx(playerid, "PED", "JOG_maleA", 4.0, 1, 1, 1, 1, 1, 1);
-	case 3: PlayAnimEx(playerid, "PED", "WOMAN_walkfatold", 4.0, 1, 1, 1, 1, 1, 1);
-	case 4: PlayAnimEx(playerid, "PED", "run_fat", 4.0, 1, 1, 1, 1, 1, 1);
-	case 5: PlayAnimEx(playerid, "PED", "run_fatold", 4.0, 1, 1, 1, 1, 1, 1);
-	case 6: PlayAnimEx(playerid, "PED", "run_old", 4.0, 1, 1, 1, 1, 1, 1);
-	case 7: PlayAnimEx(playerid, "PED", "Run_Wuzi", 4.0, 1, 1, 1, 1, 1, 1);
-	case 8: PlayAnimEx(playerid, "PED", "swat_run", 4.0, 1, 1, 1, 1, 1, 1);
-	case 9: PlayAnimEx(playerid, "PED", "WALK_fat", 4.0, 1, 1, 1, 1, 1, 1);
-	case 10: PlayAnimEx(playerid, "PED", "WALK_fatold", 4.0, 1, 1, 1, 1, 1, 1);
-	case 11: PlayAnimEx(playerid, "PED", "WALK_gang1", 4.0, 1, 1, 1, 1, 1, 1);
-	case 12: PlayAnimEx(playerid, "PED", "WALK_gang2", 4.0, 1, 1, 1, 1, 1, 1);
-	case 13: PlayAnimEx(playerid, "PED", "WALK_old", 4.0, 1, 1, 1, 1, 1, 1);
-	case 14: PlayAnimEx(playerid, "PED", "WALK_shuffle", 4.0, 1, 1, 1, 1, 1, 1);
-	case 15: PlayAnimEx(playerid, "PED", "woman_run", 4.0, 1, 1, 1, 1, 1, 1);
-	case 16: PlayAnimEx(playerid, "PED", "WOMAN_runbusy", 4.0, 1, 1, 1, 1, 1, 1);
-	case 17: PlayAnimEx(playerid, "PED", "WOMAN_runfatold", 4.0, 1, 1, 1, 1, 1, 1);
-	case 18: PlayAnimEx(playerid, "PED", "woman_runpanic", 4.0, 1, 1, 1, 1, 1, 1);
-	case 19: PlayAnimEx(playerid, "PED", "WOMAN_runsexy", 4.0, 1, 1, 1, 1, 1, 1);
-	case 20: PlayAnimEx(playerid, "PED", "WOMAN_walkbusy", 4.0, 1, 1, 1, 1, 1, 1);
-	case 21: PlayAnimEx(playerid, "PED", "WOMAN_walkfatold", 4.0, 1, 1, 1, 1, 1, 1);
-	case 22: PlayAnimEx(playerid, "PED", "WOMAN_walknorm", 4.0, 1, 1, 1, 1, 1, 1);
-	case 23: PlayAnimEx(playerid, "PED", "WOMAN_walkold", 4.0, 1, 1, 1, 1, 1, 1);
-	case 24: PlayAnimEx(playerid, "PED", "WOMAN_walkpro", 4.0, 1, 1, 1, 1, 1, 1);
-	case 25: PlayAnimEx(playerid, "PED", "WOMAN_walksexy", 4.0, 1, 1, 1, 1, 1, 1);
-	case 26: PlayAnimEx(playerid, "PED", "WOMAN_walkshop", 4.0, 1, 1, 1, 1, 1, 1);
+	case 1: ApplyAnimationEx(playerid, "PED", "JOG_femaleA", 4.0, 1, 1, 1, 1, 1, 1);
+	case 2: ApplyAnimationEx(playerid, "PED", "JOG_maleA", 4.0, 1, 1, 1, 1, 1, 1);
+	case 3: ApplyAnimationEx(playerid, "PED", "WOMAN_walkfatold", 4.0, 1, 1, 1, 1, 1, 1);
+	case 4: ApplyAnimationEx(playerid, "PED", "run_fat", 4.0, 1, 1, 1, 1, 1, 1);
+	case 5: ApplyAnimationEx(playerid, "PED", "run_fatold", 4.0, 1, 1, 1, 1, 1, 1);
+	case 6: ApplyAnimationEx(playerid, "PED", "run_old", 4.0, 1, 1, 1, 1, 1, 1);
+	case 7: ApplyAnimationEx(playerid, "PED", "Run_Wuzi", 4.0, 1, 1, 1, 1, 1, 1);
+	case 8: ApplyAnimationEx(playerid, "PED", "swat_run", 4.0, 1, 1, 1, 1, 1, 1);
+	case 9: ApplyAnimationEx(playerid, "PED", "WALK_fat", 4.0, 1, 1, 1, 1, 1, 1);
+	case 10: ApplyAnimationEx(playerid, "PED", "WALK_fatold", 4.0, 1, 1, 1, 1, 1, 1);
+	case 11: ApplyAnimationEx(playerid, "PED", "WALK_gang1", 4.0, 1, 1, 1, 1, 1, 1);
+	case 12: ApplyAnimationEx(playerid, "PED", "WALK_gang2", 4.0, 1, 1, 1, 1, 1, 1);
+	case 13: ApplyAnimationEx(playerid, "PED", "WALK_old", 4.0, 1, 1, 1, 1, 1, 1);
+	case 14: ApplyAnimationEx(playerid, "PED", "WALK_shuffle", 4.0, 1, 1, 1, 1, 1, 1);
+	case 15: ApplyAnimationEx(playerid, "PED", "woman_run", 4.0, 1, 1, 1, 1, 1, 1);
+	case 16: ApplyAnimationEx(playerid, "PED", "WOMAN_runbusy", 4.0, 1, 1, 1, 1, 1, 1);
+	case 17: ApplyAnimationEx(playerid, "PED", "WOMAN_runfatold", 4.0, 1, 1, 1, 1, 1, 1);
+	case 18: ApplyAnimationEx(playerid, "PED", "woman_runpanic", 4.0, 1, 1, 1, 1, 1, 1);
+	case 19: ApplyAnimationEx(playerid, "PED", "WOMAN_runsexy", 4.0, 1, 1, 1, 1, 1, 1);
+	case 20: ApplyAnimationEx(playerid, "PED", "WOMAN_walkbusy", 4.0, 1, 1, 1, 1, 1, 1);
+	case 21: ApplyAnimationEx(playerid, "PED", "WOMAN_walkfatold", 4.0, 1, 1, 1, 1, 1, 1);
+	case 22: ApplyAnimationEx(playerid, "PED", "WOMAN_walknorm", 4.0, 1, 1, 1, 1, 1, 1);
+	case 23: ApplyAnimationEx(playerid, "PED", "WOMAN_walkold", 4.0, 1, 1, 1, 1, 1, 1);
+	case 24: ApplyAnimationEx(playerid, "PED", "WOMAN_walkpro", 4.0, 1, 1, 1, 1, 1, 1);
+	case 25: ApplyAnimationEx(playerid, "PED", "WOMAN_walksexy", 4.0, 1, 1, 1, 1, 1, 1);
+	case 26: ApplyAnimationEx(playerid, "PED", "WOMAN_walkshop", 4.0, 1, 1, 1, 1, 1, 1);
 	default: SendClientMessage(playerid, COLOR_LIGHTRED, "SU DUNG:{FFFFFF} /pedmove [1-26]");
 	}
 	
@@ -738,16 +739,16 @@ CMD:getjiggy(playerid, params[])
 	if(!CheckAnimation(playerid)) return 1;
 	switch(strval(params))
 	{
-	case 1: PlayAnimEx(playerid, "DANCING", "DAN_Down_A", 4.0, 1, 0, 0, 0, 0, 1);
-	case 2: PlayAnimEx(playerid, "DANCING", "DAN_Left_A", 4.0, 1, 0, 0, 0, 0, 1);
-	case 3: PlayAnimEx(playerid, "DANCING", "DAN_Loop_A", 4.0, 1, 0, 0, 0, 0, 1);
-	case 4: PlayAnimEx(playerid, "DANCING", "DAN_Right_A", 4.0, 1, 0, 0, 0, 0, 1);
-	case 5: PlayAnimEx(playerid, "DANCING", "DAN_Up_A", 4.0, 1, 0, 0, 0, 0, 1);
-	case 6: PlayAnimEx(playerid, "DANCING", "dnce_M_a", 4.0, 1, 0, 0, 0, 0, 1);
-	case 7: PlayAnimEx(playerid, "DANCING", "dnce_M_b", 4.0, 1, 0, 0, 0, 0, 1);
-	case 8: PlayAnimEx(playerid, "DANCING", "dnce_M_c", 4.0, 1, 0, 0, 0, 0, 1);
-	case 9: PlayAnimEx(playerid, "DANCING", "dnce_M_c", 4.0, 1, 0, 0, 0, 0, 1);
-	case 10: PlayAnimEx(playerid, "DANCING", "dnce_M_d", 4.0, 1, 0, 0, 0, 0, 1);
+	case 1: ApplyAnimationEx(playerid, "DANCING", "DAN_Down_A", 4.0, 1, 0, 0, 0, 0, 1);
+	case 2: ApplyAnimationEx(playerid, "DANCING", "DAN_Left_A", 4.0, 1, 0, 0, 0, 0, 1);
+	case 3: ApplyAnimationEx(playerid, "DANCING", "DAN_Loop_A", 4.0, 1, 0, 0, 0, 0, 1);
+	case 4: ApplyAnimationEx(playerid, "DANCING", "DAN_Right_A", 4.0, 1, 0, 0, 0, 0, 1);
+	case 5: ApplyAnimationEx(playerid, "DANCING", "DAN_Up_A", 4.0, 1, 0, 0, 0, 0, 1);
+	case 6: ApplyAnimationEx(playerid, "DANCING", "dnce_M_a", 4.0, 1, 0, 0, 0, 0, 1);
+	case 7: ApplyAnimationEx(playerid, "DANCING", "dnce_M_b", 4.0, 1, 0, 0, 0, 0, 1);
+	case 8: ApplyAnimationEx(playerid, "DANCING", "dnce_M_c", 4.0, 1, 0, 0, 0, 0, 1);
+	case 9: ApplyAnimationEx(playerid, "DANCING", "dnce_M_c", 4.0, 1, 0, 0, 0, 0, 1);
+	case 10: ApplyAnimationEx(playerid, "DANCING", "dnce_M_d", 4.0, 1, 0, 0, 0, 0, 1);
 	default: SendClientMessage(playerid, COLOR_LIGHTRED, "SU DUNG:{FFFFFF} /getjiggy [1-10]");
 	}
 	
@@ -759,8 +760,8 @@ CMD:stripclub(playerid, params[])
 	if(!CheckAnimation(playerid)) return 1;
 	switch(strval(params))
 	{
-	case 1: PlayAnimEx(playerid, "STRIP", "PLY_CASH", 4.0, 1, 0, 0, 0, 0, 1);
-	case 2: PlayAnimEx(playerid, "STRIP", "PUN_CASH", 4.0, 1, 0, 0, 0, 0, 1);
+	case 1: ApplyAnimationEx(playerid, "STRIP", "PLY_CASH", 4.0, 1, 0, 0, 0, 0, 1);
+	case 2: ApplyAnimationEx(playerid, "STRIP", "PUN_CASH", 4.0, 1, 0, 0, 0, 0, 1);
 	default: SendClientMessage(playerid, COLOR_LIGHTRED, "SU DUNG:{FFFFFF} /stripclub [1-2]");
 	}
 	
@@ -773,9 +774,9 @@ CMD:smoke(playerid, params[])
 	switch(strval(params))
 	{
 	case 1: PlayAnim(playerid, "SMOKING", "M_smk_in", 4.1, 0, 0, 0, 0, 0, 1);
-	case 2: PlayAnimEx(playerid, "SMOKING", "M_smklean_loop", 4.1, 1, 0, 0, 0, 0, 1);
-	case 3: PlayAnimEx(playerid, "SMOKING", "M_smk_drag", 4.1, 0, 0, 0, 0, 0, 1);
-	case 4: PlayAnimEx(playerid, "SMOKING", "M_smkstnd_loop", 4.1, 0, 0, 0, 0, 0, 1);
+	case 2: ApplyAnimationEx(playerid, "SMOKING", "M_smklean_loop", 4.1, 1, 0, 0, 0, 0, 1);
+	case 3: ApplyAnimationEx(playerid, "SMOKING", "M_smk_drag", 4.1, 0, 0, 0, 0, 0, 1);
+	case 4: ApplyAnimationEx(playerid, "SMOKING", "M_smkstnd_loop", 4.1, 0, 0, 0, 0, 0, 1);
 	default: SendClientMessage(playerid, COLOR_LIGHTRED, "SU DUNG:{FFFFFF} /smoke [1-4]");
 	}
 	
@@ -787,10 +788,10 @@ CMD:dj(playerid, params[])
 	if(!CheckAnimation(playerid)) return 1;
 	switch(strval(params))
 	{
-	case 1: PlayAnimEx(playerid, "SCRATCHING", "scdldlp", 4.0, 1, 0, 0, 0, 0, 1);
-	case 2: PlayAnimEx(playerid, "SCRATCHING", "scdlulp", 4.0, 1, 0, 0, 0, 0, 1);
-	case 3: PlayAnimEx(playerid, "SCRATCHING", "scdrdlp", 4.0, 1, 0, 0, 0, 0, 1);
-	case 4: PlayAnimEx(playerid, "SCRATCHING", "scdrulp", 4.0, 1, 0, 0, 0, 0, 1);
+	case 1: ApplyAnimationEx(playerid, "SCRATCHING", "scdldlp", 4.0, 1, 0, 0, 0, 0, 1);
+	case 2: ApplyAnimationEx(playerid, "SCRATCHING", "scdlulp", 4.0, 1, 0, 0, 0, 0, 1);
+	case 3: ApplyAnimationEx(playerid, "SCRATCHING", "scdrdlp", 4.0, 1, 0, 0, 0, 0, 1);
+	case 4: ApplyAnimationEx(playerid, "SCRATCHING", "scdrulp", 4.0, 1, 0, 0, 0, 0, 1);
 	default: SendClientMessage(playerid, COLOR_LIGHTRED, "SU DUNG:{FFFFFF} /dj [1-4]");
 	}
 	
@@ -815,8 +816,8 @@ CMD:tag(playerid, params[])
 	if(!CheckAnimation(playerid)) return 1;
 	switch(strval(params))
 	{
-	case 1: PlayAnimEx(playerid, "GRAFFITI", "graffiti_Chkout", 4.0, 1, 0, 0, 0, 0, 1);
-	case 2: PlayAnimEx(playerid, "GRAFFITI", "spraycan_fire", 4.0, 1, 0, 0, 0, 0, 1);
+	case 1: ApplyAnimationEx(playerid, "GRAFFITI", "graffiti_Chkout", 4.0, 1, 0, 0, 0, 0, 1);
+	case 2: ApplyAnimationEx(playerid, "GRAFFITI", "spraycan_fire", 4.0, 1, 0, 0, 0, 0, 1);
 	default: SendClientMessage(playerid, COLOR_LIGHTRED, "SU DUNG:{FFFFFF} /tag [1-2]");
 	}
 	
@@ -828,12 +829,12 @@ CMD:deal(playerid, params[])
 	if(!CheckAnimation(playerid)) return 1;
 	switch(strval(params))
 	{
-	case 1: PlayAnimEx(playerid, "DEALER", "DEALER_DEAL", 4.1, 0, 0, 0, 0, 0, 1);
-	case 2: PlayAnimEx(playerid, "DEALER", "shop_pay", 4.1, 0, 0, 0, 0, 0, 1);
-	case 3: PlayAnimEx(playerid,"DEALER","DRUGS_BUY", 4.1, 0, 0, 0, 0, 0, 1);
-	case 4: PlayAnimEx(playerid, "DEALER", "DEALER_IDLE_01", 4.1, 1, 0, 0, 0, 0, 1);
-	case 5: PlayAnimEx(playerid, "DEALER", "DEALER_IDLE_02", 4.1, 1, 0, 0, 0, 0, 1);
-	case 6: PlayAnimEx(playerid,"DEALER","DEALER_IDLE_03", 4.1, 1, 0, 0, 0, 0, 1);
+	case 1: ApplyAnimationEx(playerid, "DEALER", "DEALER_DEAL", 4.1, 0, 0, 0, 0, 0, 1);
+	case 2: ApplyAnimationEx(playerid, "DEALER", "shop_pay", 4.1, 0, 0, 0, 0, 0, 1);
+	case 3: ApplyAnimationEx(playerid,"DEALER","DRUGS_BUY", 4.1, 0, 0, 0, 0, 0, 1);
+	case 4: ApplyAnimationEx(playerid, "DEALER", "DEALER_IDLE_01", 4.1, 1, 0, 0, 0, 0, 1);
+	case 5: ApplyAnimationEx(playerid, "DEALER", "DEALER_IDLE_02", 4.1, 1, 0, 0, 0, 0, 1);
+	case 6: ApplyAnimationEx(playerid,"DEALER","DEALER_IDLE_03", 4.1, 1, 0, 0, 0, 0, 1);
 	default: SendClientMessage(playerid, COLOR_LIGHTRED, "SU DUNG:{FFFFFF} /deal [1-6]");
 	}
 	return 1;
@@ -844,10 +845,10 @@ CMD:crossarms(playerid, params[])
 	if(!CheckAnimation(playerid)) return 1;
 	switch(strval(params))
 	{
-	case 1: PlayAnimEx(playerid, "COP_AMBIENT", "Coplook_loop", 4.0, 0, 1, 1, 1, -1, 1);
-	case 2: PlayAnimEx(playerid, "DEALER", "DEALER_IDLE", 4.0, 1, 0, 0, 0, 0, 1);
-	case 3: PlayAnimEx(playerid, "GRAVEYARD", "mrnM_loop", 4.0, 1, 0, 0, 0, 0, 1);
-	case 4: PlayAnimEx(playerid, "GRAVEYARD", "prst_loopa", 4.0, 1, 0, 0, 0, 0, 1);
+	case 1: ApplyAnimationEx(playerid, "COP_AMBIENT", "Coplook_loop", 4.0, 0, 1, 1, 1, -1, 1);
+	case 2: ApplyAnimationEx(playerid, "DEALER", "DEALER_IDLE", 4.0, 1, 0, 0, 0, 0, 1);
+	case 3: ApplyAnimationEx(playerid, "GRAVEYARD", "mrnM_loop", 4.0, 1, 0, 0, 0, 0, 1);
+	case 4: ApplyAnimationEx(playerid, "GRAVEYARD", "prst_loopa", 4.0, 1, 0, 0, 0, 0, 1);
 	default: SendClientMessage(playerid, COLOR_LIGHTRED, "SU DUNG:{FFFFFF} /crossarms [1-4]");
 	}
 	
@@ -859,14 +860,14 @@ CMD:cheer(playerid, params[])
 	if(!CheckAnimation(playerid)) return 1;
 	switch(strval(params))
 	{
-	case 1: PlayAnimEx(playerid, "ON_LOOKERS", "shout_01", 4.0, 1, 0, 0, 0, 0, 1);
-	case 2: PlayAnimEx(playerid, "ON_LOOKERS", "shout_02", 4.0, 1, 0, 0, 0, 0, 1);
-	case 3: PlayAnimEx(playerid, "ON_LOOKERS", "shout_in", 4.0, 1, 0, 0, 0, 0, 1);
-	case 4: PlayAnimEx(playerid, "RIOT", "RIOT_ANGRY_B", 4.0, 1, 0, 0, 0, 0, 1);
-	case 5: PlayAnimEx(playerid, "RIOT", "RIOT_CHANT", 4.0, 1, 0, 0, 0, 0, 1);
-	case 6: PlayAnimEx(playerid, "RIOT", "RIOT_shout", 4.0, 1, 0, 0, 0, 0, 1);
-	case 7: PlayAnimEx(playerid, "STRIP", "PUN_HOLLER", 4.0, 1, 0, 0, 0, 0, 1);
-	case 8: PlayAnimEx(playerid, "OTB", "wtchrace_win", 4.0, 1, 0, 0, 0, 0, 1);
+	case 1: ApplyAnimationEx(playerid, "ON_LOOKERS", "shout_01", 4.0, 1, 0, 0, 0, 0, 1);
+	case 2: ApplyAnimationEx(playerid, "ON_LOOKERS", "shout_02", 4.0, 1, 0, 0, 0, 0, 1);
+	case 3: ApplyAnimationEx(playerid, "ON_LOOKERS", "shout_in", 4.0, 1, 0, 0, 0, 0, 1);
+	case 4: ApplyAnimationEx(playerid, "RIOT", "RIOT_ANGRY_B", 4.0, 1, 0, 0, 0, 0, 1);
+	case 5: ApplyAnimationEx(playerid, "RIOT", "RIOT_CHANT", 4.0, 1, 0, 0, 0, 0, 1);
+	case 6: ApplyAnimationEx(playerid, "RIOT", "RIOT_shout", 4.0, 1, 0, 0, 0, 0, 1);
+	case 7: ApplyAnimationEx(playerid, "STRIP", "PUN_HOLLER", 4.0, 1, 0, 0, 0, 0, 1);
+	case 8: ApplyAnimationEx(playerid, "OTB", "wtchrace_win", 4.0, 1, 0, 0, 0, 0, 1);
 	default: SendClientMessage(playerid, COLOR_LIGHTRED, "SU DUNG:{FFFFFF} /cheer [1-8]");
 	}
 	
@@ -878,14 +879,14 @@ CMD:sit(playerid, params[])
 	if(!CheckAnimation(playerid)) return 1;
 	switch(strval(params))
 	{
-	case 1: PlayAnimEx(playerid,"PED","SEAT_down",4.1,0,1,1,1,0,1);
-	case 2: PlayAnimEx(playerid,"MISC","seat_lr",2.0,1,0,0,0,0,1);
-	case 3: PlayAnimEx(playerid,"MISC","seat_talk_01",2.0,1,0,0,0,0,1);
-	case 4: PlayAnimEx(playerid,"MISC","seat_talk_02",2.0,1,0,0,0,0,1);
-	case 5: PlayAnimEx(playerid, "BEACH", "ParkSit_M_loop", 4.0, 1, 0, 0, 0, 0, 1);
-	case 6: PlayAnimEx(playerid, "CRIB", "PED_Console_Loop", 4.1, 0, 1, 1, 1, 1, 1);
-	case 8: PlayAnimEx(playerid, "CRIB", "PED_Console_Loose", 4.1, 0, 1, 1, 1, 1, 1);
-	case 7: PlayAnimEx(playerid, "CRIB", "PED_Console_Win", 4.1, 0, 1, 1, 1, 1, 1);
+	case 1: ApplyAnimationEx(playerid,"PED","SEAT_down",4.1,0,1,1,1,0,1);
+	case 2: ApplyAnimationEx(playerid,"MISC","seat_lr",2.0,1,0,0,0,0,1);
+	case 3: ApplyAnimationEx(playerid,"MISC","seat_talk_01",2.0,1,0,0,0,0,1);
+	case 4: ApplyAnimationEx(playerid,"MISC","seat_talk_02",2.0,1,0,0,0,0,1);
+	case 5: ApplyAnimationEx(playerid, "BEACH", "ParkSit_M_loop", 4.0, 1, 0, 0, 0, 0, 1);
+	case 6: ApplyAnimationEx(playerid, "CRIB", "PED_Console_Loop", 4.1, 0, 1, 1, 1, 1, 1);
+	case 8: ApplyAnimationEx(playerid, "CRIB", "PED_Console_Loose", 4.1, 0, 1, 1, 1, 1, 1);
+	case 7: ApplyAnimationEx(playerid, "CRIB", "PED_Console_Win", 4.1, 0, 1, 1, 1, 1, 1);
 	default: SendClientMessage(playerid, COLOR_LIGHTRED, "SU DUNG:{FFFFFF} /sit [1-6]");
 	}
 	
@@ -897,8 +898,8 @@ CMD:siteat(playerid, params[])
 	if(!CheckAnimation(playerid)) return 1;
 	switch(strval(params))
 	{
-	case 1: PlayAnimEx(playerid, "FOOD", "FF_Sit_Eat3", 4.0, 1, 0, 0, 0, 0, 1);
-	case 2: PlayAnimEx(playerid, "FOOD", "FF_Sit_Eat2", 4.0, 1, 0, 0, 0, 0, 1);
+	case 1: ApplyAnimationEx(playerid, "FOOD", "FF_Sit_Eat3", 4.0, 1, 0, 0, 0, 0, 1);
+	case 2: ApplyAnimationEx(playerid, "FOOD", "FF_Sit_Eat2", 4.0, 1, 0, 0, 0, 0, 1);
 	default: SendClientMessage(playerid, COLOR_LIGHTRED, "SU DUNG:{FFFFFF} /siteat [1-2]");
 	}
 	return 1;
@@ -913,7 +914,7 @@ CMD:bar(playerid, params[])
 	case 2: PlayAnim(playerid, "BAR", "Barserve_bottle", 4.0, 0, 0, 0, 0, 0, 1);
 	case 3: PlayAnim(playerid, "BAR", "Barserve_give", 4.0, 0, 0, 0, 0, 0, 1);
 	case 4: PlayAnim(playerid, "BAR", "dnk_stndM_loop", 4.0, 0, 0, 0, 0, 0, 1);
-	case 5: PlayAnimEx(playerid, "BAR", "BARman_idle", 4.0, 1, 0, 0, 0, 0, 1);
+	case 5: ApplyAnimationEx(playerid, "BAR", "BARman_idle", 4.0, 1, 0, 0, 0, 0, 1);
 	default: SendClientMessage(playerid, COLOR_LIGHTRED, "SU DUNG:{FFFFFF} /bar [1-5]");
 	}
 	
@@ -939,16 +940,16 @@ CMD:hiphop(playerid, params[])
 	if(!CheckAnimation(playerid)) return 1;
 	switch(strval(params))
 	{
-	case 1: PlayAnimEx(playerid, "DANCING", "bd_clap",4.0,1,0,0,0,0,1);
-	case 2: PlayAnimEx(playerid, "DANCING", "bd_clap1", 4.1, 1, 0, 0, 0, 0, 1);
-	case 3: PlayAnimEx(playerid, "DANCING", "dance_loop", 4.1, 1, 0, 0, 0, 0, 1);
-	case 4: PlayAnimEx(playerid, "DANCING", "DAN_Down_A", 4.1, 1, 0, 0, 0, 0, 1);
-	case 5: PlayAnimEx(playerid, "DANCING", "DAN_Left_A", 4.1, 1, 0, 0, 0, 0, 1);
-	case 6: PlayAnimEx(playerid, "DANCING", "DAN_Loop_A", 4.1, 1, 0, 0, 0, 0, 1);
-	case 7: PlayAnimEx(playerid, "DANCING", "DAN_Right_A", 4.1, 1, 0, 0, 0, 0, 1);
-	case 8: PlayAnimEx(playerid, "DANCING", "DAN_Up_A", 4.1, 1, 0, 0, 0, 0, 1);
-	case 9: PlayAnimEx(playerid, "DANCING", "dnce_M_a", 4.1, 1, 0, 0, 0, 0, 1);
-	case 10: PlayAnimEx(playerid, "DANCING", "dnce_M_b", 4.1, 1, 0, 0, 0, 0, 1);
+	case 1: ApplyAnimationEx(playerid, "DANCING", "bd_clap",4.0,1,0,0,0,0,1);
+	case 2: ApplyAnimationEx(playerid, "DANCING", "bd_clap1", 4.1, 1, 0, 0, 0, 0, 1);
+	case 3: ApplyAnimationEx(playerid, "DANCING", "dance_loop", 4.1, 1, 0, 0, 0, 0, 1);
+	case 4: ApplyAnimationEx(playerid, "DANCING", "DAN_Down_A", 4.1, 1, 0, 0, 0, 0, 1);
+	case 5: ApplyAnimationEx(playerid, "DANCING", "DAN_Left_A", 4.1, 1, 0, 0, 0, 0, 1);
+	case 6: ApplyAnimationEx(playerid, "DANCING", "DAN_Loop_A", 4.1, 1, 0, 0, 0, 0, 1);
+	case 7: ApplyAnimationEx(playerid, "DANCING", "DAN_Right_A", 4.1, 1, 0, 0, 0, 0, 1);
+	case 8: ApplyAnimationEx(playerid, "DANCING", "DAN_Up_A", 4.1, 1, 0, 0, 0, 0, 1);
+	case 9: ApplyAnimationEx(playerid, "DANCING", "dnce_M_a", 4.1, 1, 0, 0, 0, 0, 1);
+	case 10: ApplyAnimationEx(playerid, "DANCING", "dnce_M_b", 4.1, 1, 0, 0, 0, 0, 1);
 	default: SendClientMessage(playerid, COLOR_LIGHTRED, "SU DUNG:{FFFFFF} /hiphop [1-12]");
 	}
 	return 1;
@@ -960,10 +961,10 @@ CMD:spank(playerid, params[])
 	if(!CheckAnimation(playerid)) return 1;
 	switch(strval(params))
 	{
-	case 1: PlayAnimEx(playerid, "SNM", "SPANKINGW", 4.1, 1, 0, 0, 0, 0, 1);
-	case 2: PlayAnimEx(playerid, "SNM", "SPANKINGP", 4.1, 1, 0, 0, 0, 0, 1);
-	case 3: PlayAnimEx(playerid, "SNM", "SPANKEDW", 4.1, 1, 0, 0, 0, 0, 1);
-	case 4: PlayAnimEx(playerid, "SNM", "SPANKEDP", 4.1, 1, 0, 0, 0, 0, 1);
+	case 1: ApplyAnimationEx(playerid, "SNM", "SPANKINGW", 4.1, 1, 0, 0, 0, 0, 1);
+	case 2: ApplyAnimationEx(playerid, "SNM", "SPANKINGP", 4.1, 1, 0, 0, 0, 0, 1);
+	case 3: ApplyAnimationEx(playerid, "SNM", "SPANKEDW", 4.1, 1, 0, 0, 0, 0, 1);
+	case 4: ApplyAnimationEx(playerid, "SNM", "SPANKEDP", 4.1, 1, 0, 0, 0, 0, 1);
 	default: SendClientMessage(playerid, COLOR_LIGHTRED, "SU DUNG:{FFFFFF} /spank [1-4]");
 	}
 	return 1;
@@ -974,14 +975,14 @@ CMD:sexy(playerid, params[])
 	if(!CheckAnimation(playerid)) return 1;
 	switch(strval(params))
 	{
-	case 1: PlayAnimEx(playerid, "SNM","SPANKING_IDLEW", 4.1, 0, 0, 0, 1, 0, 1);
-	case 2: PlayAnimEx(playerid, "SNM","SPANKING_IDLEP", 4.1, 0, 0, 0, 1, 0, 1);
-	case 3: PlayAnimEx(playerid, "SNM","SPANKINGW", 4.1, 0, 0, 0, 1, 0, 1);
-	case 4: PlayAnimEx(playerid, "SNM","SPANKINGP", 4.1, 0, 0, 0, 1, 0, 1);
-	case 5: PlayAnimEx(playerid, "SNM","SPANKING_ENDW", 4.1, 0, 0, 0, 1, 0, 1);
-	case 6: PlayAnimEx(playerid, "SNM","SPANKING_ENDP", 4.1, 0, 0, 0, 1, 0, 1);
-	case 7: PlayAnimEx(playerid, "SNM", "SPANKEDW", 4.1, 0, 0, 0, 1, 0, 1);
-	case 8: PlayAnimEx(playerid, "SNM", "SPANKEDP", 4.1, 0, 0, 0, 1, 0, 1);
+	case 1: ApplyAnimationEx(playerid, "SNM","SPANKING_IDLEW", 4.1, 0, 0, 0, 1, 0, 1);
+	case 2: ApplyAnimationEx(playerid, "SNM","SPANKING_IDLEP", 4.1, 0, 0, 0, 1, 0, 1);
+	case 3: ApplyAnimationEx(playerid, "SNM","SPANKINGW", 4.1, 0, 0, 0, 1, 0, 1);
+	case 4: ApplyAnimationEx(playerid, "SNM","SPANKINGP", 4.1, 0, 0, 0, 1, 0, 1);
+	case 5: ApplyAnimationEx(playerid, "SNM","SPANKING_ENDW", 4.1, 0, 0, 0, 1, 0, 1);
+	case 6: ApplyAnimationEx(playerid, "SNM","SPANKING_ENDP", 4.1, 0, 0, 0, 1, 0, 1);
+	case 7: ApplyAnimationEx(playerid, "SNM", "SPANKEDW", 4.1, 0, 0, 0, 1, 0, 1);
+	case 8: ApplyAnimationEx(playerid, "SNM", "SPANKEDP", 4.1, 0, 0, 0, 1, 0, 1);
 	default: SendClientMessage(playerid, COLOR_LIGHTRED, "SU DUNG:{FFFFFF} /sexy [1-8]");
 	}
 	
@@ -1014,8 +1015,8 @@ CMD:win(playerid, params[])
 	if(!CheckAnimation(playerid)) return 1;
 	switch(strval(params))
 	{
-	case 1: PlayAnimEx(playerid, "CASINO","Roulette_win", 4.0, 1, 0, 0, 0, 0, 1);
-	case 2: PlayAnimEx(playerid, "CASINO","cards_win", 4.0, 1, 0, 0, 0, 0, 1);
+	case 1: ApplyAnimationEx(playerid, "CASINO","Roulette_win", 4.0, 1, 0, 0, 0, 0, 1);
+	case 2: ApplyAnimationEx(playerid, "CASINO","cards_win", 4.0, 1, 0, 0, 0, 0, 1);
 	default: SendClientMessage(playerid, COLOR_LIGHTRED, "SU DUNG:{FFFFFF} /win [1-2]");
 	}
 	
@@ -1027,8 +1028,8 @@ CMD:celebrate(playerid, params[])
 	if(!CheckAnimation(playerid)) return 1;
 	switch(strval(params))
 	{
-	case 1: PlayAnimEx(playerid, "benchpress","gym_bp_celebrate", 4.0, 1, 0, 0, 0, 0, 1);
-	case 2: PlayAnimEx(playerid, "GYMNASIUM","gym_tread_celebrate", 4.0, 1, 0, 0, 0, 0, 1);
+	case 1: ApplyAnimationEx(playerid, "benchpress","gym_bp_celebrate", 4.0, 1, 0, 0, 0, 0, 1);
+	case 2: ApplyAnimationEx(playerid, "GYMNASIUM","gym_tread_celebrate", 4.0, 1, 0, 0, 0, 0, 1);
 	default: SendClientMessage(playerid, COLOR_LIGHTRED, "SU DUNG:{FFFFFF} /celebrate [1-2]");
 	}
 	
@@ -1040,8 +1041,8 @@ CMD:leanon(playerid, params[])
 	if(!CheckAnimation(playerid)) return 1;
 	switch(strval(params))
 	{
-	case 1: PlayAnimEx(playerid,  "GANGS", "leanIDLE", 4.0, 1, 0, 0, 1, 1, 1);
-	case 2: PlayAnimEx(playerid, "MISC", "Plyrlean_loop", 4.0, 1, 1, 1, 1, 1, 1);
+	case 1: ApplyAnimationEx(playerid,  "GANGS", "leanIDLE", 4.0, 1, 0, 0, 1, 1, 1);
+	case 2: ApplyAnimationEx(playerid, "MISC", "Plyrlean_loop", 4.0, 1, 1, 1, 1, 1, 1);
 	default: SendClientMessage(playerid, COLOR_LIGHTRED, "SU DUNG:{FFFFFF} /celebrate [1-2]");
 	}
 	
@@ -1053,11 +1054,11 @@ CMD:holdup(playerid, params[])
 	if(!CheckAnimation(playerid)) return 1;
 	switch(strval(params))
 	{
-	case 1: PlayAnimEx(playerid, "POOL", "POOL_ChalkCue", 4.1, 0, 1, 1, 1, 1, 1);
-	case 2: PlayAnimEx(playerid, "POOL", "POOL_Idle_Stance", 4.1, 0, 1, 1, 1, 1, 1);
-	case 3: PlayAnimEx(playerid, "POOL", "POOL_Long_Start", 4.1, 0, 1, 1, 1, 1, 1);
-	case 4: PlayAnimEx(playerid, "POOL", "POOL_Med_Shot", 4.1, 0, 1, 1, 1, 1, 1);
-	case 5: PlayAnimEx(playerid, "POOL", "POOL_Med_Start", 4.1, 0, 1, 1, 1, 1, 1);
+	case 1: ApplyAnimationEx(playerid, "POOL", "POOL_ChalkCue", 4.1, 0, 1, 1, 1, 1, 1);
+	case 2: ApplyAnimationEx(playerid, "POOL", "POOL_Idle_Stance", 4.1, 0, 1, 1, 1, 1, 1);
+	case 3: ApplyAnimationEx(playerid, "POOL", "POOL_Long_Start", 4.1, 0, 1, 1, 1, 1, 1);
+	case 4: ApplyAnimationEx(playerid, "POOL", "POOL_Med_Shot", 4.1, 0, 1, 1, 1, 1, 1);
+	case 5: ApplyAnimationEx(playerid, "POOL", "POOL_Med_Start", 4.1, 0, 1, 1, 1, 1, 1);
 	default: SendClientMessage(playerid, COLOR_LIGHTRED, "SU DUNG:{FFFFFF} /holdup [1-5]");
 	}
 	
@@ -1073,8 +1074,8 @@ CMD:copa(playerid, params[])
 	case 2: PlayAnim(playerid, "POLICE", "CopTraf_Come", 4.1, 0, 0, 0, 0, 0, 1);
 	case 3: PlayAnim(playerid, "POLICE", "CopTraf_Left", 4.1, 0, 0, 0, 0, 0, 1);
 	case 4: PlayAnim(playerid, "POLICE", "CopTraf_Stop", 4.1, 0, 0, 0, 0, 0, 1);
-	case 5: PlayAnimEx(playerid, "POLICE", "Cop_move_FWD", 4.1, 1, 1, 1, 1, 1, 1);
-	case 6: PlayAnimEx(playerid, "POLICE", "crm_drgbst_01", 4.1, 0, 0, 0, 1, 5000, 1);
+	case 5: ApplyAnimationEx(playerid, "POLICE", "Cop_move_FWD", 4.1, 1, 1, 1, 1, 1, 1);
+	case 6: ApplyAnimationEx(playerid, "POLICE", "crm_drgbst_01", 4.1, 0, 0, 0, 1, 5000, 1);
 	case 7: PlayAnim(playerid, "POLICE", "Door_Kick", 4.1, 0, 1, 1, 1, 1, 1);
 	case 8: PlayAnim(playerid, "POLICE", "plc_drgbst_01", 4.1, 0, 0, 0, 0, 5000, 1);
 	case 9: PlayAnim(playerid, "POLICE", "plc_drgbst_02", 4.1, 0, 0, 0, 0, 0, 1);
@@ -1088,8 +1089,8 @@ CMD:hiker(playerid, params[])
     if(!CheckAnimation(playerid)) return 1;
     switch(strval(params))
 	{
-         case 1: PlayAnimEx(playerid, "MISC", "Hiker_Pose_L", 4.0, 0, 1, 1, 1, 0, 1);
-         case 2: PlayAnimEx(playerid,"MISC","Hiker_Pose", 4.0, 1, 0, 0, 0, 0, 1);
+         case 1: ApplyAnimationEx(playerid, "MISC", "Hiker_Pose_L", 4.0, 0, 1, 1, 1, 0, 1);
+         case 2: ApplyAnimationEx(playerid,"MISC","Hiker_Pose", 4.0, 1, 0, 0, 0, 0, 1);
          default: SendClientMessage(playerid, COLOR_GREY, " HIND: /hiker [1-2]");
     }     
 	return 1;
@@ -1112,10 +1113,10 @@ CMD:blowjob(playerid, params[])
 	if(!CheckAnimation(playerid)) return 1;
 	switch(strval(params))
 	{
-	case 1: PlayAnimEx(playerid, "BLOWJOBZ", "BJ_COUCH_LOOP_P", 4.1, 1, 0, 0, 0, 0, 1);
-    case 2: PlayAnimEx(playerid, "BLOWJOBZ", "BJ_COUCH_LOOP_W", 4.1, 1, 0, 0, 0, 0, 1);
-	case 3: PlayAnimEx(playerid, "BLOWJOBZ", "BJ_STAND_LOOP_P", 4.1, 1, 0, 0, 0, 0, 1);
-	case 4: PlayAnimEx(playerid, "BLOWJOBZ", "BJ_STAND_LOOP_W", 4.1, 1, 0, 0, 0, 0, 1);
+	case 1: ApplyAnimationEx(playerid, "BLOWJOBZ", "BJ_COUCH_LOOP_P", 4.1, 1, 0, 0, 0, 0, 1);
+    case 2: ApplyAnimationEx(playerid, "BLOWJOBZ", "BJ_COUCH_LOOP_W", 4.1, 1, 0, 0, 0, 0, 1);
+	case 3: ApplyAnimationEx(playerid, "BLOWJOBZ", "BJ_STAND_LOOP_P", 4.1, 1, 0, 0, 0, 0, 1);
+	case 4: ApplyAnimationEx(playerid, "BLOWJOBZ", "BJ_STAND_LOOP_W", 4.1, 1, 0, 0, 0, 0, 1);
 	default: SendClientMessage(playerid, COLOR_LIGHTRED, "SU DUNG:{FFFFFF} /blowjob [1-4]");
 	}
 	
@@ -1143,21 +1144,21 @@ CMD:idles(playerid, params[])
 	if(!CheckAnimation(playerid)) return 1;
 	switch(strval(params))
 	{
-	case 1: PlayAnimEx(playerid, "PLAYIDLES", "shift", 4.1, 1, 1, 1, 1, 1, 1);
-	case 2: PlayAnimEx(playerid, "PLAYIDLES", "shldr", 4.1, 1, 1, 1, 1, 1, 1);
-	case 3: PlayAnimEx(playerid, "PLAYIDLES", "stretch", 4.1, 1, 1, 1, 1, 1, 1);
-	case 4: PlayAnimEx(playerid, "PLAYIDLES", "strleg", 4.1, 1, 1, 1, 1, 1, 1);
-	case 5: PlayAnimEx(playerid, "PLAYIDLES", "time", 4.1, 1, 1, 1, 1, 1, 1);
-	case 6: PlayAnimEx(playerid, "COP_AMBIENT", "Copbrowse_loop", 4.1, 1, 0, 0, 0, 0, 1);
-	case 7: PlayAnimEx(playerid, "COP_AMBIENT", "Coplook_loop", 4.1, 1, 0, 0, 0, 0, 1);
-	case 8: PlayAnimEx(playerid, "COP_AMBIENT", "Coplook_shake", 4.1, 1, 0, 0, 0, 0, 1);
-	case 9: PlayAnimEx(playerid, "COP_AMBIENT", "Coplook_think", 4.1, 1, 0, 0, 0, 0, 1);
-	case 10: PlayAnimEx(playerid, "COP_AMBIENT", "Coplook_watch", 4.1, 1, 0, 0, 0, 0, 1);
-	case 11: PlayAnimEx(playerid, "PED", "roadcross", 4.1, 1, 0, 0, 0, 0, 1);
-	case 12: PlayAnimEx(playerid, "PED", "roadcross_female", 4.1, 1, 0, 0, 0, 0, 1);
-	case 13: PlayAnimEx(playerid, "PED", "roadcross_gang", 4.1, 1, 0, 0, 0, 0, 1);
-	case 14: PlayAnimEx(playerid, "PED", "roadcross_old", 4.1, 1, 0, 0, 0, 0, 1);
-	case 15: PlayAnimEx(playerid, "PED", "woman_idlestance", 4.1, 1, 0, 0, 0, 0, 1);
+	case 1: ApplyAnimationEx(playerid, "PLAYIDLES", "shift", 4.1, 1, 1, 1, 1, 1, 1);
+	case 2: ApplyAnimationEx(playerid, "PLAYIDLES", "shldr", 4.1, 1, 1, 1, 1, 1, 1);
+	case 3: ApplyAnimationEx(playerid, "PLAYIDLES", "stretch", 4.1, 1, 1, 1, 1, 1, 1);
+	case 4: ApplyAnimationEx(playerid, "PLAYIDLES", "strleg", 4.1, 1, 1, 1, 1, 1, 1);
+	case 5: ApplyAnimationEx(playerid, "PLAYIDLES", "time", 4.1, 1, 1, 1, 1, 1, 1);
+	case 6: ApplyAnimationEx(playerid, "COP_AMBIENT", "Copbrowse_loop", 4.1, 1, 0, 0, 0, 0, 1);
+	case 7: ApplyAnimationEx(playerid, "COP_AMBIENT", "Coplook_loop", 4.1, 1, 0, 0, 0, 0, 1);
+	case 8: ApplyAnimationEx(playerid, "COP_AMBIENT", "Coplook_shake", 4.1, 1, 0, 0, 0, 0, 1);
+	case 9: ApplyAnimationEx(playerid, "COP_AMBIENT", "Coplook_think", 4.1, 1, 0, 0, 0, 0, 1);
+	case 10: ApplyAnimationEx(playerid, "COP_AMBIENT", "Coplook_watch", 4.1, 1, 0, 0, 0, 0, 1);
+	case 11: ApplyAnimationEx(playerid, "PED", "roadcross", 4.1, 1, 0, 0, 0, 0, 1);
+	case 12: ApplyAnimationEx(playerid, "PED", "roadcross_female", 4.1, 1, 0, 0, 0, 0, 1);
+	case 13: ApplyAnimationEx(playerid, "PED", "roadcross_gang", 4.1, 1, 0, 0, 0, 0, 1);
+	case 14: ApplyAnimationEx(playerid, "PED", "roadcross_old", 4.1, 1, 0, 0, 0, 0, 1);
+	case 15: ApplyAnimationEx(playerid, "PED", "woman_idlestance", 4.1, 1, 0, 0, 0, 0, 1);
 	default: SendClientMessage(playerid, COLOR_LIGHTRED, "SU DUNG:{FFFFFF} /idles [1-15]");
 	}
 	
@@ -1169,24 +1170,24 @@ CMD:sunbathe(playerid, params[])
 	if(!CheckAnimation(playerid)) return 1;
 	switch(strval(params))
 	{
-	case 1: PlayAnimEx(playerid, "SUNBATHE", "batherdown", 4.1, 0, 1, 1, 1, 1, 1);
-	case 2: PlayAnimEx(playerid, "SUNBATHE", "batherup", 4.1, 0, 1, 1, 1, 1, 1);
-	case 3: PlayAnimEx(playerid, "SUNBATHE", "Lay_Bac_in", 4.1, 0, 1, 1, 1, 1, 1);
-	case 4: PlayAnimEx(playerid, "SUNBATHE", "Lay_Bac_out", 4.1, 0, 1, 1, 1, 1, 1);
-	case 5: PlayAnimEx(playerid, "SUNBATHE", "ParkSit_M_IdleA", 4.1, 0, 1, 1, 1, 1, 1);
-	case 6: PlayAnimEx(playerid, "SUNBATHE", "ParkSit_M_IdleB", 4.1, 0, 1, 1, 1, 1, 1);
-	case 7: PlayAnimEx(playerid, "SUNBATHE", "ParkSit_M_IdleC", 4.1, 0, 1, 1, 1, 1, 1);
-	case 8: PlayAnimEx(playerid, "SUNBATHE", "ParkSit_M_in", 4.1, 0, 1, 1, 1, 1, 1);
-	case 9: PlayAnimEx(playerid, "SUNBATHE", "ParkSit_M_out", 4.1, 0, 1, 1, 1, 1, 1);
-	case 10: PlayAnimEx(playerid, "SUNBATHE", "ParkSit_W_idleA", 4.1, 0, 1, 1, 1, 1, 1);
-	case 11: PlayAnimEx(playerid, "SUNBATHE", "ParkSit_W_idleB", 4.1, 0, 1, 1, 1, 1, 1);
-	case 12: PlayAnimEx(playerid, "SUNBATHE", "ParkSit_W_idleC", 4.1, 0, 1, 1, 1, 1, 1);
-	case 13: PlayAnimEx(playerid, "SUNBATHE", "ParkSit_W_in", 4.1, 0, 1, 1, 1, 1, 1);
-	case 14: PlayAnimEx(playerid, "SUNBATHE", "ParkSit_W_out", 4.1, 0, 1, 1, 1, 1, 1);
-	case 15: PlayAnimEx(playerid, "SUNBATHE", "SBATHE_F_LieB2Sit", 4.1, 0, 1, 1, 1, 1, 1);
-	case 16: PlayAnimEx(playerid, "SUNBATHE", "SBATHE_F_Out", 4.1, 0, 1, 1, 1, 1, 1);
-	case 17: PlayAnimEx(playerid, "SUNBATHE", "SitnWait_in_W", 4.1, 0, 1, 1, 1, 1, 1);
-	case 18: PlayAnimEx(playerid, "SUNBATHE", "SitnWait_out_W", 4.1, 0, 1, 1, 1, 1, 1);
+	case 1: ApplyAnimationEx(playerid, "SUNBATHE", "batherdown", 4.1, 0, 1, 1, 1, 1, 1);
+	case 2: ApplyAnimationEx(playerid, "SUNBATHE", "batherup", 4.1, 0, 1, 1, 1, 1, 1);
+	case 3: ApplyAnimationEx(playerid, "SUNBATHE", "Lay_Bac_in", 4.1, 0, 1, 1, 1, 1, 1);
+	case 4: ApplyAnimationEx(playerid, "SUNBATHE", "Lay_Bac_out", 4.1, 0, 1, 1, 1, 1, 1);
+	case 5: ApplyAnimationEx(playerid, "SUNBATHE", "ParkSit_M_IdleA", 4.1, 0, 1, 1, 1, 1, 1);
+	case 6: ApplyAnimationEx(playerid, "SUNBATHE", "ParkSit_M_IdleB", 4.1, 0, 1, 1, 1, 1, 1);
+	case 7: ApplyAnimationEx(playerid, "SUNBATHE", "ParkSit_M_IdleC", 4.1, 0, 1, 1, 1, 1, 1);
+	case 8: ApplyAnimationEx(playerid, "SUNBATHE", "ParkSit_M_in", 4.1, 0, 1, 1, 1, 1, 1);
+	case 9: ApplyAnimationEx(playerid, "SUNBATHE", "ParkSit_M_out", 4.1, 0, 1, 1, 1, 1, 1);
+	case 10: ApplyAnimationEx(playerid, "SUNBATHE", "ParkSit_W_idleA", 4.1, 0, 1, 1, 1, 1, 1);
+	case 11: ApplyAnimationEx(playerid, "SUNBATHE", "ParkSit_W_idleB", 4.1, 0, 1, 1, 1, 1, 1);
+	case 12: ApplyAnimationEx(playerid, "SUNBATHE", "ParkSit_W_idleC", 4.1, 0, 1, 1, 1, 1, 1);
+	case 13: ApplyAnimationEx(playerid, "SUNBATHE", "ParkSit_W_in", 4.1, 0, 1, 1, 1, 1, 1);
+	case 14: ApplyAnimationEx(playerid, "SUNBATHE", "ParkSit_W_out", 4.1, 0, 1, 1, 1, 1, 1);
+	case 15: ApplyAnimationEx(playerid, "SUNBATHE", "SBATHE_F_LieB2Sit", 4.1, 0, 1, 1, 1, 1, 1);
+	case 16: ApplyAnimationEx(playerid, "SUNBATHE", "SBATHE_F_Out", 4.1, 0, 1, 1, 1, 1, 1);
+	case 17: ApplyAnimationEx(playerid, "SUNBATHE", "SitnWait_in_W", 4.1, 0, 1, 1, 1, 1, 1);
+	case 18: ApplyAnimationEx(playerid, "SUNBATHE", "SitnWait_out_W", 4.1, 0, 1, 1, 1, 1, 1);
 	default: SendClientMessage(playerid, COLOR_LIGHTRED, "SU DUNG:{FFFFFF} /sunbathe [1-18]");
 	}
 	return 1;

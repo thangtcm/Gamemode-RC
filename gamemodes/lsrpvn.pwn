@@ -1,4 +1,4 @@
-
+ 
 #define SERVER_GM_TEXT "LSR 1.0"
 
 
@@ -54,9 +54,10 @@
 #include "./system/playerstatus.pwn"
 
 #include "./system/vehicle/vehicle_info.pwn"
+#include "./system/drug/drug.pwn"
 #include "./system/inventory/inventory.pwn"
 #include "./system/weapon/ammo.pwn"
-#include "./system/drug/drug.pwn"
+
 #include "./main/functions.pwn"
 
 

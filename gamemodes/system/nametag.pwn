@@ -73,46 +73,54 @@ hook OnPlayerTakeDamage(playerid, issuerid, Float:amount, weaponid, bodypart)
 
 timer UpdateNameTagTimer[500](playerid)
 {
-    foreach(new i: Player)
-    {
-        if(IsPlayerConnected(i))
-        {
-            new nametag[388], Float:armour;
-            GetPlayerArmour(i, armour);
-			if(gettime() < GetPVarInt(i, "TakeNameTagDMG") ) 
+	if(IsPlayerConnected(playerid))
+	{
+		if(IsValidDynamic3DTextLabel(PlayerInfo[playerid][pNameTag]))
+		{
+			new nametag[388], Float:armour;
+			GetPlayerArmour(playerid, armour);
+			if(playerTabbed[playerid] > 1 || playerAFK[playerid] > 1)
 			{
-				if(playerAFK[i] != 0 && playerAFK[i] > 60)
+				format(nametag, sizeof(nametag), "{F81414}[AFK]{FFFFFF} %s (%d)", nametag, GetPlayerNameEx(playerid), playerid);
+			}
+			else
+			{
+				if(PlayerInfo[playerid][pMaskOn])
 				{
-					format(nametag, sizeof(nametag), "{F81414}[AFK]{FFFFFF} %s (%d)", nametag, i);
+					format(nametag, sizeof(nametag), "{%06x}[Mask %d_%d]{FFFFFF} (%d)", GetPlayerColor(playerid) >>> 8, PlayerInfo[playerid][pMaskID][0], PlayerInfo[playerid][pMaskID][1], playerid);
 				}
 				else
 				{
-					if(PlayerInfo[i][pMaskOn])
-					{
-						format(nametag, sizeof(nametag), "{%06x}[Mask %d_%d]{FFFFFF} (%d)", GetPlayerColor(i) >>> 8, PlayerInfo[i][pMaskID][0], PlayerInfo[i][pMaskID][1], i);
-					}
-					else
-					{
-						format(nametag, sizeof(nametag), "{%06x}%s{FFFFFF} (%d)", GetPlayerColor(i) >>> 8, GetPlayerNameEx(i), i);
-					}
-				}
-				if(armour > 1.0)
-				{
-					format(nametag, sizeof(nametag), "%s\n{FFFFFF}%s\n{FF0000}%s", nametag, GetArmorDots(i), GetHealthDots(i));
-				}
-				else
-				{
-					format(nametag, sizeof(nametag), "%s\n{FF0000}%s", nametag, GetHealthDots(i));
+					format(nametag, sizeof(nametag), "{%06x}%s{FFFFFF} (%d)", GetPlayerColor(playerid) >>> 8, GetPlayerNameEx(playerid), playerid);
 				}
 			}
-			UpdateDynamic3DTextLabelText(PlayerInfo[i][pNameTag], COLOR_WHITE, nametag);
-        }
-    }
+			if(gettime() < GetPVarInt(playerid, "TakeNameTagDMG") ) 
+			{
+				if(armour > 1.0)
+				{
+					format(nametag, sizeof(nametag), "%s\n{FFFFFF}%s\n{FF0000}%s", nametag, GetArmorDots(playerid), GetHealthDots(playerid));
+				}
+				else
+				{
+					format(nametag, sizeof(nametag), "%s\n{FF0000}%s", nametag, GetHealthDots(playerid));
+				}
+			}
+			UpdateDynamic3DTextLabelText(PlayerInfo[playerid][pNameTag], COLOR_WHITE, nametag);
+		}
+		else if(!IsValidDynamic3DTextLabel(PlayerInfo[playerid][pNameTag]))  
+		{
+			DestroyDynamic3DTextLabel(PlayerInfo[playerid][pNameTag]);
+			PlayerInfo[playerid][pNameTag] = INVALID_3DTEXT_ID;
+			PlayerInfo[playerid][pNameTag] = CreateDynamic3DTextLabel("", 0xFFFFFFFF, 0.0, 0.0, 0.1, NT_DISTANCE, .attachedplayer = playerid, .testlos = 1);
+		}
+	}
     return 1;
 }
 
 hook OnPlayerConnect(playerid) {
-    PlayerInfo[playerid][pNameTag] = CreateDynamic3DTextLabel("Loading nametag...", 0x008080FF, 0.0, 0.0, 0.1, 10.0, .attachedplayer = playerid, .testlos = 1);
+	if(IsValidDynamic3DTextLabel(PlayerInfo[playerid][pNameTag]))
+        DestroyDynamic3DTextLabel(PlayerInfo[playerid][pNameTag]);
+    PlayerInfo[playerid][pNameTag] = CreateDynamic3DTextLabel("Loading nametag...", 0x008080FF, 0.0, 0.0, 0.1, NT_DISTANCE, .attachedplayer = playerid, .testlos = 1);
 	myNameTagTimer[playerid] = repeat UpdateNameTagTimer(playerid);
 	PlayerInfo[playerid][pMaskOn] = 0;
 	return 1;
@@ -120,7 +128,7 @@ hook OnPlayerConnect(playerid) {
 hook OnPlayerDisconnect(playerid, reason) {
     if(IsValidDynamic3DTextLabel(PlayerInfo[playerid][pNameTag]))
         DestroyDynamic3DTextLabel(PlayerInfo[playerid][pNameTag]);
-
+	PlayerInfo[playerid][pNameTag] = INVALID_3DTEXT_ID;
     stop myNameTagTimer[playerid];
     myNameTagTimer[playerid] = Timer:-1;
     return 1;

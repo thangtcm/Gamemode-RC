@@ -1297,7 +1297,7 @@ public OnPlayerEnterVehicle(playerid, vehicleid, ispassenger)
 				}
 				if(TruckDeliveringTo[vehicleid] != INVALID_BUSINESS_ID && TruckUsed[playerid] == INVALID_VEHICLE_ID)
 				{
-					SendClientMessageEx(playerid, COLOR_YELLOW, "Tai Xe Trucker JOB: De cung cap cac hang hoa,su dung /hijackcargo cho tai xe.");
+					SendClientMessageEx(playerid, COLOR_YELLOW, "Tai Xe Trucker JOB: De cung cap cac  hang hoa,su dung /hijackcargo cho tai xe.");
 				}
 				else if(TruckUsed[playerid] == INVALID_VEHICLE_ID)
 				{
@@ -1429,10 +1429,12 @@ public OnPlayerEnterVehicle(playerid, vehicleid, ispassenger)
 }
 
 public OnPlayerConnect(playerid) {
+	DownS[playerid] = false;
 	TogglePlayerSpectating(playerid, true);
 	SetTimerEx("TimeUseMed", 60000, 0, "d", playerid);
 	SetTimerEx("TimeCraftMed", 60000, 0, "d", playerid);
 	SetTimerEx("LoadLogin", 500, 0, "i", playerid);
+	DownS[playerid] = 0;
 	SetPVarString(playerid, "PassAuth", "abc");
 	LoadLoginTextDraws(playerid);
 	CreateLoading(playerid);
@@ -1898,24 +1900,15 @@ public OnPlayerConnect(playerid) {
 
 public OnPlayerDisconnect(playerid, reason)
 {
-	if(IsValidDynamicObject(PlayerInfo[playerid][pObjHop])) {
-		DestroyDynamicObject(PlayerInfo[playerid][pObjHop]);
-	}
+	printf("0");
 	KillTimer(DownEDS[playerid]);
-    Delete3DTextLabel(PlayerInfo[playerid][HopText]);
-    PlayerInfo[playerid][pTraiCam] = 0;
-    PlayerInfo[playerid][pTraiCamHop] = 0;
-    PlayerInfo[playerid][pTraiCam] = 0;
-    PlayerInfo[playerid][pHop] = 0;
-    PlayerInfo[playerid][pPosHop][0] = 0;
-    DeletePVar(playerid, "DangHaiTr");
-	RemovePlayerAttachedObject(playerid, 1);
     if(!isnull(unbanip[playerid]))
 	{
 	    new string[26];
 	    format(string, sizeof(string), "unbanip %s", unbanip[playerid]);
 	    SendRconCommand(string);
 	}
+	printf("1");
 	if(PlayerInfo[playerid][pTruyDuoi] >= 1)
     {
             new string[128];
@@ -1940,6 +1933,7 @@ public OnPlayerDisconnect(playerid, reason)
             SetPlayerColor(playerid, TEAM_APRISON_COLOR);
     }
 	KillTimer(logincheck[playerid]);
+	printf("2");
 	foreach(new i: Player) {
 		if(Spectating[i] > 0 && Spectate[i] == playerid)
 		{
@@ -1955,6 +1949,7 @@ public OnPlayerDisconnect(playerid, reason)
 			SendClientMessageEx(i, COLOR_WHITE, "Nguoi choi ban dang kiem tra da thoat khoi may chu.");
 		}
 	}
+	printf("3");
 	// Why save on people who haven't logged in!
 	if(gPlayerLogged{playerid} == 1)
 	{
@@ -2574,11 +2569,11 @@ public OnPlayerDisconnect(playerid, reason)
 	DeletePVar(playerid, "NullEmail");
 	DeletePVar(playerid, "ViewedPMOTD");
 	gPlayerLogged{playerid} = 0;
-	new INI:File = INI_Open(UserPath(playerid));
-	INI_SetTag(File,"data");
-	INI_WriteInt(File,"dlish",PlayerInfodl[playerid][dlish]);
-	INI_WriteInt(File,"dlgetumd",PlayerInfodl[playerid][dlgetumd]);
-	INI_Close(File);
+	// new INI:File = INI_Open(UserPath(playerid));
+	// INI_SetTag(File,"data");
+	// INI_WriteInt(File,"dlish",PlayerInfodl[playerid][dlish]);
+	// INI_WriteInt(File,"dlgetumd",PlayerInfodl[playerid][dlgetumd]);
+	// INI_Close(File);
 	return 1;
 }
 
@@ -4943,6 +4938,9 @@ public OnPlayerKeyStateChange(playerid, newkeys, oldkeys)
 			}
 		}
     }
+	else if(IsKeyJustDown(KEY_SPRINT,newkeys,oldkeys) && gPlayerUsingLoopingAnim[playerid] == 1)
+		if(!(GetPVarType(playerid, "PlayerCuffed") || GetPVarType(playerid, "Injured") || GetPVarType(playerid, "IsFrozen") || PlayerInfo[playerid][pHospital]))
+	    	StopLoopingAnim(playerid);
 	return 1;
 }
 
@@ -5579,23 +5577,18 @@ public OnPlayerText(playerid, text[])
        SendClientMessageEx(playerid, COLOR_RED, "Ban khong dang nhap.");
        return 0;
     }
-    new reply = GetPVarInt(playerid, "ReplyCall");
-    new playercall = GetPVarInt(playerid, "PlayerCallToMe");
 
-    if(reply == 2)
-    {
-        new string1[129];
-        format(string1, sizeof string1, "[Phone] %s ", text);
-        SendClientMessage(playercall, 0xF7CC50FF, string1);
-        SendClientMessage(playerid, -1, string1);
-    }
+	if(GetPVarType(playerid, "Injured") || PlayerInfo[playerid][pHospital])
+	{
+		SendClientTextDraw(playerid, "Ban ~r~khong the tro chuyen~w~ ngay luc nay, hay su dung ~y~/low~w~.");
+		return 0;
+	}
 
+	printf("[Player Chat] [%s-%d]: %s", GetPlayerNameEx(playerid), GetPlayerSQLId(playerid), text);
 	new sendername[MAX_PLAYER_NAME];
 	new giveplayer[MAX_PLAYER_NAME];
 	new string[128];
 	playerLastTyped[playerid] = 0;
-
-
 
 	if(TextSpamUnmute[playerid] != 0)
 	{
@@ -5617,25 +5610,6 @@ public OnPlayerText(playerid, text[])
 			return 0;
 		}
 	}
-
-
- 	/*Compares last string with current, if the same, alert the staff only on the 3rd command. (Expires after 5 secs)
-	if(PlayerInfo[playerid][pAdmin] < 2) {
-		new laststring[128];
-		if(GetPVarString(playerid, "LastText", laststring, 128)) {
-			if(!strcmp(laststring, text, true)) {
-				TextSpamTimes[playerid]++;
-
-				if(TextSpamTimes[playerid] == 2) {
-					TextSpamTimer[playerid] = 30;
-					TextSpamTimes[playerid] = 0;
-					format(string, sizeof(string), "{AA3333}AdmWarning{FFFF00}: %s (ID %d) is spamming with: %s", GetPlayerNameEx(playerid), playerid, text);
-					ABroadCast(COLOR_YELLOW, string, 2);
-				}
-			}
-		}
-		SetPVarString(playerid, "LastText", text);
-	}*/
 
 	if(strfind(text, "|", true) != -1) {
 	    SendClientMessageEx(playerid, COLOR_RED, "Ban khong the su dung '|' nhan vat trong van ban.");
@@ -5919,7 +5893,7 @@ public OnPlayerText(playerid, text[])
 	}
 	if(Mobile[playerid] != INVALID_PLAYER_ID)
 	{
-		format(string, sizeof(string), "(cellphone) %s noi: %s", GetPlayerNameEx(playerid), text);
+		format(string, sizeof(string), "(Dien Thoai) %s noi: %s", GetPlayerNameEx(playerid), text);
 		ProxDetector(20.0, playerid, string,COLOR_FADE1,COLOR_FADE2,COLOR_FADE3,COLOR_FADE4,COLOR_FADE5);
 		if(IsPlayerConnected(Mobile[playerid]))
 		{
@@ -5927,7 +5901,7 @@ public OnPlayerText(playerid, text[])
 			{
 				if(PlayerInfo[Mobile[playerid]][pSpeakerPhone] != 0)
 				{
-				    format(string, sizeof(string), "(speakerphone) %s noi: %s", GetPlayerNameEx(playerid), text);
+				    format(string, sizeof(string), "(Dien Thoai) %s noi: %s", GetPlayerNameEx(playerid), text);
 					ProxDetector(20.0, Mobile[playerid], string,COLOR_FADE1,COLOR_FADE2,COLOR_FADE3,COLOR_FADE4,COLOR_FADE5);
 				}
 				else
@@ -6015,56 +5989,106 @@ public OnPlayerText(playerid, text[])
 		new Float: f_playerPos[3];
 		GetPlayerPos(playerid, f_playerPos[0], f_playerPos[1], f_playerPos[2]);
 		new str[128];
-		foreach(new i: Player)
+		if(IsPlayerInAnyVehicle(playerid))
 		{
-			if((InsidePlane[playerid] == GetPlayerVehicleID(i) && GetPlayerState(i) == 2) || (InsidePlane[i] == GetPlayerVehicleID(playerid) && GetPlayerState(playerid) == 2) || (InsidePlane[playerid] != INVALID_VEHICLE_ID && InsidePlane[playerid] == InsidePlane[i])) {
-				/*if(PlayerInfo[playerid][pDuty] || IsAHitman(playerid)) format(string, sizeof(string), "%s{%06x}%s{E6E6E6} noi: %s", accent, GetPlayerColor(playerid) >>> 8, sendername, text);*/
-				format(string, sizeof(string), "%s%s noi: %s", accent, sendername, text);
-				SendClientMessageEx(i, COLOR_FADE1, string);
+			if(strlen(text) > 64)
+			{
+				SendNearbyMessage(playerid, 20.0, COLOR_WHITE, "{BBFFEE}[Trong xe]{FFFFFF} %s noi: %s %.64s", GetPlayerNameEx(playerid), text);
+				SendNearbyMessage(playerid, 20.0, COLOR_WHITE, "{BBFFEE}[Trong xe]{FFFFFF} %s noi: ...%s", GetPlayerNameEx(playerid), text[64]);
 			}
-			else if(GetPlayerVirtualWorld(i) == GetPlayerVirtualWorld(playerid)) {
-				if(IsPlayerInRangeOfPoint(i, 20.0 * 0.6, f_playerPos[0], f_playerPos[1], f_playerPos[2]) && PlayerInfo[i][pBugged] >= 0 && PlayerInfo[playerid][pAdmin] < 2 && PlayerInfo[i][pAdmin] < 2)
-				{
-				    if(playerid == i)
-				    {
-						format(string, sizeof(string), "%s%s noi: %s", accent, sendername, text);
-				    	format(str, sizeof(str), "{8D8DFF}(BUGGED) {CBCCCE}%s", string);
-				    }
-				    else {
-						format(string, sizeof(string), "%s%s noi: %s", accent, sendername, text);
-				    	format(str, sizeof(str), "{8D8DFF}(BUG ID %d) {CBCCCE}%s", i,string);
-				    }
-				    SendBugMessage(PlayerInfo[i][pBugged], str);
-				}
-
-				if(IsPlayerInRangeOfPoint(i, 20.0 / 16, f_playerPos[0], f_playerPos[1], f_playerPos[2])) {
-					format(string, sizeof(string), "%s%s noi: %s", accent, sendername, text);
-					SendClientMessageEx(i, COLOR_FADE1, string);
-				}
-				else if(IsPlayerInRangeOfPoint(i, 20.0 / 8, f_playerPos[0], f_playerPos[1], f_playerPos[2])) {
-					format(string, sizeof(string), "%s%s noi: %s", accent, sendername, text);
-					SendClientMessageEx(i, COLOR_FADE2, string);
-				}
-				else if(IsPlayerInRangeOfPoint(i, 20.0 / 4, f_playerPos[0], f_playerPos[1], f_playerPos[2])) {
-					format(string, sizeof(string), "%s%s noi: %s", accent, sendername, text);
-					SendClientMessageEx(i, COLOR_FADE3, string);
-				}
-				else if(IsPlayerInRangeOfPoint(i, 20.0 / 2, f_playerPos[0], f_playerPos[1], f_playerPos[2])) {
-					format(string, sizeof(string), "%s%s noi: %s", accent, sendername, text);
-					SendClientMessageEx(i, COLOR_FADE4, string);
-				}
-				else if(IsPlayerInRangeOfPoint(i, 20.0, f_playerPos[0], f_playerPos[1], f_playerPos[2])) {
-					format(string, sizeof(string), "%s%s noi: %s", accent, sendername, text);
-					SendClientMessageEx(i, COLOR_FADE5, string);
-				}
-			}
-			if(GetPVarInt(i, "BigEar") == 1 || GetPVarInt(i, "BigEar") == 6 && GetPVarInt(i, "BigEarPlayer") == playerid) {
-				format(string, sizeof(string), "%s%s noi: %s", accent, sendername, text);
-				new string2[128] = "(BE) ";
-				strcat(string2,string, sizeof(string2));
-				SendClientMessageEx(i, COLOR_FADE1, string);
+			else
+			{
+				SendNearbyMessage(playerid, 20.0, COLOR_WHITE, "{BBFFEE}[Trong xe]{FFFFFF} %s noi: %s", GetPlayerNameEx(playerid), text);
 			}
 		}
+		else
+		{
+			if(strlen(text) > 64)
+			{
+				SendNearbyMessage(playerid, 20.0, COLOR_WHITE, "%s noi: %s %.64s", GetPlayerNameEx(playerid), text);
+				SendNearbyMessage(playerid, 20.0, COLOR_WHITE, "%s noi: ...%s", GetPlayerNameEx(playerid), text[64]);
+			}
+			else
+			{
+				SendNearbyMessage(playerid, 20.0, COLOR_WHITE, "%s noi: %s", GetPlayerNameEx(playerid), text);
+			}
+			if(!IsPlayerInAnyVehicle(playerid) && !gPlayerUsingLoopingAnim[playerid] && GetPlayerSpecialAction(playerid) != SPECIAL_ACTION_USECELLPHONE &&
+				GetPVarType(playerid, "PlayerCuffed") == 0 && GetPVarType(playerid, "Injured") == 0 && GetPVarType(playerid, "IsFrozen") == 0 && PlayerInfo[playerid][pHospital] == 0)
+			{
+				if(Chatting[playerid] == 0)
+				{
+					new AnimLib[32], AnimName[32];
+					GetAnimationName(GetPlayerAnimationIndex(playerid), AnimLib, 32, AnimName, 32);
+					if(!strcmp(AnimName, "IDLE_STANCE", true))
+					{
+						switch(PlayerInfo[playerid][pChatStyle])
+						{
+							case 1: ApplyAnimation(playerid, "GANGS", "prtial_gngtlkA", 4.1, 1, 0, 0, 1, 1);
+							case 2: ApplyAnimation(playerid, "GANGS", "prtial_gngtlkB", 4.1, 1, 0, 0, 1, 1);
+							case 3: ApplyAnimation(playerid, "GANGS", "prtial_gngtlkC", 4.1, 1, 0, 0, 1, 1);
+							case 4: ApplyAnimation(playerid, "GANGS", "prtial_gngtlkD", 4.1, 1, 0, 0, 1, 1);
+							case 5: ApplyAnimation(playerid, "GANGS", "prtial_gngtlkE", 4.1, 1, 0, 0, 1, 1);
+							case 6: ApplyAnimation(playerid, "GANGS", "prtial_gngtlkF", 4.1, 1, 0, 0, 1, 1);
+							case 7: ApplyAnimation(playerid, "GANGS", "prtial_gngtlkG", 4.1, 1, 0, 0, 1, 1);
+							case 8: ApplyAnimation(playerid, "GANGS", "prtial_gngtlkH", 4.1, 1, 0, 0, 1, 1);
+							default: ApplyAnimation(playerid, "GANGS", "prtial_gngtlkC", 4.1, 1, 0, 0, 1, 1);
+						}
+						Chatting[playerid] = 1;
+						SetTimerEx("StopChatting", strlen(text) * 100, 0, "d", playerid);
+					}
+				}
+			}
+		}
+		// foreach(new i: Player)
+		// {
+		// 	if((InsidePlane[playerid] == GetPlayerVehicleID(i) && GetPlayerState(i) == 2) || (InsidePlane[i] == GetPlayerVehicleID(playerid) && GetPlayerState(playerid) == 2) || (InsidePlane[playerid] != INVALID_VEHICLE_ID && InsidePlane[playerid] == InsidePlane[i])) {
+		// 		/*if(PlayerInfo[playerid][pDuty] || IsAHitman(playerid)) format(string, sizeof(string), "%s{%06x}%s{E6E6E6} noi: %s", accent, GetPlayerColor(playerid) >>> 8, sendername, text);*/
+		// 		format(string, sizeof(string), "%s%s noi: %s", accent, sendername, text);
+		// 		SendClientMessageEx(i, COLOR_FADE1, string);
+		// 	}
+		// 	else if(GetPlayerVirtualWorld(i) == GetPlayerVirtualWorld(playerid)) {
+		// 		if(IsPlayerInRangeOfPoint(i, 20.0 * 0.6, f_playerPos[0], f_playerPos[1], f_playerPos[2]) && PlayerInfo[i][pBugged] >= 0 && PlayerInfo[playerid][pAdmin] < 2 && PlayerInfo[i][pAdmin] < 2)
+		// 		{
+		// 		    if(playerid == i)
+		// 		    {
+		// 				format(string, sizeof(string), "%s%s noi: %s", accent, sendername, text);
+		// 		    	format(str, sizeof(str), "{8D8DFF}(BUGGED) {CBCCCE}%s", string);
+		// 		    }
+		// 		    else {
+		// 				format(string, sizeof(string), "%s%s noi: %s", accent, sendername, text);
+		// 		    	format(str, sizeof(str), "{8D8DFF}(BUG ID %d) {CBCCCE}%s", i,string);
+		// 		    }
+		// 		    SendBugMessage(PlayerInfo[i][pBugged], str);
+		// 		}
+
+		// 		if(IsPlayerInRangeOfPoint(i, 20.0 / 16, f_playerPos[0], f_playerPos[1], f_playerPos[2])) {
+		// 			format(string, sizeof(string), "%s%s noi: %s", accent, sendername, text);
+		// 			SendClientMessageEx(i, COLOR_FADE1, string);
+		// 		}
+		// 		else if(IsPlayerInRangeOfPoint(i, 20.0 / 8, f_playerPos[0], f_playerPos[1], f_playerPos[2])) {
+		// 			format(string, sizeof(string), "%s%s noi: %s", accent, sendername, text);
+		// 			SendClientMessageEx(i, COLOR_FADE2, string);
+		// 		}
+		// 		else if(IsPlayerInRangeOfPoint(i, 20.0 / 4, f_playerPos[0], f_playerPos[1], f_playerPos[2])) {
+		// 			format(string, sizeof(string), "%s%s noi: %s", accent, sendername, text);
+		// 			SendClientMessageEx(i, COLOR_FADE3, string);
+		// 		}
+		// 		else if(IsPlayerInRangeOfPoint(i, 20.0 / 2, f_playerPos[0], f_playerPos[1], f_playerPos[2])) {
+		// 			format(string, sizeof(string), "%s%s noi: %s", accent, sendername, text);
+		// 			SendClientMessageEx(i, COLOR_FADE4, string);
+		// 		}
+		// 		else if(IsPlayerInRangeOfPoint(i, 20.0, f_playerPos[0], f_playerPos[1], f_playerPos[2])) {
+		// 			format(string, sizeof(string), "%s%s noi: %s", accent, sendername, text);
+		// 			SendClientMessageEx(i, COLOR_FADE5, string);
+		// 		}
+		// 	}
+		// 	if(GetPVarInt(i, "BigEar") == 1 || GetPVarInt(i, "BigEar") == 6 && GetPVarInt(i, "BigEarPlayer") == playerid) {
+		// 		format(string, sizeof(string), "%s%s noi: %s", accent, sendername, text);
+		// 		new string2[128] = "(BE) ";
+		// 		strcat(string2,string, sizeof(string2));
+		// 		SendClientMessageEx(i, COLOR_FADE1, string);
+		// 	}
+		// }
 	}
 	SetPlayerChatBubble(playerid,text,COLOR_WHITE,20.0,5000);
 
@@ -6083,6 +6107,14 @@ public OnPlayerText(playerid, text[])
 forward OnPlayerModelSelection(playerid, response, listid, modelid);
 forward OnPlayerModelSelectionEx(playerid, response, extraid, modelid);
 //forward strfind(const string[],const sub[],bool:ignorecase=false,pos=0);
+
+forward StopChatting(playerid);
+public StopChatting(playerid)
+{
+	Chatting[playerid] = 0;
+    ApplyAnimation(playerid, "CARRY", "crry_prtial", 4.0, 0, 0, 0, 0, 0);
+    return 1;
+}
 
 forward OnVehicleStreamOut(vehicleid, forplayerid);
 public OnVehicleStreamOut(vehicleid, forplayerid)
@@ -7096,11 +7128,6 @@ public LoadStreamerStaticVehicles()
 	VIPVehicles[47] = AddStaticVehicleEx(560,-4358.66015625,888.96386719,986.18530273,180.00000000,-1,-1,180); //Sultan
 	VIPVehicles[48] = AddStaticVehicleEx(560,-4354.67675781,888.44500732,986.18530273,180.00000000,-1,-1,180); //Sultan
 	VIPVehicles[49] = AddStaticVehicleEx(560,-4362.83789062,889.30908203,986.18530273,180.00000000,-1,-1,180); //Sultan
-	//FDSA By Mr Son
-	FDSAVehicles[0] = AddStaticVehicleEx(416, -2544.1797, 610.5443, 14.5426, 90.9600, 1, 3, VEHICLE_RESPAWN);
-	FDSAVehicles[1] = AddStaticVehicleEx(416, -2544.2434, 604.7028, 14.5426, 90.6600, 1, 3, VEHICLE_RESPAWN);
-	FDSAVehicles[2] = AddStaticVehicleEx(416, -2544.3130, 598.8009, 14.5426, 90.6600, 1, 3, VEHICLE_RESPAWN);
-	FDSAVehicles[3] = AddStaticVehicleEx(416, -2544.2673, 592.8217, 14.5426, 90.6600, 1, 3, VEHICLE_RESPAWN);
 	//Sultan
 	FamedVehicles[0] = AddStaticVehicleEx(560,2515.6797,2381.6501,3.9175,90.5219,-1,-1,180);
 	FamedVehicles[1] = AddStaticVehicleEx(560,2515.9753,2372.6431,3.9167,89.3516,-1,-1,180);
@@ -8020,9 +8047,6 @@ forward LoadStreamerDynamicObjects();
 public LoadStreamerDynamicObjects()
 {
 	MapCam();
-
-
-	SetTimer("UpdateNametag", 500, true);
     CrateLoad = CreateDynamicObject(964,-2114.1, -1723.5, 11984.5, 0, 0, 337.994, .worldid = 0, .interiorid = 1, .streamdistance = 200); //object(cj_metal_crate) (1)
 	IslandGate = CreateDynamicObject(16773,-1083.90002441,4289.70019531,14.10000038,0.00000000,0.00000000,0.00000000, .streamdistance = 400); //object(door_savhangr1) (5)
 
@@ -8629,12 +8653,13 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
         		ShowPlayerDialog(playerid, DIALOG_SMS_SUC, DIALOG_STYLE_INPUT, "Phone - Gui tin nhan", "Vui long nhap noi dung tin nhan", "Gui tin nhan", "Huy bo");
         	}
         }
+		/*
         case DIALOG_SMS_SUC: {
         	if(response) {
         		format(string, sizeof string, "%d %s", GetPVarInt(playerid,"guitinnhan_SDT"),inputtext);
         		cmd_czzhaibmsms(playerid,string);
         	}
-        }
+        }*/
         case DIALOG_PHONEBOOK: {
         	if(response) {
         	 	SetPVarInt(playerid,"Add_NumberPhoneBook", strval(inputtext));
@@ -8922,23 +8947,25 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
         case DIALOG_HELP: {
     	    switch(listitem) {
     		    case 0:  {
-    		    	ShowPlayerDialog(playerid, DIALOG_NOTHING, DIALOG_STYLE_MSGBOX, "Tro giup - General", "\\c/newb- Dat cau hoi cho helper\n\
-    		    	\\c/yeucautrogiup - Yeu cau su ho tro cua Advisor\n\
-    		    	\\c/GPS - Dung de tim vi tri, viec lam, dia diem \n\
-       		    	\\c/my inventory - De bat tui do\n\
-       		    	\\c/my car - De xem kho xe \n\
-       		    	\\c/my stats - xem thong tin co ban \n\
-       		    	\\c/my item - de xem cac vat pham khac ngoai tui do \n\
-       		    	\\c/baocao - de gui bao cao den Admin\n\
-       		    	\\c/phone - Dung de mo giao dien dien thoai", "Dong", "");
+    		    	ShowPlayerDialog(playerid, DIALOG_NOTHING, DIALOG_STYLE_MSGBOX, "Tro giup - General", "\\c/newb- Dat cau hoi cho QTV.\n\
+    		    	\\c/newb- Dat cau hoi cho QTV.\n\
+    		    	\\c/yeucautrogiup - Yeu cau su tro giup cua QTV.\n\
+    		    	\\c/GPS - Tim vi tri cac diem quan trong tai thi tran.\n\
+       		    	\\c/inv - Dung de mo tui do. \n\
+       		    	\\c/baocao - De gui bao cao vi pham luat den QTV.\n\
+       		    	\\c/phone - De su dung dien thoai", "Dong", "");
        		    }
     	        case 1: {
-    	        	ShowPlayerDialog(playerid, DIALOG_NOTHING, DIALOG_STYLE_MSGBOX, "Tro giup - Cong viec", "\\c/GPS > Tim cong viec - de tim dia diem lam viec\n\
-    	        		\\c/pizza - De thao tac cong viec Pizza\n\
-    	        		\\c/truck - De thao tac cong viec Pizza\n\
-    	        		\\c/chatgo - De thao tac cong viec Pizza\n\
-    	        		\\c/ngudan - De mua dung cu danh ca\n\
-    	        		\\c/jobhelp de xem toan bo lenh cua cong viec", "Dong", "");
+    	        	ShowPlayerDialog(playerid, DIALOG_NOTHING, DIALOG_STYLE_MSGBOX, "Tro giup - Cong viec", "\\cTrucker\n\
+    	        		\\c/truckergo mission, car, ship. /truckergo Buy/sell.\n\
+    	        		\\cBam 'N' de boc va go hang.\n\
+    	        		\\cFarmer\n\
+    	        		\\c/farmer /farm.\n\
+    	        		\\cMiner\n\
+    	        		\\cMua Pickaxe tai NPC va an 'Y' de dao da.\n\
+    	        		\\cNeu muon ban hay tim nguoi thu mua tai Palomino Creek hoac giu lai de che tao.\n\
+    	        		\\cHai trai cay\n\
+    	        		\\cABC", "Dong", "");
                 }
                 case 2: ShowPlayerDialog(playerid, DIALOG_NOTHING, DIALOG_STYLE_MSGBOX, "Tro giup - House/Door/Biz", "Bam Alt de ra vao door/house/biz\n/muanha /muabiz /muahouse de mua house door biz\n/househelp de xem lenh cua house\n/bhelp de xem toan bo lenh Biz", "Dong", "");
     	        case 3: {
@@ -8952,6 +8979,19 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
     	        		\\c/carhelp de xem toan bo lenh cua phuong tien", "Dong", "");
     	        }
     	        case 4: ShowPlayerDialog(playerid, DIALOG_NOTHING, DIALOG_STYLE_MSGBOX, "Tro giup - Ngan hang", "/bank de tuong tac ngan hang\nGioi thieu he thong: he thong chuyen tien bang STK ngay ca khi nguoi choi OFFLINE, hay nhap stk cua nguoi ban can chuyen va giao dich", "Dong", "");
+    	    	case 5:
+    	    	{
+    	        	ShowPlayerDialog(playerid, DIALOG_NOTHING, DIALOG_STYLE_MSGBOX, "Tro giup - Toy", "De mua trang bi! Hay den cua hang quan ao va go {AA3333}/buytoys\n\
+    	        		\\cDe mac,thao hoac xoa! Ban co the su dung lenh {AA3333}/toys\n\
+    	        		\\cDe mat tat ca trang bi mot cach nhanh chong, go {AA3333}/wat\n\
+    	        		\\cDe thao tat ca trang bi mot cach nhanh chong, go {AA3333}/dat\n\
+    	        		\\cDe chon mot trang bi nao do nhanh hon, go {AA3333}/wt [toyslot]\n\
+    	        		\\cDe thao mot trang bi nao do nhanh hon, go {AA3333}/dt [toyslot]", "Dong", "");
+    	    	}
+    	    	case 6:
+    	    	{
+    	    		Dialog_Show(playerid, DialogHelpFac, DIALOG_STYLE_LIST, "Tro giup - Faction", "Canh sat\nBac si\nFaction Illegal", "Lua chon", "Huy bo");
+    	    	}
     	    }
         }
     	case DANGKYBANK: {
@@ -24844,6 +24884,38 @@ Dialog:AmmoCop(playerid, response, listitem, inputtext[])
 		}
 		SendLogToDiscordRoom("[MDC-Police] Ammo log" ,"1157912890410541167", "Name", GetPlayerNameEx(playerid), "Rank", PlayerInfo[playerid][pRankText], "Ammo", wepget, 0x227f99);
 		SendLogToDiscordRoom("[MDC-Police] Ammo log" , "1157957903874007111", "Name", GetPlayerNameEx(playerid), "Rank", PlayerInfo[playerid][pRankText], "Ammo", wepget, 0x227f99);
+	}
+	return 1;
+}
+
+Dialog:DialogHelpFac(playerid, response, listitem, inputtext[])
+{
+	if(response)
+	{
+		switch(listitem)
+		{
+			case 0:
+			{
+    	        	ShowPlayerDialog(playerid, DIALOG_NOTHING, DIALOG_STYLE_MSGBOX, "Tro giup - Canh sat", "(/r)adio /dept (/m)egaphone (/su)spect /locker /mdc /dualenxe /batgiam /warrantarrest /wanted /cuff /tazer\n\
+    	        		\\c/bug /listbugs /clearbugs /hfind\n\
+    	        		\\c/flares /cones /wants /batgiam /siren /destroyplant /radargun /searchcar /dvsiren /vradar\n\
+    	        		\\c/spikes /tichthubanglai /vcheck /vmdc /vticket /tow /untow /impound /dmvrelease /gdonate /togradio /togdept\n\
+    	        		\\c/lucsoat /take /ticket (/gov)ernment /clothes /ram /invite /giverank /deploy /destroy /pddoor /pdcell\n\
+    	        		\\c/loadkit /usekit /backup (code2) /backupall /calls /a(ccept)c(all) /i(gnore)c(all)\n\
+    	        		\\c/handcuff /handcuff1 /handcuff2 /unhandcuff /beanbag /khongche /bp1 /bp2 /nbp", "Dong", "");
+			}
+			case 1:
+			{
+    	        	ShowPlayerDialog(playerid, DIALOG_NOTHING, DIALOG_STYLE_MSGBOX, "Tro giup - Bac si", "(/r)adio /dept (/m)egaphone /heal /clothes /invite /giverank /tudo /gdonate\n\
+    	        		\\c/getpt /movept /loadpt /deliverpt /destroyplant /calls /a(ccept)c(all) /i(gnore)c(all)", "Dong", "");
+			}
+			case 2:
+			{
+    	        	ShowPlayerDialog(playerid, DIALOG_NOTHING, DIALOG_STYLE_MSGBOX, "Tro giup - Canh sat", "/invite /uninvite /ouninvite /setdiv /giverank /online\n\
+    	        		\\c/viewbudget /grepocars /gvbuyback /gdonate /ordercrates /dvtrackcar /gwithdraw, /dvstorage\n\
+    	        		\\c/setranktext", "Dong", "");
+			}
+		}
 	}
 	return 1;
 }
