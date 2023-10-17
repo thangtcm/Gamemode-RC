@@ -20167,12 +20167,12 @@ CMD:loadpt(playerid, params[])
 	{
         if(IsPlayerInAnyVehicle(playerid))
 		{
-            SendErrorMessage(playerid, "    Khong the su dung khi ban dang tren mot chiec xe!");
+            SendClientMessageEx(playerid, COLOR_GREY, "   Khong the su dung khi ban dang tren mot chiec xe!");
             return 1;
         }
 
         new string[128], giveplayerid, seat;
-        if(sscanf(params, "ud", giveplayerid, seat)) return SendUsageMessage(playerid, " /loadpt [Nguoi choi] [ID nghe]");
+        if(sscanf(params, "ud", giveplayerid, seat)) return SendClientMessageEx(playerid, COLOR_GREY, "Su Dung: /loadpt [Nguoi choi] [ID nghe]");
 
         if(IsPlayerConnected(giveplayerid))
 		{
@@ -20180,28 +20180,28 @@ CMD:loadpt(playerid, params[])
 			{
                 if(!(2 <= seat <= 3))
 				{
-                    SendServerMessage(playerid, " ID nghe ngoi khong duoc tren 3 va duoi 2.");
+                    SendClientMessageEx(playerid, COLOR_GRAD1, "ID nghe ngoi khong duoc tren 3 va duoi 2.");
                     return 1;
                 }
                 if(GetPVarInt(giveplayerid, "Injured") != 1)
 				{
-                    SendErrorMessage(playerid, " Benh nhan khong bi thuong, ban khong the dua len xe");
+                    SendClientMessageEx(playerid, COLOR_GREY, "Benh nhan khong bi thuong, ban khong the dua len xe");
                     return 1;
                 }
                 if(IsPlayerInAnyVehicle(giveplayerid))
 				{
-                    SendErrorMessage(playerid, " Benh nhan do dang tren mot chiec xe, ban khong the dua len xe");
+                    SendClientMessageEx(playerid, COLOR_GREY, "Benh nhan do dang tren mot chiec xe, ban khong the dua len xe");
                     return 1;
                 }
                 if (ProxDetectorS(8.0, playerid, giveplayerid))
 				{
-                    if(giveplayerid == playerid) { SendErrorMessage(playerid, " Ban khong the tai benh nhan!"); return 1; }
-                    if(PlayerInfo[giveplayerid][pJailTime] > 0) return SendErrorMessage(playerid, " Ban khong the su dung lenh nay voi nguoi choi dang o tu");
+                    if(giveplayerid == playerid) { SendClientMessageEx(playerid, COLOR_GREY, "Ban khong the tai benh nhan!"); return 1; }
+                    if(PlayerInfo[giveplayerid][pJailTime] > 0) return SendClientMessageEx(playerid, COLOR_GRAD2, "Ban khong the su dung lenh nay voi nguoi choi dang o tu");
                     new carid = gLastCar[playerid];
-                    if(IsSeatAvailable(carid, seat))
+                    if(IsAnAmbulance(carid))
 					{
                         if(IsVehicleOccupiedEx(carid, seat)) {
-							SendErrorMessage(playerid, " Nghe do dang co nguoi dung.");
+							SendClientMessageEx(playerid, COLOR_GREY, "Nghe do dang co nguoi dung.");
 							return 1;
 						}
 						if(IsPlayerInRangeOfVehicle(giveplayerid, carid, 10.0) && IsPlayerInRangeOfVehicle(playerid, carid, 10.0)) {
@@ -20217,29 +20217,29 @@ CMD:loadpt(playerid, params[])
 							PutPlayerInVehicle(giveplayerid,carid,seat);
 							TogglePlayerControllable(giveplayerid, false);
 						}
-						else SendErrorMessage(playerid, " Ban va benh nhanh phai dung gan xe cuu thuong.");
+						else SendClientMessageEx(playerid, COLOR_GREY, "Ban va benh nhanh phai dung gan xe cuu thuong.");
                     }
                     else
 					{
-                        SendErrorMessage(playerid, " Xe gan ban phai la xe cuu thuong!");
+                        SendClientMessageEx(playerid, COLOR_GRAD2, "Xe gan ban phai la xe cuu thuong!");
                     }
                 }
                 else
 				{
-                    SendErrorMessage(playerid, "  Ban khong o gan nguoi hoac xe cua ban!");
+                    SendClientMessageEx(playerid, COLOR_GREY, " Ban khong o gan nguoi hoac xe cua ban!");
                     return 1;
                 }
             }
         }
         else
 		{
-            SendErrorMessage(playerid, " Nguoi choi khong hop le.");
+            SendClientMessageEx(playerid, COLOR_GREY, "Nguoi choi khong hop le.");
             return 1;
         }
     }
     else
 	{
-		SendErrorMessage(playerid, "    Ban khong phai la bac si!");
+		SendClientMessageEx(playerid, COLOR_GRAD2, "   Ban khong phai la bac si!");
     }
     return 1;
 }

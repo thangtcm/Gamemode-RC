@@ -1062,7 +1062,7 @@ Dialog:DIALOG_PUT_GUN(playerid, response, listitem, inputtext[])
 			SendClientMessage(playerid,COLOR_YELLOW,"Ban da cat vu khi Combat Shotgun vao tui do thanh cong.");
 			if (IsACop(playerid))
             {
-            	Inventory_Add(playerid,"Spas-SA", 1);
+            	Inventory_Add(playerid,"Spas-AS", 1);
 			    Inventory_Add(playerid,"Dan shotgun SAAS", ammos_g);
             }
             else if (!IsACop(playerid)) {

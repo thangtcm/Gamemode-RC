@@ -1381,8 +1381,6 @@ public LOGIN_TH(playerid) {
 
 		if(isnull(szEmail)) SetPVarInt(playerid, "NullEmail", 1);
 		GetPVarString(playerid, "PassAuth", szBuffer, sizeof(szBuffer));
-		printf("%s", szBuffer);
-		printf("%s", MasterInfo[playerid][acc_pass]);
 		bcrypt_check(szBuffer, MasterInfo[playerid][acc_pass], "OnPasswordChecked", "d", playerid);
 	}
 	return 1;

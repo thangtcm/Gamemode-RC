@@ -1358,54 +1358,6 @@ public OnPlayerEnterVehicle(playerid, vehicleid, ispassenger)
 				SetPlayerPos(playerid, slx, sly, slz);
 		    }
 		}
-      	else if(IsAnSFPDCar(vehicleid))
-		{
-		    if(PlayerInfo[playerid][pMember] == 3||PlayerInfo[playerid][pLeader] == 3)
-			{
-			    if(SFPDVehicles[13] == vehicleid && PlayerInfo[playerid][pRank] < 5)
-			    {
-			        RemovePlayerFromVehicle(playerid);
-			        new Float:slx, Float:sly, Float:slz;
-					GetPlayerPos(playerid, slx, sly, slz);
-					SetPlayerPos(playerid, slx, sly, slz);
-					NOPCheck(playerid);
-					SendClientMessageEx(playerid, COLOR_GRAD2, "Chi Rank +5 moi co the lai xe nay.");
-			    }
-			}
-		    else
-			{
-			    SendErrorMessage(playerid, "   Ban khong phai nhan vien SFPD!");
-				RemovePlayerFromVehicle(playerid);
-				new Float:slx, Float:sly, Float:slz;
-				GetPlayerPos(playerid, slx, sly, slz);
-				SetPlayerPos(playerid, slx, sly, slz);
-				NOPCheck(playerid);
-			}
-		}
-    	else if(IsAnAmbulance(vehicleid))
-		{
-		    if(PlayerInfo[playerid][pMember] == 16||PlayerInfo[playerid][pLeader] == 16)
-			{
-			    if(FDSAVehicles[5] == vehicleid && PlayerInfo[playerid][pRank] < 5)
-			    {
-			        RemovePlayerFromVehicle(playerid);
-			        new Float:slx, Float:sly, Float:slz;
-					GetPlayerPos(playerid, slx, sly, slz);
-					SetPlayerPos(playerid, slx, sly, slz);
-					NOPCheck(playerid);
-					SendClientMessageEx(playerid, COLOR_GRAD2, "Chi Rank +5 moi co the lai xe nay.");
-			    }
-			}
-		    else
-			{
-			    SendErrorMessage(playerid, "   Ban khong phai nhan vien FDSA!");
-				RemovePlayerFromVehicle(playerid);
-				new Float:slx, Float:sly, Float:slz;
-				GetPlayerPos(playerid, slx, sly, slz);
-				SetPlayerPos(playerid, slx, sly, slz);
-				NOPCheck(playerid);
-			}
-		}
 		else if(IsASpawnedTrain(vehicleid))
 		{
 	        if((0 <= PlayerInfo[playerid][pMember] < MAX_GROUPS) && (arrGroupData[PlayerInfo[playerid][pMember]][g_iGroupType] == 7 || arrGroupData[PlayerInfo[playerid][pLeader]][g_iGroupType] == 7))
@@ -2606,6 +2558,8 @@ public OnRconLoginAttempt(ip[], password[], success)
 public OnPlayerDeath(playerid, killerid, reason)
 {
     if(IsPlayerNPC(playerid)) return 1;
+	IsSpawned[playerid] = 0;
+	SpawnKick[playerid] = 0;
     if(gPlayerUsingLoopingAnim[playerid])
 	{
         gPlayerUsingLoopingAnim[playerid] = 0;
@@ -3104,6 +3058,8 @@ public OnPlayerSpawn(playerid)
 	SetPlayerSpawn(playerid);
 	SetPlayerWeapons(playerid);
 	SetPlayerToTeamColor(playerid);
+	IsSpawned[playerid] = 1;
+	SpawnKick[playerid] = 0;
 	return 1;
 }
 

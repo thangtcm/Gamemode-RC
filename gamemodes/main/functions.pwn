@@ -1617,7 +1617,7 @@ GetXYBehindPlayer(playerid, &Float:x, &Float:y, Float:distance)
     y += (distance * floatcos(-a+180, degrees));
 }
 
-GetXYInFrontOfVehicle(playerid, &Float:x, &Float:y, Float:distance)
+stock GetXYInFrontOfVehicle(playerid, &Float:x, &Float:y, Float:distance)
 {
     new Float:a;
     GetVehiclePos(playerid, x, y, a);
@@ -1626,7 +1626,7 @@ GetXYInFrontOfVehicle(playerid, &Float:x, &Float:y, Float:distance)
     y += (distance * floatcos(-a, degrees));
 }
 
-IsInRangeOfPoint(Float: fPosX, Float: fPosY, Float: fPosZ, Float: fPosX2, Float: fPosY2, Float: fPosZ2, Float: fDist) {
+stock IsInRangeOfPoint(Float: fPosX, Float: fPosY, Float: fPosZ, Float: fPosX2, Float: fPosY2, Float: fPosZ2, Float: fDist) {
     fPosX -= fPosX2;
 	fPosY -= fPosY2;
     fPosZ -= fPosZ2;
@@ -2770,7 +2770,7 @@ public InitiateGamemode()
 	AllowInteriorWeapons(1);
  	AddPlayerClass(0, 1958.3783, 1343.1572, 15.3746, 269.1425, 0, 0, 0, 0, 0, 0);
 	ManualVehicleEngineAndLights();
-	GiftAllowed = 1;
+	//GiftAllowed = 1;
 	ResetNews();
 	ResetVariables();
 	FixServerTime();
@@ -2962,6 +2962,86 @@ public CloseSASD5()
 	MoveDynamicObject(sasd5A,2522.86059570,-1660.07177734,561.80206299,4);
 	MoveDynamicObject(sasd5B,2519.84228516,-1660.10888672,561.80004883,4);
 	return 1;
+}
+
+forward sobeitCheck(playerid);
+public sobeitCheck(playerid)
+{
+	if(GetPVarInt(playerid, "JailDelay") == 0)
+	{
+	    if(PlayerInfo[playerid][pJailTime] > 0)
+		{
+	        SetTimerEx("sobeitCheck", 1000, 0, "i", playerid);
+	        SetPVarInt(playerid, "JailDelay", 1);
+	        return 1;
+	    }
+	}
+
+	DeletePVar(playerid, "JailDelay");
+    if(IsPlayerFrozen[playerid] == 1)
+	{
+        new Float:hX, Float:hY, Float:hZ, Float:pX, Float:pY, Float:pZ, Float:cX, Float:cY, Float:cZ, Float:cX1, Float:cY1, Float:cZ1;
+        GetPlayerCameraFrontVector(playerid, cX1, cY1, cZ1);
+		GetPlayerPos(playerid, cX, cY, cZ);
+        hX = GetPVarFloat(playerid, "FrontVectorX");
+        hY = GetPVarFloat(playerid, "FrontVectorY");
+        hZ = GetPVarFloat(playerid, "FrontVectorZ");
+        pX = GetPVarFloat(playerid, "PlayerPositionX");
+        pY = GetPVarFloat(playerid, "PlayerPositionY");
+        pZ = GetPVarFloat(playerid, "PlayerPositionZ");
+
+        if(pX != cX && pY != cY && pZ != cZ && hX != cX1 && hY != cY1 && hZ != cZ1)
+        {
+            SendClientMessageEx(playerid, COLOR_RED, "Ban kiem tra nguoi choi that bai, vui long relog va thu lai!");
+            IsPlayerFrozen[playerid] = 0;
+            DeletePVar(playerid,"FrontVectorX");
+            DeletePVar(playerid,"FrontVectorY");
+            DeletePVar(playerid,"FrontVectorZ");
+            DeletePVar(playerid,"PlayerPositionX");
+            DeletePVar(playerid,"PlayerPositionY");
+            DeletePVar(playerid,"PlayerPositionZ");
+            SetTimerEx("KickEx", 1000, 0, "i", playerid);
+            return 1;
+        }
+	}
+
+	new Float:aX, Float:aY, Float:aZ, szString[128];
+	GetPlayerCameraFrontVector(playerid, aX, aY, aZ);
+	#pragma unused aX
+	#pragma unused aY
+
+	if(aZ < -0.7)
+	{
+		new IP[32];
+		GetPlayerIp(playerid, IP, sizeof(IP));
+		TogglePlayerControllable(playerid, true);
+
+	 	if(PlayerInfo[playerid][pSMod] == 1 || PlayerInfo[playerid][pAdmin] == 1)
+ 		{
+ 		    format(szString, sizeof(szString), "SELECT `Username` FROM `accounts` WHERE `AdminLevel` > 1 AND `Disabled` = 0 AND `IP` = '%s'", GetPlayerIpEx(playerid));
+ 		    mysql_function_query(MainPipeline, szString, true, "CheckAccounts", "i", playerid);
+       	}
+		else {
+		    format(szString, sizeof(szString), "INSERT INTO `sobeitkicks` (sqlID, Kicks) VALUES (%d, 1) ON DUPLICATE KEY UPDATE Kicks = Kicks + 1", GetPlayerSQLId(playerid));
+			mysql_function_query(MainPipeline, szString, false, "OnQueryFinish", "ii", SENDDATA_THREAD, playerid);
+
+			SendClientMessageEx(playerid, COLOR_RED, "Phan mem hack 's0beit' khong duoc phep su dung tren server nay, vui long go bo cai dat de tiep tuc tham gia server.");
+   			format(szString, sizeof(szString), "%s (IP: %s) da co gang dang nhap voi phan mem s0beit duoc cai dat.", GetPlayerNameEx(playerid), IP);
+   			Log("logs/sobeit.log", szString);
+   			IsPlayerFrozen[playerid] = 0;
+    		SetTimerEx("KickEx", 1000, 0, "i", playerid);
+     	}
+
+	}
+
+	if(playerTabbed[playerid] > 2) { SendClientMessageEx(playerid, COLOR_RED, "Ban da that bai trong viec kiem tra tai khoan, vui long relog va thu lai."), SetTimerEx("KickEx", 1000, 0, "i", playerid); }
+
+	if(PlayerInfo[playerid][pVW] > 0 || PlayerInfo[playerid][pInt] > 0) HideNoticeGUIFrame(playerid);
+	sobeitCheckvar[playerid] = 1;
+	sobeitCheckIsDone[playerid] = 1;
+	IsPlayerFrozen[playerid] = 0;
+	TogglePlayerControllable(playerid, true);
+ 	return 1;
 }
 
 forward CloseSANewsStudio();
@@ -4566,7 +4646,7 @@ public Player_StreamPrep(iPlayer, Float: fPosX, Float: fPosY, Float: fPosZ, iTim
    			    ShowNoticeGUIFrame(iPlayer, 4);
 		    	sobeitCheckIsDone[iPlayer] = 1;
    				SetTimerEx("sobeitCheck", 10000, 0, "i", iPlayer);
-			//	TogglePlayerControllable(iPlayer, false);
+				TogglePlayerControllable(iPlayer, false);
 				return 1;
 			}
 		}
@@ -6903,7 +6983,6 @@ public OnPasswordHashed(playerid, timeNow[])
 public OnPasswordChecked(playerid)
 {
 	new bool:isvalid = bcrypt_is_equal();
-	new str[256];
 	DeletePVar(playerid, "PassAuth");
 	printf("%d", isvalid);
 	if(isvalid)
@@ -13733,7 +13812,7 @@ public SyncTime()
 
 		ghour = tmphour;
 		TotalUptime += 1;
-		GiftAllowed = 1;
+		//GiftAllowed = 1;
 
 		foreach(new i: Player)
 		{
@@ -19310,16 +19389,12 @@ stock IsAnSFPDCar(carid)
 
 stock IsAnAmbulance(carid)
 {
-	for(new v = 0; v < sizeof(FDSAVehicles); v++)
-	{
-	    if(carid == FDSAVehicles[v]) return 1;
-	}
 	if(DynVeh[carid] != -1)
 	{
 	    new iDvSlotID = DynVeh[carid], iGroupID = DynVehicleInfo[iDvSlotID][gv_igID];
 	    if((0 <= iGroupID < MAX_GROUPS))
 	    {
-	    	if(arrGroupData[iGroupID][g_iGroupType] == 2) return 1;
+	    	if(arrGroupData[iGroupID][g_iGroupType] == 3) return 1;
 		}
 	}
 	return 0;

@@ -1,0 +1,2 @@
+[10/17/23 19:17:05] [plugins/discord-connector] Can't read from Discord websocket gateway: End of file (2)
+[10/17/23 19:17:05] [plugins/discord-connector] Can't write to Discord websocket gateway: The I/O operation has been aborted because of either a thread exit or an application request (995)

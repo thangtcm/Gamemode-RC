@@ -1463,7 +1463,6 @@ new bool:InfoMessage[MAX_PLAYERS] = true;
 new SafeZoneInfo[MAX_SZ][szPeace];
 new Loaded[MAX_PLAYERS];
 new ChatGoActor;
-new ActorNV;
 new TruckActor;
 new MinerActor[2];
 new PizzaActor;
@@ -1912,7 +1911,7 @@ new EventLastInt[MAX_PLAYERS]; new EventLastVW[MAX_PLAYERS];
 new VIPGifts = 0, VIPGiftsTimeLeft, VIPGiftsName[MAX_PLAYER_NAME];
 new GiftCode[32], GiftCodeBypass, SecurityCode[32], ShopClosed, SellClosed, RimMod, CarVoucher, PVIPVoucher;
 //new XMASGifts = 0;
-new GiftAllowed;
+//new GiftAllowed;
 new SpecTimer;
 new WeatherCalling;
 new gWeather;
@@ -2149,8 +2148,6 @@ new LastShot[MAX_PLAYERS];
 new unbanip[MAX_PLAYERS][16];
 
 // new Text3D:JobText3D[100];
-new SFPDVehicles[90];
-new FDSAVehicles[10];
 new VIPVehicles[50];
 new FamedVehicles[39];
 new IslandGate;
@@ -2358,7 +2355,6 @@ new Titel[pBoxingStats];
 
 new DownEDS[MAX_PLAYERS];
 new DownS[MAX_PLAYERS];
-new DownPHP[MAX_PLAYERS];
 new EventKernel[EventKernelEnum];
 
 new EventRCPU[20]; // Value to know if rcp is being used

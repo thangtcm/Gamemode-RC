@@ -409,6 +409,57 @@ task ProductionUpdate[300000]()
 	SaveFamilies();
 }
 
+// Timer Name: AFKUpdate()
+// TickRate: 10 Secs.
+task AFKUpdate[10000]()
+{
+	if(Iter_Count(Player) > MAX_PLAYERS - 100)
+	{
+		foreach(new i: Player)
+		{
+			if((playerTabbed[i] > 300 || playerAFK[i] > 300) && PlayerInfo[i][pShopTech] < 1 && PlayerInfo[i][pAdmin] < 4)
+			{
+				Kick(i);
+			}
+		}
+	}
+	return 1;
+}
+
+// Timer Name: playerTabbedLoop()
+// TickRate: 1 secs.
+task playerTabbedLoop[1000]() {
+
+	new
+		iTick = gettime() - 2;//fix  1
+
+	foreach(new x: Player)
+	{
+		if(1 <= GetPlayerState(x) <= 3) {
+			if(playerTabbed[x] >= 1) {
+				if(++playerTabbed[x] >= 1200 && PlayerInfo[x][pAdmin] < 2)
+				{
+				    ClearChatbox(x);
+	    			return Disconnect(x);
+				}
+			}
+		    else if(++playerSeconds[x] < iTick && playerTabbed[x] == 0) {
+		        playerTabbed[x] = 1;
+		    }
+			else if((IsPlayerInRangeOfPoint(x, 2.0, PlayerPos[x][0], PlayerPos[x][1], PlayerPos[x][2]) || InsidePlane[x] != INVALID_PLAYER_ID) && ++playerLastTyped[x] >= 10) {
+				if(++playerAFK[x] >= 1200 && PlayerInfo[x][pAdmin] < 2)
+				{
+				    		ClearChatbox(x);
+							return Disconnect(x);
+				}
+			}
+			else playerAFK[x] = 0;
+			GetPlayerPos(x, PlayerPos[x][0], PlayerPos[x][1], PlayerPos[x][2]);
+		}
+	}
+	return 1;
+}
+
 // Timer Name: MoneyUpdate()
 // TickRate: 1 secs.
 task MoneyUpdate[1000]()
@@ -515,7 +566,6 @@ task MoneyUpdate[1000]()
 	{
 		if(gPlayerLogged{i})
 		{
-			AFKCheck(i);
 			UpdateProgressStat(i);
 		    if(GetPlayerPing(i) > MAX_PING)
 		    {
@@ -558,6 +608,10 @@ task MoneyUpdate[1000]()
     	    else {
     		    UpdateRadio(i);
     	    }
+			if(IsSpawned[i] > 0 && SpawnKick[i] > 0)
+			{
+				SpawnKick[i] = 0;
+			}
  		    if(PlayerInfo[i][pBuddyInvited] == 1 && --PlayerInfo[i][pTempVIP] <= 0)
 			{
 				PlayerInfo[i][pTempVIP] = 0;

@@ -6,3 +6,17 @@
 [10/15/23 05:35:44] [WARNING] Unknown gateway event 'VOICE_CHANNEL_STATUS_UPDATE'
 [10/15/23 22:19:42] [WARNING] Unknown gateway event 'GUILD_MEMBERS_CHUNK'
 [10/15/23 22:24:37] [WARNING] Unknown gateway event 'GUILD_MEMBERS_CHUNK'
+[10/17/23 18:21:20] [WARNING] Unknown gateway event 'GUILD_MEMBERS_CHUNK'
+[10/17/23 18:34:38] [WARNING] Unknown gateway event 'GUILD_MEMBERS_CHUNK'
+[10/17/23 18:41:17] [WARNING] Unknown gateway event 'GUILD_MEMBERS_CHUNK'
+[10/17/23 18:43:59] [WARNING] Unknown gateway event 'GUILD_MEMBERS_CHUNK'
+[10/17/23 18:53:45] [WARNING] Unknown gateway event 'GUILD_MEMBERS_CHUNK'
+[10/17/23 19:08:41] [WARNING] Unknown gateway event 'GUILD_MEMBERS_CHUNK'
+[10/17/23 19:17:05] [ERROR] Can't read from Discord websocket gateway: End of file (2)
+[10/17/23 19:17:05] [ERROR] Can't write to Discord websocket gateway: The I/O operation has been aborted because of either a thread exit or an application request (995)
+[10/17/23 19:24:18] [WARNING] Unknown gateway event 'GUILD_MEMBERS_CHUNK'
+[10/17/23 19:26:55] [WARNING] Unknown gateway event 'GUILD_MEMBERS_CHUNK'
+[10/17/23 19:27:19] [WARNING] Unknown gateway event 'GUILD_MEMBERS_CHUNK'
+[10/17/23 19:29:46] [WARNING] Unknown gateway event 'GUILD_MEMBERS_CHUNK'
+[10/17/23 19:31:17] [WARNING] Unknown gateway event 'CHANNEL_TOPIC_UPDATE'
+[10/17/23 19:31:17] [WARNING] Unknown gateway event 'VOICE_CHANNEL_STATUS_UPDATE'

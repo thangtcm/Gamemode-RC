@@ -168,7 +168,7 @@ CMD:truckergo(playerid, params[])
         {
             SetPVarInt(playerid, "Sell_ProductID", FactoryId);
             format(string, sizeof(string), "{FFFFFF}ID\t\tSan Pham\t\tGia");
-            new CheckValid = 0, count=0;
+            new count=0;
             PlayerTruckerData[playerid][MAXPRODUCT] = 0;
             PlayerTruckerData[playerid][MAXPRODUCTIMPORT] = 0;
             if(PlayerTruckerData[playerid][ClaimFactoryID] == FactoryId)
@@ -236,10 +236,12 @@ stock RandomName()
 
 CMD:setnameinquery(playerid, params[])
 {
-    new str[258];
-    format(str, sizeof(str), "[Mask %d %d]", PlayerInfo[playerid][pMaskID][0], PlayerInfo[playerid][pMaskID][1]);
+    new str[24];
+    format(str, sizeof(str), "[Mask %d_%d]", PlayerInfo[playerid][pMaskID][0], PlayerInfo[playerid][pMaskID][1]);
 	SendClientMessageEx(playerid, COLOR_YELLOW, str);
-    SetPlayerName(playerid, str);
+    new name[MAX_PLAYER_NAME];
+    strcat(name, str, MAX_PLAYER_NAME);
+    SetPlayerName(playerid, name);
 	return 1;
 }
 

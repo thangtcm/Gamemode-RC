@@ -315,6 +315,7 @@ stock Inventory_Add(playerid, item[], quantity = 1, timer = 0) //timer là dữ 
 	if(pItemId == -1 || timer != 0)
 	{
 		pItemId = Inventory_GetFreeID(playerid);
+		if(InventoryData[playerid][playerid][invExists]) return Inventory_Add(playerid, item, quantity, timer);
 		if(pItemId != -1)
 		{
 			strcpy(InventoryData[playerid][pItemId][invModel], model);
@@ -693,32 +694,32 @@ public OnPlayerUseItem(playerid, pItemId, name[])
 	}
 	else if(!strcmp(name, "Hamburger", true))
 	{
+		if(PlayerInfo[playerid][pEat] >= 100) return SendErrorMessage(playerid, "Ban da no roi, khong the an tiep.");
 		PlayerInfo[playerid][pEat] += 16;
-		PlayerInfo[playerid][pStrong] += 8;
 		ApplyAnimation(playerid, "FOOD", "EAT_Burger", 5.0, 0, 1, 1, 1, 2000, 1);
 		PlayerPlaySound(playerid, 32201, 0.0, 0.0, 0.0);
 		Inventory_Remove(playerid, pItemId, 1);
 	}
 	else if(!strcmp(name, "Bread", true))
 	{
+		if(PlayerInfo[playerid][pEat] >= 100) return SendErrorMessage(playerid, "Ban da no roi, khong the an tiep.");
 		PlayerInfo[playerid][pEat] += 20;
-		PlayerInfo[playerid][pStrong] += 10;
 		ApplyAnimation(playerid, "FOOD", "EAT_Chicken", 5.0, 0, 1, 1, 1, 2000, 1);
 		PlayerPlaySound(playerid, 32200, 0.0, 0.0, 0.0);
 		Inventory_Remove(playerid, pItemId, 1);
 	}
 	else if(!strcmp(name, "Juice", true))
 	{
+		if(PlayerInfo[playerid][pDrink] >= 100) return SendErrorMessage(playerid, "Ban da no roi, khong the uong tiep.");
 		PlayerInfo[playerid][pDrink] += 16;
-		PlayerInfo[playerid][pStrong] += 8;
 		ApplyAnimation(playerid, "GANGS", "drnkbr_prtl", 2.67, 0, 1, 1, 1, 2000, 1);
 		PlayerPlaySound(playerid, 42600, 0.0, 0.0, 0.0);
 		Inventory_Remove(playerid, pItemId, 1);
 	}
 	else if(!strcmp(name, "Beer", true))
 	{
+		if(PlayerInfo[playerid][pDrink] >= 100) return SendErrorMessage(playerid, "Ban da no roi, khong the uong tiep.");
 		PlayerInfo[playerid][pDrink] += 16;
-		PlayerInfo[playerid][pStrong] += 8;
 		ApplyAnimation(playerid, "GANGS", "drnkbr_prtl_F", 2.67, 0, 1, 1, 1, 2000, 1);
 		PlayerPlaySound(playerid, 42600, 0.0, 0.0, 0.0);
 		Inventory_Remove(playerid, pItemId, 1);
@@ -726,7 +727,6 @@ public OnPlayerUseItem(playerid, pItemId, name[])
 	else if(!strcmp(name, "Codeine", true))
 	{
 	    UseDrug(playerid,0,pItemId);
-		
 	}
 	else if(!strcmp(name, "Cocain", true))
 	{
