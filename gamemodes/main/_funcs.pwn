@@ -1297,7 +1297,7 @@ public OnPlayerEnterVehicle(playerid, vehicleid, ispassenger)
 				}
 				if(TruckDeliveringTo[vehicleid] != INVALID_BUSINESS_ID && TruckUsed[playerid] == INVALID_VEHICLE_ID)
 				{
-					SendClientMessageEx(playerid, COLOR_YELLOW, "Tai Xe Trucker JOB: De cung cap cac hang hoa,su dung /hijackcargo cho tai xe.");
+					SendClientMessageEx(playerid, COLOR_YELLOW, "Tai Xe Trucker JOB: De cung cap cac  hang hoa,su dung /hijackcargo cho tai xe.");
 				}
 				else if(TruckUsed[playerid] == INVALID_VEHICLE_ID)
 				{
@@ -8644,12 +8644,13 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
         		ShowPlayerDialog(playerid, DIALOG_SMS_SUC, DIALOG_STYLE_INPUT, "Phone - Gui tin nhan", "Vui long nhap noi dung tin nhan", "Gui tin nhan", "Huy bo");
         	}
         }
+		/*
         case DIALOG_SMS_SUC: {
         	if(response) {
         		format(string, sizeof string, "%d %s", GetPVarInt(playerid,"guitinnhan_SDT"),inputtext);
         		cmd_czzhaibmsms(playerid,string);
         	}
-        }
+        }*/
         case DIALOG_PHONEBOOK: {
         	if(response) {
         	 	SetPVarInt(playerid,"Add_NumberPhoneBook", strval(inputtext));

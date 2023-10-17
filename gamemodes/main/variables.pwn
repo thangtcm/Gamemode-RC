@@ -1909,9 +1909,9 @@ new Float:BroadcastFloats[MAX_PLAYERS][6];
 new BroadcastLastVW[MAX_PLAYERS];
 new BroadcastLastInt[MAX_PLAYERS];
 new EventLastInt[MAX_PLAYERS]; new EventLastVW[MAX_PLAYERS];
-new Gifts, VIPGifts = 0, VIPGiftsTimeLeft, VIPGiftsName[MAX_PLAYER_NAME];
+new VIPGifts = 0, VIPGiftsTimeLeft, VIPGiftsName[MAX_PLAYER_NAME];
 new GiftCode[32], GiftCodeBypass, SecurityCode[32], ShopClosed, SellClosed, RimMod, CarVoucher, PVIPVoucher;
-new XMASGifts = 0;
+//new XMASGifts = 0;
 new GiftAllowed;
 new SpecTimer;
 new WeatherCalling;
@@ -1956,8 +1956,8 @@ new ListItemReleaseId[MAX_PLAYERS][MAX_PLAYERVEHICLES];
 new ListItemRCPId[MAX_PLAYERS][20];
 new GiveKeysTo[MAX_PLAYERS];
 new ListItemTrackId[MAX_PLAYERS][MAX_PLAYERVEHICLES];
-new dynamicgift;
-new Text3D:dynamicgift3DText;
+// new dynamicgift;
+//new Text3D:dynamicgift3DText;
 new nextteam;
 new BankTimer[MAX_PLAYERS];
 new AdvisorMessage;
@@ -1980,7 +1980,7 @@ new TaxValue = 0;
 new TRTax = 0;
 new TRTaxValue = 0, SpeedingTickets;
 new nonewbie = 0;
-new Float:Positions[14][3];
+//new Float:Positions[14][3];
 new InRing = 0;
 new RoundStarted = 0;
 new BoxDelay = 0;
@@ -2405,7 +2405,7 @@ new PizzaCar[MAX_PLAYERS];
 new dgMoney[4], dgRimKit[4], dgFirework[4], dgGVIP[4], dgGVIPEx[4], dgSVIP[4], dgSVIPEx[4], dgCarSlot[4], dgToySlot[4], dgArmor[4], dgFirstaid[4], dgDDFlag[4], dgGateFlag[4], dgCredits[4], dgPriorityAd[4], dgHealthNArmor[4], dgGiftReset[4], dgMaterial[4], dgWarning[4], dgPot[4], dgCrack[4], dgPaintballToken[4], dgVIPToken[4],
 	dgRespectPoint[4], dgCarVoucher[4], dgBuddyInvite[4], dgLaser[4], dgCustomToy[4], dgAdmuteReset[4], dgNewbieMuteReset[4], dgRestrictedCarVoucher[4], dgPlatinumVIPVoucher[4];
 
-new bool: IsDynamicGiftBoxEnabled = false;
+//new bool: IsDynamicGiftBoxEnabled = false;
 
 new Float:JoinCameraPosition[8][3] = {
 	{2211.1460, -1748.3909, 29.3744},

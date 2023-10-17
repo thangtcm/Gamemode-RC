@@ -26,27 +26,27 @@ stock GivePlayerAmmoEx(playerid, weapon, Ammo)
     switch(weapon)
     {
     	case 22,23,24: {
-    	    PlayerAmmo[playerid][ 1 ] += Ammo;
+    	    PlayerAmmo[playerid][ 1 ] = Ammo;
     	    SetPlayerAmmo(playerid, weapon, PlayerAmmo[playerid][ 1 ]);
     	  
     	}
     	case 25,27: {
-    	    PlayerAmmo[playerid][ 2 ] += Ammo;
+    	    PlayerAmmo[playerid][ 2 ] = Ammo;
     	    SetPlayerAmmo(playerid, weapon, PlayerAmmo[playerid][ 2 ]);
     	  
     	}
     	case 29: {
-    	    PlayerAmmo[playerid][ 3 ] += Ammo;
+    	    PlayerAmmo[playerid][ 3 ] = Ammo;
     	    SetPlayerAmmo(playerid, weapon, PlayerAmmo[playerid][ 3 ]);
     	 
     	}
     	case 30,31: {
-    	    PlayerAmmo[playerid][ 4 ] += Ammo;
+    	    PlayerAmmo[playerid][ 4 ] = Ammo;
     	    SetPlayerAmmo(playerid, weapon, PlayerAmmo[playerid][ 4 ]);
     	
     	}
     	case 34: {
-    	    PlayerAmmo[playerid][ 5 ] += Ammo;
+    	    PlayerAmmo[playerid][ 5 ] = Ammo;
     	    SetPlayerAmmo(playerid, weapon, PlayerAmmo[playerid][ 5 ]);
     	
     	}

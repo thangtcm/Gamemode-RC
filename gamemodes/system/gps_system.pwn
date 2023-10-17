@@ -24,26 +24,6 @@ stock GetZoneFind(z) {
 	}
 	return gaga;
 }  
-stock GetZoneFindx(z) {
-	new gaga[70];
-	switch(z) {
-		case 0:	gaga = "Bank RC";
-		case 1:	gaga = "Bank Bluberry";
-		case 2:	gaga = "Bank Dillimore";
-		case 3:	gaga = "Bank palomino";
-	}
-	return gaga;
-} 
-stock GetZoneFindy(z) {
-	new gaga[70];
-	switch(z) {
-		case 0:	gaga = "Pizza RC";
-		case 1:	gaga = "24/7 RC";
-		case 2:	gaga = "Xe RC";
-		case 3:	gaga = "Quan ao RC";
-	}
-	return gaga;
-} 
 stock GetZoneFindz(zxc) {
 	new gagaz[70];
 	switch(zxc) {
@@ -53,6 +33,7 @@ stock GetZoneFindz(zxc) {
 	}
 	return gagaz;
 }  
+
 new Float:timbank_postion[4][3] = {
 {1373.5576,405.0259,19.9555},
 {207.9119,-61.7973,1.9766},
@@ -115,6 +96,7 @@ Dialog:GPSPosition(playerid, response, listitem, inputtext[])
 {
 	if(response)
 	{
+		new wepget[20], string[256], szEmployer[GROUP_MAX_NAME_LEN], szRank[GROUP_MAX_RANK_LEN], szDivision[GROUP_MAX_DIV_LEN];
 		new szEmployer[GROUP_MAX_NAME_LEN], szRank[GROUP_MAX_RANK_LEN], szDivision[GROUP_MAX_DIV_LEN];
 		GetPlayerGroupInfo(playerid, szRank, szDivision, szEmployer);
 		switch(listitem)
