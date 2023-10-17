@@ -1,1 +1,8 @@
-[10/09/23 14:20:03] [ERROR] Error while retrieving HTTP POST response from '/api/v10/channels/1158001303033757716/messages': end of stream
+[10/13/23 23:16:03] [WARNING] Unknown gateway event 'CHANNEL_TOPIC_UPDATE'
+[10/13/23 23:16:03] [WARNING] Unknown gateway event 'VOICE_CHANNEL_STATUS_UPDATE'
+[10/14/23 00:22:31] [WARNING] Unknown gateway event 'CHANNEL_TOPIC_UPDATE'
+[10/14/23 00:22:31] [WARNING] Unknown gateway event 'VOICE_CHANNEL_STATUS_UPDATE'
+[10/15/23 05:35:44] [WARNING] Unknown gateway event 'CHANNEL_TOPIC_UPDATE'
+[10/15/23 05:35:44] [WARNING] Unknown gateway event 'VOICE_CHANNEL_STATUS_UPDATE'
+[10/15/23 22:19:42] [WARNING] Unknown gateway event 'GUILD_MEMBERS_CHUNK'
+[10/15/23 22:24:37] [WARNING] Unknown gateway event 'GUILD_MEMBERS_CHUNK'

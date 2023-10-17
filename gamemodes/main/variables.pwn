@@ -719,11 +719,12 @@ enum tempcharacters {
 new TempCharacter[MAX_PLAYERS][4][tempcharacters];
 
 enum master {
-	acc_name[32],
+	acc_name[MAX_PLAYER_NAME],
 	acc_id,
 	acc_lastlogin[32],
 	acc_regidate[32],
-
+	acc_pass[BCRYPT_HASH_LENGTH],
+	acc_confirm
 }
 new MasterInfo[MAX_PLAYERS][master];
 new Chatting[MAX_PLAYERS];
@@ -2020,6 +2021,7 @@ new RegistrationStep[MAX_PLAYERS];
 new playerSeconds[MAX_PLAYERS];
 new playerTabbed[MAX_PLAYERS];
 new playerAFK[MAX_PLAYERS];
+new playerAFKTimer[MAX_PLAYERS];
 new playerLastTyped[MAX_PLAYERS];
 new UsedFind[MAX_PLAYERS];
 new Spectating[MAX_PLAYERS];
