@@ -24,29 +24,6 @@ stock GetZoneFind(z) {
 	}
 	return gaga;
 }  
-<<<<<<< HEAD
-=======
-stock GetZoneFindx(z) {
-	new gaga[70];
-	switch(z) {
-		case 0:	gaga = "Bank RC";
-		case 1:	gaga = "Bank Bluberry";
-		case 2:	gaga = "Bank Dillimore";
-		case 3:	gaga = "Bank palomino";
-	}
-	return gaga;
-} 
-stock GetZoneFindy(z) {
-	new gaga[70];
-	switch(z) {
-		case 0:	gaga = "Pizza RC";
-		case 1:	gaga = "24/7 RC";
-		case 2:	gaga = "Xe RC";
-		case 3:	gaga = "Quan ao RC";
-	}
-	return gaga;
-} 
->>>>>>> main
 stock GetZoneFindz(zxc) {
 	new gagaz[70];
 	switch(zxc) {
@@ -56,9 +33,7 @@ stock GetZoneFindz(zxc) {
 	}
 	return gagaz;
 }  
-<<<<<<< HEAD
 
-=======
 new Float:timbank_postion[4][3] = {
 {1373.5576,405.0259,19.9555},
 {207.9119,-61.7973,1.9766},
@@ -71,7 +46,6 @@ new Float:timstore_postion[4][3] = {
 {1242.3909,211.3994,19.5547},
 {1277.0188,370.8625,19.5547} 
 };
->>>>>>> main
 new Float:timduong_postion[4][3] = {
 {1289.2391,248.9346,19.4063},
 {233.1081,-211.2786,1.4300},
@@ -122,11 +96,8 @@ Dialog:GPSPosition(playerid, response, listitem, inputtext[])
 {
 	if(response)
 	{
-<<<<<<< HEAD
 		new wepget[20], string[256], szEmployer[GROUP_MAX_NAME_LEN], szRank[GROUP_MAX_RANK_LEN], szDivision[GROUP_MAX_DIV_LEN];
-=======
 		new szEmployer[GROUP_MAX_NAME_LEN], szRank[GROUP_MAX_RANK_LEN], szDivision[GROUP_MAX_DIV_LEN];
->>>>>>> main
 		GetPlayerGroupInfo(playerid, szRank, szDivision, szEmployer);
 		switch(listitem)
 		{
@@ -156,10 +127,6 @@ Dialog:GPSPosition(playerid, response, listitem, inputtext[])
 				}
 				ShowPlayerDialog(playerid, TIMVIECLAM, DIALOG_STYLE_TABLIST_HEADERS, "Tim viec lam",stringz,"Chon", "Huy");
 			}
-<<<<<<< HEAD
-			case 2: return 1;
-			case 3: return 1;
-=======
 			case 2:
 			{
 				new stringz[1029];
@@ -186,7 +153,6 @@ Dialog:GPSPosition(playerid, response, listitem, inputtext[])
 				}
 				ShowPlayerDialog(playerid, TIMVIECLAM, DIALOG_STYLE_TABLIST_HEADERS, "Tim viec lam",stringz,"Chon", "Huy");
 			}
->>>>>>> main
 			case 4:
 			{
 			    new stringz[1029];

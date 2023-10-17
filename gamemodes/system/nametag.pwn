@@ -88,15 +88,9 @@ timer UpdateNameTagTimer[500](playerid)
 		{
 			new nametag[388], Float:armour;
 			GetPlayerArmour(playerid, armour);
-<<<<<<< HEAD
-			if(playerTabbed[playerid] > 1 || playerAFK[playerid] > 1)
-			{
-				format(nametag, sizeof(nametag), "{F81414}[AFK]{FFFFFF} %s (%d)", nametag, GetPlayerNameEx(playerid), playerid);
-=======
 			if(playerAFK[playerid] > 10)
 			{
 				format(nametag, sizeof(nametag), "{F81414}[AFK]{FFFFFF} %s (%d)", GetPlayerNameEx(playerid), playerid);
->>>>>>> main
 			}
 			else
 			{

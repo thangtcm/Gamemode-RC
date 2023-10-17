@@ -5983,10 +5983,6 @@ public OnPlayerText(playerid, text[])
 
 		new Float: f_playerPos[3];
 		GetPlayerPos(playerid, f_playerPos[0], f_playerPos[1], f_playerPos[2]);
-<<<<<<< HEAD
-		new str[128];
-=======
->>>>>>> main
 		if(IsPlayerInAnyVehicle(playerid))
 		{
 			if(strlen(text) > 64)

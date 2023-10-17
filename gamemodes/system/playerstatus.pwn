@@ -189,8 +189,6 @@ task NotifiHunger[600000]()
 			{
 				SendClientMessage(i, COLOR_REALRED, "[SERVER] {ffffff}Hay an uong gi do, neu khong ban se chet.");
 			}
-<<<<<<< HEAD
-=======
 			else if(PlayerInfo[i][pDrink] <= 25)
 			{
 				SendClientMessage(i, COLOR_REALRED, "[SERVER] {ffffff}Hay uong gi do, neu khong ban se chet.");
@@ -199,7 +197,6 @@ task NotifiHunger[600000]()
 			{
 				SendClientMessage(i, COLOR_REALRED, "[SERVER] {ffffff}Hay an gi do, neu khong ban se chet.");
 			}
->>>>>>> main
 		}
 	}
 }
@@ -222,14 +219,6 @@ task HungerDownHP[300000]()
 				}
 			}
 		}
-<<<<<<< HEAD
-		else if(PlayerInfo[playerid][pDrink] >= 1)
-		{
-			if(PlayerInfo[playerid][pDrink] >= 2)
-			{
-				PlayerInfo[playerid][pDrink]--;
-			}
-=======
 		
 	}
 }
@@ -247,117 +236,22 @@ stock UpdatePlayerHungry(playerid)
 		}else{
 			SetPlayerHealth(playerid, 0);
 			SendClientMessage(playerid, COLOR_REALRED, "[SERVER] {ffffff}Ban da chet vi doi bung.");
->>>>>>> main
 		}
 	}
 	else
 	{
-<<<<<<< HEAD
-		if(PlayerInfo[playerid][pEat] > 25)
-		{
-			PlayerInfo[playerid][pEat]--;
-			PlayerInfo[playerid][pEat]--;
-		}
-		else if(PlayerInfo[playerid][pEat] >= 0)
-		{
-			PlayerInfo[playerid][pEat]--;
-			PlayerInfo[playerid][pEat]--;
-		}
-		if(PlayerInfo[playerid][pDrink] > 25)
-		{
-			PlayerInfo[playerid][pDrink]--;
-			PlayerInfo[playerid][pDrink]--;
-		}
-		else if(PlayerInfo[playerid][pDrink] >= 0)
-		{
-			PlayerInfo[playerid][pDrink]--;
-			PlayerInfo[playerid][pDrink]--;
-		}
-	}
-
-
-
-	if(PlayerInfo[playerid][pStrong] > 1 && DownS[playerid])
-
-	{
-		PlayerInfo[playerid][pStrong]--;
-		DownS[playerid] = false;
-	}
-	else SendClientMessage(playerid, COLOR_LIGHTRED, "[SERVER] {ffffff}Ban da bi kiet suc, khong the di lam hay an uong gi do");
-	DownS[playerid] = true;
-	if(GetPVarInt(playerid, "Injured") == 0)
-	{
-		if(PlayerInfo[playerid][pEat] >= 10 && PlayerInfo[playerid][pEat] <= 25)
-=======
 		if(--PlayerInfo[playerid][pEat] <= 0 || --PlayerInfo[playerid][pDrink] <= 0)
->>>>>>> main
 		{
 			new Float: hpz;
 			GetPlayerHealth(playerid, hpz);
 			if(hpz > 5){
 				SetPlayerHealth(playerid, hpz-5);
-<<<<<<< HEAD
-				SendClientMessage(playerid, COLOR_LIGHTRED, "[SERVER] {ffffff}Hay an gi do, neu khong ban se chet.");
-			}
-			else
-			{
-				SetPlayerHealth(playerid, 0);
-				SendClientMessage(playerid, COLOR_LIGHTRED, "[SERVER] {ffffff}Ban chet vi doi bung.");
-			}
-		}
-		else if(PlayerInfo[playerid][pEat] >= 0 && PlayerInfo[playerid][pEat] < 10)
-		{
-			new Float: hpz;
-			GetPlayerHealth(playerid, hpz);
-			if(hpz > 10)
-			{
-				SetPlayerHealth(playerid, hpz-10);
-				SendClientMessage(playerid, COLOR_REALRED, "[SERVER] {ffffff}Hay an gi do, neu khong ban se chet.");
-			}
-			else
-			{
-				SetPlayerHealth(playerid, 0);
-				SendClientMessage(playerid, COLOR_REALRED, "[SERVER] {ffffff}Ban da chet vi doi bung.");
-			}
-		}
-		//
-		if(PlayerInfo[playerid][pDrink] >= 10 && PlayerInfo[playerid][pDrink] <= 25)
-		{
-			new Float: hpz;
-			GetPlayerHealth(playerid, hpz);
-			if(hpz > 5)
-			{
-				SetPlayerHealth(playerid, hpz-5);
-				SendClientMessage(playerid, COLOR_LIGHTRED, "[SERVER] {ffffff}Hay uong gi do, neu khong ban se chet.");
-			}
-			else
-			{
-				SetPlayerHealth(playerid, 0);
-				SendClientMessage(playerid, COLOR_LIGHTRED, "[SERVER] {ffffff}Ban da chet vi khat nuoc.");
-			}
-		}
-		else if(PlayerInfo[playerid][pDrink] >= 0 && PlayerInfo[playerid][pDrink] < 10)
-		{
-			new Float: hpz;
-			GetPlayerHealth(playerid, hpz);
-			if(hpz > 10)
-			{
-				SetPlayerHealth(playerid, hpz-10);
-				SendClientMessage(playerid, COLOR_REALRED, "[SERVER] {ffffff}Hay uong gi do, neu khong ban se chet.");
-			}
-			else
-			{
-				SetPlayerHealth(playerid, 0);
-				SendClientMessage(playerid, COLOR_REALRED, "[SERVER] {ffffff}Ban da chet vi khat nuoc.");
-			}
-=======
 			}else{
 				SetPlayerHealth(playerid, 0);
 				SendClientMessage(playerid, COLOR_REALRED, "[SERVER] {ffffff}Ban da chet vi doi bung.");
 			}
 			PlayerInfo[playerid][pEat]=0;
 			PlayerInfo[playerid][pDrink]=0;
->>>>>>> main
 		}
 	}
 	return 1;
