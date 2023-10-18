@@ -118,8 +118,8 @@ stock VEHICLETRUCKER_ADD(playerid, vehicleid, modelid, pCarSlotID, ProductID, Fl
     VehicleTruckerData[playerid][index][vtPos][5] = oz,
     VehicleTruckerData[playerid][index][vtFactoryID] = PlayerTruckerData[playerid][ClaimFactoryID];
 
-    format(string, sizeof(string), "INSERT INTO `vehicletrucker` (`vtSlotId`, `vtProductID`, `vtPSQL`,`vtPos1`,`vtPos2`,`vtPos3`,`vtPos4`,`vtPos5`,`vtPos6`)\
-		VALUES ('%d', '%d', '%d', '%f', '%f', '%f', '%f', '%f', '%f')",  pCarSlotID, ProductID, GetPlayerId, x, y, z, ox, oy, oz);
+    format(string, sizeof(string), "INSERT INTO `vehicletrucker` (`vtSlotId`, `vtProductID`, `vtPSQL`,`vtPos1`,`vtPos2`,`vtPos3`,`vtPos4`,`vtPos5`,`vtPos6`, `vtFactoryID`)\
+		VALUES ('%d', '%d', '%d', '%f', '%f', '%f', '%f', '%f', '%f', '%d')",  pCarSlotID, ProductID, GetPlayerId, x, y, z, ox, oy, oz, VehicleTruckerData[playerid][index][vtFactoryID]);
 	mysql_function_query(MainPipeline, string, false, "OnAddVehicleTruckerFinish", "ii", playerid, index);
     printf("Nguoi choi %s da dua san pham %s vao xe %s ", GetPlayerNameEx(playerid), ProductData[ProductID][ProductName], GetVehicleName(vehicleid));
 	return 1;

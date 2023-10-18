@@ -1,2 +1,25 @@
 [10/17/23 19:17:05] [plugins/discord-connector] Can't read from Discord websocket gateway: End of file (2)
 [10/17/23 19:17:05] [plugins/discord-connector] Can't write to Discord websocket gateway: The I/O operation has been aborted because of either a thread exit or an application request (995)
+[10/18/23 07:00:22] [plugins/discord-connector] can't update guild member: user id "807921173555183626" not cached
+[10/18/23 07:22:58] [plugins/discord-connector] Error while retrieving HTTP POST response from '/api/v10/channels/1158001303033757716/messages': end of stream
+[10/19/23 03:42:15] [plugins/discord-connector] Error while retrieving HTTP POST response from '/api/v10/channels/1157969036848668733/messages': end of stream
+[10/19/23 03:58:04] [plugins/discord-connector] Can't read from Discord websocket gateway: An existing connection was forcibly closed by the remote host (10054)
+[10/19/23 03:58:04] [plugins/discord-connector] Can't write to Discord websocket gateway: The I/O operation has been aborted because of either a thread exit or an application request (995)
+[10/19/23 03:58:05] [plugins/discord-connector] Error while retrieving HTTP GET response from '/api/oauth2/applications/@me': end of stream
+[10/19/23 04:07:46] [plugins/discord-connector] Can't read from Discord websocket gateway: An existing connection was forcibly closed by the remote host (10054)
+[10/19/23 04:07:46] [plugins/discord-connector] Can't write to Discord websocket gateway: The I/O operation has been aborted because of either a thread exit or an application request (995)
+[10/19/23 04:07:47] [plugins/discord-connector] Error while retrieving HTTP GET response from '/api/oauth2/applications/@me': An existing connection was forcibly closed by the remote host
+[10/19/23 04:10:48] [plugins/discord-connector] Discord terminated websocket connection; reason:  (1000)
+[10/19/23 04:10:48] [plugins/discord-connector] Can't write to Discord websocket gateway: The I/O operation has been aborted because of either a thread exit or an application request (995)
+[10/19/23 04:41:43] [plugins/discord-connector] Error while retrieving HTTP POST response from '/api/v10/channels/1158001303033757716/messages': end of stream
+[10/19/23 04:51:51] [plugins/discord-connector] Error while retrieving HTTP POST response from '/api/v10/channels/1158001303033757716/messages': end of stream
+[10/19/23 04:52:58] [plugins/discord-connector] can't serialize JSON: [json.exception.type_error.316] incomplete UTF-8 string; last byte: 0xBB
+[10/19/23 04:52:58] [plugins/discord-connector] can't serialize JSON: [json.exception.type_error.316] incomplete UTF-8 string; last byte: 0xBB
+[10/19/23 04:53:10] [plugins/discord-connector] can't serialize JSON: [json.exception.type_error.316] incomplete UTF-8 string; last byte: 0xC6
+[10/19/23 04:53:10] [plugins/discord-connector] can't serialize JSON: [json.exception.type_error.316] incomplete UTF-8 string; last byte: 0xC6
+[10/19/23 05:13:25] [plugins/discord-connector] Error while retrieving HTTP POST response from '/api/v10/channels/1158001303033757716/messages': end of stream
+[10/19/23 05:22:45] [plugins/discord-connector] can't serialize JSON: [json.exception.type_error.316] incomplete UTF-8 string; last byte: 0xBB
+[10/19/23 05:22:45] [plugins/discord-connector] can't serialize JSON: [json.exception.type_error.316] incomplete UTF-8 string; last byte: 0xBB
+[10/19/23 05:22:47] [plugins/discord-connector] can't serialize JSON: [json.exception.type_error.316] incomplete UTF-8 string; last byte: 0xBB
+[10/19/23 05:22:47] [plugins/discord-connector] can't serialize JSON: [json.exception.type_error.316] incomplete UTF-8 string; last byte: 0xBB
+[10/19/23 05:38:23] [plugins/discord-connector] Error while retrieving HTTP POST response from '/api/v10/channels/1158001303033757716/messages': end of stream

@@ -237,26 +237,18 @@ stock RandomName()
 CMD:setnameinquery(playerid, params[])
 {
     new str[24];
-    format(str, sizeof(str), "[Mask %d_%d]", PlayerInfo[playerid][pMaskID][0], PlayerInfo[playerid][pMaskID][1]);
+    format(str, sizeof(str), "Mask_%d_%d\0", PlayerInfo[playerid][pMaskID][0], PlayerInfo[playerid][pMaskID][1]);
 	SendClientMessageEx(playerid, COLOR_YELLOW, str);
     new name[MAX_PLAYER_NAME];
     strcat(name, str, MAX_PLAYER_NAME);
-    SetPlayerName(playerid, name);
+    printf("name %s", name);
+    if(SetPlayerName(playerid, name) == 1)
+    {
+        printf("RUN");
+    }
+    else
+    {
+        printf("NO");
+    }
 	return 1;
-}
-
-CMD:testhash(playerid, params[])
-{
-    new pass[24];
-    if(sscanf(params, "s[24]", pass))   return 1;
-    bcrypt_hash(pass, BCRYPT_COST, "OnPasswordHashed", "d", playerid);
-    return 1;
-}
-
-CMD:testrehash(playerid, params[])
-{
-    new pass[24];
-    if(sscanf(params, "s[24]", pass))   return 1;
-    bcrypt_check(pass, codehash, "OnPasswordChecked", "d", playerid);
-    return 1;
 }

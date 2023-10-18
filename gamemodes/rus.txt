@@ -1,11 +1,15 @@
+system/new_job/Farmer/cmd.pwn(50) : íåïðàâèëüíàÿ òàáóëÿöèÿ
+system/new_job/Farmer/cmd.pwn(51) : íåïðàâèëüíàÿ òàáóëÿöèÿ
 ./system/inventory/inventory.pwn(98) : íåïðàâèëüíàÿ òàáóëÿöèÿ
 ./main/mysql.pwn(24) : íåïðàâèëüíàÿ òàáóëÿöèÿ
-./main/mysql.pwn(1433) : èäåíòèôèêàòîðó ïðèñâîåíî çíà÷åíèå, íî îí íå èñïîëüçóåòñÿ: "str"
+./main/mysql.pwn(1435) : èäåíòèôèêàòîðó ïðèñâîåíî çíà÷åíèå, íî îí íå èñïîëüçóåòñÿ: "str"
 ./system/drug/drug.pwn(12) : èäåíòèôèêàòîð íå èñïîëüçóåòñÿ: "DrugTypeName"
+system/new_job/Farmer/setting.pwn(29) : èäåíòèôèêàòîð íå èñïîëüçóåòñÿ: "FarmPlayer"
 d:\Gamemode Samp\UP GM\Gamemode-RC\gamemodes\lsrpvn.pwn(1698) : èäåíòèôèêàòîð íå èñïîëüçóåòñÿ: "IsPlayerInRangeOfDynamicObject"
 d:\Gamemode Samp\UP GM\Gamemode-RC\gamemodes\lsrpvn.pwn(1089) : èäåíòèôèêàòîð íå èñïîëüçóåòñÿ: "PlacePlant"
 ./system/new_job/Trucking/setting.pwn(34) : èäåíòèôèêàòîð íå èñïîëüçóåòñÿ: "UnitType"
-d:\Gamemode Samp\UP GM\Gamemode-RC\gamemodes\lsrpvn.pwn(21674) : èäåíòèôèêàòîðó ïðèñâîåíî çíà÷åíèå, íî îí íå èñïîëüçóåòñÿ: "pointpinglimit"
-d:\Gamemode Samp\UP GM\Gamemode-RC\gamemodes\lsrpvn.pwn(16699) : èäåíòèôèêàòîðó ïðèñâîåíî çíà÷åíèå, íî îí íå èñïîëüçóåòñÿ: "tRewardText"
+./main/functions.pwn(6972) : èäåíòèôèêàòîð íå èñïîëüçóåòñÿ: "codehash"
+d:\Gamemode Samp\UP GM\Gamemode-RC\gamemodes\lsrpvn.pwn(21594) : èäåíòèôèêàòîðó ïðèñâîåíî çíà÷åíèå, íî îí íå èñïîëüçóåòñÿ: "pointpinglimit"
+d:\Gamemode Samp\UP GM\Gamemode-RC\gamemodes\lsrpvn.pwn(16700) : èäåíòèôèêàòîðó ïðèñâîåíî çíà÷åíèå, íî îí íå èñïîëüçóåòñÿ: "tRewardText"
 Pawn compiler 3.2.3664	 	 	Copyright (c) 1997-2016, ITB CompuPhase
 

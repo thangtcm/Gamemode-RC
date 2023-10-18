@@ -369,6 +369,7 @@ public OnQueryFinish(resultid, extraid, handleid)
 				{
 					cache_get_field_content(row, "Username", szField, MainPipeline, MAX_PLAYER_NAME);
                     SetPlayerName(extraid, szField);
+					printf("%s", szField);
 					if(strcmp(szField, GetPlayerNameExt(extraid), true) != 0)
 					{
 						return 1;
@@ -490,6 +491,7 @@ public OnQueryFinish(resultid, extraid, handleid)
 					cache_get_field_content(row,  "FishSkill", szResult, MainPipeline); PlayerInfo[extraid][pFishSkill] = strval(szResult);
 					cache_get_field_content(row,  "FightingStyle", szResult, MainPipeline); PlayerInfo[extraid][pFightStyle] = strval(szResult);
 					cache_get_field_content(row,  "PhoneNr", szResult, MainPipeline); PlayerInfo[extraid][pPnumber] = strval(szResult);
+					cache_get_field_content(row,  "Farmer", szResult, MainPipeline); PlayerInfo[extraid][pFarmerKey] = strval(szResult);
 					cache_get_field_content(row,  "Apartment", szResult, MainPipeline); PlayerInfo[extraid][pPhousekey] = strval(szResult);
 					cache_get_field_content(row,  "Apartment2", szResult, MainPipeline); PlayerInfo[extraid][pPhousekey2] = strval(szResult);
 					cache_get_field_content(row,  "Renting", szResult, MainPipeline); PlayerInfo[extraid][pRenting] = strval(szResult);
@@ -516,7 +518,7 @@ public OnQueryFinish(resultid, extraid, handleid)
 						PlayerInfo[extraid][pGuns][i] = strval(szResult);
 						format(szField, sizeof(szField), "ASGun%d", i);
 						cache_get_field_content(row,  szField, szResult, MainPipeline);
-						PlayerInfo[extraid][PASGuns][i] = strval(szResult);
+						PlayerInfo[extraid][pASGuns][i] = strval(szResult);
 					}				
 					cache_get_field_content(row,  "DrugsTime", szResult, MainPipeline); PlayerInfo[extraid][pDrugsTime] = strval(szResult);
 					cache_get_field_content(row,  "LawyerTime", szResult, MainPipeline); PlayerInfo[extraid][pLawyerTime] = strval(szResult);
@@ -3010,6 +3012,7 @@ stock g_mysql_SaveAccount(playerid)
     SavePlayerInteger(query, GetPlayerSQLId(playerid), "FishSkill", PlayerInfo[playerid][pFishSkill]);
     SavePlayerInteger(query, GetPlayerSQLId(playerid), "FightingStyle", PlayerInfo[playerid][pFightStyle]);
     SavePlayerInteger(query, GetPlayerSQLId(playerid), "PhoneNr", PlayerInfo[playerid][pPnumber]);
+    SavePlayerInteger(query, GetPlayerSQLId(playerid), "Farmer", PlayerInfo[playerid][pFarmerKey]);
     SavePlayerInteger(query, GetPlayerSQLId(playerid), "Apartment", PlayerInfo[playerid][pPhousekey]);
     SavePlayerInteger(query, GetPlayerSQLId(playerid), "Apartment2", PlayerInfo[playerid][pPhousekey2]);
     SavePlayerInteger(query, GetPlayerSQLId(playerid), "Renting", PlayerInfo[playerid][pRenting]);
@@ -3040,7 +3043,20 @@ stock g_mysql_SaveAccount(playerid)
     SavePlayerInteger(query, GetPlayerSQLId(playerid), "Ammo7", PlayerAmmo[playerid][7]);
     SavePlayerInteger(query, GetPlayerSQLId(playerid), "Ammo8", PlayerAmmo[playerid][8]);
 
-    SavePlayerInteger(query, GetPlayerSQLId(playerid), "Gun0", PlayerInfo[playerid][pGuns][0]);
+    SavePlayerInteger(query, GetPlayerSQLId(playerid), "ASGun0", PlayerInfo[playerid][pASGuns][0]);
+    SavePlayerInteger(query, GetPlayerSQLId(playerid), "ASGun1", PlayerInfo[playerid][pASGuns][1]);
+    SavePlayerInteger(query, GetPlayerSQLId(playerid), "ASGun2", PlayerInfo[playerid][pASGuns][2]);
+    SavePlayerInteger(query, GetPlayerSQLId(playerid), "ASGun3", PlayerInfo[playerid][pASGuns][3]);
+    SavePlayerInteger(query, GetPlayerSQLId(playerid), "ASGun4", PlayerInfo[playerid][pASGuns][4]);
+    SavePlayerInteger(query, GetPlayerSQLId(playerid), "ASGun5", PlayerInfo[playerid][pASGuns][5]);
+    SavePlayerInteger(query, GetPlayerSQLId(playerid), "ASGun6", PlayerInfo[playerid][pASGuns][6]);
+    SavePlayerInteger(query, GetPlayerSQLId(playerid), "ASGun7", PlayerInfo[playerid][pASGuns][7]);
+    SavePlayerInteger(query, GetPlayerSQLId(playerid), "ASGun8", PlayerInfo[playerid][pASGuns][8]);
+    SavePlayerInteger(query, GetPlayerSQLId(playerid), "ASGun9", PlayerInfo[playerid][pASGuns][9]);
+    SavePlayerInteger(query, GetPlayerSQLId(playerid), "ASGun10", PlayerInfo[playerid][pASGuns][10]);
+    SavePlayerInteger(query, GetPlayerSQLId(playerid), "ASGun11", PlayerInfo[playerid][pASGuns][11]);
+
+	SavePlayerInteger(query, GetPlayerSQLId(playerid), "Gun0", PlayerInfo[playerid][pGuns][0]);
     SavePlayerInteger(query, GetPlayerSQLId(playerid), "Gun1", PlayerInfo[playerid][pGuns][1]);
     SavePlayerInteger(query, GetPlayerSQLId(playerid), "Gun2", PlayerInfo[playerid][pGuns][2]);
     SavePlayerInteger(query, GetPlayerSQLId(playerid), "Gun3", PlayerInfo[playerid][pGuns][3]);
@@ -7951,6 +7967,7 @@ public OnPlayerLoad(playerid)
 		PlayerInfo[playerid][pPnumber] = 0;
 		PlayerInfo[playerid][pPhousekey] = INVALID_HOUSE_ID;
 		PlayerInfo[playerid][pPhousekey2] = INVALID_HOUSE_ID;
+		PlayerInfo[playerid][pFarmerKey] = -1;
 		PlayerInfo[playerid][pCarLic] = 0;
 		PlayerInfo[playerid][pFlyLic] = 0;
 		PlayerInfo[playerid][pBoatLic] = 0;
@@ -7968,6 +7985,7 @@ public OnPlayerLoad(playerid)
         PlayerInfo[playerid][pLevel] = 1;
 		PlayerInfo[playerid][pSHealth] = 0.0;
 		PlayerInfo[playerid][pPnumber] = 0;
+		PlayerInfo[playerid][pFarmerKey] = -1;
 		PlayerInfo[playerid][pPhousekey] = INVALID_HOUSE_ID;
 		PlayerInfo[playerid][pPhousekey2] = INVALID_HOUSE_ID;
 		PlayerInfo[playerid][pAccount] = 0;
@@ -8398,7 +8416,7 @@ public OnPlayerLoad(playerid)
 
 	if(iCheckTwo != INVALID_HOUSE_ID) PlayerInfo[playerid][pPhousekey2] = iCheckTwo;
 	else PlayerInfo[playerid][pPhousekey2] = INVALID_HOUSE_ID;
-
+	SetPlayerFarmer(playerid);
 	if(PlayerInfo[playerid][pRenting] != INVALID_HOUSE_ID && (PlayerInfo[playerid][pPhousekey] != INVALID_HOUSE_ID || PlayerInfo[playerid][pPhousekey2] != INVALID_HOUSE_ID)) {
 		PlayerInfo[playerid][pRenting] = INVALID_HOUSE_ID;
 	}

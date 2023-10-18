@@ -41,7 +41,7 @@
 #include "./include/loading.pwn"
 #include "./system/new_job/pickup.pwn"
 #include "./system/new_job/Farmer/main.pwn"
-#include "./system/new_job/Farmer/raise.pwn"
+// #include "./system/new_job/Farmer/raise.pwn"
 #include "./system/noithat.pwn"
 #include "./system/haha.pwn"
 #include "./system/danhba.pwn"

@@ -1,0 +1,8 @@
+C:\Users\Admin\Desktop\Gamemode-RCz\gamemodes\system\new_job\Farmer\main.pwn(5) : ôạ̀àëüíàÿ îøèáêà 100: íåâîḉîæíî ïđî÷åṇ̃ü ôàéë: "system/new_job/Farmer/plant.pwn"
+
+Êî́ïèëÿöèÿ îṇ̃àíîâëåíà.
+
+Pawn compiler 3.2.3664	 	 	Copyright (c) 1997-2016, ITB CompuPhase
+
+
+Îøèáîê:1.

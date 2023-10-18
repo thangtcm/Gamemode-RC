@@ -2729,6 +2729,7 @@ public InitiateGamemode()
  	mysql_LoadCrates();
  	LoadSafeZones();
 	LoadHouses();
+	LoadFarms();
 	LoadDynamicDoors();
 	LoadDynamicMapIcons();
 	LoadMailboxes();

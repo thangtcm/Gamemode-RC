@@ -225,32 +225,13 @@ stock UpdatePlayerHungry(playerid)
 {
 	if(PlayerInfo[playerid][pEat] <= 25 || PlayerInfo[playerid][pDrink] <= 25)
 	{
-		PlayerInfo[playerid][pEat]--;
-		PlayerInfo[playerid][pDrink]--;
-		new Float: hpz;
-		GetPlayerHealth(playerid, hpz);
-		if(hpz > 5){
-			SetPlayerHealth(playerid, hpz-5);
-		}else{
-			SetPlayerHealth(playerid, 0);
-			SendClientMessage(playerid, COLOR_REALRED, "[SERVER] {ffffff}Ban da chet vi doi bung.");
-		}
+		if(--PlayerInfo[playerid][pEat] <= 0) PlayerInfo[playerid][pEat] = 0;
+		if(--PlayerInfo[playerid][pDrink] <= 0) PlayerInfo[playerid][pDrink]=0;
 	}
 	else
 	{
-		if(--PlayerInfo[playerid][pEat] <= 0 || --PlayerInfo[playerid][pDrink] <= 0)
-		{
-			new Float: hpz;
-			GetPlayerHealth(playerid, hpz);
-			if(hpz > 5){
-				SetPlayerHealth(playerid, hpz-5);
-			}else{
-				SetPlayerHealth(playerid, 0);
-				SendClientMessage(playerid, COLOR_REALRED, "[SERVER] {ffffff}Ban da chet vi doi bung.");
-			}
-			PlayerInfo[playerid][pEat]=0;
-			PlayerInfo[playerid][pDrink]=0;
-		}
+		--PlayerInfo[playerid][pEat];
+		--PlayerInfo[playerid][pDrink];
 	}
 	return 1;
 }

@@ -172,6 +172,7 @@ public OnInventoryAdd(playerid, pItemId, timer)
 {
 	InventoryData[playerid][pItemId][invExists] = true;
 	InventoryData[playerid][pItemId][invID] = mysql_insert_id(MainPipeline);
+	DeletePVar(playerid, "IsAddingInv");
 	return 1;
 }
 
@@ -216,6 +217,7 @@ stock Inventory_GetItemID(playerid, item[], quantity = -1)
 {
 	for(new i = 0; i < MAX_INVENTORY; i++)
 	{
+		if(GetPVarInt(playerid, "IsAddingInv") == i) continue;
 		if(!InventoryData[playerid][i][invExists])
 			continue;
 		if(quantity != -1 && InventoryData[playerid][i][invQuantity] >= quantity && InventoryData[playerid][i][invTimer] == 0 && !strcmp(InventoryData[playerid][i][invItem], item))
@@ -315,7 +317,6 @@ stock Inventory_Add(playerid, item[], quantity = 1, timer = 0) //timer là dữ 
 	if(pItemId == -1 || timer != 0)
 	{
 		pItemId = Inventory_GetFreeID(playerid);
-		if(InventoryData[playerid][playerid][invExists]) return Inventory_Add(playerid, item, quantity, timer);
 		if(pItemId != -1)
 		{
 			strcpy(InventoryData[playerid][pItemId][invModel], model);
@@ -326,6 +327,7 @@ stock Inventory_Add(playerid, item[], quantity = 1, timer = 0) //timer là dữ 
 			strcpy(InventoryData[playerid][pItemId][invItem], item, 32);
             format(string, sizeof(string), "INSERT INTO `inventory` (`ID`, `invItem`, `invModel`, `invQuantity`, `invTimer`, `pvSQLID`, `hSQLID`) VALUES('%d', '%s', '%s', '%d', '%d', 0, 0)", 
 				PlayerSQLId, g_mysql_ReturnEscaped(item, MainPipeline), g_mysql_ReturnEscaped(model, MainPipeline), quantity, InventoryData[playerid][pItemId][invTimer]);
+			SetPVarInt(playerid, "IsAddingInv", pItemId);
 			mysql_function_query(MainPipeline, string, false, "OnInventoryAdd", "iii", playerid, pItemId, timer);
 			printf("[CREATE INVENTORY] %s (ID %d) da duoc them vao du lieu cua %s", InventoryData[playerid][pItemId][invItem], pItemId, GetPlayerNameEx(playerid));
 			new itemidzxc[10];
@@ -695,7 +697,7 @@ public OnPlayerUseItem(playerid, pItemId, name[])
 	else if(!strcmp(name, "Hamburger", true))
 	{
 		if(PlayerInfo[playerid][pEat] >= 100) return SendErrorMessage(playerid, "Ban da no roi, khong the an tiep.");
-		PlayerInfo[playerid][pEat] += 16;
+		PlayerInfo[playerid][pEat] = PlayerInfo[playerid][pEat] + 16 > 100 ? 100 : PlayerInfo[playerid][pEat] + 16;
 		ApplyAnimation(playerid, "FOOD", "EAT_Burger", 5.0, 0, 1, 1, 1, 2000, 1);
 		PlayerPlaySound(playerid, 32201, 0.0, 0.0, 0.0);
 		Inventory_Remove(playerid, pItemId, 1);
@@ -703,7 +705,7 @@ public OnPlayerUseItem(playerid, pItemId, name[])
 	else if(!strcmp(name, "Bread", true))
 	{
 		if(PlayerInfo[playerid][pEat] >= 100) return SendErrorMessage(playerid, "Ban da no roi, khong the an tiep.");
-		PlayerInfo[playerid][pEat] += 20;
+		PlayerInfo[playerid][pEat] = PlayerInfo[playerid][pEat] + 20 > 100 ? 100 : PlayerInfo[playerid][pEat] + 20;
 		ApplyAnimation(playerid, "FOOD", "EAT_Chicken", 5.0, 0, 1, 1, 1, 2000, 1);
 		PlayerPlaySound(playerid, 32200, 0.0, 0.0, 0.0);
 		Inventory_Remove(playerid, pItemId, 1);
@@ -711,7 +713,7 @@ public OnPlayerUseItem(playerid, pItemId, name[])
 	else if(!strcmp(name, "Juice", true))
 	{
 		if(PlayerInfo[playerid][pDrink] >= 100) return SendErrorMessage(playerid, "Ban da no roi, khong the uong tiep.");
-		PlayerInfo[playerid][pDrink] += 16;
+		PlayerInfo[playerid][pDrink] = PlayerInfo[playerid][pDrink] + 16 > 100 ? 100 : PlayerInfo[playerid][pDrink] + 16;
 		ApplyAnimation(playerid, "GANGS", "drnkbr_prtl", 2.67, 0, 1, 1, 1, 2000, 1);
 		PlayerPlaySound(playerid, 42600, 0.0, 0.0, 0.0);
 		Inventory_Remove(playerid, pItemId, 1);
@@ -720,6 +722,7 @@ public OnPlayerUseItem(playerid, pItemId, name[])
 	{
 		if(PlayerInfo[playerid][pDrink] >= 100) return SendErrorMessage(playerid, "Ban da no roi, khong the uong tiep.");
 		PlayerInfo[playerid][pDrink] += 16;
+		PlayerInfo[playerid][pDrink] = PlayerInfo[playerid][pDrink] + 16 > 100 ? 100 : PlayerInfo[playerid][pDrink] + 16;
 		ApplyAnimation(playerid, "GANGS", "drnkbr_prtl_F", 2.67, 0, 1, 1, 1, 2000, 1);
 		PlayerPlaySound(playerid, 42600, 0.0, 0.0, 0.0);
 		Inventory_Remove(playerid, pItemId, 1);
@@ -752,7 +755,9 @@ public OnPlayerUseItem(playerid, pItemId, name[])
 				PlayerInfo[playerid][pMaskOn] = 1;
 				if(IsPlayerAttachedObjectSlotUsed(playerid, PIZZA_INDEX)) RemovePlayerAttachedObject(playerid, PIZZA_INDEX);
 				SetPlayerAttachedObject(playerid, PIZZA_INDEX, 19036,2, 0.093999, 0.026000, -0.004999, 93.800018, 82.199951, -3.300001, 1.098000, 1.139999, 1.173000);
-				format(szName, sizeof(szName), "[Mask %d_%d]", PlayerInfo[playerid][pMaskID][0], PlayerInfo[playerid][pMaskID][1]);
+				GetPlayerName(playerid, szName, sizeof(szName));
+				SetPVarString(playerid, "TempNameName", szName);
+				format(szName, sizeof(szName), "[Mask%d_%d]", PlayerInfo[playerid][pMaskID][0], PlayerInfo[playerid][pMaskID][1]);
 				SetPlayerName(playerid, szName);
 			}
 			case 1:
@@ -760,7 +765,7 @@ public OnPlayerUseItem(playerid, pItemId, name[])
 				format(str, sizeof(str), "* %s da thao mat na.", GetPlayerNameEx(playerid));
 				ProxDetector(30.0, playerid, str, COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE);
 				PlayerInfo[playerid][pMaskOn] = 0;
-				GetPlayerName(playerid, szName,MAX_PLAYER_NAME);
+				GetPVarString(playerid, "TempNameName", szName, sizeof(szName));
 				SetPlayerName(playerid, szName);
 				if(IsPlayerAttachedObjectSlotUsed(playerid, PIZZA_INDEX)) RemovePlayerAttachedObject(playerid, PIZZA_INDEX);
 			}
@@ -1117,6 +1122,8 @@ CMD:checkinv(playerid, params[])
 		return SendClientMessageEx(playerid, COLOR_LIGHTRED, "Ban khong duoc phep su dung lenh nay.");
 	if(sscanf(params, "u", giveplayerid))
 		return SendClientMessageEx(playerid, COLOR_GRAD1, "/checkinv [playerid/name]");
+	if(!IsPlayerConnected(giveplayerid)) 
+		return SendErrorMessage(playerid, "Nguoi choi khong hop le.");
 	OpenInventory(playerid, true);
 	new str[128];
 	SetPVarInt(playerid, "GivePlayerid_Inventory", giveplayerid);
@@ -1135,10 +1142,11 @@ CMD:setitem(playerid, params[])
 
 	if(PlayerInfo[playerid][pAdmin] < 4)
 		return SendClientMessageEx(playerid, COLOR_LIGHTRED, "Ban khong duoc phep su dung lenh nay.");
-
 	if(sscanf(params, "uddd", giveplayerid, quantity, index, timer))
 		return SendClientMessageEx(playerid, COLOR_GRAD1, "/setitem [playerid/name] [quantity] [item id] [timer]");
 	if(index == -1 || index >= sizeof(g_aInventoryItems))	return SendClientMessageEx(playerid, COLOR_LIGHTRED, "Item khong hop le (su dung [/itemlist] de xem).");
+	if(!IsPlayerConnected(giveplayerid)) 
+		return SendErrorMessage(playerid, "Nguoi choi khong hop le.");
 	if(!strcmp(g_aInventoryItems[index][e_InventoryItem], "Dien thoai", true))
 	{
 		PlayerInfo[giveplayerid][pPhoneBook] = 1;
