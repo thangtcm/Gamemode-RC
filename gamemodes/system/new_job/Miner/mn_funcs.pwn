@@ -187,6 +187,7 @@ Dialog:muapickaxedialog(playerid, response, listitem, inputtext[])
 	if(response)
 	{
 		if(Inventory_Count(playerid, "Pickaxe") >= 1) return SendErrorMessage(playerid, "Ban da mua Pickaxe roi, hay di tim nhung khoang san de dao");
+		if(GetPlayerCash(playerid) < 500) return SendErrorMessage(playerid, "Ban khong co du tien.");
 		PlayerInfo[playerid][pCash] -= 500;
 		Inventory_Add(playerid, "Pickaxe", 1, 60);
 		SendClientMessage(playerid, COLOR_LIGHTRED, "SERVER: {ffffff}Ban da mua thanh cong Pickaxe, hay di tim khoang san de dao");

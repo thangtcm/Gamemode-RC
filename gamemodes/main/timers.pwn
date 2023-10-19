@@ -417,6 +417,7 @@ task AFKUpdate[10000]()
 	{
 		foreach(new i: Player)
 		{
+			if(!IsPlayerConnected(i)) continue;
 			if((playerTabbed[i] > 300 || playerAFK[i] > 300) && PlayerInfo[i][pShopTech] < 1 && PlayerInfo[i][pAdmin] < 4)
 			{
 				Kick(i);

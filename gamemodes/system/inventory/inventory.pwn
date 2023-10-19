@@ -217,12 +217,9 @@ stock Inventory_GetItemID(playerid, item[], quantity = -1)
 {
 	for(new i = 0; i < MAX_INVENTORY; i++)
 	{
-		if(GetPVarInt(playerid, "IsAddingInv") == i) continue;
 		if(!InventoryData[playerid][i][invExists])
 			continue;
-		if(quantity != -1 && InventoryData[playerid][i][invQuantity] >= quantity && InventoryData[playerid][i][invTimer] == 0 && !strcmp(InventoryData[playerid][i][invItem], item))
-			return i;
-		if(!strcmp(InventoryData[playerid][i][invItem], item) && quantity == -1 && InventoryData[playerid][i][invTimer] == 0) 
+		if(!strcmp(InventoryData[playerid][i][invItem], item) && InventoryData[playerid][i][invQuantity] >= quantity) 
 			return i;
 	}
 	return -1;
@@ -247,6 +244,11 @@ stock Inventory_GetFreeID(playerid)
 
 	for(new i = 0; i < MAX_INVENTORY; i++)
 	{
+		if(GetPVarInt(playerid, "IsAddingInv") == i) 
+		{
+			DeletePVar(playerid, "IsAddingInv");
+			continue;
+		}
 		if(!InventoryData[playerid][i][invExists])
 			return i;
 	}
@@ -306,7 +308,24 @@ stock Inventory_SendRemoveTimer(playerid, pItemId, quantity)
 	Inventory_Remove(playerid, pItemId, quantity);
 }
 
-stock Inventory_Add(playerid, item[], quantity = 1, timer = 0) //timer là dữ liệu số phút - 1 ngay = 60*24 - 1 tuan = 60*24*7 
+stock Inventory_Add(playerid, item[], quantity = 1, timer = 0, isGive = false)
+{
+	new result = Inventory_AddEx(playerid, item, quantity, timer);
+	if(!isGive && result == -1)
+	{
+		return SendErrorMessage(playerid, "Ban khong con slot de chua vat pham nay, vui long nang cap tui do de chua nhieu vat pham hon.");
+	}
+	else if(isGive && result == -1)
+	{
+		new str[128];
+		format(str, sizeof(str), "{FF6347}ERROR:{FFFFFF}Tui do cua nguoi choi %s da dat gioi han chua vat pham.", GetPlayerNameEx(playerid));
+		SendClientMessageEx(playerid, COLOR_WHITE, str);
+		return 1;
+	}
+	return 1;
+}
+
+stock Inventory_AddEx(playerid, item[], quantity = 1, timer = 0) //timer là dữ liệu số phút - 1 ngay = 60*24 - 1 tuan = 60*24*7 		
 {
 	new
 		pItemId = Inventory_GetItemID(playerid, item),
@@ -314,9 +333,11 @@ stock Inventory_Add(playerid, item[], quantity = 1, timer = 0) //timer là dữ 
         PlayerSQLId = GetPlayerSQLId(playerid),
 		model[64];
 	strcpy(model, g_aInventoryItems[Inventory_GetModel(item)][e_InventoryModel], 64);
+	printf("%d", pItemId);
 	if(pItemId == -1 || timer != 0)
 	{
 		pItemId = Inventory_GetFreeID(playerid);
+		printf("%d", pItemId);
 		if(pItemId != -1)
 		{
 			strcpy(InventoryData[playerid][pItemId][invModel], model);
@@ -328,6 +349,7 @@ stock Inventory_Add(playerid, item[], quantity = 1, timer = 0) //timer là dữ 
             format(string, sizeof(string), "INSERT INTO `inventory` (`ID`, `invItem`, `invModel`, `invQuantity`, `invTimer`, `pvSQLID`, `hSQLID`) VALUES('%d', '%s', '%s', '%d', '%d', 0, 0)", 
 				PlayerSQLId, g_mysql_ReturnEscaped(item, MainPipeline), g_mysql_ReturnEscaped(model, MainPipeline), quantity, InventoryData[playerid][pItemId][invTimer]);
 			SetPVarInt(playerid, "IsAddingInv", pItemId);
+			printf("%d", pItemId);
 			mysql_function_query(MainPipeline, string, false, "OnInventoryAdd", "iii", playerid, pItemId, timer);
 			printf("[CREATE INVENTORY] %s (ID %d) da duoc them vao du lieu cua %s", InventoryData[playerid][pItemId][invItem], pItemId, GetPlayerNameEx(playerid));
 			new itemidzxc[10];
@@ -349,7 +371,7 @@ stock Inventory_Add(playerid, item[], quantity = 1, timer = 0) //timer là dữ 
         format(itemidzxcv, 10, "%d", quantity);
 		SendLogToDiscordRoom4("LOG ADD VẬT PHẨM", "1158001303033757716", "Name", GetPlayerNameEx(playerid), "ADDED", InventoryData[playerid][pItemId][invItem], "Số lượng", itemidzxcv, "ITEMID", itemidzxc, 0x25b807);
 	}
-	return pItemId;
+	return -1;
 }
 
 stock Inventory_Update(playerid, pItemId, pVehicleId = -1, pHouseId = -1)
@@ -388,14 +410,12 @@ stock Inventory_Update(playerid, pItemId, pVehicleId = -1, pHouseId = -1)
 
 stock Inventory_RemoveTimer(playerid, item[], quantity)
 {
-	new invforever, arrTimer[MAX_INVENTORY] = {-1,...}, arrRemove[MAX_INVENTORY], quantityTemp = 0, countRemove = 0;
+	new arrTimer[MAX_INVENTORY] = {-1,...}, arrRemove[MAX_INVENTORY], quantityTemp = 0, countRemove = 0;
 	new str[128], maxItem = 0;
 	for(new i = 0; i < MAX_INVENTORY; i++)
 	{
 		if(!InventoryData[playerid][i][invExists])
 			continue;
-		if(!strcmp(InventoryData[playerid][i][invItem], item) && InventoryData[playerid][i][invTimer] == 0) 
-			invforever= i;
 		if(!strcmp(InventoryData[playerid][i][invItem], item) && InventoryData[playerid][i][invTimer] != 0) 
 		{
 			arrTimer[maxItem++] = i;
@@ -454,15 +474,15 @@ stock Inventory_RemoveTimer(playerid, item[], quantity)
 				format(str, sizeof(str), "%d", InventoryData[playerid][arrRemove[0]][invID]);
 				InventoryData[playerid][arrRemove[0]][invExists] = false;
 				InventoryData[playerid][arrRemove[0]][invQuantity] = 0;
+				for(new i = 1; i < countRemove - 1; i++)
+				{
+					InventoryData[playerid][arrRemove[i]][invExists] = false;
+					InventoryData[playerid][arrRemove[i]][invQuantity] = 0;
+					format(str, sizeof(str), "%s, %d", str, InventoryData[playerid][arrRemove[i]][invID]);
+				}
+				format(str, sizeof(str), "DELETE FROM `inventory` WHERE `invID` IN(%s)", str);
+				mysql_function_query(MainPipeline, str, false, "OnQueryFinish", "i", SENDDATA_THREAD);
 			}
-			for(new i = 1; i < countRemove - 1; i++)
-			{
-				InventoryData[playerid][arrRemove[i]][invExists] = false;
-				InventoryData[playerid][arrRemove[i]][invQuantity] = 0;
-				format(str, sizeof(str), "%s, %d", str, InventoryData[playerid][arrRemove[i]][invID]);
-			}
-			format(str, sizeof(str), "DELETE FROM `inventory` WHERE `invID` IN(%s)", str);
-			mysql_function_query(MainPipeline, str, false, "OnQueryFinish", "i", SENDDATA_THREAD);
 			new str2[128];
 			update_amount = InventoryData[playerid][arrRemove[countRemove-1]][invQuantity] - quantityTemp;
 			InventoryData[playerid][arrRemove[countRemove-1]][invQuantity] = update_amount;
@@ -473,7 +493,7 @@ stock Inventory_RemoveTimer(playerid, item[], quantity)
 	return 1;
 }
 
-stock Inventory_Remove(playerid, pItemId, quantity = 1) //ID cua InventoryData
+stock Inventory_Remove(playerid, pItemId, quantity = 1, isDrop = false) //ID cua InventoryData
 {
 	new
 		string[258],
@@ -481,6 +501,10 @@ stock Inventory_Remove(playerid, pItemId, quantity = 1) //ID cua InventoryData
 
 	if(InventoryData[playerid][pItemId][invExists])
 	{
+		if(InventoryData[playerid][pItemId][invTimer] != 0 && !isDrop)
+		{
+			return Inventory_RemoveTimer(playerid, InventoryData[playerid][pItemId][invItem], quantity);
+		}
 		if(InventoryData[playerid][pItemId][invQuantity] > 0)
 		{
 			InventoryData[playerid][pItemId][invQuantity] -= quantity;
@@ -757,7 +781,7 @@ public OnPlayerUseItem(playerid, pItemId, name[])
 				SetPlayerAttachedObject(playerid, PIZZA_INDEX, 19036,2, 0.093999, 0.026000, -0.004999, 93.800018, 82.199951, -3.300001, 1.098000, 1.139999, 1.173000);
 				GetPlayerName(playerid, szName, sizeof(szName));
 				SetPVarString(playerid, "TempNameName", szName);
-				format(szName, sizeof(szName), "[Mask%d_%d]", PlayerInfo[playerid][pMaskID][0], PlayerInfo[playerid][pMaskID][1]);
+				format(szName, sizeof(szName), "Mask_%d%d]", PlayerInfo[playerid][pMaskID][1], playerid);
 				SetPlayerName(playerid, szName);
 			}
 			case 1:
@@ -1330,7 +1354,7 @@ Dialog:DropItem(playerid, response, listitem, inputtext[])
 		}
 		else
 		{
-			Inventory_Remove(playerid, itemId, strval(inputtext));
+			Inventory_Remove(playerid, itemId, strval(inputtext), true);
 			format(string, sizeof(string), "* %s da vut %d vat pham \"%s\" ra khoi tui do cua ho.", GetPlayerNameEx(playerid), strval(inputtext), itemName);
 			ProxDetector(30.0, playerid, string, COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE);
 		}
@@ -1367,7 +1391,7 @@ Dialog:GiveItem(playerid, response, listitem, inputtext[])
 		strcpy(itemName, InventoryData[playerid][itemId][invItem], 32);
 		if(InventoryData[playerid][itemId][invQuantity] == 1)
 		{
-			new id = Inventory_Add(giveplayerid, itemName), str[560];
+			new id = Inventory_Add(giveplayerid, itemName, 1, InventoryData[playerid][itemId][invTimer]), str[560];
 			if(id == -1)
 				return SendErrorMessage(playerid, "Nguoi choi do khong con slot trong tui do.");
 			format(str, sizeof(str), "* %s da lay \"%s\" va dua cho %s.", GetPlayerNameEx(playerid), itemName, GetPlayerNameEx(giveplayerid));
@@ -1415,7 +1439,7 @@ Dialog:GiveQuantity(playerid, response, listitem, inputtext[])
 			format(str, sizeof(str), "Ban khong co nhieu item.\n\nItem: %s (So luong: %d)\n\nXin vui long nhap so luong %s:", itemName, InventoryData[playerid][itemId][invQuantity], GetPlayerNameEx(giveplayerid));
 			return  Dialog_Show(playerid, GiveQuantity, DIALOG_STYLE_INPUT, "Dua item", str, "Dua", "Huy bo");
 		}
-		new id = Inventory_Add(giveplayerid, itemName, strval(inputtext));
+		new id = Inventory_Add(giveplayerid, itemName, strval(inputtext), InventoryData[playerid][itemId][invTimer]);
 
 		if(id == -1)
 			return SendErrorMessage(playerid, "Nguoi choi do khong con slot trong tui do.");

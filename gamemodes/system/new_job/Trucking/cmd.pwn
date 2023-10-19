@@ -46,7 +46,7 @@ CMD:goiynhamay(playerid, params[])
 CMD:goiygiaohang(playerid, params[])
 {
     new numFoundFactories = 0,
-        MaxFactiory = sizeof(FactoryData), MaxImport;
+        MaxFactiory = sizeof(FactoryData);
 
     new d = PlayerInfo[playerid][pRegisterCarTruck];
     
@@ -54,12 +54,12 @@ CMD:goiygiaohang(playerid, params[])
         for (new j = 0; j < MAX_PRODUCT; j++) {
             if(FactoryData[i][ProductImportName][j] != -1)
             {
-                for(new index; index < MAX_OBJECTTRUCKER; index++)
+                for(new index = 0; index < MAX_OBJECTTRUCKER; index++)
                 {
                     if(VehicleTruckerData[playerid][index][vtId] != -1 && VehicleTruckerData[playerid][index][vtSlotId] == PlayerVehicleInfo[playerid][d][pvSlotId]
                         && VehicleTruckerData[playerid][index][vtProductID] == FactoryData[i][ProductImportName][j]){
                         PlayerTruckerData[playerid][SuggestFactory][numFoundFactories++] = i;
-                        j = MaxImport;
+                        j = MAX_PRODUCT;
                         break;
                     }
                 }

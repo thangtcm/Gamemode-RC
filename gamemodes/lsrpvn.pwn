@@ -1,5 +1,5 @@
  
-#define SERVER_GM_TEXT "LSR 1.0"
+#define SERVER_GM_TEXT "RCRP 1.0"
 
 
 #include <a_samp>

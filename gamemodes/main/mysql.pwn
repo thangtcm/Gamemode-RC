@@ -7964,6 +7964,7 @@ public OnPlayerLoad(playerid)
 		PlayerInfo[playerid][pBeingSentenced] = 0;
 		PlayerInfo[playerid][pProbationTime] = 0;
 		PlayerInfo[playerid][pModel] = 311;
+		PlayerInfo[playerid][pMinerLevel] = 0;
 		PlayerInfo[playerid][pPnumber] = 0;
 		PlayerInfo[playerid][pPhousekey] = INVALID_HOUSE_ID;
 		PlayerInfo[playerid][pPhousekey2] = INVALID_HOUSE_ID;

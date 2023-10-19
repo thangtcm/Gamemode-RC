@@ -1127,6 +1127,7 @@ RemovePlayerWeapon(playerid, weaponid)
 {
 	ResetPlayerWeapons(playerid);
 	PlayerInfo[playerid][pGuns][GetWeaponSlot(weaponid)] = 0;
+	PlayerInfo[playerid][pASGuns][GetWeaponSlot(weaponid)] = 0;
 	SetPlayerWeaponsEx(playerid);
 	return 1;
 }
