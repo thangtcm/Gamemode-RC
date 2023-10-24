@@ -1399,26 +1399,26 @@ public OnPlayerConnect(playerid) {
     gPlayerUsingLoopingAnim[playerid] = 0;
 	// car mechanic 
 
-	RadioInfo[playerid] = CreatePlayerTextDraw(playerid, 510.000000, 108.000000, "~w~Radio Info");
-	PlayerTextDrawBackgroundColor(playerid, RadioInfo[playerid],0x000000ff);
-	PlayerTextDrawFont(playerid, RadioInfo[playerid], 3);
-	PlayerTextDrawLetterSize(playerid, RadioInfo[playerid], 0.475600, 1.652266);
-	PlayerTextDrawColor(playerid, RadioInfo[playerid],0xffffffff);
-	PlayerTextDrawSetShadow(playerid, RadioInfo[playerid], 1);
+	// RadioInfo[playerid] = CreatePlayerTextDraw(playerid, 510.000000, 108.000000, "~w~Radio Info");
+	// PlayerTextDrawBackgroundColor(playerid, RadioInfo[playerid],0x000000ff);
+	// PlayerTextDrawFont(playerid, RadioInfo[playerid], 3);
+	// PlayerTextDrawLetterSize(playerid, RadioInfo[playerid], 0.475600, 1.652266);
+	// PlayerTextDrawColor(playerid, RadioInfo[playerid],0xffffffff);
+	// PlayerTextDrawSetShadow(playerid, RadioInfo[playerid], 1);
 
-	ChannelInfo[playerid] = CreatePlayerTextDraw(playerid, 510.000000, 122.000000, "");
-	PlayerTextDrawBackgroundColor(playerid, ChannelInfo[playerid],0x000000ff);
-	PlayerTextDrawFont(playerid, ChannelInfo[playerid], 3);
-	PlayerTextDrawLetterSize(playerid, ChannelInfo[playerid], 0.385999, 1.338666);
-	PlayerTextDrawColor(playerid, ChannelInfo[playerid],0xffffffff);
-	PlayerTextDrawSetShadow(playerid, ChannelInfo[playerid], 1);
+	// ChannelInfo[playerid] = CreatePlayerTextDraw(playerid, 510.000000, 122.000000, "");
+	// PlayerTextDrawBackgroundColor(playerid, ChannelInfo[playerid],0x000000ff);
+	// PlayerTextDrawFont(playerid, ChannelInfo[playerid], 3);
+	// PlayerTextDrawLetterSize(playerid, ChannelInfo[playerid], 0.385999, 1.338666);
+	// PlayerTextDrawColor(playerid, ChannelInfo[playerid],0xffffffff);
+	// PlayerTextDrawSetShadow(playerid, ChannelInfo[playerid], 1);
 
-	SlotInfo[playerid] = CreatePlayerTextDraw(playerid, 513.000000, 133.000000, "");
-	PlayerTextDrawBackgroundColor(playerid, SlotInfo[playerid],0x000000ff);
-	PlayerTextDrawFont(playerid, SlotInfo[playerid], 3);
-	PlayerTextDrawLetterSize(playerid, SlotInfo[playerid], 0.385999, 1.338666);
-	PlayerTextDrawColor(playerid, SlotInfo[playerid],0xffffffff);
-	PlayerTextDrawSetShadow(playerid, SlotInfo[playerid], 1);
+	// SlotInfo[playerid] = CreatePlayerTextDraw(playerid, 513.000000, 133.000000, "");
+	// PlayerTextDrawBackgroundColor(playerid, SlotInfo[playerid],0x000000ff);
+	// PlayerTextDrawFont(playerid, SlotInfo[playerid], 3);
+	// PlayerTextDrawLetterSize(playerid, SlotInfo[playerid], 0.385999, 1.338666);
+	// PlayerTextDrawColor(playerid, SlotInfo[playerid],0xffffffff);
+	// PlayerTextDrawSetShadow(playerid, SlotInfo[playerid], 1);
 // Cong Vien RC
 	RemoveBuildingForPlayer(playerid, 764, 1341.180, 274.531, 17.843, 0.250);
 	RemoveBuildingForPlayer(playerid, 764, 1337.130, 265.156, 18.937, 0.250);
@@ -7211,6 +7211,7 @@ public LoadStreamerDynamicPickups()
 	CreateDynamicPickup(1240, 23, 2024.5742,-1382.7844,48.3359, -1);// Deliverpt (County General)
 	CreateDynamicPickup(1240, 23, 1233.3384,316.4022,24.7578, -1);// Deliverpt (Montgomery Rooftop)
 	CreateDynamicPickup(1240, 23, -334.1560,1051.4434,26.0125, -1);// Deliverpt (Fort Carson Rooftop)
+	CreateDynamicPickup(1240, 23, 1256.2775, -1299.9001, 1061.8671, -1);// Deliverpt (Fort Carson Rooftop)
 	CreateDynamicPickup(1240, 23, -2656.0339,615.2567,66.0938, -1);// Deliverpt (SF Rooftop)
 	CreateDynamicPickup(1240, 23, 1579.58,1768.88,10.82, -1);// Deliverpt (LV Hospital)
 	CreateDynamicPickup(1240, 23, -2482.4338,2231.1106,4.8463, -1);// Deliverpt (TR - Bayside)
@@ -7401,6 +7402,7 @@ public LoadStreamerDynamic3DTextLabels()
    	CreateDynamic3DTextLabel("/capcuu",COLOR_LIGHTRED,2024.5742,-1382.7844,48.3359+0.6,4.0);///Deliverpt (County General)
    	CreateDynamic3DTextLabel("/capcuu",COLOR_LIGHTRED,1233.3384,316.4022,24.7578+0.6,4.0);///Deliverpt (Montgomery Rooftop)
    	CreateDynamic3DTextLabel("/capcuu",COLOR_LIGHTRED,-334.1560,1051.4434,26.0125+0.6,4.0);///Deliverpt (Fort Carson Rooftop)
+   	CreateDynamic3DTextLabel("/capcuu",COLOR_LIGHTRED,1256.2775, -1299.9001, 1061.8671+0.6,4.0);///Deliverpt (Fort Carson Rooftop)
    	CreateDynamic3DTextLabel("/capcuu",COLOR_LIGHTRED,-2656.0339,615.2567,66.0938+0.6,4.0);///Deliverpt (SF Rooftop)
 	CreateDynamic3DTextLabel("/capcuu",COLOR_LIGHTRED,1579.58,1768.88,10.82+0.6,4.0); // /deliverpt (LV Hospital)
    	CreateDynamic3DTextLabel("Emergency Room\n/capcuu",COLOR_DBLUE,-2573.300,611.013,14.030+0.6,4.0);///Deliverpt (SF)
@@ -16407,7 +16409,7 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 				Log("logs/business.log", string);
 				format(string,sizeof(string),"* Ban da mua mot %s tai %s voi gia $%d.",RestaurantItems[iItem],Businesses[iBusiness][bName], cost);
 				SendClientMessage(playerid, COLOR_YELLOW, string);
-
+				Inventory_Add(playerid, RestaurantItems[iItem]);
 				printf("%s\n%i", RestaurantItems[iItem], iItem);
 
 				// if (strcmp("Hambuger", RestaurantItems[iItem]) == 0) // full meal
@@ -16500,7 +16502,7 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 			    SendClientMessageEx(playerid, COLOR_GRAD4, "Mua khong thanh cong vi gia item nay da thay doi.");
 			}
 			else if (GetPlayerCash(playerid) < cost) {
-				SendClientMessageEx(playerid, COLOR_GRAD4, "Ban khong the mua item nay!");
+				SendClientMessageEx(playerid, COLOR_GRAD4, "Ban du tien de mua item nay!");
 			}
 			else {
 		        format(pvar, sizeof(pvar), "Business_MenuItem%d", listitem);
@@ -20803,7 +20805,7 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 			format(string, sizeof(string), "%s %s (IP: %s) da dat gia %s den $%s trong %s (%d)", GetBusinessRankName(PlayerInfo[playerid][pBusinessRank]), GetPlayerNameEx(playerid), GetPlayerIpEx(playerid), Drinks[item], number_format(iPrice), Businesses[iBusiness][bName], iBusiness);
 			new szDialog[302];
 			for (new i = 0; i <= 13; i++) format(szDialog, sizeof(szDialog), "%s%s  ($%s)\n", szDialog, Drinks[i], number_format(Businesses[iBusiness][bItemPrices][i]));
-	        ShowPlayerDialog(playerid, DIALOG_BARPRICE, DIALOG_STYLE_LIST, "Chih gia cua hang", szDialog, "Dong y", "Huy bo");
+	        ShowPlayerDialog(playerid, DIALOG_BARPRICE, DIALOG_STYLE_LIST, "Chinh gia cua hang", szDialog, "Dong y", "Huy bo");
 			Log("logs/business.log", string);
 	    }
 	    DeletePVar(playerid, "EditingStoreItem");

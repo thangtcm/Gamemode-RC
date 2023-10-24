@@ -1,15 +1,19 @@
-system/new_job/Farmer/cmd.pwn(50) : íåïðàâèëüíàÿ òàáóëÿöèÿ
-system/new_job/Farmer/cmd.pwn(51) : íåïðàâèëüíàÿ òàáóëÿöèÿ
-./system/inventory/inventory.pwn(98) : íåïðàâèëüíàÿ òàáóëÿöèÿ
+./system/inventory/inventory.pwn(105) : íåïðàâèëüíàÿ òàáóëÿöèÿ
 ./main/mysql.pwn(24) : íåïðàâèëüíàÿ òàáóëÿöèÿ
 ./main/mysql.pwn(1435) : èäåíòèôèêàòîðó ïðèñâîåíî çíà÷åíèå, íî îí íå èñïîëüçóåòñÿ: "str"
+system/new_job/Farmer/cmd.pwn(81) : íåïðàâèëüíàÿ òàáóëÿöèÿ
+system/new_job/Farmer/cmd.pwn(82) : íåïðàâèëüíàÿ òàáóëÿöèÿ
+./main/variables.pwn(1466) : èäåíòèôèêàòîð íå èñïîëüçóåòñÿ: "ChatGoActor"
 ./system/drug/drug.pwn(12) : èäåíòèôèêàòîð íå èñïîëüçóåòñÿ: "DrugTypeName"
-system/new_job/Farmer/setting.pwn(29) : èäåíòèôèêàòîð íå èñïîëüçóåòñÿ: "FarmPlayer"
+system/new_job/Farmer/setting.pwn(86) : èäåíòèôèêàòîð íå èñïîëüçóåòñÿ: "FarmPlayer"
 d:\Gamemode Samp\UP GM\Gamemode-RC\gamemodes\lsrpvn.pwn(1699) : èäåíòèôèêàòîð íå èñïîëüçóåòñÿ: "IsPlayerInRangeOfDynamicObject"
+d:\Gamemode Samp\UP GM\Gamemode-RC\gamemodes\lsrpvn.pwn(1708) : èäåíòèôèêàòîð íå èñïîëüçóåòñÿ: "IsPlayerInRangeOfObject"
 d:\Gamemode Samp\UP GM\Gamemode-RC\gamemodes\lsrpvn.pwn(1089) : èäåíòèôèêàòîð íå èñïîëüçóåòñÿ: "PlacePlant"
+./main/variables.pwn(4) : èäåíòèôèêàòîð íå èñïîëüçóåòñÿ: "RadioInfo"
+./main/variables.pwn(6) : èäåíòèôèêàòîð íå èñïîëüçóåòñÿ: "SlotInfo"
 ./system/new_job/Trucking/setting.pwn(34) : èäåíòèôèêàòîð íå èñïîëüçóåòñÿ: "UnitType"
 ./main/functions.pwn(6973) : èäåíòèôèêàòîð íå èñïîëüçóåòñÿ: "codehash"
-d:\Gamemode Samp\UP GM\Gamemode-RC\gamemodes\lsrpvn.pwn(21594) : èäåíòèôèêàòîðó ïðèñâîåíî çíà÷åíèå, íî îí íå èñïîëüçóåòñÿ: "pointpinglimit"
-d:\Gamemode Samp\UP GM\Gamemode-RC\gamemodes\lsrpvn.pwn(16701) : èäåíòèôèêàòîðó ïðèñâîåíî çíà÷åíèå, íî îí íå èñïîëüçóåòñÿ: "tRewardText"
+d:\Gamemode Samp\UP GM\Gamemode-RC\gamemodes\lsrpvn.pwn(21608) : èäåíòèôèêàòîðó ïðèñâîåíî çíà÷åíèå, íî îí íå èñïîëüçóåòñÿ: "pointpinglimit"
+d:\Gamemode Samp\UP GM\Gamemode-RC\gamemodes\lsrpvn.pwn(16702) : èäåíòèôèêàòîðó ïðèñâîåíî çíà÷åíèå, íî îí íå èñïîëüçóåòñÿ: "tRewardText"
 Pawn compiler 3.2.3664	 	 	Copyright (c) 1997-2016, ITB CompuPhase
 

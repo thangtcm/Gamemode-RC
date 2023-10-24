@@ -4263,10 +4263,9 @@ CMD:togbr(playerid, params[])
 	}
 	return 1;
 }
-
 CMD:togpr(playerid, params[])
 {
-	if(PlayerInfo[playerid][pRadio] == 1)
+	if(Inventory_HasItem(playerid, "Radio"))
 	{
  		if (gRadio{playerid} == 0)
    		{
@@ -11505,6 +11504,16 @@ CMD:enter(playerid, params[])
         SendServerMessage(playerid, " Ban khong the lam dieu nay ngay bay gio.");
         return 1;
     }
+	new FarmID = PlayerNearFarm(playerid, GetPlayerSQLId(playerid));
+	if(FarmID != -1)
+	{
+		SetPVarInt(playerid, "IsPlayer_StreamPrep", gettime() + 30); // 30 giay
+		SetPlayerFacingAngle(playerid, 90);
+		SetPlayerVirtualWorld(playerid, GetPlayerSQLId(playerid));
+		SetPlayerPos(playerid, -1424.9208,-1472.0114,101.6843);
+		Player_StreamPrep(playerid, -1424.9208,-1472.0114,101.6843, FREEZE_TIME);
+		return 1;
+	}
 	new cCar = GetClosestCar(playerid);
     for(new i = 0; i < sizeof(DDoorsInfo); i++) {
         if (IsPlayerInRangeOfPoint(playerid,3.0,DDoorsInfo[i][ddExteriorX], DDoorsInfo[i][ddExteriorY], DDoorsInfo[i][ddExteriorZ]) && PlayerInfo[playerid][pVW] == DDoorsInfo[i][ddExteriorVW]) {
@@ -11952,6 +11961,11 @@ CMD:exit(playerid, params[])
         SendServerMessage(playerid, " Ban khong the lam dieu do vao luc nay");
         return 1;
     }
+	if(IsPlayerInDynamicArea(playerid, PlayerFarmArea))
+	{
+		LeaveAreaFarm(playerid, PlayerFarmArea);
+		return 1;
+	}
     for(new i = 0; i <  sizeof(DDoorsInfo); i++) {
         if (IsPlayerInRangeOfPoint(playerid,3.0,DDoorsInfo[i][ddInteriorX], DDoorsInfo[i][ddInteriorY], DDoorsInfo[i][ddInteriorZ]) && PlayerInfo[playerid][pVW] == DDoorsInfo[i][ddInteriorVW]) {
             SetPlayerInterior(playerid,DDoorsInfo[i][ddExteriorInt]);
@@ -41379,16 +41393,20 @@ CMD:givemehit(playerid, params[])
 CMD:radio(playerid, params[])
 {
 	new radiotext[42];
-	if (PlayerInfo[playerid][pRadio] == 0)
+	if (!Inventory_HasItem(playerid, "Radio"))
 	{
 		SendErrorMessage(playerid, " ban khong co radio.");
 	}
- 	if (PlayerInfo[playerid][pRadio] == 1)
+ 	if (Inventory_HasItem(playerid, "Radio"))
 	{
 		SendServerMessage(playerid, " Ban da bat tan so radio.");
 		format(radiotext ,sizeof(radiotext),"Tan So Radio: %d khz", PlayerInfo[playerid][pRadioFreq]);
 		PlayerTextDrawSetString(playerid,radio[playerid], radiotext);
 		PlayerTextDrawShow(playerid,radio[playerid]);
+	}
+	else
+	{
+		PlayerTextDrawHide(playerid,radio[playerid]);
 	}
 	return 1;
 }
@@ -44281,209 +44299,209 @@ CMD:wanted(playerid, params[])
 	return 1;
 }
 
-CMD:drop(playerid, params[])
-{
-	new string[128], choice[32];
-	if(sscanf(params, "s[32]", choice))
-	{
-		SendUsageMessage(playerid, " /drop [name]");
-		SendSelectMessage(playerid, " Weapons, Pot, Crack, Materials, Packages, Crates, Radio, Pizza, Seeds, Rawopium, Heroin, Syringes");
-		return 1;
-	}
-    else if(strcmp(choice,"seeds",true) == 0)
-	{
-		if(PlayerInfo[playerid][pOpiumSeeds] > 0 || PlayerInfo[playerid][pWSeeds] > 0)
-		{
-			PlayerPlaySound(playerid, 1052, 0.0, 0.0, 0.0);
-			format(string, sizeof(string), "Ban da giam %d hat giong.", PlayerInfo[playerid][pOpiumSeeds]+PlayerInfo[playerid][pWSeeds]);
-			SendClientMessageEx(playerid, COLOR_WHITE, string);
-			PlayerInfo[playerid][pOpiumSeeds] = 0, PlayerInfo[playerid][pWSeeds] = 0;
-			format(string, sizeof(string), "* %s da nem bo hat giong cua ho.", GetPlayerNameEx(playerid));
-			ProxDetector(30.0, playerid, string, COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE);
-		}
-		else
-		{
-			SendErrorMessage(playerid, " Ban khong mang theo hat giong de vut bo!");
-		}
-	}
-    else if(strcmp(choice,"rawopium",true) == 0)
-	{
-		if(PlayerInfo[playerid][pRawOpium] > 0)
-		{
-			PlayerPlaySound(playerid, 1052, 0.0, 0.0, 0.0);
-			format(string, sizeof(string), "Ban da giam %d grams raw opium.", PlayerInfo[playerid][pRawOpium]);
-			SendClientMessageEx(playerid, COLOR_WHITE, string);
-			PlayerInfo[playerid][pRawOpium] = 0;
-			format(string, sizeof(string), "* %s da nem bo raw opium cua ho.", GetPlayerNameEx(playerid));
-			ProxDetector(30.0, playerid, string, COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE);
-		}
-		else
-		{
-			SendErrorMessage(playerid, " Ban khong tro bat ki raw opium nao de nem bo!");
-		}
-	}
-	else if(strcmp(choice,"heroin",true) == 0)
-	{
-		if(PlayerInfo[playerid][pHeroin] > 0)
-		{
-			PlayerPlaySound(playerid, 1052, 0.0, 0.0, 0.0);
-			format(string, sizeof(string), "Ban da giam %d grams heroin.", PlayerInfo[playerid][pHeroin]);
-			SendClientMessageEx(playerid, COLOR_WHITE, string);
-			PlayerInfo[playerid][pHeroin] = 0;
-			format(string, sizeof(string), "* %s da nem bo heroin cua ho.", GetPlayerNameEx(playerid));
-			ProxDetector(30.0, playerid, string, COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE);
-		}
-		else
-		{
-			SendErrorMessage(playerid, " Ban khong mang theo heroin de vut bo!");
-		}
-	}
-	else if(strcmp(choice,"syringes",true) == 0)
-	{
-		if(PlayerInfo[playerid][pSyringes] > 0)
-		{
-			PlayerPlaySound(playerid, 1052, 0.0, 0.0, 0.0);
-			format(string, sizeof(string), "Ban da giam %d bom kim tiem.", PlayerInfo[playerid][pSyringes]);
-			SendClientMessageEx(playerid, COLOR_WHITE, string);
-			PlayerInfo[playerid][pSyringes] = 0;
-			format(string, sizeof(string), "* %s nem bo kim tiem cua ho.", GetPlayerNameEx(playerid));
-			ProxDetector(30.0, playerid, string, COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE);
-		}
-		else
-		{
-			SendErrorMessage(playerid, " Ban khong mang theo kim tiem de vut bo!");
-		}
-	}
+// CMD:drop(playerid, params[])
+// {
+// 	new string[128], choice[32];
+// 	if(sscanf(params, "s[32]", choice))
+// 	{
+// 		SendUsageMessage(playerid, " /drop [name]");
+// 		SendSelectMessage(playerid, " Weapons, Pot, Crack, Materials, Packages, Crates, Radio, Pizza, Seeds, Rawopium, Heroin, Syringes");
+// 		return 1;
+// 	}
+//     else if(strcmp(choice,"seeds",true) == 0)
+// 	{
+// 		if(PlayerInfo[playerid][pOpiumSeeds] > 0 || PlayerInfo[playerid][pWSeeds] > 0)
+// 		{
+// 			PlayerPlaySound(playerid, 1052, 0.0, 0.0, 0.0);
+// 			format(string, sizeof(string), "Ban da giam %d hat giong.", PlayerInfo[playerid][pOpiumSeeds]+PlayerInfo[playerid][pWSeeds]);
+// 			SendClientMessageEx(playerid, COLOR_WHITE, string);
+// 			PlayerInfo[playerid][pOpiumSeeds] = 0, PlayerInfo[playerid][pWSeeds] = 0;
+// 			format(string, sizeof(string), "* %s da nem bo hat giong cua ho.", GetPlayerNameEx(playerid));
+// 			ProxDetector(30.0, playerid, string, COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE);
+// 		}
+// 		else
+// 		{
+// 			SendErrorMessage(playerid, " Ban khong mang theo hat giong de vut bo!");
+// 		}
+// 	}
+//     else if(strcmp(choice,"rawopium",true) == 0)
+// 	{
+// 		if(PlayerInfo[playerid][pRawOpium] > 0)
+// 		{
+// 			PlayerPlaySound(playerid, 1052, 0.0, 0.0, 0.0);
+// 			format(string, sizeof(string), "Ban da giam %d grams raw opium.", PlayerInfo[playerid][pRawOpium]);
+// 			SendClientMessageEx(playerid, COLOR_WHITE, string);
+// 			PlayerInfo[playerid][pRawOpium] = 0;
+// 			format(string, sizeof(string), "* %s da nem bo raw opium cua ho.", GetPlayerNameEx(playerid));
+// 			ProxDetector(30.0, playerid, string, COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE);
+// 		}
+// 		else
+// 		{
+// 			SendErrorMessage(playerid, " Ban khong tro bat ki raw opium nao de nem bo!");
+// 		}
+// 	}
+// 	else if(strcmp(choice,"heroin",true) == 0)
+// 	{
+// 		if(PlayerInfo[playerid][pHeroin] > 0)
+// 		{
+// 			PlayerPlaySound(playerid, 1052, 0.0, 0.0, 0.0);
+// 			format(string, sizeof(string), "Ban da giam %d grams heroin.", PlayerInfo[playerid][pHeroin]);
+// 			SendClientMessageEx(playerid, COLOR_WHITE, string);
+// 			PlayerInfo[playerid][pHeroin] = 0;
+// 			format(string, sizeof(string), "* %s da nem bo heroin cua ho.", GetPlayerNameEx(playerid));
+// 			ProxDetector(30.0, playerid, string, COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE);
+// 		}
+// 		else
+// 		{
+// 			SendErrorMessage(playerid, " Ban khong mang theo heroin de vut bo!");
+// 		}
+// 	}
+// 	else if(strcmp(choice,"syringes",true) == 0)
+// 	{
+// 		if(PlayerInfo[playerid][pSyringes] > 0)
+// 		{
+// 			PlayerPlaySound(playerid, 1052, 0.0, 0.0, 0.0);
+// 			format(string, sizeof(string), "Ban da giam %d bom kim tiem.", PlayerInfo[playerid][pSyringes]);
+// 			SendClientMessageEx(playerid, COLOR_WHITE, string);
+// 			PlayerInfo[playerid][pSyringes] = 0;
+// 			format(string, sizeof(string), "* %s nem bo kim tiem cua ho.", GetPlayerNameEx(playerid));
+// 			ProxDetector(30.0, playerid, string, COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE);
+// 		}
+// 		else
+// 		{
+// 			SendErrorMessage(playerid, " Ban khong mang theo kim tiem de vut bo!");
+// 		}
+// 	}
 
-	else if(strcmp(choice,"materials",true) == 0)
-	{
-		if(PlayerInfo[playerid][pMats] > 0)
-		{
-			PlayerPlaySound(playerid, 1052, 0.0, 0.0, 0.0);
-			format(string, sizeof(string), "Ban da giam %d Vat lieu.", PlayerInfo[playerid][pMats]);
-			SendClientMessageEx(playerid, COLOR_WHITE, string);
-			format(string, sizeof(string), "* %s da nem bo goi vat lieu cua ho.", GetPlayerNameEx(playerid));
-			ProxDetector(30.0, playerid, string, COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE);
-			PlayerInfo[playerid][pMats] = 0;
-		}
-		else
-		{
-			SendErrorMessage(playerid, " Ban khong tro bat ki goi vat lieu nao de nem bo!");
-		}
-	}
-	else if(strcmp(choice,"radio",true) == 0)
-	{
-		if(PlayerInfo[playerid][pRadio] != 0)
-		{
-			PlayerPlaySound(playerid, 1052, 0.0, 0.0, 0.0);
-			format(string, sizeof(string), "* %s da vut bo radio cam tay cua ho.", GetPlayerNameEx(playerid));
-			ProxDetector(30.0, playerid, string, COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE);
-			PlayerInfo[playerid][pRadio] = 0;
-			PlayerInfo[playerid][pRadioFreq] = 0;
-		}
-		else
-		{
-			SendErrorMessage(playerid, " Ban khong mang theo portable radio de vut bo!");
-		}
-	}
-	else if(strcmp(choice,"weapons",true) == 0)
-	{
-		if(GetPVarInt(playerid, "IsInArena") >= 0)
-		{
-			SendServerMessage(playerid, " Ban khong the lam dieu nay bay gio, ban dang trong arena!");
-			return 1;
-		}
-		if(GetPVarInt( playerid, "EventToken") != 0)
-		{
-			SendErrorMessage(playerid, " Ban khong the lam dieu nay khi dang tham gia su kien.");
-			return 1;
-		}
-		PlayerPlaySound(playerid, 1052, 0.0, 0.0, 0.0);
-		ResetPlayerWeaponsEx(playerid);
-		format(string, sizeof(string), "* %s da vut bo sung cua ho.", GetPlayerNameEx(playerid));
-		ProxDetector(30.0, playerid, string, COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE);
-	}
-	else if(strcmp(choice,"pot",true) == 0)
-	{
-		if(PlayerInfo[playerid][pPot] > 0)
-		{
-			format(string, sizeof(string), "Ban da giam %d grams pot.", PlayerInfo[playerid][pPot]);
-			SendClientMessageEx(playerid, COLOR_WHITE, string);
-			PlayerPlaySound(playerid, 1052, 0.0, 0.0, 0.0);
-			format(string, sizeof(string), "* %s da nem bo pot cua ho.", GetPlayerNameEx(playerid));
-			ProxDetector(30.0, playerid, string, COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE);
-			PlayerInfo[playerid][pPot] = 0;
-		}
-		else
-		{
-			SendErrorMessage(playerid, " Ban khong tro bat ki goi pot nao de vut bo!");
-		}
-	}
-	else if(strcmp(choice,"crack",true) == 0)
-	{
-		if(PlayerInfo[playerid][pCrack] > 0)
-		{
-			PlayerPlaySound(playerid, 1052, 0.0, 0.0, 0.0);
-			format(string, sizeof(string), "Ban da giam %d grams crack.", PlayerInfo[playerid][pCrack]);
-			SendClientMessageEx(playerid, COLOR_WHITE, string);
-			format(string, sizeof(string), "* %s da nem bo crack cua ho.", GetPlayerNameEx(playerid));
-			ProxDetector(30.0, playerid, string, COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE);
-			PlayerInfo[playerid][pCrack] = 0;
-		}
-		else
-		{
-			SendErrorMessage(playerid, " Ban khong tro bat ki goi crack nao de nem bo!");
-		}
-	}
-	else if(strcmp(choice,"packages",true) == 0)
-	{
-		if(GetPVarInt(playerid, "Packages") > 0)
-		{
-			PlayerPlaySound(playerid, 1052, 0.0, 0.0, 0.0);
-			format(string, sizeof(string), "* %s da nem bo goi vat lieu cua ho.", GetPlayerNameEx(playerid));
-			ProxDetector(30.0, playerid, string, COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE);
-			DeletePVar(playerid, "Packages");
-		}
-		else
-		{
-			SendErrorMessage(playerid, " Ban khong cho bat ki goi nao de nem bo!");
-		}
-	}
-	else if(strcmp(choice,"crates",true) == 0)
-	{
-		if(PlayerInfo[playerid][pCrates] > 0)
-		{
-			PlayerPlaySound(playerid, 1052, 0.0, 0.0, 0.0);
-			format(string, sizeof(string), "* %s da nem bo thung thuoc cua ho.", GetPlayerNameEx(playerid));
-			ProxDetector(30.0, playerid, string, COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE);
-			PlayerInfo[playerid][pCrates] = 0;
-		}
-		else
-		{
-			SendErrorMessage(playerid, " Ban khong cho bat ki thung thuoc nao de nem bo!");
-		}
-	}
-	else if(strcmp(choice,"pizza",true) == 0)
-	{
-		if(GetPVarInt(playerid, "Pizza") > 0)
-		{
-			PlayerPlaySound(playerid, 1052, 0.0, 0.0, 0.0);
-			format(string, sizeof(string), "* %s da nem bo banh pizza giao cua ho.", GetPlayerNameEx(playerid));
-			ProxDetector(30.0, playerid, string, COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE);
-            DeletePVar(playerid, "Pizza");
-		}
-		else
-		{
-			SendErrorMessage(playerid, " Ban khong cung cap pizzas!");
-		}
-	}
-	else
-	{
-		SendUsageMessage(playerid, " /drop [name]");
-		SendSelectMessage(playerid, " Weapons, Pot, Crack, Materials, Packages, Crates, Radio");
-	}
-	return 1;
-}
+// 	else if(strcmp(choice,"materials",true) == 0)
+// 	{
+// 		if(PlayerInfo[playerid][pMats] > 0)
+// 		{
+// 			PlayerPlaySound(playerid, 1052, 0.0, 0.0, 0.0);
+// 			format(string, sizeof(string), "Ban da giam %d Vat lieu.", PlayerInfo[playerid][pMats]);
+// 			SendClientMessageEx(playerid, COLOR_WHITE, string);
+// 			format(string, sizeof(string), "* %s da nem bo goi vat lieu cua ho.", GetPlayerNameEx(playerid));
+// 			ProxDetector(30.0, playerid, string, COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE);
+// 			PlayerInfo[playerid][pMats] = 0;
+// 		}
+// 		else
+// 		{
+// 			SendErrorMessage(playerid, " Ban khong tro bat ki goi vat lieu nao de nem bo!");
+// 		}
+// 	}
+// 	else if(strcmp(choice,"radio",true) == 0)
+// 	{
+// 		if(PlayerInfo[playerid][pRadio] != 0)
+// 		{
+// 			PlayerPlaySound(playerid, 1052, 0.0, 0.0, 0.0);
+// 			format(string, sizeof(string), "* %s da vut bo radio cam tay cua ho.", GetPlayerNameEx(playerid));
+// 			ProxDetector(30.0, playerid, string, COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE);
+// 			PlayerInfo[playerid][pRadio] = 0;
+// 			PlayerInfo[playerid][pRadioFreq] = 0;
+// 		}
+// 		else
+// 		{
+// 			SendErrorMessage(playerid, " Ban khong mang theo portable radio de vut bo!");
+// 		}
+// 	}
+// 	else if(strcmp(choice,"weapons",true) == 0)
+// 	{
+// 		if(GetPVarInt(playerid, "IsInArena") >= 0)
+// 		{
+// 			SendServerMessage(playerid, " Ban khong the lam dieu nay bay gio, ban dang trong arena!");
+// 			return 1;
+// 		}
+// 		if(GetPVarInt( playerid, "EventToken") != 0)
+// 		{
+// 			SendErrorMessage(playerid, " Ban khong the lam dieu nay khi dang tham gia su kien.");
+// 			return 1;
+// 		}
+// 		PlayerPlaySound(playerid, 1052, 0.0, 0.0, 0.0);
+// 		ResetPlayerWeaponsEx(playerid);
+// 		format(string, sizeof(string), "* %s da vut bo sung cua ho.", GetPlayerNameEx(playerid));
+// 		ProxDetector(30.0, playerid, string, COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE);
+// 	}
+// 	else if(strcmp(choice,"pot",true) == 0)
+// 	{
+// 		if(PlayerInfo[playerid][pPot] > 0)
+// 		{
+// 			format(string, sizeof(string), "Ban da giam %d grams pot.", PlayerInfo[playerid][pPot]);
+// 			SendClientMessageEx(playerid, COLOR_WHITE, string);
+// 			PlayerPlaySound(playerid, 1052, 0.0, 0.0, 0.0);
+// 			format(string, sizeof(string), "* %s da nem bo pot cua ho.", GetPlayerNameEx(playerid));
+// 			ProxDetector(30.0, playerid, string, COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE);
+// 			PlayerInfo[playerid][pPot] = 0;
+// 		}
+// 		else
+// 		{
+// 			SendErrorMessage(playerid, " Ban khong tro bat ki goi pot nao de vut bo!");
+// 		}
+// 	}
+// 	else if(strcmp(choice,"crack",true) == 0)
+// 	{
+// 		if(PlayerInfo[playerid][pCrack] > 0)
+// 		{
+// 			PlayerPlaySound(playerid, 1052, 0.0, 0.0, 0.0);
+// 			format(string, sizeof(string), "Ban da giam %d grams crack.", PlayerInfo[playerid][pCrack]);
+// 			SendClientMessageEx(playerid, COLOR_WHITE, string);
+// 			format(string, sizeof(string), "* %s da nem bo crack cua ho.", GetPlayerNameEx(playerid));
+// 			ProxDetector(30.0, playerid, string, COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE);
+// 			PlayerInfo[playerid][pCrack] = 0;
+// 		}
+// 		else
+// 		{
+// 			SendErrorMessage(playerid, " Ban khong tro bat ki goi crack nao de nem bo!");
+// 		}
+// 	}
+// 	else if(strcmp(choice,"packages",true) == 0)
+// 	{
+// 		if(GetPVarInt(playerid, "Packages") > 0)
+// 		{
+// 			PlayerPlaySound(playerid, 1052, 0.0, 0.0, 0.0);
+// 			format(string, sizeof(string), "* %s da nem bo goi vat lieu cua ho.", GetPlayerNameEx(playerid));
+// 			ProxDetector(30.0, playerid, string, COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE);
+// 			DeletePVar(playerid, "Packages");
+// 		}
+// 		else
+// 		{
+// 			SendErrorMessage(playerid, " Ban khong cho bat ki goi nao de nem bo!");
+// 		}
+// 	}
+// 	else if(strcmp(choice,"crates",true) == 0)
+// 	{
+// 		if(PlayerInfo[playerid][pCrates] > 0)
+// 		{
+// 			PlayerPlaySound(playerid, 1052, 0.0, 0.0, 0.0);
+// 			format(string, sizeof(string), "* %s da nem bo thung thuoc cua ho.", GetPlayerNameEx(playerid));
+// 			ProxDetector(30.0, playerid, string, COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE);
+// 			PlayerInfo[playerid][pCrates] = 0;
+// 		}
+// 		else
+// 		{
+// 			SendErrorMessage(playerid, " Ban khong cho bat ki thung thuoc nao de nem bo!");
+// 		}
+// 	}
+// 	else if(strcmp(choice,"pizza",true) == 0)
+// 	{
+// 		if(GetPVarInt(playerid, "Pizza") > 0)
+// 		{
+// 			PlayerPlaySound(playerid, 1052, 0.0, 0.0, 0.0);
+// 			format(string, sizeof(string), "* %s da nem bo banh pizza giao cua ho.", GetPlayerNameEx(playerid));
+// 			ProxDetector(30.0, playerid, string, COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE);
+//             DeletePVar(playerid, "Pizza");
+// 		}
+// 		else
+// 		{
+// 			SendErrorMessage(playerid, " Ban khong cung cap pizzas!");
+// 		}
+// 	}
+// 	else
+// 	{
+// 		SendUsageMessage(playerid, " /drop [name]");
+// 		SendSelectMessage(playerid, " Weapons, Pot, Crack, Materials, Packages, Crates, Radio");
+// 	}
+// 	return 1;
+// }
 
 CMD:show(playerid, params[])
 {

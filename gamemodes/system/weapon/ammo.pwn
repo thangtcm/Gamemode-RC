@@ -540,6 +540,54 @@ stock SetPlayerWeaponsEx(playerid)
 		{
 			GivePlayerValidWeapon(playerid, PlayerInfo[playerid][pGuns][11], 60000);
 		}
+		if(PlayerInfo[playerid][pGuns][0] > 0 && PlayerInfo[playerid][pAGuns][0] == 0)
+		{
+			GivePlayerValidWeapon(playerid, PlayerInfo[playerid][pGuns][0], 60000);
+		}
+		if(PlayerInfo[playerid][pASGuns][1] > 0)
+		{
+			GivePlayerValidWeapon(playerid, PlayerInfo[playerid][pASGuns][1], 60000);
+		}
+		if(PlayerInfo[playerid][pASGuns][2] > 0 && PlayerAmmo[playerid][1] > 0)
+		{
+			GivePlayerValidWeapon(playerid, PlayerInfo[playerid][pASGuns][2], PlayerAmmo[playerid][1]);
+		}
+		if(PlayerInfo[playerid][pASGuns][3] > 0 && PlayerAmmo[playerid][2] > 0)
+		{
+			GivePlayerValidWeapon(playerid, PlayerInfo[playerid][pASGuns][3], PlayerAmmo[playerid][2]);
+		}
+		if(PlayerInfo[playerid][pASGuns][4] > 0 && PlayerAmmo[playerid][3] > 0)
+		{
+			GivePlayerValidWeapon(playerid, PlayerInfo[playerid][pASGuns][4], PlayerAmmo[playerid][3]);
+		}
+		if(PlayerInfo[playerid][pASGuns][5] > 0 && PlayerAmmo[playerid][4] > 0)
+		{
+			GivePlayerValidWeapon(playerid, PlayerInfo[playerid][pASGuns][5], PlayerAmmo[playerid][4]);
+		}
+		if(PlayerInfo[playerid][pASGuns][6] > 0 && PlayerAmmo[playerid][5] > 0)
+		{
+			GivePlayerValidWeapon(playerid, PlayerInfo[playerid][pASGuns][6], PlayerAmmo[playerid][5]);
+		}
+		if(PlayerInfo[playerid][pASGuns][7] > 0 && PlayerAmmo[playerid][6] > 0)
+		{
+			GivePlayerValidWeapon(playerid, PlayerInfo[playerid][pASGuns][7], PlayerAmmo[playerid][6]);
+		}
+		if(PlayerInfo[playerid][pASGuns][8] > 0 && PlayerAmmo[playerid][7] > 0)
+		{
+			GivePlayerValidWeapon(playerid, PlayerInfo[playerid][pASGuns][8], PlayerAmmo[playerid][7]);
+		}
+		if(PlayerInfo[playerid][pASGuns][9] > 0 && PlayerAmmo[playerid][8] > 0)
+		{
+			GivePlayerValidWeapon(playerid, PlayerInfo[playerid][pASGuns][9], PlayerAmmo[playerid][8]);
+		}
+		if(PlayerInfo[playerid][pASGuns][10] > 0)
+		{
+			GivePlayerValidWeapon(playerid, PlayerInfo[playerid][pASGuns][10], 60000);
+		}
+		if(PlayerInfo[playerid][pASGuns][11] > 0)
+		{
+			GivePlayerValidWeapon(playerid, PlayerInfo[playerid][pASGuns][11], 60000);
+		}
 	}
 	SetPlayerArmedWeapon(playerid, GetPVarInt(playerid, "LastWeapon"));
 }

@@ -1,42 +1,44 @@
 
 new Float:PosSpamXeLincese[13][4] = {
-	{1445.9119,-1837.9928,13.2016,88.0349},
-	{1456.4446,-1838.3541,13.2029,88.0348},
-	{1468.9463,-1838.7815,13.2062,88.0344},
-	{1484.0825,-1839.3005,13.2060,88.0341},
-	{1500.9413,-1839.8793,13.2037,88.0343},
-	{1519.9199,-1840.5289,13.2050,88.0341},
-	{1535.8464,-1841.0750,13.2059,88.0338},
-	{1532.2242,-1845.2850,13.2027,89.2910},
-	{1515.8356,-1845.0823,13.1972,89.2909},
-	{1496.7513,-1844.8461,13.2005,89.2913},
-	{1477.4598,-1844.6074,13.1970,89.2915},
-	{1451.9580,-1844.2924,13.1965,89.2920},
-	{1433.6875,-1844.0659,13.1965,89.2914}
+	{1228.9402,240.5223,19.4063,158.6938},
+	{1228.9402,240.5223,19.4063,158.6938},
+	{1228.9402,240.5223,19.4063,158.6938},
+	{1228.9402,240.5223,19.4063,158.6938},
+	{1228.9402,240.5223,19.4063,158.6938},
+	{1228.9402,240.5223,19.4063,158.6938},
+	{1228.9402,240.5223,19.4063,158.6938},
+	{1228.9402,240.5223,19.4063,158.6938},
+	{1228.9402,240.5223,19.4063,158.6938},
+	{1228.9402,240.5223,19.4063,158.6938},
+	{1228.9402,240.5223,19.4063,158.6938},
+	{1228.9402,240.5223,19.4063,158.6938},
+	{1228.9402,240.5223,19.4063,158.6938}
 };
 
 
 
-new Float:CheckPointLincense[19][3] = {
-{1396.2833,-1854.1860,13.1987},
-{1308.9808,-1851.7272,13.0378},
-{1066.1506,-1852.4757,13.0503},
-{920.3820,-1772.8195,13.0435},
-{918.4958,-1564.0211,13.0383},
-{917.0357,-1404.9038,12.9121},
-{1358.0099,-1401.8512,12.9620},
-{1455.8229,-1444.2722,13.0435},
-{1677.1183,-1442.5297,13.0362},
-{1850.2520,-1461.0669,13.0506},
-{2106.7249,-1465.4827,23.4856},
-{2086.7739,-1753.6436,13.0571},
-{1834.9203,-1749.9318,13.0361},
-{1705.7441,-1731.6935,13.0360},
-{1572.7560,-1732.0654,13.0385},
-{1391.3323,-1742.4547,13.0367},
-{1430.3444,-1831.0839,13.1935},
-{1430.3444,-1831.0839,13.1935},
-{1430.3444,-1831.0839,13.1935}
+new Float:CheckPointLincense[21][3] = {
+	{1243.7153,269.0829,19.4063}, //1
+	{1201.8435,291.4996,19.4063}, //2
+	{1226.1063,353.0921,19.4063}, //3
+	{1274.4603,339.2561,19.4115}, //4
+	{1296.4961,376.2139,19.4063}, //5
+	{1338.5752,359.3585,19.4063}, //6
+	{1317.5883,312.8614,19.4063}, //7
+	{1363.9290,291.6877,19.4063}, //8
+	{1336.5966,227.8452,19.4063}, //9
+	{1390.1343,204.8535,19.4063}, //10
+	{1440.6486,183.0667,22.8004}, //11
+	{1488.1987,163.7778,29.8833}, //12
+	{1527.3568,105.6040,29.4787}, //13
+	{1462.4253,61.2825,30.6948}, //14
+	{1407.7551,14.5576,32.4829}, //15
+	{1301.5416,-78.6849,36.4803}, //16
+	{1249.7988,3.5941,27.2588}, //17
+	{1243.3496,139.0621,19.8191}, //18
+	{1262.0869,183.2326,19.4063}, //19
+	{1219.6520,207.8302,19.4063}, //20
+	{1228.9402,240.5223,19.4063} //end task
 };
 new PlayerLincenseAttemp[MAX_PLAYERS];
 new VehicleDrivertest[MAX_PLAYERS];
@@ -46,7 +48,7 @@ CMD:thibanglai(playerid,parmas[]) {
 	if(GetPVarInt(playerid, "is_DriverTest") == 1) return SendErrorMessage(playerid, " Ban dang thi bang lai roi khong the tiep tuc.");
 	if(!IsPlayerInRangeOfPoint(playerid, 3, 1222.5018,243.8309,19.5469)) return SendErrorMessage(playerid," Ban khong o gan noi thi bang lai.");
     SendClientMessageEx(playerid, COLOR_YELLOW, "Ban dang bat dau thi bang lai, hay thuc hien hoan thanh bai kiem tra thuc hanh nhe.");
-    SendClientMessageEx(playerid, COLOR_YELLOW, "Dieu kien de hoan thanh: khong vuot qua 70 km/h, phuong tien khong bi hu hong.");
+    SendClientMessageEx(playerid, COLOR_YELLOW, "Dieu kien de hoan thanh: khong vuot qua 60 km/h, phuong tien khong bi hu hong.");
     new pos = random(13);
     SetPlayerPos(playerid,PosSpamXeLincese[pos][0],PosSpamXeLincese[pos][1],PosSpamXeLincese[pos][2]);
     VehicleDrivertest[playerid] = CreateVehicle(410, PosSpamXeLincese[pos][0],PosSpamXeLincese[pos][1],PosSpamXeLincese[pos][2],PosSpamXeLincese[pos][3], 1, 1, -1);
@@ -65,11 +67,11 @@ public OnPlayerEnterRaceCheckpoint(playerid)
 	{
 	    PlayerLincenseAttemp[playerid]++; 
 
-        if(PlayerLincenseAttemp[playerid] == 17) {
+        if(PlayerLincenseAttemp[playerid] == 21) {
         	new Float:vehhp;
 			new vehicleid = GetPlayerVehicleID(playerid);
         	GetVehicleHealth(vehicleid,vehhp);
-        	if(vehhp < 900 || GetVehicleSpeed(vehicleid) >= 70) {
+        	if(vehhp < 900 || GetVehicleSpeed(vehicleid) >= 60) {
         		SendClientMessageEx(playerid,COLOR_VANG,"Ban da that bai trong bai kiem tra thuc hanh, ban khong duoc nhan bang lai xe.");
         		DestroyVehicle(VehicleDrivertest[playerid]);
         		DeletePVar(playerid, "is_DriverTest");

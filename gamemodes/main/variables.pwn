@@ -1468,7 +1468,7 @@ new TruckActor;
 new MinerActor[2];
 new PizzaActor;
 
-new ActorFarmer;
+new ActorFarmer[MAX_PLAYERS];
 enum 	e_labeltypes
 {
 	Text3D: TYPE_KEYPAD,
@@ -1652,17 +1652,28 @@ new BoatDropoffs[][CargoArrayData] =
 	{-492.1511,617.2073,-0.4076}, // boat dropoff
 	{1188.8872,654.2936,-0.3999} // boat dropoff
 };
-
+new FarmPlantArea, PlayerFarmArea;
+new Float:farm_area_v1[] = {
+	-1449.4784,-1505.7494,
+	-1466.2009,-1507.0875,
+	-1463.9092,-1534.1356,
+	-1447.2477,-1533.6912,
+	-1449.4784,-1505.7494
+};
+new Float:farm_area_v2[] = {
+	-1395.3156,-1599.5948,
+	-1474.5533,-1600.5260,
+	-1473.6438,-1437.4464,
+	-1398.0452,-1436.2637,
+	-1395.3156,-1599.5948
+};
 new const Drinks[][] =
 {
-	"Beer",
-	"Chivas 62",
-	"Whiskey",
-	"Martini",
-	"Tequilla",
-	"Gin",
-	"Water",
-	"Soda"
+	"Pizza",
+	"Hamburger",
+	"Bread",
+	"Juice",
+	"Beer"
 };
 
 new const SexItems[][] =
@@ -1675,13 +1686,11 @@ new const SexItems[][] =
 
 new const RestaurantItems[][] =
 {
-	"Hambuger",
 	"Pizza",
-	"Banh Mi",
-	"Nuoc Suoi",
-	"Sting",
-	"7up",
-	"Cocacola"
+	"Hamburger",
+	"Bread",
+	"Juice",
+	"Beer"
 };
 
 new const Weapons[][WeaponsEnum] =

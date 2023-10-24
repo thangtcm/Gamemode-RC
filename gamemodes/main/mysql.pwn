@@ -7922,7 +7922,7 @@ public OnPlayerLoad(playerid)
 		PlayerInfo[playerid][pPhoneBook] = 0;
 		PlayerInfo[playerid][pFishes] = 0;
 		PlayerInfo[playerid][pGcoin] = 0;
-		PlayerInfo[playerid][pCapacity] = 16;
+		PlayerInfo[playerid][pCapacity] = 30;
 		PlayerInfo[playerid][pInventoryItem] = 0;
 		PlayerInfo[playerid][pBiggestFish] = 0;
 		PlayerInfo[playerid][pJob] = 0;
@@ -8347,7 +8347,7 @@ public OnPlayerLoad(playerid)
 	SetPlayerToTeamColor(playerid);
 
 	Inventory_Load(playerid);
-
+	FarmPlants_LOAD(playerid);
 	format(string, sizeof(string), "SELECT * FROM `rentedcars` WHERE `sqlid` = '%d'", GetPlayerSQLId(playerid));
 	mysql_function_query(MainPipeline, string, true, "LoadRentedCar", "i", playerid);
 

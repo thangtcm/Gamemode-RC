@@ -600,15 +600,17 @@ task MoneyUpdate[1000]()
 				PlayerTextDrawHide(i, SpeedoTD[i][6]);
 				PlayerTextDrawHide(i, SpeedoTD[i][7]);
 			}
-			if(GetPVarInt(i, "togRadio") == 1 || PlayerInfo[i][pRadio] == 0)
-    	    {
-    		    PlayerTextDrawHide(i, RadioInfo[i]);
-	 		    PlayerTextDrawHide(i, ChannelInfo[i]);
-	 		    PlayerTextDrawHide(i, SlotInfo[i]);
-    	    }
-    	    else {
-    		    UpdateRadio(i);
-    	    }
+			PlantTree_Timer(i);
+			// if(Inventory_HasItem(i, "Radio"))
+    	    // {
+			// 	UpdateRadio(i);
+    		// //     PlayerTextDrawHide(i, RadioInfo[i]);
+	 		// //     PlayerTextDrawHide(i, ChannelInfo[i]);
+	 		// //     PlayerTextDrawHide(i, SlotInfo[i]);
+    	    // // }
+    	    // // else {
+    		// //     UpdateRadio(i);
+    	    // }
 			if(IsSpawned[i] > 0 && SpawnKick[i] > 0)
 			{
 				SpawnKick[i] = 0;

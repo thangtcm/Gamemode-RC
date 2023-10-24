@@ -1197,48 +1197,48 @@ PayDay(i) {
 			if(PlayerInfo[i][pNation] == 0)
 			{
 				format(string, sizeof(string), "  Paycheck: {10ff2c}$%s{ffffff}  |  SA Gov Tax: {10ff2c}$%s{ffffff} ({fdff25}%d{ffffff} phan tram)", number_format(PlayerInfo[i][pPayCheck]), number_format((PlayerInfo[i][pPayCheck] / 100) * TaxValue), TaxValue);
-				PlayerInfo[i][pAccount] -= (PlayerInfo[i][pPayCheck] / 100) * TaxValue;
-				Tax += (PlayerInfo[i][pPayCheck] / 100) * TaxValue;
+				PlayerInfo[i][pAccount] -= (PlayerInfo[i][pPayCheck] / 1000) * TaxValue;
+				Tax += (PlayerInfo[i][pPayCheck] / 1000) * TaxValue;
 			}
 			else if(PlayerInfo[i][pNation] == 1)
 			{
 				format(string, sizeof(string), "  Paycheck: {10ff2c}$%s{ffffff} |  TR Gov Tax: {10ff2c}$%s{ffffff} ({fdff25}%d{ffffff} phan tram)", number_format(PlayerInfo[i][pPayCheck]), number_format((PlayerInfo[i][pPayCheck] / 100) * TRTaxValue), TRTaxValue);
-				PlayerInfo[i][pAccount] -= (PlayerInfo[i][pPayCheck] / 100) * TRTaxValue;
-				TRTax += (PlayerInfo[i][pPayCheck] / 100) * TRTaxValue;
+				PlayerInfo[i][pAccount] -= (PlayerInfo[i][pPayCheck] / 1000) * TRTaxValue;
+				TRTax += (PlayerInfo[i][pPayCheck] / 1000) * TRTaxValue;
 			}
 			SendClientMessageEx(i, COLOR_GRAD1, string);
-			interest = (PlayerInfo[i][pAccount] + 1) / 100;
+			interest = (PlayerInfo[i][pAccount] + 1) / 1000;
 
-			switch(PlayerInfo[i][pDonateRank]) {
-				case 0: {
-					if(interest > 500) interest = 500;
-					format(string, sizeof(string), "  Tien con lai: {10ff2c}$%s{ffffff}  |  Lai suat: {fdff25}0.1{ffffff} phan tram ($500 max)", number_format(PlayerInfo[i][pAccount]));
-					SendClientMessageEx(i, COLOR_WHITE, string);
-				}
-				case 1: {
-					if(interest > 600) interest = 600;
-					format(string, sizeof(string), "  Tien con lai: {10ff2c}$%s{ffffff}  |  Lai suat: {fdff25}0.1{ffffff} phan tram ($600 max)", number_format(PlayerInfo[i][pAccount]));
-					SendClientMessageEx(i, COLOR_WHITE, string);
-				}
-				case 2:	{
-					if(interest > 700) interest = 700;
-					format(string, sizeof(string), "  Tien con lai: {10ff2c}$%s{ffffff}  |  Lai suat: {fdff25}0.1{ffffff} phan tram ($700 max)", number_format(PlayerInfo[i][pAccount]));
-					SendClientMessageEx(i, COLOR_WHITE, string);
-				}
-				case 3: {
-					if(interest > 800) interest = 800;
-					format(string, sizeof(string), "  Tien con lai: {10ff2c}$%s{ffffff}  |  Lai suat: {fdff25}0.1{ffffff} phan tram ($800 max)", number_format(PlayerInfo[i][pAccount]));
-					SendClientMessageEx(i, COLOR_WHITE, string);
-				}
-				case 4, 5: {
-					if(interest > 900) interest = 900;
-					format(string, sizeof(string), "  Tien con lai: {10ff2c}$%s{ffffff}  |  Lai suat: {fdff25}0.1{ffffff} phan tram ($900 max)", number_format(PlayerInfo[i][pAccount]));
-					SendClientMessageEx(i, COLOR_WHITE, string);
-				}
-			}
+			// switch(PlayerInfo[i][pDonateRank]) {
+			// 	case 0: {
+			// 		if(interest > 500) interest = 500;
+			// 		format(string, sizeof(string), "  Tien con lai: {10ff2c}$%s{ffffff}  |  Lai suat: {fdff25}0.1{ffffff} phan tram ($500 max)", number_format(PlayerInfo[i][pAccount]));
+			// 		SendClientMessageEx(i, COLOR_WHITE, string);
+			// 	}
+			// 	case 1: {
+			// 		if(interest > 600) interest = 600;
+			// 		format(string, sizeof(string), "  Tien con lai: {10ff2c}$%s{ffffff}  |  Lai suat: {fdff25}0.1{ffffff} phan tram ($600 max)", number_format(PlayerInfo[i][pAccount]));
+			// 		SendClientMessageEx(i, COLOR_WHITE, string);
+			// 	}
+			// 	case 2:	{
+			// 		if(interest > 700) interest = 700;
+			// 		format(string, sizeof(string), "  Tien con lai: {10ff2c}$%s{ffffff}  |  Lai suat: {fdff25}0.1{ffffff} phan tram ($700 max)", number_format(PlayerInfo[i][pAccount]));
+			// 		SendClientMessageEx(i, COLOR_WHITE, string);
+			// 	}
+			// 	case 3: {
+			// 		if(interest > 800) interest = 800;
+			// 		format(string, sizeof(string), "  Tien con lai: {10ff2c}$%s{ffffff}  |  Lai suat: {fdff25}0.1{ffffff} phan tram ($800 max)", number_format(PlayerInfo[i][pAccount]));
+			// 		SendClientMessageEx(i, COLOR_WHITE, string);
+			// 	}
+			// 	case 4, 5: {
+			// 		if(interest > 900) interest = 900;
+			// 		format(string, sizeof(string), "  Tien con lai: {10ff2c}$%s{ffffff}  |  Lai suat: {fdff25}0.1{ffffff} phan tram ($900 max)", number_format(PlayerInfo[i][pAccount]));
+			// 		SendClientMessageEx(i, COLOR_WHITE, string);
+			// 	}
+			// }
 			if(PlayerInfo[i][pTaxiLicense] == 1) {
-				PlayerInfo[i][pAccount] -= (PlayerInfo[i][pPayCheck] / 100) * 1;
-				Tax += (PlayerInfo[i][pPayCheck] / 100) * 1;
+				PlayerInfo[i][pAccount] -= (PlayerInfo[i][pPayCheck] / 1000) * 1;
+				Tax += (PlayerInfo[i][pPayCheck] / 1000) * 1;
 				format(string, sizeof(string), "  Le phi giay phep Taxi ({fdff25}1 phan tram{ffffff}): {10ff2c}$%s", number_format((PlayerInfo[i][pPayCheck] / 100) * 5));
 				SendClientMessageEx(i, COLOR_WHITE, string);
 			}
@@ -1251,7 +1251,7 @@ PayDay(i) {
 						if(arrGroupData[iGroupID][g_iGroupType] == 5)
 						{
 							new str[128], file[32];
-							format(str, sizeof(str), "%s da tra $%s tien thue.", GetPlayerNameEx(i), number_format((PlayerInfo[i][pPayCheck] / 100) * TaxValue));
+							format(str, sizeof(str), "%s da tra $%s tien thue.", GetPlayerNameEx(i), number_format((PlayerInfo[i][pPayCheck] / 1000) * TaxValue));
 							format(file, sizeof(file), "grouppay/%d/%d-%d-%d.log", iGroupID, month, day, year);
 							Log(file, str);
 						}
@@ -1264,7 +1264,7 @@ PayDay(i) {
 						if(arrGroupData[iGroupID][g_iGroupType] == 5)
 						{
 							new str[128], file[32];
-							format(str, sizeof(str), "%s da tra $%s tien thue.", GetPlayerNameEx(i), number_format((PlayerInfo[i][pPayCheck] / 100) * TaxValue));
+							format(str, sizeof(str), "%s da tra $%s tien thue.", GetPlayerNameEx(i), number_format((PlayerInfo[i][pPayCheck] / 1000) * TaxValue));
 							format(file, sizeof(file), "grouppay/%d/%d-%d-%d.log", iGroupID, month, day, year);
 							Log(file, str);
 						}
@@ -1275,8 +1275,8 @@ PayDay(i) {
 			format(string, sizeof(string), "  Lai thu duoc: $%s", number_format(interest));
 			SendClientMessageEx(i, COLOR_WHITE, string);
 			SendClientMessageEx(i, COLOR_WHITE, "______________________________________");
-			format(string, sizeof(string), "  Moi-Tien con lai: $%s  |  Tra thue: $%s", number_format(PlayerInfo[i][pAccount]), number_format((0 <= PlayerInfo[i][pRenting] < sizeof HouseInfo) ? (HouseInfo[PlayerInfo[i][pRenting]][hRentFee]) : (0)));
-			SendClientMessageEx(i, COLOR_WHITE, string);
+			// format(string, sizeof(string), "  Moi-Tien con lai: $%s  |  Tra thue: $%s", number_format(PlayerInfo[i][pAccount]), number_format((0 <= PlayerInfo[i][pRenting] < sizeof HouseInfo) ? (HouseInfo[PlayerInfo[i][pRenting]][hRentFee]) : (0)));
+			// SendClientMessageEx(i, COLOR_WHITE, string);
 
 			GivePlayerCash(i, PlayerInfo[i][pPayCheck]);
 
@@ -12121,7 +12121,7 @@ stock IsAtDeliverPatientPoint(playerid)
 		{//ALLSAINTS, ALL SAINTS ROOF, COUNTY GENERAL, COUNTY ROOF
 			return 1;
 		}
-		else if(IsPlayerInRangeOfPoint(playerid, 4.0, 1227.2339,306.4730,19.7028) || IsPlayerInRangeOfPoint(playerid, 5.0, 1233.3384,316.4022,24.7578) || IsPlayerInRangeOfPoint(playerid, 3.0,-339.2989,1055.8138,19.7392) || IsPlayerInRangeOfPoint(playerid, 5.0, -334.1560,1051.4434,26.0125))
+		else if(IsPlayerInRangeOfPoint(playerid, 4.0, 1227.2339,306.4730,19.7028) || IsPlayerInRangeOfPoint(playerid, 5.0, 1233.3384,316.4022,24.7578) || IsPlayerInRangeOfPoint(playerid, 3.0,-339.2989,1055.8138,19.7392) || IsPlayerInRangeOfPoint(playerid, 5.0, -334.1560,1051.4434,26.0125) || IsPlayerInRangeOfPoint(playerid, 5.0, 1256.2775, -1299.9001, 1061.8671))
 		{//RED COUNTY, RED COUNTY ROOF, FORT CARSON, Fortcarson ROOF
 			return 1;
 		}
@@ -13361,13 +13361,15 @@ stock GivePlayerStoreItem(playerid, type, business, item, price)
   	{
   		case ITEM_CELLPHONE:
 		{
-			new randphone = 99999 + random(900000);
-			new query[128];
-			SetPVarInt(playerid, "WantedPh", randphone);
-			SetPVarInt(playerid, "CurrentPh", PlayerInfo[playerid][pPnumber]);
-	       // SetPVarInt(playerid, "PhChangeCost", 500);
-			format(query, sizeof(query), "SELECT `Username` FROM `accounts` WHERE `PhoneNr` = '%d'",randphone);
-			mysql_function_query(MainPipeline, query, true, "OnPhoneNumberCheck", "ii", playerid, 2);
+			if(!Inventory_HasItem(playerid, "Dien thoai")) {
+				if(!Inventory_Add(playerid, "Dien thoai")) return 1;
+				new randphone = 99999 + random(900000);
+				new query[128];
+				SetPVarInt(playerid, "WantedPh", randphone);
+				SetPVarInt(playerid, "CurrentPh", PlayerInfo[playerid][pPnumber]);
+				format(query, sizeof(query), "SELECT `Username` FROM `accounts` WHERE `PhoneNr` = '%d'",randphone);
+				mysql_function_query(MainPipeline, query, true, "OnPhoneNumberCheck", "ii", playerid, 2);
+			}
 		}
   		case ITEM_PHONEBOOK:
 		{
@@ -13383,16 +13385,15 @@ stock GivePlayerStoreItem(playerid, type, business, item, price)
 		}
   		case ITEM_CONDOM:
 		{
-			if(PlayerInfo[playerid][pGPS] == 0) {
-				PlayerInfo[playerid][pGPS] = 1;
-				//AddItemInventory(playerid,22,1);
-
+			if(!Inventory_HasItem(playerid, "GPS")) {
+				if(!Inventory_Add(playerid, "GPS")) return 1;
 				SendClientMessageEx(playerid, COLOR_WHITE, "Ban da mua GPS thanh cong, su dung /inv > GPS");
 			}
 			else return SendClientMessageEx(playerid, COLOR_WHITE, "Ban da so huu GPS");
 		}
   		case ITEM_MUSICPLAYER:
 		{
+			
 			PlayerInfo[playerid][pCDPlayer] = 1;
 			SendClientMessageEx(playerid, COLOR_GRAD4, "Ban da mua may nghe nhac");
 			SendClientMessageEx(playerid, COLOR_WHITE, "HUONG DAN: Su dung /music de nghe nhac");
@@ -13437,11 +13438,13 @@ stock GivePlayerStoreItem(playerid, type, business, item, price)
 		}
   		case ITEM_RADIO:
 		{
-			PlayerInfo[playerid][pRadio] = 1;
-			PlayerInfo[playerid][pRadioFreq] = 0;
-			SendClientMessageEx(playerid, COLOR_GRAD4, "Ban da mua radio lien lac.");
-			SendClientMessageEx(playerid, COLOR_WHITE, "HUONG DAN: Su dung /pr de lien lac voi nhung nguoi trong cung tan so.");
-			SendClientMessageEx(playerid, COLOR_WHITE, "HUONG DAN: Su dung /tanso de thay doi tan so radio.");
+			if(!Inventory_HasItem(playerid, "Radio")) {
+				if(!Inventory_Add(playerid, "Radio")) return 1;
+				PlayerInfo[playerid][pRadioFreq] = 0;
+				SendClientMessageEx(playerid, COLOR_GRAD4, "Ban da mua radio lien lac.");
+				SendClientMessageEx(playerid, COLOR_WHITE, "HUONG DAN: Su dung /pr de lien lac voi nhung nguoi trong cung tan so.");
+				SendClientMessageEx(playerid, COLOR_WHITE, "HUONG DAN: Su dung /tanso de thay doi tan so radio.");
+			}
 		}
   		case ITEM_CAMERA:
 		{
@@ -13526,11 +13529,9 @@ stock GivePlayerStoreItem(playerid, type, business, item, price)
 		}
 		case ITEM_GPS:
 		{
-			if(PlayerInfo[playerid][pGPS] == 0) {
-				PlayerInfo[playerid][pGPS] = 1;
+			if(Inventory_HasItem(playerid, "Radio")) {
+				return SendClientMessageEx(playerid, COLOR_WHITE, "Ban da so huu GPS");
 			}
-
-			else return SendClientMessageEx(playerid, COLOR_WHITE, "Ban da so huu GPS");
 		}
 		default:
 		{
@@ -15696,7 +15697,7 @@ stock RadioBroadCast(playerid, string[])
 	new MiscString[128], Float: aaaPositions[3];
 	foreach(new i: Player)
 	{
-		if(PlayerInfo[i][pRadioFreq] == PlayerInfo[playerid][pRadioFreq] && PlayerInfo[i][pRadio] >= 1 && gRadio{i} != 0)
+		if(PlayerInfo[i][pRadioFreq] == PlayerInfo[playerid][pRadioFreq] && Inventory_HasItem(playerid, "Radio") && gRadio{i} != 0)
 		{
 		    PlayerInfo[playerid][pServiceTime] = gettime()+3;
 			GetPlayerPos(i, aaaPositions[0], aaaPositions[1], aaaPositions[2]);
@@ -17928,8 +17929,6 @@ stock SpawnZombie(playerid)
 	ClearAnimations(playerid);
 	return 1;
 }
-
-
 
 stock xoaradio(playerid)
 {
@@ -23349,11 +23348,11 @@ stock UpdateRadio(playerid) {
 	new str[62];
 	format(str,sizeof str, "~w~Tan so: ~y~%d", PlayerInfo[playerid][pRadioFreq]);
     PlayerTextDrawSetString(playerid, ChannelInfo[playerid], str);
-	str = "~w~Slot: ~y~0";
-	PlayerTextDrawSetString(playerid, SlotInfo[playerid], str);
-	PlayerTextDrawShow(playerid, RadioInfo[playerid]);
-	PlayerTextDrawShow(playerid, ChannelInfo[playerid]);
-	PlayerTextDrawShow(playerid, SlotInfo[playerid]);
+	// str = "~w~Slot: ~y~0";
+	// PlayerTextDrawSetString(playerid, SlotInfo[playerid], str);
+	// PlayerTextDrawShow(playerid, RadioInfo[playerid]);
+	// PlayerTextDrawShow(playerid, ChannelInfo[playerid]);
+	// PlayerTextDrawShow(playerid, SlotInfo[playerid]);
 	return 1;
 }
 

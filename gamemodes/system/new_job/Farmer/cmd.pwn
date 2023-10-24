@@ -5,6 +5,37 @@ CMD:thuenongtrai(playerid, params[])
     return 1;
 }
 
+CMD:exitfarm(playerid, params[])
+{
+	if(IsPlayerInDynamicArea(playerid, PlayerFarmArea))
+	{
+		LeaveAreaFarm(playerid, PlayerFarmArea);
+	}
+	return 1;
+}
+
+CMD:gotofarm(playerid, params[])
+{
+	if(PlayerInfo[playerid][pAdmin] >= 4 || PlayerInfo[playerid][pShopTech] >= 1)
+	{
+		new farmid;
+		if(sscanf(params, "d", farmid)) return SendUsageMessage(playerid, " /gotofarm [farmer id]");
+		if(!FarmInfo[farmid][Exsits]) return SendErrorMessage(playerid, " Invalid farmer ID specified.");
+		if (FarmInfo[farmid][ExteriorX] == 0.0) return SendErrorMessage(playerid, " No exterior set for this farmer.");
+		GameTextForPlayer(playerid, "~w~Teleporting", 5000, 1);
+		SetPlayerInterior(playerid, 0);
+		SetPlayerVirtualWorld(playerid, 0);
+		PlayerInfo[playerid][pInt] = 0;
+		PlayerInfo[playerid][pVW] = 0;
+		SetPlayerPos(playerid,FarmInfo[farmid][ExteriorX], FarmInfo[farmid][ExteriorY], FarmInfo[farmid][ExteriorZ]);
+	}
+	else
+	{
+	    SendErrorMessage(playerid, " Ban khong duoc phep su dung lenh nay.");
+	}
+	return 1;
+}
+
 CMD:muanongtrai(playerid, parms[])
 {
     if(PlayerInfo[playerid][pFarmerKey] != -1) return SendErrorMessage(playerid, "Ban da so huu nong trai roi, khong the mua them nong trai moi.");
@@ -97,4 +128,46 @@ CMD:farmedit(playerid, params[])
         Log("logs/farmedit.log", string);
 	}
     return 1;
+}
+
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+//~~~~~~~~~~~~~~~~~~~~~~~~~~
+//          PLANT
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+//~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+CMD:farmer(playerid, params[])
+{
+	new Float:x,
+            Float:y,
+            Float:z;
+	GetDynamicActorPos(ActorFarmer[playerid], x, y, z);
+
+	if(IsPlayerInRangeOfPoint(playerid, 5.0, x, y, z))
+	{
+		Dialog_Show(playerid, FARMER_MENU, DIALOG_STYLE_LIST, "Cong viec", "Xin viec\nNghi viec (1)\nNghi viec (2)\nThay dong phuc\nMua cay giong\nMua gia suc\nBan hang", "Chon", "Huy");
+	}
+	else SendErrorMessage(playerid, "Ban khong o gan nguoi quan ly nong trai");
+	return 1;
+}
+
+
+CMD:thuhoach(playerid, params[])
+{
+    new thuhoachmsg[512];
+    new plantId = PlantTree_Near(playerid, 3.0);
+    if(!IsPlayerInDynamicArea(playerid, FarmPlantArea) || GetPlayerVirtualWorld(playerid) != GetPlayerSQLId(playerid)) return SendErrorMessage(playerid, "Ban khong o trong khu vuc trong cay cua ban.");
+    if(plantId == -1) return SendErrorMessage(playerid, "Ban khong dung gan bat ky cay trong nao cua ban.");
+	if(PlantTreeInfo[playerid][plantId][plantTimer] <= 0 && PlantTreeInfo[playerid][plantId][plantLevel] == 3)
+	{
+		new TreeType = PlantTreeInfo[playerid][plantId][plantType];
+		if(Inventory_Add(playerid, PlantArr[TreeType][PlantProduct]))
+		{
+			format(thuhoachmsg, sizeof(thuhoachmsg), "Ban da thu hoach thanh cong cay %s (ID: %d)", PlantArr[TreeType][PlantProduct], plantId);
+			SendFarmerJob(playerid, thuhoachmsg);
+			PLANT_DELETE(playerid, plantId);
+		}
+	}
+	else SendFarmerJob(playerid, "Cay nay van chua the thu hoach !");
+	return 1;
 }
