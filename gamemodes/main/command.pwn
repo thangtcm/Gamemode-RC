@@ -8727,6 +8727,7 @@ CMD:accept(playerid, params[])
    							if(!vehicleSpawnCountCheck(playerid)) {
 								return SendClientMessage(playerid, COLOR_GRAD2, "Ban da co rat nhieu phuong tien duoc dat ra - cua hang dau tien.");
 							}
+							SendLogToDiscordRoom("LOG SELL VEHICLE", "1158022204789895288", "Người bán", GetPlayerNameEx(VehicleOffer[playerid]), "Người nhận", GetPlayerNameEx(playerid), "Số tiền", pricez, 0x25b807);
                             new ip[32], ipex[32];
                             GetPlayerIp(playerid, ip, sizeof(ip));
                             GetPlayerIp(VehicleOffer[playerid], ipex, sizeof(ipex));
@@ -20590,7 +20591,7 @@ CMD:sellmycar(playerid, params[])
                 SendClientMessageEx(giveplayerid, COLOR_LIGHTBLUE, string);
                 new pricez[20];
         		format(pricez, 20, "%d$", price);
-				SendLogToDiscordRoom("LOG SELL VEHICLE", "1158022204789895288", "Người bán", GetPlayerNameEx(playerid), "Người nhận", GetPlayerNameEx(giveplayerid), "Số tiền", pricez, 0x25b807);
+				
                 return 1;
             }
             else
