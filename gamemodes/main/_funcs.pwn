@@ -978,118 +978,150 @@ public OnPlayerClickPlayerTextDraw(playerid, PlayerText:playertextid)
 	}
 	
 
-   	if(GetPVarInt(playerid, "DangTaoAcc") == 1)
-   	{
-   		if(playertextid == RegCharacter[playerid][1])
-   		{
-			ShowPlayerDialog(playerid, REGISTERMONTH, DIALOG_STYLE_LIST, "Khoi tao nhan vat | Thang sinh?", "Thang 1\nThang 2\nThang 3\nThang 4\nThang 5\nThang 6\nThang 7\nThang 8\nThang 9\nThang 10\nThang 11\nThang 12", "Luu chon", "");
-   		}
-   		if(playertextid == RegCharacter[playerid][2])
-   		{
-   			ShowPlayerDialog(playerid, REGISTERSEX, DIALOG_STYLE_MSGBOX, "Khoi tao nhan vat | Gioi tinh", "Gioi tinh nhan vat ban la gi?", "Nam", "Nu");
-   		}
-   		if(playertextid == RegCharacter[playerid][3])
-   		{
-   			Dialog_Show(playerid, NhapQuocTich, DIALOG_STYLE_INPUT, "Khoi tao nhan vat | Quoc tich", "Quoc tich cua ban la gi?", "Xac nhan", "");
-   		}
-   		if(playertextid == RegCharacter[playerid][5])
-   		{
-			if(PlayerInfo[playerid][pSex] != 0 && GetPVarInt(playerid, #dateinsert) == 1 && PlayerInfo[playerid][pQuocTich] != 0)
-			{
-					JoinGame(playerid);
-			}
-			else return SendClientTextDraw(playerid, "~r~Ban chua dien day du thong tin.");
-   		}
-   		if(playertextid == RegCharacter[playerid][7])
-   		{
-   			if(ChangeSkin[playerid] < 299)
-   			{
-	   			ChangeSkin[playerid] += 1;
-	   			PlayerTextDrawSetPreviewModel(playerid, RegCharacter[playerid][6], ChangeSkin[playerid]);
-	   			PlayerTextDrawShow(playerid, RegCharacter[playerid][6]);
-	   			if(ChangeSkin[playerid] >= 274 && ChangeSkin[playerid] <= 289)
-		   		{
-		   			ChangeSkin[playerid] = 289;
-		   			PlayerTextDrawSetPreviewModel(playerid, RegCharacter[playerid][6], ChangeSkin[playerid]);
-		   			PlayerTextDrawShow(playerid, RegCharacter[playerid][6]);
-		   		}
-		   		else if(ChangeSkin[playerid] >= 265 && ChangeSkin[playerid] <= 267)
-		   		{
-		   			ChangeSkin[playerid] = 268;
-		   			PlayerTextDrawSetPreviewModel(playerid, RegCharacter[playerid][6], ChangeSkin[playerid]);
-		   			PlayerTextDrawShow(playerid, RegCharacter[playerid][6]);
-		   		}
-		   		PlayerPlaySound(playerid, 1084, 0.0, 0.0, 0.0);
-		   	}
-	   		else
-	   		{
-	   			PlayerPlaySound(playerid, 1085, 0.0, 0.0, 0.0);
-	   			ChangeSkin[playerid] = 299;
-	   			PlayerTextDrawSetPreviewModel(playerid, RegCharacter[playerid][6], ChangeSkin[playerid]);
-	   			PlayerTextDrawShow(playerid, RegCharacter[playerid][6]);
-	   		}
-   		}
-   		if(playertextid == RegCharacter[playerid][8])
-   		{
-   			if(ChangeSkin[playerid] >= 2)
-   			{
-	   			ChangeSkin[playerid] -= 1;
-	   			PlayerTextDrawSetPreviewModel(playerid, RegCharacter[playerid][6], ChangeSkin[playerid]);
-	   			PlayerTextDrawShow(playerid, RegCharacter[playerid][6]);
-	   			if(ChangeSkin[playerid] >= 274 && ChangeSkin[playerid] <= 289)
-		   		{
-		   			ChangeSkin[playerid] = 274;
-		   			PlayerTextDrawSetPreviewModel(playerid, RegCharacter[playerid][6], ChangeSkin[playerid]);
-		   			PlayerTextDrawShow(playerid, RegCharacter[playerid][6]);
-		   		}
-		   		else if(ChangeSkin[playerid] >= 265 && ChangeSkin[playerid] <= 267)
-		   		{
-		   			ChangeSkin[playerid] = 265;
-		   			PlayerTextDrawSetPreviewModel(playerid, RegCharacter[playerid][6], ChangeSkin[playerid]);
-		   			PlayerTextDrawShow(playerid, RegCharacter[playerid][6]);
-		   		}
-		   		PlayerPlaySound(playerid, 1084, 0.0, 0.0, 0.0);
-		   	}
-	   		else if(ChangeSkin[playerid] == 1)
-	   		{
-	   			PlayerPlaySound(playerid, 1085, 0.0, 0.0, 0.0);
-	   			ChangeSkin[playerid] = 1;
-	   			PlayerTextDrawSetPreviewModel(playerid, RegCharacter[playerid][6], ChangeSkin[playerid]);
-	   			PlayerTextDrawShow(playerid, RegCharacter[playerid][6]);
-	   		}
-   		}
-   	}
-    if(GetPVarInt(playerid, "TextDrawCharacter") == 1) {
-        for(new i = 0 ; i < 3 ; i++) {
-    	    if(playertextid == CharacterName[playerid][i]) {
-    	    	if(TempCharacter[playerid][i][IsCreated]) {
-                	SetPVarInt(playerid,"SelectNhanVat",i);
-			    	HideTDCharacter(playerid);
-			    	LoaderStarting(playerid, LOAD_CHARACTERLOGIN, "Dang tai du lieu game...", 2);       
-    	    	}
-    	    	else if(!TempCharacter[playerid][i][IsCreated]) {
-                    HideTDCharacter(playerid);
-                    SetPVarInt(playerid, "SelectNhanVat", i);
-                    ShowPlayerDialog(playerid, DIALOG_TAONHANVAT, DIALOG_STYLE_INPUT, "Tao nhan vat", "Hay nhap ten nhan vat de tiep tuc tao nhan vat\nLuu y: Ten phai viet hoa 2 chu dau, va khong co ky tu dac biet", "Tiep tuc", "Quay lai");
-    	    	}
-    	    }
-    	}
+   	if(GetPVarInt(playerid,#open_character) == 1) {
+        if(playertextid == Character_create[playerid][2]) {
+            SendClientTextDraw(playerid,"Nhap ~r~ten nhan vat~w~ cua ban de tiep tuc,luu y: ten nhan vat phai phu hop.",5);
+            Dialog_Show(playerid, create_CharacterName, DIALOG_STYLE_INPUT, "Create Character - Name", "Vui long nhap ten dang nhap phia ben duoi\nTen dang nhap phai co _ giua ho va ten\nVi du: Cuong_Nguyen", "Xac nhan", "Quay lai");
+        }
+        if(playertextid == Character_create[playerid][6]) {
+            Dialog_Show(playerid, create_CharacterAge, DIALOG_STYLE_INPUT, "Create Character - Age", "Vui long nhap so tuoi cua nhan vat\nSo phai la don vi, bat dau tu 6-80\nVi du: 16", "Xac nhan", "Quay lai");
+        }
+        if(playertextid == Character_create[playerid][10]) {
+            if(GetPVarInt(playerid,#sex_character) != 2) SetPVarInt(playerid, #sex_character, 2); // nam
+            else SetPVarInt(playerid, #sex_character,  1); // nam
+            update_CreateCharacter(playerid);
+            show_CreateCharacter(playerid);
+        }
+        if(playertextid == Character_create[playerid][13]) {
+            if(GetPVarInt(playerid,#sex_character) != 2) SetPVarInt(playerid, #sex_character, 2); // nam
+            else SetPVarInt(playerid, #sex_character,  1); // nam
+            update_CreateCharacter(playerid);
+            show_CreateCharacter(playerid);
+        }
+        if(playertextid == Character_create[playerid][11]) {
+            if(GetPVarInt(playerid,#nation_character) != 2) SetPVarInt(playerid, #nation_character, 2); // nam
+            else SetPVarInt(playerid, #nation_character, 1); // nam
+            update_CreateCharacter(playerid);
+            show_CreateCharacter(playerid);
+        }
+        if(playertextid == Character_create[playerid][14]) {
+            if(GetPVarInt(playerid,#nation_character) != 2) SetPVarInt(playerid, #nation_character, 2); // nam
+            else SetPVarInt(playerid, #nation_character,1); // nam
+            update_CreateCharacter(playerid);
+            show_CreateCharacter(playerid);
+        }
+        if(playertextid == Character_create[playerid][12]) {
+            if(GetPVarInt(playerid,#sex_character) == 0) return SendClientTextDraw(playerid,"Vui long chon gioi tinh de tiep tuc qua trinh khoi tao Skin.",5);
+            if(GetPVarInt(playerid,#skin_character) >= 5) SetPVarInt(playerid, #skin_character, 0); // nam
+            else SetPVarInt(playerid, #skin_character, GetPVarInt(playerid,#skin_character) + 1); // nam
+            update_CreateCharacter(playerid,1);
+            show_CreateCharacter(playerid);
+        }
+        if(playertextid == Character_create[playerid][15]) {
+            if(GetPVarInt(playerid,#sex_character) == 0) return SendClientTextDraw(playerid,"Vui long chon gioi tinh de tiep tuc qua trinh khoi tao Skin.",5);
+            if(GetPVarInt(playerid,#skin_character) <= 0) SetPVarInt(playerid, #skin_character, 5); // nam
+            else SetPVarInt(playerid, #skin_character, GetPVarInt(playerid,#skin_character) - 1); // nam
+            update_CreateCharacter(playerid,1);
+            show_CreateCharacter(playerid);
+        }
+        if(playertextid == Character_create[playerid][16]) {
+    
+            ShowPlayerCharacter(playerid,1);
+            hide_CreateCharacter(playerid);
+        }
+         
+        if(playertextid == Character_create[playerid][3]) {
+            new return_str[32];
+            GetPVarString(playerid, #character_name, return_str, sizeof(return_str));
+            if(isnull(return_str)) return SendClientTextDraw(playerid,"Vui long nhap ten nhan vat de tiep tuc qua trinh khoi tao.",5);
+            if(GetPVarInt(playerid,#sex_character) == 0) return SendClientTextDraw(playerid,"Vui long chon gioi tinh de tiep tuc qua trinh khoi tao.",5);
+            if(GetPVarInt(playerid,#age_character) == 0) return SendClientTextDraw(playerid,"Vui long chon do tuoi nhan vat de tiep tuc qua trinh khoi tao.",5);
+            if(GetPVarInt(playerid,#skin_character) == 0) return SendClientTextDraw(playerid,"Vui long chon trang phuc de tiep tuc qua trinh khoi tao.",5);
+            if(GetPVarInt(playerid,#nation_character) == 0)return  SendClientTextDraw(playerid,"Vui long chon quoc tich de tiep tuc qua trinh khoi tao.",5);
+            GetPVarString(playerid, #character_name, return_str, sizeof(return_str));
+            CheckCharacterNameExist(playerid, return_str);
+        }
+        if(playertextid == Character_create[playerid][4]) {
+           
+            DeletePVar(playerid,#sex_character);
+            DeletePVar(playerid,#nation_character);
+            DeletePVar(playerid,#skin_character);
+            DeletePVar(playerid,#character_age);
+            DeletePVar(playerid,#character_name);
+            update_CreateCharacter(playerid);
+            show_CreateCharacter(playerid);
+        }
+        for(new i = 0 ; i < 4 ; i++) {
+            if(playertextid == character_button[playerid][i]) {
+                PlayerTextDrawHide(playerid,character_button[playerid][0]);
+                PlayerTextDrawHide(playerid,character_button[playerid][1]);
+                PlayerTextDrawHide(playerid,character_button[playerid][2]);
+                PlayerTextDrawHide(playerid,character_button[playerid][3]);
+                TogglePlayerControllable(playerid, 1);
+                switch(i) {
+                    case 0: {
+                        // SetPlayerCameraPos(playerid, 2494.0857, -1697.6871, 1016.0413);
+                        // SetPlayerCameraLookAt(playerid, 2494.0054, -1696.6927, 1015.3209,CAMERA_MOVE);
+                        InterpolateCameraPos(playerid, 2118.102050, -1864.503906, 16.002574, 2128.635742, -1869.387084, 15.977824, 3000);
+                        InterpolateCameraLookAt(playerid, 2122.167724, -1867.171386, 14.838608, 2133.453857, -1868.650268, 14.862911, 3000);
+                    }
+                    case 1: {
+                        // SetPlayerCameraPos(playerid, 2493.4937, -1697.2549, 1015.5622);
+                        // SetPlayerCameraLookAt(playerid, 2494.4385, -1697.5751, 1014.8873,CAMERA_MOVE);
+                
+                        InterpolateCameraPos(playerid,2118.102050, -1864.503906, 16.002574, 2121.721191, -1869.287109, 14.011209, 3000);
+                        InterpolateCameraLookAt(playerid, 2122.167724, -1867.171386, 14.838608, 2122.865966, -1874.154296, 13.996252, 3000);
+                    }
+                    case 2: {
+                        // SetPlayerCameraPos(playerid, 2493.6079, -1697.2856, 1016.0413);
+                        // SetPlayerCameraLookAt(playerid, 2493.2866, -1698.2301, 1015.5665,CAMERA_MOVE);
+                        InterpolateCameraPos(playerid, 2118.102050, -1864.503906, 16.002574, 2121.612792, -1868.598144, 14.267834, 3000);
+                        InterpolateCameraLookAt(playerid, 2122.167724, -1867.171386, 14.838608, 2126.326171, -1868.613159, 12.599309, 3000);
+                    }
+                    case 3: {
+                        // SetPlayerCameraPos(playerid, 2493.6079, -1697.2856, 1016.0413);
+                        // SetPlayerCameraLookAt(playerid, 2493.9602, -1698.2191, 1015.4063,CAMERA_MOVE);
+                        InterpolateCameraPos(playerid, 2118.102050, -1864.503906, 16.002574, 2125.654052, -1873.481445, 14.032361, 3000);
+                        InterpolateCameraLookAt(playerid, 2122.167724, -1867.171386, 14.838608, 2130.647460, -1873.269653, 14.179213, 3000);
+                        
+                    }
+                }
+    
+               
+                if(TempCharacter[playerid][i][IsCreated])
+                {
+                    SetTimerEx("showPreviewCharacter", 3000, 0, "dd", playerid,i);
+                }
+                else {
+    
+                    SetTimerEx("ShowCreateCharacter", 3000, 0, "dd", playerid,i);
+                    // 
+                }
+            }
+        }
+        if(playertextid == character_preview[playerid][3]) {
+            new i = GetPVarInt(playerid, #select_character),string[128];
+         //   ShowNoticeGUIFrame(playerid, 3);
+            SetPlayerName(playerid,TempCharacter[playerid][i][Name]);
+            format(string, sizeof(string), "SELECT * FROM `accounts` WHERE `Username` = '%s'",  TempCharacter[playerid][i][Name]);
+            mysql_function_query(MainPipeline, string, true, "OnQueryFinish", "iii", LOADUSERDATA_THREAD, playerid, g_arrQueryHandle{playerid});
+            hide_PreviewCharacter(playerid);
+            SetPVarInt(playerid,#select_character,i);
+            LoaderStarting(playerid, LOAD_CHARACTERLOGIN, "Dang tai du lieu game...", 2);       
+        }
+        if(playertextid == character_preview[playerid][5]) {
+            PlayerTextDrawHide(playerid,character_preview[playerid][0]);
+            PlayerTextDrawHide(playerid,character_preview[playerid][1]);
+            PlayerTextDrawHide(playerid,character_preview[playerid][2]);
+            PlayerTextDrawHide(playerid,character_preview[playerid][3]);
+            PlayerTextDrawHide(playerid,character_preview[playerid][4]);
+            PlayerTextDrawHide(playerid,character_preview[playerid][5]);
+       
+            ShowPlayerCharacter(playerid,1);
+        }
     }
-   	if(playertextid == LoginTD[playerid][2])
-   	{
-        new string[229],ip[32];
-        GetPlayerIp(playerid, ip, 32);
-        format(string,sizeof (string),"Tai khoan: %s\n\n\
-        Dia chi IP cua ban: %s\n\n\
-        Lan cuoi dang nhap cua tai khoan: %s\n\n\
-        Thoi gian tao tai khoan: %s\n\n\
-        Tai khoan ban da dang ky hay nhap mat khau de dang nhap\n\n\n",GetPlayerNameEx(playerid),ip,MasterInfo[playerid][acc_lastlogin],MasterInfo[playerid][acc_regidate]);
-        ShowPlayerDialog(playerid,DANGNHAP,DIALOG_STYLE_PASSWORD,"Dang nhap",string,"Dang nhap","Thoat");
-   	}
-   	if(playertextid == LoginTD[playerid][0])
-   	{
-   		g_mysql_AccountLoginCheck(playerid);
-   	}
+
+
 	return 1;
 }
 
@@ -1433,10 +1465,9 @@ public OnPlayerConnect(playerid) {
 	TogglePlayerSpectating(playerid, true);
 	SetTimerEx("TimeUseMed", 60000, 0, "d", playerid);
 	SetTimerEx("TimeCraftMed", 60000, 0, "d", playerid);
-	SetTimerEx("LoadLogin", 500, 0, "i", playerid);
+	// SetTimerEx("LoadLogin", 500, 0, "i", playerid);
 	DownS[playerid] = 0;
 	SetPVarString(playerid, "PassAuth", "abc");
-	LoadLoginTextDraws(playerid);
 	CreateLoading(playerid);
 	BlockChat[playerid] = 0;
 	ResetDamages(playerid);
@@ -6543,111 +6574,24 @@ public LoadTextDraws()
 	print("[Textdraws] Loaded textdraws.");
 	return 1;
 }
-stock LoadLoginTextDraws(playerid)
-{
-	LoginTD[playerid][0] = CreatePlayerTextDraw(playerid, 273.000, 259.000, "mdl-3000:login-dn");
-	PlayerTextDrawTextSize(playerid, LoginTD[playerid][0], 93.000, 49.000);
-	PlayerTextDrawAlignment(playerid, LoginTD[playerid][0], 1);
-	PlayerTextDrawColor(playerid, LoginTD[playerid][0], -1);
-	PlayerTextDrawSetShadow(playerid, LoginTD[playerid][0], 0);
-	PlayerTextDrawSetOutline(playerid, LoginTD[playerid][0], 0);
-	PlayerTextDrawBackgroundColor(playerid, LoginTD[playerid][0], 255);
-	PlayerTextDrawFont(playerid, LoginTD[playerid][0], 4);
-	PlayerTextDrawSetProportional(playerid, LoginTD[playerid][0], 1);
-	PlayerTextDrawSetSelectable(playerid, LoginTD[playerid][0], 1);
 
-	LoginTD[playerid][1] = CreatePlayerTextDraw(playerid, 250.000, 199.000, "mdl-3000:login-trong");
-	PlayerTextDrawTextSize(playerid, LoginTD[playerid][1], 139.000, 30.000);
-	PlayerTextDrawAlignment(playerid, LoginTD[playerid][1], 1);
-	PlayerTextDrawColor(playerid, LoginTD[playerid][1], -1);
-	PlayerTextDrawSetShadow(playerid, LoginTD[playerid][1], 0);
-	PlayerTextDrawSetOutline(playerid, LoginTD[playerid][1], 0);
-	PlayerTextDrawBackgroundColor(playerid, LoginTD[playerid][1], 255);
-	PlayerTextDrawFont(playerid, LoginTD[playerid][1], 4);
-	PlayerTextDrawSetProportional(playerid, LoginTD[playerid][1], 1);
-
-	LoginTD[playerid][2] = CreatePlayerTextDraw(playerid, 250.000, 227.000, "mdl-3000:login-mk");
-	PlayerTextDrawTextSize(playerid, LoginTD[playerid][2], 139.000, 30.000);
-	PlayerTextDrawAlignment(playerid, LoginTD[playerid][2], 1);
-	PlayerTextDrawColor(playerid, LoginTD[playerid][2], -1);
-	PlayerTextDrawSetShadow(playerid, LoginTD[playerid][2], 0);
-	PlayerTextDrawSetOutline(playerid, LoginTD[playerid][2], 0);
-	PlayerTextDrawBackgroundColor(playerid, LoginTD[playerid][2], 255);
-	PlayerTextDrawFont(playerid, LoginTD[playerid][2], 4);
-	PlayerTextDrawSetProportional(playerid, LoginTD[playerid][2], 1);
-	PlayerTextDrawSetSelectable(playerid, LoginTD[playerid][2], 1);
-
-	LoginTD[playerid][3] = CreatePlayerTextDraw(playerid, 254.000, 67.000, "mdl-3000:login-logo");
-	PlayerTextDrawTextSize(playerid, LoginTD[playerid][3], 128.000, 131.000);
-	PlayerTextDrawAlignment(playerid, LoginTD[playerid][3], 1);
-	PlayerTextDrawColor(playerid, LoginTD[playerid][3], -1);
-	PlayerTextDrawSetShadow(playerid, LoginTD[playerid][3], 0);
-	PlayerTextDrawSetOutline(playerid, LoginTD[playerid][3], 0);
-	PlayerTextDrawBackgroundColor(playerid, LoginTD[playerid][3], 255);
-	PlayerTextDrawFont(playerid, LoginTD[playerid][3], 4);
-	PlayerTextDrawSetProportional(playerid, LoginTD[playerid][3], 1);
-
-	LoginTD[playerid][4] = CreatePlayerTextDraw(playerid, 321.000, 208.000, "phatbentre");
-	PlayerTextDrawLetterSize(playerid, LoginTD[playerid][4], 0.230, 1.298);
-	PlayerTextDrawAlignment(playerid, LoginTD[playerid][4], 2);
-	PlayerTextDrawColor(playerid, LoginTD[playerid][4], -1);
-	PlayerTextDrawSetShadow(playerid, LoginTD[playerid][4], 0);
-	PlayerTextDrawSetOutline(playerid, LoginTD[playerid][4], 0);
-	PlayerTextDrawBackgroundColor(playerid, LoginTD[playerid][4], 150);
-	PlayerTextDrawFont(playerid, LoginTD[playerid][4], 1);
-	PlayerTextDrawSetProportional(playerid, LoginTD[playerid][4], 1);
-
-	LoginTD[playerid][5] = CreatePlayerTextDraw(playerid, 250.000, 227.000, "mdl-3000:login-trong");
-	PlayerTextDrawTextSize(playerid, LoginTD[playerid][5], 139.000, 30.000);
-	PlayerTextDrawAlignment(playerid, LoginTD[playerid][5], 1);
-	PlayerTextDrawColor(playerid, LoginTD[playerid][5], -1);
-	PlayerTextDrawSetShadow(playerid, LoginTD[playerid][5], 0);
-	PlayerTextDrawSetOutline(playerid, LoginTD[playerid][5], 0);
-	PlayerTextDrawBackgroundColor(playerid, LoginTD[playerid][5], 255);
-	PlayerTextDrawFont(playerid, LoginTD[playerid][5], 4);
-	PlayerTextDrawSetProportional(playerid, LoginTD[playerid][5], 1);
-
-	LoginTD[playerid][6] = CreatePlayerTextDraw(playerid, 320.000, 230.000, ".......................");
-	PlayerTextDrawLetterSize(playerid, LoginTD[playerid][6], 0.379, 1.799);
-	PlayerTextDrawAlignment(playerid, LoginTD[playerid][6], 2);
-	PlayerTextDrawColor(playerid, LoginTD[playerid][6], -1);
-	PlayerTextDrawSetShadow(playerid, LoginTD[playerid][6], 0);
-	PlayerTextDrawSetOutline(playerid, LoginTD[playerid][6], 0);
-	PlayerTextDrawBackgroundColor(playerid, LoginTD[playerid][6], 150);
-	PlayerTextDrawFont(playerid, LoginTD[playerid][6], 1);
-	PlayerTextDrawSetProportional(playerid, LoginTD[playerid][6], 1);
-}
-stock HideLoginTD(playerid)
-{
-	PlayerTextDrawHide(playerid, LoginTD[playerid][0]);
-	PlayerTextDrawHide(playerid, LoginTD[playerid][1]);
-	PlayerTextDrawHide(playerid, LoginTD[playerid][2]);
-	PlayerTextDrawHide(playerid, LoginTD[playerid][3]);
-	PlayerTextDrawHide(playerid, LoginTD[playerid][4]);
-	PlayerTextDrawHide(playerid, LoginTD[playerid][5]);
-	PlayerTextDrawHide(playerid, LoginTD[playerid][6]);
-	CancelSelectTextDraw(playerid);
-
-}
 
 stock LoadLogin(playerid)
 {
-	new string[128];
-	format(string, sizeof(string), "%s", GetPlayerNameEx(playerid));
-	PlayerTextDrawSetString(playerid, LoginTD[playerid][4], string);
-	// PlayerTextDrawSetString(playerid, LoginTD[playerid][6], string);
-	PlayerTextDrawShow(playerid, LoginTD[playerid][0]);
-	PlayerTextDrawShow(playerid, LoginTD[playerid][1]);
-	PlayerTextDrawShow(playerid, LoginTD[playerid][2]);
-	PlayerTextDrawShow(playerid, LoginTD[playerid][3]);
-	PlayerTextDrawShow(playerid, LoginTD[playerid][4]);
-	SelectTextDraw(playerid, 0xe1dfa2FF);
 	switch(random(3))
 	{
 		case 0: InterpolateCameraPos(playerid, 1532.3927,357.1458,78.8630, 1228.4036,155.1032,45.7313, 50000, CAMERA_CUT);
 		case 1: InterpolateCameraPos(playerid, 2433.3809,-66.7512,76.6627, 2167.8020,96.4188,42.4985, 50000, CAMERA_CUT);
 		case 2: InterpolateCameraPos(playerid, -214.2948,-74.1664,39.5735, 120.3837,-7.4578,26.9301, 50000, CAMERA_CUT);
 	}
+	new string[229],ip[32];
+    GetPlayerIp(playerid, ip, 32);
+    format(string,sizeof (string),"Tai khoan: %s\n\n\
+    Dia chi IP cua ban: %s\n\n\
+    Lan cuoi dang nhap cua tai khoan: %s\n\n\
+    Thoi gian tao tai khoan: %s\n\n\
+    Tai khoan ban da dang ky hay nhap mat khau de dang nhap\n\n\n",GetPlayerNameEx(playerid),ip,MasterInfo[playerid][acc_lastlogin],MasterInfo[playerid][acc_regidate]);
+    ShowPlayerDialog(playerid,DANGNHAP,DIALOG_STYLE_PASSWORD,"Dang nhap",string,"Dang nhap","Thoat");
 	return 1;
 }
 
@@ -8250,30 +8194,30 @@ public LoadStreamerDynamicObjects()
 
 	return 1;
 }
-CheckCharacterNameExist(playerid, name[])
-{
-    new query[128];
-    mysql_format(MainPipeline, query, sizeof query, "select Username from accounts where Username='%s'", name);
-    mysql_tquery(MainPipeline, query, "OnCheckCharacterExist", "ds", playerid, name);
+// CheckCharacterNameExist(playerid, name[])
+// {
+//     new query[128];
+//     mysql_format(MainPipeline, query, sizeof query, "select Username from accounts where Username='%s'", name);
+//     mysql_tquery(MainPipeline, query, "OnCheckCharacterExist", "ds", playerid, name);
 
-}
+// }
 
-forward OnCheckCharacterExist(playerid, name[]);
-public OnCheckCharacterExist(playerid, name[])
-{
-    if(cache_num_rows())
-    {
-        ShowPlayerDialog(playerid, DIALOG_TAONHANVAT, DIALOG_STYLE_INPUT, "khoi tao Nhan vat", "Ten nhan vat da ton tai!\n\nNhap ten nhan vat cua ban \nDe khoi tao , ten nhan vat se la ten goi IC Cua ban\nVi vay phai can nhac va dat dung quy dinh", "Nhap","Quay lai");
-    }
-    else {
-        SetPlayerName(playerid, name);
-        g_mysql_CreateAccount(playerid, name);
-        new i = GetPVarInt(playerid, "SelectNhanVat");
-	    TempCharacter[playerid][i][IsCreated] = true;
-		format(TempCharacter[playerid][i][Name], 24, "%s", name);
-    }
-    return 1;
-}
+// forward OnCheckCharacterExist(playerid, name[]);
+// public OnCheckCharacterExist(playerid, name[])
+// {
+//     if(cache_num_rows())
+//     {
+//         ShowPlayerDialog(playerid, DIALOG_TAONHANVAT, DIALOG_STYLE_INPUT, "khoi tao Nhan vat", "Ten nhan vat da ton tai!\n\nNhap ten nhan vat cua ban \nDe khoi tao , ten nhan vat se la ten goi IC Cua ban\nVi vay phai can nhac va dat dung quy dinh", "Nhap","Quay lai");
+//     }
+//     else {
+//         SetPlayerName(playerid, name);
+//         g_mysql_CreateAccount(playerid, name);
+//         new i = GetPVarInt(playerid, #select_character);
+// 	    TempCharacter[playerid][i][IsCreated] = true;
+// 		format(TempCharacter[playerid][i][Name], 24, "%s", name);
+//     }
+//     return 1;
+// }
 
 
 
@@ -9156,23 +9100,15 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 		}
 		
 	}
-	if(dialogid == DIALOG_TAONHANVAT) 
-	{
-    	if(response) 
-    	{
-    		if(!IsValidName(inputtext)) return ShowPlayerDialog(playerid, DIALOG_TAONHANVAT, DIALOG_STYLE_INPUT, "Tao nhan vat", "Hay nhap ten nhan vat de tiep tuc tao nhan vat\nLuu y: Ten phai viet hoa 2 chu dau, va khong co ky tu dac biet", "Tiep tuc", "Quay lai");
-       		CheckCharacterNameExist(playerid, inputtext);
-    	}
-    	else if(!response) ShowPlayerCharacter(playerid);
-    }
+	
     if(dialogid == DIALOG_NHANVAT) {
 		if(response) {
 			if(TempCharacter[playerid][listitem][IsCreated]) {
-				SetPVarInt(playerid, "SelectNhanVat", listitem);
+				SetPVarInt(playerid, #select_character, listitem);
                 ShowPlayerDialog(playerid, DIALOG_NHANVAT1, DIALOG_STYLE_LIST, "Tuy chon nhan vat", "Tham gia\nThong tin nhan vat\nXoa nhan vat", "Chon", "Quay lai");		       
 			} 
 			else {
-				SetPVarInt(playerid, "SelectNhanVat", listitem);
+				SetPVarInt(playerid, #select_character, listitem);
                 ShowPlayerDialog(playerid, DIALOG_TAONHANVAT, DIALOG_STYLE_INPUT, "Tao nhan vat", "Hay nhap ten nhan vat de tiep tuc tao nhan vat\nLuu y: Ten phai viet hoa 2 chu dau, va khong co ky tu dac biet", "Tiep tuc", "Quay lai");
 			}
 		}
@@ -9183,13 +9119,13 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 	if(dialogid == DIALOG_NHANVAT1) {
 		if(response) {
 			if(listitem == 0) {
-				new i = GetPVarInt(playerid, "SelectNhanVat");
+				new i = GetPVarInt(playerid, #select_character);
                 ShowNoticeGUIFrame(playerid, 3);
 	            format(string, sizeof(string), "SELECT * FROM `accounts` WHERE `Username` = '%s'",  TempCharacter[playerid][i][Name]);
  	            mysql_function_query(MainPipeline, string, true, "OnQueryFinish", "iii", LOADUSERDATA_THREAD, playerid, g_arrQueryHandle{playerid});
 			}
 			if(listitem == 1) {              
-                new i = GetPVarInt(playerid, "SelectNhanVat");  
+                new i = GetPVarInt(playerid, #select_character);  
                 new zone[MAX_ZONE_NAME];
 				Get3DZone(TempCharacter[playerid][i][SPos_x],TempCharacter[playerid][i][SPos_y],TempCharacter[playerid][i][SPos_z], zone, sizeof(zone));
                 format(string, sizeof string, "Ten nhap vat: %s\nLan cuoi dang nhap: %s\nThoi gian tao tai khoan: %s\nCap do: %d\nVi tri cuoi cung: %s", TempCharacter[playerid][i][Name],TempCharacter[playerid][i][pLastOnline],TempCharacter[playerid][i][pRegidate],TempCharacter[playerid][i][Lv],zone);
@@ -14516,18 +14452,8 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 		    if(!isnull(inputtext) && strlen(inputtext) < 64)
 		    {
 		        SetPVarString(playerid, "PassAuth", inputtext);
-		        new passdayne[256];
-		       	GetPVarString(playerid, "PassAuth", passdayne, sizeof(passdayne));
-		       	strdel(passLength, 0, 256);
-		        new lengthpass = strlen(passdayne);
-		        for(new i = 0; i < lengthpass; i++)
-		        {
-		        	strcat(passLength, ".");
-		        }
-		        PlayerTextDrawSetString(playerid, LoginTD[playerid][6], passLength);
-		        PlayerTextDrawShow(playerid, LoginTD[playerid][5]);
-		        PlayerTextDrawShow(playerid, LoginTD[playerid][6]);
 		        //g_mysql_AccountLoginCheckzz(playerid);
+		        g_mysql_AccountLoginCheck(playerid);
 		    }
 		    else
 		    {

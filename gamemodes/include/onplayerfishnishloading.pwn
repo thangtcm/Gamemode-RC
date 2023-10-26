@@ -30,7 +30,7 @@ public OnLoadingFinish(playerid,loadingid) {
             }
         }
 		case LOAD_CHARACTERLOGIN: { 
-		    new i = GetPVarInt(playerid, "SelectNhanVat");
+		    new i = GetPVarInt(playerid, #select_character);
             ShowNoticeGUIFrame(playerid, 3);
             CancelSelectTextDraw(playerid);
             new string[129];

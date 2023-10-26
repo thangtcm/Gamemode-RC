@@ -1555,16 +1555,8 @@ stock ShowCMND(playerid,giveplayerid) {
     return 1;
 }
 
-stock DestroyLog@_Reg(playerid) {
-    PlayerTextDrawDestroy(playerid, CharacterMain[playerid][0]);
-    for(new i = 0; i< 3; i++) {
-        PlayerTextDrawDestroy(playerid, CharacterSkin[playerid][i]);
-        PlayerTextDrawDestroy(playerid, CharacterName[playerid][i]);
-        PlayerTextDrawDestroy(playerid, CharacterLevel[playerid][i]);
-    }
-    return 1;
-}
-g_mysql_AccountAuthCheck(playerid)
+
+stock g_mysql_AccountAuthCheck(playerid)
 {
         new string[128];
         format(string, sizeof(string), "SELECT * FROM masterdb WHERE acc_name = '%s'", GetPlayerNameExt(playerid));

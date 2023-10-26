@@ -6910,7 +6910,6 @@ public OnPasswordChecked(playerid)
 	{
 		HideNoticeGUIFrame(playerid);
 		SendClientMessage(playerid, 0xa5bbd0FF, "(LOGIN) Ban da dang nhap thanh cong hay chon nhan vat de tham gia game!.");
-		HideLoginTD(playerid);
 		LoadTempCharacters(playerid);
 		new years,month,day,hourz,minz,sec,time[50];
 		getdate(years,month,day);
@@ -11206,12 +11205,12 @@ stock SetPlayerSpawn(playerid)
 			Streamer_UpdateEx(playerid, 2229.4968,-1722.0701,13.5625);
 			SetPlayerCameraPos(playerid, 2144.0933,-80.9560,9.7431);
 			SetPlayerCameraLookAt(playerid, 2126.6655,-77.3383,2.4477);
-			SetPlayerPos(playerid, 2177.0903,-75.1653,27.4766);
+			//SetPlayerPos(playerid, 2177.0903,-75.1653,27.4766);
             PlayerInfo[playerid][pVW] = 0;
             SetPlayerVirtualWorld(playerid,0);
    			RegistrationStep[playerid] = 1;
    			SetPVarInt(playerid,"DangTaoAcc",1);
-   			ShowRegCharTD(playerid);
+   			JoinGame(playerid);
 			return 1;
 		}
 		new rand;

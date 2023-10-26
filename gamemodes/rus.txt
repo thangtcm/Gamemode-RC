@@ -1,0 +1,31 @@
+./include/textclient.pwn(22) : èäåíòèôèêàòîð íå èñïîëüçóåòñÿ: "time"
+./system/inventory/inventory.pwn(98) : íåïðàâèëüíàÿ òàáóëÿöèÿ
+./main/functions.pwn(6906) : èäåíòèôèêàòîðó ïðèñâîåíî çíà÷åíèå, íî îí íå èñïîëüçóåòñÿ: "str"
+./system/charactertd.pwn(9) : íåïðàâèëüíàÿ òàáóëÿöèÿ
+./system/charactertd.pwn(242) : íåïðàâèëüíàÿ òàáóëÿöèÿ
+./main/mysql.pwn(24) : íåïðàâèëüíàÿ òàáóëÿöèÿ
+./main/mysql.pwn(1435) : èäåíòèôèêàòîðó ïðèñâîåíî çíà÷åíèå, íî îí íå èñïîëüçóåòñÿ: "str"
+./system/new_job/Trucking/func.pwn(68) : èäåíòèôèêàòîð íå èñïîëüçóåòñÿ: "MaxExport"
+./system/new_job/Trucking/func.pwn(189) : èäåíòèôèêàòîðó ïðèñâîåíî çíà÷åíèå, íî îí íå èñïîëüçóåòñÿ: "arr"
+./system/new_job/Trucking/cmd.pwn(171) : èäåíòèôèêàòîðó ïðèñâîåíî çíà÷åíèå, íî îí íå èñïîëüçóåòñÿ: "CheckValid"
+./system/new_job/Trucking/dialog.pwn(5) : èäåíòèôèêàòîð íå èñïîëüçóåòñÿ: "checkMax"
+./system/new_job/Trucking/dialog.pwn(5) : èäåíòèôèêàòîðó ïðèñâîåíî çíà÷åíèå, íî îí íå èñïîëüçóåòñÿ: "strEheader"
+./system/new_job/Trucking/dialog.pwn(5) : èäåíòèôèêàòîðó ïðèñâîåíî çíà÷åíèå, íî îí íå èñïîëüçóåòñÿ: "strIheader"
+./main/variables.pwn(1466) : èäåíòèôèêàòîð íå èñïîëüçóåòñÿ: "ActorNV"
+./main/variables.pwn(2361) : èäåíòèôèêàòîð íå èñïîëüçóåòñÿ: "DownPHP"
+./system/drug/drug.pwn(12) : èäåíòèôèêàòîð íå èñïîëüçóåòñÿ: "DrugTypeName"
+lsrpvn.pwn(1620) : èäåíòèôèêàòîð íå èñïîëüçóåòñÿ: "GetXYInFrontOfVehicle"
+./main/variables.pwn(2243) : èäåíòèôèêàòîð íå èñïîëüçóåòñÿ: "IsSpawned"
+./main/variables.pwn(2222) : èäåíòèôèêàòîð íå èñïîëüçóåòñÿ: "PlayerPos"
+./main/variables.pwn(2244) : èäåíòèôèêàòîð íå èñïîëüçóåòñÿ: "SpawnKick"
+./system/new_job/Trucking/setting.pwn(34) : èäåíòèôèêàòîð íå èñïîëüçóåòñÿ: "UnitType"
+./main/variables.pwn(1718) : èäåíòèôèêàòîð íå èñïîëüçóåòñÿ: "passLength"
+Pawn compiler 3.2.3664	 	 	Copyright (c) 1997-2016, ITB CompuPhase
+
+Ðàçìåð çàãîëîâêà:	   52352 áàéò
+Ðàçìåð êîäà:		 7447160 áàéò
+Ðàçìåð äàííûõ:		176330400 áàéò
+Ðàçìåð ñòýêà\êó÷è:	18000000 áàéò; Ïðèìåðíîå ìàêñ. èñïîëüçîâàíèå: Íåèçâåñòíî, èç-çà ðåêóðñèé
+Âñåãî òðåáóåòñÿ:	201829912 áàéò
+
+Ãîòîâî.

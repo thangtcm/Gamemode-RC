@@ -1433,7 +1433,7 @@ public OnLoadTempCharacters(playerid) {
     {
     	ShowPlayerCharacter(playerid);
 		new str[256];
-		SendServerMessage(playerid, "Ten nay da ton tai hoac khong hop le (Name_Name).");
+//		SendServerMessage(playerid, "Ten nay da ton tai hoac khong hop le (Name_Name).");
     	print("Khong tai duoc tai khoan chinh cua ban");
 
     }
@@ -8444,7 +8444,7 @@ public OnPlayerLoad(playerid)
     	SetPlayerSpecialAction(playerid, SPECIAL_ACTION_CARRY);
  	}  
  	SetPlayerWeapons(playerid);
- 	DestroyLog@_Reg(playerid);
+// 	DestroyLog@_Reg(playerid);
  	SendClientMessageEx(playerid, COLOR_VANG, "Chao mung ban da tro lai may chu Red County Roleplay.");
  	DownEDS[playerid] = SetTimerEx("StartDownEatDrinkStrong", 180000, true, "i", playerid);
 	DeletePVar(playerid, "TextDrawCharacter");
