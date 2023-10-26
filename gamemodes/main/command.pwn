@@ -11961,11 +11961,6 @@ CMD:exit(playerid, params[])
         SendServerMessage(playerid, " Ban khong the lam dieu do vao luc nay");
         return 1;
     }
-	if(IsPlayerInDynamicArea(playerid, PlayerFarmArea))
-	{
-		LeaveAreaFarm(playerid, PlayerFarmArea);
-		return 1;
-	}
     for(new i = 0; i <  sizeof(DDoorsInfo); i++) {
         if (IsPlayerInRangeOfPoint(playerid,3.0,DDoorsInfo[i][ddInteriorX], DDoorsInfo[i][ddInteriorY], DDoorsInfo[i][ddInteriorZ]) && PlayerInfo[playerid][pVW] == DDoorsInfo[i][ddInteriorVW]) {
             SetPlayerInterior(playerid,DDoorsInfo[i][ddExteriorInt]);
@@ -50895,5 +50890,14 @@ CMD:setranktext(playerid, params[])
 CMD:testeat(playerid, params[])
 {
 	PlayerInfo[playerid][pEat] = 26;
+	return 1;
+}
+
+
+CMD:mynumberphone(playerid, params[])
+{
+	new string[256];
+	format(string, sizeof(string), " %s's So dien thoai cua ban la: {FFF000}%d.", GetPlayerNameEx(playerid), PlayerInfo[playerid][pPnumber]);
+	SendClientMessageEx(playerid, COLOR_WHITE, string);
 	return 1;
 }

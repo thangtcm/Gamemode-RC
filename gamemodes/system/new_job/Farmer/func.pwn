@@ -347,11 +347,11 @@ stock PlantTree_Add(playerid, type)
 {
     if(!IsPlayerInDynamicArea(playerid, FarmPlantArea) || GetPlayerVirtualWorld(playerid) != GetPlayerSQLId(playerid)) return SendErrorMessage(playerid, "Ban khong o trong khu vuc trong cay cua ban.");
     if(PlantTree_Near(playerid, 3.0) != -1) return SendErrorMessage(playerid, "Ban khong the trong cay trong pham vi dang co cay trong khac.");
-    if(Inventory_Count(playerid, "Hat Giong Lua") <= 0) SendErrorMessage(playerid, "Ban khong co giong cay de trong cay.");
+    if(Inventory_Count(playerid, PlantArr[type][PlantName]) <= 0) SendErrorMessage(playerid, "Ban khong co giong cay de trong cay.");
     if(PlayerInfo[playerid][pJob] != JOB_FARMER && PlayerInfo[playerid][pJob2] != JOB_FARMER) return SendErrorMessage(playerid, "Ban khong phai la nguoi nong dan.");
     new plantId = GetPlantFree(playerid);
     if(plantId == -1)   return SendErrorMessage(playerid, "Ban khong the trong cay them nua.");
-    new playerinvId = Inventory_GetItemID(playerid,"Hat Giong Lua");
+    new playerinvId = Inventory_GetItemID(playerid, PlantArr[type][PlantName]);
     Inventory_Remove(playerid, playerinvId);
     GetPlayerPos(playerid, PlantTreeInfo[playerid][plantId][plantPos][0], PlantTreeInfo[playerid][plantId][plantPos][1], PlantTreeInfo[playerid][plantId][plantPos][2]);
     PlantTreeInfo[playerid][plantId][plantPos][2] = Plant_ZDefault;

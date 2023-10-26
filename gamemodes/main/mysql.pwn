@@ -389,6 +389,7 @@ public OnQueryFinish(resultid, extraid, handleid)
 					cache_get_field_content(row,  "Disabled", szResult, MainPipeline); PlayerInfo[extraid][pDisabled] = strval(szResult);
 					cache_get_field_content(row,  "Level", szResult, MainPipeline); PlayerInfo[extraid][pLevel] = strval(szResult);
 					cache_get_field_content(row,  "AdminLevel", szResult, MainPipeline); PlayerInfo[extraid][pAdmin] = strval(szResult);
+					printf("Admin %d",  PlayerInfo[extraid][pAdmin]);
 					cache_get_field_content(row,  "CMND", szResult, MainPipeline); PlayerInfo[extraid][pCMND] = strval(szResult);
 					cache_get_field_content(row,  "MaskID1", szResult, MainPipeline); PlayerInfo[extraid][pMaskID][0] = strval(szResult);
 					cache_get_field_content(row,  "MaskID2", szResult, MainPipeline); PlayerInfo[extraid][pMaskID][1] = strval(szResult);
@@ -1433,7 +1434,7 @@ public OnLoadTempCharacters(playerid) {
     {
     	ShowPlayerCharacter(playerid);
 		new str[256];
-		SendServerMessage(playerid, "Ten nay da ton tai hoac khong hop le (Name_Name).");
+		SendServerMessage(playerid, "Ban chua khoi tao nhan vat nao.");
     	print("Khong tai duoc tai khoan chinh cua ban");
 
     }
@@ -7871,7 +7872,7 @@ public OnPlayerLoad(playerid)
 		PlayerInfo[playerid][pServiceTime] = 0;
 		PlayerInfo[playerid][pFirework] = 0;
 		PlayerInfo[playerid][pBoombox] = 0;
-		PlayerInfo[playerid][pCash] = 1000;
+		PlayerInfo[playerid][pCash] = 2000;
 		PlayerInfo[playerid][pLevel] = 1;
 		PlayerInfo[playerid][pTruyDuoi] = 0;
 		PlayerInfo[playerid][pAdmin] = 0;
@@ -7902,7 +7903,6 @@ public OnPlayerLoad(playerid)
 		PlayerInfo[playerid][pMaskID][1] = random(40) + 59;
 		PlayerInfo[playerid][gPupgrade] = 0;
 		PlayerInfo[playerid][pConnectHours] = 0;
-		PlayerInfo[playerid][pReg] = 0;
 		PlayerInfo[playerid][pSex] = 0;
 		strcpy(PlayerInfo[playerid][pBirthDate], "0000-00-00", 64);
 		PlayerInfo[playerid][pRingtone] = 0;
@@ -7965,6 +7965,7 @@ public OnPlayerLoad(playerid)
 		PlayerInfo[playerid][pProbationTime] = 0;
 		PlayerInfo[playerid][pModel] = 311;
 		PlayerInfo[playerid][pMinerLevel] = 0;
+		PlayerInfo[playerid][pSoLanMiner] = 0;
 		PlayerInfo[playerid][pPnumber] = 0;
 		PlayerInfo[playerid][pPhousekey] = INVALID_HOUSE_ID;
 		PlayerInfo[playerid][pPhousekey2] = INVALID_HOUSE_ID;
@@ -8273,8 +8274,6 @@ public OnPlayerLoad(playerid)
 	printf("%s has logged in.", GetPlayerNameEx(playerid));
 	//format(string, sizeof(string), "(SERVER) Chao mung, %s.", GetPlayerNameEx(playerid));
 	SendClientMessageEx(playerid, COLOR_WHITE, string);
-	SetPlayerVirtualWorld(playerid, PlayerInfo[playerid][pVW]);
-	SetSpawnInfo(playerid, 0, PlayerInfo[playerid][pModel], PlayerInfo[playerid][pPos_x], PlayerInfo[playerid][pPos_y], PlayerInfo[playerid][pPos_z], 1.0, -1, -1, -1, -1, -1, -1);
 	SpawnPlayer(playerid);
 	defer SkinDelay(playerid);
 	g_mysql_AccountOnline(playerid, servernumber);
@@ -8432,9 +8431,6 @@ public OnPlayerLoad(playerid)
 	}
 	TextDrawHideForPlayer(playerid, BannerServer[1]);
 	if(pMOTD[0]) { ShowPlayerDialog(playerid, PMOTDNOTICE, DIALOG_STYLE_MSGBOX, "Dong y", pMOTD, "Tu choi", ""); }
-	else if(GetPVarInt(playerid, "NullEmail")) {
-	ShowPlayerDialog(playerid, NULLEMAIL, DIALOG_STYLE_INPUT, "{3399FF}Dang ky E-Mail", "{FFFFFF}Xin vui long nhap dia chi E-mail hop le de lien ket voi tai khoan.\n\nLuu y: Cung cap mot dia chi email khong hop le tai khoan se bi cham dut tai khoan.", "Xac nhan", "Bo qua");
-	}
     SetUnreadMailsNotification(playerid);
     #if defined zombiemode
    	if(zombieevent == 1)

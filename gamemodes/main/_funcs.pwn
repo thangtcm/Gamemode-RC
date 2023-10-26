@@ -996,7 +996,7 @@ public OnPlayerClickPlayerTextDraw(playerid, PlayerText:playertextid)
    		{
 			if(PlayerInfo[playerid][pSex] != 0 && GetPVarInt(playerid, #dateinsert) == 1 && PlayerInfo[playerid][pQuocTich] != 0)
 			{
-					JoinGame(playerid);
+				JoinGame(playerid);
 			}
 			else return SendClientTextDraw(playerid, "~r~Ban chua dien day du thong tin.");
    		}
@@ -9143,6 +9143,8 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 			if(listitem == 0) {
 				new i = GetPVarInt(playerid, "SelectNhanVat");
                 ShowNoticeGUIFrame(playerid, 3);
+            	printf("DIALOG_NHANVAT1 %s - Admin %d", TempCharacter[playerid][i][Name], PlayerInfo[playerid][pAdmin]);
+
 	            format(string, sizeof(string), "SELECT * FROM `accounts` WHERE `Username` = '%s'",  TempCharacter[playerid][i][Name]);
  	            mysql_function_query(MainPipeline, string, true, "OnQueryFinish", "iii", LOADUSERDATA_THREAD, playerid, g_arrQueryHandle{playerid});
 			}
@@ -16409,7 +16411,7 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 				Log("logs/business.log", string);
 				format(string,sizeof(string),"* Ban da mua mot %s tai %s voi gia $%d.",RestaurantItems[iItem],Businesses[iBusiness][bName], cost);
 				SendClientMessage(playerid, COLOR_YELLOW, string);
-				Inventory_Add(playerid, RestaurantItems[iItem]);
+				Inventory_Add(playerid, RestaurantItems[iItem], .timer = 60*24*2);
 				printf("%s\n%i", RestaurantItems[iItem], iItem);
 
 				// if (strcmp("Hambuger", RestaurantItems[iItem]) == 0) // full meal

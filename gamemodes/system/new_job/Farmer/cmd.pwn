@@ -14,6 +14,33 @@ CMD:exitfarm(playerid, params[])
 	return 1;
 }
 
+CMD:asellfarm(playerid, params[])
+{
+	if (PlayerInfo[playerid][pAdmin] < 4) {
+		return SendErrorMessage(playerid, " Ban khong duoc phep su dung lenh nay.");
+	}
+	new string[128], farmId;
+	if(sscanf(params, "d", farmId)) return SendUsageMessage(playerid, " /asellfarm [farmer id]");
+	FarmClear(farmId);
+	FARM_UPDATE(farmId);
+	new ip[16];
+	GetPlayerIp(playerid,ip,sizeof(ip));
+	format(string,sizeof(string),"Administrator %s (IP: %s) da ban nong trai ID %d (duoc so huu boi %d).",GetPlayerNameEx(playerid),ip,farmId,FarmInfo[farmId][OwnerName]);
+	Log("logs/farmer.log", string);
+	PlayerPlaySound(playerid, 1052, 0.0, 0.0, 0.0);
+	format(string, sizeof(string), "~w~Ban da ban farmer %d.", farmId);
+	GameTextForPlayer(playerid, string, 10000, 3);
+	foreach(new j: Player) {
+		if(PlayerInfo[j][pFarmerKey] == farmId) {
+			PlayerInfo[j][pFarmerKey] = -1;
+			SendServerMessage(playerid, " Mot Admin da ban cua hang nay, so lieu thong ke cua hang ban duoc thiet lap lai.");
+		}
+	}
+	format(string, sizeof(string), "UPDATE `accounts` SET `Farmer` = -1 WHERE `Farmer` = '%d'", farmId);
+	mysql_function_query(MainPipeline, string, false, "OnQueryFinish", "i", SENDDATA_THREAD);
+	return 1;
+}
+
 CMD:gotofarm(playerid, params[])
 {
 	if(PlayerInfo[playerid][pAdmin] >= 4 || PlayerInfo[playerid][pShopTech] >= 1)

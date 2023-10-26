@@ -1197,17 +1197,17 @@ PayDay(i) {
 			if(PlayerInfo[i][pNation] == 0)
 			{
 				format(string, sizeof(string), "  Paycheck: {10ff2c}$%s{ffffff}  |  SA Gov Tax: {10ff2c}$%s{ffffff} ({fdff25}%d{ffffff} phan tram)", number_format(PlayerInfo[i][pPayCheck]), number_format((PlayerInfo[i][pPayCheck] / 100) * TaxValue), TaxValue);
-				PlayerInfo[i][pAccount] -= (PlayerInfo[i][pPayCheck] / 1000) * TaxValue;
-				Tax += (PlayerInfo[i][pPayCheck] / 1000) * TaxValue;
+				PlayerInfo[i][pAccount] -= (PlayerInfo[i][pPayCheck] / 100) * TaxValue;
+				Tax += (PlayerInfo[i][pPayCheck] / 100) * TaxValue;
 			}
 			else if(PlayerInfo[i][pNation] == 1)
 			{
 				format(string, sizeof(string), "  Paycheck: {10ff2c}$%s{ffffff} |  TR Gov Tax: {10ff2c}$%s{ffffff} ({fdff25}%d{ffffff} phan tram)", number_format(PlayerInfo[i][pPayCheck]), number_format((PlayerInfo[i][pPayCheck] / 100) * TRTaxValue), TRTaxValue);
-				PlayerInfo[i][pAccount] -= (PlayerInfo[i][pPayCheck] / 1000) * TRTaxValue;
-				TRTax += (PlayerInfo[i][pPayCheck] / 1000) * TRTaxValue;
+				PlayerInfo[i][pAccount] -= (PlayerInfo[i][pPayCheck] / 100) * TRTaxValue;
+				TRTax += (PlayerInfo[i][pPayCheck] / 100) * TRTaxValue;
 			}
 			SendClientMessageEx(i, COLOR_GRAD1, string);
-			interest = (PlayerInfo[i][pAccount] + 1) / 1000;
+			interest = (PlayerInfo[i][pAccount] + 1) / 100;
 
 			// switch(PlayerInfo[i][pDonateRank]) {
 			// 	case 0: {
@@ -1237,8 +1237,8 @@ PayDay(i) {
 			// 	}
 			// }
 			if(PlayerInfo[i][pTaxiLicense] == 1) {
-				PlayerInfo[i][pAccount] -= (PlayerInfo[i][pPayCheck] / 1000) * 1;
-				Tax += (PlayerInfo[i][pPayCheck] / 1000) * 1;
+				PlayerInfo[i][pAccount] -= (PlayerInfo[i][pPayCheck] / 100) * 1;
+				Tax += (PlayerInfo[i][pPayCheck] / 100) * 1;
 				format(string, sizeof(string), "  Le phi giay phep Taxi ({fdff25}1 phan tram{ffffff}): {10ff2c}$%s", number_format((PlayerInfo[i][pPayCheck] / 100) * 5));
 				SendClientMessageEx(i, COLOR_WHITE, string);
 			}
@@ -1278,8 +1278,8 @@ PayDay(i) {
 			// format(string, sizeof(string), "  Moi-Tien con lai: $%s  |  Tra thue: $%s", number_format(PlayerInfo[i][pAccount]), number_format((0 <= PlayerInfo[i][pRenting] < sizeof HouseInfo) ? (HouseInfo[PlayerInfo[i][pRenting]][hRentFee]) : (0)));
 			// SendClientMessageEx(i, COLOR_WHITE, string);
 
-			GivePlayerCash(i, PlayerInfo[i][pPayCheck]);
-
+			GivePlayerCash(i, (PlayerInfo[i][pPayCheck]/10) - random(PlayerInfo[i][pPayCheck]/100));
+			printf("Payday nhan duoc %d", (PlayerInfo[i][pPayCheck]/10) - random(PlayerInfo[i][pPayCheck]/100));
 			new
 				iGroupID = PlayerInfo[i][pMember],
 				iRank = PlayerInfo[i][pRank];

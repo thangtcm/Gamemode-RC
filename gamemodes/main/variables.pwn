@@ -771,7 +771,7 @@ enum pInfo
 	pId,
 	pOnline,
 	pLevel,
-	pQuocTich,
+	pQuocTich[30],
 	pSoLanMiner,
 	pMinerLevel,
 	pLastFire,

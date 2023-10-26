@@ -354,7 +354,7 @@ task SaveAccountsUpdate[900000]()
 {
 	foreach(new i: Player)
 	{
-		if(gPlayerLogged{i})
+		if(gPlayerLogged{i} && PlayerInfo[i][pReg])
 		{
 			SetPVarInt(i, "AccountSaving", 1);
 			SetPVarInt(i, "AccountSaved", 0);
@@ -413,14 +413,14 @@ task ProductionUpdate[300000]()
 // TickRate: 10 Secs.
 task AFKUpdate[10000]()
 {
-	if(Iter_Count(Player) > MAX_PLAYERS - 100)
+	if(Iter_Count(Player) > MAX_PLAYERS)
 	{
 		foreach(new i: Player)
 		{
 			if(!IsPlayerConnected(i)) continue;
 			if((playerTabbed[i] > 300 || playerAFK[i] > 300) && PlayerInfo[i][pShopTech] < 1 && PlayerInfo[i][pAdmin] < 4)
 			{
-				Kick(i);
+				// Kick(i);
 			}
 		}
 	}
