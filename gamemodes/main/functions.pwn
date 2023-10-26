@@ -12121,7 +12121,7 @@ stock IsAtDeliverPatientPoint(playerid)
 		{//ALLSAINTS, ALL SAINTS ROOF, COUNTY GENERAL, COUNTY ROOF
 			return 1;
 		}
-		else if(IsPlayerInRangeOfPoint(playerid, 4.0, 1227.2339,306.4730,19.7028) || IsPlayerInRangeOfPoint(playerid, 5.0, 1233.3384,316.4022,24.7578) || IsPlayerInRangeOfPoint(playerid, 3.0,-339.2989,1055.8138,19.7392) || IsPlayerInRangeOfPoint(playerid, 5.0, -334.1560,1051.4434,26.0125) || IsPlayerInRangeOfPoint(playerid, 5.0, 1256.2775, -1299.9001, 1061.8671))
+		else if(IsPlayerInRangeOfPoint(playerid, 4.0, 1227.2339,306.4730,19.7028) || IsPlayerInRangeOfPoint(playerid, 5.0, 1233.3384,316.4022,24.7578) || IsPlayerInRangeOfPoint(playerid, 3.0,-339.2989,1055.8138,19.7392) || IsPlayerInRangeOfPoint(playerid, 5.0, -334.1560,1051.4434,26.0125) || IsPlayerInRangeOfPoint(playerid, 5.0, 1251.0858, -1300.1538, 1061.8671))
 		{//RED COUNTY, RED COUNTY ROOF, FORT CARSON, Fortcarson ROOF
 			return 1;
 		}

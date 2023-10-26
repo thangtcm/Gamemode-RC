@@ -1250,9 +1250,9 @@ stock JoinGame(playerid) {
     TextDrawHideForPlayer(playerid, BannerServer[1]);
     SetPlayerVirtualWorld(playerid, PlayerInfo[playerid][pVW]);
     SetPlayerInterior(playerid,0);
-    Streamer_UpdateEx(playerid,1223.4490,247.0872,19.5469);
-    SetSpawnInfo(playerid, 0, PlayerInfo[playerid][pModel], 1223.4490,247.0872,19.5469, 1.0, -1, -1, -1, -1, -1, -1);
-    SetPlayerPos(playerid, 1223.4490,247.0872,19.5469);
+    Streamer_UpdateEx(playerid,1355.6627, 259.0992, 19.5547);
+    SetSpawnInfo(playerid, 0, PlayerInfo[playerid][pModel], 1355.6627, 259.0992, 19.5547, 1.0, -1, -1, -1, -1, -1, -1);
+    SetPlayerPos(playerid, 1355.6627,259.0992, 19.5547);
     SetPlayerFacingAngle(playerid, 247.5060);
     PlayerInfo[playerid][pVW] = 0;
     PlayerInfo[playerid][pDoiBung] = 100;

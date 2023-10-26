@@ -703,7 +703,7 @@ public OnPlayerUseItem(playerid, pItemId, name[])
 	else if(!strcmp(name, "Pizza", true))
 	{
 		if(PlayerInfo[playerid][pEat] >= 100) return SendErrorMessage(playerid, "Ban da no roi, khong the an tiep.");
-		PlayerInfo[playerid][pEat] = PlayerInfo[playerid][pEat] + 20 > 100 ? 100 : PlayerInfo[playerid][pEat] + 20;
+		PlayerInfo[playerid][pEat] = PlayerInfo[playerid][pEat] + 30 > 100 ? 100 : PlayerInfo[playerid][pEat] + 30;
 		ApplyAnimation(playerid, "FOOD", "EAT_Pizza", 5.0, 0, 1, 1, 1, 2000, 1);
 		PlayerPlaySound(playerid, 32200, 0.0, 0.0, 0.0);
 		Inventory_Remove(playerid, pItemId, 1);
@@ -727,7 +727,7 @@ public OnPlayerUseItem(playerid, pItemId, name[])
 	else if(!strcmp(name, "Hamburger", true))
 	{
 		if(PlayerInfo[playerid][pEat] >= 100) return SendErrorMessage(playerid, "Ban da no roi, khong the an tiep.");
-		PlayerInfo[playerid][pEat] = PlayerInfo[playerid][pEat] + 16 > 100 ? 100 : PlayerInfo[playerid][pEat] + 16;
+		PlayerInfo[playerid][pEat] = PlayerInfo[playerid][pEat] + 25 > 100 ? 100 : PlayerInfo[playerid][pEat] + 25;
 		ApplyAnimation(playerid, "FOOD", "EAT_Burger", 5.0, 0, 1, 1, 1, 2000, 1);
 		PlayerPlaySound(playerid, 32201, 0.0, 0.0, 0.0);
 		Inventory_Remove(playerid, pItemId, 1);
@@ -743,7 +743,7 @@ public OnPlayerUseItem(playerid, pItemId, name[])
 	else if(!strcmp(name, "Juice", true))
 	{
 		if(PlayerInfo[playerid][pDrink] >= 100) return SendErrorMessage(playerid, "Ban da no roi, khong the uong tiep.");
-		PlayerInfo[playerid][pDrink] = PlayerInfo[playerid][pDrink] + 16 > 100 ? 100 : PlayerInfo[playerid][pDrink] + 16;
+		PlayerInfo[playerid][pDrink] = PlayerInfo[playerid][pDrink] + 25 > 100 ? 100 : PlayerInfo[playerid][pDrink] + 25;
 		ApplyAnimation(playerid, "GANGS", "drnkbr_prtl", 2.67, 0, 1, 1, 1, 2000, 1);
 		PlayerPlaySound(playerid, 42600, 0.0, 0.0, 0.0);
 		Inventory_Remove(playerid, pItemId, 1);
@@ -1255,7 +1255,7 @@ Dialog:InventoryCH(playerid, response, listitem, inputtext[])
 		}
 		else if(GetPVarInt(playerid, "InvPlayerHouse") != 0)
 		{
-			Inventory_Update(playerid, itemId, GetPVarInt(playerid, "InvPlayerHouse"));
+			Inventory_Update(playerid, itemId, -1, GetPVarInt(playerid, "InvPlayerHouse"));
 			format(str, sizeof(str), "Ban da cat vat pham %s vao ngoi nha cua ban.", itemName);
 			SendClientMessageEx(playerid, COLOR_MAIN, str);
 		}
@@ -1427,7 +1427,7 @@ Dialog:GiveItem(playerid, response, listitem, inputtext[])
 		strcpy(itemName, InventoryData[playerid][itemId][invItem], 32);
 		if(InventoryData[playerid][itemId][invQuantity] == 1)
 		{
-			new id = Inventory_Add(giveplayerid, itemName, 1, InventoryData[playerid][itemId][invTimer]), str[560];
+			new id = Inventory_Add(giveplayerid, itemName, 1, InventoryData[playerid][itemId][invTimer] - gettime()), str[560];
 			if(id == -1)
 				return SendErrorMessage(playerid, "Nguoi choi do khong con slot trong tui do.");
 			format(str, sizeof(str), "* %s da lay \"%s\" va dua cho %s.", GetPlayerNameEx(playerid), itemName, GetPlayerNameEx(giveplayerid));
@@ -1463,7 +1463,7 @@ Dialog:GiveQuantity(playerid, response, listitem, inputtext[])
 			itemName[32], str[560];
 
 		strunpack(itemName, InventoryData[playerid][itemId][invItem]);
-
+		printf("GiveQuantity %s", itemName);
 		if(isnull(inputtext))
 		{
 			format(str, sizeof(str), "Item: %s (So luong: %d)\n\nXin vui long nhap so luong %s:", itemName, InventoryData[playerid][itemId][invQuantity], GetPlayerNameEx(giveplayerid));
@@ -1475,7 +1475,7 @@ Dialog:GiveQuantity(playerid, response, listitem, inputtext[])
 			format(str, sizeof(str), "Ban khong co nhieu item.\n\nItem: %s (So luong: %d)\n\nXin vui long nhap so luong %s:", itemName, InventoryData[playerid][itemId][invQuantity], GetPlayerNameEx(giveplayerid));
 			return  Dialog_Show(playerid, GiveQuantity, DIALOG_STYLE_INPUT, "Dua item", str, "Dua", "Huy bo");
 		}
-		new id = Inventory_Add(giveplayerid, itemName, strval(inputtext), InventoryData[playerid][itemId][invTimer]);
+		new id = Inventory_Add(giveplayerid, itemName, strval(inputtext), InventoryData[playerid][itemId][invTimer] - gettime());
 
 		if(id == -1)
 			return SendErrorMessage(playerid, "Nguoi choi do khong con slot trong tui do.");

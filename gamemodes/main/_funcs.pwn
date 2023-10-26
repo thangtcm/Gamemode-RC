@@ -7402,7 +7402,7 @@ public LoadStreamerDynamic3DTextLabels()
    	CreateDynamic3DTextLabel("/capcuu",COLOR_LIGHTRED,2024.5742,-1382.7844,48.3359+0.6,4.0);///Deliverpt (County General)
    	CreateDynamic3DTextLabel("/capcuu",COLOR_LIGHTRED,1233.3384,316.4022,24.7578+0.6,4.0);///Deliverpt (Montgomery Rooftop)
    	CreateDynamic3DTextLabel("/capcuu",COLOR_LIGHTRED,-334.1560,1051.4434,26.0125+0.6,4.0);///Deliverpt (Fort Carson Rooftop)
-   	CreateDynamic3DTextLabel("/capcuu",COLOR_LIGHTRED,1256.2775, -1299.9001, 1061.8671+0.6,4.0);///Deliverpt (Fort Carson Rooftop)
+   	CreateDynamic3DTextLabel("/capcuu",COLOR_LIGHTRED,1251.0858, -1300.1538, 1061.8671+0.6,4.0);///Deliverpt (Fort Carson Rooftop)
    	CreateDynamic3DTextLabel("/capcuu",COLOR_LIGHTRED,-2656.0339,615.2567,66.0938+0.6,4.0);///Deliverpt (SF Rooftop)
 	CreateDynamic3DTextLabel("/capcuu",COLOR_LIGHTRED,1579.58,1768.88,10.82+0.6,4.0); // /deliverpt (LV Hospital)
    	CreateDynamic3DTextLabel("Emergency Room\n/capcuu",COLOR_DBLUE,-2573.300,611.013,14.030+0.6,4.0);///Deliverpt (SF)
@@ -14872,6 +14872,7 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 					g_mysql_SaveVehicle(playerid, listitem);			
 					new vstring[128];
 					format(vstring, sizeof(vstring), "Ban da cat %s. Chiec xe da duoc chinh vao kho xe cua ban", VehicleName[PlayerVehicleInfo[playerid][listitem][pvModelId] - 400]);
+					VehicleTrucker_Reload(playerid, listitem);
 					SendClientMessageEx(playerid, COLOR_WHITE, vstring);
 					CheckPlayerVehiclesForDesync(playerid);
 				}
@@ -14936,6 +14937,7 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 				CheckPlayerVehiclesForDesync(playerid);
 				Vehicle_ResetData(iVeh);
 				VehicleFuel[iVeh] = PlayerVehicleInfo[playerid][listitem][pvFuel];
+				VehicleTrucker_Reload(playerid, listitem, true);
 				if (VehicleFuel[iVeh] > 100.0) VehicleFuel[iVeh] = 100.0;
 
 				if(PlayerVehicleInfo[playerid][listitem][pvCrashFlag] == 1 && PlayerVehicleInfo[playerid][listitem][pvCrashX] != 0.0)

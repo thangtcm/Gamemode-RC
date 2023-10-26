@@ -186,6 +186,7 @@ Dialog:SELL_PRODUCT_DIALOG(playerid, response, listitem, inputtext[]){
 		if(Inventory_Count(playerid, PlantArr[PlantArrId][PlantProduct]) < strval(inputtext)) return SendErrorMessage(playerid, "Ban khong du so luong!");
 		PlayerInfo[playerid][pCash] += strval(inputtext)*PlantArr[PlantArrId][PlantSell];
 		new pItemId = Inventory_GetItemID(playerid, PlantArr[PlantArrId][PlantProduct], strval(inputtext));
+		printf("%s", InventoryData[playerid][pItemId][invItem]);
 		Inventory_Remove(playerid, pItemId, strval(inputtext));
 		format(buyer_msg, sizeof(buyer_msg), "Ban da ban thanh cong %d %s va nhan duoc %d$",strval(inputtext), PlantArr[PlantArrId][PlantProduct], strval(inputtext)*PlantArr[PlantArrId][PlantSell]);
 		SendFarmerJob(playerid, buyer_msg);

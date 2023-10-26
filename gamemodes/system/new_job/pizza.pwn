@@ -129,7 +129,12 @@ hook OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
         			if(PlayerInfo[playerid][pStrong] <= 1) return SendErrorMessage(playerid, " Ban da qua met moi khong the lam viec."); 
         			if(LamViec[playerid] == 0) {
 	    				SetPlayerPos(playerid, 1380.8643,270.4954,21.9751);
-		    			PizzaCar[playerid] = CreateVehicle(448, 1367.3431,270.6667,19.5669, 0 , random(255), random(255), 1000, 0);
+		    			PizzaCar[playerid] = CreateVehicle(448, 1367.3431,270.6667,19.5669, 0 , random(255), random(255), -1);
+						VehicleFuel[PizzaCar[playerid]] = 100;
+						new fVW = GetPlayerVirtualWorld(playerid);
+						Vehicle_ResetData(PizzaCar[playerid]);
+						LinkVehicleToInterior(PizzaCar[playerid], GetPlayerInterior(playerid));
+						SetVehicleVirtualWorld(PizzaCar[playerid], fVW);
 	        			PutPlayerInVehicle(playerid, PizzaCar[playerid] ,0);
 	       				SetPVarInt(playerid, "IsDaThue", 1);
 	       				LamViec[playerid] =1;
@@ -257,7 +262,7 @@ hook OnPlayerKeyStateChange(playerid, newkeys, oldkeys) {
 
 stock DestroyVehiclePizza(playerid)
 {
-	if(IsValid3DTextLabel(PizzaTextInfo[playerid])) Delete3DTextLabel(Text3D:PizzaTextInfo[playerid]);
+	if(IsValid3DTextLabel(PizzaTextInfo[playerid])) Delete3DTextLabel(PizzaTextInfo[playerid]);
 	PizzaTextInfo[playerid] = Text3D: INVALID_3DTEXT_ID;
 	DestroyVehicle(PizzaCar[playerid]);
 	PizzaCar[playerid] = INVALID_VEHICLE_ID;

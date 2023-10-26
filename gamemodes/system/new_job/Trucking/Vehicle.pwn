@@ -131,6 +131,41 @@ public OnAddVehicleTruckerFinish(playerid, index)
     return 1;
 }
 
+stock VehicleTrucker_Reload(playerid, pVehicleIndex, isAdd = false)
+{
+    if(PlayerInfo[playerid][pRegisterCarTruck] != pVehicleIndex)    return 1;
+    for(new i; i < MAX_OBJECTTRUCKER; i++)
+    {
+        if(isAdd)
+        {
+            if(VehicleTruckerData[playerid][i][vtId] != -1 && VehicleTruckerData[playerid][i][vtSlotId] == PlayerVehicleInfo[playerid][pVehicleIndex][pvSlotId])
+            {
+                if(IsValidDynamicObject(VehicleTruckerData[playerid][i][vtObject]))
+                {
+                    DestroyDynamicObject(VehicleTruckerData[playerid][i][vtObject]);
+                }
+                VehicleTruckerData[playerid][i][vtObject] = CreateDynamicObject(1271, 
+                    VehicleTruckerData[playerid][i][vtPos][0], VehicleTruckerData[playerid][i][vtPos][1], VehicleTruckerData[playerid][i][vtPos][2], 
+                    0, 0, 0, GetPlayerVirtualWorld(playerid), GetPlayerInterior(playerid));
+                AttachDynamicObjectToVehicle(VehicleTruckerData[playerid][i][vtObject], PlayerVehicleInfo[playerid][pVehicleIndex][pvId], 
+                    VehicleTruckerData[playerid][i][vtPos][0], VehicleTruckerData[playerid][i][vtPos][1], VehicleTruckerData[playerid][i][vtPos][2], 
+                    VehicleTruckerData[playerid][i][vtPos][3], VehicleTruckerData[playerid][i][vtPos][4], VehicleTruckerData[playerid][i][vtPos][5]);
+            }
+        }
+        else
+        {
+            if(VehicleTruckerData[playerid][i][vtSlotId] == PlayerVehicleInfo[playerid][pVehicleIndex][pvSlotId] && VehicleTruckerData[playerid][i][vtId] != -1)
+            {
+                if(IsValidDynamicObject(VehicleTruckerData[playerid][i][vtObject]))
+                {
+                    DestroyDynamicObject(VehicleTruckerData[playerid][i][vtObject]);
+                }
+            }
+        }
+    }
+    return 1;
+}
+
 stock VEHICLETRUCKER_DELETE(playerid, index)
 {
     new
