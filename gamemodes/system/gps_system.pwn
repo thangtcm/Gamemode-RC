@@ -6,14 +6,34 @@
 stock GetJobFind(z) {
 	new jobnamez[80];
 	switch(z) {
-		case 0:	jobnamez = "Truck container (Van chuyen hang hoa)";
-		case 1:	jobnamez = "Pizza Deliver (Giao Pizza)";
-		case 2:	jobnamez = "Lumberjack (Chat go)";
-		case 3:	jobnamez = "Hai trai cay";
-		case 4:	jobnamez = "Dao da";
+		case 0:	jobnamez = "Pizza RC";
+		case 1:	jobnamez = "Pizza Bluberry";
+		case 2:	jobnamez = "Trucker";
+		case 3:	jobnamez = "Miner";
+		case 4:	jobnamez = "Farm";
 	}
 	return jobnamez;
 }  
+stock GetZoneFindx(z) {
+	new gaga[70];
+	switch(z) {
+		case 0:	gaga = "Bank RC";
+		case 1:	gaga = "Bank Bluberry";
+		case 2:	gaga = "Bank Dillimore";
+		case 3:	gaga = "Bank palomino";
+	}
+	return gaga;
+} 
+stock GetZoneFindy(z) {
+	new gaga[70];
+	switch(z) {
+		case 0:	gaga = "Pizza RC";
+		case 1:	gaga = "24/7 RC";
+		case 2:	gaga = "Xe RC";
+		case 3:	gaga = "Quan ao RC";
+	}
+	return gaga;
+} 
 stock GetZoneFind(z) {
 	new gaga[70];
 	switch(z) {
@@ -34,6 +54,18 @@ stock GetZoneFindz(zxc) {
 	return gagaz;
 }  
 
+new Float:timbank_postion[4][3] = {
+{1373.5576,405.0259,19.9555},
+{207.9119,-61.7973,1.9766},
+{694.9058,-500.1317,16.3359},
+{2303.8279,-16.1507,26.4844} 
+};
+new Float:timstore_postion[4][3] = {
+{1367.5760,248.1629,19.5669},
+{1359.8734,204.9854,19.7555},
+{1242.3909,211.3994,19.5547},
+{1277.0188,370.8625,19.5547} 
+};
 new Float:timduong_postion[4][3] = {
 {1289.2391,248.9346,19.4063},
 {233.1081,-211.2786,1.4300},
@@ -46,11 +78,11 @@ new Float:diadiemkhac_postion[3][3] = {
 {447.7277,238.8819,19.4063}
 };
 new Float:timvieclam_postion[5][3] = {
-{2507.7554,-2120.0732,13.5469},
-{ 2098.5432,-1800.6925,13.3889},
-{-543.2013,-197.4136,78.4063},
-{1942.4304,164.3992,37.2813},
-{581.6000,939.5470,-42.6158}
+{1363.0930,253.7802,19.5669},
+{206.2160,-202.2273,1.5781},
+{58.6224,-291.5815,1.5781},
+{588.0701,865.1739,-43.5557},
+{-100.2749, -57.9010, 3.1172}
 };
 CMD:gps(playerid, params[])
 {
@@ -114,8 +146,32 @@ Dialog:GPSPosition(playerid, response, listitem, inputtext[])
 				}
 				ShowPlayerDialog(playerid, TIMVIECLAM, DIALOG_STYLE_TABLIST_HEADERS, "Tim viec lam",stringz,"Chon", "Huy");
 			}
-			case 2: return 1;
-			case 3: return 1;
+			case 2:
+			{
+				new stringz[1029];
+				stringz = "Ngan hang\tDia diem\tKhoang cach";
+				for(new z =0 ; z < 5 ; z++ ) 
+				{
+					new zone[MAX_ZONE_NAME],Float:Distance;
+					Distance = GetPlayerDistanceFromPoint(playerid, timbank_postion[z][0], timbank_postion[z][1], timbank_postion[z][2]);
+				    Get3DZone(timbank_postion[z][0], timbank_postion[z][1], timbank_postion[z][2], zone, sizeof(zone));
+				    format(stringz, sizeof stringz, "%s\n\%s\t{6db4c3}%s\t{3cab4e}%0.2f met", stringz,GetZoneFindx(z),zone,Distance);
+				}
+				ShowPlayerDialog(playerid, TIMVIECLAM, DIALOG_STYLE_TABLIST_HEADERS, "Tim viec lam",stringz,"Chon", "Huy");
+			}
+			case 3:
+			{
+				new stringz[1029];
+				stringz = "Cua hang\tDia diem\tKhoang cach";
+				for(new z =0 ; z < 5 ; z++ ) 
+				{
+					new zone[MAX_ZONE_NAME],Float:Distance;
+					Distance = GetPlayerDistanceFromPoint(playerid, timstore_postion[z][0], timstore_postion[z][1], timstore_postion[z][2]);
+				    Get3DZone(timstore_postion[z][0], timstore_postion[z][1], timstore_postion[z][2], zone, sizeof(zone));
+				    format(stringz, sizeof stringz, "%s\n\%s\t{6db4c3}%s\t{3cab4e}%0.2f met", stringz,GetZoneFindy(z),zone,Distance);
+				}
+				ShowPlayerDialog(playerid, TIMVIECLAM, DIALOG_STYLE_TABLIST_HEADERS, "Tim viec lam",stringz,"Chon", "Huy");
+			}
 			case 4:
 			{
 			    new stringz[1029];

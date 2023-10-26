@@ -37,6 +37,7 @@ public OnPlayerLeaveDynamicArea(playerid, areaid)
 			}
 		}
 	}
+	LeaveAreaFarm(playerid, areaid);
 	if(areaid == audiourlid)
 	{
 		StopAudioStreamForPlayerEx(playerid);

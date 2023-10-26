@@ -56,24 +56,24 @@ public ResetPrice()
 	{
 		case 0..50:
 		{
-			RandomMoney[0] = (10+random(10))*10;
-			RandomMoney[1] = (50+random(30))*10;
-			RandomMoney[2] = (50+random(30))*10;
-			RandomMoney[3] = (1000+random(500))*10;
+			RandomMoney[0] = (10+random(10));
+			RandomMoney[1] = (15+random(50));
+			RandomMoney[2] = (20+random(100));
+			RandomMoney[3] = (30+random(500));
 		}
 		case 51..79:
 		{
-			RandomMoney[0] = (20+random(20))*10;
-			RandomMoney[1] = (80+random(50))*10;
-			RandomMoney[2] = (80+random(50))*10;
-			RandomMoney[3] = (1200+random(800))*10;
+			RandomMoney[0] = (10+random(10)) * 2;
+			RandomMoney[1] = (15+random(50)) * 2;
+			RandomMoney[2] = (20+random(100)) * 2;
+			RandomMoney[3] = (30+random(500)) * 2;
 		}
 		case 80..100:
 		{
-			RandomMoney[0] = (50+random(30))*10;
-			RandomMoney[1] = (150+random(100))*10;
-			RandomMoney[2] = (150+random(100))*10;
-			RandomMoney[3] = (1800+random(1200))*10;
+			RandomMoney[0] = (10+random(10)) * 3;
+			RandomMoney[1] = (15+random(50)) * 3;
+			RandomMoney[2] = (20+random(100)) * 3;
+			RandomMoney[3] = (30+random(500)) * 3;
 		}
 	}
 	SetTimer("ResetPrice", 3600000, false);

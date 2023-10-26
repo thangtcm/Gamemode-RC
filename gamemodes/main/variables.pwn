@@ -771,7 +771,7 @@ enum pInfo
 	pId,
 	pOnline,
 	pLevel,
-	pQuocTich,
+	pQuocTich[30],
 	pSoLanMiner,
 	pMinerLevel,
 	pLastFire,
@@ -887,6 +887,7 @@ enum pInfo
 	pPnumber,
 	pPhousekey,
 	pPhousekey2,
+	pFarmerKey,
 	Float:pPos_x,
 	Float:pPos_y,
 	Float:pPos_z,
@@ -899,7 +900,7 @@ enum pInfo
 	pGunLic,
 	pGuns[12],
 	pAGuns[12],
-	PASGuns[12],
+	pASGuns[12],
 	pConnectSeconds,
 	pPayDayHad,
 	pCDPlayer,
@@ -1463,12 +1464,11 @@ new bool:InfoMessage[MAX_PLAYERS] = true;
 new SafeZoneInfo[MAX_SZ][szPeace];
 new Loaded[MAX_PLAYERS];
 new ChatGoActor;
-new ActorNV;
 new TruckActor;
 new MinerActor[2];
 new PizzaActor;
 
-new ActorFarmer;
+new ActorFarmer[MAX_PLAYERS];
 enum 	e_labeltypes
 {
 	Text3D: TYPE_KEYPAD,
@@ -1652,17 +1652,28 @@ new BoatDropoffs[][CargoArrayData] =
 	{-492.1511,617.2073,-0.4076}, // boat dropoff
 	{1188.8872,654.2936,-0.3999} // boat dropoff
 };
-
+new FarmPlantArea, PlayerFarmArea;
+new Float:farm_area_v1[] = {
+	-1449.4784,-1505.7494,
+	-1466.2009,-1507.0875,
+	-1463.9092,-1534.1356,
+	-1447.2477,-1533.6912,
+	-1449.4784,-1505.7494
+};
+new Float:farm_area_v2[] = {
+	-1395.3156,-1599.5948,
+	-1474.5533,-1600.5260,
+	-1473.6438,-1437.4464,
+	-1398.0452,-1436.2637,
+	-1395.3156,-1599.5948
+};
 new const Drinks[][] =
 {
-	"Beer",
-	"Chivas 62",
-	"Whiskey",
-	"Martini",
-	"Tequilla",
-	"Gin",
-	"Water",
-	"Soda"
+	"Pizza",
+	"Hamburger",
+	"Bread",
+	"Juice",
+	"Beer"
 };
 
 new const SexItems[][] =
@@ -1675,13 +1686,11 @@ new const SexItems[][] =
 
 new const RestaurantItems[][] =
 {
-	"Hambuger",
 	"Pizza",
-	"Banh Mi",
-	"Nuoc Suoi",
-	"Sting",
-	"7up",
-	"Cocacola"
+	"Hamburger",
+	"Bread",
+	"Juice",
+	"Beer"
 };
 
 new const Weapons[][WeaponsEnum] =
@@ -1909,10 +1918,10 @@ new Float:BroadcastFloats[MAX_PLAYERS][6];
 new BroadcastLastVW[MAX_PLAYERS];
 new BroadcastLastInt[MAX_PLAYERS];
 new EventLastInt[MAX_PLAYERS]; new EventLastVW[MAX_PLAYERS];
-new Gifts, VIPGifts = 0, VIPGiftsTimeLeft, VIPGiftsName[MAX_PLAYER_NAME];
+new VIPGifts = 0, VIPGiftsTimeLeft, VIPGiftsName[MAX_PLAYER_NAME];
 new GiftCode[32], GiftCodeBypass, SecurityCode[32], ShopClosed, SellClosed, RimMod, CarVoucher, PVIPVoucher;
-new XMASGifts = 0;
-new GiftAllowed;
+//new XMASGifts = 0;
+//new GiftAllowed;
 new SpecTimer;
 new WeatherCalling;
 new gWeather;
@@ -1956,8 +1965,8 @@ new ListItemReleaseId[MAX_PLAYERS][MAX_PLAYERVEHICLES];
 new ListItemRCPId[MAX_PLAYERS][20];
 new GiveKeysTo[MAX_PLAYERS];
 new ListItemTrackId[MAX_PLAYERS][MAX_PLAYERVEHICLES];
-new dynamicgift;
-new Text3D:dynamicgift3DText;
+// new dynamicgift;
+//new Text3D:dynamicgift3DText;
 new nextteam;
 new BankTimer[MAX_PLAYERS];
 new AdvisorMessage;
@@ -1980,7 +1989,7 @@ new TaxValue = 0;
 new TRTax = 0;
 new TRTaxValue = 0, SpeedingTickets;
 new nonewbie = 0;
-new Float:Positions[14][3];
+//new Float:Positions[14][3];
 new InRing = 0;
 new RoundStarted = 0;
 new BoxDelay = 0;
@@ -2149,8 +2158,6 @@ new LastShot[MAX_PLAYERS];
 new unbanip[MAX_PLAYERS][16];
 
 // new Text3D:JobText3D[100];
-new SFPDVehicles[90];
-new FDSAVehicles[10];
 new VIPVehicles[50];
 new FamedVehicles[39];
 new IslandGate;
@@ -2358,7 +2365,6 @@ new Titel[pBoxingStats];
 
 new DownEDS[MAX_PLAYERS];
 new DownS[MAX_PLAYERS];
-new DownPHP[MAX_PLAYERS];
 new EventKernel[EventKernelEnum];
 
 new EventRCPU[20]; // Value to know if rcp is being used
@@ -2405,7 +2411,7 @@ new PizzaCar[MAX_PLAYERS];
 new dgMoney[4], dgRimKit[4], dgFirework[4], dgGVIP[4], dgGVIPEx[4], dgSVIP[4], dgSVIPEx[4], dgCarSlot[4], dgToySlot[4], dgArmor[4], dgFirstaid[4], dgDDFlag[4], dgGateFlag[4], dgCredits[4], dgPriorityAd[4], dgHealthNArmor[4], dgGiftReset[4], dgMaterial[4], dgWarning[4], dgPot[4], dgCrack[4], dgPaintballToken[4], dgVIPToken[4],
 	dgRespectPoint[4], dgCarVoucher[4], dgBuddyInvite[4], dgLaser[4], dgCustomToy[4], dgAdmuteReset[4], dgNewbieMuteReset[4], dgRestrictedCarVoucher[4], dgPlatinumVIPVoucher[4];
 
-new bool: IsDynamicGiftBoxEnabled = false;
+//new bool: IsDynamicGiftBoxEnabled = false;
 
 new Float:JoinCameraPosition[8][3] = {
 	{2211.1460, -1748.3909, 29.3744},

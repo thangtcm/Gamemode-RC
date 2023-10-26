@@ -15,9 +15,7 @@ stock ShowProgressTD(playerid)
 stock UpdateProgressStat(playerid)
 {
 	new Float: Eatz = float(PlayerInfo[playerid][pEat]),
-		Float: Drinkz = float(PlayerInfo[playerid][pDrink]),
-		Float: Eat = (1.0/100.0) * Eatz,
-		Float: Drink = (1.0/100.0) * Drinkz;
+		Float: Drinkz = float(PlayerInfo[playerid][pDrink]);
 	if(Eatz >= 2 && Drinkz >= 2)
 	{
 		new calEat = floatround(Eatz/2, floatround_floor),
@@ -25,12 +23,12 @@ stock UpdateProgressStat(playerid)
 		new minHungry = (calEat < calDrink ? (calEat) : calDrink);
 		PlayerInfo[playerid][pStrong] = minHungry;
 	}
-	new Float: Strongz = float(PlayerInfo[playerid][pStrong]),
-		Float: Strong = (1.0/100.0) * Strongz;
+	new Float: Strongz = float(PlayerInfo[playerid][pStrong]);
+	new Float: MainHungry = (-20.0 / 100.0);
 	new pstring[32];
-	PlayerTextDrawTextSize(playerid, P_Progress[playerid][1], 20.000, Eat);
-	PlayerTextDrawTextSize(playerid, P_Progress[playerid][4], 20.000, Drink);
-	PlayerTextDrawTextSize(playerid, P_Progress[playerid][7], 20.000, Strong);
+	PlayerTextDrawTextSize(playerid, P_Progress[playerid][1], 20.000, MainHungry * Eatz);
+	PlayerTextDrawTextSize(playerid, P_Progress[playerid][4], 20.000, MainHungry * Drinkz);
+	PlayerTextDrawTextSize(playerid, P_Progress[playerid][7], 20.000, MainHungry * Strongz);
 	format(pstring, sizeof(pstring), "%0.1f", Strongz);
 	PlayerTextDrawSetString(playerid, P_Progress[playerid][9], pstring);
 	format(pstring, sizeof(pstring), "%0.1f", Drinkz);
@@ -227,32 +225,13 @@ stock UpdatePlayerHungry(playerid)
 {
 	if(PlayerInfo[playerid][pEat] <= 25 || PlayerInfo[playerid][pDrink] <= 25)
 	{
-		PlayerInfo[playerid][pEat]--;
-		PlayerInfo[playerid][pDrink]--;
-		new Float: hpz;
-		GetPlayerHealth(playerid, hpz);
-		if(hpz > 5){
-			SetPlayerHealth(playerid, hpz-5);
-		}else{
-			SetPlayerHealth(playerid, 0);
-			SendClientMessage(playerid, COLOR_REALRED, "[SERVER] {ffffff}Ban da chet vi doi bung.");
-		}
+		if(--PlayerInfo[playerid][pEat] <= 0) PlayerInfo[playerid][pEat] = 0;
+		if(--PlayerInfo[playerid][pDrink] <= 0) PlayerInfo[playerid][pDrink]=0;
 	}
 	else
 	{
-		if(--PlayerInfo[playerid][pEat] <= 0 || --PlayerInfo[playerid][pDrink] <= 0)
-		{
-			new Float: hpz;
-			GetPlayerHealth(playerid, hpz);
-			if(hpz > 5){
-				SetPlayerHealth(playerid, hpz-5);
-			}else{
-				SetPlayerHealth(playerid, 0);
-				SendClientMessage(playerid, COLOR_REALRED, "[SERVER] {ffffff}Ban da chet vi doi bung.");
-			}
-			PlayerInfo[playerid][pEat]=0;
-			PlayerInfo[playerid][pDrink]=0;
-		}
+		--PlayerInfo[playerid][pEat];
+		--PlayerInfo[playerid][pDrink];
 	}
 	return 1;
 }

@@ -118,8 +118,8 @@ stock VEHICLETRUCKER_ADD(playerid, vehicleid, modelid, pCarSlotID, ProductID, Fl
     VehicleTruckerData[playerid][index][vtPos][5] = oz,
     VehicleTruckerData[playerid][index][vtFactoryID] = PlayerTruckerData[playerid][ClaimFactoryID];
 
-    format(string, sizeof(string), "INSERT INTO `vehicletrucker` (`vtSlotId`, `vtProductID`, `vtPSQL`,`vtPos1`,`vtPos2`,`vtPos3`,`vtPos4`,`vtPos5`,`vtPos6`)\
-		VALUES ('%d', '%d', '%d', '%f', '%f', '%f', '%f', '%f', '%f')",  pCarSlotID, ProductID, GetPlayerId, x, y, z, ox, oy, oz);
+    format(string, sizeof(string), "INSERT INTO `vehicletrucker` (`vtSlotId`, `vtProductID`, `vtPSQL`,`vtPos1`,`vtPos2`,`vtPos3`,`vtPos4`,`vtPos5`,`vtPos6`, `vtFactoryID`)\
+		VALUES ('%d', '%d', '%d', '%f', '%f', '%f', '%f', '%f', '%f', '%d')",  pCarSlotID, ProductID, GetPlayerId, x, y, z, ox, oy, oz, VehicleTruckerData[playerid][index][vtFactoryID]);
 	mysql_function_query(MainPipeline, string, false, "OnAddVehicleTruckerFinish", "ii", playerid, index);
     printf("Nguoi choi %s da dua san pham %s vao xe %s ", GetPlayerNameEx(playerid), ProductData[ProductID][ProductName], GetVehicleName(vehicleid));
 	return 1;
@@ -128,6 +128,41 @@ stock VEHICLETRUCKER_ADD(playerid, vehicleid, modelid, pCarSlotID, ProductID, Fl
 public OnAddVehicleTruckerFinish(playerid, index)
 {
     VehicleTruckerData[playerid][index][vtId] = mysql_insert_id(MainPipeline);
+    return 1;
+}
+
+stock VehicleTrucker_Reload(playerid, pVehicleIndex, isAdd = false)
+{
+    if(PlayerInfo[playerid][pRegisterCarTruck] != pVehicleIndex)    return 1;
+    for(new i; i < MAX_OBJECTTRUCKER; i++)
+    {
+        if(isAdd)
+        {
+            if(VehicleTruckerData[playerid][i][vtId] != -1 && VehicleTruckerData[playerid][i][vtSlotId] == PlayerVehicleInfo[playerid][pVehicleIndex][pvSlotId])
+            {
+                if(IsValidDynamicObject(VehicleTruckerData[playerid][i][vtObject]))
+                {
+                    DestroyDynamicObject(VehicleTruckerData[playerid][i][vtObject]);
+                }
+                VehicleTruckerData[playerid][i][vtObject] = CreateDynamicObject(1271, 
+                    VehicleTruckerData[playerid][i][vtPos][0], VehicleTruckerData[playerid][i][vtPos][1], VehicleTruckerData[playerid][i][vtPos][2], 
+                    0, 0, 0, GetPlayerVirtualWorld(playerid), GetPlayerInterior(playerid));
+                AttachDynamicObjectToVehicle(VehicleTruckerData[playerid][i][vtObject], PlayerVehicleInfo[playerid][pVehicleIndex][pvId], 
+                    VehicleTruckerData[playerid][i][vtPos][0], VehicleTruckerData[playerid][i][vtPos][1], VehicleTruckerData[playerid][i][vtPos][2], 
+                    VehicleTruckerData[playerid][i][vtPos][3], VehicleTruckerData[playerid][i][vtPos][4], VehicleTruckerData[playerid][i][vtPos][5]);
+            }
+        }
+        else
+        {
+            if(VehicleTruckerData[playerid][i][vtSlotId] == PlayerVehicleInfo[playerid][pVehicleIndex][pvSlotId] && VehicleTruckerData[playerid][i][vtId] != -1)
+            {
+                if(IsValidDynamicObject(VehicleTruckerData[playerid][i][vtObject]))
+                {
+                    DestroyDynamicObject(VehicleTruckerData[playerid][i][vtObject]);
+                }
+            }
+        }
+    }
     return 1;
 }
 

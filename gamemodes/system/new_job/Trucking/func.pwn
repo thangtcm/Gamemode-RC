@@ -65,7 +65,7 @@ stock FactoryInformation(playerid)
 stock FactorySuggest(playerid)
 {
     new numFoundFactories = 0,
-        MaxFactiory = sizeof(FactoryData), MaxExport;
+        MaxFactiory = sizeof(FactoryData);
     SetPVarInt(playerid, "IsPlayerSuggest", 1);
     for (new i = 0; i < MaxFactiory; i++) {
         for (new j = 0; j < MAX_PRODUCT; j++) {
@@ -186,7 +186,7 @@ stock IsPlayerInFactory(playerid)
 
 stock GetUnitType(index) //CarTruckWorking
 {
-    new arr[7], count = 0;
+    new count = 0;
     for(new i; i < 7; i++)
     {
         if(CarTruckWorking[index][CarUnitType][i] == -1)

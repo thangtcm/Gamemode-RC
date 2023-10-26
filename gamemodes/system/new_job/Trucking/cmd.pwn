@@ -46,7 +46,7 @@ CMD:goiynhamay(playerid, params[])
 CMD:goiygiaohang(playerid, params[])
 {
     new numFoundFactories = 0,
-        MaxFactiory = sizeof(FactoryData), MaxImport;
+        MaxFactiory = sizeof(FactoryData);
 
     new d = PlayerInfo[playerid][pRegisterCarTruck];
     
@@ -54,12 +54,12 @@ CMD:goiygiaohang(playerid, params[])
         for (new j = 0; j < MAX_PRODUCT; j++) {
             if(FactoryData[i][ProductImportName][j] != -1)
             {
-                for(new index; index < MAX_OBJECTTRUCKER; index++)
+                for(new index = 0; index < MAX_OBJECTTRUCKER; index++)
                 {
                     if(VehicleTruckerData[playerid][index][vtId] != -1 && VehicleTruckerData[playerid][index][vtSlotId] == PlayerVehicleInfo[playerid][d][pvSlotId]
                         && VehicleTruckerData[playerid][index][vtProductID] == FactoryData[i][ProductImportName][j]){
                         PlayerTruckerData[playerid][SuggestFactory][numFoundFactories++] = i;
-                        j = MaxImport;
+                        j = MAX_PRODUCT;
                         break;
                     }
                 }
@@ -168,7 +168,7 @@ CMD:truckergo(playerid, params[])
         {
             SetPVarInt(playerid, "Sell_ProductID", FactoryId);
             format(string, sizeof(string), "{FFFFFF}ID\t\tSan Pham\t\tGia");
-            new CheckValid = 0, count=0;
+            new count=0;
             PlayerTruckerData[playerid][MAXPRODUCT] = 0;
             PlayerTruckerData[playerid][MAXPRODUCTIMPORT] = 0;
             if(PlayerTruckerData[playerid][ClaimFactoryID] == FactoryId)
@@ -236,25 +236,19 @@ stock RandomName()
 
 CMD:setnameinquery(playerid, params[])
 {
-    new str[258];
-    format(str, sizeof(str), "[Mask %d %d]", PlayerInfo[playerid][pMaskID][0], PlayerInfo[playerid][pMaskID][1]);
+    new str[24];
+    format(str, sizeof(str), "Mask_%d_%d\0", PlayerInfo[playerid][pMaskID][0], PlayerInfo[playerid][pMaskID][1]);
 	SendClientMessageEx(playerid, COLOR_YELLOW, str);
-    SetPlayerName(playerid, str);
+    new name[MAX_PLAYER_NAME];
+    strcat(name, str, MAX_PLAYER_NAME);
+    printf("name %s", name);
+    if(SetPlayerName(playerid, name) == 1)
+    {
+        printf("RUN");
+    }
+    else
+    {
+        printf("NO");
+    }
 	return 1;
-}
-
-CMD:testhash(playerid, params[])
-{
-    new pass[24];
-    if(sscanf(params, "s[24]", pass))   return 1;
-    bcrypt_hash(pass, BCRYPT_COST, "OnPasswordHashed", "d", playerid);
-    return 1;
-}
-
-CMD:testrehash(playerid, params[])
-{
-    new pass[24];
-    if(sscanf(params, "s[24]", pass))   return 1;
-    bcrypt_check(pass, codehash, "OnPasswordChecked", "d", playerid);
-    return 1;
 }

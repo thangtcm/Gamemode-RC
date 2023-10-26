@@ -369,6 +369,7 @@ public OnQueryFinish(resultid, extraid, handleid)
 				{
 					cache_get_field_content(row, "Username", szField, MainPipeline, MAX_PLAYER_NAME);
                     SetPlayerName(extraid, szField);
+					printf("%s", szField);
 					if(strcmp(szField, GetPlayerNameExt(extraid), true) != 0)
 					{
 						return 1;
@@ -388,6 +389,7 @@ public OnQueryFinish(resultid, extraid, handleid)
 					cache_get_field_content(row,  "Disabled", szResult, MainPipeline); PlayerInfo[extraid][pDisabled] = strval(szResult);
 					cache_get_field_content(row,  "Level", szResult, MainPipeline); PlayerInfo[extraid][pLevel] = strval(szResult);
 					cache_get_field_content(row,  "AdminLevel", szResult, MainPipeline); PlayerInfo[extraid][pAdmin] = strval(szResult);
+					printf("Admin %d",  PlayerInfo[extraid][pAdmin]);
 					cache_get_field_content(row,  "CMND", szResult, MainPipeline); PlayerInfo[extraid][pCMND] = strval(szResult);
 					cache_get_field_content(row,  "MaskID1", szResult, MainPipeline); PlayerInfo[extraid][pMaskID][0] = strval(szResult);
 					cache_get_field_content(row,  "MaskID2", szResult, MainPipeline); PlayerInfo[extraid][pMaskID][1] = strval(szResult);
@@ -490,6 +492,7 @@ public OnQueryFinish(resultid, extraid, handleid)
 					cache_get_field_content(row,  "FishSkill", szResult, MainPipeline); PlayerInfo[extraid][pFishSkill] = strval(szResult);
 					cache_get_field_content(row,  "FightingStyle", szResult, MainPipeline); PlayerInfo[extraid][pFightStyle] = strval(szResult);
 					cache_get_field_content(row,  "PhoneNr", szResult, MainPipeline); PlayerInfo[extraid][pPnumber] = strval(szResult);
+					cache_get_field_content(row,  "Farmer", szResult, MainPipeline); PlayerInfo[extraid][pFarmerKey] = strval(szResult);
 					cache_get_field_content(row,  "Apartment", szResult, MainPipeline); PlayerInfo[extraid][pPhousekey] = strval(szResult);
 					cache_get_field_content(row,  "Apartment2", szResult, MainPipeline); PlayerInfo[extraid][pPhousekey2] = strval(szResult);
 					cache_get_field_content(row,  "Renting", szResult, MainPipeline); PlayerInfo[extraid][pRenting] = strval(szResult);
@@ -516,7 +519,7 @@ public OnQueryFinish(resultid, extraid, handleid)
 						PlayerInfo[extraid][pGuns][i] = strval(szResult);
 						format(szField, sizeof(szField), "ASGun%d", i);
 						cache_get_field_content(row,  szField, szResult, MainPipeline);
-						PlayerInfo[extraid][PASGuns][i] = strval(szResult);
+						PlayerInfo[extraid][pASGuns][i] = strval(szResult);
 					}				
 					cache_get_field_content(row,  "DrugsTime", szResult, MainPipeline); PlayerInfo[extraid][pDrugsTime] = strval(szResult);
 					cache_get_field_content(row,  "LawyerTime", szResult, MainPipeline); PlayerInfo[extraid][pLawyerTime] = strval(szResult);
@@ -1381,8 +1384,6 @@ public LOGIN_TH(playerid) {
 
 		if(isnull(szEmail)) SetPVarInt(playerid, "NullEmail", 1);
 		GetPVarString(playerid, "PassAuth", szBuffer, sizeof(szBuffer));
-		printf("%s", szBuffer);
-		printf("%s", MasterInfo[playerid][acc_pass]);
 		bcrypt_check(szBuffer, MasterInfo[playerid][acc_pass], "OnPasswordChecked", "d", playerid);
 	}
 	return 1;
@@ -1433,7 +1434,11 @@ public OnLoadTempCharacters(playerid) {
     {
     	ShowPlayerCharacter(playerid);
 		new str[256];
+<<<<<<< HEAD
 //		SendServerMessage(playerid, "Ten nay da ton tai hoac khong hop le (Name_Name).");
+=======
+		SendServerMessage(playerid, "Ban chua khoi tao nhan vat nao.");
+>>>>>>> main
     	print("Khong tai duoc tai khoan chinh cua ban");
 
     }
@@ -3012,6 +3017,7 @@ stock g_mysql_SaveAccount(playerid)
     SavePlayerInteger(query, GetPlayerSQLId(playerid), "FishSkill", PlayerInfo[playerid][pFishSkill]);
     SavePlayerInteger(query, GetPlayerSQLId(playerid), "FightingStyle", PlayerInfo[playerid][pFightStyle]);
     SavePlayerInteger(query, GetPlayerSQLId(playerid), "PhoneNr", PlayerInfo[playerid][pPnumber]);
+    SavePlayerInteger(query, GetPlayerSQLId(playerid), "Farmer", PlayerInfo[playerid][pFarmerKey]);
     SavePlayerInteger(query, GetPlayerSQLId(playerid), "Apartment", PlayerInfo[playerid][pPhousekey]);
     SavePlayerInteger(query, GetPlayerSQLId(playerid), "Apartment2", PlayerInfo[playerid][pPhousekey2]);
     SavePlayerInteger(query, GetPlayerSQLId(playerid), "Renting", PlayerInfo[playerid][pRenting]);
@@ -3042,7 +3048,20 @@ stock g_mysql_SaveAccount(playerid)
     SavePlayerInteger(query, GetPlayerSQLId(playerid), "Ammo7", PlayerAmmo[playerid][7]);
     SavePlayerInteger(query, GetPlayerSQLId(playerid), "Ammo8", PlayerAmmo[playerid][8]);
 
-    SavePlayerInteger(query, GetPlayerSQLId(playerid), "Gun0", PlayerInfo[playerid][pGuns][0]);
+    SavePlayerInteger(query, GetPlayerSQLId(playerid), "ASGun0", PlayerInfo[playerid][pASGuns][0]);
+    SavePlayerInteger(query, GetPlayerSQLId(playerid), "ASGun1", PlayerInfo[playerid][pASGuns][1]);
+    SavePlayerInteger(query, GetPlayerSQLId(playerid), "ASGun2", PlayerInfo[playerid][pASGuns][2]);
+    SavePlayerInteger(query, GetPlayerSQLId(playerid), "ASGun3", PlayerInfo[playerid][pASGuns][3]);
+    SavePlayerInteger(query, GetPlayerSQLId(playerid), "ASGun4", PlayerInfo[playerid][pASGuns][4]);
+    SavePlayerInteger(query, GetPlayerSQLId(playerid), "ASGun5", PlayerInfo[playerid][pASGuns][5]);
+    SavePlayerInteger(query, GetPlayerSQLId(playerid), "ASGun6", PlayerInfo[playerid][pASGuns][6]);
+    SavePlayerInteger(query, GetPlayerSQLId(playerid), "ASGun7", PlayerInfo[playerid][pASGuns][7]);
+    SavePlayerInteger(query, GetPlayerSQLId(playerid), "ASGun8", PlayerInfo[playerid][pASGuns][8]);
+    SavePlayerInteger(query, GetPlayerSQLId(playerid), "ASGun9", PlayerInfo[playerid][pASGuns][9]);
+    SavePlayerInteger(query, GetPlayerSQLId(playerid), "ASGun10", PlayerInfo[playerid][pASGuns][10]);
+    SavePlayerInteger(query, GetPlayerSQLId(playerid), "ASGun11", PlayerInfo[playerid][pASGuns][11]);
+
+	SavePlayerInteger(query, GetPlayerSQLId(playerid), "Gun0", PlayerInfo[playerid][pGuns][0]);
     SavePlayerInteger(query, GetPlayerSQLId(playerid), "Gun1", PlayerInfo[playerid][pGuns][1]);
     SavePlayerInteger(query, GetPlayerSQLId(playerid), "Gun2", PlayerInfo[playerid][pGuns][2]);
     SavePlayerInteger(query, GetPlayerSQLId(playerid), "Gun3", PlayerInfo[playerid][pGuns][3]);
@@ -7857,7 +7876,7 @@ public OnPlayerLoad(playerid)
 		PlayerInfo[playerid][pServiceTime] = 0;
 		PlayerInfo[playerid][pFirework] = 0;
 		PlayerInfo[playerid][pBoombox] = 0;
-		PlayerInfo[playerid][pCash] = 1000;
+		PlayerInfo[playerid][pCash] = 2000;
 		PlayerInfo[playerid][pLevel] = 1;
 		PlayerInfo[playerid][pTruyDuoi] = 0;
 		PlayerInfo[playerid][pAdmin] = 0;
@@ -7888,7 +7907,6 @@ public OnPlayerLoad(playerid)
 		PlayerInfo[playerid][pMaskID][1] = random(40) + 59;
 		PlayerInfo[playerid][gPupgrade] = 0;
 		PlayerInfo[playerid][pConnectHours] = 0;
-		PlayerInfo[playerid][pReg] = 0;
 		PlayerInfo[playerid][pSex] = 0;
 		strcpy(PlayerInfo[playerid][pBirthDate], "0000-00-00", 64);
 		PlayerInfo[playerid][pRingtone] = 0;
@@ -7908,7 +7926,7 @@ public OnPlayerLoad(playerid)
 		PlayerInfo[playerid][pPhoneBook] = 0;
 		PlayerInfo[playerid][pFishes] = 0;
 		PlayerInfo[playerid][pGcoin] = 0;
-		PlayerInfo[playerid][pCapacity] = 16;
+		PlayerInfo[playerid][pCapacity] = 30;
 		PlayerInfo[playerid][pInventoryItem] = 0;
 		PlayerInfo[playerid][pBiggestFish] = 0;
 		PlayerInfo[playerid][pJob] = 0;
@@ -7950,9 +7968,12 @@ public OnPlayerLoad(playerid)
 		PlayerInfo[playerid][pBeingSentenced] = 0;
 		PlayerInfo[playerid][pProbationTime] = 0;
 		PlayerInfo[playerid][pModel] = 311;
+		PlayerInfo[playerid][pMinerLevel] = 0;
+		PlayerInfo[playerid][pSoLanMiner] = 0;
 		PlayerInfo[playerid][pPnumber] = 0;
 		PlayerInfo[playerid][pPhousekey] = INVALID_HOUSE_ID;
 		PlayerInfo[playerid][pPhousekey2] = INVALID_HOUSE_ID;
+		PlayerInfo[playerid][pFarmerKey] = -1;
 		PlayerInfo[playerid][pCarLic] = 0;
 		PlayerInfo[playerid][pFlyLic] = 0;
 		PlayerInfo[playerid][pBoatLic] = 0;
@@ -7970,6 +7991,7 @@ public OnPlayerLoad(playerid)
         PlayerInfo[playerid][pLevel] = 1;
 		PlayerInfo[playerid][pSHealth] = 0.0;
 		PlayerInfo[playerid][pPnumber] = 0;
+		PlayerInfo[playerid][pFarmerKey] = -1;
 		PlayerInfo[playerid][pPhousekey] = INVALID_HOUSE_ID;
 		PlayerInfo[playerid][pPhousekey2] = INVALID_HOUSE_ID;
 		PlayerInfo[playerid][pAccount] = 0;
@@ -8256,8 +8278,6 @@ public OnPlayerLoad(playerid)
 	printf("%s has logged in.", GetPlayerNameEx(playerid));
 	//format(string, sizeof(string), "(SERVER) Chao mung, %s.", GetPlayerNameEx(playerid));
 	SendClientMessageEx(playerid, COLOR_WHITE, string);
-	SetPlayerVirtualWorld(playerid, PlayerInfo[playerid][pVW]);
-	SetSpawnInfo(playerid, 0, PlayerInfo[playerid][pModel], PlayerInfo[playerid][pPos_x], PlayerInfo[playerid][pPos_y], PlayerInfo[playerid][pPos_z], 1.0, -1, -1, -1, -1, -1, -1);
 	SpawnPlayer(playerid);
 	defer SkinDelay(playerid);
 	g_mysql_AccountOnline(playerid, servernumber);
@@ -8330,7 +8350,7 @@ public OnPlayerLoad(playerid)
 	SetPlayerToTeamColor(playerid);
 
 	Inventory_Load(playerid);
-
+	FarmPlants_LOAD(playerid);
 	format(string, sizeof(string), "SELECT * FROM `rentedcars` WHERE `sqlid` = '%d'", GetPlayerSQLId(playerid));
 	mysql_function_query(MainPipeline, string, true, "LoadRentedCar", "i", playerid);
 
@@ -8400,7 +8420,7 @@ public OnPlayerLoad(playerid)
 
 	if(iCheckTwo != INVALID_HOUSE_ID) PlayerInfo[playerid][pPhousekey2] = iCheckTwo;
 	else PlayerInfo[playerid][pPhousekey2] = INVALID_HOUSE_ID;
-
+	SetPlayerFarmer(playerid);
 	if(PlayerInfo[playerid][pRenting] != INVALID_HOUSE_ID && (PlayerInfo[playerid][pPhousekey] != INVALID_HOUSE_ID || PlayerInfo[playerid][pPhousekey2] != INVALID_HOUSE_ID)) {
 		PlayerInfo[playerid][pRenting] = INVALID_HOUSE_ID;
 	}
@@ -8415,9 +8435,6 @@ public OnPlayerLoad(playerid)
 	}
 	TextDrawHideForPlayer(playerid, BannerServer[1]);
 	if(pMOTD[0]) { ShowPlayerDialog(playerid, PMOTDNOTICE, DIALOG_STYLE_MSGBOX, "Dong y", pMOTD, "Tu choi", ""); }
-	else if(GetPVarInt(playerid, "NullEmail")) {
-	ShowPlayerDialog(playerid, NULLEMAIL, DIALOG_STYLE_INPUT, "{3399FF}Dang ky E-Mail", "{FFFFFF}Xin vui long nhap dia chi E-mail hop le de lien ket voi tai khoan.\n\nLuu y: Cung cap mot dia chi email khong hop le tai khoan se bi cham dut tai khoan.", "Xac nhan", "Bo qua");
-	}
     SetUnreadMailsNotification(playerid);
     #if defined zombiemode
    	if(zombieevent == 1)
@@ -8446,7 +8463,7 @@ public OnPlayerLoad(playerid)
  	SetPlayerWeapons(playerid);
 // 	DestroyLog@_Reg(playerid);
  	SendClientMessageEx(playerid, COLOR_VANG, "Chao mung ban da tro lai may chu Red County Roleplay.");
- 	DownEDS[playerid] = SetTimerEx("StartDownEatDrinkStrong", 180000, true, "i", playerid);
+ 	DownEDS[playerid] = SetTimerEx("StartDownEatDrinkStrong", 100000, true, "i", playerid);
 	DeletePVar(playerid, "TextDrawCharacter");
  	GetHomeCount(playerid);
 	new rdName[MAX_PLAYER_NAME];

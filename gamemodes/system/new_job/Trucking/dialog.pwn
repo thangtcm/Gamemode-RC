@@ -2,7 +2,7 @@ Dialog:DIALOG_LISTFACTORY(playerid, response, listitem, inputtext[])
 {
 	if(response)
 	{
-		new string[5000], szString[100], strImport[1000], strIheader[256], strEheader[256], checkMax, islocker[50], strExport[1000], 
+		new string[5000], szString[100], strImport[1000], islocker[50], strExport[1000], 
             index = PlayerTruckerData[playerid][SuggestFactory][listitem];
         SetPVarInt(playerid, "SelectFactoryID", index);
         format(szString, sizeof(szString), "{FFFFFF}Thong tin nha may - {FF8000}%s (ID: %d)", FactoryData[index][FactoryName], index);

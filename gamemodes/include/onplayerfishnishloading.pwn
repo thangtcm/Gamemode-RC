@@ -34,6 +34,7 @@ public OnLoadingFinish(playerid,loadingid) {
             ShowNoticeGUIFrame(playerid, 3);
             CancelSelectTextDraw(playerid);
             new string[129];
+            printf("LOAD_CHARACTERLOGIN %s - Admin %d", TempCharacter[playerid][i][Name], PlayerInfo[playerid][pAdmin]);
 	        format(string, sizeof(string), "SELECT * FROM `accounts` WHERE `Username` = '%s'",  TempCharacter[playerid][i][Name]);
  	        mysql_function_query(MainPipeline, string, true, "OnQueryFinish", "iii", LOADUSERDATA_THREAD, playerid, g_arrQueryHandle{playerid}); 
  	    }
@@ -47,21 +48,21 @@ public OnLoadingFinish(playerid,loadingid) {
             DisablePlayerCheckpoint(playerid);
             TogglePlayerControllable(playerid,1);
         }
-        case LOAD_LAYGO: {
-            new i = GetPVarInt(playerid, "GoIDAAA") - 1;
-            if(WoodInfo[i][WoodInWoodxD] <= 1) return SendClientTextDraw(playerid,"Loi go da het khong the lay...");
-            WoodInfo[i][WoodInWoodxD] -= 1;
+        // case LOAD_LAYGO: {
+        //     new i = GetPVarInt(playerid, "GoIDAAA") - 1;
+        //     if(WoodInfo[i][WoodInWoodxD] <= 1) return SendClientTextDraw(playerid,"Loi go da het khong the lay...");
+        //     WoodInfo[i][WoodInWoodxD] -= 1;
     
-            SetPlayerSpecialAction(playerid, SPECIAL_ACTION_CARRY);
-            SetPVarInt(playerid, "Chatcay_var", 1);
-            SetPlayerCheckpoint(playerid, -745.2551,-115.5959,66.7408, 1);
-            DeletePVar(playerid, "GoIDAAA");
-            SetPlayerAttachedObject( playerid, PIZZA_INDEX, 19793, 1, 0.002953, 0.469660, -0.009797, 269.851104, 88.443557, 0.000000, 0.804894, 1.000000, 0.822361 );                      
-            if(WoodInfo[i][WoodInWoodxD] <= 0) {
-                DestroyDynamicObject( WoodInfo[i][WoodObject]);
-                DestroyDynamic3DTextLabel(WoodInfo[i][WoodText]);
-            }
-        }
+        //     SetPlayerSpecialAction(playerid, SPECIAL_ACTION_CARRY);
+        //     SetPVarInt(playerid, "Chatcay_var", 1);
+        //     SetPlayerCheckpoint(playerid, -745.2551,-115.5959,66.7408, 1);
+        //     DeletePVar(playerid, "GoIDAAA");
+        //     SetPlayerAttachedObject( playerid, PIZZA_INDEX, 19793, 1, 0.002953, 0.469660, -0.009797, 269.851104, 88.443557, 0.000000, 0.804894, 1.000000, 0.822361 );                      
+        //     if(WoodInfo[i][WoodInWoodxD] <= 0) {
+        //         DestroyDynamicObject( WoodInfo[i][WoodObject]);
+        //         DestroyDynamic3DTextLabel(WoodInfo[i][WoodText]);
+        //     }
+        // }
 	}
 	return 1;
 }

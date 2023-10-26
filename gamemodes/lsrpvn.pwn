@@ -1,5 +1,5 @@
  
-#define SERVER_GM_TEXT "LSR 1.0"
+#define SERVER_GM_TEXT "RCRP 1.0"
 
 
 #include <a_samp>
@@ -40,8 +40,7 @@
 #include "./main/variables.pwn"
 #include "./include/loading.pwn"
 #include "./system/new_job/pickup.pwn"
-#include "./system/new_job/Farmer/main.pwn"
-#include "./system/new_job/Farmer/raise.pwn"
+// #include "./system/new_job/Farmer/raise.pwn"
 #include "./system/noithat.pwn"
 #include "./system/haha.pwn"
 #include "./system/danhba.pwn"
@@ -83,14 +82,14 @@
 //#include "./system/register.pwn"
 
 #include "./system/new_job/Trucking/textdrawanim.pwn"
+#include "./system/new_job/Farmer/main.pwn"
 #include "./system/new_job/Trucking/main.pwn"
 #include "./system/new_job/Trucking/tutorial.pwn"
 #include "./system/new_job/pizza.pwn"
 #include "./system/new_job/miner/mn_variables.pwn"
 #include "./system/new_job/miner/mn_callbacks.pwn"
 #include "./system/new_job/miner/mn_funcs.pwn"
-//#include "./system/new_job/daoda.pwn"  bảo trì
-#include "./system/new_job/wood.pwn"
+// #include "./system/new_job/wood.pwn"
 #include "./system/new_job/caucanew.pwn"
 // #include "./system/farmer.pwn"
 #include "./system/bodydame/bodydamage.pwn"

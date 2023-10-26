@@ -102,7 +102,7 @@ CMD:newb(playerid, params[])
 	}
 	return 1;
 }
-
+/*
 CMD:bango(playerid, params[])
 {
 	ShowPlayerDialog(playerid, BANGO, DIALOG_STYLE_LIST, "Danh Sach Gia Go","20KG Go, Gia 200$\n40KG Go, Gia 450$\n100KG Go, Gia 1.200$", "Ban Go", "Khong Ban");
@@ -122,7 +122,7 @@ public DangChatGo(playerid)
 	SetPlayerSpecialAction(playerid, SPECIAL_ACTION_CARRY);
 	return 1;
 }
-
+*/
 CMD:credits(playerid, params[])
 {
     new str[2460], name[1280];
@@ -173,6 +173,7 @@ CMD:g(playerid, params[]) {
 	else return SendErrorMessage(playerid," Ban khong o trong nhom.");
 	return 1;
 }
+/*
 CMD:banvukhi(playerid, params[])
 {
 	return cmd_sellgun(playerid, params);
@@ -507,7 +508,7 @@ CMD:muatoken(playerid, params[])
 
 
 
-
+*/
 CMD:lockjob(playerid, params[])
 {
 	if(PlayerInfo[playerid][pAdmin] >= 2)
@@ -789,7 +790,7 @@ CMD:dungtruyduoi(playerid, params[])
 	}
 	return 1;
 }
-
+/*
 CMD:sudungbanh(playerid, params[])
 {
 	if(GetPVarType(playerid, "PlayerCuffed") || GetPVarType(playerid, "Injured") || GetPVarType(playerid, "IsFrozen") || PlayerInfo[playerid][pHospital]) {
@@ -1076,6 +1077,7 @@ public GhepXe(playerid)
 	}
 	return 1;
 }
+*/
 CMD:finegcoin(playerid, params[])
 {
 	new string[128], giveplayerid, amount, reason[64];
@@ -1223,48 +1225,51 @@ CMD:toglichsu(playerid, params[])
     return 1;
 }
 stock JoinGame(playerid) {
-        HideRegCharTD(playerid);
-	    PlayerHasNationSelected[playerid] = 1;
-	    TextDrawHideForPlayer(playerid,txtNationSelHelper);
-		TextDrawHideForPlayer(playerid,txtNationSelMain);
-		TextDrawHideForPlayer(playerid,txtSanAndreas);
-		TextDrawHideForPlayer(playerid,txtTierraRobada);
-		RegistrationStep[playerid] = 0;
-	    PlayerInfo[playerid][pTut] = 1;
-		gOoc[playerid] = 0; gNews[playerid] = 0; gFam[playerid] = 0;
-		TogglePlayerControllable(playerid, 1);
-		SetCamBack(playerid);
-		DeletePVar(playerid, "MedicBill");
-		SetPlayerColor(playerid,TEAM_HIT_COLOR);
-		DeletePVar(playerid,"DangTaoAcc");
-		SetPlayerSkin(playerid, ChangeSkin[playerid]);
-        PlayerInfo[playerid][pModel] = ChangeSkin[playerid];
-		PlayerInfo[playerid][pTempVIP] = 0;
-		PlayerInfo[playerid][pBuddyInvited] = 0;
-		PlayerInfo[playerid][pSpeedo] = 1;
-		SetCameraBehindPlayer(playerid);
-       	PlayerPlaySound(playerid, 1056, 0.0, 0.0, 0.0);
-	    TextDrawHideForPlayer(playerid, BannerServer[1]);
-		SetPlayerVirtualWorld(playerid, 0);
-		SetPlayerInterior(playerid,0);
-		Streamer_UpdateEx(playerid,1223.4490,247.0872,19.5469);
-		SetPlayerPos(playerid,1223.4490,247.0872,19.5469);
-		SetPlayerFacingAngle(playerid, 247.5060);
-		PlayerInfo[playerid][pVW] = 0;
-		PlayerInfo[playerid][pDoiBung] = 100;
-		PlayerInfo[playerid][pKhatNuoc] = 100;
-        PlayerInfo[playerid][pEat] = 100;
-        PlayerInfo[playerid][pDrink] = 100;
-        PlayerInfo[playerid][pStrong] = 100;
-        ClearChatbox(playerid);
-        SendClientMessageEx(playerid,COLOR_VANG,"Chao mung ban da den voi may chu RC-RP.");
-      //  SendClientMessageEx(playerid,COLOR_VANG,"(HUONG DAN) Hay di vao Market tim cua hang dien tu mua mot cai GPS nhe.");
-		return 1;
+    OnPlayerLoad(playerid);
+    HideRegCharTD(playerid);
+    PlayerHasNationSelected[playerid] = 1;
+    TextDrawHideForPlayer(playerid,txtNationSelHelper);
+    TextDrawHideForPlayer(playerid,txtNationSelMain);
+    TextDrawHideForPlayer(playerid,txtSanAndreas);
+    TextDrawHideForPlayer(playerid,txtTierraRobada);
+    RegistrationStep[playerid] = 0;
+    PlayerInfo[playerid][pTut] = 1;
+    gOoc[playerid] = 0; gNews[playerid] = 0; gFam[playerid] = 0;
+    TogglePlayerControllable(playerid, 1);
+    SetCamBack(playerid);
+    DeletePVar(playerid, "MedicBill");
+    SetPlayerColor(playerid,TEAM_HIT_COLOR);
+    DeletePVar(playerid,"DangTaoAcc");
+    SetPlayerSkin(playerid, ChangeSkin[playerid]);
+    PlayerInfo[playerid][pModel] = ChangeSkin[playerid];
+    PlayerInfo[playerid][pTempVIP] = 0;
+    PlayerInfo[playerid][pBuddyInvited] = 0;
+    PlayerInfo[playerid][pSpeedo] = 1;
+    SetCameraBehindPlayer(playerid);
+    PlayerPlaySound(playerid, 1056, 0.0, 0.0, 0.0);
+    TextDrawHideForPlayer(playerid, BannerServer[1]);
+    SetPlayerVirtualWorld(playerid, PlayerInfo[playerid][pVW]);
+    SetPlayerInterior(playerid,0);
+    Streamer_UpdateEx(playerid,1355.6627, 259.0992, 19.5547);
+    SetSpawnInfo(playerid, 0, PlayerInfo[playerid][pModel], 1355.6627, 259.0992, 19.5547, 1.0, -1, -1, -1, -1, -1, -1);
+    SetPlayerPos(playerid, 1355.6627,259.0992, 19.5547);
+    SetPlayerFacingAngle(playerid, 247.5060);
+    PlayerInfo[playerid][pVW] = 0;
+    PlayerInfo[playerid][pDoiBung] = 100;
+    PlayerInfo[playerid][pKhatNuoc] = 100;
+    PlayerInfo[playerid][pEat] = 100;
+    PlayerInfo[playerid][pDrink] = 100;
+    PlayerInfo[playerid][pStrong] = 100;
+    ClearChatbox(playerid);
+    SendClientMessageEx(playerid,COLOR_VANG,"Chao mung ban da den voi may chu RC-RP.");
+    //  SendClientMessageEx(playerid,COLOR_VANG,"(HUONG DAN) Hay di vao Market tim cua hang dien tu mua mot cai GPS nhe.");
+    return 1;
 }
 CMD:vwcuatao(playerid, params[]) {
 	printf("vw cua may la %d",GetPlayerVirtualWorld(playerid));
 	return 1;
 }
+/*
 CMD:hihi(playerid, params[]) return   SetPlayerSpecialAction(playerid, SPECIAL_ACTION_CARRY);
 
 forward UpdateTK(playerid);
@@ -1313,6 +1318,7 @@ public STK_check(playerid) {
  		ShowPlayerDialog(playerid, DIALOG_CHUYENTIEN, DIALOG_STYLE_INPUT, "Chuyen tien", "So tai khoan khong ton tai !\nVui long nhap so tai khoan de tiep tuc giao dich", "Tuy chon", "Thoat");	    	
     }
 }
+*/
 CMD:atm(playerid, params[]) {
 	if(!IsAtATM(playerid))
 	{
@@ -1355,6 +1361,7 @@ CMD:datthung(playerid,params[]) {
     RemovePlayerAttachedObject(playerid, 1);
     return 1;
 }
+
 CMD:layhopz(playerid,params[]) return PlayerInfo[playerid][pHop] = 1;
 CMD:laythung(playerid,params[]) {
 	if(GetPVarInt(playerid,"CamHop") == 1) return  SendErrorMessage(playerid," Khong the thao tac.");
@@ -1482,9 +1489,10 @@ CMD:my(playerid, params[])
     else if(strcmp(choice,"giayto",true) == 0) {
         ShowPlayerDialog(playerid, XEMGIAYTO, DIALOG_STYLE_LIST, "Giay to tuy than", "CMND\nGiay to xe\nBang lai xe", "Chon", "Huy bo");
     }
-    else if(strcmp(choice,"Item",true) == 0) {
+  /*  else if(strcmp(choice,"Item",true) == 0) {
         cmd_invzz(playerid,"");
     }
+    */
     else if(strcmp(choice,"lincense",true) == 0) {
         new string[260], text1[50], text2[50], text3[50], text4[50];
         if(PlayerInfo[playerid][pCarLic]) { text1 = "{5db278}Da dang ky{ffffff}"; } else { text1 = "{b45151}Chua dang ky{ffffff}"; }

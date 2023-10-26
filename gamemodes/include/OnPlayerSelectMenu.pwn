@@ -53,7 +53,7 @@ public OnPlayerSelectMenu(playerid,menuid,itemid,response) {
         			case 2: {
         				if(PlayerInfo[playerid][pCash] < 170) return SendErrorMessage(playerid," Ban khong du '$170' de mua vat pham 'Radio lien lac'");
         				PlayerInfo[playerid][pCash] -= 170;
-        				PlayerInfo[playerid][pRadio] = 1;
+						Inventory_Add(playerid, "Radio");
 						PlayerInfo[playerid][pRadioFreq] = 0;
 						SendClientMessageEx(playerid, COLOR_VANG, "Ban da mua radio lien lac.");
 						SendClientMessageEx(playerid, COLOR_WHITE, "HUONG DAN: Su dung /pr de lien lac voi nhung nguoi trong cung tan so.");
