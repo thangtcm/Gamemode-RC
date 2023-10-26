@@ -1714,7 +1714,7 @@ new SkinList = mS_INVALID_LISTID;
 new PlayerText:radio[MAX_PLAYERS];
 new CauHoiNewb[MAX_PLAYERS][128];
 new TraLoiCauHoi[MAX_PLAYERS][128];
-new PlayerText: LoginTD[MAX_PLAYERS][7];
+
 new Text:MainMenuTxtdraw[12];
 new Text:NoticeTxtdraw[8];
 new Text:WristWatch;

@@ -19,7 +19,7 @@ PlayerTextDrawSetShadow(playerid, ClientText[playerid][0], 1);
 
 }
 
-stock SendClientTextDraw(playerid, text[])
+stock SendClientTextDraw(playerid, text[],time=0)
 {
     if(GetPVarInt(playerid, "IsShowText") == 1) KillTimer(SendClientText[playerid]);
     PlayerTextDrawSetString(playerid,  ClientText[playerid][0], text);
