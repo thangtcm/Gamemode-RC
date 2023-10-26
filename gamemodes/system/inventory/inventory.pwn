@@ -1325,6 +1325,7 @@ Dialog:DropItem(playerid, response, listitem, inputtext[])
 			Inventory_Remove(playerid, itemId, strval(inputtext));
 			format(string, sizeof(string), "* %s da vut %d vat pham \"%s\" ra khoi tui do cua ho.", GetPlayerNameEx(playerid), strval(inputtext), itemName);
 			ProxDetector(30.0, playerid, string, COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE);
+			SendLogToDiscordRoom("LOG XÓA VẬT PHẨM", "1158001317931921429", "Name", GetPlayerNameEx(playerid), "REMOVED", itemName, "Số lượng", strval(inputtext), 0xFF00FF);
 		}
 	}
 	return 1;
