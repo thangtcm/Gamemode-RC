@@ -1374,6 +1374,7 @@ Dialog:GiveItem(playerid, response, listitem, inputtext[])
 			format(time, sizeof time , "%d/%d/%d %d:%d:%d",day,month,years,hourz,minz,sec);
 			format(str, sizeof(str), "[%s] %s (%s) da dua %s cho %s (%s).", time, GetPlayerNameEx(playerid), PlayerInfo[playerid][pIP], itemName, GetPlayerNameEx(giveplayerid), PlayerInfo[giveplayerid][pIP]);
 			Log("logs/give_log.txt", str);
+			SendLogToDiscordRoom4("LOG ĐƯA VẬT PHẨM", "1166983700597186570", "Name", GetPlayerNameEx(playerid), "Người nhận", GetPlayerNameEx(giveplayerid), "Vật phẩm", itemName, "Số lượng", "1", 0x8d9922);
 		}
 		else
 		{
@@ -1417,7 +1418,7 @@ Dialog:GiveQuantity(playerid, response, listitem, inputtext[])
 		ProxDetector(30.0, playerid, str, COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE);
 		format(str, sizeof(str), "%s da dua \"%s\" va da duoc them vao trong tui do.", GetPlayerNameEx(playerid), str);
 		SendClientMessageEx(giveplayerid, COLOR_YELLOW, str);
-
+		SendLogToDiscordRoom4("LOG ĐƯA VẬT PHẨM", "1166983700597186570", "Name", GetPlayerNameEx(playerid), "Người nhận", GetPlayerNameEx(giveplayerid), "Vật phẩm", itemName, "Số lượng", strval(inputtext), 0x8d9922);
 		Inventory_Remove(playerid, itemId, strval(inputtext));
 		new years,month,day,hourz,minz,sec,time[50];
 		getdate(years,month,day);
