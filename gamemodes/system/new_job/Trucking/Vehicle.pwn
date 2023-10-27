@@ -106,7 +106,7 @@ stock VEHICLETRUCKER_ADD(playerid, vehicleid, modelid, pCarSlotID, ProductID, Fl
     GetPlayerPos(playerid, playerPos[0], playerPos[1], playerPos[2]);
     if(IsValidDynamicObject(VehicleTruckerData[playerid][index][vtObject]))
         DestroyDynamicObject(VehicleTruckerData[playerid][index][vtObject]);
-    VehicleTruckerData[playerid][index][vtObject] = CreateDynamicObject(modelid, playerPos[0], playerPos[1], playerPos[2], 0, 0, 0, GetPlayerVirtualWorld(playerid), GetPlayerInterior(playerid));
+    VehicleTruckerData[playerid][index][vtObject] = CreateDynamicObject(modelid, playerPos[0], playerPos[1], playerPos[2], 0, 0, 0);
     AttachDynamicObjectToVehicle(VehicleTruckerData[playerid][index][vtObject], vehicleid, x, y, z, ox, oy, oz);
     VehicleTruckerData[playerid][index][vtSlotId] = pCarSlotID,
     VehicleTruckerData[playerid][index][vtProductID] = ProductID,
@@ -146,7 +146,7 @@ stock VehicleTrucker_Reload(playerid, pVehicleIndex, isAdd = false)
                 }
                 VehicleTruckerData[playerid][i][vtObject] = CreateDynamicObject(1271, 
                     VehicleTruckerData[playerid][i][vtPos][0], VehicleTruckerData[playerid][i][vtPos][1], VehicleTruckerData[playerid][i][vtPos][2], 
-                    0, 0, 0, GetPlayerVirtualWorld(playerid), GetPlayerInterior(playerid));
+                    0, 0, 0);
                 AttachDynamicObjectToVehicle(VehicleTruckerData[playerid][i][vtObject], PlayerVehicleInfo[playerid][pVehicleIndex][pvId], 
                     VehicleTruckerData[playerid][i][vtPos][0], VehicleTruckerData[playerid][i][vtPos][1], VehicleTruckerData[playerid][i][vtPos][2], 
                     VehicleTruckerData[playerid][i][vtPos][3], VehicleTruckerData[playerid][i][vtPos][4], VehicleTruckerData[playerid][i][vtPos][5]);

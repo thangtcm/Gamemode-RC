@@ -27,6 +27,7 @@ hook OnPlayerKeyStateChange(playerid, newkeys, oldkeys)
 				{
 					if(IsPlayerInRangeOfPoint(playerid, 2.0, rockPositions[i][0], rockPositions[i][1], rockPositions[i][2]))
 					{
+						if(IsPlayerInAnyVehicle(playerid)) return SendErrorMessage(playerid, " Ban khong the lam dieu nay khi o tren xe.");
 						if(GetPlayerSkin(playerid) == 27)
 						{
 							if(Inventory_Count(playerid, "Pickaxe") >= 1)

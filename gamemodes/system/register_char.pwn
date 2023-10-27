@@ -109,7 +109,6 @@ hook OnPlayerConnect(playerid)
 }
 
 stock ShowRegCharTD(playerid) {
-	ChangeSkin[playerid] = 1;
 	new name[MAX_PLAYER_NAME];
 	GetPlayerName(playerid, name, MAX_PLAYER_NAME);
 	PlayerTextDrawSetString(playerid, RegCharacter[playerid][4], name);

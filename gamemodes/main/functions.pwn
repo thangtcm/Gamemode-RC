@@ -1209,39 +1209,12 @@ PayDay(i) {
 			SendClientMessageEx(i, COLOR_GRAD1, string);
 			interest = (PlayerInfo[i][pAccount] + 1) / 100;
 
-			// switch(PlayerInfo[i][pDonateRank]) {
-			// 	case 0: {
-			// 		if(interest > 500) interest = 500;
-			// 		format(string, sizeof(string), "  Tien con lai: {10ff2c}$%s{ffffff}  |  Lai suat: {fdff25}0.1{ffffff} phan tram ($500 max)", number_format(PlayerInfo[i][pAccount]));
-			// 		SendClientMessageEx(i, COLOR_WHITE, string);
-			// 	}
-			// 	case 1: {
-			// 		if(interest > 600) interest = 600;
-			// 		format(string, sizeof(string), "  Tien con lai: {10ff2c}$%s{ffffff}  |  Lai suat: {fdff25}0.1{ffffff} phan tram ($600 max)", number_format(PlayerInfo[i][pAccount]));
-			// 		SendClientMessageEx(i, COLOR_WHITE, string);
-			// 	}
-			// 	case 2:	{
-			// 		if(interest > 700) interest = 700;
-			// 		format(string, sizeof(string), "  Tien con lai: {10ff2c}$%s{ffffff}  |  Lai suat: {fdff25}0.1{ffffff} phan tram ($700 max)", number_format(PlayerInfo[i][pAccount]));
-			// 		SendClientMessageEx(i, COLOR_WHITE, string);
-			// 	}
-			// 	case 3: {
-			// 		if(interest > 800) interest = 800;
-			// 		format(string, sizeof(string), "  Tien con lai: {10ff2c}$%s{ffffff}  |  Lai suat: {fdff25}0.1{ffffff} phan tram ($800 max)", number_format(PlayerInfo[i][pAccount]));
-			// 		SendClientMessageEx(i, COLOR_WHITE, string);
-			// 	}
-			// 	case 4, 5: {
-			// 		if(interest > 900) interest = 900;
-			// 		format(string, sizeof(string), "  Tien con lai: {10ff2c}$%s{ffffff}  |  Lai suat: {fdff25}0.1{ffffff} phan tram ($900 max)", number_format(PlayerInfo[i][pAccount]));
-			// 		SendClientMessageEx(i, COLOR_WHITE, string);
-			// 	}
+			// if(PlayerInfo[i][pTaxiLicense] == 1) {
+			// 	PlayerInfo[i][pAccount] -= (PlayerInfo[i][pPayCheck] / 100) * 1;
+			// 	Tax += (PlayerInfo[i][pPayCheck] / 100) * 1;
+			// 	format(string, sizeof(string), "  Le phi giay phep Taxi ({fdff25}1 phan tram{ffffff}): {10ff2c}$%s", number_format((PlayerInfo[i][pPayCheck] / 100) * 5));
+			// 	SendClientMessageEx(i, COLOR_WHITE, string);
 			// }
-			if(PlayerInfo[i][pTaxiLicense] == 1) {
-				PlayerInfo[i][pAccount] -= (PlayerInfo[i][pPayCheck] / 100) * 1;
-				Tax += (PlayerInfo[i][pPayCheck] / 100) * 1;
-				format(string, sizeof(string), "  Le phi giay phep Taxi ({fdff25}1 phan tram{ffffff}): {10ff2c}$%s", number_format((PlayerInfo[i][pPayCheck] / 100) * 5));
-				SendClientMessageEx(i, COLOR_WHITE, string);
-			}
 			for(new iGroupID; iGroupID < MAX_GROUPS; iGroupID++)
 			{
 				if(PlayerInfo[i][pNation] == 0)
@@ -1272,14 +1245,15 @@ PayDay(i) {
 				}
 			}
 			PlayerInfo[i][pAccount] += interest;
-			format(string, sizeof(string), "  Lai thu duoc: $%s", number_format(interest));
+			format(string, sizeof(string), "  Lai thu duoc tu ngan hang: $%s", number_format(interest));
+			new priceClaim = (PlayerInfo[i][pPayCheck]/10) - random(PlayerInfo[i][pPayCheck]/100);
+			format(string, sizeof(string), "  Luong thu duoc vao tui tien: $%s", number_format(priceClaim));
 			SendClientMessageEx(i, COLOR_WHITE, string);
 			SendClientMessageEx(i, COLOR_WHITE, "______________________________________");
 			// format(string, sizeof(string), "  Moi-Tien con lai: $%s  |  Tra thue: $%s", number_format(PlayerInfo[i][pAccount]), number_format((0 <= PlayerInfo[i][pRenting] < sizeof HouseInfo) ? (HouseInfo[PlayerInfo[i][pRenting]][hRentFee]) : (0)));
 			// SendClientMessageEx(i, COLOR_WHITE, string);
-
-			GivePlayerCash(i, (PlayerInfo[i][pPayCheck]/10) - random(PlayerInfo[i][pPayCheck]/100));
-			printf("Payday nhan duoc %d", (PlayerInfo[i][pPayCheck]/10) - random(PlayerInfo[i][pPayCheck]/100));
+			GivePlayerCash(i, priceClaim);
+			printf("Payday nhan duoc %d", priceClaim);
 			new
 				iGroupID = PlayerInfo[i][pMember],
 				iRank = PlayerInfo[i][pRank];
@@ -1386,13 +1360,13 @@ PayDay(i) {
 					PlayerInfo[i][pGoldBoxTokens]++;
 				//	SendClientMessage(i, COLOR_LIGHTBLUE, "Ban da nhan duoc 1 Gold Giftbox token!  #Chuc mung");
 				}
-			//	format(string, sizeof(string), "Ban dang co %d gio thuong, hay kiem tra /rewards de biet them thong tin.", floatround(PlayerInfo[i][pRewardHours]));
+				format(string, sizeof(string), "Ban dang co %d gio thuong, hay kiem tra /rewards de biet them thong tin.", floatround(PlayerInfo[i][pRewardHours]));
 				SendClientMessageEx(i, COLOR_YELLOW, string);
 			}
 
 			if(DoubleXP) {
-			//	SendClientMessageEx(i, COLOR_YELLOW, "Ban co 2 diem nhan doi kinh nghiem thay vi 1. (Nhan doi XP)");
-			//	format(string, sizeof(string), "Ban duoc tang %s tien nhan doi XP (Nhan doi XP)", number_format((PlayerInfo[i][pLevel] * XP_RATE * 2) * XP_RATE_HOURLY));
+				SendClientMessageEx(i, COLOR_YELLOW, "Ban co 2 diem nhan doi kinh nghiem thay vi 1. (Nhan doi XP)");
+				format(string, sizeof(string), "Ban duoc tang %s tien nhan doi XP (Nhan doi XP)", number_format((PlayerInfo[i][pLevel] * XP_RATE * 2) * XP_RATE_HOURLY));
 				SendClientMessageEx(i, COLOR_YELLOW, string);
 				PlayerInfo[i][pExp] += 2;
 				PlayerInfo[i][pXP] += (PlayerInfo[i][pLevel] * XP_RATE * 2) * XP_RATE_HOURLY;
@@ -1400,9 +1374,9 @@ PayDay(i) {
 			else
 			if(PlayerInfo[i][pDoubleEXP] > 0 && !DoubleXP) {
 				PlayerInfo[i][pDoubleEXP]--;
-			//	format(string, sizeof(string), "Ban co 2 diem nhan doi kinh nghiem thay vi 1. Ban co %d gio con lai nhan doi EXP token.", PlayerInfo[i][pDoubleEXP]);
+				format(string, sizeof(string), "Ban co 2 diem nhan doi kinh nghiem thay vi 1. Ban co %d gio con lai nhan doi EXP token.", PlayerInfo[i][pDoubleEXP]);
 				SendClientMessageEx(i, COLOR_YELLOW, string);
-			//	format(string, sizeof(string), "Ban duoc tang %s tien nhan doi XP (Nhan doi EXP token)", number_format((PlayerInfo[i][pLevel] * XP_RATE * 2) * XP_RATE_HOURLY));
+				format(string, sizeof(string), "Ban duoc tang %s tien nhan doi XP (Nhan doi EXP token)", number_format((PlayerInfo[i][pLevel] * XP_RATE * 2) * XP_RATE_HOURLY));
 				SendClientMessageEx(i, COLOR_YELLOW, string);
 				PlayerInfo[i][pExp] += 2;
 				PlayerInfo[i][pXP] += (PlayerInfo[i][pLevel] * XP_RATE * 2) * XP_RATE_HOURLY;
@@ -1411,12 +1385,12 @@ PayDay(i) {
 			{
 				PlayerInfo[i][pExp]++;
 				PlayerInfo[i][pXP] += PlayerInfo[i][pLevel] * XP_RATE * XP_RATE_HOURLY;
-			//	format(string, sizeof(string), "Ban duoc tang %s tien nhan doi XP.", number_format(PlayerInfo[i][pLevel] * XP_RATE * XP_RATE_HOURLY));
+				format(string, sizeof(string), "Ban duoc tang %s tien nhan doi XP.", number_format(PlayerInfo[i][pLevel] * XP_RATE * XP_RATE_HOURLY));
 				SendClientMessageEx(i, COLOR_YELLOW, string);
 			}
 
 			if(PlayerInfo[i][pWRestricted] > 0 && --PlayerInfo[i][pWRestricted] == 0) {
-			//	SendClientMessageEx(i, COLOR_LIGHTRED, "Bay gio vu khi cua ban khong con bi gioi han!");
+				SendClientMessageEx(i, COLOR_LIGHTRED, "Bay gio vu khi cua ban khong con bi gioi han!");
 			}
 
 			if(PlayerInfo[i][pShopNotice] > 0) PlayerInfo[i][pShopNotice]--;
@@ -1446,7 +1420,8 @@ PayDay(i) {
 	}
 }
 
-CreateGate(gateid) {
+stock CreateGate(gateid) {
+	if(GateInfo[gateid][gPosX] == 0.0)	return 1;
 	if(IsValidDynamicObject(GateInfo[gateid][gGATE])) DestroyDynamicObject(GateInfo[gateid][gGATE]);
 	switch(GateInfo[gateid][gRenderHQ]) {
 		case 1: GateInfo[gateid][gGATE] = CreateDynamicObject(GateInfo[gateid][gModel], GateInfo[gateid][gPosX], GateInfo[gateid][gPosY], GateInfo[gateid][gPosZ], GateInfo[gateid][gRotX], GateInfo[gateid][gRotY], GateInfo[gateid][gRotZ], GateInfo[gateid][gVW], GateInfo[gateid][gInt], -1, 100.0);
@@ -1454,6 +1429,7 @@ CreateGate(gateid) {
 		case 3: GateInfo[gateid][gGATE] = CreateDynamicObject(GateInfo[gateid][gModel], GateInfo[gateid][gPosX], GateInfo[gateid][gPosY], GateInfo[gateid][gPosZ], GateInfo[gateid][gRotX], GateInfo[gateid][gRotY], GateInfo[gateid][gRotZ], GateInfo[gateid][gVW], GateInfo[gateid][gInt], -1, 200.0);
 		default: GateInfo[gateid][gGATE] = CreateDynamicObject(GateInfo[gateid][gModel], GateInfo[gateid][gPosX], GateInfo[gateid][gPosY], GateInfo[gateid][gPosZ], GateInfo[gateid][gRotX], GateInfo[gateid][gRotY], GateInfo[gateid][gRotZ], GateInfo[gateid][gVW], GateInfo[gateid][gInt], -1, 60.0);
 	}
+	return 1;
 }
 
 IsAtTruckDeliveryPoint(playerid)
@@ -6221,7 +6197,7 @@ public ParkVehicle(playerid, ownerid, vehicleid, d, Float:X, Float:Y, Float:Z)
 			IsPlayerEntering{playerid} = true;
 			PutPlayerInVehicle(playerid, vehicleid, 0);
 			SetPlayerArmedWeapon(playerid, 0);
-			format(string, sizeof(string), "* %s da dau chiec xe cua ho tai day.", GetPlayerNameEx(playerid), GetPlayerNameEx(ownerid));
+			format(string, sizeof(string), "* %s da dau chiec xe cua ho tai day.", GetPlayerNameEx(playerid));
 		}
 		ProxDetector(30.0, playerid, string, COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE);
 	}
@@ -11525,10 +11501,14 @@ stock SetPlayerSpawn(playerid)
 			}
 			else if(PlayerInfo[playerid][pInsurance] == 1)
 			{
-				new randum = random(sizeof(HospitalSpawnXYZ));
-				SetPlayerCameraPos(playerid, HospitalSpawnXYZ[randum][0],HospitalSpawnXYZ[randum][1],HospitalSpawnXYZ[randum][2]);
-				SetPlayerCameraLookAt(playerid, HospitalSpawnXYZ[randum][0],HospitalSpawnXYZ[randum][1],HospitalSpawnXYZ[randum][2]);
-				SetPlayerPos(playerid, HospitalSpawnXYZ[randum][0],HospitalSpawnXYZ[randum][1],HospitalSpawnXYZ[randum][2]);
+				//Tam thoi xoa
+				// new randum = random(sizeof(HospitalSpawnXYZ));
+				// SetPlayerCameraPos(playerid, HospitalSpawnXYZ[randum][0],HospitalSpawnXYZ[randum][1],HospitalSpawnXYZ[randum][2]);
+				// SetPlayerCameraLookAt(playerid, HospitalSpawnXYZ[randum][0],HospitalSpawnXYZ[randum][1],HospitalSpawnXYZ[randum][2]);
+				// SetPlayerPos(playerid, HospitalSpawnXYZ[randum][0],HospitalSpawnXYZ[randum][1],HospitalSpawnXYZ[randum][2]);
+				SetPlayerCameraPos(playerid,1188.4574,-1309.2242,13.5625+6.0);
+				SetPlayerCameraLookAt(playerid,1175.5581,-1324.7922,18.1610);
+				SetPlayerPos(playerid, 1188.4574,-1309.2242,10.5625); // Warp the player
 				PlayerInfo[playerid][pHospital] = 2;
 			}
 			else if(PlayerInfo[playerid][pInsurance] == 2)
@@ -13353,6 +13333,7 @@ stock Group_NumToDialogHex(iValue)
 
 stock GivePlayerStoreItem(playerid, type, business, item, price)
 {
+	printf("RUNN %d", item);
 	new string[256];
 	if(Businesses[business][bInventory] >= StoreItemCost[item][ItemValue]) Businesses[business][bInventory] -= StoreItemCost[item][ItemValue];
 	else return SendClientMessageEx(playerid, COLOR_GRAD2, "Cua hang khong co du cho item do");
@@ -13382,7 +13363,15 @@ stock GivePlayerStoreItem(playerid, type, business, item, price)
 			SendClientMessageEx(playerid, COLOR_GRAD4, "Ban da mua con xuc xac");
 
 		}
-  		case ITEM_CONDOM:
+  		case ITEM_MASK:
+		{
+			if(!Inventory_HasItem(playerid, "Mat na")) {
+				if(!Inventory_Add(playerid, "Mat na", .timer = 60*24*7)) return 1;
+				SendClientMessageEx(playerid, COLOR_WHITE, "Ban da mua Mat na (Do ben: 1 tuan) thanh cong, su dung /inv > Mat na");
+			}
+			else return SendClientMessageEx(playerid, COLOR_WHITE, "Ban da so huu Mat na");
+		}
+		case ITEM_CONDOM:
 		{
 			if(!Inventory_HasItem(playerid, "GPS")) {
 				if(!Inventory_Add(playerid, "GPS")) return 1;
@@ -14237,6 +14226,7 @@ stock ReloadHousePickup(houseid)
 	new string[228], szTrasStr[228];
 	if(IsValidDynamicPickup(HouseInfo[houseid][hPickupID])) DestroyDynamicPickup(HouseInfo[houseid][hPickupID]);
 	if(IsValidDynamic3DTextLabel(HouseInfo[houseid][hTextID])) DestroyDynamic3DTextLabel(HouseInfo[houseid][hTextID]);
+	if(HouseInfo[houseid][hExteriorX] == 0.0) return 1;
 	if(HouseInfo[houseid][hOwned])
 	{
 	    format(szTrasStr, sizeof(szTrasStr), "Thung Rac HID: %d\nChu so huu: %s",houseid,StripUnderscore(HouseInfo[houseid][hOwnerName]));
@@ -14264,6 +14254,7 @@ stock ReloadHousePickup(houseid)
 		HouseInfo[houseid][hTextID] = CreateDynamic3DTextLabel(string, COLOR_WHITE, HouseInfo[houseid][hExteriorX], HouseInfo[houseid][hExteriorY], HouseInfo[houseid][hExteriorZ]+0.5,10.0, .testlos = 1, .worldid = HouseInfo[houseid][hExtVW], .interiorid = HouseInfo[houseid][hExtIW], .streamdistance = 10.0);
 		HouseInfo[houseid][hPickupID] = CreateDynamicPickup(1273, 23, HouseInfo[houseid][hExteriorX], HouseInfo[houseid][hExteriorY], HouseInfo[houseid][hExteriorZ], .worldid = HouseInfo[houseid][hExtVW], .interiorid = HouseInfo[houseid][hExtIW]);
 	}
+	return 1;
 }
 SaveSafeZones()
 {
@@ -15501,6 +15492,7 @@ stock RefreshBusinessPickup(i)
   	DestroyDynamic3DTextLabel(Businesses[i][bStateText]);
   	DestroyDynamic3DTextLabel(Businesses[i][bSupplyText]);
   	DestroyDynamicPickup(Businesses[i][bPickup]);
+	if(Businesses[i][bExtPos][0] == 0.0)	return 1;
     if (!(Businesses[i][bExtPos][0] == 0.0 && Businesses[i][bExtPos][1] == 0.0 && Businesses[i][bExtPos][2] == 0.0)) {
     	new string[228];
 		Businesses[i][bPickup] = CreateDynamicPickup(GetBusinessDefaultPickup(i), 23, Businesses[i][bExtPos][0], Businesses[i][bExtPos][1], Businesses[i][bExtPos][2]);
@@ -15520,6 +15512,7 @@ stock RefreshBusinessPickup(i)
 	//	format(string,sizeof(string),"%s\nSupply Delivery Point", Businesses[i][bName]);
 	//	Businesses[i][bSupplyText] = CreateDynamic3DTextLabel(string, BUSINESS_NAME_COLOR, Businesses[i][bSupplyPos][0], Businesses[i][bSupplyPos][1], Businesses[i][bSupplyPos][2], 10.0, INVALID_PLAYER_ID, INVALID_VEHICLE_ID, 1, 0, 0, -1);
 	}
+	return 1;
 }
 
 stock SaveGates()
@@ -16023,6 +16016,14 @@ stock DestroyPlayerVehicle(playerid, playervehicleid)
 	{
 	    VehicleSpawned[playerid]--;
 	    PlayerCars--;
+		VehicleTrucker_Reload(playerid, playervehicleid);
+		// for(new i; i < MAX_OBJECTTRUCKER; i++)
+		// {
+		// 	if(VehicleTruckerData[playerid][i][vtId] == PlayerVehicleInfo[playerid][playervehicleid][pvSlotId])
+		// 	{
+		// 		VEHICLETRUCKER_DELETE(playerid, i);
+		// 	}
+		// }
 		DestroyVehicle(PlayerVehicleInfo[playerid][playervehicleid][pvId]);
 		PlayerVehicleInfo[playerid][playervehicleid][pvModelId] = 0;
 		PlayerVehicleInfo[playerid][playervehicleid][pvPosX] = 0.0;
@@ -16075,7 +16076,7 @@ stock LoadPlayerVehicles(playerid) {
 					PlayerCars++;
 					VehicleSpawned[playerid]++;
 					new carcreated = CreateVehicle(PlayerVehicleInfo[playerid][v][pvModelId], PlayerVehicleInfo[playerid][v][pvPosX], PlayerVehicleInfo[playerid][v][pvPosY], PlayerVehicleInfo[playerid][v][pvPosZ], PlayerVehicleInfo[playerid][v][pvPosAngle],PlayerVehicleInfo[playerid][v][pvColor1], PlayerVehicleInfo[playerid][v][pvColor2], -1);
-
+					VehicleTrucker_Reload(playerid, v, true);
 					SetVehicleVirtualWorld(carcreated, PlayerVehicleInfo[playerid][v][pvVW]);
   					LinkVehicleToInterior(carcreated, PlayerVehicleInfo[playerid][v][pvInt]);
 
@@ -16122,7 +16123,9 @@ stock UnloadPlayerVehicles(playerid) {
 	for(new v = 0; v < MAX_PLAYERVEHICLES; v++) if(PlayerVehicleInfo[playerid][v][pvId] != INVALID_PLAYER_VEHICLE_ID && !PlayerVehicleInfo[playerid][v][pvImpounded] && PlayerVehicleInfo[playerid][v][pvSpawned]) {
 		PlayerCars--;
 		if(LockStatus{PlayerVehicleInfo[playerid][v][pvId]} != 0) LockStatus{PlayerVehicleInfo[playerid][v][pvId]} = 0;
+		VehicleTrucker_Reload(playerid, v);
 		DestroyVehicle(PlayerVehicleInfo[playerid][v][pvId]);
+
 		PlayerVehicleInfo[playerid][v][pvId] = INVALID_PLAYER_VEHICLE_ID;
 		if(PlayerVehicleInfo[playerid][v][pvAllowedPlayerId] != INVALID_PLAYER_ID)
 		{
@@ -16153,12 +16156,14 @@ stock UpdatePlayerVehicleParkPosition(playerid, playervehicleid, Float:newx, Flo
 		oldfuel = VehicleFuel[PlayerVehicleInfo[playerid][playervehicleid][pvId]];
 		UpdatePlayerVehicleMods(playerid, playervehicleid);
 		GetVehicleDamageStatus(PlayerVehicleInfo[playerid][playervehicleid][pvId], arrDamage[0], arrDamage[1], arrDamage[2], arrDamage[3]);
+		VehicleTrucker_Reload(playerid, playervehicleid);
 		DestroyVehicle(PlayerVehicleInfo[playerid][playervehicleid][pvId]);
 		new carcreated = CreateVehicle(PlayerVehicleInfo[playerid][playervehicleid][pvModelId], PlayerVehicleInfo[playerid][playervehicleid][pvPosX], PlayerVehicleInfo[playerid][playervehicleid][pvPosY], PlayerVehicleInfo[playerid][playervehicleid][pvPosZ],
 		PlayerVehicleInfo[playerid][playervehicleid][pvPosAngle],PlayerVehicleInfo[playerid][playervehicleid][pvColor1], PlayerVehicleInfo[playerid][playervehicleid][pvColor2], -1);
 		SetVehicleVirtualWorld(carcreated, PlayerVehicleInfo[playerid][playervehicleid][pvVW]);
   		LinkVehicleToInterior(carcreated, PlayerVehicleInfo[playerid][playervehicleid][pvInt]);
 		PlayerVehicleInfo[playerid][playervehicleid][pvId] = carcreated;
+		VehicleTrucker_Reload(playerid, playervehicleid, true);
 		Vehicle_ResetData(carcreated);
 		VehicleFuel[carcreated] = oldfuel;
 		// SetVehicleNumberPlate(carcreated, PlayerVehicleInfo[playerid][playervehicleid][pvNumberPlate]);
@@ -17598,6 +17603,7 @@ stock RenderHouseMailbox(h)
 {
 	DestroyDynamicObject(HouseInfo[h][hMailObjectId]);
 	DestroyDynamic3DTextLabel(HouseInfo[h][hMailTextID]);
+	if(HouseInfo[h][hMailX] == 0.0)	return 1;
 	if (HouseInfo[h][hMailX] != 0.0)
 	{
 		HouseInfo[h][hMailObjectId] = CreateDynamicObject((HouseInfo[h][hMailType] == 1) ? 1478 : 3407, HouseInfo[h][hMailX], HouseInfo[h][hMailY], HouseInfo[h][hMailZ], 0, 0, HouseInfo[h][hMailA]);
@@ -17605,12 +17611,14 @@ stock RenderHouseMailbox(h)
 		format(string, sizeof(string), "HID: %d",h);
 		HouseInfo[h][hMailTextID] = CreateDynamic3DTextLabel(string, 0xFFFFFF88, HouseInfo[h][hMailX], HouseInfo[h][hMailY], HouseInfo[h][hMailZ]+0.5,10.0, .testlos = 1, .streamdistance = 10.0);
 	}
+	return 1;
 }
 
 stock RenderStreetMailbox(id)
 {
 	DestroyDynamicObject(MailBoxes[id][mbObjectId]);
 	DestroyDynamic3DTextLabel(MailBoxes[id][mbTextId]);
+	if(MailBoxes[id][mbPosX] == 0.0)	return 1;
 	if(MailBoxes[id][mbPosX] != 0.0)
 	{
 	    new string[128];
@@ -17618,6 +17626,7 @@ stock RenderStreetMailbox(id)
 		format(string,sizeof(string),"Thung thu(%d)\nSu dung /guithu de gui thu.", id);
 		MailBoxes[id][mbTextId] = CreateDynamic3DTextLabel(string, COLOR_YELLOW, MailBoxes[id][mbPosX], MailBoxes[id][mbPosY], MailBoxes[id][mbPosZ] + 0.5, 10.0, .worldid = MailBoxes[id][mbVW], .testlos = 0, .streamdistance = 25.0);
 	}
+	return 1;
 }
 
 stock HasMailbox(playerid)

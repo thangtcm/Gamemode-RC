@@ -821,10 +821,11 @@ public OnCheckCharacterExist(playerid, name[])
         // new fName[129];
         // GetPVarString(playerid, "NhapUserName", fName, sizeof(fName));
         SetPlayerName(playerid, name);
-        // new fName[24];
-
-        g_mysql_CreateAccountzz(playerid, name);
         new i = GetPVarInt(playerid, #select_character);
+        // new fName[24];
+        TempCharacter[playerid][i][Skin] = GetSkinCreateCharacter(playerid);
+        TempCharacter[playerid][i][Lv] = 1;
+        g_mysql_CreateAccountzz(playerid, name);
         TempCharacter[playerid][i][IsCreated] = true;
         format(TempCharacter[playerid][i][Name], 24, "%s", name);
     }

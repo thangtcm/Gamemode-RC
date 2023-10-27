@@ -389,7 +389,6 @@ public OnQueryFinish(resultid, extraid, handleid)
 					cache_get_field_content(row,  "Disabled", szResult, MainPipeline); PlayerInfo[extraid][pDisabled] = strval(szResult);
 					cache_get_field_content(row,  "Level", szResult, MainPipeline); PlayerInfo[extraid][pLevel] = strval(szResult);
 					cache_get_field_content(row,  "AdminLevel", szResult, MainPipeline); PlayerInfo[extraid][pAdmin] = strval(szResult);
-					printf("Admin %d",  PlayerInfo[extraid][pAdmin]);
 					cache_get_field_content(row,  "CMND", szResult, MainPipeline); PlayerInfo[extraid][pCMND] = strval(szResult);
 					cache_get_field_content(row,  "MaskID1", szResult, MainPipeline); PlayerInfo[extraid][pMaskID][0] = strval(szResult);
 					cache_get_field_content(row,  "MaskID2", szResult, MainPipeline); PlayerInfo[extraid][pMaskID][1] = strval(szResult);
@@ -1434,11 +1433,7 @@ public OnLoadTempCharacters(playerid) {
     {
     	ShowPlayerCharacter(playerid);
 		new str[256];
-<<<<<<< HEAD
 //		SendServerMessage(playerid, "Ten nay da ton tai hoac khong hop le (Name_Name).");
-=======
-		SendServerMessage(playerid, "Ban chua khoi tao nhan vat nao.");
->>>>>>> main
     	print("Khong tai duoc tai khoan chinh cua ban");
 
     }
@@ -3395,7 +3390,7 @@ stock SaveBusiness(id)
 	Businesses[id][bIntPos][0],	Businesses[id][bIntPos][1], Businesses[id][bIntPos][2], Businesses[id][bIntPos][3],
 	Businesses[id][bInt], Businesses[id][bCustomExterior], Businesses[id][bCustomInterior], Businesses[id][bGrade], Businesses[id][bVW], Businesses[id][bSupplyPos][0],Businesses[id][bSupplyPos][1], Businesses[id][bSupplyPos][2], Businesses[id][bNoThue]);
 
-	for (new i; i < 17; i++) format(query, sizeof(query), "%s`Item%dPrice` = %d, ", query, i+1, Businesses[id][bItemPrices][i]);
+	for (new i; i < MAX_ITEM; i++) format(query, sizeof(query), "%s`Item%dPrice` = %d, ", query, i+1, Businesses[id][bItemPrices][i]);
 	for (new i; i < 5; i++)	format(query, sizeof(query), "%s`Rank%dPay` = %d, ", query, i, Businesses[id][bRankPay][i], id);
 	for (new i; i < MAX_BUSINESS_GAS_PUMPS; i++) format(query, sizeof(query), "%s `GasPump%dPosX` = %f, `GasPump%dPosY` = %f, `GasPump%dPosZ` = %f, `GasPump%dAngle` = %f, `GasPump%dModel` = %d, `GasPump%dCapacity` = %f, `GasPump%dGas` = %f, ", query, i+1, Businesses[id][GasPumpPosX][i],	i+1, Businesses[id][GasPumpPosY][i], i+1, Businesses[id][GasPumpPosZ][i], i+1, Businesses[id][GasPumpAngle][i], i+1, 1646,i+1, Businesses[id][GasPumpCapacity],	i+1, Businesses[id][GasPumpGallons]);
 
@@ -7169,7 +7164,7 @@ public BusinessesLoadQueryFinish()
 				cache_get_field_content(i, column, tmp, MainPipeline); Businesses[i][GasPumpGallons][j] = floatstr(tmp);
 				CreateDynamicGasPump(_, i, j);
 
-				for (new z; z <= 17; z++)
+				for (new z; z < MAX_ITEM; z++)
 				{
 			    	new col[12];
 					format(col, sizeof(col), "Item%dPrice", z + 1);
@@ -7210,7 +7205,7 @@ public BusinessesLoadQueryFinish()
 		}
 		else
 		{
-			for (new j; j <= 17; j++)
+			for (new j; j < MAX_ITEM; j++)
 			{
 			    new col[12];
 				format(col, sizeof(col), "Item%dPrice", j + 1);
@@ -7844,10 +7839,21 @@ public OnPlayerLoad(playerid)
 			PlayerToyInfo[playerid][v][ptScaleZ] = 1.0;
 			PlayerToyInfo[playerid][v][ptSpecial] = 0;
 		}
-
+		PlayerInfo[playerid][pTempVIP] = 0;
+		PlayerInfo[playerid][pBuddyInvited] = 0;
+		PlayerInfo[playerid][pSpeedo] = 1;
+		PlayerInfo[playerid][pDoiBung] = 100;
+		PlayerInfo[playerid][pKhatNuoc] = 100;
+		PlayerInfo[playerid][pEat] = 100;
+		PlayerInfo[playerid][pDrink] = 100;
+		PlayerInfo[playerid][pStrong] = 100;
 		PlayerInfo[playerid][pTokens] = 0;
 		PlayerInfo[playerid][pSecureIP][0] = 0;
 		PlayerInfo[playerid][pCrates] = 0;
+		PlayerInfo[playerid][pPos_x] = 1355.6627;
+		PlayerInfo[playerid][pPos_y] = 259.0992;
+		PlayerInfo[playerid][pPos_z] = 20;
+		strcpy(PlayerInfo[playerid][pBirthDate], "0000-00-00", 64);
 		PlayerInfo[playerid][pOrder] = 0;
 		PlayerInfo[playerid][pOrderConfirmed] = 0;
 		PlayerInfo[playerid][pRacePlayerLaps] = 0;
@@ -7907,8 +7913,6 @@ public OnPlayerLoad(playerid)
 		PlayerInfo[playerid][pMaskID][1] = random(40) + 59;
 		PlayerInfo[playerid][gPupgrade] = 0;
 		PlayerInfo[playerid][pConnectHours] = 0;
-		PlayerInfo[playerid][pSex] = 0;
-		strcpy(PlayerInfo[playerid][pBirthDate], "0000-00-00", 64);
 		PlayerInfo[playerid][pRingtone] = 0;
 		PlayerInfo[playerid][pVIPM] = 0;
 		PlayerInfo[playerid][pVIPMO] = 0;
@@ -7926,7 +7930,7 @@ public OnPlayerLoad(playerid)
 		PlayerInfo[playerid][pPhoneBook] = 0;
 		PlayerInfo[playerid][pFishes] = 0;
 		PlayerInfo[playerid][pGcoin] = 0;
-		PlayerInfo[playerid][pCapacity] = 30;
+		PlayerInfo[playerid][pCapacity] = 16;
 		PlayerInfo[playerid][pInventoryItem] = 0;
 		PlayerInfo[playerid][pBiggestFish] = 0;
 		PlayerInfo[playerid][pJob] = 0;
@@ -7967,7 +7971,6 @@ public OnPlayerLoad(playerid)
 		PlayerInfo[playerid][pJudgeJailType] = 0;
 		PlayerInfo[playerid][pBeingSentenced] = 0;
 		PlayerInfo[playerid][pProbationTime] = 0;
-		PlayerInfo[playerid][pModel] = 311;
 		PlayerInfo[playerid][pMinerLevel] = 0;
 		PlayerInfo[playerid][pSoLanMiner] = 0;
 		PlayerInfo[playerid][pPnumber] = 0;
@@ -8463,7 +8466,6 @@ public OnPlayerLoad(playerid)
  	SetPlayerWeapons(playerid);
 // 	DestroyLog@_Reg(playerid);
  	SendClientMessageEx(playerid, COLOR_VANG, "Chao mung ban da tro lai may chu Red County Roleplay.");
- 	DownEDS[playerid] = SetTimerEx("StartDownEatDrinkStrong", 100000, true, "i", playerid);
 	DeletePVar(playerid, "TextDrawCharacter");
  	GetHomeCount(playerid);
 	new rdName[MAX_PLAYER_NAME];

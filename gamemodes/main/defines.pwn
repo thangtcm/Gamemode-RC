@@ -269,6 +269,8 @@
 #define 		ITEM_ELOCK                      	17
 #define 		ITEM_ALOCK                      	18
 #define 		ITEM_GPS                        	19
+#define 		ITEM_MASK                        	20
+#define 		MAX_ITEM                        	20
 #define 		FUEL_PUMP_RATE 						0.1 // Gallons per second
 #define 		BIZ_PENALTY 						0.2
 
@@ -805,6 +807,8 @@
 #define         NHANNV		      			(5087)
 #define			DIALOG_NV	            	(5088)
 #define			GHEPXE 		            	(5089)
+#define			TIMNGANHANG 		        (5090)
+#define			TIMCUAHANG	 		        (5091)
 #define			TIMDIADIEM					(5116)
 #define         TRAICAYD                   (5720)
 #define         DIALOG_XINVIEC              (5103)

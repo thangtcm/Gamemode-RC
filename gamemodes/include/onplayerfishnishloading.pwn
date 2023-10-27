@@ -34,7 +34,6 @@ public OnLoadingFinish(playerid,loadingid) {
             ShowNoticeGUIFrame(playerid, 3);
             CancelSelectTextDraw(playerid);
             new string[129];
-            printf("LOAD_CHARACTERLOGIN %s - Admin %d", TempCharacter[playerid][i][Name], PlayerInfo[playerid][pAdmin]);
 	        format(string, sizeof(string), "SELECT * FROM `accounts` WHERE `Username` = '%s'",  TempCharacter[playerid][i][Name]);
  	        mysql_function_query(MainPipeline, string, true, "OnQueryFinish", "iii", LOADUSERDATA_THREAD, playerid, g_arrQueryHandle{playerid}); 
  	    }

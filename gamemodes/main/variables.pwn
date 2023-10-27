@@ -129,7 +129,7 @@ enum eBiz {
 	bGunsOffered[31],
 	bSkinsOffered[300],
 	bToysOffered[100],
-	bItemPrices[18],
+	bItemPrices[20],
 	bTotalSales,
 	bTotalProfits,
 	Text3D: bStateText,
@@ -1606,7 +1606,8 @@ new StoreItemCost[][StoreItemCostEnum] =
 	{1},
 	{25},
 	{80},
-	{10}
+	{10},
+	{1}
 };
 
 new const StoreItems[][] =
@@ -1628,7 +1629,8 @@ new const StoreItems[][] =
 	"Giay trang",
 	"Khoa cong nghiep",
 	"Khoa dien",
-	"Khoa bao dong"
+	"Khoa bao dong",
+	"Mat na"
 };
 
 new TruckerDropoffs[][CargoArrayData] =
@@ -2274,6 +2276,7 @@ SSCANF:storeitem(string[])
 	if (!strcmp(string, "industriallock", true)) return ITEM_ILOCK;
 	if (!strcmp(string, "elock", true)) return ITEM_ELOCK;
 	if (!strcmp(string, "alarmlock", true)) return ITEM_ALOCK;
+	if (!strcmp(string, "Mask", true)) return ITEM_MASK;
 	return INVALID_STORE_ITEM;
 }
 

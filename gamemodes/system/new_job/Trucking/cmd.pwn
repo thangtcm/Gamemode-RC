@@ -124,6 +124,7 @@ CMD:truckergo(playerid, params[])
     }
     else if(!strcmp(type, "buy", true))
 	{
+        if(IsPlayerInAnyVehicle(playerid)) return SendErrorMessage(playerid, " Ban khong the lam dieu nay khi o tren xe.");
         if(pLoadProduct[playerid] != -1) return SendErrorMessage(playerid, "Ban dang cam mot thung hang roi, hay dua len xe roi hay mua tiep.");
         if(FactoryId != -1)
         {
@@ -164,6 +165,7 @@ CMD:truckergo(playerid, params[])
     }
     else if(!strcmp(type, "sell", true))
 	{
+        if(IsPlayerInAnyVehicle(playerid)) return SendErrorMessage(playerid, " Ban khong the lam dieu nay khi o tren xe.");
         if(FactoryId != -1)
         {
             SetPVarInt(playerid, "Sell_ProductID", FactoryId);

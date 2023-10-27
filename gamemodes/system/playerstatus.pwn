@@ -168,16 +168,8 @@ hook OnPlayerConnect(playerid)
 	Load_TDProgressPlayer(playerid);
 	return 1;
 }
-forward StartDownEatDrinkStrong(playerid);
-public StartDownEatDrinkStrong(playerid)
-{
-	if(GetPVarInt(playerid, "Injured") == 1 || PlayerCuffed[ playerid ] >= 1 || PlayerInfo[ playerid ][ pJailTime ] > 0 || PlayerInfo[playerid][pHospital] > 0 || !IsPlayerConnected(playerid))
-		return 1;
-	UpdatePlayerHungry(playerid);
-	return 1;
-}
 
-task NotifiHunger[600000]()
+task NotifiHunger[800000]()
 {
 	foreach(new i : Player)
 	{
@@ -185,32 +177,44 @@ task NotifiHunger[600000]()
 		{
 			if(PlayerInfo[i][pDrink] <= 25 && PlayerInfo[i][pEat] <= 25)
 			{
-				SendClientMessage(i, COLOR_REALRED, "[SERVER] {ffffff}Hay an uong gi do, neu khong ban se chet.");
+				SendClientMessage(i, COLOR_REALRED, "[SERVER] {ffffff}Suc khoe cua ban dang bi can kiet, hay an uong gi do truoc khi dan den tu vong vi kiet suc.");
 			}
 			else if(PlayerInfo[i][pDrink] <= 25)
 			{
-				SendClientMessage(i, COLOR_REALRED, "[SERVER] {ffffff}Hay uong gi do, neu khong ban se chet.");
+				SendClientMessage(i, COLOR_REALRED, "[SERVER] {ffffff}Ban dang khat nuoc, hay uong gi do truoc khi bi kiet suc.");
 			}
 			else if(PlayerInfo[i][pEat] <= 25)
 			{
-				SendClientMessage(i, COLOR_REALRED, "[SERVER] {ffffff}Hay an gi do, neu khong ban se chet.");
+				SendClientMessage(i, COLOR_REALRED, "[SERVER] {ffffff}Ban dang doi bung, hay an gi do truoc khi bi kiet suc.");
 			}
 		}
 	}
 }
 
-task HungerDownHP[300000]()
+task StartDownEatDrinkStrong[180000]()
 {
 	foreach(new i : Player)
 	{
+		if(GetPVarInt(i, "Injured") == 1 || PlayerCuffed[ i ] >= 1 || PlayerInfo[ i ][ pJailTime ] > 0 || PlayerInfo[i][pHospital] > 0 || !IsPlayerConnected(i))
+		continue;
+		UpdatePlayerHungry(i);
+	}
+}
+
+task HungerDownHP[420000]()
+{
+	foreach(new i : Player)
+	{
+		if(!IsPlayerConnected(i)) continue;
 		if(GetPVarInt(i, "Injured") == 0 && PlayerCuffed[ i ] == 0 && PlayerInfo[ i ][ pJailTime ] == 0 && PlayerInfo[i][pHospital] == 0 && IsPlayerConnected(i))
 		{
 			if(PlayerInfo[i][pDrink] <= 25 || PlayerInfo[i][pEat] <= 25)
 			{
-				new Float: hpz;
+				new Float: hpz, Float:calHp = (PlayerInfo[i][pDrink] < 25.0 ? 2.5 : 0.0) + (PlayerInfo[i][pEat] < 25.0 ? 2.5 : 0.0);
+
 				GetPlayerHealth(i, hpz);
-				if(hpz > 5){
-					SetPlayerHealth(i, hpz-5);
+				if(hpz > calHp){
+					SetPlayerHealth(i, hpz-calHp);
 				}else{
 					SetPlayerHealth(i, 0);
 					SendClientMessage(i, COLOR_REALRED, "[SERVER] {ffffff}Ban da chet vi doi bung.");
@@ -230,8 +234,8 @@ stock UpdatePlayerHungry(playerid)
 	}
 	else
 	{
-		--PlayerInfo[playerid][pEat];
-		--PlayerInfo[playerid][pDrink];
+		PlayerInfo[playerid][pEat]-=2;
+		PlayerInfo[playerid][pDrink]-=2;
 	}
 	return 1;
 }

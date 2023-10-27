@@ -1240,11 +1240,8 @@ stock JoinGame(playerid) {
     DeletePVar(playerid, "MedicBill");
     SetPlayerColor(playerid,TEAM_HIT_COLOR);
     DeletePVar(playerid,"DangTaoAcc");
-    SetPlayerSkin(playerid, ChangeSkin[playerid]);
-    PlayerInfo[playerid][pModel] = ChangeSkin[playerid];
-    PlayerInfo[playerid][pTempVIP] = 0;
-    PlayerInfo[playerid][pBuddyInvited] = 0;
-    PlayerInfo[playerid][pSpeedo] = 1;
+    SetPlayerSkin(playerid, PlayerInfo[playerid][pModel]);
+    printf("%d", PlayerInfo[playerid][pModel]);
     SetCameraBehindPlayer(playerid);
     PlayerPlaySound(playerid, 1056, 0.0, 0.0, 0.0);
     TextDrawHideForPlayer(playerid, BannerServer[1]);
@@ -1253,13 +1250,9 @@ stock JoinGame(playerid) {
     Streamer_UpdateEx(playerid,1355.6627, 259.0992, 19.5547);
     SetSpawnInfo(playerid, 0, PlayerInfo[playerid][pModel], 1355.6627, 259.0992, 19.5547, 1.0, -1, -1, -1, -1, -1, -1);
     SetPlayerPos(playerid, 1355.6627,259.0992, 19.5547);
+    Player_StreamPrep(playerid, 1355.6627, 259.0992, 19.5547, FREEZE_TIME);
     SetPlayerFacingAngle(playerid, 247.5060);
-    PlayerInfo[playerid][pVW] = 0;
-    PlayerInfo[playerid][pDoiBung] = 100;
-    PlayerInfo[playerid][pKhatNuoc] = 100;
-    PlayerInfo[playerid][pEat] = 100;
-    PlayerInfo[playerid][pDrink] = 100;
-    PlayerInfo[playerid][pStrong] = 100;
+    
     ClearChatbox(playerid);
     SendClientMessageEx(playerid,COLOR_VANG,"Chao mung ban da den voi may chu RC-RP.");
     //  SendClientMessageEx(playerid,COLOR_VANG,"(HUONG DAN) Hay di vao Market tim cua hang dien tu mua mot cai GPS nhe.");

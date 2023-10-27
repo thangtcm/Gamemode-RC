@@ -312,66 +312,66 @@ public OnPlayerSelectMenu(playerid,menuid,itemid,response) {
 
         }
        
-        case PIZZABOY_MENU: {
-        	if(!response) return HidePlayerMenu(playerid);
-        	switch(itemid) {
-        		case 0: {
-        			if(LamViec[playerid] == 0) {
-        				SendClientMessageEx(playerid,COLOR_VANG,"Ban da bat dau lam viec 'Pizza Boy' hay di den pickup lay banh va chat len xe (Press 'Y' de lay banh/cat banh vao xe)");
-	    				SendClientMessageEx(playerid,COLOR_VANG,"/pizza giaobanh de bat dau di giao");
-	    				SetPlayerPos(playerid, 2113.1775,-1772.8745,12.9609);
-		    			PizzaCar[playerid] = CreateVehicle(482, 2113.1775,-1772.8745,12.9609 , 0 , random(255), random(255), 1000, 0);
-	        			PutPlayerInVehicle(playerid, PizzaCar[playerid] ,0);
-	       				SetPVarInt(playerid, "IsDaThue", 1);
-	       				LamViec[playerid] =1;
-	        			BanhPizzaInCar[playerid] = 0;
-	        			format(zzstr, sizeof zzstr, "Xe Pizza cua: %s\nBanh trong xe: %d/5", GetPlayerNameEx(playerid),BanhPizzaInCar[playerid]);
-	        			PizzaTextInfo[playerid] = Create3DTextLabel(zzstr, COLOR_WHITE, 0.0, 0.0, 0.0, 50.0, 0, 1);
-           				Attach3DTextLabelToVehicle(PizzaTextInfo[playerid], PizzaCar[playerid], 0.0, 0.0, 2.0); // Attaching Text Label To Vehicle.
-           				HidePlayerMenu(playerid);
-           				counttick[playerid] = GetTickCount() + 500;
-	        			return 1;
-	    			}
-	    			else {
-	    				SendErrorMessage(playerid, " Ban dang lam viec khong the bat dau lam viec tiep.");
-	    			}
-        		}
-        		case 1: {
-    		        if(LamViec[playerid] != 1 || LamViec[playerid] == 0 && LamViec[playerid] != 1) return SendErrorMessage(playerid, " Ban chua lam cong viec Pizza.");
-	    			if(IsPlayerInAnyVehicle(playerid)) return SendErrorMessage(playerid, " Ban khong the lam dieu nay khi o tren xe.");
-					if(BanhPizzaInFoot[playerid] == 1) return SendErrorMessage(playerid, " Ban da cam banh tren tay khong the lay them.");
-					if(IsPlayerInRangeOfPoint(playerid, 5, 2098.5432,-1800.6925,13.3889)) {
-        				SetPlayerAttachedObject( playerid, PIZZA_INDEX, 1582, 1, 0.002953, 0.469660, -0.009797, 269.851104, 88.443557, 0.000000, 0.804894, 1.000000, 0.822361 );                      
-        				SetPlayerSpecialAction(playerid, SPECIAL_ACTION_CARRY);
-        				BanhPizzaInFoot[playerid] = 1;
-        				HidePlayerMenu(playerid);
-        				counttick[playerid] = GetTickCount() + 500;
-        				return 1;
-					}
-					else {
-	   					SendErrorMessage(playerid, " Ban khong o noi lay banh khong the lay banh.");
-					}
-        		}
-        		case 2: {
-        			if(LamViec[playerid] == 1) {
-	        			LamViec[playerid] =0;
-	        			DeletePVar(playerid, "IsDaThue");
-	        			DestroyVehicle(PizzaCar[playerid]);
-	        			BanhPizzaInCar[playerid] = 0;
-	        			DeletePVar(playerid, "giaobanh_Pizza");
-             			DeletePVar(playerid, "postion_Pizza");
-             			DisablePlayerCheckpoint(playerid);
-             			Delete3DTextLabel(PizzaTextInfo[playerid]);
-             			HidePlayerMenu(playerid);
-             			counttick[playerid] = GetTickCount() + 500;
-             			return 1;
-	    			}
-	    			else {
-	   					SendErrorMessage(playerid, " Ban khong o noi lay banh khong the lay banh.");
-					}
-        		}
-        	}
-        }
+        // case PIZZABOY_MENU: {
+        // 	if(!response) return HidePlayerMenu(playerid);
+        // 	switch(itemid) {
+        // 		case 0: {
+        // 			if(LamViec[playerid] == 0) {
+        // 				SendClientMessageEx(playerid,COLOR_VANG,"Ban da bat dau lam viec 'Pizza Boy' hay di den pickup lay banh va chat len xe (Press 'Y' de lay banh/cat banh vao xe)");
+	    // 				SendClientMessageEx(playerid,COLOR_VANG,"/pizza giaobanh de bat dau di giao");
+	    // 				SetPlayerPos(playerid, 2113.1775,-1772.8745,12.9609);
+		//     			PizzaCar[playerid] = CreateVehicle(482, 2113.1775,-1772.8745,12.9609 , 0 , random(255), random(255), 1000, 0);
+	    //     			PutPlayerInVehicle(playerid, PizzaCar[playerid] ,0);
+	    //    				SetPVarInt(playerid, "IsDaThue", 1);
+	    //    				LamViec[playerid] =1;
+	    //     			BanhPizzaInCar[playerid] = 0;
+	    //     			format(zzstr, sizeof zzstr, "Xe Pizza cua: %s\nBanh trong xe: %d/5", GetPlayerNameEx(playerid),BanhPizzaInCar[playerid]);
+	    //     			PizzaTextInfo[playerid] = Create3DTextLabel(zzstr, COLOR_WHITE, 0.0, 0.0, 0.0, 50.0, 0, 1);
+        //    				Attach3DTextLabelToVehicle(PizzaTextInfo[playerid], PizzaCar[playerid], 0.0, 0.0, 2.0); // Attaching Text Label To Vehicle.
+        //    				HidePlayerMenu(playerid);
+        //    				counttick[playerid] = GetTickCount() + 500;
+	    //     			return 1;
+	    // 			}
+	    // 			else {
+	    // 				SendErrorMessage(playerid, " Ban dang lam viec khong the bat dau lam viec tiep.");
+	    // 			}
+        // 		}
+        // 		case 1: {
+    	// 	        if(LamViec[playerid] != 1 || LamViec[playerid] == 0 && LamViec[playerid] != 1) return SendErrorMessage(playerid, " Ban chua lam cong viec Pizza.");
+	    // 			if(IsPlayerInAnyVehicle(playerid)) return SendErrorMessage(playerid, " Ban khong the lam dieu nay khi o tren xe.");
+		// 			if(BanhPizzaInFoot[playerid] == 1) return SendErrorMessage(playerid, " Ban da cam banh tren tay khong the lay them.");
+		// 			if(IsPlayerInRangeOfPoint(playerid, 5, 2098.5432,-1800.6925,13.3889)) {
+        // 				SetPlayerAttachedObject( playerid, PIZZA_INDEX, 1582, 1, 0.002953, 0.469660, -0.009797, 269.851104, 88.443557, 0.000000, 0.804894, 1.000000, 0.822361 );                      
+        // 				SetPlayerSpecialAction(playerid, SPECIAL_ACTION_CARRY);
+        // 				BanhPizzaInFoot[playerid] = 1;
+        // 				HidePlayerMenu(playerid);
+        // 				counttick[playerid] = GetTickCount() + 500;
+        // 				return 1;
+		// 			}
+		// 			else {
+	   	// 				SendErrorMessage(playerid, " Ban khong o noi lay banh khong the lay banh.");
+		// 			}
+        // 		}
+        // 		case 2: {
+        // 			if(LamViec[playerid] == 1) {
+	    //     			LamViec[playerid] =0;
+	    //     			DeletePVar(playerid, "IsDaThue");
+	    //     			DestroyVehicle(PizzaCar[playerid]);
+	    //     			BanhPizzaInCar[playerid] = 0;
+	    //     			DeletePVar(playerid, "giaobanh_Pizza");
+        //      			DeletePVar(playerid, "postion_Pizza");
+        //      			DisablePlayerCheckpoint(playerid);
+        //      			Delete3DTextLabel(PizzaTextInfo[playerid]);
+        //      			HidePlayerMenu(playerid);
+        //      			counttick[playerid] = GetTickCount() + 500;
+        //      			return 1;
+	    // 			}
+	    // 			else {
+	   	// 				SendErrorMessage(playerid, " Ban khong o noi lay banh khong the lay banh.");
+		// 			}
+        // 		}
+        // 	}
+        // }
 	}
 	return 1;
 

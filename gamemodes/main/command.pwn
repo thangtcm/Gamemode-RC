@@ -8727,7 +8727,9 @@ CMD:accept(playerid, params[])
    							if(!vehicleSpawnCountCheck(playerid)) {
 								return SendClientMessage(playerid, COLOR_GRAD2, "Ban da co rat nhieu phuong tien duoc dat ra - cua hang dau tien.");
 							}
-							SendLogToDiscordRoom("LOG SELL VEHICLE", "1158022204789895288", "Người bán", GetPlayerNameEx(VehicleOffer[playerid]), "Người nhận", GetPlayerNameEx(playerid), "Số tiền", pricez, 0x25b807);
+							new logprice[10];
+							format(logprice, sizeof(logprice), "%d", number_format(VehiclePrice[playerid]));
+							SendLogToDiscordRoom("LOG SELL VEHICLE", "1158022204789895288", "Người bán", GetPlayerNameEx(VehicleOffer[playerid]), "Người nhận", GetPlayerNameEx(playerid), "Số tiền", logprice, 0x25b807);
                             new ip[32], ipex[32];
                             GetPlayerIp(playerid, ip, sizeof(ip));
                             GetPlayerIp(VehicleOffer[playerid], ipex, sizeof(ipex));
@@ -12508,7 +12510,12 @@ CMD:saveaccount(playerid, params[])
 	return 1;
 }
 
-
+CMD:resetvw(playerid, params[])
+{
+	SetPlayerVirtualWorld(playerid, 0);
+	SendErrorMessage(playerid, "Ban da reset virual world");
+	return 1;
+}
 /*
 CMD:myangle(playerid, params[])
 {

@@ -1162,9 +1162,9 @@ CMD:checkinv(playerid, params[])
 		return SendClientMessageEx(playerid, COLOR_GRAD1, "/checkinv [playerid/name]");
 	if(!IsPlayerConnected(giveplayerid)) 
 		return SendErrorMessage(playerid, "Nguoi choi khong hop le.");
+	SetPVarInt(playerid, "GivePlayerid_Inventory", giveplayerid);
 	OpenInventory(playerid, true);
 	new str[128];
-	SetPVarInt(playerid, "GivePlayerid_Inventory", giveplayerid);
 	format(str, sizeof(str), "Ban dang xem tui do cua %s", GetPlayerNameEx(giveplayerid));
 	SendClientMessageEx(playerid, COLOR_LIGHTRED, str);
 	return 1;
@@ -1393,7 +1393,9 @@ Dialog:DropItem(playerid, response, listitem, inputtext[])
 			Inventory_Remove(playerid, itemId, strval(inputtext), true);
 			format(string, sizeof(string), "* %s da vut %d vat pham \"%s\" ra khoi tui do cua ho.", GetPlayerNameEx(playerid), strval(inputtext), itemName);
 			ProxDetector(30.0, playerid, string, COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE);
-			SendLogToDiscordRoom("LOG XÓA VẬT PHẨM", "1158001317931921429", "Name", GetPlayerNameEx(playerid), "REMOVED", itemName, "Số lượng", strval(inputtext), 0xFF00FF);
+			new itemidzxc[10];
+        	format(itemidzxc, 10, "%d", strval(inputtext));
+			SendLogToDiscordRoom("LOG XÓA VẬT PHẨM", "1158001317931921429", "Name", GetPlayerNameEx(playerid), "REMOVED", itemName, "Số lượng", itemidzxc, 0xFF00FF);
 		}
 	}
 	return 1;
@@ -1428,7 +1430,7 @@ Dialog:GiveItem(playerid, response, listitem, inputtext[])
 		strcpy(itemName, InventoryData[playerid][itemId][invItem], 32);
 		if(InventoryData[playerid][itemId][invQuantity] == 1)
 		{
-			new id = Inventory_Add(giveplayerid, itemName, 1, InventoryData[playerid][itemId][invTimer] - gettime()), str[560];
+			new id = Inventory_Add(giveplayerid, itemName, 1, floatround(InventoryData[playerid][itemId][invTimer] - gettime())/60, floatround_ceil), str[560];
 			if(id == -1)
 				return SendErrorMessage(playerid, "Nguoi choi do khong con slot trong tui do.");
 			format(str, sizeof(str), "* %s da lay \"%s\" va dua cho %s.", GetPlayerNameEx(playerid), itemName, GetPlayerNameEx(giveplayerid));
@@ -1477,7 +1479,7 @@ Dialog:GiveQuantity(playerid, response, listitem, inputtext[])
 			format(str, sizeof(str), "Ban khong co nhieu item.\n\nItem: %s (So luong: %d)\n\nXin vui long nhap so luong %s:", itemName, InventoryData[playerid][itemId][invQuantity], GetPlayerNameEx(giveplayerid));
 			return  Dialog_Show(playerid, GiveQuantity, DIALOG_STYLE_INPUT, "Dua item", str, "Dua", "Huy bo");
 		}
-		new id = Inventory_Add(giveplayerid, itemName, strval(inputtext), InventoryData[playerid][itemId][invTimer] - gettime());
+		new id = Inventory_Add(giveplayerid, itemName, strval(inputtext), floatround(InventoryData[playerid][itemId][invTimer] - gettime()/60, floatround_ceil));
 
 		if(id == -1)
 			return SendErrorMessage(playerid, "Nguoi choi do khong con slot trong tui do.");
@@ -1486,7 +1488,9 @@ Dialog:GiveQuantity(playerid, response, listitem, inputtext[])
 		ProxDetector(30.0, playerid, str, COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE);
 		format(str, sizeof(str), "%s da dua \"%s\" va da duoc them vao trong tui do.", GetPlayerNameEx(playerid), str);
 		SendClientMessageEx(giveplayerid, COLOR_YELLOW, str);
-		SendLogToDiscordRoom4("LOG ĐƯA VẬT PHẨM", "1166983700597186570", "Name", GetPlayerNameEx(playerid), "Người nhận", GetPlayerNameEx(giveplayerid), "Vật phẩm", itemName, "Số lượng", strval(inputtext), 0x8d9922);
+		new itemidzxc[10];
+        	format(itemidzxc, 10, "%d", strval(inputtext));
+		SendLogToDiscordRoom4("LOG ĐƯA VẬT PHẨM", "1166983700597186570", "Name", GetPlayerNameEx(playerid), "Người nhận", GetPlayerNameEx(giveplayerid), "Vật phẩm", itemName, "Số lượng", itemidzxc, 0x8d9922);
 		Inventory_Remove(playerid, itemId, strval(inputtext));
 		new years,month,day,hourz,minz,sec,time[50];
 		getdate(years,month,day);

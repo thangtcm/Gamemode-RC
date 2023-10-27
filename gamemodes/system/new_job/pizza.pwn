@@ -128,10 +128,12 @@ hook OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
         			if(!IsPlayerInRangeOfPoint(playerid, 5, 1362.9523,253.9632,19.5669)) return SendErrorMessage(playerid, " Ban khong dung gan noi lam viec Pizza."); 
         			if(PlayerInfo[playerid][pStrong] <= 1) return SendErrorMessage(playerid, " Ban da qua met moi khong the lam viec."); 
         			if(LamViec[playerid] == 0) {
+						if(PizzaCar[playerid] == - 1) DestroyVehiclePizza(PizzaCar[playerid]);
 	    				SetPlayerPos(playerid, 1380.8643,270.4954,21.9751);
 		    			PizzaCar[playerid] = CreateVehicle(448, 1367.3431,270.6667,19.5669, 0 , random(255), random(255), -1);
 						VehicleFuel[PizzaCar[playerid]] = 100;
 						new fVW = GetPlayerVirtualWorld(playerid);
+						SetVehicleHealth(PizzaCar[playerid], 1000);
 						Vehicle_ResetData(PizzaCar[playerid]);
 						LinkVehicleToInterior(PizzaCar[playerid], GetPlayerInterior(playerid));
 						SetVehicleVirtualWorld(PizzaCar[playerid], fVW);
@@ -189,10 +191,6 @@ hook OnPlayerEnterCheckpoint(playerid) {
         TienLuongPizza[playerid] += pizzamoney;
         format(zzstr, sizeof zzstr, "Ban da giao banh 'Pizza' thanh cong va nhan duoc '$%d' Dollar (Tien luong hien tai la: %d )", pizzamoney, TienLuongPizza[playerid]);     
         SendClientMessage(playerid,COLOR_WHITE,zzstr);
-        // The luc
-        PlayerInfo[playerid][pStrong]--;
-        PlayerInfo[playerid][pEat] -= 2;
-        PlayerInfo[playerid][pDrink] -= 2;
         RemovePlayerAttachedObject(playerid,PIZZA_INDEX);
         SetPlayerSpecialAction(playerid, SPECIAL_ACTION_NONE);
         DeletePVar(playerid, "giaobanh_Pizza");
@@ -262,8 +260,7 @@ hook OnPlayerKeyStateChange(playerid, newkeys, oldkeys) {
 
 stock DestroyVehiclePizza(playerid)
 {
-	if(IsValid3DTextLabel(PizzaTextInfo[playerid])) Delete3DTextLabel(PizzaTextInfo[playerid]);
-	PizzaTextInfo[playerid] = Text3D: INVALID_3DTEXT_ID;
+	Delete3DTextLabel(PizzaTextInfo[playerid]);
 	DestroyVehicle(PizzaCar[playerid]);
 	PizzaCar[playerid] = INVALID_VEHICLE_ID;
 	return 1;

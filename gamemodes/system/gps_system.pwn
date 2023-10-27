@@ -157,7 +157,7 @@ Dialog:GPSPosition(playerid, response, listitem, inputtext[])
 				    Get3DZone(timbank_postion[z][0], timbank_postion[z][1], timbank_postion[z][2], zone, sizeof(zone));
 				    format(stringz, sizeof stringz, "%s\n\%s\t{6db4c3}%s\t{3cab4e}%0.2f met", stringz,GetZoneFindx(z),zone,Distance);
 				}
-				ShowPlayerDialog(playerid, TIMVIECLAM, DIALOG_STYLE_TABLIST_HEADERS, "Tim viec lam",stringz,"Chon", "Huy");
+				ShowPlayerDialog(playerid, TIMNGANHANG, DIALOG_STYLE_TABLIST_HEADERS, "Tim viec lam",stringz,"Chon", "Huy");
 			}
 			case 3:
 			{
@@ -170,7 +170,7 @@ Dialog:GPSPosition(playerid, response, listitem, inputtext[])
 				    Get3DZone(timstore_postion[z][0], timstore_postion[z][1], timstore_postion[z][2], zone, sizeof(zone));
 				    format(stringz, sizeof stringz, "%s\n\%s\t{6db4c3}%s\t{3cab4e}%0.2f met", stringz,GetZoneFindy(z),zone,Distance);
 				}
-				ShowPlayerDialog(playerid, TIMVIECLAM, DIALOG_STYLE_TABLIST_HEADERS, "Tim viec lam",stringz,"Chon", "Huy");
+				ShowPlayerDialog(playerid, TIMCUAHANG, DIALOG_STYLE_TABLIST_HEADERS, "Tim viec lam",stringz,"Chon", "Huy");
 			}
 			case 4:
 			{
@@ -230,7 +230,22 @@ hook OnDialogResponse(playerid, dialogid, response, listitem, inputtext[]) {
 	       	CP[playerid] = 252000;
 		}
 	}
-
+	if(dialogid == TIMNGANHANG)
+	{
+	    if(response)
+	    {
+	       	SetPlayerCheckpoint(playerid,timbank_postion[listitem][0], timbank_postion[listitem][1], timbank_postion[listitem][2],3);
+	       	CP[playerid] = 252000;
+		}
+	}
+	if(dialogid == TIMCUAHANG)
+	{
+	    if(response)
+	    {
+	       	SetPlayerCheckpoint(playerid,timstore_postion[listitem][0], timstore_postion[listitem][1], timstore_postion[listitem][2],3);
+	       	CP[playerid] = 252000;
+		}
+	}
 	if(dialogid == TIMDUONG)
 	{
 	    if(response)

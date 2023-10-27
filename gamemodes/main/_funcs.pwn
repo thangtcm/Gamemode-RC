@@ -978,7 +978,6 @@ public OnPlayerClickPlayerTextDraw(playerid, PlayerText:playertextid)
 	}
 	
 
-<<<<<<< HEAD
    	if(GetPVarInt(playerid,#open_character) == 1) {
         if(playertextid == Character_create[playerid][2]) {
             SendClientTextDraw(playerid,"Nhap ~r~ten nhan vat~w~ cua ban de tiep tuc,luu y: ten nhan vat phai phu hop.",5);
@@ -1120,104 +1119,6 @@ public OnPlayerClickPlayerTextDraw(playerid, PlayerText:playertextid)
        
             ShowPlayerCharacter(playerid,1);
         }
-=======
-   	if(GetPVarInt(playerid, "DangTaoAcc") == 1)
-   	{
-   		if(playertextid == RegCharacter[playerid][1])
-   		{
-			ShowPlayerDialog(playerid, REGISTERMONTH, DIALOG_STYLE_LIST, "Khoi tao nhan vat | Thang sinh?", "Thang 1\nThang 2\nThang 3\nThang 4\nThang 5\nThang 6\nThang 7\nThang 8\nThang 9\nThang 10\nThang 11\nThang 12", "Luu chon", "");
-   		}
-   		if(playertextid == RegCharacter[playerid][2])
-   		{
-   			ShowPlayerDialog(playerid, REGISTERSEX, DIALOG_STYLE_MSGBOX, "Khoi tao nhan vat | Gioi tinh", "Gioi tinh nhan vat ban la gi?", "Nam", "Nu");
-   		}
-   		if(playertextid == RegCharacter[playerid][3])
-   		{
-   			Dialog_Show(playerid, NhapQuocTich, DIALOG_STYLE_INPUT, "Khoi tao nhan vat | Quoc tich", "Quoc tich cua ban la gi?", "Xac nhan", "");
-   		}
-   		if(playertextid == RegCharacter[playerid][5])
-   		{
-			if(PlayerInfo[playerid][pSex] != 0 && GetPVarInt(playerid, #dateinsert) == 1 && PlayerInfo[playerid][pQuocTich] != 0)
-			{
-				JoinGame(playerid);
-			}
-			else return SendClientTextDraw(playerid, "~r~Ban chua dien day du thong tin.");
-   		}
-   		if(playertextid == RegCharacter[playerid][7])
-   		{
-   			if(ChangeSkin[playerid] < 299)
-   			{
-	   			ChangeSkin[playerid] += 1;
-	   			PlayerTextDrawSetPreviewModel(playerid, RegCharacter[playerid][6], ChangeSkin[playerid]);
-	   			PlayerTextDrawShow(playerid, RegCharacter[playerid][6]);
-	   			if(ChangeSkin[playerid] >= 274 && ChangeSkin[playerid] <= 289)
-		   		{
-		   			ChangeSkin[playerid] = 289;
-		   			PlayerTextDrawSetPreviewModel(playerid, RegCharacter[playerid][6], ChangeSkin[playerid]);
-		   			PlayerTextDrawShow(playerid, RegCharacter[playerid][6]);
-		   		}
-		   		else if(ChangeSkin[playerid] >= 265 && ChangeSkin[playerid] <= 267)
-		   		{
-		   			ChangeSkin[playerid] = 268;
-		   			PlayerTextDrawSetPreviewModel(playerid, RegCharacter[playerid][6], ChangeSkin[playerid]);
-		   			PlayerTextDrawShow(playerid, RegCharacter[playerid][6]);
-		   		}
-		   		PlayerPlaySound(playerid, 1084, 0.0, 0.0, 0.0);
-		   	}
-	   		else
-	   		{
-	   			PlayerPlaySound(playerid, 1085, 0.0, 0.0, 0.0);
-	   			ChangeSkin[playerid] = 299;
-	   			PlayerTextDrawSetPreviewModel(playerid, RegCharacter[playerid][6], ChangeSkin[playerid]);
-	   			PlayerTextDrawShow(playerid, RegCharacter[playerid][6]);
-	   		}
-   		}
-   		if(playertextid == RegCharacter[playerid][8])
-   		{
-   			if(ChangeSkin[playerid] >= 2)
-   			{
-	   			ChangeSkin[playerid] -= 1;
-	   			PlayerTextDrawSetPreviewModel(playerid, RegCharacter[playerid][6], ChangeSkin[playerid]);
-	   			PlayerTextDrawShow(playerid, RegCharacter[playerid][6]);
-	   			if(ChangeSkin[playerid] >= 274 && ChangeSkin[playerid] <= 289)
-		   		{
-		   			ChangeSkin[playerid] = 274;
-		   			PlayerTextDrawSetPreviewModel(playerid, RegCharacter[playerid][6], ChangeSkin[playerid]);
-		   			PlayerTextDrawShow(playerid, RegCharacter[playerid][6]);
-		   		}
-		   		else if(ChangeSkin[playerid] >= 265 && ChangeSkin[playerid] <= 267)
-		   		{
-		   			ChangeSkin[playerid] = 265;
-		   			PlayerTextDrawSetPreviewModel(playerid, RegCharacter[playerid][6], ChangeSkin[playerid]);
-		   			PlayerTextDrawShow(playerid, RegCharacter[playerid][6]);
-		   		}
-		   		PlayerPlaySound(playerid, 1084, 0.0, 0.0, 0.0);
-		   	}
-	   		else if(ChangeSkin[playerid] == 1)
-	   		{
-	   			PlayerPlaySound(playerid, 1085, 0.0, 0.0, 0.0);
-	   			ChangeSkin[playerid] = 1;
-	   			PlayerTextDrawSetPreviewModel(playerid, RegCharacter[playerid][6], ChangeSkin[playerid]);
-	   			PlayerTextDrawShow(playerid, RegCharacter[playerid][6]);
-	   		}
-   		}
-   	}
-    if(GetPVarInt(playerid, "TextDrawCharacter") == 1) {
-        for(new i = 0 ; i < 3 ; i++) {
-    	    if(playertextid == CharacterName[playerid][i]) {
-    	    	if(TempCharacter[playerid][i][IsCreated]) {
-                	SetPVarInt(playerid,"SelectNhanVat",i);
-			    	HideTDCharacter(playerid);
-			    	LoaderStarting(playerid, LOAD_CHARACTERLOGIN, "Dang tai du lieu game...", 2);       
-    	    	}
-    	    	else if(!TempCharacter[playerid][i][IsCreated]) {
-                    HideTDCharacter(playerid);
-                    SetPVarInt(playerid, "SelectNhanVat", i);
-                    ShowPlayerDialog(playerid, DIALOG_TAONHANVAT, DIALOG_STYLE_INPUT, "Tao nhan vat", "Hay nhap ten nhan vat de tiep tuc tao nhan vat\nLuu y: Ten phai viet hoa 2 chu dau, va khong co ky tu dac biet", "Tiep tuc", "Quay lai");
-    	    	}
-    	    }
-    	}
->>>>>>> main
     }
 
 
@@ -1512,6 +1413,11 @@ public OnPlayerEnterVehicle(playerid, vehicleid, ispassenger)
 }
 
 public OnPlayerConnect(playerid) {
+	switch(random(2))
+	{
+		case 0: InterpolateCameraPos(playerid, 1532.3927,357.1458,78.8630, 1228.4036,155.1032,45.7313, 50000, CAMERA_CUT);
+		case 1: InterpolateCameraPos(playerid, 2433.3809,-66.7512,76.6627, 2167.8020,96.4188,42.4985, 50000, CAMERA_CUT);
+	}
 	DownS[playerid] = false;
 	TogglePlayerSpectating(playerid, true);
 	SetTimerEx("TimeUseMed", 60000, 0, "d", playerid);
@@ -1527,6 +1433,7 @@ public OnPlayerConnect(playerid) {
 	pLoopAnim[playerid] = 0;
 	PlayerInfo[playerid][pObjHop] = INVALID_OBJECT_ID;
     gPlayerUsingLoopingAnim[playerid] = 0;
+	
 	// car mechanic 
 
 	// RadioInfo[playerid] = CreatePlayerTextDraw(playerid, 510.000000, 108.000000, "~w~Radio Info");
@@ -1981,8 +1888,6 @@ public OnPlayerConnect(playerid) {
 
 public OnPlayerDisconnect(playerid, reason)
 {
-	printf("0");
-	KillTimer(DownEDS[playerid]);
     if(!isnull(unbanip[playerid]))
 	{
 	    new string[26];
@@ -2190,6 +2095,7 @@ public OnPlayerDisconnect(playerid, reason)
 					PlayerVehicleInfo[playerid][i][pvImpounded] = 1;
 					PlayerVehicleInfo[playerid][i][pvSpawned] = 1;
 					SetVehiclePos(PlayerVehicleInfo[playerid][i][pvId], 0, 0, 0); // Attempted desync fix
+					VehicleTrucker_Reload(playerid, i);
 					DestroyVehicle(PlayerVehicleInfo[playerid][i][pvId]);
 					PlayerVehicleInfo[playerid][i][pvId] = INVALID_PLAYER_VEHICLE_ID;
 					g_mysql_SaveVehicle(playerid, i);
@@ -6633,11 +6539,10 @@ public LoadTextDraws()
 
 stock LoadLogin(playerid)
 {
-	switch(random(3))
+	switch(random(2))
 	{
 		case 0: InterpolateCameraPos(playerid, 1532.3927,357.1458,78.8630, 1228.4036,155.1032,45.7313, 50000, CAMERA_CUT);
 		case 1: InterpolateCameraPos(playerid, 2433.3809,-66.7512,76.6627, 2167.8020,96.4188,42.4985, 50000, CAMERA_CUT);
-		case 2: InterpolateCameraPos(playerid, -214.2948,-74.1664,39.5735, 120.3837,-7.4578,26.9301, 50000, CAMERA_CUT);
 	}
 	new string[229],ip[32];
     GetPlayerIp(playerid, ip, 32);
@@ -9178,7 +9083,6 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 			if(listitem == 0) {
 				new i = GetPVarInt(playerid, #select_character);
                 ShowNoticeGUIFrame(playerid, 3);
-            	printf("DIALOG_NHANVAT1 %s - Admin %d", TempCharacter[playerid][i][Name], PlayerInfo[playerid][pAdmin]);
 
 	            format(string, sizeof(string), "SELECT * FROM `accounts` WHERE `Username` = '%s'",  TempCharacter[playerid][i][Name]);
  	            mysql_function_query(MainPipeline, string, true, "OnQueryFinish", "iii", LOADUSERDATA_THREAD, playerid, g_arrQueryHandle{playerid});
@@ -16553,7 +16457,7 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 				}
 			}
 		}
-		for (new i; i <= 13; i++)
+		for (new i; i <= 20; i++)
 		{
 			format(pvar,sizeof(pvar),"Business_MenuItem%d", i);
 			DeletePVar(playerid, pvar);
@@ -20861,12 +20765,14 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 			}
 
 			format(string,sizeof(string), "%s da duoc thiet lap gia den $%s!", StoreItems[item], number_format(iPrice));
+			printf("RUNN %d", item);
 			Businesses[iBusiness][bItemPrices][item] = iPrice;
 			SaveBusiness(iBusiness);
 			SendClientMessageEx(playerid, COLOR_WHITE, string);
 			format(string, sizeof(string), "%s %s (IP: %s) da dat gia %s den $%s trong %s (%d)", GetBusinessRankName(PlayerInfo[playerid][pBusinessRank]), GetPlayerNameEx(playerid), GetPlayerIpEx(playerid), StoreItems[item], number_format(iPrice), Businesses[iBusiness][bName], iBusiness);
 			new szDialog[912];
-			for (new i = 0; i <= sizeof(StoreItems); i++) format(szDialog, sizeof(szDialog), "%s%s  ($%s) (Gia co the ban: $%s)\n", szDialog, StoreItems[i], number_format(Businesses[iBusiness][bItemPrices][i]), number_format(floatround(StoreItemCost[i][ItemValue] * BUSINESS_ITEMS_COST)));
+			printf("RUNN %d 3222", item);
+			for (new i = 0; i < sizeof(StoreItems); i++) format(szDialog, sizeof(szDialog), "%s%s  ($%s) (Gia co the ban: $%s)\n", szDialog, StoreItems[i], number_format(Businesses[iBusiness][bItemPrices][i]), number_format(floatround(StoreItemCost[i][ItemValue] * BUSINESS_ITEMS_COST)));
 	        ShowPlayerDialog(playerid, DIALOG_STOREPRICES, DIALOG_STYLE_LIST, "Sua gia cua hang 24/7", szDialog, "Dong y", "Huy bo");
 			Log("logs/business.log", string);
 	    }
