@@ -241,6 +241,7 @@ public OnLoadCattles(playerid)
 		cache_get_field_content(i, "cattlePos0", tmp, MainPipeline); RaiseCattleInfo[playerid][i][c_Pos][0] = floatstr(tmp);
 		cache_get_field_content(i, "cattlePos1", tmp, MainPipeline); RaiseCattleInfo[playerid][i][c_Pos][1] = floatstr(tmp);
 		cache_get_field_content(i, "cattlePos2", tmp, MainPipeline); RaiseCattleInfo[playerid][i][c_Pos][2] = floatstr(tmp);
+		cache_get_field_content(i, "weight", tmp, MainPipeline); RaiseCattleInfo[playerid][i][c_Weight] = strval(tmp);
   		i++;
  	}
 	if(i > 0) printf("[LOAD CATTLE] %d du lieu dong vat da duoc tai.", i);
@@ -258,6 +259,7 @@ stock CATTLE_UPDATE(playerid, index)
 		`cattlePos0`=%f,\
 		`cattlePos1`=%f,\
 		`cattlePos2`=%f,\
+		`weight`=%f,\
          WHERE `Id`=%d",
 		RaiseCattleInfo[playerid][index][plantLevel],
         GetPlayerSQLId(playerid),
@@ -266,6 +268,7 @@ stock CATTLE_UPDATE(playerid, index)
 		RaiseCattleInfo[playerid][index][plantPos][0],
 		RaiseCattleInfo[playerid][index][plantPos][1],
 		RaiseCattleInfo[playerid][index][plantPos][2],
+		RaiseCattleInfo[playerid][index][c_Weight],
 		RaiseCattleInfo[playerid][index][Id]
 	);
 	mysql_function_query(MainPipeline, string, false, "OnQueryFinish", "i", SENDDATA_THREAD);
@@ -282,7 +285,8 @@ stock CATTLE_ADD(playerid, index)
 		`cattleAnimal`, \
 		`cattlePos0`, \
 		`cattlePos1`, \
-		`cattlePos2`)\
+		`cattlePos2`,\
+		`weight`)\
 		VALUES ('%d', '%d', '%d', '%d', '%f', '%f', '%f')", 
         RaiseCattleInfo[playerid][index][plantLevel],
         GetPlayerSQLId(playerid),
@@ -290,7 +294,8 @@ stock CATTLE_ADD(playerid, index)
 		RaiseCattleInfo[playerid][index][c_Animal],
 		RaiseCattleInfo[playerid][index][plantPos][0],
 		RaiseCattleInfo[playerid][index][plantPos][1],
-		RaiseCattleInfo[playerid][index][plantPos][2]
+		RaiseCattleInfo[playerid][index][plantPos][2],
+		RaiseCattleInfo[playerid][index][c_Weight]
 	);
 	mysql_function_query(MainPipeline, string, false, "OnCreateFarmFinish", "iii", playerid, index, SENDDATA_CATTLE);
 	return 1;

@@ -243,7 +243,7 @@ stock PlantTree_Reload(playerid, plantid)
                 PlantTreeInfo[playerid][plantid][plantTimer],
                 GetPlayerNameEx(playerid)
             );
-            PlantTreeInfo[playerid][plantid][plantPos][2] += 1.0;
+            PlantTreeInfo[playerid][plantid][plantPos][2] += Plant_ZDefault + 1.0;
             PlantTreeInfo[playerid][plantid][plantTimer] = PlantTreeInfo[playerid][plantid][plantType] == 0 ? (PLANT_TINE_LEVEL_3) : PLANT_TINE_LEVEL_3 * 3;
         }
     }
@@ -404,4 +404,29 @@ stock LeaveAreaFarm(playerid, areaid)
         SetPlayerInterior(playerid, 0);
 	    SetPlayerVirtualWorld(playerid, 0);
     }
+}
+
+
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+//~~~~~~~~~~~~~~~~~~~~~~~~~~
+//          CATTLE
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+//~~~~~~~~~~~~~~~~~~~~~~~~~~
+Get_CattleStatus(statuslevel)
+{
+	new str[256];
+	switch(statuslevel)
+	{
+		case 0: str="{0af762}Binh thuong{FFFFFF}";
+		case 1: str="{f7ef0a}Doi bung{FFFFFF}";
+		case 2: str="{5678f5}Khat Nuoc{FFFFFF}";
+        case 3: str="{6b09e3}Doi bung va khat nuoc{FFFFFF}";
+		default: str="Khong xac dinh";
+	}
+	return str;
+}
+
+stock Cattle_AddDefault(cattileId)
+{
+    
 }

@@ -43,44 +43,14 @@ Dialog:FARMER_MENU(playerid, response, listitem, inputtext[]){
 		if(CMND < 1) return SendErrorMessage(playerid,"Ban khong co CMND khong the xin viec.");
         switch(listitem) {
 			case 0: {
-                new Float:x, Float:y, Float:z;
-                GetDynamicActorPos(ActorFarmer[playerid], x, y, z);
-				if(IsPlayerInRangeOfPoint(playerid, 5.0, x, y, z)) {
-					if(PlayerInfo[playerid][pJob] == JOB_FARMER || PlayerInfo[playerid][pJob2] == JOB_FARMER) return SendErrorMessage(playerid, " Ban da lam viec Nong Dan roi.");
-					if(PlayerInfo[playerid][pJob] == 0)
-					{
-						SendServerMessage(playerid, "*Ban da nhan cong viec Nong Dan thanh cong, hay thay dong phuc va bat dau lam viec.");
-						SendClientTextDraw(playerid, "Ban da nhan viec ~y~Nong Dan~w~ hay thay dong phuc va bat dau lam viec");
-						PlayerInfo[playerid][pJob] = JOB_FARMER;
-						return 1;
-					}
-					else if((PlayerInfo[playerid][pDonateRank] > 0 || PlayerInfo[playerid][pFamed] > 0) && PlayerInfo[playerid][pJob2] == 0 && PlayerInfo[playerid][pJob2] != JOB_FARMER)
-					{
-						SendServerMessage(playerid, "*Ban da nhan cong viec Nong Dan thanh cong, hay thay dong phuc va bat dau lam viec.");
-						SendClientTextDraw(playerid, "Ban da nhan viec ~y~Nong Dan~w~ hay thay dong phuc va bat dau lam viec");
-						PlayerInfo[playerid][pJob2] = JOB_FARMER;
-						return 1;
-					}
-					else return SendServerMessage(playerid, "Ban da co cong viec, hay nghi viec de bat dau cong viec nay.");
-				}
-				else
-				{
-					return SendErrorMessage(playerid, "Ban can toi vi tri xin viec /gps de tim cong viec.");
-				}
+				SetPlayerSkin(playerid, 158);
+				SendClientTextDraw(playerid, "Ban da thay trang phuc hay bat dau lam viec.");
 			}
 			case 1: {
-				cmd_nghiviec(playerid,"1");
+				SetPlayerSkin(playerid, PlayerInfo[playerid][pModel]);
+				SendClientTextDraw(playerid, "Ban da tra trang phuc lam viec cua minh.");
 			}
-			case 2: {
-				cmd_nghiviec(playerid,"2");
-			}
-			case 3: {
-				if(PlayerInfo[playerid][pJob] != JOB_FARMER && PlayerInfo[playerid][pJob2] != JOB_FARMER) return SendErrorMessage(playerid, " Ban chua phai Nong Dan."); 
-				SetPlayerSkin(playerid, 158);
-				PlayerInfo[playerid][pModel] = 158;
-				SendClientTextDraw(playerid, "Ban da thay trang phuc hay bat dau lam viec");
-			}
-			case 4:{
+			case 2:{
                 SetPVarInt(playerid, #RangeFarm, 1);
 				new str[560];
 				format(str, sizeof(str), "Hat Giong\t\tGia");
@@ -90,11 +60,11 @@ Dialog:FARMER_MENU(playerid, response, listitem, inputtext[]){
 				}
                 Dialog_Show(playerid, BUYER_FARM_DIALOG, DIALOG_STYLE_TABLIST_HEADERS, "Mua cay giong", str, ">>", "<<");
 			}
-			case 5:
+			case 3:
 			{
 				SendErrorMessage(playerid, "He thong dang bao tri, se duoc cap nhat trong lan toi.");
 			}
-            case 7:{
+            case 4:{
                 SetPVarInt(playerid, #RangeFarm, 2);
                 Dialog_Show(playerid, BUYER_FARM_DIALOG, DIALOG_STYLE_LIST, "Mua gia suc", "Bo\nNai", ">>", "<<");
             }

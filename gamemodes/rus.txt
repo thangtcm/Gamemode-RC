@@ -8,11 +8,13 @@
 ./main/mysql.pwn(1435) : èäåíòèôèêàòîðó ïðèñâîåíî çíà÷åíèå, íî îí íå èñïîëüçóåòñÿ: "str"
 system/new_job/Farmer/cmd.pwn(108) : íåïðàâèëüíàÿ òàáóëÿöèÿ
 system/new_job/Farmer/cmd.pwn(109) : íåïðàâèëüíàÿ òàáóëÿöèÿ
+system/new_job/Farmer/setting.pwn(99) : èäåíòèôèêàòîð íå èñïîëüçóåòñÿ: "CattlePosClaim"
 ./main/variables.pwn(3803) : èäåíòèôèêàòîð íå èñïîëüçóåòñÿ: "ChangeSkin"
 ./main/variables.pwn(1466) : èäåíòèôèêàòîð íå èñïîëüçóåòñÿ: "ChatGoActor"
 ./main/variables.pwn(2369) : èäåíòèôèêàòîð íå èñïîëüçóåòñÿ: "DownEDS"
 ./system/drug/drug.pwn(12) : èäåíòèôèêàòîð íå èñïîëüçóåòñÿ: "DrugTypeName"
 system/new_job/Farmer/setting.pwn(86) : èäåíòèôèêàòîð íå èñïîëüçóåòñÿ: "FarmPlayer"
+d:\Gamemode Samp\UP GM\Gamemode-RC\gamemodes\lsrpvn.pwn(415) : èäåíòèôèêàòîð íå èñïîëüçóåòñÿ: "Get_CattleStatus"
 ./main/variables.pwn(2365) : èäåíòèôèêàòîð íå èñïîëüçóåòñÿ: "HospitalSpawnXYZ"
 d:\Gamemode Samp\UP GM\Gamemode-RC\gamemodes\lsrpvn.pwn(1675) : èäåíòèôèêàòîð íå èñïîëüçóåòñÿ: "IsPlayerInRangeOfDynamicObject"
 d:\Gamemode Samp\UP GM\Gamemode-RC\gamemodes\lsrpvn.pwn(1684) : èäåíòèôèêàòîð íå èñïîëüçóåòñÿ: "IsPlayerInRangeOfObject"

@@ -8325,6 +8325,14 @@ public OnPlayerGiveDamage(playerid, damagedid, Float:amount, weaponid)
  
 	if (damagedid == INVALID_PLAYER_ID) return 1;
 	if (playerid == INVALID_PLAYER_ID) return 1;
+	if(weaponid == 38 && PlayerInfo[playerid][pAdmin] < 2) 
+	{
+		new weaponname[128], string[128];
+		GetWeaponName(weaponid, weaponname, sizeof(weaponname));
+		format(string, sizeof(string), "{AA3333}AdmWarning{FFFF00}: %s (ID: %d) co the dang hack vu khi weapon (%s).", GetPlayerNameEx(playerid), playerid, weaponname);
+		ABroadCast(COLOR_YELLOW, string, 2);
+		return 1;
+	}
 	for(new Sz; Sz < MAX_SZ; Sz++)
     {
 		if(IsPlayerInRangeOfPoint(damagedid, SafeZoneInfo[Sz][szKhoangcach], SafeZoneInfo[Sz][szExteriorX], SafeZoneInfo[Sz][szExteriorY], SafeZoneInfo[Sz][szExteriorZ]))

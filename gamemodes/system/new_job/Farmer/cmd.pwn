@@ -172,7 +172,7 @@ CMD:farmer(playerid, params[])
 
 	if(IsPlayerInRangeOfPoint(playerid, 5.0, x, y, z))
 	{
-		Dialog_Show(playerid, FARMER_MENU, DIALOG_STYLE_LIST, "Cong viec", "Xin viec\nNghi viec (1)\nNghi viec (2)\nThay dong phuc\nMua cay giong\nMua gia suc\nBan hang", "Chon", "Huy");
+		Dialog_Show(playerid, FARMER_MENU, DIALOG_STYLE_LIST, "Cong viec", "Thay dong phuc\nMua cay giong\nMua gia suc\nBan hang", "Chon", "Huy");
 	}
 	else SendErrorMessage(playerid, "Ban khong o gan nguoi quan ly nong trai");
 	return 1;

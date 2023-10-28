@@ -56,7 +56,7 @@ enum PLANT_INFO{
 
 enum CATTLE_INFO{
 	Id,
-	c_Height,
+	c_Weight,
 	c_Status,
 	c_Timer,
 	OwnerPlayerId,
@@ -91,3 +91,17 @@ forward OnLoadCattles(playerid);
 new CostCow = 500;
 new CostDeer = 500;
 forward DangGieoGiong(playerid, plantId);
+
+new CattlePosClaim[2][4]=
+{
+	{-1424, -1464.4, 100.68, 90},
+	{-1417, -1464, 101}
+};
+
+/* Ngang Left:
+	-1425 -1462.8 100.68 , 90
+
+
+	Ngang Right
+
+*/
