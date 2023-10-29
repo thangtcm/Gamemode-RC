@@ -10,3 +10,7 @@
 [10/27/23 07:19:22] [plugins/discord-connector] can't update guild member presence: user id "1045033559422935040" not cached
 [10/27/23 07:21:24] [plugins/discord-connector] can't update guild member presence: user id "1045033559422935040" not cached
 [10/27/23 07:25:58] [plugins/discord-connector] Error while retrieving HTTP POST response from '/api/v10/channels/1158001303033757716/messages': end of stream
+[10/28/23 19:48:13] [plugins/discord-connector] can't update guild member presence: user id "1045033559422935040" not cached
+[10/28/23 19:51:25] [plugins/discord-connector] can't update guild member presence: user id "1045033559422935040" not cached
+[10/28/23 19:51:36] [plugins/discord-connector] can't update guild member presence: user id "1045033559422935040" not cached
+[10/28/23 19:53:36] [plugins/discord-connector] can't update guild member presence: user id "1045033559422935040" not cached

@@ -12510,7 +12510,7 @@ CMD:saveaccount(playerid, params[])
 	return 1;
 }
 
-CMD:resetvw(playerid, params[])
+CMD:fixvw(playerid, params[])
 {
 	SetPlayerVirtualWorld(playerid, 0);
 	SendErrorMessage(playerid, "Ban da reset virual world");
@@ -23898,18 +23898,18 @@ CMD:check(playerid, params[])
 	return 1;
 }
 
-// CMD:checkinv(playerid, params[])
-// {
-// 	if (PlayerInfo[playerid][pAdmin] >= 2)
-// 	{
-// 		new giveplayerid;
-// 		if(sscanf(params, "u", giveplayerid)) return SendUsageMessage(playerid, " /checkinv [player]");
-// 		if(IsPlayerConnected(giveplayerid)) ShowInventory(playerid, giveplayerid);
-// 		else SendErrorMessage(playerid, "Nguoi choi khong hop le");
-// 	}
-// 	else SendErrorMessage(playerid, "Ban khong the su dung lenh nay");
-// 	return 1;
-// }
+CMD:checkinvbase(playerid, params[])
+{
+	if (PlayerInfo[playerid][pAdmin] >= 2)
+	{
+		new giveplayerid;
+		if(sscanf(params, "u", giveplayerid)) return SendUsageMessage(playerid, " /checkinvbase [player]");
+		if(IsPlayerConnected(giveplayerid)) ShowInventory(playerid, giveplayerid);
+		else SendErrorMessage(playerid, "Nguoi choi khong hop le");
+	}
+	else SendErrorMessage(playerid, "Ban khong the su dung lenh nay");
+	return 1;
+}
 /*
 CMD:carcatsung(playerid, params[])
 {
@@ -42948,63 +42948,63 @@ CMD:tim(playerid, params[]) {
 }
 
 
-CMD:hfind(playerid, params[])
-{
-	if (IsACop(playerid) || IsAHitman(playerid) || (arrGroupData[PlayerInfo[playerid][pMember]][g_iBugAccess] != 1 || arrGroupData[PlayerInfo[playerid][pMember]][g_iGroupType] == 2) && PlayerInfo[playerid][pRank] >= arrGroupData[PlayerInfo[playerid][pMember]][g_iBugAccess])
-	{
-	    if(GetPVarType(playerid, "hFind"))
-		{
-	   		SendErrorMessage(playerid, " (-) Da Ngung Tim kiem");
-	        DeletePVar(playerid, "hFind");
-	        DisablePlayerCheckpoint(playerid);
-		}
-		else
-		{
-			new	iTargetID;
+// CMD:hfind(playerid, params[])
+// {
+// 	if (IsACop(playerid) || IsAHitman(playerid) || (arrGroupData[PlayerInfo[playerid][pMember]][g_iBugAccess] != 1 || arrGroupData[PlayerInfo[playerid][pMember]][g_iGroupType] == 2) && PlayerInfo[playerid][pRank] >= arrGroupData[PlayerInfo[playerid][pMember]][g_iBugAccess])
+// 	{
+// 	    if(GetPVarType(playerid, "hFind"))
+// 		{
+// 	   		SendErrorMessage(playerid, " (-) Da Ngung Tim kiem");
+// 	        DeletePVar(playerid, "hFind");
+// 	        DisablePlayerCheckpoint(playerid);
+// 		}
+// 		else
+// 		{
+// 			new	iTargetID;
 
-			if(sscanf(params, "u", iTargetID)) {
-				return SendUsageMessage(playerid, " /hfind [player]");
-			}
-			else if(iTargetID == playerid) {
-				return SendErrorMessage(playerid, " Ban khong the su dung lenh nay cho ban.");
-			}
+// 			if(sscanf(params, "u", iTargetID)) {
+// 				return SendUsageMessage(playerid, " /hfind [player]");
+// 			}
+// 			else if(iTargetID == playerid) {
+// 				return SendErrorMessage(playerid, " Ban khong the su dung lenh nay cho ban.");
+// 			}
 
-			else if(!IsPlayerConnected(iTargetID)) {
-				return SendErrorMessage(playerid, " Nguoi choi khong hop le.");
-			}
-			else if(GetPlayerInterior(iTargetID) != 0) {
-				return SendErrorMessage(playerid, " Ban khong the su dung lenh nay trong khi dang o trong mot noi that.");
-			}
-			else if(PlayerInfo[iTargetID][pAdmin] >= 99999)
-			{
-				return SendErrorMessage(playerid, " Ban Khong The Tim Kiem Admin");
-			}
-			else if (GetPVarInt(playerid, "_SwimmingActivity") >= 1)
-			{
-				return SendErrorMessage(playerid, " Ban khong the tim thay nguoi nay trong khi dang boi loi.");
-			}
-			if (GetPVarInt(playerid, "_SwimmingActivity") >= 1)
-			{
-			    SendErrorMessage(playerid, "   Ban phai dung boi! (/stopswimming)");
-			    return 1;
-			}
-			new
-				szZone[MAX_ZONE_NAME],
-				szMessage[108];
+// 			else if(!IsPlayerConnected(iTargetID)) {
+// 				return SendErrorMessage(playerid, " Nguoi choi khong hop le.");
+// 			}
+// 			else if(GetPlayerInterior(iTargetID) != 0) {
+// 				return SendErrorMessage(playerid, " Ban khong the su dung lenh nay trong khi dang o trong mot noi that.");
+// 			}
+// 			else if(PlayerInfo[iTargetID][pAdmin] >= 99999)
+// 			{
+// 				return SendErrorMessage(playerid, " Ban Khong The Tim Kiem Admin");
+// 			}
+// 			else if (GetPVarInt(playerid, "_SwimmingActivity") >= 1)
+// 			{
+// 				return SendErrorMessage(playerid, " Ban khong the tim thay nguoi nay trong khi dang boi loi.");
+// 			}
+// 			if (GetPVarInt(playerid, "_SwimmingActivity") >= 1)
+// 			{
+// 			    SendErrorMessage(playerid, "   Ban phai dung boi! (/stopswimming)");
+// 			    return 1;
+// 			}
+// 			new
+// 				szZone[MAX_ZONE_NAME],
+// 				szMessage[108];
 
-			new Float:X, Float:Y, Float:Z;
-			GetPlayerPos(iTargetID, X, Y, Z);
-			DisablePlayerCheckpoint(playerid);
-			SetPlayerCheckpoint(playerid, X, Y, Z, 4.0);
-			GetPlayer3DZone(iTargetID, szZone, sizeof(szZone));
-			format(szMessage, sizeof(szMessage), "Theo doi tren %s, nhin thay o %s.", GetPlayerNameEx(iTargetID), szZone);
-			SendClientMessageEx(playerid, COLOR_GRAD2, szMessage);
-			SetPVarInt(playerid, "hFind", iTargetID);
-		}
-	}
-	else SendErrorMessage(playerid, "Ban khong the su dung lenh nay");
-	return 1;
-}
+// 			new Float:X, Float:Y, Float:Z;
+// 			GetPlayerPos(iTargetID, X, Y, Z);
+// 			DisablePlayerCheckpoint(playerid);
+// 			SetPlayerCheckpoint(playerid, X, Y, Z, 4.0);
+// 			GetPlayer3DZone(iTargetID, szZone, sizeof(szZone));
+// 			format(szMessage, sizeof(szMessage), "Theo doi tren %s, nhin thay o %s.", GetPlayerNameEx(iTargetID), szZone);
+// 			SendClientMessageEx(playerid, COLOR_GRAD2, szMessage);
+// 			SetPVarInt(playerid, "hFind", iTargetID);
+// 		}
+// 	}
+// 	else SendErrorMessage(playerid, "Ban khong the su dung lenh nay");
+// 	return 1;
+// }
 /*
 CMD:deletehit(playerid, params[])
 {

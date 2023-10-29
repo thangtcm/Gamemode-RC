@@ -1526,7 +1526,7 @@ CMD:xemthue(playerid, params[]) {
 CMD:phone(playerid,params[]) return ShowPlayerDialog(playerid, DIALOG_PHONE, DIALOG_STYLE_LIST, "Phone - Main", "Goi dien\nNhan tin\nLog SMS\nDanh ba\nChuyen tien", "Chon", "Huy bo");
 CMD:dangkycmnd(playerid,params[]) {
     new string[129];
-    if(!IsPlayerInRangeOfPoint(playerid, 5, -1872.7721,2671.1101,3.5904)) return SendErrorMessage(playerid," Ban khong o gan city hall khong the dang ky CMND.");
+    if(!IsPlayerInRangeOfPoint(playerid, 5, 359.7139,173.6452,1008.3893)) return SendErrorMessage(playerid," Ban khong o gan city hall khong the dang ky CMND.");
     if(PlayerInfo[playerid][pCMND] < 10) {
         new cmnd;
         cmnd = 10000000 + random(99999999);

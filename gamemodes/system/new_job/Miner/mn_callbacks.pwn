@@ -53,31 +53,37 @@ hook OnPlayerKeyStateChange(playerid, newkeys, oldkeys)
 forward ResetPrice();
 public ResetPrice()
 {
+	new bool:isHight = false;
 	switch(random(100))
 	{
 		case 0..50:
 		{
-			RandomMoney[0] = (10+random(10));
-			RandomMoney[1] = (15+random(50));
-			RandomMoney[2] = (20+random(100));
-			RandomMoney[3] = (30+random(500));
+			RandomMoney[0] = (10+random(10)); // 20
+			RandomMoney[1] = (RandomMoney[0] + 5 +random(20)); // 45
+			RandomMoney[2] = (RandomMoney[1]+random(25));// 70
+			RandomMoney[3] = (RandomMoney[2]+random(200));// => 270
 		}
-		case 51..79:
+		case 51..94:
 		{
-			RandomMoney[0] = (10+random(10)) * 2;
-			RandomMoney[1] = (15+random(50)) * 2;
-			RandomMoney[2] = (20+random(100)) * 2;
-			RandomMoney[3] = (30+random(500)) * 2;
+			RandomMoney[0] = (10 * 2+random(10)) ;// 20 +10 => 30
+			RandomMoney[1] = (RandomMoney[0] + random(30)) ; // 30 + 30 => 60
+			RandomMoney[2] = (RandomMoney[1] * 2+random(50)) ; // 120 + 50 => 170
+			RandomMoney[3] = (RandomMoney[2] + random(100)+30); // 170 + 30 + 100 => 300
 		}
-		case 80..100:
+		case 95..100:
 		{
-			RandomMoney[0] = (10+random(10)) * 3;
-			RandomMoney[1] = (15+random(50)) * 3;
-			RandomMoney[2] = (20+random(100)) * 3;
-			RandomMoney[3] = (30+random(500)) * 3;
+			RandomMoney[0] = (30+random(20) * 2); // 30 + 40 => 70
+			RandomMoney[1] = (RandomMoney[0]+random(30) * 2);// 70 + 60 => 130
+			RandomMoney[2] = (RandomMoney[1] * 2 +random(240));// 130* 2 + 200 => 260 + 240 => 500
+			RandomMoney[3] = (RandomMoney[2]+ random(300));// 460 + 300 => 760
+			isHight = true;
 		}
 	}
+
+	
 	SetTimer("ResetPrice", 3600000, false);
+	if(isHight)
+		SendClientMessageToAll(COLOR_REALRED, "[THU MUA KHOANG SAN] {ffffff}Thi truong khoang san dang bi khan hiem, gia ca thi truong tang cao ngat nguong.");
 	SendClientMessageToAll(COLOR_REALRED, "[THU MUA KHOANG SAN] {ffffff}Gia ca thi truong da thay doi, hay den nguoi thu mua tai Palomino Creek de xem gia ca.");
     new moneyzxc0[30], moneyzxc1[30], moneyzxc2[30], moneyzxc3[30];
     format(moneyzxc0, 30, "%d$", RandomMoney[0]);
@@ -154,19 +160,19 @@ public StartCountTime(playerid)
 			{
 				switch(random(100))
 				{
-					case 0..72:
+					case 0..60:
 					{
 						format(format_job, sizeof(format_job), "~g~Ban da dao thanh cong va nhan duoc ~y~1 Da~g~.");
 						Inventory_Add(playerid, "Da", 1);
 						SendLogToDiscordRoom("MINERAL LOG" ,"1157988317548265523", "Name", GetPlayerNameEx(playerid), "ADDED", "Đá", "Số lượng", "1", 0x226199);
 					}
-					case 73..83:
+					case 84..94:
 					{
 						format(format_job, sizeof(format_job), "~g~Ban da dao thanh cong va nhan duoc ~b~1 Sat~g~.");
 						Inventory_Add(playerid, "Sat", 1);
 						SendLogToDiscordRoom("MINERAL LOG" ,"1157988317548265523", "Name", GetPlayerNameEx(playerid), "ADDED", "Sắt", "Số lượng", "1", 0x226199);
 					}
-					case 84..94:
+					case 61..83:
 					{
 						format(format_job, sizeof(format_job), "~g~Ban da dao thanh cong va nhan duoc ~b~1 Dong~g~.");
 						Inventory_Add(playerid, "Dong", 1);

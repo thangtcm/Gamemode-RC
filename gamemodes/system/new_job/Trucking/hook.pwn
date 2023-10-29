@@ -85,3 +85,9 @@ hook OnPlayerDisconnect(playerid, reason)
 	DeletePVar(playerid, "ViewTutorialTruck");
 	return 1;
 }
+
+hook OnPlayerEnterVehicle(playerid, vehicleid, ispassenger)
+{
+    if(pLoadProduct[playerid] != -1) return SendErrorMessage(playerid, "Ban khong the len xe trong khi dang cam thung hang.");
+    return 1;
+}

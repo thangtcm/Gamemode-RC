@@ -1145,6 +1145,7 @@ CMD:invch(playerid, params[])
 			{
 				SetPVarInt(playerid, "InvPlayerHouse", i);
 				OpenInventoryCarHouse(playerid, "INV HOUSE");
+				OpenInventory(playerid);
 				return 1;
 			}
 		}
@@ -1330,7 +1331,7 @@ Dialog:Inventory(playerid, response, listitem, inputtext[])
 				}
 			}
 			case 3:{
-				format(str, sizeof(str), "Item: %s - So luong: %d\n\nXin vui long nhap so luong ban muon cat vat pham nay:", itemName, InventoryData[playerid][itemId][invQuantity]);
+				format(str, sizeof(str), "Item: %s - So luong: %d", itemName, InventoryData[playerid][itemId][invQuantity]);
 				Dialog_Show(playerid, InventoryCH, DIALOG_STYLE_LIST, "Cat Item", str, "Lua chon", "<");
 			}
 		}
@@ -1430,7 +1431,7 @@ Dialog:GiveItem(playerid, response, listitem, inputtext[])
 		strcpy(itemName, InventoryData[playerid][itemId][invItem], 32);
 		if(InventoryData[playerid][itemId][invQuantity] == 1)
 		{
-			new id = Inventory_Add(giveplayerid, itemName, 1, floatround(InventoryData[playerid][itemId][invTimer]/60, floatround_ceil) - gettime()), str[560];
+			new id = Inventory_Add(giveplayerid, itemName, 1, floatround((InventoryData[playerid][itemId][invTimer] - gettime())/60, floatround_ceil)), str[560];
 			if(id == -1)
 				return SendErrorMessage(playerid, "Nguoi choi do khong con slot trong tui do.");
 			format(str, sizeof(str), "* %s da lay \"%s\" va dua cho %s.", GetPlayerNameEx(playerid), itemName, GetPlayerNameEx(giveplayerid));
@@ -1479,7 +1480,8 @@ Dialog:GiveQuantity(playerid, response, listitem, inputtext[])
 			format(str, sizeof(str), "Ban khong co nhieu item.\n\nItem: %s (So luong: %d)\n\nXin vui long nhap so luong %s:", itemName, InventoryData[playerid][itemId][invQuantity], GetPlayerNameEx(giveplayerid));
 			return  Dialog_Show(playerid, GiveQuantity, DIALOG_STYLE_INPUT, "Dua item", str, "Dua", "Huy bo");
 		}
-		new id = Inventory_Add(giveplayerid, itemName, strval(inputtext), floatround(InventoryData[playerid][itemId][invTimer]/60, floatround_ceil) - gettime());
+		printf("Timer %d -- now %d", InventoryData[playerid][itemId][invTimer], gettime());
+		new id = Inventory_Add(giveplayerid, itemName, strval(inputtext), floatround((InventoryData[playerid][itemId][invTimer] - gettime())/60, floatround_ceil));
 
 		if(id == -1)
 			return SendErrorMessage(playerid, "Nguoi choi do khong con slot trong tui do.");

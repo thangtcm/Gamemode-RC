@@ -181,6 +181,18 @@ stock GetPlantFree(playerid)
     return -1;
 }
 
+stock SavePlantPlayer(playerid)
+{
+    for(new i = 0; i < MAX_PLAYER_PLANT; ++i)
+	{
+		if(!PlantTreeInfo[playerid][i][Exsits])
+		{
+            PLANT_UPDATE(playerid, i);
+		}
+	}
+    return -1;
+}
+
 stock PlantTree_Reload(playerid, plantid)
 {
     new string[256];
@@ -211,7 +223,14 @@ stock PlantTree_Reload(playerid, plantid)
                 PlantTreeInfo[playerid][plantid][plantTimer],
                 GetPlayerNameEx(playerid)
             );
-            PlantTreeInfo[playerid][plantid][plantTimer] = PlantTreeInfo[playerid][plantid][plantType] == 0 ? (PLANT_TINE_LEVEL_1) : PLANT_TINE_LEVEL_1 * 3;
+            if(PlantTreeInfo[playerid][plantid][plantTimer] < PLANT_TINE_LEVEL_1 && PlantTreeInfo[playerid][plantid][plantTimer] != 0)
+            {
+                PlantTreeInfo[playerid][plantid][plantTimer] = PlantTreeInfo[playerid][plantid][plantTimer];
+            }
+            else
+            {
+                PlantTreeInfo[playerid][plantid][plantTimer] = PlantTreeInfo[playerid][plantid][plantType] == 0 ? (PLANT_TINE_LEVEL_1) : PLANT_TINE_LEVEL_1 * 3;
+            }
         }
         case 2:{
             plantObject = 19473;
@@ -227,7 +246,14 @@ stock PlantTree_Reload(playerid, plantid)
                 PlantTreeInfo[playerid][plantid][plantTimer],
                 GetPlayerNameEx(playerid)
             );
-            PlantTreeInfo[playerid][plantid][plantTimer] = PlantTreeInfo[playerid][plantid][plantType] == 0 ? (PLANT_TINE_LEVEL_2) : PLANT_TINE_LEVEL_2 * 3;
+            if(PlantTreeInfo[playerid][plantid][plantTimer] < PLANT_TINE_LEVEL_2 && PlantTreeInfo[playerid][plantid][plantTimer] != 0)
+            {
+                PlantTreeInfo[playerid][plantid][plantTimer] = PlantTreeInfo[playerid][plantid][plantTimer];
+            }
+            else
+            {
+                PlantTreeInfo[playerid][plantid][plantTimer] = PlantTreeInfo[playerid][plantid][plantType] == 0 ? (PLANT_TINE_LEVEL_2) : PLANT_TINE_LEVEL_2 * 3;
+            }
         }
         case 3:{
             plantObject = 804;
@@ -244,7 +270,14 @@ stock PlantTree_Reload(playerid, plantid)
                 GetPlayerNameEx(playerid)
             );
             PlantTreeInfo[playerid][plantid][plantPos][2] += Plant_ZDefault + 1.0;
-            PlantTreeInfo[playerid][plantid][plantTimer] = PlantTreeInfo[playerid][plantid][plantType] == 0 ? (PLANT_TINE_LEVEL_3) : PLANT_TINE_LEVEL_3 * 3;
+            if(PlantTreeInfo[playerid][plantid][plantTimer] < PLANT_TINE_LEVEL_3 && PlantTreeInfo[playerid][plantid][plantTimer] != 0)
+            {
+                PlantTreeInfo[playerid][plantid][plantTimer] = PlantTreeInfo[playerid][plantid][plantTimer];
+            }
+            else
+            {
+                PlantTreeInfo[playerid][plantid][plantTimer] = PlantTreeInfo[playerid][plantid][plantType] == 0 ? (PLANT_TINE_LEVEL_3) : PLANT_TINE_LEVEL_3 * 3;
+            }
         }
     }
     PlantTreeInfo[playerid][plantid][PlantText] = CreateDynamic3DTextLabel(string, COLOR_WHITE, 
@@ -348,7 +381,6 @@ stock PlantTree_Add(playerid, type)
     if(!IsPlayerInDynamicArea(playerid, FarmPlantArea) || GetPlayerVirtualWorld(playerid) != GetPlayerSQLId(playerid)) return SendErrorMessage(playerid, "Ban khong o trong khu vuc trong cay cua ban.");
     if(PlantTree_Near(playerid, 3.0) != -1) return SendErrorMessage(playerid, "Ban khong the trong cay trong pham vi dang co cay trong khac.");
     if(Inventory_Count(playerid, PlantArr[type][PlantName]) <= 0) SendErrorMessage(playerid, "Ban khong co giong cay de trong cay.");
-    if(PlayerInfo[playerid][pJob] != JOB_FARMER && PlayerInfo[playerid][pJob2] != JOB_FARMER) return SendErrorMessage(playerid, "Ban khong phai la nguoi nong dan.");
     new plantId = GetPlantFree(playerid);
     if(plantId == -1)   return SendErrorMessage(playerid, "Ban khong the trong cay them nua.");
     new playerinvId = Inventory_GetItemID(playerid, PlantArr[type][PlantName]);

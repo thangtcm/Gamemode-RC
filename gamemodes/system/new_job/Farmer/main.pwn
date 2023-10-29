@@ -1,6 +1,5 @@
 #include <a_samp>
 #include <YSI_Coding\y_hooks>
-#define JOB_FARMER 31
 #include "system/new_job/Farmer/setting.pwn"
 #include "system/new_job/Farmer/database.pwn"
 #include "system/new_job/Farmer/map.pwn"

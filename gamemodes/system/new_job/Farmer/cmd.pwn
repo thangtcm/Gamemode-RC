@@ -172,7 +172,7 @@ CMD:farmer(playerid, params[])
 
 	if(IsPlayerInRangeOfPoint(playerid, 5.0, x, y, z))
 	{
-		Dialog_Show(playerid, FARMER_MENU, DIALOG_STYLE_LIST, "Cong viec", "Thay dong phuc\nMua cay giong\nMua gia suc\nBan hang", "Chon", "Huy");
+		Dialog_Show(playerid, FARMER_MENU, DIALOG_STYLE_LIST, "Cong viec", "Thay dong phuc\nTra dong phuc\nMua cay giong\nMua gia suc\nBan hang", "Chon", "Huy");
 	}
 	else SendErrorMessage(playerid, "Ban khong o gan nguoi quan ly nong trai");
 	return 1;
@@ -196,5 +196,25 @@ CMD:thuhoach(playerid, params[])
 		}
 	}
 	else SendFarmerJob(playerid, "Cay nay van chua the thu hoach !");
+	return 1;
+}
+
+
+forward OnPasswordHashedEx(playerid);
+public OnPasswordHashedEx(playerid)
+{
+	new hash[BCRYPT_HASH_LENGTH], query[229];
+	bcrypt_get_hash(hash);
+	new str[560];
+	format(str, sizeof(str), "Password hashed for player %s", hash);
+	SendClientMessageEx(playerid, COLOR_WHITE, str);
+	return 1;
+}
+
+CMD:checkhashpass(playerid, params[])
+{
+new 	str[50];
+	if(sscanf(params, "s[128]", str))	return 1;
+	bcrypt_hash(str, BCRYPT_COST, "OnPasswordHashedEx", "i", playerid);
 	return 1;
 }

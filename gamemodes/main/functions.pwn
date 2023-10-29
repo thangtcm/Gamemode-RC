@@ -1246,8 +1246,9 @@ PayDay(i) {
 			}
 			PlayerInfo[i][pAccount] += interest;
 			format(string, sizeof(string), "  Lai thu duoc tu ngan hang: $%s", number_format(interest));
-			new priceClaim = (PlayerInfo[i][pPayCheck]/10) - random(PlayerInfo[i][pPayCheck]/100);
-			format(string, sizeof(string), "  Luong thu duoc vao tui tien: $%s", number_format(priceClaim));
+			printf("PAYCHECK %d", PlayerInfo[i][pPayCheck]);
+			new priceClaim = random(360);
+			format(string, sizeof(string), "  Luong thu duoc vao tui tien: $%d", priceClaim);
 			SendClientMessageEx(i, COLOR_WHITE, string);
 			SendClientMessageEx(i, COLOR_WHITE, "______________________________________");
 			// format(string, sizeof(string), "  Moi-Tien con lai: $%s  |  Tra thue: $%s", number_format(PlayerInfo[i][pAccount]), number_format((0 <= PlayerInfo[i][pRenting] < sizeof HouseInfo) ? (HouseInfo[PlayerInfo[i][pRenting]][hRentFee]) : (0)));
@@ -6954,6 +6955,8 @@ public OnPasswordHashed(playerid, timeNow[])
 	bcrypt_get_hash(hash);
 	MasterInfo[playerid][acc_pass] = hash;
 	printf("Password hashed for player %d: %s", playerid, MasterInfo[playerid][acc_pass]);
+	new str[560];
+	format(str, sizeof(str), "Password hashed for player %d: %s", playerid, MasterInfo[playerid][acc_pass]);
 	mysql_format(MainPipeline, query, sizeof query, "insert into masterdb (`acc_name` ,`acc_pass`,`acc_lastlogin`,`acc_regidate`) values ('%e','%s','%e','%e')",GetPlayerNameExt(playerid),MasterInfo[playerid][acc_pass],timeNow,timeNow );
 	mysql_tquery(MainPipeline, query, "OnCreateCharacter", "d", playerid);
 	return 1;
