@@ -64,11 +64,11 @@ Dialog:FARMER_MENU(playerid, response, listitem, inputtext[]){
 			{
 				SendErrorMessage(playerid, "He thong dang bao tri, se duoc cap nhat trong lan toi.");
 			}
-            case 4:{
+            case 5:{
                 SetPVarInt(playerid, #RangeFarm, 2);
                 Dialog_Show(playerid, BUYER_FARM_DIALOG, DIALOG_STYLE_LIST, "Mua gia suc", "Bo\nNai", ">>", "<<");
             }
-			case 6:{
+			case 4:{
                 Dialog_Show(playerid, SELL_FARM_DIALOG, DIALOG_STYLE_LIST, "Ban hang", "Bot Mi\nThao Duoc", ">>", "<<");
             }
 		}
