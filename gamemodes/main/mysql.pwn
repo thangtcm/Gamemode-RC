@@ -389,6 +389,9 @@ public OnQueryFinish(resultid, extraid, handleid)
 					cache_get_field_content(row,  "Disabled", szResult, MainPipeline); PlayerInfo[extraid][pDisabled] = strval(szResult);
 					cache_get_field_content(row,  "Level", szResult, MainPipeline); PlayerInfo[extraid][pLevel] = strval(szResult);
 					cache_get_field_content(row,  "AdminLevel", szResult, MainPipeline); PlayerInfo[extraid][pAdmin] = strval(szResult);
+					cache_get_field_content(row,  "DownCountJT", szResult, MainPipeline); DownCountJobTime[extraid] = strval(szResult);
+                    cache_get_field_content(row,  "BonusHealth", szResult, MainPipeline); BonusHealth[extraid] = strval(szResult);
+                    cache_get_field_content(row,  "BonusArmour", szResult, MainPipeline); BonusArmour[extraid] = strval(szResult);
 					cache_get_field_content(row,  "CMND", szResult, MainPipeline); PlayerInfo[extraid][pCMND] = strval(szResult);
 					cache_get_field_content(row,  "MaskID1", szResult, MainPipeline); PlayerInfo[extraid][pMaskID][0] = strval(szResult);
 					cache_get_field_content(row,  "MaskID2", szResult, MainPipeline); PlayerInfo[extraid][pMaskID][1] = strval(szResult);
@@ -2907,6 +2910,13 @@ stock g_mysql_SaveAccount(playerid)
     SavePlayerInteger(query, GetPlayerSQLId(playerid), "CraftWeaponDealTime", CraftWeaponDealTime[playerid]);
     SavePlayerInteger(query, GetPlayerSQLId(playerid), "Level", PlayerInfo[playerid][pLevel]);
     SavePlayerInteger(query, GetPlayerSQLId(playerid), "AdminLevel", PlayerInfo[playerid][pAdmin]); 
+    SavePlayerInteger(query, GetPlayerSQLId(playerid), "DownCountJT", DownCountJobTime[playerid]); 
+    SavePlayerFloat(query, GetPlayerSQLId(playerid), "BonusHealth", BonusHealth[playerid]); 
+    SavePlayerFloat(query, GetPlayerSQLId(playerid), "BonusArmour", BonusArmour[playerid]); 
+    
+
+
+
     SavePlayerInteger(query, GetPlayerSQLId(playerid), "CMND", PlayerInfo[playerid][pCMND]);
 	SavePlayerInteger(query, GetPlayerSQLId(playerid), "MaskID1", PlayerInfo[playerid][pMaskID][0]);
 	SavePlayerInteger(query, GetPlayerSQLId(playerid), "MaskID2", PlayerInfo[playerid][pMaskID][1]);

@@ -124,6 +124,9 @@ public OnPlayerPickUpRock(playerid, rockIndex)
     {
     	RockStatus[rockIndex] = 0;
 		timerdc[playerid] = 35+(random(40));
+		if(DownCountJobTime[playerid] >= gettime()) {
+			timerdc[playerid] -= 10;
+		}
 		timerd = timerdc[playerid]*1000;
 		SetTimerEx("OnRockMined", timerd, false, "i", playerid);
 		SetTimerEx("StartCountTime", 1000, false, "i", playerid);
@@ -143,9 +146,16 @@ public StartCountTime(playerid)
 	{
 		if(timerdc[playerid] > 0)
 		{
+			
 			timerdc[playerid]--;
 			new format_job[1280];
-			format(format_job, sizeof(format_job), "Ban dang dao da, vui long doi~p~ %d~w~ de dao xong.", timerdc[playerid]);
+			if(DownCountJobTime[playerid] >= gettime()) {
+			    format(format_job, sizeof(format_job), "Ban dang dao da, vui long doi~p~ %d~w~ de dao xong.", timerdc[playerid]);
+		    }
+		    else {
+		    	format(format_job, sizeof(format_job), "Ban dang dao da, vui long doi~p~ %d~w~ de dao xong (~r~-10 giay~w~).", timerdc[playerid]);
+		    }
+			
 			SendClientTextDraw(playerid, format_job);
 			SetTimerEx("StartCountTime", 1000, false, "i", playerid);
 			ApplyAnimation(playerid,"BASEBALL","Bat_4",1.0,1,1,1,1,1);
