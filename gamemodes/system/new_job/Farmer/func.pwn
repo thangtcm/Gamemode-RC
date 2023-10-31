@@ -207,7 +207,6 @@ stock PlantTree_Reload(playerid, plantid)
         PlantTreeInfo[playerid][plantid][ObjectSpawn] = INVALID_OBJECT_ID;
     }
     new plantObject = 19837, playerVW = GetPlayerSQLId(playerid);
-    printf("%d", PlantTreeInfo[playerid][plantid][plantLevel]);
     switch(PlantTreeInfo[playerid][plantid][plantLevel])
     {
         case 1:{
@@ -269,7 +268,7 @@ stock PlantTree_Reload(playerid, plantid)
                 PlantTreeInfo[playerid][plantid][plantTimer],
                 GetPlayerNameEx(playerid)
             );
-            PlantTreeInfo[playerid][plantid][plantPos][2] += Plant_ZDefault + 1.0;
+            PlantTreeInfo[playerid][plantid][plantPos][2] = Plant_ZDefault + 1.0;
             if(PlantTreeInfo[playerid][plantid][plantTimer] < PLANT_TINE_LEVEL_3 && PlantTreeInfo[playerid][plantid][plantTimer] != 0)
             {
                 PlantTreeInfo[playerid][plantid][plantTimer] = PlantTreeInfo[playerid][plantid][plantTimer];
@@ -298,6 +297,7 @@ stock PlantTree_Update(playerid, plantid)
     {
         if(PlantTreeInfo[playerid][plantid][plantLevel] == 3) return 1;
         PlantTreeInfo[playerid][plantid][plantLevel]++;
+        PlantTreeInfo[playerid][plantid][plantTimer] = 0;
         PlantTree_Reload(playerid, plantid);
         return 1;
     }
@@ -370,7 +370,7 @@ stock PlantTree_Near(playerid, Float:range)
         if(IsPlayerInRangeOfPoint(playerid, range, 
             PlantTreeInfo[playerid][i][plantPos][0], 
             PlantTreeInfo[playerid][i][plantPos][1], 
-            PlantTreeInfo[playerid][i][plantPos][2]))
+            PlantTreeInfo[playerid][i][plantPos][2]) && PlantTreeInfo[playerid][i][Exsits])
             return i;
     }
     return -1;
@@ -389,6 +389,7 @@ stock PlantTree_Add(playerid, type)
     PlantTreeInfo[playerid][plantId][plantPos][2] = Plant_ZDefault;
     PlantTreeInfo[playerid][plantId][plantLevel] = 1;
     PlantTreeInfo[playerid][plantId][plantType] = type;
+    PlantTreeInfo[playerid][plantId][plantTimer] = PLANT_TINE_LEVEL_1;
     ApplyAnimation(playerid,"BOMBER","BOM_Plant_Crouch_Out", 4.1, false, 0, 0, 0, 3000, 1);
 	GameTextForPlayer(playerid, "~n~~n~~n~~n~~n~~n~~n~~n~~n~~b~Dang gieo giong...~w~ Xin vui long doi.", 3000, 3);
     SetTimerEx("DangGieoGiong", 3000, false, "ii", playerid, plantId);

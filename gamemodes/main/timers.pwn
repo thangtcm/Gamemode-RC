@@ -3,7 +3,7 @@
 
 stock BatGPS(playerid)
 {
-	if(PlayerInfo[playerid][pGPS] > 0)
+	if(Inventory_HasItem(playerid, "GPS"))
 	{
 		new string[128];
 		if(GetPVarInt(playerid, "gpsonoff") == 0)

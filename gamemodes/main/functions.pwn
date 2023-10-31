@@ -5048,8 +5048,8 @@ public Maintenance()
 
 
     ABroadCast(COLOR_YELLOW, "{AA3333}Bao tri{FFFF00}: Luu tai khoan thanh cong...", 1);
-	SendRconCommand("password vnrpcom");
-	SendRconCommand("hostname [SV.EL-RP.COM] Bao tri may chu");
+	SendRconCommand("password rcrpvn");
+	SendRconCommand("hostname [RC:RP] Bao tri may chu");
 	foreach(new i: Player)
 	{
 		if(gPlayerLogged{i}) {
@@ -10378,7 +10378,7 @@ stock GetPlayerNameEx(playerid) {
 		iPos;
 	if(PlayerInfo[playerid][pMaskOn])
 	{
-		format(szName, sizeof(szName), "[Mask %d_%d]", PlayerInfo[playerid][pMaskID][0], PlayerInfo[playerid][pMaskID][1]);
+		format(szName, sizeof(szName), "Mask %d%d", PlayerInfo[playerid][pMaskID][0], playerid);
 	}
 	else
 	{
@@ -13340,6 +13340,7 @@ stock GivePlayerStoreItem(playerid, type, business, item, price)
 	new string[256];
 	if(Businesses[business][bInventory] >= StoreItemCost[item][ItemValue]) Businesses[business][bInventory] -= StoreItemCost[item][ItemValue];
 	else return SendClientMessageEx(playerid, COLOR_GRAD2, "Cua hang khong co du cho item do");
+	printf("RUNN 22%d", item);
 	switch (item)
   	{
   		case ITEM_CELLPHONE:
@@ -13518,17 +13519,12 @@ stock GivePlayerStoreItem(playerid, type, business, item, price)
 			}
 			else return SendClientMessageEx(playerid, COLOR_WHITE, "Ban khong co chiec xe nao - Ban muon cai dat no len dau?");
 		}
-		case ITEM_GPS:
-		{
-			if(Inventory_HasItem(playerid, "Radio")) {
-				return SendClientMessageEx(playerid, COLOR_WHITE, "Ban da so huu GPS");
-			}
-		}
 		default:
 		{
 		    return 0;
 		}
 	}
+	printf("RUNN 333%d", item);
 	Businesses[business][bTotalSales]++;
 	Businesses[business][bSafeBalance] += TaxSale(price);
 	GivePlayerCash(playerid, -price);

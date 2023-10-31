@@ -356,7 +356,6 @@ stock Inventory_AddEx(playerid, item[], quantity = 1, timer = 0) //timer l√† d·ª
             format(string, sizeof(string), "INSERT INTO `inventory` (`ID`, `invItem`, `invModel`, `invQuantity`, `invTimer`, `pvSQLID`, `hSQLID`) VALUES('%d', '%s', '%s', '%d', '%d', 0, 0)", 
 				PlayerSQLId, g_mysql_ReturnEscaped(item, MainPipeline), g_mysql_ReturnEscaped(model, MainPipeline), quantity, InventoryData[playerid][pItemId][invTimer]);
 			SetPVarInt(playerid, "IsAddingInv", pItemId);
-			printf("%d", pItemId);
 			mysql_function_query(MainPipeline, string, false, "OnInventoryAdd", "iii", playerid, pItemId, timer);
 			printf("[CREATE INVENTORY] %s (ID %d) da duoc them vao du lieu cua %s", InventoryData[playerid][pItemId][invItem], pItemId, GetPlayerNameEx(playerid));
 			new itemidzxc[10];
@@ -787,7 +786,7 @@ public OnPlayerUseItem(playerid, pItemId, name[])
 				SetPlayerAttachedObject(playerid, PIZZA_INDEX, 19036,2, 0.093999, 0.026000, -0.004999, 93.800018, 82.199951, -3.300001, 1.098000, 1.139999, 1.173000);
 				GetPlayerName(playerid, szName, sizeof(szName));
 				SetPVarString(playerid, "TempNameName", szName);
-				format(szName, sizeof(szName), "Mask_%d%d]", PlayerInfo[playerid][pMaskID][1], playerid);
+				format(szName, sizeof(szName), "Mask_%d%d", PlayerInfo[playerid][pMaskID][0], playerid);
 				SetPlayerName(playerid, szName);
 			}
 			case 1:
@@ -1431,7 +1430,11 @@ Dialog:GiveItem(playerid, response, listitem, inputtext[])
 		strcpy(itemName, InventoryData[playerid][itemId][invItem], 32);
 		if(InventoryData[playerid][itemId][invQuantity] == 1)
 		{
-			new id = Inventory_Add(giveplayerid, itemName, 1, floatround((InventoryData[playerid][itemId][invTimer] - gettime())/60, floatround_ceil)), str[560];
+			new id, str[560];
+			if(InventoryData[playerid][itemId][invTimer] == 0)
+				id = Inventory_Add(giveplayerid, itemName);
+			else
+				id = Inventory_Add(giveplayerid, itemName, 1, floatround((InventoryData[playerid][itemId][invTimer] - gettime())/60, floatround_ceil));
 			if(id == -1)
 				return SendErrorMessage(playerid, "Nguoi choi do khong con slot trong tui do.");
 			format(str, sizeof(str), "* %s da lay \"%s\" va dua cho %s.", GetPlayerNameEx(playerid), itemName, GetPlayerNameEx(giveplayerid));
@@ -1480,8 +1483,10 @@ Dialog:GiveQuantity(playerid, response, listitem, inputtext[])
 			format(str, sizeof(str), "Ban khong co nhieu item.\n\nItem: %s (So luong: %d)\n\nXin vui long nhap so luong %s:", itemName, InventoryData[playerid][itemId][invQuantity], GetPlayerNameEx(giveplayerid));
 			return  Dialog_Show(playerid, GiveQuantity, DIALOG_STYLE_INPUT, "Dua item", str, "Dua", "Huy bo");
 		}
-		printf("Timer %d -- now %d", InventoryData[playerid][itemId][invTimer], gettime());
-		new id = Inventory_Add(giveplayerid, itemName, strval(inputtext), floatround((InventoryData[playerid][itemId][invTimer] - gettime())/60, floatround_ceil));
+		new id; 
+		if(InventoryData[playerid][itemId][invTimer] == 0)	id = Inventory_Add(giveplayerid, itemName, strval(inputtext));
+		else
+			id = Inventory_Add(giveplayerid, itemName, strval(inputtext), floatround((InventoryData[playerid][itemId][invTimer] - gettime())/60, floatround_ceil));
 
 		if(id == -1)
 			return SendErrorMessage(playerid, "Nguoi choi do khong con slot trong tui do.");

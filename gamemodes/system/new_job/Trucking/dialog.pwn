@@ -121,10 +121,13 @@ Dialog:DIALOG_BUYPRODUCT(playerid, response, listitem, inputtext[])
         new factoryID = GetPVarInt(playerid, "BUY_FactoryID"), index = PlayerTruckerData[playerid][MissionBuy][listitem], 
             money, str[256], productID;
         money = FactoryData[factoryID][ProductPrice][index];
+
         if(GetPlayerCash(playerid) < money) return SendErrorMessage(playerid, "Ban khong du tien de mua thung hang nay.");
         if(FactoryData[factoryID][WareHouse][index] <= 0) return SendErrorMessage(playerid, "Nha may nay khong du so luong san pham de ban cho ban.");
         
         productID = FactoryData[factoryID][ProductName][index];
+        new unit = ProductData[productID][ProductUnitID];
+        if(!CheckProductCar(GetCarTruckID(PlayerInfo[playerid][pRegisterCarTruck]), unit)) return SendErrorMessage(playerid, "Xe dang ky van chuyen cua ban khong the mua mat hang nay.");
         
         if(GetPVarInt(playerid, "MissionTruck") == 1)  {
             MissionProduct_Update(playerid, productID);

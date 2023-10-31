@@ -1102,7 +1102,7 @@ public OnQueryFinish(resultid, extraid, handleid)
 		{
 		    if(rows > 0)
 			{
-				SendClientMessage(extraid, COLOR_RED, "IP cua ban bi cam truy cap, de mo khoa vui long truy cap dien dan: FORUM.SV.EL-RP.COM");
+				SendClientMessage(extraid, COLOR_RED, "IP cua ban bi cam truy cap, de mo khoa vui long truy cap dien dan: discord rcrp.vn");
 				SetTimerEx("KickEx", 1000, 0, "i", extraid);
 			}
 			else

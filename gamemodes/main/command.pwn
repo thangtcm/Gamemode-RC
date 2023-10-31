@@ -25412,7 +25412,8 @@ CMD:r(playerid, params[]) {
 					format(string, sizeof(string), "(radio) %s", params);
 					SetPlayerChatBubble(playerid, string, COLOR_WHITE, 15.0, 5000);
 					GetPlayerGroupInfo(playerid, rank, division, employer);
-					format(string, sizeof(string), "**[CH: 911, S: 1] [%d] %s %s: %s **",PlayerInfo[playerid][pMaHieu1],PlayerInfo[playerid][pRankText], GetPlayerNameEx(playerid), params);
+					
+					format(string, sizeof(string), "**[CH: 911, DIV: %s] [%d] %s %s: %s **", arrGroupDivisions[iGroupID][PlayerInfo[playerid][pDivision]], PlayerInfo[playerid][pMaHieu1],arrGroupRanks[iGroupID][PlayerInfo[playerid][pRank]], GetPlayerNameEx(playerid), params);
 					foreach(new i: Player)
 					{
 						if(GetPVarInt(i, "togRadio") == 0)
@@ -25902,7 +25903,7 @@ CMD:order(playerid, params[])
 */
 // Going to add these to 24-7 later
 
-/*
+
 CMD:blindfold(playerid, params[]) {
 	return cmd_bf(playerid, params);
 }
@@ -25969,7 +25970,7 @@ CMD:bf(playerid, params[])
 	}
     return 1;
 }
-*/
+
 
 CMD:hgate(playerid, params[])
 {

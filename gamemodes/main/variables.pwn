@@ -1607,6 +1607,8 @@ new StoreItemCost[][StoreItemCostEnum] =
 	{25},
 	{80},
 	{10},
+	{1},
+	{1},
 	{1}
 };
 
@@ -1754,7 +1756,7 @@ new CountDown = 0;
 
 new Tooltips[][] =
 {
-	"May chu {7ED9B7}SV.EL-RP.COM{FFFFFF} se luon cap nhat tinh nang moi cho ban"
+	"May chu {7ED9B7}sv.rcrp.vn{FFFFFF} se luon cap nhat tinh nang moi cho ban"
 };
 
 new Float:HiddenTreasure[23][4] = {

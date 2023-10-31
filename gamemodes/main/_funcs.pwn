@@ -7355,6 +7355,7 @@ public LoadStreamerDynamic3DTextLabels()
 	CreateDynamic3DTextLabel("/capcuu",COLOR_LIGHTRED,1579.58,1768.88,10.82+0.6,4.0); // /deliverpt (LV Hospital)
    	CreateDynamic3DTextLabel("Emergency Room\n/capcuu",COLOR_DBLUE,-2573.300,611.013,14.030+0.6,4.0);///Deliverpt (SF)
 	CreateDynamic3DTextLabel("/capcuu",COLOR_LIGHTRED,-2482.4338,2231.1106,4.8463+0.6,4.0);///Deliverpt (TR - Bayside)
+	CreateDynamic3DTextLabel("/capcuu",COLOR_LIGHTRED,1165.7424,-1331.3671,2423.9551+0.6,4.0);///RC (RC - RC)
    	CreateDynamic3DTextLabel("/deliver",COLOR_DBLUE,1991.7953,-2321.2532,13.5469+0.6,4.0);// Deliver
    	CreateDynamic3DTextLabel("/healme \nDe chua benh cua ban",COLOR_DBLUE,1179.4012451172,-1331.5632324219,2423.0461425781+0.6,4.0);// /healme
    	CreateDynamic3DTextLabel("/muabaohiem \n Mua bao hiem y te",COLOR_DBLUE,1171.7323, -1319.0518, -44.2836+0.6,4.0);// Insurance
@@ -16965,7 +16966,7 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
             }
             else if(listitem == 6) //Website
             {
-           		ShowPlayerDialog(playerid, WEBSITEFAQ, DIALOG_STYLE_MSGBOX, "Thong tin khac", "Thong tin:\n\nForum ho tro: 4r.SV.EL-RP.COM, tim hieu sau hon: Wiki.gta-sa.vn, Up anh nhanh: Upanh.gta-sa.vn", "Cam on", "Huy bo");
+           		ShowPlayerDialog(playerid, WEBSITEFAQ, DIALOG_STYLE_MSGBOX, "Thong tin khac", "Thong tin:\n\nForum ho tro: sv.rcrp.vn, tim hieu sau hon: Wiki.gta-sa.vn, Up anh nhanh: Upanh.gta-sa.vn", "Cam on", "Huy bo");
             }
             else if(listitem == 7) //Further Help
            	{
