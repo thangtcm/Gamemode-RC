@@ -61,7 +61,8 @@ new const g_aInventoryItems[][e_InventoryItems] =
 	{"MP5", "MP5"}, /// type 3
 	{"AK47", "AK47"}, // TYPE 4
 	{"M4", "M4"}, // TYPE 4
-	{"Sniper", "Sniper"}, // type 5
+	{"Micro SMG Uzi", "uzi"}, // type 5
+	{"Tec-9", "tec_9"}, // type 5
 
 	{"Deagle-AS", "Deagle-AS"},// ammo type = 1
 	{"Shotgun-AS", "Shotgun-AS"},// ammo type = 2
@@ -877,9 +878,27 @@ public OnPlayerUseItem(playerid, pItemId, name[])
 	{
 		new weapon_g,ammos_g;
 		GetPlayerWeaponData(playerid, 4, weapon_g, ammos_g);
-        if(weapon_g == 29 ) return SendClientMessage(playerid,-1,"Ban da trang bi mot loai vu khi tuong tu.");
+        if(weapon_g == 29 || weapon_g == 28 || weapon_g == 32 ) return SendClientMessage(playerid,-1,"Ban da trang bi mot loai vu khi tuong tu.");
         GivePlayerValidWeapon(playerid, 29, 1);
         SendClientTextDraw(playerid, "Ban da trang bi thanh cong vu khi ~r~MP5~w~ voi ~r~1 vien dan");
+        Inventory_Remove(playerid, pItemId, 1);
+	}
+	else if(!strcmp(name, "Tec-9", true))
+	{
+		new weapon_g,ammos_g;
+		GetPlayerWeaponData(playerid, 4, weapon_g, ammos_g);
+        if(weapon_g == 29 || weapon_g == 28 || weapon_g == 32 ) return SendClientMessage(playerid,-1,"Ban da trang bi mot loai vu khi tuong tu.");
+        GivePlayerValidWeapon(playerid, 32, 1);
+        SendClientTextDraw(playerid, "Ban da trang bi thanh cong vu khi ~r~Tec-9~w~ voi ~r~1 vien dan");
+        Inventory_Remove(playerid, pItemId, 1);
+	}
+    else if(!strcmp(name, "Micro SMG Uzi", true))
+	{
+		new weapon_g,ammos_g;
+		GetPlayerWeaponData(playerid, 4, weapon_g, ammos_g);
+        if(weapon_g == 29 || weapon_g == 28 || weapon_g == 32 ) return SendClientMessage(playerid,-1,"Ban da trang bi mot loai vu khi tuong tu.");
+        GivePlayerValidWeapon(playerid, 28, 1);
+        SendClientTextDraw(playerid, "Ban da trang bi thanh cong vu khi ~r~Micro SMG Uzi~w~ voi ~r~1 vien dan");
         Inventory_Remove(playerid, pItemId, 1);
 	}
 	else if(!strcmp(name, "mp5-AS", true))
