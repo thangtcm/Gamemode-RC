@@ -1377,6 +1377,30 @@ CMD:near(playerid, params[])
 	return 1;
 }
 
+CMD:givemoneys(playerid, params[])
+{
+ 	if(PlayerInfo[playerid][pAdmin]>=99999)//Neu nguoi choi la admin 9x
+	{
+	    if(gPlayerLogged{playerid} == 0) return SendClientMessageEx(playerid, COLOR_GREY, "   Ban chua dang nhap!");
+		if(isnull(params)) return SendClientMessage(playerid,0xFF000FF,"Su dung : /givemoneys [so luong]");
+		if(strval(params)<=0) return SendClientMessage(playerid,0xFF000FF,"So tien khong hop le");
+		new str[256];
+		format(str, sizeof(str), "UPDATE accounts SET `Money` = `Money` +  %d WHERE `Online` = 0", params);
+		mysql_function_query(MainPipeline, str, false, "OnQueryFinish", "i", SENDDATA_THREAD);
+		format(str,128,"%s da phat %d money cho tat ca moi nguoi thuoc may chu RC:RP",GetPlayerNameEx(playerid),strval(params));
+		SendClientMessageToAll(0xFFF000FF,str);
+		foreach(new i : Player)
+		{
+			if(IsPlayerConnected(i))
+			{
+			    GivePlayerCash(playerid, strval(params));
+			}
+		}
+		return 1;
+ 	}
+	return SendErrorMessage(playerid, " Ban khong the su dung lenh nay.");
+}
+
 CMD:givegun(playerid, params[])
 {
     if (PlayerInfo[playerid][pAdmin] >= 1337) {
@@ -2652,6 +2676,46 @@ CMD:businesshelp(playerid, params[])
 		SendClientMessageEx(playerid, COLOR_GRAD3, "*** BIZ ADMIN *** /bedit /bname (ST) /bnext (ST) /bnear (ST) /gotobiz (ST) /goinbiz (ST)");
 		SendClientMessageEx(playerid, COLOR_GRAD3, "*** BIZ ADMIN *** /deletegaspump /asellbiz /creategaspump /editgaspump");
 	}
+    return 1;
+}
+
+CMD:offermenu(playerid, params[])
+{
+    new iBusiness = InBusiness(playerid);
+
+   	if(iBusiness == INVALID_BUSINESS_ID || (Businesses[iBusiness][bType] != BUSINESS_TYPE_BAR && Businesses[iBusiness][bType] != BUSINESS_TYPE_CLUB && Businesses[iBusiness][bType] != BUSINESS_TYPE_RESTAURANT)) return SendClientMessageEx(playerid, COLOR_GRAD2, "   You are not in a bar, club or restaurant!");
+
+	new szDialog[512], pvar[25], line;
+
+	if (Businesses[iBusiness][bType] == BUSINESS_TYPE_BAR || Businesses[iBusiness][bType] == BUSINESS_TYPE_CLUB)
+	{
+		for (new item; item < sizeof(Drinks); item++)
+		{
+			new cost = (PlayerInfo[playerid][pDonateRank] >= 1) ? (floatround(Businesses[iBusiness][bItemPrices][item] * 0.8)) : (Businesses[iBusiness][bItemPrices][item]);
+			format(szDialog, sizeof(szDialog), "%s%s  ($%s)\n", szDialog, Drinks[item], number_format(cost));
+			format(pvar, sizeof(pvar), "Business_MenuItem%d", line);
+			SetPVarInt(playerid, pvar, item);
+			format(pvar, sizeof(pvar), "Business_MenuItemPrice%d", line);
+			SetPVarInt(playerid, pvar, Businesses[iBusiness][bItemPrices][item]);
+			line++;
+		}
+	}
+	else if(Businesses[iBusiness][bType] == BUSINESS_TYPE_RESTAURANT)
+	{
+		for (new item; item < sizeof(RestaurantItems); ++item)
+		{
+			new cost = (PlayerInfo[playerid][pDonateRank] >= 1) ? (floatround(Businesses[iBusiness][bItemPrices][item] * 0.8)) : (Businesses[iBusiness][bItemPrices][item]);
+			format(szDialog, sizeof(szDialog), "%s%s  ($%s)\n", szDialog, RestaurantItems[item], number_format(cost));
+			format(pvar, sizeof(pvar), "Business_MenuItem%d", line);
+			SetPVarInt(playerid, pvar, item);
+			format(pvar, sizeof(pvar), "Business_MenuItemPrice%d", line);
+			SetPVarInt(playerid, pvar, Businesses[iBusiness][bItemPrices][item]);
+			line++;
+		}
+	}
+
+   	if(strlen(szDialog) == 0) SendClientMessageEx(playerid, COLOR_GRAD2, "   Cua hang nay khong ban bat ki mat hang nao!");
+    else ShowPlayerDialog(playerid, RESTAURANTMENU, DIALOG_STYLE_LIST, "Menu", szDialog, "Mua", "Huy bo");
     return 1;
 }
 
@@ -12510,12 +12574,21 @@ CMD:saveaccount(playerid, params[])
 	return 1;
 }
 
-CMD:fixvw(playerid, params[])
+forward ResetFixVw(playerid);
+public ResetFixVw(playerid)
 {
 	SetPlayerVirtualWorld(playerid, 0);
 	SendErrorMessage(playerid, "Ban da reset virual world");
 	return 1;
 }
+
+CMD:fixvw(playerid, params[])
+{
+	SetPlayerVirtualWorld(playerid, 1);
+	SetTimerEx("ResetFixVw", 1000, false, "i", playerid);
+	return 1;
+}
+
 /*
 CMD:myangle(playerid, params[])
 {
@@ -20009,7 +20082,6 @@ CMD:deliverpt(playerid, params[])
 							DeletePVar(giveplayerid, "STD");
                             SendClientMessageEx(giveplayerid, COLOR_LIGHTBLUE, "* Benh vien da chua tri chi ban khoi STD.!");
                         }
-                        GivePlayerCash(giveplayerid, -400);
                         Tax += 1000;
                         GivePlayerCash(playerid, 500);
                         KillEMSQueue(giveplayerid);
@@ -20017,9 +20089,9 @@ CMD:deliverpt(playerid, params[])
                         SendClientMessageEx(giveplayerid, TEAM_CYAN_COLOR, "Cap Cuu: Hoa don y te cua ban la $400. Chuc mot ngay tot lanh!");
                         format(string,sizeof(string),"Ban nhan duoc $500 cho viec chua tri benh nhan!");
                         SendClientMessageEx(playerid, TEAM_CYAN_COLOR, string);
-						SetPlayerPos(giveplayerid, 1153.7006, -1330.3177, -41.9554);
-						Streamer_UpdateEx(giveplayerid, 1153.7006, -1330.3177, -41.9554);
-						Player_StreamPrep(giveplayerid, 1153.7006, -1330.3177, -41.9554,FREEZE_TIME);
+						SetPlayerPos(giveplayerid, 1165.7424,-1331.3671,2423.9551);
+						Streamer_UpdateEx(giveplayerid, 1165.7424,-1331.3671,2423.9551);
+						Player_StreamPrep(giveplayerid, 1165.7424,-1331.3671,2423.9551,FREEZE_TIME);
 						SetPlayerFacingAngle(giveplayerid, 179.4258);
                         SetPlayerHealth(giveplayerid, 50.0);
                         PlayerInfo[playerid][pPatientsDelivered]++;
@@ -30074,74 +30146,74 @@ CMD:getrewardgift(playerid, params[]) {
 	return 1;
 }
 */
-CMD:heal(playerid, params[])
-{
-	new giveplayerid, price;
-	if(sscanf(params, "ud", giveplayerid, price)) return SendUsageMessage(playerid, " /heal [player] [price]");
+// CMD:heal(playerid, params[])
+// {
+// 	new giveplayerid, price;
+// 	if(sscanf(params, "ud", giveplayerid, price)) return SendUsageMessage(playerid, " /heal [player] [price]");
 
-	if(!(200 <= price <= 1000))
-	{
-		SendErrorMessage(playerid, " Healing price can't below $200 or above $1,000.");
-		return 1;
-	}
-	if (giveplayerid == playerid)
-	{
-		SendServerMessage(playerid, " You can't heal yourself.");
-		return 1;
-	}
-	if (IsPlayerConnected(giveplayerid))
-	{
-		new iVehicle = GetPlayerVehicleID(playerid);
-		if(IsAMedic(playerid))
-		{
-			if(GetPlayerVehicleID(giveplayerid) == iVehicle && (IsAnAmbulance(iVehicle)))
-			{
-			    new Float:X, Float:Y, Float:Z;
-	   			GetPlayerPos(giveplayerid, X, Y, Z);
+// 	if(!(200 <= price <= 1000))
+// 	{
+// 		SendErrorMessage(playerid, " Healing price can't below $200 or above $1,000.");
+// 		return 1;
+// 	}
+// 	if (giveplayerid == playerid)
+// 	{
+// 		SendServerMessage(playerid, " You can't heal yourself.");
+// 		return 1;
+// 	}
+// 	if (IsPlayerConnected(giveplayerid))
+// 	{
+// 		new iVehicle = GetPlayerVehicleID(playerid);
+// 		if(IsAMedic(playerid))
+// 		{
+// 			if(GetPlayerVehicleID(giveplayerid) == iVehicle && (IsAnAmbulance(iVehicle)))
+// 			{
+// 			    new Float:X, Float:Y, Float:Z;
+// 	   			GetPlayerPos(giveplayerid, X, Y, Z);
 
-				if(!IsPlayerInRangeOfPoint(playerid, 10, X, Y, Z)) return SendClientMessageEx(playerid, TEAM_GREEN_COLOR,"You are not near them!");
-				new Float:tempheal;
-				GetPlayerHealth(giveplayerid,tempheal);
-				if(tempheal >= 100.0)
-				{
-					SendClientMessageEx(playerid, TEAM_GREEN_COLOR,"That person is fully healed.");
-					return 1;
-				}
-				new string[64];
-				format(string, sizeof(string), "You healed %s for $%d.", GetPlayerNameEx(giveplayerid),price);
-				SendClientMessageEx(playerid, COLOR_PINK, string);
-				GivePlayerCash(playerid, price / 2);
-				Tax += price / 2;
-				GivePlayerCash(giveplayerid, -price);
-				SetPlayerHealth(giveplayerid, 100);
-				PlayerPlaySound(playerid, 1150, 0.0, 0.0, 0.0);
-				PlayerPlaySound(giveplayerid, 1150, 0.0, 0.0, 0.0);
-				format(string, sizeof(string), "You have been healed to 100 health for $%d by %s.",price, GetPlayerNameEx(playerid));
-				SendClientMessageEx(giveplayerid, TEAM_GREEN_COLOR,string);
-				if(GetPVarType(giveplayerid, "STD"))
-				{
-					DeletePVar(giveplayerid, "STD");
-					SendClientMessageEx(giveplayerid, COLOR_LIGHTBLUE, "* You are no longer infected with a STD because of the medic's help.");
-				}
-			}
-			else
-			{
-				SendServerMessage(playerid, " Both you and the patient must be in an ambulance.");
-				return 1;
-			}
-		}
-		else
-		{
-			SendErrorMessage(playerid, "Ban khong the su dung lenh nay");
-			return 1;
-		}
-	}
-	else
-	{
-		SendErrorMessage(playerid, "Nguoi choi khong hop le");
-	}
-	return 1;
-}
+// 				if(!IsPlayerInRangeOfPoint(playerid, 10, X, Y, Z)) return SendClientMessageEx(playerid, TEAM_GREEN_COLOR,"You are not near them!");
+// 				new Float:tempheal;
+// 				GetPlayerHealth(giveplayerid,tempheal);
+// 				if(tempheal >= 100.0)
+// 				{
+// 					SendClientMessageEx(playerid, TEAM_GREEN_COLOR,"That person is fully healed.");
+// 					return 1;
+// 				}
+// 				new string[64];
+// 				format(string, sizeof(string), "You healed %s for $%d.", GetPlayerNameEx(giveplayerid),price);
+// 				SendClientMessageEx(playerid, COLOR_PINK, string);
+// 				GivePlayerCash(playerid, price / 2);
+// 				Tax += price / 2;
+// 				GivePlayerCash(giveplayerid, -price);
+// 				SetPlayerHealth(giveplayerid, 100);
+// 				PlayerPlaySound(playerid, 1150, 0.0, 0.0, 0.0);
+// 				PlayerPlaySound(giveplayerid, 1150, 0.0, 0.0, 0.0);
+// 				format(string, sizeof(string), "You have been healed to 100 health for $%d by %s.",price, GetPlayerNameEx(playerid));
+// 				SendClientMessageEx(giveplayerid, TEAM_GREEN_COLOR,string);
+// 				if(GetPVarType(giveplayerid, "STD"))
+// 				{
+// 					DeletePVar(giveplayerid, "STD");
+// 					SendClientMessageEx(giveplayerid, COLOR_LIGHTBLUE, "* You are no longer infected with a STD because of the medic's help.");
+// 				}
+// 			}
+// 			else
+// 			{
+// 				SendServerMessage(playerid, " Both you and the patient must be in an ambulance.");
+// 				return 1;
+// 			}
+// 		}
+// 		else
+// 		{
+// 			SendErrorMessage(playerid, "Ban khong the su dung lenh nay");
+// 			return 1;
+// 		}
+// 	}
+// 	else
+// 	{
+// 		SendErrorMessage(playerid, "Nguoi choi khong hop le");
+// 	}
+// 	return 1;
+// }
 
 CMD:mole(playerid, params[])
 {
@@ -41758,6 +41830,8 @@ CMD:smslog(playerid, params[])
 	else return SendClientMessageEx(playerid, COLOR_YELLOW, "    Ban khong co tin nhan SMS nao!");
 	return 1;
 }
+
+
 /*
 CMD:chetao(playerid, params[])
 {
@@ -46059,18 +46133,18 @@ CMD:chetaomedkit(playerid, params[]) {
 						{
 							if(PlayerInfo[playerid][pTimeCraft] == 0)
 							{
-								if(Inventory_HasItem(playerid, "Duoc lieu", 30))
+								if(Inventory_HasItem(playerid, "Thao Duoc", 20))
 								{
 									new format_job[1280];
 									format(format_job, sizeof(format_job), "[SERVER] {ffffff}Ban da che tao thanh cong {6e69ff}1 {5c5c5c}Medkit{ffffff}.");
 									SendClientMessage(playerid, COLOR_LIGHTRED, format_job);
-									new pItemId = Inventory_GetItemID(playerid, "Duoc lieu", 30);
-									Inventory_Remove(playerid, pItemId, 30);
+									new pItemId = Inventory_GetItemID(playerid, "Thao Duoc", 20);
+									Inventory_Remove(playerid, pItemId, 20);
 									Inventory_Add(playerid, "Medkit", 1);
 									PlayerInfo[playerid][pTimeCraft] = 10;
 									SetTimerEx("TimeCraftMed", 60000, 0, "d", playerid);
 								}
-								else return SendErrorMessage(playerid, " Ban khong co du 30 duoc lieu de che tao.");
+								else return SendErrorMessage(playerid, " Ban khong co du 20 Thao Duoc de che tao.");
 							}
 							else return SendErrorMessage(playerid, " Ban vua che medkit trong vong 10 phut tro lai roi, vui long doi.");
 						}
@@ -47534,7 +47608,6 @@ CMD:buyfood(playerid, params[])
     new iBusiness = InBusiness(playerid);
 
    	if(iBusiness == INVALID_BUSINESS_ID || (Businesses[iBusiness][bType] != BUSINESS_TYPE_BAR && Businesses[iBusiness][bType] != BUSINESS_TYPE_CLUB && Businesses[iBusiness][bType] != BUSINESS_TYPE_RESTAURANT)) return SendErrorMessage(playerid, "    You are not in a bar, club or restaurant!");
-	else if(Businesses[iBusiness][bInventory] < 1) return SendErrorMessage(playerid, "    Cua hang khong du hang ton kho!");
 
 	new szDialog[512], pvar[25], line;
 

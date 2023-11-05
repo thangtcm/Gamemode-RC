@@ -1247,7 +1247,7 @@ PayDay(i) {
 			PlayerInfo[i][pAccount] += interest;
 			format(string, sizeof(string), "  Lai thu duoc tu ngan hang: $%s", number_format(interest));
 			printf("PAYCHECK %d", PlayerInfo[i][pPayCheck]);
-			new priceClaim = random(360);
+			new priceClaim = 300 + random(60);
 			format(string, sizeof(string), "  Luong thu duoc vao tui tien: $%d", priceClaim);
 			SendClientMessageEx(i, COLOR_WHITE, string);
 			SendClientMessageEx(i, COLOR_WHITE, "______________________________________");
@@ -2712,6 +2712,7 @@ public InitiateGamemode()
 	LoadDynamicMapIcons();
 	LoadMailboxes();
 	LoadBusinesses();
+	LoadInvBiz();
 	LoadAuctions();
 	LoadTxtLabels();
 	LoadPlants();
@@ -10839,7 +10840,7 @@ stock HospitalSpawn(playerid)
 				}
 				SetPlayerHealth(playerid, 50.0);
 				DeletePVar(playerid, "MedicBill");
-				GivePlayerCash(playerid, -25);
+				GivePlayerCash(playerid, -1500);
 				for(new z; z < MAX_GROUPS; z++)
 				{
 					if(arrGroupData[z][g_iAllegiance] == 1)
@@ -10857,7 +10858,7 @@ stock HospitalSpawn(playerid)
 					}
 				}
 				Misc_Save();
-				SendClientMessageEx(playerid, 0xb4b486FF, "[HOSPITAL] Ban ton $25 cho tien vien phi");
+				SendClientMessageEx(playerid, 0xb4b486FF, "[HOSPITAL] Ban ton $1500 cho tien vien phi");
 				PlayerInfo[playerid][pVW] = 0;
 				SetPlayerPos(playerid, 1245.2665,334.1407,19.5547);
 				Streamer_UpdateEx(playerid, 1245.2665,334.1407,19.5547);
@@ -13336,17 +13337,15 @@ stock Group_NumToDialogHex(iValue)
 
 stock GivePlayerStoreItem(playerid, type, business, item, price)
 {
-	printf("RUNN %d", item);
 	new string[256];
 	if(Businesses[business][bInventory] >= StoreItemCost[item][ItemValue]) Businesses[business][bInventory] -= StoreItemCost[item][ItemValue];
 	else return SendClientMessageEx(playerid, COLOR_GRAD2, "Cua hang khong co du cho item do");
-	printf("RUNN 22%d", item);
 	switch (item)
   	{
   		case ITEM_CELLPHONE:
 		{
 			if(!Inventory_HasItem(playerid, "Dien thoai")) {
-				if(!Inventory_Add(playerid, "Dien thoai")) return 1;
+				if(!Inventory_Add(playerid, "Dien thoai", .timer = 60*24*30)) return 1;
 				new randphone = 99999 + random(900000);
 				new query[128];
 				SetPVarInt(playerid, "WantedPh", randphone);
@@ -13370,10 +13369,14 @@ stock GivePlayerStoreItem(playerid, type, business, item, price)
   		case ITEM_MASK:
 		{
 			if(!Inventory_HasItem(playerid, "Mat na")) {
-				if(!Inventory_Add(playerid, "Mat na", .timer = 60*24*7)) return 1;
+				if(!Inventory_Add(playerid, "Mat na", .timer = 60*24*6)) return 1;
 				SendClientMessageEx(playerid, COLOR_WHITE, "Ban da mua Mat na (Do ben: 1 tuan) thanh cong, su dung /inv > Mat na");
 			}
 			else return SendClientMessageEx(playerid, COLOR_WHITE, "Ban da so huu Mat na");
+		}
+		case ITEM_BASEBALL:{
+			GivePlayerValidWeapon(playerid,5,2);
+			SendClientMessageEx(playerid, COLOR_WHITE, "Ban da mua gay bong chay");
 		}
 		case ITEM_CONDOM:
 		{
@@ -13431,7 +13434,7 @@ stock GivePlayerStoreItem(playerid, type, business, item, price)
   		case ITEM_RADIO:
 		{
 			if(!Inventory_HasItem(playerid, "Radio")) {
-				if(!Inventory_Add(playerid, "Radio")) return 1;
+				if(!Inventory_Add(playerid, "Radio", .timer = 60*24*15)) return 1;
 				PlayerInfo[playerid][pRadioFreq] = 0;
 				SendClientMessageEx(playerid, COLOR_GRAD4, "Ban da mua radio lien lac.");
 				SendClientMessageEx(playerid, COLOR_WHITE, "HUONG DAN: Su dung /pr de lien lac voi nhung nguoi trong cung tan so.");

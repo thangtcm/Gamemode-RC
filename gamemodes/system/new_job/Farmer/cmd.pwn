@@ -172,7 +172,7 @@ CMD:farmer(playerid, params[])
 
 	if(IsPlayerInRangeOfPoint(playerid, 5.0, x, y, z))
 	{
-		Dialog_Show(playerid, FARMER_MENU, DIALOG_STYLE_LIST, "Cong viec", "Thay dong phuc\nTra dong phuc\nMua cay giong\nMua gia suc\nBan hang", "Chon", "Huy");
+		Dialog_Show(playerid, FARMER_MENU, DIALOG_STYLE_LIST, "Cong viec", "Thay dong phuc\nTra dong phuc\nMua cay giong\nMua gia suc\nBan hang\nDoi Bot Mi", "Chon", "Huy");
 	}
 	else SendErrorMessage(playerid, "Ban khong o gan nguoi quan ly nong trai");
 	return 1;
@@ -211,10 +211,30 @@ public OnPasswordHashedEx(playerid)
 	return 1;
 }
 
-CMD:checkhashpass(playerid, params[])
+// CMD:checkhashpass(playerid, params[])
+// {
+// new 	str[50];
+// 	if(sscanf(params, "s[128]", str))	return 1;
+// 	bcrypt_hash(str, BCRYPT_COST, "OnPasswordHashedEx", "i", playerid);
+// 	return 1;
+// }
+
+CMD:feed(playerid, params[])
 {
-new 	str[50];
-	if(sscanf(params, "s[128]", str))	return 1;
-	bcrypt_hash(str, BCRYPT_COST, "OnPasswordHashedEx", "i", playerid);
+	new cattleId;
+	if(sscanf(params, "i", cattleId)) return SendUsageMessage(playerid, "/feed [ Cattle ID ]");
+	if(!IsPlayerInRangeOfPoint(playerid, 3.0, 
+            RaiseCattleInfo[playerid][cattleId][c_Pos][0], 
+            RaiseCattleInfo[playerid][cattleId][c_Pos][1], 
+            RaiseCattleInfo[playerid][cattleId][c_Pos][2])) return SendErrorMessage(playerid, "Ban khong dung gan gia suc nao.");
+	printf("%d %d %d", RaiseCattleInfo[playerid][cattleId][OwnerPlayerId], GetPlayerSQLId(playerid), RaiseCattleInfo[playerid][cattleId][Exsits]);
+	if(RaiseCattleInfo[playerid][cattleId][Exsits])
+	{
+		SetPVarInt(playerid, #Cattle_Nearing, cattleId);
+		Dialog_Show(playerid, FARM_MENU_FEED, DIALOG_STYLE_LIST, "Thao tac gia suc", "Cho an\nCho uong\nLay Thit", ">>", "<<");
+	}
+	else {
+		SendFarmerJob(playerid, "Gia suc nay khong phai cua ban!");
+	}
 	return 1;
 }

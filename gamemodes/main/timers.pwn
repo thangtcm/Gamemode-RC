@@ -601,6 +601,7 @@ task MoneyUpdate[1000]()
 				PlayerTextDrawHide(i, SpeedoTD[i][7]);
 			}
 			PlantTree_Timer(i);
+			Cattle_Timer(i);
 			// if(Inventory_HasItem(i, "Radio"))
     	    // {
 			// 	UpdateRadio(i);

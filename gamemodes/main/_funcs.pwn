@@ -8188,6 +8188,7 @@ public OnPlayerTakeDamage(playerid, issuerid, Float:amount, weaponid)
 	{
 		SetPVarInt(playerid, "commitSuicide", 0);
 	}
+	SetPVarInt(playerid, "TakeDamageFood", gettime() + 60*5);
 	if(issuerid != INVALID_PLAYER_ID)
 	{
 	    ShotPlayer[issuerid][playerid] = gettime();
@@ -16322,9 +16323,6 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 			if (!iPrice) {
 			    SendClientMessageEx(playerid, COLOR_GRAD4, "Item nay khong duoc ban.");
 			}
-		 	else if (Businesses[iBusiness][bInventory] < 1) {
-	   	 		SendClientMessageEx(playerid, COLOR_GRAD2, "Cua hang khong con do de ban!");
-			}
 			else if (iPrice != Businesses[iBusiness][bItemPrices][iItem]) {
 			    SendClientMessageEx(playerid, COLOR_GRAD4, "Mua khong thanh cong vi gia mat hang nay da thay doi.");
 			}
@@ -16332,28 +16330,35 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 				SendClientMessageEx(playerid, COLOR_GRAD4, "Ban khong the mua item nay!");
 			}
 			else {
-		        format(pvar, sizeof(pvar), "Business_MenuItem%d", listitem);
-    			Businesses[iBusiness][bInventory]--;
-				Businesses[iBusiness][bTotalSales]++;
-				Businesses[iBusiness][bSafeBalance] += TaxSale(cost);
-				Businesses[iBusiness][bSafeBalance] -= floatround(cost * BIZ_PENALTY);
-				GivePlayerCash(playerid, -cost);
-				printf("mat hang %s co gia la %d",RestaurantItems[iItem],cost);
-				if (PlayerInfo[playerid][pBusiness] != InBusiness(playerid)) Businesses[iBusiness][bLevelProgress]++;
-				SaveBusiness(iBusiness);
-				PlayerPlaySound(playerid, 1052, 0.0, 0.0, 0.0);
-				if (PlayerInfo[playerid][pDonateRank] >= 1)
+				if(InvBusiness_Recipes(iBusiness, RestaurantItems[iItem]))
 				{
-					format(string,sizeof(string),"VIP: Ban duoc giam gia 20 phan tram khi mua hang. Thay vi phai tra $%s, Ban tra $%s.", number_format(Businesses[iBusiness][bItemPrices][listitem]), number_format(cost));
-					SendClientMessageEx(playerid, COLOR_YELLOW, string);
-				}
-				format(string,sizeof(string),"%s (IP: %s) da mua mot %s tai %s (%d) voi gia $%d.",GetPlayerNameEx(playerid),GetPlayerIpEx(playerid),RestaurantItems[iItem], Businesses[iBusiness][bName], iBusiness, cost);
-				Log("logs/business.log", string);
-				format(string,sizeof(string),"* Ban da mua mot %s tai %s voi gia $%d.",RestaurantItems[iItem],Businesses[iBusiness][bName], cost);
-				SendClientMessage(playerid, COLOR_YELLOW, string);
-				Inventory_Add(playerid, RestaurantItems[iItem], .timer = 60*24*2);
-				printf("%s\n%i", RestaurantItems[iItem], iItem);
+					format(pvar, sizeof(pvar), "Business_MenuItem%d", listitem);
+					Businesses[iBusiness][bInventory]--;
+					Businesses[iBusiness][bTotalSales]++;
+					Businesses[iBusiness][bSafeBalance] += TaxSale(cost);
+					Businesses[iBusiness][bSafeBalance] -= floatround(cost * BIZ_PENALTY);
+					GivePlayerCash(playerid, -cost);
+					printf("mat hang %s co gia la %d",RestaurantItems[iItem],cost);
+					if (PlayerInfo[playerid][pBusiness] != InBusiness(playerid)) Businesses[iBusiness][bLevelProgress]++;
+					SaveBusiness(iBusiness);
+					PlayerPlaySound(playerid, 1052, 0.0, 0.0, 0.0);
+					if (PlayerInfo[playerid][pDonateRank] >= 1)
+					{
+						format(string,sizeof(string),"VIP: Ban duoc giam gia 20 phan tram khi mua hang. Thay vi phai tra $%s, Ban tra $%s.", number_format(Businesses[iBusiness][bItemPrices][listitem]), number_format(cost));
+						SendClientMessageEx(playerid, COLOR_YELLOW, string);
+					}
+					format(string,sizeof(string),"%s (IP: %s) da mua mot %s tai %s (%d) voi gia $%d.",GetPlayerNameEx(playerid),GetPlayerIpEx(playerid),RestaurantItems[iItem], Businesses[iBusiness][bName], iBusiness, cost);
+					Log("logs/business.log", string);
+					format(string,sizeof(string),"* Ban da mua mot %s tai %s voi gia $%d.",RestaurantItems[iItem],Businesses[iBusiness][bName], cost);
+					SendClientMessage(playerid, COLOR_YELLOW, string);
+					Inventory_Add(playerid, RestaurantItems[iItem], .timer = 60*24*2);
+					printf("%s\n%i", RestaurantItems[iItem], iItem);
 
+				}else
+				{
+					SendErrorMessage(playerid, "Cua hang khong con nguyen lieu che bien de ban!");
+				}
+		        
 				// if (strcmp("Hambuger", RestaurantItems[iItem]) == 0) // full meal
 				// {
 				//     AddItemInventory(playerid,21,1);

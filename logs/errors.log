@@ -14,3 +14,35 @@
 [10/28/23 19:51:25] [plugins/discord-connector] can't update guild member presence: user id "1045033559422935040" not cached
 [10/28/23 19:51:36] [plugins/discord-connector] can't update guild member presence: user id "1045033559422935040" not cached
 [10/28/23 19:53:36] [plugins/discord-connector] can't update guild member presence: user id "1045033559422935040" not cached
+[10/31/23 14:57:25] [plugins/discord-connector] can't update guild member presence: user id "1128306366524686379" not cached
+[10/31/23 14:59:29] [plugins/discord-connector] can't update guild member presence: user id "1128306366524686379" not cached
+[10/31/23 15:00:32] [plugins/discord-connector] can't update guild member presence: user id "1128306366524686379" not cached
+[10/31/23 15:01:29] [plugins/discord-connector] can't update guild member presence: user id "1128306366524686379" not cached
+[10/31/23 15:01:33] [plugins/discord-connector] can't update guild member presence: user id "1128306366524686379" not cached
+[10/31/23 15:01:49] [plugins/discord-connector] can't update guild member presence: user id "1128306366524686379" not cached
+[10/31/23 15:02:31] [plugins/discord-connector] can't update guild member presence: user id "1128306366524686379" not cached
+[10/31/23 15:02:41] [plugins/discord-connector] can't update guild member presence: user id "1128306366524686379" not cached
+[10/31/23 15:02:59] [plugins/discord-connector] can't update guild member presence: user id "1128306366524686379" not cached
+[10/31/23 15:04:38] [plugins/discord-connector] can't update guild member presence: user id "1128306366524686379" not cached
+[10/31/23 15:04:57] [plugins/discord-connector] can't update guild member presence: user id "1128306366524686379" not cached
+[10/31/23 15:05:18] [plugins/discord-connector] can't update guild member presence: user id "1128306366524686379" not cached
+[10/31/23 15:06:31] [plugins/discord-connector] can't update guild member presence: user id "1128306366524686379" not cached
+[10/31/23 15:07:47] [plugins/discord-connector] can't update guild member presence: user id "1128306366524686379" not cached
+[11/01/23 00:45:17] [plugins/discord-connector] can't update guild member presence: user id "1128306366524686379" not cached
+[11/01/23 00:46:11] [plugins/discord-connector] can't update guild member presence: user id "1128306366524686379" not cached
+[11/01/23 12:36:25] [plugins/discord-connector] can't update guild member presence: user id "1128306366524686379" not cached
+[11/01/23 12:36:40] [plugins/discord-connector] can't update guild member presence: user id "1128306366524686379" not cached
+[11/01/23 12:36:54] [plugins/discord-connector] can't update guild member presence: user id "1128306366524686379" not cached
+[11/01/23 12:36:57] [plugins/discord-connector] can't update guild member presence: user id "1128306366524686379" not cached
+[11/01/23 12:37:57] [plugins/discord-connector] can't update guild member presence: user id "1128306366524686379" not cached
+[11/01/23 12:41:15] [plugins/discord-connector] can't update guild member presence: user id "1128306366524686379" not cached
+[11/01/23 12:41:15] [plugins/discord-connector] can't update guild member: user id "1128306366524686379" not cached
+[11/01/23 12:42:21] [plugins/discord-connector] can't update guild member presence: user id "1128306366524686379" not cached
+[11/01/23 12:42:21] [plugins/discord-connector] can't update guild member: user id "1128306366524686379" not cached
+[11/01/23 12:44:13] [plugins/discord-connector] can't update guild member presence: user id "1128306366524686379" not cached
+[11/01/23 12:46:16] [plugins/discord-connector] can't update guild member presence: user id "1128306366524686379" not cached
+[11/02/23 13:43:10] [plugins/discord-connector] Can't read from Discord websocket gateway: The semaphore timeout period has expired (121)
+[11/02/23 13:43:10] [plugins/discord-connector] Can't write to Discord websocket gateway: The I/O operation has been aborted because of either a thread exit or an application request (995)
+[11/02/23 14:01:38] [plugins/discord-connector] can't update guild member presence: user id "1128306366524686379" not cached
+[11/02/23 14:01:56] [plugins/discord-connector] can't update guild member presence: user id "1128306366524686379" not cached
+[11/05/23 09:44:18] [plugins/discord-connector] Error while retrieving HTTP POST response from '/api/v10/channels/1158001303033757716/messages': end of stream

@@ -1,4 +1,12 @@
 #include <YSI_Coding\y_hooks>
+
+new CountPress[MAX_PLAYERS];
+
+hook OnPlayerConnect(playerid)
+{
+	CountPress[playerid] = 0;
+}
+
 hook OnPlayerKeyStateChange(playerid, newkeys, oldkeys)
 {
 	if(IsPlayerInRangeOfPoint(playerid, 2.5, 588.1791,866.1268,-42.4973))
@@ -21,6 +29,21 @@ hook OnPlayerKeyStateChange(playerid, newkeys, oldkeys)
 	{
 		if(PRESSED(KEY_YES))
 		{
+			if(timerdc[playerid] > 1){
+				CountPress[playerid]++;
+				if(CountPress[playerid] >= 5)
+				{
+					if(gettime() > GetPVarInt(playerid, "TimeCountNotyHack"))
+					{
+						new string[128];
+						format(string, sizeof(string), "{AA3333}AdmWarning{FFFF00}: %s (ID: %d) co the dang su dung cleo auto farm .", GetPlayerNameEx(playerid), playerid);
+						ABroadCast(COLOR_YELLOW, string, 2);
+						SendServerMessage(playerid, "Chung toi dang nhan thay ban su dung cleo farm, vui long tat neu khong muon bi hinh phat tu server.");
+						SetPVarInt(playerid, "TimeCountNotyHack", gettime() + 120);
+					}
+					CountPress[playerid] = 0;
+				}
+			}
 			for(new i = 0; i < MAX_ROCKS; i++)
 			{
 				if(RockStatus[i] == 1)
@@ -58,24 +81,24 @@ public ResetPrice()
 	{
 		case 0..50:
 		{
-			RandomMoney[0] = (10+random(10)); // 20
-			RandomMoney[1] = (RandomMoney[0] + 5 +random(20)); // 45
-			RandomMoney[2] = (RandomMoney[1]+random(25));// 70
-			RandomMoney[3] = (RandomMoney[2]+random(200));// => 270
+			RandomMoney[0] = (10+random(30)); // 20
+			RandomMoney[1] = (RandomMoney[0] + 5 +random(50)); // 45
+			RandomMoney[2] = (RandomMoney[1]+random(55));// 70
+			RandomMoney[3] = (RandomMoney[2]+random(250));// => 270
 		}
-		case 51..94:
+		case 51..89:
 		{
-			RandomMoney[0] = (10 * 2+random(10)) ;// 20 +10 => 30
-			RandomMoney[1] = (RandomMoney[0] + random(30)) ; // 30 + 30 => 60
-			RandomMoney[2] = (RandomMoney[1] * 2+random(50)) ; // 120 + 50 => 170
-			RandomMoney[3] = (RandomMoney[2] + random(100)+30); // 170 + 30 + 100 => 300
+			RandomMoney[0] = (20 * 2+random(30)) ;//70
+			RandomMoney[1] = (RandomMoney[0] + random(50)) ; // 120
+			RandomMoney[2] = (RandomMoney[1] * 2+random(50)) ; // 240 + 50 => 290
+			RandomMoney[3] = (RandomMoney[2] + random(100)+110); //  500
 		}
-		case 95..100:
+		case 90..100:
 		{
-			RandomMoney[0] = (30+random(20) * 2); // 30 + 40 => 70
-			RandomMoney[1] = (RandomMoney[0]+random(30) * 2);// 70 + 60 => 130
-			RandomMoney[2] = (RandomMoney[1] * 2 +random(240));// 130* 2 + 200 => 260 + 240 => 500
-			RandomMoney[3] = (RandomMoney[2]+ random(300));// 460 + 300 => 760
+			RandomMoney[0] = (30*2+random(30) * 2); // 60+60 => 120
+			RandomMoney[1] = (RandomMoney[0] + 30 +random(25) * 2);//120 + 80 => 200
+			RandomMoney[2] = (RandomMoney[1] * 2 +random(240));// 440
+			RandomMoney[3] = (RandomMoney[2] + 260 + random(300));// 440 + 260 + 300 => 1k
 			isHight = true;
 		}
 	}
@@ -200,17 +223,17 @@ public StartCountTime(playerid)
 			{
 				switch(random(100))
 				{
-					case 0..60:
+					case 0..50:
 					{
 						format(format_job, sizeof(format_job), "~g~Ban da dao thanh cong va nhan duoc ~y~1 Da~g~.");
 						Inventory_Add(playerid, "Da", 1);
 					}
-					case 61..76:
+					case 51..65:
 					{
 						format(format_job, sizeof(format_job), "~g~Ban da dao thanh cong va nhan duoc ~b~1 Sat~g~.");
 						Inventory_Add(playerid, "Sat", 1);
 					}
-					case 77..92:
+					case 66..92:
 					{
 						format(format_job, sizeof(format_job), "~g~Ban da dao thanh cong va nhan duoc ~b~1 Dong~g~.");
 						Inventory_Add(playerid, "Dong", 1);
@@ -226,22 +249,22 @@ public StartCountTime(playerid)
 			{
 				switch(random(100))
 				{
-					case 0..48:
+					case 0..40:
 					{
 						format(format_job, sizeof(format_job), "~g~Ban da dao thanh cong va nhan duoc ~y~1 Da~g~.");
 						Inventory_Add(playerid, "Da", 1);
 					}
-					case 49..68:
+					case 41..58:
 					{
 						format(format_job, sizeof(format_job), "~g~Ban da dao thanh cong va nhan duoc ~b~1 Sat~g~.");
 						Inventory_Add(playerid, "Sat", 1);
 					}
-					case 69..89:
+					case 59..88:
 					{
 						format(format_job, sizeof(format_job), "~g~Ban da dao thanh cong va nhan duoc ~b~1 Dong~g~.");
 						Inventory_Add(playerid, "Dong", 1);
 					}
-					case 90..100:
+					case 89..100:
 					{
 						format(format_job, sizeof(format_job), "~g~Ban da dao thanh cong va nhan duoc ~r~1 VANG~g~.");
 						Inventory_Add(playerid, "Vang", 1);

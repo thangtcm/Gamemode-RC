@@ -1,4 +1,4 @@
-C:\Users\cuozg7\Desktop\San Andreas Mutilplayer 2023\Gamemode-RCz\pawno\include\YSI_Coding\y_hooks\..\y_cgen\..\..\YSI_Core\y_core\y_thirdpartyinclude.inc(324) : ôàòàëüíàÿ îøèáêà 111: ïîëüçîâàòåëüñêàÿ îøèáêà: Could not include "https://github.com/Zeex/amx_assembly" - ensure its files are in "include\amx_assembly\"
+D:\Gamemode Samp\Gamemode-RC\pawno\include\YSI_Coding\y_hooks\..\y_cgen\..\..\YSI_Core\y_core\y_thirdpartyinclude.inc(324) : ôàòàëüíàÿ îøèáêà 111: ïîëüçîâàòåëüñêàÿ îøèáêà: Could not include "https://github.com/Zeex/amx_assembly" - ensure its files are in "include\amx_assembly\"
 
 
 Êîìïèëÿöèÿ îñòàíîâëåíà.

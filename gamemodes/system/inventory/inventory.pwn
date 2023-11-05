@@ -82,8 +82,6 @@ new const g_aInventoryItems[][e_InventoryItems] =
 	{"Dan tieu lien SAAS", "Ammo3-AS"}, // type 5
 	{"Dan sung truong SAAS", "Ammo4-AS"}, // type 5
 	{"Dan sniper SAAS", "Ammo5-AS"}, // type 5
-	
-	{"Duoc lieu", "item_duoclieu"},
 	{"Medkit", "item_medkit"},  
 	//NameTag
 	{"Mat na", "Mask"},
@@ -96,7 +94,9 @@ new const g_aInventoryItems[][e_InventoryItems] =
 	{"Lua", "rice"},
 	{"Thit", "meat"},
 	{"Giong Bo", "ticket_cow"},
-	{"Giong Nai", "ticket_deer"}
+	{"Giong Nai", "ticket_deer"},
+	{"Bot Mi", "flour"},
+	{"Trai Cay", "fruit"}
 };
 
 hook OnPlayerDisconnect(playerid, reason)
@@ -701,11 +701,19 @@ public OnPlayerUseItem(playerid, pItemId, name[])
 	}
 	else if(!strcmp(name, "Pizza", true))
 	{
+		if(GetPVarInt(playerid, "TakeDamageFood") > gettime())
+			return SendErrorMessage(playerid, "Ban khong the uong trong khi vua bi tan cong.");
 		if(PlayerInfo[playerid][pEat] >= 100) return SendErrorMessage(playerid, "Ban da no roi, khong the an tiep.");
 		PlayerInfo[playerid][pEat] = PlayerInfo[playerid][pEat] + 30 > 100 ? 100 : PlayerInfo[playerid][pEat] + 30;
 		ApplyAnimation(playerid, "FOOD", "EAT_Pizza", 5.0, 0, 1, 1, 1, 2000, 1);
 		PlayerPlaySound(playerid, 32200, 0.0, 0.0, 0.0);
 		Inventory_Remove(playerid, pItemId, 1);
+		new Float:playerHeath;
+		GetPlayerHealth(playerid, playerHeath);
+		if(playerHeath + 5.0 > 100.0)
+			SetPlayerHealth(playerid, 100.0);
+		else
+			SetPlayerHealth(playerid, playerHeath+10.0);
 	}
 	else if(!strcmp(name, "Boombox", true))
 	{
@@ -725,27 +733,51 @@ public OnPlayerUseItem(playerid, pItemId, name[])
 	}
 	else if(!strcmp(name, "Hamburger", true))
 	{
+		if(GetPVarInt(playerid, "TakeDamageFood") > gettime())
+			return SendErrorMessage(playerid, "Ban khong the an trong khi vua bi tan cong.");
 		if(PlayerInfo[playerid][pEat] >= 100) return SendErrorMessage(playerid, "Ban da no roi, khong the an tiep.");
 		PlayerInfo[playerid][pEat] = PlayerInfo[playerid][pEat] + 25 > 100 ? 100 : PlayerInfo[playerid][pEat] + 25;
 		ApplyAnimation(playerid, "FOOD", "EAT_Burger", 5.0, 0, 1, 1, 1, 2000, 1);
 		PlayerPlaySound(playerid, 32201, 0.0, 0.0, 0.0);
 		Inventory_Remove(playerid, pItemId, 1);
+		new Float:playerHeath;
+		GetPlayerHealth(playerid, playerHeath);
+		if(playerHeath + 5.0 > 100.0)
+			SetPlayerHealth(playerid, 100.0);
+		else
+			SetPlayerHealth(playerid, playerHeath+5.0);
 	}
 	else if(!strcmp(name, "Bread", true))
 	{
+		if(GetPVarInt(playerid, "TakeDamageFood") > gettime())
+			return SendErrorMessage(playerid, "Ban khong the an trong khi vua bi tan cong.");
 		if(PlayerInfo[playerid][pEat] >= 100) return SendErrorMessage(playerid, "Ban da no roi, khong the an tiep.");
 		PlayerInfo[playerid][pEat] = PlayerInfo[playerid][pEat] + 20 > 100 ? 100 : PlayerInfo[playerid][pEat] + 20;
 		ApplyAnimation(playerid, "FOOD", "EAT_Chicken", 5.0, 0, 1, 1, 1, 2000, 1);
 		PlayerPlaySound(playerid, 32200, 0.0, 0.0, 0.0);
 		Inventory_Remove(playerid, pItemId, 1);
+		new Float:playerHeath;
+		GetPlayerHealth(playerid, playerHeath);
+		if(playerHeath + 5.0 > 100.0)
+			SetPlayerHealth(playerid, 100.0);
+		else
+			SetPlayerHealth(playerid, playerHeath+5.0);
 	}
 	else if(!strcmp(name, "Juice", true))
 	{
+		if(GetPVarInt(playerid, "TakeDamageFood") > gettime())
+			return SendErrorMessage(playerid, "Ban khong the uong trong khi vua bi tan cong.");
 		if(PlayerInfo[playerid][pDrink] >= 100) return SendErrorMessage(playerid, "Ban da no roi, khong the uong tiep.");
 		PlayerInfo[playerid][pDrink] = PlayerInfo[playerid][pDrink] + 25 > 100 ? 100 : PlayerInfo[playerid][pDrink] + 25;
 		ApplyAnimation(playerid, "GANGS", "drnkbr_prtl", 2.67, 0, 1, 1, 1, 2000, 1);
 		PlayerPlaySound(playerid, 42600, 0.0, 0.0, 0.0);
 		Inventory_Remove(playerid, pItemId, 1);
+		new Float:playerHeath;
+		GetPlayerHealth(playerid, playerHeath);
+		if(playerHeath + 5.0 > 100.0)
+			SetPlayerHealth(playerid, 100.0);
+		else
+			SetPlayerHealth(playerid, playerHeath+5.0);
 	}
 	else if(!strcmp(name, "Beer", true))
 	{
@@ -783,7 +815,7 @@ public OnPlayerUseItem(playerid, pItemId, name[])
 				ProxDetector(30.0, playerid, str, COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE);
 				PlayerInfo[playerid][pMaskOn] = 1;
 				if(IsPlayerAttachedObjectSlotUsed(playerid, PIZZA_INDEX)) RemovePlayerAttachedObject(playerid, PIZZA_INDEX);
-				SetPlayerAttachedObject(playerid, PIZZA_INDEX, 19036,2, 0.093999, 0.026000, -0.004999, 93.800018, 82.199951, -3.300001, 1.098000, 1.139999, 1.173000);
+				SetPlayerAttachedObject(playerid, PIZZA_INDEX, 18912, 2, 0.078534, 0.041857, -0.001727, 268.970458, 1.533374, 269.223754);
 				GetPlayerName(playerid, szName, sizeof(szName));
 				SetPVarString(playerid, "TempNameName", szName);
 				format(szName, sizeof(szName), "Mask_%d%d", PlayerInfo[playerid][pMaskID][0], playerid);
@@ -1045,6 +1077,14 @@ public OnPlayerUseItem(playerid, pItemId, name[])
 	else if(!strcmp(name, "Hat Giong Duoc Lieu", true))
 	{
 		PlantTree_Add(playerid, 1);
+	}
+	else if(!strcmp(name, "Giong Bo", true))
+	{
+		Cattle_AddDefault(playerid, 0);
+	}
+	else if(!strcmp(name, "Giong Nai", true))
+	{
+		Cattle_AddDefault(playerid, 1);
 	}
 	return 1;
 }
