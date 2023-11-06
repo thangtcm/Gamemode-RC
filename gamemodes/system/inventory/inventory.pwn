@@ -1027,14 +1027,14 @@ public OnPlayerUseItem(playerid, pItemId, name[])
 	{
 		new weapon_g,ammos_g;
 		GetPlayerWeaponData(playerid, 4, weapon_g, ammos_g);
-        if(weapon_g != 29 ) return SendClientMessage(playerid,-1,"Ban khong so huu vu khi 'Sung tieu lien' tren nguoi.");
+        if(weapon_g != 29 && weapon_g != 32 && weapon_g != 28  ) return SendClientMessage(playerid,-1,"Ban khong so huu vu khi 'Sung tieu lien' tren nguoi.");
         Dialog_Show(playerid, DIALOG_USEAMMO3, DIALOG_STYLE_INPUT, "Trang bi - Dan tieu lien", "Ban muon nap bao nhieu vien dan ?", "Xac nhan", "Huy bo");
 	}
 	else if(!strcmp(name, "Dan tieu lien SAAS", true))
 	{
 		new weapon_g,ammos_g;
 		GetPlayerWeaponData(playerid, 4, weapon_g, ammos_g);
-        if(weapon_g != 29 ) return SendClientMessage(playerid,-1,"Ban khong so huu vu khi 'Sung tieu lien' tren nguoi.");
+        if(weapon_g != 29 && weapon_g != 32 && weapon_g != 28  ) return SendClientMessage(playerid,-1,"Ban khong so huu vu khi 'Sung tieu lien' tren nguoi.");
         Dialog_Show(playerid, DIALOG_USEAMMO3AS, DIALOG_STYLE_INPUT, "Trang bi - Dan tieu lien", "Ban muon nap bao nhieu vien dan ?", "Xac nhan", "Huy bo");
 	}
 	else if(!strcmp(name, "Dan sung truong", true))

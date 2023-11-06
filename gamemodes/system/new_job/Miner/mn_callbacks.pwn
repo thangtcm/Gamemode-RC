@@ -173,10 +173,10 @@ public StartCountTime(playerid)
 			timerdc[playerid]--;
 			new format_job[1280];
 			if(DownCountJobTime[playerid] >= gettime()) {
-			    format(format_job, sizeof(format_job), "Ban dang dao da, vui long doi~p~ %d~w~ de dao xong.", timerdc[playerid]);
+				format(format_job, sizeof(format_job), "Ban dang dao da, vui long doi~p~ %d~w~ de dao xong (~r~-10 giay~w~).", timerdc[playerid]);
 		    }
 		    else {
-		    	format(format_job, sizeof(format_job), "Ban dang dao da, vui long doi~p~ %d~w~ de dao xong (~r~-10 giay~w~).", timerdc[playerid]);
+		    	format(format_job, sizeof(format_job), "Ban dang dao da, vui long doi~p~ %d~w~ de dao xong.", timerdc[playerid]);
 		    }
 			
 			SendClientTextDraw(playerid, format_job);
