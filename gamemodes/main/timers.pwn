@@ -3,7 +3,7 @@
 
 stock BatGPS(playerid)
 {
-	if(PlayerInfo[playerid][pGPS] > 0)
+	if(Inventory_HasItem(playerid, "GPS"))
 	{
 		new string[128];
 		if(GetPVarInt(playerid, "gpsonoff") == 0)
@@ -601,6 +601,7 @@ task MoneyUpdate[1000]()
 				PlayerTextDrawHide(i, SpeedoTD[i][7]);
 			}
 			PlantTree_Timer(i);
+			Cattle_Timer(i);
 			// if(Inventory_HasItem(i, "Radio"))
     	    // {
 			// 	UpdateRadio(i);

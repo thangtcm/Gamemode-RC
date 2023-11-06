@@ -121,10 +121,13 @@ Dialog:DIALOG_BUYPRODUCT(playerid, response, listitem, inputtext[])
         new factoryID = GetPVarInt(playerid, "BUY_FactoryID"), index = PlayerTruckerData[playerid][MissionBuy][listitem], 
             money, str[256], productID;
         money = FactoryData[factoryID][ProductPrice][index];
+
         if(GetPlayerCash(playerid) < money) return SendErrorMessage(playerid, "Ban khong du tien de mua thung hang nay.");
         if(FactoryData[factoryID][WareHouse][index] <= 0) return SendErrorMessage(playerid, "Nha may nay khong du so luong san pham de ban cho ban.");
         
         productID = FactoryData[factoryID][ProductName][index];
+        new unit = ProductData[productID][ProductUnitID];
+        if(!CheckProductCar(GetCarTruckID(PlayerVehicleInfo[playerid][PlayerInfo[playerid][pRegisterCarTruck]][pvId]), unit)) return SendErrorMessage(playerid, "Xe dang ky van chuyen cua ban khong the mua mat hang nay.");
         
         if(GetPVarInt(playerid, "MissionTruck") == 1)  {
             MissionProduct_Update(playerid, productID);
@@ -181,11 +184,21 @@ Dialog:DIALOG_SELLPRODUCT(playerid, response, listitem, inputtext[])
             FactoryData[factoryID][ImportWareHouse][index] += FactoryData[factoryID][ProductImport][index];
             if(FactoryData[factoryID][ImportWareHouse][index] > FactoryData[factoryID][ImportMaxWareHouse][index])
                 FactoryData[factoryID][ImportWareHouse][index] = FactoryData[factoryID][ImportMaxWareHouse][index];
-            new moneyzxc[30];
+            new rand = random(100);
+            if(rand <= ProductData[pLoadProduct[playerid]][Percen] && ProductData[pLoadProduct[playerid]][Percen] != 0)
+            {
+                if(!Inventory_Add(playerid, ProductData[pLoadProduct[playerid]][ItemReceived])){
+                    SendErrorMessage(playerid, "Ban nhan vat pham that bai, hay lien he doi ngu ho tro neu muon duoc phuc hoi san pham.");
+                    format(str, 30, "%d$", FactoryData[factoryID][ProductImportPrice][index]);
+                    SendLogToDiscordRoom("LOG BÁN THÙNG HÀNG", "1157969051264503838", "Name", GetPlayerNameEx(playerid), "Nhận vật phẩm thất bại", ProductData[pLoadProduct[playerid]][ProductName], "Giá tiền", str, 0x229926);
+                }
+                format(str, sizeof(str), "Ban duoc thuong them vat pham %s tu ong chu vi hoan thanh tot cong viec.", ProductData[pLoadProduct[playerid]][ItemReceived]);
+                SendClientMessageEx(playerid, COLOR_1YELLOW, str);
+            }
             format(str, sizeof(str), "Ban da ban san pham %s thanh cong.", ProductData[pLoadProduct[playerid]][ProductName]);
-            format(moneyzxc, 30, "%d$", FactoryData[factoryID][ProductImportPrice][index]);
-            SendLogToDiscordRoom("LOG BÁN THÙNG HÀNG", "1157969051264503838", "Name", GetPlayerNameEx(playerid), "Đã bán", ProductData[pLoadProduct[playerid]][ProductName], "Giá tiền", moneyzxc, 0x229926);
             SendClientMessageEx(playerid, COLOR_1YELLOW, str);
+            format(str, 30, "%d$", FactoryData[factoryID][ProductImportPrice][index]);
+            SendLogToDiscordRoom("LOG BÁN THÙNG HÀNG", "1157969051264503838", "Name", GetPlayerNameEx(playerid), "Đã bán", ProductData[pLoadProduct[playerid]][ProductName], "Giá tiền", str, 0x229926);
         }
         else
         {

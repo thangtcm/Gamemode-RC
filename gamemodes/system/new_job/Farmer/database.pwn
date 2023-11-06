@@ -219,16 +219,17 @@ stock CATTLE_LOAD(playerid)
 {
 	printf("[LOAD CATTLE] Loading data from database...");
     new str[128];
+	for(new i = 0; i < MAX_CATTLES; i++)
+    {
+        RaiseCattleInfo[playerid][i][Exsits] = false;
+    }
+	LoadPutCattle(playerid);
     format(str, sizeof(str), "SELECT c.* FROM farmcattle c WHERE c.OwnerPlayerId = %d", GetPlayerSQLId(playerid));
 	mysql_function_query(MainPipeline, str, true, "OnLoadCattles", "i", playerid);
 }
 
 public OnLoadCattles(playerid)
 {
-    for(new i = 0; i < MAX_CATTLES; i++)
-    {
-        RaiseCattleInfo[playerid][i][Exsits] = false;
-    }
 	new i, rows, fields, tmp[128];
 	cache_get_data(rows, fields, MainPipeline);
 
@@ -237,11 +238,17 @@ public OnLoadCattles(playerid)
 		cache_get_field_content(i, "Id", tmp, MainPipeline); RaiseCattleInfo[playerid][i][Id] = strval(tmp);
 		cache_get_field_content(i, "cattleStatus", tmp, MainPipeline); RaiseCattleInfo[playerid][i][c_Status] = strval(tmp);
 		cache_get_field_content(i, "cattleTimer", tmp, MainPipeline); RaiseCattleInfo[playerid][i][c_Timer] = strval(tmp);
-		cache_get_field_content(i, "cattleAnimal", tmp, MainPipeline); RaiseCattleInfo[playerid][i][c_Animal] = strval(tmp);
+		cache_get_field_content(i, "cattleModel", tmp, MainPipeline); RaiseCattleInfo[playerid][i][c_Model] = strval(tmp);
 		cache_get_field_content(i, "cattlePos0", tmp, MainPipeline); RaiseCattleInfo[playerid][i][c_Pos][0] = floatstr(tmp);
 		cache_get_field_content(i, "cattlePos1", tmp, MainPipeline); RaiseCattleInfo[playerid][i][c_Pos][1] = floatstr(tmp);
 		cache_get_field_content(i, "cattlePos2", tmp, MainPipeline); RaiseCattleInfo[playerid][i][c_Pos][2] = floatstr(tmp);
+		cache_get_field_content(i, "spawnPos", tmp, MainPipeline); RaiseCattleInfo[playerid][i][c_SpawnPos] = strval(tmp);
+		cache_get_field_content(i, "cattleRotZ", tmp, MainPipeline); RaiseCattleInfo[playerid][i][c_Pos][3] = floatstr(tmp);
+		cache_get_field_content(i, "cattleName", RaiseCattleInfo[playerid][i][c_Name], MainPipeline, 32);
 		cache_get_field_content(i, "weight", tmp, MainPipeline); RaiseCattleInfo[playerid][i][c_Weight] = strval(tmp);
+		RaiseCattleInfo[playerid][i][Exsits] = true;
+		CattlePosData[playerid][RaiseCattleInfo[playerid][i][c_SpawnPos]][Exsits] = true;
+		Cattle_Reload(playerid, i);
   		i++;
  	}
 	if(i > 0) printf("[LOAD CATTLE] %d du lieu dong vat da duoc tai.", i);
@@ -254,23 +261,29 @@ stock CATTLE_UPDATE(playerid, index)
 	format(string, sizeof(string), "UPDATE `farmcattle` SET \
 		`cattleStatus`=%d, \
 		`OwnerPlayerId`=%d, \
+		`cattleName`= '%s', \
 		`cattleTimer`=%d, \
-		`cattleAnimal`=%d, \
+		`cattleModel`=%d, \
 		`cattlePos0`=%f,\
 		`cattlePos1`=%f,\
 		`cattlePos2`=%f,\
-		`weight`=%f,\
-         WHERE `Id`=%d",
-		RaiseCattleInfo[playerid][index][plantLevel],
+		`cattleRotZ`=%f,\
+		`spawnPos`=%d,\
+		`weight`=%d WHERE `Id`=%d",
+		RaiseCattleInfo[playerid][index][c_Status],
         GetPlayerSQLId(playerid),
-		RaiseCattleInfo[playerid][index][plantTimer],
-		RaiseCattleInfo[playerid][index][c_Animal],
-		RaiseCattleInfo[playerid][index][plantPos][0],
-		RaiseCattleInfo[playerid][index][plantPos][1],
-		RaiseCattleInfo[playerid][index][plantPos][2],
+		g_mysql_ReturnEscaped(RaiseCattleInfo[playerid][index][c_Name], MainPipeline),
+		RaiseCattleInfo[playerid][index][c_Timer],
+		RaiseCattleInfo[playerid][index][c_Model],
+		RaiseCattleInfo[playerid][index][c_Pos][0],
+		RaiseCattleInfo[playerid][index][c_Pos][1],
+		RaiseCattleInfo[playerid][index][c_Pos][2],
+		RaiseCattleInfo[playerid][index][c_Pos][3],
+		RaiseCattleInfo[playerid][index][c_SpawnPos],
 		RaiseCattleInfo[playerid][index][c_Weight],
 		RaiseCattleInfo[playerid][index][Id]
 	);
+	Cattle_Reload(playerid, index);
 	mysql_function_query(MainPipeline, string, false, "OnQueryFinish", "i", SENDDATA_THREAD);
     return 1;
 }
@@ -281,20 +294,26 @@ stock CATTLE_ADD(playerid, index)
     format(string, sizeof(string), "INSERT INTO `farmcattle` (\
 		`cattleStatus`, \
 		`OwnerPlayerId`, \
+		`cattleName`, \
 		`cattleTimer`, \
-		`cattleAnimal`, \
+		`cattleModel`, \
 		`cattlePos0`, \
 		`cattlePos1`, \
 		`cattlePos2`,\
+		`cattleRotZ`,\
+		`spawnPos`,\
 		`weight`)\
-		VALUES ('%d', '%d', '%d', '%d', '%f', '%f', '%f')", 
-        RaiseCattleInfo[playerid][index][plantLevel],
+		VALUES ('%d', '%d', '%s', '%d', '%d', '%f', '%f', '%f', '%f', '%d', '%d')", 
+        RaiseCattleInfo[playerid][index][c_Status],
         GetPlayerSQLId(playerid),
-		RaiseCattleInfo[playerid][index][plantTimer],
-		RaiseCattleInfo[playerid][index][c_Animal],
-		RaiseCattleInfo[playerid][index][plantPos][0],
-		RaiseCattleInfo[playerid][index][plantPos][1],
-		RaiseCattleInfo[playerid][index][plantPos][2],
+		g_mysql_ReturnEscaped(RaiseCattleInfo[playerid][index][c_Name], MainPipeline),
+		RaiseCattleInfo[playerid][index][c_Timer],
+		RaiseCattleInfo[playerid][index][c_Model],
+		RaiseCattleInfo[playerid][index][c_Pos][0],
+		RaiseCattleInfo[playerid][index][c_Pos][1],
+		RaiseCattleInfo[playerid][index][c_Pos][2],
+		RaiseCattleInfo[playerid][index][c_Pos][3],
+		RaiseCattleInfo[playerid][index][c_SpawnPos],
 		RaiseCattleInfo[playerid][index][c_Weight]
 	);
 	mysql_function_query(MainPipeline, string, false, "OnCreateFarmFinish", "iii", playerid, index, SENDDATA_CATTLE);
@@ -312,6 +331,7 @@ stock CATTLE_DELETE(playerid, index)
 
         RaiseCattleInfo[playerid][index][Exsits] = false;
         RaiseCattleInfo[playerid][index][Id] = 0;
+		Cattle_Remove(playerid, index);
     }
 	return 1;
 }
@@ -335,7 +355,81 @@ public OnCreateFarmFinish(playerid, index, type)
         {
             RaiseCattleInfo[playerid][index][Id] = mysql_insert_id(MainPipeline);
             RaiseCattleInfo[playerid][index][Exsits] = true;
+			CattlePosData[playerid][RaiseCattleInfo[playerid][index][c_SpawnPos]][Exsits] = true;
+			Cattle_Reload(playerid, index);
         }
+		case SENDDATA_ORDERPRODUCT:{
+			OrderFlourInfo[playerid][index][Id] = mysql_insert_id(MainPipeline);
+            OrderFlourInfo[playerid][index][Exsits] = true;
+		}
     }
     return 1;
+}
+
+
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+//~~~~~~~~~~~~~~~~~~~~~~~~~~
+//          ORDER PRODUCT
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+//~~~~~~~~~~~~~~~~~~~~~~~~~~
+stock ORDERPRODUCT_LOAD(playerid)
+{
+	printf("[LOAD ORDER PRODUCT] Loading data from database...");
+    new str[128];
+	LoadPutCattle(playerid);
+    format(str, sizeof(str), "SELECT c.* FROM orderproducts c WHERE c.OwnerPlayerId = %d", GetPlayerSQLId(playerid));
+	mysql_function_query(MainPipeline, str, true, "OnLoadOrderProduct", "i", playerid);
+}
+
+public OnLoadOrderProduct(playerid)
+{
+    for(new i = 0; i < MAX_ORDERPRODUCT; i++)
+    {
+        OrderFlourInfo[playerid][i][Exsits] = false;
+    }
+	new i, rows, fields, tmp[128];
+	cache_get_data(rows, fields, MainPipeline);
+
+	while(i < rows)
+	{
+		cache_get_field_content(i, "Id", tmp, MainPipeline); OrderFlourInfo[playerid][i][Id] = strval(tmp);
+		cache_get_field_content(i, "Timer", tmp, MainPipeline); OrderFlourInfo[playerid][i][OrderTimer] = strval(tmp);
+		cache_get_field_content(i, "Quantity", tmp, MainPipeline); OrderFlourInfo[playerid][i][OrderQuantity] = strval(tmp);
+		cache_get_field_content(i, "productName", OrderFlourInfo[playerid][i][ProductName], MainPipeline, 32);
+		OrderFlourInfo[playerid][i][Exsits] = true;
+  		i++;
+ 	}
+	if(i > 0) printf("[LOAD ORDER PRODUCT] %d du lieu che tao san pham da duoc tai.", i);
+}
+
+stock ORDERPRODUCT_ADD(playerid, index)
+{
+	new string[2048];
+    format(string, sizeof(string), "INSERT INTO `orderproducts` (\
+		`Timer`, \
+		`Quantity`, \
+		`productName`, \
+		`OwnerPlayer`)\
+		VALUES ('%d', '%d', '%s', '%d')", 
+        OrderFlourInfo[playerid][index][OrderTimer],
+        OrderFlourInfo[playerid][index][OrderQuantity],
+		g_mysql_ReturnEscaped(OrderFlourInfo[playerid][index][ProductName], MainPipeline),
+        GetPlayerSQLId(playerid)
+	);
+	mysql_function_query(MainPipeline, string, false, "OnCreateFarmFinish", "iii", playerid, index, SENDDATA_ORDERPRODUCT);
+	return 1;
+}
+
+stock ORDERPRODUCT_DELETE(playerid, index)
+{
+    if(OrderFlourInfo[playerid][index][Id] != 0)
+	{
+        new
+            string[64];
+        format(string, sizeof(string), "DELETE FROM `orderproducts` WHERE `Id`= '%d'", OrderFlourInfo[playerid][index][Id]);
+        mysql_function_query(MainPipeline, string, false, "OnQueryFinish", "i", SENDDATA_THREAD);
+        OrderFlourInfo[playerid][index][Exsits] = false;
+        OrderFlourInfo[playerid][index][Id] = 0;
+    }
+	return 1;
 }

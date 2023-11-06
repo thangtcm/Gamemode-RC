@@ -1241,7 +1241,6 @@ stock JoinGame(playerid) {
     SetPlayerColor(playerid,TEAM_HIT_COLOR);
     DeletePVar(playerid,"DangTaoAcc");
     SetPlayerSkin(playerid, PlayerInfo[playerid][pModel]);
-    printf("%d", PlayerInfo[playerid][pModel]);
     SetCameraBehindPlayer(playerid);
     PlayerPlaySound(playerid, 1056, 0.0, 0.0, 0.0);
     TextDrawHideForPlayer(playerid, BannerServer[1]);

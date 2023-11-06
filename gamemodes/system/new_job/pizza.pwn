@@ -151,8 +151,8 @@ hook OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 	    			}
 	    			else if(LamViec[playerid] == 1) {
 	        			new str[129];
-	    				format(str, sizeof str,"Ban da ngung lam viec thanh cong, so tien luong ban nhan duoc la $%d", TienLuongPizza[playerid]);
-	    				PlayerInfo[playerid][pCash] += TienLuongPizza[playerid];
+	    				format(str, sizeof str,"Ban da ngung lam viec thanh cong, so tien luong ban nhan duoc la $%d", TienLuongPizza[playerid]*2);
+	    				PlayerInfo[playerid][pCash] += TienLuongPizza[playerid]*2;
 	    				TienLuongPizza[playerid] = 0;
 	    				SendClientMessageEx(playerid,COLOR_VANG,str);
 	        			LamViec[playerid] =0;

@@ -200,6 +200,7 @@ stock CheckProductCar(CarTruckID, Unit)
 {
     for(new i; i < MAX_PLAYERPRODUCT; i++)
     {
+        if(CarTruckWorking[CarTruckID][CarUnitType][i] == -1) return 0;
         if(CarTruckWorking[CarTruckID][CarUnitType][i] == Unit)
         {
             return 1;

@@ -1,0 +1,31 @@
+./include/textclient.pwn(22) : èäåíòèôèêàòîð íå èñïîëüçóåòñÿ: "time"
+./system/inventory/inventory.pwn(105) : íåïðàâèëüíàÿ òàáóëÿöèÿ
+./system/inventory/inventory.pwn(1539) : íåïðàâèëüíàÿ òàáóëÿöèÿ
+./system/inventory/inventory.pwn(1540) : íåïðàâèëüíàÿ òàáóëÿöèÿ
+./system/bussiness/inventorybiz.pwn(211) : íåïðàâèëüíàÿ òàáóëÿöèÿ
+./system/bussiness/inventorybiz.pwn(212) : íåïðàâèëüíàÿ òàáóëÿöèÿ
+./system/charactertd.pwn(9) : íåïðàâèëüíàÿ òàáóëÿöèÿ
+./system/charactertd.pwn(242) : íåïðàâèëüíàÿ òàáóëÿöèÿ
+./main/mysql.pwn(24) : íåïðàâèëüíàÿ òàáóëÿöèÿ
+./main/mysql.pwn(1438) : èäåíòèôèêàòîðó ïðèñâîåíî çíà÷åíèå, íî îí íå èñïîëüçóåòñÿ: "str"
+system/new_job/Farmer/cmd.pwn(108) : íåïðàâèëüíàÿ òàáóëÿöèÿ
+system/new_job/Farmer/cmd.pwn(109) : íåïðàâèëüíàÿ òàáóëÿöèÿ
+system/new_job/Farmer/cmd.pwn(206) : èäåíòèôèêàòîðó ïðèñâîåíî çíà÷åíèå, íî îí íå èñïîëüçóåòñÿ: "query"
+./main/variables.pwn(3808) : èäåíòèôèêàòîð íå èñïîëüçóåòñÿ: "ChangeSkin"
+./main/variables.pwn(1467) : èäåíòèôèêàòîð íå èñïîëüçóåòñÿ: "ChatGoActor"
+./main/variables.pwn(2374) : èäåíòèôèêàòîð íå èñïîëüçóåòñÿ: "DownEDS"
+./system/drug/drug.pwn(12) : èäåíòèôèêàòîð íå èñïîëüçóåòñÿ: "DrugTypeName"
+system/new_job/Farmer/setting.pwn(97) : èäåíòèôèêàòîð íå èñïîëüçóåòñÿ: "FarmPlayer"
+./main/variables.pwn(2370) : èäåíòèôèêàòîð íå èñïîëüçóåòñÿ: "HospitalSpawnXYZ"
+d:\Gamemode Samp\UP GM\Gamemode-RC\gamemodes\lsrpvn.pwn(1676) : èäåíòèôèêàòîð íå èñïîëüçóåòñÿ: "IsPlayerInRangeOfDynamicObject"
+d:\Gamemode Samp\UP GM\Gamemode-RC\gamemodes\lsrpvn.pwn(1685) : èäåíòèôèêàòîð íå èñïîëüçóåòñÿ: "IsPlayerInRangeOfObject"
+d:\Gamemode Samp\UP GM\Gamemode-RC\gamemodes\lsrpvn.pwn(1089) : èäåíòèôèêàòîð íå èñïîëüçóåòñÿ: "PlacePlant"
+./main/variables.pwn(4) : èäåíòèôèêàòîð íå èñïîëüçóåòñÿ: "RadioInfo"
+./main/variables.pwn(6) : èäåíòèôèêàòîð íå èñïîëüçóåòñÿ: "SlotInfo"
+./system/new_job/Trucking/setting.pwn(34) : èäåíòèôèêàòîð íå èñïîëüçóåòñÿ: "UnitType"
+./main/functions.pwn(6951) : èäåíòèôèêàòîð íå èñïîëüçóåòñÿ: "codehash"
+./main/variables.pwn(1733) : èäåíòèôèêàòîð íå èñïîëüçóåòñÿ: "passLength"
+d:\Gamemode Samp\UP GM\Gamemode-RC\gamemodes\lsrpvn.pwn(21683) : èäåíòèôèêàòîðó ïðèñâîåíî çíà÷åíèå, íî îí íå èñïîëüçóåòñÿ: "pointpinglimit"
+d:\Gamemode Samp\UP GM\Gamemode-RC\gamemodes\lsrpvn.pwn(16708) : èäåíòèôèêàòîðó ïðèñâîåíî çíà÷åíèå, íî îí íå èñïîëüçóåòñÿ: "tRewardText"
+Pawn compiler 3.2.3664	 	 	Copyright (c) 1997-2016, ITB CompuPhase
+

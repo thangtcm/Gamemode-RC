@@ -697,6 +697,28 @@ CMD:nobreath(playerid, params[])
 	return 1;
 }
 
+CMD:fallover(playerid, params[])
+{
+	if(!CheckAnimation(playerid)) return 1;
+	switch(strval(params))
+	{
+	case 1: ApplyAnimationEx(playerid, "KNIFE", "KILL_Knife_Ped_Die", 4.0, 0, 1, 1, 1, 0, 1);
+	case 2: ApplyAnimationEx(playerid, "PED", "KO_shot_face", 4.0, 0, 1, 1, 1, 0, 1);
+	case 3: ApplyAnimationEx(playerid, "PED", "KO_shot_stom", 4.0, 0, 1, 1, 1, 0, 1);
+	case 4: ApplyAnimationEx(playerid, "PED", "BIKE_fallR", 4.1, 0, 1, 1, 1, 0, 1);
+	case 5: ApplyAnimationEx(playerid, "PED", "BIKE_fall_off", 4.1, 0, 1, 1, 1, 0, 1);
+	case 6: ApplyAnimationEx(playerid, "BASEBALL", "Bat_Hit_3", 4.1, 0, 1, 1, 1, 0, 1);
+	case 7: ApplyAnimationEx(playerid, "DILDO", "Dildo_Hit_3", 4.1, 0, 1, 1, 1, 0, 1);
+	case 8: ApplyAnimationEx(playerid, "HEIST9", "CAS_G2_GasKO", 4.1, 0, 1, 1, 1, 0, 1);
+	case 9: ApplyAnimationEx(playerid, "FIGHT_B", "HitB_3", 4.1, 0, 1, 1, 1, 0, 1);
+	case 10: ApplyAnimationEx(playerid, "FIGHT_C", "HitC_3", 4.1, 0, 1, 1, 1, 0, 1);
+	case 11: ApplyAnimationEx(playerid, "FIGHT_D", "HitD_3", 4.1, 0, 1, 1, 1, 0, 1);
+	case 12: ApplyAnimationEx(playerid, "FIGHT_E", "Hit_fightkick_B", 4.1, 0, 1, 1, 1, 0, 1);
+	default: SendClientMessage(playerid, COLOR_WHITE, "USAGE: /fallover [1-12]");
+	}
+	return 1;
+}
+
 CMD:pedmove(playerid, params[])
 {
 	if(!CheckAnimation(playerid)) return 1;

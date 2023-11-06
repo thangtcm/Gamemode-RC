@@ -100,6 +100,7 @@ enum eGroupVehData {
 }
 
 enum eBiz {
+	bId,
 	bNoThue,
     bName[MAX_BUSINESS_NAME],
 	bOwner,
@@ -129,7 +130,7 @@ enum eBiz {
 	bGunsOffered[31],
 	bSkinsOffered[300],
 	bToysOffered[100],
-	bItemPrices[20],
+	bItemPrices[MAX_ITEM],
 	bTotalSales,
 	bTotalProfits,
 	Text3D: bStateText,
@@ -1607,6 +1608,8 @@ new StoreItemCost[][StoreItemCostEnum] =
 	{25},
 	{80},
 	{10},
+	{1},
+	{1},
 	{1}
 };
 
@@ -1630,7 +1633,8 @@ new const StoreItems[][] =
 	"Khoa cong nghiep",
 	"Khoa dien",
 	"Khoa bao dong",
-	"Mat na"
+	"Mat na",
+	"Gay bong chay"
 };
 
 new TruckerDropoffs[][CargoArrayData] =
@@ -1754,7 +1758,7 @@ new CountDown = 0;
 
 new Tooltips[][] =
 {
-	"May chu {7ED9B7}SV.EL-RP.COM{FFFFFF} se luon cap nhat tinh nang moi cho ban"
+	"May chu {7ED9B7}sv.rcrp.vn{FFFFFF} se luon cap nhat tinh nang moi cho ban"
 };
 
 new Float:HiddenTreasure[23][4] = {
@@ -2277,6 +2281,7 @@ SSCANF:storeitem(string[])
 	if (!strcmp(string, "elock", true)) return ITEM_ELOCK;
 	if (!strcmp(string, "alarmlock", true)) return ITEM_ALOCK;
 	if (!strcmp(string, "Mask", true)) return ITEM_MASK;
+	if (!strcmp(string, "Gay bong chay", true)) return ITEM_MASK;
 	return INVALID_STORE_ITEM;
 }
 

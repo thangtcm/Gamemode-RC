@@ -1102,7 +1102,7 @@ public OnQueryFinish(resultid, extraid, handleid)
 		{
 		    if(rows > 0)
 			{
-				SendClientMessage(extraid, COLOR_RED, "IP cua ban bi cam truy cap, de mo khoa vui long truy cap dien dan: FORUM.SV.EL-RP.COM");
+				SendClientMessage(extraid, COLOR_RED, "IP cua ban bi cam truy cap, de mo khoa vui long truy cap dien dan: discord rcrp.vn");
 				SetTimerEx("KickEx", 1000, 0, "i", extraid);
 			}
 			else
@@ -7098,6 +7098,7 @@ public BusinessesLoadQueryFinish()
 	cache_get_data(rows, fields, MainPipeline);
 	while(i < rows)
 	{
+		cache_get_field_content(i, "Id", tmp, MainPipeline), Businesses[i][bId] = strval(tmp);
 		cache_get_field_content(i, "Name", Businesses[i][bName], MainPipeline, MAX_BUSINESS_NAME);
 		cache_get_field_content(i, "OwnerID", tmp, MainPipeline); Businesses[i][bOwner] = strval(tmp);
 		cache_get_field_content(i, "Username", Businesses[i][bOwnerName], MainPipeline, MAX_PLAYER_NAME);
@@ -7172,7 +7173,10 @@ public BusinessesLoadQueryFinish()
 				cache_get_field_content(i, column, tmp, MainPipeline); Businesses[i][GasPumpCapacity][j] = floatstr(tmp);
 			    format(column, sizeof(column), "GasPump%dGas", j + 1);
 				cache_get_field_content(i, column, tmp, MainPipeline); Businesses[i][GasPumpGallons][j] = floatstr(tmp);
-				CreateDynamicGasPump(_, i, j);
+				if(Businesses[i][GasPumpPosX][j] != 0.0)
+				{
+					CreateDynamicGasPump(_, i, j);
+				}
 
 				for (new z; z < MAX_ITEM; z++)
 				{
@@ -8364,6 +8368,7 @@ public OnPlayerLoad(playerid)
 
 	Inventory_Load(playerid);
 	FarmPlants_LOAD(playerid);
+	CATTLE_LOAD(playerid);
 	format(string, sizeof(string), "SELECT * FROM `rentedcars` WHERE `sqlid` = '%d'", GetPlayerSQLId(playerid));
 	mysql_function_query(MainPipeline, string, true, "LoadRentedCar", "i", playerid);
 

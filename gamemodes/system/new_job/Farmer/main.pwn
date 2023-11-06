@@ -37,5 +37,13 @@ hook OnPlayerDisconnect(playerid, reason)
 			PlantTree_Remove(playerid, i);
         }
     }
+	for(new i= 0; i < MAX_CATTLES; i++)
+    {
+        if(RaiseCattleInfo[playerid][i][Exsits])
+		{
+            CATTLE_UPDATE(playerid, i);
+			Cattle_Remove(playerid, i);
+		}
+    }
 	return 1;
 }

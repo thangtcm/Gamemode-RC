@@ -87,7 +87,7 @@ timer UpdateNameTagTimer[500](playerid)
 			{
 				if(PlayerInfo[playerid][pMaskOn])
 				{
-					format(nametag, sizeof(nametag), "{%06x}[Mask %d_%d]{FFFFFF} (%d)", GetPlayerColor(playerid) >>> 8, PlayerInfo[playerid][pMaskID][0], PlayerInfo[playerid][pMaskID][1], playerid);
+					format(nametag, sizeof(nametag), "{%06x}Mask %d%d{FFFFFF} (%d)", GetPlayerColor(playerid) >>> 8, PlayerInfo[playerid][pMaskID][0], playerid, playerid);
 				}
 				else
 				{
