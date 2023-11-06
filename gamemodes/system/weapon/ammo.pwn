@@ -35,7 +35,7 @@ stock GivePlayerAmmoEx(playerid, weapon, Ammo)
     	    SetPlayerAmmo(playerid, weapon, PlayerAmmo[playerid][ 2 ]);
     	  
     	}
-    	case 29: {
+    	case 29,32,28: {
     	    PlayerAmmo[playerid][ 3 ] = Ammo;
     	    SetPlayerAmmo(playerid, weapon, PlayerAmmo[playerid][ 3 ]);
     	 
@@ -131,6 +131,18 @@ hook OnPlayerUpdate(playerid) {
         SetPlayerArmedWeapon(playerid, 0);
         SendClientTextDraw(playerid," Vu khi cua ban da~r~ het dan ~w~vui long gan them dan");
     }
+    GetPlayerWeaponData(playerid, 4, weaponzz, ammosdzz);
+	if(GetPlayerWeapon(playerid) == 28 && ammosdzz <= 1)
+	{
+        SetPlayerArmedWeapon(playerid, 0);
+        SendClientTextDraw(playerid," Vu khi cua ban da~r~ het dan ~w~vui long gan them dan");
+    }
+    GetPlayerWeaponData(playerid, 4, weaponzz, ammosdzz);
+	if(GetPlayerWeapon(playerid) == 32 && ammosdzz <= 1)
+	{
+        SetPlayerArmedWeapon(playerid, 0);
+        SendClientTextDraw(playerid," Vu khi cua ban da~r~ het dan ~w~vui long gan them dan");
+    }
     GetPlayerWeaponData(playerid, 5, weaponzz, ammosdzz);
     if(GetPlayerWeapon(playerid) == 30 && ammosdzz <= 1)
 	{
@@ -174,7 +186,7 @@ hook OnPlayerWeaponShot(playerid, weaponid, hittype, hitid, Float:fX, Float:fY, 
 
                     }
                 }
-                case 29: 
+                case 29,32,28: 
                 {
                     if(PlayerAmmo[playerid][ 3 ] > 0)
                     {
@@ -621,7 +633,7 @@ stock UseAmmo(playerid,type_ammo,ammo) {
         case 3: {
 			new weapon_g,ammos_g;
 			GetPlayerWeaponData(playerid, 4, weapon_g, ammos_g);
-            if(weapon_g != 29) return SendClientMessage(playerid,-1,"Ban khong so huu vu khi 'Sung tieu lien MP5' tren nguoi.");
+            if(weapon_g != 29 && weapon_g != 32 && weapon_g != 28) return SendClientMessage(playerid,-1,"Ban khong so huu vu khi 'Sung tieu lien' tren nguoi.");
             GivePlayerAmmoEx(playerid, weapon_g, ammos_g + ammo);
             SetPlayerArmedWeapon(playerid, weapon_g);
             //x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x//
@@ -757,6 +769,8 @@ stock GetOderName(type) {
 		case 5: type_name = "Don hang MP5";
 		case 6: type_name = "Don hang AK47";
 		case 7: type_name = "Don hang Sniper";
+		case 8: type_name = "Don hang Uzi";
+		case 9: type_name = "Don hang Tec-9";
 	}
 	return type_name;
 }
@@ -801,7 +815,9 @@ stock ShowCraftWeapon(playerid) {
 		        		                                                #Spas 12\t60 sat & 10 go & 80 vat lieu\t30p\n\
 		                                                                #MP5\t50 Sat & 60 vat lieu\t40p\n\
 													     				#AK47\t60 Sat & 60 go & 150 vat lieu\t60p\n\
-													                    #Sniper\t150 Sat & 40 go & 280 vat lieu\t120p", "Che tao", "Huy bo");
+													                    #Sniper\t150 Sat & 40 go & 280 vat lieu\t120p\n\
+													                    #Uzi\t150 Sat & 40 go & 280 vat lieu\t15p\n\
+														                #Tec-9\t30 Sat & 10 go & 25 vat lieu\t15p", "Che tao", "Huy bo");
 }
 stock ShowCraftAmmo(playerid) {
 	Dialog_Show(playerid, CRAFT_AMMO, DIALOG_STYLE_TABLIST_HEADERS, "Che tao dan", "Loai dan\tYeu cau\t#So vien\n\
@@ -835,6 +851,8 @@ Dialog:MY_DEALCRAFT(playerid, response, listitem, inputtext[]) {
 		            case 5: pitem_add = "MP5";
 		            case 6: pitem_add = "AK47";
 		            case 7: pitem_add = "Sniper";
+		            case 8: pitem_add = "Micro SMG Uzi";
+		            case 9: pitem_add = "Tec-9";
     		    }
 		        Inventory_Add(playerid,pitem_add, 1);
 		        CraftWeaponDeal[playerid] = 0;
@@ -1029,7 +1047,7 @@ Dialog:CRAFT_WEAPON(playerid, response, listitem, inputtext[]) {
 		    CraftWeaponDeal[playerid] = 6;
 		    CraftWeaponDealTime[playerid] = gettime() + ( 60 * 60 ) ; // 
     	}
-    	if(listitem == 5 ) {
+    	if(listitem == 6 ) {
     		// craft Shotgun 30 sat 20 go 25 vl , 15phut
     		if(Inventory_Count(playerid, "Sat") < 150) return SendClientMessage(playerid, -1, "Ban khong du so luong sat (60) (/inv de kiem tra).");
     		if(Inventory_Count(playerid, "Go") < 40) return SendClientMessage(playerid, -1, "Ban khong du so luong go (60) (/inv de kiem tra).");
@@ -1044,6 +1062,38 @@ Dialog:CRAFT_WEAPON(playerid, response, listitem, inputtext[]) {
 		    SendClientMessage(playerid, COLOR_YELLOW, " > Sau khi don hang hoan tat hay quay lai NPC va nhan hang.");
 		    CraftWeaponDeal[playerid] = 7;
 		    CraftWeaponDealTime[playerid] = gettime() + ( 60 * 60 ) ; // 15p
+    	}
+    	if(listitem == 7 ) {
+    		// craft Shotgun 30 sat 20 go 25 vl , 15phut
+    		if(Inventory_Count(playerid, "Sat") < 30) return SendClientMessage(playerid, -1, "Ban khong du so luong sat (30) (/inv de kiem tra).");
+    		if(Inventory_Count(playerid, "Go") < 10) return SendClientMessage(playerid, -1, "Ban khong du so luong go (10) (/inv de kiem tra).");
+    		if(Inventory_Count(playerid, "Vat lieu") < 25) return SendClientMessage(playerid, -1, "Ban khong du so luong vat lieu (25) (/inv de kiem tra).");
+    	    new pItemId = Inventory_GetItemID(playerid,"Sat");
+		    Inventory_Remove(playerid, pItemId, 30); //ID cua InventoryData
+		    pItemId = Inventory_GetItemID(playerid,"Vat lieu");
+		    Inventory_Remove(playerid, pItemId, 10); //ID cua InventoryData
+		    pItemId = Inventory_GetItemID(playerid,"Go");
+		    Inventory_Remove(playerid, pItemId, 25); //ID cua InventoryData
+		    SendClientMessage(playerid, COLOR_YELLOW, "Ban da oder thanh cong Uzi , don hang se hoan tat trong 15p.");
+		    SendClientMessage(playerid, COLOR_YELLOW, " > Sau khi don hang hoan tat hay quay lai NPC va nhan hang.");
+		    CraftWeaponDeal[playerid] = 8;
+		    CraftWeaponDealTime[playerid] = gettime() + ( 15 * 60 ) ; // 15p
+    	}
+    	if(listitem == 8 ) {
+    		// craft Shotgun 30 sat 20 go 25 vl , 15phut
+    		if(Inventory_Count(playerid, "Sat") < 30) return SendClientMessage(playerid, -1, "Ban khong du so luong sat (30) (/inv de kiem tra).");
+    		if(Inventory_Count(playerid, "Go") < 5) return SendClientMessage(playerid, -1, "Ban khong du so luong go (5) (/inv de kiem tra).");
+    		if(Inventory_Count(playerid, "Vat lieu") < 30) return SendClientMessage(playerid, -1, "Ban khong du so luong vat lieu (30) (/inv de kiem tra).");
+    	    new pItemId = Inventory_GetItemID(playerid,"Sat");
+		    Inventory_Remove(playerid, pItemId, 30); //ID cua InventoryData
+		    pItemId = Inventory_GetItemID(playerid,"Vat lieu");
+		    Inventory_Remove(playerid, pItemId, 5); //ID cua InventoryData
+		    pItemId = Inventory_GetItemID(playerid,"Go");
+		    Inventory_Remove(playerid, pItemId, 30); //ID cua InventoryData
+		    SendClientMessage(playerid, COLOR_YELLOW, "Ban da oder thanh cong Tec-9 , don hang se hoan tat trong 15p.");
+		    SendClientMessage(playerid, COLOR_YELLOW, " > Sau khi don hang hoan tat hay quay lai NPC va nhan hang.");
+		    CraftWeaponDeal[playerid] = 9;
+		    CraftWeaponDealTime[playerid] = gettime() + ( 15 * 60 ) ; // 15p
     	}
     }  
     return 1; 
@@ -1093,7 +1143,7 @@ Dialog:DIALOG_PUT_GUN(playerid, response, listitem, inputtext[])
 			RemovePlayerWeapon(playerid, 22);
 			SendClientMessage(playerid,COLOR_YELLOW,"Ban da cat vu khi 9mm vao tui do thanh cong.");
 			Inventory_Add(playerid,"9mm", 1);
-			Inventory_Add(playerid,"Dan sung luc", ammos_g);	
+			if(ammos_g > 1) Inventory_Add(playerid,"Dan sung luc", ammos_g-1);	
 			
 		}
 		if(strcmp(inputtext, "Colt 45-AS", true) == 0) 
@@ -1103,25 +1153,25 @@ Dialog:DIALOG_PUT_GUN(playerid, response, listitem, inputtext[])
 			RemovePlayerWeapon(playerid, 22);
 			SendClientMessage(playerid,COLOR_YELLOW,"Ban da cat vu khi 9mm vao tui do thanh cong.");
 			Inventory_Add(playerid,"9mm-AS", 1);
-			Inventory_Add(playerid,"Dan sung luc SAAS", ammos_g);
+			if(ammos_g > 1) Inventory_Add(playerid,"Dan sung luc SAAS", ammos_g-1);
 		}
-		if(strcmp(inputtext, "Silenced 9mm", true) == 0) 
+		if(strcmp(inputtext, "Silenced Pistol", true) == 0) 
 		{
 			GetPlayerWeaponData(playerid, 2, weapon_g, ammos_g);
             if(weapon_g != 23) return SendClientMessage(playerid,-1,"Ban khong so huu vu khi 'Sung Sdpistol' tren nguoi.");
 			RemovePlayerWeapon(playerid, 23);
 			SendClientMessage(playerid,COLOR_YELLOW,"Ban da cat vu khi Silenced 9mm vao tui do thanh cong.");
 			Inventory_Add(playerid,"Sdpistol", 1);
-			Inventory_Add(playerid,"Dan sung luc", ammos_g);
+			if(ammos_g > 1) Inventory_Add(playerid,"Dan sung luc", ammos_g-1);
 		}
-		if(strcmp(inputtext, "Silenced 9mm-AS", true) == 0) 
+		if(strcmp(inputtext, "Silenced Pistol-AS", true) == 0) 
 		{
 			GetPlayerWeaponData(playerid, 2, weapon_g, ammos_g);
             if(weapon_g != 23) return SendClientMessage(playerid,-1,"Ban khong so huu vu khi 'Sung Sdpistol' tren nguoi.");
 			RemovePlayerWeapon(playerid, 23);
 			SendClientMessage(playerid,COLOR_YELLOW,"Ban da cat vu khi Silenced 9mm vao tui do thanh cong.");
 			Inventory_Add(playerid,"Sdpistol-AS", 1);
-			Inventory_Add(playerid,"Dan sung luc SAAS", ammos_g);
+			if(ammos_g > 1) Inventory_Add(playerid,"Dan sung luc SAAS", ammos_g-1);
 		}
 		if(strcmp(inputtext, "Desert Eagle", true) == 0) 
 		{
@@ -1131,7 +1181,7 @@ Dialog:DIALOG_PUT_GUN(playerid, response, listitem, inputtext[])
 			RemovePlayerWeapon(playerid, 24);
 			SendClientMessage(playerid,COLOR_YELLOW,"Ban da cat vu khi Desert Eagle vao tui do thanh cong.");
 			Inventory_Add(playerid,"Deagle", 1);
-			Inventory_Add(playerid,"Dan sung luc", ammos_g);
+			if(ammos_g > 1) Inventory_Add(playerid,"Dan sung luc", ammos_g-1);
 		}
 		if(strcmp(inputtext, "Desert Eagle-AS", true) == 0) 
 		{
@@ -1141,7 +1191,7 @@ Dialog:DIALOG_PUT_GUN(playerid, response, listitem, inputtext[])
 			RemovePlayerWeapon(playerid, 24);
 			SendClientMessage(playerid,COLOR_YELLOW,"Ban da cat vu khi Desert Eagle vao tui do thanh cong.");
 			Inventory_Add(playerid,"Deagle-AS", 1);
-			Inventory_Add(playerid,"Dan sung luc SAAS", ammos_g);
+			if(ammos_g > 1) Inventory_Add(playerid,"Dan sung luc SAAS", ammos_g-1);
 		}
 		if(strcmp(inputtext, "Shotgun", true) == 0) 
 		{
@@ -1150,7 +1200,7 @@ Dialog:DIALOG_PUT_GUN(playerid, response, listitem, inputtext[])
 			RemovePlayerWeapon(playerid, 25);
 			SendClientMessage(playerid,COLOR_YELLOW,"Ban da cat vu khi Shotgun vao tui do thanh cong.");
 			Inventory_Add(playerid,"Shotgun", 1);
-			Inventory_Add(playerid,"Dan shotgun", ammos_g);
+			if(ammos_g > 1) Inventory_Add(playerid,"Dan shotgun", ammos_g-1);
 		}
 		if(strcmp(inputtext, "Shotgun-AS", true) == 0) 
 		{
@@ -1159,7 +1209,7 @@ Dialog:DIALOG_PUT_GUN(playerid, response, listitem, inputtext[])
 			RemovePlayerWeapon(playerid, 25);
 			SendClientMessage(playerid,COLOR_YELLOW,"Ban da cat vu khi Shotgun vao tui do thanh cong.");
 			Inventory_Add(playerid,"Shotgun-AS", 1);
-			Inventory_Add(playerid,"Dan shotgun SAAS", ammos_g);
+			if(ammos_g > 1) Inventory_Add(playerid,"Dan shotgun SAAS", ammos_g-1);
 		}
 		if(strcmp(inputtext, "Combat Shotgun", true) == 0) 
 		{
@@ -1168,7 +1218,7 @@ Dialog:DIALOG_PUT_GUN(playerid, response, listitem, inputtext[])
 			RemovePlayerWeapon(playerid, 27);
 			SendClientMessage(playerid,COLOR_YELLOW,"Ban da cat vu khi Combat Shotgun vao tui do thanh cong.");
 			Inventory_Add(playerid,"Spas", 1);
-			Inventory_Add(playerid,"Dan shotgun", ammos_g);
+			if(ammos_g > 1) Inventory_Add(playerid,"Dan shotgun", ammos_g-1);
 		}
 		if(strcmp(inputtext, "Combat Shotgun-AS", true) == 0) 
 		{
@@ -1177,7 +1227,7 @@ Dialog:DIALOG_PUT_GUN(playerid, response, listitem, inputtext[])
 			RemovePlayerWeapon(playerid, 27);
 			SendClientMessage(playerid,COLOR_YELLOW,"Ban da cat vu khi Combat Shotgun vao tui do thanh cong.");
 			Inventory_Add(playerid,"Spas-AS", 1);
-			Inventory_Add(playerid,"Dan shotgun SAAS", ammos_g);
+			if(ammos_g > 1) Inventory_Add(playerid,"Dan shotgun SAAS", ammos_g-1);
 		}
 		if(strcmp(inputtext, "MP5", true) == 0) 
 		{
@@ -1186,7 +1236,7 @@ Dialog:DIALOG_PUT_GUN(playerid, response, listitem, inputtext[])
 			RemovePlayerWeapon(playerid, 29);
 			SendClientMessage(playerid,COLOR_YELLOW,"Ban da cat vu khi MP5 vao tui do thanh cong.");
 			Inventory_Add(playerid,"MP5", 1);
-			Inventory_Add(playerid,"Dan tieu lien", ammos_g);
+			if(ammos_g > 1) Inventory_Add(playerid,"Dan tieu lien", ammos_g-1);
 		}
 		if(strcmp(inputtext, "MP5-AS", true) == 0) 
 		{
@@ -1195,7 +1245,7 @@ Dialog:DIALOG_PUT_GUN(playerid, response, listitem, inputtext[])
 			RemovePlayerWeapon(playerid, 29);
 			SendClientMessage(playerid,COLOR_YELLOW,"Ban da cat vu khi MP5 vao tui do thanh cong.");
 			Inventory_Add(playerid,"MP5-AS", 1);
-			Inventory_Add(playerid,"Dan tieu lien SAAS", ammos_g);
+			if(ammos_g > 1) Inventory_Add(playerid,"Dan tieu lien SAAS", ammos_g-1);
 		}
 		if(strcmp(inputtext, "AK47", true) == 0) 
 		{
@@ -1204,7 +1254,7 @@ Dialog:DIALOG_PUT_GUN(playerid, response, listitem, inputtext[])
 			RemovePlayerWeapon(playerid, 30);
 			SendClientMessage(playerid,COLOR_YELLOW,"Ban da cat vu khi AK47 vao tui do thanh cong.");
 			Inventory_Add(playerid,"AK47", 1);
-			Inventory_Add(playerid,"Dan sung truong", ammos_g);
+			if(ammos_g > 1) Inventory_Add(playerid,"Dan sung truong", ammos_g-1);
 
 		}
 		if(strcmp(inputtext, "AK47-AS", true) == 0) 
@@ -1214,7 +1264,7 @@ Dialog:DIALOG_PUT_GUN(playerid, response, listitem, inputtext[])
 			RemovePlayerWeapon(playerid, 30);
 			SendClientMessage(playerid,COLOR_YELLOW,"Ban da cat vu khi AK47 vao tui do thanh cong.");
 			Inventory_Add(playerid,"AK47-AS", 1);
-			Inventory_Add(playerid,"Dan sung truong SAAS", ammos_g);
+			if(ammos_g > 1) Inventory_Add(playerid,"Dan sung truong SAAS", ammos_g-1);
 		}
 		if(strcmp(inputtext, "M4", true) == 0) 
 		{
@@ -1223,7 +1273,7 @@ Dialog:DIALOG_PUT_GUN(playerid, response, listitem, inputtext[])
 			RemovePlayerWeapon(playerid, 31);
 			SendClientMessage(playerid,COLOR_YELLOW,"Ban da cat vu khi M4 vao tui do thanh cong.");
 			Inventory_Add(playerid,"M4", 1);
-			Inventory_Add(playerid,"Dan sung truong", ammos_g);
+			if(ammos_g > 1) Inventory_Add(playerid,"Dan sung truong", ammos_g-1);
 		}
 		if(strcmp(inputtext, "M4-AS", true) == 0) 
 		{
@@ -1232,7 +1282,7 @@ Dialog:DIALOG_PUT_GUN(playerid, response, listitem, inputtext[])
 			RemovePlayerWeapon(playerid, 31);
 			SendClientMessage(playerid,COLOR_YELLOW,"Ban da cat vu khi M4 vao tui do thanh cong.");
 			Inventory_Add(playerid,"M4-AS", 1);
-			Inventory_Add(playerid,"Dan sung truong SAAS", ammos_g);
+			if(ammos_g > 1) Inventory_Add(playerid,"Dan sung truong SAAS", ammos_g-1);
 		}
 		if(strcmp(inputtext, "Sniper Rifle", true) == 0) 
 		{
@@ -1241,7 +1291,7 @@ Dialog:DIALOG_PUT_GUN(playerid, response, listitem, inputtext[])
 			RemovePlayerWeapon(playerid, 34);
 			SendClientMessage(playerid,COLOR_YELLOW,"Ban da cat vu khi Sniper vao tui do thanh cong.");
 			Inventory_Add(playerid,"Sniper", 1);
-			Inventory_Add(playerid,"Dan sniper", ammos_g);
+			if(ammos_g > 1) Inventory_Add(playerid,"Dan sniper", ammos_g-1);
 		}
 		if(strcmp(inputtext, "Sniper Rifle-AS", true) == 0) 
 		{
@@ -1250,7 +1300,7 @@ Dialog:DIALOG_PUT_GUN(playerid, response, listitem, inputtext[])
 			RemovePlayerWeapon(playerid, 34);
 			SendClientMessage(playerid,COLOR_YELLOW,"Ban da cat vu khi Sniper vao tui do thanh cong.");
 			Inventory_Add(playerid,"Sniper-AS", 1);
-			Inventory_Add(playerid,"Dan sniper-SAAS", ammos_g);
+			if(ammos_g > 1) Inventory_Add(playerid,"Dan sniper-SAAS", ammos_g-1);
 		}
 	}
 	return 1;
