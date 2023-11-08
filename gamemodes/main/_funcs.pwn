@@ -3019,7 +3019,14 @@ public OnPlayerSpawn(playerid)
     if(IsPlayerNPC(playerid)) return 1;
 	SetPlayerSkillLevel(playerid, WEAPONSKILL_PISTOL, 1);
 	SetPlayerSkillLevel(playerid, WEAPONSKILL_MICRO_UZI, 1);
-
+	if ( IsPlayerAndroid(playerid) )
+	{
+		Streamer_SetVisibleItems(STREAMER_TYPE_OBJECT, 300, playerid);
+	}
+	else
+	{
+		Streamer_SetVisibleItems(STREAMER_TYPE_OBJECT, 1000, playerid);
+	}
  	if(sobeitCheckvar[playerid] == 0)
 	{
 	    if(PlayerInfo[playerid][pInt] == 0 && PlayerInfo[playerid][pVW] == 0)
@@ -5508,7 +5515,7 @@ public OnPlayerCommandReceived(playerid, cmdtext[]) {
 	}
 
 	playerLastTyped[playerid] = 0;
-	printf("[zcmd] [%s]: %s", GetPlayerNameEx(playerid), cmdtext);
+	printf("[zcmd] [%s]: %s", GetPlayerNameEx(playerid, false), cmdtext);
 
 	if(PlayerInfo[playerid][pMuted] == 1) {
 		SendErrorMessage(playerid, " Ban khong the noi chuyen, ban dang bi mute!");
@@ -5571,7 +5578,7 @@ public OnPlayerText(playerid, text[])
 		return 0;
 	}
 
-	printf("[Player Chat] [%s-%d]: %s", GetPlayerNameEx(playerid), GetPlayerSQLId(playerid), text);
+	printf("[Player Chat] [%s-%d]: %s", GetPlayerNameEx(playerid, false), GetPlayerSQLId(playerid), text);
 	new sendername[MAX_PLAYER_NAME];
 	new giveplayer[MAX_PLAYER_NAME];
 	new string[128];
@@ -24732,8 +24739,8 @@ Dialog:WeaponCop(playerid, response, listitem, inputtext[])
 				SendClientTextDraw(playerid, "Ban da lay mot khau sung Sniper.~n~~r~Neu lay nham, bat buoc phai tra lai cho leader.");
 			}
 		}
-		SendLogToDiscordRoom("[MDC-Police] Wep log" ,"1157912890410541167", "Name", GetPlayerNameEx(playerid), "Rank", szRank, "Wep", wepget, 0x226199);
-		SendLogToDiscordRoom("[MDC-Police] Wep log" , "1157957903874007111", "Name", GetPlayerNameEx(playerid), "Rank", szRank, "Wep", wepget, 0x226199);
+		SendLogToDiscordRoom("[MDC-Police] Wep log" ,"1157912890410541167", "Name", GetPlayerNameEx(playerid, false), "Rank", szRank, "Wep", wepget, 0x226199);
+		SendLogToDiscordRoom("[MDC-Police] Wep log" , "1157957903874007111", "Name", GetPlayerNameEx(playerid, false), "Rank", szRank, "Wep", wepget, 0x226199);
 	}
 	return 1;
 }
@@ -24777,8 +24784,8 @@ Dialog:AmmoCop(playerid, response, listitem, inputtext[])
 				SendClientTextDraw(playerid, "Ban da lay mot bang dan Sung Sniper.~n~~r~Neu lay nham, bat buoc phai tra lai cho leader.");
 			}
 		}
-		SendLogToDiscordRoom("[MDC-Police] Ammo log" ,"1157912890410541167", "Name", GetPlayerNameEx(playerid), "Rank", PlayerInfo[playerid][pRankText], "Ammo", wepget, 0x227f99);
-		SendLogToDiscordRoom("[MDC-Police] Ammo log" , "1157957903874007111", "Name", GetPlayerNameEx(playerid), "Rank", PlayerInfo[playerid][pRankText], "Ammo", wepget, 0x227f99);
+		SendLogToDiscordRoom("[MDC-Police] Ammo log" ,"1157912890410541167", "Name", GetPlayerNameEx(playerid, false), "Rank", PlayerInfo[playerid][pRankText], "Ammo", wepget, 0x227f99);
+		SendLogToDiscordRoom("[MDC-Police] Ammo log" , "1157957903874007111", "Name", GetPlayerNameEx(playerid, false), "Rank", PlayerInfo[playerid][pRankText], "Ammo", wepget, 0x227f99);
 	}
 	return 1;
 }

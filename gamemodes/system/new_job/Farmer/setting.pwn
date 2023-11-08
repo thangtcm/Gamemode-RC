@@ -13,8 +13,6 @@
 #define PLANT_TINE_LEVEL_3          180
 #define MAX_CATTLES                 16
 #define CATTLE_DEFAULT_STATUS       0
-#define OBJ_DEER                    19315
-#define OBJ_COW                     19833
 #define WEIGHT_DEFAULT				10
 #define Plant_ZDefault              100.75
 #define CATTLE_TIME					600 //5 phut

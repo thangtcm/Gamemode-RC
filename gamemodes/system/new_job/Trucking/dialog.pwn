@@ -135,13 +135,13 @@ Dialog:DIALOG_BUYPRODUCT(playerid, response, listitem, inputtext[])
         PlayerTruckerData[playerid][ClaimFactoryID] = factoryID;
         format(str, sizeof(str), "Mua san pham %s thanh cong.", ProductData[productID][ProductName]);
         
-        FactoryData[factoryID][WareHouse][index] -= FactoryData[factoryID][Productivity][index];
+        FactoryData[factoryID][WareHouse][index]--;
         
         if(FactoryData[factoryID][WareHouse][index] <= 0)
             FactoryData[factoryID][WareHouse][index] = 0;
         new moneyzxc[30];
         format(moneyzxc, 30, "%d$", FactoryData[factoryID][ProductPrice][index]);
-        SendLogToDiscordRoom("LOG MUA THÙNG HÀNG", "1157969036848668733", "Name", GetPlayerNameEx(playerid), "Đã mua", ProductData[productID][ProductName], "Giá tiền", moneyzxc, 0x992422);
+        SendLogToDiscordRoom("LOG MUA THÙNG HÀNG", "1157969036848668733", "Name", GetPlayerNameEx(playerid, false), "Đã mua", ProductData[productID][ProductName], "Giá tiền", moneyzxc, 0x992422);
         GivePlayerCash(playerid, money*-1);
         pLoadProduct[playerid] = productID;
         SendClientMessageEx(playerid, COLOR_MAIN, str);
@@ -190,7 +190,7 @@ Dialog:DIALOG_SELLPRODUCT(playerid, response, listitem, inputtext[])
                 if(!Inventory_Add(playerid, ProductData[pLoadProduct[playerid]][ItemReceived])){
                     SendErrorMessage(playerid, "Ban nhan vat pham that bai, hay lien he doi ngu ho tro neu muon duoc phuc hoi san pham.");
                     format(str, 30, "%d$", FactoryData[factoryID][ProductImportPrice][index]);
-                    SendLogToDiscordRoom("LOG BÁN THÙNG HÀNG", "1157969051264503838", "Name", GetPlayerNameEx(playerid), "Nhận vật phẩm thất bại", ProductData[pLoadProduct[playerid]][ProductName], "Giá tiền", str, 0x229926);
+                    SendLogToDiscordRoom("LOG BÁN THÙNG HÀNG", "1157969051264503838", "Name", GetPlayerNameEx(playerid, false), "Nhận vật phẩm thất bại", ProductData[pLoadProduct[playerid]][ProductName], "Giá tiền", str, 0x229926);
                 }
                 format(str, sizeof(str), "Ban duoc thuong them vat pham %s tu ong chu vi hoan thanh tot cong viec.", ProductData[pLoadProduct[playerid]][ItemReceived]);
                 SendClientMessageEx(playerid, COLOR_1YELLOW, str);
@@ -198,7 +198,7 @@ Dialog:DIALOG_SELLPRODUCT(playerid, response, listitem, inputtext[])
             format(str, sizeof(str), "Ban da ban san pham %s thanh cong.", ProductData[pLoadProduct[playerid]][ProductName]);
             SendClientMessageEx(playerid, COLOR_1YELLOW, str);
             format(str, 30, "%d$", FactoryData[factoryID][ProductImportPrice][index]);
-            SendLogToDiscordRoom("LOG BÁN THÙNG HÀNG", "1157969051264503838", "Name", GetPlayerNameEx(playerid), "Đã bán", ProductData[pLoadProduct[playerid]][ProductName], "Giá tiền", str, 0x229926);
+            SendLogToDiscordRoom("LOG BÁN THÙNG HÀNG", "1157969051264503838", "Name", GetPlayerNameEx(playerid, false), "Đã bán", ProductData[pLoadProduct[playerid]][ProductName], "Giá tiền", str, 0x229926);
         }
         else
         {
@@ -216,7 +216,7 @@ Dialog:DIALOG_SELLPRODUCT(playerid, response, listitem, inputtext[])
             new moneyzxc[30];
             format(str, sizeof(str), "Ban da ban san pham %s thanh cong.", ProductData[pLoadProduct[playerid]][ProductName]);
             format(moneyzxc, 30, "%d$", FactoryData[factoryID][ProductPrice][index]);
-            SendLogToDiscordRoom("LOG BÁN THÙNG HÀNG", "1157969051264503838", "Name", GetPlayerNameEx(playerid), "Đã bán", ProductData[pLoadProduct[playerid]][ProductName], "Giá tiền", moneyzxc, 0x229926);
+            SendLogToDiscordRoom("LOG BÁN THÙNG HÀNG", "1157969051264503838", "Name", GetPlayerNameEx(playerid, false), "Đã bán", ProductData[pLoadProduct[playerid]][ProductName], "Giá tiền", moneyzxc, 0x229926);
             SendClientMessageEx(playerid, COLOR_1YELLOW, str);
         }
         RemovePlayerAttachedObject(playerid, PIZZA_INDEX);
