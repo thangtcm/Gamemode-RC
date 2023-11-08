@@ -10372,14 +10372,19 @@ stock GetWeaponNameEx(weaponid)
 	return name;
 }
 
-stock GetPlayerNameEx(playerid) {
+stock GetPlayerNameEx(playerid, isMask = true) {
 
 	new
 		szName[MAX_PLAYER_NAME],
 		iPos;
-	if(PlayerInfo[playerid][pMaskOn])
+	if(PlayerInfo[playerid][pMaskOn] && isMask)
 	{
 		format(szName, sizeof(szName), "Mask %d%d", PlayerInfo[playerid][pMaskID][0], playerid);
+	}
+	else if(PlayerInfo[playerid][pMaskOn] && !isMask)
+	{
+		GetPVarString(playerid, "TempNameName", szName, MAX_PLAYER_NAME);
+		while ((iPos = strfind(szName, "_", false, iPos)) != -1) szName[iPos] = ' ';
 	}
 	else
 	{

@@ -583,6 +583,14 @@ stock Cattle_UpdateTimer(playerid, cattleId)
     new string[256];
     if(RaiseCattleInfo[playerid][cattleId][c_Weight] >= 500) return 1;
     RaiseCattleInfo[playerid][cattleId][c_Timer]--;
+    if(RaiseCattleInfo[playerid][cattleId][c_Timer] == 60 && RaiseCattleInfo[playerid][cattleId][c_Status] != 0)
+    {
+        new str[128];
+        format(str, sizeof(str), "%s (ID: %d) cua ban dang bi %s, ban con 1 phut de cham soc no truoc khi chet.", RaiseCattleInfo[playerid][cattleId][c_Name],
+            cattleId,
+            GetCattleStatus(RaiseCattleInfo[playerid][cattleId][c_Status]));
+        SendClientMessageEx(playerid, COLOR_WHITE, str);
+    }
     if(RaiseCattleInfo[playerid][cattleId][c_Timer] <= 0 && RaiseCattleInfo[playerid][cattleId][c_Status] != 0)
     {
         new str[128];

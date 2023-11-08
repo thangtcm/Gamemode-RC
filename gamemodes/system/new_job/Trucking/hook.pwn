@@ -91,3 +91,20 @@ hook OnPlayerEnterVehicle(playerid, vehicleid, ispassenger)
     if(pLoadProduct[playerid] != -1) return SendErrorMessage(playerid, "Ban khong the len xe trong khi dang cam thung hang.");
     return 1;
 }
+
+hook OnPlayerStateChange(playerid, newstate, oldstate)
+{
+    if(newstate == PLAYER_STATE_DRIVER || newstate == PLAYER_STATE_PASSENGER)
+	{
+        if(pLoadProduct[playerid] != -1) {
+            new Float:slx, Float:sly, Float:slz;
+            GetPlayerPos(playerid, slx, sly, slz);
+            SetPlayerPos(playerid, slx, sly, slz+1.3);
+            PlayerPlaySound(playerid, 1130, slx, sly, slz+1.3);
+            RemovePlayerFromVehicle(playerid);
+            defer NOPCheck(playerid);
+            SendErrorMessage(playerid, "Ban khong the len xe trong khi dang cam thung hang.");
+        } 
+    }
+    return 1;
+}

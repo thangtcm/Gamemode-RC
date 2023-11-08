@@ -32,16 +32,23 @@ stock LoadInvBiz()
 public OnLoadInvBiz()
 {
     
-	new i, rows, fields, tmp[128], businessid;
+	new i, rows, fields, tmp[128], businessid, index, oldbusinessid = -1;
 	cache_get_data(rows, fields, MainPipeline);
 	while(i < rows)
 	{
 		cache_get_field_content(i, "OwnerBusiness", tmp, MainPipeline); businessid = strval(tmp);
-		cache_get_field_content(i, "Id", tmp, MainPipeline); InventoryBizInfo[--businessid][i][Id] = strval(tmp);
-		cache_get_field_content(i, "Quantity", tmp, MainPipeline); InventoryBizInfo[businessid][i][Quantity] = strval(tmp);
-		cache_get_field_content(i, "ProductName", InventoryBizInfo[businessid][i][ProductName], MainPipeline, 32);
-        InventoryBizInfo[businessid][i][Exsits] = true;
+		if(businessid != oldbusinessid)
+		{
+			index = 0;
+			oldbusinessid = businessid;
+		}
+		cache_get_field_content(i, "Id", tmp, MainPipeline); InventoryBizInfo[--businessid][index][Id] = strval(tmp);
+		printf("businessid -- %d -- index %d", businessid, index);
+		cache_get_field_content(i, "Quantity", tmp, MainPipeline); InventoryBizInfo[businessid][index][Quantity] = strval(tmp);
+		cache_get_field_content(i, "ProductName", InventoryBizInfo[businessid][index][ProductName], MainPipeline, 32);
+        InventoryBizInfo[businessid][index][Exsits] = true;
   		i++;
+		index++;
  	}
 	if(i > 0) printf("[Load Inventory Biz] %d du lieu kho cua hang %s da duoc tai.", i, Businesses[businessid][bName]);
 }

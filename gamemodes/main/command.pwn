@@ -8793,11 +8793,11 @@ CMD:accept(playerid, params[])
 							}
 							new logprice[10];
 							format(logprice, sizeof(logprice), "%d", number_format(VehiclePrice[playerid]));
-							SendLogToDiscordRoom("LOG SELL VEHICLE", "1158022204789895288", "Người bán", GetPlayerNameEx(VehicleOffer[playerid]), "Người nhận", GetPlayerNameEx(playerid), "Số tiền", logprice, 0x25b807);
+							SendLogToDiscordRoom("LOG SELL VEHICLE", "1158022204789895288", "Người bán", GetPlayerNameEx(VehicleOffer[playerid], false), "Người nhận", GetPlayerNameEx(playerid), "Số tiền", logprice, 0x25b807);
                             new ip[32], ipex[32];
                             GetPlayerIp(playerid, ip, sizeof(ip));
                             GetPlayerIp(VehicleOffer[playerid], ipex, sizeof(ipex));
-                            format(szMessage, sizeof(szMessage), "[CAR] %s (IP: %s) da tra $%s cho %s cho %s (IP: %s)", GetPlayerNameEx(playerid), ip, number_format(VehiclePrice[playerid]), GetPlayerNameEx(VehicleOffer[playerid]), GetVehicleName(PlayerVehicleInfo[VehicleOffer[playerid]][VehicleId[playerid]][pvId]), ipex);
+                            format(szMessage, sizeof(szMessage), "[CAR] %s (IP: %s) da tra $%s cho %s cho %s (IP: %s)", GetPlayerNameEx(playerid, false), ip, number_format(VehiclePrice[playerid]), GetPlayerNameEx(VehicleOffer[playerid]), GetVehicleName(PlayerVehicleInfo[VehicleOffer[playerid]][VehicleId[playerid]][pvId]), ipex);
                             Log("logs/pay.log", szMessage);
                             GetPlayerName(VehicleOffer[playerid], giveplayer, sizeof(giveplayer));
                             GetPlayerName(playerid, sendername, sizeof(sendername));
@@ -14701,11 +14701,12 @@ CMD:pay(playerid, params[])
 		SetPVarInt(playerid, "LastTransaction", gettime());
         new amountz[20];
         format(amountz, 20, "%d$", amount);
-		SendLogToDiscordRoom("LOG MONEY", "1158020776654540801", "Người đưa", GetPlayerNameEx(playerid), "Người nhận", GetPlayerNameEx(id), "Số tiền", amountz, 0x25b807);
+		SendLogToDiscordRoom("LOG MONEY", "1158020776654540801", "Người đưa", GetPlayerNameEx(playerid, false), "Người nhận", GetPlayerNameEx(id, false), "Số tiền", amountz, 0x25b807);
 	}
 	else SendErrorMessage(playerid, " Nguoi do khong gan ban.");
 	return 1;
 }
+
 
 CMD:rehashall(playerid, params[])
 {
@@ -30271,6 +30272,28 @@ CMD:togtp(playerid, params[])
 	return 1;
 }
 
+CMD:checkpmask(playerid, params[])
+{
+	if(PlayerInfo[playerid][pAdmin] < 2 && PlayerInfo[playerid][pHelper] < 3 && !GetPVarType(playerid, "pWatchdogWatching"))
+	{
+		SendErrorMessage(playerid, " Ban khong duoc phep su dung lenh nay.");
+		return 1;
+	}
+	new giveplayerid;
+	if(sscanf(params, "u", giveplayerid)) return SendUsageMessage(playerid, " /checkpmask (playerid)");
+	if(IsPlayerConnected(giveplayerid))
+	{
+		new string[128];
+		format(string, sizeof(string), "Check Name Mask playerid (%d) %s is name %s", giveplayerid, GetPlayerNameEx(giveplayerid), GetPlayerNameEx(giveplayerid, false));
+		SendClientMessageEx(playerid, COLOR_GREEN, string);
+	}
+	else
+	{
+		SendServerMessage(playerid, " Target is not available.");
+	}
+	return 1;
+}
+
 CMD:spec(playerid, params[])
 {
 	if(PlayerInfo[playerid][pAdmin] < 2 && PlayerInfo[playerid][pHelper] < 3 && !GetPVarType(playerid, "pWatchdogWatching"))
@@ -30321,7 +30344,7 @@ CMD:spec(playerid, params[])
 		if(PlayerInfo[playerid][pAdmin] >= 4 && Spectate[giveplayerid] != INVALID_PLAYER_ID && Spectating[giveplayerid] == 1)
 		{
 			new string[128];
-			format(string, sizeof(string), "Admin %s is speccing %s", GetPlayerNameEx(giveplayerid), GetPlayerNameEx(Spectate[giveplayerid]));
+			format(string, sizeof(string), "Admin %s is speccing %s", GetPlayerNameEx(giveplayerid), GetPlayerNameEx(Spectate[giveplayerid], false));
 			SendClientMessageEx(playerid, COLOR_GREEN, string);
 			return 1;
 		}

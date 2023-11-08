@@ -53,7 +53,7 @@
 
 #include "./system/vehicle/vehicle_info.pwn"
 #include "./system/drug/drug.pwn"
-#include "./system/inventory/inventory.pwn"
+#include "./system/inventory/main.pwn"
 #include "./system/bussiness/inventorybiz.pwn"
 #include "./system/weapon/ammo.pwn"
 
@@ -62,6 +62,7 @@
 
 
 #include "./system/speedo.pwn"
+#include "./system/help.pwn"
 #include "./system/gps_system.pwn"
 
 #include "./system/newfaction/handcuff.pwn"

@@ -8367,6 +8367,7 @@ public OnPlayerLoad(playerid)
 	SetPlayerToTeamColor(playerid);
 
 	Inventory_Load(playerid);
+	InventoryCH_Load(playerid);
 	FarmPlants_LOAD(playerid);
 	CATTLE_LOAD(playerid);
 	format(string, sizeof(string), "SELECT * FROM `rentedcars` WHERE `sqlid` = '%d'", GetPlayerSQLId(playerid));
