@@ -873,7 +873,7 @@ task EMSUpdate[5000]()
 	        if(GetPVarInt(i, "EMSAttempt") != 0)
 			{
 
-				new Float:health;
+				new Float:health,string[129];
  				GetPlayerHealth(i,health);
 				SetPlayerHealth(i, health-1);
 				if(GetPVarInt(i, "EMSAttempt") == -1)
@@ -887,6 +887,8 @@ task EMSUpdate[5000]()
 	    			}
 //					GameTextForPlayer(i, "~r~Bi thuong~n~~w~/chapnhan chet hoac /dichvu capcuu", 5000, 3);
 	    			SendClientTextDraw(i,"Ban da bi thuong ~r~/chapnhan chet~w~ de ve vien hoac ~r~/dichvu capcuu");
+                    format(string, sizeof string, "(( Nguoi choi nay dang bi thuong nang, /damages %d de xem chi tiet)) ", i); 
+	    			SetPlayerChatBubble(i, string, COLOR_LIGHTRED, 30.0, 6000);
 				}
 				if(GetPVarInt(i, "EMSAttempt") == 1)
 				{
@@ -898,6 +900,8 @@ task EMSUpdate[5000]()
 						SpawnPlayer(i);
 	    			}
 					GameTextForPlayer(i, "~r~Bi thuong~n~~w~Dang doi EMS den...", 5000, 3);
+					format(string, sizeof string, "(( Nguoi choi nay dang bi thuong nang, /damages %d de xem chi tiet)) ", i); 
+	    			SetPlayerChatBubble(i, string, COLOR_LIGHTRED, 30.0, 6000);
 				}
 				if(GetPVarInt(i, "EMSAttempt") == 2)
 				{
@@ -913,6 +917,8 @@ task EMSUpdate[5000]()
 						}
 	    			}
 	    			GameTextForPlayer(i, "~g~Dich vu~n~~w~Dang cho dieu tri...", 5000, 3);
+	    			format(string, sizeof string, "(( Nguoi choi nay dang bi thuong nang, /damages %d de xem chi tiet)) ", i); 
+	    			SetPlayerChatBubble(i, string, COLOR_LIGHTRED, 30.0, 6000);
 				}
 				if(GetPVarInt(i, "EMSAttempt") == 3)
 				{

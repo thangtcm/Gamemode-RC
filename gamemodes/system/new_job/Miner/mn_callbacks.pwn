@@ -211,7 +211,7 @@ public StartCountTime(playerid)
 	{
 		if(TimerPressKey[playerid] <= 0 && KeyPressed[playerid])
 		{
-<<<<<<< HEAD
+
 			
 			timerdc[playerid]--;
 			new format_job[1280];
@@ -225,17 +225,17 @@ public StartCountTime(playerid)
 			SendClientTextDraw(playerid, format_job);
 			SetTimerEx("StartCountTime", 1000, false, "i", playerid);
 			ApplyAnimation(playerid,"BASEBALL","Bat_4",1.0,1,1,1,1,1);
-=======
+
 			if(timerdc[playerid] > 0)
 			{
 				
 				timerdc[playerid]--;
-				new format_job[1280];
 				if(DownCountJobTime[playerid] >= gettime()) {
-					format(format_job, sizeof(format_job), "Ban dang dao da, vui long doi~p~ %d~w~ de dao xong.", timerdc[playerid]);
+					format(format_job, sizeof(format_job), "Ban dang dao da, vui long doi~p~ %d~w~ de dao xong (~r~-10 giay~w~).", timerdc[playerid]);
+					
 				}
 				else {
-					format(format_job, sizeof(format_job), "Ban dang dao da, vui long doi~p~ %d~w~ de dao xong (~r~-10 giay~w~).", timerdc[playerid]);
+				    format(format_job, sizeof(format_job), "Ban dang dao da, vui long doi~p~ %d~w~ de dao xong.", timerdc[playerid]);
 				}
 				SendClientTextDraw(playerid, format_job);
 				ApplyAnimation(playerid,"BASEBALL","Bat_4",1.0,1,1,1,1,1);
@@ -249,7 +249,7 @@ public StartCountTime(playerid)
 				TogglePlayerControllable(playerid, 1);
 				ApplyAnimation(playerid,"SWORD","sword_1",0.87,1,0,0,0,0);
 				ClearAnimations(playerid);
-				new format_job[1280];
+
 				if(PlayerInfo[playerid][pMinerLevel] == 0)
 				{
 					switch(random(100))
@@ -354,7 +354,7 @@ public StartCountTime(playerid)
 				SetTimerEx("OnRockRespawn", 600000, false, "i", rockIndex);
 				KillTimer(MinerTimer[playerid]);
 			}
->>>>>>> main
+
 		}
 		else
 		{

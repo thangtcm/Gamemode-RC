@@ -28,22 +28,6 @@ public BiBanChan(playerid)
 {
 	BanVaoChan[playerid] = 0;
 }
-GetBodyPartName(bodypart)
-{
-        new part[11];
-        switch(bodypart)
-        {
-                case BODY_PART_TORSO: part = "nguc";
-                case BODY_PART_GROIN: part = "hang";
-                case BODY_PART_LEFT_ARM: part = "tay trai";
-                case BODY_PART_RIGHT_ARM: part = "tay phai";
-                case BODY_PART_LEFT_LEG: part = "chan trai";
-                case BODY_PART_RIGHT_LEG: part = "chan phai";
-                case BODY_PART_HEAD: part = "dau";
-                default: part = "NONE";
-        }
-        return part;
-}
 
 
 DisplayDamages(toplayer, playerid)
@@ -74,15 +58,6 @@ DisplayDamages(toplayer, playerid)
         return 1;
 }
 
-CMD:damages(playerid, params[])
-{
-        new id;
-        if(sscanf(params, "u", id)) return SendClientMessage(playerid, COLOR_LIGHTRED, "SU DUNG:{FFFFFF} /damages [playerid]");
-        if(!IsPlayerConnected(id)) return SendClientMessage(playerid, COLOR_LIGHTRED, "[ ! ]{FFFFFF} Nguoi choi khong hop le.");
-        if (!ProxDetectorS(8.0, playerid, id)) return SendClientMessage(playerid, COLOR_LIGHTRED, "[ ! ]{FFFFFF} Ban khong dung gan nguoi choi.");
-        DisplayDamages(playerid, id);
-        return 1;
-}
 
 //      FUNCTIONS
 ResetDamages(playerid)
