@@ -1229,6 +1229,24 @@ Dialog:DIALOG_PUT_GUN(playerid, response, listitem, inputtext[])
 			Inventory_Add(playerid,"Spas-AS", 1);
 			if(ammos_g > 1) Inventory_Add(playerid,"Dan shotgun SAAS", ammos_g-1);
 		}
+		if(strcmp(inputtext, "TEC9", true) == 0) 
+		{
+			GetPlayerWeaponData(playerid, 4, weapon_g, ammos_g);
+            if(weapon_g != 32) return SendClientMessage(playerid,-1,"Ban khong so huu vu khi 'Tec-9' tren nguoi.");
+			RemovePlayerWeapon(playerid, 32);
+			SendClientMessage(playerid,COLOR_YELLOW,"Ban da cat vu khi Tec-9 vao tui do thanh cong.");
+			Inventory_Add(playerid,"Tec-9", 1);
+			if(ammos_g > 1) Inventory_Add(playerid,"Dan tieu lien", ammos_g-1);
+		}
+		if(strcmp(inputtext, "UZI", true) == 0) 
+		{
+			GetPlayerWeaponData(playerid, 4, weapon_g, ammos_g);
+            if(weapon_g != 28) return SendClientMessage(playerid,-1,"Ban khong so huu vu khi 'Micro SMG Uzi' tren nguoi.");
+			RemovePlayerWeapon(playerid, 28);
+			SendClientMessage(playerid,COLOR_YELLOW,"Ban da cat vu khi Micro SMG Uzi vao tui do thanh cong.");
+			Inventory_Add(playerid,"Micro SMG Uzi", 1);
+			if(ammos_g > 1) Inventory_Add(playerid,"Dan tieu lien", ammos_g-1);
+		}
 		if(strcmp(inputtext, "MP5", true) == 0) 
 		{
 			GetPlayerWeaponData(playerid, 4, weapon_g, ammos_g);
