@@ -348,6 +348,7 @@ public OnPlayerInteriorChange(playerid,newinteriorid,oldinteriorid)
 			SetTimerEx("SpecUpdate", 1500, false, "i", i);
 		}
 	}
+	return 1;
 }
 
 public OnPlayerPressButton(playerid, buttonid)
@@ -851,6 +852,7 @@ public OnPlayerPressButton(playerid, buttonid)
 public OnEnterExitModShop( playerid, enterexit, interiorid ) {
 	if(!enterexit && GetPlayerVehicle(playerid, GetPlayerVehicleID(playerid)) > -1) UpdatePlayerVehicleMods(playerid, GetPlayerVehicle(playerid, GetPlayerVehicleID(playerid)));
 	if(!enterexit && DynVeh[GetPlayerVehicleID(playerid)] != -1) UpdateGroupVehicleMods(GetPlayerVehicleID(playerid));
+	return 1;
 }
 
 public OnVehiclePaintjob(playerid, vehicleid, paintjobid)
@@ -2591,6 +2593,38 @@ public OnRconLoginAttempt(ip[], password[], success)
     return 1;
 }
 
+// public OnPlayerCheatDetected(playerid, code)
+// {
+//     new cheatname[128], string[128];
+//     switch (code)
+//     {
+//         case 0: cheatname = "Silent Aimbot";
+//         case 1: cheatname = "Vehicle Repair Hack";
+//         case 2: cheatname = "Screen Flickering";
+//         case 3: cheatname = "Car Troller";
+//         case 4: cheatname = "Surfing Invisible";
+//         case 5: cheatname = "Airbreak";
+//         case 6: cheatname = "Seat Crasher";
+//         case 7: cheatname = "Speed Hack";
+//         case 8: cheatname = "Troll Animation";
+//         case 9: cheatname = "Animation Invisible";
+//         case 10: cheatname = "Fly Hack";
+//         case 11: cheatname = "Rage Shot";
+//         case 12: cheatname = "Trailer Crasher";
+//         case 13: cheatname = "Weapon Hack";
+//         case 14: cheatname = "Kill All";
+//         case 15: cheatname = "Checkpoint Teleport";
+//         case 16: cheatname = "Quick Turn";
+//         case 17: cheatname = "NPC Login";
+//         case 19: cheatname = "Game Speed";
+//         case 18: cheatname = "Fake State";
+//     }
+//     format(string, sizeof(string), "He thong anti cheat phat hien ban hack %s.", cheatname);
+//     SendClientMessage(playerid, 0xA9C4E4FF, string);
+//     Kick(playerid);
+//     return 1;
+// }
+
 public OnPlayerDeath(playerid, killerid, reason)
 {
     if(IsPlayerNPC(playerid)) return 1;
@@ -2960,7 +2994,7 @@ public OnPlayerDeath(playerid, killerid, reason)
 	return 1;
 }
 
-public OnVehicleDeath(vehicleid) {
+public OnVehicleDeath(vehicleid, killerid) {
     new Float:X, Float:Y, Float:Z;
     new Float:XB, Float:YB, Float:ZB;
     VehicleStatus{vehicleid} = 1;
@@ -3012,6 +3046,7 @@ public OnVehicleDeath(vehicleid) {
 		}
     }
 	arr_Engine{vehicleid} = 0;
+	return 1;
 }
 
 public OnPlayerSpawn(playerid)
@@ -6121,11 +6156,6 @@ public OnVehicleDamageStatusUpdate(vehicleid, playerid)
     return CallRemoteFunction("OVDStatusUpdate", "dd", vehicleid, playerid);
 }
 
-forward OnUnoccupiedVehicleUpdate(vehicleid, playerid, passenger_seat);
-public OnUnoccupiedVehicleUpdate(vehicleid, playerid, passenger_seat)
-{
-    return 1;
-}
 
 forward OnRconCommand(cmd[]);
 public OnRconCommand(cmd[])

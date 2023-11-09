@@ -5878,7 +5878,7 @@ CMD:changepass(playerid, params[])
 	return 1;
 }
 
-CMD:trogiup(playerid, params[]) {
+CMD:trogiupss(playerid, params[]) {
 	return cmd_help(playerid, params);
 }
 CMD:help(playerid,params[]) {

@@ -8620,6 +8620,7 @@ public OnVehicleSpawn(vehicleid) {
 		    break;
 		}
     }
+	return 1;
 }
 
 public OnVehicleMod(playerid, vehicleid, componentid)

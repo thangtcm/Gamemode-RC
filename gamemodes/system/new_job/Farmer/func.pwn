@@ -174,6 +174,18 @@ stock Rent_Farm(playerid, farmid)
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 //~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+stock Plant_GetNameStatus(playerid, type)
+{
+    new name[34];
+    switch(type)
+    {
+        case 0: name = "Dang phat trien";
+        case 1: name = "";
+        case 2: name = "Can tuoi nuoc";
+    }
+    return name;
+}
+
 stock GetPlantFree(playerid)
 {
     for(new i = 0; i < MAX_PLAYER_PLANT; ++i)

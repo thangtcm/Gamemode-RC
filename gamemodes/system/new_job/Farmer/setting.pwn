@@ -41,6 +41,7 @@ enum PLANT_INFO{
 	plantLevel,
     OwnerPlayerId,
 	plantType,
+	plantStatus,
 	plantTimer,
 	ObjectSpawn,
 	Text3D:PlantText,
@@ -73,7 +74,8 @@ enum TreeGolbal{
 
 new PlantArr[][TreeGolbal] ={
 	{"Hat Giong Lua", 5, 15, "Lua"},
-	{"Hat Giong Duoc Lieu", 35, 65, "Thao Duoc"}
+	{"Hat Giong Duoc Lieu", 35, 65, "Thao Duoc"},
+	{"Hat Giong Cam", 35, 65, "Cam"}
 };
 
 enum AnimalInfo{

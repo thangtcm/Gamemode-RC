@@ -6945,6 +6945,7 @@ stock SafeLogin(playerid, type)
                     Dia chi IP cua ban: %s\n\n\
                     Tai khoan ban chua dang ky, hay vao trang web : UCP.RCRP.VN de dang ky tai khoan\n\n",GetPlayerNameEx(playerid),ip);
                     ShowPlayerDialog(playerid,DIALOG_NOTHING, DIALOG_STYLE_MSGBOX,"ERROR",string,"<","");
+					Kick(playerid);
                 }
         }
 }

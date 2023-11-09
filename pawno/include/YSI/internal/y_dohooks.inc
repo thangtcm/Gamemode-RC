@@ -2495,9 +2495,9 @@ public OnVehicleDamageStatusUpdate(vehicleid, playerid)
 #define OnVehicleDamageStatusUpdate S@@_OnVehicleDamageStatusUpdate
 ALS_FORWARD<VehicleDamageStatusUpdate>
 
-public OnUnoccupiedVehicleUpdate(vehicleid, playerid, passenger_seat)
+public OnUnoccupiedVehicleUpdate(vehicleid, playerid, passenger_seat, Float:new_x, Float:new_y, Float:new_z, Float:vel_x, Float:vel_y, Float:vel_z)
 {
-	P:2("Hooks_OnUnoccupiedVehicleUpdate called: %d, %d, %d", vehicleid, playerid, passenger_seat);
+	P:2("Hooks_OnUnoccupiedVehicleUpdate called: %d, %d, %d, %f, %f, %f, %f, %f, %f", vehicleid, playerid, passenger_seat, new_x, new_y, new_z, vel_x, vel_y, vel_z);
 	new
 		end   = YSI_g_sCallbackData[ALS_OnUnoccupiedVehicleUpdate][E_FUNC_HOOK_DATA_END],
 		start = YSI_g_sCallbackData[ALS_OnUnoccupiedVehicleUpdate][E_FUNC_HOOK_DATA_START],

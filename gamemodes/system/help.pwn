@@ -146,7 +146,7 @@ hook OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 	return 1;
 }
 
-CMD:trogiupnew(playerid, params[])
+CMD:trogiup(playerid, params[])
 {
     ShowHelpDialog(playerid);
     return 1;
