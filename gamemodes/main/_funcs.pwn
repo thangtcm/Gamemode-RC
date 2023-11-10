@@ -1105,8 +1105,8 @@ public OnPlayerClickPlayerTextDraw(playerid, PlayerText:playertextid)
             new i = GetPVarInt(playerid, #select_character),string[128];
          //   ShowNoticeGUIFrame(playerid, 3);
             SetPlayerName(playerid,TempCharacter[playerid][i][Name]);
-            format(string, sizeof(string), "SELECT * FROM `accounts` WHERE `Username` = '%s'",  TempCharacter[playerid][i][Name]);
-            mysql_function_query(MainPipeline, string, true, "OnQueryFinish", "iii", LOADUSERDATA_THREAD, playerid, g_arrQueryHandle{playerid});
+            // format(string, sizeof(string), "SELECT * FROM `accounts` WHERE `Username` = '%s'",  TempCharacter[playerid][i][Name]);
+            // mysql_function_query(MainPipeline, string, true, "OnQueryFinish", "iii", LOADUSERDATA_THREAD, playerid, g_arrQueryHandle{playerid});
             hide_PreviewCharacter(playerid);
             SetPVarInt(playerid,#select_character,i);
             LoaderStarting(playerid, LOAD_CHARACTERLOGIN, "Dang tai du lieu game...", 2);       
@@ -1180,6 +1180,11 @@ public OnPlayerStreamIn(playerid, forplayerid)
 		}
 	}
     return 1;
+}
+
+public OnUnoccupiedVehicleUpdate(vehicleid, playerid, passenger_seat)
+{
+	return 1;
 }
 
 public OnPlayerStreamOut(playerid, forplayerid)
@@ -1607,8 +1612,11 @@ public OnPlayerConnect(playerid) {
     pFPS[playerid] = 0;
 	BackupClearTimer[playerid] = 0;
 	Backup[playerid] = 0;
+	SetPlayerVirtualWorld(playerid, 99999);
     CarRadars[playerid] = 0;
     CurrentArmor[playerid] = 0.0;
+	PlayerInfo[playerid][pCash] = 0;
+	PlayerInfo[playerid][pLevel] = 0;
 	PlayerInfo[playerid][pReg] = 0;
 	HHcheckVW[playerid] = 0;
 	HHcheckInt[playerid] = 0;
@@ -1880,7 +1888,6 @@ public OnPlayerConnect(playerid) {
 	InsideMainMenu{playerid} = true;
  	InsideTut{playerid} = 0;
 	ClearChatbox(playerid);
-	SetPlayerVirtualWorld(playerid, 0);
 	SetPlayerColor(playerid,TEAM_HIT_COLOR);
 	SyncPlayerTime(playerid);
 	MainMenuUpdateForPlayer(playerid);
@@ -8217,6 +8224,42 @@ public LoadStreamerDynamicObjects()
 // 		format(TempCharacter[playerid][i][Name], 24, "%s", name);
 //     }
 //     return 1;
+// }
+
+// forward OnPlayerViolate(playerid, severity, violationCode, const violationName[]);
+// public OnPlayerViolate(playerid, severity, violationCode, const violationName[])
+// {
+// 	new string[128], name[MAX_PLAYER_NAME];
+// 	GetPlayerName(playerid, name, sizeof name);
+	
+// 	switch(severity)
+// 	{
+// 		new playerip[32];
+// 		GetPlayerIp(playerid, playerip, sizeof(playerip));
+// 		case SEVERITY_CASE_ONE:
+// 		{
+// 			if(s_playerWarnings[playerid] < MAX_WARNS_AC) s_playerWarnings[playerid]++;
+// 			else 
+// 			{
+// 				format(string, sizeof(string), "{AA3333}AdmWarning{FFFF00}: Nguoi choi %s (ID: %d - IP: %s) da bi kick vi co kha nang su dung hack 3 lan. reason: Code violation #%d", name, playerid, violationCode, playerip);
+// 				ABroadCast(COLOR_YELLOW, string, 2);
+// 				Kick(playerid);
+// 			}
+// 		}
+// 		case SEVERITY_CASE_TWO:
+// 		{
+// 			format(string, sizeof(string), "{AA3333}AdmWarning{FFFF00}: Nguoi choi %s (ID: %d - IP :%s) da bi kick vi co kha nang su dung hack 3 lan. reason: Code violation #%d", name, playerid, violationCode, playerip);
+// 			ABroadCast(COLOR_YELLOW, string, 2);
+// 			Kick(playerid);
+// 		}
+// 		case SEVERITY_CASE_THREE:
+// 		{
+// 			format(string, sizeof(string), "{AA3333}AdmWarning{FFFF00}: Nguoi choi %s (ID: %d - IP :%s) da bi kick vi co kha nang su dung hack 3 lan. reason: Code violation #%d", name, playerid, violationCode, playerip);
+// 			ABroadCast(COLOR_YELLOW, string, 2);
+// 			Kick(playerid);
+// 		}
+// 	}
+// 	return 1;
 // }
 
 public OnPlayerTakeDamage(playerid, issuerid, Float:amount, weaponid)

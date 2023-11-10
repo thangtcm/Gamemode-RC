@@ -211,13 +211,13 @@ public OnPasswordHashedEx(playerid)
 	return 1;
 }
 
-// CMD:checkhashpass(playerid, params[])
-// {
-// new 	str[50];
-// 	if(sscanf(params, "s[128]", str))	return 1;
-// 	bcrypt_hash(str, BCRYPT_COST, "OnPasswordHashedEx", "i", playerid);
-// 	return 1;
-// }
+CMD:checkhashpass(playerid, params[])
+{
+new 	str[50];
+	if(sscanf(params, "s[128]", str))	return 1;
+	bcrypt_hash(str, BCRYPT_COST, "OnPasswordHashedEx", "i", playerid);
+	return 1;
+}
 
 CMD:feed(playerid, params[])
 {

@@ -23,10 +23,6 @@
 #include <discord-connector>
 #include <discord-cmd>
 #include <bcrypt>
-#define DEBUG
-#include <nex-ac_vn.lang> //or any other
-#include <nex-ac>
-
 #if defined SOCKET_ENABLED
 
 
@@ -102,6 +98,10 @@
 #include "./system/bodydame/bodydamage.pwn"
 #include "./system/vehicle/vehicle_info.pwn"
 #include "./system/nametag.pwn"
+
+// ============= ANTI ============= //
+// #include "./anticheat/anti_airbreak.pwn"
+#include "./anticheat/anti_troll_car.pwn"
 
 #include "./include/onplayerfishnishloading.pwn"
 

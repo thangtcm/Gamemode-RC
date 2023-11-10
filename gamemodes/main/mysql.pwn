@@ -4546,7 +4546,7 @@ public OnLoadGates()
 	new i, rows, fields, tmp[128];
 	cache_get_data(rows, fields, MainPipeline);
 
-	while(i < rows)
+	while(i < rows && i < MAX_GATES)
 	{
 		cache_get_field_content(i, "HID", tmp, MainPipeline);  GateInfo[i][gHID] = strval(tmp);
 		cache_get_field_content(i, "Speed", tmp, MainPipeline); GateInfo[i][gSpeed] = floatstr(tmp);
@@ -4633,6 +4633,7 @@ public OnLoadDynamicDoor(index)
 
 	for(new row; row < rows; row++)
 	{
+		
 		cache_get_field_content(rows, "id", tmp, MainPipeline);  DDoorsInfo[index][ddSQLId] = strval(tmp);
 		cache_get_field_content(rows, "Description", DDoorsInfo[index][ddDescription], MainPipeline, 128);
 		cache_get_field_content(rows, "Owner", tmp, MainPipeline); DDoorsInfo[index][ddOwner] = strval(tmp);
@@ -4679,7 +4680,7 @@ public OnLoadDynamicDoors()
 	new i, rows, fields, tmp[128];
 	cache_get_data(rows, fields, MainPipeline);
 
-	while(i < rows)
+	while(i < rows && i < MAX_DDOORS)
 	{
 		cache_get_field_content(i, "id", tmp, MainPipeline);  DDoorsInfo[i][ddSQLId] = strval(tmp);
 		cache_get_field_content(i, "Description", DDoorsInfo[i][ddDescription], MainPipeline, 128);
@@ -4798,7 +4799,7 @@ public OnLoadHouses()
 	new i, rows, fields, szField[24], tmp[128];
 	cache_get_data(rows, fields, MainPipeline);
 
-	while(i < rows)
+	while(i < rows && i < MAX_HOUSES)
 	{
 		cache_get_field_content(i, "id", tmp, MainPipeline); HouseInfo[i][hSQLId] = strval(tmp);
 		cache_get_field_content(i, "Owned", tmp, MainPipeline); HouseInfo[i][hOwned] = strval(tmp);

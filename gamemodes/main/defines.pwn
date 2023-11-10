@@ -98,15 +98,15 @@
 #define 		MAX_FAMILY 					(60)
 #define 		MAX_POINTS 					(10)
 #define 		MAX_DMAPICONS 				(400)
-#define 		MAX_DDOORS					(3000)
+#define 		MAX_DDOORS					(1000)
 
 #define         DIALOG_TRONGCAY                    (15124)
 #define         DIALOG_SLWEAPON                    (5124)
 #define         MENUVUKHI                    (5125)
 #define         DIALOG_HELP                    (5123)
-#define 		MAX_HOUSES 					(3000)
+#define 		MAX_HOUSES 					(1000)
 #define 		MAX_OWNABLE_HOUSES 			(2)
-#define 		MAX_GATES 					(5000)
+#define 		MAX_GATES 					(1000)
 #define 		MAX_EVENTPOINTS 			(50)
 #define 		INVALID_HOUSE_ID			(-1)
 #define			MAX_ARENAS					(10)
@@ -148,7 +148,7 @@
 #define 		zombiemode
 
 #define	        TYPE_THOIGIANCHET 60
-
+#define 		MAX_WARNS_AC 3 //Max warns before kick in severe case 1
 #define MAX_MONEYBAGS  (150)
 // strcpy - Simon / Y_LESS
 /*#define strcpy(%0,%1,%2) \
