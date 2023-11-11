@@ -2105,9 +2105,9 @@ public OnPlayerDisconnect(playerid, reason)
 					PlayerVehicleInfo[playerid][i][pvSpawned] = 1;
 					SetVehiclePos(PlayerVehicleInfo[playerid][i][pvId], 0, 0, 0); // Attempted desync fix
 					VehicleTrucker_Reload(playerid, i);
+					g_mysql_SaveVehicle(playerid, i);
 					DestroyVehicle(PlayerVehicleInfo[playerid][i][pvId]);
 					PlayerVehicleInfo[playerid][i][pvId] = INVALID_PLAYER_VEHICLE_ID;
-					g_mysql_SaveVehicle(playerid, i);
 				}
 			}
 		}
@@ -14886,9 +14886,9 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 					VehicleSpawned[playerid]--;
 					PlayerVehicleInfo[playerid][listitem][pvSpawned] = 0;
 					PlayerVehicleInfo[playerid][listitem][pvFuel] = VehicleFuel[iVehicleID];
+					g_mysql_SaveVehicle(playerid, listitem);
 					DestroyVehicle(iVehicleID);
-					PlayerVehicleInfo[playerid][listitem][pvId] = INVALID_PLAYER_VEHICLE_ID;
-					g_mysql_SaveVehicle(playerid, listitem);			
+					PlayerVehicleInfo[playerid][listitem][pvId] = INVALID_PLAYER_VEHICLE_ID;			
 					new vstring[128];
 					format(vstring, sizeof(vstring), "Ban da cat %s. Chiec xe da duoc chinh vao kho xe cua ban", VehicleName[PlayerVehicleInfo[playerid][listitem][pvModelId] - 400]);
 					VehicleTrucker_Reload(playerid, listitem);
@@ -14940,6 +14940,7 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 
                 SetVehicleVirtualWorld(iVeh, PlayerVehicleInfo[playerid][listitem][pvVW]);
                 LinkVehicleToInterior(iVeh, PlayerVehicleInfo[playerid][listitem][pvInt]);
+				SetVehicleHealth(iVeh, PlayerVehicleInfo[playerid][listitem][pvHealth]);
      
                 
 				++PlayerCars;
@@ -14957,13 +14958,14 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 				Vehicle_ResetData(iVeh);
 				VehicleFuel[iVeh] = PlayerVehicleInfo[playerid][listitem][pvFuel];
 				VehicleTrucker_Reload(playerid, listitem, true);
-				if (VehicleFuel[iVeh] > 100.0) VehicleFuel[iVeh] = 100.0;
+				if (VehicleFuel[iVeh] > GetVehicleFuelCapacity(iVeh)) VehicleFuel[iVeh] = GetVehicleFuelCapacity(iVeh);
 
 				if(PlayerVehicleInfo[playerid][listitem][pvCrashFlag] == 1 && PlayerVehicleInfo[playerid][listitem][pvCrashX] != 0.0)
 				{
 					SetVehiclePos(iVeh, PlayerVehicleInfo[playerid][listitem][pvCrashX], PlayerVehicleInfo[playerid][listitem][pvCrashY], PlayerVehicleInfo[playerid][listitem][pvCrashZ]);
 					SetVehicleZAngle(iVeh, PlayerVehicleInfo[playerid][listitem][pvCrashAngle]);
 					SetVehicleVirtualWorld(iVeh, PlayerVehicleInfo[playerid][listitem][pvCrashVW]);
+					SetVehicleHealth(iVeh, PlayerVehicleInfo[playerid][listitem][pvHealth]);
 					PlayerVehicleInfo[playerid][listitem][pvCrashFlag] = 0;
 					PlayerVehicleInfo[playerid][listitem][pvCrashVW] = 0;
 					PlayerVehicleInfo[playerid][listitem][pvCrashX] = 0.0;
