@@ -1,6 +1,5 @@
 #include <YSI_Coding\y_hooks>
 
-new PlayerOnVehicle[MAX_PLAYERS];
 new playerTrollCar[MAX_PLAYERS],
 	playerVehicleOccupied[MAX_PLAYERS];
 
@@ -45,18 +44,18 @@ hook OnPlayerStateChange(playerid, newstate, oldstate)
 			if(vehicleid == 1 || vehicleid == 2)
 			{
 				new mess[128];
-				format(mess, sizeof(mess), "RCRP-AC: %s (PID: %d) co the dang su dung Troll Car (Code #001).", GetPlayerNameEx(playerid, false), playerid);
+				format(mess, sizeof(mess), "RCRP-AC: %s (PID: %d) co the dang su dung Troll Car.", GetPlayerNameEx(playerid, false), playerid);
 			    ABroadCast(COLOR_YELLOW, string, 2);
-				format(mess, sizeof(mess), "[RCRP-AC] %s (%d) da bi kick khoi may chu [Reason: RCRP-AC Airbeak #2-001].", GetPlayerNameEx(playerid, false), playerid);
+				format(mess, sizeof(mess), "[RCRP-AC] %s (%d) da bi kick khoi may chu [Reason: RCRP-AC Airbeak].", GetPlayerNameEx(playerid, false), playerid);
 				SendClientMessageToAllEx(COLOR_LIGHTRED, mess);
 				SetTimerEx("KickEx", 1000, 0, "i", playerid);
 			}
 	 		if(vehicleid != PlayerOnVehicle[playerid])
 			{
 				new mess[128];
-				format(mess, sizeof(mess), "RCRP-AC: %s (PID: %d - ID SQL: %d) dang hack troll-car (S: %d-002).", GetPlayerNameEx(playerid, false), playerid, GetPlayerSQLId(playerid), playerTrollCar[playerid]);
+				format(mess, sizeof(mess), "RCRP-AC: %s (PID: %d - ID SQL: %d) dang hack troll-car (S: %d).", GetPlayerNameEx(playerid, false), playerid, GetPlayerSQLId(playerid), playerTrollCar[playerid]);
 			    ABroadCast(COLOR_YELLOW, string, 2);
-				format(mess, sizeof(mess), "[RCRP-AC] %s (%d) da bi kick khoi may chu [Reason: RCRP-AC Airbeak #2-002].", GetPlayerNameEx(playerid, false), playerid);
+				format(mess, sizeof(mess), "[RCRP-AC] %s (%d) da bi kick khoi may chu [Reason: RCRP-AC Airbeak].", GetPlayerNameEx(playerid, false), playerid);
 				SendClientMessageToAllEx(COLOR_LIGHTRED, mess);
 				SetTimerEx("KickEx", 1000, 0, "i", playerid);
 				playerTrollCar[playerid] ++;

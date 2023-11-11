@@ -74,7 +74,7 @@ Dialog:FARMER_MENU(playerid, response, listitem, inputtext[]){
                 Dialog_Show(playerid, BUYER_FARM_DIALOG, DIALOG_STYLE_LIST, "Mua gia suc", "Bo", ">>", "<<");
             }
 			case 4:{
-                Dialog_Show(playerid, SELL_FARM_DIALOG, DIALOG_STYLE_LIST, "Ban hang", "Bot Mi\nThao Duoc\nThit", ">>", "<<");
+                Dialog_Show(playerid, SELL_FARM_DIALOG, DIALOG_STYLE_LIST, "Ban hang", "Lua\nThao Duoc\nThit", ">>", "<<");
             }
 			case 5:{
 				Dialog_Show(playerid, CONVERT_FLOUR_DIALOG, DIALOG_STYLE_INPUT, "Doi bot mi (2 lua = 1 bot mi)", "Nhap so luong", ">>", "<<");
@@ -192,6 +192,67 @@ Dialog:SELL_PRODUCT_DIALOG(playerid, response, listitem, inputtext[]){
 	return 1;	
 }
 
+Dialog:FARM_MENU_PLANTFEED(playerid, response, listitem, inputtext[]) {
+	if(response)
+	{
+		new plantId = GetPVarInt(playerid, #Plant_Nearing);
+		new str[128];
+		switch(listitem)
+		{
+			case 0:{
+				if(PlantTreeInfo[playerid][plantId][plantStatus] == 1)
+				{
+					SendFarmerJob(playerid, "Ban da tuoi nuoc cho cay trong cua minh");
+					if(PlantTreeInfo[playerid][plantId][plantLevel] == 1)
+					{
+						PlantTreeInfo[playerid][plantId][plantLevel]++;
+						PlantTreeInfo[playerid][plantId][plantStatus] = 0;
+					}
+					else if(PlantTreeInfo[playerid][plantId][plantLevel] == 2)
+					{
+						PlantTreeInfo[playerid][plantId][plantAmount] += random(5) + 1;
+						PlantTreeInfo[playerid][plantId][plantStatus] = 0;
+						if(PlantTreeInfo[playerid][plantId][plantAmount] >= 20)
+						{
+							PlantTreeInfo[playerid][plantId][plantLevel]++;
+							PlantTreeInfo[playerid][plantId][plantStatus] = sizeof(PlantStatusArr);
+						}
+					}
+					GivePlayerCash(playerid, -5);
+					PlantTree_Reload(playerid, plantId);
+				}
+				else SendFarmerJob(playerid, "Cay trong cua ban dang trong tinh trang phat trien!");
+			}
+			case 1:{
+
+				if(PlantTreeInfo[playerid][plantId][plantStatus] == 2)
+				{
+					SendFarmerJob(playerid, "Ban da bon phan cho cay trong cua minh");
+					if(PlantTreeInfo[playerid][plantId][plantLevel] == 1)
+					{
+						PlantTreeInfo[playerid][plantId][plantLevel]++;
+						PlantTreeInfo[playerid][plantId][plantStatus] = 0;
+					}
+					else if(PlantTreeInfo[playerid][plantId][plantLevel] == 2)
+					{
+						PlantTreeInfo[playerid][plantId][plantAmount] += random(5) + 1;
+						PlantTreeInfo[playerid][plantId][plantStatus] = 0;
+						if(PlantTreeInfo[playerid][plantId][plantAmount] >= 20)
+						{
+							PlantTreeInfo[playerid][plantId][plantLevel]++;
+							PlantTreeInfo[playerid][plantId][plantStatus] = 0;
+						}
+					}
+					GivePlayerCash(playerid, -5);
+					PlantTree_Reload(playerid, plantId);
+				}
+				else SendFarmerJob(playerid, "Cay trong cua ban dang trong tinh trang phat trien!");
+			}
+		}
+
+	}
+	return 1;
+}
 Dialog:FARM_MENU_FEED(playerid, response, listitem, inputtext[]) {
 	if(response)
 	{
@@ -219,9 +280,7 @@ Dialog:FARM_MENU_FEED(playerid, response, listitem, inputtext[]) {
 				}
 				else if(RaiseCattleInfo[playerid][cattleId][c_Status] == 1)
 				{
-					printf("RUNN");
 					new needitem = floatround((float(RaiseCattleInfo[playerid][cattleId][c_Weight])/50.0), floatround_ceil);
-					printf("RUNN 222 %d", needitem);
 					if(Inventory_Count(playerid, "Lua") < needitem)
 					{
 						format(str, sizeof(str), "Ban khong co du %d lua de cho gia suc nay an.", needitem);
