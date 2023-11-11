@@ -136,6 +136,8 @@ public OnLoadPlants(playerid)
 		cache_get_field_content(i, "Id", tmp, MainPipeline); PlantTreeInfo[playerid][i][Id] = strval(tmp);
 		cache_get_field_content(i, "plantLevel", tmp, MainPipeline); PlantTreeInfo[playerid][i][plantLevel] = strval(tmp);
 		cache_get_field_content(i, "plantType", tmp, MainPipeline); PlantTreeInfo[playerid][i][plantType] = strval(tmp);
+		cache_get_field_content(i, "plantStatus", tmp, MainPipeline); PlantTreeInfo[playerid][i][plantStatus] = strval(tmp);
+		cache_get_field_content(i, "plantAmount", tmp, MainPipeline); PlantTreeInfo[playerid][i][plantAmount] = strval(tmp);
 		cache_get_field_content(i, "plantTimer", tmp, MainPipeline); PlantTreeInfo[playerid][i][plantTimer] = strval(tmp);
 		cache_get_field_content(i, "plantPos0", tmp, MainPipeline); PlantTreeInfo[playerid][i][plantPos][0] = floatstr(tmp);
 		cache_get_field_content(i, "plantPos1", tmp, MainPipeline); PlantTreeInfo[playerid][i][plantPos][1] = floatstr(tmp);
@@ -154,6 +156,8 @@ stock PLANT_UPDATE(playerid, index)
 	format(string, sizeof(string), "UPDATE `farmplants` SET \
 		`plantLevel` = %d, \
 		`plantType` = %d, \
+		`plantStatus` = %d, \
+		`plantAmount` = %d, \
 		`OwnerPlayerId` = %d, \
 		`plantTimer` = %d, \
 		`plantPos0` = %f,\
@@ -162,6 +166,8 @@ stock PLANT_UPDATE(playerid, index)
          WHERE `Id` = %d",
 		PlantTreeInfo[playerid][index][plantLevel],
 		PlantTreeInfo[playerid][index][plantType],
+		PlantTreeInfo[playerid][index][plantStatus],
+		PlantTreeInfo[playerid][index][plantAmount],
         GetPlayerSQLId(playerid),
 		PlantTreeInfo[playerid][index][plantTimer],
 		PlantTreeInfo[playerid][index][plantPos][0],
@@ -179,14 +185,18 @@ stock PLANT_ADD(playerid, index)
     format(string, sizeof(string), "INSERT INTO `farmplants` (\
 		`plantLevel`, \
 		`plantType`, \
+		`plantStatus`, \
+		`plantAmount`, \
 		`OwnerPlayerId`, \
 		`plantTimer`, \
 		`plantPos0`, \
 		`plantPos1`, \
 		`plantPos2`)\
-		VALUES ('%d', '%d', '%d', '%d', '%f', '%f', '%f')", 
+		VALUES ('%d', '%d', '%d', '%d', '%d', '%d', '%f', '%f', '%f')", 
         PlantTreeInfo[playerid][index][plantLevel],
         PlantTreeInfo[playerid][index][plantType],
+        PlantTreeInfo[playerid][index][plantStatus],
+        PlantTreeInfo[playerid][index][plantAmount],
         GetPlayerSQLId(playerid),
         PlantTreeInfo[playerid][index][plantTimer],
 		PlantTreeInfo[playerid][index][plantPos][0],

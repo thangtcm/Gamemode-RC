@@ -38,6 +38,46 @@ forward OnLoadInventory(playerid);
 forward OnInventoryAdd(playerid, pItemId, timer);
 forward OnInventoryAddCH(playerid, pItemId, timer);
 forward OnLoadInventoryCH(playerid);
+
+new const g_facInventory[][] = {
+	"9mm",
+	"Dong",
+	"Sat",
+	"Chat hoa hoc I",
+	"Chat hoa hoc II",
+	"Codeine",
+	"Ecstacy",
+	"LSD",
+	"sdpistol",
+	"Deagle",
+	"Shotgun",
+	"Spas",
+	"Mp5",
+	"AK47",
+	"M4",
+	"uzi",
+	"tec_9",
+	"Deagle-AS",
+	"Shotgun-AS",
+	"Spas-AS",
+	"M4-AS",
+	"Sniper-AS",
+	"Rifle-AS",
+	"Dan Sung Luc",
+	"Dan Shot Gun",
+	"Dan Tieu Lien",
+	"Dan sung truong",
+	"Dan Sniper",
+	"Dan Sung Luc SAAS",
+	"Dan SHotgun SAAS",
+	"Dan Tieu Lien SAAS",
+	"Dan sung truong SAAS",
+	"DAn Sniper SAAS",
+	"Mat na",
+	"Vat lieu",
+	"Thuoc Sung",
+};
+
 new const g_aInventoryItems[][e_InventoryItems] =
 {
 	{"Pickaxe", "item_Pickaxe"},
@@ -102,6 +142,7 @@ new const g_aInventoryItems[][e_InventoryItems] =
 	{"Thuoc sung", "thuoc_sung"},
 	{"Hat Giong Lua", "seed_paddy"},
 	{"Hat Giong Duoc Lieu", "seed_herbal"},
+	{"Hat Giong Cam", "seed_herbal"},
 	{"Thao Duoc", "herbal"},
 	{"Lua", "rice"},
 	{"Thit", "meat"},
@@ -113,7 +154,6 @@ new const g_aInventoryItems[][e_InventoryItems] =
 
 hook OnPlayerDisconnect(playerid, reason)
 {
-		printf("myItemTimer");
 	if(myItemTimer[playerid] != Timer:-1)
 	{
 		stop myItemTimer[playerid];
@@ -245,6 +285,29 @@ stock Inventory_GetFreeID(playerid)
 			return i;
 	}
 	return -1;
+}
+
+stock MaskHandle(playerid)
+{
+	PlayerInfo[playerid][pMaskOn] = !PlayerInfo[playerid][pMaskOn];
+	new szName[MAX_PLAYER_NAME];
+	if(PlayerInfo[playerid][pMaskOn]) // true la deo
+	{
+		if(IsPlayerAttachedObjectSlotUsed(playerid, PIZZA_INDEX)) RemovePlayerAttachedObject(playerid, PIZZA_INDEX);
+		SetPlayerAttachedObject(playerid, PIZZA_INDEX, 18912, 2, 0.078534, 0.041857, -0.001727, 268.970458, 1.533374, 269.223754);
+		GetPlayerName(playerid, szName, sizeof(szName));
+		SetPVarString(playerid, "TempNameName", szName);
+		format(szName, sizeof(szName), "Mask_%d%d", PlayerInfo[playerid][pMaskID][0], playerid);
+		SetPlayerName(playerid, szName);
+		return 1;
+	}
+	else
+	{
+		GetPVarString(playerid, "TempNameName", szName, sizeof(szName));
+		SetPlayerName(playerid, szName);
+		if(IsPlayerAttachedObjectSlotUsed(playerid, PIZZA_INDEX)) RemovePlayerAttachedObject(playerid, PIZZA_INDEX);
+	}
+	return 0;
 }
 
 stock Inventory_Items(playerid)
@@ -711,30 +774,14 @@ public OnPlayerUseItem(playerid, pItemId, name[])
 	}
 	else if(!strcmp(name, "Mat na", true))
 	{
-		new szName[MAX_PLAYER_NAME];
-		switch(PlayerInfo[playerid][pMaskOn])
+		if(MaskHandle(playerid))
 		{
-			case 0:
-			{
-				format(str, sizeof(str), "* %s da deo mat na.", GetPlayerNameEx(playerid));
-				ProxDetector(30.0, playerid, str, COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE);
-				PlayerInfo[playerid][pMaskOn] = 1;
-				if(IsPlayerAttachedObjectSlotUsed(playerid, PIZZA_INDEX)) RemovePlayerAttachedObject(playerid, PIZZA_INDEX);
-				SetPlayerAttachedObject(playerid, PIZZA_INDEX, 18912, 2, 0.078534, 0.041857, -0.001727, 268.970458, 1.533374, 269.223754);
-				GetPlayerName(playerid, szName, sizeof(szName));
-				SetPVarString(playerid, "TempNameName", szName);
-				format(szName, sizeof(szName), "Mask_%d%d", PlayerInfo[playerid][pMaskID][0], playerid);
-				SetPlayerName(playerid, szName);
-			}
-			case 1:
-			{
-				format(str, sizeof(str), "* %s da thao mat na.", GetPlayerNameEx(playerid));
-				ProxDetector(30.0, playerid, str, COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE);
-				PlayerInfo[playerid][pMaskOn] = 0;
-				GetPVarString(playerid, "TempNameName", szName, sizeof(szName));
-				SetPlayerName(playerid, szName);
-				if(IsPlayerAttachedObjectSlotUsed(playerid, PIZZA_INDEX)) RemovePlayerAttachedObject(playerid, PIZZA_INDEX);
-			}
+			format(str, sizeof(str), "* %s da deo mat na.", GetPlayerNameEx(playerid));
+			ProxDetector(30.0, playerid, str, COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE);
+		}
+		else{
+			format(str, sizeof(str), "* %s da thao mat na.", GetPlayerNameEx(playerid));
+			ProxDetector(30.0, playerid, str, COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE);
 		}
 	}
 	else if(!strcmp(name, "9mm", true))
@@ -1001,6 +1048,10 @@ public OnPlayerUseItem(playerid, pItemId, name[])
 	{
 		PlantTree_Add(playerid, 1);
 	}
+	else if(!strcmp(name, "Hat Giong Cam", true))
+	{
+		PlantTree_Add(playerid, 2);
+	}
 	else if(!strcmp(name, "Giong Bo", true))
 	{
 		Cattle_AddDefault(playerid, 0);
@@ -1137,6 +1188,66 @@ CMD:itemlist(playerid, params[])
 		}
 	}
 	return Dialog_Show(playerid, ShowOnly, DIALOG_STYLE_LIST, "Item list", string, "Lua chon", "Huy bo");
+}
+
+CMD:thaomatna(playerid, params[])
+{
+	if(IsACop(playerid))
+	{
+		if(GetPVarInt(playerid, "Injured") == 1 || PlayerCuffed[ playerid ] >= 1 || PlayerInfo[ playerid ][ pJailTime ] > 0 || PlayerInfo[playerid][pHospital] > 0)
+		{
+			SendErrorMessage(playerid, " Ban khong the lam dieu nay bay gio.");
+			return 1;
+		}
+
+		if(PlayerInfo[playerid][pHasCuff] < 1)
+		{
+		    SendServerMessage(playerid, " Ban khong co chiec cong tay nao!");
+		    return 1;
+		}
+
+		new string[128], giveplayerid, Float:health, Float:armor;
+		if(sscanf(params, "u", giveplayerid)) return SendUsageMessage(playerid, " /thaomatna [Player]");
+		if(IsPlayerConnected(giveplayerid))
+		{
+			if (ProxDetectorS(8.0, playerid, giveplayerid))
+			{
+				if(PlayerInfo[giveplayerid][pMaskOn] && GetPlayerSpecialAction(giveplayerid) == SPECIAL_ACTION_HANDSUP)
+				{
+					if(!MaskHandle(giveplayerid))
+					{
+						format(string, sizeof(string), "*%s da thao mat na %s xuong.", GetPlayerNameEx(playerid));
+						ProxDetector(30.0, playerid, string, COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE);
+					}
+					format(string, sizeof(string), "* Ban da bi thao mat na boi %s.", GetPlayerNameEx(playerid));
+					SendClientMessageEx(giveplayerid, COLOR_LIGHTBLUE, string);
+					format(string, sizeof(string), "* Ban da thao mat na cua %s xuong.", GetPlayerNameEx(giveplayerid));
+					SendClientMessageEx(playerid, COLOR_LIGHTBLUE, string);
+					GameTextForPlayer(giveplayerid, "~r~Thao mat na", 2500, 3);
+				}
+				else
+				{
+					SendErrorMessage(playerid, " Nguoi do chua dau hang hoac chua bi cuong che !");
+					return 1;
+				}
+			}
+			else
+			{
+				SendErrorMessage(playerid, " Nguoi do khong o gan ban.");
+				return 1;
+			}
+		}
+		else
+		{
+			SendErrorMessage(playerid, " nguoi choi khong hop le.");
+			return 1;
+		}
+	}
+	else
+	{
+		SendErrorMessage(playerid, " Ban khong phai nhan vien chinh phu");
+	}
+	return 1;
 }
 
 

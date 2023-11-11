@@ -348,6 +348,7 @@ public OnPlayerInteriorChange(playerid,newinteriorid,oldinteriorid)
 			SetTimerEx("SpecUpdate", 1500, false, "i", i);
 		}
 	}
+	return 1;
 }
 
 public OnPlayerPressButton(playerid, buttonid)
@@ -851,6 +852,7 @@ public OnPlayerPressButton(playerid, buttonid)
 public OnEnterExitModShop( playerid, enterexit, interiorid ) {
 	if(!enterexit && GetPlayerVehicle(playerid, GetPlayerVehicleID(playerid)) > -1) UpdatePlayerVehicleMods(playerid, GetPlayerVehicle(playerid, GetPlayerVehicleID(playerid)));
 	if(!enterexit && DynVeh[GetPlayerVehicleID(playerid)] != -1) UpdateGroupVehicleMods(GetPlayerVehicleID(playerid));
+	return 1;
 }
 
 public OnVehiclePaintjob(playerid, vehicleid, paintjobid)
@@ -1103,8 +1105,8 @@ public OnPlayerClickPlayerTextDraw(playerid, PlayerText:playertextid)
             new i = GetPVarInt(playerid, #select_character),string[128];
          //   ShowNoticeGUIFrame(playerid, 3);
             SetPlayerName(playerid,TempCharacter[playerid][i][Name]);
-            format(string, sizeof(string), "SELECT * FROM `accounts` WHERE `Username` = '%s'",  TempCharacter[playerid][i][Name]);
-            mysql_function_query(MainPipeline, string, true, "OnQueryFinish", "iii", LOADUSERDATA_THREAD, playerid, g_arrQueryHandle{playerid});
+            // format(string, sizeof(string), "SELECT * FROM `accounts` WHERE `Username` = '%s'",  TempCharacter[playerid][i][Name]);
+            // mysql_function_query(MainPipeline, string, true, "OnQueryFinish", "iii", LOADUSERDATA_THREAD, playerid, g_arrQueryHandle{playerid});
             hide_PreviewCharacter(playerid);
             SetPVarInt(playerid,#select_character,i);
             LoaderStarting(playerid, LOAD_CHARACTERLOGIN, "Dang tai du lieu game...", 2);       
@@ -1178,6 +1180,11 @@ public OnPlayerStreamIn(playerid, forplayerid)
 		}
 	}
     return 1;
+}
+
+public OnUnoccupiedVehicleUpdate(vehicleid, playerid, passenger_seat)
+{
+	return 1;
 }
 
 public OnPlayerStreamOut(playerid, forplayerid)
@@ -1605,8 +1612,11 @@ public OnPlayerConnect(playerid) {
     pFPS[playerid] = 0;
 	BackupClearTimer[playerid] = 0;
 	Backup[playerid] = 0;
+	SetPlayerVirtualWorld(playerid, 99999);
     CarRadars[playerid] = 0;
     CurrentArmor[playerid] = 0.0;
+	PlayerInfo[playerid][pCash] = 0;
+	PlayerInfo[playerid][pLevel] = 0;
 	PlayerInfo[playerid][pReg] = 0;
 	HHcheckVW[playerid] = 0;
 	HHcheckInt[playerid] = 0;
@@ -1878,7 +1888,6 @@ public OnPlayerConnect(playerid) {
 	InsideMainMenu{playerid} = true;
  	InsideTut{playerid} = 0;
 	ClearChatbox(playerid);
-	SetPlayerVirtualWorld(playerid, 0);
 	SetPlayerColor(playerid,TEAM_HIT_COLOR);
 	SyncPlayerTime(playerid);
 	MainMenuUpdateForPlayer(playerid);
@@ -2096,9 +2105,9 @@ public OnPlayerDisconnect(playerid, reason)
 					PlayerVehicleInfo[playerid][i][pvSpawned] = 1;
 					SetVehiclePos(PlayerVehicleInfo[playerid][i][pvId], 0, 0, 0); // Attempted desync fix
 					VehicleTrucker_Reload(playerid, i);
+					g_mysql_SaveVehicle(playerid, i);
 					DestroyVehicle(PlayerVehicleInfo[playerid][i][pvId]);
 					PlayerVehicleInfo[playerid][i][pvId] = INVALID_PLAYER_VEHICLE_ID;
-					g_mysql_SaveVehicle(playerid, i);
 				}
 			}
 		}
@@ -2591,6 +2600,38 @@ public OnRconLoginAttempt(ip[], password[], success)
     return 1;
 }
 
+// public OnPlayerCheatDetected(playerid, code)
+// {
+//     new cheatname[128], string[128];
+//     switch (code)
+//     {
+//         case 0: cheatname = "Silent Aimbot";
+//         case 1: cheatname = "Vehicle Repair Hack";
+//         case 2: cheatname = "Screen Flickering";
+//         case 3: cheatname = "Car Troller";
+//         case 4: cheatname = "Surfing Invisible";
+//         case 5: cheatname = "Airbreak";
+//         case 6: cheatname = "Seat Crasher";
+//         case 7: cheatname = "Speed Hack";
+//         case 8: cheatname = "Troll Animation";
+//         case 9: cheatname = "Animation Invisible";
+//         case 10: cheatname = "Fly Hack";
+//         case 11: cheatname = "Rage Shot";
+//         case 12: cheatname = "Trailer Crasher";
+//         case 13: cheatname = "Weapon Hack";
+//         case 14: cheatname = "Kill All";
+//         case 15: cheatname = "Checkpoint Teleport";
+//         case 16: cheatname = "Quick Turn";
+//         case 17: cheatname = "NPC Login";
+//         case 19: cheatname = "Game Speed";
+//         case 18: cheatname = "Fake State";
+//     }
+//     format(string, sizeof(string), "He thong anti cheat phat hien ban hack %s.", cheatname);
+//     SendClientMessage(playerid, 0xA9C4E4FF, string);
+//     Kick(playerid);
+//     return 1;
+// }
+
 public OnPlayerDeath(playerid, killerid, reason)
 {
     if(IsPlayerNPC(playerid)) return 1;
@@ -2960,7 +3001,7 @@ public OnPlayerDeath(playerid, killerid, reason)
 	return 1;
 }
 
-public OnVehicleDeath(vehicleid) {
+public OnVehicleDeath(vehicleid, killerid) {
     new Float:X, Float:Y, Float:Z;
     new Float:XB, Float:YB, Float:ZB;
     VehicleStatus{vehicleid} = 1;
@@ -3012,6 +3053,7 @@ public OnVehicleDeath(vehicleid) {
 		}
     }
 	arr_Engine{vehicleid} = 0;
+	return 1;
 }
 
 public OnPlayerSpawn(playerid)
@@ -4210,14 +4252,6 @@ public OnPlayerKeyStateChange(playerid, newkeys, oldkeys)
 		}
 	}
 	if(newkeys & KEY_YES) {
-		if(IsPlayerInRangeOfPoint(playerid,30, 581.6000,939.5470,-42.6158))
-	    {
-	    	if(GetPVarInt(playerid, "DangDaoDa") == 1) return SendClientTextDraw(playerid," Ban ~r~dang dao da~w~ roi");
-	    	LoaderStarting(playerid, LoadingDaoDa, "Dang dao da...", 1,10);
-			ApplyAnimation(playerid,"PED","BIKE_elbowL",4.0,0,0,0,0,0);
-			SetPVarInt(playerid,"DangDaoDa",1);
-			SetPlayerAttachedObject(playerid, PIZZA_INDEX, 19631, 6, -0.059999,	0.034,	0.319,	21,	-110.5,	112.8,	1,	1,	1, 0, 0);
-	    }
 		if(IsAtATM(playerid))
 		{
 			cmd_atm(playerid,"");
@@ -6121,11 +6155,6 @@ public OnVehicleDamageStatusUpdate(vehicleid, playerid)
     return CallRemoteFunction("OVDStatusUpdate", "dd", vehicleid, playerid);
 }
 
-forward OnUnoccupiedVehicleUpdate(vehicleid, playerid, passenger_seat);
-public OnUnoccupiedVehicleUpdate(vehicleid, playerid, passenger_seat)
-{
-    return 1;
-}
 
 forward OnRconCommand(cmd[]);
 public OnRconCommand(cmd[])
@@ -8187,6 +8216,42 @@ public LoadStreamerDynamicObjects()
 // 		format(TempCharacter[playerid][i][Name], 24, "%s", name);
 //     }
 //     return 1;
+// }
+
+// forward OnPlayerViolate(playerid, severity, violationCode, const violationName[]);
+// public OnPlayerViolate(playerid, severity, violationCode, const violationName[])
+// {
+// 	new string[128], name[MAX_PLAYER_NAME];
+// 	GetPlayerName(playerid, name, sizeof name);
+	
+// 	switch(severity)
+// 	{
+// 		new playerip[32];
+// 		GetPlayerIp(playerid, playerip, sizeof(playerip));
+// 		case SEVERITY_CASE_ONE:
+// 		{
+// 			if(s_playerWarnings[playerid] < MAX_WARNS_AC) s_playerWarnings[playerid]++;
+// 			else 
+// 			{
+// 				format(string, sizeof(string), "{AA3333}AdmWarning{FFFF00}: Nguoi choi %s (ID: %d - IP: %s) da bi kick vi co kha nang su dung hack 3 lan. reason: Code violation #%d", name, playerid, violationCode, playerip);
+// 				ABroadCast(COLOR_YELLOW, string, 2);
+// 				Kick(playerid);
+// 			}
+// 		}
+// 		case SEVERITY_CASE_TWO:
+// 		{
+// 			format(string, sizeof(string), "{AA3333}AdmWarning{FFFF00}: Nguoi choi %s (ID: %d - IP :%s) da bi kick vi co kha nang su dung hack 3 lan. reason: Code violation #%d", name, playerid, violationCode, playerip);
+// 			ABroadCast(COLOR_YELLOW, string, 2);
+// 			Kick(playerid);
+// 		}
+// 		case SEVERITY_CASE_THREE:
+// 		{
+// 			format(string, sizeof(string), "{AA3333}AdmWarning{FFFF00}: Nguoi choi %s (ID: %d - IP :%s) da bi kick vi co kha nang su dung hack 3 lan. reason: Code violation #%d", name, playerid, violationCode, playerip);
+// 			ABroadCast(COLOR_YELLOW, string, 2);
+// 			Kick(playerid);
+// 		}
+// 	}
+// 	return 1;
 // }
 
 public OnPlayerTakeDamage(playerid, issuerid, Float:amount, weaponid)
@@ -14813,9 +14878,9 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 					VehicleSpawned[playerid]--;
 					PlayerVehicleInfo[playerid][listitem][pvSpawned] = 0;
 					PlayerVehicleInfo[playerid][listitem][pvFuel] = VehicleFuel[iVehicleID];
+					g_mysql_SaveVehicle(playerid, listitem);
 					DestroyVehicle(iVehicleID);
-					PlayerVehicleInfo[playerid][listitem][pvId] = INVALID_PLAYER_VEHICLE_ID;
-					g_mysql_SaveVehicle(playerid, listitem);			
+					PlayerVehicleInfo[playerid][listitem][pvId] = INVALID_PLAYER_VEHICLE_ID;			
 					new vstring[128];
 					format(vstring, sizeof(vstring), "Ban da cat %s. Chiec xe da duoc chinh vao kho xe cua ban", VehicleName[PlayerVehicleInfo[playerid][listitem][pvModelId] - 400]);
 					VehicleTrucker_Reload(playerid, listitem);
@@ -14867,6 +14932,7 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 
                 SetVehicleVirtualWorld(iVeh, PlayerVehicleInfo[playerid][listitem][pvVW]);
                 LinkVehicleToInterior(iVeh, PlayerVehicleInfo[playerid][listitem][pvInt]);
+				SetVehicleHealth(iVeh, PlayerVehicleInfo[playerid][listitem][pvHealth]);
      
                 
 				++PlayerCars;
@@ -14884,13 +14950,14 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 				Vehicle_ResetData(iVeh);
 				VehicleFuel[iVeh] = PlayerVehicleInfo[playerid][listitem][pvFuel];
 				VehicleTrucker_Reload(playerid, listitem, true);
-				if (VehicleFuel[iVeh] > 100.0) VehicleFuel[iVeh] = 100.0;
+				if (VehicleFuel[iVeh] > GetVehicleFuelCapacity(iVeh)) VehicleFuel[iVeh] = GetVehicleFuelCapacity(iVeh);
 
 				if(PlayerVehicleInfo[playerid][listitem][pvCrashFlag] == 1 && PlayerVehicleInfo[playerid][listitem][pvCrashX] != 0.0)
 				{
 					SetVehiclePos(iVeh, PlayerVehicleInfo[playerid][listitem][pvCrashX], PlayerVehicleInfo[playerid][listitem][pvCrashY], PlayerVehicleInfo[playerid][listitem][pvCrashZ]);
 					SetVehicleZAngle(iVeh, PlayerVehicleInfo[playerid][listitem][pvCrashAngle]);
 					SetVehicleVirtualWorld(iVeh, PlayerVehicleInfo[playerid][listitem][pvCrashVW]);
+					SetVehicleHealth(iVeh, PlayerVehicleInfo[playerid][listitem][pvHealth]);
 					PlayerVehicleInfo[playerid][listitem][pvCrashFlag] = 0;
 					PlayerVehicleInfo[playerid][listitem][pvCrashVW] = 0;
 					PlayerVehicleInfo[playerid][listitem][pvCrashX] = 0.0;

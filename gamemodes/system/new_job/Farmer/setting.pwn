@@ -41,6 +41,8 @@ enum PLANT_INFO{
 	plantLevel,
     OwnerPlayerId,
 	plantType,
+	plantStatus,
+	plantAmount,
 	plantTimer,
 	ObjectSpawn,
 	Text3D:PlantText,
@@ -73,7 +75,8 @@ enum TreeGolbal{
 
 new PlantArr[][TreeGolbal] ={
 	{"Hat Giong Lua", 5, 15, "Lua"},
-	{"Hat Giong Duoc Lieu", 35, 65, "Thao Duoc"}
+	{"Hat Giong Duoc Lieu", 35, 65, "Thao Duoc"},
+	{"Hat Giong Cam", 35, 65, "Cam"}
 };
 
 enum AnimalInfo{
@@ -89,6 +92,13 @@ new AnimalArr[][AnimalInfo] ={
 	{"Giong Nai", 400, 80, "Thit", 19315}
 };
 
+
+new PlantStatusArr[][45] = {
+	"{0af762}Dang Phat Trien{ffffff}",
+	"{f7ef0a}Can Tuoi Nuoc{ffffff}",
+	"{5678f5}Can Bon Phan{ffffff}",
+	"{ff0000}Co the thu hoach{ffffff}"
+};
 new FarmInfo[MAX_FARM][fmInfo];
 new PlantTreeInfo[MAX_PLAYERS][MAX_PLAYER_PLANT][PLANT_INFO];
 new RaiseCattleInfo[MAX_PLAYERS][MAX_CATTLES][CATTLE_INFO];

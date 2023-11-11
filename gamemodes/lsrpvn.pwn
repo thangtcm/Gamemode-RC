@@ -3,12 +3,14 @@
 
 
 #include <a_samp>
+
 #include <a_mysql>
 #include <streamer>
 #include <yom_buttons>
 #include <ZCMD>
 #include <sscanf2>
 #include <foreach>
+#include <YSF>
 #include <YSI\y_timers>
 #include <YSI\y_utils>
 #include <YSI\y_ini>
@@ -18,7 +20,6 @@
 #include <eInventory>
 #include <eInvCarHouse>
 #include <stamina>
-#include <YSF>
 #include <discord-connector>
 #include <discord-cmd>
 #include <bcrypt>
@@ -97,6 +98,10 @@
 #include "./system/bodydame/bodydamage.pwn"
 #include "./system/vehicle/vehicle_info.pwn"
 #include "./system/nametag.pwn"
+
+// ============= ANTI ============= //
+#include "./anticheat/anti_airbreak.pwn"
+#include "./anticheat/anti_troll_car.pwn"
 
 #include "./include/onplayerfishnishloading.pwn"
 

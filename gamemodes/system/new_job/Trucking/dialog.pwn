@@ -181,7 +181,7 @@ Dialog:DIALOG_SELLPRODUCT(playerid, response, listitem, inputtext[])
             else    money = FactoryData[factoryID][ProductImportPrice][index];
             GivePlayerCash(playerid, money);
 
-            FactoryData[factoryID][ImportWareHouse][index] += FactoryData[factoryID][ProductImport][index];
+            FactoryData[factoryID][ImportWareHouse][index]++;
             if(FactoryData[factoryID][ImportWareHouse][index] > FactoryData[factoryID][ImportMaxWareHouse][index])
                 FactoryData[factoryID][ImportWareHouse][index] = FactoryData[factoryID][ImportMaxWareHouse][index];
             new rand = random(100);
@@ -210,7 +210,7 @@ Dialog:DIALOG_SELLPRODUCT(playerid, response, listitem, inputtext[])
             if(GetPVarInt(playerid, "MissionTruck") == 1)  {
                 MissionProduct_Update(playerid, pLoadProduct[playerid], true);
             } 
-            FactoryData[factoryID][WareHouse][index] += FactoryData[factoryID][Productivity][index];
+            FactoryData[factoryID][WareHouse][index] ++;
             if(FactoryData[factoryID][WareHouse][index] > FactoryData[factoryID][MaxWareHouse][index])
                 FactoryData[factoryID][WareHouse][index] = FactoryData[factoryID][MaxWareHouse][index];
             new moneyzxc[30];

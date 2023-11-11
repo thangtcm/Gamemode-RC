@@ -178,21 +178,50 @@ CMD:farmer(playerid, params[])
 	return 1;
 }
 
+CMD:plantfeed(playerid, params[])
+{
+    new plantId = PlantTree_Near(playerid, 3.0);
+	if((!IsPlayerInDynamicArea(playerid, FarmPlantArea) && !IsPlayerInDynamicArea(playerid, FarmPlantOrangeArea)) || GetPlayerVirtualWorld(playerid) != GetPlayerSQLId(playerid)) return SendErrorMessage(playerid, "Ban khong o trong khu vuc trong cay cua ban.");
+    if(plantId == -1) return SendErrorMessage(playerid, "Ban khong dung gan bat ky cay trong nao cua ban.");
+	if(PlantTreeInfo[playerid][plantId][plantType] == 2 && (PlantTreeInfo[playerid][plantId][plantStatus] == 1 || PlantTreeInfo[playerid][plantId][plantStatus] == 2))
+	{
+		SetPVarInt(playerid, #Plant_Nearing, plantId);
+		Dialog_Show(playerid, FARM_MENU_PLANTFEED, DIALOG_STYLE_LIST, "Thao tac cay trong cam", "Tuoi nuoc\nBon Phan", ">>", "<<");
+	}
+	else {
+		SendFarmerJob(playerid, "Cay nay dang trong tinh trang phat trien hoac da phat truong thanh !");
+	}
+	return 1;
+}
 
 CMD:thuhoach(playerid, params[])
 {
     new thuhoachmsg[512];
     new plantId = PlantTree_Near(playerid, 3.0);
-    if(!IsPlayerInDynamicArea(playerid, FarmPlantArea) || GetPlayerVirtualWorld(playerid) != GetPlayerSQLId(playerid)) return SendErrorMessage(playerid, "Ban khong o trong khu vuc trong cay cua ban.");
+    if((!IsPlayerInDynamicArea(playerid, FarmPlantArea) && !IsPlayerInDynamicArea(playerid, FarmPlantOrangeArea)) || GetPlayerVirtualWorld(playerid) != GetPlayerSQLId(playerid)) return SendErrorMessage(playerid, "Ban khong o trong khu vuc trong cay cua ban.");
     if(plantId == -1) return SendErrorMessage(playerid, "Ban khong dung gan bat ky cay trong nao cua ban.");
 	if(PlantTreeInfo[playerid][plantId][plantTimer] <= 0 && PlantTreeInfo[playerid][plantId][plantLevel] == 3)
 	{
 		new TreeType = PlantTreeInfo[playerid][plantId][plantType];
-		if(Inventory_Add(playerid, PlantArr[TreeType][PlantProduct]))
+		switch(TreeType)
 		{
-			format(thuhoachmsg, sizeof(thuhoachmsg), "Ban da thu hoach thanh cong cay %s (ID: %d)", PlantArr[TreeType][PlantProduct], plantId);
-			SendFarmerJob(playerid, thuhoachmsg);
-			PLANT_DELETE(playerid, plantId);
+			case 0, 1:
+			{
+				if(Inventory_Add(playerid, PlantArr[TreeType][PlantProduct]))
+				{
+					format(thuhoachmsg, sizeof(thuhoachmsg), "Ban da thu hoach thanh cong cay %s (ID: %d)", PlantArr[TreeType][PlantProduct], plantId);
+					SendFarmerJob(playerid, thuhoachmsg);
+					PLANT_DELETE(playerid, plantId);
+				}
+			}
+			case 2:{
+				if(Inventory_Add(playerid, PlantArr[TreeType][PlantProduct], PlantTreeInfo[playerid][plantId][plantAmount]))
+				{
+					format(thuhoachmsg, sizeof(thuhoachmsg), "Ban da thu hoach %d qua %s tu cay trong %s (ID: %d)", PlantTreeInfo[playerid][plantId][plantAmount] ,PlantArr[TreeType][PlantProduct], PlantArr[TreeType][PlantProduct], plantId);
+					SendFarmerJob(playerid, thuhoachmsg);
+					PLANT_DELETE(playerid, plantId);
+				}
+			}
 		}
 	}
 	else SendFarmerJob(playerid, "Cay nay van chua the thu hoach !");
@@ -211,13 +240,13 @@ public OnPasswordHashedEx(playerid)
 	return 1;
 }
 
-// CMD:checkhashpass(playerid, params[])
-// {
-// new 	str[50];
-// 	if(sscanf(params, "s[128]", str))	return 1;
-// 	bcrypt_hash(str, BCRYPT_COST, "OnPasswordHashedEx", "i", playerid);
-// 	return 1;
-// }
+CMD:checkhashpass(playerid, params[])
+{
+new 	str[50];
+	if(sscanf(params, "s[128]", str))	return 1;
+	bcrypt_hash(str, BCRYPT_COST, "OnPasswordHashedEx", "i", playerid);
+	return 1;
+}
 
 CMD:feed(playerid, params[])
 {
@@ -238,3 +267,4 @@ CMD:feed(playerid, params[])
 	}
 	return 1;
 }
+

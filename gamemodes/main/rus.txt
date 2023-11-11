@@ -1,13 +1,5 @@
-mysql.pwn(8) : îøèáêà 004: ôóíêöèÿ "cache_get_data" íå ðåàëèçîâàíà
-mysql.pwn(11) : îøèáêà 004: ôóíêöèÿ "cache_get_field_content" íå ðåàëèçîâàíà
-mysql.pwn(11) : îøèáêà 017: íåîáúÿâëåííûé ñèìâîë "DrugLabInfo"
-mysql.pwn(11) : ïðåäóïðåæäåíèå 215: âûðàæåíèå íå èìååò ýôôåêòà
-mysql.pwn(11) : îøèáêà 001: îæèäàëñÿ òîêåí ";", íî íàéäåí "]"
-mysql.pwn(11) : ôàòàëüíàÿ îøèáêà 107: ñëèøêîì ìíîãî îøèáîê íà îäíîé ñòðîêå
-
-Êîìïèëÿöèÿ îñòàíîâëåíà.
-
+d:\Gamemode Samp\UP GM\Gamemode-RC\gamemodes\main\defines.pwn(924) : îøèáêà 013: îòñóòñòâóåò òî÷êà âõîäà (íåò public-ôóíêöèé)
 Pawn compiler 3.2.3664	 	 	Copyright (c) 1997-2016, ITB CompuPhase
 
 
-Îøèáîê:5.
+Îøèáîê:1.

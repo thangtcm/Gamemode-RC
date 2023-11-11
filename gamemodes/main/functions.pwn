@@ -998,7 +998,7 @@ Vehicle_ResetData(iVehicleID) {
 		stationidv[iVehicleID][0] = 0;
 		TruckContents{iVehicleID} = 0;
 		TruckDeliveringTo[iVehicleID] = INVALID_BUSINESS_ID;
-		VehicleFuel[iVehicleID] = 100.0;
+		VehicleFuel[iVehicleID] = GetVehicleFuelCapacity(iVehicleID);
 
 		if(LockStatus{iVehicleID}) {
 			foreach(new i: Player)
@@ -3343,7 +3343,7 @@ public GasPumpSaleTimer(playerid, iBusinessID, iPumpID)
 		Float: fPumpAmount = FUEL_PUMP_RATE / 4,
 		iVehicleID = Businesses[iBusinessID][GasPumpVehicleID][iPumpID];
 
-	if (fPumpAmount*10 + VehicleFuel[iVehicleID] > 100.0)
+	if (fPumpAmount*10 + VehicleFuel[iVehicleID] > GetVehicleFuelCapacity(iVehicleID))
 	{
 		SendClientMessageEx(playerid, COLOR_GREEN, "Nhien lieu xe ban da day binh.");
 	    StopRefueling(playerid, iBusinessID, iPumpID);
@@ -6945,6 +6945,7 @@ stock SafeLogin(playerid, type)
                     Dia chi IP cua ban: %s\n\n\
                     Tai khoan ban chua dang ky, hay vao trang web : UCP.RCRP.VN de dang ky tai khoan\n\n",GetPlayerNameEx(playerid),ip);
                     ShowPlayerDialog(playerid,DIALOG_NOTHING, DIALOG_STYLE_MSGBOX,"ERROR",string,"<","");
+					Kick(playerid);
                 }
         }
 }
@@ -7024,15 +7025,20 @@ stock InvalidNameCheck(playerid) {
 
 stock Float: GetVehicleFuelCapacity(vehicleid)
 {
-	new Float: capacity;
-	if (IsABike(vehicleid)) {
-		capacity = 5.0;
+	new Float: capacity = 50.0;
+	foreach(new i: Player)
+	{
+		for(new d; d < MAX_PLAYERVEHICLES; ++d)
+		{
+			if(PlayerVehicleInfo[i][d][pvId] == vehicleid)
+			{
+				capacity = PlayerVehicleInfo[i][d][pvCapacity];
+				break;
+			}
+		}
 	}
- 	else {
-	 	capacity = 20.00;
-	}
+
 	return capacity;
-	//TODO optimise more
 }
 
 stock UpdateSANewsBroadcast()
@@ -16041,7 +16047,9 @@ stock DestroyPlayerVehicle(playerid, playervehicleid)
 		PlayerVehicleInfo[playerid][playervehicleid][pvColor1] = 126;
 		PlayerVehicleInfo[playerid][playervehicleid][pvColor2] = 126;
 		PlayerVehicleInfo[playerid][playervehicleid][pvPrice] = 0;
+		PlayerVehicleInfo[playerid][playervehicleid][pvHealth] = 900.0;
 		PlayerVehicleInfo[playerid][playervehicleid][pvFuel] = 0.0;
+		PlayerVehicleInfo[playerid][playervehicleid][pvCapacity] = 50.0;
 		PlayerVehicleInfo[playerid][playervehicleid][pvImpounded] = 0;
 		PlayerVehicleInfo[playerid][playervehicleid][pvSpawned] = 0;
 		PlayerVehicleInfo[playerid][playervehicleid][pvVW] = 0;
@@ -16086,10 +16094,12 @@ stock LoadPlayerVehicles(playerid) {
 					VehicleTrucker_Reload(playerid, v, true);
 					SetVehicleVirtualWorld(carcreated, PlayerVehicleInfo[playerid][v][pvVW]);
   					LinkVehicleToInterior(carcreated, PlayerVehicleInfo[playerid][v][pvInt]);
+					SetVehicleHealth(carcreated, PlayerVehicleInfo[playerid][v][pvHealth]);
 
 					Vehicle_ResetData(carcreated);
 					PlayerVehicleInfo[playerid][v][pvId] = carcreated;
 					VehicleFuel[carcreated] = PlayerVehicleInfo[playerid][v][pvFuel];
+					if(VehicleFuel[carcreated] > PlayerVehicleInfo[playerid][v][pvCapacity]) VehicleFuel[carcreated] = PlayerVehicleInfo[playerid][v][pvCapacity];
 
 					if(PlayerVehicleInfo[playerid][v][pvLocked]) {
 						LockPlayerVehicle(playerid, carcreated, PlayerVehicleInfo[playerid][v][pvLock]);
@@ -16821,6 +16831,13 @@ stock CreatePlayerVehicle(playerid, playervehicleid, modelid, Float: x, Float: y
 		PlayerVehicleInfo[playerid][playervehicleid][pvColor2] = color2;
 		PlayerVehicleInfo[playerid][playervehicleid][pvPark] = 1;
 		PlayerVehicleInfo[playerid][playervehicleid][pvPrice] = price;
+		switch(modelid)
+		{
+			case 403, 406, 414, 423, 427, 428, 433, 443, 455, 456, 470, 499, 514, 515:
+			{PlayerVehicleInfo[playerid][playervehicleid][pvHealth] = 1100.0;} 
+			default: PlayerVehicleInfo[playerid][playervehicleid][pvHealth] = 900.0;
+		}
+
 		for(new w = 0; w < 3; w++)
 	    {
 	    	PlayerVehicleInfo[playerid][playervehicleid][pvWeapons][w] = 0;
@@ -16851,10 +16868,12 @@ stock CreatePlayerVehicle(playerid, playervehicleid, modelid, Float: x, Float: y
 		new carcreated = CreateVehicle(modelid,x,y,z,angle,color1,color2,-1);
 		SetVehicleVirtualWorld(carcreated, PlayerVehicleInfo[playerid][playervehicleid][pvVW]);
   		LinkVehicleToInterior(carcreated, PlayerVehicleInfo[playerid][playervehicleid][pvInt]);
+		SetVehicleHealth(carcreated, PlayerVehicleInfo[playerid][playervehicleid][pvHealth]);
+		UpdateVehicleDamageStatus(carcreated, PlayerVehicleInfo[playerid][playervehicleid][pvPanels], PlayerVehicleInfo[playerid][playervehicleid][pvDoors], PlayerVehicleInfo[playerid][playervehicleid][pvLights], PlayerVehicleInfo[playerid][playervehicleid][pvTires]);
 		Vehicle_ResetData(carcreated);
 		PlayerVehicleInfo[playerid][playervehicleid][pvId] = carcreated;
 		PlayerVehicleInfo[playerid][playervehicleid][pvSpawned] = 1;
-		PlayerVehicleInfo[playerid][playervehicleid][pvFuel] = 100.0;
+		PlayerVehicleInfo[playerid][playervehicleid][pvFuel] = PlayerVehicleInfo[playerid][playervehicleid][pvCapacity];
 		//SetVehicleNumberPlate(carcreated, PlayerVehicleInfo[playerid][playervehicleid][pvNumberPlate]);
 
 		new string[128];
@@ -19732,7 +19751,7 @@ public ResetVariables()
 	if(TaxValue < 0) TaxValue = 0;
 
 	for(new i = 0; i < MAX_VEHICLES; ++i) {
-		VehicleFuel[i] = 100.0;
+		VehicleFuel[i] = GetVehicleFuelCapacity(i);
 	}
 	for(new i = 0; i < sizeof(CreatedCars); ++i) {
 		CreatedCars[i] = INVALID_VEHICLE_ID;

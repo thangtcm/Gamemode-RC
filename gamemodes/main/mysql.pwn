@@ -8,25 +8,25 @@ public DRL_Load(d)
     cache_get_data(rows, fields, MainPipeline);
 
     for( new index; index < rows; index++) {
-        cache_get_field_content(index, "DLab_Vw", result, MainPipeline); DrugLabInfo[index][DLab_Vw] = strval(result);
-        cache_get_field_content(index, "DLab_Int", result, MainPipeline); DrugLabInfo[index][DLab_Int] = strval(result);
-        cache_get_field_content(index, "DLab_Type", result, MainPipeline); DrugLabInfo[index][DLab_Type] = strval(result);
-        cache_get_field_content(index, "DLab_Family", result, MainPipeline); DrugLabInfo[index][DLab_Family] = strval(result);
-        cache_get_field_content(index, "DLab_Postion0", result, MainPipeline); DrugLabInfo[index][DLab_Postion][0] = floatstr(result);
-        cache_get_field_content(index, "DLab_Postion1", result, MainPipeline); DrugLabInfo[index][DLab_Postion][1] = floatstr(result);
-        cache_get_field_content(index, "DLab_Postion2", result, MainPipeline); DrugLabInfo[index][DLab_Postion][2] = floatstr(result);
-        
-        new Float:Pos_drl[6];
-        Pos_drl[0] = DrugLabInfo[index][DLab_Postion][0];
-        Pos_drl[1] = DrugLabInfo[index][DLab_Postion][1];
-        Pos_drl[2] = DrugLabInfo[index][DLab_Postion][2];
+		cache_get_field_content(index, "DLab_Vw", result, MainPipeline); DrugLabInfo[index][DLab_Vw] = strval(result);
+		cache_get_field_content(index, "DLab_Int", result, MainPipeline); DrugLabInfo[index][DLab_Int] = strval(result);
+		cache_get_field_content(index, "DLab_Type", result, MainPipeline); DrugLabInfo[index][DLab_Type] = strval(result);
+		cache_get_field_content(index, "DLab_Family", result, MainPipeline); DrugLabInfo[index][DLab_Family] = strval(result);
+		cache_get_field_content(index, "DLab_Postion0", result, MainPipeline); DrugLabInfo[index][DLab_Postion][0] = floatstr(result);
+		cache_get_field_content(index, "DLab_Postion1", result, MainPipeline); DrugLabInfo[index][DLab_Postion][1] = floatstr(result);
+		cache_get_field_content(index, "DLab_Postion2", result, MainPipeline); DrugLabInfo[index][DLab_Postion][2] = floatstr(result);
+		
+		new Float:Pos_drl[6];
+		Pos_drl[0] = DrugLabInfo[index][DLab_Postion][0];
+		Pos_drl[1] = DrugLabInfo[index][DLab_Postion][1];
+		Pos_drl[2] = DrugLabInfo[index][DLab_Postion][2];
 
-       new string[129];
-       new family = DrugLabInfo[index][DLab_Family] ;
-       format(string,sizeof string,"Drub Lab %d\nFamily: %s\n(Bam Y de thao tac)",index,FamilyInfo[family][FamilyName]);
-       DrugLabInfo[index][DLab_Label] = CreateDynamic3DTextLabel(string, -1,  Pos_drl[0], Pos_drl[1], Pos_drl[2], 30.0, INVALID_PLAYER_ID,  INVALID_VEHICLE_ID,   0, DrugLabInfo[index][DLab_Vw], DrugLabInfo[index][DLab_Int]);
-       DrugLabInfo[index][DLab_PickUP] = CreateDynamicPickup(1577, 10,  Pos_drl[0], Pos_drl[1], Pos_drl[2],DrugLabInfo[index][DLab_Vw], DrugLabInfo[index][DLab_Int]);
-       printf("[Drug lab database] %d Druglab loaded.", index);
+		new string[129];
+		new family = DrugLabInfo[index][DLab_Family] ;
+		format(string,sizeof string,"Drub Lab %d\nFamily: %s\n(Bam Y de thao tac)",index,FamilyInfo[family][FamilyName]);
+		DrugLabInfo[index][DLab_Label] = CreateDynamic3DTextLabel(string, -1,  Pos_drl[0], Pos_drl[1], Pos_drl[2], 30.0, INVALID_PLAYER_ID,  INVALID_VEHICLE_ID,   0, DrugLabInfo[index][DLab_Vw], DrugLabInfo[index][DLab_Int]);
+		DrugLabInfo[index][DLab_PickUP] = CreateDynamicPickup(1577, 10,  Pos_drl[0], Pos_drl[1], Pos_drl[2],DrugLabInfo[index][DLab_Vw], DrugLabInfo[index][DLab_Int]);
+		printf("[Drug lab database] %d Druglab loaded.", index);
 
     }
 
@@ -915,7 +915,6 @@ public OnQueryFinish(resultid, extraid, handleid)
 
 					if(PlayerVehicleInfo[extraid][i][pvModelId] != 0)
 					{
-					
 
 						cache_get_field_content(i,  "pvPosX", szResult, MainPipeline);
 						PlayerVehicleInfo[extraid][i][pvPosX] = floatstr(szResult);
@@ -977,8 +976,26 @@ public OnQueryFinish(resultid, extraid, handleid)
 						cache_get_field_content(i,  "pvWepUpgrade", szResult, MainPipeline);
 						PlayerVehicleInfo[extraid][i][pvWepUpgrade] = strval(szResult);
 
+						cache_get_field_content(i,  "pvPanels", szResult, MainPipeline);
+						PlayerVehicleInfo[extraid][i][pvPanels] = strval(szResult);
+
+						cache_get_field_content(i,  "pvDoors", szResult, MainPipeline);
+						PlayerVehicleInfo[extraid][i][pvDoors] = strval(szResult);
+
+						cache_get_field_content(i,  "pvLights", szResult, MainPipeline);
+						PlayerVehicleInfo[extraid][i][pvLights] = strval(szResult);
+
+						cache_get_field_content(i,  "pvTires", szResult, MainPipeline);
+						PlayerVehicleInfo[extraid][i][pvTires] = strval(szResult);
+
+						cache_get_field_content(i,  "pvHealth", szResult, MainPipeline);
+						PlayerVehicleInfo[extraid][i][pvHealth] = floatstr(szResult);
+
 						cache_get_field_content(i,  "pvFuel", szResult, MainPipeline);
 						PlayerVehicleInfo[extraid][i][pvFuel] = floatstr(szResult);
+
+						cache_get_field_content(i,  "pvCapacity", szResult, MainPipeline);
+						PlayerVehicleInfo[extraid][i][pvCapacity] = floatstr(szResult);
 
 						cache_get_field_content(i,  "pvImpound", szResult, MainPipeline);
 						PlayerVehicleInfo[extraid][i][pvImpounded] = strval(szResult);
@@ -1435,7 +1452,6 @@ public OnLoadTempCharacters(playerid) {
     else
     {
     	ShowPlayerCharacter(playerid);
-		new str[256];
 //		SendServerMessage(playerid, "Ten nay da ton tai hoac khong hop le (Name_Name).");
     	print("Khong tai duoc tai khoan chinh cua ban");
 
@@ -1571,7 +1587,9 @@ stock g_mysql_SaveVehicle(playerid, slotid)
 	format(query, sizeof(query), "%s `pvWeapon2` = %d,", query, PlayerVehicleInfo[playerid][slotid][pvWeapons][2]);
 	format(query, sizeof(query), "%s `pvLock` = %d,", query, PlayerVehicleInfo[playerid][slotid][pvLock]);
 	format(query, sizeof(query), "%s `pvWepUpgrade` = %d,", query, PlayerVehicleInfo[playerid][slotid][pvWepUpgrade]);
+	format(query, sizeof(query), "%s `pvHealth` = %0.5f,", query, PlayerVehicleInfo[playerid][slotid][pvHealth]);
 	format(query, sizeof(query), "%s `pvFuel` = %0.5f,", query, PlayerVehicleInfo[playerid][slotid][pvFuel]);
+	format(query, sizeof(query), "%s `pvCapacity` = %0.5f,", query, PlayerVehicleInfo[playerid][slotid][pvCapacity]);
 	format(query, sizeof(query), "%s `pvImpound` = %d,", query, PlayerVehicleInfo[playerid][slotid][pvImpounded]);
 	format(query, sizeof(query), "%s `pvDisabled` = %d,", query, PlayerVehicleInfo[playerid][slotid][pvDisabled]);
 	format(query, sizeof(query), "%s `pvPlate` = '%s',", query, g_mysql_ReturnEscaped(PlayerVehicleInfo[playerid][slotid][pvPlate], MainPipeline));
@@ -1589,6 +1607,9 @@ stock g_mysql_SaveVehicle(playerid, slotid)
 	format(query, sizeof(query), "%s `pvCrashZ` = %0.5f,", query, PlayerVehicleInfo[playerid][slotid][pvCrashZ]);
 	format(query, sizeof(query), "%s `pvCrashAngle` = %0.5f,", query, PlayerVehicleInfo[playerid][slotid][pvCrashAngle]);
 
+	new panels, doors, lights, tires;
+	GetVehicleDamageStatus(PlayerVehicleInfo[playerid][slotid][pvId], panels, doors, lights, tires);
+	format(query, sizeof(query), "%s `pvPanels` = %d, `pvDoors` = %d, `pvLights` = %d, `pvTires` = %d,", query, panels, doors, lights, tires);
 	for(new m = 0; m < MAX_MODS; m++)
 	{
 		if(m == MAX_MODS-1)
@@ -4546,7 +4567,7 @@ public OnLoadGates()
 	new i, rows, fields, tmp[128];
 	cache_get_data(rows, fields, MainPipeline);
 
-	while(i < rows)
+	while(i < rows && i < MAX_GATES)
 	{
 		cache_get_field_content(i, "HID", tmp, MainPipeline);  GateInfo[i][gHID] = strval(tmp);
 		cache_get_field_content(i, "Speed", tmp, MainPipeline); GateInfo[i][gSpeed] = floatstr(tmp);
@@ -4633,6 +4654,7 @@ public OnLoadDynamicDoor(index)
 
 	for(new row; row < rows; row++)
 	{
+		
 		cache_get_field_content(rows, "id", tmp, MainPipeline);  DDoorsInfo[index][ddSQLId] = strval(tmp);
 		cache_get_field_content(rows, "Description", DDoorsInfo[index][ddDescription], MainPipeline, 128);
 		cache_get_field_content(rows, "Owner", tmp, MainPipeline); DDoorsInfo[index][ddOwner] = strval(tmp);
@@ -4679,7 +4701,7 @@ public OnLoadDynamicDoors()
 	new i, rows, fields, tmp[128];
 	cache_get_data(rows, fields, MainPipeline);
 
-	while(i < rows)
+	while(i < rows && i < MAX_DDOORS)
 	{
 		cache_get_field_content(i, "id", tmp, MainPipeline);  DDoorsInfo[i][ddSQLId] = strval(tmp);
 		cache_get_field_content(i, "Description", DDoorsInfo[i][ddDescription], MainPipeline, 128);
@@ -4798,7 +4820,7 @@ public OnLoadHouses()
 	new i, rows, fields, szField[24], tmp[128];
 	cache_get_data(rows, fields, MainPipeline);
 
-	while(i < rows)
+	while(i < rows && i < MAX_HOUSES)
 	{
 		cache_get_field_content(i, "id", tmp, MainPipeline); HouseInfo[i][hSQLId] = strval(tmp);
 		cache_get_field_content(i, "Owned", tmp, MainPipeline); HouseInfo[i][hOwned] = strval(tmp);
@@ -7820,7 +7842,9 @@ public OnPlayerLoad(playerid)
 			PlayerVehicleInfo[playerid][v][pvAmmos][1] = 0;
 			PlayerVehicleInfo[playerid][v][pvAmmos][2] = 0;
 			PlayerVehicleInfo[playerid][v][pvWepUpgrade] = 0;
+			PlayerVehicleInfo[playerid][v][pvHealth] = 900.0;
 			PlayerVehicleInfo[playerid][v][pvFuel] = 0.0;
+			PlayerVehicleInfo[playerid][v][pvCapacity] = 50.0;
 			PlayerVehicleInfo[playerid][v][pvAllowedPlayerId] = INVALID_PLAYER_ID;
 			PlayerVehicleInfo[playerid][v][pvPark] = 0;
 			ListItemReleaseId[playerid][v] = -1;
@@ -8620,6 +8644,7 @@ public OnVehicleSpawn(vehicleid) {
 		    break;
 		}
     }
+	return 1;
 }
 
 public OnVehicleMod(playerid, vehicleid, componentid)

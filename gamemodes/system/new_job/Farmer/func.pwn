@@ -174,6 +174,21 @@ stock Rent_Farm(playerid, farmid)
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 //~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+stock PlantTree_GetNameLevel(treeLevel)
+{
+    new name[128];
+    switch(treeLevel)
+    {
+        case 1, 2:{
+            name = "Thu hoach: {FF0000}Chua{FFFFFF}";
+        }
+        case 3: {
+            name = "Su dung {212c58}/thuhoach{FFFFFF} de thu hoach";
+        }
+    }
+    return name;
+}
+
 stock GetPlantFree(playerid)
 {
     for(new i = 0; i < MAX_PLAYER_PLANT; ++i)
@@ -215,18 +230,6 @@ stock PlantTree_Reload(playerid, plantid)
     switch(PlantTreeInfo[playerid][plantid][plantLevel])
     {
         case 1:{
-            format(string, sizeof(string), 
-                "Cay {212c58}%s{FFFFFF}(ID:%d)\n\
-                Cap do: {212c58}%d{FFFFFF}\n\
-                Thoi gian phat trien: {212c58}%d{FFFFFF},\n\
-                Chu so huu: {212c58}%s{FFFFFF}\n\
-                Thu hoach: {FF0000}Chua{FFFFFF}",
-                PlantArr[PlantTreeInfo[playerid][plantid][plantType]][PlantName], 
-                plantid,
-                PlantTreeInfo[playerid][plantid][plantLevel],
-                PlantTreeInfo[playerid][plantid][plantTimer],
-                GetPlayerNameEx(playerid)
-            );
             if(PlantTreeInfo[playerid][plantid][plantTimer] < PLANT_TINE_LEVEL_1 && PlantTreeInfo[playerid][plantid][plantTimer] != 0)
             {
                 PlantTreeInfo[playerid][plantid][plantTimer] = PlantTreeInfo[playerid][plantid][plantTimer];
@@ -237,19 +240,10 @@ stock PlantTree_Reload(playerid, plantid)
             }
         }
         case 2:{
-            plantObject = 19473;
-            format(string, sizeof(string), 
-                "Cay {212c58}%s{FFFFFF}(ID:%d)\n\
-                Cap do: {212c58}%d{FFFFFF}\n\
-                Thoi gian phat trien: {212c58}%d{FFFFFF},\n\
-                Chu so huu: {212c58}%s{FFFFFF}\n\
-                Thu hoach: {FF0000}Chua{FFFFFF}", 
-                PlantArr[PlantTreeInfo[playerid][plantid][plantType]][PlantName], 
-                plantid,
-                PlantTreeInfo[playerid][plantid][plantLevel],
-                PlantTreeInfo[playerid][plantid][plantTimer],
-                GetPlayerNameEx(playerid)
-            );
+            if(PlantTreeInfo[playerid][plantid][plantType] == 2)
+                plantObject = 738;
+            else
+                plantObject = 19473;
             if(PlantTreeInfo[playerid][plantid][plantTimer] < PLANT_TINE_LEVEL_2 && PlantTreeInfo[playerid][plantid][plantTimer] != 0)
             {
                 PlantTreeInfo[playerid][plantid][plantTimer] = PlantTreeInfo[playerid][plantid][plantTimer];
@@ -260,19 +254,10 @@ stock PlantTree_Reload(playerid, plantid)
             }
         }
         case 3:{
-            plantObject = 804;
-            format(string, sizeof(string), 
-                "Cay {212c58}%s{FFFFFF}(ID:%d)\n\
-                Cap do: {212c58}%d{FFFFFF}\n\
-                Thoi gian phat trien: {212c58}%d{FFFFFF},\n\
-                Chu so huu: {212c58}%s{FFFFFF}\n\
-                Su dung {212c58}/thuhoach{FFFFFF} de thu hoach", 
-                PlantArr[PlantTreeInfo[playerid][plantid][plantType]][PlantName], 
-                plantid,
-                PlantTreeInfo[playerid][plantid][plantLevel],
-                PlantTreeInfo[playerid][plantid][plantTimer],
-                GetPlayerNameEx(playerid)
-            );
+            if(PlantTreeInfo[playerid][plantid][plantType] == 2)
+                plantObject = 738;
+            else
+                plantObject = 804;
             PlantTreeInfo[playerid][plantid][plantPos][2] = Plant_ZDefault + 1.0;
             if(PlantTreeInfo[playerid][plantid][plantTimer] < PLANT_TINE_LEVEL_3 && PlantTreeInfo[playerid][plantid][plantTimer] != 0)
             {
@@ -284,6 +269,41 @@ stock PlantTree_Reload(playerid, plantid)
             }
         }
     }
+    switch(PlantTreeInfo[playerid][plantid][plantType])
+    {
+        case 0, 1:
+        {
+            format(string, sizeof(string), 
+            "Cay {212c58}%s{FFFFFF}(ID:%d)\n\
+            Cap do: {212c58}%d{FFFFFF}\n\
+            Thoi gian phat trien: {212c58}%d{FFFFFF},\n\
+            Chu so huu: {212c58}%s{FFFFFF}\n\
+            %s", 
+            PlantArr[PlantTreeInfo[playerid][plantid][plantType]][PlantName], 
+            plantid,
+            PlantTreeInfo[playerid][plantid][plantLevel],
+            PlantTreeInfo[playerid][plantid][plantTimer],
+            GetPlayerNameEx(playerid),
+            PlantTree_GetNameLevel(PlantTreeInfo[playerid][plantid][plantLevel])
+            );
+        }
+        case 2:{
+            format(string, sizeof(string), 
+            "Cay {212c58}%s{FFFFFF}(ID:%d)\n\
+            Cap do: {212c58}%d{FFFFFF}\n\
+            Thoi gian phat trien: {212c58}%d{FFFFFF},\n\
+            Chu so huu: {212c58}%s{FFFFFF}\n\
+            Trang thai: {212c58}%s{FFFFFF}\n\
+            Su dung {212c58}/plantfeed va /thuhoach{FFFFFF} de thao tac", 
+            PlantArr[PlantTreeInfo[playerid][plantid][plantType]][PlantName], 
+            plantid,
+            PlantTreeInfo[playerid][plantid][plantLevel],
+            PlantTreeInfo[playerid][plantid][plantTimer],
+            GetPlayerNameEx(playerid),
+            Plant_GetNameStatus(playerid, PlantTreeInfo[playerid][plantid][plantStatus])
+            );
+        }
+    }
     PlantTreeInfo[playerid][plantid][PlantText] = CreateDynamic3DTextLabel(string, COLOR_WHITE, 
         PlantTreeInfo[playerid][plantid][plantPos][0],
         PlantTreeInfo[playerid][plantid][plantPos][1],
@@ -292,13 +312,39 @@ stock PlantTree_Reload(playerid, plantid)
         PlantTreeInfo[playerid][plantid][plantPos][0],
         PlantTreeInfo[playerid][plantid][plantPos][1],
         PlantTreeInfo[playerid][plantid][plantPos][2], 0.000000, 0.000000, 0.000000, .interiorid = -1, .worldid = playerVW, .playerid=-1, .streamdistance = 100);
+    Streamer_Update(playerid);
     return 1;
 }
 
 stock PlantTree_Update(playerid, plantid)
 {
     new string[256];
-    if(--PlantTreeInfo[playerid][plantid][plantTimer] <= 0)
+    PlantTreeInfo[playerid][plantid][plantTimer]--;
+    if(PlantTreeInfo[playerid][plantid][plantTimer] <= 0 && PlantTreeInfo[playerid][plantid][plantType] == 2)
+    {
+        if(PlantTreeInfo[playerid][plantid][plantStatus] != 0)
+        {
+            format(string, sizeof(string), "Cay trong %s (ID: %d) cua ban da bi heo vi %s.", 
+                PlantArr[PlantTreeInfo[playerid][plantid][plantType]][PlantName],
+                plantid,
+                Plant_GetNameStatus(playerid, PlantTreeInfo[playerid][plantid][plantStatus]));
+            SendClientMessageEx(playerid, COLOR_WHITE, string);
+            PLANT_DELETE(playerid, plantid);
+        }
+        if(PlantTreeInfo[playerid][plantid][plantStatus] == 0)
+        {
+            PlantTreeInfo[playerid][plantid][plantStatus] = random(1) + 1;
+            PlantTreeInfo[playerid][plantid][plantTimer] = 240; // 4p
+            new str[128];
+            format(str, sizeof(str), "Cay trong %s (ID: %d) cua ban dang bi %s, ban co 4 phut de cham soc no truoc khi bi heo.", 
+                PlantArr[PlantTreeInfo[playerid][plantid][plantType]][PlantName],
+                plantid,
+                Plant_GetNameStatus(playerid, PlantTreeInfo[playerid][plantid][plantStatus]));
+            SendClientMessageEx(playerid, COLOR_WHITE, str);
+        }
+        return 1;
+    }
+    if(PlantTreeInfo[playerid][plantid][plantTimer] <= 0 && PlantTreeInfo[playerid][plantid][plantType] != 2)
     {
         if(PlantTreeInfo[playerid][plantid][plantLevel] == 3) return 1;
         PlantTreeInfo[playerid][plantid][plantLevel]++;
@@ -306,53 +352,42 @@ stock PlantTree_Update(playerid, plantid)
         PlantTree_Reload(playerid, plantid);
         return 1;
     }
-    switch(PlantTreeInfo[playerid][plantid][plantLevel])
+    switch(PlantTreeInfo[playerid][plantid][plantType])
     {
-        case 1:{
-            
+        case 0, 1:
+        {
             format(string, sizeof(string), 
-                "Cay {212c58}%s{FFFFFF}(ID:%d)\n\
-                Cap do: {212c58}%d{FFFFFF}\n\
-                Thoi gian phat trien: {212c58}%d{FFFFFF},\n\
-                Chu so huu: {212c58}%s{FFFFFF}\n\
-                Thu hoach: {FF0000}Chua{FFFFFF}", 
-                PlantArr[PlantTreeInfo[playerid][plantid][plantType]][PlantName], 
-                plantid,
-                PlantTreeInfo[playerid][plantid][plantLevel],
-                PlantTreeInfo[playerid][plantid][plantTimer],
-                GetPlayerNameEx(playerid)
+            "Cay {212c58}%s{FFFFFF}(ID:%d)\n\
+            Cap do: {212c58}%d{FFFFFF}\n\
+            Thoi gian phat trien: {212c58}%d{FFFFFF},\n\
+            Chu so huu: {212c58}%s{FFFFFF}\n\
+            %s", 
+            PlantArr[PlantTreeInfo[playerid][plantid][plantType]][PlantName], 
+            plantid,
+            PlantTreeInfo[playerid][plantid][plantLevel],
+            PlantTreeInfo[playerid][plantid][plantTimer],
+            GetPlayerNameEx(playerid),
+            PlantTree_GetNameLevel(PlantTreeInfo[playerid][plantid][plantLevel])
             );
-            
         }
         case 2:{
             format(string, sizeof(string), 
-                "Cay {212c58}%s{FFFFFF}(ID:%d)\n\
-                Cap do: {212c58}%d{FFFFFF}\n\
-                Thoi gian phat trien: {212c58}%d{FFFFFF},\n\
-                Chu so huu: {212c58}%s{FFFFFF}\n\
-                Thu hoach: {FF0000}Chua{FFFFFF}", 
-                PlantArr[PlantTreeInfo[playerid][plantid][plantType]][PlantName], 
-                plantid,
-                PlantTreeInfo[playerid][plantid][plantLevel],
-                PlantTreeInfo[playerid][plantid][plantTimer],
-                GetPlayerNameEx(playerid)
-            );
-        }
-        case 3:{
-            format(string, sizeof(string), 
-                "Cay {212c58}%s{FFFFFF}(ID:%d)\n\
-                Cap do: {212c58}%d{FFFFFF}\n\
-                Thoi gian phat trien: {212c58}%d{FFFFFF},\n\
-                Chu so huu: {212c58}%s{FFFFFF}\n\
-                Su dung {212c58}/thuhoach{FFFFFF} de thu hoach", 
-                PlantArr[PlantTreeInfo[playerid][plantid][plantType]][PlantName], 
-                plantid,
-                PlantTreeInfo[playerid][plantid][plantLevel],
-                PlantTreeInfo[playerid][plantid][plantTimer],
-                GetPlayerNameEx(playerid)
+            "Cay {212c58}%s{FFFFFF}(ID:%d)\n\
+            Cap do: {212c58}%d{FFFFFF}\n\
+            Thoi gian phat trien: {212c58}%d{FFFFFF},\n\
+            Chu so huu: {212c58}%s{FFFFFF}\n\
+            Trang thai: {212c58}%s{FFFFFF}\n\
+            Su dung {212c58}/plantfeed va /thuhoach{FFFFFF} de thao tac", 
+            PlantArr[PlantTreeInfo[playerid][plantid][plantType]][PlantName], 
+            plantid,
+            PlantTreeInfo[playerid][plantid][plantLevel],
+            PlantTreeInfo[playerid][plantid][plantTimer],
+            GetPlayerNameEx(playerid),
+            Plant_GetNameStatus(playerid, PlantTreeInfo[playerid][plantid][plantStatus])
             );
         }
     }
+    
     UpdateDynamic3DTextLabelText(PlantTreeInfo[playerid][plantid][PlantText], COLOR_WHITE, string);
     return 1;
 }
@@ -381,9 +416,14 @@ stock PlantTree_Near(playerid, Float:range)
     return -1;
 }
 
+stock Plant_GetNameStatus(playerid, type)
+{
+    return PlantStatusArr[type];
+}
+
 stock PlantTree_Add(playerid, type)
 {
-    if(!IsPlayerInDynamicArea(playerid, FarmPlantArea) || GetPlayerVirtualWorld(playerid) != GetPlayerSQLId(playerid)) return SendErrorMessage(playerid, "Ban khong o trong khu vuc trong cay cua ban.");
+    if((!IsPlayerInDynamicArea(playerid, FarmPlantArea) && !IsPlayerInDynamicArea(playerid, FarmPlantOrangeArea)) || GetPlayerVirtualWorld(playerid) != GetPlayerSQLId(playerid)) return SendErrorMessage(playerid, "Ban khong o trong khu vuc trong cay.");
     if(PlantTree_Near(playerid, 3.0) != -1) return SendErrorMessage(playerid, "Ban khong the trong cay trong pham vi dang co cay trong khac.");
     if(Inventory_Count(playerid, PlantArr[type][PlantName]) <= 0) SendErrorMessage(playerid, "Ban khong co giong cay de trong cay.");
     new plantId = GetPlantFree(playerid);
@@ -395,6 +435,8 @@ stock PlantTree_Add(playerid, type)
     PlantTreeInfo[playerid][plantId][plantLevel] = 1;
     PlantTreeInfo[playerid][plantId][plantType] = type;
     PlantTreeInfo[playerid][plantId][plantTimer] = PLANT_TINE_LEVEL_1;
+    PlantTreeInfo[playerid][plantId][plantStatus] = 0;
+    PlantTreeInfo[playerid][plantId][plantAmount] = 0;
     ApplyAnimation(playerid,"BOMBER","BOM_Plant_Crouch_Out", 4.1, false, 0, 0, 0, 3000, 1);
 	GameTextForPlayer(playerid, "~n~~n~~n~~n~~n~~n~~n~~n~~n~~b~Dang gieo giong...~w~ Xin vui long doi.", 3000, 3);
     SetTimerEx("DangGieoGiong", 3000, false, "ii", playerid, plantId);

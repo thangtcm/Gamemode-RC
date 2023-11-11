@@ -19,7 +19,7 @@ new
 	DEBUG_CODE_5[] =		"[NEX-AC debug] ID %d su dung NOPP %s",
 #endif
 
-	KICK_MSG[] =			"Ban da bi banned vinh vien boi vi HACK/BUG khong duoc phep (#%03d)",
+	KICK_MSG[] =			"Ban da bi kick boi vi he thong nghi ngo ban HACK/BUG khong duoc phep (#%03d)",
 	MAX_CONNECTS_MSG[] =	"Ban da vuot qua so ket noi tren 1 IP-address",
 	UNKNOWN_CLIENT_MSG[] =	"Phien ban hien tai cua client khong tuong thich voi server",
 

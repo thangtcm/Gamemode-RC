@@ -1,18 +1,25 @@
 #include <YSI_Coding\y_hooks>
 
-new CountPress[MAX_PLAYERS];
+new CountPress[MAX_PLAYERS][3];
 new KeyPressed[MAX_PLAYERS];
 new TimerPressKey[MAX_PLAYERS];
 new KeyPressesType[MAX_PLAYERS];
 new GetKeyMiner[MAX_PLAYERS];
 new MinerTimer[MAX_PLAYERS];
 new TimerRandomPress[MAX_PLAYERS];
-
+new RockIDMiner[MAX_PLAYERS];
 hook OnPlayerConnect(playerid)
 {
-	CountPress[playerid] = 0;
+	CountPress[playerid][0] = 0;
+	CountPress[playerid][1] = 0;
+	CountPress[playerid][2] = 0;
 	TimerPressKey[playerid] = 0;
 	KeyPressed[playerid] = true;
+	KillTimer(MinerTimer[playerid]);
+	timerdc[playerid] = 0;
+	RockIDMiner[playerid] = -1;
+	DeletePVar(playerid, "MinerWorking");
+	return 1;
 }
 
 hook OnPlayerKeyStateChange(playerid, newkeys, oldkeys)
@@ -38,21 +45,6 @@ hook OnPlayerKeyStateChange(playerid, newkeys, oldkeys)
 	{
 		if(PRESSED(KEY_YES))
 		{
-			// if(timerdc[playerid] > 1){
-			// 	CountPress[playerid]++;
-			// 	if(CountPress[playerid] >= 5)
-			// 	{
-			// 		if(gettime() > GetPVarInt(playerid, "TimeCountNotyHack"))
-			// 		{
-			// 			new string[128];
-			// 			format(string, sizeof(string), "{AA3333}AdmWarning{FFFF00}: %s (ID: %d) co the dang su dung cleo auto farm .", GetPlayerNameEx(playerid), playerid);
-			// 			ABroadCast(COLOR_YELLOW, string, 2);
-			// 			SendServerMessage(playerid, "Chung toi dang nhan thay ban su dung cleo farm, vui long tat neu khong muon bi hinh phat tu server.");
-			// 			SetPVarInt(playerid, "TimeCountNotyHack", gettime() + 120);
-			// 		}
-			// 		CountPress[playerid] = 0;
-			// 	}
-			// }
 			for(new i = 0; i < MAX_ROCKS; i++)
 			{
 				if(RockStatus[i] == 1)
@@ -67,7 +59,7 @@ hook OnPlayerKeyStateChange(playerid, newkeys, oldkeys)
 								if(timerdc[playerid] == 0)
 								{
 									OnPlayerPickUpRock(playerid, i);
-									SetPVarInt(playerid, "RockID", i);
+									RockIDMiner[playerid] = i;
 								}
 								else return SendErrorMessage(playerid, " Ban dang dao da roi.");
 							}
@@ -76,6 +68,62 @@ hook OnPlayerKeyStateChange(playerid, newkeys, oldkeys)
 						else return SendErrorMessage(playerid, " Ban dang khong mac quan ao bao ho cua cong viec miner, hay den NPC de lay quan ao.");
 					}
 				}
+			}
+		}
+	}
+	if(PRESSED(65536) && KeyPressed[playerid])
+	{
+		if(timerdc[playerid] > 1 && timerdc[playerid] < TimerRandomPress[playerid]){
+			CountPress[playerid][0]++;
+			if(gettime() > GetPVarInt(playerid, "TimeCountNotyHack"))
+			{
+				new string[128];
+				format(string, sizeof(string), "{AA3333}AdmWarning{FFFF00}: %s (ID: %d) co the dang su dung cleo auto farm phim Y(%d lan trong 30s).", GetPlayerNameEx(playerid), playerid, CountPress[playerid][0]);
+				ABroadCast(COLOR_YELLOW, string, 2);
+				SetPVarInt(playerid, "TimeCountNotyHack", gettime() + 30);
+				CountPress[playerid][0] = 0;
+			}
+		}
+	}
+	if(PRESSED(65536) && KeyPressed[playerid])
+	{
+		if(timerdc[playerid] > 1 && timerdc[playerid] < TimerRandomPress[playerid]){
+			CountPress[playerid][0]++;
+			if(gettime() > GetPVarInt(playerid, "TimeCountNotyHack") && CountPress[playerid][0] > 1)
+			{
+				new string[128];
+				format(string, sizeof(string), "{AA3333}AdmWarning{FFFF00}: %s (ID: %d) co the dang su dung cleo auto farm phim Y(%d lan trong 30s).", GetPlayerNameEx(playerid), playerid, CountPress[playerid][0]);
+				ABroadCast(COLOR_YELLOW, string, 2);
+				SetPVarInt(playerid, "TimeCountNotyHack", gettime() + 30);
+				CountPress[playerid][0] = 0;
+			}
+		}
+	}
+	if(PRESSED(262144) && KeyPressed[playerid])
+	{
+		if(timerdc[playerid] > 1 && timerdc[playerid] < TimerRandomPress[playerid]){
+			CountPress[playerid][1]++;
+			if(gettime() > GetPVarInt(playerid, "TimeCountNotyHack1") && CountPress[playerid][1] > 1)
+			{
+				new string[128];
+				format(string, sizeof(string), "{AA3333}AdmWarning{FFFF00}: %s (ID: %d) co the dang su dung cleo auto farm phim H(%d lan trong 30s).", GetPlayerNameEx(playerid), playerid, CountPress[playerid][1]);
+				ABroadCast(COLOR_YELLOW, string, 2);
+				SetPVarInt(playerid, "TimeCountNotyHack1", gettime() + 30);
+				CountPress[playerid][0] = 0;
+			}
+		}
+	}
+	if(PRESSED(131072) && KeyPressed[playerid])
+	{
+		if(timerdc[playerid] > 1){
+			CountPress[playerid][2]++;
+			if(gettime() > GetPVarInt(playerid, "TimeCountNotyHack2") && CountPress[playerid][2] > 1)
+			{
+				new string[128];
+				format(string, sizeof(string), "{AA3333}AdmWarning{FFFF00}: %s (ID: %d) co the dang su dung cleo auto farm phim N(%d lan trong 30s).", GetPlayerNameEx(playerid), playerid, CountPress[playerid][2]);
+				ABroadCast(COLOR_YELLOW, string, 2);
+				SetPVarInt(playerid, "TimeCountNotyHack2", gettime() + 30);
+				CountPress[playerid][0] = 0;
 			}
 		}
 	}
@@ -107,9 +155,12 @@ stock FaildMiner(playerid)
 	SetPlayerSpecialAction(playerid, SPECIAL_ACTION_NONE);
 	timerdc[playerid] = 0;
 	TimerPressKey[playerid] = 0;
-	new rockIndex = GetPVarInt(playerid, "RockID");
-	CreateRock(rockIndex);
-	RockStatus[rockIndex] = 1;
+	if(RockIDMiner[playerid] != -1)
+	{
+		CreateRock(RockIDMiner[playerid]);
+		RockStatus[RockIDMiner[playerid]] = 1;
+	}
+	DeletePVar(playerid, "MinerWorking");
 	return 1;
 }
 
@@ -169,7 +220,7 @@ hook OnPlayerDisconnect(playerid, reason)
 		SetPlayerSkin(playerid, skinc);
 		SetPVarInt(playerid, #skinsavezxc, 0);
 	}
-	KillTimer(MinerTimer[playerid]);
+	FaildMiner(playerid);
 	return 1;
 }
 hook OnGameModeInit()
@@ -195,6 +246,7 @@ public OnPlayerPickUpRock(playerid, rockIndex)
 		TimerRandomPress[playerid] = random(timerdc[playerid]-10);
 		timerd = timerdc[playerid]*1000;
 		KeyPressed[playerid] = true;
+		SetPVarInt(playerid, "MinerWorking", 1);
 		MinerTimer[playerid] = SetTimerEx("StartCountTime", 1000, true, "i", playerid);
     	DestroyDynamicObject(RockObj[rockIndex]);
     	DestroyDynamic3DTextLabel(RockText[rockIndex]);
@@ -209,8 +261,9 @@ public StartCountTime(playerid)
 {
 	if(IsPlayerConnected(playerid))
 	{
-		if(TimerPressKey[playerid] <= 0 && KeyPressed[playerid])
+		if(GetPVarInt(playerid, "MinerWorking") != 0)
 		{
+<<<<<<< HEAD
 
 			
 			timerdc[playerid]--;
@@ -240,132 +293,164 @@ public StartCountTime(playerid)
 				SendClientTextDraw(playerid, format_job);
 				ApplyAnimation(playerid,"BASEBALL","Bat_4",1.0,1,1,1,1,1);
 				if(timerdc[playerid] == TimerRandomPress[playerid])
+=======
+			if(TimerPressKey[playerid] <= 0 && KeyPressed[playerid])
+			{
+				if(timerdc[playerid] > 0)
+>>>>>>> main
 				{
-					MinerGetKeys(playerid);
+					
+					timerdc[playerid]--;
+					new format_job[1280];
+					if(DownCountJobTime[playerid] >= gettime()) {
+						format(format_job, sizeof(format_job), "Ban dang dao da, vui long doi~p~ %d~w~ de dao xong (~r~-10 giay~w~).", timerdc[playerid]);
+					}
+					else {
+						format(format_job, sizeof(format_job), "Ban dang dao da, vui long doi~p~ %d~w~ de dao xong.", timerdc[playerid]);
+					}
+					SendClientTextDraw(playerid, format_job);
+					ApplyAnimation(playerid,"BASEBALL","Bat_4",1.0,1,1,1,1,1);
+					if(timerdc[playerid] == TimerRandomPress[playerid])
+					{
+						MinerGetKeys(playerid);
+					}
+				}
+				else
+				{
+					TogglePlayerControllable(playerid, 1);
+					ApplyAnimation(playerid,"SWORD","sword_1",0.87,1,0,0,0,0);
+					ClearAnimations(playerid);
+					new format_job[1280];
+					if(PlayerInfo[playerid][pMinerLevel] == 0)
+					{
+						switch(random(100))
+						{
+							case 0..60:
+							{
+								format(format_job, sizeof(format_job), "~g~Ban da dao thanh cong va nhan duoc ~y~1 Da~g~.");
+								Inventory_Add(playerid, "Da", 1);
+								SendLogToDiscordRoom("MINERAL LOG" ,"1157988317548265523", "Name", GetPlayerNameEx(playerid, false), "ADDED", "Đá", "Số lượng", "1", 0x226199);
+							}
+							case 84..94:
+							{
+								format(format_job, sizeof(format_job), "~g~Ban da dao thanh cong va nhan duoc ~b~1 Sat~g~.");
+								Inventory_Add(playerid, "Sat", 1);
+								SendLogToDiscordRoom("MINERAL LOG" ,"1157988317548265523", "Name", GetPlayerNameEx(playerid, false), "ADDED", "Sắt", "Số lượng", "1", 0x226199);
+							}
+							case 61..83:
+							{
+								format(format_job, sizeof(format_job), "~g~Ban da dao thanh cong va nhan duoc ~b~1 Dong~g~.");
+								Inventory_Add(playerid, "Dong", 1);
+								SendLogToDiscordRoom("MINERAL LOG" ,"1157988317548265523", "Name", GetPlayerNameEx(playerid, false), "ADDED", "Đồng", "Số lượng", "1", 0x226199);
+							}
+							case 95..100:
+							{
+								format(format_job, sizeof(format_job), "~g~Ban da dao thanh cong va nhan duoc ~r~1 VANG~g~.");
+								Inventory_Add(playerid, "Vang", 1);
+								SendLogToDiscordRoom("MINERAL LOG" ,"1157988317548265523", "Name", GetPlayerNameEx(playerid, false), "ADDED", "VÀNG", "Số lượng", "1", 0x226199);
+							}
+						}
+					}
+					else if(PlayerInfo[playerid][pMinerLevel] == 2)
+					{
+						switch(random(100))
+						{
+							case 0..50:
+							{
+								format(format_job, sizeof(format_job), "~g~Ban da dao thanh cong va nhan duoc ~y~1 Da~g~.");
+								Inventory_Add(playerid, "Da", 1);
+							}
+							case 51..65:
+							{
+								format(format_job, sizeof(format_job), "~g~Ban da dao thanh cong va nhan duoc ~b~1 Sat~g~.");
+								Inventory_Add(playerid, "Sat", 1);
+							}
+							case 66..92:
+							{
+								format(format_job, sizeof(format_job), "~g~Ban da dao thanh cong va nhan duoc ~b~1 Dong~g~.");
+								Inventory_Add(playerid, "Dong", 1);
+							}
+							case 93..100:
+							{
+								format(format_job, sizeof(format_job), "~g~Ban da dao thanh cong va nhan duoc ~r~1 VANG~g~.");
+								Inventory_Add(playerid, "Vang", 1);
+							}
+						}
+					}
+					else if(PlayerInfo[playerid][pMinerLevel] == 3)
+					{
+						switch(random(100))
+						{
+							case 0..40:
+							{
+								format(format_job, sizeof(format_job), "~g~Ban da dao thanh cong va nhan duoc ~y~1 Da~g~.");
+								Inventory_Add(playerid, "Da", 1);
+							}
+							case 41..58:
+							{
+								format(format_job, sizeof(format_job), "~g~Ban da dao thanh cong va nhan duoc ~b~1 Sat~g~.");
+								Inventory_Add(playerid, "Sat", 1);
+							}
+							case 59..88:
+							{
+								format(format_job, sizeof(format_job), "~g~Ban da dao thanh cong va nhan duoc ~b~1 Dong~g~.");
+								Inventory_Add(playerid, "Dong", 1);
+							}
+							case 89..100:
+							{
+								format(format_job, sizeof(format_job), "~g~Ban da dao thanh cong va nhan duoc ~r~1 VANG~g~.");
+								Inventory_Add(playerid, "Vang", 1);
+							}
+						}
+					}
+					StopLoopingAnim(playerid);
+					RemovePlayerAttachedObject(playerid, 9);
+					PlayerInfo[playerid][pSoLanMiner]++;
+					
+					if(PlayerInfo[playerid][pMinerLevel] == 0 && PlayerInfo[playerid][pSoLanMiner] == 500)
+					{
+						SendClientMessage(playerid, COLOR_LIGHTRED, "SERVER: {ffffff}Chuc mung, ban da dat duoc Level 2 cua job miner.");
+						SendClientMessage(playerid, COLOR_LIGHTRED, "Level cang cao thi ti le ra duoc dong, sat, vang cao hon binh thuong.");
+						PlayerInfo[playerid][pMinerLevel] = 2;
+					}
+					else if(PlayerInfo[playerid][pMinerLevel] == 2 && PlayerInfo[playerid][pSoLanMiner] == 1000)
+					{
+						SendClientMessage(playerid, COLOR_LIGHTRED, "SERVER: {ffffff}Chuc mung, ban da dat duoc Level 3 cua job miner.");
+						SendClientMessage(playerid, COLOR_LIGHTRED, "Level cang cao thi ti le ra duoc dong, sat, vang cao hon binh thuong.");
+						PlayerInfo[playerid][pMinerLevel] = 3;
+					}
+					SendClientTextDraw(playerid, format_job);
+					SetPlayerSpecialAction(playerid, SPECIAL_ACTION_NONE);
+					if(RockIDMiner[playerid] != -1)
+					{
+						SetTimerEx("OnRockRespawn", 600000, false, "i", RockIDMiner[playerid]);
+					}
+					KillTimer(MinerTimer[playerid]);
+					DeletePVar(playerid, "MinerWorking");
 				}
 			}
 			else
 			{
+<<<<<<< HEAD
 				TogglePlayerControllable(playerid, 1);
 				ApplyAnimation(playerid,"SWORD","sword_1",0.87,1,0,0,0,0);
 				ClearAnimations(playerid);
 
 				if(PlayerInfo[playerid][pMinerLevel] == 0)
+=======
+				if(--TimerPressKey[playerid] < 0)
+>>>>>>> main
 				{
-					switch(random(100))
-					{
-						case 0..60:
-						{
-							format(format_job, sizeof(format_job), "~g~Ban da dao thanh cong va nhan duoc ~y~1 Da~g~.");
-							Inventory_Add(playerid, "Da", 1);
-							SendLogToDiscordRoom("MINERAL LOG" ,"1157988317548265523", "Name", GetPlayerNameEx(playerid, false), "ADDED", "Đá", "Số lượng", "1", 0x226199);
-						}
-						case 84..94:
-						{
-							format(format_job, sizeof(format_job), "~g~Ban da dao thanh cong va nhan duoc ~b~1 Sat~g~.");
-							Inventory_Add(playerid, "Sat", 1);
-							SendLogToDiscordRoom("MINERAL LOG" ,"1157988317548265523", "Name", GetPlayerNameEx(playerid, false), "ADDED", "Sắt", "Số lượng", "1", 0x226199);
-						}
-						case 61..83:
-						{
-							format(format_job, sizeof(format_job), "~g~Ban da dao thanh cong va nhan duoc ~b~1 Dong~g~.");
-							Inventory_Add(playerid, "Dong", 1);
-							SendLogToDiscordRoom("MINERAL LOG" ,"1157988317548265523", "Name", GetPlayerNameEx(playerid, false), "ADDED", "Đồng", "Số lượng", "1", 0x226199);
-						}
-						case 95..100:
-						{
-							format(format_job, sizeof(format_job), "~g~Ban da dao thanh cong va nhan duoc ~r~1 VANG~g~.");
-							Inventory_Add(playerid, "Vang", 1);
-							SendLogToDiscordRoom("MINERAL LOG" ,"1157988317548265523", "Name", GetPlayerNameEx(playerid, false), "ADDED", "VÀNG", "Số lượng", "1", 0x226199);
-						}
-					}
+					
+					FaildMiner(playerid);
 				}
-				else if(PlayerInfo[playerid][pMinerLevel] == 2)
-				{
-					switch(random(100))
-					{
-						case 0..50:
-						{
-							format(format_job, sizeof(format_job), "~g~Ban da dao thanh cong va nhan duoc ~y~1 Da~g~.");
-							Inventory_Add(playerid, "Da", 1);
-						}
-						case 51..65:
-						{
-							format(format_job, sizeof(format_job), "~g~Ban da dao thanh cong va nhan duoc ~b~1 Sat~g~.");
-							Inventory_Add(playerid, "Sat", 1);
-						}
-						case 66..92:
-						{
-							format(format_job, sizeof(format_job), "~g~Ban da dao thanh cong va nhan duoc ~b~1 Dong~g~.");
-							Inventory_Add(playerid, "Dong", 1);
-						}
-						case 93..100:
-						{
-							format(format_job, sizeof(format_job), "~g~Ban da dao thanh cong va nhan duoc ~r~1 VANG~g~.");
-							Inventory_Add(playerid, "Vang", 1);
-						}
-					}
-				}
-				else if(PlayerInfo[playerid][pMinerLevel] == 3)
-				{
-					switch(random(100))
-					{
-						case 0..40:
-						{
-							format(format_job, sizeof(format_job), "~g~Ban da dao thanh cong va nhan duoc ~y~1 Da~g~.");
-							Inventory_Add(playerid, "Da", 1);
-						}
-						case 41..58:
-						{
-							format(format_job, sizeof(format_job), "~g~Ban da dao thanh cong va nhan duoc ~b~1 Sat~g~.");
-							Inventory_Add(playerid, "Sat", 1);
-						}
-						case 59..88:
-						{
-							format(format_job, sizeof(format_job), "~g~Ban da dao thanh cong va nhan duoc ~b~1 Dong~g~.");
-							Inventory_Add(playerid, "Dong", 1);
-						}
-						case 89..100:
-						{
-							format(format_job, sizeof(format_job), "~g~Ban da dao thanh cong va nhan duoc ~r~1 VANG~g~.");
-							Inventory_Add(playerid, "Vang", 1);
-						}
-					}
-				}
-				StopLoopingAnim(playerid);
-				RemovePlayerAttachedObject(playerid, 9);
-				PlayerInfo[playerid][pSoLanMiner]++;
-				
-				if(PlayerInfo[playerid][pMinerLevel] == 0 && PlayerInfo[playerid][pSoLanMiner] == 500)
-				{
-					SendClientMessage(playerid, COLOR_LIGHTRED, "SERVER: {ffffff}Chuc mung, ban da dat duoc Level 2 cua job miner.");
-					SendClientMessage(playerid, COLOR_LIGHTRED, "Level cang cao thi ti le ra duoc dong, sat, vang cao hon binh thuong.");
-					PlayerInfo[playerid][pMinerLevel] = 2;
-				}
-				else if(PlayerInfo[playerid][pMinerLevel] == 2 && PlayerInfo[playerid][pSoLanMiner] == 1000)
-				{
-					SendClientMessage(playerid, COLOR_LIGHTRED, "SERVER: {ffffff}Chuc mung, ban da dat duoc Level 3 cua job miner.");
-					SendClientMessage(playerid, COLOR_LIGHTRED, "Level cang cao thi ti le ra duoc dong, sat, vang cao hon binh thuong.");
-					PlayerInfo[playerid][pMinerLevel] = 3;
-				}
-				SendClientTextDraw(playerid, format_job);
-				SetPlayerSpecialAction(playerid, SPECIAL_ACTION_NONE);
-				new rockIndex = GetPVarInt(playerid, "RockID");
-				SetTimerEx("OnRockRespawn", 600000, false, "i", rockIndex);
-				KillTimer(MinerTimer[playerid]);
+				ShowMessageKeyPressed(playerid);
 			}
+<<<<<<< HEAD
 
+=======
+>>>>>>> main
 		}
-		else
-		{
-			if(--TimerPressKey[playerid] < 0)
-			{
-				
-				FaildMiner(playerid);
-			}
-			ShowMessageKeyPressed(playerid);
-		}
-		
 	}
 	return 1;
 }
@@ -381,20 +466,14 @@ stock MinerGetKeys(playerid)
 		case 0:
 		{
 			GetKeyMiner[playerid] = 65536;
-			format(string, sizeof(string), "Hay nhan phim {FF0000}Y {FFFFFF} trong {b027ae}%d{ffffff} giay de tiep tuc dao.", TimerPressKey[playerid]);
-		    SendClientMessageEx(playerid, COLOR_WHITE, string);
 		}
 		case 1:
 		{
 		    GetKeyMiner[playerid] = 262144;
-			format(string, sizeof(string), "Hay nhan phim {FF0000}H{FFFFFF} trong {b027ae}%d{ffffff} giay de tiep tuc dao.", TimerPressKey[playerid]);
-		    SendClientMessageEx(playerid, COLOR_WHITE, string);
 		}
 		case 2:
 		{
 		    GetKeyMiner[playerid] = 131072;
-			format(string, sizeof(string), "Hay nhan phim {FF0000}N{FFFFFF} trong {b027ae}%d{ffffff} giay de tiep tuc dao.", TimerPressKey[playerid]);
-		    SendClientMessageEx(playerid, COLOR_WHITE, string);
 		}
 	}
 	return 1;
