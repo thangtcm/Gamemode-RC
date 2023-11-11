@@ -263,41 +263,9 @@ public StartCountTime(playerid)
 	{
 		if(GetPVarInt(playerid, "MinerWorking") != 0)
 		{
-<<<<<<< HEAD
-
-			
-			timerdc[playerid]--;
-			new format_job[1280];
-			if(DownCountJobTime[playerid] >= gettime()) {
-				format(format_job, sizeof(format_job), "Ban dang dao da, vui long doi~p~ %d~w~ de dao xong (~r~-10 giay~w~).", timerdc[playerid]);
-		    }
-		    else {
-		    	format(format_job, sizeof(format_job), "Ban dang dao da, vui long doi~p~ %d~w~ de dao xong.", timerdc[playerid]);
-		    }
-			
-			SendClientTextDraw(playerid, format_job);
-			SetTimerEx("StartCountTime", 1000, false, "i", playerid);
-			ApplyAnimation(playerid,"BASEBALL","Bat_4",1.0,1,1,1,1,1);
-
-			if(timerdc[playerid] > 0)
-			{
-				
-				timerdc[playerid]--;
-				if(DownCountJobTime[playerid] >= gettime()) {
-					format(format_job, sizeof(format_job), "Ban dang dao da, vui long doi~p~ %d~w~ de dao xong (~r~-10 giay~w~).", timerdc[playerid]);
-					
-				}
-				else {
-				    format(format_job, sizeof(format_job), "Ban dang dao da, vui long doi~p~ %d~w~ de dao xong.", timerdc[playerid]);
-				}
-				SendClientTextDraw(playerid, format_job);
-				ApplyAnimation(playerid,"BASEBALL","Bat_4",1.0,1,1,1,1,1);
-				if(timerdc[playerid] == TimerRandomPress[playerid])
-=======
 			if(TimerPressKey[playerid] <= 0 && KeyPressed[playerid])
 			{
 				if(timerdc[playerid] > 0)
->>>>>>> main
 				{
 					
 					timerdc[playerid]--;
@@ -431,25 +399,13 @@ public StartCountTime(playerid)
 			}
 			else
 			{
-<<<<<<< HEAD
-				TogglePlayerControllable(playerid, 1);
-				ApplyAnimation(playerid,"SWORD","sword_1",0.87,1,0,0,0,0);
-				ClearAnimations(playerid);
-
-				if(PlayerInfo[playerid][pMinerLevel] == 0)
-=======
 				if(--TimerPressKey[playerid] < 0)
->>>>>>> main
 				{
 					
 					FaildMiner(playerid);
 				}
 				ShowMessageKeyPressed(playerid);
 			}
-<<<<<<< HEAD
-
-=======
->>>>>>> main
 		}
 	}
 	return 1;
