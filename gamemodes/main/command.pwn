@@ -4821,8 +4821,8 @@ CMD:impound(playerid, params[]) {
 						PlayerVehicleInfo[iTargetOwner][iVehIndex][pvId] = INVALID_PLAYER_VEHICLE_ID;
 						DetachTrailerFromVehicle(GetPlayerVehicleID(playerid));
 						SetVehiclePos(iVehTowed, 0, 0, 0); // Attempted desync fix
+						g_mysql_SaveVehicle(iTargetOwner, iVehIndex);
 						DestroyVehicle(iVehTowed);
-                        g_mysql_SaveVehicle(iTargetOwner, iVehIndex);
 						VehicleSpawned[iTargetOwner]--;
 						--PlayerCars;
 
@@ -6351,7 +6351,7 @@ CMD:refuel(playerid, params[])
 	    if(engine == VEHICLE_PARAMS_ON) return SendClientMessageEx(playerid, COLOR_RED, "Ban phai tat may xe truoc khi do xang (/car engine).");
      	if (Businesses[iBusinessID][GasPumpGallons][iPumpID] == 0.0) return SendClientMessageEx(playerid, COLOR_RED, "Khong co xang trong tram xang nay.");
 	    if (!IsRefuelableVehicle(vehicleid)) return SendClientMessageEx(playerid,COLOR_RED,"Chiec xe nay khong can nhien lieu.");
-	    if (VehicleFuel[vehicleid] >= 100.0) return SendClientMessageEx(playerid, COLOR_RED, "Chiec xe nay da nap day binh xang.");
+	    if (VehicleFuel[vehicleid] >= GetVehicleFuelCapacity(vehicleid)) return SendClientMessageEx(playerid, COLOR_RED, "Chiec xe nay da nap day binh xang.");
 	    if (Businesses[iBusinessID][GasPumpVehicleID][iPumpID] > 0) return SendClientMessageEx(playerid, COLOR_RED, "This gas pump is occupied.");
 
        	SendServerMessage(playerid, " Dang do xang cho chiec xe cua ban, vui long cho trong giay lat...!");
@@ -10895,7 +10895,7 @@ CMD:accept(playerid, params[])
                             GetPlayerName(playerid, sendername, sizeof(sendername));
                             new vehicleid = GetPlayerVehicleID(playerid);
                             VehicleFuel[vehicleid] = floatadd(VehicleFuel[vehicleid], fueltogive);
-                            if(VehicleFuel[vehicleid] > 100.0) VehicleFuel[vehicleid] = 100.0;
+                            if(VehicleFuel[vehicleid] > GetVehicleFuelCapacity(vehicleid)) VehicleFuel[vehicleid] = GetVehicleFuelCapacity(vehicleid);
                             for(new vehicleslot = 0; vehicleslot < MAX_PLAYERVEHICLES; vehicleslot++)
 							{
 								if(IsPlayerInVehicle(playerid, PlayerVehicleInfo[playerid][vehicleslot][pvId]))
@@ -18786,16 +18786,25 @@ CMD:park(playerid, params[])
 	{
 		if(IsPlayerInVehicle(playerid, PlayerVehicleInfo[playerid][d][pvId]))
 		{
-			new Float:x, Float:y, Float:z, Float:health;
-			GetVehicleHealth(PlayerVehicleInfo[playerid][d][pvId], health);
-            if(GetPlayerState(playerid) != PLAYER_STATE_DRIVER) return SendErrorMessage(playerid, " Ban phai ngoi tren chiec xe cua minh.");
-			if(health < 800) return SendErrorMessage(playerid, "  Chiec xe cua ban bi hu hong qua nang, vui long sua xe de tiep tuc.");
-			if(PlayerInfo[playerid][pLockCar] == GetPlayerVehicleID(playerid)) PlayerInfo[playerid][pLockCar] = INVALID_VEHICLE_ID;
-			GetPlayerPos(playerid, x, y, z);
+			for(new i; i < MAX_HOUSES; i++)
+			{
+				if(GetPlayerSQLId(playerid) == HouseInfo[i][hOwnerID] && IsPlayerInRangeOfPoint(playerid, 20.0, HouseInfo[i][hExteriorX], HouseInfo[i][hExteriorY], HouseInfo[i][hExteriorZ]) && GetPlayerVirtualWorld(playerid) == HouseInfo[i][hExtVW] && GetPlayerInterior(playerid) == HouseInfo[i][hExtIW])
+				{
+					new Float:x, Float:y, Float:z, Float:health;
+					GetVehicleHealth(PlayerVehicleInfo[playerid][d][pvId], health);
+					if(GetPlayerState(playerid) != PLAYER_STATE_DRIVER) return SendErrorMessage(playerid, " Ban phai ngoi tren chiec xe cua minh.");
+					if(health < 800) return SendErrorMessage(playerid, "  Chiec xe cua ban bi hu hong qua nang, vui long sua xe de tiep tuc.");
+					if(PlayerInfo[playerid][pLockCar] == GetPlayerVehicleID(playerid)) PlayerInfo[playerid][pLockCar] = INVALID_VEHICLE_ID;
+					GetPlayerPos(playerid, x, y, z);
 
-   			SetTimerEx("ParkVehicle", 1000, false, "iiiifff", playerid, INVALID_PLAYER_ID, PlayerVehicleInfo[playerid][d][pvId], d, x, y, z);
-      		SendClientMessageEx (playerid, COLOR_YELLOW, "Vui long khong di chuyen chiec xe...!");
-			return 1;
+					SetTimerEx("ParkVehicle", 1000, false, "iiiifff", playerid, INVALID_PLAYER_ID, PlayerVehicleInfo[playerid][d][pvId], d, x, y, z);
+					SendClientMessageEx (playerid, COLOR_YELLOW, "Vui long khong di chuyen chiec xe...!");
+					return 1;
+				}
+				else {
+					return SendErrorMessage(playerid, "Ban chi co the dau xe gan khu vuc nha o cua minh.");
+				}
+			}
 		}
 	}
 	SendErrorMessage(playerid, " Ban phai ngoi ben trong chiec xe cua ban.");
@@ -19111,7 +19120,7 @@ CMD:createcdveh(playerid, params[]) {
 			{
 				if (Businesses[iBusiness][bVehID][i] == 0) {
 					Businesses[iBusiness][bVehID][i] = CreateVehicle(iVehicle, fVehPos[0], fVehPos[1], fVehPos[2], fVehPos[3], iColors[0], iColors[1], -1);
-					VehicleFuel[Businesses[iBusiness][bVehID][i]] = 100.0;
+					VehicleFuel[Businesses[iBusiness][bVehID][i]] = GetVehicleFuelCapacity(Businesses[iBusiness][bVehID][i]);
 
 					Businesses[iBusiness][bModel][i] = iVehicle;
 
@@ -19167,7 +19176,7 @@ CMD:veh(playerid, params[]) {
 			GetPlayerPos(playerid, fVehPos[0], fVehPos[1], fVehPos[2]);
 			GetPlayerFacingAngle(playerid, fVehPos[3]);
 			CreatedCars[iIterator] = CreateVehicle(iVehicle, fVehPos[0], fVehPos[1], fVehPos[2], fVehPos[3], iColors[0], iColors[1], -1);
-			VehicleFuel[CreatedCars[iIterator]] = 100.0;
+			VehicleFuel[CreatedCars[iIterator]] = GetVehicleFuelCapacity(CreatedCars[iIterator]);
 			Vehicle_ResetData(CreatedCars[iIterator]);
 			LinkVehicleToInterior(CreatedCars[iIterator], GetPlayerInterior(playerid));
 			SetVehicleVirtualWorld(CreatedCars[iIterator], fVW);
@@ -30493,9 +30502,9 @@ CMD:rcabuse(playerid, params[]) {
 						PlayerVehicleInfo[iTargetID][iVehIndex][pvSpawned] = 0;
 						PlayerVehicleInfo[iTargetID][iVehIndex][pvFuel] = VehicleFuel[iVehicleID];
 
+						g_mysql_SaveVehicle(iTargetID, iVehIndex);
 						DestroyVehicle(iVehicleID);
 						PlayerVehicleInfo[iTargetID][iVehIndex][pvId] = INVALID_PLAYER_VEHICLE_ID;
-						g_mysql_SaveVehicle(iTargetID, iVehIndex);
 						CheckPlayerVehiclesForDesync(iTargetID);
 
 						GetPlayerPos(iTargetID, fPlayerPos[0], fPlayerPos[1], fPlayerPos[2]);
@@ -43532,7 +43541,7 @@ CMD:refill(playerid, params[])
 				{
 					new vehicleid = GetPlayerVehicleID(playerid);
 					VehicleFuel[vehicleid] = VehicleFuel[vehicleid] + fueltogive;
-					if(VehicleFuel[vehicleid] > 100.0) VehicleFuel[vehicleid] = 100.0;
+					if(VehicleFuel[vehicleid] > GetVehicleFuelCapacity(vehicleid)) VehicleFuel[vehicleid] = GetVehicleFuelCapacity(vehicleid);
 					format(string, sizeof(string), "* %s da do xang vao chiec xe cua ho.", GetPlayerNameEx(playerid));
 					ProxDetector(30.0, playerid, string, COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE);
 					format(string, sizeof(string), "* Ban them %.2f nhien lieu cho chiec xe.",fueltogive);
@@ -51006,5 +51015,42 @@ CMD:mynumberphone(playerid, params[])
 	new string[256];
 	format(string, sizeof(string), " %s's So dien thoai cua ban la: {FFF000}%d.", GetPlayerNameEx(playerid), PlayerInfo[playerid][pPnumber]);
 	SendClientMessageEx(playerid, COLOR_WHITE, string);
+	return 1;
+}
+
+CMD:setvehcap(playerid, params[])
+{
+	if(PlayerInfo[playerid][pAdmin] < 4) return SendErrorMessage(playerid, "Ban khong the su dung lenh nay.");
+	extract params -> new vehid, Float:capacity; else
+	{
+		return SendUsageMessage(playerid, " /setvehcap [vehid] [capacity]");
+	}
+	
+	new result = -1, mes[128];
+	foreach(new i: Player)
+	{
+		for(new d; d < MAX_PLAYERVEHICLES; i ++)
+		{
+			if(PlayerVehicleInfo[i][d][pvId] == vehid)
+			{
+				PlayerVehicleInfo[i][d][pvCapacity] = capacity;
+				if(PlayerVehicleInfo[i][d][pvFuel] > capacity)
+				{
+					PlayerVehicleInfo[i][d][pvFuel] = capacity;
+				}
+
+				result = 1;
+				break;
+			}
+		}
+	}
+	if(result == -1)
+	{
+		SendErrorMessage(playerid, "VehicleID khong hop le.");
+		return 1;
+	}
+
+	format(mes, sizeof(mes), "Ban da dieu chinh dung tich xang VEHID %d thanh %0.f.", vehid, capacity);
+	SendClientMessage(playerid, -1, mes);
 	return 1;
 }
