@@ -51,7 +51,7 @@
 #include "./main/discord-bot.pwn"
 // Doi, no, suc khoe
 #include "./system/playerstatus.pwn"
-
+#include "./system/death/dmg.pwn"
 #include "./system/vehicle/vehicle_info.pwn"
 #include "./system/drug/drug.pwn"
 #include "./system/inventory/main.pwn"
@@ -61,7 +61,7 @@
 #include "./main/functions.pwn"
 
 
-
+#include "./system/gangwar.pwn"
 #include "./system/speedo.pwn"
 #include "./system/help.pwn"
 #include "./system/gps_system.pwn"
