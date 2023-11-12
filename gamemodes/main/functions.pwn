@@ -16831,6 +16831,7 @@ stock CreatePlayerVehicle(playerid, playervehicleid, modelid, Float: x, Float: y
 		PlayerVehicleInfo[playerid][playervehicleid][pvColor2] = color2;
 		PlayerVehicleInfo[playerid][playervehicleid][pvPark] = 1;
 		PlayerVehicleInfo[playerid][playervehicleid][pvPrice] = price;
+		PlayerVehicleInfo[playerid][playervehicleid][pvCapacity] = 50.0;
 		switch(modelid)
 		{
 			case 403, 406, 414, 423, 427, 428, 433, 443, 455, 456, 470, 499, 514, 515:
