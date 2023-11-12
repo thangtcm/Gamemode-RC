@@ -14953,6 +14953,13 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
                 SetVehicleVirtualWorld(iVeh, PlayerVehicleInfo[playerid][listitem][pvVW]);
                 LinkVehicleToInterior(iVeh, PlayerVehicleInfo[playerid][listitem][pvInt]);
 				SetVehicleHealth(iVeh, PlayerVehicleInfo[playerid][listitem][pvHealth]);
+				UpdateVehicleDamageStatus(	
+											iVeh, 	
+											PlayerVehicleInfo[playerid][listitem][pvPanels], 
+											PlayerVehicleInfo[playerid][listitem][pvDoors], 
+											PlayerVehicleInfo[playerid][listitem][pvLights], 
+											PlayerVehicleInfo[playerid][listitem][pvTires]
+										);
      
                 
 				++PlayerCars;
@@ -14978,6 +14985,13 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 					SetVehicleZAngle(iVeh, PlayerVehicleInfo[playerid][listitem][pvCrashAngle]);
 					SetVehicleVirtualWorld(iVeh, PlayerVehicleInfo[playerid][listitem][pvCrashVW]);
 					SetVehicleHealth(iVeh, PlayerVehicleInfo[playerid][listitem][pvHealth]);
+					UpdateVehicleDamageStatus(	
+												iVeh, 	
+												PlayerVehicleInfo[playerid][listitem][pvPanels], 
+												PlayerVehicleInfo[playerid][listitem][pvDoors], 
+												PlayerVehicleInfo[playerid][listitem][pvLights], 
+												PlayerVehicleInfo[playerid][listitem][pvTires]
+										);
 					PlayerVehicleInfo[playerid][listitem][pvCrashFlag] = 0;
 					PlayerVehicleInfo[playerid][listitem][pvCrashVW] = 0;
 					PlayerVehicleInfo[playerid][listitem][pvCrashX] = 0.0;

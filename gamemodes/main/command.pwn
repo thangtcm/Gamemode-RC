@@ -51050,7 +51050,18 @@ CMD:setvehcap(playerid, params[])
 		return 1;
 	}
 
-	format(mes, sizeof(mes), "Ban da dieu chinh dung tich xang VEHID %d thanh %0.f.", vehid, capacity);
+	format(mes, sizeof(mes), "Ban da dieu chinh dung tich xang VEHID %d thanh %0.1f.", vehid, capacity);
 	SendClientMessage(playerid, -1, mes);
+	return 1;
+}
+
+CMD:myfuel(playerid, params[])
+{
+	new 
+		vid = GetPlayerVehicleID(playerid),
+		str[200];
+	
+	format(str, sizeof str, "Capacity: %0.1fL | Fuel: %0.1fL ", GetVehicleFuelCapacity(vid), VehicleFuel[vid]);
+	SendClientMessage(playerid, -1, str);
 	return 1;
 }
