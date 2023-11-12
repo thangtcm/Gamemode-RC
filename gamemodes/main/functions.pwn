@@ -2001,6 +2001,14 @@ public OnPlayerWeaponShot(playerid, weaponid, hittype, hitid, Float:fX, Float:fY
             }
         }
     }
+	if(IsValidPlayerWeapon(playerid, weaponid) && PlayerInfo[playerid][pAdmin] < 2 && GetPVarInt(playerid, "AC_Weapon") < gettime())
+	{
+		new string[128], weaponName[32];
+		GetWeaponName(weaponid, weaponName, sizeof(weaponName));
+		format(string,sizeof(string),"[{57d699}RCRP-AC{ffffff}] Nguoi choi {57d699}%s(%d){FFFFFF} co the dang su dung hack vu khi %s.",GetPlayerNameEx(playerid), playerid, weaponName);
+		ABroadCast(COLOR_YELLOW , string, 2);
+		SetPVarInt(playerid, "AC_Weapon", gettime()+15);
+	}
     for(new Sz; Sz < MAX_SZ; Sz++)
  	{
   		if(IsPlayerInRangeOfPoint(playerid, SafeZoneInfo[Sz][szKhoangcach], SafeZoneInfo[Sz][szExteriorX], SafeZoneInfo[Sz][szExteriorY], SafeZoneInfo[Sz][szExteriorZ]))
@@ -2014,7 +2022,7 @@ public OnPlayerWeaponShot(playerid, weaponid, hittype, hitid, Float:fX, Float:fY
 					SendClientMessageToAll( COLOR_LIGHTRED,string);
 					new rand = random(sizeof(LSPDJailSpawns));
 					SetPlayerFacingAngle(playerid, LSPDJailSpawns[rand][2]);
-					SetPlayerPos(playerid, LSPDJailSpawns[rand][0], LSPDJailSpawns[rand][1], LSPDJailSpawns[rand][2]);
+					ActSetPlayerPos(playerid, LSPDJailSpawns[rand][0], LSPDJailSpawns[rand][1], LSPDJailSpawns[rand][2]);
 		        	ResetPlayerWeapons(playerid);
 			        SetPlayerHealth(playerid, 100);
 			        SetPlayerSkin(playerid, 50);
@@ -2112,7 +2120,7 @@ public AntiSpeed(playerid)
         {
             new antispeed2[128], Float:slx, Float:sly, Float:slz, vehicleid;
             GetPlayerPos(playerid, slx, sly, slz);
-            SetPlayerPos(playerid, slx, sly, slz+1.3);
+            ActSetPlayerPos(playerid, slx, sly, slz+1.3);
             PlayerPlaySound(playerid, 1130, slx, sly, slz+1.3);
             format(antispeed2, sizeof(antispeed2), "[{57d699}LSR-AC{ffffff}] %s (ID %d) (Vehicle %d) nghi van hack Speed Car", GetPlayerNameEx(playerid), playerid, GetVehicleName(vehicleid), vehicleid);
             ABroadCast(COLOR_YELLOW, antispeed2, 1);
@@ -3550,7 +3558,7 @@ public SetCamBack(playerid)
 	{
 		new Float:plocx,Float:plocy,Float:plocz;
 		GetPlayerPos(playerid, plocx, plocy, plocz);
-		SetPlayerPos(playerid, -1863.15, -21.6598, 1060.15); // Warp the player
+		ActSetPlayerPos(playerid, -1863.15, -21.6598, 1060.15); // Warp the player
 		SetPlayerInterior(playerid,14);
 	}
 }
@@ -3915,7 +3923,7 @@ public MoveEMS(playerid)
 	SetPVarInt(GetPVarInt(playerid, "MovingStretcher"), "MedicInt", GetPlayerInterior(playerid));
 
 	Streamer_UpdateEx(GetPVarInt(playerid, "MovingStretcher"), mX, mY, mZ);
-	SetPlayerPos(GetPVarInt(playerid, "MovingStretcher"), mX, mY, mZ);
+	ActSetPlayerPos(GetPVarInt(playerid, "MovingStretcher"), mX, mY, mZ);
 	SetPlayerInterior(GetPVarInt(playerid, "MovingStretcher"), GetPlayerVirtualWorld(playerid));
 	SetPlayerVirtualWorld(GetPVarInt(playerid, "MovingStretcher"), GetPlayerVirtualWorld(playerid));
 
@@ -3961,7 +3969,7 @@ public SendEMSQueue(playerid,type)
 		case 1:
 		{
 		    Streamer_UpdateEx(playerid, GetPVarFloat(playerid,"MedicX"), GetPVarFloat(playerid,"MedicY"), GetPVarFloat(playerid,"MedicZ"));
-			SetPlayerPos(playerid, GetPVarFloat(playerid,"MedicX"), GetPVarFloat(playerid,"MedicY"), GetPVarFloat(playerid,"MedicZ"));
+			ActSetPlayerPos(playerid, GetPVarFloat(playerid,"MedicX"), GetPVarFloat(playerid,"MedicY"), GetPVarFloat(playerid,"MedicZ"));
 			SetPlayerVirtualWorld(playerid, GetPVarInt(playerid,"MedicVW"));
 	  		SetPlayerInterior(playerid, GetPVarInt(playerid,"MedicInt"));
 
@@ -4225,7 +4233,7 @@ public SetVehicleEngine(vehicleid, playerid)
 forward SurfingFix(playerid, Float:x, Float:y, Float:z);
 public SurfingFix(playerid, Float:x, Float:y, Float:z)
 {
-	SetPlayerPos(playerid, x, y, z);
+	ActSetPlayerPos(playerid, x, y, z);
 	return 1;
 }
 
@@ -4293,7 +4301,7 @@ forward rccam(playerid);
 public rccam(playerid)
 {
 	DestroyVehicle(GetPVarInt(playerid, "rcveh"));
- 	SetPlayerPos(playerid, GetPVarFloat(playerid, "rcX"), GetPVarFloat(playerid, "rcY"), GetPVarFloat(playerid, "rcZ"));
+ 	ActSetPlayerPos(playerid, GetPVarFloat(playerid, "rcX"), GetPVarFloat(playerid, "rcY"), GetPVarFloat(playerid, "rcZ"));
   	SendClientMessageEx(playerid, COLOR_GRAD1, "RC Cam cua ban da het pin!");
    	SetPVarInt(playerid, "rccam", 0);
 }
@@ -4304,7 +4312,7 @@ public cameraexpire(playerid)
  	SetCameraBehindPlayer(playerid);
  	if(GetPVarInt(playerid, "camerasc") == 1)
  	{
-	 	SetPlayerPos(playerid, GetPVarFloat(playerid, "cameraX2"), GetPVarFloat(playerid, "cameraY2"), GetPVarFloat(playerid, "cameraZ2"));
+	 	ActSetPlayerPos(playerid, GetPVarFloat(playerid, "cameraX2"), GetPVarFloat(playerid, "cameraY2"), GetPVarFloat(playerid, "cameraZ2"));
 	  	SetPlayerVirtualWorld(playerid, GetPVarInt(playerid, "cameravw2"));
 	  	SetPlayerInterior(playerid, GetPVarInt(playerid, "cameraint2"));
 	}
@@ -4645,7 +4653,7 @@ public Player_StreamPrep(iPlayer, Float: fPosX, Float: fPosY, Float: fPosZ, iTim
 				SetVehiclePos(GetPlayerVehicleID(iPlayer), fPosX, fPosY, fPosZ + 2.0);
 
 			else
-				SetPlayerPos(iPlayer, fPosX, fPosY, fPosZ + 0.5);
+				ActSetPlayerPos(iPlayer, fPosX, fPosY, fPosZ + 0.5);
 
 			SetPVarInt(iPlayer, "StreamPrep", 2);
 			SetTimerEx("Player_StreamPrep", iTime / 2, false, "ifffi", iPlayer, fPosX, fPosY, fPosZ, iTime);
@@ -4659,7 +4667,7 @@ public Player_StreamPrep(iPlayer, Float: fPosX, Float: fPosY, Float: fPosZ, iTim
 				SetVehiclePos(GetPlayerVehicleID(iPlayer), fPosX, fPosY, fPosZ);
 
 			else
-				SetPlayerPos(iPlayer, fPosX, fPosY, fPosZ);
+				ActSetPlayerPos(iPlayer, fPosX, fPosY, fPosZ);
 
 			if(GetPVarType(iPlayer, "MedicCall")) {
 				ClearAnimations(iPlayer);
@@ -5257,7 +5265,7 @@ public HealthHackCheck(playerid, giveplayerid)
 		if(HHcheckFloats[giveplayerid][1] > 0) {
 			SetPlayerArmor(giveplayerid, HHcheckFloats[giveplayerid][1]);
 		}
-		SetPlayerPos(giveplayerid, HHcheckFloats[giveplayerid][2], HHcheckFloats[giveplayerid][3], HHcheckFloats[giveplayerid][4]);
+		ActSetPlayerPos(giveplayerid, HHcheckFloats[giveplayerid][2], HHcheckFloats[giveplayerid][3], HHcheckFloats[giveplayerid][4]);
 		SetPlayerFacingAngle(giveplayerid, HHcheckFloats[giveplayerid][5]);
 		SetCameraBehindPlayer(giveplayerid);
 		SetPlayerVirtualWorld(giveplayerid, HHcheckVW[giveplayerid]);
@@ -5281,7 +5289,7 @@ public HealthHackCheck(playerid, giveplayerid)
         if(HHcheckFloats[giveplayerid][1] > 0) {
 			SetPlayerArmor(giveplayerid, HHcheckFloats[giveplayerid][1]);
 		}
-		SetPlayerPos(giveplayerid, HHcheckFloats[giveplayerid][2], HHcheckFloats[giveplayerid][3], HHcheckFloats[giveplayerid][4]);
+		ActSetPlayerPos(giveplayerid, HHcheckFloats[giveplayerid][2], HHcheckFloats[giveplayerid][3], HHcheckFloats[giveplayerid][4]);
 		SetPlayerFacingAngle(giveplayerid, HHcheckFloats[giveplayerid][5]);
 		SetCameraBehindPlayer(giveplayerid);
 		SetPlayerVirtualWorld(giveplayerid, HHcheckVW[giveplayerid]);
@@ -5325,7 +5333,7 @@ public HealthHackCheck(playerid, giveplayerid)
 	if(HHcheckFloats[giveplayerid][1] > 0) {
 		SetPlayerArmor(giveplayerid, HHcheckFloats[giveplayerid][1]);
 	}
-	SetPlayerPos(giveplayerid, HHcheckFloats[giveplayerid][2], HHcheckFloats[giveplayerid][3], HHcheckFloats[giveplayerid][4]);
+	ActSetPlayerPos(giveplayerid, HHcheckFloats[giveplayerid][2], HHcheckFloats[giveplayerid][3], HHcheckFloats[giveplayerid][4]);
 	SetPlayerFacingAngle(giveplayerid, HHcheckFloats[giveplayerid][5]);
 	SetCameraBehindPlayer(giveplayerid);
 	SetPlayerVirtualWorld(giveplayerid, HHcheckVW[giveplayerid]);
@@ -6058,7 +6066,7 @@ public DragPlayer(dragger, dragee)
 		SetPVarInt(dragee, "DragWorld", GetPlayerVirtualWorld(dragger));
 		SetPVarInt(dragee, "DragInt", GetPlayerInterior(dragger));
 		Streamer_UpdateEx(dragee, dX, dY, dZ);
-		SetPlayerPos(dragee, dX, dY, dZ);
+		ActSetPlayerPos(dragee, dX, dY, dZ);
 		SetPlayerInterior(dragee, GetPlayerInterior(dragger));
 		SetPlayerVirtualWorld(dragee, GetPlayerVirtualWorld(dragger));
 		ClearAnimations(dragee);
@@ -6186,7 +6194,7 @@ public ParkVehicle(playerid, ownerid, vehicleid, d, Float:X, Float:Y, Float:Z)
 			SurfingCheck(vehicleid);
 			UpdatePlayerVehicleParkPosition(ownerid, d, x, y, z, angle, health, GetPlayerVirtualWorld(playerid), GetPlayerInterior(playerid));
 			IsPlayerEntering{playerid} = true;
-			PutPlayerInVehicle(playerid, vehicleid, 0);
+			ActPutPlayerInVehicle(playerid, vehicleid, 0);
 			SetPlayerArmedWeapon(playerid, 0);
 			format(string, sizeof(string), "* %s da dau xe %s's.", GetPlayerNameEx(playerid), GetPlayerNameEx(ownerid));
 		}
@@ -6197,7 +6205,7 @@ public ParkVehicle(playerid, ownerid, vehicleid, d, Float:X, Float:Y, Float:Z)
 			SurfingCheck(vehicleid);
 			UpdatePlayerVehicleParkPosition(playerid, d, x, y, z, angle, health, GetPlayerVirtualWorld(playerid), GetPlayerInterior(playerid));
 			IsPlayerEntering{playerid} = true;
-			PutPlayerInVehicle(playerid, vehicleid, 0);
+			ActPutPlayerInVehicle(playerid, vehicleid, 0);
 			SetPlayerArmedWeapon(playerid, 0);
 			format(string, sizeof(string), "* %s da dau chiec xe cua ho tai day.", GetPlayerNameEx(playerid));
 		}
@@ -10837,7 +10845,7 @@ stock HospitalSpawn(playerid)
 				Misc_Save();
 				SendClientMessageEx(playerid, TEAM_CYAN_COLOR, "None , benh vien nay xoa roi thi phai muabaohiem khac di");
 				PlayerInfo[playerid][pVW] = 0;
-				SetPlayerPos(playerid, 1153.7006, -1330.3177, -41.9554);
+				ActSetPlayerPos(playerid, 1153.7006, -1330.3177, -41.9554);
 				Streamer_UpdateEx(playerid, 1153.7006, -1330.3177, -41.9554);
 				Player_StreamPrep(playerid, 1153.7006, -1330.3177, -41.9554,FREEZE_TIME);
 				SetPlayerFacingAngle(playerid, 179.4258);
@@ -10871,7 +10879,7 @@ stock HospitalSpawn(playerid)
 				Misc_Save();
 				SendClientMessageEx(playerid, 0xb4b486FF, "[HOSPITAL] Ban ton $1500 cho tien vien phi");
 				PlayerInfo[playerid][pVW] = 0;
-				SetPlayerPos(playerid, 1245.2665,334.1407,19.5547);
+				ActSetPlayerPos(playerid, 1245.2665,334.1407,19.5547);
 				Streamer_UpdateEx(playerid, 1245.2665,334.1407,19.5547);
 				Player_StreamPrep(playerid, 1245.2665,334.1407,19.5547,FREEZE_TIME);
 				SetPlayerFacingAngle(playerid, 179.4258);
@@ -10905,7 +10913,7 @@ stock HospitalSpawn(playerid)
 				Misc_Save();//SF , Old Red county
 				SendClientMessageEx(playerid, 0xb4b486FF, "Hoa don benh vien $25. Chuc mot ngay tot lanh!");
 				PlayerInfo[playerid][pVW] = 0;
-				SetPlayerPos(playerid, 1153.7006, -1330.3177, -41.9554);
+				ActSetPlayerPos(playerid, 1153.7006, -1330.3177, -41.9554);
 				Streamer_UpdateEx(playerid, 1153.7006, -1330.3177, -41.9554);
 				Player_StreamPrep(playerid, 1153.7006, -1330.3177, -41.9554,FREEZE_TIME);
 				SetPlayerFacingAngle(playerid, 179.4258);
@@ -10938,7 +10946,7 @@ stock HospitalSpawn(playerid)
 				Misc_Save();
 				SendClientMessageEx(playerid, TEAM_CYAN_COLOR, "Hoa don benh vien $250. Chuc mot ngay tot lanh!");
 				PlayerInfo[playerid][pVW] = 0;
-				SetPlayerPos(playerid, 1153.7006, -1330.3177, -41.9554);
+				ActSetPlayerPos(playerid, 1153.7006, -1330.3177, -41.9554);
 				Streamer_UpdateEx(playerid, 1153.7006, -1330.3177, -41.9554);
 				Player_StreamPrep(playerid, 1153.7006, -1330.3177, -41.9554,FREEZE_TIME);
 				SetPlayerFacingAngle(playerid, 179.4258);
@@ -10971,7 +10979,7 @@ stock HospitalSpawn(playerid)
 				}
 				Misc_Save();//SF
 				PlayerInfo[playerid][pVW] = 0;
-				SetPlayerPos(playerid, 1153.7006, -1330.3177, -41.9554);
+				ActSetPlayerPos(playerid, 1153.7006, -1330.3177, -41.9554);
 				Streamer_UpdateEx(playerid, 1153.7006, -1330.3177, -41.9554);
 				Player_StreamPrep(playerid, 1153.7006, -1330.3177, -41.9554,FREEZE_TIME);
 				SetPlayerFacingAngle(playerid, 179.4258);
@@ -11002,7 +11010,7 @@ stock HospitalSpawn(playerid)
 				}
 				Misc_Save();
 				PlayerInfo[playerid][pVW] = 0;
-				SetPlayerPos(playerid, 1153.7006, -1330.3177, -41.9554);
+				ActSetPlayerPos(playerid, 1153.7006, -1330.3177, -41.9554);
 				Streamer_UpdateEx(playerid, 1153.7006, -1330.3177, -41.9554);
 				Player_StreamPrep(playerid, 1153.7006, -1330.3177, -41.9554,FREEZE_TIME);
 				SetPlayerFacingAngle(playerid, 179.4258);
@@ -11035,7 +11043,7 @@ stock HospitalSpawn(playerid)
 				Misc_Save();
 				SendClientMessageEx(playerid, TEAM_CYAN_COLOR, "Hoa don benh vien $250. Chuc mot ngay tot lanh!!");
 				PlayerInfo[playerid][pVW] = 0;
-				SetPlayerPos(playerid, 1153.7006, -1330.3177, -41.9554);
+				ActSetPlayerPos(playerid, 1153.7006, -1330.3177, -41.9554);
 				Streamer_UpdateEx(playerid, 1153.7006, -1330.3177, -41.9554);
 				Player_StreamPrep(playerid, 1153.7006, -1330.3177, -41.9554,FREEZE_TIME);
 				SetPlayerFacingAngle(playerid, 179.4258);
@@ -11074,7 +11082,7 @@ stock HospitalSpawn(playerid)
 					{
 						Streamer_UpdateEx(playerid, HouseInfo[i][hInteriorX],HouseInfo[i][hInteriorY],HouseInfo[i][hInteriorZ]);
 						SetPlayerInterior(playerid,HouseInfo[i][hIntIW]);
-						SetPlayerPos(playerid,HouseInfo[i][hInteriorX],HouseInfo[i][hInteriorY],HouseInfo[i][hInteriorZ]);
+						ActSetPlayerPos(playerid,HouseInfo[i][hInteriorX],HouseInfo[i][hInteriorY],HouseInfo[i][hInteriorZ]);
 						GameTextForPlayer(playerid, "~w~Welcome Home", 5000, 1);
 						PlayerInfo[playerid][pInt] = HouseInfo[i][hIntIW];
 						PlayerInfo[playerid][pVW] = HouseInfo[i][hIntVW];
@@ -11097,7 +11105,7 @@ stock HospitalSpawn(playerid)
 				SendClientMessageEx(playerid, TEAM_CYAN_COLOR, "DOC: Chuc mot ngay tot lanh.");
 				new Float:X, Float:Y, Float:Z;
 				GetDynamicObjectPos(Carrier[0], X, Y, Z);
-				SetPlayerPos(playerid, (X-0.377671),(Y-10.917018),11.6986);
+				ActSetPlayerPos(playerid, (X-0.377671),(Y-10.917018),11.6986);
 				SetPlayerFacingAngle(playerid, 0);
 				PlayerInfo[playerid][pHospital] = 0;
 				SetCameraBehindPlayer(playerid);
@@ -11130,7 +11138,7 @@ stock HospitalSpawn(playerid)
 				}
 				Misc_Save();
 				SendClientMessageEx(playerid, TEAM_CYAN_COLOR, "Hoa don benh vien $250. Chuc mot ngay tot lanh!");
-				SetPlayerPos(playerid, -1514.809204, 2526.305175, 55.759651);
+				ActSetPlayerPos(playerid, -1514.809204, 2526.305175, 55.759651);
 				SetPlayerFacingAngle(playerid, 357.79);
 				PlayerInfo[playerid][pHospital] = 0;
 				SetCameraBehindPlayer(playerid);
@@ -11144,7 +11152,7 @@ stock HospitalSpawn(playerid)
 				}
 				SetPlayerHealth(playerid, 50.0);
 				SendClientMessageEx(playerid, TEAM_CYAN_COLOR, "DOC: Hoa don cua ban duoc chi tra mien phi, chuc mot ngay vui ve!");
-				SetPlayerPos(playerid, -1680.8573, 284.6186, 7.1875);
+				ActSetPlayerPos(playerid, -1680.8573, 284.6186, 7.1875);
 				SetCameraBehindPlayer(playerid);
 				PlayerInfo[playerid][pHospital] = 0;
 				SetCameraBehindPlayer(playerid);
@@ -11158,7 +11166,7 @@ stock HospitalSpawn(playerid)
 				}
 				SetPlayerHealth(playerid, 50.0);
 				SendClientMessageEx(playerid, TEAM_CYAN_COLOR, "DOC: Hoa don cua ban duoc chi tra mien phi, chuc mot ngay vui ve!");
-				SetPlayerPos(playerid, 1607.4916, 1817.4746, 10.8203);
+				ActSetPlayerPos(playerid, 1607.4916, 1817.4746, 10.8203);
 				SetCameraBehindPlayer(playerid);
 				PlayerInfo[playerid][pHospital] = 0;
 				SetCameraBehindPlayer(playerid);
@@ -11172,7 +11180,7 @@ stock HospitalSpawn(playerid)
 				}
 				SetPlayerHealth(playerid, 50.0);
 				SendClientMessageEx(playerid, TEAM_CYAN_COLOR, "DOC: Hoa don cua ban duoc chi tra mien phi, chuc mot ngay vui ve!");
-				SetPlayerPos(playerid, 914.8001, 1427.6847, -81.1762);
+				ActSetPlayerPos(playerid, 914.8001, 1427.6847, -81.1762);
 				SetCameraBehindPlayer(playerid);
 				PlayerInfo[playerid][pHospital] = 0;
 				SetCameraBehindPlayer(playerid);
@@ -11186,7 +11194,7 @@ stock HospitalSpawn(playerid)
 				}
 				SetPlayerHealth(playerid, 50.0);
 				SendClientMessageEx(playerid, TEAM_CYAN_COLOR, "DOC: Hoa don cua ban duoc chi tra mien phi, chuc mot ngay vui ve!");
-				SetPlayerPos(playerid, 230.8369, 1980.1620, 17.6406);
+				ActSetPlayerPos(playerid, 230.8369, 1980.1620, 17.6406);
 				SetPlayerFacingAngle(playerid, 0);
 				PlayerInfo[playerid][pHospital] = 0;
 				SetCameraBehindPlayer(playerid);
@@ -11218,7 +11226,7 @@ stock HospitalSpawn(playerid)
 				}
 				Misc_Save();
 				SendClientMessageEx(playerid, TEAM_CYAN_COLOR, "Hoa don benh vien $500. Chuc mot ngay tot lanh!");
-				SetPlayerPos(playerid, -2486.7124,2234.5493,4.8438);
+				ActSetPlayerPos(playerid, -2486.7124,2234.5493,4.8438);
 				SetPlayerFacingAngle(playerid, -90);
 				PlayerInfo[playerid][pHospital] = 0;
 				SetCameraBehindPlayer(playerid);
@@ -11249,7 +11257,7 @@ stock SetPlayerSpawn(playerid)
 			PlayerInfo[playerid][pInt] = GetPVarInt(playerid, "SpecInt");
 			SetPlayerVirtualWorld(playerid, GetPVarInt(playerid, "SpecVW"));
 			PlayerInfo[playerid][pVW] = GetPVarInt(playerid, "SpecVW");
-			SetPlayerPos(playerid, GetPVarFloat(playerid, "SpecPosX"), GetPVarFloat(playerid, "SpecPosY"), GetPVarFloat(playerid, "SpecPosZ"));
+			ActSetPlayerPos(playerid, GetPVarFloat(playerid, "SpecPosX"), GetPVarFloat(playerid, "SpecPosY"), GetPVarFloat(playerid, "SpecPosZ"));
 			if(GetPVarInt(playerid, "SpecInt") > 0) {
 				Player_StreamPrep(playerid, GetPVarFloat(playerid, "SpecPosX"), GetPVarFloat(playerid, "SpecPosY"), GetPVarFloat(playerid, "SpecPosZ"), FREEZE_TIME);
 			}
@@ -11277,7 +11285,7 @@ stock SetPlayerSpawn(playerid)
 			Streamer_UpdateEx(playerid, 2229.4968,-1722.0701,13.5625);
 			SetPlayerCameraPos(playerid, 2144.0933,-80.9560,9.7431);
 			SetPlayerCameraLookAt(playerid, 2126.6655,-77.3383,2.4477);
-			//SetPlayerPos(playerid, 2177.0903,-75.1653,27.4766);
+			//ActSetPlayerPos(playerid, 2177.0903,-75.1653,27.4766);
             PlayerInfo[playerid][pVW] = 0;
             SetPlayerVirtualWorld(playerid,0);
    			RegistrationStep[playerid] = 1;
@@ -11290,7 +11298,7 @@ stock SetPlayerSpawn(playerid)
 		{
 		    PhoneOnline[playerid] = 1;
 		    rand = random(sizeof(WarrantJail));
-			SetPlayerPos(playerid, WarrantJail[rand][0], WarrantJail[rand][1], WarrantJail[rand][2]);
+			ActSetPlayerPos(playerid, WarrantJail[rand][0], WarrantJail[rand][1], WarrantJail[rand][2]);
 			if(rand != 0) courtjail[playerid] = 2;
 			else courtjail[playerid] = 1;
 			Player_StreamPrep(playerid, WarrantJail[rand][0], WarrantJail[rand][1], WarrantJail[rand][2], FREEZE_TIME);
@@ -11307,7 +11315,7 @@ stock SetPlayerSpawn(playerid)
 				SetPlayerInterior(playerid, 10);
 				PlayerInfo[playerid][pInt] = 0;
 				rand = random(sizeof(DocPrison));
-    			SetPlayerPos(playerid, DocPrison[rand][0], DocPrison[rand][1], DocPrison[rand][2]);
+    			ActSetPlayerPos(playerid, DocPrison[rand][0], DocPrison[rand][1], DocPrison[rand][2]);
 				SetPlayerSkin(playerid, 50);
 				SetPlayerColor(playerid, TEAM_ORANGE_COLOR);
 				SetPlayerHealth(playerid, 100);
@@ -11320,7 +11328,7 @@ stock SetPlayerSpawn(playerid)
 		        PhoneOnline[playerid] = 1;
 				SetPlayerInterior(playerid, 10);
 				PlayerInfo[playerid][pInt] = 0;
-				SetPlayerPos(playerid, -2095.3391, -215.8563, 978.8315);
+				ActSetPlayerPos(playerid, -2095.3391, -215.8563, 978.8315);
 				SetPlayerSkin(playerid, 50);
 				SetPlayerHealth(playerid, 100);
 				SetPlayerColor(playerid, TEAM_ORANGE_COLOR);
@@ -11335,7 +11343,7 @@ stock SetPlayerSpawn(playerid)
 				SetPlayerInterior(playerid, 1);
 				PlayerInfo[playerid][pInt] = 1;
 				rand = random(sizeof(OOCPrisonSpawns));
-				SetPlayerPos(playerid, OOCPrisonSpawns[rand][0], OOCPrisonSpawns[rand][1], OOCPrisonSpawns[rand][2]);
+				ActSetPlayerPos(playerid, OOCPrisonSpawns[rand][0], OOCPrisonSpawns[rand][1], OOCPrisonSpawns[rand][2]);
 				SetPlayerSkin(playerid, 50);
 				SetPlayerColor(playerid, TEAM_APRISON_COLOR);
 				new string[128];
@@ -11364,7 +11372,7 @@ stock SetPlayerSpawn(playerid)
 					SetPlayerWeapons(playerid);
 					SetPlayerToTeamColor(playerid);
 					SetPlayerSkin(playerid, PlayerInfo[playerid][pModel]);
-					SetPlayerPos(playerid,EventFloats[playerid][1],EventFloats[playerid][2],EventFloats[playerid][3]);
+					ActSetPlayerPos(playerid,EventFloats[playerid][1],EventFloats[playerid][2],EventFloats[playerid][3]);
 					SetPlayerVirtualWorld(playerid, EventLastVW[playerid]);
 					SetPlayerFacingAngle(playerid, EventFloats[playerid][0]);
 					SetPlayerInterior(playerid,EventLastInt[playerid]);
@@ -11393,7 +11401,7 @@ stock SetPlayerSpawn(playerid)
 			}
             if(EventKernel[EventType] == 4)
 			{
-			   	SetPlayerPos(playerid, EventKernel[ EventPositionX ], EventKernel[ EventPositionY ], EventKernel[ EventPositionZ ] );
+			   	ActSetPlayerPos(playerid, EventKernel[ EventPositionX ], EventKernel[ EventPositionY ], EventKernel[ EventPositionZ ] );
 				SetPlayerInterior(playerid, EventKernel[ EventInterior ] );
 				SetPlayerVirtualWorld(playerid, EventKernel[ EventWorld ] );
 				SendClientMessageEx(playerid, COLOR_WHITE, "Ban la zombie! Su dung /bite de lay nhiem nguoi khac");
@@ -11408,7 +11416,7 @@ stock SetPlayerSpawn(playerid)
 			{
 			    DeletePVar(playerid, "EventToken");
 			    SetPlayerWeapons(playerid);
-			    SetPlayerPos(playerid,EventFloats[playerid][1],EventFloats[playerid][2],EventFloats[playerid][3]);
+			    ActSetPlayerPos(playerid,EventFloats[playerid][1],EventFloats[playerid][2],EventFloats[playerid][3]);
 				//PlayerInfo[playerid][pInterior] = PlayerInfo[playerid][pInt];
 				SetPlayerVirtualWorld(playerid, EventLastVW[playerid]);
 				SetPlayerFacingAngle(playerid, EventFloats[playerid][0]);
@@ -11472,7 +11480,7 @@ stock SetPlayerSpawn(playerid)
 						format(string, sizeof(string), " County General Hospital da bao cao doi tuong truy na %s dang o day.", GetPlayerNameEx(playerid));
 						SetPlayerCameraPos(playerid,1999.5308,-1449.3281,13.5594+6.0);
 						SetPlayerCameraLookAt(playerid,2036.2179,-1410.3223,17.1641);
-						SetPlayerPos(playerid, 1999.5308,-1449.3281,10.5594);
+						ActSetPlayerPos(playerid, 1999.5308,-1449.3281,10.5594);
 						PlayerInfo[playerid][pHospital] = 2;
 					}
 					case 2:
@@ -11481,7 +11489,7 @@ stock SetPlayerSpawn(playerid)
 						format(string, sizeof(string), " All Saints Hospital da bao cao doi tuong truy na %s dang o day.", GetPlayerNameEx(playerid));
 						SetPlayerCameraPos(playerid,1188.4574,-1309.2242,13.5625+6.0);
 						SetPlayerCameraLookAt(playerid,1175.5581,-1324.7922,18.1610);
-						SetPlayerPos(playerid, 1188.4574,-1309.2242,10.5625); // Warp the player
+						ActSetPlayerPos(playerid, 1188.4574,-1309.2242,10.5625); // Warp the player
 						PlayerInfo[playerid][pHospital] = 1;
 					}
 					case 3:
@@ -11490,7 +11498,7 @@ stock SetPlayerSpawn(playerid)
 						format(string, sizeof(string), " Red County Hospital da bao cao doi tuong truy na %s dang o day.", GetPlayerNameEx(playerid));
 						SetPlayerCameraPos(playerid,1248.4147,338.8385,19.4063+6.0);
 						SetPlayerCameraLookAt(playerid,1241.4449,326.3389,19.7555);
-						SetPlayerPos(playerid, 1248.4147,338.8385,19.4063);
+						ActSetPlayerPos(playerid, 1248.4147,338.8385,19.4063);
 						PlayerInfo[playerid][pHospital] = 3;
 					}
 					case 4:
@@ -11499,7 +11507,7 @@ stock SetPlayerSpawn(playerid)
 						format(string, sizeof(string), " Fort Carson Hospital da bao cao doi tuong truy na %s dang o day.", GetPlayerNameEx(playerid));
 						SetPlayerCameraPos(playerid,-314.0242,1060.7919,19.5938+6.0);
 						SetPlayerCameraLookAt(playerid,-320.0992,1049.0341,20.3403);
-						SetPlayerPos(playerid, -314.0242,1060.7919,19.5938);
+						ActSetPlayerPos(playerid, -314.0242,1060.7919,19.5938);
 						PlayerInfo[playerid][pHospital] = 4;
 					}
 					case 5:
@@ -11508,7 +11516,7 @@ stock SetPlayerSpawn(playerid)
 						format(string, sizeof(string), " San Fierro Hospital da bao cao doi tuong truy na %s dang o day.", GetPlayerNameEx(playerid));
 						SetPlayerCameraPos(playerid,-2571.2766,558.7813,68.1754);
 						SetPlayerCameraLookAt(playerid,-2619.2883,596.2850,49.0966);
-						SetPlayerPos(playerid, -2653.6685,626.6485,4.8930);
+						ActSetPlayerPos(playerid, -2653.6685,626.6485,4.8930);
 						PlayerInfo[playerid][pHospital] = 5;
 					}
 				}
@@ -11520,38 +11528,38 @@ stock SetPlayerSpawn(playerid)
 				// new randum = random(sizeof(HospitalSpawnXYZ));
 				// SetPlayerCameraPos(playerid, HospitalSpawnXYZ[randum][0],HospitalSpawnXYZ[randum][1],HospitalSpawnXYZ[randum][2]);
 				// SetPlayerCameraLookAt(playerid, HospitalSpawnXYZ[randum][0],HospitalSpawnXYZ[randum][1],HospitalSpawnXYZ[randum][2]);
-				// SetPlayerPos(playerid, HospitalSpawnXYZ[randum][0],HospitalSpawnXYZ[randum][1],HospitalSpawnXYZ[randum][2]);
+				// ActSetPlayerPos(playerid, HospitalSpawnXYZ[randum][0],HospitalSpawnXYZ[randum][1],HospitalSpawnXYZ[randum][2]);
 				SetPlayerCameraPos(playerid,1188.4574,-1309.2242,13.5625+6.0);
 				SetPlayerCameraLookAt(playerid,1175.5581,-1324.7922,18.1610);
-				SetPlayerPos(playerid, 1188.4574,-1309.2242,10.5625); // Warp the player
+				ActSetPlayerPos(playerid, 1188.4574,-1309.2242,10.5625); // Warp the player
 				PlayerInfo[playerid][pHospital] = 2;
 			}
 			else if(PlayerInfo[playerid][pInsurance] == 2)
 			{
 				SetPlayerCameraPos(playerid,1188.4574,-1309.2242,13.5625+6.0);
 				SetPlayerCameraLookAt(playerid,1175.5581,-1324.7922,18.1610);
-				SetPlayerPos(playerid, 1188.4574,-1309.2242,10.5625); // Warp the player
+				ActSetPlayerPos(playerid, 1188.4574,-1309.2242,10.5625); // Warp the player
 				PlayerInfo[playerid][pHospital] = 1;
 			}
 			else if(PlayerInfo[playerid][pInsurance] == 3)
 			{
 				SetPlayerCameraPos(playerid,1237.849243, 352.657409, 23.576650);
 				SetPlayerCameraLookAt(playerid,1239.147705, 348.883331, 23.311220);
-				SetPlayerPos(playerid, 1248.4147,338.8385,16.0);
+				ActSetPlayerPos(playerid, 1248.4147,338.8385,16.0);
 				PlayerInfo[playerid][pHospital] = 3;
 			}
    			else if(PlayerInfo[playerid][pInsurance] == 4)
 			{
 				SetPlayerCameraPos(playerid,-314.0242,1060.7919,19.5938+6.0);
 				SetPlayerCameraLookAt(playerid,-320.0992,1049.0341,20.3403);
-				SetPlayerPos(playerid, -314.0242,1060.7919,19.5938);
+				ActSetPlayerPos(playerid, -314.0242,1060.7919,19.5938);
 				PlayerInfo[playerid][pHospital] = 4;
 			}
 			else if(PlayerInfo[playerid][pInsurance] == 5)
 			{
 				SetPlayerCameraPos(playerid,-2571.2766,558.7813,68.1754);
 				SetPlayerCameraLookAt(playerid,-2619.2883,596.2850,49.0966);
-				SetPlayerPos(playerid, -2653.6685,626.6485,4.8930);
+				ActSetPlayerPos(playerid, -2653.6685,626.6485,4.8930);
 				PlayerInfo[playerid][pHospital] = 5;
 			}
 			else if(PlayerInfo[playerid][pInsurance] == 6)
@@ -11560,7 +11568,7 @@ stock SetPlayerSpawn(playerid)
 			    {
 					SetPlayerCameraPos(playerid,2787.102050, 2392.162841, 1243.898681);
 					SetPlayerCameraLookAt(playerid,2801.281982, 2404.575683, 1240.531127);
-					SetPlayerPos(playerid, 2788.561523, 2387.321044, 1227.350219);
+					ActSetPlayerPos(playerid, 2788.561523, 2387.321044, 1227.350219);
 					PlayerInfo[playerid][pHospital] = 7;
 				}
 				else
@@ -11573,7 +11581,7 @@ stock SetPlayerSpawn(playerid)
 			{
 				SetPlayerCameraPos(playerid,2787.102050, 2392.162841, 1243.898681);
 				SetPlayerCameraLookAt(playerid,2801.281982, 2404.575683, 1240.531127);
-				SetPlayerPos(playerid, 2788.561523, 2387.321044, 1227.350219);
+				ActSetPlayerPos(playerid, 2788.561523, 2387.321044, 1227.350219);
 				PlayerInfo[playerid][pHospital] = 8;
 			}
 			else if(PlayerInfo[playerid][pInsurance] == 8)
@@ -11583,14 +11591,14 @@ stock SetPlayerSpawn(playerid)
 				GetDynamicObjectPos(Carrier[0], X, Y, Z);
 				SetPlayerCameraPos(playerid,(X-100),(Y-100),30);
 				SetPlayerCameraLookAt(playerid,X, Y, Z);
-				SetPlayerPos(playerid, (X-0.377671),(Y-10.917018),0);
+				ActSetPlayerPos(playerid, (X-0.377671),(Y-10.917018),0);
 				PlayerInfo[playerid][pHospital] = 9;
 			}
 			else if(PlayerInfo[playerid][pInsurance] == 9)
 			{
 				SetPlayerCameraPos(playerid, -1529.847167, 2539.394042, 62.038913);
 				SetPlayerCameraLookAt(playerid, -1514.883300, 2527.161132, 55.743553);
-				SetPlayerPos(playerid, -1514.809204, 2526.305175, 51.865501);
+				ActSetPlayerPos(playerid, -1514.809204, 2526.305175, 51.865501);
 				PlayerInfo[playerid][pHospital] = 10;
 			}
 			else if(PlayerInfo[playerid][pInsurance] == 10)
@@ -11602,7 +11610,7 @@ stock SetPlayerSpawn(playerid)
 				}
 				else
 				{
-					SetPlayerPos(playerid,-1633.0745, 266.1379, 1.2124);
+					ActSetPlayerPos(playerid,-1633.0745, 266.1379, 1.2124);
 					SetPlayerCameraPos(playerid, -1633.7493, 266.4792, 28.4621);
 					SetPlayerCameraLookAt(playerid, -1634.6990, 266.8079, 28.1269);
 					TogglePlayerControllable(playerid, 0);
@@ -11613,28 +11621,28 @@ stock SetPlayerSpawn(playerid)
 			{
 				SetPlayerCameraPos(playerid, 1575.5074, 1862.8700, 22.8418);
 				SetPlayerCameraLookAt(playerid, 1607.4342, 1826.3204, 10.8203);
-				SetPlayerPos(playerid, 1578.7942, 1862.1686, 3.6148);
+				ActSetPlayerPos(playerid, 1578.7942, 1862.1686, 3.6148);
 				PlayerInfo[playerid][pHospital] = 12;
 			}
 			else if(PlayerInfo[playerid][pInsurance] == 12)
 			{
 				SetPlayerCameraPos(playerid, 922.253, 1430.680, -80.411);
     			SetPlayerCameraLookAt(playerid,917.2774,1425.5016,-80.7928);
-				SetPlayerPos(playerid, 922.4749, 1430.8566, -85.9349);
+				ActSetPlayerPos(playerid, 922.4749, 1430.8566, -85.9349);
 				PlayerInfo[playerid][pHospital] = 13;
 			}
 			else if(PlayerInfo[playerid][pInsurance] == 13) //DeMorgan
 			{
 				SetPlayerCameraPos(playerid, 241.085021, 2018.862182, 24.019464);
 				SetPlayerCameraLookAt(playerid, 239.654739, 2015.127685, 23.928848);
-				SetPlayerPos(playerid, 226.7881,1981.7726,11.6014);
+				ActSetPlayerPos(playerid, 226.7881,1981.7726,11.6014);
 				PlayerInfo[playerid][pHospital] = 14;
 			}
 			else if(PlayerInfo[playerid][pInsurance] == 14) //TR - Bayside
 			{
 				SetPlayerCameraPos(playerid, -2472.393310, 2255.071777, 8.939566);
 				SetPlayerCameraLookAt(playerid, -2475.382324, 2252.422119, 9.152222);
-				SetPlayerPos(playerid, -2486.7124,2234.5493,1.0);
+				ActSetPlayerPos(playerid, -2486.7124,2234.5493,1.0);
 				PlayerInfo[playerid][pHospital] = 15;
 			}
    			if(PlayerInfo[playerid][pInsurance] == 0)
@@ -11653,7 +11661,7 @@ stock SetPlayerSpawn(playerid)
 
 						SetPlayerCameraPos(playerid,1188.4574,-1309.2242,13.5625+6.0);
 						SetPlayerCameraLookAt(playerid,1175.5581,-1324.7922,18.1610);
-						SetPlayerPos(playerid, 1188.4574,-1309.2242,10.5625); // Warp the player
+						ActSetPlayerPos(playerid, 1188.4574,-1309.2242,10.5625); // Warp the player
 						PlayerInfo[playerid][pHospital] = 6;
   	    			}
     	    		case 2:
@@ -11667,7 +11675,7 @@ stock SetPlayerSpawn(playerid)
 
 						SetPlayerCameraPos(playerid,1999.5308,-1449.3281,13.5594+6.0);
 						SetPlayerCameraLookAt(playerid,2036.2179,-1410.3223,17.1641);
-						SetPlayerPos(playerid, 1999.5308,-1449.3281,10.5594);
+						ActSetPlayerPos(playerid, 1999.5308,-1449.3281,10.5594);
 						PlayerInfo[playerid][pHospital] = 2;
    					}
    				}
@@ -11730,7 +11738,7 @@ stock SetPlayerSpawn(playerid)
 		}
 		if(PlayerInfo[playerid][pHospital] == 0)
 		{
-			SetPlayerPos(playerid,PlayerInfo[playerid][pPos_x],PlayerInfo[playerid][pPos_y],PlayerInfo[playerid][pPos_z]);
+			ActSetPlayerPos(playerid,PlayerInfo[playerid][pPos_x],PlayerInfo[playerid][pPos_y],PlayerInfo[playerid][pPos_z]);
 			SetPlayerVirtualWorld(playerid, PlayerInfo[playerid][pVW]);
 			SetPlayerFacingAngle(playerid, PlayerInfo[playerid][pPos_r]);
 			SetPlayerInterior(playerid,PlayerInfo[playerid][pInt]);
@@ -11769,7 +11777,7 @@ stock SetPlayerSpawn(playerid)
 				}
 				SetPlayerCameraPos(playerid,1999.5308,-1449.3281,13.5594+6.0);
 				SetPlayerCameraLookAt(playerid,2036.2179,-1410.3223,17.1641);
-				SetPlayerPos(playerid, 1999.5308,-1449.3281,10.5594);
+				ActSetPlayerPos(playerid, 1999.5308,-1449.3281,10.5594);
 				PlayerInfo[playerid][pHospital] = 2;
 			}
 			else if(PlayerInfo[playerid][pInsurance] == 2)
@@ -11782,7 +11790,7 @@ stock SetPlayerSpawn(playerid)
 				}
 				SetPlayerCameraPos(playerid,1188.4574,-1309.2242,13.5625+6.0);
 				SetPlayerCameraLookAt(playerid,1175.5581,-1324.7922,18.1610);
-				SetPlayerPos(playerid, 1188.4574,-1309.2242,10.5625); // Warp the player
+				ActSetPlayerPos(playerid, 1188.4574,-1309.2242,10.5625); // Warp the player
 				PlayerInfo[playerid][pHospital] = 1;
 			}
 			else if(PlayerInfo[playerid][pInsurance] == 3)
@@ -11795,7 +11803,7 @@ stock SetPlayerSpawn(playerid)
 				}
 				SetPlayerCameraPos(playerid,1248.4147,338.8385,19.4063+6.0);
 				SetPlayerCameraLookAt(playerid,1241.4449,326.3389,19.7555);
-				SetPlayerPos(playerid, 1248.4147,338.8385,19.4063);
+				ActSetPlayerPos(playerid, 1248.4147,338.8385,19.4063);
 				PlayerInfo[playerid][pHospital] = 3;
 			}
    			else if(PlayerInfo[playerid][pInsurance] == 4)
@@ -11808,7 +11816,7 @@ stock SetPlayerSpawn(playerid)
 				}
 				SetPlayerCameraPos(playerid,-314.0242,1060.7919,19.5938+6.0);
 				SetPlayerCameraLookAt(playerid,-320.0992,1049.0341,20.3403);
-				SetPlayerPos(playerid, -314.0242,1060.7919,19.5938);
+				ActSetPlayerPos(playerid, -314.0242,1060.7919,19.5938);
 				PlayerInfo[playerid][pHospital] = 4;
 			}
 			else if(PlayerInfo[playerid][pInsurance] == 5)
@@ -11821,21 +11829,21 @@ stock SetPlayerSpawn(playerid)
 				}
 				SetPlayerCameraPos(playerid,-2571.2766,558.7813,68.1754);
 				SetPlayerCameraLookAt(playerid,-2619.2883,596.2850,49.0966);
-				SetPlayerPos(playerid, -2653.6685,626.6485,4.8930);
+				ActSetPlayerPos(playerid, -2653.6685,626.6485,4.8930);
 				PlayerInfo[playerid][pHospital] = 5;
 			}
 			else if(PlayerInfo[playerid][pInsurance] == 6)
 			{
 				SetPlayerCameraPos(playerid,2787.102050, 2392.162841, 1243.898681);
 				SetPlayerCameraLookAt(playerid,2801.281982, 2404.575683, 1240.531127);
-				SetPlayerPos(playerid, 2788.561523, 2387.321044, 1227.350219);
+				ActSetPlayerPos(playerid, 2788.561523, 2387.321044, 1227.350219);
 				PlayerInfo[playerid][pHospital] = 7;
 			}
 			else if(PlayerInfo[playerid][pInsurance] == 7)
 			{
 				SetPlayerCameraPos(playerid,2787.102050, 2392.162841, 1243.898681);
 				SetPlayerCameraLookAt(playerid,2801.281982, 2404.575683, 1240.531127);
-				SetPlayerPos(playerid, 2788.561523, 2387.321044, 1227.350219);
+				ActSetPlayerPos(playerid, 2788.561523, 2387.321044, 1227.350219);
 				PlayerInfo[playerid][pHospital] = 8;
 			}
 			else if(PlayerInfo[playerid][pInsurance] == 8)
@@ -11844,14 +11852,14 @@ stock SetPlayerSpawn(playerid)
 				GetDynamicObjectPos(Carrier[0], X, Y, Z);
 				SetPlayerCameraPos(playerid,(X-100),(Y-100),30);
 				SetPlayerCameraLookAt(playerid,X, Y, Z);
-				SetPlayerPos(playerid, (X-0.377671),(Y-10.917018),0);
+				ActSetPlayerPos(playerid, (X-0.377671),(Y-10.917018),0);
 				PlayerInfo[playerid][pHospital] = 9;
 			}
 			else if(PlayerInfo[playerid][pInsurance] == 9)
 			{
 				SetPlayerCameraPos(playerid, -1529.847167, 2539.394042, 62.038913);
 				SetPlayerCameraLookAt(playerid, -1514.883300, 2527.161132, 55.743553);
-				SetPlayerPos(playerid, -1514.809204, 2526.305175, 51.865501);
+				ActSetPlayerPos(playerid, -1514.809204, 2526.305175, 51.865501);
 				PlayerInfo[playerid][pHospital] = 10;
 			}
    			if(PlayerInfo[playerid][pInsurance] == 0)
@@ -11870,7 +11878,7 @@ stock SetPlayerSpawn(playerid)
 
 						SetPlayerCameraPos(playerid,1188.4574,-1309.2242,13.5625+6.0);
 						SetPlayerCameraLookAt(playerid,1175.5581,-1324.7922,18.1610);
-						SetPlayerPos(playerid, 1188.4574,-1309.2242,10.5625); // Warp the player
+						ActSetPlayerPos(playerid, 1188.4574,-1309.2242,10.5625); // Warp the player
 						PlayerInfo[playerid][pHospital] = 6;
   	    			}
     	    		case 2:
@@ -11884,7 +11892,7 @@ stock SetPlayerSpawn(playerid)
 
 						SetPlayerCameraPos(playerid,1999.5308,-1449.3281,13.5594+6.0);
 						SetPlayerCameraLookAt(playerid,2036.2179,-1410.3223,17.1641);
-						SetPlayerPos(playerid, 1999.5308,-1449.3281,10.5594);
+						ActSetPlayerPos(playerid, 1999.5308,-1449.3281,10.5594);
 						PlayerInfo[playerid][pHospital] = 2;
    					}
    				}
@@ -11952,7 +11960,7 @@ stock SetPlayerSpawn(playerid)
 		if(x == 0.0 && y == 0.0)
 		{
   			SetPlayerInterior(playerid,0);
-			SetPlayerPos(playerid, 1715.1201,-1903.1711,13.5665);
+			ActSetPlayerPos(playerid, 1715.1201,-1903.1711,13.5665);
 			SetPlayerFacingAngle(playerid, 359.4621);
 			SetCameraBehindPlayer(playerid);
 		}
@@ -14947,22 +14955,22 @@ stock SpawnPaintballArena(playerid, arenaid)
 			{
 	    		case 1:
 	    		{
-	        		SetPlayerPos(playerid, PaintBallArena[arenaid][pbDeathmatch1][0],PaintBallArena[arenaid][pbDeathmatch1][1],PaintBallArena[arenaid][pbDeathmatch1][2]);
+	        		ActSetPlayerPos(playerid, PaintBallArena[arenaid][pbDeathmatch1][0],PaintBallArena[arenaid][pbDeathmatch1][1],PaintBallArena[arenaid][pbDeathmatch1][2]);
  					SetPlayerFacingAngle(playerid, PaintBallArena[arenaid][pbDeathmatch1][3]);
 	    		}
 	    		case 2:
 				{
-		    		SetPlayerPos(playerid, PaintBallArena[arenaid][pbDeathmatch2][0],PaintBallArena[arenaid][pbDeathmatch2][1],PaintBallArena[arenaid][pbDeathmatch2][2]);
+		    		ActSetPlayerPos(playerid, PaintBallArena[arenaid][pbDeathmatch2][0],PaintBallArena[arenaid][pbDeathmatch2][1],PaintBallArena[arenaid][pbDeathmatch2][2]);
  					SetPlayerFacingAngle(playerid, PaintBallArena[arenaid][pbDeathmatch2][3]);
 				}
 				case 3:
 				{
-		    		SetPlayerPos(playerid, PaintBallArena[arenaid][pbDeathmatch3][0],PaintBallArena[arenaid][pbDeathmatch3][1],PaintBallArena[arenaid][pbDeathmatch3][2]);
+		    		ActSetPlayerPos(playerid, PaintBallArena[arenaid][pbDeathmatch3][0],PaintBallArena[arenaid][pbDeathmatch3][1],PaintBallArena[arenaid][pbDeathmatch3][2]);
  					SetPlayerFacingAngle(playerid, PaintBallArena[arenaid][pbDeathmatch3][3]);
 				}
 				case 4:
 				{
-		    		SetPlayerPos(playerid, PaintBallArena[arenaid][pbDeathmatch4][0],PaintBallArena[arenaid][pbDeathmatch4][1],PaintBallArena[arenaid][pbDeathmatch4][2]);
+		    		ActSetPlayerPos(playerid, PaintBallArena[arenaid][pbDeathmatch4][0],PaintBallArena[arenaid][pbDeathmatch4][1],PaintBallArena[arenaid][pbDeathmatch4][2]);
  					SetPlayerFacingAngle(playerid, PaintBallArena[arenaid][pbDeathmatch4][3]);
 				}
 			}
@@ -14976,17 +14984,17 @@ stock SpawnPaintballArena(playerid, arenaid)
 		    	{
 		    	    case 1:
 		    	    {
-		    	        SetPlayerPos(playerid, PaintBallArena[arenaid][pbTeamRed1][0],PaintBallArena[arenaid][pbTeamRed1][1],PaintBallArena[arenaid][pbTeamRed1][2]);
+		    	        ActSetPlayerPos(playerid, PaintBallArena[arenaid][pbTeamRed1][0],PaintBallArena[arenaid][pbTeamRed1][1],PaintBallArena[arenaid][pbTeamRed1][2]);
  						SetPlayerFacingAngle(playerid, PaintBallArena[arenaid][pbTeamRed1][3]);
 		    	    }
 		    	    case 2:
 		    	    {
-		    	        SetPlayerPos(playerid, PaintBallArena[arenaid][pbTeamRed2][0],PaintBallArena[arenaid][pbTeamRed2][1],PaintBallArena[arenaid][pbTeamRed2][2]);
+		    	        ActSetPlayerPos(playerid, PaintBallArena[arenaid][pbTeamRed2][0],PaintBallArena[arenaid][pbTeamRed2][1],PaintBallArena[arenaid][pbTeamRed2][2]);
  						SetPlayerFacingAngle(playerid, PaintBallArena[arenaid][pbTeamRed2][3]);
 		    	    }
 		    	    case 3:
 		    	    {
-		    	        SetPlayerPos(playerid, PaintBallArena[arenaid][pbTeamRed3][0],PaintBallArena[arenaid][pbTeamRed3][1],PaintBallArena[arenaid][pbTeamRed3][2]);
+		    	        ActSetPlayerPos(playerid, PaintBallArena[arenaid][pbTeamRed3][0],PaintBallArena[arenaid][pbTeamRed3][1],PaintBallArena[arenaid][pbTeamRed3][2]);
  						SetPlayerFacingAngle(playerid, PaintBallArena[arenaid][pbTeamRed3][3]);
 		    	    }
 		    	}
@@ -14999,17 +15007,17 @@ stock SpawnPaintballArena(playerid, arenaid)
 			    {
 			        case 1:
 		    	    {
-		    	        SetPlayerPos(playerid, PaintBallArena[arenaid][pbTeamBlue1][0],PaintBallArena[arenaid][pbTeamBlue1][1],PaintBallArena[arenaid][pbTeamBlue1][2]);
+		    	        ActSetPlayerPos(playerid, PaintBallArena[arenaid][pbTeamBlue1][0],PaintBallArena[arenaid][pbTeamBlue1][1],PaintBallArena[arenaid][pbTeamBlue1][2]);
  						SetPlayerFacingAngle(playerid, PaintBallArena[arenaid][pbTeamBlue1][3]);
 		    	    }
 		    	    case 2:
 		    	    {
-		    	        SetPlayerPos(playerid, PaintBallArena[arenaid][pbTeamBlue2][0],PaintBallArena[arenaid][pbTeamBlue2][1],PaintBallArena[arenaid][pbTeamBlue2][2]);
+		    	        ActSetPlayerPos(playerid, PaintBallArena[arenaid][pbTeamBlue2][0],PaintBallArena[arenaid][pbTeamBlue2][1],PaintBallArena[arenaid][pbTeamBlue2][2]);
  						SetPlayerFacingAngle(playerid, PaintBallArena[arenaid][pbTeamBlue2][3]);
 		    	    }
 		    	    case 3:
 		    	    {
-		    	        SetPlayerPos(playerid, PaintBallArena[arenaid][pbTeamBlue3][0],PaintBallArena[arenaid][pbTeamBlue3][1],PaintBallArena[arenaid][pbTeamBlue3][2]);
+		    	        ActSetPlayerPos(playerid, PaintBallArena[arenaid][pbTeamBlue3][0],PaintBallArena[arenaid][pbTeamBlue3][1],PaintBallArena[arenaid][pbTeamBlue3][2]);
  						SetPlayerFacingAngle(playerid, PaintBallArena[arenaid][pbTeamBlue3][3]);
 		    	    }
 			    }
@@ -15219,7 +15227,7 @@ stock LeavePaintballArena(playerid, arenaid)
 		SetPlayerWeapons(playerid);
   		SetPlayerColor(playerid,TEAM_HIT_COLOR);
   		SetPlayerSkin(playerid, PlayerInfo[playerid][pModel]);
-		SetPlayerPos(playerid, GetPVarFloat(playerid, "pbOldX"), GetPVarFloat(playerid, "pbOldY"), GetPVarFloat(playerid, "pbOldZ"));
+		ActSetPlayerPos(playerid, GetPVarFloat(playerid, "pbOldX"), GetPVarFloat(playerid, "pbOldY"), GetPVarFloat(playerid, "pbOldZ"));
 		SetPlayerHealth(playerid, GetPVarFloat(playerid, "pbOldHealth"));
 		SetPlayerArmor(playerid, GetPVarFloat(playerid, "pbOldArmor"));
 		SetPlayerVirtualWorld(playerid, GetPVarInt(playerid, "pbOldVW"));
@@ -17510,10 +17518,10 @@ stock ExecuteNOPAction(playerid)
 	new newcar = GetPlayerVehicleID(playerid);
 	if(NOPTrigger[playerid] >= MAX_NOP_WARNINGS) { return 1; }
 	NOPTrigger[playerid]++;
-	RemovePlayerFromVehicle(playerid);
+	ActRemovePlayerFromVehicle(playerid);
 	new Float:X, Float:Y, Float:Z;
 	GetPlayerPos(playerid, X, Y, Z);
-	SetPlayerPos(playerid, X, Y, Z+2);
+	ActSetPlayerPos(playerid, X, Y, Z+2);
 	defer NOPCheck(playerid);
 	if(NOPTrigger[playerid] > 1)
 	{
@@ -17958,7 +17966,7 @@ stock SpawnZombie(playerid)
             maxdis=dis;
         }
 	}
-	SetPlayerPos(playerid, ZombieSpawns[tpto][0], ZombieSpawns[tpto][1], ZombieSpawns[tpto][2]);
+	ActSetPlayerPos(playerid, ZombieSpawns[tpto][0], ZombieSpawns[tpto][1], ZombieSpawns[tpto][2]);
 	SetPlayerFacingAngle(playerid, ZombieSpawns[tpto][3]);
 	ClearAnimations(playerid);
 	return 1;
@@ -19789,7 +19797,7 @@ public SpecUpdate(playerid)
 {
 	if(Spectating[playerid] > 0 && Spectate[playerid] != INVALID_PLAYER_ID) {
 		for(new i = 0; i < 2; i++) {
-			TogglePlayerSpectating(playerid, true);
+			ActTogglePlayerSpectating(playerid, true);
 			PlayerSpectatePlayer( playerid, Spectate[playerid] );
 			SetPlayerInterior( playerid, GetPlayerInterior( Spectate[playerid] ) );
 			SetPlayerVirtualWorld( playerid, GetPlayerVirtualWorld( Spectate[playerid] ) );
@@ -19837,21 +19845,21 @@ stock SpectatePlayer(playerid, giveplayerid)
 			SetPVarInt(playerid, "SpecInt", GetPlayerInterior(playerid));
 			SetPVarInt(playerid, "SpecVW", GetPlayerVirtualWorld(playerid));
 			if(IsPlayerInAnyVehicle(giveplayerid)) {
-				TogglePlayerSpectating(playerid, true);
+				ActTogglePlayerSpectating(playerid, true);
 				new carid = GetPlayerVehicleID( giveplayerid );
 				PlayerSpectateVehicle( playerid, carid );
 				SetPlayerInterior( playerid, GetPlayerInterior( giveplayerid ) );
 				SetPlayerVirtualWorld( playerid, GetPlayerVirtualWorld( giveplayerid ) );
 			}
 			else if(InsidePlane[giveplayerid] != INVALID_VEHICLE_ID) {
-				TogglePlayerSpectating(playerid, true);
+				ActTogglePlayerSpectating(playerid, true);
 				PlayerSpectateVehicle(playerid, InsidePlane[giveplayerid]);
 				SetPlayerInterior(playerid, GetPlayerInterior(giveplayerid));
 				SetPlayerVirtualWorld(playerid, GetPlayerVirtualWorld(giveplayerid));
 			}
 			else {
 				for(new i = 0; i < 2; i++) {
-					TogglePlayerSpectating(playerid, true);
+					ActTogglePlayerSpectating(playerid, true);
 					PlayerSpectatePlayer( playerid, giveplayerid );
 					SetPlayerInterior( playerid, GetPlayerInterior( giveplayerid ) );
 					SetPlayerVirtualWorld( playerid, GetPlayerVirtualWorld( giveplayerid ) );
@@ -19863,21 +19871,21 @@ stock SpectatePlayer(playerid, giveplayerid)
 		}
 		else {
 			if(IsPlayerInAnyVehicle(giveplayerid)) {
-				TogglePlayerSpectating(playerid, true);
+				ActTogglePlayerSpectating(playerid, true);
 				new carid = GetPlayerVehicleID( giveplayerid );
 				PlayerSpectateVehicle( playerid, carid );
 				SetPlayerInterior( playerid, GetPlayerInterior( giveplayerid ) );
 				SetPlayerVirtualWorld( playerid, GetPlayerVirtualWorld( giveplayerid ) );
 			}
 			else if(InsidePlane[giveplayerid] != INVALID_VEHICLE_ID) {
-				TogglePlayerSpectating(playerid, true);
+				ActTogglePlayerSpectating(playerid, true);
 				PlayerSpectateVehicle(playerid, InsidePlane[giveplayerid]);
 				SetPlayerInterior(playerid, GetPlayerInterior(giveplayerid));
 				SetPlayerVirtualWorld(playerid, GetPlayerVirtualWorld(giveplayerid));
 			}
 			else {
 				for(new i = 0; i < 2; i++) {
-					TogglePlayerSpectating(playerid, true);
+					ActTogglePlayerSpectating(playerid, true);
 					PlayerSpectatePlayer( playerid, giveplayerid );
 					SetPlayerInterior( playerid, GetPlayerInterior( giveplayerid ) );
 					SetPlayerVirtualWorld( playerid, GetPlayerVirtualWorld( giveplayerid ) );
@@ -23261,7 +23269,7 @@ public TeleportToShop(playerid)
 	if(gettime() - LastShot[playerid] < 30) return DeletePVar(playerid, "ShopTP"), SendClientMessageEx(playerid, COLOR_GRAD2, "ban da bi thuong trong 30s cuoi cung, ban se khong duoc dich chuyen den cac cua hang.");
 	if(GetPVarInt(playerid, "ShopTP") == 1)
 	{
-		SetPlayerPos(playerid, 2957.9670, -1459.4045, 10.8092);
+		ActSetPlayerPos(playerid, 2957.9670, -1459.4045, 10.8092);
 		SetPlayerInterior(playerid, 0);
 		SetPlayerVirtualWorld(playerid, 0);
 		TogglePlayerControllable(playerid, 1);
@@ -23368,6 +23376,16 @@ public todtime1()
     SetWorldTime(0);
     GioFix1 = SetTimerEx("todtime", 1000, 0, "d", 1);
 }
+
+stock IsValidPlayerWeapon(playerid, weaponid)
+{
+	if(PlayerInfo[playerid][pGuns][GetWeaponSlot(weaponid)] != weaponid && PlayerInfo[playerid][pASGuns][GetWeaponSlot(weaponid)] != weaponid)
+	{
+		return 0;
+	}
+	return 1;
+}
+
 stock GetPlayerWeaponDataCx(playerid,weaponid) {
 	new weapon,ammo;
 	for(new i = 0; i < 12 ; i++ ) {

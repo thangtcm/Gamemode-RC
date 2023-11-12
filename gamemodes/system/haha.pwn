@@ -18,7 +18,7 @@ new Float:Prison_CP[7][3] = {
 };
 // onplayerload
  /*   if(PrisonCP[playerid] == 1) {
-        SetPlayerPos(playerid,-1398.103515,937.631164,1036.479125);
+        ActSetPlayerPos(playerid,-1398.103515,937.631164,1036.479125);
         SetPlayerInterior(playerid, 15);
         SetPVarInt(playerid,"PrisonCP",1);
         SetPlayerCheckpoint(playerid,Prison_CP[GetPVarInt(playerid,"PrisonCP")][0], Prison_CP[GetPVarInt(playerid,"PrisonCP")][1],Prison_CP[GetPVarInt(playerid,"PrisonCP")][2], 4);
@@ -51,7 +51,7 @@ CMD:cpprison(playerid, params[])
 			Log("logs/admin.log", string);
 			format(string, sizeof(string), "AdmCmd: %s da bi phat tu %d checkpoint boi %s, ly do: %s", GetPlayerNameEx(giveplayerid), minutes,GetPlayerNameEx(playerid), reason);
 			SendClientMessageToAllEx(COLOR_LIGHTRED, string);
-			SetPlayerPos(giveplayerid,-1398.103515,937.631164,1036.479125);
+			ActSetPlayerPos(giveplayerid,-1398.103515,937.631164,1036.479125);
         	SetPlayerInterior(giveplayerid, 15);
         	PrisonCP[giveplayerid] = 1;
         	PrisonCPCount[giveplayerid] = minutes;
@@ -73,7 +73,7 @@ public ChetTrongTu(playerid) {
 	KillEMSQueue(playerid);
    	ClearAnimations(playerid);
    	SetPlayerHealth(playerid, 100);
-	SetPlayerPos(playerid,-1398.103515,937.631164,1036.479125);
+	ActSetPlayerPos(playerid,-1398.103515,937.631164,1036.479125);
     SetPlayerInterior(playerid, 15);
     return 1;
 }
@@ -90,7 +90,7 @@ hook OnPlayerEnterCheckpoint(playerid) {
 		GameTextForPlayer(playerid, string, 10000, 3);
         SetPlayerCheckpoint(playerid,Prison_CP[GetPVarInt(playerid,"PrisonCP")][0], Prison_CP[GetPVarInt(playerid,"PrisonCP")][1],Prison_CP[GetPVarInt(playerid,"PrisonCP")][2], 4);
         if(PrisonCPCount[playerid] <= 0) {
-        	SetPlayerPos(playerid, 1541.6099,-1671.7644,13.5529);
+        	ActSetPlayerPos(playerid, 1541.6099,-1671.7644,13.5529);
         	SetPlayerFacingAngle(playerid, 82.8185);
         	SetPlayerInterior(playerid, 0);
         	DisablePlayerCheckpoint(playerid);

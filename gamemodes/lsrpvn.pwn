@@ -102,6 +102,8 @@
 // ============= ANTI ============= //
 #include "./anticheat/anti_airbreak.pwn"
 #include "./anticheat/anti_troll_car.pwn"
+#include "./anticheat/cartroll.pwn"
+#include "./anticheat/fakedamager.pwn"
 
 #include "./include/onplayerfishnishloading.pwn"
 

@@ -50,9 +50,9 @@ CMD:thibanglai(playerid,parmas[]) {
     SendClientMessageEx(playerid, COLOR_YELLOW, "Ban dang bat dau thi bang lai, hay thuc hien hoan thanh bai kiem tra thuc hanh nhe.");
     SendClientMessageEx(playerid, COLOR_YELLOW, "Dieu kien de hoan thanh: khong vuot qua 60 km/h, phuong tien khong bi hu hong.");
     new pos = random(13);
-    SetPlayerPos(playerid,PosSpamXeLincese[pos][0],PosSpamXeLincese[pos][1],PosSpamXeLincese[pos][2]);
+    ActSetPlayerPos(playerid,PosSpamXeLincese[pos][0],PosSpamXeLincese[pos][1],PosSpamXeLincese[pos][2]);
     VehicleDrivertest[playerid] = CreateVehicle(410, PosSpamXeLincese[pos][0],PosSpamXeLincese[pos][1],PosSpamXeLincese[pos][2],PosSpamXeLincese[pos][3], 1, 1, -1);
-    PutPlayerInVehicle(playerid, VehicleDrivertest[playerid], 0);
+    ActPutPlayerInVehicle(playerid, VehicleDrivertest[playerid], 0);
     PlayerLincenseAttemp[playerid] = 0;
 
     SetPlayerRaceCheckpoint(playerid, 0, CheckPointLincense[PlayerLincenseAttemp[playerid]][0],CheckPointLincense[PlayerLincenseAttemp[playerid]][1],CheckPointLincense[PlayerLincenseAttemp[playerid]][2],CheckPointLincense[PlayerLincenseAttemp[playerid]+1][0],CheckPointLincense[PlayerLincenseAttemp[playerid]+1][1],CheckPointLincense[PlayerLincenseAttemp[playerid]+1][2], 5);

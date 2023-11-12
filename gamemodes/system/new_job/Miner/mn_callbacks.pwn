@@ -159,6 +159,7 @@ stock FaildMiner(playerid)
 	{
 		CreateRock(RockIDMiner[playerid]);
 		RockStatus[RockIDMiner[playerid]] = 1;
+		RockIDMiner[playerid] = -1;
 	}
 	DeletePVar(playerid, "MinerWorking");
 	return 1;

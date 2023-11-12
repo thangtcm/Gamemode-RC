@@ -39,6 +39,7 @@ forward OnInventoryAdd(playerid, pItemId, timer);
 forward OnInventoryAddCH(playerid, pItemId, timer);
 forward OnLoadInventoryCH(playerid);
 
+
 new const g_facInventory[][] = {
 	"9mm",
 	"Dong",
@@ -75,7 +76,7 @@ new const g_facInventory[][] = {
 	"DAn Sniper SAAS",
 	"Mat na",
 	"Vat lieu",
-	"Thuoc Sung",
+	"Thuoc Sung"
 };
 
 new const g_aInventoryItems[][e_InventoryItems] =
@@ -613,6 +614,16 @@ public OnModelSelectionResponseInv(playerid, extraid, index, modelid[], response
 	return 1;
 }
 
+stock Inventory_IsValidTake(item[])
+{
+	for(new i = 0; i < sizeof(g_facInventory); i++)
+	{
+		if(!strcmp(g_facInventory[i], item, true))
+			return 1;
+	}
+	return 0;
+}
+
 stock OpenInventory(playerid, bool:Ransack = false)
 {
 	if(!IsPlayerConnected(playerid))
@@ -1129,22 +1140,48 @@ CMD:inv(playerid, params[])
 	OpenInventory(playerid);
 	return 1;
 }
-
+CMD:lucsoat(playerid, params[]) {
+	return cmd_checkinv(playerid, params);
+}
 CMD:checkinv(playerid, params[])
 {
 	new
-		giveplayerid;
-	if(PlayerInfo[playerid][pAdmin] < 4)
+		giveplayerid,
+		str[128];
+	if(PlayerInfo[playerid][pAdmin] < 4 && !IsACop(playerid))
 		return SendClientMessageEx(playerid, COLOR_LIGHTRED, "Ban khong duoc phep su dung lenh nay.");
 	if(sscanf(params, "u", giveplayerid))
-		return SendClientMessageEx(playerid, COLOR_GRAD1, "/checkinv [playerid/name]");
+		return SendClientMessageEx(playerid, COLOR_GRAD1, "/lucsoat [playerid/name]");
 	if(!IsPlayerConnected(giveplayerid)) 
 		return SendErrorMessage(playerid, "Nguoi choi khong hop le.");
-	SetPVarInt(playerid, "GivePlayerid_Inventory", giveplayerid);
+	if(PlayerInfo[playerid][pAdmin] >= 4)
+	{
+		SetPVarInt(playerid, "GivePlayerid_Inventory", giveplayerid);
+		format(str, sizeof(str), "Ban dang xem tui do cua %s", GetPlayerNameEx(giveplayerid));
+		SendClientMessageEx(playerid, COLOR_LIGHTRED, str);
+	}
+	else if(IsACop(playerid))
+	{
+		if(GetPlayerSpecialAction(giveplayerid) == SPECIAL_ACTION_HANDSUP)
+		{
+			if (ProxDetectorS(8.0, playerid, giveplayerid))
+			{
+				if(giveplayerid == playerid) { 
+					SendErrorMessage(playerid, " Ban khong the luc soat chinh minh!"); return 1; 
+				}
+				format(str, sizeof(str), "* %s da luc soat tui do cua %s.", GetPlayerNameEx(playerid),GetPlayerNameEx(giveplayerid));
+				ProxDetector(30.0, playerid, str, COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE);
+			}
+			else
+			{
+				SendErrorMessage(playerid, " Nguoi choi do khong gan ban.");
+			}
+		}else
+		{
+			SendErrorMessage(playerid, " Nguoi choi do can dau hang de ban luc soat.");
+		}
+	}
 	OpenInventory(playerid, true);
-	new str[128];
-	format(str, sizeof(str), "Ban dang xem tui do cua %s", GetPlayerNameEx(giveplayerid));
-	SendClientMessageEx(playerid, COLOR_LIGHTRED, str);
 	return 1;
 }
 
@@ -1324,19 +1361,43 @@ Dialog:Take_Inventory(playerid, response, listitem, inputtext[])
 	if(response)
 	{
 		new
-			target = GetPVarInt(playerid, "GivePlayerid_Inventory"),
-			itemId = PlayerInfo[target][pInventoryItem],
-			itemName[64], str[128];
+			giveplayerid = GetPVarInt(playerid, "GivePlayerid_Inventory"),
+			itemId = PlayerInfo[giveplayerid][pInventoryItem],
+			itemName[32], str[128];
 
-		strunpack(itemName, InventoryData[target][itemId][invItem]);
+		strunpack(itemName, InventoryData[giveplayerid][itemId][invItem]);
 
 		switch(listitem)
 		{
 			case 0:
 			{
-				Inventory_Remove(target, itemId, InventoryData[target][itemId][invQuantity]);
-				format(str, sizeof(str), "%s da tich thu vat pham %s cua %s.", GetPlayerNameEx(playerid), itemName, GetPlayerNameEx(target));
-				ProxDetector(30.0, playerid, str, COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE);
+				if(PlayerInfo[playerid][pAdmin] >= 4)
+				{
+					Inventory_Remove(giveplayerid, itemId, InventoryData[giveplayerid][itemId][invQuantity]);
+					format(str, sizeof(str), "%s da tich thu vat pham %s cua %s.", GetPlayerNameEx(playerid), itemName, GetPlayerNameEx(giveplayerid));
+					ProxDetector(30.0, playerid, str, COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE);
+				}
+				else if(IsACop(playerid))
+				{
+					if(!Inventory_IsValidTake(itemName)) return SendErrorMessage(playerid, "Ban khong the tich thu vat pham nay.");
+					if(GetPlayerSpecialAction(giveplayerid) == SPECIAL_ACTION_HANDSUP)
+					{
+						if (ProxDetectorS(8.0, playerid, giveplayerid))
+						{
+							Inventory_Remove(giveplayerid, itemId, InventoryData[giveplayerid][itemId][invQuantity]);
+							format(str, sizeof(str), "%s da tich thu vat pham %s cua %s.", GetPlayerNameEx(playerid), itemName, GetPlayerNameEx(giveplayerid));
+							ProxDetector(30.0, playerid, str, COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE);
+						}
+						else
+						{
+							SendErrorMessage(playerid, " Nguoi choi do khong gan ban.");
+						}
+					}
+					else
+					{
+						SendErrorMessage(playerid, " Thao tac that bai, nguoi choi do dang khong dau hang.");
+					}
+				}
 			}
 		}
 	}

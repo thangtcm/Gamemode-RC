@@ -525,7 +525,7 @@ CMD:gotosz(playerid, params[])
 		new housenum;
 		if(sscanf(params, "d", housenum)) return SendErrorMessage(playerid," SUDUNG: /gotosz [ID Khu An Toan]");
 
-		SetPlayerPos(playerid,SafeZoneInfo[housenum][szExteriorX],SafeZoneInfo[housenum][szExteriorY],SafeZoneInfo[housenum][szExteriorZ]);
+		ActSetPlayerPos(playerid,SafeZoneInfo[housenum][szExteriorX],SafeZoneInfo[housenum][szExteriorY],SafeZoneInfo[housenum][szExteriorZ]);
 		GameTextForPlayer(playerid, "~w~Teleporting", 5000, 1);
 		SetPlayerInterior(playerid, 0);
 		PlayerInfo[playerid][pInt] = 0;
@@ -1248,7 +1248,7 @@ stock JoinGame(playerid) {
     SetPlayerInterior(playerid,0);
     Streamer_UpdateEx(playerid,1355.6627, 259.0992, 19.5547);
     SetSpawnInfo(playerid, 0, PlayerInfo[playerid][pModel], 1355.6627, 259.0992, 19.5547, 1.0, -1, -1, -1, -1, -1, -1);
-    SetPlayerPos(playerid, 1355.6627,259.0992, 19.5547);
+    ActSetPlayerPos(playerid, 1355.6627,259.0992, 19.5547);
     Player_StreamPrep(playerid, 1355.6627, 259.0992, 19.5547, FREEZE_TIME);
     SetPlayerFacingAngle(playerid, 247.5060);
     
@@ -1563,7 +1563,7 @@ stock g_mysql_AccountAuthCheck(playerid)
 //      mysql_function_query(MainPipeline, string, true, "OnQueryFinish", "iii", AUTH_THREAD, playerid, g_arrQueryHandle{playerid});
         mysql_tquery(MainPipeline, string, "AUTH_TH", "d", playerid);
         ClearChatbox(playerid);
-        SetPlayerVirtualWorld(playerid, 0);
+        SetPlayerVirtualWorld(playerid, 99);
         return 1;
 }
 forward AUTH_TH(playerid);

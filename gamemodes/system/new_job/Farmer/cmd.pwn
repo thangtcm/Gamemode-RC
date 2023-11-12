@@ -54,7 +54,7 @@ CMD:gotofarm(playerid, params[])
 		SetPlayerVirtualWorld(playerid, 0);
 		PlayerInfo[playerid][pInt] = 0;
 		PlayerInfo[playerid][pVW] = 0;
-		SetPlayerPos(playerid,FarmInfo[farmid][ExteriorX], FarmInfo[farmid][ExteriorY], FarmInfo[farmid][ExteriorZ]);
+		ActSetPlayerPos(playerid,FarmInfo[farmid][ExteriorX], FarmInfo[farmid][ExteriorY], FarmInfo[farmid][ExteriorZ]);
 	}
 	else
 	{
@@ -268,3 +268,13 @@ CMD:feed(playerid, params[])
 	return 1;
 }
 
+
+CMD:testvalidgun(playerid, params[])
+{
+	new weaponid;
+	if(sscanf(params, "i", weaponid)) return SendUsageMessage(playerid, "/testvalidgun [weapon]");
+	new str[128];
+	format(str, sizeof(str), "Valid %d", IsValidPlayerWeapon(playerid, weaponid));
+	SendClientMessageEx(playerid, COLOR_YELLOW, str);
+	return 1;
+}

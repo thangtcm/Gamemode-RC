@@ -199,3 +199,22 @@
 [11/12/23 01:37:43] [WARNING] Unknown gateway event 'GUILD_MEMBERS_CHUNK'
 [11/12/23 01:46:35] [ERROR] Error while retrieving HTTP POST response from '/api/v10/channels/1158001303033757716/messages': end of stream
 [11/12/23 01:58:03] [ERROR] Error while retrieving HTTP POST response from '/api/v10/channels/1158001303033757716/messages': end of stream
+[11/12/23 13:38:08] [WARNING] Unknown gateway event 'GUILD_MEMBERS_CHUNK'
+[11/12/23 13:40:57] [WARNING] Unknown gateway event 'GUILD_MEMBERS_CHUNK'
+[11/12/23 13:43:25] [WARNING] Unknown gateway event 'GUILD_MEMBERS_CHUNK'
+[11/13/23 02:51:58] [WARNING] Unknown gateway event 'GUILD_MEMBERS_CHUNK'
+[11/13/23 03:25:47] [WARNING] Unknown gateway event 'GUILD_MEMBERS_CHUNK'
+[11/13/23 03:29:45] [WARNING] Unknown gateway event 'GUILD_MEMBERS_CHUNK'
+[11/13/23 03:42:19] [WARNING] Unknown gateway event 'GUILD_MEMBERS_CHUNK'
+[11/13/23 03:43:56] [WARNING] Unknown gateway event 'GUILD_MEMBERS_CHUNK'
+[11/13/23 03:49:52] [WARNING] Unknown gateway event 'GUILD_MEMBERS_CHUNK'
+[11/13/23 03:52:20] [WARNING] Unknown gateway event 'GUILD_MEMBERS_CHUNK'
+[11/13/23 03:56:48] [ERROR] Can't read from Discord websocket gateway: The semaphore timeout period has expired (121)
+[11/13/23 03:56:48] [ERROR] Can't write to Discord websocket gateway: The I/O operation has been aborted because of either a thread exit or an application request (995)
+[11/13/23 03:57:41] [ERROR] Error while retrieving HTTP POST response from '/api/v10/channels/1158001303033757716/messages': A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond
+[11/13/23 03:57:41] [WARNING] Error while shutting down SSL on HTTP connection: An existing connection was forcibly closed by the remote host (10054)
+[11/13/23 04:00:11] [WARNING] Unknown gateway event 'GUILD_MEMBERS_CHUNK'
+[11/13/23 04:35:38] [WARNING] Unknown gateway event 'GUILD_MEMBERS_CHUNK'
+[11/13/23 04:35:38] [WARNING] Unknown gateway event 'GUILD_MEMBERS_CHUNK'
+[11/13/23 04:40:52] [WARNING] Unknown gateway event 'GUILD_MEMBERS_CHUNK'
+[11/13/23 04:40:52] [WARNING] Unknown gateway event 'GUILD_MEMBERS_CHUNK'

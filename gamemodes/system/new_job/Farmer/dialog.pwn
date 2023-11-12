@@ -215,7 +215,7 @@ Dialog:FARM_MENU_PLANTFEED(playerid, response, listitem, inputtext[]) {
 						if(PlantTreeInfo[playerid][plantId][plantAmount] >= 20)
 						{
 							PlantTreeInfo[playerid][plantId][plantLevel]++;
-							PlantTreeInfo[playerid][plantId][plantStatus] = sizeof(PlantStatusArr);
+							PlantTreeInfo[playerid][plantId][plantStatus] = sizeof(PlantStatusArr) - 1;
 						}
 					}
 					GivePlayerCash(playerid, -5);

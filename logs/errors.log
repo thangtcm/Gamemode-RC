@@ -58,3 +58,6 @@
 [11/12/23 00:46:43] [plugins/discord-connector] Error while retrieving HTTP POST response from '/api/v10/channels/1157993235776557156/messages': end of stream
 [11/12/23 01:46:35] [plugins/discord-connector] Error while retrieving HTTP POST response from '/api/v10/channels/1158001303033757716/messages': end of stream
 [11/12/23 01:58:03] [plugins/discord-connector] Error while retrieving HTTP POST response from '/api/v10/channels/1158001303033757716/messages': end of stream
+[11/13/23 03:56:48] [plugins/discord-connector] Can't read from Discord websocket gateway: The semaphore timeout period has expired (121)
+[11/13/23 03:56:48] [plugins/discord-connector] Can't write to Discord websocket gateway: The I/O operation has been aborted because of either a thread exit or an application request (995)
+[11/13/23 03:57:41] [plugins/discord-connector] Error while retrieving HTTP POST response from '/api/v10/channels/1158001303033757716/messages': A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond

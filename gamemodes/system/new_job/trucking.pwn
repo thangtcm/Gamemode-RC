@@ -170,9 +170,9 @@ hook OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
                     if(LamViec[playerid] != 0 && LamViec[playerid] != 2) return  SendClientMessage(playerid, COLOR_GREY, "Ban dang lam cong viec khac khong the lam Trucker.");  
                     if(LamViec[playerid] != 0) return SendErrorMessage(playerid," Ban dang lam viec khong the lam viec tiep.");
                     SendClientMessage(playerid, COLOR_VANG, "Ban da bat dau lam viec Container, su dung /truck > Lay thung hang de lay thung hang va giao.");
-                    SetPlayerPos(playerid, 2519.6191,-2089.2661,13.5469);
+                    ActSetPlayerPos(playerid, 2519.6191,-2089.2661,13.5469);
                     TruckerCar[playerid] = CreateVehicle(515, 2519.4590,-2090.2463,13.5469 , 0 , random(255), random(255), 1000, 0);
-                    PutPlayerInVehicle(playerid, TruckerCar[playerid] ,0);
+                    ActPutPlayerInVehicle(playerid, TruckerCar[playerid] ,0);
                     SetPVarInt(playerid, "IsDaThue", 1);
                     LamViec[playerid] =2;
                     return 1;
@@ -401,9 +401,9 @@ CMD:truck(playerid, params[])
      //   if(GetPVarInt(playerid, "IsDaThue") == 1) return SendClientTextDraw(playerid , "Ban da thue phuong tien trucker roi hay su dung ~g~/laythunghang de tiep tuc");	    
 	    if(LamViec[playerid] == 0) {
            
-	    	SetPlayerPos(playerid, 2519.6191,-2089.2661,13.5469);
+	    	ActSetPlayerPos(playerid, 2519.6191,-2089.2661,13.5469);
 		    TruckerCar[playerid] = CreateVehicle(515, 2519.4590,-2090.2463,13.5469 , 0 , random(255), random(255), 1000, 0);
-	        PutPlayerInVehicle(playerid, TruckerCar[playerid] ,0);
+	        ActPutPlayerInVehicle(playerid, TruckerCar[playerid] ,0);
 	        SetPVarInt(playerid, "IsDaThue", 1);
 	        LamViec[playerid] =2;
 	        return 1;
@@ -436,7 +436,7 @@ CMD:thuexe(playerid, params[])
             if(IsDaThue[i] == 0)
             {
                 ThueXePizza[playerid] = CreateVehicle(482,2092.4355,-1799.6438,13.3828,3,6,60 * 10,0); // Pizzaboy
-                PutPlayerInVehicle(playerid, ThueXePizza[playerid], 0);
+                ActPutPlayerInVehicle(playerid, ThueXePizza[playerid], 0);
                 PizzaBikesPizzas[ThueXePizza[playerid]]=10;
                 SendClientTextDraw(playerid, "Ban da thue phuong tien ~g~thanh cong");
                 CheckThueXe[playerid] = 1;
@@ -450,9 +450,9 @@ CMD:thuexe(playerid, params[])
     {
         if(GetPVarInt(playerid, "IsDaThue") == 1) return SendClientTextDraw(playerid , "Ban da thue phuong tien trucker roi hay su dung ~g~/laythunghang de tiep tuc");
 	    if(LamViec[playerid] == 2) {
-	    	SetPlayerPos(playerid, 2519.6191,-2089.2661,13.5469);
+	    	ActSetPlayerPos(playerid, 2519.6191,-2089.2661,13.5469);
 		    TruckerCar[playerid] = CreateVehicle(515, 2519.4590,-2090.2463,13.5469, random(255), random(255), 60 * 10, 0);
-	        PutPlayerInVehicle(playerid, TruckerCar[playerid] ,0);
+	        ActPutPlayerInVehicle(playerid, TruckerCar[playerid] ,0);
 	        SetPVarInt(playerid, "IsDaThue", 1);
 	        return 1;
 	    }
@@ -806,7 +806,7 @@ stock GiaoBanh(playerid)
 	    if(GetPVarInt(playerid, "BatDauGiao") == 1) {
             if(IsPlayerAttachedObjectSlotUsed(playerid,PIZZA_INDEX))
             {
-                RemovePlayerFromVehicle(playerid);
+                ActRemovePlayerFromVehicle(playerid);
                 SetPlayerArmedWeapon(playerid,0);
                 ApplyAnimation(playerid,"CARRY","crry_prtial",4.1,1,1,1,1,1,1);
             }
@@ -839,7 +839,7 @@ stock GiaoBanh(playerid)
                 }
                 else
                 {
-                    RemovePlayerFromVehicle(playerid);
+                    ActRemovePlayerFromVehicle(playerid);
                 }
             }
             return 1;
