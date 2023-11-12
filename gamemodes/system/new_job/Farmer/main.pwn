@@ -11,6 +11,7 @@ hook OnGameModeInit()
 {
 	CreateFarmMap(); 
 	FarmPlantArea = CreateDynamicPolygon(farm_area_v1);
+	FarmPlantOrangeArea = CreateDynamicPolygon(farm_area_v3);
 	PlayerFarmArea = CreateDynamicPolygon(farm_area_v2);
 	return 1;
 }

@@ -727,6 +727,8 @@ enum master {
 	acc_pass[BCRYPT_HASH_LENGTH],
 	acc_confirm
 }
+new PlayerOnVehicle[MAX_PLAYERS];
+
 new MasterInfo[MAX_PLAYERS][master];
 new Chatting[MAX_PLAYERS];
 
@@ -1663,7 +1665,7 @@ new BoatDropoffs[][CargoArrayData] =
 	{-492.1511,617.2073,-0.4076}, // boat dropoff
 	{1188.8872,654.2936,-0.3999} // boat dropoff
 };
-new FarmPlantArea, PlayerFarmArea;
+new FarmPlantArea, PlayerFarmArea, FarmPlantOrangeArea;
 new Float:farm_area_v1[] = {
 	-1449.4784,-1505.7494,
 	-1466.2009,-1507.0875,
@@ -1677,6 +1679,13 @@ new Float:farm_area_v2[] = {
 	-1473.6438,-1437.4464,
 	-1398.0452,-1436.2637,
 	-1395.3156,-1599.5948
+};
+new Float:farm_area_v3[] ={
+	-1447.6593,-1474.4944,
+	-1449.0746,-1451.4717,
+	-1465.0720,-1454.1194,
+	-1463.5120,-1475.5242,
+	-1447.6593,-1474.4944
 };
 new const Drinks[][] =
 {

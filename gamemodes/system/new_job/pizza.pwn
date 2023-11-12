@@ -132,6 +132,7 @@ hook OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 	    				SetPlayerPos(playerid, 1380.8643,270.4954,21.9751);
 		    			PizzaCar[playerid] = CreateVehicle(448, 1367.3431,270.6667,19.5669, 0 , random(255), random(255), -1);
 						VehicleFuel[PizzaCar[playerid]] = GetVehicleFuelCapacity(PizzaCar[playerid]);
+						PlayerOnVehicle[playerid] = PizzaCar[playerid] ;
 						new fVW = GetPlayerVirtualWorld(playerid);
 						SetVehicleHealth(PizzaCar[playerid], 1000);
 						Vehicle_ResetData(PizzaCar[playerid]);
