@@ -16149,6 +16149,8 @@ stock UnloadPlayerVehicles(playerid) {
 		PlayerCars--;
 		if(LockStatus{PlayerVehicleInfo[playerid][v][pvId]} != 0) LockStatus{PlayerVehicleInfo[playerid][v][pvId]} = 0;
 		VehicleTrucker_Reload(playerid, v);
+
+		g_mysql_SaveVehicle(playerid, v);
 		DestroyVehicle(PlayerVehicleInfo[playerid][v][pvId]);
 
 		PlayerVehicleInfo[playerid][v][pvId] = INVALID_PLAYER_VEHICLE_ID;

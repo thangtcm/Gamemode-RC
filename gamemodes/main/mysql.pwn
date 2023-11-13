@@ -1587,8 +1587,7 @@ stock g_mysql_SaveVehicle(playerid, slotid)
 	format(query, sizeof(query), "%s `pvWeapon2` = %d,", query, PlayerVehicleInfo[playerid][slotid][pvWeapons][2]);
 	format(query, sizeof(query), "%s `pvLock` = %d,", query, PlayerVehicleInfo[playerid][slotid][pvLock]);
 	format(query, sizeof(query), "%s `pvWepUpgrade` = %d,", query, PlayerVehicleInfo[playerid][slotid][pvWepUpgrade]);
-	format(query, sizeof(query), "%s `pvHealth` = %0.5f,", query, PlayerVehicleInfo[playerid][slotid][pvHealth]);
-	format(query, sizeof(query), "%s `pvFuel` = %0.5f,", query, PlayerVehicleInfo[playerid][slotid][pvFuel]);
+	format(query, sizeof(query), "%s `pvFuel` = %0.5f,", query, VehicleFuel[PlayerVehicleInfo[playerid][slotid][pvId]]);
 	format(query, sizeof(query), "%s `pvCapacity` = %0.5f,", query, PlayerVehicleInfo[playerid][slotid][pvCapacity]);
 	format(query, sizeof(query), "%s `pvImpound` = %d,", query, PlayerVehicleInfo[playerid][slotid][pvImpounded]);
 	format(query, sizeof(query), "%s `pvDisabled` = %d,", query, PlayerVehicleInfo[playerid][slotid][pvDisabled]);
@@ -1607,9 +1606,10 @@ stock g_mysql_SaveVehicle(playerid, slotid)
 	format(query, sizeof(query), "%s `pvCrashZ` = %0.5f,", query, PlayerVehicleInfo[playerid][slotid][pvCrashZ]);
 	format(query, sizeof(query), "%s `pvCrashAngle` = %0.5f,", query, PlayerVehicleInfo[playerid][slotid][pvCrashAngle]);
 
-	new panels, doors, lights, tires;
+	new panels, doors, lights, tires, Float:vhp;
 	GetVehicleDamageStatus(PlayerVehicleInfo[playerid][slotid][pvId], panels, doors, lights, tires);
-	format(query, sizeof(query), "%s `pvPanels` = %d, `pvDoors` = %d, `pvLights` = %d, `pvTires` = %d,", query, panels, doors, lights, tires);
+	GetVehicleHealth(PlayerVehicleInfo[playerid][slotid][pvId], vhp);
+	format(query, sizeof(query), "%s `pvPanels` = %i, `pvDoors` = %i, `pvLights` = %i, `pvTires` = %i, `pvHealth` = %0.5f,", query, panels, doors, lights, tires, vhp);
 	for(new m = 0; m < MAX_MODS; m++)
 	{
 		if(m == MAX_MODS-1)

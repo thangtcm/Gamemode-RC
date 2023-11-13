@@ -14888,7 +14888,7 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 
 				GetVehicleHealth(iVehicleID, vehiclehealth);
 
-				if(vehiclehealth < 800) {
+				if(vehiclehealth < 750) {
 					SendServerMessage(playerid, " Xe nay da hu hong qua nhieu de cat giu.");
 				}
    				else if (GetPVarInt(playerid, "Refueling") == PlayerVehicleInfo[playerid][listitem][pvId])
@@ -14898,6 +14898,9 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 					VehicleSpawned[playerid]--;
 					PlayerVehicleInfo[playerid][listitem][pvSpawned] = 0;
 					PlayerVehicleInfo[playerid][listitem][pvFuel] = VehicleFuel[iVehicleID];
+					new panels, doors, lights, tires, Float:vhp;
+					GetVehicleDamageStatus(iVehicleID, PlayerVehicleInfo[playerid][listitem][pvPanels], PlayerVehicleInfo[playerid][listitem][pvDoors], PlayerVehicleInfo[playerid][listitem][pvLights], PlayerVehicleInfo[playerid][listitem][pvTires]);
+					GetVehicleHealth(iVehicleID, PlayerVehicleInfo[playerid][listitem][pvHealth]);
 					g_mysql_SaveVehicle(playerid, listitem);
 					DestroyVehicle(iVehicleID);
 					PlayerVehicleInfo[playerid][listitem][pvId] = INVALID_PLAYER_VEHICLE_ID;			
@@ -14985,13 +14988,6 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 					SetVehicleZAngle(iVeh, PlayerVehicleInfo[playerid][listitem][pvCrashAngle]);
 					SetVehicleVirtualWorld(iVeh, PlayerVehicleInfo[playerid][listitem][pvCrashVW]);
 					SetVehicleHealth(iVeh, PlayerVehicleInfo[playerid][listitem][pvHealth]);
-					UpdateVehicleDamageStatus(	
-												iVeh, 	
-												PlayerVehicleInfo[playerid][listitem][pvPanels], 
-												PlayerVehicleInfo[playerid][listitem][pvDoors], 
-												PlayerVehicleInfo[playerid][listitem][pvLights], 
-												PlayerVehicleInfo[playerid][listitem][pvTires]
-										);
 					PlayerVehicleInfo[playerid][listitem][pvCrashFlag] = 0;
 					PlayerVehicleInfo[playerid][listitem][pvCrashVW] = 0;
 					PlayerVehicleInfo[playerid][listitem][pvCrashX] = 0.0;
