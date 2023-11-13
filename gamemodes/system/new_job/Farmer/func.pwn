@@ -323,7 +323,7 @@ stock PlantTree_Update(playerid, plantid)
     PlantTreeInfo[playerid][plantid][plantTimer]--;
     if(PlantTreeInfo[playerid][plantid][plantTimer] <= 0 && PlantTreeInfo[playerid][plantid][plantType] == 2)
     {
-        if(PlantTreeInfo[playerid][plantid][plantStatus] != 0)
+        if(PlantTreeInfo[playerid][plantid][plantStatus] > 0 && PlantTreeInfo[playerid][plantid][plantStatus] < 3)
         {
             format(string, sizeof(string), "Cay trong %s (ID: %d) cua ban da bi heo vi %s.", 
                 PlantArr[PlantTreeInfo[playerid][plantid][plantType]][PlantName],

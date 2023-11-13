@@ -215,7 +215,8 @@ Dialog:FARM_MENU_PLANTFEED(playerid, response, listitem, inputtext[]) {
 						if(PlantTreeInfo[playerid][plantId][plantAmount] >= 20)
 						{
 							PlantTreeInfo[playerid][plantId][plantLevel]++;
-							PlantTreeInfo[playerid][plantId][plantStatus] = sizeof(PlantStatusArr) - 1;
+							PlantTreeInfo[playerid][plantId][plantStatus] = 3;
+							PlantTreeInfo[playerid][plantId][plantTimer] = 0;
 						}
 					}
 					GivePlayerCash(playerid, -5);
@@ -240,7 +241,8 @@ Dialog:FARM_MENU_PLANTFEED(playerid, response, listitem, inputtext[]) {
 						if(PlantTreeInfo[playerid][plantId][plantAmount] >= 20)
 						{
 							PlantTreeInfo[playerid][plantId][plantLevel]++;
-							PlantTreeInfo[playerid][plantId][plantStatus] = 0;
+							PlantTreeInfo[playerid][plantId][plantStatus] = 3;
+							PlantTreeInfo[playerid][plantId][plantTimer] = 0;
 						}
 					}
 					GivePlayerCash(playerid, -5);

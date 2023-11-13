@@ -1169,6 +1169,7 @@ CMD:checkinv(playerid, params[])
 				if(giveplayerid == playerid) { 
 					SendErrorMessage(playerid, " Ban khong the luc soat chinh minh!"); return 1; 
 				}
+				SetPVarInt(playerid, "GivePlayerid_Inventory", giveplayerid);
 				format(str, sizeof(str), "* %s da luc soat tui do cua %s.", GetPlayerNameEx(playerid),GetPlayerNameEx(giveplayerid));
 				ProxDetector(30.0, playerid, str, COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE);
 			}
