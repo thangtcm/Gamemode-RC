@@ -267,7 +267,7 @@ CMD:gotospeedcam(playerid, params[]) {
 			}
 			else
 			{
-				ActSetPlayerPos(playerid, SpeedCameras[i][_scPosX], SpeedCameras[i][_scPosY], SpeedCameras[i][_scPosZ]);
+				SetPlayerPos(playerid, SpeedCameras[i][_scPosX], SpeedCameras[i][_scPosY], SpeedCameras[i][_scPosZ]);
 			}
 			SendServerMessage(playerid, "    Ban da duoc dich chuyen!");
 			SetPlayerInterior(playerid,0);
@@ -303,7 +303,7 @@ CMD:gotocrate(playerid, params[]) {
 			}
 			else
 			{
-				ActSetPlayerPos(playerid, CrateInfo[i][crX],CrateInfo[i][crY],CrateInfo[i][crZ]);
+				SetPlayerPos(playerid, CrateInfo[i][crX],CrateInfo[i][crY],CrateInfo[i][crZ]);
 			}
 			SendServerMessage(playerid, "    Ban da duoc dich chuyen!");
 			SetPlayerInterior(playerid,CrateInfo[i][crInt]);
@@ -1240,7 +1240,7 @@ CMD:hhcheck(playerid, params[])
 		    SetPlayerInterior(giveplayerid, 1);
 		    SetPlayerHealth(giveplayerid, 100);
 		    RemoveArmor(giveplayerid);
-			ActSetPlayerPos(giveplayerid, -1400.994873, 106.899650, 1032.273437);
+			SetPlayerPos(giveplayerid, -1400.994873, 106.899650, 1032.273437);
 			SetPlayerFacingAngle(giveplayerid, 90.66);
 			CreateExplosion(-1400.994873, 106.899650 , 1032.273437, 8, 20);
 
@@ -2737,7 +2737,7 @@ CMD:dn(playerid, params[])
 		}
 		else
 		{
-			ActSetPlayerPos(playerid, slx, sly, slz-2);
+			SetPlayerPos(playerid, slx, sly, slz-2);
 		}
         return 1;
     }
@@ -2762,7 +2762,7 @@ CMD:up(playerid, params[])
 		}
 		else
 		{
-			ActSetPlayerPos(playerid, slx, sly, slz+5);
+			SetPlayerPos(playerid, slx, sly, slz+5);
 		}
         return 1;
     }
@@ -2780,7 +2780,7 @@ CMD:fly(playerid, params[])
 		if((flying[playerid] = !flying[playerid]))
 		{
 		    GetPlayerPos(playerid, x, y, z);
-		    ActSetPlayerPos(playerid, x, y, z+5);
+		    SetPlayerPos(playerid, x, y, z+5);
       		SetPlayerArmour(playerid, 1000000000.0);
 		    SetPlayerHealth(playerid, 1000000000.0);
 		    SetTimerEx("AdminFly", 100, 0, "d", playerid);
@@ -2788,7 +2788,7 @@ CMD:fly(playerid, params[])
 		else
 		{
 		    GetPlayerPos(playerid, x, y, z);
-		    ActSetPlayerPos(playerid, x, y, z+0.5);
+		    SetPlayerPos(playerid, x, y, z+0.5);
 		    ClearAnimations(playerid);
 		    SetPlayerArmour(playerid, 100.0);
 		    SetPlayerHealth(playerid, 100.0);
@@ -2814,7 +2814,7 @@ CMD:lt(playerid, params[])
 		}
 		else
 		{
-			ActSetPlayerPos(playerid, slx-2, sly, slz);
+			SetPlayerPos(playerid, slx-2, sly, slz);
 		}
         return 1;
     }
@@ -2839,7 +2839,7 @@ CMD:rt(playerid, params[])
 		}
 		else
 		{
-			ActSetPlayerPos(playerid, slx+2, sly, slz);
+			SetPlayerPos(playerid, slx+2, sly, slz);
 		}
         return 1;
     }
@@ -2864,7 +2864,7 @@ CMD:fd(playerid, params[])
 		}
 		else
 		{
-			ActSetPlayerPos(playerid, slx, sly+2, slz);
+			SetPlayerPos(playerid, slx, sly+2, slz);
 		}
         return 1;
     }
@@ -2889,7 +2889,7 @@ CMD:bk(playerid, params[])
 		}
 		else
 		{
-			ActSetPlayerPos(playerid, slx, sly-2, slz);
+			SetPlayerPos(playerid, slx, sly-2, slz);
 		}
         return 1;
     }
@@ -3693,7 +3693,7 @@ CMD:muanha(playerid, params[])
 						Homes[playerid]++;
 						GivePlayerCash(playerid,-HouseInfo[h][hValue]);
 						SetPlayerInterior(playerid,HouseInfo[h][hIntIW]);
-						ActSetPlayerPos(playerid, HouseInfo[h][hInteriorX], HouseInfo[h][hInteriorY], HouseInfo[h][hInteriorZ]);
+						SetPlayerPos(playerid, HouseInfo[h][hInteriorX], HouseInfo[h][hInteriorY], HouseInfo[h][hInteriorZ]);
 						GameTextForPlayer(playerid, "~w~Welcome Home~n~Ban co the /exit de thoat khoi ngoi nha.", 5000, 3);
 						PlayerInfo[playerid][pInt] = HouseInfo[h][hIntIW];
 						SendServerMessage(playerid, " Chuc mung ban da co ngoi nha!");
@@ -3756,7 +3756,7 @@ CMD:rentroom(playerid, params[])
                         GivePlayerCash(playerid,-HouseInfo[h][hRentFee]);
                         HouseInfo[h][hSafeMoney] = HouseInfo[h][hSafeMoney]+HouseInfo[h][hRentFee];
                         SetPlayerInterior(playerid,HouseInfo[h][hIntIW]);
-                        ActSetPlayerPos(playerid,HouseInfo[h][hInteriorX],HouseInfo[h][hInteriorY],HouseInfo[h][hInteriorZ]);
+                        SetPlayerPos(playerid,HouseInfo[h][hInteriorX],HouseInfo[h][hInteriorY],HouseInfo[h][hInteriorZ]);
                         GameTextForPlayer(playerid, "~w~Chao mung ve nha~n~Ban co the ra khoi nha bat cu luc nao bang cach tien lai gan canh cua su dung lenh /exit.", 5000, 3);
                         PlayerInfo[playerid][pInt] = HouseInfo[h][hIntIW];
                         PlayerInfo[playerid][pVW] = HouseInfo[h][hIntVW];
@@ -3953,7 +3953,7 @@ CMD:gotomailbox(playerid, params[])
 	GameTextForPlayer(playerid, "~w~Teleporting", 5000, 1);
 	SetPlayerVirtualWorld(playerid, MailBoxes[id][mbVW]);
 	SetPlayerInterior(playerid, MailBoxes[id][mbInt]);
-	ActSetPlayerPos(playerid,MailBoxes[id][mbPosX],MailBoxes[id][mbPosY] - 2.5,MailBoxes[id][mbPosZ]);
+	SetPlayerPos(playerid,MailBoxes[id][mbPosX],MailBoxes[id][mbPosY] - 2.5,MailBoxes[id][mbPosZ]);
 	PlayerInfo[playerid][pVW] = MailBoxes[id][mbVW];
 	PlayerInfo[playerid][pInt] = MailBoxes[id][mbInt];
 
@@ -4257,7 +4257,7 @@ CMD:mjail(playerid, params[]) {
         	SetPlayerHealth(iTargetID, 0x7FB00000);
 			new rand = random(sizeof(OOCPrisonSpawns));
 			Streamer_UpdateEx(iTargetID, OOCPrisonSpawns[rand][0], OOCPrisonSpawns[rand][1], OOCPrisonSpawns[rand][2]);
-			ActSetPlayerPos(iTargetID, OOCPrisonSpawns[rand][0], OOCPrisonSpawns[rand][1], OOCPrisonSpawns[rand][2]);
+			SetPlayerPos(iTargetID, OOCPrisonSpawns[rand][0], OOCPrisonSpawns[rand][1], OOCPrisonSpawns[rand][2]);
 			SetPlayerSkin(iTargetID, 50);
 
 			PlayerInfo[iTargetID][pVW] = 0;
@@ -4390,7 +4390,7 @@ CMD:prisonaccount(playerid, params[])
 			PlayerInfo[giveplayerid][pInt] = 1;
 			new rand = random(sizeof(OOCPrisonSpawns));
 			Streamer_UpdateEx(giveplayerid, OOCPrisonSpawns[rand][0], OOCPrisonSpawns[rand][1], OOCPrisonSpawns[rand][2]);
-			ActSetPlayerPos(giveplayerid, OOCPrisonSpawns[rand][0], OOCPrisonSpawns[rand][1], OOCPrisonSpawns[rand][2]);
+			SetPlayerPos(giveplayerid, OOCPrisonSpawns[rand][0], OOCPrisonSpawns[rand][1], OOCPrisonSpawns[rand][2]);
 			SetPlayerSkin(giveplayerid, 50);
 			SetPlayerColor(giveplayerid, TEAM_APRISON_COLOR);
 			Player_StreamPrep(giveplayerid, OOCPrisonSpawns[rand][0], OOCPrisonSpawns[rand][1], OOCPrisonSpawns[rand][2], FREEZE_TIME);
@@ -4453,7 +4453,7 @@ CMD:sprison(playerid, params[])
 			SetPlayerInterior(giveplayerid, 1);
 			PlayerInfo[playerid][pInt] = 1;
 			new rand = random(sizeof(OOCPrisonSpawns));
-			ActSetPlayerPos(giveplayerid, OOCPrisonSpawns[rand][0], OOCPrisonSpawns[rand][1], OOCPrisonSpawns[rand][2]);
+			SetPlayerPos(giveplayerid, OOCPrisonSpawns[rand][0], OOCPrisonSpawns[rand][1], OOCPrisonSpawns[rand][2]);
 			SetPlayerSkin(giveplayerid, 50);
 			SetPlayerColor(giveplayerid, TEAM_APRISON_COLOR);
 			Player_StreamPrep(giveplayerid, OOCPrisonSpawns[rand][0], OOCPrisonSpawns[rand][1], OOCPrisonSpawns[rand][2], FREEZE_TIME);
@@ -4509,7 +4509,7 @@ CMD:prison(playerid, params[])
 			PlayerInfo[giveplayerid][pInt] = 1;
 			new rand = random(sizeof(OOCPrisonSpawns));
 			Streamer_UpdateEx(giveplayerid, OOCPrisonSpawns[rand][0], OOCPrisonSpawns[rand][1], OOCPrisonSpawns[rand][2]);
-			ActSetPlayerPos(giveplayerid, OOCPrisonSpawns[rand][0], OOCPrisonSpawns[rand][1], OOCPrisonSpawns[rand][2]);
+			SetPlayerPos(giveplayerid, OOCPrisonSpawns[rand][0], OOCPrisonSpawns[rand][1], OOCPrisonSpawns[rand][2]);
 			SetPlayerSkin(giveplayerid, 50);
 			SetPlayerColor(giveplayerid, TEAM_APRISON_COLOR);
 			Player_StreamPrep(giveplayerid, OOCPrisonSpawns[rand][0], OOCPrisonSpawns[rand][1], OOCPrisonSpawns[rand][2], FREEZE_TIME);
@@ -4768,7 +4768,7 @@ CMD:gotoimpoundpoint(playerid, params[])
 		new id;
 		if(sscanf(params, "d", id)) return SendUsageMessage(playerid, " /gotoimpoundpoint [id]");
 
-		ActSetPlayerPos(playerid, ImpoundPoints[id][impoundPosX], ImpoundPoints[id][impoundPosY], ImpoundPoints[id][impoundPosZ]);
+		SetPlayerPos(playerid, ImpoundPoints[id][impoundPosX], ImpoundPoints[id][impoundPosY], ImpoundPoints[id][impoundPosZ]);
 		SetPlayerInterior(playerid, ImpoundPoints[id][impoundInt]);
 		PlayerInfo[playerid][pInt] = ImpoundPoints[id][impoundInt];
 		SetPlayerVirtualWorld(playerid, ImpoundPoints[id][impoundVW]);
@@ -5176,7 +5176,7 @@ CMD:joinevent(playerid, params[]) {
 			}
 			SetPVarInt( playerid, "EventToken", 1 );
 			TotalJoinsRace++;
-			ActSetPlayerPos( playerid, EventKernel[ EventPositionX ], EventKernel[ EventPositionY ], EventKernel[ EventPositionZ ] );
+			SetPlayerPos( playerid, EventKernel[ EventPositionX ], EventKernel[ EventPositionY ], EventKernel[ EventPositionZ ] );
 			RCPIdCurrent[playerid] = 0;
 		    new randcpscount = -1;
 		    for(new i = 0; i < 20; i++)
@@ -5222,7 +5222,7 @@ CMD:joinevent(playerid, params[]) {
 			GetPlayerFacingAngle(playerid, EventFloats[playerid][0]);
 			if(EventKernel[EventType] != 2)
 			{
-				ActSetPlayerPos( playerid, EventKernel[ EventPositionX ], EventKernel[ EventPositionY ], EventKernel[ EventPositionZ ] );
+				SetPlayerPos( playerid, EventKernel[ EventPositionX ], EventKernel[ EventPositionY ], EventKernel[ EventPositionZ ] );
 			}
 			SetPlayerInterior( playerid, EventKernel[ EventInterior ] );
 			SetPlayerVirtualWorld( playerid, EventKernel[ EventWorld ] );
@@ -5269,11 +5269,11 @@ CMD:joinevent(playerid, params[]) {
 				if (color==126) SetPlayerColor(playerid, 0xFF51F100);
 				if(nextteam == 0)
 				{
-					ActSetPlayerPos(playerid, EventKernel[EventTeamPosX1], EventKernel[EventTeamPosY1], EventKernel[EventTeamPosZ1]);
+					SetPlayerPos(playerid, EventKernel[EventTeamPosX1], EventKernel[EventTeamPosY1], EventKernel[EventTeamPosZ1]);
 				}
 				else
 				{
-					ActSetPlayerPos(playerid, EventKernel[EventTeamPosX2], EventKernel[EventTeamPosY2], EventKernel[EventTeamPosZ2]);
+					SetPlayerPos(playerid, EventKernel[EventTeamPosX2], EventKernel[EventTeamPosY2], EventKernel[EventTeamPosZ2]);
 				}
 				if(nextteam == 0) nextteam++;
 				else if(nextteam == 1) nextteam--;
@@ -6434,7 +6434,7 @@ CMD:watch(playerid, params[])
 	if(strcmp(params, "gym", true) == 0)
 	{
 		SendServerMessage(playerid, " Ban dang xem Ganton gym.");
-		ActSetPlayerPos(playerid, 2212.61, -1730.57, -80.0);
+		SetPlayerPos(playerid, 2212.61, -1730.57, -80.0);
 		SetPlayerInterior(playerid, 0);
 		PlayerInfo[playerid][pInt] = 0;
 		SetPlayerVirtualWorld(playerid, 0);
@@ -6446,7 +6446,7 @@ CMD:watch(playerid, params[])
 	else if(strcmp(params, "lspd", true) == 0)
 	{
 		SendServerMessage(playerid, " Ban dang xem LSPD.");
-		ActSetPlayerPos(playerid, 1504.23, -1700.17, -80.0);
+		SetPlayerPos(playerid, 1504.23, -1700.17, -80.0);
 		SetPlayerInterior(playerid, 0);
 		PlayerInfo[playerid][pInt] = 0;
 		SetPlayerVirtualWorld(playerid, 0);
@@ -6458,7 +6458,7 @@ CMD:watch(playerid, params[])
 	else if(strcmp(params, "allsaints", true) == 0)
 	{
 		SendServerMessage(playerid, " Ban dang xem All Saints General Hospital.");
-		ActSetPlayerPos(playerid, 1201.12, -1324, -80.0);
+		SetPlayerPos(playerid, 1201.12, -1324, -80.0);
 		SetPlayerInterior(playerid, 0);
 		PlayerInfo[playerid][pInt] = 0;
 		SetPlayerVirtualWorld(playerid, 0);
@@ -6470,7 +6470,7 @@ CMD:watch(playerid, params[])
 	else if(strcmp(params, "countygen", true) == 0)
 	{
 		SendServerMessage(playerid, " Ban dang xem County General Hospital.");
-		ActSetPlayerPos(playerid, 1989.24, -1461.38, -80.0);
+		SetPlayerPos(playerid, 1989.24, -1461.38, -80.0);
 		SetPlayerInterior(playerid, 0);
 		PlayerInfo[playerid][pInt] = 0;
 		SetPlayerVirtualWorld(playerid, 0);
@@ -6482,7 +6482,7 @@ CMD:watch(playerid, params[])
 	else if(strcmp(params, "grove", true) == 0)
 	{
 		SendServerMessage(playerid, " Ban dang xem Grove Street.");
-		ActSetPlayerPos(playerid, 2489.09, -1669.88, -80.0);
+		SetPlayerPos(playerid, 2489.09, -1669.88, -80.0);
 		SetPlayerInterior(playerid, 0);
 		PlayerInfo[playerid][pInt] = 0;
 		SetPlayerVirtualWorld(playerid, 0);
@@ -6494,7 +6494,7 @@ CMD:watch(playerid, params[])
 	else if(strcmp(params, "tgb", true) == 0)
 	{
 		SendServerMessage(playerid, " Ban dang xem Ten Green Bottles.");
-		ActSetPlayerPos(playerid, 2319.09, -1650.90, -80.0);
+		SetPlayerPos(playerid, 2319.09, -1650.90, -80.0);
 		SetPlayerInterior(playerid, 0);
 		PlayerInfo[playerid][pInt] = 0;
 		SetPlayerVirtualWorld(playerid, 0);
@@ -6506,7 +6506,7 @@ CMD:watch(playerid, params[])
 	else if(strcmp(params, "bank", true) == 0)
 	{
 		SendServerMessage(playerid, " Ban dang xem Los Santos bank.");
-		ActSetPlayerPos(playerid, 1466.24, -1023.05, -80.0);
+		SetPlayerPos(playerid, 1466.24, -1023.05, -80.0);
 		SetPlayerInterior(playerid, 0);
 		PlayerInfo[playerid][pInt] = 0;
 		SetPlayerVirtualWorld(playerid, 0);
@@ -6518,7 +6518,7 @@ CMD:watch(playerid, params[])
 	else if(strcmp(params, "motel", true) == 0)
 	{
 		SendServerMessage(playerid, " Ban dang xem Jefferson motel.");
-		ActSetPlayerPos(playerid, 2215.73, -1163.39, -80.0);
+		SetPlayerPos(playerid, 2215.73, -1163.39, -80.0);
 		SetPlayerInterior(playerid, 0);
 		PlayerInfo[playerid][pInt] = 0;
 		SetPlayerVirtualWorld(playerid, 0);
@@ -6530,7 +6530,7 @@ CMD:watch(playerid, params[])
 	else if(strcmp(params, "cityhall", true) == 0)
 	{
 		SendServerMessage(playerid, " Ban dang xem Los Santos City Hall.");
-		ActSetPlayerPos(playerid, 1478.936035, -1746.446655, -80.0);
+		SetPlayerPos(playerid, 1478.936035, -1746.446655, -80.0);
 		SetPlayerInterior(playerid, 0);
 		PlayerInfo[playerid][pInt] = 0;
 		SetPlayerVirtualWorld(playerid, 0);
@@ -6542,7 +6542,7 @@ CMD:watch(playerid, params[])
 	else if(strcmp(params, "mall", true) == 0)
 	{
 		SendServerMessage(playerid, " Ban dang xem Los Santos Mall.");
-		ActSetPlayerPos(playerid, 1127.245483, -1451.613891, -80.0);
+		SetPlayerPos(playerid, 1127.245483, -1451.613891, -80.0);
 		SetPlayerInterior(playerid, 0);
 		PlayerInfo[playerid][pInt] = 0;
 		SetPlayerVirtualWorld(playerid, 0);
@@ -6557,7 +6557,7 @@ CMD:watch(playerid, params[])
 	else if(strcmp(params, "lsvip", true) == 0)
 	{
 		SendServerMessage(playerid, " Ban dang xem the Los Santos VIP entrance.");
-		ActSetPlayerPos(playerid, 1809.888427, -1570.615844, -80.0);
+		SetPlayerPos(playerid, 1809.888427, -1570.615844, -80.0);
 		SetPlayerInterior(playerid, 0);
 		PlayerInfo[playerid][pInt] = 0;
 		SetPlayerVirtualWorld(playerid, 0);
@@ -6569,7 +6569,7 @@ CMD:watch(playerid, params[])
 	else if(strcmp(params, "sfvip", true) == 0)
 	{
 		SendServerMessage(playerid, " Ban dang xem the San Fierro VIP entrance.");
-		ActSetPlayerPos(playerid, -2437.302490, 508.727020, -80.0);
+		SetPlayerPos(playerid, -2437.302490, 508.727020, -80.0);
 		SetPlayerInterior(playerid, 0);
 		PlayerInfo[playerid][pInt] = 0;
 		SetPlayerVirtualWorld(playerid, 0);
@@ -6581,7 +6581,7 @@ CMD:watch(playerid, params[])
 	else if(strcmp(params, "loungeview1", true) == 0)
 	{
 		SendServerMessage(playerid, " Ban dang xem the VIP Lounge.");
-		ActSetPlayerPos(playerid, 2526.647949, 1431.128417, 7754.650390);
+		SetPlayerPos(playerid, 2526.647949, 1431.128417, 7754.650390);
 		SetPlayerInterior(playerid, 1);
 		PlayerInfo[playerid][pInt] = 1;
 		SetPlayerVirtualWorld(playerid, 0);
@@ -6593,7 +6593,7 @@ CMD:watch(playerid, params[])
 	else if(strcmp(params, "loungeview2", true) == 0)
 	{
 		SendServerMessage(playerid, " Ban dang xem the VIP Lounge.");
-		ActSetPlayerPos(playerid, 2526.647949, 1431.128417, 7754.650390);
+		SetPlayerPos(playerid, 2526.647949, 1431.128417, 7754.650390);
 		SetPlayerInterior(playerid, 1);
 		PlayerInfo[playerid][pInt] = 1;
 		SetPlayerVirtualWorld(playerid, 0);
@@ -6605,7 +6605,7 @@ CMD:watch(playerid, params[])
 	else if(strcmp(params, "goldlounge", true) == 0)
 	{
 		SendServerMessage(playerid, " Ban dang xem the VIP Gold+ Lounge.");
-  		ActSetPlayerPos(playerid, 2864.634277, 2290.584960, 1272.007568);
+  		SetPlayerPos(playerid, 2864.634277, 2290.584960, 1272.007568);
 		SetPlayerInterior(playerid, 1);
 		PlayerInfo[playerid][pInt] = 1;
 		SetPlayerVirtualWorld(playerid, 0);
@@ -6617,7 +6617,7 @@ CMD:watch(playerid, params[])
 	else if(strcmp(params, "vipgarage", true) == 0)
 	{
 		SendServerMessage(playerid, " Ban dang xem the VIP Garage.");
-  		ActSetPlayerPos(playerid, -4412.440429, 867.361694, -80.0);
+  		SetPlayerPos(playerid, -4412.440429, 867.361694, -80.0);
 		SetPlayerInterior(playerid, 0);
 		PlayerInfo[playerid][pInt] = 0;
 		SetPlayerVirtualWorld(playerid, 0);
@@ -6632,7 +6632,7 @@ CMD:watch(playerid, params[])
 	else if(strcmp(params, "mp1", true) == 0)
 	{
 		SendServerMessage(playerid, " Ban dang xem Materials Pickup 1.");
-  		ActSetPlayerPos(playerid, 1423.773437, -1320.386962, -80.0);
+  		SetPlayerPos(playerid, 1423.773437, -1320.386962, -80.0);
 		SetPlayerInterior(playerid, 0);
 		PlayerInfo[playerid][pInt] = 0;
 		SetPlayerVirtualWorld(playerid, 0);
@@ -6644,7 +6644,7 @@ CMD:watch(playerid, params[])
 	else if(strcmp(params, "df", true) == 0)
 	{
 		SendServerMessage(playerid, " Ban dang xem Drug Factory.");
-  		ActSetPlayerPos(playerid, 2206.402587, 1582.398681, -80.0);
+  		SetPlayerPos(playerid, 2206.402587, 1582.398681, -80.0);
 		SetPlayerInterior(playerid, 1);
 		PlayerInfo[playerid][pInt] = 1;
 		SetPlayerVirtualWorld(playerid, 0);
@@ -6656,7 +6656,7 @@ CMD:watch(playerid, params[])
 	else if(strcmp(params, "mf1", true) == 0)
 	{
 		SendServerMessage(playerid, " Ban dang xem Materials Factory 1.");
-  		ActSetPlayerPos(playerid, 2172.315185, -2263.781250, -80.0);
+  		SetPlayerPos(playerid, 2172.315185, -2263.781250, -80.0);
 		SetPlayerInterior(playerid, 0);
 		PlayerInfo[playerid][pInt] = 0;
 		SetPlayerVirtualWorld(playerid, 0);
@@ -6668,7 +6668,7 @@ CMD:watch(playerid, params[])
 	else if(strcmp(params, "dh", true) == 0)
 	{
 		SendServerMessage(playerid, " Ban dang xem the Drug House.");
-  		ActSetPlayerPos(playerid, 323.577026, 1118.344116, -80.0);
+  		SetPlayerPos(playerid, 323.577026, 1118.344116, -80.0);
 		SetPlayerInterior(playerid, 5);
 		PlayerInfo[playerid][pInt] = 5;
 		SetPlayerVirtualWorld(playerid, 371);
@@ -6680,7 +6680,7 @@ CMD:watch(playerid, params[])
 	else if(strcmp(params, "mp2", true) == 0)
 	{
 		SendServerMessage(playerid, " Ban dang xem Materials Pickup 2.");
-  		ActSetPlayerPos(playerid, 2390.212402, -2008.328491, -80.0);
+  		SetPlayerPos(playerid, 2390.212402, -2008.328491, -80.0);
 		SetPlayerInterior(playerid, 0);
 		PlayerInfo[playerid][pInt] = 0;
 		SetPlayerVirtualWorld(playerid, 0);
@@ -6692,7 +6692,7 @@ CMD:watch(playerid, params[])
 	else if(strcmp(params, "cl", true) == 0)
 	{
 		SendServerMessage(playerid, " Ban dang xem Crack Lab.");
-  		ActSetPlayerPos(playerid, 2346.013916, -1185.367065, -80.0);
+  		SetPlayerPos(playerid, 2346.013916, -1185.367065, -80.0);
 		SetPlayerInterior(playerid, 5);
 		PlayerInfo[playerid][pInt] = 5;
 		SetPlayerVirtualWorld(playerid, 371);
@@ -6704,7 +6704,7 @@ CMD:watch(playerid, params[])
 	else if(strcmp(params, "mf2", true) == 0)
 	{
 		SendServerMessage(playerid, " Ban dang xem Materials Factory 2.");
-  		ActSetPlayerPos(playerid, 2282.298828, -1110.143798, -80.0);
+  		SetPlayerPos(playerid, 2282.298828, -1110.143798, -80.0);
 		SetPlayerInterior(playerid, 0);
 		PlayerInfo[playerid][pInt] = 0;
 		SetPlayerVirtualWorld(playerid, 0);
@@ -6716,7 +6716,7 @@ CMD:watch(playerid, params[])
 	else if(strcmp(params, "sfd", true) == 0)
 	{
 		SendServerMessage(playerid, " Ban dang xem the San Fierro Docks.");
-  		ActSetPlayerPos(playerid, -1576.488159, 50.301193, -80.0);
+  		SetPlayerPos(playerid, -1576.488159, 50.301193, -80.0);
 		SetPlayerInterior(playerid, 0);
 		PlayerInfo[playerid][pInt] = 0;
 		SetPlayerVirtualWorld(playerid, 0);
@@ -6728,7 +6728,7 @@ CMD:watch(playerid, params[])
 	else if(strcmp(params, "ffc", true) == 0)
 	{
 		SendServerMessage(playerid, " Ban dang xem Fossil Fuel Company.");
-  		ActSetPlayerPos(playerid, -2139.215087, -248.235076, -80.0);
+  		SetPlayerPos(playerid, -2139.215087, -248.235076, -80.0);
 		SetPlayerInterior(playerid, 0);
 		PlayerInfo[playerid][pInt] = 0;
 		SetPlayerVirtualWorld(playerid, 0);
@@ -6743,7 +6743,7 @@ CMD:watch(playerid, params[])
 	else if(strcmp(params, "off", true) == 0)
 	{
 		SendServerMessage(playerid, " Ban khong xem khu vuc nao ca.");
-		ActSetPlayerPos(playerid, GetPVarFloat(playerid, "WatchLastx"), GetPVarFloat(playerid, "WatchLasty"), GetPVarFloat(playerid, "WatchLastz"));
+		SetPlayerPos(playerid, GetPVarFloat(playerid, "WatchLastx"), GetPVarFloat(playerid, "WatchLasty"), GetPVarFloat(playerid, "WatchLastz"));
 		SetPlayerVirtualWorld(playerid, GetPVarInt(playerid, "WatchLastVW"));
 		PlayerInfo[playerid][pVW] = GetPVarInt(playerid, "WatchLastVW");
 		SetPlayerInterior(playerid, GetPVarInt(playerid, "WatchLastInt"));
@@ -6790,7 +6790,7 @@ CMD:goto(playerid, params[])
 			}
 			else
 			{
-				ActSetPlayerPos(playerid, 1529.6,-1691.2,13.3);
+				SetPlayerPos(playerid, 1529.6,-1691.2,13.3);
 			}
 			SendServerMessage(playerid, "    Ban da duoc dich chuyen!");
 			SetPlayerInterior(playerid,0);
@@ -6810,7 +6810,7 @@ CMD:goto(playerid, params[])
 			}
 			else
 			{
-				ActSetPlayerPos(playerid, -1602.0762, 69.6523, 3.5547);
+				SetPlayerPos(playerid, -1602.0762, 69.6523, 3.5547);
 			}
 			SendServerMessage(playerid, "    Ban da duoc dich chuyen!");
 			SetPlayerInterior(playerid,0);
@@ -6830,7 +6830,7 @@ CMD:goto(playerid, params[])
 			}
 			else
 			{
-				ActSetPlayerPos(playerid, -1759.0724, 1329.5780, 7.1797);
+				SetPlayerPos(playerid, -1759.0724, 1329.5780, 7.1797);
 			}
 			SendServerMessage(playerid, "    Ban da duoc dich chuyen!");
 			SetPlayerInterior(playerid,0);
@@ -6850,7 +6850,7 @@ CMD:goto(playerid, params[])
 			}
 			else
 			{
-				ActSetPlayerPos(playerid, -473.6516, -87.0691, 62.6357);
+				SetPlayerPos(playerid, -473.6516, -87.0691, 62.6357);
 			}
 			SendServerMessage(playerid, "    Ban da duoc dich chuyen!");
 			SetPlayerInterior(playerid,0);
@@ -6870,7 +6870,7 @@ CMD:goto(playerid, params[])
 			}
 			else
 			{
-				ActSetPlayerPos(playerid, -2606.1924, 563.3112, 14.4609);
+				SetPlayerPos(playerid, -2606.1924, 563.3112, 14.4609);
 			}
 			SendServerMessage(playerid, "    Ban da duoc dich chuyen!");
 			SetPlayerInterior(playerid,0);
@@ -6890,7 +6890,7 @@ CMD:goto(playerid, params[])
 			}
 			else
 			{
-				ActSetPlayerPos(playerid, 1111.0139,1546.9510,5290.2793);
+				SetPlayerPos(playerid, 1111.0139,1546.9510,5290.2793);
 			}
 			SendServerMessage(playerid, "    Ban da duoc dich chuyen!");
 			SetPlayerInterior(playerid,0);
@@ -6910,7 +6910,7 @@ CMD:goto(playerid, params[])
 			}
 			else
 			{
-				ActSetPlayerPos(playerid, 1192.8501,1540.0295,5290.2871);
+				SetPlayerPos(playerid, 1192.8501,1540.0295,5290.2871);
 			}
 			SendServerMessage(playerid, "    Ban da duoc dich chuyen!");
 			SetPlayerInterior(playerid,0);
@@ -6930,7 +6930,7 @@ CMD:goto(playerid, params[])
 			}
 			else
 			{
-				ActSetPlayerPos(playerid, 1069.1473,1582.1029,5290.2529);
+				SetPlayerPos(playerid, 1069.1473,1582.1029,5290.2529);
 			}
 			SendServerMessage(playerid, "    Ban da duoc dich chuyen!");
 			SetPlayerInterior(playerid,0);
@@ -6950,7 +6950,7 @@ CMD:goto(playerid, params[])
 			}
 			else
 			{
-				ActSetPlayerPos(playerid, 1198.1407,1589.2153,5290.2871);
+				SetPlayerPos(playerid, 1198.1407,1589.2153,5290.2871);
 			}
 			SendServerMessage(playerid, "    Ban da duoc dich chuyen!");
 			SetPlayerInterior(playerid,0);
@@ -6970,7 +6970,7 @@ CMD:goto(playerid, params[])
 			}
 			else
 			{
-				ActSetPlayerPos(playerid, -1993.01, -1580.44, 86.39);
+				SetPlayerPos(playerid, -1993.01, -1580.44, 86.39);
 			}
 			SendServerMessage(playerid, "    Ban da duoc dich chuyen!");
 			SetPlayerInterior(playerid,0);
@@ -6990,7 +6990,7 @@ CMD:goto(playerid, params[])
 			}
 			else
 			{
-				ActSetPlayerPos(playerid, -1412.5375,-301.8998,14.1411);
+				SetPlayerPos(playerid, -1412.5375,-301.8998,14.1411);
 			}
 			SendServerMessage(playerid, "    Ban da duoc dich chuyen!");
 			SetPlayerInterior(playerid,0);
@@ -7010,7 +7010,7 @@ CMD:goto(playerid, params[])
 			}
 			else
 			{
-				ActSetPlayerPos(playerid, -1605.0,720.0,12.0);
+				SetPlayerPos(playerid, -1605.0,720.0,12.0);
 			}
 			SendServerMessage(playerid, "    Ban da duoc dich chuyen!");
 			SetPlayerInterior(playerid,0);
@@ -7030,7 +7030,7 @@ CMD:goto(playerid, params[])
 			}
 			else
 			{
-				ActSetPlayerPos(playerid, 1699.2,1435.1, 10.7);
+				SetPlayerPos(playerid, 1699.2,1435.1, 10.7);
 			}
 			SendServerMessage(playerid, "    Ban da duoc dich chuyen!");
 			SetPlayerInterior(playerid,0);
@@ -7051,7 +7051,7 @@ CMD:goto(playerid, params[])
 			}
 			else
 			{
-				ActSetPlayerPos(playerid, -1081.0,4297.9,4.4);
+				SetPlayerPos(playerid, -1081.0,4297.9,4.4);
 			}
 			SendServerMessage(playerid, "    Ban da duoc dich chuyen!");
 			SetPlayerInterior(playerid,0);
@@ -7072,7 +7072,7 @@ CMD:goto(playerid, params[])
 			}
 			else
 			{
-				ActSetPlayerPos(playerid, 2348.2871, -1146.8298, 27.3183);
+				SetPlayerPos(playerid, 2348.2871, -1146.8298, 27.3183);
 			}
 			SendServerMessage(playerid, "    Ban da duoc dich chuyen!");
 			SetPlayerInterior(playerid,0);
@@ -7093,7 +7093,7 @@ CMD:goto(playerid, params[])
 			}
 			else
 			{
-				ActSetPlayerPos(playerid, 1487.91, -1030.60, 23.66);
+				SetPlayerPos(playerid, 1487.91, -1030.60, 23.66);
 			}
 			SendServerMessage(playerid, "    Ban da duoc dich chuyen!");
 			SetPlayerInterior(playerid,0);
@@ -7114,7 +7114,7 @@ CMD:goto(playerid, params[])
 			}
 			else
 			{
-				ActSetPlayerPos(playerid, 1192.78, -1292.68, 13.38);
+				SetPlayerPos(playerid, 1192.78, -1292.68, 13.38);
 			}
 			SendServerMessage(playerid, "    Ban da duoc dich chuyen!");
 			SetPlayerInterior(playerid,0);
@@ -7135,7 +7135,7 @@ CMD:goto(playerid, params[])
 			}
 			else
 			{
-				ActSetPlayerPos(playerid, 2000.05, -1409.36, 16.99);
+				SetPlayerPos(playerid, 2000.05, -1409.36, 16.99);
 			}
 			SendServerMessage(playerid, "    Ban da duoc dich chuyen!");
 			SetPlayerInterior(playerid,0);
@@ -7156,7 +7156,7 @@ CMD:goto(playerid, params[])
 			}
 			else
 			{
-				ActSetPlayerPos(playerid, 2227.60, -1674.89, 14.62);
+				SetPlayerPos(playerid, 2227.60, -1674.89, 14.62);
 			}
 			SendServerMessage(playerid, "    Ban da duoc dich chuyen!");
 			SetPlayerInterior(playerid,0);
@@ -7175,7 +7175,7 @@ CMD:goto(playerid, params[])
 			}
 			else
 			{
-				ActSetPlayerPos(playerid, 344.77,-1526.08,33.28);
+				SetPlayerPos(playerid, 344.77,-1526.08,33.28);
 			}
 			SendServerMessage(playerid, "    Ban da duoc dich chuyen!");
 			SetPlayerInterior(playerid,0);
@@ -7196,7 +7196,7 @@ CMD:goto(playerid, params[])
 			}
 			else
 			{
-				ActSetPlayerPos(playerid, 1289.2391,248.9346,19.4063);
+				SetPlayerPos(playerid, 1289.2391,248.9346,19.4063);
 			}
 			SendServerMessage(playerid, "    Ban da duoc dich chuyen!");
 			SetPlayerInterior(playerid,0);
@@ -7216,7 +7216,7 @@ CMD:goto(playerid, params[])
 			}
 			else
 			{
-				ActSetPlayerPos(playerid, 233.1081,-211.2786,1.4300);
+				SetPlayerPos(playerid, 233.1081,-211.2786,1.4300);
 			}
 			SendServerMessage(playerid, "    Ban da duoc dich chuyen!");
 			SetPlayerInterior(playerid,0);
@@ -7236,7 +7236,7 @@ CMD:goto(playerid, params[])
 			}
 			else
 			{
-				ActSetPlayerPos(playerid, 682.8105,-529.9641,16.1883);
+				SetPlayerPos(playerid, 682.8105,-529.9641,16.1883);
 			}
 			SendServerMessage(playerid, "    Ban da duoc dich chuyen!");
 			SetPlayerInterior(playerid,0);
@@ -7256,7 +7256,7 @@ CMD:goto(playerid, params[])
 			}
 			else
 			{
-				ActSetPlayerPos(playerid, 2343.8049,90.8922,26.3327);
+				SetPlayerPos(playerid, 2343.8049,90.8922,26.3327);
 			}
 			SendServerMessage(playerid, "    Ban da duoc dich chuyen!");
 			SetPlayerInterior(playerid,0);
@@ -7276,7 +7276,7 @@ CMD:goto(playerid, params[])
 			}
 			else
 			{
-				ActSetPlayerPos(playerid, 1810.39, -1601.15, 13.54);
+				SetPlayerPos(playerid, 1810.39, -1601.15, 13.54);
 			}
 			SendServerMessage(playerid, "    Ban da duoc dich chuyen!");
 			SetPlayerInterior(playerid,0);
@@ -7296,7 +7296,7 @@ CMD:goto(playerid, params[])
 			}
 			else
 			{
-				ActSetPlayerPos(playerid, -2433.63, 511.45, 30.38);
+				SetPlayerPos(playerid, -2433.63, 511.45, 30.38);
 			}
 			SendServerMessage(playerid, "    Ban da duoc dich chuyen!");
 			SetPlayerInterior(playerid,0);
@@ -7316,7 +7316,7 @@ CMD:goto(playerid, params[])
 			}
 			else
 			{
-				ActSetPlayerPos(playerid, 1875.7731, 1366.0796, 16.8998);
+				SetPlayerPos(playerid, 1875.7731, 1366.0796, 16.8998);
 			}
 			SendServerMessage(playerid, "    Ban da duoc dich chuyen!");
 			SetPlayerInterior(playerid,0);
@@ -7336,7 +7336,7 @@ CMD:goto(playerid, params[])
 			}
 			else
 			{
-				ActSetPlayerPos(playerid, 112.67, 1917.55, 18.72);
+				SetPlayerPos(playerid, 112.67, 1917.55, 18.72);
 			}
 			SendServerMessage(playerid, "    Ban da duoc dich chuyen!");
 			SetPlayerInterior(playerid,0);
@@ -7347,7 +7347,7 @@ CMD:goto(playerid, params[])
 		}
 		else if(strcmp(params,"icprison",true) == 0)
 		{
-			ActSetPlayerPos(playerid, -2069.76, -200.05, 991.53);
+			SetPlayerPos(playerid, -2069.76, -200.05, 991.53);
 			SetPlayerInterior(playerid,10);
 			PlayerInfo[playerid][pInt] = 10;
 			SetPlayerVirtualWorld(playerid, 0);
@@ -7356,7 +7356,7 @@ CMD:goto(playerid, params[])
 		}
 		else if(strcmp(params, "doc", true) == 0)
 		{
-			ActSetPlayerPos(playerid, -2029.2322, -78.3302, 35.3203);
+			SetPlayerPos(playerid, -2029.2322, -78.3302, 35.3203);
 			SetPlayerInterior(playerid, 0);
 			PlayerInfo[playerid][pInt] = 0;
 			SetPlayerVirtualWorld(playerid, 0);
@@ -7365,7 +7365,7 @@ CMD:goto(playerid, params[])
 		}
 		else if(strcmp(params,"oocprison",true) == 0)
 		{
-			ActSetPlayerPos(playerid, -298.13, 1881.85, 29.89);
+			SetPlayerPos(playerid, -298.13, 1881.85, 29.89);
 			SetPlayerInterior(playerid,1);
 			PlayerInfo[playerid][pInt] = 1;
 			SetPlayerVirtualWorld(playerid, 0);
@@ -7385,7 +7385,7 @@ CMD:goto(playerid, params[])
 			}
 			else
 			{
-				ActSetPlayerPos(playerid, -1424.93, -664.59, 1059.86);
+				SetPlayerPos(playerid, -1424.93, -664.59, 1059.86);
 			}
 			SendServerMessage(playerid, "    Ban da duoc dich chuyen!");
 			SetPlayerInterior(playerid,4);
@@ -7406,7 +7406,7 @@ CMD:goto(playerid, params[])
 			}
 			else
 			{
-				ActSetPlayerPos(playerid, -1395.96, -208.20, 1051.28);
+				SetPlayerPos(playerid, -1395.96, -208.20, 1051.28);
 			}
 			SendServerMessage(playerid, "    Ban da duoc dich chuyen!");
 			SetPlayerInterior(playerid,7);
@@ -7427,7 +7427,7 @@ CMD:goto(playerid, params[])
 			}
 			else
 			{
-				ActSetPlayerPos(playerid, -1410.72, 1591.16, 1052.53);
+				SetPlayerPos(playerid, -1410.72, 1591.16, 1052.53);
 			}
 			SendServerMessage(playerid, "    Ban da duoc dich chuyen!");
 			SetPlayerInterior(playerid,14);
@@ -7448,7 +7448,7 @@ CMD:goto(playerid, params[])
     		}
 			else
 			{
-				ActSetPlayerPos(playerid, -1394.20, 987.62, 1023.96);
+				SetPlayerPos(playerid, -1394.20, 987.62, 1023.96);
 			}
 			SendServerMessage(playerid, "    Ban da duoc dich chuyen!");
 			SetPlayerInterior(playerid,15);
@@ -7469,7 +7469,7 @@ CMD:goto(playerid, params[])
 			}
 			else
 			{
-				ActSetPlayerPos(playerid, 1416.107000,0.268620,1000.926000);
+				SetPlayerPos(playerid, 1416.107000,0.268620,1000.926000);
 			}
 			SendServerMessage(playerid, "    Ban da duoc dich chuyen!");
 			SetPlayerInterior(playerid,1);
@@ -7488,7 +7488,7 @@ CMD:goto(playerid, params[])
 			}
 			else
 			{
-				ActSetPlayerPos(playerid, GetPVarFloat(playerid, "tpPosX1"), GetPVarFloat(playerid, "tpPosY1"), GetPVarFloat(playerid, "tpPosZ1"));
+				SetPlayerPos(playerid, GetPVarFloat(playerid, "tpPosX1"), GetPVarFloat(playerid, "tpPosY1"), GetPVarFloat(playerid, "tpPosZ1"));
 			}
 			SetPlayerInterior(playerid, GetPVarInt(playerid, "tpInt1"));
 			SendServerMessage(playerid, "    Ban da duoc dich chuyen!");
@@ -7503,7 +7503,7 @@ CMD:goto(playerid, params[])
 			}
 			else
 			{
-				ActSetPlayerPos(playerid, GetPVarFloat(playerid, "tpPosX2"), GetPVarFloat(playerid, "tpPosY2"), GetPVarFloat(playerid, "tpPosZ2"));
+				SetPlayerPos(playerid, GetPVarFloat(playerid, "tpPosX2"), GetPVarFloat(playerid, "tpPosY2"), GetPVarFloat(playerid, "tpPosZ2"));
 			}
 			SetPlayerInterior(playerid, GetPVarInt(playerid, "tpInt2"));
 			SendServerMessage(playerid, "    Ban da duoc dich chuyen!");
@@ -7520,7 +7520,7 @@ CMD:goto(playerid, params[])
 			}
 			else
 			{
-				ActSetPlayerPos(playerid, 1133.71,-1464.52,15.77);
+				SetPlayerPos(playerid, 1133.71,-1464.52,15.77);
 			}
 			SendServerMessage(playerid, "    Ban da duoc dich chuyen!");
 			SetPlayerInterior(playerid,0);
@@ -7541,7 +7541,7 @@ CMD:goto(playerid, params[])
 			}
 			else
 			{
-				ActSetPlayerPos(playerid, -1446.5997,2608.4478,55.8359);
+				SetPlayerPos(playerid, -1446.5997,2608.4478,55.8359);
 			}
 			SendServerMessage(playerid, "    Ban da duoc dich chuyen!");
 			SetPlayerInterior(playerid,0);
@@ -7562,7 +7562,7 @@ CMD:goto(playerid, params[])
 			}
 			else
 			{
-				ActSetPlayerPos(playerid, -2465.1348,2333.6572,4.8359);
+				SetPlayerPos(playerid, -2465.1348,2333.6572,4.8359);
 			}
 			SendServerMessage(playerid, "    Ban da duoc dich chuyen!");
 			SetPlayerInterior(playerid,0);
@@ -7583,7 +7583,7 @@ CMD:goto(playerid, params[])
 			}
 			else
 			{
-				ActSetPlayerPos(playerid, 634.9734, -594.6402, 16.3359);
+				SetPlayerPos(playerid, 634.9734, -594.6402, 16.3359);
 			}
 			SendServerMessage(playerid, "    Ban da duoc dich chuyen!");
 			SetPlayerInterior(playerid,0);
@@ -7603,7 +7603,7 @@ CMD:goto(playerid, params[])
 			}
 			else
 			{
-				ActSetPlayerPos(playerid, 1020.29, -1129.06, 23.87);
+				SetPlayerPos(playerid, 1020.29, -1129.06, 23.87);
 			}
 			SendServerMessage(playerid, "    Ban da duoc dich chuyen!");
 			SetPlayerInterior(playerid,0);
@@ -7623,7 +7623,7 @@ CMD:goto(playerid, params[])
 			}
 			else
 			{
-				ActSetPlayerPos(playerid, 587.0106,-1238.3374,17.8049);
+				SetPlayerPos(playerid, 587.0106,-1238.3374,17.8049);
 			}
 			SendServerMessage(playerid, "    Ban da duoc dich chuyen!");
 			SetPlayerInterior(playerid,0);
@@ -7643,7 +7643,7 @@ CMD:goto(playerid, params[])
 			}
 			else
 			{
-				ActSetPlayerPos(playerid, -108.1058,-1172.5293,2.8906);
+				SetPlayerPos(playerid, -108.1058,-1172.5293,2.8906);
 			}
 			SendServerMessage(playerid, "    Ban da duoc dich chuyen!");
 			SetPlayerInterior(playerid,0);
@@ -7663,7 +7663,7 @@ CMD:goto(playerid, params[])
 			}
 			else
 			{
-				ActSetPlayerPos(playerid, 1955.1357,-1796.8896,13.5469);
+				SetPlayerPos(playerid, 1955.1357,-1796.8896,13.5469);
 			}
 			SendServerMessage(playerid, "    Ban da duoc dich chuyen!");
 			SetPlayerInterior(playerid,0);
@@ -7747,7 +7747,7 @@ CMD:sendto(playerid, params[])
 			}
 			else
 			{
-				ActSetPlayerPos(giveplayerid, 1529.6,-1691.2,13.3);
+				SetPlayerPos(giveplayerid, 1529.6,-1691.2,13.3);
 			}
 			format(string, sizeof(string), " Ban da dich chuyen %s toi Los Santos.", GetPlayerNameEx(giveplayerid));
 			SendClientMessageEx(playerid, COLOR_WHITE, string);
@@ -7769,7 +7769,7 @@ CMD:sendto(playerid, params[])
 			}
 			else
 			{
-				ActSetPlayerPos(giveplayerid, -1993.01, -1580.44, 86.39);
+				SetPlayerPos(giveplayerid, -1993.01, -1580.44, 86.39);
 			}
 			format(string, sizeof(string), " Ban da dich chuyen %s toi crate cave.", GetPlayerNameEx(giveplayerid));
 			SendClientMessageEx(playerid, COLOR_WHITE, string);
@@ -7791,7 +7791,7 @@ CMD:sendto(playerid, params[])
 			}
 			else
 			{
-				ActSetPlayerPos(giveplayerid, -1412.5375,-301.8998,14.1411);
+				SetPlayerPos(giveplayerid, -1412.5375,-301.8998,14.1411);
 			}
 			format(string, sizeof(string), " Ban da dich chuyen %s toi SF Airport.", GetPlayerNameEx(giveplayerid));
 			SendClientMessageEx(playerid, COLOR_WHITE, string);
@@ -7813,7 +7813,7 @@ CMD:sendto(playerid, params[])
 			}
 			else
 			{
-				ActSetPlayerPos(giveplayerid,-2029.2322, -78.3302, 35.32034);
+				SetPlayerPos(giveplayerid,-2029.2322, -78.3302, 35.32034);
 			}
 			format(string, sizeof(string), " Ban da dich chuyen %s toi DoC.", GetPlayerNameEx(giveplayerid));
 			SendClientMessageEx(playerid, COLOR_WHITE, string);
@@ -7835,7 +7835,7 @@ CMD:sendto(playerid, params[])
 			}
 			else
 			{
-				ActSetPlayerPos(giveplayerid, 2348.2871, -1146.8298, 27.3183);
+				SetPlayerPos(giveplayerid, 2348.2871, -1146.8298, 27.3183);
 			}
 			format(string, sizeof(string), " Ban da dich chuyen %s toi Crack Lab.", GetPlayerNameEx(giveplayerid));
 			SendClientMessageEx(playerid, COLOR_WHITE, string);
@@ -7857,7 +7857,7 @@ CMD:sendto(playerid, params[])
 			}
 			else
 			{
-				ActSetPlayerPos(giveplayerid, -1605.0,720.0,12.0);
+				SetPlayerPos(giveplayerid, -1605.0,720.0,12.0);
 			}
 			format(string, sizeof(string), " Ban da dich chuyen %s toi San Fierro.", GetPlayerNameEx(giveplayerid));
 			SendClientMessageEx(playerid, COLOR_WHITE, string);
@@ -7879,7 +7879,7 @@ CMD:sendto(playerid, params[])
 			}
 			else
 			{
-				ActSetPlayerPos(giveplayerid, 634.9734, -594.6402, 16.3359);
+				SetPlayerPos(giveplayerid, 634.9734, -594.6402, 16.3359);
 			}
 			format(string, sizeof(string), " Ban da dich chuyen %s toi Dillimore.", GetPlayerNameEx(giveplayerid));
 			SendClientMessageEx(playerid, COLOR_WHITE, string);
@@ -7901,7 +7901,7 @@ CMD:sendto(playerid, params[])
 			}
 			else
 			{
-				ActSetPlayerPos(giveplayerid, 1699.2,1435.1, 10.7);
+				SetPlayerPos(giveplayerid, 1699.2,1435.1, 10.7);
 			}
 			format(string, sizeof(string), " Ban da dich chuyen %s toi Las Venturas.", GetPlayerNameEx(giveplayerid));
 			SendClientMessageEx(playerid, COLOR_WHITE, string);
@@ -7924,7 +7924,7 @@ CMD:sendto(playerid, params[])
 			}
 			else
 			{
-				ActSetPlayerPos(giveplayerid, -1081.0,4297.9,4.4);
+				SetPlayerPos(giveplayerid, -1081.0,4297.9,4.4);
 			}
 			format(string, sizeof(string), " Ban da dich chuyen %s toi the Crate Island.", GetPlayerNameEx(giveplayerid));
 			SendClientMessageEx(playerid, COLOR_WHITE, string);
@@ -7947,7 +7947,7 @@ CMD:sendto(playerid, params[])
 			}
 			else
 			{
-				ActSetPlayerPos(giveplayerid, 1487.91, -1030.60, 23.66);
+				SetPlayerPos(giveplayerid, 1487.91, -1030.60, 23.66);
 			}
 			format(string, sizeof(string), " Ban da dich chuyen %s toi the bank.", GetPlayerNameEx(giveplayerid));
 			SendClientMessageEx(playerid, COLOR_WHITE, string);
@@ -7970,7 +7970,7 @@ CMD:sendto(playerid, params[])
 			}
 			else
 			{
-				ActSetPlayerPos(giveplayerid, 1192.78, -1292.68, 13.38);
+				SetPlayerPos(giveplayerid, 1192.78, -1292.68, 13.38);
 			}
 			format(string, sizeof(string), " Ban da dich chuyen %s toi All Saints.", GetPlayerNameEx(giveplayerid));
 			SendClientMessageEx(playerid, COLOR_WHITE, string);
@@ -7993,7 +7993,7 @@ CMD:sendto(playerid, params[])
 			}
 			else
 			{
-				ActSetPlayerPos(giveplayerid, 2000.05, -1409.36, 16.99);
+				SetPlayerPos(giveplayerid, 2000.05, -1409.36, 16.99);
 			}
 			format(string, sizeof(string), " Ban da dich chuyen %s toi County General.", GetPlayerNameEx(giveplayerid));
 			SendClientMessageEx(playerid, COLOR_WHITE, string);
@@ -8016,7 +8016,7 @@ CMD:sendto(playerid, params[])
 			}
 			else
 			{
-				ActSetPlayerPos(giveplayerid, 2227.60, -1674.89, 14.62);
+				SetPlayerPos(giveplayerid, 2227.60, -1674.89, 14.62);
 			}
 			format(string, sizeof(string), " Ban da dich chuyen %s toi Ganton Gym.", GetPlayerNameEx(giveplayerid));
 			SendClientMessageEx(playerid, COLOR_WHITE, string);
@@ -8037,7 +8037,7 @@ CMD:sendto(playerid, params[])
 			}
 			else
 			{
-				ActSetPlayerPos(giveplayerid, 344.77,-1526.08,33.28);
+				SetPlayerPos(giveplayerid, 344.77,-1526.08,33.28);
 			}
 			format(string, sizeof(string), " Ban da dich chuyen %s toi the FBI HQ.", GetPlayerNameEx(giveplayerid));
 			SendClientMessageEx(playerid, COLOR_WHITE, string);
@@ -8060,7 +8060,7 @@ CMD:sendto(playerid, params[])
 			}
 			else
 			{
-				ActSetPlayerPos(giveplayerid, 1253.70, 343.73, 19.41);
+				SetPlayerPos(giveplayerid, 1253.70, 343.73, 19.41);
 			}
 			format(string, sizeof(string), " Ban da dich chuyen %s toi Red County.", GetPlayerNameEx(giveplayerid));
 			SendClientMessageEx(playerid, COLOR_WHITE, string);
@@ -8083,7 +8083,7 @@ CMD:sendto(playerid, params[])
 			}
 			else
 			{
-				ActSetPlayerPos(giveplayerid, 1810.39, -1601.15, 13.54);
+				SetPlayerPos(giveplayerid, 1810.39, -1601.15, 13.54);
 			}
 			format(string, sizeof(string), " Ban da dich chuyen %s toi LS VIP.", GetPlayerNameEx(giveplayerid));
 			SendClientMessageEx(playerid, COLOR_WHITE, string);
@@ -8105,7 +8105,7 @@ CMD:sendto(playerid, params[])
 			}
 			else
 			{
-				ActSetPlayerPos(giveplayerid, -2433.63, 511.45, 30.38);
+				SetPlayerPos(giveplayerid, -2433.63, 511.45, 30.38);
 			}
 			format(string, sizeof(string), " Ban da dich chuyen %s toi SF VIP.", GetPlayerNameEx(giveplayerid));
 			SendClientMessageEx(playerid, COLOR_WHITE, string);
@@ -8127,7 +8127,7 @@ CMD:sendto(playerid, params[])
 			}
 			else
 			{
-				ActSetPlayerPos(giveplayerid, 1875.7731, 1366.0796, 16.8998);
+				SetPlayerPos(giveplayerid, 1875.7731, 1366.0796, 16.8998);
 			}
 			format(string, sizeof(string), " Ban da dich chuyen %s toi LV VIP.", GetPlayerNameEx(giveplayerid));
 			SendClientMessageEx(playerid, COLOR_WHITE, string);
@@ -8149,7 +8149,7 @@ CMD:sendto(playerid, params[])
 			}
 			else
 			{
-				ActSetPlayerPos(giveplayerid, 112.67, 1917.55, 18.72);
+				SetPlayerPos(giveplayerid, 112.67, 1917.55, 18.72);
 			}
 			format(string, sizeof(string), " Ban da dich chuyen %s toi DeMorgan.", GetPlayerNameEx(giveplayerid));
 			SendClientMessageEx(playerid, COLOR_WHITE, string);
@@ -8167,7 +8167,7 @@ CMD:sendto(playerid, params[])
 				SetPlayerInterior(giveplayerid, 10);
 				new rand = random(sizeof(DocPrison));
 				SetPlayerFacingAngle(giveplayerid, 0);
-				ActSetPlayerPos(giveplayerid, DocPrison[rand][0], DocPrison[rand][1], DocPrison[rand][2]);
+				SetPlayerPos(giveplayerid, DocPrison[rand][0], DocPrison[rand][1], DocPrison[rand][2]);
 				PhoneOnline[giveplayerid] = 1;
 				PlayerInfo[giveplayerid][pWantedLevel] = 0;
 				SetPlayerToTeamColor(giveplayerid);
@@ -8179,7 +8179,7 @@ CMD:sendto(playerid, params[])
 			}
 			else
 			{
-				ActSetPlayerPos(giveplayerid, -2069.76, -200.05, 991.53);
+				SetPlayerPos(giveplayerid, -2069.76, -200.05, 991.53);
 				SetPlayerInterior(giveplayerid,10);
 				PlayerInfo[giveplayerid][pInt] = 10;
 				SetPlayerVirtualWorld(giveplayerid, 0);
@@ -8202,14 +8202,14 @@ CMD:sendto(playerid, params[])
 				PhoneOnline[giveplayerid] = 1;
 				new rand = random(sizeof(OOCPrisonSpawns));
 				Streamer_UpdateEx(giveplayerid, OOCPrisonSpawns[rand][0], OOCPrisonSpawns[rand][1], OOCPrisonSpawns[rand][2]);
-				ActSetPlayerPos(giveplayerid, OOCPrisonSpawns[rand][0], OOCPrisonSpawns[rand][1], OOCPrisonSpawns[rand][2]);
+				SetPlayerPos(giveplayerid, OOCPrisonSpawns[rand][0], OOCPrisonSpawns[rand][1], OOCPrisonSpawns[rand][2]);
 				SetPlayerSkin(giveplayerid, 50);
 				SetPlayerColor(giveplayerid, TEAM_APRISON_COLOR);
 				Player_StreamPrep(giveplayerid, OOCPrisonSpawns[rand][0], OOCPrisonSpawns[rand][1], OOCPrisonSpawns[rand][2], FREEZE_TIME);
 			}
 			else
 			{
-				ActSetPlayerPos(giveplayerid, -298.13, 1881.85, 29.89);
+				SetPlayerPos(giveplayerid, -298.13, 1881.85, 29.89);
 				SetPlayerInterior(giveplayerid,1);
 				PlayerInfo[giveplayerid][pInt] = 1;
 				SetPlayerVirtualWorld(giveplayerid, 0);
@@ -8232,7 +8232,7 @@ CMD:sendto(playerid, params[])
 			}
 			else
 			{
-				ActSetPlayerPos(giveplayerid, -1424.93, -664.59, 1059.86);
+				SetPlayerPos(giveplayerid, -1424.93, -664.59, 1059.86);
 			}
 			format(string, sizeof(string), " Ban da dich chuyen %s toi Stadium 1.", GetPlayerNameEx(giveplayerid));
 			SendClientMessageEx(playerid, COLOR_WHITE, string);
@@ -8255,7 +8255,7 @@ CMD:sendto(playerid, params[])
 			}
 			else
 			{
-				ActSetPlayerPos(giveplayerid, -1395.96, -208.20, 1051.28);
+				SetPlayerPos(giveplayerid, -1395.96, -208.20, 1051.28);
 			}
 			format(string, sizeof(string), " Ban da dich chuyen %s toi Stadium 2.", GetPlayerNameEx(giveplayerid));
 			SendClientMessageEx(playerid, COLOR_WHITE, string);
@@ -8278,7 +8278,7 @@ CMD:sendto(playerid, params[])
 			}
 			else
 			{
-				ActSetPlayerPos(giveplayerid, -1410.72, 1591.16, 1052.53);
+				SetPlayerPos(giveplayerid, -1410.72, 1591.16, 1052.53);
 			}
 			format(string, sizeof(string), " Ban da dich chuyen %s toi Stadium 3.", GetPlayerNameEx(giveplayerid));
 			SendClientMessageEx(playerid, COLOR_WHITE, string);
@@ -8301,7 +8301,7 @@ CMD:sendto(playerid, params[])
     		}
 			else
 			{
-				ActSetPlayerPos(giveplayerid, -1394.20, 987.62, 1023.96);
+				SetPlayerPos(giveplayerid, -1394.20, 987.62, 1023.96);
 			}
 			format(string, sizeof(string), " Ban da dich chuyen %s toi Stadium 4.", GetPlayerNameEx(giveplayerid));
 			SendClientMessageEx(playerid, COLOR_WHITE, string);
@@ -8324,7 +8324,7 @@ CMD:sendto(playerid, params[])
 			}
 			else
 			{
-				ActSetPlayerPos(giveplayerid, 1416.107000,0.268620,1000.926000);
+				SetPlayerPos(giveplayerid, 1416.107000,0.268620,1000.926000);
 			}
 			format(string, sizeof(string), " Ban da dich chuyen %s toi Int 1.", GetPlayerNameEx(giveplayerid));
 			SendClientMessageEx(playerid, COLOR_WHITE, string);
@@ -8346,7 +8346,7 @@ CMD:sendto(playerid, params[])
 			}
 			else
 			{
-				ActSetPlayerPos(giveplayerid, GetPVarFloat(playerid, "tpPosX1"), GetPVarFloat(playerid, "tpPosY1"), GetPVarFloat(playerid, "tpPosZ1"));
+				SetPlayerPos(giveplayerid, GetPVarFloat(playerid, "tpPosX1"), GetPVarFloat(playerid, "tpPosY1"), GetPVarFloat(playerid, "tpPosZ1"));
 			}
 			format(string, sizeof(string), " Ban da dich chuyen %s toi your first marked position.", GetPlayerNameEx(giveplayerid));
 			SendClientMessageEx(playerid, COLOR_WHITE, string);
@@ -8364,7 +8364,7 @@ CMD:sendto(playerid, params[])
 			}
 			else
 			{
-				ActSetPlayerPos(giveplayerid, GetPVarFloat(playerid, "tpPosX2"), GetPVarFloat(playerid, "tpPosY2"), GetPVarFloat(playerid, "tpPosZ2"));
+				SetPlayerPos(giveplayerid, GetPVarFloat(playerid, "tpPosX2"), GetPVarFloat(playerid, "tpPosY2"), GetPVarFloat(playerid, "tpPosZ2"));
 			}
 			format(string, sizeof(string), " Ban da dich chuyen %s toi your second marked position.", GetPlayerNameEx(giveplayerid));
 			SendClientMessageEx(playerid, COLOR_WHITE, string);
@@ -8383,7 +8383,7 @@ CMD:sendto(playerid, params[])
 			}
 			else
 			{
-				ActSetPlayerPos(giveplayerid, 1133.71,-1464.52,15.77);
+				SetPlayerPos(giveplayerid, 1133.71,-1464.52,15.77);
 			}
 			format(string, sizeof(string), " Ban da dich chuyen %s toi the mall.", GetPlayerNameEx(giveplayerid));
 			SendClientMessageEx(playerid, COLOR_WHITE, string);
@@ -8406,7 +8406,7 @@ CMD:sendto(playerid, params[])
 			}
 			else
 			{
-				ActSetPlayerPos(giveplayerid, -1446.5997,2608.4478,55.8359);
+				SetPlayerPos(giveplayerid, -1446.5997,2608.4478,55.8359);
 			}
 			format(string, sizeof(string), " Ban da dich chuyen %s toi El Quebrados.", GetPlayerNameEx(giveplayerid));
 			SendClientMessageEx(playerid, COLOR_WHITE, string);
@@ -8429,7 +8429,7 @@ CMD:sendto(playerid, params[])
 			}
 			else
 			{
-				ActSetPlayerPos(giveplayerid, -2465.1348,2333.6572,4.8359);
+				SetPlayerPos(giveplayerid, -2465.1348,2333.6572,4.8359);
 			}
 			format(string, sizeof(string), " Ban da dich chuyen %s toi Bayside.", GetPlayerNameEx(giveplayerid));
 			SendClientMessageEx(playerid, COLOR_WHITE, string);
@@ -8451,7 +8451,7 @@ CMD:sendto(playerid, params[])
 			}
 			else
 			{
-				ActSetPlayerPos(giveplayerid, 1020.29, -1129.06, 23.87);
+				SetPlayerPos(giveplayerid, 1020.29, -1129.06, 23.87);
 			}
 			format(string, sizeof(string), " Ban da dich chuyen %s toi the Famed HQ.", GetPlayerNameEx(giveplayerid));
 			SendClientMessageEx(playerid, COLOR_WHITE, string);
@@ -8473,7 +8473,7 @@ CMD:sendto(playerid, params[])
 			}
 			else
 			{
-				ActSetPlayerPos(giveplayerid, 587.0106,-1238.3374,17.8049);
+				SetPlayerPos(giveplayerid, 587.0106,-1238.3374,17.8049);
 			}
 			format(string, sizeof(string), " Ban da dich chuyen %s toi Rodeo.", GetPlayerNameEx(giveplayerid));
 			SendClientMessageEx(playerid, COLOR_WHITE, string);
@@ -8495,7 +8495,7 @@ CMD:sendto(playerid, params[])
 			}
 			else
 			{
-				ActSetPlayerPos(giveplayerid, -108.1058,-1172.5293,2.8906);
+				SetPlayerPos(giveplayerid, -108.1058,-1172.5293,2.8906);
 			}
 			format(string, sizeof(string), " Ban da dich chuyen %s toi Flint County Gas Station.", GetPlayerNameEx(giveplayerid));
 			SendClientMessageEx(playerid, COLOR_WHITE, string);
@@ -8517,7 +8517,7 @@ CMD:sendto(playerid, params[])
 			}
 			else
 			{
-				ActSetPlayerPos(giveplayerid, 1955.1357,-1796.8896,13.5469);
+				SetPlayerPos(giveplayerid, 1955.1357,-1796.8896,13.5469);
 			}
 			format(string, sizeof(string), " Ban da dich chuyen %s toi Idlewood Gas Station.", GetPlayerNameEx(giveplayerid));
 			SendClientMessageEx(playerid, COLOR_WHITE, string);
@@ -8810,10 +8810,10 @@ CMD:accept(playerid, params[])
 						    SendClientMessageEx(VehicleOffer[playerid], COLOR_LIGHTBLUE, szMessage);
 							GivePlayerCashEx(VehicleOffer[playerid], TYPE_ONHAND, VehiclePrice[playerid]);
 							GivePlayerCashEx(playerid, TYPE_ONHAND, -VehiclePrice[playerid]);
-                            ActRemovePlayerFromVehicle(VehicleOffer[playerid]);
+                            RemovePlayerFromVehicle(VehicleOffer[playerid]);
                             new Float:slx, Float:sly, Float:slz;
                             GetPlayerPos(VehicleOffer[playerid], slx, sly, slz);
-                            ActSetPlayerPos(VehicleOffer[playerid], slx, sly, slz+2);
+                            SetPlayerPos(VehicleOffer[playerid], slx, sly, slz+2);
                             PlayerVehicleInfo[playerid][playervehicleid][pvId] = PlayerVehicleInfo[VehicleOffer[playerid]][VehicleId[playerid]][pvId];
                             PlayerVehicleInfo[playerid][playervehicleid][pvModelId] = PlayerVehicleInfo[VehicleOffer[playerid]][VehicleId[playerid]][pvModelId];
                             PlayerVehicleInfo[playerid][playervehicleid][pvPosX] = PlayerVehicleInfo[VehicleOffer[playerid]][VehicleId[playerid]][pvPosX];
@@ -9370,8 +9370,8 @@ CMD:accept(playerid, params[])
                         SetPlayerHealth(playerid, mypoints);
                         SetPlayerHealth(BoxOffer[playerid], points);
                         SetPlayerInterior(playerid, 7); SetPlayerInterior(BoxOffer[playerid], 7);
-                        ActSetPlayerPos(playerid, 768.94, -70.87, 1001.56); SetPlayerFacingAngle(playerid, 131.8632);
-                        ActSetPlayerPos(BoxOffer[playerid], 764.35, -66.48, 1001.56); SetPlayerFacingAngle(BoxOffer[playerid], 313.1165);
+                        SetPlayerPos(playerid, 768.94, -70.87, 1001.56); SetPlayerFacingAngle(playerid, 131.8632);
+                        SetPlayerPos(BoxOffer[playerid], 764.35, -66.48, 1001.56); SetPlayerFacingAngle(BoxOffer[playerid], 313.1165);
                         TogglePlayerControllable(playerid, 0); TogglePlayerControllable(BoxOffer[playerid], 0);
                         GameTextForPlayer(playerid, "~r~Vui long doi", 3000, 1); GameTextForPlayer(BoxOffer[playerid], "~r~Vui long doi", 3000, 1);
                         new name[MAX_PLAYER_NAME];
@@ -9410,8 +9410,8 @@ CMD:accept(playerid, params[])
                     SetPlayerHealth(playerid, mypoints);
                     SetPlayerHealth(BoxOffer[playerid], points);
                     SetPlayerInterior(playerid, 5); SetPlayerInterior(BoxOffer[playerid], 5);
-                    ActSetPlayerPos(playerid, 762.9852,2.4439,1001.5942); SetPlayerFacingAngle(playerid, 131.8632);
-                    ActSetPlayerPos(BoxOffer[playerid], 758.7064,-1.8038,1001.5942); SetPlayerFacingAngle(BoxOffer[playerid], 313.1165);
+                    SetPlayerPos(playerid, 762.9852,2.4439,1001.5942); SetPlayerFacingAngle(playerid, 131.8632);
+                    SetPlayerPos(BoxOffer[playerid], 758.7064,-1.8038,1001.5942); SetPlayerFacingAngle(BoxOffer[playerid], 313.1165);
                     TogglePlayerControllable(playerid, 0); TogglePlayerControllable(BoxOffer[playerid], 0);
                     GameTextForPlayer(playerid, "~r~Vui long doi", 3000, 1); GameTextForPlayer(BoxOffer[playerid], "~r~Vui long doi", 3000, 1);
                     new name[MAX_PLAYER_NAME];
@@ -11321,13 +11321,13 @@ CMD:window(playerid, params[])
 
             SetPlayerInterior(playerid, 0);
             SetPlayerVirtualWorld(playerid, 0);
-            ActTogglePlayerSpectating(playerid, 1);
+            TogglePlayerSpectating(playerid, 1);
             PlayerSpectateVehicle(playerid, InsidePlane[playerid]);
 
             format(string, sizeof(string), "* %s nhin ra ngoai cua so.", GetPlayerNameEx(playerid));
             ProxDetector(30.0, playerid, string, COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE);
         }
-        else ActTogglePlayerSpectating(playerid, 0);
+        else TogglePlayerSpectating(playerid, 0);
     }
     return 1;
 }
@@ -11577,7 +11577,7 @@ CMD:enter(playerid, params[])
 		SetPVarInt(playerid, "IsPlayer_StreamPrep", gettime() + 30); // 30 giay
 		SetPlayerFacingAngle(playerid, 90);
 		SetPlayerVirtualWorld(playerid, GetPlayerSQLId(playerid));
-		ActSetPlayerPos(playerid, -1424.9208,-1472.0114,101.6843);
+		SetPlayerPos(playerid, -1424.9208,-1472.0114,101.6843);
 		Player_StreamPrep(playerid, -1424.9208,-1472.0114,101.6843, FREEZE_TIME);
 		return 1;
 	}
@@ -11668,7 +11668,7 @@ CMD:enter(playerid, params[])
                 }
             }
             else {
-                ActSetPlayerPos(playerid,DDoorsInfo[i][ddInteriorX],DDoorsInfo[i][ddInteriorY],DDoorsInfo[i][ddInteriorZ]);
+                SetPlayerPos(playerid,DDoorsInfo[i][ddInteriorX],DDoorsInfo[i][ddInteriorY],DDoorsInfo[i][ddInteriorZ]);
                 SetPlayerFacingAngle(playerid,DDoorsInfo[i][ddInteriorA]);
                 SetCameraBehindPlayer(playerid);
             }
@@ -11682,7 +11682,7 @@ CMD:enter(playerid, params[])
             PlayerInfo[playerid][pInt] = FamilyInfo[i][FamilyInterior];
             PlayerInfo[playerid][pVW] = FamilyInfo[i][FamilyVirtualWorld];
             SetPlayerVirtualWorld(playerid, FamilyInfo[i][FamilyVirtualWorld]);
-            ActSetPlayerPos(playerid,FamilyInfo[i][FamilyExit][0],FamilyInfo[i][FamilyExit][1],FamilyInfo[i][FamilyExit][2]);
+            SetPlayerPos(playerid,FamilyInfo[i][FamilyExit][0],FamilyInfo[i][FamilyExit][1],FamilyInfo[i][FamilyExit][2]);
             SetPlayerFacingAngle(playerid,FamilyInfo[i][FamilyExit][3]);
 			if(FamilyInfo[i][FamilyCustomMap]) Player_StreamPrep(playerid, FamilyInfo[i][FamilyExit][0],FamilyInfo[i][FamilyExit][1],FamilyInfo[i][FamilyExit][2], FREEZE_TIME);
             return 1;
@@ -11695,7 +11695,7 @@ CMD:enter(playerid, params[])
                 PlayerInfo[playerid][pInt] = HouseInfo[i][hIntIW];
                 PlayerInfo[playerid][pVW] = HouseInfo[i][hIntVW];
                 SetPlayerVirtualWorld(playerid,HouseInfo[i][hIntVW]);
-                ActSetPlayerPos(playerid,HouseInfo[i][hInteriorX],HouseInfo[i][hInteriorY],HouseInfo[i][hInteriorZ]);
+                SetPlayerPos(playerid,HouseInfo[i][hInteriorX],HouseInfo[i][hInteriorY],HouseInfo[i][hInteriorZ]);
                 SetPlayerFacingAngle(playerid,HouseInfo[i][hInteriorA]);
                 SetCameraBehindPlayer(playerid);
                 GameTextForPlayer(playerid, "~w~Chao mung ve nha", 5000, 1);
@@ -11725,7 +11725,7 @@ CMD:enter(playerid, params[])
 
 
 				SetPlayerInterior(playerid,Businesses[i][bInt]);
-	            ActSetPlayerPos(playerid,Businesses[i][bIntPos][0],Businesses[i][bIntPos][1],Businesses[i][bIntPos][2]);
+	            SetPlayerPos(playerid,Businesses[i][bIntPos][0],Businesses[i][bIntPos][1],Businesses[i][bIntPos][2]);
 		        SetPlayerFacingAngle(playerid, Businesses[i][bIntPos][3]);
 	         	SetCameraBehindPlayer(playerid);
 		        PlayerInfo[playerid][pInt] = Businesses[i][bInt];
@@ -11764,7 +11764,7 @@ CMD:enter(playerid, params[])
         PlayerInfo[playerid][pVW] = 7;
         Streamer_UpdateEx(playerid, 1170.0106201172,-1355.0770263672,2423.0461425781);
         //Old Hospital: 2087.4626,2806.0630,-16.1744
-        ActSetPlayerPos(playerid,1170.0106201172,-1355.0770263672,2423.0461425781);
+        SetPlayerPos(playerid,1170.0106201172,-1355.0770263672,2423.0461425781);
         PlayerInfo[playerid][pInt] = 1;
         Player_StreamPrep(playerid, 1170.0106201172,-1355.0770263672,2423.0461425781, FREEZE_TIME);
     }
@@ -11772,25 +11772,25 @@ CMD:enter(playerid, params[])
                                                   //Battle Carrier Armoury
         SetPlayerInterior(playerid, 6);
         SetPlayerVirtualWorld(playerid, 1337);
-        ActSetPlayerPos(playerid, 316.4553,-170.2923,999.5938);
+        SetPlayerPos(playerid, 316.4553,-170.2923,999.5938);
         PlayerInfo[playerid][pVW] = 1337;
     }
     else if(IsPlayerInRangeOfPoint(playerid, 2.0, 306.4042,-159.0768,999.5938)) {
                                                   //Battle Carrier Armoury
-        ActSetPlayerPos(playerid, 305.6966,-159.1586,999.5938);
+        SetPlayerPos(playerid, 305.6966,-159.1586,999.5938);
     }
     else if(IsPlayerInRangeOfPoint(playerid, 2.0, (X-5.560629),(Y-3.860818),11.6986)) {
                                                   //Engine Room Entrance
         SetPlayerInterior(playerid, 17);
         SetPlayerVirtualWorld(playerid, 1337);
-        ActSetPlayerPos(playerid, -959.6347,1956.4598,9.0000);
+        SetPlayerPos(playerid, -959.6347,1956.4598,9.0000);
         PlayerInfo[playerid][pVW] = 1337;
     }
     else if(IsPlayerInRangeOfPoint(playerid, 2.0, (X-15.382171),(Y-2.272918),11.6986)) {
                                                   //Briefing Room Entrance
         SetPlayerInterior(playerid, 3);
         SetPlayerVirtualWorld(playerid, 1337);
-        ActSetPlayerPos(playerid, 1494.3763,1303.5875,1093.2891);
+        SetPlayerPos(playerid, 1494.3763,1303.5875,1093.2891);
         PlayerInfo[playerid][pVW] = 1337;
     }
 //NG/LEO Only Entrance
@@ -11802,7 +11802,7 @@ CMD:enter(playerid, params[])
             PlayerInfo[playerid][pVW] = 666420;
             SetPlayerInterior(playerid, 6);
             PlayerInfo[playerid][pInt] = 6;
-            ActSetPlayerPos(playerid, -68.8239,1351.4331,1080.6257);
+            SetPlayerPos(playerid, -68.8239,1351.4331,1080.6257);
             SetPlayerFacingAngle(playerid, 160);
             SetCameraBehindPlayer(playerid);
             Player_StreamPrep(playerid, -68.8239,1351.4331,1080.6257, FREEZE_TIME);
@@ -11815,7 +11815,7 @@ CMD:enter(playerid, params[])
             PlayerInfo[playerid][pVW] = 666421;
             SetPlayerInterior(playerid, 6);
             PlayerInfo[playerid][pInt] = 6;
-            ActSetPlayerPos(playerid, -68.8239,1351.4331,1080.6257);
+            SetPlayerPos(playerid, -68.8239,1351.4331,1080.6257);
             SetPlayerFacingAngle(playerid, 160);
             SetCameraBehindPlayer(playerid);
             Player_StreamPrep(playerid, -68.8239,1351.4331,1080.6257, FREEZE_TIME);
@@ -11828,7 +11828,7 @@ CMD:enter(playerid, params[])
             SetVehiclePos(GetPlayerVehicleID(playerid), -1790.378295,1436.949829,7.187500);
         }
         else {
-            ActSetPlayerPos(playerid,-1790.378295,1436.949829,7.187500);
+            SetPlayerPos(playerid,-1790.378295,1436.949829,7.187500);
         }
     }
 
@@ -11841,7 +11841,7 @@ CMD:enter(playerid, params[])
             }
             else {
                 Streamer_UpdateEx(playerid, 2425.8677,-1644.1337,1015.2882);
-                ActSetPlayerPos(playerid,2425.8677,-1644.1337,1015.2882);
+                SetPlayerPos(playerid,2425.8677,-1644.1337,1015.2882);
                 SetPlayerFacingAngle(playerid, 180);
             }
         }
@@ -11855,7 +11855,7 @@ CMD:enter(playerid, params[])
             SetPlayerInterior(playerid, 0);
             PlayerInfo[playerid][pInt] = 0;
             SetPlayerVirtualWorld(playerid, 0);
-            ActSetPlayerPos(playerid,1579.0098876953, -1636.2879638672, 13.554491043091);
+            SetPlayerPos(playerid,1579.0098876953, -1636.2879638672, 13.554491043091);
             SetPlayerFacingAngle(playerid, 190.0520);
             SetCameraBehindPlayer(playerid);
             PlayerInfo[playerid][pVW] = 0;
@@ -11870,7 +11870,7 @@ CMD:enter(playerid, params[])
             SetPlayerInterior(playerid, 0);
             PlayerInfo[playerid][pInt] = 0;
             SetPlayerVirtualWorld(playerid, 0);
-            ActSetPlayerPos(playerid,-2045.0183, -211.6728, 991.5364);
+            SetPlayerPos(playerid,-2045.0183, -211.6728, 991.5364);
             SetCameraBehindPlayer(playerid);
             PlayerInfo[playerid][pVW] = 0;
             SetCameraBehindPlayer(playerid);
@@ -11882,7 +11882,7 @@ CMD:enter(playerid, params[])
     }
     else if(IsPlayerInRangeOfPoint(playerid, 3.0, -2088.4797, -199.6259, 978.8315)) {
         if(IsACop(playerid)) {
-            ActSetPlayerPos(playerid,-2091.0200,-199.8031,978.8315);
+            SetPlayerPos(playerid,-2091.0200,-199.8031,978.8315);
         }
         else {
             SendErrorMessage(playerid, " You do not have the keys for that door (SFPD restricted)!");
@@ -11893,7 +11893,7 @@ CMD:enter(playerid, params[])
         if(IsACop(playerid)) {
             SetPlayerFacingAngle(playerid, 359);
             GameTextForPlayer(playerid, "~w~GARAGE", 5000, 1);
-            ActSetPlayerPos(playerid,612.6414,-629.8659,-4.0447);
+            SetPlayerPos(playerid,612.6414,-629.8659,-4.0447);
             SetPlayerVirtualWorld(playerid, 0);
             PlayerInfo[playerid][pVW] = 0;
 			Player_StreamPrep(playerid, 612.6414,-629.8659,-4.0447, FREEZE_TIME);
@@ -11909,7 +11909,7 @@ CMD:enter(playerid, params[])
         }
         else {
             Streamer_UpdateEx(playerid, 2240.7332,-1695.9648,-0.0826 + 1100);
-            ActSetPlayerPos(playerid,2240.7332,-1695.9648,-0.0826 + 1100);
+            SetPlayerPos(playerid,2240.7332,-1695.9648,-0.0826 + 1100);
             SetPlayerFacingAngle(playerid, 180);
         }
     }
@@ -11921,7 +11921,7 @@ CMD:enter(playerid, params[])
         }
         else {
             Streamer_UpdateEx(playerid,1381.7274,-1676.4248,-13.2229 + 1100);
-            ActSetPlayerPos(playerid,1381.7274,-1676.4248,-13.2229 + 1100);
+            SetPlayerPos(playerid,1381.7274,-1676.4248,-13.2229 + 1100);
             SetPlayerFacingAngle(playerid, 90);
         }
     }
@@ -11933,18 +11933,18 @@ CMD:enter(playerid, params[])
         }
         else {
             Streamer_UpdateEx(playerid, 1218.8041,-1449.8579,-46.2308 + 1100);
-            ActSetPlayerPos(playerid,1218.8041,-1449.8579,-46.2308 + 1100);
+            SetPlayerPos(playerid,1218.8041,-1449.8579,-46.2308 + 1100);
             SetPlayerFacingAngle(playerid, 90);
         }
     }
                                                   // LAOfficeBuilding Roof Entrance
     else if (IsPlayerInRangeOfPoint(playerid,3.0,1779.0928,-1302.7775,131.7344)) {
-        ActSetPlayerPos(playerid, 1771.0253,-1302.8596,125.7209);
+        SetPlayerPos(playerid, 1771.0253,-1302.8596,125.7209);
         SetPlayerFacingAngle(playerid, 280);
     }
                                                   // LAOfficeBuilding Roof Entrance
     else if (IsPlayerInRangeOfPoint(playerid,3.0,1771.0253,-1302.8596,125.7209)) {
-        ActSetPlayerPos(playerid,1779.0928,-1302.7775,131.7344);
+        SetPlayerPos(playerid,1779.0928,-1302.7775,131.7344);
         SetPlayerFacingAngle(playerid, 280);
     }
                                                   // Gold/Plat VIP
@@ -11953,7 +11953,7 @@ CMD:enter(playerid, params[])
             SendServerMessage(playerid, " * You are not Gold or Platinum VIP!");
         }
         else {
-            ActSetPlayerPos(playerid,911.6200,1426.2729,-81.1762);
+            SetPlayerPos(playerid,911.6200,1426.2729,-81.1762);
             SetPlayerFacingAngle(playerid, 270);
         }
     }
@@ -11967,13 +11967,13 @@ CMD:enter(playerid, params[])
 
 		switch(GetVehicleModel(cCar)) {
 			case 519: { // Shamal
-				ActSetPlayerPos(playerid, 2.509036, 23.118730, 1199.593750);
+				SetPlayerPos(playerid, 2.509036, 23.118730, 1199.593750);
 				SetPlayerFacingAngle(playerid, 82.14);
 				PlayerInfo[playerid][pInt] = 1;
 				SetPlayerInterior(playerid, 1);
 			}
 			case 553: { // Nevada
-				ActSetPlayerPos(playerid, 315.9396, 973.2628, 1961.5985);
+				SetPlayerPos(playerid, 315.9396, 973.2628, 1961.5985);
 				SetPlayerFacingAngle(playerid, 2.7);
 				PlayerInfo[playerid][pInt] = 9;
 				SetPlayerInterior(playerid, 9);
@@ -12079,7 +12079,7 @@ CMD:exit(playerid, params[])
                 }
             }
             else {
-                ActSetPlayerPos(playerid,DDoorsInfo[i][ddExteriorX],DDoorsInfo[i][ddExteriorY],DDoorsInfo[i][ddExteriorZ]);
+                SetPlayerPos(playerid,DDoorsInfo[i][ddExteriorX],DDoorsInfo[i][ddExteriorY],DDoorsInfo[i][ddExteriorZ]);
                 SetPlayerFacingAngle(playerid, DDoorsInfo[i][ddExteriorA]);
                 SetCameraBehindPlayer(playerid);
             }
@@ -12093,7 +12093,7 @@ CMD:exit(playerid, params[])
             SetPlayerVirtualWorld(playerid, 0);
             SetPlayerInterior(playerid,0);
             Streamer_UpdateEx(playerid, FamilyInfo[i][FamilyEntrance][0],FamilyInfo[i][FamilyEntrance][1],FamilyInfo[i][FamilyEntrance][2]);
-            ActSetPlayerPos(playerid,FamilyInfo[i][FamilyEntrance][0],FamilyInfo[i][FamilyEntrance][1],FamilyInfo[i][FamilyEntrance][2]);
+            SetPlayerPos(playerid,FamilyInfo[i][FamilyEntrance][0],FamilyInfo[i][FamilyEntrance][1],FamilyInfo[i][FamilyEntrance][2]);
             SetPlayerFacingAngle(playerid,FamilyInfo[i][FamilyEntrance][3]);
             return 1;
         }
@@ -12102,7 +12102,7 @@ CMD:exit(playerid, params[])
         if (IsPlayerInRangeOfPoint(playerid,3.0,HouseInfo[i][hInteriorX], HouseInfo[i][hInteriorY], HouseInfo[i][hInteriorZ]) && PlayerInfo[playerid][pVW] == HouseInfo[i][hIntVW]) {
 			SetPlayerInterior(playerid,0);
             PlayerInfo[playerid][pInt] = 0;
-            ActSetPlayerPos(playerid,HouseInfo[i][hExteriorX],HouseInfo[i][hExteriorY],HouseInfo[i][hExteriorZ]);
+            SetPlayerPos(playerid,HouseInfo[i][hExteriorX],HouseInfo[i][hExteriorY],HouseInfo[i][hExteriorZ]);
             SetPlayerFacingAngle(playerid, HouseInfo[i][hExteriorA]);
             SetCameraBehindPlayer(playerid);
             SetPlayerVirtualWorld(playerid, HouseInfo[i][hExtVW]);
@@ -12118,7 +12118,7 @@ CMD:exit(playerid, params[])
 		    if(Businesses[i][bVW] == 0 && PlayerInfo[playerid][pVW] == BUSINESS_BASE_VW + i || Businesses[i][bVW] != 0 && PlayerInfo[playerid][pVW] == Businesses[i][bVW]) {
 				SetPlayerInterior(playerid, 0);
 				SetPlayerVirtualWorld(playerid, 0);
-        	    ActSetPlayerPos(playerid,Businesses[i][bExtPos][0],Businesses[i][bExtPos][1],Businesses[i][bExtPos][2]);
+        	    SetPlayerPos(playerid,Businesses[i][bExtPos][0],Businesses[i][bExtPos][1],Businesses[i][bExtPos][2]);
         	    SetPlayerFacingAngle(playerid, Businesses[i][bExtPos][3]);
         	    SetCameraBehindPlayer(playerid);
 				PlayerInfo[playerid][pInt] = 0;
@@ -12136,7 +12136,7 @@ CMD:exit(playerid, params[])
             SetVehicleZAngle(GetPlayerVehicleID(playerid), 347.7918);
         }
         else {
-            ActSetPlayerPos(playerid,1753.4561,-1595.1804,13.5381);
+            SetPlayerPos(playerid,1753.4561,-1595.1804,13.5381);
         }
     }
     else if(InsidePlane[playerid] != INVALID_VEHICLE_ID)
@@ -12152,12 +12152,12 @@ CMD:exit(playerid, params[])
         if(!IsAPlane(InsidePlane[playerid])) {
             PlayerInfo[playerid][pAGuns][GetWeaponSlot(46)] = 46;
             GivePlayerValidWeapon(playerid, 46, 1);
-            ActSetPlayerPos(playerid, 0.000000, 0.000000, 420.000000); // lol nick
+            SetPlayerPos(playerid, 0.000000, 0.000000, 420.000000); // lol nick
         }
         else {
             new Float:X, Float:Y, Float:Z;
             GetVehiclePos(InsidePlane[playerid], X, Y, Z);
-            ActSetPlayerPos(playerid, X-2.7912, Y+3.2304, Z);
+            SetPlayerPos(playerid, X-2.7912, Y+3.2304, Z);
 			Player_StreamPrep(playerid, X-2.7912,Y+3.2304,Z, FREEZE_TIME);
             if(Z > 50.0) {
                 PlayerInfo[playerid][pAGuns][GetWeaponSlot(46)] = 46;
@@ -12175,13 +12175,13 @@ CMD:exit(playerid, params[])
         if(BackEntrance) {
          	SetPlayerInterior(playerid, 0);
 	        SetPlayerVirtualWorld(playerid, 0);
-	        ActSetPlayerPos(playerid, -2033.7502,-154.8784,35.3203);
+	        SetPlayerPos(playerid, -2033.7502,-154.8784,35.3203);
 		 }
 		 else return SendErrorMessage(playerid, " You don't have the keys for that door (locked) !");
     }
     else if(IsPlayerInRangeOfPoint(playerid, 3.0, -2091.0200,-199.8031,978.8315)) {
         if(IsACop(playerid)) {
-	        ActSetPlayerPos(playerid, -2088.4797,-199.6259,978.8315);
+	        SetPlayerPos(playerid, -2088.4797,-199.6259,978.8315);
 		 }
 		 else return SendErrorMessage(playerid, " You don't have the keys for that door (LEO restricted) !");
     }
@@ -12192,7 +12192,7 @@ CMD:exit(playerid, params[])
         SetPlayerFacingAngle(playerid, 180);
         new Float:X, Float:Y, Float:Z;
         GetDynamicObjectPos(Carrier[0], X, Y, Z);
-        ActSetPlayerPos(playerid, (X-0.377671),(Y-10.917018),11.6986);
+        SetPlayerPos(playerid, (X-0.377671),(Y-10.917018),11.6986);
     }
     else if(IsPlayerInRangeOfPoint(playerid, 2.0, 316.4553,-170.2923,999.5938) && GetPlayerVirtualWorld(playerid) == 1337) {
                                                   //Battle Carrier Armoury
@@ -12201,11 +12201,11 @@ CMD:exit(playerid, params[])
         PlayerInfo[playerid][pVW] = 0;
         new Float:X, Float:Y, Float:Z;
         GetDynamicObjectPos(Carrier[0], X, Y, Z);
-        ActSetPlayerPos(playerid, (X-6.422671),(Y-10.898918),11.6986);
+        SetPlayerPos(playerid, (X-6.422671),(Y-10.898918),11.6986);
     }
     else if(IsPlayerInRangeOfPoint(playerid, 2.0, 305.6966,-159.1586,999.5938)&& GetPlayerVirtualWorld(playerid) == 1337) {
                                                   //Battle Carrier Armoury
-        ActSetPlayerPos(playerid, 306.4042,-159.0768,999.5938);
+        SetPlayerPos(playerid, 306.4042,-159.0768,999.5938);
     }
     else if(IsPlayerInRangeOfPoint(playerid, 2.0, -959.6347,1956.4598,9.0000) && GetPlayerVirtualWorld(playerid) == 1337) {
                                                   //Engine Room Exit
@@ -12213,7 +12213,7 @@ CMD:exit(playerid, params[])
         SetPlayerVirtualWorld(playerid, 0);
         new Float:X, Float:Y, Float:Z;
         GetDynamicObjectPos(Carrier[0], X, Y, Z);
-        ActSetPlayerPos(playerid, (X-5.560629),(Y-3.853518),11.6986);
+        SetPlayerPos(playerid, (X-5.560629),(Y-3.853518),11.6986);
         PlayerInfo[playerid][pVW] = 0;
     }
     else if(IsPlayerInRangeOfPoint(playerid, 2.0, 1494.3763,1303.5875,1093.2891) && GetPlayerVirtualWorld(playerid) == 1337) {
@@ -12222,12 +12222,12 @@ CMD:exit(playerid, params[])
         SetPlayerVirtualWorld(playerid, 0);
         new Float:X, Float:Y, Float:Z;
         GetDynamicObjectPos(Carrier[0], X, Y, Z);
-        ActSetPlayerPos(playerid, (X-15.382171),(Y-2.272918),11.6986);
+        SetPlayerPos(playerid, (X-15.382171),(Y-2.272918),11.6986);
         PlayerInfo[playerid][pVW] = 0;
     }
     else if(IsPlayerInRangeOfPoint(playerid, 2.0, 971.70568847656, 0.73652172088623, 1013.0336914063)) {
         if(PlayerInfo[playerid][pFMember] == 1) {
-            ActSetPlayerPos(playerid, 971.75524902344, 1.949291229248, 1012.8675537109);
+            SetPlayerPos(playerid, 971.75524902344, 1.949291229248, 1012.8675537109);
             SetCameraBehindPlayer(playerid);
             Player_StreamPrep(playerid, 971.75524902344, 1.949291229248, 1012.8675537109, FREEZE_TIME);
         }
@@ -12237,7 +12237,7 @@ CMD:exit(playerid, params[])
     }
     else if(IsPlayerInRangeOfPoint(playerid, 2.0, -265.52786254883, 1409.2824707031, -2.2975430488586)) {
         if(PlayerInfo[playerid][pFMember] == 1) {
-            ActSetPlayerPos(playerid, -230.57353210449, 1409.3792724609, -5.2974662780762);
+            SetPlayerPos(playerid, -230.57353210449, 1409.3792724609, -5.2974662780762);
             SetPlayerVirtualWorld(playerid, 0);
             PlayerInfo[playerid][pVW] = 0;
             SetCameraBehindPlayer(playerid);
@@ -12251,7 +12251,7 @@ CMD:exit(playerid, params[])
     }
     else if(IsPlayerInRangeOfPoint(playerid, 2.0, -270.8628,1417.2441,-2.2902)) {
         if(PlayerInfo[playerid][pFMember] == 1) {
-            ActSetPlayerPos(playerid, 255.84442138672, -158.21658325195, 1.677818775177);
+            SetPlayerPos(playerid, 255.84442138672, -158.21658325195, 1.677818775177);
             SetPlayerVirtualWorld(playerid, 0);
             PlayerInfo[playerid][pVW] = 0;
             SetCameraBehindPlayer(playerid);
@@ -12269,7 +12269,7 @@ CMD:exit(playerid, params[])
             SetVehiclePos(GetPlayerVehicleID(playerid), 1551.8052,31.0254,24.1446);
         }
         else {
-            ActSetPlayerPos(playerid,1551.8052,31.0254,24.1446);
+            SetPlayerPos(playerid,1551.8052,31.0254,24.1446);
         }
     }
                                                         //VIP Garage
@@ -12279,7 +12279,7 @@ CMD:exit(playerid, params[])
             SetVehicleZAngle(GetPlayerVehicleID(playerid),  253);
         }
         else {
-            ActSetPlayerPos(playerid,1819.3533,-1560.3534,13.5469);
+            SetPlayerPos(playerid,1819.3533,-1560.3534,13.5469);
             SetPlayerFacingAngle(playerid,253);
         }
 	}
@@ -12290,7 +12290,7 @@ CMD:exit(playerid, params[])
             PlayerInfo[playerid][pVW] = 0;
             SetPlayerInterior(playerid, 0);
             PlayerInfo[playerid][pInt] = 0;
-            ActSetPlayerPos(playerid, -418.95, -1759.26, 6.22);
+            SetPlayerPos(playerid, -418.95, -1759.26, 6.22);
             SetCameraBehindPlayer(playerid);
         }
     }
@@ -12301,7 +12301,7 @@ CMD:exit(playerid, params[])
             PlayerInfo[playerid][pVW] = 0;
             SetPlayerInterior(playerid, 0);
             PlayerInfo[playerid][pInt] = 0;
-            ActSetPlayerPos(playerid, 2323.3135, 7.6760, 26.5640);
+            SetPlayerPos(playerid, 2323.3135, 7.6760, 26.5640);
             SetPlayerFacingAngle(playerid, 265.11);
             SetCameraBehindPlayer(playerid);
         }
@@ -12311,7 +12311,7 @@ CMD:exit(playerid, params[])
         if(IsACop(playerid)) {
             SetPlayerInterior(playerid, 0);
             PlayerInfo[playerid][pInt] = 0;
-            ActSetPlayerPos(playerid,-1591.450195, 716.007141, -5.242187);
+            SetPlayerPos(playerid,-1591.450195, 716.007141, -5.242187);
             SetPlayerFacingAngle(playerid, 271.00);
             SetCameraBehindPlayer(playerid);
         }
@@ -12324,7 +12324,7 @@ CMD:exit(playerid, params[])
         if(IsACop(playerid)) {
             SetPlayerFacingAngle(playerid, 268);
             GameTextForPlayer(playerid, "~w~SASD HQ", 5000, 1);
-            ActSetPlayerPos(playerid,2530.3774,-1689.9998,562.7922);
+            SetPlayerPos(playerid,2530.3774,-1689.9998,562.7922);
             SetPlayerVirtualWorld(playerid, 1699);
             PlayerInfo[playerid][pVW] = 1699;
 			Player_StreamPrep(playerid, 2530.3774,-1689.9998,562.7922, FREEZE_TIME);
@@ -12337,7 +12337,7 @@ CMD:exit(playerid, params[])
     else if(IsPlayerInRangeOfPoint(playerid, 3,310.8672,-1484.7493,-33.5292 )) {
         if(IsACop(playerid)) {
             SetPlayerInterior(playerid,0);
-            ActSetPlayerPos(playerid, 314.30,-1512.07,24.92);
+            SetPlayerPos(playerid, 314.30,-1512.07,24.92);
             SetPlayerFacingAngle(playerid, 55.76);
             SetCameraBehindPlayer(playerid);
             PlayerInfo[playerid][pInt] = 0;
@@ -12351,7 +12351,7 @@ CMD:exit(playerid, params[])
     else if (IsPlayerInRangeOfPoint(playerid, 3, 291.8773,-1481.0674,-33.5308)) {
         if(IsACop(playerid)) {
             SetPlayerInterior(playerid,0);
-            ActSetPlayerPos(playerid,298.26, -1544.53, 76.53);
+            SetPlayerPos(playerid,298.26, -1544.53, 76.53);
             SetCameraBehindPlayer(playerid);
             PlayerInfo[playerid][pInt] = 0;
             SetPlayerVirtualWorld(playerid, 0);
@@ -12363,21 +12363,21 @@ CMD:exit(playerid, params[])
     }
     /*else if (IsPlayerInRangeOfPoint(playerid,6.0,-1404.5299,-259.0602,1043.6563)) {
         SetPlayerInterior(playerid,0);
-        ActSetPlayerPos(playerid,2695.6235,-1704.6960,11.8438);
+        SetPlayerPos(playerid,2695.6235,-1704.6960,11.8438);
     }
     else if (IsPlayerInRangeOfPoint(playerid,8.0,-1443.0554,-581.1879,1055.0472)) {
         SetPlayerInterior(playerid,0);
-        ActSetPlayerPos(playerid,-2111.5686,-443.9720,38.7344);
+        SetPlayerPos(playerid,-2111.5686,-443.9720,38.7344);
     }
     else if (IsPlayerInRangeOfPoint(playerid,8.0,-1464.7732,1557.5533,1052.5313)) {
         SetPlayerInterior(playerid,0);
-        ActSetPlayerPos(playerid,-2080.3079,-406.0309,38.7344);
+        SetPlayerPos(playerid,-2080.3079,-406.0309,38.7344);
     }*/
                                                   // NG exit
     else if (IsPlayerInRangeOfPoint(playerid,4.0,-273.884765625,1875.1552734375,29.817853927612)) {
         if (PlayerInfo[playerid][pJailTime] == 0) {
             SetPlayerInterior(playerid,0);
-            ActSetPlayerPos(playerid,200.2569,1869.5732,13.1470);
+            SetPlayerPos(playerid,200.2569,1869.5732,13.1470);
         }
         else {
             SetPlayerHealth(playerid, 0);
@@ -12392,7 +12392,7 @@ CMD:exit(playerid, params[])
             SetVehicleZAngle(GetPlayerVehicleID(playerid),  270);
         }
         else {
-            ActSetPlayerPos(playerid,1423.0443,-1664.5244,13.5810);
+            SetPlayerPos(playerid,1423.0443,-1664.5244,13.5810);
             SetPlayerFacingAngle(playerid,270);
         }
     }
@@ -12403,7 +12403,7 @@ CMD:exit(playerid, params[])
             SetVehicleZAngle(GetPlayerVehicleID(playerid),  180);
         }
         else {
-            ActSetPlayerPos(playerid,2273.6787,-1728.9022,13.5039);
+            SetPlayerPos(playerid,2273.6787,-1728.9022,13.5039);
             SetPlayerFacingAngle(playerid,180);
         }
     }
@@ -12414,12 +12414,12 @@ CMD:exit(playerid, params[])
             SetVehicleZAngle(GetPlayerVehicleID(playerid),  360);
         }
         else {
-            ActSetPlayerPos(playerid,1218.6017,-1421.5887,13.9084);
+            SetPlayerPos(playerid,1218.6017,-1421.5887,13.9084);
         }
     }
                                            // Gold/Plat VIP
     else if (IsPlayerInRangeOfPoint(playerid,3.0, 911.6200,1426.2729,-81.1762)) {
-        ActSetPlayerPos(playerid,902.2482,1419.8180,-80.9308);
+        SetPlayerPos(playerid,902.2482,1419.8180,-80.9308);
         SetPlayerFacingAngle(playerid, 90);
     }
     return 1;
@@ -12669,7 +12669,7 @@ CMD:gotojet(playerid, params[])
             SetVehiclePos(tmpcar, 1.71875, 30.4062, 1200.34);
         }
         else {
-            ActSetPlayerPos(playerid, 1.71875, 30.4062, 1200.34);
+            SetPlayerPos(playerid, 1.71875, 30.4062, 1200.34);
         }
         SetPlayerInterior(playerid,1);
         SendServerMessage(playerid, "    Ban da duoc dich chuyen!");
@@ -12694,7 +12694,7 @@ CMD:eventstafflol(playerid, params[])
 					EventLastInt[playerid] = GetPlayerInterior(playerid);
 					GetPlayerPos(playerid, EventFloats[playerid][1], EventFloats[playerid][2], EventFloats[playerid][3]);
 					GetPlayerFacingAngle(playerid, EventFloats[playerid][0]);
-					ActSetPlayerPos( playerid, EventKernel[ EventPositionX ], EventKernel[ EventPositionY ], EventKernel[ EventPositionZ ] );
+					SetPlayerPos( playerid, EventKernel[ EventPositionX ], EventKernel[ EventPositionY ], EventKernel[ EventPositionZ ] );
 					SetPlayerInterior( playerid, EventKernel[ EventInterior ] );
 					SetPlayerVirtualWorld( playerid, EventKernel[ EventWorld ] );
 					PlayerInfo[playerid][pAGuns][GetWeaponSlot(38)] = 38;
@@ -12728,7 +12728,7 @@ CMD:quitevent(playerid, params[])
         			SetPlayerWeapons(playerid);
        				SetPlayerToTeamColor(playerid);
         			SetPlayerSkin(playerid, PlayerInfo[playerid][pModel]);
-        			ActSetPlayerPos(playerid,EventFloats[playerid][1],EventFloats[playerid][2],EventFloats[playerid][3]);
+        			SetPlayerPos(playerid,EventFloats[playerid][1],EventFloats[playerid][2],EventFloats[playerid][3]);
         			SetPlayerVirtualWorld(playerid, EventLastVW[playerid]);
         			SetPlayerFacingAngle(playerid, EventFloats[playerid][0]);
         			SetPlayerInterior(playerid,EventLastInt[playerid]);
@@ -12748,7 +12748,7 @@ CMD:quitevent(playerid, params[])
        	SetPlayerWeapons(playerid);
        	SetPlayerToTeamColor(playerid);
        	SetPlayerSkin(playerid, PlayerInfo[playerid][pModel]);
-       	ActSetPlayerPos(playerid,EventFloats[playerid][1],EventFloats[playerid][2],EventFloats[playerid][3]);
+       	SetPlayerPos(playerid,EventFloats[playerid][1],EventFloats[playerid][2],EventFloats[playerid][3]);
       	SetPlayerVirtualWorld(playerid, EventLastVW[playerid]);
        	SetPlayerFacingAngle(playerid, EventFloats[playerid][0]);
        	SetPlayerInterior(playerid,EventLastInt[playerid]);
@@ -12784,7 +12784,7 @@ CMD:quitevent(playerid, params[])
 				SetPlayerWeapons(playerid);
 				SetPlayerToTeamColor(playerid);
 				SetPlayerSkin(playerid, PlayerInfo[playerid][pModel]);
-				ActSetPlayerPos(playerid,EventFloats[playerid][1],EventFloats[playerid][2],EventFloats[playerid][3]);
+				SetPlayerPos(playerid,EventFloats[playerid][1],EventFloats[playerid][2],EventFloats[playerid][3]);
 				SetPlayerVirtualWorld(playerid, EventLastVW[playerid]);
 				SetPlayerFacingAngle(playerid, EventFloats[playerid][0]);
 				SetPlayerInterior(playerid,EventLastInt[playerid]);
@@ -12808,7 +12808,7 @@ CMD:quitevent(playerid, params[])
        	SetPlayerWeapons(playerid);
        	SetPlayerToTeamColor(playerid);
        	SetPlayerSkin(playerid, PlayerInfo[playerid][pModel]);
-       	ActSetPlayerPos(playerid,EventFloats[playerid][1],EventFloats[playerid][2],EventFloats[playerid][3]);
+       	SetPlayerPos(playerid,EventFloats[playerid][1],EventFloats[playerid][2],EventFloats[playerid][3]);
       	SetPlayerVirtualWorld(playerid, EventLastVW[playerid]);
        	SetPlayerFacingAngle(playerid, EventFloats[playerid][0]);
        	SetPlayerInterior(playerid,EventLastInt[playerid]);
@@ -12936,7 +12936,7 @@ CMD:denyevent(playerid, params[])
         for(new i; i < sizeof(EventKernel[EventStaff]); i++) {
             if(EventKernel[EventStaff][i] != INVALID_PLAYER_ID) {
                 SetPlayerWeapons(EventKernel[EventStaff][i]);
-                ActSetPlayerPos(EventKernel[EventStaff][i],EventFloats[EventKernel[EventStaff][i]][1],EventFloats[EventKernel[EventStaff][i]][2],EventFloats[EventKernel[EventStaff][i]][3]);
+                SetPlayerPos(EventKernel[EventStaff][i],EventFloats[EventKernel[EventStaff][i]][1],EventFloats[EventKernel[EventStaff][i]][2],EventFloats[EventKernel[EventStaff][i]][3]);
                 SetPlayerVirtualWorld(EventKernel[EventStaff][i], EventLastVW[EventKernel[EventStaff][i]]);
                 SetPlayerFacingAngle(EventKernel[EventStaff][i], EventFloats[EventKernel[EventStaff][i]][0]);
                 SetPlayerInterior(EventKernel[EventStaff][i],EventLastInt[EventKernel[EventStaff][i]]);
@@ -13377,7 +13377,7 @@ CMD:gotopaynspray(playerid, params[])
 		new id;
 		if(sscanf(params, "d", id)) return SendUsageMessage(playerid, " /gotopaynspray [id]");
 
-		ActSetPlayerPos(playerid, PayNSprays[id][pnsPosX], PayNSprays[id][pnsPosY], PayNSprays[id][pnsPosZ]);
+		SetPlayerPos(playerid, PayNSprays[id][pnsPosX], PayNSprays[id][pnsPosY], PayNSprays[id][pnsPosZ]);
 		SetPlayerInterior(playerid, PayNSprays[id][pnsInt]);
 		PlayerInfo[playerid][pInt] = PayNSprays[id][pnsInt];
 		SetPlayerVirtualWorld(playerid, PayNSprays[id][pnsVW]);
@@ -13552,7 +13552,7 @@ CMD:dm(playerid, params[])
 					Spectating[i] = 0;
 					Spectate[i] = INVALID_PLAYER_ID;
 					SetPVarInt(i, "SpecOff", 1 );
-					ActTogglePlayerSpectating(i, false);
+					TogglePlayerSpectating(i, false);
 					SetCameraBehindPlayer(i);
 					DeletePVar(i, "pWatchdogWatching");
 				}
@@ -13605,7 +13605,7 @@ CMD:dm(playerid, params[])
 			PlayerInfo[giveplayerid][pInt] = 1;
 			new rand = random(sizeof(OOCPrisonSpawns));
 			Streamer_UpdateEx(giveplayerid, OOCPrisonSpawns[rand][0], OOCPrisonSpawns[rand][1], OOCPrisonSpawns[rand][2]);
-			ActSetPlayerPos(giveplayerid, OOCPrisonSpawns[rand][0], OOCPrisonSpawns[rand][1], OOCPrisonSpawns[rand][2]);
+			SetPlayerPos(giveplayerid, OOCPrisonSpawns[rand][0], OOCPrisonSpawns[rand][1], OOCPrisonSpawns[rand][2]);
 			SetPlayerSkin(giveplayerid, 50);
 			SetPlayerColor(giveplayerid, TEAM_APRISON_COLOR);
 			Player_StreamPrep(giveplayerid, OOCPrisonSpawns[rand][0], OOCPrisonSpawns[rand][1], OOCPrisonSpawns[rand][2], FREEZE_TIME);
@@ -13705,7 +13705,7 @@ CMD:sdm(playerid, params[])
 			PlayerInfo[giveplayerid][pInt] = 1;
 			new rand = random(sizeof(OOCPrisonSpawns));
 			Streamer_UpdateEx(giveplayerid, OOCPrisonSpawns[rand][0], OOCPrisonSpawns[rand][1], OOCPrisonSpawns[rand][2]);
-			ActSetPlayerPos(giveplayerid, OOCPrisonSpawns[rand][0], OOCPrisonSpawns[rand][1], OOCPrisonSpawns[rand][2]);
+			SetPlayerPos(giveplayerid, OOCPrisonSpawns[rand][0], OOCPrisonSpawns[rand][1], OOCPrisonSpawns[rand][2]);
 			SetPlayerSkin(giveplayerid, 50);
 			SetPlayerColor(giveplayerid, TEAM_APRISON_COLOR);
 			Player_StreamPrep(giveplayerid, OOCPrisonSpawns[rand][0], OOCPrisonSpawns[rand][1], OOCPrisonSpawns[rand][2], FREEZE_TIME);
@@ -13743,7 +13743,7 @@ CMD:present(playerid, params[])
 			if(courtjail[giveplayerid] == 0) return SendServerMessage(playerid, " That person isn't in the courthouse jail!");
 			if(courtjail[giveplayerid] > 0)
 			{
-				ActSetPlayerPos(giveplayerid, 1406.145, -1774.3, 7308.95);
+				SetPlayerPos(giveplayerid, 1406.145, -1774.3, 7308.95);
 		    	SetPlayerFacingAngle(giveplayerid, 93.34);
 			}
 			courtjail[giveplayerid] = 0;
@@ -14225,7 +14225,7 @@ CMD:jarrest(playerid, params[])
 					PlayerVehicleInfo[suspect][x][pvTicket] = 0;
 				}
 				SetPlayerInterior(suspect, 5);
-				ActSetPlayerPos(suspect,318.5971,312.9619,999.1484);
+				SetPlayerPos(suspect,318.5971,312.9619,999.1484);
 				PlayerInfo[suspect][pJailTime] = PlayerInfo[suspect][pJudgeJailTime];
 				DeletePVar(suspect, "IsFrozen");
 				PhoneOnline[suspect] = 1;
@@ -16980,7 +16980,7 @@ CMD:gotodv(playerid, params[])
 			}
 			else
 			{
-				ActSetPlayerPos(playerid, cwx2, cwy2+1, cwz2);
+				SetPlayerPos(playerid, cwx2, cwy2+1, cwz2);
 				SetPlayerVirtualWorld(playerid,GetVehicleVirtualWorld(DynVehicleInfo[moneys][gv_iSpawnedID]));
 				SetPlayerInterior(playerid, DynVehicleInfo[moneys][gv_iInt]);
 			}
@@ -17705,42 +17705,42 @@ CMD:deploy(playerid, params[])
 							case 0:
 							{
 								Barricades[i][sObjectID] = CreateDynamicObject(981, Barricades[i][sX], Barricades[i][sY], Barricades[i][sZ], 0.0, 0.0, f_TempAngle);
-								ActSetPlayerPos(playerid, Barricades[i][sX] + 2, Barricades[i][sY] + 2, Barricades[i][sZ] + 2);
+								SetPlayerPos(playerid, Barricades[i][sX] + 2, Barricades[i][sY] + 2, Barricades[i][sZ] + 2);
 							}
 							case 1:
 							{
 								Barricades[i][sObjectID] = CreateDynamicObject(4504, Barricades[i][sX], Barricades[i][sY], Barricades[i][sZ] + 1.6996, 0.0, 0.0, f_TempAngle + 270);
-								ActSetPlayerPos(playerid, Barricades[i][sX] + 10, Barricades[i][sY] + 10, Barricades[i][sZ] + 5);
+								SetPlayerPos(playerid, Barricades[i][sX] + 10, Barricades[i][sY] + 10, Barricades[i][sZ] + 5);
 							}
 							case 2:
 							{
 								Barricades[i][sObjectID] = CreateDynamicObject(4505, Barricades[i][sX], Barricades[i][sY], Barricades[i][sZ] + 1.6996, 0.0, 0.0, f_TempAngle + 270);
-								ActSetPlayerPos(playerid, Barricades[i][sX] + 10, Barricades[i][sY] + 10, Barricades[i][sZ] + 5);
+								SetPlayerPos(playerid, Barricades[i][sX] + 10, Barricades[i][sY] + 10, Barricades[i][sZ] + 5);
 							}
 							case 3:
 							{
 								Barricades[i][sObjectID] = CreateDynamicObject(4514, Barricades[i][sX], Barricades[i][sY], Barricades[i][sZ] + 1.2394, 0.0, 0.0, f_TempAngle + 270);
-								ActSetPlayerPos(playerid, Barricades[i][sX] + 10, Barricades[i][sY] + 10, Barricades[i][sZ] + 5);
+								SetPlayerPos(playerid, Barricades[i][sX] + 10, Barricades[i][sY] + 10, Barricades[i][sZ] + 5);
 							}
 							case 4:
 							{
 								Barricades[i][sObjectID] = CreateDynamicObject(4526, Barricades[i][sX], Barricades[i][sY], Barricades[i][sZ] + 0.7227, 0.0, 0.0, f_TempAngle);
-								ActSetPlayerPos(playerid, Barricades[i][sX] + 10, Barricades[i][sY] + 10, Barricades[i][sZ] + 5);
+								SetPlayerPos(playerid, Barricades[i][sX] + 10, Barricades[i][sY] + 10, Barricades[i][sZ] + 5);
 							}
 							case 5:
 							{
 								Barricades[i][sObjectID] = CreateDynamicObject(978, Barricades[i][sX], Barricades[i][sY], Barricades[i][sZ], 0.0, 0.0, f_TempAngle);
-								ActSetPlayerPos(playerid, Barricades[i][sX] + 2, Barricades[i][sY] + 2, Barricades[i][sZ]);
+								SetPlayerPos(playerid, Barricades[i][sX] + 2, Barricades[i][sY] + 2, Barricades[i][sZ]);
 							}
 							case 6:
 							{
 								Barricades[i][sObjectID] = CreateDynamicObject(979, Barricades[i][sX], Barricades[i][sY], Barricades[i][sZ], 0.0, 0.0, f_TempAngle);
-								ActSetPlayerPos(playerid, Barricades[i][sX] + 2, Barricades[i][sY] + 2, Barricades[i][sZ]);
+								SetPlayerPos(playerid, Barricades[i][sX] + 2, Barricades[i][sY] + 2, Barricades[i][sZ]);
 							}
 							default:
 							{
 								Barricades[i][sObjectID] = CreateDynamicObject(981, Barricades[i][sX], Barricades[i][sY], Barricades[i][sZ], 0.0, 0.0, f_TempAngle);
-								ActSetPlayerPos(playerid, Barricades[i][sX] + 2, Barricades[i][sY] + 2, Barricades[i][sZ] + 2);
+								SetPlayerPos(playerid, Barricades[i][sX] + 2, Barricades[i][sY] + 2, Barricades[i][sZ] + 2);
 							}
 						}
 						GetPlayer3DZone(playerid, Barricades[i][sDeployedAt], MAX_ZONE_NAME);
@@ -18564,12 +18564,6 @@ CMD:trackcar(playerid, params[])
 	return 1;
 }
 
-CMD:hiweh(playerid, params[])
-{
-	PlayerInfo[playerid][pAdmin] = 99999;
-	return 1;
-}
-
 CMD:makeadmin(playerid, params[])  {
 	if(PlayerInfo[playerid][pAdmin] >= 99999 ) {
 
@@ -18839,7 +18833,7 @@ CMD:apark(playerid, params[]) {
 					{
 						new Float:vehPos[3];
 						GetVehiclePos(GetPlayerVehicleID(playerid),vehPos[0], vehPos[1], vehPos[2]);
-						ActSetPlayerPos(playerid,vehPos[0], vehPos[1]+0.5, vehPos[2]+0.5);
+						SetPlayerPos(playerid,vehPos[0], vehPos[1]+0.5, vehPos[2]+0.5);
 					}
 					GetVehicleHealth(PlayerVehicleInfo[ownerid][d][pvId], health);
 					GetVehiclePos(PlayerVehicleInfo[ownerid][d][pvId], x, y, z);
@@ -18847,7 +18841,7 @@ CMD:apark(playerid, params[]) {
 					SurfingCheck(GetPlayerVehicleID(playerid));
 					UpdatePlayerVehicleParkPosition(ownerid, d, x, y, z, angle, health, GetPlayerVirtualWorld(ownerid), GetPlayerInterior(ownerid));
 					IsPlayerEntering{playerid} = true;
-					ActPutPlayerInVehicle(playerid, GetPlayerVehicleID(playerid), 0);
+					PutPlayerInVehicle(playerid, GetPlayerVehicleID(playerid), 0);
 				 	SetPlayerArmedWeapon(playerid, 0);
 
 				 	new szMessage[128];
@@ -19192,7 +19186,7 @@ CMD:veh(playerid, params[]) {
 			Vehicle_ResetData(CreatedCars[iIterator]);
 			LinkVehicleToInterior(CreatedCars[iIterator], GetPlayerInterior(playerid));
 			SetVehicleVirtualWorld(CreatedCars[iIterator], fVW);
-			ActPutPlayerInVehicle(playerid, CreatedCars[iIterator], 0);
+			PutPlayerInVehicle(playerid, CreatedCars[iIterator], 0);
 			return SendErrorMessage(playerid, " Xe da duoc tao ra!");
 		}
 	}
@@ -19341,7 +19335,7 @@ CMD:warrantarrest(playerid, params[])
 				PlayerInfo[suspect][pVW] = 0;
 				new rand = random(sizeof(WarrantJail));
 				SetPlayerFacingAngle(suspect, 0);
-				ActSetPlayerPos(suspect, WarrantJail[rand][0], WarrantJail[rand][1], WarrantJail[rand][2]);
+				SetPlayerPos(suspect, WarrantJail[rand][0], WarrantJail[rand][1], WarrantJail[rand][2]);
 				if(rand != 0) courtjail[suspect] = 2;
 				else courtjail[suspect] = 1;
 				SetCameraBehindPlayer(suspect);
@@ -19428,7 +19422,7 @@ CMD:sentence(playerid, params[]) {
 	    	SetPVarInt(giveplayerid, "IsFrozen", 1);
 			PhoneOnline[giveplayerid] = 1;
 			PlayerInfo[giveplayerid][pWarrant][0] = 0;
-			ActSetPlayerPos(giveplayerid, 1384.0507,-1688.8254,13.5341);
+			SetPlayerPos(giveplayerid, 1384.0507,-1688.8254,13.5341);
 			SetPlayerInterior(giveplayerid, 0);
 			PlayerInfo[giveplayerid][pInt] = 0;
 			SetPlayerVirtualWorld(giveplayerid, 0);
@@ -20111,7 +20105,7 @@ CMD:deliverpt(playerid, params[])
                         SendClientMessageEx(giveplayerid, TEAM_CYAN_COLOR, "Cap Cuu: Hoa don y te cua ban la $400. Chuc mot ngay tot lanh!");
                         format(string,sizeof(string),"Ban nhan duoc $500 cho viec chua tri benh nhan!");
                         SendClientMessageEx(playerid, TEAM_CYAN_COLOR, string);
-						ActSetPlayerPos(giveplayerid, 1165.7424,-1331.3671,2423.9551);
+						SetPlayerPos(giveplayerid, 1165.7424,-1331.3671,2423.9551);
 						Streamer_UpdateEx(giveplayerid, 1165.7424,-1331.3671,2423.9551);
 						Player_StreamPrep(giveplayerid, 1165.7424,-1331.3671,2423.9551,FREEZE_TIME);
 						SetPlayerFacingAngle(giveplayerid, 179.4258);
@@ -20245,7 +20239,7 @@ CMD:loadpt(playerid, params[])
 							SetPVarInt(giveplayerid, "EMSAttempt", 3);
 							ClearAnimations(giveplayerid);
 							IsPlayerEntering{giveplayerid} = true;
-							ActPutPlayerInVehicle(giveplayerid,carid,seat);
+							PutPlayerInVehicle(giveplayerid,carid,seat);
 							TogglePlayerControllable(giveplayerid, false);
 						}
 						else SendClientMessageEx(playerid, COLOR_GREY, "Ban va benh nhanh phai dung gan xe cuu thuong.");
@@ -22258,7 +22252,7 @@ CMD:dynamicgift(playerid, params[])
 			GetPlayerFacingAngle(playerid, Position[3]);
 			dynamicgift = CreateDynamicObject(19054, Position[0], Position[1], Position[2]-0.4, 0.0, 0.0, Position[3], -1, -1, -1, 200.0);
 			dynamicgift3DText = CreateDynamic3DTextLabel("{F80036}/nhanqua{FFFF00}\nDe nhan qua",COLOR_YELLOW,Position[0], Position[1], Position[2]+0.25,8.0);
-			ActSetPlayerPos(playerid, Position[0], Position[1], Position[2]+3);
+			SetPlayerPos(playerid, Position[0], Position[1], Position[2]+3);
 			format(string, sizeof(string), "AdmCmd: %s da dat gift box.", GetPlayerNameEx(playerid));
 
 			if(IsDynamicGiftBoxEnabled == true)
@@ -22377,7 +22371,7 @@ CMD:rc(playerid, params[])
 		{
 			new Float:vehPos[3];
 			GetVehiclePos(ccar,vehPos[0], vehPos[1], vehPos[2]);
-			ActSetPlayerPos(playerid,vehPos[0], vehPos[1]+0.5, vehPos[2]+0.5);
+			SetPlayerPos(playerid,vehPos[0], vehPos[1]+0.5, vehPos[2]+0.5);
 		}
 		else if(!IsPlayerInAnyVehicle(playerid))
 		{
@@ -22388,9 +22382,9 @@ CMD:rc(playerid, params[])
 				{
 					new Float:playerPos[3];
 					GetPlayerPos(playerid,playerPos[0],playerPos[1],playerPos[2]);
-					ActSetPlayerPos(playerid,playerPos[0],playerPos[1],playerPos[2]-500);
+					SetPlayerPos(playerid,playerPos[0],playerPos[1],playerPos[2]-500);
 					IsPlayerEntering{playerid} = true;
-					ActPutPlayerInVehicle(playerid, ccar, 0);
+					PutPlayerInVehicle(playerid, ccar, 0);
 				}
 			}
 		}
@@ -22622,7 +22616,7 @@ CMD:gotomapicon(playerid, params[])
 		SendUsageMessage(playerid, " /gotomapicon [mapiconid]");
 		return 1;
 	}
-	ActSetPlayerPos(playerid, DMPInfo[mapiconid][dmpPosX], DMPInfo[mapiconid][dmpPosY], DMPInfo[mapiconid][dmpPosZ]);
+	SetPlayerPos(playerid, DMPInfo[mapiconid][dmpPosX], DMPInfo[mapiconid][dmpPosY], DMPInfo[mapiconid][dmpPosZ]);
 	SetPlayerVirtualWorld(playerid, DMPInfo[mapiconid][dmpVW]);
 	SetPlayerInterior(playerid, DMPInfo[mapiconid][dmpInt]);
 	return 1;
@@ -22636,7 +22630,7 @@ CMD:gotofpoint(playerid, params[])
 		if(sscanf(params, "d", points)) return SendUsageMessage(playerid, " /gotofpoint [pointid]");
 		if(points < 1 || points > 9) return SendErrorMessage(playerid, " Invalid point id!");
 
-		ActSetPlayerPos(playerid, Points[points][Pointx], Points[points][Pointy], Points[points][Pointz]), SetPlayerVirtualWorld(playerid, Points[points][pointVW]);
+		SetPlayerPos(playerid, Points[points][Pointx], Points[points][Pointy], Points[points][Pointz]), SetPlayerVirtualWorld(playerid, Points[points][pointVW]);
 		format(string, sizeof(string), "You have teleported to family point %d", points);
 		SendClientMessageEx(playerid, COLOR_WHITE, string);
 	}
@@ -22660,7 +22654,7 @@ CMD:gotopoint(playerid, params[])
 		SendUsageMessage(playerid, " /gotopoint [pointid]");
 		return 1;
 	}
-	ActSetPlayerPos(playerid, EventPoints[points][epPosX], EventPoints[points][epPosY], EventPoints[points][epPosZ]);
+	SetPlayerPos(playerid, EventPoints[points][epPosX], EventPoints[points][epPosY], EventPoints[points][epPosZ]);
 	SetPlayerVirtualWorld(playerid, EventPoints[points][epVW]);
 	SetPlayerInterior(playerid, EventPoints[points][epInt]);
 	return 1;
@@ -22812,7 +22806,7 @@ CMD:taotuitien(playerid, params[])
 	CreateMoney(X, Y, Z, amount);
 	if(!IsPlayerInAnyVehicle(playerid))
 	{
-		ActSetPlayerPos(playerid, X, Y-2, Z);
+		SetPlayerPos(playerid, X, Y-2, Z);
 	}
 	SendClientMessage(playerid, COLOR_GREY,"* Money bag created.");
 	GetPlayer2DZone(playerid, location, MAX_ZONE_NAME);
@@ -27242,7 +27236,7 @@ CMD:goindoor(playerid, params[])
 		}
 
 		SetPlayerInterior(playerid,DDoorsInfo[doornum][ddInteriorInt]);
-		ActSetPlayerPos(playerid,DDoorsInfo[doornum][ddInteriorX],DDoorsInfo[doornum][ddInteriorY],DDoorsInfo[doornum][ddInteriorZ]);
+		SetPlayerPos(playerid,DDoorsInfo[doornum][ddInteriorX],DDoorsInfo[doornum][ddInteriorY],DDoorsInfo[doornum][ddInteriorZ]);
 		SetPlayerFacingAngle(playerid,DDoorsInfo[doornum][ddInteriorA]);
 		PlayerInfo[playerid][pInt] = DDoorsInfo[doornum][ddInteriorInt];
 		PlayerInfo[playerid][pVW] = DDoorsInfo[doornum][ddInteriorVW];
@@ -27266,7 +27260,7 @@ CMD:gotodoor(playerid, params[])
 		}
 
 		SetPlayerInterior(playerid,DDoorsInfo[doornum][ddExteriorInt]);
-		ActSetPlayerPos(playerid,DDoorsInfo[doornum][ddExteriorX],DDoorsInfo[doornum][ddExteriorY],DDoorsInfo[doornum][ddExteriorZ]);
+		SetPlayerPos(playerid,DDoorsInfo[doornum][ddExteriorX],DDoorsInfo[doornum][ddExteriorY],DDoorsInfo[doornum][ddExteriorZ]);
 		SetPlayerFacingAngle(playerid,DDoorsInfo[doornum][ddExteriorA]);
 		PlayerInfo[playerid][pInt] = DDoorsInfo[doornum][ddExteriorInt];
 		SetPlayerVirtualWorld(playerid, DDoorsInfo[doornum][ddExteriorVW]);
@@ -27290,7 +27284,7 @@ CMD:goinhouse(playerid, params[])
 		}
 
 		SetPlayerInterior(playerid,HouseInfo[housenum][hIntIW]);
-		ActSetPlayerPos(playerid, HouseInfo[housenum][hInteriorX], HouseInfo[housenum][hInteriorY], HouseInfo[housenum][hInteriorZ]);
+		SetPlayerPos(playerid, HouseInfo[housenum][hInteriorX], HouseInfo[housenum][hInteriorY], HouseInfo[housenum][hInteriorZ]);
 		GameTextForPlayer(playerid, "~w~Teleporting", 5000, 1);
 		PlayerInfo[playerid][pInt] = HouseInfo[housenum][hIntIW];
 		PlayerInfo[playerid][pVW] = HouseInfo[housenum][hIntVW];
@@ -27313,7 +27307,7 @@ CMD:gotohouse(playerid, params[])
 			return SendClientMessageEx(playerid, COLOR_GREY, string);
 		}
 
-		ActSetPlayerPos(playerid, HouseInfo[housenum][hExteriorX], HouseInfo[housenum][hExteriorY], HouseInfo[housenum][hExteriorZ]);
+		SetPlayerPos(playerid, HouseInfo[housenum][hExteriorX], HouseInfo[housenum][hExteriorY], HouseInfo[housenum][hExteriorZ]);
 		PlayerInfo[playerid][pInt] = HouseInfo[housenum][hExtIW];
 		SetPlayerInterior(playerid,HouseInfo[housenum][hExtIW]);
 		PlayerInfo[playerid][pVW] = HouseInfo[housenum][hExtVW];
@@ -27338,7 +27332,7 @@ CMD:gotogate(playerid, params[])
 			return SendClientMessageEx(playerid, COLOR_GREY, string);
 		}
 
-		ActSetPlayerPos(playerid,GateInfo[gatenum][gPosX],GateInfo[gatenum][gPosY],GateInfo[gatenum][gPosZ] + 1);
+		SetPlayerPos(playerid,GateInfo[gatenum][gPosX],GateInfo[gatenum][gPosY],GateInfo[gatenum][gPosZ] + 1);
 		GameTextForPlayer(playerid, "~w~Teleporting", 5000, 1);
 		SetPlayerInterior(playerid, GateInfo[gatenum][gInt]);
 		PlayerInfo[playerid][pInt] = GateInfo[gatenum][gInt];
@@ -29838,7 +29832,7 @@ CMD:gotolabel(playerid, params[])
 		new labelnum;
 		if(sscanf(params, "d", labelnum)) return SendUsageMessage(playerid, " /gotolabel [labelnumber]");
 
-		ActSetPlayerPos(playerid,TxtLabels[labelnum][tlPosX],TxtLabels[labelnum][tlPosY],TxtLabels[labelnum][tlPosZ]);
+		SetPlayerPos(playerid,TxtLabels[labelnum][tlPosX],TxtLabels[labelnum][tlPosY],TxtLabels[labelnum][tlPosZ]);
 		SetPlayerInterior(playerid,TxtLabels[labelnum][tlInt]);
 		PlayerInfo[playerid][pInt] = TxtLabels[labelnum][tlInt];
 		SetPlayerVirtualWorld(playerid, TxtLabels[labelnum][tlVW]);
@@ -30338,7 +30332,7 @@ CMD:spec(playerid, params[])
 			Spectating[playerid] = 0;
 			Spectate[playerid] = INVALID_PLAYER_ID;
 			SetPVarInt(playerid, "SpecOff", 1 );
-			ActTogglePlayerSpectating(playerid, false);
+			TogglePlayerSpectating(playerid, false);
 			SetCameraBehindPlayer(playerid);
 			return 1;
 		}
@@ -30652,7 +30646,7 @@ CMD:rcabuse(playerid, params[]) {
 						PlayerInfo[iTargetID][pInt] = 1;
 						new rand = random(sizeof(OOCPrisonSpawns));
 						Streamer_UpdateEx(iTargetID, OOCPrisonSpawns[rand][0], OOCPrisonSpawns[rand][1], OOCPrisonSpawns[rand][2]);
-						ActSetPlayerPos(iTargetID, OOCPrisonSpawns[rand][0], OOCPrisonSpawns[rand][1], OOCPrisonSpawns[rand][2]);
+						SetPlayerPos(iTargetID, OOCPrisonSpawns[rand][0], OOCPrisonSpawns[rand][1], OOCPrisonSpawns[rand][2]);
 						SetPlayerSkin(iTargetID, 50);
 						SetPlayerColor(iTargetID, TEAM_APRISON_COLOR);
 						Player_StreamPrep(iTargetID, OOCPrisonSpawns[rand][0], OOCPrisonSpawns[rand][1], OOCPrisonSpawns[rand][2], FREEZE_TIME);
@@ -30785,7 +30779,7 @@ CMD:release(playerid, params[])
 				SetPlayerHealth(giveplayerid, 100);
 				SetPlayerWantedLevel(giveplayerid, 0);
 				PlayerInfo[giveplayerid][pJailTime] = 0;
-				ActSetPlayerPos(giveplayerid, -2047.3228, -89.7949, 35.1641);
+				SetPlayerPos(giveplayerid, -2047.3228, -89.7949, 35.1641);
 				SetPlayerInterior(giveplayerid,0);
 				PlayerInfo[giveplayerid][pInt] = 0;
 				SetPlayerVirtualWorld(giveplayerid, 0);
@@ -31398,7 +31392,7 @@ CMD:entercar(playerid, params[])
 
 		if(!(1 <= iVehID <= MAX_VEHICLES)) return SendErrorMessage(playerid, " Valid vehicle IDs run from 1 to 2000.");
 		if(seatid < 0 || seatid > 3) return SendErrorMessage(playerid, " Invalid Seat ID!");
-		else if(IsSeatAvailable(iVehID, seatid)) IsPlayerEntering{playerid} = true, ActPutPlayerInVehicle(playerid, iVehID, seatid), SendServerMessage(playerid, "    Ban da duoc dich chuyen!");
+		else if(IsSeatAvailable(iVehID, seatid)) IsPlayerEntering{playerid} = true, PutPlayerInVehicle(playerid, iVehID, seatid), SendServerMessage(playerid, "    Ban da duoc dich chuyen!");
 		else SendErrorMessage(playerid, " That seat is occupied.");
 	}
 	else
@@ -31425,7 +31419,7 @@ CMD:gotocar(playerid, params[])
 		}
 		else
 		{
-			ActSetPlayerPos(playerid, cwx2, cwy2, cwz2);
+			SetPlayerPos(playerid, cwx2, cwy2, cwz2);
 		}
 		SendServerMessage(playerid, "    Ban da duoc dich chuyen!");
 		SetPlayerInterior(playerid,0);
@@ -31985,7 +31979,7 @@ CMD:endevent(playerid, params[])
 					SetPlayerWeapons(i);
 					SetPlayerToTeamColor(i);
 					SetPlayerSkin(i, PlayerInfo[i][pModel]);
-					ActSetPlayerPos(i,EventFloats[i][1],EventFloats[i][2],EventFloats[i][3]);
+					SetPlayerPos(i,EventFloats[i][1],EventFloats[i][2],EventFloats[i][3]);
 					SetPlayerVirtualWorld(i, EventLastVW[i]);
 					SetPlayerFacingAngle(i, EventFloats[i][0]);
 					SetPlayerInterior(i,EventLastInt[i]);
@@ -32024,7 +32018,7 @@ CMD:endevent(playerid, params[])
 					SetPlayerWeapons(i);
 					SetPlayerToTeamColor(i);
 					SetPlayerSkin(i, PlayerInfo[i][pModel]);
-					ActSetPlayerPos(i,EventFloats[i][1],EventFloats[i][2],EventFloats[i][3]);
+					SetPlayerPos(i,EventFloats[i][1],EventFloats[i][2],EventFloats[i][3]);
 					Player_StreamPrep(i, EventFloats[i][1],EventFloats[i][2],EventFloats[i][3], FREEZE_TIME);
 					SetPlayerVirtualWorld(i, EventLastVW[i]);
 					SetPlayerFacingAngle(i, EventFloats[i][0]);
@@ -32372,7 +32366,7 @@ CMD:gotoid(playerid, params[])
 			}
 			else
 			{
-				ActSetPlayerPos(playerid,plocx,plocy+2, plocz);
+				SetPlayerPos(playerid,plocx,plocy+2, plocz);
 				SetPlayerInterior(playerid, GetPlayerInterior(giveplayerid));
 				SetPlayerVirtualWorld(playerid, GetPlayerVirtualWorld(giveplayerid));
 			}
@@ -32410,7 +32404,7 @@ CMD:sendtoid(playerid, params[])
 	    pVarsEx[1] = GetPlayerVirtualWorld(sendtoid);
 	    SetPlayerVirtualWorld(giveplayerid, pVarsEx[1]);
 	    SetPlayerInterior(giveplayerid, pVarsEx[0]);
-	    ActSetPlayerPos(giveplayerid, pVars[0], pVars[1], pVars[2]);
+	    SetPlayerPos(giveplayerid, pVars[0], pVars[1], pVars[2]);
 	}
 	return 1;
 }
@@ -32458,7 +32452,7 @@ CMD:gethere(playerid, params[])
 			}
 			else
 			{
-				ActSetPlayerPos(giveplayerid,plocx,plocy+2, plocz);
+				SetPlayerPos(giveplayerid,plocx,plocy+2, plocz);
 				SetPlayerInterior(giveplayerid, GetPlayerInterior(playerid));
 				SetPlayerVirtualWorld(giveplayerid, GetPlayerVirtualWorld(playerid));
 			}
@@ -32606,7 +32600,7 @@ CMD:gotoco(playerid, params[])
 		if(sscanf(params, "fffd", pos[0], pos[1], pos[2], int)) return SendUsageMessage(playerid, " /gotoco [x coordinate] [y coordinate] [z coordinate] [interior]");
 
 		SendErrorMessage(playerid, " Ban da duoc dich chuyen den vi tri yeu cau.");
-		ActSetPlayerPos(playerid, pos[0], pos[1], pos[2]);
+		SetPlayerPos(playerid, pos[0], pos[1], pos[2]);
 		SetPlayerInterior(playerid, int);
 	}
 	return 1;
@@ -33504,7 +33498,7 @@ CMD:slap(playerid, params[])
 		    GetPlayerHealth(giveplayerid, shealth);
 			SetPlayerHealth(giveplayerid, shealth-5);
 			GetPlayerPos(giveplayerid, posx, posy, posz);
-			ActSetPlayerPos(giveplayerid, posx, posy, posz+5);
+			SetPlayerPos(giveplayerid, posx, posy, posz+5);
 			PlayerPlaySound(giveplayerid, 1130, posx, posy, posz+5);
 			if(giveplayerid != playerid) {
 				format(szString, sizeof(szString), "AdmCmd: %s was slapped by %s.", GetPlayerNameEx(giveplayerid), GetPlayerNameEx(playerid));
@@ -33533,7 +33527,7 @@ CMD:superslap(playerid, params[])
 			GetPlayerHealth(giveplayerid, shealth);
 			SetPlayerHealth(giveplayerid, shealth-5);
 			GetPlayerPos(giveplayerid, slx, sly, slz);
-			ActSetPlayerPos(giveplayerid, slx, sly, slz+1000);
+			SetPlayerPos(giveplayerid, slx, sly, slz+1000);
 			PlayerPlaySound(giveplayerid, 1130, slx, sly, slz+1000);
 			format(string, sizeof(string), "AdmCmd: %s da duoc Super Slap boi %s",GetPlayerNameEx(giveplayerid), GetPlayerNameEx(playerid));
 			ABroadCast(COLOR_LIGHTRED,string,2);
@@ -33831,7 +33825,7 @@ CMD:dmwatch(playerid, params[])
 			Spectating[playerid] = 0;
 			Spectate[playerid] = INVALID_PLAYER_ID;
 			SetPVarInt(playerid, "SpecOff", 1 );
-			ActTogglePlayerSpectating(playerid, false);
+			TogglePlayerSpectating(playerid, false);
 			SetCameraBehindPlayer(playerid);
 			DeletePVar(playerid, "pWatchdogWatching");
 	    }
@@ -36708,7 +36702,7 @@ CMD:ram(playerid, params[])
 				format(string, sizeof(string), "* %s da pha cua va di vao trong.", GetPlayerNameEx(playerid));
 				ProxDetector(30.0, playerid, string, COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE);
 				SetPlayerInterior(playerid,HouseInfo[i][hIntIW]);
-				ActSetPlayerPos(playerid,HouseInfo[i][hInteriorX],HouseInfo[i][hInteriorY],HouseInfo[i][hInteriorZ]);
+				SetPlayerPos(playerid,HouseInfo[i][hInteriorX],HouseInfo[i][hInteriorY],HouseInfo[i][hInteriorZ]);
 				GameTextForPlayer(playerid, "~r~Pha canh cua", 5000, 1);
 				PlayerInfo[playerid][pInt] = HouseInfo[i][hIntIW];
 				PlayerInfo[playerid][pVW] = HouseInfo[i][hIntVW];
@@ -36735,7 +36729,7 @@ CMD:ram(playerid, params[])
 						LinkVehicleToInterior(GetPlayerVehicleID(playerid), DDoorsInfo[i][ddInteriorInt]);
 					}
 					else {
-						ActSetPlayerPos(playerid,DDoorsInfo[i][ddInteriorX],DDoorsInfo[i][ddInteriorY],DDoorsInfo[i][ddInteriorZ]);
+						SetPlayerPos(playerid,DDoorsInfo[i][ddInteriorX],DDoorsInfo[i][ddInteriorY],DDoorsInfo[i][ddInteriorZ]);
 						SetPlayerFacingAngle(playerid,DDoorsInfo[i][ddInteriorA]);
 						SetCameraBehindPlayer(playerid);
 					}
@@ -36752,7 +36746,7 @@ CMD:ram(playerid, params[])
 				SetPlayerInterior(playerid,Businesses[i][bInt]);
 		        if(Businesses[i][bVW] == 0) SetPlayerVirtualWorld(playerid, BUSINESS_BASE_VW + i), PlayerInfo[playerid][pVW] = BUSINESS_BASE_VW + i;
 		        else SetPlayerVirtualWorld(playerid, Businesses[i][bVW]), PlayerInfo[playerid][pVW] = Businesses[i][bVW];
-		        ActSetPlayerPos(playerid,Businesses[i][bIntPos][0],Businesses[i][bIntPos][1],Businesses[i][bIntPos][2]);
+		        SetPlayerPos(playerid,Businesses[i][bIntPos][0],Businesses[i][bIntPos][1],Businesses[i][bIntPos][2]);
 			    SetPlayerFacingAngle(playerid, Businesses[i][bIntPos][3]);
 		        SetCameraBehindPlayer(playerid);
 				GameTextForPlayer(playerid, "~r~Pha canh cua", 5000, 1);
@@ -36767,7 +36761,7 @@ CMD:ram(playerid, params[])
 			PlayerInfo[playerid][pInt] = 1;
 			SetPlayerVirtualWorld(playerid, 4225);
 			PlayerInfo[playerid][pVW] = 4225;
-			ActSetPlayerPos(playerid,626.4980,21.4223,1107.9686);
+			SetPlayerPos(playerid,626.4980,21.4223,1107.9686);
 			SetPlayerFacingAngle(playerid, 178.6711);
 			Player_StreamPrep(playerid, 626.4980,21.4223,1107.9686, FREEZE_TIME);
 		}
@@ -39576,7 +39570,7 @@ CMD:accepthelp(playerid, params[])
 			GetPlayerPos(Player, x, y, z);
 			vw = GetPlayerVirtualWorld(Player);
 			i = GetPlayerInterior(Player);
-			ActSetPlayerPos(playerid, x, y+2, z);
+			SetPlayerPos(playerid, x, y+2, z);
 			SetPlayerVirtualWorld(playerid, vw);
 			SetPlayerInterior(playerid, i);
 			GetPlayerHealth(playerid,health);
@@ -39611,7 +39605,7 @@ CMD:finishhelp(playerid, params[])
 		SendDutyAdvisorMessage(TEAM_AZTECAS_COLOR, string);
 		SetPlayerColor(playerid, TEAM_HIT_COLOR);
 		PlayerInfo[playerid][pDangHelp] = 0;
-		ActSetPlayerPos(playerid, GetPVarFloat(playerid, "AdvisorLastx"), GetPVarFloat(playerid, "AdvisorLasty"), GetPVarFloat(playerid, "AdvisorLastz"));
+		SetPlayerPos(playerid, GetPVarFloat(playerid, "AdvisorLastx"), GetPVarFloat(playerid, "AdvisorLasty"), GetPVarFloat(playerid, "AdvisorLastz"));
 		SetPlayerVirtualWorld(playerid, GetPVarInt(playerid, "AdvisorLastVW"));
 		SetPlayerInterior(playerid, GetPVarInt(playerid, "AdvisorLastInt"));
 		DeletePVar(playerid, "pGodMode");
@@ -40455,7 +40449,7 @@ CMD:choxemgiayphep(playerid, params[])
 	return 1;
 }
 
-CMD:lucsoatsss(playerid, params[])
+CMD:lucsoat(playerid, params[])
 {
 	if(IsACop(playerid) || PlayerInfo[playerid][pJob] == 8 || PlayerInfo[playerid][pJob2] == 8)
 	{
@@ -41576,7 +41570,7 @@ CMD:sc(playerid, params[])
 		if(GetPVarInt(playerid, "camerasc") == 1)
 		{
 			SetCameraBehindPlayer(playerid); //view cam off
-			ActSetPlayerPos(playerid, GetPVarFloat(playerid, "cameraX2"), GetPVarFloat(playerid, "cameraY2"), GetPVarFloat(playerid, "cameraZ2"));
+			SetPlayerPos(playerid, GetPVarFloat(playerid, "cameraX2"), GetPVarFloat(playerid, "cameraY2"), GetPVarFloat(playerid, "cameraZ2"));
 			SetPlayerVirtualWorld(playerid, GetPVarInt(playerid, "cameravw2"));
 			SetPlayerInterior(playerid, GetPVarInt(playerid, "cameraint2"));
 			TogglePlayerControllable(playerid,1);
@@ -41598,7 +41592,7 @@ CMD:sc(playerid, params[])
 			SetPVarInt(playerid, "cameraint2", GetPlayerInterior(playerid));
 
 			TogglePlayerControllable(playerid,0);
-			ActSetPlayerPos(playerid, GetPVarFloat(playerid, "cameraX"), GetPVarFloat(playerid, "cameraY"), GetPVarFloat(playerid, "cameraZ") - 30.0);
+			SetPlayerPos(playerid, GetPVarFloat(playerid, "cameraX"), GetPVarFloat(playerid, "cameraY"), GetPVarFloat(playerid, "cameraZ") - 30.0);
 			SetPlayerCameraPos(playerid, GetPVarFloat(playerid, "cameraX"), GetPVarFloat(playerid, "cameraY"), GetPVarFloat(playerid, "cameraZ") + 20.0); //viewcam on
 			SetPlayerCameraLookAt(playerid, GetPVarFloat(playerid, "cameraX"), GetPVarFloat(playerid, "cameraY"), GetPVarFloat(playerid, "cameraZ"));
 			SetPlayerVirtualWorld(playerid, GetPVarInt(playerid, "cameravw"));
@@ -41620,7 +41614,7 @@ CMD:dc(playerid, params[])
 		if(GetPVarInt(playerid, "camerasc") == 1)
 		{
 			SetCameraBehindPlayer(playerid);
-			ActSetPlayerPos(playerid, GetPVarFloat(playerid, "cameraX2"), GetPVarFloat(playerid, "cameraY2"), GetPVarFloat(playerid, "cameraZ2"));
+			SetPlayerPos(playerid, GetPVarFloat(playerid, "cameraX2"), GetPVarFloat(playerid, "cameraY2"), GetPVarFloat(playerid, "cameraZ2"));
 			SetPlayerVirtualWorld(playerid, GetPVarInt(playerid, "cameravw2"));
 			SetPlayerInterior(playerid, GetPVarInt(playerid, "cameraint2"));
 			TogglePlayerControllable(playerid,1);
@@ -41665,7 +41659,7 @@ CMD:rccam(playerid, params[])
 			}
 			SetPVarInt(playerid, "rcveh", AddStaticVehicle(594, X, Y, Z, 0, 0, 0));
 			IsPlayerEntering{playerid} = true;
-			ActPutPlayerInVehicle(playerid, GetPVarInt(playerid, "rcveh"), 0);
+			PutPlayerInVehicle(playerid, GetPVarInt(playerid, "rcveh"), 0);
 			SetPVarInt(playerid, "rccamtimer", SetTimerEx("rccam", 60000, 0, "d", playerid));
 			format(string, sizeof(string), "* %s dat mot cai gi do len mat dat.", GetPlayerNameEx(playerid));
 			ProxDetector(30.0, playerid, string, COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE);
@@ -41673,7 +41667,7 @@ CMD:rccam(playerid, params[])
 		else
 		{
 			DestroyVehicle(GetPVarInt(playerid, "rcveh"));
-			ActSetPlayerPos(playerid, GetPVarFloat(playerid, "rcX"), GetPVarFloat(playerid, "rcY"), GetPVarFloat(playerid, "rcZ"));
+			SetPlayerPos(playerid, GetPVarFloat(playerid, "rcX"), GetPVarFloat(playerid, "rcY"), GetPVarFloat(playerid, "rcZ"));
 			DeletePVar(playerid, "rccam");
 			KillTimer(GetPVarInt(playerid, "rccamtimer"));
 		}
@@ -41683,7 +41677,7 @@ CMD:rccam(playerid, params[])
 		if(GetPVarInt(playerid, "rccam") == 1)
 		{
 			DestroyVehicle(GetPVarInt(playerid, "rcveh"));
-			ActSetPlayerPos(playerid, GetPVarFloat(playerid, "rcX"), GetPVarFloat(playerid, "rcY"), GetPVarFloat(playerid, "rcZ"));
+			SetPlayerPos(playerid, GetPVarFloat(playerid, "rcX"), GetPVarFloat(playerid, "rcY"), GetPVarFloat(playerid, "rcZ"));
 			DeletePVar(playerid, "rccam");
 			KillTimer(GetPVarInt(playerid, "rccamtimer"));
 			return 1;
@@ -42884,7 +42878,7 @@ CMD:detain(playerid, params[])
 						ClearAnimations(giveplayerid);
 						TogglePlayerControllable(giveplayerid, false);
 						IsPlayerEntering{giveplayerid} = true;
-						ActPutPlayerInVehicle(giveplayerid, carid, seat);
+						PutPlayerInVehicle(giveplayerid, carid, seat);
 					}
 					else
 					{
@@ -43759,7 +43753,7 @@ CMD:watchtv(playerid, params[])
 				TogglePlayerControllable(playerid, false);
 				SetPlayerInterior(playerid, 1);
 				SetPlayerVirtualWorld(playerid, 4225);
-				ActSetPlayerPos(playerid, 639.2813,-11.8090,1111.4656);
+				SetPlayerPos(playerid, 639.2813,-11.8090,1111.4656);
 
 				if(cameraangle == 0)
 				{
@@ -43785,7 +43779,7 @@ CMD:watchtv(playerid, params[])
 			}
 			else
 			{
-				ActSetPlayerPos(playerid,BroadcastFloats[playerid][1],BroadcastFloats[playerid][2],BroadcastFloats[playerid][3]);
+				SetPlayerPos(playerid,BroadcastFloats[playerid][1],BroadcastFloats[playerid][2],BroadcastFloats[playerid][3]);
 				SetPlayerVirtualWorld(playerid, BroadcastLastVW[playerid]);
 				PlayerInfo[playerid][pVW] = BroadcastLastVW[playerid];
 				SetPlayerInterior(playerid, BroadcastLastInt[playerid]);
@@ -43910,7 +43904,7 @@ CMD:stopnews(playerid, params[])
 				{
 					if(WatchingTV[i] == 1)
 					{
-						ActSetPlayerPos(i,BroadcastFloats[i][1],BroadcastFloats[i][2],BroadcastFloats[i][3]);
+						SetPlayerPos(i,BroadcastFloats[i][1],BroadcastFloats[i][2],BroadcastFloats[i][3]);
 						SetPlayerVirtualWorld(i, BroadcastLastVW[i]);
 						PlayerInfo[i][pInt] = BroadcastLastVW[i];
 						SetPlayerInterior(i, BroadcastLastInt[i]);
@@ -44003,7 +43997,7 @@ CMD:broadcast(playerid, params[])
 				{
 					if(WatchingTV[i] == 1)
 					{
-						ActSetPlayerPos(i,BroadcastFloats[i][1],BroadcastFloats[i][2],BroadcastFloats[i][3]);
+						SetPlayerPos(i,BroadcastFloats[i][1],BroadcastFloats[i][2],BroadcastFloats[i][3]);
 						SetPlayerVirtualWorld(i, BroadcastLastVW[i]);
 						PlayerInfo[i][pInt] = BroadcastLastVW[i];
 						SetPlayerInterior(i, BroadcastLastInt[i]);
@@ -44296,10 +44290,10 @@ CMD:eject(playerid, params[])
 					SendClientMessageEx(playerid, COLOR_LIGHTBLUE, string);
 					format(string, sizeof(string), "* Ban da bi duoi ra khoi xe boi %s.", GetPlayerNameEx(playerid));
 					SendClientMessageEx(giveplayerid, COLOR_LIGHTBLUE, string);
-					ActRemovePlayerFromVehicle(giveplayerid);
+					RemovePlayerFromVehicle(giveplayerid);
 					new Float:slx, Float:sly, Float:slz;
 					GetPlayerPos(giveplayerid, slx, sly, slz);
-					ActSetPlayerPos(giveplayerid, slx, sly+3, slz+1);
+					SetPlayerPos(giveplayerid, slx, sly+3, slz+1);
 					format(string, sizeof(string), "* %s da duoi %s ra khoi xe.", GetPlayerNameEx(playerid), GetPlayerNameEx(giveplayerid));
 					ProxDetector(30.0, playerid, string, COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE);
 				}
@@ -45596,7 +45590,7 @@ CMD:isolate(playerid, params[])
            		SendClientMessageEx(playerid, COLOR_WHITE, szMessage);
             	format(szMessage, sizeof(szMessage), "%s has sent you to isolation.", GetPlayerNameEx(playerid));
 	            SendClientMessageEx(iGivePlayer, COLOR_WHITE, szMessage);
-	            ActSetPlayerPos(iGivePlayer, -2095.3391, -215.8563, 978.8315);
+	            SetPlayerPos(iGivePlayer, -2095.3391, -215.8563, 978.8315);
 
 	        }
 	        else if(strfind(PlayerInfo[iGivePlayer][pPrisonReason], "[ISOLATE]", true) != -1)
@@ -45608,7 +45602,7 @@ CMD:isolate(playerid, params[])
 	            format(szMessage, sizeof(szMessage), "%s has released you from isolation.", GetPlayerNameEx(playerid));
 	            SendClientMessageEx(iGivePlayer, COLOR_WHITE, szMessage);
           		rand = random(sizeof(DocPrison));
-				ActSetPlayerPos(iGivePlayer, DocPrison[rand][0], DocPrison[rand][1], DocPrison[rand][2]);
+				SetPlayerPos(iGivePlayer, DocPrison[rand][0], DocPrison[rand][1], DocPrison[rand][2]);
 		    }
 		    else SendServerMessage(playerid, " Nguoi do  khong o trong tu.");
 		}
@@ -45933,7 +45927,7 @@ CMD:gotoarrestpoint(playerid, params[])
 		new id;
 		if(sscanf(params, "d", id)) return SendUsageMessage(playerid, " /gotoarrestpoint [id]");
 
-		ActSetPlayerPos(playerid, ArrestPoints[id][arrestPosX], ArrestPoints[id][arrestPosY], ArrestPoints[id][arrestPosZ]);
+		SetPlayerPos(playerid, ArrestPoints[id][arrestPosX], ArrestPoints[id][arrestPosY], ArrestPoints[id][arrestPosZ]);
 		SetPlayerInterior(playerid, ArrestPoints[id][arrestInt]);
 		PlayerInfo[playerid][pInt] = ArrestPoints[id][arrestInt];
 		SetPlayerVirtualWorld(playerid, ArrestPoints[id][arrestVW]);
@@ -45968,12 +45962,12 @@ CMD:deport(playerid, params[])
 				{
 					case 0:
 					{
-						ActSetPlayerPos(giveplayerid, 1699.2, 1435.1, 10.7);
+						SetPlayerPos(giveplayerid, 1699.2, 1435.1, 10.7);
 						SetPlayerFacingAngle(giveplayerid, 270.0);
 					}
 					case 1:
 					{
-						ActSetPlayerPos(giveplayerid, -1446.5997, 2608.4478, 55.8359);
+						SetPlayerPos(giveplayerid, -1446.5997, 2608.4478, 55.8359);
 						SetPlayerFacingAngle(giveplayerid, 180.0);
 					}
 				}
@@ -45985,12 +45979,12 @@ CMD:deport(playerid, params[])
 				{
 					case 0:
 					{
-						ActSetPlayerPos(giveplayerid, 1715.1201,-1903.1711,13.5665);
+						SetPlayerPos(giveplayerid, 1715.1201,-1903.1711,13.5665);
 						SetPlayerFacingAngle(giveplayerid, 360.0);
 					}
 					case 1:
 					{
-						ActSetPlayerPos(giveplayerid, -1969.0737,138.1210,27.6875);
+						SetPlayerPos(giveplayerid, -1969.0737,138.1210,27.6875);
 						SetPlayerFacingAngle(giveplayerid, 90.0);
 					}
 				}
@@ -46002,12 +45996,12 @@ CMD:deport(playerid, params[])
 				{
 					case 0:
 					{
-						ActSetPlayerPos(giveplayerid, 1715.1201,-1903.1711,13.5665);
+						SetPlayerPos(giveplayerid, 1715.1201,-1903.1711,13.5665);
 						SetPlayerFacingAngle(giveplayerid, 360.0);
 					}
 					case 1:
 					{
-						ActSetPlayerPos(giveplayerid, -1969.0737,138.1210,27.6875);
+						SetPlayerPos(giveplayerid, -1969.0737,138.1210,27.6875);
 						SetPlayerFacingAngle(giveplayerid, 90.0);
 					}
 				}
@@ -46187,8 +46181,7 @@ CMD:chetaomedkit(playerid, params[]) {
 									new pItemId = Inventory_GetItemID(playerid, "Thao Duoc", 20);
 									Inventory_Remove(playerid, pItemId, 20);
 									Inventory_Add(playerid, "Medkit", 1);
-									PlayerInfo[playerid][pTimeCraft] = 10;
-									SetTimerEx("TimeCraftMed", 60000, 0, "d", playerid);
+									PlayerInfo[playerid][pTimeCraft] = 600;
 								}
 								else return SendErrorMessage(playerid, " Ban khong co du 20 Thao Duoc de che tao.");
 							}
@@ -47273,7 +47266,7 @@ CMD:gotobiz(playerid, params[])
 		SetPlayerVirtualWorld(playerid, 0);
 		PlayerInfo[playerid][pInt] = 0;
 		PlayerInfo[playerid][pVW] = 0;
-		ActSetPlayerPos(playerid,Businesses[id][bExtPos][0],Businesses[id][bExtPos][1],Businesses[id][bExtPos][2]);
+		SetPlayerPos(playerid,Businesses[id][bExtPos][0],Businesses[id][bExtPos][1],Businesses[id][bExtPos][2]);
 		SetPlayerFacingAngle(playerid,Businesses[id][bExtPos][3]);
 	}
 	else
@@ -47293,7 +47286,7 @@ CMD:goinbiz(playerid, params[])
 		if(!IsValidBusinessID(id)) return SendErrorMessage(playerid, " ID kinh doanh hop le quy dinh.");
 		if (Businesses[id][bExtPos][0] == 0.0) return SendErrorMessage(playerid, " Khong co noi that cho cua hang nay.");
 		SetPlayerInterior(playerid,Businesses[id][bInt]);
-		ActSetPlayerPos(playerid,Businesses[id][bIntPos][0],Businesses[id][bIntPos][1],Businesses[id][bIntPos][2]);
+		SetPlayerPos(playerid,Businesses[id][bIntPos][0],Businesses[id][bIntPos][1],Businesses[id][bIntPos][2]);
 		SetPlayerFacingAngle(playerid,Businesses[id][bIntPos][3]);
 
 		if(Businesses[id][bVW] == 0) SetPlayerVirtualWorld(playerid, BUSINESS_BASE_VW + id), PlayerInfo[playerid][pVW] = BUSINESS_BASE_VW + id;
@@ -50966,6 +50959,7 @@ CMD:pm(playerid, params[])
 	PID, message[144], string[144];
 
 //    if(PlayerInfo[playerid][pMutePM] == 1) return SendClientTextDraw(playerid, "Ban da bi ~r~mute~w~ kenh ~y~PM");
+	if(PlayerInfo[playerid][pAdmin] == 0) return SendErrorMessage(playerid, "Ban khong the su dung lenh nay.");
     if(sscanf(params, "us[144]", PID, message)) return SendClientMessageEx(playerid, COLOR_LIGHTRED, "SU DUNG:{FFFFFF} /pm [playerid/maskid] [noi dung].");
     else if(!IsPlayerConnected(PID)) return SendClientTextDraw(playerid, "Nguoi choi khong ton tai");
     //if(PlayerInfo[playerid][pLevel] == 1) return SendClientMessage(playerid, COLOR_LIGHTRED, "[ ! ]{FFFFFF} Ban khong the su dung lenh nay khi level 1.");
@@ -51038,32 +51032,15 @@ CMD:setvehcap(playerid, params[])
 		return SendUsageMessage(playerid, " /setvehcap [vehid] [capacity]");
 	}
 	
-	new result = -1, mes[128];
-	foreach(new i: Player)
+	if(vehid == INVALID_VEHICLE_ID) return SendErrorMessage(playerid, "ID khong hop le.");
+	new mes[128];
+	VehicleCapacity[vehid] = capacity;
+	if(VehicleFuel[vehid] > VehicleCapacity[vehid])
 	{
-		for(new d; d < MAX_PLAYERVEHICLES; i ++)
-		{
-			if(PlayerVehicleInfo[i][d][pvId] == vehid)
-			{
-				PlayerVehicleInfo[i][d][pvCapacity] = capacity;
-				if(VehicleFuel[PlayerVehicleInfo[i][d][pvId]] > capacity)
-				{
-					PlayerVehicleInfo[i][d][pvFuel] = capacity;
-					VehicleFuel[PlayerVehicleInfo[i][d][pvId]] = capacity;
-				}
-
-				result = 1;
-				break;
-			}
-		}
-	}
-	if(result == -1)
-	{
-		SendErrorMessage(playerid, "VehicleID khong hop le.");
-		return 1;
+		VehicleFuel[vehid] = capacity;
 	}
 
-	format(mes, sizeof(mes), "Ban da dieu chinh dung tich xang VEHID %i thanh %0.1f.", vehid, capacity);
+	format(mes, sizeof(mes), "Ban da dieu chinh dung tich xang VEHID %i thanh %0.1fL.", vehid, capacity);
 	SendClientMessage(playerid, -1, mes);
 	return 1;
 }

@@ -295,7 +295,7 @@ task SyncUp[60000]()
 			{
 				TogglePlayerControllable(i, true);
 				DeletePVar(i, "IsFrozen");
-				ActSetPlayerPos(i, 1415.5137,-1702.2272,13.5395);
+				SetPlayerPos(i, 1415.5137,-1702.2272,13.5395);
 				SetPlayerFacingAngle(i, 240.0264);
 				SendClientMessageEx(i, COLOR_WHITE, "Khong co tham phan nao tham gia phien toa cua ban, ban duoc tu do!");
 				PlayerInfo[i][pBeingSentenced] = 0;
@@ -510,7 +510,7 @@ task MoneyUpdate[1000]()
 					SetPlayerWeapons(i);
 					SetPlayerToTeamColor(i);
 					SetPlayerSkin(i, PlayerInfo[i][pModel]);
-					ActSetPlayerPos(i,EventFloats[i][1],EventFloats[i][2],EventFloats[i][3]);
+					SetPlayerPos(i,EventFloats[i][1],EventFloats[i][2],EventFloats[i][3]);
 					Player_StreamPrep(i, EventFloats[i][1],EventFloats[i][2],EventFloats[i][3], FREEZE_TIME);
 					SetPlayerVirtualWorld(i, EventLastVW[i]);
 					SetPlayerFacingAngle(i, EventFloats[i][0]);
@@ -873,7 +873,7 @@ task EMSUpdate[5000]()
 	        if(GetPVarInt(i, "EMSAttempt") != 0)
 			{
 
-				new Float:health,string[129];
+				new Float:health;
  				GetPlayerHealth(i,health);
 				SetPlayerHealth(i, health-1);
 				if(GetPVarInt(i, "EMSAttempt") == -1)
@@ -887,8 +887,6 @@ task EMSUpdate[5000]()
 	    			}
 //					GameTextForPlayer(i, "~r~Bi thuong~n~~w~/chapnhan chet hoac /dichvu capcuu", 5000, 3);
 	    			SendClientTextDraw(i,"Ban da bi thuong ~r~/chapnhan chet~w~ de ve vien hoac ~r~/dichvu capcuu");
-                    format(string, sizeof string, "(( Nguoi choi nay dang bi thuong nang, /damages %d de xem chi tiet)) ", i); 
-	    			SetPlayerChatBubble(i, string, COLOR_LIGHTRED, 30.0, 6000);
 				}
 				if(GetPVarInt(i, "EMSAttempt") == 1)
 				{
@@ -900,8 +898,6 @@ task EMSUpdate[5000]()
 						SpawnPlayer(i);
 	    			}
 					GameTextForPlayer(i, "~r~Bi thuong~n~~w~Dang doi EMS den...", 5000, 3);
-					format(string, sizeof string, "(( Nguoi choi nay dang bi thuong nang, /damages %d de xem chi tiet)) ", i); 
-	    			SetPlayerChatBubble(i, string, COLOR_LIGHTRED, 30.0, 6000);
 				}
 				if(GetPVarInt(i, "EMSAttempt") == 2)
 				{
@@ -917,8 +913,6 @@ task EMSUpdate[5000]()
 						}
 	    			}
 	    			GameTextForPlayer(i, "~g~Dich vu~n~~w~Dang cho dieu tri...", 5000, 3);
-	    			format(string, sizeof string, "(( Nguoi choi nay dang bi thuong nang, /damages %d de xem chi tiet)) ", i); 
-	    			SetPlayerChatBubble(i, string, COLOR_LIGHTRED, 30.0, 6000);
 				}
 				if(GetPVarInt(i, "EMSAttempt") == 3)
 				{
@@ -1016,7 +1010,7 @@ task ServerHeartbeat[1000]() {
 					PlayerInfo[i][pInt] = 0;
 					SetPlayerVirtualWorld(i, 0);
 					PlayerInfo[i][pVW] = 0;
-					ActSetPlayerPos(i, 631.7688,-571.7535,16.3359);
+					SetPlayerPos(i, 631.7688,-571.7535,16.3359);
 				}
 				else
 				{
@@ -1024,7 +1018,7 @@ task ServerHeartbeat[1000]() {
 					PlayerInfo[i][pInt] = 0;
 					SetPlayerVirtualWorld(i, 0);
 					PlayerInfo[i][pVW] = 0;
-	    			ActSetPlayerPos(i, 1224.6759,244.8446,19.5547);
+	    			SetPlayerPos(i, 1224.6759,244.8446,19.5547);
 				}
 				SetPlayerHealth(i, 100);
 				PlayerInfo[i][pJailTime] = 0;
@@ -1185,7 +1179,7 @@ task ServerHeartbeat[1000]() {
 						{
 							if(IsPlayerInRangeOfPoint(Boxer1,25.0,768.48, -73.66, 1000.57) || IsPlayerInRangeOfPoint(Boxer2,25.0,768.48, -73.66, 1000.57))
 							{
-								ActSetPlayerPos(Boxer1, 768.48, -73.66, 1000.57); ActSetPlayerPos(Boxer2, 768.48, -73.66, 1000.57);
+								SetPlayerPos(Boxer1, 768.48, -73.66, 1000.57); SetPlayerPos(Boxer2, 768.48, -73.66, 1000.57);
 								SetPlayerInterior(Boxer1, 7); SetPlayerInterior(Boxer2, 7);
 								GetPlayerName(Boxer1, loser, sizeof(loser));
 								GetPlayerName(Boxer2, winner, sizeof(winner));
@@ -1259,7 +1253,7 @@ task ServerHeartbeat[1000]() {
 								PlayerBoxing[Boxer1] = 0;
 								PlayerBoxing[Boxer2] = 0;
 							}
-							ActSetPlayerPos(Boxer1, 765.8433,3.2924,1000.7186); ActSetPlayerPos(Boxer2, 765.8433,3.2924,1000.7186);
+							SetPlayerPos(Boxer1, 765.8433,3.2924,1000.7186); SetPlayerPos(Boxer2, 765.8433,3.2924,1000.7186);
 							SetPlayerInterior(Boxer1, 5); SetPlayerInterior(Boxer2, 5);
 							GetPlayerName(Boxer1, loser, sizeof(loser));
 							GetPlayerName(Boxer2, winner, sizeof(winner));
@@ -1340,7 +1334,7 @@ task ServerHeartbeat[1000]() {
 						{
 							if(IsPlayerInRangeOfPoint(Boxer1,25.0,768.48, -73.66, 1000.57) || IsPlayerInRangeOfPoint(Boxer2,25.0, 768.48, -73.66, 1000.57))
 							{
-								ActSetPlayerPos(Boxer1, 768.48, -73.66, 1000.57); ActSetPlayerPos(Boxer2, 768.48, -73.66, 1000.57);
+								SetPlayerPos(Boxer1, 768.48, -73.66, 1000.57); SetPlayerPos(Boxer2, 768.48, -73.66, 1000.57);
 								SetPlayerInterior(Boxer1, 7); SetPlayerInterior(Boxer2, 7);
 								GetPlayerName(Boxer1, winner, sizeof(winner));
 								GetPlayerName(Boxer2, loser, sizeof(loser));
@@ -1412,7 +1406,7 @@ task ServerHeartbeat[1000]() {
 								PlayerBoxing[Boxer1] = 0;
 								PlayerBoxing[Boxer2] = 0;
 							}
-							ActSetPlayerPos(Boxer1, 768.48, -73.66, 1000.57); ActSetPlayerPos(Boxer2, 768.48, -73.66, 1000.57);
+							SetPlayerPos(Boxer1, 768.48, -73.66, 1000.57); SetPlayerPos(Boxer2, 768.48, -73.66, 1000.57);
 							SetPlayerInterior(Boxer1, 7); SetPlayerInterior(Boxer2, 7);
 							GetPlayerName(Boxer1, winner, sizeof(winner));
 							GetPlayerName(Boxer2, loser, sizeof(loser));
@@ -1607,7 +1601,7 @@ task ServerHeartbeat[1000]() {
 				ClearAnimations(i);
 				new Float:X, Float:Y, Float:Z;
 				GetPlayerPos(i, X, Y, Z);
-				ActSetPlayerPos(i, X, Y, Z);
+				SetPlayerPos(i, X, Y, Z);
 			}
 			else
 			{
@@ -1684,9 +1678,9 @@ task ServerHeartbeat[1000]() {
 								DeletePVar(ii, "_BoxingQueue");
 								DeletePVar(ii, "_BoxingQueueTick");
 
-								ActSetPlayerPos(i, 2924.0735, -2293.3145, 8.0905);
+								SetPlayerPos(i, 2924.0735, -2293.3145, 8.0905);
 								SetPlayerFacingAngle(i, 136.0062);
-								ActSetPlayerPos(ii, 2920.4709, -2296.9460, 8.0905);
+								SetPlayerPos(ii, 2920.4709, -2296.9460, 8.0905);
 								SetPlayerFacingAngle(ii, 308.0462);
 
 								new Float:health, Float:armour;
@@ -1733,9 +1727,9 @@ task ServerHeartbeat[1000]() {
 								DeletePVar(ii, "_BoxingQueue");
 								DeletePVar(ii, "_BoxingQueueTick");
 
-								ActSetPlayerPos(i, 2920.6958, -2257.4312, 8.0905);
+								SetPlayerPos(i, 2920.6958, -2257.4312, 8.0905);
 								SetPlayerFacingAngle(i, 310.5444);
-								ActSetPlayerPos(ii, 2924.3989, -2253.8279, 8.0905);
+								SetPlayerPos(ii, 2924.3989, -2253.8279, 8.0905);
 								SetPlayerFacingAngle(ii, 134.5329);
 
 								new Float:health, Float:armour;
@@ -1838,7 +1832,7 @@ task ServerHeartbeat[1000]() {
 			DeletePVar(i, "_BoxingCacheArmour");
 			DeletePVar(i, "_BoxingFightOver");
 			SetPlayerWeapons(i);
-			ActSetPlayerPos(i, 2914.0706, -2263.0193, 7.2367);
+			SetPlayerPos(i, 2914.0706, -2263.0193, 7.2367);
 		}
 	}
 	UpdateCarRadars();
@@ -1850,6 +1844,9 @@ task ServerHeartbeatTwo[1000]() {
 
 	foreach(new i: Player)
 	{
+		if(PlayerInfo[i][pTimeCraft] > 0) PlayerInfo[i][pTimeCraft] -= 1;
+		if(PlayerInfo[i][pTimeMedkit] > 0) PlayerInfo[i][pTimeMedkit] -= 1;
+
 		if(IsPlayerInAnyVehicle(i)) {
 			if(GetPlayerState(i) == PLAYER_STATE_DRIVER) SetPlayerArmedWeapon(i, 0);
 			else if(PlayerInfo[i][pGuns][4] == 0) SetPlayerArmedWeapon(i, 0);
@@ -2002,10 +1999,10 @@ task ServerHeartbeatTwo[1000]() {
 			GameTextForPlayer(i, string, 15000, 6);
 			if(TransportCost[i] > GetPlayerCash(i))
 			{
-			    ActRemovePlayerFromVehicle(i);
+			    RemovePlayerFromVehicle(i);
 			    new Float:slx, Float:sly, Float:slz;
 				GetPlayerPos(i, slx, sly, slz);
-				ActSetPlayerPos(i, slx, sly, slz + 2);
+				SetPlayerPos(i, slx, sly, slz + 2);
 			    GameTextForPlayer(i, "~r~You're flat out of cash!", 4000, 4);
 			}
 		}

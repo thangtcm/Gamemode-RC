@@ -1844,6 +1844,7 @@ new TruckDeliveringTo[MAX_VEHICLES];
 new TruckContents[MAX_VEHICLES char] = 0;
 new TruckRoute[MAX_VEHICLES char] = -1;
 new Float: VehicleFuel[MAX_VEHICLES];
+new Float: VehicleCapacity[MAX_VEHICLES];
 new VehicleStatus[MAX_VEHICLES char] = 0; // 0 == none, 1 == vehicle dead about to respawn
 new DynVeh[MAX_VEHICLES]; // -1 = Not a dynamic vehicle, 0 > = DynVehicleInfo ID
 new Float: fVehSpeed[MAX_PLAYERS];
@@ -2270,8 +2271,6 @@ new aLastShot[MAX_PLAYERS];
 new IsSpawned[MAX_PLAYERS];
 new SpawnKick[MAX_PLAYERS];
 
-new AC_FakeSpawn[MAX_PLAYERS];
-
 // Tradable Toys
 new InsideTradeToys[MAX_PLAYERS], PlayerText: ttBackground[MAX_PLAYERS], PlayerText: ttModel[MAX_PLAYERS], PlayerText: ttObjectInfo[MAX_PLAYERS], PlayerText: ttLogo[MAX_PLAYERS], PlayerText: ttPurchase[MAX_PLAYERS],
 	PlayerText: ttDecline[MAX_PLAYERS], PlayerText: ttOffer[MAX_PLAYERS], PlayerText: ttNote[MAX_PLAYERS], PlayerText: ttYes[MAX_PLAYERS], PlayerText: ttNo[MAX_PLAYERS];
@@ -2423,6 +2422,7 @@ new ArrestPoints[MAX_ARRESTPOINTS][arrestInfo];
 new ImpoundPoints[MAX_IMPOUNDPOINTS][impoundInfo];
 new fireworktog = 1;
 new CpStore[MAX_PLAYERS][cStore];
+
 new PlayerText:ShopNotice[MAX_PLAYERS];
 new ShopReminder = 1;
 

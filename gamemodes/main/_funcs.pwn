@@ -30,7 +30,7 @@ public OnPlayerUpdate(playerid)
           	GetVehiclePos(vehicleid, vehx, vehy, vehz);
           	SetVehiclePos(vehicleid, vehx, vehy, vehz);
 	        SetVehicleParamsEx(GetPVarInt(playerid, "XePizza"),VEHICLE_PARAMS_OFF,lights,alarm,1,bonnet,0,objective);
-	        ActRemovePlayerFromVehicle(playerid);
+	        RemovePlayerFromVehicle(playerid);
 	    	GameTextForPlayer(playerid, "~w~An nut ~r~Y~w~ de lay banh.", 6000, 5);
 	    	SetPVarInt(playerid, "DenDichXuongXe", 1);
 	    	return 1;
@@ -88,6 +88,7 @@ public OnPlayerUpdate(playerid)
 			}
 	        acstruct[playerid][checkmaptp] = 0;
 	}
+
 	if(PlayerInfo[playerid][pAdmin] < 2)
 	{
 	new string[128];
@@ -1108,7 +1109,6 @@ public OnPlayerClickPlayerTextDraw(playerid, PlayerText:playertextid)
             // mysql_function_query(MainPipeline, string, true, "OnQueryFinish", "iii", LOADUSERDATA_THREAD, playerid, g_arrQueryHandle{playerid});
             hide_PreviewCharacter(playerid);
             SetPVarInt(playerid,#select_character,i);
-			AC_FakeSpawn[playerid] = 1;
             LoaderStarting(playerid, LOAD_CHARACTERLOGIN, "Dang tai du lieu game...", 2);       
         }
         if(playertextid == character_preview[playerid][5]) {
@@ -1130,7 +1130,7 @@ public OnPlayerClickPlayerTextDraw(playerid, PlayerText:playertextid)
 public OnPlayerClickMap(playerid, Float:fX, Float:fY, Float:fZ)
 {
  
-    if(PlayerInfo[playerid][pAdmin] > 2) ActSetPlayerPos(playerid,fX,fY,fZ);
+    if(PlayerInfo[playerid][pAdmin] > 2) SetPlayerPos(playerid,fX,fY,fZ);
 	acstruct[playerid][checkmaptp] = 1; acstruct[playerid][maptplastclick] = GetTickCount();
 	acstruct[playerid][maptp][0] = fX; acstruct[playerid][maptp][1] = fY; acstruct[playerid][maptp][2] = fZ;
 	return 1;
@@ -1223,7 +1223,7 @@ public OnPlayerEnterVehicle(playerid, vehicleid, ispassenger)
 	{
 		if(GetPVarType(playerid, "Injured"))
 		{
-			ActSetPlayerPos(playerid, GetPVarFloat(playerid,"MedicX"), GetPVarFloat(playerid,"MedicY"), GetPVarFloat(playerid,"MedicZ"));
+			SetPlayerPos(playerid, GetPVarFloat(playerid,"MedicX"), GetPVarFloat(playerid,"MedicY"), GetPVarFloat(playerid,"MedicZ"));
 			ClearAnimations(playerid);
 			ApplyAnimation(playerid, "WUZI", "CS_Dead_Guy", 4.1, 1, 1, 1, 1, 0, 1);
 		}
@@ -1238,9 +1238,9 @@ public OnPlayerEnterVehicle(playerid, vehicleid, ispassenger)
 			{
 			    new Float:slx, Float:sly, Float:slz;
 				GetPlayerPos(playerid, slx, sly, slz);
-				ActSetPlayerPos(playerid, slx, sly, slz+1.3);
+				SetPlayerPos(playerid, slx, sly, slz+1.3);
 				PlayerPlaySound(playerid, 1130, slx, sly, slz+1.3);
-			    ActRemovePlayerFromVehicle(playerid);
+			    RemovePlayerFromVehicle(playerid);
 			    defer NOPCheck(playerid);
 			    SendClientMessageEx(playerid, COLOR_GRAD2, "Ban khong phai VIP, day la chiec xe duoc lay tu gara VIP!");
 			}
@@ -1268,9 +1268,9 @@ public OnPlayerEnterVehicle(playerid, vehicleid, ispassenger)
 				    {
                         new Float:slx, Float:sly, Float:slz;
 						GetPlayerPos(playerid, slx, sly, slz);
-						ActSetPlayerPos(playerid, slx, sly, slz+1.3);
+						SetPlayerPos(playerid, slx, sly, slz+1.3);
 						PlayerPlaySound(playerid, 1130, slx, sly, slz+1.3);
-					    ActRemovePlayerFromVehicle(playerid);
+					    RemovePlayerFromVehicle(playerid);
 					    defer NOPCheck(playerid);
 					    SendClientMessageEx(playerid, COLOR_GRAD2, "Day la xe Old-School, ban khong the su dung chiec xe nay.");
 					}
@@ -1281,9 +1281,9 @@ public OnPlayerEnterVehicle(playerid, vehicleid, ispassenger)
 					{
 					    new Float:slx, Float:sly, Float:slz;
 						GetPlayerPos(playerid, slx, sly, slz);
-						ActSetPlayerPos(playerid, slx, sly, slz+1.3);
+						SetPlayerPos(playerid, slx, sly, slz+1.3);
 						PlayerPlaySound(playerid, 1130, slx, sly, slz+1.3);
-					    ActRemovePlayerFromVehicle(playerid);
+					    RemovePlayerFromVehicle(playerid);
 					    defer NOPCheck(playerid);
 					    SendClientMessageEx(playerid, COLOR_GRAD2, "Day la xe Chartered Old-School, ban khong the su dung chiec xe nay.");
 					}
@@ -1294,9 +1294,9 @@ public OnPlayerEnterVehicle(playerid, vehicleid, ispassenger)
 				    {
 				        new Float:slx, Float:sly, Float:slz;
 						GetPlayerPos(playerid, slx, sly, slz);
-						ActSetPlayerPos(playerid, slx, sly, slz+1.3);
+						SetPlayerPos(playerid, slx, sly, slz+1.3);
 						PlayerPlaySound(playerid, 1130, slx, sly, slz+1.3);
-					    ActRemovePlayerFromVehicle(playerid);
+					    RemovePlayerFromVehicle(playerid);
 					    defer NOPCheck(playerid);
 					    SendClientMessageEx(playerid, COLOR_GRAD2, "Day la xe Famed, ban khong the su dung chiec xe nay.");
 					}
@@ -1358,10 +1358,10 @@ public OnPlayerEnterVehicle(playerid, vehicleid, ispassenger)
 			}
 		    else if(!IsABoat(vehicleid))
 			{
-			    ActRemovePlayerFromVehicle(playerid);
+			    RemovePlayerFromVehicle(playerid);
 			    new Float:slx, Float:sly, Float:slz;
 				GetPlayerPos(playerid, slx, sly, slz);
-				ActSetPlayerPos(playerid, slx, sly, slz);
+				SetPlayerPos(playerid, slx, sly, slz);
 			    defer NOPCheck(playerid);
 			    SendClientMessageEx(playerid, COLOR_GRAD2, "Ban khong phai la Tai Xe Trucker!");
 			}
@@ -1370,10 +1370,10 @@ public OnPlayerEnterVehicle(playerid, vehicleid, ispassenger)
 		{
 	  		if(PlayerInfo[playerid][pFlyLic] != 1)
 	  		{
-		  		ActRemovePlayerFromVehicle(playerid);
+		  		RemovePlayerFromVehicle(playerid);
 		  		new Float:slx, Float:sly, Float:slz;
 				GetPlayerPos(playerid, slx, sly, slz);
-				ActSetPlayerPos(playerid, slx, sly, slz);
+				SetPlayerPos(playerid, slx, sly, slz);
 		  		defer NOPCheck(playerid);
 			 	SendErrorMessage(playerid, "Ban khong co giay phep thi cong!");
 	  		}
@@ -1391,10 +1391,10 @@ public OnPlayerEnterVehicle(playerid, vehicleid, ispassenger)
 		    else
 			{
 		        SendErrorMessage(playerid, "   Ban khong phai nhan vien Taxi/Bus!");
-		        ActRemovePlayerFromVehicle(playerid);
+		        RemovePlayerFromVehicle(playerid);
 		        new Float:slx, Float:sly, Float:slz;
 				GetPlayerPos(playerid, slx, sly, slz);
-				ActSetPlayerPos(playerid, slx, sly, slz);
+				SetPlayerPos(playerid, slx, sly, slz);
 		    }
 		}
 		else if(IsASpawnedTrain(vehicleid))
@@ -1405,10 +1405,10 @@ public OnPlayerEnterVehicle(playerid, vehicleid, ispassenger)
 		    else
 			{
 		        SendErrorMessage(playerid, "   Ban khong thuoc bo phan van chuyen!");
-		        ActRemovePlayerFromVehicle(playerid);
+		        RemovePlayerFromVehicle(playerid);
 		        new Float:slx, Float:sly, Float:slz;
 				GetPlayerPos(playerid, slx, sly, slz);
-				ActSetPlayerPos(playerid, slx, sly, slz);
+				SetPlayerPos(playerid, slx, sly, slz);
 		    }
 		}
 	}
@@ -1426,9 +1426,7 @@ public OnPlayerConnect(playerid) {
 		case 1: InterpolateCameraPos(playerid, 2433.3809,-66.7512,76.6627, 2167.8020,96.4188,42.4985, 50000, CAMERA_CUT);
 	}
 	DownS[playerid] = false;
-	ActTogglePlayerSpectating(playerid, true);
-	SetTimerEx("TimeUseMed", 60000, 0, "d", playerid);
-	SetTimerEx("TimeCraftMed", 60000, 0, "d", playerid);
+	TogglePlayerSpectating(playerid, true);
 	// SetTimerEx("LoadLogin", 500, 0, "i", playerid);
 	DownS[playerid] = 0;
 	SetPVarString(playerid, "PassAuth", "abc");
@@ -1440,7 +1438,7 @@ public OnPlayerConnect(playerid) {
 	pLoopAnim[playerid] = 0;
 	PlayerInfo[playerid][pObjHop] = INVALID_OBJECT_ID;
     gPlayerUsingLoopingAnim[playerid] = 0;
-	AC_FakeSpawn[playerid] = 0;
+	
 	// car mechanic 
 
 	// RadioInfo[playerid] = CreatePlayerTextDraw(playerid, 510.000000, 108.000000, "~w~Radio Info");
@@ -1916,7 +1914,7 @@ public OnPlayerDisconnect(playerid, reason)
             SetPlayerHealth(playerid, 0x7FB00000);
             SetPlayerFacingAngle(playerid, 0);
             new rand = random(sizeof(OOCPrisonSpawns));
-            ActSetPlayerPos(playerid, OOCPrisonSpawns[rand][0], OOCPrisonSpawns[rand][1], OOCPrisonSpawns[rand][2]);
+            SetPlayerPos(playerid, OOCPrisonSpawns[rand][0], OOCPrisonSpawns[rand][1], OOCPrisonSpawns[rand][2]);
             PlayerInfo[playerid][pVW] = 0;
             SetPlayerVirtualWorld(playerid, 0);
             format(string, sizeof(string), "[OOC] Roi khoi khi dang bi truy duoi [Timeout]");
@@ -1936,7 +1934,7 @@ public OnPlayerDisconnect(playerid, reason)
 			Spectating[i] = 0;
 			Spectate[i] = INVALID_PLAYER_ID;
 			GettingSpectated[playerid] = INVALID_PLAYER_ID;
-			ActTogglePlayerSpectating(i, 0);
+			TogglePlayerSpectating(i, false);
 			SendClientMessageEx(i, COLOR_WHITE, "Nguoi choi ban dang theo doi da thoat khoi may chu.");
 		}
 		if(GetPVarType(i, "_dCheck") && GetPVarInt(i, "_dCheck") == playerid) {
@@ -2482,12 +2480,12 @@ public OnPlayerDisconnect(playerid, reason)
 					if(IsPlayerInRangeOfPoint(PlayerBoxing[Boxer2], 20.0, 768.94, -70.87, 1001.56))
 					{
 						PlayerBoxing[Boxer2] = 0;
-						ActSetPlayerPos(Boxer2, 768.48, -73.66, 1000.57);
+						SetPlayerPos(Boxer2, 768.48, -73.66, 1000.57);
 						SetPlayerInterior(Boxer2, 7);
 						GameTextForPlayer(Boxer2, "~r~Match interupted", 5000, 1);
 					}
 					PlayerBoxing[Boxer2] = 0;
-					ActSetPlayerPos(Boxer2, 765.8433,3.2924,1000.7186);
+					SetPlayerPos(Boxer2, 765.8433,3.2924,1000.7186);
 					SetPlayerInterior(Boxer2, 5);
 					GameTextForPlayer(Boxer2, "~r~Match interupted", 5000, 1);
 				}
@@ -2499,12 +2497,12 @@ public OnPlayerDisconnect(playerid, reason)
 					if(IsPlayerInRangeOfPoint(PlayerBoxing[Boxer1],20.0,764.35, -66.48, 1001.56))
 					{
 						PlayerBoxing[Boxer1] = 0;
-						ActSetPlayerPos(Boxer1, 768.48, -73.66, 1000.57);
+						SetPlayerPos(Boxer1, 768.48, -73.66, 1000.57);
 						SetPlayerInterior(Boxer1, 7);
 						GameTextForPlayer(Boxer1, "~r~Match interupted", 5000, 1);
 					}
 					PlayerBoxing[Boxer1] = 0;
-					ActSetPlayerPos(Boxer1, 765.8433,3.2924,1000.7186);
+					SetPlayerPos(Boxer1, 765.8433,3.2924,1000.7186);
 					SetPlayerInterior(Boxer1, 5);
 					GameTextForPlayer(Boxer1, "~r~Match interupted", 5000, 1);
 				}
@@ -3011,7 +3009,7 @@ public OnVehicleDeath(vehicleid, killerid) {
 	    if(InsidePlane[i] == vehicleid)
 	    {
 			GetVehiclePos(InsidePlane[i], X, Y, Z);
-			ActSetPlayerPos(i, X-4, Y-2.3, Z);
+			SetPlayerPos(i, X-4, Y-2.3, Z);
 			GetVehiclePos(InsidePlane[i], XB, YB, ZB);
 			if(ZB > 50.0)
 			{
@@ -3027,7 +3025,14 @@ public OnVehicleDeath(vehicleid, killerid) {
 	    }
 	    if(GetPVarInt(i, "NGPassengerVeh") == vehicleid)
 	    {
-	        ActTogglePlayerSpectating(i, false);
+	        TogglePlayerSpectating(i, 0);
+		}
+
+		new v;
+		if((v = GetPlayerVehicle(i, vehicleid)) != -1) 
+		{
+			GetVehicleHealth(vehicleid, PlayerVehicleInfo[i][v][pvHealth]);
+			GetVehicleDamageStatus(vehicleid, PlayerVehicleInfo[i][v][pvPanels], PlayerVehicleInfo[i][v][pvDoors], PlayerVehicleInfo[i][v][pvLights], PlayerVehicleInfo[i][v][pvTires]);
 		}
 	}
     /*if(DynVeh[vehicleid] != -1)
@@ -3058,20 +3063,7 @@ public OnVehicleDeath(vehicleid, killerid) {
 
 public OnPlayerSpawn(playerid)
 {
-	printf("RUNN SPAWN");
-    if(IsPlayerNPC(playerid)) 
-	{
-		SetTimerEx("KickEx", 1000, 0, "i", playerid);
-		return 1;
-	}
-	if(!AC_FakeSpawn[playerid])
-	{
-		new string[256],  playerip[32];
-		GetPlayerIp(playerid, playerip, sizeof(playerip));
-		format(string, sizeof(string), "{AA3333}AdmWarning{FFFF00}: %s (ID: %d - IP : %s) da bi kick khoi may chu [Reason: RCRP-AC Fake Spawn].", GetPlayerNameEx(playerid), playerid, playerip);
-		ABroadCast(COLOR_YELLOW, string, 2);
-		SetTimerEx("KickEx", 1000, 0, "i", playerid);
-	}
+    if(IsPlayerNPC(playerid)) return 1;
 	SetPlayerSkillLevel(playerid, WEAPONSKILL_PISTOL, 1);
 	SetPlayerSkillLevel(playerid, WEAPONSKILL_MICRO_UZI, 1);
 	if ( IsPlayerAndroid(playerid) )
@@ -3105,7 +3097,7 @@ public OnPlayerSpawn(playerid)
 	{
 	    new Float:X, Float:Y, Float:Z;
 	    GetVehiclePos(GetPVarInt(playerid, "NGPassengerVeh"), X, Y, Z);
-	    ActSetPlayerPos(playerid, (X-2.557), (Y-3.049), Z);
+	    SetPlayerPos(playerid, (X-2.557), (Y-3.049), Z);
 	    SetPlayerWeaponsEx(playerid);
         GivePlayerValidWeapon(playerid, 46, 60000);
         SetPlayerSkin(playerid, GetPVarInt(playerid, "NGPassengerSkin"));
@@ -3122,7 +3114,7 @@ public OnPlayerSpawn(playerid)
 	}
 	if(InsidePlane[playerid] != INVALID_VEHICLE_ID)
 	{
-		ActSetPlayerPos(playerid, GetPVarFloat(playerid, "air_Xpos"), GetPVarFloat(playerid, "air_Ypos"), GetPVarFloat(playerid, "air_Zpos"));
+		SetPlayerPos(playerid, GetPVarFloat(playerid, "air_Xpos"), GetPVarFloat(playerid, "air_Ypos"), GetPVarFloat(playerid, "air_Zpos"));
 		SetPlayerFacingAngle(playerid, GetPVarFloat(playerid, "air_Rpos"));
 		SetPlayerHealth(playerid, GetPVarFloat(playerid, "air_HP"));
 		if(GetPVarFloat(playerid, "air_Arm") > 0) {
@@ -3884,7 +3876,7 @@ public OnPlayerEnterCheckpoint(playerid)
 				DisablePlayerCheckpoint(playerid);
 				gPlayerCheckpointStatus[playerid] = CHECKPOINT_NONE;
 				SetPlayerInterior(playerid,HouseInfo[i][hIntIW]);
-				ActSetPlayerPos(playerid,HouseInfo[i][hInteriorX],HouseInfo[i][hInteriorY],HouseInfo[i][hInteriorZ]);
+				SetPlayerPos(playerid,HouseInfo[i][hInteriorX],HouseInfo[i][hInteriorY],HouseInfo[i][hInteriorZ]);
 				GameTextForPlayer(playerid, "~w~Welcome Home", 5000, 1);
 				PlayerInfo[playerid][pInt] = HouseInfo[i][hIntIW];
 				PlayerInfo[playerid][pVW] = HouseInfo[i][hIntVW];
@@ -4748,7 +4740,7 @@ public OnPlayerKeyStateChange(playerid, newkeys, oldkeys)
 	{
 	    if(GetPVarInt(playerid, "NGPassenger") == 1)
 	    {
-	        ActTogglePlayerSpectating(playerid, 0);
+	        TogglePlayerSpectating(playerid, 0);
 		}
 		if(GetPVarInt(playerid, "UsingSprunk"))
 		{
@@ -4933,7 +4925,7 @@ public OnPlayerKeyStateChange(playerid, newkeys, oldkeys)
 			SetPVarInt(GetPVarInt(playerid, "DraggingPlayer"), "DragWorld", GetPlayerVirtualWorld(playerid));
 			SetPVarInt(GetPVarInt(playerid, "DraggingPlayer"), "DragInt", GetPlayerInterior(playerid));
 			Streamer_UpdateEx(GetPVarInt(playerid, "DraggingPlayer"), dX, dY, dZ);
-			ActSetPlayerPos(GetPVarInt(playerid, "DraggingPlayer"), dX, dY, dZ);
+			SetPlayerPos(GetPVarInt(playerid, "DraggingPlayer"), dX, dY, dZ);
 			SetPlayerInterior(GetPVarInt(playerid, "DraggingPlayer"), GetPlayerInterior(playerid));
 			SetPlayerVirtualWorld(GetPVarInt(playerid, "DraggingPlayer"), GetPlayerVirtualWorld(playerid));
 			ClearAnimations(GetPVarInt(playerid, "DraggingPlayer"));
@@ -5039,7 +5031,7 @@ public OnPlayerStateChange(playerid, newstate, oldstate)
 				{
 					if (GetPVarInt(playerid, "_BikeParkourSlot") != it)
 					{
-						ActRemovePlayerFromVehicle(playerid);
+						RemovePlayerFromVehicle(playerid);
 						SendClientMessageEx(playerid, COLOR_GRAD2, "Do khong phai chiec xe cua ban!");
 					}
 				}
@@ -5069,12 +5061,12 @@ public OnPlayerStateChange(playerid, newstate, oldstate)
 			if(PlayerInfo[i][pAdmin] >= 2 || GetPVarType(i, "pWatchdogWatching")) {
 				if(Spectating[i] > 0 && Spectate[i] == playerid) {
 					if(newstate == PLAYER_STATE_DRIVER || newstate == PLAYER_STATE_PASSENGER) {
-						ActTogglePlayerSpectating(i, true);
+						TogglePlayerSpectating(i, true);
 						new carid = GetPlayerVehicleID( playerid );
 						PlayerSpectateVehicle( i, carid );
 					}
 					else if(newstate == PLAYER_STATE_ONFOOT) {
-						ActTogglePlayerSpectating(i, true);
+						TogglePlayerSpectating(i, true);
 						PlayerSpectatePlayer( i, playerid );
 						SetPlayerInterior( i, GetPlayerInterior( playerid ) );
 					}
@@ -5172,7 +5164,7 @@ public OnPlayerStateChange(playerid, newstate, oldstate)
 			SendErrorMessage(playerid, " Zombie khong the di vao xe oto.");
 			new Float:X, Float:Y, Float:Z;
 			GetPlayerPos(playerid, X, Y, Z);
-			ActSetPlayerPos(playerid, X, Y, Z);
+			SetPlayerPos(playerid, X, Y, Z);
 			return 1;
 		}
 		#endif
@@ -5197,10 +5189,10 @@ public OnPlayerStateChange(playerid, newstate, oldstate)
 					new string[28];
 					format(string, sizeof(string), "[Taxi] Ban Can Phai Co $%d De Vao Xe", TransportValue[i]);
 					SendClientMessageEx(playerid, COLOR_LIGHTBLUE, string);
-					ActRemovePlayerFromVehicle(playerid);
+					RemovePlayerFromVehicle(playerid);
 					new Float:X, Float:Y, Float:Z;
 					GetPlayerPos(playerid, X, Y, Z);
-					ActSetPlayerPos(playerid, X, Y, Z+2);
+					SetPlayerPos(playerid, X, Y, Z+2);
 					TogglePlayerControllable(playerid, 1);
 				}
 				else
@@ -5251,7 +5243,7 @@ public OnPlayerStateChange(playerid, newstate, oldstate)
 			SendErrorMessage(playerid, " Zombie khong the lai xe.");
 			new Float:X, Float:Y, Float:Z;
 			GetPlayerPos(playerid, X, Y, Z);
-			ActSetPlayerPos(playerid, X, Y, Z);
+			SetPlayerPos(playerid, X, Y, Z);
 			return 1;
 		}
 		#endif
@@ -5273,7 +5265,7 @@ public OnPlayerStateChange(playerid, newstate, oldstate)
 			if(EventKernel[EventFootRace] == 1) {
 				new Float:X, Float:Y, Float:Z;
 				GetPlayerPos(playerid, X, Y, Z);
-				ActSetPlayerPos(playerid, X, Y, Z+1.3);
+				SetPlayerPos(playerid, X, Y, Z+1.3);
 				SendServerMessage(playerid, " Ban khong the tham gia su kien khi dang o ben trong mot chiec xe.");
 				return 1;
 			}
@@ -5318,8 +5310,8 @@ public OnPlayerStateChange(playerid, newstate, oldstate)
 					{
 						new Float:slx, Float:sly, Float:slz;
 						GetPlayerPos(playerid, slx, sly, slz);
-						ActSetPlayerPos(playerid, slx, sly, slz+1.3);
-						ActRemovePlayerFromVehicle(playerid);
+						SetPlayerPos(playerid, slx, sly, slz+1.3);
+						RemovePlayerFromVehicle(playerid);
 						defer NOPCheck(playerid);
 					}
 					else
@@ -5342,9 +5334,9 @@ public OnPlayerStateChange(playerid, newstate, oldstate)
 			{
 			    new Float:slx, Float:sly, Float:slz;
 				GetPlayerPos(playerid, slx, sly, slz);
-				ActSetPlayerPos(playerid, slx, sly, slz+1.3);
+				SetPlayerPos(playerid, slx, sly, slz+1.3);
 				PlayerPlaySound(playerid, 1130, slx, sly, slz+1.3);
-			    ActRemovePlayerFromVehicle(playerid);
+			    RemovePlayerFromVehicle(playerid);
 			    defer NOPCheck(playerid);
 			    SendClientMessageEx(playerid, COLOR_GRAD2, "Ban khong phai la VIP, day la chiec xe chi danh cho  VIP!");
 			}
@@ -5355,9 +5347,9 @@ public OnPlayerStateChange(playerid, newstate, oldstate)
 		    {
 		        new Float:slx, Float:sly, Float:slz;
 				GetPlayerPos(playerid, slx, sly, slz);
-				ActSetPlayerPos(playerid, slx, sly, slz+1.3);
+				SetPlayerPos(playerid, slx, sly, slz+1.3);
 				PlayerPlaySound(playerid, 1130, slx, sly, slz+1.3);
-			    ActRemovePlayerFromVehicle(playerid);
+			    RemovePlayerFromVehicle(playerid);
 			    defer NOPCheck(playerid);
 			    SendClientMessageEx(playerid, COLOR_GRAD2, "Ban khong phai la Famed Member, chiec xe da duoc lay tu gare Famed!");
 			 }
@@ -5371,16 +5363,16 @@ public OnPlayerStateChange(playerid, newstate, oldstate)
 			GetPlayerPos(playerid, slx, sly, slz);
 			if(DynVehicleInfo[DynVeh[vehicleid]][gv_igID] != INVALID_GROUP_ID && (PlayerInfo[playerid][pMember] != DynVehicleInfo[DynVeh[vehicleid]][gv_igID]))
 			{
-				ActRemovePlayerFromVehicle(playerid);
-				ActSetPlayerPos(playerid, slx, sly, slz+1.3);
+				RemovePlayerFromVehicle(playerid);
+				SetPlayerPos(playerid, slx, sly, slz+1.3);
 				defer NOPCheck(playerid);
 				format(string, sizeof(string), "Ban can phai o trong %s de lai chiec xe nay.", arrGroupData[DynVehicleInfo[DynVeh[vehicleid]][gv_igID]][g_szGroupName]);
 				SendClientMessageEx(playerid, COLOR_GRAD2, string);
 			}
 			else if(DynVehicleInfo[DynVeh[vehicleid]][gv_igDivID] != 0 && PlayerInfo[playerid][pDivision] != DynVehicleInfo[DynVeh[vehicleid]][gv_igDivID])
 			{
-				ActRemovePlayerFromVehicle(playerid);
-				ActSetPlayerPos(playerid, slx, sly, slz+1.3);
+				RemovePlayerFromVehicle(playerid);
+				SetPlayerPos(playerid, slx, sly, slz+1.3);
 				defer NOPCheck(playerid);
 				format(string, sizeof(string), "Ban can phai o trong %s's %s phan chia de lai xe nay.",
 				arrGroupData[DynVehicleInfo[DynVeh[vehicleid]][gv_igID]][g_szGroupName],
@@ -5389,14 +5381,14 @@ public OnPlayerStateChange(playerid, newstate, oldstate)
 			}
 			else if(DynVehicleInfo[DynVeh[vehicleid]][gv_ifID] != 0 && (PlayerInfo[playerid][pFMember] != DynVehicleInfo[DynVeh[vehicleid]][gv_ifID]))
 			{
-				ActRemovePlayerFromVehicle(playerid);
-				ActSetPlayerPos(playerid, slx, sly, slz+1.3);
+				RemovePlayerFromVehicle(playerid);
+				SetPlayerPos(playerid, slx, sly, slz+1.3);
 				defer NOPCheck(playerid);
 			}
 			else if(DynVehicleInfo[DynVeh[vehicleid]][gv_irID] != 0 && (PlayerInfo[playerid][pRank] < DynVehicleInfo[DynVeh[vehicleid]][gv_irID]))
 			{
-				ActRemovePlayerFromVehicle(playerid);
-				ActSetPlayerPos(playerid, slx, sly, slz+1.3);
+				RemovePlayerFromVehicle(playerid);
+				SetPlayerPos(playerid, slx, sly, slz+1.3);
 				defer NOPCheck(playerid);
 			}
 		}
@@ -5404,10 +5396,10 @@ public OnPlayerStateChange(playerid, newstate, oldstate)
 		{
 	  		if(PlayerInfo[playerid][pFlyLic] != 1)
 	  		{
-		  		ActRemovePlayerFromVehicle(playerid);
+		  		RemovePlayerFromVehicle(playerid);
 		  		new Float:slx, Float:sly, Float:slz;
 				GetPlayerPos(playerid, slx, sly, slz);
-				ActSetPlayerPos(playerid, slx, sly, slz);
+				SetPlayerPos(playerid, slx, sly, slz);
 		  		defer NOPCheck(playerid);
 			 	SendErrorMessage(playerid, "Ban khong co bang lai may bay!");
 	  		}
@@ -5425,10 +5417,10 @@ public OnPlayerStateChange(playerid, newstate, oldstate)
 		    else
 			{
 		        SendErrorMessage(playerid, "   Ban khong phai la tai xe Taxi/Bus!");
-		        ActRemovePlayerFromVehicle(playerid);
+		        RemovePlayerFromVehicle(playerid);
 		        new Float:slx, Float:sly, Float:slz;
 				GetPlayerPos(playerid, slx, sly, slz);
-				ActSetPlayerPos(playerid, slx, sly, slz);
+				SetPlayerPos(playerid, slx, sly, slz);
 				defer NOPCheck(playerid);
 		    }
 		}
@@ -5443,10 +5435,10 @@ public OnPlayerStateChange(playerid, newstate, oldstate)
 
 			if(Businesses[iBusiness][bInventory] == 0) {
 			    SendErrorMessage(playerid, "Cua hang nay da het hang.");
-		        ActRemovePlayerFromVehicle(playerid);
+		        RemovePlayerFromVehicle(playerid);
 		        new Float:slx, Float:sly, Float:slz;
 				GetPlayerPos(playerid, slx, sly, slz);
-				ActSetPlayerPos(playerid, slx, sly, slz);
+				SetPlayerPos(playerid, slx, sly, slz);
 				defer NOPCheck(playerid);
 				return 1;
 			}
@@ -5520,7 +5512,7 @@ public OnPlayerExitVehicle(playerid, vehicleid)
 	if(GetPVarInt(playerid, "rccam") == 1)
 	{
 		DestroyVehicle(GetPVarInt(playerid, "rcveh"));
-	    ActSetPlayerPos(playerid, GetPVarFloat(playerid, "rcX"), GetPVarFloat(playerid, "rcY"), GetPVarFloat(playerid, "rcZ"));
+	    SetPlayerPos(playerid, GetPVarFloat(playerid, "rcX"), GetPVarFloat(playerid, "rcY"), GetPVarFloat(playerid, "rcZ"));
 		DeletePVar(playerid, "rccam");
 	    KillTimer(GetPVarInt(playerid, "rccamtimer"));
 	}
@@ -5532,12 +5524,12 @@ public OnPlayerRequestClass(playerid, classid)
     if(IsPlayerNPC(playerid)) return 1;
 	if(gPlayerLogged{playerid} == 1)
 	{
-		ActTogglePlayerSpectating(playerid, 0);
+		TogglePlayerSpectating(playerid, 0);
 		SetTimerEx("ForceSpawn", 10, false, "i", playerid);
 	}
 	else
 	{
-		ActTogglePlayerSpectating(playerid, 1);
+		TogglePlayerSpectating(playerid, 1);
 	}
 
 	return 1;
@@ -6593,8 +6585,7 @@ stock LoadLogin(playerid)
 		case 0: InterpolateCameraPos(playerid, 1532.3927,357.1458,78.8630, 1228.4036,155.1032,45.7313, 50000, CAMERA_CUT);
 		case 1: InterpolateCameraPos(playerid, 2433.3809,-66.7512,76.6627, 2167.8020,96.4188,42.4985, 50000, CAMERA_CUT);
 	}
-	new string[229],ip[32], Float:playerPos[3];
-
+	new string[229],ip[32];
     GetPlayerIp(playerid, ip, 32);
     format(string,sizeof (string),"Tai khoan: %s\n\n\
     Dia chi IP cua ban: %s\n\n\
@@ -6602,8 +6593,6 @@ stock LoadLogin(playerid)
     Thoi gian tao tai khoan: %s\n\n\
     Tai khoan ban da dang ky hay nhap mat khau de dang nhap\n\n\n",GetPlayerNameEx(playerid),ip,MasterInfo[playerid][acc_lastlogin],MasterInfo[playerid][acc_regidate]);
     ShowPlayerDialog(playerid,DANGNHAP,DIALOG_STYLE_PASSWORD,"Dang nhap",string,"Dang nhap","Thoat");
-	GetPlayerPos(playerid, playerPos[0], playerPos[1], playerPos[2]);
-	printf("Vi tri %f - %f- %f", playerPos[0], playerPos[1], playerPos[2]);
 	return 1;
 }
 
@@ -8334,7 +8323,7 @@ public OnPlayerTakeDamage(playerid, issuerid, Float:amount, weaponid)
 						PlayerInfo[playerid][pVW] = 3;
 						new rand = random(sizeof(OOCPrisonSpawns));
 						Streamer_UpdateEx(playerid, OOCPrisonSpawns[rand][0], OOCPrisonSpawns[rand][1], OOCPrisonSpawns[rand][2]);
-						ActSetPlayerPos(playerid, OOCPrisonSpawns[rand][0], OOCPrisonSpawns[rand][1], OOCPrisonSpawns[rand][2]);
+						SetPlayerPos(playerid, OOCPrisonSpawns[rand][0], OOCPrisonSpawns[rand][1], OOCPrisonSpawns[rand][2]);
 						SetPlayerSkin(playerid, 50);
 						SetPlayerColor(playerid, TEAM_APRISON_COLOR);
 						Player_StreamPrep(playerid, OOCPrisonSpawns[rand][0], OOCPrisonSpawns[rand][1], OOCPrisonSpawns[rand][2], FREEZE_TIME);
@@ -8383,7 +8372,7 @@ public OnPlayerTakeDamage(playerid, issuerid, Float:amount, weaponid)
 		            {
 		                new Float:x, Float:y, Float:z;
 		                GetPlayerPos(issuerid, x, y, z);
-		                ActSetPlayerPos(issuerid, x, y, z + 5);
+		                SetPlayerPos(issuerid, x, y, z + 5);
 						SendClientMessageEx(issuerid, COLOR_YELLOW, "(-) Canh bao : Khong duoc tan cong nguoi choi o khu an toan (-).");
 						GameTextForPlayer(issuerid, "~r~Khong duoc Car Raming", 5000, 3);
 						return 1;
@@ -11557,7 +11546,7 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 				else {
 				    SetPlayerCheckpoint(playerid, EventRCPX[ConfigEventCPId[playerid]], EventRCPY[ConfigEventCPId[playerid]], EventRCPZ[ConfigEventCPId[playerid]], EventRCPS[ConfigEventCPId[playerid]]);
 				}
-				ActSetPlayerPos(playerid, EventRCPX[ConfigEventCPId[playerid]], EventRCPY[ConfigEventCPId[playerid]], EventRCPZ[ConfigEventCPId[playerid]]);
+				SetPlayerPos(playerid, EventRCPX[ConfigEventCPId[playerid]], EventRCPY[ConfigEventCPId[playerid]], EventRCPZ[ConfigEventCPId[playerid]]);
 				SendServerMessage(playerid, " You now have a view of this checkpoint, you are inside of the checkpoint, step outside to see it.");
 			}
 	    }
@@ -12779,7 +12768,7 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 						PlayerInfo[playerid][pInt] = 1;
 						new rand = random(sizeof(OOCPrisonSpawns));
 						Streamer_UpdateEx(playerid, OOCPrisonSpawns[rand][0], OOCPrisonSpawns[rand][1], OOCPrisonSpawns[rand][2]);
-						ActSetPlayerPos(playerid, OOCPrisonSpawns[rand][0], OOCPrisonSpawns[rand][1], OOCPrisonSpawns[rand][2]);
+						SetPlayerPos(playerid, OOCPrisonSpawns[rand][0], OOCPrisonSpawns[rand][1], OOCPrisonSpawns[rand][2]);
 						SetPlayerSkin(playerid, 50);
 						SetPlayerColor(playerid, TEAM_APRISON_COLOR);
 						Player_StreamPrep(playerid, OOCPrisonSpawns[rand][0], OOCPrisonSpawns[rand][1], OOCPrisonSpawns[rand][2], FREEZE_TIME);
@@ -12799,7 +12788,7 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 						PlayerInfo[playerid][pInt] = 1;
 						new rand = random(sizeof(OOCPrisonSpawns));
 						Streamer_UpdateEx(playerid, OOCPrisonSpawns[rand][0], OOCPrisonSpawns[rand][1], OOCPrisonSpawns[rand][2]);
-						ActSetPlayerPos(playerid, OOCPrisonSpawns[rand][0], OOCPrisonSpawns[rand][1], OOCPrisonSpawns[rand][2]);
+						SetPlayerPos(playerid, OOCPrisonSpawns[rand][0], OOCPrisonSpawns[rand][1], OOCPrisonSpawns[rand][2]);
 						SetPlayerSkin(playerid, 50);
 						SetPlayerColor(playerid, TEAM_APRISON_COLOR);
 						Player_StreamPrep(playerid, OOCPrisonSpawns[rand][0], OOCPrisonSpawns[rand][1], OOCPrisonSpawns[rand][2], FREEZE_TIME);
@@ -12853,7 +12842,7 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 						PlayerInfo[playerid][pInt] = 1;
 						new rand = random(sizeof(OOCPrisonSpawns));
 						Streamer_UpdateEx(playerid, OOCPrisonSpawns[rand][0], OOCPrisonSpawns[rand][1], OOCPrisonSpawns[rand][2]);
-						ActSetPlayerPos(playerid, OOCPrisonSpawns[rand][0], OOCPrisonSpawns[rand][1], OOCPrisonSpawns[rand][2]);
+						SetPlayerPos(playerid, OOCPrisonSpawns[rand][0], OOCPrisonSpawns[rand][1], OOCPrisonSpawns[rand][2]);
 						SetPlayerSkin(playerid, 50);
 						SetPlayerColor(playerid, TEAM_APRISON_COLOR);
 						Player_StreamPrep(playerid, OOCPrisonSpawns[rand][0], OOCPrisonSpawns[rand][1], OOCPrisonSpawns[rand][2], FREEZE_TIME);
@@ -12873,7 +12862,7 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 						PlayerInfo[playerid][pInt] = 1;
 						new rand = random(sizeof(OOCPrisonSpawns));
 						Streamer_UpdateEx(playerid, OOCPrisonSpawns[rand][0], OOCPrisonSpawns[rand][1], OOCPrisonSpawns[rand][2]);
-						ActSetPlayerPos(playerid, OOCPrisonSpawns[rand][0], OOCPrisonSpawns[rand][1], OOCPrisonSpawns[rand][2]);
+						SetPlayerPos(playerid, OOCPrisonSpawns[rand][0], OOCPrisonSpawns[rand][1], OOCPrisonSpawns[rand][2]);
 						SetPlayerSkin(playerid, 50);
 						SetPlayerColor(playerid, TEAM_APRISON_COLOR);
 						Player_StreamPrep(playerid, OOCPrisonSpawns[rand][0], OOCPrisonSpawns[rand][1], OOCPrisonSpawns[rand][2], FREEZE_TIME);
@@ -13086,7 +13075,7 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 					SetPVarInt(playerid, "pbOldInt", GetPlayerInterior(playerid));
 					SetPVarInt(playerid, "pbOldVW", GetPlayerVirtualWorld(playerid));
 
-					ActSetPlayerPos(playerid, PaintBallArena[i][pbDeathmatch1][0],PaintBallArena[i][pbDeathmatch1][1],PaintBallArena[i][pbDeathmatch1][2]);
+					SetPlayerPos(playerid, PaintBallArena[i][pbDeathmatch1][0],PaintBallArena[i][pbDeathmatch1][1],PaintBallArena[i][pbDeathmatch1][2]);
      				SetPlayerFacingAngle(playerid, PaintBallArena[i][pbDeathmatch1][3]);
          			SetPlayerInterior(playerid, PaintBallArena[i][pbInterior]);
             		SetPlayerVirtualWorld(playerid, PaintBallArena[i][pbVirtual]);
@@ -13146,7 +13135,7 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 	    {
 	        if(GetPVarInt(playerid, "ArenaNumber") != -1)
 	        {
-	            ActSetPlayerPos(playerid, GetPVarFloat(playerid, "pbOldX"),GetPVarFloat(playerid, "pbOldY"),GetPVarFloat(playerid, "pbOldZ"));
+	            SetPlayerPos(playerid, GetPVarFloat(playerid, "pbOldX"),GetPVarFloat(playerid, "pbOldY"),GetPVarFloat(playerid, "pbOldZ"));
   				SetPlayerInterior(playerid, GetPVarInt(playerid, "pbOldInt"));
     			SetPlayerVirtualWorld(playerid, GetPVarInt(playerid, "pbOldVW"));
      			SetPVarInt(playerid, "ArenaNumber", -1);
@@ -13193,7 +13182,7 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 		            SendServerMessage(playerid, " Hay chac chan ban dang dung o dung vi tri va muon luu no.");
 		            SetPVarInt(playerid, "EditingDMPos", 1);
 
-		            ActSetPlayerPos(playerid, PaintBallArena[arenaid][pbDeathmatch1][0],PaintBallArena[arenaid][pbDeathmatch1][1],PaintBallArena[arenaid][pbDeathmatch1][2]);
+		            SetPlayerPos(playerid, PaintBallArena[arenaid][pbDeathmatch1][0],PaintBallArena[arenaid][pbDeathmatch1][1],PaintBallArena[arenaid][pbDeathmatch1][2]);
 		            SetPlayerFacingAngle(playerid, PaintBallArena[arenaid][pbDeathmatch1][3]);
 		            SetPlayerInterior(playerid, PaintBallArena[arenaid][pbInterior]);
 		            SetPlayerVirtualWorld(playerid, PaintBallArena[arenaid][pbVirtual]);
@@ -13207,7 +13196,7 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 		            SendServerMessage(playerid, " Hay chac chan ban dang dung o dung vi tri va muon luu no.");
 		            SetPVarInt(playerid, "EditingDMPos", 2);
 
-		            ActSetPlayerPos(playerid, PaintBallArena[arenaid][pbDeathmatch2][0],PaintBallArena[arenaid][pbDeathmatch2][1],PaintBallArena[arenaid][pbDeathmatch2][2]);
+		            SetPlayerPos(playerid, PaintBallArena[arenaid][pbDeathmatch2][0],PaintBallArena[arenaid][pbDeathmatch2][1],PaintBallArena[arenaid][pbDeathmatch2][2]);
 		            SetPlayerFacingAngle(playerid, PaintBallArena[arenaid][pbDeathmatch2][3]);
 		            SetPlayerInterior(playerid, PaintBallArena[arenaid][pbInterior]);
 		            SetPlayerVirtualWorld(playerid, PaintBallArena[arenaid][pbVirtual]);
@@ -13221,7 +13210,7 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 		            SendServerMessage(playerid, " Hay chac chan ban dang dung o dung vi tri va muon luu no.");
 		            SetPVarInt(playerid, "EditingDMPos", 3);
 
-		            ActSetPlayerPos(playerid, PaintBallArena[arenaid][pbDeathmatch3][0],PaintBallArena[arenaid][pbDeathmatch3][1],PaintBallArena[arenaid][pbDeathmatch3][2]);
+		            SetPlayerPos(playerid, PaintBallArena[arenaid][pbDeathmatch3][0],PaintBallArena[arenaid][pbDeathmatch3][1],PaintBallArena[arenaid][pbDeathmatch3][2]);
 		            SetPlayerFacingAngle(playerid, PaintBallArena[arenaid][pbDeathmatch3][3]);
 		            SetPlayerInterior(playerid, PaintBallArena[arenaid][pbInterior]);
 		            SetPlayerVirtualWorld(playerid, PaintBallArena[arenaid][pbVirtual]);
@@ -13235,7 +13224,7 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 		            SendServerMessage(playerid, " Hay chac chan ban dang dung o dung vi tri va muon luu no.");
 		            SetPVarInt(playerid, "EditingDMPos", 4);
 
-		            ActSetPlayerPos(playerid, PaintBallArena[arenaid][pbDeathmatch4][0],PaintBallArena[arenaid][pbDeathmatch4][1],PaintBallArena[arenaid][pbDeathmatch4][2]);
+		            SetPlayerPos(playerid, PaintBallArena[arenaid][pbDeathmatch4][0],PaintBallArena[arenaid][pbDeathmatch4][1],PaintBallArena[arenaid][pbDeathmatch4][2]);
 		            SetPlayerFacingAngle(playerid, PaintBallArena[arenaid][pbDeathmatch4][3]);
 		            SetPlayerInterior(playerid, PaintBallArena[arenaid][pbInterior]);
 		            SetPlayerVirtualWorld(playerid, PaintBallArena[arenaid][pbVirtual]);
@@ -13263,7 +13252,7 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 		            SendServerMessage(playerid, " Hay chac chan ban dang dung o dung vi tri va muon luu no.");
 		            SetPVarInt(playerid, "EditingTeamPos", 1);
 
-		            ActSetPlayerPos(playerid, PaintBallArena[arenaid][pbTeamRed1][0],PaintBallArena[arenaid][pbTeamRed1][1],PaintBallArena[arenaid][pbTeamRed1][2]);
+		            SetPlayerPos(playerid, PaintBallArena[arenaid][pbTeamRed1][0],PaintBallArena[arenaid][pbTeamRed1][1],PaintBallArena[arenaid][pbTeamRed1][2]);
 		            SetPlayerFacingAngle(playerid, PaintBallArena[arenaid][pbTeamRed1][3]);
 		            SetPlayerInterior(playerid, PaintBallArena[arenaid][pbInterior]);
 		            SetPlayerVirtualWorld(playerid, PaintBallArena[arenaid][pbVirtual]);
@@ -13277,7 +13266,7 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 		            SendServerMessage(playerid, " Hay chac chan ban dang dung o dung vi tri va muon luu no.");
 		            SetPVarInt(playerid, "EditingTeamPos", 2);
 
-		            ActSetPlayerPos(playerid, PaintBallArena[arenaid][pbTeamRed2][0],PaintBallArena[arenaid][pbTeamRed2][1],PaintBallArena[arenaid][pbTeamRed2][2]);
+		            SetPlayerPos(playerid, PaintBallArena[arenaid][pbTeamRed2][0],PaintBallArena[arenaid][pbTeamRed2][1],PaintBallArena[arenaid][pbTeamRed2][2]);
 		            SetPlayerFacingAngle(playerid, PaintBallArena[arenaid][pbTeamRed2][3]);
 		            SetPlayerInterior(playerid, PaintBallArena[arenaid][pbInterior]);
 		            SetPlayerVirtualWorld(playerid, PaintBallArena[arenaid][pbVirtual]);
@@ -13291,7 +13280,7 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 		            SendServerMessage(playerid, " Hay chac chan ban dang dung o dung vi tri va muon luu no.");
 		            SetPVarInt(playerid, "EditingTeamPos", 3);
 
-		            ActSetPlayerPos(playerid, PaintBallArena[arenaid][pbTeamRed3][0],PaintBallArena[arenaid][pbTeamRed3][1],PaintBallArena[arenaid][pbTeamRed3][2]);
+		            SetPlayerPos(playerid, PaintBallArena[arenaid][pbTeamRed3][0],PaintBallArena[arenaid][pbTeamRed3][1],PaintBallArena[arenaid][pbTeamRed3][2]);
 		            SetPlayerFacingAngle(playerid, PaintBallArena[arenaid][pbTeamRed3][3]);
 		            SetPlayerInterior(playerid, PaintBallArena[arenaid][pbInterior]);
 		            SetPlayerVirtualWorld(playerid, PaintBallArena[arenaid][pbVirtual]);
@@ -13305,7 +13294,7 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 		            SendServerMessage(playerid, " Hay chac chan ban dang dung o dung vi tri va muon luu no.");
 		            SetPVarInt(playerid, "EditingTeamPos", 4);
 
-		            ActSetPlayerPos(playerid, PaintBallArena[arenaid][pbTeamBlue1][0],PaintBallArena[arenaid][pbTeamBlue1][1],PaintBallArena[arenaid][pbTeamBlue1][2]);
+		            SetPlayerPos(playerid, PaintBallArena[arenaid][pbTeamBlue1][0],PaintBallArena[arenaid][pbTeamBlue1][1],PaintBallArena[arenaid][pbTeamBlue1][2]);
 		            SetPlayerFacingAngle(playerid, PaintBallArena[arenaid][pbTeamBlue1][3]);
 		            SetPlayerInterior(playerid, PaintBallArena[arenaid][pbInterior]);
 		            SetPlayerVirtualWorld(playerid, PaintBallArena[arenaid][pbVirtual]);
@@ -13319,7 +13308,7 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 		            SendServerMessage(playerid, " Hay chac chan ban dang dung o dung vi tri va muon luu no.");
 		            SetPVarInt(playerid, "EditingTeamPos", 5);
 
-		            ActSetPlayerPos(playerid, PaintBallArena[arenaid][pbTeamBlue2][0],PaintBallArena[arenaid][pbTeamBlue2][1],PaintBallArena[arenaid][pbTeamBlue2][2]);
+		            SetPlayerPos(playerid, PaintBallArena[arenaid][pbTeamBlue2][0],PaintBallArena[arenaid][pbTeamBlue2][1],PaintBallArena[arenaid][pbTeamBlue2][2]);
 		            SetPlayerFacingAngle(playerid, PaintBallArena[arenaid][pbTeamBlue2][3]);
 		            SetPlayerInterior(playerid, PaintBallArena[arenaid][pbInterior]);
 		            SetPlayerVirtualWorld(playerid, PaintBallArena[arenaid][pbVirtual]);
@@ -13333,7 +13322,7 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 		            SendServerMessage(playerid, " Hay chac chan ban dang dung o dung vi tri va muon luu no.");
 		            SetPVarInt(playerid, "EditingTeamPos", 6);
 
-		            ActSetPlayerPos(playerid, PaintBallArena[arenaid][pbTeamBlue3][0],PaintBallArena[arenaid][pbTeamBlue3][1],PaintBallArena[arenaid][pbTeamBlue3][2]);
+		            SetPlayerPos(playerid, PaintBallArena[arenaid][pbTeamBlue3][0],PaintBallArena[arenaid][pbTeamBlue3][1],PaintBallArena[arenaid][pbTeamBlue3][2]);
 		            SetPlayerFacingAngle(playerid, PaintBallArena[arenaid][pbTeamBlue3][3]);
 		            SetPlayerInterior(playerid, PaintBallArena[arenaid][pbInterior]);
 		            SetPlayerVirtualWorld(playerid, PaintBallArena[arenaid][pbVirtual]);
@@ -13361,7 +13350,7 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 	                SendServerMessage(playerid, " Hay chac chan ban dang dung o dung vi tri va muon luu no.");
 	                SetPVarInt(playerid, "EditingFlagPos", 1);
 
-					ActSetPlayerPos(playerid,PaintBallArena[arenaid][pbFlagRedSpawn][0],PaintBallArena[arenaid][pbFlagRedSpawn][1],PaintBallArena[arenaid][pbFlagRedSpawn][2]);
+					SetPlayerPos(playerid,PaintBallArena[arenaid][pbFlagRedSpawn][0],PaintBallArena[arenaid][pbFlagRedSpawn][1],PaintBallArena[arenaid][pbFlagRedSpawn][2]);
 					SetPlayerInterior(playerid, PaintBallArena[arenaid][pbInterior]);
 					SetPlayerVirtualWorld(playerid, PaintBallArena[arenaid][pbVirtual]);
 	            }
@@ -13371,7 +13360,7 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 	                SendServerMessage(playerid, " Hay chac chan ban dang dung o dung vi tri va muon luu no.");
 	                SetPVarInt(playerid, "EditingFlagPos", 2);
 
-					ActSetPlayerPos(playerid,PaintBallArena[arenaid][pbFlagBlueSpawn][0],PaintBallArena[arenaid][pbFlagBlueSpawn][1],PaintBallArena[arenaid][pbFlagBlueSpawn][2]);
+					SetPlayerPos(playerid,PaintBallArena[arenaid][pbFlagBlueSpawn][0],PaintBallArena[arenaid][pbFlagBlueSpawn][1],PaintBallArena[arenaid][pbFlagBlueSpawn][2]);
 					SetPlayerInterior(playerid, PaintBallArena[arenaid][pbInterior]);
 					SetPlayerVirtualWorld(playerid, PaintBallArena[arenaid][pbVirtual]);
 				}
@@ -13481,7 +13470,7 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 						SetPVarFloat(playerid, "pbOldHealth", oldHealth);
 						SetPVarFloat(playerid, "pbOldArmor", oldArmor);
 
-       		            ActSetPlayerPos(playerid, PaintBallArena[i][pbDeathmatch1][0],PaintBallArena[i][pbDeathmatch1][1],PaintBallArena[i][pbDeathmatch1][2]);
+       		            SetPlayerPos(playerid, PaintBallArena[i][pbDeathmatch1][0],PaintBallArena[i][pbDeathmatch1][1],PaintBallArena[i][pbDeathmatch1][2]);
        		            SetPlayerFacingAngle(playerid, PaintBallArena[i][pbDeathmatch1][3]);
        		            SetPlayerInterior(playerid, PaintBallArena[i][pbInterior]);
        		            SetPlayerVirtualWorld(playerid, PaintBallArena[i][pbVirtual]);
@@ -14525,11 +14514,7 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 			    ShowPlayerDialog(playerid,DANGNHAP,DIALOG_STYLE_PASSWORD,"Dang nhap",string,"Dang nhap","Thoat");
     		   // SendClientMessage(playerid, 0xa5bbd0FF, "(REGISTER) Ban da dang ky thanh cong hay dang nhap de tiep tuc.");   
 		    }
-		}
-		else
-		{
-			SetTimerEx("KickEx", 1000, 0, "i", playerid);
-		}  
+		}	  
 	}
   	if(dialogid == MAINMENU || dialogid == MAINMENU2)
 	{
@@ -14567,14 +14552,14 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
     {
 		if (listitem == 0)
 		{
-			ActSetPlayerPos(playerid, 1564.8, -1666.2, 28.3);
+			SetPlayerPos(playerid, 1564.8, -1666.2, 28.3);
 			SetPlayerInterior(playerid, 0);
 			PlayerInfo[playerid][pVW] = 0;
 			SetPlayerVirtualWorld(playerid, 0);
 		}
 		else
 		{
-			ActSetPlayerPos(playerid, 1568.6676, -1689.9708, 6.2188);
+			SetPlayerPos(playerid, 1568.6676, -1689.9708, 6.2188);
 		 	SetPlayerInterior(playerid, 0);
 		 	PlayerInfo[playerid][pVW] = 0;
 			SetPlayerVirtualWorld(playerid, 0);
@@ -14584,14 +14569,14 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
     {
 		if (listitem == 0)
 		{
-			ActSetPlayerPos(playerid, 276.0980, 122.1232, 1004.6172);
+			SetPlayerPos(playerid, 276.0980, 122.1232, 1004.6172);
 			SetPlayerInterior(playerid, 10);
 			PlayerInfo[playerid][pVW] = 133337;
 			SetPlayerVirtualWorld(playerid, 133337);
 		}
 		else
 		{
-			ActSetPlayerPos(playerid, 1568.6676, -1689.9708, 6.2188);
+			SetPlayerPos(playerid, 1568.6676, -1689.9708, 6.2188);
 			SetPlayerInterior(playerid, 0);
 			PlayerInfo[playerid][pVW] = 0;
 			SetPlayerVirtualWorld(playerid, 0);
@@ -14601,14 +14586,14 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
     {
 		if (listitem == 0)
 		{
-			ActSetPlayerPos(playerid, 1564.8, -1666.2, 28.3);
+			SetPlayerPos(playerid, 1564.8, -1666.2, 28.3);
 			SetPlayerInterior(playerid, 0);
 			PlayerInfo[playerid][pVW] = 0;
 			SetPlayerVirtualWorld(playerid, 0);
 		}
 		else
 		{
-			ActSetPlayerPos(playerid, 276.0980, 122.1232, 1004.6172);
+			SetPlayerPos(playerid, 276.0980, 122.1232, 1004.6172);
 			SetPlayerInterior(playerid, 10);
 			PlayerInfo[playerid][pVW] = 133337;
 			SetPlayerVirtualWorld(playerid, 133337);
@@ -14756,10 +14741,10 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 							if(GetPlayerCash(playerid) < 1000)
 								{
 								    SendClientMessageEx(playerid, COLOR_GRAD1, "Ban khong co du enough money!");
-								    ActRemovePlayerFromVehicle(playerid);
+								    RemovePlayerFromVehicle(playerid);
 								    new Float:slx, Float:sly, Float:slz;
 									GetPlayerPos(playerid, slx, sly, slz);
-									ActSetPlayerPos(playerid, slx, sly, slz+1.2);
+									SetPlayerPos(playerid, slx, sly, slz+1.2);
 								    TogglePlayerControllable(playerid,1);
 								}
 							else
@@ -14777,10 +14762,10 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 						   if(GetPlayerCash(playerid) < 2000)
 								{
 								    SendClientMessageEx(playerid, COLOR_GRAD1, "Ban khong co du enough money!");
-								    ActRemovePlayerFromVehicle(playerid);
+								    RemovePlayerFromVehicle(playerid);
 								    new Float:slx, Float:sly, Float:slz;
 									GetPlayerPos(playerid, slx, sly, slz);
-									ActSetPlayerPos(playerid, slx, sly, slz+1.2);
+									SetPlayerPos(playerid, slx, sly, slz+1.2);
 								    TogglePlayerControllable(playerid,1);
 								}
 							else
@@ -14798,10 +14783,10 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 						    if(GetPlayerCash(playerid) < 4000)
 								{
 								    SendClientMessageEx(playerid, COLOR_GRAD1, "Ban khong co du enough money!");
-								    ActRemovePlayerFromVehicle(playerid);
+								    RemovePlayerFromVehicle(playerid);
 								    new Float:slx, Float:sly, Float:slz;
 									GetPlayerPos(playerid, slx, sly, slz);
-									ActSetPlayerPos(playerid, slx, sly, slz+1.2);
+									SetPlayerPos(playerid, slx, sly, slz+1.2);
 								    TogglePlayerControllable(playerid,1);
 								}
 							else
@@ -14818,10 +14803,10 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 			}
 		if(!response)
 		{
-		    ActRemovePlayerFromVehicle(playerid);
+		    RemovePlayerFromVehicle(playerid);
 		    new Float:slx, Float:sly, Float:slz;
 			GetPlayerPos(playerid, slx, sly, slz);
-			ActSetPlayerPos(playerid, slx, sly, slz+1.2);
+			SetPlayerPos(playerid, slx, sly, slz+1.2);
 		    TogglePlayerControllable(playerid,1);
 		    SendErrorMessage(playerid, " You may only use these bikes if you rent one.");
 		}
@@ -14838,7 +14823,7 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 				v = ListItemTrackId[playerid][listitem];
 	        GetVehiclePos(PlayerVehicleInfo[miscid][v][pvId], carPosF[0], carPosF[1], carPosF[2]);
 	        SetPlayerVirtualWorld(playerid,GetVehicleVirtualWorld(PlayerVehicleInfo[miscid][v][pvId]));
-	        ActSetPlayerPos(playerid, carPosF[0], carPosF[1], carPosF[2]);
+	        SetPlayerPos(playerid, carPosF[0], carPosF[1], carPosF[2]);
 		}
 	}
 	if(dialogid == GOTOPLAYERCAR)
@@ -14855,7 +14840,7 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 						GetVehiclePos(PlayerVehicleInfo[id][i][pvId], carPos[0], carPos[1], carPos[2]);
 						SetPlayerVirtualWorld(playerid,GetVehicleVirtualWorld(PlayerVehicleInfo[id][i][pvId]));
 						SetPlayerInterior(playerid,0);
-						ActSetPlayerPos(playerid, carPos[0], carPos[1], carPos[2]);
+						SetPlayerPos(playerid, carPos[0], carPos[1], carPos[2]);
 					}
 					else
 					{
@@ -14898,7 +14883,6 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 					VehicleSpawned[playerid]--;
 					PlayerVehicleInfo[playerid][listitem][pvSpawned] = 0;
 					PlayerVehicleInfo[playerid][listitem][pvFuel] = VehicleFuel[iVehicleID];
-					new panels, doors, lights, tires, Float:vhp;
 					GetVehicleDamageStatus(iVehicleID, PlayerVehicleInfo[playerid][listitem][pvPanels], PlayerVehicleInfo[playerid][listitem][pvDoors], PlayerVehicleInfo[playerid][listitem][pvLights], PlayerVehicleInfo[playerid][listitem][pvTires]);
 					GetVehicleHealth(iVehicleID, PlayerVehicleInfo[playerid][listitem][pvHealth]);
 					g_mysql_SaveVehicle(playerid, listitem);
@@ -17831,7 +17815,7 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 					}
 					new rand = random(sizeof(LSPDJailSpawns));
 					SetPlayerFacingAngle(suspect, LSPDJailSpawns[rand][2]);
-					ActSetPlayerPos(suspect, LSPDJailSpawns[rand][0], LSPDJailSpawns[rand][1], LSPDJailSpawns[rand][2]);
+					SetPlayerPos(suspect, LSPDJailSpawns[rand][0], LSPDJailSpawns[rand][1], LSPDJailSpawns[rand][2]);
 					if(PlayerInfo[suspect][pDonateRank] >= 2)
 					{
 						PlayerInfo[suspect][pJailTime] = ((time*60)*75)/100;
@@ -17914,7 +17898,7 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 					}
 					new rand = random(sizeof(DocPrison));
 					SetPlayerFacingAngle(suspect, 0);
-					ActSetPlayerPos(suspect, DocPrison[rand][0], DocPrison[rand][1], DocPrison[rand][2]);
+					SetPlayerPos(suspect, DocPrison[rand][0], DocPrison[rand][1], DocPrison[rand][2]);
 					if(PlayerInfo[suspect][pDonateRank] >= 2)
 					{
 						PlayerInfo[suspect][pJailTime] = ((time*60)*75)/100;
@@ -21081,17 +21065,17 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
             if(Businesses[d][bPurchaseX] == 0.0 && Businesses[d][bPurchaseY] == 0.0 && Businesses[d][bPurchaseZ] == 0.0)
             {
 				SendClientMessageEx(playerid, COLOR_GRAD1, "ERROR: Chu so huu Dai ly xe nay da khong thiep lap diem giao tra xe cho khach hang.");
-				ActRemovePlayerFromVehicle(playerid);
+				RemovePlayerFromVehicle(playerid);
 				new Float:slx, Float:sly, Float:slz;
 				GetPlayerPos(playerid, slx, sly, slz);
-				ActSetPlayerPos(playerid, slx, sly, slz+1.2);
+				SetPlayerPos(playerid, slx, sly, slz+1.2);
 				TogglePlayerControllable(playerid, 1);
 				return 1;
             }
 
 		    new randcolor1 = Random(0, 126);
 		    new randcolor2 = Random(0, 126);
-		    ActSetPlayerPos(playerid, Businesses[d][bParkPosX][v], Businesses[d][bParkPosY][v], Businesses[d][bParkPosZ][v]+2);
+		    SetPlayerPos(playerid, Businesses[d][bParkPosX][v], Businesses[d][bParkPosY][v], Businesses[d][bParkPosZ][v]+2);
 		    TogglePlayerControllable(playerid, 1);
 		    new cost;
 		    if(PlayerInfo[playerid][pDonateRank] < 1)
@@ -21100,10 +21084,10 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 	            if(PlayerInfo[playerid][pCash] < cost)
 	            {
 					SendClientMessageEx(playerid, COLOR_GRAD1, "ERROR: Ban khong co du tien de mua.");
-					ActRemovePlayerFromVehicle(playerid);
+					RemovePlayerFromVehicle(playerid);
 					new Float:slx, Float:sly, Float:slz;
 					GetPlayerPos(playerid, slx, sly, slz);
-					ActSetPlayerPos(playerid, slx, sly, slz+1.2);
+					SetPlayerPos(playerid, slx, sly, slz+1.2);
 					return 1;
 	            }
                 format(string, sizeof(string), " Ban da mua phuong tien {E8DF3F}%s{FFFFFF} voi gia {0bf03d}%s.",VehicleName[vehicleid],number_format(cost));
@@ -21118,10 +21102,10 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 	            if(PlayerInfo[playerid][pCash] < cost)
 	            {
 					SendClientMessageEx(playerid, COLOR_GRAD1, "ERROR: Ban khong du tien de mua.");
-					ActRemovePlayerFromVehicle(playerid);
+					RemovePlayerFromVehicle(playerid);
 					new Float:slx, Float:sly, Float:slz;
 					GetPlayerPos(playerid, slx, sly, slz);
-					ActSetPlayerPos(playerid, slx, sly, slz+1.2);
+					SetPlayerPos(playerid, slx, sly, slz+1.2);
 					return 1;
 	            }
 
@@ -21135,15 +21119,15 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 			Businesses[d][bTotalSales]++;
      		IsPlayerEntering{playerid} = true;
             new car = CreatePlayerVehicle(playerid, playervehicleid, Businesses[d][bModel][v], Businesses[d][bPurchaseX], Businesses[d][bPurchaseY], Businesses[d][bPurchaseZ], Businesses[d][bPurchaseAngle], randcolor1, randcolor2, cost, GetPlayerVirtualWorld(playerid), GetPlayerInterior(playerid));
-            ActPutPlayerInVehicle(playerid, car, 0);
+            PutPlayerInVehicle(playerid, car, 0);
             SaveBusiness(d);
 		}
 		else
 		{
-            ActRemovePlayerFromVehicle(playerid);
+            RemovePlayerFromVehicle(playerid);
             new Float:slx, Float:sly, Float:slz;
 			GetPlayerPos(playerid, slx, sly, slz);
-			ActSetPlayerPos(playerid, slx, sly, slz+1.2);
+			SetPlayerPos(playerid, slx, sly, slz+1.2);
             TogglePlayerControllable(playerid, 1);
 			return 1;
 		}
@@ -21365,7 +21349,7 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 
 				SetDynamicObjectPos(SpeedCameras[id][_scObjectId], x, y, z-3.000);
 				SetDynamicObjectRot(SpeedCameras[id][_scObjectId], 0, 0, angle - 180);
-				ActSetPlayerPos(playerid, x + 1, y, z);
+				SetPlayerPos(playerid, x + 1, y, z);
 				SaveSpeedCamera(id);
 				SendServerMessage(playerid, " Speed camera moved.");
 

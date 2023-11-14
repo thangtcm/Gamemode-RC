@@ -1588,7 +1588,7 @@ stock g_mysql_SaveVehicle(playerid, slotid)
 	format(query, sizeof(query), "%s `pvLock` = %d,", query, PlayerVehicleInfo[playerid][slotid][pvLock]);
 	format(query, sizeof(query), "%s `pvWepUpgrade` = %d,", query, PlayerVehicleInfo[playerid][slotid][pvWepUpgrade]);
 	format(query, sizeof(query), "%s `pvFuel` = %0.5f,", query, VehicleFuel[PlayerVehicleInfo[playerid][slotid][pvId]]);
-	format(query, sizeof(query), "%s `pvCapacity` = %0.5f,", query, PlayerVehicleInfo[playerid][slotid][pvCapacity]);
+	format(query, sizeof(query), "%s `pvCapacity` = %0.5f,", query, VehicleCapacity[PlayerVehicleInfo[playerid][slotid][pvId]]);
 	format(query, sizeof(query), "%s `pvImpound` = %d,", query, PlayerVehicleInfo[playerid][slotid][pvImpounded]);
 	format(query, sizeof(query), "%s `pvDisabled` = %d,", query, PlayerVehicleInfo[playerid][slotid][pvDisabled]);
 	format(query, sizeof(query), "%s `pvPlate` = '%s',", query, g_mysql_ReturnEscaped(PlayerVehicleInfo[playerid][slotid][pvPlate], MainPipeline));
@@ -5213,7 +5213,7 @@ public ParkRentedVehicle(playerid, vehicleid, modelid, Float:X, Float:Y, Float:Z
         mysql_function_query(MainPipeline, string, false, "OnQueryFinish", "ii", SENDDATA_THREAD, playerid);
 
 		IsPlayerEntering{playerid} = true;
-		ActPutPlayerInVehicle(playerid, vehicleid, 0);
+		PutPlayerInVehicle(playerid, vehicleid, 0);
 		SetPlayerArmedWeapon(playerid, 0);
 		format(string, sizeof(string), "* %s has parked their vehicle.", GetPlayerNameEx(playerid));
 		ProxDetector(30.0, playerid, string, COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE);
@@ -7393,7 +7393,7 @@ public ReferralSecurity(playerid)
 			SetPlayerVirtualWorld(playerid, 0);
 			SetPlayerInterior(playerid, 0);
 			Streamer_UpdateEx(playerid,1716.1129,-1880.0715,22.0264);
-			ActSetPlayerPos(playerid,1716.1129,-1880.0715,-10.0);
+			SetPlayerPos(playerid,1716.1129,-1880.0715,-10.0);
 			SetPlayerCameraPos(playerid,1755.0413,-1824.8710,20.2100);
 			SetPlayerCameraLookAt(playerid,1716.1129,-1880.0715,22.0264);
 		}
@@ -8360,7 +8360,7 @@ public OnPlayerLoad(playerid)
 		SetTimerEx("KickEx", 1000, 0, "i", playerid);
 		return 1;
 	}
-	ActTogglePlayerSpectating(playerid, 0);
+	TogglePlayerSpectating(playerid, 0);
 	SendClientMessageEx(playerid, COLOR_YELLOW, GlobalMOTD);
 	TextDrawHideForPlayer(playerid, BannerServer[1]);
 	if(PlayerInfo[playerid][pAdmin] > 0) {
@@ -8597,6 +8597,8 @@ public OnVehicleSpawn(vehicleid) {
 
             SetVehicleVirtualWorld(iVehicleID, PlayerVehicleInfo[i][v][pvVW]);
             LinkVehicleToInterior(iVehicleID, PlayerVehicleInfo[i][v][pvInt]);
+			SetVehicleHealth(iVehicleID, PlayerVehicleInfo[i][v][pvHealth]);
+			UpdateVehicleDamageStatus(iVehicleID, PlayerVehicleInfo[i][v][pvPanels], PlayerVehicleInfo[i][v][pvDoors], PlayerVehicleInfo[i][v][pvLights], PlayerVehicleInfo[i][v][pvTires]);
 
 			PlayerVehicleInfo[i][v][pvId] = iVehicleID;
 
