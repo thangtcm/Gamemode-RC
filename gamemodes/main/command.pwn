@@ -7702,7 +7702,7 @@ CMD:goto(playerid, params[])
 
 CMD:sendto(playerid, params[])
 {
-    if(PlayerInfo[playerid][pAdmin] >= 2)
+    if(PlayerInfo[playerid][pAdmin] >= 2 || PlayerInfo[playerid][pHelper] >= 3)
 	{
 		new string[128], location[32], giveplayerid;
 		if(sscanf(params, "s[32]u", location, giveplayerid))
@@ -12577,7 +12577,17 @@ CMD:saveaccount(playerid, params[])
 forward ResetFixVw(playerid);
 public ResetFixVw(playerid)
 {
-	SetPlayerVirtualWorld(playerid, 0);
+	if (GetPlayerState(playerid) == 2)
+	{
+		new tmpcar = GetPlayerVehicleID(playerid);
+		LinkVehicleToInterior(tmpcar, 0);
+		SetVehicleVirtualWorld(tmpcar, 0);
+		fVehSpeed[playerid] = 0.0;
+	}
+	else
+	{
+		SetPlayerVirtualWorld(playerid, 0);
+	}
 	SendErrorMessage(playerid, "Ban da reset virual world");
 	return 1;
 }
@@ -18794,6 +18804,7 @@ CMD:park(playerid, params[])
 			}
 		}
 	}
+    new ischeck = 0;
 	for(new d = 0 ; d < MAX_PLAYERVEHICLES; d++)
 	{
 		if(IsPlayerInVehicle(playerid, PlayerVehicleInfo[playerid][d][pvId]))
@@ -18802,6 +18813,7 @@ CMD:park(playerid, params[])
 			{
 				if(GetPlayerSQLId(playerid) == HouseInfo[i][hOwnerID] && IsPlayerInRangeOfPoint(playerid, 30.0, HouseInfo[i][hExteriorX], HouseInfo[i][hExteriorY], HouseInfo[i][hExteriorZ]))
 				{
+                    ischeck = 1;
 					new Float:x, Float:y, Float:z, Float:health;
 					GetVehicleHealth(PlayerVehicleInfo[playerid][d][pvId], health);
 					if(GetPlayerState(playerid) != PLAYER_STATE_DRIVER) return SendErrorMessage(playerid, " Ban phai ngoi tren chiec xe cua minh.");
@@ -18813,12 +18825,10 @@ CMD:park(playerid, params[])
 					SendClientMessageEx (playerid, COLOR_YELLOW, "Vui long khong di chuyen chiec xe...!");
 					return 1;
 				}
-				else {
-					return SendErrorMessage(playerid, "Ban chi co the dau xe gan khu vuc nha o cua minh.");
-				}
 			}
 		}
 	}
+    if(!ischeck) return SendErrorMessage(playerid, "Ban chi co the dau xe gan khu vuc nha o cua minh.");
 	SendErrorMessage(playerid, " Ban phai ngoi ben trong chiec xe cua ban.");
 	return 1;
 }
@@ -32390,7 +32400,7 @@ CMD:gotoid(playerid, params[])
 }
 CMD:sendtoid(playerid, params[])
 {
-	if(PlayerInfo[playerid][pAdmin] < 2) {
+	if(PlayerInfo[playerid][pAdmin] < 2 && PlayerInfo[playerid][pHelper] < 3) {
 	    SendErrorMessage(playerid, " Ban khong the dung lenh nay.");
 	    return 1;
 	}
@@ -43595,78 +43605,55 @@ CMD:suaxe(playerid, params[]) {
 
 CMD:repair(playerid, params[])
 {
-	if(PlayerInfo[playerid][pJob] != 7 && PlayerInfo[playerid][pJob2] != 7)
-	{
-		SendErrorMessage(playerid, "    ban khong phai Tho sua xe!");
-		return 1;
-	}
-	if(IsPlayerInAnyVehicle(playerid)) return SendServerMessage(playerid, " Ban khong the sua chua khi dang trong xe.");
+	if (PlayerInfo[playerid][pJob] != 7 && PlayerInfo[playerid][pJob2] != 7) return SendErrorMessage(playerid, "Ban khong phai la tho sua xe!");
 
-	new string[128];
-	if(gettime() < PlayerInfo[playerid][pMechTime])
-	{
-		format(string, sizeof(string), "ban phai cho %d giay!", PlayerInfo[playerid][pMechTime]-gettime());
-		SendClientMessageEx(playerid, COLOR_GRAD1,string);
-		return 1;
-	}
-	if(GetPVarInt(playerid, "EventToken")) {
-		return SendServerMessage(playerid, " Ban khong the lam dieu nay trong su kien.");
-	}
-	new giveplayerid, money;
-	if(sscanf(params, "ud", giveplayerid, money)) return SendUsageMessage(playerid, " /suaxe [Player] [Gia tien]");
+	new 
+		i, bid, vid, title[128], info[448], Float:vhp,
+		panels, doors, lights, tires, status[3][64], timeleft[128];
 
-	if(PlayerInfo[playerid][pTire] > 0)
+	if ((i = GetRepairPointNearest(playerid)) == -1) 						return SendErrorMessage(playerid, "Ban khong o gan diem sua xe.");
+	if ((bid = PlayerInfo[playerid][pBusiness]) != RepairPoint[i][rpBizID]) return SendErrorMessage(playerid, "Diem sua xe nay khong thuoc doanh nghiep cua ban.");
+	if (!IsPlayerInAnyVehicle(playerid)) 	return SendErrorMessage(playerid, "Ban khong o trong phuong tien de sua chua.");
+
+	vid = GetPlayerVehicleID(playerid);
+	GetVehicleStatus(playerid, panels, doors, lights, tires);
+	if (panels == 0) status[0] = "{13BC10}[Tot]{FFFFFF}";
+	else status[0] = "{D31212}[Hong]{FFFFFF}";
+	if (doors == 0) status[1] = "{13BC10}[Tot]{FFFFFF}";
+	else status[1] = "{D31212}[Hong]{FFFFFF}";
+	if (lights == 0) status[2] = "{13BC10}[Tot]{FFFFFF}";
+	else status[2] = "{D31212}[Hong]{FFFFFF}";
+	GetVehicleHealth(vid, vhp);
+
+	format(title, sizeof(title), "Xe {2C6EAF}%s", VehicleName[GetVehicleModel(vid) - 400]);
+	foreach(new p: Player)
 	{
-		if(money < 1 || money > 10000) { SendErrorMessage(playerid, "    Gia khong thap hon $1 hoac cao hon $10,000!"); return 1; }
-		if(IsPlayerConnected(giveplayerid))
+		for(new d = 0; d < MAX_PLAYERVEHICLES; d++)
 		{
-			if(giveplayerid != INVALID_PLAYER_ID)
+			if(PlayerVehicleInfo[p][d][pvId] == vid)
 			{
-			    new closestcar = GetClosestCar(playerid);
+				if(PlayerVehicleInfo[p][d][pvTiresDays] > gettime()) format(timeleft, sizeof(timeleft), "[Con %s]", FormatTimeleft(gettime(), PlayerVehicleInfo[p][d][pvTiresDays]));
+				else timeleft = "{D31212}[Hong]{FFFFFF}";
 
-	  			if(IsPlayerInRangeOfVehicle(playerid, closestcar, 8.0))
-	  			{
-					if(ProxDetectorS(8.0, playerid, giveplayerid)&& IsPlayerInAnyVehicle(giveplayerid))
-					{
-						if(giveplayerid == playerid) { SendErrorMessage(playerid, "    Khong the lam dieu do!"); return 1; }
-	                    if(!IsABike(closestcar) && !IsAPlane(closestcar))
-						{
-							new engine,lights,alarm,doors,bonnet,boot,objective;
-							GetVehicleParamsEx(closestcar,engine,lights,alarm,doors,bonnet,boot,objective);
-							if(bonnet == VEHICLE_PARAMS_OFF || bonnet == VEHICLE_PARAMS_UNSET)
-							{
-								SendServerMessage(playerid, " Mui xe phai duoc mo ra de sua chua no.");
-								return 1;
-							}
-						}
-						format(string, sizeof(string), "* Ban duoc cung cap %s de sua chiec xe cho ho $%d .",GetPlayerNameEx(giveplayerid),money);
-						SendClientMessageEx(playerid, COLOR_LIGHTBLUE, string);
-						format(string, sizeof(string), "* Car Mechanic %s muon sua chiec xe cua ban voi gia' $%d, (su dung /chapnhan suaxe) de chap nhan.",GetPlayerNameEx(playerid),money);
-						SendClientMessageEx(giveplayerid, COLOR_LIGHTBLUE, string);
-						PlayerInfo[playerid][pMechTime] = gettime()+60;
-						RepairOffer[giveplayerid] = playerid;
-						RepairPrice[giveplayerid] = money;
-					}
-					else
-					{
-						SendErrorMessage(playerid, "    Nguoi choi do khong gan ban / khong o trong mot chiec xe.");
-					}
-				}
-				else
-				{
-				    SendErrorMessage(playerid, "    Ban khong o gan bat ky chiec xe nao.");
-				}
+				format(info, sizeof(info), "\
+				Dong co\t[%0.1f/%0.1f]\t100 HP/1 unit\n\
+				Den xe\t%s\t1 unit\n\
+				Cua xe\t%s\t1 unit\n\
+				Than xe\t%s\t1 unit\n\
+				Lop xe\t%s\t1 ngay/5 unit",
+				vhp, PlayerVehicleInfo[p][d][pvMaxHealth],
+				status[2], status[1], status[0], timeleft);
+
+				ShowPlayerDialog(playerid, DIALOG_MECH, DIALOG_STYLE_TABLIST, title, info, "Chon", "Dong");
+
+				SetPVarInt(playerid, #pvID, p);
+				SetPVarInt(playerid, #pvSlot, d);
+				return 1;
 			}
 		}
-		else
-		{
-			SendErrorMessage(playerid, "    Nguoi do dang offline.");
-		}
 	}
-	else
-	{
-		SendErrorMessage(playerid, "    Ban khong co bat ky lop xe, mua mot cai tu mot tho thu cong.");
-	}
+
+	SendErrorMessage(playerid, "Phuong tien nay khong kha dung.");
 	return 1;
 }
 
@@ -50980,7 +50967,13 @@ CMD:pm(playerid, params[])
 	}
 	else if(PlayerInfo[playerid][pAdmin] == 0)
 	{
-		format(string, sizeof(string), "(( PM nhan tu %s (%d): %s ))", GetPlayerNameExt(playerid), playerid, message);
+        if(ProxDetectorS(5.0, playerid, PID))
+        {
+		    format(string, sizeof(string), "(( PM nhan tu %s (%d): %s ))", GetPlayerNameExt(playerid), playerid, message);
+        }
+        else{
+            SendErrorMessage(playerid, "Ban khong dung gan nguoi choi do.");
+        }
 	}
 	SendClientMessage(PID, COLOR_RECEIVEPM, string);
 	if(PlayerInfo[PID][pAdmin] >= 1)
@@ -51038,35 +51031,19 @@ CMD:setvehcap(playerid, params[])
 		return SendUsageMessage(playerid, " /setvehcap [vehid] [capacity]");
 	}
 	
-	new result = -1, mes[128];
-	foreach(new i: Player)
+	if(vehid == INVALID_VEHICLE_ID) return SendErrorMessage(playerid, "ID khong hop le.");
+	new mes[128];
+	VehicleCapacity[vehid] = capacity;
+	if(VehicleFuel[vehid] > VehicleCapacity[vehid])
 	{
-		for(new d; d < MAX_PLAYERVEHICLES; i ++)
-		{
-			if(PlayerVehicleInfo[i][d][pvId] == vehid)
-			{
-				PlayerVehicleInfo[i][d][pvCapacity] = capacity;
-				if(VehicleFuel[PlayerVehicleInfo[i][d][pvId]] > capacity)
-				{
-					PlayerVehicleInfo[i][d][pvFuel] = capacity;
-					VehicleFuel[PlayerVehicleInfo[i][d][pvId]] = capacity;
-				}
-
-				result = 1;
-				break;
-			}
-		}
-	}
-	if(result == -1)
-	{
-		SendErrorMessage(playerid, "VehicleID khong hop le.");
-		return 1;
+		VehicleFuel[vehid] = capacity;
 	}
 
-	format(mes, sizeof(mes), "Ban da dieu chinh dung tich xang VEHID %i thanh %0.1f.", vehid, capacity);
+	format(mes, sizeof(mes), "Ban da dieu chinh dung tich xang VEHID %i thanh %0.1fL.", vehid, capacity);
 	SendClientMessage(playerid, -1, mes);
 	return 1;
 }
+
 
 CMD:myfuel(playerid, params[])
 {
@@ -51076,5 +51053,85 @@ CMD:myfuel(playerid, params[])
 	
 	format(str, sizeof str, "Capacity: %0.1fL | Fuel: %0.1fL ", GetVehicleFuelCapacity(vid), VehicleFuel[vid]);
 	SendClientMessage(playerid, -1, str);
+	return 1;
+}
+
+
+CMD:rpedit(playerid, params[])
+{
+	if(PlayerInfo[playerid][pAdmin] < 4) return SendErrorMessage(playerid, "Ban khong the su dung lenh nay.");
+
+	new option[16], secoption[128];
+	if(sscanf(params, "s[16]S()[128]", option, secoption))
+	{
+		SendUsageMessage(playerid, " /rpedit [option]");
+		SendClientMessage(playerid, -1, "Option: create / pos / biz / delete");
+		return 1;
+	}
+
+	new 
+		i,
+		bid,
+		Float: fPos[3],
+		string[228];
+
+	if (strcmp(option, "create") == 0)
+	{
+		if (sscanf(secoption, "d", bid)) 	return SendUsageMessage(playerid, " /rpedit create [biz id]");
+		if (!IsValidBusinessID(bid)) 		return SendErrorMessage(playerid, "Doanh nghiep nay khong ton tai.");
+		if (Businesses[bid][bType] != BUSINESS_TYPE_MECHANIC) return SendErrorMessage(playerid, "Loai hinh doanh nghiep nay khong phai la sua xe.");
+
+		if ((i = GetFreeRepairPoint()) == -1) return SendErrorMessage(playerid, "The limit has been reached [ERROR]"); // MAX_REPAIR_POINT ()
+		GetPlayerPos(playerid, fPos[0], fPos[1], fPos[2]);
+		RepairPoint[i][rpPosX] = fPos[0];
+		RepairPoint[i][rpPosY] = fPos[1];
+		RepairPoint[i][rpPosZ] = fPos[2];
+		RepairPoint[i][rpBizID] = bid;
+
+		format(string, sizeof(string), "INSERT INTO `repairpoint` (`BizID`, `PosX`, `PosY`, `PosZ`) VALUES ('%d', '%f', '%f', '%f')", bid, RepairPoint[i][rpPosX], RepairPoint[i][rpPosY], RepairPoint[i][rpPosZ]);
+		mysql_tquery(MainPipeline, string, "OnRepairPointCreated", "d", i);
+
+		CreateRepairPoint(i);
+	}
+	else if (strcmp(option, "pos") == 0)
+	{
+		if (sscanf(secoption, "d", i)) 		return SendUsageMessage(playerid, " /rpedit pos [repair id]");
+		if (RepairPoint[i][rpPosX] == 0.0) 	return SendErrorMessage(playerid, "Khong ton tai Repair Point #%d", i);
+
+		GetPlayerPos(playerid, fPos[0], fPos[1], fPos[2]);
+		RepairPoint[i][rpPosX] = fPos[0];
+		RepairPoint[i][rpPosY] = fPos[1];
+		RepairPoint[i][rpPosZ] = fPos[2];
+
+		CreateRepairPoint(i); // refresh point
+		SaveRepairPoint(i); 
+	}
+	else if (strcmp(option, "biz") == 0)
+	{
+		if (sscanf(secoption, "d", bid)) 		return SendUsageMessage(playerid, " /rpedit biz [biz id]");
+		if (!IsValidBusinessID(bid)) 			return SendErrorMessage(playerid, "Doanh nghiep nay khong ton tai.");
+		if (Businesses[bid][bType] != BUSINESS_TYPE_MECHANIC) return SendErrorMessage(playerid, "Loai hinh doanh nghiep nay khong phai la sua xe.");
+	
+		RepairPoint[i][rpBizID] = bid;
+		CreateRepairPoint(i); // refresh point
+		SaveRepairPoint(i);
+	}
+	else if (strcmp(option, "delete") == 0)
+	{
+		if (sscanf(secoption, "d", i)) 		return SendUsageMessage(playerid, " /rpedit delete [i]");
+		if (RepairPoint[i][rpPosX] == 0.0) 	return SendErrorMessage(playerid, "Khong ton tai Repair Point #%d", i);
+
+		RepairPoint[i][rpPosX] = 0.0;
+		RepairPoint[i][rpPosY] = 0.0;
+		RepairPoint[i][rpPosZ] = 0.0;
+		RepairPoint[i][rpBizID] = -1;
+		
+		mysql_format(MainPipeline, string, sizeof(string), "DELETE FROM `repairpoint` WHERE `id` = %d", RepairPoint[i][rpId]);
+		mysql_query(MainPipeline, string);
+		RepairPoint[i][rpId] = -1;
+		
+		if(IsValidDynamicPickup(RepairPoint[i][rpPickup])) DestroyDynamicPickup(RepairPoint[i][rpPickup]);
+		if(IsValidDynamic3DTextLabel(RepairPoint[i][rpText])) DestroyDynamic3DTextLabel(RepairPoint[i][rpText]);
+	}
 	return 1;
 }

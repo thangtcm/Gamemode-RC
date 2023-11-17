@@ -394,6 +394,7 @@ public StartCountTime(playerid)
 					{
 						SetTimerEx("OnRockRespawn", 600000, false, "i", RockIDMiner[playerid]);
 					}
+					GiveRewardMisson(playerid);
 					KillTimer(MinerTimer[playerid]);
 					DeletePVar(playerid, "MinerWorking");
 				}
@@ -472,6 +473,16 @@ public CreateRock(rockIndex)
 {
 	new randomrzx = random(360);
 	new Float:randomrz = float(randomrzx);
+	if(IsValidDynamic3DTextLabel(RockText[rockIndex]))
+    {
+        DestroyDynamic3DTextLabel(RockText[rockIndex]);
+        RockText[rockIndex] = Text3D: INVALID_3DTEXT_ID;
+    }
+    if(IsValidDynamicObject(RockObj[rockIndex]))
+    {
+        DestroyDynamicObject(RockObj[rockIndex]);
+        RockObj[rockIndex] = INVALID_OBJECT_ID;
+    }
 	RockText[rockIndex] = CreateDynamic3DTextLabel("<Rock>\n Bam phim 'Y' de bat dau dao da.", -1, rockPositions[rockIndex][0], rockPositions[rockIndex][1], rockPositions[rockIndex][2], 2.0);
     RockObj[rockIndex] = CreateDynamicObject(905, rockPositions[rockIndex][0], rockPositions[rockIndex][1], rockPositions[rockIndex][2]-0.8, 0.0, 0.0, randomrz, -1, -1, -1);
 }

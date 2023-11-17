@@ -114,6 +114,7 @@
 #define 		MAX_3DLABELS 				(500)
 #define 		MAX_SPEEDCAMERAS			(50)
 #define 		MAX_PAYNSPRAYS				(20)
+#define			MAX_REPAIR_POINT			(50)
 #define 		MAX_ARRESTPOINTS			(30)
 #define 		MAX_IMPOUNDPOINTS			(20)
 #define         NATION_SAN_ANDREAS		 	0
@@ -349,6 +350,9 @@
 #define         DIALOG_LOADTRUCKOLD         (670)
 #define			DIALOG_LOADTRUCKL			(680)
 #define			DIALOG_LOADTRUCKI			(690)
+
+#define			DIALOG_MECH 				(2036)
+#define			DIALOG_MECH_CONFIRM 		(2037)
 
 #define         RESTAURANTMENU              (930)
 #define         RESTAURANTMENU2             (931)

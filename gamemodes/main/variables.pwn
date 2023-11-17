@@ -1114,9 +1114,11 @@ enum pvInfo
 	pvLights,
 	pvDoors,
 	pvTires,
+	pvTiresDays,
 	Float: pvFuel,
 	Float: pvCapacity,
 	Float: pvHealth,
+	Float: pvMaxHealth,
 	pvVW,
 	pvInt,
 	pvCrashFlag,
@@ -1372,6 +1374,18 @@ enum pnsInfo
 	pnsGroupCost,
 	pnsRegCost
 }
+
+enum rpInfo
+{
+	rpId,
+	rpBizID,
+	rpStatus,
+	Float: rpPosX,
+	Float: rpPosY,
+	Float: rpPosZ,
+	rpPickup,
+	Text3D: rpText
+};
 
 enum arrestInfo
 {
@@ -1844,6 +1858,7 @@ new TruckDeliveringTo[MAX_VEHICLES];
 new TruckContents[MAX_VEHICLES char] = 0;
 new TruckRoute[MAX_VEHICLES char] = -1;
 new Float: VehicleFuel[MAX_VEHICLES];
+new Float: VehicleCapacity[MAX_VEHICLES];
 new VehicleStatus[MAX_VEHICLES char] = 0; // 0 == none, 1 == vehicle dead about to respawn
 new DynVeh[MAX_VEHICLES]; // -1 = Not a dynamic vehicle, 0 > = DynVehicleInfo ID
 new Float: fVehSpeed[MAX_PLAYERS];
@@ -2419,6 +2434,7 @@ new MailBoxes[MAX_MAILBOXES][mbInfo];
 new MoneyInfo[MAX_MONEYBAGS][ttInfo];
 new TxtLabels[MAX_3DLABELS][tlInfo];
 new PayNSprays[MAX_PAYNSPRAYS][pnsInfo];
+new RepairPoint[MAX_REPAIR_POINT][rpInfo];
 new ArrestPoints[MAX_ARRESTPOINTS][arrestInfo];
 new ImpoundPoints[MAX_IMPOUNDPOINTS][impoundInfo];
 new fireworktog = 1;

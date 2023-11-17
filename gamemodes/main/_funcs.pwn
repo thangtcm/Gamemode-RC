@@ -1427,8 +1427,6 @@ public OnPlayerConnect(playerid) {
 	}
 	DownS[playerid] = false;
 	ActTogglePlayerSpectating(playerid, true);
-	SetTimerEx("TimeUseMed", 60000, 0, "d", playerid);
-	SetTimerEx("TimeCraftMed", 60000, 0, "d", playerid);
 	// SetTimerEx("LoadLogin", 500, 0, "i", playerid);
 	DownS[playerid] = 0;
 	SetPVarString(playerid, "PassAuth", "abc");
@@ -3029,7 +3027,13 @@ public OnVehicleDeath(vehicleid, killerid) {
 	    {
 	        ActTogglePlayerSpectating(i, false);
 		}
-	}
+        new v;
+		if((v = GetPlayerVehicle(i, vehicleid)) != -1) 
+		{
+			GetVehicleHealth(vehicleid, PlayerVehicleInfo[i][v][pvHealth]);
+			GetVehicleDamageStatus(vehicleid, PlayerVehicleInfo[i][v][pvPanels], PlayerVehicleInfo[i][v][pvDoors], PlayerVehicleInfo[i][v][pvLights], PlayerVehicleInfo[i][v][pvTires]);
+        }
+    }
     /*if(DynVeh[vehicleid] != -1)
 	{
 		DynVeh_Spawn(DynVeh[vehicleid]);
@@ -24774,6 +24778,257 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 			}
 		}
 	}
+    if(dialogid == DIALOG_MECH)
+	{
+		if(!response) 
+        {
+            DeletePVar(playerid, #pvID);
+            DeletePVar(playerid, #pvSlot);
+            SendClientMessage(playerid, 0xCE794BFF, "MECH:{FFFFFF} Ban da tat Menu Mechanic.");
+            return 1;
+        }
+        
+        new 
+            p = GetPVarInt(playerid, #pvID),
+            d = GetPVarInt(playerid, #pvSlot),
+            iBusiness = PlayerInfo[playerid][pBusiness],
+            vid = GetPlayerVehicleID(playerid),
+            title[128], info[256],
+            panels, lights, doors, tires;
+		switch(listitem)
+		{
+			case 0: {
+				new Float:hp, cost;
+				GetVehicleHealth(vid, hp);
+                if (hp >= PlayerVehicleInfo[p][d][pvMaxHealth]){
+                    sendMessage(playerid, 0xCE794BFF, "MECH:{FFFFFF} Dong co chiec xe nay khong hu hong.");
+                    return cmd_suaxe(playerid, "");
+                }
+
+                cost = (floatround(PlayerVehicleInfo[p][d][pvMaxHealth]) - floatround(hp)) / 100;
+                if(cost == 0) cost = 1;
+                if (Businesses[iBusiness][bInventory] < cost) {
+                    sendMessage(playerid, 0xCE794BFF, "MECH:{FFFFFF} Doanh nghiep khong du linh kien de sua chua.");
+                    return cmd_suaxe(playerid, "");
+                }   
+
+                format(title, sizeof(title), "Xe %s > Dong co", VehicleName[GetVehicleModel(vid) - 400]);
+                format(info, sizeof(info), "{FFFFFF}\
+                    [#] Dong co: {4B84CE}%0.1f/%0.1f{FFFFFF}\n\
+                    [#] Yeu cau: %d linh kien\n\n\
+                    {41B431} -> Ban co muon sua chua phuong tien nay khong?", 
+                    hp, PlayerVehicleInfo[p][d][pvMaxHealth], cost);
+
+                SetPVarInt(playerid, #repairCost, cost);
+                SetPVarInt(playerid, #mechConfirm, 1);
+
+                ShowPlayerDialog(playerid, DIALOG_MECH_CONFIRM, DIALOG_STYLE_INPUT, title, info, "Co", "Quay lai");
+			}
+            case 1: {
+                GetVehicleStatus(playerid, panels, doors, lights, tires);
+                if (lights == 0) {
+                    sendMessage(playerid, 0xCE794BFF, "MECH:{FFFFFF} Den xe khong bi hong.");
+                    return cmd_suaxe(playerid, "");
+                }
+                else if (Businesses[iBusiness][bInventory] < 1) {
+                    sendMessage(playerid, 0xCE794BFF, "MECH:{FFFFFF} Doanh nghiep khong du linh kien de sua chua.");
+                    return cmd_suaxe(playerid, "");
+                }
+
+                format(title, sizeof(title), "Xe %s > Den xe", VehicleName[GetVehicleModel(vid) - 400]);
+                format(info, sizeof(info), "{FFFFFF}\
+                    [#] Trang thai: %s{FFFFFF} (Thiet hai: %d%%)\n\
+                    [#] Yeu cau: 1 linh kien\n\n\
+                    {41B431} -> Ban co muon sua chua den chieu sang cua phuong tien nay khong?", 
+                    (lights) ? ("{D31212}Hong") : ("{13BC10}Tot"), lights);
+
+                ShowPlayerDialog(playerid, DIALOG_MECH_CONFIRM, DIALOG_STYLE_INPUT, title, info, "Co", "Quay lai");
+                SetPVarInt(playerid, #repairCost, 1);
+                SetPVarInt(playerid, #mechConfirm, 2);
+            }
+            case 2: {
+                GetVehicleStatus(playerid, panels, doors, lights, tires);
+                if (doors == 0) {
+                    sendMessage(playerid, 0xCE794BFF, "MECH:{FFFFFF} Cua xe khong bi hong.");
+                    return cmd_suaxe(playerid, "");
+                }
+                else if (Businesses[iBusiness][bInventory] < 1) {
+                    sendMessage(playerid, 0xCE794BFF, "MECH:{FFFFFF} Doanh nghiep khong du linh kien de sua chua.");
+                    return cmd_suaxe(playerid, "");
+                }
+
+                format(title, sizeof(title), "Xe %s > Cua xe", VehicleName[GetVehicleModel(vid) - 400]);
+                format(info, sizeof(info), "{FFFFFF}\
+                    [#] Trang thai: %s{FFFFFF} (Thiet hai: %d%%)\n\
+                    [#] Yeu cau: 1 linh kien\n\n\
+                    {41B431} -> Ban co muon sua chua canh cua cua phuong tien nay khong?", 
+                    (lights) ? ("{D31212}Hong") : ("{13BC10}Tot"), lights);
+
+                ShowPlayerDialog(playerid, DIALOG_MECH_CONFIRM, DIALOG_STYLE_INPUT, title, info, "Co", "Quay lai");
+                SetPVarInt(playerid, #repairCost, 1);
+                SetPVarInt(playerid, #mechConfirm, 3);
+            }
+            case 3: {
+                GetVehicleStatus(playerid, panels, doors, lights, tires);
+                if (panels == 0) {
+                    sendMessage(playerid, 0xCE794BFF, "MECH:{FFFFFF} Than xe khong bi hong.");
+                    return cmd_suaxe(playerid, "");
+                }
+                else if (Businesses[iBusiness][bInventory] < 1) {
+                    sendMessage(playerid, 0xCE794BFF, "MECH:{FFFFFF} Doanh nghiep khong du linh kien de sua chua.");
+                    return cmd_suaxe(playerid, "");
+                }
+
+                format(title, sizeof(title), "Xe %s > Than xe", VehicleName[GetVehicleModel(vid) - 400]);
+                format(info, sizeof(info), "{FFFFFF}\
+                    [#] Trang thai: %s{FFFFFF} (Thiet hai: %d%%)\n\
+                    [#] Yeu cau: 1 linh kien\n\n\
+                    {41B431} -> Ban co muon sua chua phan than cua phuong tien nay khong?", 
+                    (lights) ? ("{D31212}Hong") : ("{13BC10}Tot"), lights);
+
+                ShowPlayerDialog(playerid, DIALOG_MECH_CONFIRM, DIALOG_STYLE_INPUT, title, info, "Co", "Quay lai");
+                SetPVarInt(playerid, #repairCost, 1);
+                SetPVarInt(playerid, #mechConfirm, 4);
+            }
+            case 4: {
+                GetVehicleStatus(playerid, panels, doors, lights, tires);
+                if (panels == 0) {
+                    sendMessage(playerid, 0xCE794BFF, "MECH:{FFFFFF} Than xe khong bi hong.");
+                    return cmd_suaxe(playerid, "");
+                }
+                else if (Businesses[iBusiness][bInventory] < 1) {
+                    sendMessage(playerid, 0xCE794BFF, "MECH:{FFFFFF} Doanh nghiep khong du linh kien de sua chua.");
+                    return cmd_suaxe(playerid, "");
+                }
+
+                format(title, sizeof(title), "Xe %s > Than xe", VehicleName[GetVehicleModel(vid) - 400]);
+                format(info, sizeof(info), "{FFFFFF}\
+                    [#] Trang thai: %s{FFFFFF} (Thiet hai: %d%%)\n\
+                    [#] Yeu cau: 1 linh kien\n\n\
+                    {41B431} -> Ban co muon sua chua phan than cua phuong tien nay khong?", 
+                    (lights) ? ("{D31212}Hong") : ("{13BC10}Tot"), lights);
+
+                ShowPlayerDialog(playerid, DIALOG_MECH_CONFIRM, DIALOG_STYLE_INPUT, title, info, "Co", "Quay lai");
+                SetPVarInt(playerid, #repairCost, 1);
+                SetPVarInt(playerid, #mechConfirm, 4);
+            }
+			case 5: {
+				GetVehicleStatus(playerid, panels, doors, lights, tires);
+				if(tires == 0 || gettime() < (PlayerVehicleInfo[p][d][pvTiresDays] - (86400 * 9))) {
+					sendMessage(playerid, 0xCE794BFF, "MECH:{FFFFFF} Lop xe khong bi hong va cung khong can gia han.");
+                    return cmd_suaxe(playerid, "");
+				}
+
+				new leftdays, cost;
+
+				if (PlayerVehicleInfo[p][d][pvTiresDays] > gettime()) {
+					leftdays = (PlayerVehicleInfo[p][d][pvTiresDays] - gettime()) / 86400;
+					cost = (10 - leftdays) * 5;
+				}
+				else {
+					leftdays = 0;
+					cost = 10 * 5;
+				}
+
+				if(cost == 0) cost = 5;
+                if (Businesses[iBusiness][bInventory] < cost) {
+                    sendMessage(playerid, 0xCE794BFF, "MECH:{FFFFFF} Doanh nghiep khong du linh kien de sua chua.");
+                    return cmd_suaxe(playerid, "");
+                }
+
+                format(title, sizeof(title), "Xe %s > Lop xe", VehicleName[GetVehicleModel(vid) - 400]);
+                format(info, sizeof(info), "{FFFFFF}\
+                    [#] Trang thai: %s{FFFFFF} (Thiet hai: %d%%)\n\
+					[#] Thoi han: con %d ngay\n\
+                    [#] Yeu cau: %d linh kien\n\n\
+                    {41B431} -> Ban co muon sua chua lop xe cua phuong tien nay khong?", 
+                    (tires) ? ("{D31212}Hong") : ("{13BC10}Tot"), tires, leftdays, cost);
+
+                ShowPlayerDialog(playerid, DIALOG_MECH_CONFIRM, DIALOG_STYLE_INPUT, title, info, "Co", "Quay lai");
+                SetPVarInt(playerid, #repairCost, cost);
+                SetPVarInt(playerid, #mechConfirm, 5);
+			}
+		}
+	}
+    if (dialogid == DIALOG_MECH_CONFIRM)
+    {
+        if(!response) return cmd_suaxe(playerid, "");
+        new 
+            p = GetPVarInt(playerid, #pvID),
+            d = GetPVarInt(playerid, #pvSlot),
+            iBusiness = PlayerInfo[playerid][pBusiness],
+            vid = GetPlayerVehicleID(playerid),
+			cost = GetPVarInt(playerid, #repairCost),
+            panels, lights, doors, tires;
+
+        if (Businesses[iBusiness][bInventory] < GetPVarInt(playerid, #repairCost)) {
+            sendMessage(playerid, 0xCE794BFF, "MECH:{FFFFFF} Doanh nghiep khong du linh kien de sua chua.");
+            return cmd_suaxe(playerid, "");
+        }
+
+        switch(GetPVarInt(playerid, #mechConfirm))
+        {
+            case 1: {
+                Businesses[iBusiness][bInventory] -= cost;
+
+                PlayerPlaySound(playerid, 1133, 0.0, 0.0, 0.0);
+                SetVehicleHealth(vid, PlayerVehicleInfo[p][d][pvMaxHealth]);
+                PlayerVehicleInfo[p][d][pvHealth] = PlayerVehicleInfo[p][d][pvMaxHealth];
+                
+                sendMessage(playerid, 0xCE794BFF, "MECH:{FFFFFF} Ban da sua chua dong co cua chiec xe %s.", VehicleName[GetVehicleModel(vid) - 400]);
+            }
+            case 2: {
+                Businesses[iBusiness][bInventory] -= cost;
+
+                PlayerPlaySound(playerid, 1133, 0.0, 0.0, 0.0);
+                GetVehicleDamageStatus(vid, panels, doors, lights, tires);
+                UpdateVehicleDamageStatus(vid, panels, doors, 0, tires);
+                PlayerVehicleInfo[p][d][pvLights] = 0;
+
+                sendMessage(playerid, 0xCE794BFF, "MECH:{FFFFFF} Ban da sua chua den chieu sang cua chiec xe %s.", VehicleName[GetVehicleModel(vid) - 400]);
+            }
+            case 3: {
+                Businesses[iBusiness][bInventory] -= cost;
+
+                PlayerPlaySound(playerid, 1133, 0.0, 0.0, 0.0);
+                GetVehicleDamageStatus(vid, panels, doors, lights, tires);
+                UpdateVehicleDamageStatus(vid, panels, 0, lights, tires);
+                PlayerVehicleInfo[p][d][pvDoors] = 0;
+
+                sendMessage(playerid, 0xCE794BFF, "MECH:{FFFFFF} Ban da sua chua canh cua cua chiec xe %s.", VehicleName[GetVehicleModel(vid) - 400]);
+            }
+            case 4: {
+                Businesses[iBusiness][bInventory] -= cost;
+
+                PlayerPlaySound(playerid, 1133, 0.0, 0.0, 0.0);
+                GetVehicleDamageStatus(vid, panels, doors, lights, tires);
+                UpdateVehicleDamageStatus(vid, 0, doors, lights, tires);
+                PlayerVehicleInfo[p][d][pvPanels] = 0;
+
+                sendMessage(playerid, 0xCE794BFF, "MECH:{FFFFFF} Ban da sua chua phan than cua chiec xe %s.", VehicleName[GetVehicleModel(vid) - 400]);
+            }
+			case 5: {
+                Businesses[iBusiness][bInventory] -= cost;
+
+                PlayerPlaySound(playerid, 1133, 0.0, 0.0, 0.0);
+                GetVehicleDamageStatus(vid, panels, doors, lights, tires);
+                UpdateVehicleDamageStatus(vid, panels, doors, lights, 0);
+                PlayerVehicleInfo[p][d][pvTires] = 0;
+
+				new extend_days = 10 - ((PlayerVehicleInfo[p][d][pvTiresDays] - gettime()) / 86400);
+				if(PlayerVehicleInfo[p][d][pvTiresDays] > gettime()) PlayerVehicleInfo[p][d][pvTiresDays] += extend_days * 86400;
+				else PlayerVehicleInfo[p][d][pvTiresDays] = gettime() + (86400 * 10);
+
+                sendMessage(playerid, 0xCE794BFF, "MECH:{FFFFFF} Ban da sua chua lop cua chiec xe %s (gia han them %d ngay).", VehicleName[GetVehicleModel(vid) - 400], extend_days);
+			}
+        }
+
+        DeletePVar(playerid, #pvID);
+        DeletePVar(playerid, #pvSlot);
+        DeletePVar(playerid, #repairCost);
+        DeletePVar(playerid, #mechConfirm);
+        return cmd_suaxe(playerid, "");
+    }
 	return 1;
 }
 

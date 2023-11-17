@@ -305,6 +305,9 @@ stock PlantTree_Reload(playerid, plantid)
             );
         }
     }
+    printf("Pos %f, %f, %f", PlantTreeInfo[playerid][plantid][plantPos][0],
+        PlantTreeInfo[playerid][plantid][plantPos][1],
+        PlantTreeInfo[playerid][plantid][plantPos][2]);
     PlantTreeInfo[playerid][plantid][PlantText] = CreateDynamic3DTextLabel(string, COLOR_WHITE, 
         PlantTreeInfo[playerid][plantid][plantPos][0],
         PlantTreeInfo[playerid][plantid][plantPos][1],

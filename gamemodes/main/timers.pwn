@@ -1855,6 +1855,8 @@ task ServerHeartbeatTwo[1000]() {
 			else if(PlayerInfo[i][pGuns][4] == 0) SetPlayerArmedWeapon(i, 0);
 			else SetPlayerArmedWeapon(i, 29);
         }
+        if(--PlayerInfo[i][pTimeCraft] < 0) PlayerInfo[i][pTimeCraft] = 0;
+		if(--PlayerInfo[i][pTimeMedkit] < 0) PlayerInfo[i][pTimeMedkit] = 0;
         new Float:armor;
         GetPlayerArmour(i, armor);
 		if((armor > CurrentArmor[i]) && PlayerInfo[i][pAdmin] < 2)

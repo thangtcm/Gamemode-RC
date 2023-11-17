@@ -45,7 +45,8 @@
 #include "./system/noithat.pwn"
 #include "./system/haha.pwn"
 #include "./system/danhba.pwn"
-#include "./system/driver_test.pwn"
+// #include "./system/driver_test.pwn"
+
 
 #include "./system/register_char.pwn"
 #include "./main/discord-bot.pwn"
@@ -98,10 +99,11 @@
 #include "./system/bodydame/bodydamage.pwn"
 #include "./system/vehicle/vehicle_info.pwn"
 #include "./system/nametag.pwn"
-
+#include "./system/mission/Misson.pwn"
+#include "./system/mission/ThiBanglai.pwn"
 // ============= ANTI ============= //
 #include "./anticheat/anti_airbreak.pwn"
-#include "./anticheat/anti_troll_car.pwn"
+// #include "./anticheat/anti_troll_car.pwn"
 #include "./anticheat/cartroll.pwn"
 #include "./anticheat/fakedamager.pwn"
 

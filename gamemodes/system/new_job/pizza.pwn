@@ -198,6 +198,7 @@ hook OnPlayerEnterCheckpoint(playerid) {
         DeletePVar(playerid, "postion_Pizza");
         DisablePlayerCheckpoint(playerid);	
 		BanhPizzaInFoot[playerid] = 0;
+		GiveRewardMisson(playerid);
 	//	if(LamViec[playerid] != 1) return 1;
 		if(BanhPizzaInCar[playerid] > 0)
 		{

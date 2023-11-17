@@ -91,7 +91,7 @@ new const g_aInventoryItems[][e_InventoryItems] =
 	{"Hamburger", "item_buger"},
 	{"Bread", "item_bread"},
 	{"Juice", "item_juice"},
-	// {"Beer", 1544},
+	{"Beer", "beer"},
 	// {"Da", 905},
 	{"Da", "item_stone"},
 	{"Dong", "item_copper"},
@@ -760,12 +760,20 @@ public OnPlayerUseItem(playerid, pItemId, name[])
 	}
 	else if(!strcmp(name, "Beer", true))
 	{
+        if(GetPVarInt(playerid, "TakeDamageFood") > gettime())
+			return SendErrorMessage(playerid, "Ban khong the uong trong khi vua bi tan cong.");
 		if(PlayerInfo[playerid][pDrink] >= 100) return SendErrorMessage(playerid, "Ban da no roi, khong the uong tiep.");
-		PlayerInfo[playerid][pDrink] += 16;
-		PlayerInfo[playerid][pDrink] = PlayerInfo[playerid][pDrink] + 16 > 100 ? 100 : PlayerInfo[playerid][pDrink] + 16;
+		PlayerInfo[playerid][pDrink] += 40;
+		PlayerInfo[playerid][pDrink] = PlayerInfo[playerid][pDrink] + 40 > 100 ? 100 : PlayerInfo[playerid][pDrink] + 40;
 		ApplyAnimation(playerid, "GANGS", "drnkbr_prtl_F", 2.67, 0, 1, 1, 1, 2000, 1);
 		PlayerPlaySound(playerid, 42600, 0.0, 0.0, 0.0);
 		Inventory_Remove(playerid, pItemId, 1);
+        new Float:playerHeath;
+		GetPlayerHealth(playerid, playerHeath);
+		if(playerHeath + 15.0 > 100.0)
+			SetPlayerHealth(playerid, 100.0);
+		else
+			SetPlayerHealth(playerid, playerHeath+15.0);
 	}
 	else if(!strcmp(name, "Codeine", true))
 	{
@@ -1040,8 +1048,7 @@ public OnPlayerUseItem(playerid, pItemId, name[])
 			{
 				SetPlayerHealth(playerid, HPx);
 			}
-			PlayerInfo[playerid][pTimeMedkit] = 30;
-			SetTimerEx("TimeUseMed", 60000, 0, "d", playerid);
+			PlayerInfo[playerid][pTimeMedkit] = 30 * 60;
             format(string, sizeof string, "{FF8000}* {C2A2DA}%s da su dung medkit.", GetPlayerNameEx(playerid));
             SetPlayerChatBubble(playerid, string, COLOR_PURPLE, 30.0, 6000);
             format(string, sizeof string, "{FF8000}> {C2A2DA}%s da su dung medkit.", GetPlayerNameEx(playerid));
