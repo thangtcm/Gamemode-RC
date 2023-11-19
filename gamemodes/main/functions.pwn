@@ -2729,6 +2729,7 @@ public InitiateGamemode()
 	LoadPlants();
 	LoadSpeedCameras();
 	LoadPayNSprays();
+	LoadRepairPoint();
 	LoadArrestPoints();
 	LoadImpoundPoints();
  	g_mysql_LoadSales();
@@ -13400,6 +13401,13 @@ stock GivePlayerStoreItem(playerid, type, business, item, price)
 			GivePlayerValidWeapon(playerid,5,2);
 			SendClientMessageEx(playerid, COLOR_WHITE, "Ban da mua gay bong chay");
 		}
+		case ITEM_SAWDER:{
+			if(!Inventory_HasItem(playerid, "May Cua")) {
+				if(!Inventory_Add(playerid, "May Cua", .timer = 60*24*6)) return 1;
+				SendClientMessageEx(playerid, COLOR_WHITE, "Ban da mua May Cua (Do ben: 1 tuan) thanh cong, su dung /inv > May Cua");
+			}
+			else return SendClientMessageEx(playerid, COLOR_WHITE, "Ban da so huu May Cua");
+		}
 		case ITEM_CONDOM:
 		{
 			if(!Inventory_HasItem(playerid, "GPS")) {
@@ -14394,39 +14402,6 @@ stock RehashHouses()
 		RehashHouse(i);
 	}
 	LoadHouses();
-}
-stock GetFreeRepairPoint()
-{
-	for(new i; i < MAX_REPAIR_POINT; i ++)
-	{
-		if (RepairPoint[i][rpPosX] == 0.0) return i;
-	}
-
-	return -1;
-}
-
-stock GetRepairPointNearest(playerid)
-{
-	for(new i; i < MAX_REPAIR_POINT; i ++)
-	{
-		if(IsPlayerInRangeOfPoint(playerid, 3.0, RepairPoint[i][rpPosX], RepairPoint[i][rpPosY], RepairPoint[i][rpPosZ])) return i;
-	}
-	
-	return -1;
-}
-
-stock CreateRepairPoint(id)
-{
-	if (IsValidDynamic3DTextLabel(RepairPoint[id][rpText])) DestroyDynamic3DTextLabel(RepairPoint[id][rpText]);
-	if (IsValidDynamicPickup(RepairPoint[id][rpPickup])) 	DestroyDynamicPickup(RepairPoint[id][rpPickup]);
-
-	RepairPoint[id][rpPickup] = CreateDynamicPickup(19134, 23, RepairPoint[id][rpPosX], RepairPoint[id][rpPosY], RepairPoint[id][rpPosZ], -1, -1, -1);
-	
-	new szText[128];
-	format(szText, sizeof(szText), "[Repair Point #%i]{FFFFFF}\nDoanh nghiep: #%i\n/suaxe", RepairPoint[id][rpId], RepairPoint[id][rpBizID]);
-
-	RepairPoint[id][rpText] = CreateDynamic3DTextLabel(szText, 0xA7622AFF, RepairPoint[id][rpPosX], RepairPoint[id][rpPosY], RepairPoint[id][rpPosZ]+0.3, 15.0);
-	return 1;
 }
 
 stock SaveDynamicDoors()

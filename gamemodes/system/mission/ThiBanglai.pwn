@@ -61,11 +61,10 @@ new Float:dsPoints[][3] = {
 //player_get_speed
 
 new pDriveReward[MAX_PLAYERS];
-new pFindDrive[MAX_PLAYERS];
 new pDriveTimer[MAX_PLAYERS];
 new pDriveTimerCheck[MAX_PLAYERS];
 new DangLenXe[MAX_PLAYERS];
-
+new PlayerLincenseAttemp[MAX_PLAYERS];
 
 
 forward CheckSpeed(playerid);
@@ -82,9 +81,9 @@ DrivingTestFinish(playerid)
 	DestroyVehicle(pTestVeh);
 	DeletePVar(playerid, "pTestVeh");
 	DeletePVar(playerid, "pDTest");
-	DeletePVar(playerid, "pTestMarker");
+	PlayerLincenseAttemp[playerid] = 0;
 	KillTimer(pDriveTimerCheck[playerid]);
-	DisablePlayerCheckpoint(playerid);
+	DisablePlayerRaceCheckpoint(playerid);
 	PlayerInfo[playerid][pCarLic] = 1;
 	SendTestMessage(playerid, "CHUC MUNG! Ban da hoan thanh khoa hoc lai xe va lay duoc bang lai!");
 	if(pDriveReward[playerid] == 0) // qua lan dau thi
@@ -93,8 +92,8 @@ DrivingTestFinish(playerid)
 	    new Float: arr_fPlayerPos[4];
 		GetPlayerPos(playerid, arr_fPlayerPos[0], arr_fPlayerPos[1], arr_fPlayerPos[2]);
 		GetPlayerFacingAngle(playerid, arr_fPlayerPos[3]);
-		CreatePlayerVehicle(playerid, GetPlayerFreeVehicleId(playerid), 509, arr_fPlayerPos[0], arr_fPlayerPos[1], arr_fPlayerPos[2], arr_fPlayerPos[3], 1, 1, 2000000, GetPlayerVirtualWorld(playerid), GetPlayerInterior(playerid));
-		SendTestMessage(playerid, "Ban duoc tang chiec BIKE cho viec hoan thanh hoc lai xe!");
+		// CreatePlayerVehicle(playerid, GetPlayerFreeVehicleId(playerid), 509, arr_fPlayerPos[0], arr_fPlayerPos[1], arr_fPlayerPos[2], arr_fPlayerPos[3], 1, 1, 2000000, GetPlayerVirtualWorld(playerid), GetPlayerInterior(playerid));
+		// SendTestMessage(playerid, "Ban duoc tang chiec BIKE cho viec hoan thanh hoc lai xe!");
 	}
 	return 1;
 }
@@ -102,7 +101,7 @@ DrivingTestFinish(playerid)
 DrivingSchoolSpeedMeter(playerid, Float:speed)
 {
 	new 
-		pTestMarker = GetPVarInt(playerid, "pTestMarker"),
+		pTestMarker = PlayerLincenseAttemp[playerid],
 		maxspeed = 0; 
 
 	switch(pTestMarker) {
@@ -117,6 +116,7 @@ DrivingSchoolSpeedMeter(playerid, Float:speed)
         format(string, sizeof string, "~r~(FAIL) ~w~Ban da vuot qua gioi han toc do toi da la ~p~%d MPH.", maxspeed);
         SendClientTextDraw(playerid, string);
 		SetPlayerCheckpoint(playerid, 814.0655,-600.5410,16.0355, 4.0);
+		DisablePlayerRaceCheckpoint(playerid);
 		SetPVarInt(playerid, "pDTest", 2);
 	}
 	return 1;
@@ -174,9 +174,9 @@ public checkTestVehicle(playerid)
 		DestroyVehicle(pTestVeh);
 		DeletePVar(playerid, "pTestVeh");
 		DeletePVar(playerid, "pDTest");
-		DeletePVar(playerid, "pTestMarker");
+		PlayerLincenseAttemp[playerid] = 0;
 		KillTimer(pDriveTimerCheck[playerid]);
-		DisablePlayerCheckpoint(playerid);
+		DisablePlayerRaceCheckpoint(playerid);
 		SendClientMessageEx(playerid, COLOR_YELLOW, "RADIO: Ban da rot bai thi lai xe. - Nguoi gui: Nguoi huong dan (619)");
 	}
 	return 1;
@@ -190,50 +190,45 @@ hook OnPlayerDisconnect(playerid)
 		DestroyVehicle(pTestVeh);
 	}
 	KillTimer(pDriveTimerCheck[playerid]);
-	pFindDrive[playerid] = 0;
 	pDriveTimer[playerid] = 0;
 }
 
 hook OnPlayerEnterCheckpoint(playerid){
-	if(pFindDrive[playerid] == 1)
+	if(GetPVarInt(playerid, "pDTest") == 2)
 	{
-		pFindDrive[playerid] = 0;
+		new pTestVeh = GetPVarInt(playerid, "PTestVeh");
+		DestroyVehicle(pTestVeh);
+		DeletePVar(playerid, "pTestVeh");
+		DeletePVar(playerid, "pDTest");
+		PlayerLincenseAttemp[playerid] = 0;
 		DisablePlayerCheckpoint(playerid);
-		SendClientMessageEx(playerid, COLOR_GREY, "Ban da den the driving school!");
 	}
-	else if(gPlayerCheckpointStatus[playerid] == CHECKPOINT_DRIVINGSCHOOL)
+	return 1;
+}
+stock OnPlayerEnterRaceCP(playerid){
+	if(GetPVarInt(playerid, "pDTest") == 1)
 	{
-	    new maxspeed = 0;
-		new pDTest = GetPVarInt(playerid, "pDTest");
-		if(pDTest == 1)
+		PlayerLincenseAttemp[playerid]++;
+		if(PlayerLincenseAttemp[playerid] == 8) // 
 		{
-			new pTestMarker = GetPVarInt(playerid, "pTestMarker");
-			pTestMarker += 1;
-			if(pTestMarker == 8) // 
-			{
-			    new string[129];
-                format(string, sizeof string, "~r~(WARNING SPEED) ~w~Toc do toi da sap toi ban co the chay ~p~60 MPH~w~.");
-                SendClientTextDraw(playerid, string);
-			}
-			else if(pTestMarker == 18) // 
-			{
-			    new string[129];
-                format(string, sizeof string, "~r~(WARNING SPEED) ~w~Hay giam toc lai duoi ~p~ 40 MPH ~w~- Tranh bi thi truot." );
-                SendClientTextDraw(playerid, string);
-			}
-			if(pTestMarker >= sizeof(dsPoints)) return DrivingTestFinish(playerid);
-			SetPlayerCheckpoint(playerid, dsPoints[pTestMarker][0], dsPoints[pTestMarker][1], dsPoints[pTestMarker][2], 4.0);
-			SetPVarInt(playerid, "pTestMarker", pTestMarker);
+			new string[129];
+			format(string, sizeof string, "~r~(WARNING SPEED) ~w~Toc do toi da sap toi ban co the chay ~p~60 MPH~w~.");
+			SendClientTextDraw(playerid, string);
 		}
-		else if(pDTest == 2)
+		else if(PlayerLincenseAttemp[playerid] == 18) // 
 		{
-			new pTestVeh = GetPVarInt(playerid, "PTestVeh");
-			DestroyVehicle(pTestVeh);
-			DeletePVar(playerid, "pTestVeh");
-			DeletePVar(playerid, "pDTest");
-			DeletePVar(playerid, "pTestMarker");
-			DisablePlayerCheckpoint(playerid);
+			new string[129];
+			format(string, sizeof string, "~r~(WARNING SPEED) ~w~Hay giam toc lai duoi ~p~ 40 MPH ~w~- Tranh bi thi truot." );
+			SendClientTextDraw(playerid, string);
 		}
+		if(PlayerLincenseAttemp[playerid] >= sizeof(dsPoints)-1) return DrivingTestFinish(playerid);
+		else
+		{
+			SetPlayerRaceCheckpoint(playerid, 0, 
+				dsPoints[PlayerLincenseAttemp[playerid]][0], dsPoints[PlayerLincenseAttemp[playerid]][1], dsPoints[PlayerLincenseAttemp[playerid]][2],
+				dsPoints[PlayerLincenseAttemp[playerid] + 1][0], dsPoints[PlayerLincenseAttemp[playerid] + 1][1], dsPoints[PlayerLincenseAttemp[playerid] + 1][2], 4.0);
+		}
+			
 	}
 	return 1;
 }
@@ -341,10 +336,11 @@ hook OnDialogResponse(playerid, dialogid, response, listitem, inputtext[]) {
 					SendTestMessage(playerid, "Nguoi huong dan: Hay giu toc do phuong tien khong qua 40 MPH . Bay gio ban co the bat dau!");
 					pDriveTimerCheck[playerid] = SetTimerEx("CheckSpeed", 500, true, "i", playerid);
 					SetPVarInt(playerid, "PDTest", 1);
-					DisablePlayerCheckpoint(playerid);
-					SetPlayerCheckpoint(playerid, dsPoints[0][0], dsPoints[0][1], dsPoints[0][2], 4.0);
-					SetPVarInt(playerid, "pTestMarker", 0);
-					gPlayerCheckpointStatus[playerid] = CHECKPOINT_DRIVINGSCHOOL;
+					printf("%f %f %f", dsPoints[1][0], dsPoints[1][1], dsPoints[1][2]);
+					SetPlayerRaceCheckpoint(playerid, 0, 
+						dsPoints[PlayerLincenseAttemp[playerid]][0], dsPoints[PlayerLincenseAttemp[playerid]][1], dsPoints[PlayerLincenseAttemp[playerid]][2],
+						dsPoints[PlayerLincenseAttemp[playerid] + 1][0], dsPoints[PlayerLincenseAttemp[playerid] + 1][1], dsPoints[PlayerLincenseAttemp[playerid] + 1][2], 4.0);
+					PlayerLincenseAttemp[playerid]++;
 				}
 				else
 				{

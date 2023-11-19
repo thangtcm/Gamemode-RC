@@ -1375,18 +1375,6 @@ enum pnsInfo
 	pnsRegCost
 }
 
-enum rpInfo
-{
-	rpId,
-	rpBizID,
-	rpStatus,
-	Float: rpPosX,
-	Float: rpPosY,
-	Float: rpPosZ,
-	rpPickup,
-	Text3D: rpText
-};
-
 enum arrestInfo
 {
 	arrestSQLId,
@@ -1609,6 +1597,7 @@ new BikeParkourObjects[2];
 new BikeParkourObjectStage[2];
 new Selected[MAX_PLAYERS][MAX_BUSINESSSALES];
 new Businesses[MAX_BUSINESSES][eBiz];
+//Edit Price Businesses
 new StoreItemCost[][StoreItemCostEnum] =
 {
 	{1},
@@ -1629,6 +1618,7 @@ new StoreItemCost[][StoreItemCostEnum] =
 	{25},
 	{80},
 	{10},
+	{1},
 	{1},
 	{1},
 	{1}
@@ -1655,7 +1645,8 @@ new const StoreItems[][] =
 	"Khoa dien",
 	"Khoa bao dong",
 	"Mat na",
-	"Gay bong chay"
+	"Gay bong chay",
+	"May Cua"
 };
 
 new TruckerDropoffs[][CargoArrayData] =
@@ -2434,7 +2425,6 @@ new MailBoxes[MAX_MAILBOXES][mbInfo];
 new MoneyInfo[MAX_MONEYBAGS][ttInfo];
 new TxtLabels[MAX_3DLABELS][tlInfo];
 new PayNSprays[MAX_PAYNSPRAYS][pnsInfo];
-new RepairPoint[MAX_REPAIR_POINT][rpInfo];
 new ArrestPoints[MAX_ARRESTPOINTS][arrestInfo];
 new ImpoundPoints[MAX_IMPOUNDPOINTS][impoundInfo];
 new fireworktog = 1;

@@ -1,21 +1,14 @@
 ./include/textclient.pwn(22) : èäåíòèôèêàòîð íå èñïîëüçóåòñÿ: "time"
-./system/inventory/inventory.pwn(1254) : èäåíòèôèêàòîð íå èñïîëüçóåòñÿ: "armor"
-./system/inventory/inventory.pwn(1254) : èäåíòèôèêàòîð íå èñïîëüçóåòñÿ: "health"
-./system/inventory/inventory.pwn(1333) : íåïðàâèëüíàÿ òàáóëÿöèÿ
-./system/inventory/inventory.pwn(1334) : íåïðàâèëüíàÿ òàáóëÿöèÿ
-./system/inventory/inventory.pwn(1544) : íåïðàâèëüíàÿ òàáóëÿöèÿ
-./system/inventory/inventory.pwn(1545) : íåïðàâèëüíàÿ òàáóëÿöèÿ
 ./system/bussiness/inventorybiz.pwn(218) : íåïðàâèëüíàÿ òàáóëÿöèÿ
 ./system/bussiness/inventorybiz.pwn(219) : íåïðàâèëüíàÿ òàáóëÿöèÿ
 ./system/charactertd.pwn(9) : íåïðàâèëüíàÿ òàáóëÿöèÿ
 ./system/charactertd.pwn(242) : íåïðàâèëüíàÿ òàáóëÿöèÿ
-./main/command.pwn(43615) : èäåíòèôèêàòîðó ïðèñâîåíî çíà÷åíèå, íî îí íå èñïîëüçóåòñÿ: "bid"
 ./main/_funcs.pwn(1104) : èäåíòèôèêàòîðó ïðèñâîåíî çíà÷åíèå, íî îí íå èñïîëüçóåòñÿ: "string"
-./main/_funcs.pwn(14905) : èäåíòèôèêàòîð íå èñïîëüçóåòñÿ: "vhp"
-./main/_funcs.pwn(14905) : èäåíòèôèêàòîð íå èñïîëüçóåòñÿ: "tires"
-./main/_funcs.pwn(14905) : èäåíòèôèêàòîð íå èñïîëüçóåòñÿ: "lights"
-./main/_funcs.pwn(14905) : èäåíòèôèêàòîð íå èñïîëüçóåòñÿ: "doors"
-./main/_funcs.pwn(14905) : èäåíòèôèêàòîð íå èñïîëüçóåòñÿ: "panels"
+./main/_funcs.pwn(14917) : èäåíòèôèêàòîð íå èñïîëüçóåòñÿ: "vhp"
+./main/_funcs.pwn(14917) : èäåíòèôèêàòîð íå èñïîëüçóåòñÿ: "tires"
+./main/_funcs.pwn(14917) : èäåíòèôèêàòîð íå èñïîëüçóåòñÿ: "lights"
+./main/_funcs.pwn(14917) : èäåíòèôèêàòîð íå èñïîëüçóåòñÿ: "doors"
+./main/_funcs.pwn(14917) : èäåíòèôèêàòîð íå èñïîëüçóåòñÿ: "panels"
 system/new_job/Farmer/map.pwn(75) : íåïðàâèëüíàÿ òàáóëÿöèÿ
 system/new_job/Farmer/dialog.pwn(199) : èäåíòèôèêàòîðó ïðèñâîåíî çíà÷åíèå, íî îí íå èñïîëüçóåòñÿ: "str"
 system/new_job/Farmer/cmd.pwn(108) : íåïðàâèëüíàÿ òàáóëÿöèÿ
@@ -23,27 +16,25 @@ system/new_job/Farmer/cmd.pwn(109) : íåïðàâèëüíàÿ òàáóëÿöèÿ
 system/new_job/Farmer/cmd.pwn(235) : èäåíòèôèêàòîðó ïðèñâîåíî çíà÷åíèå, íî îí íå èñïîëüçóåòñÿ: "query"
 system/new_job/Farmer/cmd.pwn(246) : íåïðàâèëüíàÿ òàáóëÿöèÿ
 ./system/new_job/miner/mn_callbacks.pwn(418) : èäåíòèôèêàòîðó ïðèñâîåíî çíà÷åíèå, íî îí íå èñïîëüçóåòñÿ: "string"
-./system/mission/ThiBanglai.pwn(206) : èäåíòèôèêàòîðó ïðèñâîåíî çíà÷åíèå, íî îí íå èñïîëüçóåòñÿ: "maxspeed"
-d:\Gamemode Samp\UP GM\Gamemode-RC\gamemodes\lsrpvn.pwn(26) : èäåíòèôèêàòîð íå èñïîëüçóåòñÿ: "AC_FD_OnPlayerDamage"
-./main/variables.pwn(3839) : èäåíòèôèêàòîð íå èñïîëüçóåòñÿ: "ChangeSkin"
-./main/variables.pwn(1488) : èäåíòèôèêàòîð íå èñïîëüçóåòñÿ: "ChatGoActor"
+./system/mechanic/mechanic.pwn(117) : èäåíòèôèêàòîðó ïðèñâîåíî çíà÷åíèå, íî îí íå èñïîëüçóåòñÿ: "bid"
+./main/variables.pwn(3829) : èäåíòèôèêàòîð íå èñïîëüçóåòñÿ: "ChangeSkin"
 d:\Gamemode Samp\UP GM\Gamemode-RC\gamemodes\lsrpvn.pwn(72) : èäåíòèôèêàòîð íå èñïîëüçóåòñÿ: "CountDamages"
 d:\Gamemode Samp\UP GM\Gamemode-RC\gamemodes\lsrpvn.pwn(33) : èäåíòèôèêàòîð íå èñïîëüçóåòñÿ: "DisplayDamages"
-./main/variables.pwn(2405) : èäåíòèôèêàòîð íå èñïîëüçóåòñÿ: "DownEDS"
+./main/variables.pwn(2396) : èäåíòèôèêàòîð íå èñïîëüçóåòñÿ: "DownEDS"
 ./system/drug/drug.pwn(12) : èäåíòèôèêàòîð íå èñïîëüçóåòñÿ: "DrugTypeName"
 system/new_job/Farmer/setting.pwn(105) : èäåíòèôèêàòîð íå èñïîëüçóåòñÿ: "FarmPlayer"
 d:\Gamemode Samp\UP GM\Gamemode-RC\gamemodes\lsrpvn.pwn(88) : èäåíòèôèêàòîð íå èñïîëüçóåòñÿ: "GetBodyPartName"
-./main/variables.pwn(2401) : èäåíòèôèêàòîð íå èñïîëüçóåòñÿ: "HospitalSpawnXYZ"
+./system/new_job/wood.pwn(29) : èäåíòèôèêàòîð íå èñïîëüçóåòñÿ: "HasChainsaw"
+./main/variables.pwn(2392) : èäåíòèôèêàòîð íå èñïîëüçóåòñÿ: "HospitalSpawnXYZ"
 d:\Gamemode Samp\UP GM\Gamemode-RC\gamemodes\lsrpvn.pwn(1676) : èäåíòèôèêàòîð íå èñïîëüçóåòñÿ: "IsPlayerInRangeOfDynamicObject"
-d:\Gamemode Samp\UP GM\Gamemode-RC\gamemodes\lsrpvn.pwn(1685) : èäåíòèôèêàòîð íå èñïîëüçóåòñÿ: "IsPlayerInRangeOfObject"
 d:\Gamemode Samp\UP GM\Gamemode-RC\gamemodes\lsrpvn.pwn(1089) : èäåíòèôèêàòîð íå èñïîëüçóåòñÿ: "PlacePlant"
 ./main/variables.pwn(4) : èäåíòèôèêàòîð íå èñïîëüçóåòñÿ: "RadioInfo"
 ./main/variables.pwn(6) : èäåíòèôèêàòîð íå èñïîëüçóåòñÿ: "SlotInfo"
 ./system/new_job/Trucking/setting.pwn(34) : èäåíòèôèêàòîð íå èñïîëüçóåòñÿ: "UnitType"
-./main/functions.pwn(6963) : èäåíòèôèêàòîð íå èñïîëüçóåòñÿ: "codehash"
-./main/variables.pwn(1761) : èäåíòèôèêàòîð íå èñïîëüçóåòñÿ: "passLength"
+./main/functions.pwn(6964) : èäåíòèôèêàòîð íå èñïîëüçóåòñÿ: "codehash"
+./main/variables.pwn(1752) : èäåíòèôèêàòîð íå èñïîëüçóåòñÿ: "passLength"
 d:\Gamemode Samp\UP GM\Gamemode-RC\gamemodes\lsrpvn.pwn(21715) : èäåíòèôèêàòîðó ïðèñâîåíî çíà÷åíèå, íî îí íå èñïîëüçóåòñÿ: "pointpinglimit"
-d:\Gamemode Samp\UP GM\Gamemode-RC\gamemodes\lsrpvn.pwn(16771) : èäåíòèôèêàòîðó ïðèñâîåíî çíà÷åíèå, íî îí íå èñïîëüçóåòñÿ: "tRewardText"
+d:\Gamemode Samp\UP GM\Gamemode-RC\gamemodes\lsrpvn.pwn(16746) : èäåíòèôèêàòîðó ïðèñâîåíî çíà÷åíèå, íî îí íå èñïîëüçóåòñÿ: "tRewardText"
 d:\Gamemode Samp\UP GM\Gamemode-RC\gamemodes\lsrpvn.pwn(248) : èäåíòèôèêàòîðó ïðèñâîåíî çíà÷åíèå, íî îí íå èñïîëüçóåòñÿ: "timerd"
 Pawn compiler 3.2.3664	 	 	Copyright (c) 1997-2016, ITB CompuPhase
 

@@ -73,10 +73,11 @@ new const g_facInventory[][] = {
 	"Dan SHotgun SAAS",
 	"Dan Tieu Lien SAAS",
 	"Dan sung truong SAAS",
-	"DAn Sniper SAAS",
+	"Dan Sniper SAAS",
 	"Mat na",
 	"Vat lieu",
-	"Thuoc Sung"
+	"Thuoc Sung",
+	"May Cua"
 };
 
 new const g_aInventoryItems[][e_InventoryItems] =
@@ -150,7 +151,8 @@ new const g_aInventoryItems[][e_InventoryItems] =
 	{"Giong Bo", "ticket_cow"},
 	{"Giong Nai", "ticket_deer"},
 	{"Bot Mi", "flour"},
-	{"Trai Cay", "fruit"}
+	{"Trai Cay", "fruit"},
+	{"May Cua", "sawder"}
 };
 
 hook OnPlayerDisconnect(playerid, reason)
@@ -1251,7 +1253,7 @@ CMD:thaomatna(playerid, params[])
 		    return 1;
 		}
 
-		new string[128], giveplayerid, Float:health, Float:armor;
+		new string[128], giveplayerid;
 		if(sscanf(params, "u", giveplayerid)) return SendUsageMessage(playerid, " /thaomatna [Player]");
 		if(IsPlayerConnected(giveplayerid))
 		{
@@ -1330,7 +1332,6 @@ Dialog:Inventory(playerid, response, listitem, inputtext[])
 			itemName[64], str[128];
 
 		strunpack(itemName, InventoryData[playerid][itemId][invItem]);
-	printf("%d", itemId);
 		switch(listitem)
 		{
 			case 0:{
@@ -1541,7 +1542,7 @@ Dialog:GiveQuantity(playerid, response, listitem, inputtext[])
 		format(str, sizeof(str), "%s da dua \"%s\" va da duoc them vao trong tui do.", GetPlayerNameEx(playerid), str);
 		SendClientMessageEx(giveplayerid, COLOR_YELLOW, str);
 		new itemidzxc[10];
-        	format(itemidzxc, 10, "%d", strval(inputtext));
+		format(itemidzxc, 10, "%d", strval(inputtext));
 		SendLogToDiscordRoom4("LOG ĐƯA VẬT PHẨM", "1166983700597186570", "Name", GetPlayerNameEx(playerid, false), "Người nhận", GetPlayerNameEx(giveplayerid, false), "Vật phẩm", itemName, "Số lượng", itemidzxc, 0x8d9922);
 		Inventory_Remove(playerid, itemId, strval(inputtext));
 		new years,month,day,hourz,minz,sec,time[50];

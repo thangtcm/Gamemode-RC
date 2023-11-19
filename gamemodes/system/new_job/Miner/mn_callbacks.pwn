@@ -394,7 +394,7 @@ public StartCountTime(playerid)
 					{
 						SetTimerEx("OnRockRespawn", 600000, false, "i", RockIDMiner[playerid]);
 					}
-					GiveRewardMisson(playerid);
+					CheckDoneMisson(playerid, 1);
 					KillTimer(MinerTimer[playerid]);
 					DeletePVar(playerid, "MinerWorking");
 				}
@@ -444,15 +444,15 @@ stock ShowMessageKeyPressed(playerid)
 	{
 		case 0:
 		{
-			format(str, sizeof(str), "Hay nhan phim ~r~Y~w~ trong ~p~ %d~w~ giay.", TimerPressKey[playerid]);
+			format(str, sizeof(str), "Hay nhan phim {ff1f1f}Y~w~ trong ~p~ %d~w~ giay.", TimerPressKey[playerid]);
 		}
 		case 1:
 		{
-		   format(str, sizeof(str), "Hay nhan phim ~r~H~w~ trong ~p~ %d~w~ giay.", TimerPressKey[playerid]);
+		   format(str, sizeof(str), "Hay nhan phim {ff1f1f}H~w~ trong ~p~ %d~w~ giay.", TimerPressKey[playerid]);
 		}
 		case 2:
 		{
-		    format(str, sizeof(str), "Hay nhan phim ~r~N~w~ trong ~p~ %d~w~ giay.", TimerPressKey[playerid]);
+		    format(str, sizeof(str), "Hay nhan phim {ff1f1f}N~w~ trong ~p~ %d~w~ giay.", TimerPressKey[playerid]);
 		}
 	}
 	SendClientTextDraw(playerid, str);

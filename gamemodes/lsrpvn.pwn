@@ -93,7 +93,7 @@
 #include "./system/new_job/miner/mn_variables.pwn"
 #include "./system/new_job/miner/mn_callbacks.pwn"
 #include "./system/new_job/miner/mn_funcs.pwn"
-// #include "./system/new_job/wood.pwn"
+#include "./system/new_job/wood.pwn"
 #include "./system/new_job/caucanew.pwn"
 // #include "./system/farmer.pwn"
 #include "./system/bodydame/bodydamage.pwn"
@@ -101,11 +101,12 @@
 #include "./system/nametag.pwn"
 #include "./system/mission/Misson.pwn"
 #include "./system/mission/ThiBanglai.pwn"
+#include "./system/mechanic/mechanic.pwn"
 // ============= ANTI ============= //
 #include "./anticheat/anti_airbreak.pwn"
 // #include "./anticheat/anti_troll_car.pwn"
 #include "./anticheat/cartroll.pwn"
-#include "./anticheat/fakedamager.pwn"
+// #include "./anticheat/fakedamager.pwn"
 
 #include "./include/onplayerfishnishloading.pwn"
 

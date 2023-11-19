@@ -2483,12 +2483,6 @@ stock SaveHouse(houseid)
 	mysql_function_query(MainPipeline, string, false, "OnQueryFinish", "i", SENDDATA_THREAD);
 }
 
-stock LoadRepairPoint()
-{
-	printf("[LoadRepairPoint] Loading data from database...");
-	mysql_function_query(MainPipeline, "SELECT * FROM `repairpoint`", true, "OnLoadRepairPoint", "");
-}
-
 
 stock LoadHouse(houseid)
 {
@@ -2618,23 +2612,6 @@ stock LoadTxtLabels()
 	mysql_function_query(MainPipeline, "SELECT * FROM `text_labels`", true, "OnLoadTxtLabels", "");
 }
 
-stock SaveRepairPoint(id)
-{
-	new string[576];
-	format(string, sizeof(string), "UPDATE `repairpoint` SET \
-		`BizID` = %d, \
-		`PosX` = %f, \
-		`PosY` = %f, \
-		`PosZ` = %f WHERE `id` = %d",
-		RepairPoint[id][rpBizID],
-		RepairPoint[id][rpPosX],
-		RepairPoint[id][rpPosY],
-		RepairPoint[id][rpPosZ],
-		RepairPoint[id][rpId]);
-
-	mysql_function_query(MainPipeline, string, false, "OnQueryFinish", "i", SENDDATA_THREAD);
-	return 1;
-}
 
 stock SavePayNSpray(id)
 {
@@ -5054,37 +5031,6 @@ public OnLoadPayNSprays()
 		}
 		i++;
 	}
-}
-
-forward OnLoadRepairPoint();
-public OnLoadRepairPoint()
-{
-	new i, rows, fields;
-	cache_get_data(rows, fields, MainPipeline);
-
-	while (i < rows)
-	{
-		RepairPoint[i][rpId] = cache_get_field_content_int(i, "id", MainPipeline);
-		RepairPoint[i][rpBizID] = cache_get_field_content_int(i, "BizID", MainPipeline);
-		RepairPoint[i][rpPosX] = cache_get_field_content_float(i, "PosX", MainPipeline);
-		RepairPoint[i][rpPosY] = cache_get_field_content_float(i, "PosY", MainPipeline);
-		RepairPoint[i][rpPosZ] = cache_get_field_content_float(i, "PosZ", MainPipeline);
-		
-		RepairPoint[i][rpStatus] = 0;
-		CreateRepairPoint(i);
-		i++;
-	}
-
-	printf("[LoadRepairPoint] Loaded %i repair points", i);
-	return 1;
-}
-
-forward OnRepairPointCreated(id);
-public OnRepairPointCreated(id)
-{
-	RepairPoint[id][rpId] = cache_insert_id();
-	printf("[Repair Point] %i has been created (sqlID: %i)", id, RepairPoint[id][rpId]);
-	return 1;
 }
 
 forward OnLoadArrestPoint(index);

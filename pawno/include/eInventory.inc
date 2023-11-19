@@ -599,7 +599,7 @@ stock Menu_SetPage(playerid, page)
 					PlayerTextDrawHide(playerid, g_ePlayerMenuData[playerid][g_eMenuItems][i - start]);
 					PlayerTextDrawShow(playerid, g_ePlayerMenuData[playerid][g_eMenuItems][i - start]);
 				}
-				if (g_ePlayerMenuData[playerid][g_eMenuExpirys][i - start] != PlayerText:INVALID_TEXT_DRAW)
+				if (strcmp(g_ePlayerMenuData[playerid][g_eMenuExpiry][i], "_"))
 				{
 					format(str, sizeof(str), "HSD: %s", ConvertSecondsToDuration(g_ePlayerMenuData[playerid][g_eMenuExpiry][i]));
 					PlayerTextDrawSetString(playerid, g_ePlayerMenuData[playerid][g_eMenuExpirys][i - start], str);

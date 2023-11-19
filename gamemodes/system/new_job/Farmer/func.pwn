@@ -305,9 +305,6 @@ stock PlantTree_Reload(playerid, plantid)
             );
         }
     }
-    printf("Pos %f, %f, %f", PlantTreeInfo[playerid][plantid][plantPos][0],
-        PlantTreeInfo[playerid][plantid][plantPos][1],
-        PlantTreeInfo[playerid][plantid][plantPos][2]);
     PlantTreeInfo[playerid][plantid][PlantText] = CreateDynamic3DTextLabel(string, COLOR_WHITE, 
         PlantTreeInfo[playerid][plantid][plantPos][0],
         PlantTreeInfo[playerid][plantid][plantPos][1],
@@ -324,7 +321,7 @@ stock PlantTree_Update(playerid, plantid)
 {
     new string[560];
     PlantTreeInfo[playerid][plantid][plantTimer]--;
-    if(PlantTreeInfo[playerid][plantid][plantTimer] <= 0 && PlantTreeInfo[playerid][plantid][plantType] == 2)
+    if(PlantTreeInfo[playerid][plantid][plantTimer] < 0 && PlantTreeInfo[playerid][plantid][plantType] == 2)
     {
         if(PlantTreeInfo[playerid][plantid][plantStatus] > 0 && PlantTreeInfo[playerid][plantid][plantStatus] < 3)
         {
@@ -348,7 +345,7 @@ stock PlantTree_Update(playerid, plantid)
         }
         return 1;
     }
-    if(PlantTreeInfo[playerid][plantid][plantTimer] <= 0 && PlantTreeInfo[playerid][plantid][plantType] != 2)
+    if(PlantTreeInfo[playerid][plantid][plantTimer] < 0 && PlantTreeInfo[playerid][plantid][plantType] != 2)
     {
         if(PlantTreeInfo[playerid][plantid][plantLevel] == 3) return 1;
         PlantTreeInfo[playerid][plantid][plantLevel]++;

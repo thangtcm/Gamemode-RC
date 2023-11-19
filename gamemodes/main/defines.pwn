@@ -114,7 +114,6 @@
 #define 		MAX_3DLABELS 				(500)
 #define 		MAX_SPEEDCAMERAS			(50)
 #define 		MAX_PAYNSPRAYS				(20)
-#define			MAX_REPAIR_POINT			(50)
 #define 		MAX_ARRESTPOINTS			(30)
 #define 		MAX_IMPOUNDPOINTS			(20)
 #define         NATION_SAN_ANDREAS		 	0
@@ -271,7 +270,8 @@
 #define 		ITEM_ALOCK                      	18
 #define 		ITEM_MASK                        	19
 #define 		ITEM_BASEBALL                      	20
-#define 		MAX_ITEM                        	21
+#define 		ITEM_SAWDER                      	21
+#define 		MAX_ITEM                        	22
 #define 		FUEL_PUMP_RATE 						0.1 // Gallons per second
 #define 		BIZ_PENALTY 						0.2
 
@@ -350,9 +350,6 @@
 #define         DIALOG_LOADTRUCKOLD         (670)
 #define			DIALOG_LOADTRUCKL			(680)
 #define			DIALOG_LOADTRUCKI			(690)
-
-#define			DIALOG_MECH 				(2036)
-#define			DIALOG_MECH_CONFIRM 		(2037)
 
 #define         RESTAURANTMENU              (930)
 #define         RESTAURANTMENU2             (931)
