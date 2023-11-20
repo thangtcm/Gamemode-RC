@@ -1,5 +1,8 @@
 
 
+new PlayerAmmo[MAX_PLAYERS][10];
+new CraftWeaponDeal[MAX_PLAYERS];
+new CraftWeaponDealTime[MAX_PLAYERS];
 
 new PlayerText:RadioInfo[MAX_PLAYERS];
 new PlayerText:ChannelInfo[MAX_PLAYERS];

@@ -1,8 +1,6 @@
 #include <a_samp>
 #include <YSI_Coding\y_hooks>
-new PlayerAmmo[MAX_PLAYERS][10];
-new CraftWeaponDeal[MAX_PLAYERS];
-new CraftWeaponDealTime[MAX_PLAYERS];
+
 new weaponzz, ammosdzz;
     // 	// ammo & weapon item
 	// {"9mm", "9mm"}, // ammo type = 1
