@@ -16906,6 +16906,7 @@ stock CreatePlayerVehicle(playerid, playervehicleid, modelid, Float: x, Float: y
 		PlayerVehicleInfo[playerid][playervehicleid][pvId] = carcreated;
 		PlayerVehicleInfo[playerid][playervehicleid][pvSpawned] = 1;
 		PlayerVehicleInfo[playerid][playervehicleid][pvFuel] = PlayerVehicleInfo[playerid][playervehicleid][pvCapacity];
+		VehicleFuel[carcreated] = PlayerVehicleInfo[playerid][playervehicleid][pvFuel];
 		VehicleCapacity[carcreated] = 50.0;
 		//SetVehicleNumberPlate(carcreated, PlayerVehicleInfo[playerid][playervehicleid][pvNumberPlate]);
 

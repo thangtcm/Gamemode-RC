@@ -99,7 +99,7 @@ stock CreateRepairPoint(id)
 	RepairPoint[id][rpPickup] = CreateDynamicPickup(19134, 23, RepairPoint[id][rpPosX], RepairPoint[id][rpPosY], RepairPoint[id][rpPosZ], -1, -1, -1);
 	
 	new szText[128];
-	format(szText, sizeof(szText), "[Repair Point #%i]{FFFFFF}\nDoanh nghiep: #%i\n/mech", RepairPoint[id][rpId], RepairPoint[id][rpBizID]);
+	format(szText, sizeof(szText), "[Repair Point #%i]{FFFFFF}\nDoanh nghiep: #%i\n/mech", id, RepairPoint[id][rpBizID]);
 
 	RepairPoint[id][rpText] = CreateDynamic3DTextLabel(szText, 0xA7622AFF, RepairPoint[id][rpPosX], RepairPoint[id][rpPosY], RepairPoint[id][rpPosZ]+0.3, 15.0);
 	return 1;
@@ -211,10 +211,11 @@ CMD:rpedit(playerid, params[])
 	}
 	else if (strcmp(option, "biz") == 0)
 	{
-		if (sscanf(secoption, "d", bid)) 		return SendUsageMessage(playerid, " /rpedit biz [biz id]");
+		if (sscanf(secoption, "dd", i, bid)) 		return SendUsageMessage(playerid, " /rpedit biz [repair id] [biz id]");
 		if (!IsValidBusinessID(bid)) 			return SendErrorMessage(playerid, "Doanh nghiep nay khong ton tai.");
 		if (Businesses[bid][bType] != BUSINESS_TYPE_MECHANIC) return SendErrorMessage(playerid, "Loai hinh doanh nghiep nay khong phai la sua xe.");
-	
+        if (RepairPoint[i][rpPosX] == 0.0) 	return SendErrorMessage(playerid, "Khong ton tai Repair Point #%d", i);
+
 		RepairPoint[i][rpBizID] = bid;
 		CreateRepairPoint(i); // refresh point
 		SaveRepairPoint(i);
@@ -244,9 +245,9 @@ CMD:mech(playerid, params[])
 	new 
 		i, vid, title[128];
 
-    if (PlayerInfo[playerid][pBusiness] != RepairPoint[i][rpBizID]) return SendErrorMessage(playerid, "Diem sua xe nay khong thuoc doanh nghiep cua ban.");
-	if ((i = GetRepairPointNearest(playerid)) == -1) 						return SendErrorMessage(playerid, "Ban khong o gan diem sua xe.");
-	if (!IsPlayerInAnyVehicle(playerid)) 	return SendErrorMessage(playerid, "Ban phai o ben trong mot chiec xe.");
+	if ((i = GetRepairPointNearest(playerid)) == -1) 						return SendErrorMessage(playerid, " Ban khong o gan diem sua xe.");
+	if (PlayerInfo[playerid][pBusiness] != RepairPoint[i][rpBizID]) return SendErrorMessage(playerid, " Diem sua xe nay khong thuoc doanh nghiep cua ban.");
+    if (!IsPlayerInAnyVehicle(playerid)) 	return SendErrorMessage(playerid, " Ban phai o ben trong mot chiec xe.");
 
 	vid = GetPlayerVehicleID(playerid);
 
@@ -364,9 +365,14 @@ Dialog:DIALOG_MECH_UPGRADE(playerid, response, listitem, inputtext[]){
                     sendMessage(playerid, 0xCE794BFF, "MECH:{FFFFFF} Mot con so khong hop le.");
                     return cmd_mech(playerid, "");
                 }
-                if (Businesses[iBusiness][bInventory] < cost){
+                if (Businesses[iBusiness][bInventory] < cost) {
                     DeletePVar(playerid, #pvUpgrade);
                     sendMessage(playerid, 0xCE794BFF, "MECH:{FFFFFF} Doanh nghiep khong du linh kien (Yeu cau: %d linh kien).", cost - Businesses[iBusiness][bInventory]);
+                    return cmd_mech(playerid, "");
+                }
+                if(amount + PlayerVehicleInfo[p][d][pvMaxHealth] == 1000.0) {
+                    DeletePVar(playerid, #pvUpgrade);
+                    sendMessage(playerid, 0xCE794BFF, "MECH:{FFFFFF} HP Dong co khong the la 1000.0.", cost - Businesses[iBusiness][bInventory]);
                     return cmd_mech(playerid, "");
                 }
 
@@ -412,7 +418,7 @@ Dialog:DIALOG_MECH_UPGRADE(playerid, response, listitem, inputtext[]){
             format(info, sizeof(info), "{FFFFFF}\
                 [#] Dong co hien tai: {3B83E8}%0.1f HP{FFFFFF}\n\
                 [#] Chi phi: 1 HP/1 unit\n\n\
-                {41B431}-> Nhap so HP ban muon nang cap cho dong co.");
+                {41B431}-> Nhap so HP ban muon nang cap cho dong co.", PlayerVehicleInfo[p][d][pvMaxHealth]);
             Dialog_Show(playerid, DIALOG_MECH_UPGRADE, DIALOG_STYLE_INPUT, title, info, "Nang cap", "Quay lai");
         }
         case 1: {
@@ -421,7 +427,7 @@ Dialog:DIALOG_MECH_UPGRADE(playerid, response, listitem, inputtext[]){
             format(info, sizeof(info), "{FFFFFF}\
                 [#] Dung tich hien tai: {3B83E8}%0.1fL{FFFFFF}\n\
                 [#] Chi phi: 1L/1 unit\n\n\
-                {41B431}-> Nhap so lit ban muon nang cap cho dung tich xang.");
+                {41B431}-> Nhap so lit ban muon nang cap cho dung tich xang.", VehicleCapacity[vid]);
             Dialog_Show(playerid, DIALOG_MECH_UPGRADE, DIALOG_STYLE_INPUT, title, info, "Nang cap", "Quay lai");
         }
     }
@@ -479,7 +485,7 @@ Dialog:DIALOG_MECH_FIXED(playerid, response, listitem, inputtext[]){
 
             SetPVarInt(playerid, #repairCost, cost);
             SetPVarInt(playerid, #mechConfirm, 1);
-            Dialog_Show(playerid, DIALOG_MECH_CONFIRM, DIALOG_STYLE_INPUT, title, info, "Co", "Quay lai");
+            Dialog_Show(playerid, DIALOG_MECH_CONFIRM, DIALOG_STYLE_MSGBOX, title, info, "Co", "Quay lai");
         }
         case 1: {
             GetVehicleStatus(playerid, panels, doors, lights, tires);
@@ -499,7 +505,7 @@ Dialog:DIALOG_MECH_FIXED(playerid, response, listitem, inputtext[]){
                 {41B431} -> Ban co muon sua chua den chieu sang cua phuong tien nay khong?", 
                 (lights) ? ("{D31212}Hong") : ("{13BC10}Tot"), lights);
 
-            Dialog_Show(playerid, DIALOG_MECH_CONFIRM, DIALOG_STYLE_INPUT, title, info, "Co", "Quay lai");
+            Dialog_Show(playerid, DIALOG_MECH_CONFIRM, DIALOG_STYLE_MSGBOX, title, info, "Co", "Quay lai");
             SetPVarInt(playerid, #repairCost, 1);
             SetPVarInt(playerid, #mechConfirm, 2);
         }
@@ -519,9 +525,9 @@ Dialog:DIALOG_MECH_FIXED(playerid, response, listitem, inputtext[]){
                 [#] Trang thai: %s{FFFFFF} (Thiet hai: %d%%)\n\
                 [#] Yeu cau: 1 linh kien\n\n\
                 {41B431} -> Ban co muon sua chua canh cua cua phuong tien nay khong?", 
-                (lights) ? ("{D31212}Hong") : ("{13BC10}Tot"), lights);
+                (doors) ? ("{D31212}Hong") : ("{13BC10}Tot"), doors);
 
-            Dialog_Show(playerid, DIALOG_MECH_CONFIRM, DIALOG_STYLE_INPUT, title, info, "Co", "Quay lai");
+            Dialog_Show(playerid, DIALOG_MECH_CONFIRM, DIALOG_STYLE_MSGBOX, title, info, "Co", "Quay lai");
             SetPVarInt(playerid, #repairCost, 1);
             SetPVarInt(playerid, #mechConfirm, 3);
         }
@@ -541,35 +547,13 @@ Dialog:DIALOG_MECH_FIXED(playerid, response, listitem, inputtext[]){
                 [#] Trang thai: %s{FFFFFF} (Thiet hai: %d%%)\n\
                 [#] Yeu cau: 1 linh kien\n\n\
                 {41B431} -> Ban co muon sua chua phan than cua phuong tien nay khong?", 
-                (lights) ? ("{D31212}Hong") : ("{13BC10}Tot"), lights);
+                (panels) ? ("{D31212}Hong") : ("{13BC10}Tot"), panels);
 
-            Dialog_Show(playerid, DIALOG_MECH_CONFIRM, DIALOG_STYLE_INPUT, title, info, "Co", "Quay lai");
+            Dialog_Show(playerid, DIALOG_MECH_CONFIRM, DIALOG_STYLE_MSGBOX, title, info, "Co", "Quay lai");
             SetPVarInt(playerid, #repairCost, 1);
             SetPVarInt(playerid, #mechConfirm, 4);
         }
         case 4: {
-            GetVehicleStatus(playerid, panels, doors, lights, tires);
-            if (panels == 0) {
-                sendMessage(playerid, 0xCE794BFF, "MECH:{FFFFFF} Than xe khong bi hong.");
-                return cmd_mech(playerid, "");
-            }
-            else if (Businesses[iBusiness][bInventory] < 1) {
-                sendMessage(playerid, 0xCE794BFF, "MECH:{FFFFFF} Doanh nghiep khong du linh kien de sua chua.");
-                return cmd_mech(playerid, "");
-            }
-
-            format(title, sizeof(title), "Xe {2C6EAF}%s{FFFFFF} > Than xe", VehicleName[GetVehicleModel(vid) - 400]);
-            format(info, sizeof(info), "{FFFFFF}\
-                [#] Trang thai: %s{FFFFFF} (Thiet hai: %d%%)\n\
-                [#] Yeu cau: 1 linh kien\n\n\
-                {41B431} -> Ban co muon sua chua phan than cua phuong tien nay khong?", 
-                (lights) ? ("{D31212}Hong") : ("{13BC10}Tot"), lights);
-
-            Dialog_Show(playerid, DIALOG_MECH_CONFIRM, DIALOG_STYLE_INPUT, title, info, "Co", "Quay lai");
-            SetPVarInt(playerid, #repairCost, 1);
-            SetPVarInt(playerid, #mechConfirm, 4);
-        }
-        case 5: {
             GetVehicleStatus(playerid, panels, doors, lights, tires);
             if(tires == 0 || gettime() < (PlayerVehicleInfo[p][d][pvTiresDays] - (86400 * 9))) {
                 sendMessage(playerid, 0xCE794BFF, "MECH:{FFFFFF} Lop xe khong bi hong va cung khong can gia han.");
@@ -601,7 +585,7 @@ Dialog:DIALOG_MECH_FIXED(playerid, response, listitem, inputtext[]){
                 {41B431} -> Ban co muon sua chua lop xe cua phuong tien nay khong?", 
                 (tires) ? ("{D31212}Hong") : ("{13BC10}Tot"), tires, leftdays, cost);
 
-            Dialog_Show(playerid, DIALOG_MECH_CONFIRM, DIALOG_STYLE_INPUT, title, info, "Co", "Quay lai");
+            Dialog_Show(playerid, DIALOG_MECH_CONFIRM, DIALOG_STYLE_MSGBOX, title, info, "Co", "Quay lai");
             SetPVarInt(playerid, #repairCost, cost);
             SetPVarInt(playerid, #mechConfirm, 5);
         }

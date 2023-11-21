@@ -2,7 +2,7 @@
 #include <YSI_Coding\y_hooks>
 const
 		JOB_WOOD = 30,
-		MAX_WOOD = 10,
+		MAX_WOOD = 20,
 		WOOD_CHECK = 1883;
 
 enum eWood {
@@ -14,29 +14,34 @@ enum eWood {
 new WoodInfo[MAX_WOOD][eWood];
 new Float:WoodPostion[MAX_WOOD][3] = // Position có sẵn của bản cũ
 {
-	{-639.3089,-61.5377,64.8936},
-	{-652.7448,-86.8826,63.3066},
-	{-683.0600,-90.6403,66.3271},
-	{-694.6327,-74.3674,69.7006},
-	{-686.5068,-64.7477,69.8633},
-	{-633.3345,-73.4974,65.3331},
-	{-662.6438,-124.9772,61.1884},
-	{-647.3447,-145.8317,63.0927},
-	{-636.9913,-138.2652,65.7189},
-	{-684.5880,-55.5238,70.5329}
+	{-639.308898, -61.537700, 63.663585},
+	{-652.744812, -86.882598, 61.776596},
+	{-683.059997, -90.640296, 65.067100},
+	{-694.632690, -74.367401, 68.170616},
+	{-596.119812, -55.054405, 62.655719},
+	{-633.334472, -73.497398, 64.133110},
+	{-662.643798, -124.977203, 59.338436},
+	{-647.344726, -145.831695, 62.012748},
+	{-636.991271, -138.265197, 64.358955},
+	{-586.455932, -72.081352, 64.091049},
+	{-602.226013, -98.415702, 64.275665},
+	{-599.704345, -113.975410, 66.417808},
+	{-608.638244, -132.362823, 69.410560},
+	{-623.587402, -151.391662, 68.463569},
+	{-591.516906, -149.363723, 76.047988},
+	{-574.566040, -152.103195, 76.461341},
+	{-650.633056, -182.740081, 62.525093},
+	{-680.540344, -175.798797, 60.878055},
+	{-683.731018, -146.484481, 59.855533},
+	{-610.268005, -37.102207, 61.575477}
 };
-
-new HasChainsaw[MAX_PLAYERS];
-/*
-	HasChainsaw -> biến lưu cưa máy, có gì cho nó lưu và thêm vào 24/7 giúp tui.
-*/
 
 /*-----------------------------------------*/
 forward RespawnWood(i);
 public RespawnWood(i)
 {
-	WoodInfo[i][WoodText] = CreateDynamic3DTextLabel("Cay Go\nNhan 'Y' de chat go", -1,  WoodPostion[i][0],WoodPostion[i][1],WoodPostion[i][2]-1, 100);
-	WoodInfo[i][WoodObject] = CreateObject(655, WoodPostion[i][0], WoodPostion[i][1], WoodPostion[i][2]-1, 0,0,0);
+	WoodInfo[i][WoodText] = CreateDynamic3DTextLabel("Cay Go\nNhan 'Y' de chat go", -1,  WoodPostion[i][0], WoodPostion[i][1], WoodPostion[i][2]+1.2, 13.0);
+	WoodInfo[i][WoodObject] = CreateObject(655, WoodPostion[i][0], WoodPostion[i][1], WoodPostion[i][2], 0,0,0);
 	WoodInfo[i][WoodStatus] = 0;
 	printf("Wood %d respawn", i);
 	return 1;
@@ -53,13 +58,13 @@ public CuttingWood(playerid)
 	}
 	ClearCutting(playerid);
 
-	new rand = Random(4, 7);
+	new rand = Random(1, 2);
 	Inventory_Add(playerid, "Go", rand);
 	sendMessage(playerid, 0xECA727FF, "LUMBER:{FFFFFF} Ban nhan duoc %d go tu viec chat cai cay nay.", rand);
 
 	DestroyObject(WoodInfo[GetPVarInt(playerid, #woodID)][WoodObject]);
 	DestroyDynamic3DTextLabel(WoodInfo[GetPVarInt(playerid, #woodID)][WoodText]);
-	SetTimerEx("RespawnWood", 60000 * 20, false, "d", GetPVarInt(playerid, #woodID)); // 20 min
+	SetTimerEx("RespawnWood", 60000 * 10, false, "d", GetPVarInt(playerid, #woodID)); // 20 min
 	return 1;
 }
 
@@ -109,14 +114,7 @@ CMD:chatgo(playerid, params[])
 	GetActorPos(ChatGoActor, PosXACtor, PosYACtor, PosZACtor);
 	if(IsPlayerInRangeOfPoint(playerid, 2.0, PosXACtor, PosYACtor, PosZACtor))
 	{
-		if(PlayerInfo[playerid][pJob] != JOB_WOOD && PlayerInfo[playerid][pJob2] != JOB_WOOD)
-		{
-			ShowPlayerDialog(playerid, WOOD_MENU, DIALOG_STYLE_LIST, "Cong viec", "Xin viec\nNghi viec (1)\nNghi viec (2)\nThay dong phuc", "Chon", "Huy");
-		}
-		else
-		{
-			ShowPlayerDialog(playerid, WOOD_MENU, DIALOG_STYLE_LIST, "Cong viec", "Xin viec\nNghi viec (1)\nNghi viec (2)\nThay dong phuc", "Chon", "Huy");
-		}
+		ShowPlayerDialog(playerid, WOOD_MENU, DIALOG_STYLE_LIST, "Cong viec", "Xin viec\nNghi viec (1)\nNghi viec (2)\nThay dong phuc", "Chon", "Huy");
 	}
 	return 1;
 }
@@ -133,11 +131,11 @@ hook OnPlayerKeyStateChange(playerid, newkeys, oldkeys) {
 				if (PlayerInfo[playerid][pJob] != JOB_WOOD && PlayerInfo[playerid][pJob2] != JOB_WOOD) return 1;
 				if (GetPVarInt(playerid, #cuttingWood)) return 1;
 				if (Inventory_Count(playerid, "May Cua") < 1) return SendClientMessage(playerid, 0xECA727FF, "LUMBER:{FFFFFF} Ban khong co may cua de chat go.");
-				if (PlayerInfo[playerid][pModel] != 16) return SendClientMessage(playerid, 0xECA727FF, "LUMBER:{FFFFFF} Ban khong mac do bao ho.");
+				if (GetPlayerSkin(playerid) != 16) return SendClientMessage(playerid, 0xECA727FF, "LUMBER:{FFFFFF} Ban khong mac do bao ho.");
 
 				TogglePlayerControllable(playerid, false);
 				PlayAnim(playerid, "CHAINSAW", "WEAPON_csaw", 4.1, 1, 0, 0, 1, 0, 1);
-				SetPlayerAttachedObject(playerid, PIZZA_INDEX, 341, 6, -0.059999,	0.034,	0.319,	21,	-110.5,	112.8,	1,	1,	1, 0, 0);
+				SetPlayerAttachedObject(playerid, PIZZA_INDEX, 341, 6, 0.0,	0.0, 0.0, 0.0, 0.0, 0.0, 1, 1, 1, 0, 0);
 				SetPVarInt(playerid, #cuttingWood, 1);
 				SendClientTextDraw(playerid, "Dang chat go...");
 				
@@ -161,7 +159,7 @@ hook OnDialogResponse(playerid, dialogid, response, listitem, inputtext[]) {
         	switch(listitem) {
         		case 0: {
         			if (IsPlayerInRangeOfPoint(playerid,5.0,-543.2013,-197.4136,78.4063)) {
-        				if(PlayerInfo[playerid][pJob] == JOB_WOOD || PlayerInfo[playerid][pJob2] == JOB_WOOD) return SendErrorMessage(playerid, " Ban da lam viec Lam Tac roi.");
+        				if(PlayerInfo[playerid][pJob] == JOB_WOOD || PlayerInfo[playerid][pJob2] == JOB_WOOD) return 1;
             			if(PlayerInfo[playerid][pJob] == 0)
                         {
                 			SendClientMessageEx(playerid, COLOR_YELLOW, " Ban da nhan cong viec lam tac thanh cong, hay thay dong phuc va bat dau lam viec.");
@@ -190,9 +188,16 @@ hook OnDialogResponse(playerid, dialogid, response, listitem, inputtext[]) {
 				}
         		case 3: {
         			if(PlayerInfo[playerid][pJob] != JOB_WOOD && PlayerInfo[playerid][pJob2] != JOB_WOOD) return SendErrorMessage(playerid, " Ban chua phai Lam Tac."); 
-        			SetPlayerSkin(playerid, 16);
-        			PlayerInfo[playerid][pModel] = 16;
-        			SendClientTextDraw(playerid, "Ban da thay trang phuc hay bat dau lam viec");
+        			
+					if(GetPlayerSkin(playerid) == 16)
+					{
+						SetPlayerSkin(playerid, PlayerInfo[playerid][pModel]);
+						SendClientTextDraw(playerid, "Ban da cat quan ao lam viec.");
+					}
+					else {
+						SetPlayerSkin(playerid, 16);
+						SendClientTextDraw(playerid, "Ban da thay quan ao lam viec.");
+					}
         		}
         	}
         }
@@ -225,8 +230,8 @@ hook OnGameModeInit()
     for(new i = 0 ; i < MAX_WOOD ; i++) 
 	{
 
-    	WoodInfo[i][WoodText] = CreateDynamic3DTextLabel("Cay Go\nNhan 'Y' de chat go", -1,  WoodPostion[i][0],WoodPostion[i][1],WoodPostion[i][2]-1, 100);
-    	WoodInfo[i][WoodObject] = CreateObject(655, WoodPostion[i][0], WoodPostion[i][1], WoodPostion[i][2]-1, 0,0,0);
+    	WoodInfo[i][WoodText] = CreateDynamic3DTextLabel("Cay Go\nNhan 'Y' de chat go", -1,  WoodPostion[i][0],WoodPostion[i][1],WoodPostion[i][2]+1.2, 13.0);
+    	WoodInfo[i][WoodObject] = CreateObject(655, WoodPostion[i][0], WoodPostion[i][1], WoodPostion[i][2], 0,0,0);
     	WoodInfo[i][WoodStatus]  = 0;
     }
 

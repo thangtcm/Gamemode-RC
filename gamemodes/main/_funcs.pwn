@@ -14985,18 +14985,20 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 				VehicleSpawned[playerid]++;
 				PlayerVehicleInfo[playerid][listitem][pvSpawned] = 1;
 				PlayerVehicleInfo[playerid][listitem][pvId] = iVeh;
-				if(PlayerVehicleInfo[playerid][listitem][pvLocked] == 1) LockPlayerVehicle(playerid, iVeh, PlayerVehicleInfo[playerid][listitem][pvLock]);
+				VehicleFuel[iVeh] = PlayerVehicleInfo[playerid][listitem][pvFuel];
+				if (PlayerVehicleInfo[playerid][listitem][pvTiresDays] == 0) PlayerVehicleInfo[playerid][listitem][pvTiresDays] = gettime() + (86400 * 10);
+				if (VehicleFuel[iVeh] > GetVehicleFuelCapacity(iVeh)) VehicleFuel[iVeh] = GetVehicleFuelCapacity(iVeh);
+				if (PlayerVehicleInfo[playerid][listitem][pvLocked] == 1) LockPlayerVehicle(playerid, iVeh, PlayerVehicleInfo[playerid][listitem][pvLock]);
 				LoadPlayerVehicleMods(playerid, listitem);
 				g_mysql_SaveVehicle(playerid, listitem);
+				sendMessage(playerid, -1, "pvFuel %0.1f | Fuel %0.1f", PlayerVehicleInfo[playerid][listitem][pvFuel], VehicleFuel[iVeh]);
 
 				new vstring[64];
 				format(vstring, sizeof(vstring), "Ban da lay %s cua ban ra khoi kho.", VehicleName[PlayerVehicleInfo[playerid][listitem][pvModelId] - 400]);
 				SendClientMessageEx(playerid, COLOR_WHITE, vstring);
 				CheckPlayerVehiclesForDesync(playerid);
 				Vehicle_ResetData(iVeh);
-				VehicleFuel[iVeh] = PlayerVehicleInfo[playerid][listitem][pvFuel];
 				VehicleTrucker_Reload(playerid, listitem, true);
-				if (VehicleFuel[iVeh] > GetVehicleFuelCapacity(iVeh)) VehicleFuel[iVeh] = GetVehicleFuelCapacity(iVeh);
 
 				if(PlayerVehicleInfo[playerid][listitem][pvCrashFlag] == 1 && PlayerVehicleInfo[playerid][listitem][pvCrashX] != 0.0)
 				{

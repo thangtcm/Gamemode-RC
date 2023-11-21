@@ -37,7 +37,7 @@ hook OnPlayerKeyStateChange(playerid, newkeys, oldkeys)
 	    if(PRESSED(KEY_YES))
 	    {
 			new format_job[1280];
-			format(format_job, sizeof(format_job), "{a8a7a7}Da: {ffffff}%d$\n{c96c02}Dong: {ffffff}%d$\n{5c5c5c}Sat: {ffffff}%d$\n{f7ff05}Vang: {ffffff}%d$", RandomMoney[0], RandomMoney[1], RandomMoney[2], RandomMoney[3]);
+			format(format_job, sizeof(format_job), "{a8a7a7}Da: {ffffff}%d$\n{c96c02}Dong: {ffffff}%d$\n{5c5c5c}Sat: {ffffff}%d$\n{f7ff05}Vang: {ffffff}%d$\n{C88541}Go:{FFFFFF} %d$", RandomMoney[0], RandomMoney[1], RandomMoney[2], RandomMoney[3], RandomMoney[4]);
 	    	Dialog_Show(playerid, thuksdialog, DIALOG_STYLE_LIST, "Thu mua khoang san", format_job, "Lua chon", "Huy bo");
 	    }
 	}
@@ -177,6 +177,7 @@ public ResetPrice()
 			RandomMoney[1] = (RandomMoney[0] + 5 +random(50)); // 45
 			RandomMoney[2] = (RandomMoney[1]+random(55));// 70
 			RandomMoney[3] = (RandomMoney[2]+random(250));// => 270
+			RandomMoney[4] = RandomMoney[0];
 		}
 		case 51..89:
 		{
@@ -184,6 +185,7 @@ public ResetPrice()
 			RandomMoney[1] = (RandomMoney[0] + random(50)) ; // 120
 			RandomMoney[2] = (RandomMoney[1] * 2+random(50)) ; // 240 + 50 => 290
 			RandomMoney[3] = (RandomMoney[2] + random(100)+110); //  500
+			RandomMoney[4] = RandomMoney[0];
 		}
 		case 90..100:
 		{
@@ -191,6 +193,7 @@ public ResetPrice()
 			RandomMoney[1] = (RandomMoney[0] + 30 +random(25) * 2);//120 + 80 => 200
 			RandomMoney[2] = (RandomMoney[1] * 2 +random(240));// 440
 			RandomMoney[3] = (RandomMoney[2] + 260 + random(300));// 440 + 260 + 300 => 1k
+			RandomMoney[4] = RandomMoney[0];
 			isHight = true;
 		}
 	}
