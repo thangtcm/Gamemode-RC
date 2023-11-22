@@ -96,6 +96,9 @@ public M_OnQueryFinish(extraid, handleid)
 		if(g_arrQueryHandle{extraid} != -1 && g_arrQueryHandle{extraid} != handleid) return 0;
 	}
 	cache_get_data(rows, fields, MainPipeline);
+	new month, day, year, datetimenow;
+    getdate(year,month,day);
+	datetimenow = day*1000000 + month*10000 + year;
 	if(IsPlayerConnected(extraid))
 	{
 		new szResult[64];
@@ -103,6 +106,11 @@ public M_OnQueryFinish(extraid, handleid)
 		for(new row;row < rows;row++)
 		{
 			cache_get_field_content(row,  "Daily", szResult, MainPipeline); PlayerInfo[extraid][pDaily] = strval(szResult);
+			if(PlayerInfo[extraid][pDaily] != datetimenow)
+			{
+				PlayerInfo[extraid][pDaily] = datetimenow;
+				SendServerMessage(extraid, "Hom nay la lan dang nhap dau tien cua ban.");
+			}
 			cache_get_field_content(row,  "M_get_1", szResult, MainPipeline); PMisson[extraid][m_get][1] = strval(szResult);
 			cache_get_field_content(row,  "M_get_2", szResult, MainPipeline); PMisson[extraid][m_get][2] = strval(szResult);
 			
@@ -204,14 +212,19 @@ stock CheckDoneMisson(playerid, type)
     return 1;
 }
 
-stock ResetCountMisson(playerid)
+stock Main_ResetCountMisson(playerid)
 {
-    PMisson[playerid][m_check_count][5] = 0;
-    PMisson[playerid][m_check_count][4] = 0;
-    PMisson[playerid][m_check_count][2] = 0;
     PMisson[playerid][m_check_count][1] = 0;
     PMisson[playerid][m_check_count][0] = 0;
-    PMisson[playerid][m_check_count][3] = 0;
+    PMisson[playerid][m_get][1] = 0;
+    PMisson[playerid][a_m_done] = 0;
+}
+
+stock ResetCountMisson(playerid)
+{
+    PMisson[playerid][m_check_count][1] = 0;
+    PMisson[playerid][m_check_count][0] = 0;
+    PMisson[playerid][m_get][1] = 0;
 }
 
 stock GiveRewardMisson(playerid)

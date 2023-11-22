@@ -8402,6 +8402,7 @@ public OnPlayerLoad(playerid)
 	InventoryCH_Load(playerid);
 	FarmPlants_LOAD(playerid);
 	CATTLE_LOAD(playerid);
+	g_mysql_LoadMisson(playerid);
 	format(string, sizeof(string), "SELECT * FROM `rentedcars` WHERE `sqlid` = '%d'", GetPlayerSQLId(playerid));
 	mysql_function_query(MainPipeline, string, true, "LoadRentedCar", "i", playerid);
 
