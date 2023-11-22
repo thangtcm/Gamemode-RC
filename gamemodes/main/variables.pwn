@@ -1851,6 +1851,7 @@ new Float: fVehSpeed[MAX_PLAYERS];
 new Float: fVehHealth[MAX_PLAYERS];
 new szAdvert[MAX_PLAYERS][128];
 new AdvertType[MAX_PLAYERS];
+
 //Aduty
 new Aduty[MAX_PLAYERS];
 // C4 vehicle bomb

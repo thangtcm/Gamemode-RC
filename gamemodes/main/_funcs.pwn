@@ -14953,10 +14953,21 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 				VehicleSpawned[playerid]++;
 				PlayerVehicleInfo[playerid][listitem][pvSpawned] = 1;
 				PlayerVehicleInfo[playerid][listitem][pvId] = iVeh;
+<<<<<<< Updated upstream
 				if(PlayerVehicleInfo[playerid][listitem][pvLocked] == 1) LockPlayerVehicle(playerid, iVeh, PlayerVehicleInfo[playerid][listitem][pvLock]);
 				LoadPlayerVehicleMods(playerid, listitem);
 				g_mysql_SaveVehicle(playerid, listitem);
 
+=======
+				VehicleFuel[iVeh] = PlayerVehicleInfo[playerid][listitem][pvFuel];
+				if (PlayerVehicleInfo[playerid][listitem][pvMaxHealth] == 0.0) PlayerVehicleInfo[playerid][listitem][pvMaxHealth] = 900.0;
+				if (PlayerVehicleInfo[playerid][listitem][pvTiresDays] == 0) PlayerVehicleInfo[playerid][listitem][pvTiresDays] = gettime() + (86400 * 10);
+				if (VehicleFuel[iVeh] > GetVehicleFuelCapacity(iVeh)) VehicleFuel[iVeh] = GetVehicleFuelCapacity(iVeh);
+				if (PlayerVehicleInfo[playerid][listitem][pvLocked] == 1) LockPlayerVehicle(playerid, iVeh, PlayerVehicleInfo[playerid][listitem][pvLock]);
+				LoadPlayerVehicleMods(playerid, listitem);
+				g_mysql_SaveVehicle(playerid, listitem);
+				
+>>>>>>> Stashed changes
 				new vstring[64];
 				format(vstring, sizeof(vstring), "Ban da lay %s cua ban ra khoi kho.", VehicleName[PlayerVehicleInfo[playerid][listitem][pvModelId] - 400]);
 				SendClientMessageEx(playerid, COLOR_WHITE, vstring);
