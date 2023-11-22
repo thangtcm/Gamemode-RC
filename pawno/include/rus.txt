@@ -1,49 +1,11 @@
-d:\Gamemode Samp\Gamemode-RC\pawno\include\eInventory.inc(47) : îøèáêà 017: íåîáúÿâëåííûé ñèìâîë "MAX_PLAYERS"
-d:\Gamemode Samp\Gamemode-RC\pawno\include\eInventory.inc(69) : îøèáêà 017: íåîáúÿâëåííûé ñèìâîë "IsPlayerConnected"
-d:\Gamemode Samp\Gamemode-RC\pawno\include\eInventory.inc(73) : îøèáêà 017: íåîáúÿâëåííûé ñèìâîë "PlayerTextDrawDestroy"
-d:\Gamemode Samp\Gamemode-RC\pawno\include\eInventory.inc(74) : îøèáêà 017: íåîáúÿâëåííûé ñèìâîë "PlayerTextDrawDestroy"
-d:\Gamemode Samp\Gamemode-RC\pawno\include\eInventory.inc(80) : îøèáêà 017: íåîáúÿâëåííûé ñèìâîë "INVALID_TEXT_DRAW"
-d:\Gamemode Samp\Gamemode-RC\pawno\include\eInventory.inc(82) : îøèáêà 017: íåîáúÿâëåííûé ñèìâîë "PlayerTextDrawDestroy"
-d:\Gamemode Samp\Gamemode-RC\pawno\include\eInventory.inc(83) : íåïðàâèëüíàÿ òàáóëÿöèÿ
-d:\Gamemode Samp\Gamemode-RC\pawno\include\eInventory.inc(83) : îøèáêà 017: íåîáúÿâëåííûé ñèìâîë "INVALID_TEXT_DRAW"
-d:\Gamemode Samp\Gamemode-RC\pawno\include\eInventory.inc(85) : îøèáêà 017: íåîáúÿâëåííûé ñèìâîë "INVALID_TEXT_DRAW"
-d:\Gamemode Samp\Gamemode-RC\pawno\include\eInventory.inc(87) : îøèáêà 017: íåîáúÿâëåííûé ñèìâîë "PlayerTextDrawDestroy"
-d:\Gamemode Samp\Gamemode-RC\pawno\include\eInventory.inc(88) : îøèáêà 017: íåîáúÿâëåííûé ñèìâîë "INVALID_TEXT_DRAW"
-d:\Gamemode Samp\Gamemode-RC\pawno\include\eInventory.inc(90) : íåïðàâèëüíàÿ òàáóëÿöèÿ
-d:\Gamemode Samp\Gamemode-RC\pawno\include\eInventory.inc(90) : îøèáêà 017: íåîáúÿâëåííûé ñèìâîë "INVALID_TEXT_DRAW"
-d:\Gamemode Samp\Gamemode-RC\pawno\include\eInventory.inc(92) : îøèáêà 017: íåîáúÿâëåííûé ñèìâîë "PlayerTextDrawDestroy"
-d:\Gamemode Samp\Gamemode-RC\pawno\include\eInventory.inc(93) : îøèáêà 017: íåîáúÿâëåííûé ñèìâîë "INVALID_TEXT_DRAW"
-d:\Gamemode Samp\Gamemode-RC\pawno\include\eInventory.inc(95) : îøèáêà 017: íåîáúÿâëåííûé ñèìâîë "INVALID_TEXT_DRAW"
-d:\Gamemode Samp\Gamemode-RC\pawno\include\eInventory.inc(97) : îøèáêà 017: íåîáúÿâëåííûé ñèìâîë "PlayerTextDrawDestroy"
-d:\Gamemode Samp\Gamemode-RC\pawno\include\eInventory.inc(98) : îøèáêà 017: íåîáúÿâëåííûé ñèìâîë "INVALID_TEXT_DRAW"
-d:\Gamemode Samp\Gamemode-RC\pawno\include\eInventory.inc(101) : íåïðàâèëüíàÿ òàáóëÿöèÿ
-d:\Gamemode Samp\Gamemode-RC\pawno\include\eInventory.inc(101) : îøèáêà 017: íåîáúÿâëåííûé ñèìâîë "strcpy"
-d:\Gamemode Samp\Gamemode-RC\pawno\include\eInventory.inc(103) : îøèáêà 017: íåîáúÿâëåííûé ñèìâîë "strcpy"
-d:\Gamemode Samp\Gamemode-RC\pawno\include\eInventory.inc(110) : íåïðàâèëüíàÿ òàáóëÿöèÿ
-d:\Gamemode Samp\Gamemode-RC\pawno\include\eInventory.inc(112) : íåïðàâèëüíàÿ òàáóëÿöèÿ
-d:\Gamemode Samp\Gamemode-RC\pawno\include\eInventory.inc(112) : îøèáêà 070: ïîääåðæêà ðàöèîíàëüíûõ ÷èñåë íå âêëþ÷åíà
-d:\Gamemode Samp\Gamemode-RC\pawno\include\eInventory.inc(112) : ïðåäóïðåæäåíèå 213: íåñîâïàäåíèå òèïîâ
-d:\Gamemode Samp\Gamemode-RC\pawno\include\eInventory.inc(113) : íåïðàâèëüíàÿ òàáóëÿöèÿ
-d:\Gamemode Samp\Gamemode-RC\pawno\include\eInventory.inc(113) : îøèáêà 070: ïîääåðæêà ðàöèîíàëüíûõ ÷èñåë íå âêëþ÷åíà
-d:\Gamemode Samp\Gamemode-RC\pawno\include\eInventory.inc(113) : ïðåäóïðåæäåíèå 213: íåñîâïàäåíèå òèïîâ
-d:\Gamemode Samp\Gamemode-RC\pawno\include\eInventory.inc(114) : îøèáêà 070: ïîääåðæêà ðàöèîíàëüíûõ ÷èñåë íå âêëþ÷åíà
-d:\Gamemode Samp\Gamemode-RC\pawno\include\eInventory.inc(114) : ïðåäóïðåæäåíèå 213: íåñîâïàäåíèå òèïîâ
-d:\Gamemode Samp\Gamemode-RC\pawno\include\eInventory.inc(115) : îøèáêà 070: ïîääåðæêà ðàöèîíàëüíûõ ÷èñåë íå âêëþ÷åíà
-d:\Gamemode Samp\Gamemode-RC\pawno\include\eInventory.inc(115) : ïðåäóïðåæäåíèå 213: íåñîâïàäåíèå òèïîâ
-d:\Gamemode Samp\Gamemode-RC\pawno\include\eInventory.inc(117) : íåïðàâèëüíàÿ òàáóëÿöèÿ
-d:\Gamemode Samp\Gamemode-RC\pawno\include\eInventory.inc(117) : îøèáêà 017: íåîáúÿâëåííûé ñèìâîë "CancelSelectTextDraw"
-d:\Gamemode Samp\Gamemode-RC\pawno\include\eInventory.inc(493) : íåïðàâèëüíàÿ òàáóëÿöèÿ
-d:\Gamemode Samp\Gamemode-RC\pawno\include\eInventory.inc(493) : îøèáêà 017: íåîáúÿâëåííûé ñèìâîë "printf"
-d:\Gamemode Samp\Gamemode-RC\pawno\include\eInventory.inc(498) : îøèáêà 017: íåîáúÿâëåííûé ñèìâîë "format"
-d:\Gamemode Samp\Gamemode-RC\pawno\include\eInventory.inc(498) : ïðåäóïðåæäåíèå 202: êîëè÷åñòâî àðãóìåíòîâ íå ñîâïàäàåò ñ îáúÿâëåíèåì
-d:\Gamemode Samp\Gamemode-RC\pawno\include\eInventory.inc(498) : ïðåäóïðåæäåíèå 202: êîëè÷åñòâî àðãóìåíòîâ íå ñîâïàäàåò ñ îáúÿâëåíèåì
-d:\Gamemode Samp\Gamemode-RC\pawno\include\eInventory.inc(498) : ïðåäóïðåæäåíèå 202: êîëè÷åñòâî àðãóìåíòîâ íå ñîâïàäàåò ñ îáúÿâëåíèåì
-d:\Gamemode Samp\Gamemode-RC\pawno\include\eInventory.inc(497) : èäåíòèôèêàòîðó ïðèñâîåíî çíà÷åíèå, íî îí íå èñïîëüçóåòñÿ: "years"
-d:\Gamemode Samp\Gamemode-RC\pawno\include\eInventory.inc(503) : îøèáêà 017: íåîáúÿâëåííûé ñèìâîë "format"
-
-Êîìïèëÿöèÿ îñòàíîâëåíà.
-
+D:\Gamemode Samp\UP GM\Gamemode-RC\pawno\include\Pawn.RakNet.inc(907) : ïðåäóïðåæäåíèå 235: public-ôóíêöèÿ íóæäàåòñÿ â îïåðåæàþùåì îáúÿâëåíèè (èäåíòèôèêàòîð "OnGameModeInit")
+d:\Gamemode Samp\UP GM\Gamemode-RC\pawno\include\player-gangzones.inc(12) : îøèáêà 001: îæèäàëñÿ òîêåí "-identifier-", íî íàéäåí "enum"
+d:\Gamemode Samp\UP GM\Gamemode-RC\pawno\include\player-gangzones.inc(25) : îøèáêà 017: íåîáúÿâëåííûé ñèìâîë "MAX_PLAYERS"
+d:\Gamemode Samp\UP GM\Gamemode-RC\pawno\include\player-gangzones.inc(25) : îøèáêà 009: íåâåðíûé ðàçìåð ìàññèâà (îòðèöàòåëüíûé/íóëåâîé ðàçìåð èëè âûõîä çà ïðåäåëû ìàññèâà)
+d:\Gamemode Samp\UP GM\Gamemode-RC\pawno\include\player-gangzones.inc(156) : ïðåäóïðåæäåíèå 235: public-ôóíêöèÿ íóæäàåòñÿ â îïåðåæàþùåì îáúÿâëåíèè (èäåíòèôèêàòîð "OnPlayerDisconnect")
+d:\Gamemode Samp\UP GM\Gamemode-RC\pawno\include\player-gangzones.inc(159) : îøèáêà 017: íåîáúÿâëåííûé ñèìâîë "player_GZ_Used"
+d:\Gamemode Samp\UP GM\Gamemode-RC\pawno\include\player-gangzones.inc(160) : îøèáêà 017: íåîáúÿâëåííûé ñèìâîë "CallLocalFunction"
 Pawn compiler 3.2.3664	 	 	Copyright (c) 1997-2016, ITB CompuPhase
 
 
-Îøèáîê:26.
+Îøèáîê:5.

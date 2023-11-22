@@ -50,7 +50,7 @@ Dialog:DIALOG_SETPOINTFACTORY(playerid, response, listitem, inputtext[])
 	if(response)
 	{
 		new index = GetPVarInt(playerid, "SelectFactoryID");
-        SetPlayerCheckpoint(playerid, FactoryData[index][FactoryPos][0], FactoryData[index][FactoryPos][1], FactoryData[index][FactoryPos][2], 5);
+        SetPlayerCheckPointEx(playerid, FactoryData[index][FactoryPos][0], FactoryData[index][FactoryPos][1], FactoryData[index][FactoryPos][2], 5);
         SendServerMessage(playerid, "Ban da nhan duoc vi tri tren checkpoint.");
         DeletePVar(playerid, "SelectFactoryID");
 	}else

@@ -738,6 +738,7 @@ enum pInfo
 	pChatStyle,
 	pNai,
 	pBo,
+	pDaily,
 	pRansack,
 	Text3D:pNameTag,
 	pMaskID[2],

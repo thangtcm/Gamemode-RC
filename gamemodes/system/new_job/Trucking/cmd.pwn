@@ -106,7 +106,7 @@ CMD:truckergo(playerid, params[])
         }
         else 
         { 
-            SetPlayerCheckpoint(playerid,  90.3602, -303.6159, 1.5823, 7.0);
+            SetPlayerCheckPointEx(playerid,  90.3602, -303.6159, 1.5823, 7.0);
             return SendErrorMessage(playerid, "Ban can den vi tri tren cham do de dang ky xe van chuyen hang hoa.");
         }
     }
