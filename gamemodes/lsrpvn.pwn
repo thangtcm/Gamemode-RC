@@ -23,6 +23,8 @@
 #include <discord-connector>
 #include <discord-cmd>
 #include <bcrypt>
+#include <GPS>
+#include <samp-player-gangzones>
 #if defined SOCKET_ENABLED
 
 
@@ -102,6 +104,8 @@
 #include "./system/mission/Misson.pwn"
 #include "./system/mission/ThiBanglai.pwn"
 #include "./system/mechanic/mechanic.pwn"
+// ============= GPS ============= //
+#include "./system/gps/gps.pwn"
 // ============= ANTI ============= //
 #include "./anticheat/anti_airbreak.pwn"
 // #include "./anticheat/anti_troll_car.pwn"

@@ -115,7 +115,7 @@ DrivingSchoolSpeedMeter(playerid, Float:speed)
 		new string[129];
         format(string, sizeof string, "~r~(FAIL) ~w~Ban da vuot qua gioi han toc do toi da la ~p~%d MPH.", maxspeed);
         SendClientTextDraw(playerid, string);
-		SetPlayerCheckpoint(playerid, 814.0655,-600.5410,16.0355, 4.0);
+		SetPlayerCheckPointEx(playerid, 814.0655,-600.5410,16.0355, 4.0);
 		DisablePlayerRaceCheckpoint(playerid);
 		SetPVarInt(playerid, "pDTest", 2);
 	}

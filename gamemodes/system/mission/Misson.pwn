@@ -8,6 +8,8 @@
 #define A_MISSON (7888)
 #define B_MISSON (7889)
 
+forward M_OnQueryFinish(extraid, handleid);
+
 SendMissonMessage(playerid, const msg_job[])
 {
 	new format_job[1280];
@@ -48,10 +50,75 @@ new Misson[6][minfo] = {
 
 hook OnGameModeInit()
 {
-    NPC_Misson = CreateActor(2,-1430.5309, -1529.1608, 101.7540, 7.1778);
-    CreateDynamic3DTextLabel("Jhon Song\n(( Su dung [/nhiemvu] de nhan nhiem vu ))", -1, -1430.5309, -1529.1608, 101.7540 , 10);         
+    NPC_Misson = CreateActor(2,1223.2640,246.9477,19.5469,61.2911);
+    CreateDynamic3DTextLabel("Jhon Song\n(( Su dung [/nhiemvu] de nhan nhiem vu ))", -1, 1223.2640,246.9477,19.5469 , 10);           
 }
 
+hook OnPlayerDisconnect(playerid, reason)
+{
+	g_mysql_SaveMisson(playerid);
+}
+
+stock g_mysql_LoadMisson(playerid)
+{
+	new string[164];
+	format(string, sizeof(string), "SELECT * FROM `accounts` WHERE `Username` = '%s'", GetPlayerNameExt(playerid));
+ 	mysql_function_query(MainPipeline, string, true, "M_OnQueryFinish", "ii", playerid, g_arrQueryHandle{playerid});
+	return 1;
+}
+
+stock g_mysql_SaveMisson(playerid)
+{
+    new query[2048];
+
+    format(query, 2048, "UPDATE `accounts` SET ");
+    SavePlayerInteger(query, GetPlayerSQLId(playerid), "Daily", PlayerInfo[playerid][pDaily]);
+    SavePlayerInteger(query, GetPlayerSQLId(playerid), "M_get_1", PMisson[playerid][m_get][1]);
+    SavePlayerInteger(query, GetPlayerSQLId(playerid), "M_get_2", PMisson[playerid][m_get][2]);
+    
+    SavePlayerInteger(query, GetPlayerSQLId(playerid), "A_M_done", PMisson[playerid][a_m_done]);
+    SavePlayerInteger(query, GetPlayerSQLId(playerid), "B_M_done", PMisson[playerid][b_m_done]);
+    
+    SavePlayerInteger(query, GetPlayerSQLId(playerid), "M_count_0", PMisson[playerid][m_check_count][0]);
+    SavePlayerInteger(query, GetPlayerSQLId(playerid), "M_count_1", PMisson[playerid][m_check_count][1]);
+    SavePlayerInteger(query, GetPlayerSQLId(playerid), "M_count_2", PMisson[playerid][m_check_count][2]);
+    SavePlayerInteger(query, GetPlayerSQLId(playerid), "M_count_3", PMisson[playerid][m_check_count][3]);
+    SavePlayerInteger(query, GetPlayerSQLId(playerid), "M_count_4", PMisson[playerid][m_check_count][4]); 
+    SavePlayerInteger(query, GetPlayerSQLId(playerid), "M_count_5", PMisson[playerid][m_check_count][5]);
+	MySQLUpdateFinish(query, GetPlayerSQLId(playerid));
+    return 1;
+}
+
+public M_OnQueryFinish(extraid, handleid)
+{
+    new rows, fields;
+	if(extraid != INVALID_PLAYER_ID) {
+		if(g_arrQueryHandle{extraid} != -1 && g_arrQueryHandle{extraid} != handleid) return 0;
+	}
+	cache_get_data(rows, fields, MainPipeline);
+	if(IsPlayerConnected(extraid))
+	{
+		new szResult[64];
+
+		for(new row;row < rows;row++)
+		{
+			cache_get_field_content(row,  "Daily", szResult, MainPipeline); PlayerInfo[extraid][pDaily] = strval(szResult);
+			cache_get_field_content(row,  "M_get_1", szResult, MainPipeline); PMisson[extraid][m_get][1] = strval(szResult);
+			cache_get_field_content(row,  "M_get_2", szResult, MainPipeline); PMisson[extraid][m_get][2] = strval(szResult);
+			
+			cache_get_field_content(row,  "A_M_done", szResult, MainPipeline); PMisson[extraid][a_m_done] = strval(szResult); // hang ngay
+			cache_get_field_content(row,  "B_M_done", szResult, MainPipeline); PMisson[extraid][b_m_done] = strval(szResult); // tan thu
+			
+			cache_get_field_content(row,  "M_count_0", szResult, MainPipeline); PMisson[extraid][m_check_count][0] = strval(szResult);
+			cache_get_field_content(row,  "M_count_1", szResult, MainPipeline); PMisson[extraid][m_check_count][1] = strval(szResult);
+			cache_get_field_content(row,  "M_count_2", szResult, MainPipeline); PMisson[extraid][m_check_count][2] = strval(szResult);
+			cache_get_field_content(row,  "M_count_3", szResult, MainPipeline); PMisson[extraid][m_check_count][3] = strval(szResult);
+			cache_get_field_content(row,  "M_count_4", szResult, MainPipeline); PMisson[extraid][m_check_count][4] = strval(szResult);
+			cache_get_field_content(row,  "M_count_5", szResult, MainPipeline); PMisson[extraid][m_check_count][5] = strval(szResult);
+		}
+	}
+	return 1;
+}
 
 stock CheckDoneMisson(playerid, type)
 {

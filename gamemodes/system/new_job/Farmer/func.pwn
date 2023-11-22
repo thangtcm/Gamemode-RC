@@ -241,9 +241,9 @@ stock PlantTree_Reload(playerid, plantid)
             }
         }
         case 2:{
-            if(PlantTreeInfo[playerid][plantid][plantType] == 2)
-                plantObject = 738;
-            else
+            // if(PlantTreeInfo[playerid][plantid][plantType] == 2)
+            //     plantObject = 894;
+            // else
                 plantObject = 19473;
             if(PlantTreeInfo[playerid][plantid][plantTimer] > 0)
             {
@@ -255,11 +255,17 @@ stock PlantTree_Reload(playerid, plantid)
             }
         }
         case 3:{
-            if(PlantTreeInfo[playerid][plantid][plantType] == 2)
-                plantObject = 738;
-            else
+            // if(PlantTreeInfo[playerid][plantid][plantType] == 2)
+            // {
+            //     plantObject = 894;
+            //     PlantTreeInfo[playerid][plantid][plantPos][2] = Plant_ZDefault;
+            // }
+            // else
+            // {
                 plantObject = 804;
-            PlantTreeInfo[playerid][plantid][plantPos][2] = Plant_ZDefault + 1.0;
+                PlantTreeInfo[playerid][plantid][plantPos][2] = Plant_ZDefault + 1.0;
+
+            // }
             if(PlantTreeInfo[playerid][plantid][plantTimer] > 0)
             {
                 PlantTreeInfo[playerid][plantid][plantTimer] = PlantTreeInfo[playerid][plantid][plantTimer];
@@ -308,7 +314,7 @@ stock PlantTree_Reload(playerid, plantid)
     PlantTreeInfo[playerid][plantid][PlantText] = CreateDynamic3DTextLabel(string, COLOR_WHITE, 
         PlantTreeInfo[playerid][plantid][plantPos][0],
         PlantTreeInfo[playerid][plantid][plantPos][1],
-        PlantTreeInfo[playerid][plantid][plantPos][2]+0.5, 5.0, .worldid = playerVW, .streamdistance = 10.0);
+        PlantTreeInfo[playerid][plantid][plantPos][2]+0.5, 5.0, .testlos = 1, .worldid = playerVW, .streamdistance = 20.0);
     PlantTreeInfo[playerid][plantid][ObjectSpawn] = CreateDynamicObject(plantObject, 
         PlantTreeInfo[playerid][plantid][plantPos][0],
         PlantTreeInfo[playerid][plantid][plantPos][1],
@@ -320,6 +326,7 @@ stock PlantTree_Reload(playerid, plantid)
 stock PlantTree_Update(playerid, plantid)
 {
     new string[560];
+    if(!PlantTreeInfo[playerid][plantid][Exsits]) return 1;
     PlantTreeInfo[playerid][plantid][plantTimer]--;
     if(PlantTreeInfo[playerid][plantid][plantTimer] < 0 && PlantTreeInfo[playerid][plantid][plantType] == 2)
     {

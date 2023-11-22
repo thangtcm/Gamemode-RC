@@ -1171,7 +1171,7 @@ CMD:checkinv(playerid, params[])
 	}
 	else if(IsACop(playerid))
 	{
-		if(GetPlayerSpecialAction(giveplayerid) == SPECIAL_ACTION_HANDSUP)
+		if(GetPlayerSpecialAction(giveplayerid) == SPECIAL_ACTION_HANDSUP || GetPVarInt(giveplayerid, "PlayerCuffed") == 2)
 		{
 			if (ProxDetectorS(8.0, playerid, giveplayerid))
 			{

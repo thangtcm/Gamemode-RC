@@ -885,7 +885,7 @@ CMD:islandgps(playerid, params[]) {
 	{
 	    SetPVarInt(playerid,"igps", 1);
 		DisablePlayerCheckpoint(playerid);
-		SetPlayerCheckpoint(playerid, -1173.3702,4491.6836,4.4765, 15.0);
+		SetPlayerCheckPointEx(playerid, -1173.3702,4491.6836,4.4765, 15.0);
 	}
 	else
 	{
@@ -3455,7 +3455,7 @@ CMD:beginswimming(playerid, params[])
 	}
 
 	SetPVarInt(playerid, "_SwimmingActivity", 1);
-	SetPlayerCheckpoint(playerid, 585.8839,-2157.9448,-0.1667, 2.0);
+	SetPlayerCheckPointEx(playerid, 585.8839,-2157.9448,-0.1667, 2.0);
 	SendServerMessage(playerid, " Tiep tuc voi tram kiem soat dau tien de bat dau tap gym.");
 	SendServerMessage(playerid, " Su dung /stopswimming de thoat khoi hoat dong hien tai cua ban.");
 
@@ -5197,12 +5197,12 @@ CMD:joinevent(playerid, params[]) {
 		    if(EventRCPT[randrcp] != 1)
 		    {
 				DisablePlayerCheckpoint(playerid);
-		    	SetPlayerCheckpoint(playerid, EventRCPX[randrcp], EventRCPY[randrcp], EventRCPZ[randrcp], EventRCPS[randrcp]);
+		    	SetPlayerCheckPointEx(playerid, EventRCPX[randrcp], EventRCPY[randrcp], EventRCPZ[randrcp], EventRCPS[randrcp]);
 			}
 			else
 			{
 			    DisablePlayerCheckpoint(playerid);
-		    	SetPlayerCheckpoint(playerid, EventRCPX[randrcp], EventRCPY[randrcp], EventRCPZ[randrcp], EventRCPS[randrcp]);
+		    	SetPlayerCheckPointEx(playerid, EventRCPX[randrcp], EventRCPY[randrcp], EventRCPZ[randrcp], EventRCPS[randrcp]);
 			}
 		}
 		else
@@ -9100,7 +9100,7 @@ CMD:accept(playerid, params[])
                     format(szMessage, sizeof(szMessage), "* %s da chap nha loi moi nha.", GetPlayerNameEx(playerid));
                     SendClientMessageEx(hInviteOffer[playerid], COLOR_LIGHTBLUE, szMessage);
 					DisablePlayerCheckpoint(playerid);
-                    SetPlayerCheckpoint(playerid, HouseInfo[hInviteHouse[playerid]][hExteriorX], HouseInfo[hInviteHouse[playerid]][hExteriorY], HouseInfo[hInviteHouse[playerid]][hExteriorZ], 4.0);
+                    SetPlayerCheckPointEx(playerid, HouseInfo[hInviteHouse[playerid]][hExteriorX], HouseInfo[hInviteHouse[playerid]][hExteriorY], HouseInfo[hInviteHouse[playerid]][hExteriorZ], 4.0);
                     gPlayerCheckpointStatus[playerid] = CHECKPOINT_HOME;
                     hInviteOffer[playerid] = INVALID_PLAYER_ID;
 					hInviteHouse[playerid] = INVALID_HOUSE_ID;
@@ -9473,7 +9473,7 @@ CMD:accept(playerid, params[])
                         SendClientMessageEx(MedicCall, COLOR_LIGHTBLUE, szMessage);
                         new Float:X,Float:Y,Float:Z;
                         GetPlayerPos(MedicCall, X, Y, Z);
-                        SetPlayerCheckpoint(playerid, X, Y, Z, 5);
+                        SetPlayerCheckPointEx(playerid, X, Y, Z, 5);
                         new zone[MAX_ZONE_NAME];
                         GetPlayer3DZone(MedicCall, zone, sizeof(zone));
                         format(szMessage, sizeof(szMessage), "HINT: %s nam o %s", GetPlayerNameEx(MedicCall), zone);
@@ -9519,7 +9519,7 @@ CMD:accept(playerid, params[])
                     SendClientMessageEx(MechanicCall, COLOR_LIGHTBLUE, szMessage);
                     new Float:X,Float:Y,Float:Z;
                     GetPlayerPos(MechanicCall, X, Y, Z);
-                    SetPlayerCheckpoint(playerid, X, Y, Z, 5);
+                    SetPlayerCheckPointEx(playerid, X, Y, Z, 5);
                     GameTextForPlayer(playerid, "~w~Mechanic Caller~n~~r~Go to the red marker", 5000, 1);
                     MechanicCallTime[playerid] = 1;
                     MechanicCall = INVALID_PLAYER_ID;
@@ -11151,7 +11151,7 @@ CMD:join(playerid, params[])
        				SendServerMessage(playerid, " Hay chac chan rang ban da xoa cac muc tieu hien tai.");
            			return 1;
               	}
-               	SetPlayerCheckpoint(playerid, 51.9720,-292.6349,1.7031, 3);
+               	SetPlayerCheckPointEx(playerid, 51.9720,-292.6349,1.7031, 3);
                	CP[playerid] = 252000;
 				return 1;
 			}
@@ -11165,7 +11165,7 @@ CMD:join(playerid, params[])
        				SendServerMessage(playerid, " Hay chac chan rang ban da xoa cac muc tieu hien tai.");
            			return 1;
               	}
-               	SetPlayerCheckpoint(playerid, 51.9720,-292.6349,1.7031, 3);
+               	SetPlayerCheckPointEx(playerid, 51.9720,-292.6349,1.7031, 3);
                	CP[playerid] = 252000;
 				return 1;
 			}
@@ -12434,7 +12434,7 @@ CMD:home(playerid, params[])
     }
     if(PlayerInfo[playerid][pPhousekey] != INVALID_HOUSE_ID)
 	{
-        SetPlayerCheckpoint(playerid,HouseInfo[PlayerInfo[playerid][pPhousekey]][hExteriorX], HouseInfo[PlayerInfo[playerid][pPhousekey]][hExteriorY], HouseInfo[PlayerInfo[playerid][pPhousekey]][hExteriorZ], 4.0);
+        SetPlayerCheckPointEx(playerid,HouseInfo[PlayerInfo[playerid][pPhousekey]][hExteriorX], HouseInfo[PlayerInfo[playerid][pPhousekey]][hExteriorY], HouseInfo[PlayerInfo[playerid][pPhousekey]][hExteriorZ], 4.0);
         GameTextForPlayer(playerid, "~w~Waypoint set ~r~Home", 5000, 1);
         gPlayerCheckpointStatus[playerid] = CHECKPOINT_HOME;
     }
@@ -12452,7 +12452,7 @@ CMD:showmehq(playerid, params[])
         return 1;
     }
 	if (IsAHitman(playerid)) {
-	    SetPlayerCheckpoint(playerid,-418.95, -1759.26, 6.22, 4.0);
+	    SetPlayerCheckPointEx(playerid,-418.95, -1759.26, 6.22, 4.0);
 	    GameTextForPlayer(playerid, "~w~Waypoint set ~r~HQ", 5000, 1);
 	    gPlayerCheckpointStatus[playerid] = CHECKPOINT_HITMAN;
     }
@@ -12468,7 +12468,7 @@ CMD:showmehq2(playerid, params[])
     }
 	if (arrGroupData[PlayerInfo[playerid][pMember]][g_iGroupType] == 2 || arrGroupData[PlayerInfo[playerid][pLeader]][g_iGroupType] == 2)
 	{
-	    SetPlayerCheckpoint(playerid,811.087707, -564.493835, 16.335937, 4.0);
+	    SetPlayerCheckPointEx(playerid,811.087707, -564.493835, 16.335937, 4.0);
 	    GameTextForPlayer(playerid, "~w~Waypoint set ~r~HQ", 5000, 1);
 	    gPlayerCheckpointStatus[playerid] = CHECKPOINT_HITMAN2;
     }
@@ -12484,7 +12484,7 @@ CMD:showmehq3(playerid, params[])
     }
    	if (arrGroupData[PlayerInfo[playerid][pMember]][g_iGroupType] == 2 || arrGroupData[PlayerInfo[playerid][pLeader]][g_iGroupType] == 2)
 	{
-    	SetPlayerCheckpoint(playerid, 1415.727905, -1299.371093, 15.054657, 4.0);
+    	SetPlayerCheckPointEx(playerid, 1415.727905, -1299.371093, 15.054657, 4.0);
 	    GameTextForPlayer(playerid, "~w~Waypoint set ~r~HQ", 5000, 1);
     	gPlayerCheckpointStatus[playerid] = CHECKPOINT_HITMAN3;
 	}
@@ -14632,7 +14632,7 @@ CMD:search(playerid, params[])
 			SendServerMessage(playerid, " INFO: You only have 1 metal detector charge left.");
 		}
 
-        SetPlayerCheckpoint(playerid,HiddenTreasure[GetPVarInt(playerid, "HiddenTreasure")][0], HiddenTreasure[GetPVarInt(playerid, "HiddenTreasure")][1], HiddenTreasure[GetPVarInt(playerid, "HiddenTreasure")][2], 3);
+        SetPlayerCheckPointEx(playerid,HiddenTreasure[GetPVarInt(playerid, "HiddenTreasure")][0], HiddenTreasure[GetPVarInt(playerid, "HiddenTreasure")][1], HiddenTreasure[GetPVarInt(playerid, "HiddenTreasure")][2], 3);
         SetTimerEx("DisableCheckPoint", 2000, 0, "i", playerid);
 
    		format(szMessage, 128, "You are %f meters away from the treasure. ", distance);
@@ -15176,13 +15176,13 @@ CMD:layhangremovesss(playerid, params[])
 	            gPlayerCheckpointStatus[playerid] = CHECKPOINT_LOADTRUCK;
 	            if(!IsABoat(vehicleid))
 	            {
-		            SetPlayerCheckpoint(playerid,2528.4263,-2089.9614,13.5469, 4);
+		            SetPlayerCheckPointEx(playerid,2528.4263,-2089.9614,13.5469, 4);
 		            GameTextForPlayer(playerid, "~w~Checkpoint tai ~r~Los santos", 5000, 1);
 		            SendClientMessageEx(playerid, 0x4a8569FF, "Hay di toi kho hang de lay hang (( Checkpoint )).");
 				}
 				else
 				{
-		            SetPlayerCheckpoint(playerid,2098.6543,-104.3568,-0.4820, 4);
+		            SetPlayerCheckPointEx(playerid,2098.6543,-104.3568,-0.4820, 4);
 		            GameTextForPlayer(playerid, "~w~Checkpoint tai ~r~Palamino Docks", 5000, 1);
               		SendClientMessageEx(playerid, 0x4a8569FF, "Hay di toi kho hang de lay hang (( Checkpoint )).");
 				}
@@ -40955,7 +40955,7 @@ CMD:getmats(playerid, params[])
 			SetPVarInt(playerid, "MatDeliver", 333);
 			SetPVarInt(playerid, "tpMatRunTimer", 15);
 			SetTimerEx("OtherTimerEx", 1000, false, "ii", playerid, TYPE_TPMATRUNTIMER);
-			SetPlayerCheckpoint(playerid, -330.44, -467.54, 0.85, 5);
+			SetPlayerCheckPointEx(playerid, -330.44, -467.54, 0.85, 5);
 			return 1;
 		}
  		else
@@ -41019,7 +41019,7 @@ CMD:getmats(playerid, params[])
 		SetPVarInt(playerid, "MatDeliver", 444);
 		SetPVarInt(playerid, "tpMatRunTimer", 12);
 		SetTimerEx("OtherTimerEx", 1000, false, "ii", playerid, TYPE_TPMATRUNTIMER);
-		SetPlayerCheckpoint(playerid, -1872.879760, 1416.312500, 7.180089, 5);
+		SetPlayerCheckPointEx(playerid, -1872.879760, 1416.312500, 7.180089, 5);
 		return 1;
 	}
 	if (IsPlayerInRangeOfPoint(playerid, 4.0, -1522.7351, 2587.2612, 55.8359)) // Matrun TR
@@ -41077,7 +41077,7 @@ CMD:getmats(playerid, params[])
 		SetPVarInt(playerid, "MatDeliver", 555);
 		SetPVarInt(playerid, "tpMatRunTimer", 12);
 		SetTimerEx("OtherTimerEx", 1000, false, "ii", playerid, TYPE_TPMATRUNTIMER);
-		SetPlayerCheckpoint(playerid, -688.7897, 966.1434, 12.1627, 5);
+		SetPlayerCheckPointEx(playerid, -688.7897, 966.1434, 12.1627, 5);
 		return 1;
 	}
 	if (mypoint == -1)
@@ -41158,7 +41158,7 @@ CMD:getmats(playerid, params[])
 			//SendServerMessage(playerid, "  Family owner recieved 50 percent of the cost.");
 		}
 	}
-	SetPlayerCheckpoint(playerid, Points[mypoint][Pointx], Points[mypoint][Pointy], Points[mypoint][Pointz], 5);
+	SetPlayerCheckPointEx(playerid, Points[mypoint][Pointx], Points[mypoint][Pointy], Points[mypoint][Pointz], 5);
 	return 1;
 }
 
@@ -41249,7 +41249,7 @@ CMD:laybanh3123123(playerid, params[])
 					format(szMessage, sizeof(szMessage), "Ban da nhan duoc mot chiec banh Pizza va can phai mang toi nha cua %s. Ban co %d giay de giao!", HouseInfo[rand][hOwnerID], iDist / 8);
 					SendClientMessageEx(playerid, COLOR_WHITE, szMessage);
 
-					SetPlayerCheckpoint(playerid, HouseInfo[rand][hExteriorX], HouseInfo[rand][hExteriorY], HouseInfo[rand][hExteriorZ], 5);
+					SetPlayerCheckPointEx(playerid, HouseInfo[rand][hExteriorX], HouseInfo[rand][hExteriorY], HouseInfo[rand][hExteriorZ], 5);
 				}
 				else
 				{
@@ -43120,7 +43120,7 @@ CMD:tim(playerid, params[]) {
 // 			new Float:X, Float:Y, Float:Z;
 // 			GetPlayerPos(iTargetID, X, Y, Z);
 // 			DisablePlayerCheckpoint(playerid);
-// 			SetPlayerCheckpoint(playerid, X, Y, Z, 4.0);
+// 			SetPlayerCheckPointEx(playerid, X, Y, Z, 4.0);
 // 			GetPlayer3DZone(iTargetID, szZone, sizeof(szZone));
 // 			format(szMessage, sizeof(szMessage), "Theo doi tren %s, nhin thay o %s.", GetPlayerNameEx(iTargetID), szZone);
 // 			SendClientMessageEx(playerid, COLOR_GRAD2, szMessage);
@@ -47667,7 +47667,7 @@ CMD:bizfind(playerid, params[])
 		    {
                 SetPVarInt(playerid,"bpanic", 1);
 		        format(string, sizeof(string), "* Thiet lap GPS cua ban de tim %s", Businesses[iBusinessID][bName]);
- 				SetPlayerCheckpoint(playerid, Businesses[iBusinessID][bExtPos][0], Businesses[iBusinessID][bExtPos][1], Businesses[iBusinessID][bExtPos][2], 4.0);
+ 				SetPlayerCheckPointEx(playerid, Businesses[iBusinessID][bExtPos][0], Businesses[iBusinessID][bExtPos][1], Businesses[iBusinessID][bExtPos][2], 4.0);
  				return 1;
 			}
 			return SendErrorMessage(playerid, "  Ban khong so huu hoac lam viec trong cua hang. ");

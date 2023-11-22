@@ -1,6 +1,6 @@
 #include <YSI_Coding\y_hooks>
 
-new CountPress[MAX_PLAYERS][3];
+new CountPress[MAX_PLAYERS];
 new KeyPressed[MAX_PLAYERS];
 new TimerPressKey[MAX_PLAYERS];
 new KeyPressesType[MAX_PLAYERS];
@@ -10,9 +10,7 @@ new TimerRandomPress[MAX_PLAYERS];
 new RockIDMiner[MAX_PLAYERS];
 hook OnPlayerConnect(playerid)
 {
-	CountPress[playerid][0] = 0;
-	CountPress[playerid][1] = 0;
-	CountPress[playerid][2] = 0;
+	CountPress[playerid] = 0;
 	TimerPressKey[playerid] = 0;
 	KeyPressed[playerid] = true;
 	KillTimer(MinerTimer[playerid]);
@@ -71,62 +69,6 @@ hook OnPlayerKeyStateChange(playerid, newkeys, oldkeys)
 			}
 		}
 	}
-	if(PRESSED(65536) && KeyPressed[playerid])
-	{
-		if(timerdc[playerid] > 1 && timerdc[playerid] < TimerRandomPress[playerid]){
-			CountPress[playerid][0]++;
-			if(gettime() > GetPVarInt(playerid, "TimeCountNotyHack"))
-			{
-				new string[128];
-				format(string, sizeof(string), "{AA3333}AdmWarning{FFFF00}: %s (ID: %d) co the dang su dung cleo auto farm phim Y(%d lan trong 30s).", GetPlayerNameEx(playerid), playerid, CountPress[playerid][0]);
-				ABroadCast(COLOR_YELLOW, string, 2);
-				SetPVarInt(playerid, "TimeCountNotyHack", gettime() + 30);
-				CountPress[playerid][0] = 0;
-			}
-		}
-	}
-	if(PRESSED(65536) && KeyPressed[playerid])
-	{
-		if(timerdc[playerid] > 1 && timerdc[playerid] < TimerRandomPress[playerid]){
-			CountPress[playerid][0]++;
-			if(gettime() > GetPVarInt(playerid, "TimeCountNotyHack") && CountPress[playerid][0] > 1)
-			{
-				new string[128];
-				format(string, sizeof(string), "{AA3333}AdmWarning{FFFF00}: %s (ID: %d) co the dang su dung cleo auto farm phim Y(%d lan trong 30s).", GetPlayerNameEx(playerid), playerid, CountPress[playerid][0]);
-				ABroadCast(COLOR_YELLOW, string, 2);
-				SetPVarInt(playerid, "TimeCountNotyHack", gettime() + 30);
-				CountPress[playerid][0] = 0;
-			}
-		}
-	}
-	if(PRESSED(262144) && KeyPressed[playerid])
-	{
-		if(timerdc[playerid] > 1 && timerdc[playerid] < TimerRandomPress[playerid]){
-			CountPress[playerid][1]++;
-			if(gettime() > GetPVarInt(playerid, "TimeCountNotyHack1") && CountPress[playerid][1] > 1)
-			{
-				new string[128];
-				format(string, sizeof(string), "{AA3333}AdmWarning{FFFF00}: %s (ID: %d) co the dang su dung cleo auto farm phim H(%d lan trong 30s).", GetPlayerNameEx(playerid), playerid, CountPress[playerid][1]);
-				ABroadCast(COLOR_YELLOW, string, 2);
-				SetPVarInt(playerid, "TimeCountNotyHack1", gettime() + 30);
-				CountPress[playerid][0] = 0;
-			}
-		}
-	}
-	if(PRESSED(131072) && KeyPressed[playerid])
-	{
-		if(timerdc[playerid] > 1){
-			CountPress[playerid][2]++;
-			if(gettime() > GetPVarInt(playerid, "TimeCountNotyHack2") && CountPress[playerid][2] > 1)
-			{
-				new string[128];
-				format(string, sizeof(string), "{AA3333}AdmWarning{FFFF00}: %s (ID: %d) co the dang su dung cleo auto farm phim N(%d lan trong 30s).", GetPlayerNameEx(playerid), playerid, CountPress[playerid][2]);
-				ABroadCast(COLOR_YELLOW, string, 2);
-				SetPVarInt(playerid, "TimeCountNotyHack2", gettime() + 30);
-				CountPress[playerid][0] = 0;
-			}
-		}
-	}
 	if(!KeyPressed[playerid])
 	{
 		if((PRESSED(GetKeyMiner[playerid])) && !KeyPressed[playerid])
@@ -134,6 +76,20 @@ hook OnPlayerKeyStateChange(playerid, newkeys, oldkeys)
 			KeyPressed[playerid] = true;
 			TimerPressKey[playerid] = 0;
 			SendServerMessage(playerid, "Ban thao tac qua tot.");
+			new GetTimeNow = gettime();
+			if(GetTimeNow - GetPVarInt(playerid, "TimeCountNotyHack") <= 1 && GetPVarInt(playerid, "TimeCountNotyHack") < GetTimeNow)
+			{
+				CountPress[playerid] ++;
+				new string[128];
+				format(string, sizeof(string), "{AA3333}AdmWarning{FFFF00}: %s (ID: %d) Da thuc hien nhan phim capcha voi toc do ban tho %d lan.", GetPlayerNameEx(playerid), playerid, CountPress[playerid]);
+				ABroadCast(COLOR_YELLOW, string, 2);
+				format(string, sizeof(string), "{AA3333}AdmWarning{FFFF00}: %s (ID: %d) co the dang su dung cleo auto farm nhan phim capcha trong %d giay.", GetPlayerNameEx(playerid), playerid, GetTimeNow - GetPVarInt(playerid, "TimeCountNotyHack"));
+				ABroadCast(COLOR_YELLOW, string, 2);
+			}
+			else
+			{
+				CountPress[playerid] = 0;
+			}
 		}
 		else
 		{
@@ -447,17 +403,18 @@ stock ShowMessageKeyPressed(playerid)
 	{
 		case 0:
 		{
-			format(str, sizeof(str), "Hay nhan phim {ff1f1f}Y~w~ trong ~p~ %d~w~ giay.", TimerPressKey[playerid]);
+			format(str, sizeof(str), "~w~Hay nhan phim ~p~ Y~w~ trong ~p~ %d~w~ giay.", TimerPressKey[playerid]);
 		}
 		case 1:
 		{
-		   format(str, sizeof(str), "Hay nhan phim {ff1f1f}H~w~ trong ~p~ %d~w~ giay.", TimerPressKey[playerid]);
+		   format(str, sizeof(str), "~w~Hay nhan phim ~p~ H~w~ trong ~p~ %d~w~ giay.", TimerPressKey[playerid]);
 		}
 		case 2:
 		{
-		    format(str, sizeof(str), "Hay nhan phim {ff1f1f}N~w~ trong ~p~ %d~w~ giay.", TimerPressKey[playerid]);
+		    format(str, sizeof(str), "~w~Hay nhan phim ~p~ N~w~ trong ~p~ %d~w~ giay.", TimerPressKey[playerid]);
 		}
 	}
+	SetPVarInt(playerid, "TimeCountNotyHack", gettime());
 	SendClientTextDraw(playerid, str);
 	return 1;
 }

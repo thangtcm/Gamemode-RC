@@ -3658,7 +3658,7 @@ public SetAllCopCheckpoint(Float:allx, Float:ally, Float:allz, Float:radi)
 	{
 		if(IsACop(i))
 		{
-			SetPlayerCheckpoint(i,allx,ally,allz, radi);
+			SetPlayerCheckPointEx(i,allx,ally,allz, radi);
 		}
 	}
 	return 1;
@@ -5762,42 +5762,42 @@ public LoadTruckOld(playerid)
 			if(truckdeliver == 1)
 			{
 				SendClientMessageEx(playerid, COLOR_LIGHTBLUE,"* Thuyen cua ban chua day food & beverages.");
-				SetPlayerCheckpoint(playerid, BoatDropoffs[route][PosX], BoatDropoffs[route][PosY], BoatDropoffs[route][PosZ], 10);
+				SetPlayerCheckPointEx(playerid, BoatDropoffs[route][PosX], BoatDropoffs[route][PosY], BoatDropoffs[route][PosZ], 10);
 			}
 			else if(truckdeliver == 2)
 			{
 				SendClientMessageEx(playerid, COLOR_LIGHTBLUE,"* Thuyen cua ban chua day clothing.");
-				SetPlayerCheckpoint(playerid, BoatDropoffs[route][PosX], BoatDropoffs[route][PosY], BoatDropoffs[route][PosZ], 10);
+				SetPlayerCheckPointEx(playerid, BoatDropoffs[route][PosX], BoatDropoffs[route][PosY], BoatDropoffs[route][PosZ], 10);
 			}
 			else if(truckdeliver == 3)
 			{
 				SendClientMessageEx(playerid, COLOR_LIGHTBLUE,"* Thuyen cua ban chua day materials.");
-				SetPlayerCheckpoint(playerid, BoatDropoffs[route][PosX], BoatDropoffs[route][PosY], BoatDropoffs[route][PosZ], 10);
+				SetPlayerCheckPointEx(playerid, BoatDropoffs[route][PosX], BoatDropoffs[route][PosY], BoatDropoffs[route][PosZ], 10);
 			}
 			else if(truckdeliver == 4)
 			{
 				SendClientMessageEx(playerid, COLOR_LIGHTBLUE,"* Thuyen cua ban chua day 24/7 items.");
-				SetPlayerCheckpoint(playerid, BoatDropoffs[route][PosX], BoatDropoffs[route][PosY], BoatDropoffs[route][PosZ], 10);
+				SetPlayerCheckPointEx(playerid, BoatDropoffs[route][PosX], BoatDropoffs[route][PosY], BoatDropoffs[route][PosZ], 10);
 			}
 			else if(truckdeliver == 5)
 			{
 				SendClientMessageEx(playerid, COLOR_LIGHTBLUE,"* Thuyen cua ban chua day weapons.");
-				SetPlayerCheckpoint(playerid, BoatDropoffs[route][PosX], BoatDropoffs[route][PosY], BoatDropoffs[route][PosZ], 10);
+				SetPlayerCheckPointEx(playerid, BoatDropoffs[route][PosX], BoatDropoffs[route][PosY], BoatDropoffs[route][PosZ], 10);
 			}
 			else if(truckdeliver == 6)
 			{
 				SendClientMessageEx(playerid, COLOR_LIGHTBLUE,"* Thuyen cua ban chua day drugs.");
-				SetPlayerCheckpoint(playerid, BoatDropoffs[route][PosX], BoatDropoffs[route][PosY], BoatDropoffs[route][PosZ], 10);
+				SetPlayerCheckPointEx(playerid, BoatDropoffs[route][PosX], BoatDropoffs[route][PosY], BoatDropoffs[route][PosZ], 10);
 			}
 			else if(truckdeliver == 7)
 			{
 				SendClientMessageEx(playerid, COLOR_LIGHTBLUE,"* Thuyen cua ban chua day illegal materials.");
-				SetPlayerCheckpoint(playerid, BoatDropoffs[route][PosX], BoatDropoffs[route][PosY], BoatDropoffs[route][PosZ], 10);
+				SetPlayerCheckPointEx(playerid, BoatDropoffs[route][PosX], BoatDropoffs[route][PosY], BoatDropoffs[route][PosZ], 10);
 			}
    			else if(truckdeliver == 8)
 			{
 				SendClientMessageEx(playerid, COLOR_LIGHTBLUE,"* Thuyen cua ban chua day illegal materials.");
-				SetPlayerCheckpoint(playerid, BoatDropoffs[route][PosX], BoatDropoffs[route][PosY], BoatDropoffs[route][PosZ], 10);
+				SetPlayerCheckPointEx(playerid, BoatDropoffs[route][PosX], BoatDropoffs[route][PosY], BoatDropoffs[route][PosZ], 10);
 			}
 			SendClientMessageEx(playerid, COLOR_REALRED, "Canh Bao: Can than bon cuop, chung co the cuop hang cua ban.");
 		}
@@ -5808,47 +5808,47 @@ public LoadTruckOld(playerid)
 			if(truckdeliver == 1)
 			{
 				SendClientMessageEx(playerid, COLOR_LIGHTBLUE,"* Truck cua ban da duoc chat day food & beverages.");
-				SetPlayerCheckpoint(playerid, TruckerDropoffs[route][PosX], TruckerDropoffs[route][PosY], TruckerDropoffs[route][PosZ], 10);
+				SetPlayerCheckPointEx(playerid, TruckerDropoffs[route][PosX], TruckerDropoffs[route][PosY], TruckerDropoffs[route][PosZ], 10);
 			}
 			else if(truckdeliver == 2)
 			{
 				SendClientMessageEx(playerid, COLOR_LIGHTBLUE,"* Truck cua ban da duoc chat day clothing.");
-				SetPlayerCheckpoint(playerid, TruckerDropoffs[route][PosX], TruckerDropoffs[route][PosY], TruckerDropoffs[route][PosZ], 10);
+				SetPlayerCheckPointEx(playerid, TruckerDropoffs[route][PosX], TruckerDropoffs[route][PosY], TruckerDropoffs[route][PosZ], 10);
 			}
 			else if(truckdeliver == 3)
 			{
 				SendClientMessageEx(playerid, COLOR_LIGHTBLUE,"* Truck cua ban da duoc chat day materials.");
-				SetPlayerCheckpoint(playerid, TruckerDropoffs[route][PosX], TruckerDropoffs[route][PosY], TruckerDropoffs[route][PosZ], 10);
+				SetPlayerCheckPointEx(playerid, TruckerDropoffs[route][PosX], TruckerDropoffs[route][PosY], TruckerDropoffs[route][PosZ], 10);
 			}
 			else if(truckdeliver == 4)
 			{
 				SendClientMessageEx(playerid, COLOR_LIGHTBLUE,"* Truck cua ban da duoc chat day 24/7 items.");
-				SetPlayerCheckpoint(playerid, TruckerDropoffs[route][PosX], TruckerDropoffs[route][PosY], TruckerDropoffs[route][PosZ], 10);
+				SetPlayerCheckPointEx(playerid, TruckerDropoffs[route][PosX], TruckerDropoffs[route][PosY], TruckerDropoffs[route][PosZ], 10);
 			}
 			else if(truckdeliver == 5)
 			{
 				SendClientMessageEx(playerid, 0x4c5b74FF, "Da lay hang xong.");
-				SetPlayerCheckpoint(playerid, TruckerDropoffs[route][PosX], TruckerDropoffs[route][PosY], TruckerDropoffs[route][PosZ], 10);
+				SetPlayerCheckPointEx(playerid, TruckerDropoffs[route][PosX], TruckerDropoffs[route][PosY], TruckerDropoffs[route][PosZ], 10);
 			}
 			else if(truckdeliver == 6)
 			{
 				SendClientMessageEx(playerid, 0x4c5b74FF, "Da lay hang xong.");
-				SetPlayerCheckpoint(playerid, TruckerDropoffs[route][PosX], TruckerDropoffs[route][PosY], TruckerDropoffs[route][PosZ], 10);
+				SetPlayerCheckPointEx(playerid, TruckerDropoffs[route][PosX], TruckerDropoffs[route][PosY], TruckerDropoffs[route][PosZ], 10);
 			}
 			else if(truckdeliver == 7)
 			{
 				SendClientMessageEx(playerid, 0x4c5b74FF, "Da lay hang xong.");
-				SetPlayerCheckpoint(playerid, TruckerDropoffs[route][PosX], TruckerDropoffs[route][PosY], TruckerDropoffs[route][PosZ], 10);
+				SetPlayerCheckPointEx(playerid, TruckerDropoffs[route][PosX], TruckerDropoffs[route][PosY], TruckerDropoffs[route][PosZ], 10);
 			}
 			else if(truckdeliver == 8)
 			{
 				SendClientMessageEx(playerid, 0x4c5b74FF, "Da lay hang xong.");
-				SetPlayerCheckpoint(playerid, TruckerDropoffs[route][PosX], TruckerDropoffs[route][PosY], TruckerDropoffs[route][PosZ], 10);
+				SetPlayerCheckPointEx(playerid, TruckerDropoffs[route][PosX], TruckerDropoffs[route][PosY], TruckerDropoffs[route][PosZ], 10);
 			}
 			else if(truckdeliver == 9)
 			{
 				SendClientMessageEx(playerid, 0x4c5b74FF, "Da lay hang xong.");
-				SetPlayerCheckpoint(playerid, TruckerDropoffs[route][PosX], TruckerDropoffs[route][PosY], TruckerDropoffs[route][PosZ], 10);
+				SetPlayerCheckPointEx(playerid, TruckerDropoffs[route][PosX], TruckerDropoffs[route][PosY], TruckerDropoffs[route][PosZ], 10);
 			}
 			SendClientMessageEx(playerid, COLOR_REALRED, "[WARNING] Ban co the bi cuop hang bat cu luc nao.");
 		}
@@ -5902,7 +5902,7 @@ public LoadTruck(playerid)
 		format(string, sizeof(string), "* Xe tai cua ban da day %s", GetInventoryType(business));
 		SendClientMessageEx(playerid, COLOR_LIGHTBLUE, string);
 
-        SetPlayerCheckpoint(playerid, Businesses[business][bSupplyPos][0], Businesses[business][bSupplyPos][1], Businesses[business][bSupplyPos][2], 10.0);
+        SetPlayerCheckPointEx(playerid, Businesses[business][bSupplyPos][0], Businesses[business][bSupplyPos][1], Businesses[business][bSupplyPos][2], 10.0);
 
 		SendClientMessageEx(playerid, COLOR_WHITE, "HUONG DAN: Dua hang hoa yeu cau den dia diem nhan hang (di theo diem do tren rada).");
 		SendClientMessageEx(playerid, COLOR_REALRED, "CANH BAO: Coi chung nhung ten cuop, chung co the lay hang hoa cua ban va tau thoat...");
@@ -6431,14 +6431,14 @@ public WateringStation(playerid)
      		RCPIdCurrent[playerid]++;
      		if(EventRCPT[RCPIdCurrent[playerid]] == 1) {
 	    	    DisablePlayerCheckpoint(playerid);
-				SetPlayerCheckpoint(playerid, EventRCPX[RCPIdCurrent[playerid]], EventRCPY[RCPIdCurrent[playerid]], EventRCPZ[RCPIdCurrent[playerid]], EventRCPS[RCPIdCurrent[playerid]]);
+				SetPlayerCheckPointEx(playerid, EventRCPX[RCPIdCurrent[playerid]], EventRCPY[RCPIdCurrent[playerid]], EventRCPZ[RCPIdCurrent[playerid]], EventRCPS[RCPIdCurrent[playerid]]);
 			}
 			else if(EventRCPT[RCPIdCurrent[playerid]] == 4) {
 		   		DisablePlayerCheckpoint(playerid);
-		    	SetPlayerCheckpoint(playerid, EventRCPX[RCPIdCurrent[playerid]], EventRCPY[RCPIdCurrent[playerid]], EventRCPZ[RCPIdCurrent[playerid]], EventRCPS[RCPIdCurrent[playerid]]);
+		    	SetPlayerCheckPointEx(playerid, EventRCPX[RCPIdCurrent[playerid]], EventRCPY[RCPIdCurrent[playerid]], EventRCPZ[RCPIdCurrent[playerid]], EventRCPS[RCPIdCurrent[playerid]]);
 			} else {
 			    DisablePlayerCheckpoint(playerid);
-			    SetPlayerCheckpoint(playerid, EventRCPX[RCPIdCurrent[playerid]], EventRCPY[RCPIdCurrent[playerid]], EventRCPZ[RCPIdCurrent[playerid]], EventRCPS[RCPIdCurrent[playerid]]);
+			    SetPlayerCheckPointEx(playerid, EventRCPX[RCPIdCurrent[playerid]], EventRCPY[RCPIdCurrent[playerid]], EventRCPZ[RCPIdCurrent[playerid]], EventRCPS[RCPIdCurrent[playerid]]);
 			}
 			SendClientMessageEx(playerid, COLOR_WHITE, "You are now fully rehydrated you can continue to your next checkpoint.");
 		}
@@ -13403,8 +13403,8 @@ stock GivePlayerStoreItem(playerid, type, business, item, price)
 		}
 		case ITEM_SAWDER:{
 			if(!Inventory_HasItem(playerid, "May Cua")) {
-				if(!Inventory_Add(playerid, "May Cua", .timer = 60*24*6)) return 1;
-				SendClientMessageEx(playerid, COLOR_WHITE, "Ban da mua May Cua (Do ben: 1 tuan) thanh cong, su dung /inv > May Cua");
+				if(!Inventory_Add(playerid, "May Cua", .timer = 2*24)) return 1;
+				SendClientMessageEx(playerid, COLOR_WHITE, "Ban da mua May Cua (Do ben: 2 Tiếng) thanh cong, su dung /inv > May Cua");
 			}
 			else return SendClientMessageEx(playerid, COLOR_WHITE, "Ban da so huu May Cua");
 		}
@@ -13862,7 +13862,7 @@ public SyncTime()
 			{
 			//	format(string, sizeof(string), "%s da san sang de chiem dong.", Points[x][Name]);
 			//	SendClientMessageToAllEx(COLOR_YELLOW, string);
-				//SetPlayerCheckpoint(i, Points[i][Pointx], Points[i][Pointy], Points[i][Pointz], 3);
+				//SetPlayerCheckPointEx(i, Points[i][Pointx], Points[i][Pointy], Points[i][Pointz], 3);
 				ReadyToCapture(x);
 				Points[x][Announced] = 1;
 			}
@@ -15092,7 +15092,7 @@ stock JoinPaintballArena(playerid, arenaid, password[])
 	}
 
  	if(PaintBallArena[arenaid][pbGameType] == 4 || PaintBallArena[arenaid][pbGameType] == 5) {
- 		SetPlayerCheckpoint(playerid, PaintBallArena[arenaid][pbHillX], PaintBallArena[arenaid][pbHillY], PaintBallArena[arenaid][pbHillZ], PaintBallArena[arenaid][pbHillRadius]);
+ 		SetPlayerCheckPointEx(playerid, PaintBallArena[arenaid][pbHillX], PaintBallArena[arenaid][pbHillY], PaintBallArena[arenaid][pbHillZ], PaintBallArena[arenaid][pbHillRadius]);
    		SetPVarInt(playerid, "TickKOTHID", SetTimerEx("TickKOTH", 1000, true, "d", playerid)); // Player's KOTH Tick Function
 	}
 
@@ -19753,7 +19753,7 @@ stock CompleteToyTrade(playerid)
 forward RFLCheckpointu(playerid);
 public RFLCheckpointu(playerid)
 {
-	SetPlayerCheckpoint(playerid, EventRCPX[ConfigEventCPId[playerid]], EventRCPY[ConfigEventCPId[playerid]], EventRCPZ[ConfigEventCPId[playerid]], EventRCPS[ConfigEventCPId[playerid]]);
+	SetPlayerCheckPointEx(playerid, EventRCPX[ConfigEventCPId[playerid]], EventRCPY[ConfigEventCPId[playerid]], EventRCPZ[ConfigEventCPId[playerid]], EventRCPS[ConfigEventCPId[playerid]]);
 }
 
 forward FixServerTime();

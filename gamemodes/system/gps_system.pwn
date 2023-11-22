@@ -2,7 +2,6 @@
 #include <YSI_Coding\y_hooks>
 
 
-
 stock GetJobFind(z) {
 	new jobnamez[80];
 	switch(z) {
@@ -221,7 +220,7 @@ hook OnDialogResponse(playerid, dialogid, response, listitem, inputtext[]) {
 	{
 	    if(response)
 	    {
-	       	SetPlayerCheckpoint(playerid,timvieclam_postion[listitem][0], timvieclam_postion[listitem][1], timvieclam_postion[listitem][2],3);
+	       	SetPlayerCheckPointEx(playerid,timvieclam_postion[listitem][0], timvieclam_postion[listitem][1], timvieclam_postion[listitem][2],3);
 	       	CP[playerid] = 252000;
 		}
 	}
@@ -229,7 +228,7 @@ hook OnDialogResponse(playerid, dialogid, response, listitem, inputtext[]) {
 	{
 	    if(response)
 	    {
-	       	SetPlayerCheckpoint(playerid,timbank_postion[listitem][0], timbank_postion[listitem][1], timbank_postion[listitem][2],3);
+	       	SetPlayerCheckPointEx(playerid,timbank_postion[listitem][0], timbank_postion[listitem][1], timbank_postion[listitem][2],3);
 	       	CP[playerid] = 252000;
 		}
 	}
@@ -237,7 +236,7 @@ hook OnDialogResponse(playerid, dialogid, response, listitem, inputtext[]) {
 	{
 	    if(response)
 	    {
-	       	SetPlayerCheckpoint(playerid,timstore_postion[listitem][0], timstore_postion[listitem][1], timstore_postion[listitem][2],3);
+	       	SetPlayerCheckPointEx(playerid,timstore_postion[listitem][0], timstore_postion[listitem][1], timstore_postion[listitem][2],3);
 	       	CP[playerid] = 252000;
 		}
 	}
@@ -245,7 +244,7 @@ hook OnDialogResponse(playerid, dialogid, response, listitem, inputtext[]) {
 	{
 	    if(response)
 	    {
-	       	SetPlayerCheckpoint(playerid,timduong_postion[listitem][0], timduong_postion[listitem][1], timduong_postion[listitem][2],3);
+	       	SetPlayerCheckPointEx(playerid,timduong_postion[listitem][0], timduong_postion[listitem][1], timduong_postion[listitem][2],3);
 	       	CP[playerid] = 252000;
 		}
 	}
