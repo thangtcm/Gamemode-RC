@@ -6048,7 +6048,7 @@ public OnPlayerText(playerid, text[])
 		GetPlayerPos(playerid, f_playerPos[0], f_playerPos[1], f_playerPos[2]);
 		if(IsPlayerInAnyVehicle(playerid))
 		{
-			if(strlen(text) > 64)
+			if(strlen(text) > 95)
 			{
 				SendNearbyMessage(playerid, 20.0, COLOR_WHITE, "{BBFFEE}[Trong xe]{FFFFFF} %s noi: %s %.64s", GetPlayerNameEx(playerid), text);
 				SendNearbyMessage(playerid, 20.0, COLOR_WHITE, "{BBFFEE}[Trong xe]{FFFFFF} %s noi: ...%s", GetPlayerNameEx(playerid), text[64]);
@@ -6060,7 +6060,7 @@ public OnPlayerText(playerid, text[])
 		}
 		else
 		{
-			if(strlen(text) > 64)
+			if(strlen(text) > 95)
 			{
 				SendNearbyMessage(playerid, 20.0, COLOR_WHITE, "%s noi: %s %.64s", GetPlayerNameEx(playerid), text);
 				SendNearbyMessage(playerid, 20.0, COLOR_WHITE, "%s noi: ...%s", GetPlayerNameEx(playerid), text[64]);
