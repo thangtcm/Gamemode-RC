@@ -1,5 +1,8 @@
 
 
+new PlayerAmmo[MAX_PLAYERS][10];
+new CraftWeaponDeal[MAX_PLAYERS];
+new CraftWeaponDealTime[MAX_PLAYERS];
 
 new PlayerText:RadioInfo[MAX_PLAYERS];
 new PlayerText:ChannelInfo[MAX_PLAYERS];
@@ -735,6 +738,8 @@ new Chatting[MAX_PLAYERS];
 new TruckerVehicles[20];
 enum pInfo
 {
+	pCraftWD,
+    pCraftWDTime,
 	pChatStyle,
 	pNai,
 	pBo,

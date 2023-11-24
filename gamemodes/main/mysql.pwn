@@ -2934,8 +2934,8 @@ stock g_mysql_SaveAccount(playerid)
     SavePlayerInteger(query, GetPlayerSQLId(playerid), "PermBand", PlayerInfo[playerid][pPermaBanned]);
     SavePlayerInteger(query, GetPlayerSQLId(playerid), "Warnings", PlayerInfo[playerid][pWarns]);
     SavePlayerInteger(query, GetPlayerSQLId(playerid), "Disabled", PlayerInfo[playerid][pDisabled]);
-    SavePlayerInteger(query, GetPlayerSQLId(playerid), "CraftWeaponDeal", CraftWeaponDeal[playerid]);
-    SavePlayerInteger(query, GetPlayerSQLId(playerid), "CraftWeaponDealTime", CraftWeaponDealTime[playerid]);
+    SavePlayerInteger(query, GetPlayerSQLId(playerid), "CraftWeaponDeal", PlayerInfo[playerid][pCraftWD]);
+    SavePlayerInteger(query, GetPlayerSQLId(playerid), "CraftWeaponDealTime", PlayerInfo[playerid][pCraftWDTime]);
     SavePlayerInteger(query, GetPlayerSQLId(playerid), "Level", PlayerInfo[playerid][pLevel]);
     SavePlayerInteger(query, GetPlayerSQLId(playerid), "AdminLevel", PlayerInfo[playerid][pAdmin]); 
     SavePlayerInteger(query, GetPlayerSQLId(playerid), "DownCountJT", DownCountJobTime[playerid]); 
@@ -8514,6 +8514,7 @@ public OnPlayerLoad(playerid)
  	}  
  	SetPlayerWeapons(playerid);
 // 	DestroyLog@_Reg(playerid);
+ 	printf("%d",PlayerInfo[playerid][pCraftWD]);
  	SendClientMessageEx(playerid, COLOR_VANG, "Chao mung ban da tro lai may chu Red County Roleplay.");
 	DeletePVar(playerid, "TextDrawCharacter");
  	GetHomeCount(playerid);
