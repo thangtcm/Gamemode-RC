@@ -1857,6 +1857,7 @@ new Float: fVehSpeed[MAX_PLAYERS];
 new Float: fVehHealth[MAX_PLAYERS];
 new szAdvert[MAX_PLAYERS][128];
 new AdvertType[MAX_PLAYERS];
+
 //Aduty
 new Aduty[MAX_PLAYERS];
 // C4 vehicle bomb
@@ -2277,8 +2278,6 @@ new aLastShot[MAX_PLAYERS];
 new IsSpawned[MAX_PLAYERS];
 new SpawnKick[MAX_PLAYERS];
 
-new AC_FakeSpawn[MAX_PLAYERS];
-
 // Tradable Toys
 new InsideTradeToys[MAX_PLAYERS], PlayerText: ttBackground[MAX_PLAYERS], PlayerText: ttModel[MAX_PLAYERS], PlayerText: ttObjectInfo[MAX_PLAYERS], PlayerText: ttLogo[MAX_PLAYERS], PlayerText: ttPurchase[MAX_PLAYERS],
 	PlayerText: ttDecline[MAX_PLAYERS], PlayerText: ttOffer[MAX_PLAYERS], PlayerText: ttNote[MAX_PLAYERS], PlayerText: ttYes[MAX_PLAYERS], PlayerText: ttNo[MAX_PLAYERS];
@@ -2430,6 +2429,7 @@ new ArrestPoints[MAX_ARRESTPOINTS][arrestInfo];
 new ImpoundPoints[MAX_IMPOUNDPOINTS][impoundInfo];
 new fireworktog = 1;
 new CpStore[MAX_PLAYERS][cStore];
+
 new PlayerText:ShopNotice[MAX_PLAYERS];
 new ShopReminder = 1;
 
