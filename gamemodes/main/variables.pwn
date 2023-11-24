@@ -3831,3 +3831,4 @@ new ChangeSkin[MAX_PLAYERS];
 
 new PlayerText: Tutorial_Truck[MAX_PLAYERS][6],
 	TutorialTruck_Timer[MAX_PLAYERS];
+new pDriveReward[MAX_PLAYERS];

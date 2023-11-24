@@ -85,6 +85,7 @@ stock g_mysql_SaveMisson(playerid)
     SavePlayerInteger(query, GetPlayerSQLId(playerid), "M_count_3", PMisson[playerid][m_check_count][3]);
     SavePlayerInteger(query, GetPlayerSQLId(playerid), "M_count_4", PMisson[playerid][m_check_count][4]); 
     SavePlayerInteger(query, GetPlayerSQLId(playerid), "M_count_5", PMisson[playerid][m_check_count][5]);
+	SavePlayerInteger(query, GetPlayerSQLId(playerid), "DriveReward", pDriveReward[playerid]);
 	MySQLUpdateFinish(query, GetPlayerSQLId(playerid));
     return 1;
 }
@@ -123,6 +124,7 @@ public M_OnQueryFinish(extraid, handleid)
 			cache_get_field_content(row,  "M_count_3", szResult, MainPipeline); PMisson[extraid][m_check_count][3] = strval(szResult);
 			cache_get_field_content(row,  "M_count_4", szResult, MainPipeline); PMisson[extraid][m_check_count][4] = strval(szResult);
 			cache_get_field_content(row,  "M_count_5", szResult, MainPipeline); PMisson[extraid][m_check_count][5] = strval(szResult);
+			cache_get_field_content(row,  "DriveReward", szResult, MainPipeline); pDriveReward[playerid] = strval(szResult);
 		}
 	}
 	return 1;
