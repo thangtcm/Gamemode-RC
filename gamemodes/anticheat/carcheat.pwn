@@ -25,6 +25,5 @@ public Car_Check()
 
 hook OnGameModeInit()
 {
-    SetTimer("Car_Check", 1000, true);
     return 1;
 }

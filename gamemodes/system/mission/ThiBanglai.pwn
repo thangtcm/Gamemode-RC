@@ -60,7 +60,6 @@ new Float:dsPoints[][3] = {
 
 //player_get_speed
 
-new pDriveReward[MAX_PLAYERS];
 new pDriveTimer[MAX_PLAYERS];
 new pDriveTimerCheck[MAX_PLAYERS];
 new DangLenXe[MAX_PLAYERS];
@@ -92,8 +91,8 @@ DrivingTestFinish(playerid)
 	    new Float: arr_fPlayerPos[4];
 		GetPlayerPos(playerid, arr_fPlayerPos[0], arr_fPlayerPos[1], arr_fPlayerPos[2]);
 		GetPlayerFacingAngle(playerid, arr_fPlayerPos[3]);
-		// CreatePlayerVehicle(playerid, GetPlayerFreeVehicleId(playerid), 509, arr_fPlayerPos[0], arr_fPlayerPos[1], arr_fPlayerPos[2], arr_fPlayerPos[3], 1, 1, 2000000, GetPlayerVirtualWorld(playerid), GetPlayerInterior(playerid));
-		// SendTestMessage(playerid, "Ban duoc tang chiec BIKE cho viec hoan thanh hoc lai xe!");
+		CreatePlayerVehicle(playerid, GetPlayerFreeVehicleId(playerid), 509, arr_fPlayerPos[0], arr_fPlayerPos[1], arr_fPlayerPos[2], arr_fPlayerPos[3], 1, 1, 2000000, GetPlayerVirtualWorld(playerid), GetPlayerInterior(playerid));
+		SendTestMessage(playerid, "Ban duoc tang chiec BIKE cho viec hoan thanh hoc lai xe!");
 	}
 	return 1;
 }
