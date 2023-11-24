@@ -62,7 +62,7 @@ CMD:giaobanh(playerid, params[])
 	new postrandom = random(9);
 	new zone[MAX_ZONE_NAME];
 	Get3DZone(pizza_postion[postrandom][0],pizza_postion[postrandom][1],pizza_postion[postrandom][2], zone, sizeof(zone));
-	SetPlayerCheckpoint(playerid, pizza_postion[postrandom][0],pizza_postion[postrandom][1],pizza_postion[postrandom][2], 3);
+	SetPlayerCheckPointEx(playerid, pizza_postion[postrandom][0],pizza_postion[postrandom][1],pizza_postion[postrandom][2], 3);
 	format(zzstr, sizeof(zzstr), "Giao banh pizza den: %s\nKhu vuc: %s\nKhoang cach: %0f met", GetNameDeliverPizza(postrandom),zone,GetPlayerDistanceFromPoint(playerid, pizza_postion[postrandom][0],pizza_postion[postrandom][1],pizza_postion[postrandom][2]));
 	ShowPlayerDialog(playerid, DIALOG_NOTHING, DIALOG_STYLE_MSGBOX, "Thong tin cong viec - Dia diem giao banh", zzstr, "Dong", "");
 	SetPVarInt(playerid, "giaobanh_Pizza", 1);
@@ -198,6 +198,7 @@ hook OnPlayerEnterCheckpoint(playerid) {
         DeletePVar(playerid, "postion_Pizza");
         DisablePlayerCheckpoint(playerid);	
 		BanhPizzaInFoot[playerid] = 0;
+		CheckDoneMisson(playerid, 0);
 	//	if(LamViec[playerid] != 1) return 1;
 		if(BanhPizzaInCar[playerid] > 0)
 		{
@@ -249,7 +250,7 @@ hook OnPlayerKeyStateChange(playerid, newkeys, oldkeys) {
 	            	format(zzstr, sizeof zzstr, "Xe Pizza cua: {2791FF}%s{ffffff}\nBanh trong xe: {2791FF}%d/5{ffffff}", GetPlayerNameEx(playerid),BanhPizzaInCar[playerid]);
 	            	Update3DTextLabelText(PizzaTextInfo[playerid], COLOR_WHITE, zzstr);
 					new postrandom = GetPVarInt(playerid, "postion_Pizza");
-					SetPlayerCheckpoint(playerid, pizza_postion[postrandom][0],pizza_postion[postrandom][1],pizza_postion[postrandom][2], 3);
+					SetPlayerCheckPointEx(playerid, pizza_postion[postrandom][0],pizza_postion[postrandom][1],pizza_postion[postrandom][2], 3);
 	            }
 	            else return SendErrorMessage(playerid, " Ban da qua met moi va khong the lam viec, hay an uong de tang the luc.");
 

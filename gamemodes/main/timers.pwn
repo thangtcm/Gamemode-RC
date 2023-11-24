@@ -1074,7 +1074,7 @@ task ServerHeartbeat[1000]() {
 					else
 					{
 					    GetPlayerPos(pID, X, Y, Z);
-					    SetPlayerCheckpoint(i, X, Y, Z, 4.0);
+					    SetPlayerCheckPointEx(i, X, Y, Z, 4.0);
 					}
 				}
 			}
@@ -1533,7 +1533,7 @@ task ServerHeartbeat[1000]() {
 				{
 					new Float:X,Float:Y,Float:Z;
 					GetPlayerPos(TaxiAccepted[i], X, Y, Z);
-					SetPlayerCheckpoint(i, X, Y, Z, 5);
+					SetPlayerCheckPointEx(i, X, Y, Z, 5);
 				}
 			}
 		}
@@ -1548,7 +1548,7 @@ task ServerHeartbeat[1000]() {
 					new zone[MAX_ZONE_NAME];
 					Get3DZone(X, Y, Z, zone, sizeof(zone));
 					format(string, sizeof(string), "Benh nhan cua ban nam o %s.", zone);
-					SetPlayerCheckpoint(i, X, Y, Z, 5);
+					SetPlayerCheckPointEx(i, X, Y, Z, 5);
 				}
 			}
 		}
@@ -1561,7 +1561,7 @@ task ServerHeartbeat[1000]() {
 				{
 					new Float:X,Float:Y,Float:Z;
 					GetPlayerPos(BusAccepted[i], X, Y, Z);
-					SetPlayerCheckpoint(i, X, Y, Z, 5);
+					SetPlayerCheckPointEx(i, X, Y, Z, 5);
 				}
 			}
 		}
@@ -1573,7 +1573,7 @@ task ServerHeartbeat[1000]() {
 				format(string, sizeof(string), "%d", 45 - MedicCallTime[i]);
 				new Float:X,Float:Y,Float:Z;
 				GetPlayerPos(MedicAccepted[i], X, Y, Z);
-				SetPlayerCheckpoint(i, X, Y, Z, 5);
+				SetPlayerCheckPointEx(i, X, Y, Z, 5);
 				GameTextForPlayer(i, string, 1500, 6);
 				MedicCallTime[i] += 1;
 			}
@@ -1852,6 +1852,8 @@ task ServerHeartbeatTwo[1000]() {
 			else if(PlayerInfo[i][pGuns][4] == 0) SetPlayerArmedWeapon(i, 0);
 			else SetPlayerArmedWeapon(i, 29);
         }
+        if(--PlayerInfo[i][pTimeCraft] < 0) PlayerInfo[i][pTimeCraft] = 0;
+		if(--PlayerInfo[i][pTimeMedkit] < 0) PlayerInfo[i][pTimeMedkit] = 0;
         new Float:armor;
         GetPlayerArmour(i, armor);
 		if((armor > CurrentArmor[i]) && PlayerInfo[i][pAdmin] < 2)

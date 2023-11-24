@@ -42,7 +42,7 @@ public OnLoadInvBiz()
 			index = 0;
 			oldbusinessid = businessid;
 		}
-		cache_get_field_content(i, "Id", tmp, MainPipeline); InventoryBizInfo[--businessid][index][Id] = strval(tmp);
+		cache_get_field_content(i, "Id", tmp, MainPipeline); InventoryBizInfo[--businessid][index][Id] += strval(tmp);
 		printf("businessid -- %d -- index %d", businessid, index);
 		cache_get_field_content(i, "Quantity", tmp, MainPipeline); InventoryBizInfo[businessid][index][Quantity] = strval(tmp);
 		cache_get_field_content(i, "ProductName", InventoryBizInfo[businessid][index][ProductName], MainPipeline, 32);

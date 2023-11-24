@@ -7,6 +7,7 @@ public OnPlayerPickUpPickup(playerid, pickupid)
 {
     return 1;
 }
+
 public OnPlayerUpdate(playerid)
 {
 	for(new Sz; Sz < MAX_SZ; Sz++)
@@ -1426,7 +1427,11 @@ public OnPlayerConnect(playerid) {
 		case 1: InterpolateCameraPos(playerid, 2433.3809,-66.7512,76.6627, 2167.8020,96.4188,42.4985, 50000, CAMERA_CUT);
 	}
 	DownS[playerid] = false;
+<<<<<<< HEAD
 	TogglePlayerSpectating(playerid, true);
+=======
+	ActTogglePlayerSpectating(playerid, true);
+>>>>>>> main
 	// SetTimerEx("LoadLogin", 500, 0, "i", playerid);
 	DownS[playerid] = 0;
 	SetPVarString(playerid, "PassAuth", "abc");
@@ -3026,6 +3031,7 @@ public OnVehicleDeath(vehicleid, killerid) {
 	    if(GetPVarInt(i, "NGPassengerVeh") == vehicleid)
 	    {
 	        TogglePlayerSpectating(i, 0);
+<<<<<<< HEAD
 		}
 
 		new v;
@@ -3033,7 +3039,21 @@ public OnVehicleDeath(vehicleid, killerid) {
 		{
 			GetVehicleHealth(vehicleid, PlayerVehicleInfo[i][v][pvHealth]);
 			GetVehicleDamageStatus(vehicleid, PlayerVehicleInfo[i][v][pvPanels], PlayerVehicleInfo[i][v][pvDoors], PlayerVehicleInfo[i][v][pvLights], PlayerVehicleInfo[i][v][pvTires]);
+=======
+>>>>>>> main
 		}
+
+		for(new d; d < MAX_PLAYERVEHICLES; d++)
+		{
+			if(PlayerVehicleInfo[i][d][pvId] == vehicleid)
+			{
+				PlayerVehicleInfo[i][d][pvCapacity] = VehicleCapacity[vehicleid];
+				PlayerVehicleInfo[i][d][pvFuel] = VehicleFuel[vehicleid];
+				GetVehicleHealth(vehicleid, PlayerVehicleInfo[i][d][pvHealth]);
+				GetVehicleDamageStatus(vehicleid, PlayerVehicleInfo[i][d][pvPanels], PlayerVehicleInfo[i][d][pvDoors], PlayerVehicleInfo[i][d][pvLights], PlayerVehicleInfo[i][d][pvTires]);
+			}
+		}
+
 	}
     /*if(DynVeh[vehicleid] != -1)
 	{
@@ -3163,14 +3183,14 @@ public OnPlayerLeaveCheckpoint(playerid)
      	RCPIdCurrent[playerid]++;
 		if(EventRCPT[RCPIdCurrent[playerid]] == 1) {
 	        DisablePlayerCheckpoint(playerid);
-			SetPlayerCheckpoint(playerid, EventRCPX[RCPIdCurrent[playerid]], EventRCPY[RCPIdCurrent[playerid]], EventRCPZ[RCPIdCurrent[playerid]], EventRCPS[RCPIdCurrent[playerid]]);
+			SetPlayerCheckPointEx(playerid, EventRCPX[RCPIdCurrent[playerid]], EventRCPY[RCPIdCurrent[playerid]], EventRCPZ[RCPIdCurrent[playerid]], EventRCPS[RCPIdCurrent[playerid]]);
 		}
 		else if(EventRCPT[RCPIdCurrent[playerid]] == 4) {
 		    DisablePlayerCheckpoint(playerid);
-		    SetPlayerCheckpoint(playerid, EventRCPX[RCPIdCurrent[playerid]], EventRCPY[RCPIdCurrent[playerid]], EventRCPZ[RCPIdCurrent[playerid]], EventRCPS[RCPIdCurrent[playerid]]);
+		    SetPlayerCheckPointEx(playerid, EventRCPX[RCPIdCurrent[playerid]], EventRCPY[RCPIdCurrent[playerid]], EventRCPZ[RCPIdCurrent[playerid]], EventRCPS[RCPIdCurrent[playerid]]);
 		} else {
 		    DisablePlayerCheckpoint(playerid);
-		    SetPlayerCheckpoint(playerid, EventRCPX[RCPIdCurrent[playerid]], EventRCPY[RCPIdCurrent[playerid]], EventRCPZ[RCPIdCurrent[playerid]], EventRCPS[RCPIdCurrent[playerid]]);
+		    SetPlayerCheckPointEx(playerid, EventRCPX[RCPIdCurrent[playerid]], EventRCPY[RCPIdCurrent[playerid]], EventRCPZ[RCPIdCurrent[playerid]], EventRCPS[RCPIdCurrent[playerid]]);
 		}
 		SendServerMessage(playerid, " You have exited the checkpoint, you are no longer getting rehydrated.");
 		return 1;
@@ -3187,9 +3207,15 @@ public OnPlayerLeaveCheckpoint(playerid)
 	return 1;
 }
 
+public OnPlayerEnterRaceCheckpoint(playerid)
+{
+	OnPlayerEnterRaceCP(playerid);
+	return 1;
+}
+
 public OnPlayerEnterCheckpoint(playerid)
 {
-	DisablePlayerCheckpoint(playerid);
+	ForcePlayerEndLastRoute(playerid);
 	if(CP[playerid] == 252000)
  	{
 	 	CP[playerid] = 0;
@@ -3260,14 +3286,14 @@ public OnPlayerEnterCheckpoint(playerid)
 		}
 	    if(EventRCPT[RCPIdCurrent[playerid]] == 1) {
 	        DisablePlayerCheckpoint(playerid);
-			SetPlayerCheckpoint(playerid, EventRCPX[RCPIdCurrent[playerid]], EventRCPY[RCPIdCurrent[playerid]], EventRCPZ[RCPIdCurrent[playerid]], EventRCPS[RCPIdCurrent[playerid]]);
+			SetPlayerCheckPointEx(playerid, EventRCPX[RCPIdCurrent[playerid]], EventRCPY[RCPIdCurrent[playerid]], EventRCPZ[RCPIdCurrent[playerid]], EventRCPS[RCPIdCurrent[playerid]]);
 		}
 		else if(EventRCPT[RCPIdCurrent[playerid]] == 4) {
 		    DisablePlayerCheckpoint(playerid);
-		    SetPlayerCheckpoint(playerid, EventRCPX[RCPIdCurrent[playerid]], EventRCPY[RCPIdCurrent[playerid]], EventRCPZ[RCPIdCurrent[playerid]], EventRCPS[RCPIdCurrent[playerid]]);
+		    SetPlayerCheckPointEx(playerid, EventRCPX[RCPIdCurrent[playerid]], EventRCPY[RCPIdCurrent[playerid]], EventRCPZ[RCPIdCurrent[playerid]], EventRCPS[RCPIdCurrent[playerid]]);
 		} else {
 		    DisablePlayerCheckpoint(playerid);
-		    SetPlayerCheckpoint(playerid, EventRCPX[RCPIdCurrent[playerid]], EventRCPY[RCPIdCurrent[playerid]], EventRCPZ[RCPIdCurrent[playerid]], EventRCPS[RCPIdCurrent[playerid]]);
+		    SetPlayerCheckPointEx(playerid, EventRCPX[RCPIdCurrent[playerid]], EventRCPY[RCPIdCurrent[playerid]], EventRCPZ[RCPIdCurrent[playerid]], EventRCPS[RCPIdCurrent[playerid]]);
 		}
 		return 1;
 	}
@@ -3697,13 +3723,13 @@ public OnPlayerEnterCheckpoint(playerid)
 		gPlayerCheckpointStatus[playerid] = CHECKPOINT_RETURNTRUCK;
 		if(!IsABoat(vehicleid))
 		{
-			SetPlayerCheckpoint(playerid, 2528.4263,-2089.9614,13.5469, 5);
+			SetPlayerCheckPointEx(playerid, 2528.4263,-2089.9614,13.5469, 5);
 			GameTextForPlayer(playerid, "~w~Hay Quay Lai ~r~Ben Cang", 5000, 1);
 			SendClientMessageEx(playerid, 0xa5bbd0FF, "(TRUCK) Ban da giao hang xong, hay quay ve tra xe va nhan tien.");
 		}
 		else
 		{
-			SetPlayerCheckpoint(playerid, 2098.6543,-104.3568,-0.4820, 5);
+			SetPlayerCheckPointEx(playerid, 2098.6543,-104.3568,-0.4820, 5);
 			GameTextForPlayer(playerid, "~w~Hay Quay Lai ~r~Ben cang Palamino", 5000, 1);
 			SendClientMessageEx(playerid, 0xa5bbd0FF, "(TRUCK) Ban da giao hang xong, hay quay ve tra thuyen va nhan tien.");
 		}
@@ -3762,7 +3788,7 @@ public OnPlayerEnterCheckpoint(playerid)
 		DisablePlayerCheckpoint(playerid);
 
 	    gPlayerCheckpointStatus[playerid] = CHECKPOINT_RETURNTRUCK;
-		SetPlayerCheckpoint(playerid, -1570.9442,83.1619,3.5547, 5);
+		SetPlayerCheckPointEx(playerid, -1570.9442,83.1619,3.5547, 5);
 		GameTextForPlayer(playerid, "~w~Xac dinh diem giao hang ~r~Ocean Docks", 5000, 1);
 		SendServerMessage(playerid, " HINT: Quay lai Ocean Docks (kiem tra diem do tren radar).");
 		return 1;
@@ -4203,31 +4229,31 @@ public OnPlayerEnterCheckpoint(playerid)
 		{
 			case 1:
 			{
-				SetPlayerCheckpoint(playerid, 586.6722,-2190.0076,-0.8600, 2.0);
+				SetPlayerCheckPointEx(playerid, 586.6722,-2190.0076,-0.8600, 2.0);
 				SetPVarInt(playerid, "_SwimmingActivity", 2);
 			}
 
 			case 2:
 			{
-				SetPlayerCheckpoint(playerid, 586.6722,-2190.0076,-0.8600, 2.0);
+				SetPlayerCheckPointEx(playerid, 586.6722,-2190.0076,-0.8600, 2.0);
 				SetPVarInt(playerid, "_SwimmingActivity", 3);
 			}
 
 			case 3:
 			{
-				SetPlayerCheckpoint(playerid, 575.9869,-2177.9275,-0.3465, 2.0);
+				SetPlayerCheckPointEx(playerid, 575.9869,-2177.9275,-0.3465, 2.0);
 				SetPVarInt(playerid, "_SwimmingActivity", 4);
 			}
 
 			case 4:
 			{
-				SetPlayerCheckpoint(playerid, 572.7451,-2160.7446,-0.3552, 2.0);
+				SetPlayerCheckPointEx(playerid, 572.7451,-2160.7446,-0.3552, 2.0);
 				SetPVarInt(playerid, "_SwimmingActivity", 5);
 			}
 
 			case 5:
 			{
-				SetPlayerCheckpoint(playerid, 579.0228,-2192.4714,-0.7346, 2.0);
+				SetPlayerCheckPointEx(playerid, 579.0228,-2192.4714,-0.7346, 2.0);
 				SetPVarInt(playerid, "_SwimmingActivity", 6);
 			}
 
@@ -4236,7 +4262,7 @@ public OnPlayerEnterCheckpoint(playerid)
 				SendServerMessage(playerid, " Tap hoan thanh! The luc cua ban da tang len dang ke.");
 				SendServerMessage(playerid, " Neu ban tap luyen xong, su dung /stopswimming.");
 				SetPVarInt(playerid, "_SwimmingActivity", 3);
-				SetPlayerCheckpoint(playerid, 572.7451,-2160.7446,-0.3552, 2.0);
+				SetPlayerCheckPointEx(playerid, 572.7451,-2160.7446,-0.3552, 2.0);
 			}
 		}
 	}
@@ -4819,11 +4845,11 @@ public OnPlayerKeyStateChange(playerid, newkeys, oldkeys)
             	EventRCPS[ConfigEventCPId[playerid]] = 10.0;
             	if(ConfigEventCPId[playerid] == 0) {
 					EventRCPT[ConfigEventCPId[playerid]] = 1;
-					SetPlayerCheckpoint(playerid, EventRCPX[ConfigEventCPId[playerid]], EventRCPY[ConfigEventCPId[playerid]], EventRCPZ[ConfigEventCPId[playerid]], EventRCPS[ConfigEventCPId[playerid]]);
+					SetPlayerCheckPointEx(playerid, EventRCPX[ConfigEventCPId[playerid]], EventRCPY[ConfigEventCPId[playerid]], EventRCPZ[ConfigEventCPId[playerid]], EventRCPS[ConfigEventCPId[playerid]]);
 				}
             	else {
 					EventRCPT[ConfigEventCPId[playerid]] = 2;
-					SetPlayerCheckpoint(playerid, EventRCPX[ConfigEventCPId[playerid]], EventRCPY[ConfigEventCPId[playerid]], EventRCPZ[ConfigEventCPId[playerid]], EventRCPS[ConfigEventCPId[playerid]]);
+					SetPlayerCheckPointEx(playerid, EventRCPX[ConfigEventCPId[playerid]], EventRCPY[ConfigEventCPId[playerid]], EventRCPZ[ConfigEventCPId[playerid]], EventRCPS[ConfigEventCPId[playerid]]);
 				}
 				ConfigEventCPs[playerid][1] = 3;
             	format(string,sizeof(string),"Race Checkpoint %d Size", ConfigEventCPId[playerid]);
@@ -4832,13 +4858,13 @@ public OnPlayerKeyStateChange(playerid, newkeys, oldkeys)
 			else
 			{
 	        	if(EventRCPT[ConfigEventCPId[playerid]] == 1) {
-					SetPlayerCheckpoint(playerid, EventRCPX[ConfigEventCPId[playerid]], EventRCPY[ConfigEventCPId[playerid]], EventRCPZ[ConfigEventCPId[playerid]], EventRCPS[ConfigEventCPId[playerid]]);
+					SetPlayerCheckPointEx(playerid, EventRCPX[ConfigEventCPId[playerid]], EventRCPY[ConfigEventCPId[playerid]], EventRCPZ[ConfigEventCPId[playerid]], EventRCPS[ConfigEventCPId[playerid]]);
 				}
 				else if(EventRCPT[ConfigEventCPId[playerid]] == 4) {
-				    SetPlayerCheckpoint(playerid, EventRCPX[ConfigEventCPId[playerid]], EventRCPY[ConfigEventCPId[playerid]], EventRCPZ[ConfigEventCPId[playerid]], EventRCPS[ConfigEventCPId[playerid]]);
+				    SetPlayerCheckPointEx(playerid, EventRCPX[ConfigEventCPId[playerid]], EventRCPY[ConfigEventCPId[playerid]], EventRCPZ[ConfigEventCPId[playerid]], EventRCPS[ConfigEventCPId[playerid]]);
 				}
 				else {
-				    SetPlayerCheckpoint(playerid, EventRCPX[ConfigEventCPId[playerid]], EventRCPY[ConfigEventCPId[playerid]], EventRCPZ[ConfigEventCPId[playerid]], EventRCPS[ConfigEventCPId[playerid]]);
+				    SetPlayerCheckPointEx(playerid, EventRCPX[ConfigEventCPId[playerid]], EventRCPY[ConfigEventCPId[playerid]], EventRCPZ[ConfigEventCPId[playerid]], EventRCPS[ConfigEventCPId[playerid]]);
 				}
 			}
 		}
@@ -5704,7 +5730,7 @@ public OnPlayerText(playerid, text[])
 				SetPVarInt(playerid, "ChoosingDrugs", 0);
 				SetPVarInt(playerid, "tpDrugRunTimer", 45);
 				SetTimerEx("OtherTimerEx", 1000, false, "ii", playerid, TYPE_TPDRUGRUNTIMER);
-				SetPlayerCheckpoint(playerid, 2166.3772,-1675.3829,15.0859, 3);
+				SetPlayerCheckPointEx(playerid, 2166.3772,-1675.3829,15.0859, 3);
 				for(new i = 0; i < sizeof(FamilyInfo); i++)
 				{
 					if(strcmp(Points[mypoint][Owner], FamilyInfo[i][FamilyName], true) == 0)
@@ -5751,7 +5777,7 @@ public OnPlayerText(playerid, text[])
 				SetPVarInt(playerid, "ChoosingDrugs", 0);
 				SetPVarInt(playerid, "tpDrugRunTimer", 45);
 				SetTimerEx("OtherTimerEx", 1000, false, "ii", playerid, TYPE_TPDRUGRUNTIMER);
-				SetPlayerCheckpoint(playerid, 2354.2808,-1169.2959,28.0066, 3);
+				SetPlayerCheckPointEx(playerid, 2354.2808,-1169.2959,28.0066, 3);
 				for(new i = 0; i < sizeof(FamilyInfo); i++)
 				{
 					if(strcmp(Points[mypoint][Owner], FamilyInfo[i][FamilyName], true) == 0)
@@ -6023,7 +6049,7 @@ public OnPlayerText(playerid, text[])
 		GetPlayerPos(playerid, f_playerPos[0], f_playerPos[1], f_playerPos[2]);
 		if(IsPlayerInAnyVehicle(playerid))
 		{
-			if(strlen(text) > 64)
+			if(strlen(text) > 95)
 			{
 				SendNearbyMessage(playerid, 20.0, COLOR_WHITE, "{BBFFEE}[Trong xe]{FFFFFF} %s noi: %s %.64s", GetPlayerNameEx(playerid), text);
 				SendNearbyMessage(playerid, 20.0, COLOR_WHITE, "{BBFFEE}[Trong xe]{FFFFFF} %s noi: ...%s", GetPlayerNameEx(playerid), text[64]);
@@ -6035,7 +6061,7 @@ public OnPlayerText(playerid, text[])
 		}
 		else
 		{
-			if(strlen(text) > 64)
+			if(strlen(text) > 95)
 			{
 				SendNearbyMessage(playerid, 20.0, COLOR_WHITE, "%s noi: %s %.64s", GetPlayerNameEx(playerid), text);
 				SendNearbyMessage(playerid, 20.0, COLOR_WHITE, "%s noi: ...%s", GetPlayerNameEx(playerid), text[64]);
@@ -11503,13 +11529,13 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
         ConfigEventCPs[playerid][1] = 0;
         DisablePlayerCheckpoint(playerid);
 	    if(EventRCPT[ConfigEventCPId[playerid]] == 1) {
-			SetPlayerCheckpoint(playerid, EventRCPX[ConfigEventCPId[playerid]], EventRCPY[ConfigEventCPId[playerid]], EventRCPZ[ConfigEventCPId[playerid]], EventRCPS[ConfigEventCPId[playerid]]);
+			SetPlayerCheckPointEx(playerid, EventRCPX[ConfigEventCPId[playerid]], EventRCPY[ConfigEventCPId[playerid]], EventRCPZ[ConfigEventCPId[playerid]], EventRCPS[ConfigEventCPId[playerid]]);
 		}
 		else if(EventRCPT[ConfigEventCPId[playerid]] == 4) {
-		    SetPlayerCheckpoint(playerid, EventRCPX[ConfigEventCPId[playerid]], EventRCPY[ConfigEventCPId[playerid]], EventRCPZ[ConfigEventCPId[playerid]], EventRCPS[ConfigEventCPId[playerid]]);
+		    SetPlayerCheckPointEx(playerid, EventRCPX[ConfigEventCPId[playerid]], EventRCPY[ConfigEventCPId[playerid]], EventRCPZ[ConfigEventCPId[playerid]], EventRCPS[ConfigEventCPId[playerid]]);
 		}
 		else {
-		    SetPlayerCheckpoint(playerid, EventRCPX[ConfigEventCPId[playerid]], EventRCPY[ConfigEventCPId[playerid]], EventRCPZ[ConfigEventCPId[playerid]], EventRCPS[ConfigEventCPId[playerid]]);
+		    SetPlayerCheckPointEx(playerid, EventRCPX[ConfigEventCPId[playerid]], EventRCPY[ConfigEventCPId[playerid]], EventRCPZ[ConfigEventCPId[playerid]], EventRCPS[ConfigEventCPId[playerid]]);
 		}
         format(string,sizeof(string),"Checkpoint Edit(ID:%d)", ConfigEventCPId[playerid]);
 		ShowPlayerDialog(playerid,RCPEDITMENU2,DIALOG_STYLE_LIST,string,"Edit position\nEdit size\nEdit type\nView checkpoint","Dong y","Toi dang lam!");
@@ -11538,13 +11564,13 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 			else if(listitem == 3) // view checkpoint
 			{
 	        	if(EventRCPT[ConfigEventCPId[playerid]] == 1) {
-					SetPlayerCheckpoint(playerid, EventRCPX[ConfigEventCPId[playerid]], EventRCPY[ConfigEventCPId[playerid]], EventRCPZ[ConfigEventCPId[playerid]], EventRCPS[ConfigEventCPId[playerid]]);
+					SetPlayerCheckPointEx(playerid, EventRCPX[ConfigEventCPId[playerid]], EventRCPY[ConfigEventCPId[playerid]], EventRCPZ[ConfigEventCPId[playerid]], EventRCPS[ConfigEventCPId[playerid]]);
 				}
 				else if(EventRCPT[ConfigEventCPId[playerid]] == 4) {
-				    SetPlayerCheckpoint(playerid, EventRCPX[ConfigEventCPId[playerid]], EventRCPY[ConfigEventCPId[playerid]], EventRCPZ[ConfigEventCPId[playerid]], EventRCPS[ConfigEventCPId[playerid]]);
+				    SetPlayerCheckPointEx(playerid, EventRCPX[ConfigEventCPId[playerid]], EventRCPY[ConfigEventCPId[playerid]], EventRCPZ[ConfigEventCPId[playerid]], EventRCPS[ConfigEventCPId[playerid]]);
 				}
 				else {
-				    SetPlayerCheckpoint(playerid, EventRCPX[ConfigEventCPId[playerid]], EventRCPY[ConfigEventCPId[playerid]], EventRCPZ[ConfigEventCPId[playerid]], EventRCPS[ConfigEventCPId[playerid]]);
+				    SetPlayerCheckPointEx(playerid, EventRCPX[ConfigEventCPId[playerid]], EventRCPY[ConfigEventCPId[playerid]], EventRCPZ[ConfigEventCPId[playerid]], EventRCPS[ConfigEventCPId[playerid]]);
 				}
 				SetPlayerPos(playerid, EventRCPX[ConfigEventCPId[playerid]], EventRCPY[ConfigEventCPId[playerid]], EventRCPZ[ConfigEventCPId[playerid]]);
 				SendServerMessage(playerid, " You now have a view of this checkpoint, you are inside of the checkpoint, step outside to see it.");
@@ -11561,7 +11587,7 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 				DisablePlayerCheckpoint(playerid);
 	    		ConfigEventCPs[playerid][1] = 0;
 	    		ConfigEventCPs[playerid][0] = 0;
-	    		SetPlayerCheckpoint(playerid, EventRCPX[ConfigEventCPId[playerid]], EventRCPY[ConfigEventCPId[playerid]], EventRCPZ[ConfigEventCPId[playerid]], EventRCPS[ConfigEventCPId[playerid]]);
+	    		SetPlayerCheckPointEx(playerid, EventRCPX[ConfigEventCPId[playerid]], EventRCPY[ConfigEventCPId[playerid]], EventRCPZ[ConfigEventCPId[playerid]], EventRCPS[ConfigEventCPId[playerid]]);
          	}
 			else if(listitem == 1) // Normal Checkpoint
 			{
@@ -11569,7 +11595,7 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 			    DisablePlayerCheckpoint(playerid);
 	    		ConfigEventCPs[playerid][1] = 0;
 	    		ConfigEventCPs[playerid][0] = 0;
-	    		SetPlayerCheckpoint(playerid, EventRCPX[ConfigEventCPId[playerid]], EventRCPY[ConfigEventCPId[playerid]], EventRCPZ[ConfigEventCPId[playerid]], EventRCPS[ConfigEventCPId[playerid]]);
+	    		SetPlayerCheckPointEx(playerid, EventRCPX[ConfigEventCPId[playerid]], EventRCPY[ConfigEventCPId[playerid]], EventRCPZ[ConfigEventCPId[playerid]], EventRCPS[ConfigEventCPId[playerid]]);
 			}
 			else if(listitem == 2) // Watering Checkpoint
 			{
@@ -11577,7 +11603,7 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 			    DisablePlayerCheckpoint(playerid);
 	    		ConfigEventCPs[playerid][1] = 0;
 	    		ConfigEventCPs[playerid][0] = 0;
-	    		SetPlayerCheckpoint(playerid, EventRCPX[ConfigEventCPId[playerid]], EventRCPY[ConfigEventCPId[playerid]], EventRCPZ[ConfigEventCPId[playerid]], EventRCPS[ConfigEventCPId[playerid]]);
+	    		SetPlayerCheckPointEx(playerid, EventRCPX[ConfigEventCPId[playerid]], EventRCPY[ConfigEventCPId[playerid]], EventRCPZ[ConfigEventCPId[playerid]], EventRCPS[ConfigEventCPId[playerid]]);
 			}
 			else if(listitem == 3) // Finish Checkpoint
 			{
@@ -11585,7 +11611,7 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
        			DisablePlayerCheckpoint(playerid);
 	    		ConfigEventCPs[playerid][1] = 0;
 	    		ConfigEventCPs[playerid][0] = 0;
-	    		SetPlayerCheckpoint(playerid, EventRCPX[ConfigEventCPId[playerid]], EventRCPY[ConfigEventCPId[playerid]], EventRCPZ[ConfigEventCPId[playerid]], EventRCPS[ConfigEventCPId[playerid]]);
+	    		SetPlayerCheckPointEx(playerid, EventRCPX[ConfigEventCPId[playerid]], EventRCPY[ConfigEventCPId[playerid]], EventRCPZ[ConfigEventCPId[playerid]], EventRCPS[ConfigEventCPId[playerid]]);
 			}
 	    }
     }
@@ -13713,7 +13739,7 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 
 							CreatePaintballArenaHill(arenaid);
 							SetPVarInt(playerid, "TickKOTHID", SetTimerEx("TickKOTH", 1000, true, "d", playerid)); // Room Owner's KOTH Tick Function
-							SetPlayerCheckpoint(playerid, PaintBallArena[arenaid][pbHillX], PaintBallArena[arenaid][pbHillY], PaintBallArena[arenaid][pbHillZ], PaintBallArena[arenaid][pbHillRadius]);
+							SetPlayerCheckPointEx(playerid, PaintBallArena[arenaid][pbHillX], PaintBallArena[arenaid][pbHillY], PaintBallArena[arenaid][pbHillZ], PaintBallArena[arenaid][pbHillRadius]);
 	            	    }
 	            	    if(PaintBallArena[arenaid][pbGameType] == 5)
 	            	    {
@@ -13746,7 +13772,7 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 
 							CreatePaintballArenaHill(arenaid);
 							SetPVarInt(playerid, "TickKOTHID", SetTimerEx("TickKOTH", 1000, true, "d", playerid)); // Room Owner's KOTH Tick Function
-							SetPlayerCheckpoint(playerid, PaintBallArena[arenaid][pbHillX], PaintBallArena[arenaid][pbHillY], PaintBallArena[arenaid][pbHillZ], PaintBallArena[arenaid][pbHillRadius]);
+							SetPlayerCheckPointEx(playerid, PaintBallArena[arenaid][pbHillX], PaintBallArena[arenaid][pbHillY], PaintBallArena[arenaid][pbHillZ], PaintBallArena[arenaid][pbHillRadius]);
 							PlayerInfo[playerid][pPaintTeam] = 1;
 							PaintBallArena[arenaid][pbTeamRed] = 1;
 	            	    }
@@ -14953,10 +14979,18 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 				VehicleSpawned[playerid]++;
 				PlayerVehicleInfo[playerid][listitem][pvSpawned] = 1;
 				PlayerVehicleInfo[playerid][listitem][pvId] = iVeh;
+<<<<<<< HEAD
 <<<<<<< Updated upstream
 				if(PlayerVehicleInfo[playerid][listitem][pvLocked] == 1) LockPlayerVehicle(playerid, iVeh, PlayerVehicleInfo[playerid][listitem][pvLock]);
+=======
+				VehicleFuel[iVeh] = PlayerVehicleInfo[playerid][listitem][pvFuel];
+				if (PlayerVehicleInfo[playerid][listitem][pvTiresDays] == 0) PlayerVehicleInfo[playerid][listitem][pvTiresDays] = gettime() + (86400 * 10);
+				if (VehicleFuel[iVeh] > GetVehicleFuelCapacity(iVeh)) VehicleFuel[iVeh] = GetVehicleFuelCapacity(iVeh);
+				if (PlayerVehicleInfo[playerid][listitem][pvLocked] == 1) LockPlayerVehicle(playerid, iVeh, PlayerVehicleInfo[playerid][listitem][pvLock]);
+>>>>>>> main
 				LoadPlayerVehicleMods(playerid, listitem);
 				g_mysql_SaveVehicle(playerid, listitem);
+				sendMessage(playerid, -1, "pvFuel %0.1f | Fuel %0.1f", PlayerVehicleInfo[playerid][listitem][pvFuel], VehicleFuel[iVeh]);
 
 =======
 				VehicleFuel[iVeh] = PlayerVehicleInfo[playerid][listitem][pvFuel];
@@ -14973,9 +15007,7 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 				SendClientMessageEx(playerid, COLOR_WHITE, vstring);
 				CheckPlayerVehiclesForDesync(playerid);
 				Vehicle_ResetData(iVeh);
-				VehicleFuel[iVeh] = PlayerVehicleInfo[playerid][listitem][pvFuel];
 				VehicleTrucker_Reload(playerid, listitem, true);
-				if (VehicleFuel[iVeh] > GetVehicleFuelCapacity(iVeh)) VehicleFuel[iVeh] = GetVehicleFuelCapacity(iVeh);
 
 				if(PlayerVehicleInfo[playerid][listitem][pvCrashFlag] == 1 && PlayerVehicleInfo[playerid][listitem][pvCrashX] != 0.0)
 				{
@@ -15066,7 +15098,7 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 						Get3DZone(carPos[0], carPos[1], carPos[2], zone, sizeof(zone));
 						format(string, sizeof(string), "Your vehicle is located in %s.", zone);
 						SendClientMessageEx(playerid, COLOR_YELLOW, string);
-						SetPlayerCheckpoint(playerid, carPos[0], carPos[1], carPos[2], 15.0);
+						SetPlayerCheckPointEx(playerid, carPos[0], carPos[1], carPos[2], 15.0);
 						SendServerMessage(playerid, " Hint: Di theo diem checkpoint de tim kiem xe cua ban!");
 					}
 	            }
@@ -15109,7 +15141,7 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 				Get3DZone(carPos[0], carPos[1], carPos[2], zone, sizeof(zone));
 				format(string, sizeof(string), "Your vehicle is located in %s.", zone);
 				SendClientMessageEx(playerid, COLOR_YELLOW, string);
-				SetPlayerCheckpoint(playerid, carPos[0], carPos[1], carPos[2], 15.0);
+				SetPlayerCheckPointEx(playerid, carPos[0], carPos[1], carPos[2], 15.0);
 				SendServerMessage(playerid, " Hint: Di theo diem checkpoint de tim kiem xe cua ban!");
 			}
 		}
@@ -15183,7 +15215,7 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 				Get3DZone(carPos[0], carPos[1], carPos[2], zone, sizeof(zone));
 				format(string, sizeof(string), "Xe cua ban nam o %s.", zone);
 				SendClientMessageEx(playerid, COLOR_YELLOW, string);
-				SetPlayerCheckpoint(playerid, carPos[0], carPos[1], carPos[2], 15.0);
+				SetPlayerCheckPointEx(playerid, carPos[0], carPos[1], carPos[2], 15.0);
 				SendServerMessage(playerid, " Hint: Di theo diem checkpoint de tim kiem xe cua ban!");
 				if(carPos[2] > 500.0)
 				{

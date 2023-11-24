@@ -245,7 +245,7 @@ hook OnPlayerKeyStateChange(playerid, newkeys, oldkeys)
 					DestroyDynamicCP(tm_DynamicCP[playerid]);
 					SendClientMessage(playerid,-1,"Rac trong xe cua ban da day. Hay cho rac ve khu tai che de thuc hien tai che rac thai.");
 					//tm_DynamicCP[playerid][1] = CreateDynamicCP(TM_PICKUPTAICHE, 4.00, 0, 0, playerid, 2000.0);
-					SetPlayerCheckpoint(playerid, TM_CPRECYCLE, 3);
+					SetPlayerCheckPointEx(playerid, TM_CPRECYCLE, 3);
 					tm_BinNum[playerid] = 0;
 					return 0;
 				}

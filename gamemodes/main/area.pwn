@@ -21,6 +21,7 @@ public OnPlayerEnterDynamicArea(playerid, areaid)
 	{
 	    PlayAudioStreamForPlayerEx(playerid, audiourlurl, audiourlparams[0], audiourlparams[1], audiourlparams[2], audiourlparams[3], 1);
 	}
+	CheckNodePath(playerid, areaid);
 	return 1;
 }
 

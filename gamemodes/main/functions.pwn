@@ -2001,6 +2001,20 @@ public OnPlayerWeaponShot(playerid, weaponid, hittype, hitid, Float:fX, Float:fY
             }
         }
     }
+<<<<<<< HEAD
+=======
+	if(!IsValidPlayerWeapon(playerid, weaponid) && PlayerInfo[playerid][pAdmin] < 2 && GetPVarInt(playerid, "AC_Weapon") < gettime())
+	{
+		new string[128], weaponName[32];
+		GetWeaponName(weaponid, weaponName, sizeof(weaponName));
+		format(string,sizeof(string),"[{57d699}RCRP-AC{ffffff}] Nguoi choi {57d699}%s(%d){FFFFFF} co the dang su dung hack vu khi %s.",GetPlayerNameEx(playerid), playerid, weaponName);
+		ABroadCast(COLOR_YELLOW , string, 2);
+		SetPVarInt(playerid, "AC_Weapon", gettime()+15);
+		format(string,sizeof(string),"[RCRP-AC] %s (%d) da bi kick khoi may chu [Reason: RCRP-AC Weapon %s].",GetPlayerNameEx(playerid), playerid, weaponName);
+		SendClientMessageToAllEx(COLOR_LIGHTRED, string);
+		SetTimerEx("KickEx", 1000, 0, "i", playerid);
+	}
+>>>>>>> main
     for(new Sz; Sz < MAX_SZ; Sz++)
  	{
   		if(IsPlayerInRangeOfPoint(playerid, SafeZoneInfo[Sz][szKhoangcach], SafeZoneInfo[Sz][szExteriorX], SafeZoneInfo[Sz][szExteriorY], SafeZoneInfo[Sz][szExteriorZ]))
@@ -2718,6 +2732,7 @@ public InitiateGamemode()
 	LoadPlants();
 	LoadSpeedCameras();
 	LoadPayNSprays();
+	LoadRepairPoint();
 	LoadArrestPoints();
 	LoadImpoundPoints();
  	g_mysql_LoadSales();
@@ -3646,7 +3661,7 @@ public SetAllCopCheckpoint(Float:allx, Float:ally, Float:allz, Float:radi)
 	{
 		if(IsACop(i))
 		{
-			SetPlayerCheckpoint(i,allx,ally,allz, radi);
+			SetPlayerCheckPointEx(i,allx,ally,allz, radi);
 		}
 	}
 	return 1;
@@ -5750,42 +5765,42 @@ public LoadTruckOld(playerid)
 			if(truckdeliver == 1)
 			{
 				SendClientMessageEx(playerid, COLOR_LIGHTBLUE,"* Thuyen cua ban chua day food & beverages.");
-				SetPlayerCheckpoint(playerid, BoatDropoffs[route][PosX], BoatDropoffs[route][PosY], BoatDropoffs[route][PosZ], 10);
+				SetPlayerCheckPointEx(playerid, BoatDropoffs[route][PosX], BoatDropoffs[route][PosY], BoatDropoffs[route][PosZ], 10);
 			}
 			else if(truckdeliver == 2)
 			{
 				SendClientMessageEx(playerid, COLOR_LIGHTBLUE,"* Thuyen cua ban chua day clothing.");
-				SetPlayerCheckpoint(playerid, BoatDropoffs[route][PosX], BoatDropoffs[route][PosY], BoatDropoffs[route][PosZ], 10);
+				SetPlayerCheckPointEx(playerid, BoatDropoffs[route][PosX], BoatDropoffs[route][PosY], BoatDropoffs[route][PosZ], 10);
 			}
 			else if(truckdeliver == 3)
 			{
 				SendClientMessageEx(playerid, COLOR_LIGHTBLUE,"* Thuyen cua ban chua day materials.");
-				SetPlayerCheckpoint(playerid, BoatDropoffs[route][PosX], BoatDropoffs[route][PosY], BoatDropoffs[route][PosZ], 10);
+				SetPlayerCheckPointEx(playerid, BoatDropoffs[route][PosX], BoatDropoffs[route][PosY], BoatDropoffs[route][PosZ], 10);
 			}
 			else if(truckdeliver == 4)
 			{
 				SendClientMessageEx(playerid, COLOR_LIGHTBLUE,"* Thuyen cua ban chua day 24/7 items.");
-				SetPlayerCheckpoint(playerid, BoatDropoffs[route][PosX], BoatDropoffs[route][PosY], BoatDropoffs[route][PosZ], 10);
+				SetPlayerCheckPointEx(playerid, BoatDropoffs[route][PosX], BoatDropoffs[route][PosY], BoatDropoffs[route][PosZ], 10);
 			}
 			else if(truckdeliver == 5)
 			{
 				SendClientMessageEx(playerid, COLOR_LIGHTBLUE,"* Thuyen cua ban chua day weapons.");
-				SetPlayerCheckpoint(playerid, BoatDropoffs[route][PosX], BoatDropoffs[route][PosY], BoatDropoffs[route][PosZ], 10);
+				SetPlayerCheckPointEx(playerid, BoatDropoffs[route][PosX], BoatDropoffs[route][PosY], BoatDropoffs[route][PosZ], 10);
 			}
 			else if(truckdeliver == 6)
 			{
 				SendClientMessageEx(playerid, COLOR_LIGHTBLUE,"* Thuyen cua ban chua day drugs.");
-				SetPlayerCheckpoint(playerid, BoatDropoffs[route][PosX], BoatDropoffs[route][PosY], BoatDropoffs[route][PosZ], 10);
+				SetPlayerCheckPointEx(playerid, BoatDropoffs[route][PosX], BoatDropoffs[route][PosY], BoatDropoffs[route][PosZ], 10);
 			}
 			else if(truckdeliver == 7)
 			{
 				SendClientMessageEx(playerid, COLOR_LIGHTBLUE,"* Thuyen cua ban chua day illegal materials.");
-				SetPlayerCheckpoint(playerid, BoatDropoffs[route][PosX], BoatDropoffs[route][PosY], BoatDropoffs[route][PosZ], 10);
+				SetPlayerCheckPointEx(playerid, BoatDropoffs[route][PosX], BoatDropoffs[route][PosY], BoatDropoffs[route][PosZ], 10);
 			}
    			else if(truckdeliver == 8)
 			{
 				SendClientMessageEx(playerid, COLOR_LIGHTBLUE,"* Thuyen cua ban chua day illegal materials.");
-				SetPlayerCheckpoint(playerid, BoatDropoffs[route][PosX], BoatDropoffs[route][PosY], BoatDropoffs[route][PosZ], 10);
+				SetPlayerCheckPointEx(playerid, BoatDropoffs[route][PosX], BoatDropoffs[route][PosY], BoatDropoffs[route][PosZ], 10);
 			}
 			SendClientMessageEx(playerid, COLOR_REALRED, "Canh Bao: Can than bon cuop, chung co the cuop hang cua ban.");
 		}
@@ -5796,47 +5811,47 @@ public LoadTruckOld(playerid)
 			if(truckdeliver == 1)
 			{
 				SendClientMessageEx(playerid, COLOR_LIGHTBLUE,"* Truck cua ban da duoc chat day food & beverages.");
-				SetPlayerCheckpoint(playerid, TruckerDropoffs[route][PosX], TruckerDropoffs[route][PosY], TruckerDropoffs[route][PosZ], 10);
+				SetPlayerCheckPointEx(playerid, TruckerDropoffs[route][PosX], TruckerDropoffs[route][PosY], TruckerDropoffs[route][PosZ], 10);
 			}
 			else if(truckdeliver == 2)
 			{
 				SendClientMessageEx(playerid, COLOR_LIGHTBLUE,"* Truck cua ban da duoc chat day clothing.");
-				SetPlayerCheckpoint(playerid, TruckerDropoffs[route][PosX], TruckerDropoffs[route][PosY], TruckerDropoffs[route][PosZ], 10);
+				SetPlayerCheckPointEx(playerid, TruckerDropoffs[route][PosX], TruckerDropoffs[route][PosY], TruckerDropoffs[route][PosZ], 10);
 			}
 			else if(truckdeliver == 3)
 			{
 				SendClientMessageEx(playerid, COLOR_LIGHTBLUE,"* Truck cua ban da duoc chat day materials.");
-				SetPlayerCheckpoint(playerid, TruckerDropoffs[route][PosX], TruckerDropoffs[route][PosY], TruckerDropoffs[route][PosZ], 10);
+				SetPlayerCheckPointEx(playerid, TruckerDropoffs[route][PosX], TruckerDropoffs[route][PosY], TruckerDropoffs[route][PosZ], 10);
 			}
 			else if(truckdeliver == 4)
 			{
 				SendClientMessageEx(playerid, COLOR_LIGHTBLUE,"* Truck cua ban da duoc chat day 24/7 items.");
-				SetPlayerCheckpoint(playerid, TruckerDropoffs[route][PosX], TruckerDropoffs[route][PosY], TruckerDropoffs[route][PosZ], 10);
+				SetPlayerCheckPointEx(playerid, TruckerDropoffs[route][PosX], TruckerDropoffs[route][PosY], TruckerDropoffs[route][PosZ], 10);
 			}
 			else if(truckdeliver == 5)
 			{
 				SendClientMessageEx(playerid, 0x4c5b74FF, "Da lay hang xong.");
-				SetPlayerCheckpoint(playerid, TruckerDropoffs[route][PosX], TruckerDropoffs[route][PosY], TruckerDropoffs[route][PosZ], 10);
+				SetPlayerCheckPointEx(playerid, TruckerDropoffs[route][PosX], TruckerDropoffs[route][PosY], TruckerDropoffs[route][PosZ], 10);
 			}
 			else if(truckdeliver == 6)
 			{
 				SendClientMessageEx(playerid, 0x4c5b74FF, "Da lay hang xong.");
-				SetPlayerCheckpoint(playerid, TruckerDropoffs[route][PosX], TruckerDropoffs[route][PosY], TruckerDropoffs[route][PosZ], 10);
+				SetPlayerCheckPointEx(playerid, TruckerDropoffs[route][PosX], TruckerDropoffs[route][PosY], TruckerDropoffs[route][PosZ], 10);
 			}
 			else if(truckdeliver == 7)
 			{
 				SendClientMessageEx(playerid, 0x4c5b74FF, "Da lay hang xong.");
-				SetPlayerCheckpoint(playerid, TruckerDropoffs[route][PosX], TruckerDropoffs[route][PosY], TruckerDropoffs[route][PosZ], 10);
+				SetPlayerCheckPointEx(playerid, TruckerDropoffs[route][PosX], TruckerDropoffs[route][PosY], TruckerDropoffs[route][PosZ], 10);
 			}
 			else if(truckdeliver == 8)
 			{
 				SendClientMessageEx(playerid, 0x4c5b74FF, "Da lay hang xong.");
-				SetPlayerCheckpoint(playerid, TruckerDropoffs[route][PosX], TruckerDropoffs[route][PosY], TruckerDropoffs[route][PosZ], 10);
+				SetPlayerCheckPointEx(playerid, TruckerDropoffs[route][PosX], TruckerDropoffs[route][PosY], TruckerDropoffs[route][PosZ], 10);
 			}
 			else if(truckdeliver == 9)
 			{
 				SendClientMessageEx(playerid, 0x4c5b74FF, "Da lay hang xong.");
-				SetPlayerCheckpoint(playerid, TruckerDropoffs[route][PosX], TruckerDropoffs[route][PosY], TruckerDropoffs[route][PosZ], 10);
+				SetPlayerCheckPointEx(playerid, TruckerDropoffs[route][PosX], TruckerDropoffs[route][PosY], TruckerDropoffs[route][PosZ], 10);
 			}
 			SendClientMessageEx(playerid, COLOR_REALRED, "[WARNING] Ban co the bi cuop hang bat cu luc nao.");
 		}
@@ -5890,7 +5905,7 @@ public LoadTruck(playerid)
 		format(string, sizeof(string), "* Xe tai cua ban da day %s", GetInventoryType(business));
 		SendClientMessageEx(playerid, COLOR_LIGHTBLUE, string);
 
-        SetPlayerCheckpoint(playerid, Businesses[business][bSupplyPos][0], Businesses[business][bSupplyPos][1], Businesses[business][bSupplyPos][2], 10.0);
+        SetPlayerCheckPointEx(playerid, Businesses[business][bSupplyPos][0], Businesses[business][bSupplyPos][1], Businesses[business][bSupplyPos][2], 10.0);
 
 		SendClientMessageEx(playerid, COLOR_WHITE, "HUONG DAN: Dua hang hoa yeu cau den dia diem nhan hang (di theo diem do tren rada).");
 		SendClientMessageEx(playerid, COLOR_REALRED, "CANH BAO: Coi chung nhung ten cuop, chung co the lay hang hoa cua ban va tau thoat...");
@@ -6419,14 +6434,14 @@ public WateringStation(playerid)
      		RCPIdCurrent[playerid]++;
      		if(EventRCPT[RCPIdCurrent[playerid]] == 1) {
 	    	    DisablePlayerCheckpoint(playerid);
-				SetPlayerCheckpoint(playerid, EventRCPX[RCPIdCurrent[playerid]], EventRCPY[RCPIdCurrent[playerid]], EventRCPZ[RCPIdCurrent[playerid]], EventRCPS[RCPIdCurrent[playerid]]);
+				SetPlayerCheckPointEx(playerid, EventRCPX[RCPIdCurrent[playerid]], EventRCPY[RCPIdCurrent[playerid]], EventRCPZ[RCPIdCurrent[playerid]], EventRCPS[RCPIdCurrent[playerid]]);
 			}
 			else if(EventRCPT[RCPIdCurrent[playerid]] == 4) {
 		   		DisablePlayerCheckpoint(playerid);
-		    	SetPlayerCheckpoint(playerid, EventRCPX[RCPIdCurrent[playerid]], EventRCPY[RCPIdCurrent[playerid]], EventRCPZ[RCPIdCurrent[playerid]], EventRCPS[RCPIdCurrent[playerid]]);
+		    	SetPlayerCheckPointEx(playerid, EventRCPX[RCPIdCurrent[playerid]], EventRCPY[RCPIdCurrent[playerid]], EventRCPZ[RCPIdCurrent[playerid]], EventRCPS[RCPIdCurrent[playerid]]);
 			} else {
 			    DisablePlayerCheckpoint(playerid);
-			    SetPlayerCheckpoint(playerid, EventRCPX[RCPIdCurrent[playerid]], EventRCPY[RCPIdCurrent[playerid]], EventRCPZ[RCPIdCurrent[playerid]], EventRCPS[RCPIdCurrent[playerid]]);
+			    SetPlayerCheckPointEx(playerid, EventRCPX[RCPIdCurrent[playerid]], EventRCPY[RCPIdCurrent[playerid]], EventRCPZ[RCPIdCurrent[playerid]], EventRCPS[RCPIdCurrent[playerid]]);
 			}
 			SendClientMessageEx(playerid, COLOR_WHITE, "You are now fully rehydrated you can continue to your next checkpoint.");
 		}
@@ -13389,6 +13404,13 @@ stock GivePlayerStoreItem(playerid, type, business, item, price)
 			GivePlayerValidWeapon(playerid,5,2);
 			SendClientMessageEx(playerid, COLOR_WHITE, "Ban da mua gay bong chay");
 		}
+		case ITEM_SAWDER:{
+			if(!Inventory_HasItem(playerid, "May Cua")) {
+				if(!Inventory_Add(playerid, "May Cua", .timer = 2*24)) return 1;
+				SendClientMessageEx(playerid, COLOR_WHITE, "Ban da mua May Cua (Do ben: 2 Tiếng) thanh cong, su dung /inv > May Cua");
+			}
+			else return SendClientMessageEx(playerid, COLOR_WHITE, "Ban da so huu May Cua");
+		}
 		case ITEM_CONDOM:
 		{
 			if(!Inventory_HasItem(playerid, "GPS")) {
@@ -13843,7 +13865,7 @@ public SyncTime()
 			{
 			//	format(string, sizeof(string), "%s da san sang de chiem dong.", Points[x][Name]);
 			//	SendClientMessageToAllEx(COLOR_YELLOW, string);
-				//SetPlayerCheckpoint(i, Points[i][Pointx], Points[i][Pointy], Points[i][Pointz], 3);
+				//SetPlayerCheckPointEx(i, Points[i][Pointx], Points[i][Pointy], Points[i][Pointz], 3);
 				ReadyToCapture(x);
 				Points[x][Announced] = 1;
 			}
@@ -14384,6 +14406,7 @@ stock RehashHouses()
 	}
 	LoadHouses();
 }
+
 stock SaveDynamicDoors()
 {
 	for(new i = 0; i < MAX_DDOORS; i++)
@@ -15072,7 +15095,7 @@ stock JoinPaintballArena(playerid, arenaid, password[])
 	}
 
  	if(PaintBallArena[arenaid][pbGameType] == 4 || PaintBallArena[arenaid][pbGameType] == 5) {
- 		SetPlayerCheckpoint(playerid, PaintBallArena[arenaid][pbHillX], PaintBallArena[arenaid][pbHillY], PaintBallArena[arenaid][pbHillZ], PaintBallArena[arenaid][pbHillRadius]);
+ 		SetPlayerCheckPointEx(playerid, PaintBallArena[arenaid][pbHillX], PaintBallArena[arenaid][pbHillY], PaintBallArena[arenaid][pbHillZ], PaintBallArena[arenaid][pbHillRadius]);
    		SetPVarInt(playerid, "TickKOTHID", SetTimerEx("TickKOTH", 1000, true, "d", playerid)); // Player's KOTH Tick Function
 	}
 
@@ -16048,6 +16071,7 @@ stock DestroyPlayerVehicle(playerid, playervehicleid)
 		PlayerVehicleInfo[playerid][playervehicleid][pvColor2] = 126;
 		PlayerVehicleInfo[playerid][playervehicleid][pvPrice] = 0;
 		PlayerVehicleInfo[playerid][playervehicleid][pvHealth] = 900.0;
+		PlayerVehicleInfo[playerid][playervehicleid][pvMaxHealth] = 900.0;
 		PlayerVehicleInfo[playerid][playervehicleid][pvFuel] = 0.0;
 		PlayerVehicleInfo[playerid][playervehicleid][pvCapacity] = 50.0;
 		PlayerVehicleInfo[playerid][playervehicleid][pvImpounded] = 0;
@@ -16099,7 +16123,11 @@ stock LoadPlayerVehicles(playerid) {
 					Vehicle_ResetData(carcreated);
 					PlayerVehicleInfo[playerid][v][pvId] = carcreated;
 					VehicleFuel[carcreated] = PlayerVehicleInfo[playerid][v][pvFuel];
+<<<<<<< HEAD
 					if(VehicleFuel[carcreated] > VehicleCapacity[carcreated]) VehicleFuel[carcreated] = VehicleCapacity[carcreated];
+=======
+					if(VehicleFuel[carcreated] >  VehicleCapacity[carcreated]) VehicleFuel[carcreated] =  VehicleCapacity[carcreated];
+>>>>>>> main
 
 					if(PlayerVehicleInfo[playerid][v][pvLocked]) {
 						LockPlayerVehicle(playerid, carcreated, PlayerVehicleInfo[playerid][v][pvLock]);
@@ -16837,8 +16865,16 @@ stock CreatePlayerVehicle(playerid, playervehicleid, modelid, Float: x, Float: y
 		switch(modelid)
 		{
 			case 403, 406, 414, 423, 427, 428, 433, 443, 455, 456, 470, 499, 514, 515:
-			{PlayerVehicleInfo[playerid][playervehicleid][pvHealth] = 1100.0;} 
-			default: PlayerVehicleInfo[playerid][playervehicleid][pvHealth] = 900.0;
+			{
+				PlayerVehicleInfo[playerid][playervehicleid][pvHealth] = 1100.0;
+				PlayerVehicleInfo[playerid][playervehicleid][pvMaxHealth] = 1100.0;
+			} 
+			default: 
+			{
+				PlayerVehicleInfo[playerid][playervehicleid][pvHealth] = 900.0;
+				PlayerVehicleInfo[playerid][playervehicleid][pvMaxHealth] = 900.0;
+			}
+
 		}
 
 		for(new w = 0; w < 3; w++)
@@ -16877,6 +16913,10 @@ stock CreatePlayerVehicle(playerid, playervehicleid, modelid, Float: x, Float: y
 		PlayerVehicleInfo[playerid][playervehicleid][pvId] = carcreated;
 		PlayerVehicleInfo[playerid][playervehicleid][pvSpawned] = 1;
 		PlayerVehicleInfo[playerid][playervehicleid][pvFuel] = PlayerVehicleInfo[playerid][playervehicleid][pvCapacity];
+<<<<<<< HEAD
+=======
+		VehicleFuel[carcreated] = PlayerVehicleInfo[playerid][playervehicleid][pvFuel];
+>>>>>>> main
 		VehicleCapacity[carcreated] = 50.0;
 		//SetVehicleNumberPlate(carcreated, PlayerVehicleInfo[playerid][playervehicleid][pvNumberPlate]);
 
@@ -19723,7 +19763,7 @@ stock CompleteToyTrade(playerid)
 forward RFLCheckpointu(playerid);
 public RFLCheckpointu(playerid)
 {
-	SetPlayerCheckpoint(playerid, EventRCPX[ConfigEventCPId[playerid]], EventRCPY[ConfigEventCPId[playerid]], EventRCPZ[ConfigEventCPId[playerid]], EventRCPS[ConfigEventCPId[playerid]]);
+	SetPlayerCheckPointEx(playerid, EventRCPX[ConfigEventCPId[playerid]], EventRCPY[ConfigEventCPId[playerid]], EventRCPZ[ConfigEventCPId[playerid]], EventRCPS[ConfigEventCPId[playerid]]);
 }
 
 forward FixServerTime();
@@ -23346,6 +23386,19 @@ public todtime()
     SetWorldTime(0);
     GioFix = SetTimerEx("todtime1", 10000, 0, "d", 1);
 }
+<<<<<<< HEAD
+=======
+forward TimeCraftMed(playerid);
+public TimeCraftMed(playerid)
+{
+	if(PlayerInfo[playerid][pTimeCraft] > 1)
+	{
+    	PlayerInfo[playerid][pTimeCraft] -= 1;
+    	SetTimerEx("TimeCraftMed", 60000, 0, "d", playerid);
+    }
+    return 1;
+}
+>>>>>>> main
 
 forward todtime1();
 public todtime1()
@@ -23409,4 +23462,116 @@ stock TacklePlayer(playerid, tacklee)
 	SetPVarInt(playerid, "TackleMode", 0);
 	SendClientMessageEx(playerid, COLOR_LIGHTBLUE, "Khang cu bi vo hieu hoa. Bay gio ban co the cat vu khi vao tui. (/holster)");
 	return 1;
+}
+
+//Panels
+decode_panels(panels, &front_left_panel, &front_right_panel, &rear_left_panel, &rear_right_panel, &windshield, &front_bumper, &rear_bumper)
+{
+    front_left_panel = panels & 15;
+    front_right_panel = panels >> 4 & 15;
+    rear_left_panel = panels >> 8 & 15;
+    rear_right_panel = panels >> 12 & 15;
+    windshield = panels >> 16 & 15;
+    front_bumper = panels >> 20 & 15;
+    rear_bumper = panels >> 24 & 15;
+}
+
+//Doors
+decode_doors(doors, &bonnet, &boot, &driver_door, &passenger_door)
+{
+    bonnet = doors & 7;
+    boot = doors >> 8 & 7;
+    driver_door = doors >> 16 & 7;
+    passenger_door = doors >> 24 & 7;
+}
+
+
+//Lights
+decode_lights(lights, &front_left_light, &front_right_light, &back_lights)
+{
+    front_left_light = lights & 1;
+    front_right_light = lights >> 2 & 1;
+    back_lights = lights >> 6 & 1;
+}
+
+//Tires
+decode_tires(tires, &rear_right_tire, &front_right_tire, &rear_left_tire, &front_left_tire)
+{
+    rear_right_tire = tires & 1;
+    front_right_tire = tires >> 1 & 1;
+    rear_left_tire = tires >> 2 & 1;
+    front_left_tire = tires >> 3 & 1;
+}
+
+stock GetVehicleStatus(playerid, &dmg_panel, &dmg_door, &dmg_light, &dmg_tire)
+{
+	new vehicle = GetPlayerVehicleID(playerid);
+	if (!vehicle) 	return 1;
+
+	new panels, doors, lights, tires,
+		panel[7], door[4], light[3], tire[4];
+
+	GetVehicleDamageStatus(vehicle, panels, doors, lights, tires);
+			
+	decode_panels(panels, panel[0], panel[1], panel[2], panel[3], panel[4], panel[5], panel[6]);
+	decode_doors(doors, door[0], door[1], door[2], door[3]);
+	decode_lights(lights, light[0], light[1], light[2]);
+	decode_tires(tires, tire[0], tire[1], tire[2], tire[3]);
+
+	for(new i; i < sizeof(panels); i++) if (panel[i]) 	dmg_panel++; 
+	for(new i; i < sizeof(door); i++) 	if (door[i]) 	dmg_door++; 
+	for(new i; i < sizeof(light); i++) 	if (light[i]) 	dmg_light++; 
+	for(new i; i < sizeof(tire); i++)	if (tire[i]) 	dmg_tire++; 
+
+	dmg_panel = 	floatround(dmg_panel*100/sizeof(panel), floatround_round);
+	dmg_door =		floatround(dmg_door*100/sizeof(door), floatround_round);
+	dmg_light =		floatround(dmg_light*100/sizeof(light), floatround_round);
+	dmg_tire = 		floatround(dmg_tire*100/sizeof(tire), floatround_round);
+
+	return 1;
+}
+
+stock FormatTimeleft(startTimestamp, endTimestamp) {
+    static const
+		SECONDS_PER_MINUTE = 60,
+		SECONDS_PER_HOUR = 3600,
+		SECONDS_PER_DAY = 86400,
+		SECONDS_PER_MONTH = 2592000;
+
+    new string[128];
+
+	new seconds = endTimestamp - startTimestamp;
+
+	if (seconds == 1)
+		format(string, sizeof(string), "1 giay");
+	else if (seconds < SECONDS_PER_MINUTE)
+		format(string, sizeof(string), "%i giay", seconds);
+	else if (seconds < (2 * SECONDS_PER_MINUTE))
+		format(string, sizeof(string), "1 phut");
+	else if (seconds < (45 * SECONDS_PER_MINUTE))
+		format(string, sizeof(string), "%i phut", (seconds / SECONDS_PER_MINUTE));
+	else if (seconds < (90 * SECONDS_PER_MINUTE))
+		format(string, sizeof(string), "1 gio");
+	else if (seconds < (24 * SECONDS_PER_HOUR))
+		format(string, sizeof(string), "%i gio", (seconds / SECONDS_PER_HOUR));
+	else if (seconds < (48 * SECONDS_PER_HOUR))
+		format(string, sizeof(string), "1 ngay");
+	else if (seconds < (30 * SECONDS_PER_DAY))
+		format(string, sizeof(string), "%i ngay", (seconds / SECONDS_PER_DAY));
+	else if (seconds < (12 * SECONDS_PER_MONTH)) {
+		new months = floatround(seconds / SECONDS_PER_DAY / 30);
+      	if (months <= 1)
+			format(string, sizeof(string), "1 thang");
+      	else
+			format(string, sizeof(string), "%i thang", months);
+	}
+    else {
+      	new years = floatround(seconds / SECONDS_PER_DAY / 365);
+      	if (years <= 1)
+			format(string, sizeof(string), "1 nam");
+      	else
+			format(string, sizeof(string), "%i nam", years);
+	}
+
+	return string;
 }

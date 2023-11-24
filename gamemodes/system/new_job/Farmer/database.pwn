@@ -38,7 +38,6 @@ public OnLoadFarms()
 stock FARM_UPDATE(farmid)
 {
 	new string[2048];
-	printf("Saving Farm ID %d", farmid);
 	format(string, sizeof(string), "UPDATE `farms` SET \
 		`OwnerPlayer`=%d, \
 		`VirtualWorld`=%d, \
@@ -152,7 +151,6 @@ public OnLoadPlants(playerid)
 stock PLANT_UPDATE(playerid, index)
 {
 	new string[2048];
-	printf("Saving PLANT ID %d", index);
 	format(string, sizeof(string), "UPDATE `farmplants` SET \
 		`plantLevel` = %d, \
 		`plantType` = %d, \
@@ -267,7 +265,6 @@ public OnLoadCattles(playerid)
 stock CATTLE_UPDATE(playerid, index)
 {
 	new string[2048];
-	printf("Saving CATTLE %s's ID %d",GetPlayerNameEx(playerid), index);
 	format(string, sizeof(string), "UPDATE `farmcattle` SET \
 		`cattleStatus`=%d, \
 		`OwnerPlayerId`=%d, \

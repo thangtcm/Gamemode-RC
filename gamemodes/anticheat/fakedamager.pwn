@@ -1,5 +1,5 @@
 #include <YSI_Coding\y_hooks>
-
+#define 			WEAPON_UNARMED 				0
 static bool:playerweaponshot[MAX_PLAYERS], 
 	playershotplayerid[MAX_PLAYERS], 
 	warnings[MAX_PLAYERS];
@@ -11,6 +11,17 @@ hook OnPlayerWeaponShot(playerid, weaponid, hittype, hitid, Float:fX, Float:fY, 
 		playershotplayerid[playerid] = hitid;
 	return true;
 }
+
+stock IsBulletWeapon(weaponid) {
+
+	return (WEAPON_COLT45 <= weaponid <= WEAPON_SNIPER) || weaponid == WEAPON_MINIGUN;
+}
+
+stock IsMeleeWeapon(weaponid) {
+
+	return (WEAPON_UNARMED <= weaponid <= WEAPON_KATANA) || (WEAPON_DILDO <= weaponid <= WEAPON_CANE) || weaponid == WEAPON_PISTOLWHIP;
+}
+
 
 AC_FD_OnPlayerDamage(playerid, issuerid, weapon)
 {

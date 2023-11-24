@@ -21,7 +21,7 @@ new Float:Prison_CP[7][3] = {
         ActSetPlayerPos(playerid,-1398.103515,937.631164,1036.479125);
         SetPlayerInterior(playerid, 15);
         SetPVarInt(playerid,"PrisonCP",1);
-        SetPlayerCheckpoint(playerid,Prison_CP[GetPVarInt(playerid,"PrisonCP")][0], Prison_CP[GetPVarInt(playerid,"PrisonCP")][1],Prison_CP[GetPVarInt(playerid,"PrisonCP")][2], 4);
+        SetPlayerCheckPointEx(playerid,Prison_CP[GetPVarInt(playerid,"PrisonCP")][0], Prison_CP[GetPVarInt(playerid,"PrisonCP")][1],Prison_CP[GetPVarInt(playerid,"PrisonCP")][2], 4);
     }
  
     */
@@ -56,7 +56,7 @@ CMD:cpprison(playerid, params[])
         	PrisonCP[giveplayerid] = 1;
         	PrisonCPCount[giveplayerid] = minutes;
         	SetPVarInt(playerid,"PrisonCP",1);
-       	 	SetPlayerCheckpoint(playerid,Prison_CP[GetPVarInt(playerid,"PrisonCP")][0], Prison_CP[GetPVarInt(playerid,"PrisonCP")][1],Prison_CP[GetPVarInt(playerid,"PrisonCP")][2], 4);
+       	 	SetPlayerCheckPointEx(playerid,Prison_CP[GetPVarInt(playerid,"PrisonCP")][0], Prison_CP[GetPVarInt(playerid,"PrisonCP")][1],Prison_CP[GetPVarInt(playerid,"PrisonCP")][2], 4);
 		}
 	}
 	else SendErrorMessage(playerid, "Ban khong the su dung lenh nay");
@@ -88,7 +88,7 @@ hook OnPlayerEnterCheckpoint(playerid) {
     	new string[129];
     	format(string, sizeof(string), "So checkpoint con lai la %d", PrisonCPCount[playerid]);
 		GameTextForPlayer(playerid, string, 10000, 3);
-        SetPlayerCheckpoint(playerid,Prison_CP[GetPVarInt(playerid,"PrisonCP")][0], Prison_CP[GetPVarInt(playerid,"PrisonCP")][1],Prison_CP[GetPVarInt(playerid,"PrisonCP")][2], 4);
+        SetPlayerCheckPointEx(playerid,Prison_CP[GetPVarInt(playerid,"PrisonCP")][0], Prison_CP[GetPVarInt(playerid,"PrisonCP")][1],Prison_CP[GetPVarInt(playerid,"PrisonCP")][2], 4);
         if(PrisonCPCount[playerid] <= 0) {
         	ActSetPlayerPos(playerid, 1541.6099,-1671.7644,13.5529);
         	SetPlayerFacingAngle(playerid, 82.8185);

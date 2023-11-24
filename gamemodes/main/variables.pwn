@@ -738,6 +738,7 @@ enum pInfo
 	pChatStyle,
 	pNai,
 	pBo,
+	pDaily,
 	pRansack,
 	Text3D:pNameTag,
 	pMaskID[2],
@@ -1114,9 +1115,11 @@ enum pvInfo
 	pvLights,
 	pvDoors,
 	pvTires,
+	pvTiresDays,
 	Float: pvFuel,
 	Float: pvCapacity,
 	Float: pvHealth,
+	Float: pvMaxHealth,
 	pvVW,
 	pvInt,
 	pvCrashFlag,
@@ -1595,6 +1598,7 @@ new BikeParkourObjects[2];
 new BikeParkourObjectStage[2];
 new Selected[MAX_PLAYERS][MAX_BUSINESSSALES];
 new Businesses[MAX_BUSINESSES][eBiz];
+//Edit Price Businesses
 new StoreItemCost[][StoreItemCostEnum] =
 {
 	{1},
@@ -1615,6 +1619,7 @@ new StoreItemCost[][StoreItemCostEnum] =
 	{25},
 	{80},
 	{10},
+	{1},
 	{1},
 	{1},
 	{1}
@@ -1641,7 +1646,8 @@ new const StoreItems[][] =
 	"Khoa dien",
 	"Khoa bao dong",
 	"Mat na",
-	"Gay bong chay"
+	"Gay bong chay",
+	"May Cua"
 };
 
 new TruckerDropoffs[][CargoArrayData] =
@@ -3825,3 +3831,4 @@ new ChangeSkin[MAX_PLAYERS];
 
 new PlayerText: Tutorial_Truck[MAX_PLAYERS][6],
 	TutorialTruck_Timer[MAX_PLAYERS];
+new pDriveReward[MAX_PLAYERS];
