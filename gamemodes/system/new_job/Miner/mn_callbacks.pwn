@@ -1,6 +1,6 @@
 #include <YSI_Coding\y_hooks>
 
-new CountPress[MAX_PLAYERS][3];
+new CountPress[MAX_PLAYERS];
 new KeyPressed[MAX_PLAYERS];
 new TimerPressKey[MAX_PLAYERS];
 new KeyPressesType[MAX_PLAYERS];
@@ -10,9 +10,7 @@ new TimerRandomPress[MAX_PLAYERS];
 new RockIDMiner[MAX_PLAYERS];
 hook OnPlayerConnect(playerid)
 {
-	CountPress[playerid][0] = 0;
-	CountPress[playerid][1] = 0;
-	CountPress[playerid][2] = 0;
+	CountPress[playerid] = 0;
 	TimerPressKey[playerid] = 0;
 	KeyPressed[playerid] = true;
 	KillTimer(MinerTimer[playerid]);
@@ -37,7 +35,7 @@ hook OnPlayerKeyStateChange(playerid, newkeys, oldkeys)
 	    if(PRESSED(KEY_YES))
 	    {
 			new format_job[1280];
-			format(format_job, sizeof(format_job), "{a8a7a7}Da: {ffffff}%d$\n{c96c02}Dong: {ffffff}%d$\n{5c5c5c}Sat: {ffffff}%d$\n{f7ff05}Vang: {ffffff}%d$", RandomMoney[0], RandomMoney[1], RandomMoney[2], RandomMoney[3]);
+			format(format_job, sizeof(format_job), "{a8a7a7}Da: {ffffff}%d$\n{c96c02}Dong: {ffffff}%d$\n{5c5c5c}Sat: {ffffff}%d$\n{f7ff05}Vang: {ffffff}%d$\n{C88541}Go:{FFFFFF} %d$", RandomMoney[0], RandomMoney[1], RandomMoney[2], RandomMoney[3], RandomMoney[4]);
 	    	Dialog_Show(playerid, thuksdialog, DIALOG_STYLE_LIST, "Thu mua khoang san", format_job, "Lua chon", "Huy bo");
 	    }
 	}
@@ -71,62 +69,6 @@ hook OnPlayerKeyStateChange(playerid, newkeys, oldkeys)
 			}
 		}
 	}
-	if(PRESSED(65536) && KeyPressed[playerid])
-	{
-		if(timerdc[playerid] > 1 && timerdc[playerid] < TimerRandomPress[playerid]){
-			CountPress[playerid][0]++;
-			if(gettime() > GetPVarInt(playerid, "TimeCountNotyHack"))
-			{
-				new string[128];
-				format(string, sizeof(string), "{AA3333}AdmWarning{FFFF00}: %s (ID: %d) co the dang su dung cleo auto farm phim Y(%d lan trong 30s).", GetPlayerNameEx(playerid), playerid, CountPress[playerid][0]);
-				ABroadCast(COLOR_YELLOW, string, 2);
-				SetPVarInt(playerid, "TimeCountNotyHack", gettime() + 30);
-				CountPress[playerid][0] = 0;
-			}
-		}
-	}
-	if(PRESSED(65536) && KeyPressed[playerid])
-	{
-		if(timerdc[playerid] > 1 && timerdc[playerid] < TimerRandomPress[playerid]){
-			CountPress[playerid][0]++;
-			if(gettime() > GetPVarInt(playerid, "TimeCountNotyHack") && CountPress[playerid][0] > 1)
-			{
-				new string[128];
-				format(string, sizeof(string), "{AA3333}AdmWarning{FFFF00}: %s (ID: %d) co the dang su dung cleo auto farm phim Y(%d lan trong 30s).", GetPlayerNameEx(playerid), playerid, CountPress[playerid][0]);
-				ABroadCast(COLOR_YELLOW, string, 2);
-				SetPVarInt(playerid, "TimeCountNotyHack", gettime() + 30);
-				CountPress[playerid][0] = 0;
-			}
-		}
-	}
-	if(PRESSED(262144) && KeyPressed[playerid])
-	{
-		if(timerdc[playerid] > 1 && timerdc[playerid] < TimerRandomPress[playerid]){
-			CountPress[playerid][1]++;
-			if(gettime() > GetPVarInt(playerid, "TimeCountNotyHack1") && CountPress[playerid][1] > 1)
-			{
-				new string[128];
-				format(string, sizeof(string), "{AA3333}AdmWarning{FFFF00}: %s (ID: %d) co the dang su dung cleo auto farm phim H(%d lan trong 30s).", GetPlayerNameEx(playerid), playerid, CountPress[playerid][1]);
-				ABroadCast(COLOR_YELLOW, string, 2);
-				SetPVarInt(playerid, "TimeCountNotyHack1", gettime() + 30);
-				CountPress[playerid][0] = 0;
-			}
-		}
-	}
-	if(PRESSED(131072) && KeyPressed[playerid])
-	{
-		if(timerdc[playerid] > 1){
-			CountPress[playerid][2]++;
-			if(gettime() > GetPVarInt(playerid, "TimeCountNotyHack2") && CountPress[playerid][2] > 1)
-			{
-				new string[128];
-				format(string, sizeof(string), "{AA3333}AdmWarning{FFFF00}: %s (ID: %d) co the dang su dung cleo auto farm phim N(%d lan trong 30s).", GetPlayerNameEx(playerid), playerid, CountPress[playerid][2]);
-				ABroadCast(COLOR_YELLOW, string, 2);
-				SetPVarInt(playerid, "TimeCountNotyHack2", gettime() + 30);
-				CountPress[playerid][0] = 0;
-			}
-		}
-	}
 	if(!KeyPressed[playerid])
 	{
 		if((PRESSED(GetKeyMiner[playerid])) && !KeyPressed[playerid])
@@ -134,6 +76,20 @@ hook OnPlayerKeyStateChange(playerid, newkeys, oldkeys)
 			KeyPressed[playerid] = true;
 			TimerPressKey[playerid] = 0;
 			SendServerMessage(playerid, "Ban thao tac qua tot.");
+			new GetTimeNow = gettime();
+			if(GetTimeNow - GetPVarInt(playerid, "TimeCountNotyHack") <= 1 && GetPVarInt(playerid, "TimeCountNotyHack") < GetTimeNow)
+			{
+				CountPress[playerid] ++;
+				new string[128];
+				format(string, sizeof(string), "{AA3333}AdmWarning{FFFF00}: %s (ID: %d) Da thuc hien nhan phim capcha voi toc do ban tho %d lan.", GetPlayerNameEx(playerid), playerid, CountPress[playerid]);
+				ABroadCast(COLOR_YELLOW, string, 2);
+				format(string, sizeof(string), "{AA3333}AdmWarning{FFFF00}: %s (ID: %d) co the dang su dung cleo auto farm nhan phim capcha trong %d giay.", GetPlayerNameEx(playerid), playerid, GetTimeNow - GetPVarInt(playerid, "TimeCountNotyHack"));
+				ABroadCast(COLOR_YELLOW, string, 2);
+			}
+			else
+			{
+				CountPress[playerid] = 0;
+			}
 		}
 		else
 		{
@@ -159,6 +115,7 @@ stock FaildMiner(playerid)
 	{
 		CreateRock(RockIDMiner[playerid]);
 		RockStatus[RockIDMiner[playerid]] = 1;
+		RockIDMiner[playerid] = -1;
 	}
 	DeletePVar(playerid, "MinerWorking");
 	return 1;
@@ -176,6 +133,7 @@ public ResetPrice()
 			RandomMoney[1] = (RandomMoney[0] + 5 +random(50)); // 45
 			RandomMoney[2] = (RandomMoney[1]+random(55));// 70
 			RandomMoney[3] = (RandomMoney[2]+random(250));// => 270
+			RandomMoney[4] = RandomMoney[0];
 		}
 		case 51..89:
 		{
@@ -183,6 +141,7 @@ public ResetPrice()
 			RandomMoney[1] = (RandomMoney[0] + random(50)) ; // 120
 			RandomMoney[2] = (RandomMoney[1] * 2+random(50)) ; // 240 + 50 => 290
 			RandomMoney[3] = (RandomMoney[2] + random(100)+110); //  500
+			RandomMoney[4] = RandomMoney[0];
 		}
 		case 90..100:
 		{
@@ -190,6 +149,7 @@ public ResetPrice()
 			RandomMoney[1] = (RandomMoney[0] + 30 +random(25) * 2);//120 + 80 => 200
 			RandomMoney[2] = (RandomMoney[1] * 2 +random(240));// 440
 			RandomMoney[3] = (RandomMoney[2] + 260 + random(300));// 440 + 260 + 300 => 1k
+			RandomMoney[4] = RandomMoney[0];
 			isHight = true;
 		}
 	}
@@ -393,6 +353,7 @@ public StartCountTime(playerid)
 					{
 						SetTimerEx("OnRockRespawn", 600000, false, "i", RockIDMiner[playerid]);
 					}
+					CheckDoneMisson(playerid, 1);
 					KillTimer(MinerTimer[playerid]);
 					DeletePVar(playerid, "MinerWorking");
 				}
@@ -442,17 +403,18 @@ stock ShowMessageKeyPressed(playerid)
 	{
 		case 0:
 		{
-			format(str, sizeof(str), "Hay nhan phim ~r~Y~w~ trong ~p~ %d~w~ giay.", TimerPressKey[playerid]);
+			format(str, sizeof(str), "~w~Hay nhan phim ~p~ Y~w~ trong ~p~ %d~w~ giay.", TimerPressKey[playerid]);
 		}
 		case 1:
 		{
-		   format(str, sizeof(str), "Hay nhan phim ~r~H~w~ trong ~p~ %d~w~ giay.", TimerPressKey[playerid]);
+		   format(str, sizeof(str), "~w~Hay nhan phim ~p~ H~w~ trong ~p~ %d~w~ giay.", TimerPressKey[playerid]);
 		}
 		case 2:
 		{
-		    format(str, sizeof(str), "Hay nhan phim ~r~N~w~ trong ~p~ %d~w~ giay.", TimerPressKey[playerid]);
+		    format(str, sizeof(str), "~w~Hay nhan phim ~p~ N~w~ trong ~p~ %d~w~ giay.", TimerPressKey[playerid]);
 		}
 	}
+	SetPVarInt(playerid, "TimeCountNotyHack", gettime());
 	SendClientTextDraw(playerid, str);
 	return 1;
 }
@@ -471,6 +433,16 @@ public CreateRock(rockIndex)
 {
 	new randomrzx = random(360);
 	new Float:randomrz = float(randomrzx);
+	if(IsValidDynamic3DTextLabel(RockText[rockIndex]))
+    {
+        DestroyDynamic3DTextLabel(RockText[rockIndex]);
+        RockText[rockIndex] = Text3D: INVALID_3DTEXT_ID;
+    }
+    if(IsValidDynamicObject(RockObj[rockIndex]))
+    {
+        DestroyDynamicObject(RockObj[rockIndex]);
+        RockObj[rockIndex] = INVALID_OBJECT_ID;
+    }
 	RockText[rockIndex] = CreateDynamic3DTextLabel("<Rock>\n Bam phim 'Y' de bat dau dao da.", -1, rockPositions[rockIndex][0], rockPositions[rockIndex][1], rockPositions[rockIndex][2], 2.0);
     RockObj[rockIndex] = CreateDynamicObject(905, rockPositions[rockIndex][0], rockPositions[rockIndex][1], rockPositions[rockIndex][2]-0.8, 0.0, 0.0, randomrz, -1, -1, -1);
 }

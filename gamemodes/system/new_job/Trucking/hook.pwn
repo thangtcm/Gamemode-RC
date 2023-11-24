@@ -99,9 +99,9 @@ hook OnPlayerStateChange(playerid, newstate, oldstate)
         if(pLoadProduct[playerid] != -1) {
             new Float:slx, Float:sly, Float:slz;
             GetPlayerPos(playerid, slx, sly, slz);
-            SetPlayerPos(playerid, slx, sly, slz+1.3);
+            ActSetPlayerPos(playerid, slx, sly, slz+1.3);
             PlayerPlaySound(playerid, 1130, slx, sly, slz+1.3);
-            RemovePlayerFromVehicle(playerid);
+            ActRemovePlayerFromVehicle(playerid);
             defer NOPCheck(playerid);
             SendErrorMessage(playerid, "Ban khong the len xe trong khi dang cam thung hang.");
         } 

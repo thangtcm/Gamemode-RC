@@ -64,7 +64,7 @@ new const ProductData[][ProductInfo] = {
     { "Xang dau", 3 }, // 20
     { "Sua", 4 }, // 21
     { "Go", 5, "Go", 30}, // 22
-    { "Vat lieu xay dung", 6, "Go", 10}, // 23
+    { "Vat lieu xay dung", 6, "Vat lieu", 10}, // 23
     { "Thuc uong", 0, "Juice", 5 } // 24
 };
 
@@ -87,7 +87,9 @@ new CarTruckWorking[][CarTruckInfo] = {
     { 482, "Burrito", { 0, -1, -1, -1, -1, -1, -1 }, 10 },
     { 498, "Boxville", { 0, -1, -1, -1, -1, -1, -1 }, 12 },
     { 440, "Rumpo", { 0, -1, -1, -1, -1, -1, -1 }, 12 },
-    { 499, "Benson", { 0, 6, -1, -1, -1, -1, -1 }, 18 }
+    { 499, "Benson", { 0, 6, -1, -1, -1, -1, -1 }, 18 },
+    { 414, "Mule", { 0, 6, -1, -1, -1, -1, -1 }, 18 },
+    { 456, "Yankee", { 0, 6, -1, -1, -1, -1, -1 }, 18 }
 };
 
 enum FactoryInfo{ //Xuất khẩu

@@ -112,10 +112,10 @@ hook OnDialogResponse(playerid, dialogid, response, listitem, inputtext[]) {
                 ClearDataSellVeh_market(sellerid,slotveh);
 			}
             else {
-                RemovePlayerFromVehicle(playerid);
+                ActRemovePlayerFromVehicle(playerid);
                 new Float:slx, Float:sly, Float:slz;
                 GetPlayerPos(playerid, slx, sly, slz);
-                SetPlayerPos(playerid, slx, sly, slz+1);
+                ActSetPlayerPos(playerid, slx, sly, slz+1);
             }
 		}
 	}
@@ -222,10 +222,10 @@ hook OnPlayerEnterVehicle(playerid, vehicleid, ispassenger) {
 			}			
 		} 
         if(giveplayerid == playerid) {
-            RemovePlayerFromVehicle(playerid);
+            ActRemovePlayerFromVehicle(playerid);
             new Float:slx, Float:sly, Float:slz;
             GetPlayerPos(playerid, slx, sly, slz);
-            SetPlayerPos(playerid, slx, sly, slz+1);
+            ActSetPlayerPos(playerid, slx, sly, slz+1);
             return 1;
         }
 		SetPVarInt(playerid, "_SelectBuySlot", slot);

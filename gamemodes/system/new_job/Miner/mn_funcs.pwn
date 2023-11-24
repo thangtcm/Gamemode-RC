@@ -52,6 +52,10 @@ Dialog:thuksdialog(playerid, response, listitem, inputtext[])
 			{
 				Dialog_Show(playerid, banvang, DIALOG_STYLE_INPUT, "Ban {f7ff05}VANG", "{ffffff}Hay nhap so luong ma ban muon ban", "Ban", "Huy");
 			}
+			case 4:
+			{
+				Dialog_Show(playerid, bango, DIALOG_STYLE_INPUT, "Ban {C88541}GO", "{ffffff}Hay nhap so luong ma ban muon ban:", "Ban", "Huy");
+			}
 		}
 	}
 	return 1;
@@ -180,6 +184,39 @@ Dialog:banvang(playerid, response, listitem, inputtext[])
 	}
 	return 1;
 }
+
+Dialog:bango(playerid, response, listitem, inputtext[])
+{
+	if(response)
+	{
+		if(isnull(inputtext))
+		{
+			return Dialog_Show(playerid, bango, DIALOG_STYLE_INPUT, "Ban {C88541}GO", "{8f0a03}Hay nhap so luong hop le !", "Ban", "Huy");
+		}
+		else if(strval(inputtext) < 1)
+		{
+			return Dialog_Show(playerid, bango, DIALOG_STYLE_INPUT, "Ban {C88541}GO", "{8f0a03}Hay nhap so luong hop le !", "Ban", "Huy");
+		}
+		else if(Inventory_Count(playerid, "Go") < strval(inputtext))
+		{
+			return Dialog_Show(playerid, bango, DIALOG_STYLE_INPUT, "Ban {C88541}GO", "{8f0a03}Ban da nhap nhieu hon so {C88541}GO{8f0a03} ma ban co trong tui do !", "Ban", "Huy");
+		}
+		else
+		{
+			new format_job[1280], moneyselled = RandomMoney[4]*strval(inputtext);
+			format(format_job, sizeof(format_job), "[SERVER] {ffffff}Ban da ban {6e69ff}%d {C88541}Go {ffffff}thanh cong va nhan duoc %d$.", strval(inputtext), moneyselled);
+			GivePlayerCash(playerid, moneyselled);
+			SendClientMessage(playerid, COLOR_LIGHTRED, format_job);
+			new pItemId = Inventory_GetItemID(playerid, "Go", strval(inputtext));
+			Inventory_Remove(playerid, pItemId, strval(inputtext));
+        	new moneyzxc[30];
+        	format(moneyzxc, 30, "%d$", moneyselled);
+			SendLogToDiscordRoom4("RC:RP LOG - BÁN GỖ NÈ", "1157988261382328392", "Name", GetPlayerNameEx(playerid, false), "Đã bán", "VÀNGGGGGGGGGG", "Số lượng", inputtext, "TỔNG TIỀN", moneyzxc, 0x229926);
+		}
+	}
+	return 1;
+}
+
 
 
 Dialog:muapickaxedialog(playerid, response, listitem, inputtext[])

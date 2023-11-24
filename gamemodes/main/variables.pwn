@@ -743,6 +743,7 @@ enum pInfo
 	pChatStyle,
 	pNai,
 	pBo,
+	pDaily,
 	pRansack,
 	Text3D:pNameTag,
 	pMaskID[2],
@@ -1119,9 +1120,11 @@ enum pvInfo
 	pvLights,
 	pvDoors,
 	pvTires,
+	pvTiresDays,
 	Float: pvFuel,
 	Float: pvCapacity,
 	Float: pvHealth,
+	Float: pvMaxHealth,
 	pvVW,
 	pvInt,
 	pvCrashFlag,
@@ -1600,6 +1603,7 @@ new BikeParkourObjects[2];
 new BikeParkourObjectStage[2];
 new Selected[MAX_PLAYERS][MAX_BUSINESSSALES];
 new Businesses[MAX_BUSINESSES][eBiz];
+//Edit Price Businesses
 new StoreItemCost[][StoreItemCostEnum] =
 {
 	{1},
@@ -1620,6 +1624,7 @@ new StoreItemCost[][StoreItemCostEnum] =
 	{25},
 	{80},
 	{10},
+	{1},
 	{1},
 	{1},
 	{1}
@@ -1646,7 +1651,8 @@ new const StoreItems[][] =
 	"Khoa dien",
 	"Khoa bao dong",
 	"Mat na",
-	"Gay bong chay"
+	"Gay bong chay",
+	"May Cua"
 };
 
 new TruckerDropoffs[][CargoArrayData] =
@@ -1849,12 +1855,14 @@ new TruckDeliveringTo[MAX_VEHICLES];
 new TruckContents[MAX_VEHICLES char] = 0;
 new TruckRoute[MAX_VEHICLES char] = -1;
 new Float: VehicleFuel[MAX_VEHICLES];
+new Float: VehicleCapacity[MAX_VEHICLES];
 new VehicleStatus[MAX_VEHICLES char] = 0; // 0 == none, 1 == vehicle dead about to respawn
 new DynVeh[MAX_VEHICLES]; // -1 = Not a dynamic vehicle, 0 > = DynVehicleInfo ID
 new Float: fVehSpeed[MAX_PLAYERS];
 new Float: fVehHealth[MAX_PLAYERS];
 new szAdvert[MAX_PLAYERS][128];
 new AdvertType[MAX_PLAYERS];
+
 //Aduty
 new Aduty[MAX_PLAYERS];
 // C4 vehicle bomb
@@ -3828,3 +3836,4 @@ new ChangeSkin[MAX_PLAYERS];
 
 new PlayerText: Tutorial_Truck[MAX_PLAYERS][6],
 	TutorialTruck_Timer[MAX_PLAYERS];
+new pDriveReward[MAX_PLAYERS];

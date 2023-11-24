@@ -170,9 +170,9 @@ hook OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
                     if(LamViec[playerid] != 0 && LamViec[playerid] != 2) return  SendClientMessage(playerid, COLOR_GREY, "Ban dang lam cong viec khac khong the lam Trucker.");  
                     if(LamViec[playerid] != 0) return SendErrorMessage(playerid," Ban dang lam viec khong the lam viec tiep.");
                     SendClientMessage(playerid, COLOR_VANG, "Ban da bat dau lam viec Container, su dung /truck > Lay thung hang de lay thung hang va giao.");
-                    SetPlayerPos(playerid, 2519.6191,-2089.2661,13.5469);
+                    ActSetPlayerPos(playerid, 2519.6191,-2089.2661,13.5469);
                     TruckerCar[playerid] = CreateVehicle(515, 2519.4590,-2090.2463,13.5469 , 0 , random(255), random(255), 1000, 0);
-                    PutPlayerInVehicle(playerid, TruckerCar[playerid] ,0);
+                    ActPutPlayerInVehicle(playerid, TruckerCar[playerid] ,0);
                     SetPVarInt(playerid, "IsDaThue", 1);
                     LamViec[playerid] =2;
                     return 1;
@@ -305,7 +305,7 @@ hook OnPlayerEnterCheckpoint(playerid) {
 	//	MuiTenPos[playerid][1] = PosTwo[RandomPosTruck[playerid]][1];
 	//	MuiTenPos[playerid][2] = PosTwo[RandomPosTruck[playerid]][2];
 		//ShowNavigate(playerid);
-		SetPlayerCheckpoint(playerid, PosTwo[RandomPosTruck[playerid]][0], PosTwo[RandomPosTruck[playerid]][1], PosTwo[RandomPosTruck[playerid]][2], 10);
+		SetPlayerCheckPointEx(playerid, PosTwo[RandomPosTruck[playerid]][0], PosTwo[RandomPosTruck[playerid]][1], PosTwo[RandomPosTruck[playerid]][2], 10);
 		SetPVarInt(playerid, "LayTraing", 2);
 		SendClientTextDraw(playerid, "Hay di toi checkpoint de giao thung hang ~y~Container");
 		return 1;
@@ -322,7 +322,7 @@ hook OnPlayerEnterCheckpoint(playerid) {
 	    	    if(GetPlayerVehicleID(playerid) != TruckerCar[playerid]) return SendClientTextDraw(playerid , "Ban khong o tren xe trucker cua ban da lay");
 	            DestroyVehicle(Trailer[playerid] );
 	            SetPVarInt(playerid, "LayTraing", 3);
-	            SetPlayerCheckpoint(playerid, 2536.2314,-2084.8591,13.5469, 10);
+	            SetPlayerCheckPointEx(playerid, 2536.2314,-2084.8591,13.5469, 10);
 	            SendClientTextDraw(playerid, "Ban da giao thanh cong hay quay ve tra xe va ~y~nhan tien");
 	         //   MuiTenPos[playerid][0] = 2536.2314;
 		    //    MuiTenPos[playerid][1] = -2084.8591;
@@ -401,9 +401,9 @@ CMD:truck(playerid, params[])
      //   if(GetPVarInt(playerid, "IsDaThue") == 1) return SendClientTextDraw(playerid , "Ban da thue phuong tien trucker roi hay su dung ~g~/laythunghang de tiep tuc");	    
 	    if(LamViec[playerid] == 0) {
            
-	    	SetPlayerPos(playerid, 2519.6191,-2089.2661,13.5469);
+	    	ActSetPlayerPos(playerid, 2519.6191,-2089.2661,13.5469);
 		    TruckerCar[playerid] = CreateVehicle(515, 2519.4590,-2090.2463,13.5469 , 0 , random(255), random(255), 1000, 0);
-	        PutPlayerInVehicle(playerid, TruckerCar[playerid] ,0);
+	        ActPutPlayerInVehicle(playerid, TruckerCar[playerid] ,0);
 	        SetPVarInt(playerid, "IsDaThue", 1);
 	        LamViec[playerid] =2;
 	        return 1;
@@ -436,7 +436,7 @@ CMD:thuexe(playerid, params[])
             if(IsDaThue[i] == 0)
             {
                 ThueXePizza[playerid] = CreateVehicle(482,2092.4355,-1799.6438,13.3828,3,6,60 * 10,0); // Pizzaboy
-                PutPlayerInVehicle(playerid, ThueXePizza[playerid], 0);
+                ActPutPlayerInVehicle(playerid, ThueXePizza[playerid], 0);
                 PizzaBikesPizzas[ThueXePizza[playerid]]=10;
                 SendClientTextDraw(playerid, "Ban da thue phuong tien ~g~thanh cong");
                 CheckThueXe[playerid] = 1;
@@ -450,9 +450,9 @@ CMD:thuexe(playerid, params[])
     {
         if(GetPVarInt(playerid, "IsDaThue") == 1) return SendClientTextDraw(playerid , "Ban da thue phuong tien trucker roi hay su dung ~g~/laythunghang de tiep tuc");
 	    if(LamViec[playerid] == 2) {
-	    	SetPlayerPos(playerid, 2519.6191,-2089.2661,13.5469);
+	    	ActSetPlayerPos(playerid, 2519.6191,-2089.2661,13.5469);
 		    TruckerCar[playerid] = CreateVehicle(515, 2519.4590,-2090.2463,13.5469, random(255), random(255), 60 * 10, 0);
-	        PutPlayerInVehicle(playerid, TruckerCar[playerid] ,0);
+	        ActPutPlayerInVehicle(playerid, TruckerCar[playerid] ,0);
 	        SetPVarInt(playerid, "IsDaThue", 1);
 	        return 1;
 	    }
@@ -578,7 +578,7 @@ CMD:adsbabalaythunghang(playerid , params[])
 //	MuiTenPos[playerid][1] = PosOne[RandomPosTruck[playerid]][1];
 //	MuiTenPos[playerid][2] = PosOne[RandomPosTruck[playerid]][2];
 	//ShowNavigate(playerid);
-	SetPlayerCheckpoint(playerid, PosOne[RandomPosTruck[playerid]][0], PosOne[RandomPosTruck[playerid]][1], PosOne[RandomPosTruck[playerid]][2], 10);
+	SetPlayerCheckPointEx(playerid, PosOne[RandomPosTruck[playerid]][0], PosOne[RandomPosTruck[playerid]][1], PosOne[RandomPosTruck[playerid]][2], 10);
 	return 1;
 }
 CMD:lamviec(playerid, params[])
@@ -614,7 +614,7 @@ public DeliverComplite(playerid)
     new i = GetPVarInt(playerid, "DeliverType");
     TogglePlayerControllable(playerid, 1);
     SendClientTextDraw(playerid, "Ban da chon giao ~y~hang~w~ thanh cong ~y~ hay quay ve ben cang ( checkpoint )");  
-    SetPlayerCheckpoint(playerid, 2534.1013,-2089.8118,13.5469, 4);
+    SetPlayerCheckPointEx(playerid, 2534.1013,-2089.8118,13.5469, 4);
     SetPVarInt(playerid, "OnCheckPoint", 1);
     SetPVarInt(playerid, "BackDeliverType", i);
     DeletePVar(playerid, "DeliverType");
@@ -666,7 +666,7 @@ public GiaoHang(playerid)
         case 1:
         {
             SendClientTextDraw(playerid, "Ban da chon giao ~y~vat lieu~w~ hay di den ~y~ noi giao hang ( checkpoint )");   
-            SetPlayerCheckpoint(playerid, 901.5916,-1202.6233,16.9832, 5); // vat lieu
+            SetPlayerCheckPointEx(playerid, 901.5916,-1202.6233,16.9832, 5); // vat lieu
             SetPVarInt(playerid, "DeliverType", 1);
             DeletePVar(playerid, "SelectType");
             SetPVarInt(playerid, "OnCheckPoint", 1);
@@ -674,7 +674,7 @@ public GiaoHang(playerid)
         case 2:
         {
             SendClientTextDraw(playerid, "Ban da chon giao ~y~thuc pham~w~ hay di den ~y~ noi giao hang ( checkpoint )");   
-            SetPlayerCheckpoint(playerid, 180.1835,-323.5073,1.5781, 5); // thu nuoi
+            SetPlayerCheckPointEx(playerid, 180.1835,-323.5073,1.5781, 5); // thu nuoi
             SetPVarInt(playerid, "DeliverType", 2);
             DeletePVar(playerid, "SelectType");
             SetPVarInt(playerid, "OnCheckPoint", 1);
@@ -682,7 +682,7 @@ public GiaoHang(playerid)
         case 3:
         {
             SendClientTextDraw(playerid, "Ban da chon giao ~y~suc vat~w~ hay di den ~y~ noi giao hang ( checkpoint )"); 
-            SetPlayerCheckpoint(playerid, 1113.4196,-922.5567,43.3906, 5); // thuc pham
+            SetPlayerCheckPointEx(playerid, 1113.4196,-922.5567,43.3906, 5); // thuc pham
             SetPVarInt(playerid, "DeliverType", 3);
             DeletePVar(playerid, "SelectType");
             SetPVarInt(playerid, "OnCheckPoint", 1);
@@ -690,7 +690,7 @@ public GiaoHang(playerid)
         case 4:
         {
             SendClientTextDraw(playerid, "Ban da chon giao ~y~vu khi~w~ hay di den ~y~ noi giao hang ( checkpoint )"); 
-            SetPlayerCheckpoint(playerid, 637.4970,-1776.6399,14.0677, 5); // vu khi
+            SetPlayerCheckPointEx(playerid, 637.4970,-1776.6399,14.0677, 5); // vu khi
             SetPVarInt(playerid, "DeliverType", 4);
             DeletePVar(playerid, "SelectType");
             SetPVarInt(playerid, "OnCheckPoint", 1);
@@ -698,7 +698,7 @@ public GiaoHang(playerid)
         case 5:
         {
             SendClientTextDraw(playerid, "Ban da chon giao ~y~ma tuy~w~ hay di den ~y~ noi giao hang ( checkpoint )"); 
-            SetPlayerCheckpoint(playerid, 2351.9026,-1170.6484,28.0739,5); // ma tuy
+            SetPlayerCheckPointEx(playerid, 2351.9026,-1170.6484,28.0739,5); // ma tuy
             SetPVarInt(playerid, "DeliverType", 5);
             DeletePVar(playerid, "SelectType");            
             SetPVarInt(playerid, "OnCheckPoint", 1);
@@ -806,7 +806,7 @@ stock GiaoBanh(playerid)
 	    if(GetPVarInt(playerid, "BatDauGiao") == 1) {
             if(IsPlayerAttachedObjectSlotUsed(playerid,PIZZA_INDEX))
             {
-                RemovePlayerFromVehicle(playerid);
+                ActRemovePlayerFromVehicle(playerid);
                 SetPlayerArmedWeapon(playerid,0);
                 ApplyAnimation(playerid,"CARRY","crry_prtial",4.1,1,1,1,1,1,1);
             }
@@ -825,7 +825,7 @@ stock GiaoBanh(playerid)
                         new rand = random(sizeof(Houses));
                         new skin = random(311)+1;
                         if(skin == 74) return skin=75;
-                        SetPlayerCheckpoint(playerid,Houses[rand][0],Houses[rand][1],Houses[rand][2],2.0);                    
+                        SetPlayerCheckPointEx(playerid,Houses[rand][0],Houses[rand][1],Houses[rand][2],2.0);                    
                         PlayerCheckpoints[playerid]=PIZZA_CHECKPOINT;
                         TipTime[playerid] = 30;
                         ShowTipTimeText(playerid);
@@ -839,7 +839,7 @@ stock GiaoBanh(playerid)
                 }
                 else
                 {
-                    RemovePlayerFromVehicle(playerid);
+                    ActRemovePlayerFromVehicle(playerid);
                 }
             }
             return 1;

@@ -76,7 +76,7 @@ enum TreeGolbal{
 new PlantArr[][TreeGolbal] ={
 	{"Hat Giong Lua", 5, 15, "Lua"},
 	{"Hat Giong Duoc Lieu", 35, 65, "Thao Duoc"},
-	{"Hat Giong Cam", 35, 65, "Cam"}
+	{"Hat Giong Cam", 500, 50, "Trai Cay"}
 };
 
 enum AnimalInfo{

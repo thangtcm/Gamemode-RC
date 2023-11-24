@@ -991,6 +991,9 @@ public OnQueryFinish(resultid, extraid, handleid)
 						cache_get_field_content(i,  "pvHealth", szResult, MainPipeline);
 						PlayerVehicleInfo[extraid][i][pvHealth] = floatstr(szResult);
 
+                        cache_get_field_content(i,  "pvMaxHealth", szResult, MainPipeline);
+						PlayerVehicleInfo[extraid][i][pvMaxHealth] = floatstr(szResult);
+
 						cache_get_field_content(i,  "pvFuel", szResult, MainPipeline);
 						PlayerVehicleInfo[extraid][i][pvFuel] = floatstr(szResult);
 
@@ -1587,9 +1590,10 @@ stock g_mysql_SaveVehicle(playerid, slotid)
 	format(query, sizeof(query), "%s `pvWeapon2` = %d,", query, PlayerVehicleInfo[playerid][slotid][pvWeapons][2]);
 	format(query, sizeof(query), "%s `pvLock` = %d,", query, PlayerVehicleInfo[playerid][slotid][pvLock]);
 	format(query, sizeof(query), "%s `pvWepUpgrade` = %d,", query, PlayerVehicleInfo[playerid][slotid][pvWepUpgrade]);
-	format(query, sizeof(query), "%s `pvHealth` = %0.5f,", query, PlayerVehicleInfo[playerid][slotid][pvHealth]);
 	format(query, sizeof(query), "%s `pvFuel` = %0.5f,", query, PlayerVehicleInfo[playerid][slotid][pvFuel]);
+    VehicleFuel[PlayerVehicleInfo[playerid][slotid][pvId]] = PlayerVehicleInfo[playerid][slotid][pvId];
 	format(query, sizeof(query), "%s `pvCapacity` = %0.5f,", query, PlayerVehicleInfo[playerid][slotid][pvCapacity]);
+    VehicleCapacity[PlayerVehicleInfo[playerid][slotid][pvId]] = PlayerVehicleInfo[playerid][slotid][pvCapacity];
 	format(query, sizeof(query), "%s `pvImpound` = %d,", query, PlayerVehicleInfo[playerid][slotid][pvImpounded]);
 	format(query, sizeof(query), "%s `pvDisabled` = %d,", query, PlayerVehicleInfo[playerid][slotid][pvDisabled]);
 	format(query, sizeof(query), "%s `pvPlate` = '%s',", query, g_mysql_ReturnEscaped(PlayerVehicleInfo[playerid][slotid][pvPlate], MainPipeline));
@@ -1607,9 +1611,10 @@ stock g_mysql_SaveVehicle(playerid, slotid)
 	format(query, sizeof(query), "%s `pvCrashZ` = %0.5f,", query, PlayerVehicleInfo[playerid][slotid][pvCrashZ]);
 	format(query, sizeof(query), "%s `pvCrashAngle` = %0.5f,", query, PlayerVehicleInfo[playerid][slotid][pvCrashAngle]);
 
-	new panels, doors, lights, tires;
+	new panels, doors, lights, tires, Float:vhp;
 	GetVehicleDamageStatus(PlayerVehicleInfo[playerid][slotid][pvId], panels, doors, lights, tires);
-	format(query, sizeof(query), "%s `pvPanels` = %d, `pvDoors` = %d, `pvLights` = %d, `pvTires` = %d,", query, panels, doors, lights, tires);
+	GetVehicleHealth(PlayerVehicleInfo[playerid][slotid][pvId], vhp);
+	format(query, sizeof(query), "%s `pvPanels` = %i, `pvDoors` = %i, `pvLights` = %i, `pvTires` = %i, `pvTiresDays` = %i, `pvHealth` = %0.5f, `pvMaxHealth` = %0.5f,", query, panels, doors, lights, tires, PlayerVehicleInfo[playerid][slotid][pvTiresDays], vhp, PlayerVehicleInfo[playerid][slotid][pvMaxHealth]);
 	for(new m = 0; m < MAX_MODS; m++)
 	{
 		if(m == MAX_MODS-1)
@@ -2478,6 +2483,7 @@ stock SaveHouse(houseid)
 	mysql_function_query(MainPipeline, string, false, "OnQueryFinish", "i", SENDDATA_THREAD);
 }
 
+
 stock LoadHouse(houseid)
 {
 	new string[128];
@@ -2605,6 +2611,7 @@ stock LoadTxtLabels()
 	printf("[LoadTxtLabels] Loading data from database...");
 	mysql_function_query(MainPipeline, "SELECT * FROM `text_labels`", true, "OnLoadTxtLabels", "");
 }
+
 
 stock SavePayNSpray(id)
 {
@@ -7843,6 +7850,7 @@ public OnPlayerLoad(playerid)
 			PlayerVehicleInfo[playerid][v][pvAmmos][2] = 0;
 			PlayerVehicleInfo[playerid][v][pvWepUpgrade] = 0;
 			PlayerVehicleInfo[playerid][v][pvHealth] = 900.0;
+            PlayerVehicleInfo[playerid][v][pvMaxHealth] = 900.0;
 			PlayerVehicleInfo[playerid][v][pvFuel] = 0.0;
 			PlayerVehicleInfo[playerid][v][pvCapacity] = 50.0;
 			PlayerVehicleInfo[playerid][v][pvAllowedPlayerId] = INVALID_PLAYER_ID;
@@ -8394,6 +8402,7 @@ public OnPlayerLoad(playerid)
 	InventoryCH_Load(playerid);
 	FarmPlants_LOAD(playerid);
 	CATTLE_LOAD(playerid);
+	g_mysql_LoadMisson(playerid);
 	format(string, sizeof(string), "SELECT * FROM `rentedcars` WHERE `sqlid` = '%d'", GetPlayerSQLId(playerid));
 	mysql_function_query(MainPipeline, string, true, "LoadRentedCar", "i", playerid);
 
@@ -8598,6 +8607,8 @@ public OnVehicleSpawn(vehicleid) {
 
             SetVehicleVirtualWorld(iVehicleID, PlayerVehicleInfo[i][v][pvVW]);
             LinkVehicleToInterior(iVehicleID, PlayerVehicleInfo[i][v][pvInt]);
+			SetVehicleHealth(iVehicleID, PlayerVehicleInfo[i][v][pvHealth]);
+			UpdateVehicleDamageStatus(iVehicleID, PlayerVehicleInfo[i][v][pvPanels], PlayerVehicleInfo[i][v][pvDoors], PlayerVehicleInfo[i][v][pvLights], PlayerVehicleInfo[i][v][pvTires]);
 
 			PlayerVehicleInfo[i][v][pvId] = iVehicleID;
 

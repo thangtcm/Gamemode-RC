@@ -257,7 +257,7 @@ public NextTutorialTruck(playerid)
             SetPVarInt(playerid, "ViewTutorialTruck", 1);
             TogglePlayerControllable(playerid, 0);
             SetPlayerFacingAngle(playerid, 180.0);
-            SetPlayerPos(playerid, 58.6429, -288.6857, 2.00);
+            ActSetPlayerPos(playerid, 58.6429, -288.6857, 2.00);
             InterpolateCameraPos(playerid, 53.9746, -220.4122, 13.00, 58.6429, -288.6857, 2.00, 10000, CAMERA_MOVE);
             InterpolateCameraLookAt(playerid, 53.9746, -220.4122, 13.00, 58.6429, -288.6857, 2.00, 5000, CAMERA_MOVE);
             format(str, sizeof(str), "Xin chao va chuc mung ban den voi Red County!~n~Toi la Mike, va toi da thay rang ban co the tro thanh mot tai xe xuat sac.");

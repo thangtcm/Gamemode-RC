@@ -72,10 +72,11 @@ new const g_facInventory[][] = {
 	"Dan SHotgun SAAS",
 	"Dan Tieu Lien SAAS",
 	"Dan sung truong SAAS",
-	"DAn Sniper SAAS",
+	"Dan Sniper SAAS",
 	"Mat na",
 	"Vat lieu",
 	"Thuoc Sung",
+	"May Cua"
 };
 
 new const g_aInventoryItems[][e_InventoryItems] =
@@ -90,7 +91,7 @@ new const g_aInventoryItems[][e_InventoryItems] =
 	{"Hamburger", "item_buger"},
 	{"Bread", "item_bread"},
 	{"Juice", "item_juice"},
-	// {"Beer", 1544},
+	{"Beer", "beer"},
 	// {"Da", 905},
 	{"Da", "item_stone"},
 	{"Dong", "item_copper"},
@@ -149,7 +150,8 @@ new const g_aInventoryItems[][e_InventoryItems] =
 	{"Giong Bo", "ticket_cow"},
 	{"Giong Nai", "ticket_deer"},
 	{"Bot Mi", "flour"},
-	{"Trai Cay", "fruit"}
+	{"Trai Cay", "fruit"},
+	{"May Cua", "sawder"}
 };
 
 hook OnPlayerDisconnect(playerid, reason)
@@ -749,12 +751,20 @@ public OnPlayerUseItem(playerid, pItemId, name[])
 	}
 	else if(!strcmp(name, "Beer", true))
 	{
+        if(GetPVarInt(playerid, "TakeDamageFood") > gettime())
+			return SendErrorMessage(playerid, "Ban khong the uong trong khi vua bi tan cong.");
 		if(PlayerInfo[playerid][pDrink] >= 100) return SendErrorMessage(playerid, "Ban da no roi, khong the uong tiep.");
-		PlayerInfo[playerid][pDrink] += 16;
-		PlayerInfo[playerid][pDrink] = PlayerInfo[playerid][pDrink] + 16 > 100 ? 100 : PlayerInfo[playerid][pDrink] + 16;
+		PlayerInfo[playerid][pDrink] += 40;
+		PlayerInfo[playerid][pDrink] = PlayerInfo[playerid][pDrink] + 40 > 100 ? 100 : PlayerInfo[playerid][pDrink] + 40;
 		ApplyAnimation(playerid, "GANGS", "drnkbr_prtl_F", 2.67, 0, 1, 1, 1, 2000, 1);
 		PlayerPlaySound(playerid, 42600, 0.0, 0.0, 0.0);
 		Inventory_Remove(playerid, pItemId, 1);
+        new Float:playerHeath;
+		GetPlayerHealth(playerid, playerHeath);
+		if(playerHeath + 15.0 > 100.0)
+			SetPlayerHealth(playerid, 100.0);
+		else
+			SetPlayerHealth(playerid, playerHeath+15.0);
 	}
 	else if(!strcmp(name, "Codeine", true))
 	{
@@ -1029,8 +1039,7 @@ public OnPlayerUseItem(playerid, pItemId, name[])
 			{
 				SetPlayerHealth(playerid, HPx);
 			}
-			PlayerInfo[playerid][pTimeMedkit] = 30;
-			SetTimerEx("TimeUseMed", 60000, 0, "d", playerid);
+			PlayerInfo[playerid][pTimeMedkit] = 30 * 60;
             format(string, sizeof string, "{FF8000}* {C2A2DA}%s da su dung medkit.", GetPlayerNameEx(playerid));
             SetPlayerChatBubble(playerid, string, COLOR_PURPLE, 30.0, 6000);
             format(string, sizeof string, "{FF8000}> {C2A2DA}%s da su dung medkit.", GetPlayerNameEx(playerid));
@@ -1133,16 +1142,42 @@ CMD:inv(playerid, params[])
 CMD:checkinv(playerid, params[])
 {
 	new
-		giveplayerid;
+		giveplayerid, str[128];
 	if(PlayerInfo[playerid][pAdmin] < 4)
 		return SendClientMessageEx(playerid, COLOR_LIGHTRED, "Ban khong duoc phep su dung lenh nay.");
 	if(sscanf(params, "u", giveplayerid))
 		return SendClientMessageEx(playerid, COLOR_GRAD1, "/checkinv [playerid/name]");
 	if(!IsPlayerConnected(giveplayerid)) 
 		return SendErrorMessage(playerid, "Nguoi choi khong hop le.");
-	SetPVarInt(playerid, "GivePlayerid_Inventory", giveplayerid);
+	if(PlayerInfo[playerid][pAdmin] >= 4)
+	{
+		SetPVarInt(playerid, "GivePlayerid_Inventory", giveplayerid);
+		format(str, sizeof(str), "Ban dang xem tui do cua %s", GetPlayerNameEx(giveplayerid));
+		SendClientMessageEx(playerid, COLOR_LIGHTRED, str);
+	}
+	else if(IsACop(playerid))
+	{
+		if(GetPlayerSpecialAction(giveplayerid) == SPECIAL_ACTION_HANDSUP || GetPVarInt(giveplayerid, "PlayerCuffed") == 2)
+		{
+			if (ProxDetectorS(8.0, playerid, giveplayerid))
+			{
+				if(giveplayerid == playerid) { 
+					SendErrorMessage(playerid, " Ban khong the luc soat chinh minh!"); return 1; 
+				}
+				SetPVarInt(playerid, "GivePlayerid_Inventory", giveplayerid);
+				format(str, sizeof(str), "* %s da luc soat tui do cua %s.", GetPlayerNameEx(playerid),GetPlayerNameEx(giveplayerid));
+				ProxDetector(30.0, playerid, str, COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE);
+			}
+			else
+			{
+				SendErrorMessage(playerid, " Nguoi choi do khong gan ban.");
+			}
+		}else
+		{
+			SendErrorMessage(playerid, " Nguoi choi do can dau hang de ban luc soat.");
+		}
+	}
 	OpenInventory(playerid, true);
-	new str[128];
 	format(str, sizeof(str), "Ban dang xem tui do cua %s", GetPlayerNameEx(giveplayerid));
 	SendClientMessageEx(playerid, COLOR_LIGHTRED, str);
 	return 1;
@@ -1206,7 +1241,7 @@ CMD:thaomatna(playerid, params[])
 		    return 1;
 		}
 
-		new string[128], giveplayerid, Float:health, Float:armor;
+		new string[128], giveplayerid;
 		if(sscanf(params, "u", giveplayerid)) return SendUsageMessage(playerid, " /thaomatna [Player]");
 		if(IsPlayerConnected(giveplayerid))
 		{
@@ -1285,7 +1320,6 @@ Dialog:Inventory(playerid, response, listitem, inputtext[])
 			itemName[64], str[128];
 
 		strunpack(itemName, InventoryData[playerid][itemId][invItem]);
-	printf("%d", itemId);
 		switch(listitem)
 		{
 			case 0:{
@@ -1472,7 +1506,7 @@ Dialog:GiveQuantity(playerid, response, listitem, inputtext[])
 		format(str, sizeof(str), "%s da dua \"%s\" va da duoc them vao trong tui do.", GetPlayerNameEx(playerid), str);
 		SendClientMessageEx(giveplayerid, COLOR_YELLOW, str);
 		new itemidzxc[10];
-        	format(itemidzxc, 10, "%d", strval(inputtext));
+		format(itemidzxc, 10, "%d", strval(inputtext));
 		SendLogToDiscordRoom4("LOG ĐƯA VẬT PHẨM", "1166983700597186570", "Name", GetPlayerNameEx(playerid, false), "Người nhận", GetPlayerNameEx(giveplayerid, false), "Vật phẩm", itemName, "Số lượng", itemidzxc, 0x8d9922);
 		Inventory_Remove(playerid, itemId, strval(inputtext));
 		new years,month,day,hourz,minz,sec,time[50];

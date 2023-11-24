@@ -245,7 +245,7 @@ hook OnPlayerKeyStateChange(playerid, newkeys, oldkeys)
 					DestroyDynamicCP(tm_DynamicCP[playerid]);
 					SendClientMessage(playerid,-1,"Rac trong xe cua ban da day. Hay cho rac ve khu tai che de thuc hien tai che rac thai.");
 					//tm_DynamicCP[playerid][1] = CreateDynamicCP(TM_PICKUPTAICHE, 4.00, 0, 0, playerid, 2000.0);
-					SetPlayerCheckpoint(playerid, TM_CPRECYCLE, 3);
+					SetPlayerCheckPointEx(playerid, TM_CPRECYCLE, 3);
 					tm_BinNum[playerid] = 0;
 					return 0;
 				}
@@ -374,7 +374,7 @@ hook OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 								tm_RentTimer[playerid] = SetTimerEx("OnPlayerRentingTrashmaster", 1000, true, "i", playerid);
 								ShowPlayerDialog(playerid,D_MSGBOX,DS_MSGBOX, "THUE XE: Trashman", "Ban da thue mot chiec xe Trashman thanh cong!\nDe lam cong viec nay hay len xe va su dung lenh '/donrac'.", "Okay","");			
 								tm_RentVeh[playerid] = CreateVehicle(408,2128.5063,-2152.8242,14.0664,335.9995,1,1,-1); //Trashmaster	
-								PutPlayerInVehicle(playerid, tm_RentVeh[playerid], 0);
+								ActPutPlayerInVehicle(playerid, tm_RentVeh[playerid], 0);
 								new string[128];
 								format(string,sizeof string,"Chu so huu: %s", tm_RentOwner[playerid]);
 								tm_OwnerLabel[playerid] = Create3DTextLabel(string, COLOR_YELLOW, 0, 0, 0, 40.0, 0, 1);
@@ -463,7 +463,7 @@ hook OnPlayerEnterVehicle(playerid, vehicleid, ispassenger)
 		{
 			// Khong khoi dong duoc xe
 			SendClientMessage(playerid,COLOR_LIGHTRED,"Ban khong phai la nguoi thue chiec xe nay!");
-			RemovePlayerFromVehicle(playerid);
+			ActRemovePlayerFromVehicle(playerid);
 		}
 	}
 	return 1;

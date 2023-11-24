@@ -63,7 +63,7 @@ public logingametd(playerid)
 			//	ShowPlayerDialog(playerid,DANGNHAP,DIALOG_STYLE_PASSWORD,"Dang nhap",string,"Dang nhap","Thoat");
 			SetPlayerCameraPos(playerid, 1527.1915, -1388.5413, 405.3455);
 			SetPlayerCameraLookAt(playerid, 1527.1210, -1389.5367, 403.4106);
-			SetPlayerPos(playerid, 1535.3447, -1357.3451, 329.4568);
+			ActSetPlayerPos(playerid, 1535.3447, -1357.3451, 329.4568);
 			HideNoticeGUIFrame(playerid);
 
 			/*	if(++gPlayerLogTries[playerid] == 4)

@@ -2,7 +2,6 @@
 #include <YSI_Coding\y_hooks>
 
 
-
 stock GetJobFind(z) {
 	new jobnamez[80];
 	switch(z) {
@@ -116,74 +115,69 @@ Dialog:GPSPosition(playerid, response, listitem, inputtext[])
 {
 	if(response)
 	{
-		new szEmployer[GROUP_MAX_NAME_LEN], szRank[GROUP_MAX_RANK_LEN], szDivision[GROUP_MAX_DIV_LEN];
+		new szEmployer[GROUP_MAX_NAME_LEN], szRank[GROUP_MAX_RANK_LEN], szDivision[GROUP_MAX_DIV_LEN], string[1029];
 		GetPlayerGroupInfo(playerid, szRank, szDivision, szEmployer);
 		switch(listitem)
 		{
 			case 0:
 			{
-			    new stringz[1029];
-				stringz = "Dia diem\tKhu vuc\tKhoang cach";
+				string = "Dia diem\tKhu vuc\tKhoang cach";
 				for(new z =0 ; z < 4 ; z++ ) 
 				{
 					new zone[MAX_ZONE_NAME],Float:Distance;
 					Distance = GetPlayerDistanceFromPoint(playerid, timduong_postion[z][0], timduong_postion[z][1], timduong_postion[z][2]);
 				    Get3DZone(timduong_postion[z][0], timduong_postion[z][1], timduong_postion[z][2], zone, sizeof(zone));
-				    format(stringz, sizeof stringz, "%s\n\%s\t{6db4c3}%s\t{3cab4e}%0.2f met", stringz,GetZoneFind(z),zone,Distance);
+				    format(string, sizeof string, "%s\n\%s\t{6db4c3}%s\t{3cab4e}%0.2f met", string,GetZoneFind(z),zone,Distance);
 				}
-				ShowPlayerDialog(playerid, TIMDUONG, DIALOG_STYLE_TABLIST_HEADERS, "Tim duong",stringz,"Chon", "Huy");
+				ShowPlayerDialog(playerid, TIMDUONG, DIALOG_STYLE_TABLIST_HEADERS, "Tim duong",string,"Chon", "Huy");
 			}
 			case 1:
 			{
-				new stringz[1029];
-				stringz = "Cong viec\tDia diem\tKhoang cach";
+				string = "Cong viec\tDia diem\tKhoang cach";
 				for(new z =0 ; z < 5 ; z++ ) 
 				{
 					new zone[MAX_ZONE_NAME],Float:Distance;
 					Distance = GetPlayerDistanceFromPoint(playerid, timvieclam_postion[z][0], timvieclam_postion[z][1], timvieclam_postion[z][2]);
 				    Get3DZone(timvieclam_postion[z][0], timvieclam_postion[z][1], timvieclam_postion[z][2], zone, sizeof(zone));
-				    format(stringz, sizeof stringz, "%s\n\%s\t{6db4c3}%s\t{3cab4e}%0.2f met", stringz,GetJobFind(z),zone,Distance);
+				    format(string, sizeof string, "%s\n\%s\t{6db4c3}%s\t{3cab4e}%0.2f met", string,GetJobFind(z),zone,Distance);
 				}
-				ShowPlayerDialog(playerid, TIMVIECLAM, DIALOG_STYLE_TABLIST_HEADERS, "Tim viec lam",stringz,"Chon", "Huy");
+				ShowPlayerDialog(playerid, TIMVIECLAM, DIALOG_STYLE_TABLIST_HEADERS, "Tim viec lam",string,"Chon", "Huy");
 			}
 			case 2:
 			{
-				new stringz[1029];
-				stringz = "Ngan hang\tDia diem\tKhoang cach";
+				string = "Ngan hang\tDia diem\tKhoang cach";
 				for(new z =0 ; z < 5 ; z++ ) 
 				{
 					new zone[MAX_ZONE_NAME],Float:Distance;
 					Distance = GetPlayerDistanceFromPoint(playerid, timbank_postion[z][0], timbank_postion[z][1], timbank_postion[z][2]);
 				    Get3DZone(timbank_postion[z][0], timbank_postion[z][1], timbank_postion[z][2], zone, sizeof(zone));
-				    format(stringz, sizeof stringz, "%s\n\%s\t{6db4c3}%s\t{3cab4e}%0.2f met", stringz,GetZoneFindx(z),zone,Distance);
+				    format(string, sizeof string, "%s\n\%s\t{6db4c3}%s\t{3cab4e}%0.2f met", string,GetZoneFindx(z),zone,Distance);
 				}
-				ShowPlayerDialog(playerid, TIMNGANHANG, DIALOG_STYLE_TABLIST_HEADERS, "Tim viec lam",stringz,"Chon", "Huy");
+				ShowPlayerDialog(playerid, TIMNGANHANG, DIALOG_STYLE_TABLIST_HEADERS, "Tim viec lam",string,"Chon", "Huy");
 			}
 			case 3:
 			{
-				new stringz[1029];
-				stringz = "Cua hang\tDia diem\tKhoang cach";
+				string = "Cua hang\tDia diem\tKhoang cach";
 				for(new z =0 ; z < 5 ; z++ ) 
 				{
 					new zone[MAX_ZONE_NAME],Float:Distance;
 					Distance = GetPlayerDistanceFromPoint(playerid, timstore_postion[z][0], timstore_postion[z][1], timstore_postion[z][2]);
 				    Get3DZone(timstore_postion[z][0], timstore_postion[z][1], timstore_postion[z][2], zone, sizeof(zone));
-				    format(stringz, sizeof stringz, "%s\n\%s\t{6db4c3}%s\t{3cab4e}%0.2f met", stringz,GetZoneFindy(z),zone,Distance);
+				    format(string, sizeof string, "%s\n\%s\t{6db4c3}%s\t{3cab4e}%0.2f met", string,GetZoneFindy(z),zone,Distance);
 				}
-				ShowPlayerDialog(playerid, TIMCUAHANG, DIALOG_STYLE_TABLIST_HEADERS, "Tim viec lam",stringz,"Chon", "Huy");
+				ShowPlayerDialog(playerid, TIMCUAHANG, DIALOG_STYLE_TABLIST_HEADERS, "Tim viec lam",string,"Chon", "Huy");
 			}
 			case 4:
 			{
-			    new stringz[1029];
-				stringz = "Dia diem\tKhu vuc\tKhoang cach";
+				string = "Dia diem\tKhu vuc\tKhoang cach";
 				for(new zxc =0 ; zxc < 3 ; zxc++ ) 
 				{
 					new zone[MAX_ZONE_NAME],Float:Distance;
 					Distance = GetPlayerDistanceFromPoint(playerid, diadiemkhac_postion[zxc][0], diadiemkhac_postion[zxc][1], diadiemkhac_postion[zxc][2]);
 				    Get3DZone(diadiemkhac_postion[zxc][0], diadiemkhac_postion[zxc][1], diadiemkhac_postion[zxc][2], zone, sizeof(zone));
-				    format(stringz, sizeof stringz, "%s\n\%s\t{6db4c3}%s\t{3cab4e}%0.2f met", stringz,GetZoneFindz(zxc),zone,Distance);
+				    format(string, sizeof string, "%s\n\%s\t{6db4c3}%s\t{3cab4e}%0.2f met", string,GetZoneFindz(zxc),zone,Distance);
 				}
-				ShowPlayerDialog(playerid, TIMDUONG, DIALOG_STYLE_TABLIST_HEADERS, "Tim duong",stringz,"Chon", "Huy");
+				ShowPlayerDialog(playerid, TIMDUONG, DIALOG_STYLE_TABLIST_HEADERS, "Tim duong",string,"Chon", "Huy");
 			}
 			case 5: return cmd_home(playerid, "");
 		}
@@ -226,7 +220,7 @@ hook OnDialogResponse(playerid, dialogid, response, listitem, inputtext[]) {
 	{
 	    if(response)
 	    {
-	       	SetPlayerCheckpoint(playerid,timvieclam_postion[listitem][0], timvieclam_postion[listitem][1], timvieclam_postion[listitem][2],3);
+	       	SetPlayerCheckPointEx(playerid,timvieclam_postion[listitem][0], timvieclam_postion[listitem][1], timvieclam_postion[listitem][2],3);
 	       	CP[playerid] = 252000;
 		}
 	}
@@ -234,7 +228,7 @@ hook OnDialogResponse(playerid, dialogid, response, listitem, inputtext[]) {
 	{
 	    if(response)
 	    {
-	       	SetPlayerCheckpoint(playerid,timbank_postion[listitem][0], timbank_postion[listitem][1], timbank_postion[listitem][2],3);
+	       	SetPlayerCheckPointEx(playerid,timbank_postion[listitem][0], timbank_postion[listitem][1], timbank_postion[listitem][2],3);
 	       	CP[playerid] = 252000;
 		}
 	}
@@ -242,7 +236,7 @@ hook OnDialogResponse(playerid, dialogid, response, listitem, inputtext[]) {
 	{
 	    if(response)
 	    {
-	       	SetPlayerCheckpoint(playerid,timstore_postion[listitem][0], timstore_postion[listitem][1], timstore_postion[listitem][2],3);
+	       	SetPlayerCheckPointEx(playerid,timstore_postion[listitem][0], timstore_postion[listitem][1], timstore_postion[listitem][2],3);
 	       	CP[playerid] = 252000;
 		}
 	}
@@ -250,7 +244,7 @@ hook OnDialogResponse(playerid, dialogid, response, listitem, inputtext[]) {
 	{
 	    if(response)
 	    {
-	       	SetPlayerCheckpoint(playerid,timduong_postion[listitem][0], timduong_postion[listitem][1], timduong_postion[listitem][2],3);
+	       	SetPlayerCheckPointEx(playerid,timduong_postion[listitem][0], timduong_postion[listitem][1], timduong_postion[listitem][2],3);
 	       	CP[playerid] = 252000;
 		}
 	}

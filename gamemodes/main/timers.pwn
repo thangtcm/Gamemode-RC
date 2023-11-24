@@ -873,7 +873,7 @@ task EMSUpdate[5000]()
 	        if(GetPVarInt(i, "EMSAttempt") != 0)
 			{
 
-				new Float:health,string[129];
+				new Float:health;
  				GetPlayerHealth(i,health);
 				SetPlayerHealth(i, health-1);
 				if(GetPVarInt(i, "EMSAttempt") == -1)
@@ -887,8 +887,6 @@ task EMSUpdate[5000]()
 	    			}
 //					GameTextForPlayer(i, "~r~Bi thuong~n~~w~/chapnhan chet hoac /dichvu capcuu", 5000, 3);
 	    			SendClientTextDraw(i,"Ban da bi thuong ~r~/chapnhan chet~w~ de ve vien hoac ~r~/dichvu capcuu");
-                    format(string, sizeof string, "(( Nguoi choi nay dang bi thuong nang, /damages %d de xem chi tiet)) ", i); 
-	    			SetPlayerChatBubble(i, string, COLOR_LIGHTRED, 30.0, 6000);
 				}
 				if(GetPVarInt(i, "EMSAttempt") == 1)
 				{
@@ -900,8 +898,6 @@ task EMSUpdate[5000]()
 						SpawnPlayer(i);
 	    			}
 					GameTextForPlayer(i, "~r~Bi thuong~n~~w~Dang doi EMS den...", 5000, 3);
-					format(string, sizeof string, "(( Nguoi choi nay dang bi thuong nang, /damages %d de xem chi tiet)) ", i); 
-	    			SetPlayerChatBubble(i, string, COLOR_LIGHTRED, 30.0, 6000);
 				}
 				if(GetPVarInt(i, "EMSAttempt") == 2)
 				{
@@ -917,8 +913,6 @@ task EMSUpdate[5000]()
 						}
 	    			}
 	    			GameTextForPlayer(i, "~g~Dich vu~n~~w~Dang cho dieu tri...", 5000, 3);
-	    			format(string, sizeof string, "(( Nguoi choi nay dang bi thuong nang, /damages %d de xem chi tiet)) ", i); 
-	    			SetPlayerChatBubble(i, string, COLOR_LIGHTRED, 30.0, 6000);
 				}
 				if(GetPVarInt(i, "EMSAttempt") == 3)
 				{
@@ -1080,7 +1074,7 @@ task ServerHeartbeat[1000]() {
 					else
 					{
 					    GetPlayerPos(pID, X, Y, Z);
-					    SetPlayerCheckpoint(i, X, Y, Z, 4.0);
+					    SetPlayerCheckPointEx(i, X, Y, Z, 4.0);
 					}
 				}
 			}
@@ -1539,7 +1533,7 @@ task ServerHeartbeat[1000]() {
 				{
 					new Float:X,Float:Y,Float:Z;
 					GetPlayerPos(TaxiAccepted[i], X, Y, Z);
-					SetPlayerCheckpoint(i, X, Y, Z, 5);
+					SetPlayerCheckPointEx(i, X, Y, Z, 5);
 				}
 			}
 		}
@@ -1554,7 +1548,7 @@ task ServerHeartbeat[1000]() {
 					new zone[MAX_ZONE_NAME];
 					Get3DZone(X, Y, Z, zone, sizeof(zone));
 					format(string, sizeof(string), "Benh nhan cua ban nam o %s.", zone);
-					SetPlayerCheckpoint(i, X, Y, Z, 5);
+					SetPlayerCheckPointEx(i, X, Y, Z, 5);
 				}
 			}
 		}
@@ -1567,7 +1561,7 @@ task ServerHeartbeat[1000]() {
 				{
 					new Float:X,Float:Y,Float:Z;
 					GetPlayerPos(BusAccepted[i], X, Y, Z);
-					SetPlayerCheckpoint(i, X, Y, Z, 5);
+					SetPlayerCheckPointEx(i, X, Y, Z, 5);
 				}
 			}
 		}
@@ -1579,7 +1573,7 @@ task ServerHeartbeat[1000]() {
 				format(string, sizeof(string), "%d", 45 - MedicCallTime[i]);
 				new Float:X,Float:Y,Float:Z;
 				GetPlayerPos(MedicAccepted[i], X, Y, Z);
-				SetPlayerCheckpoint(i, X, Y, Z, 5);
+				SetPlayerCheckPointEx(i, X, Y, Z, 5);
 				GameTextForPlayer(i, string, 1500, 6);
 				MedicCallTime[i] += 1;
 			}
@@ -1850,11 +1844,16 @@ task ServerHeartbeatTwo[1000]() {
 
 	foreach(new i: Player)
 	{
+		if(PlayerInfo[i][pTimeCraft] > 0) PlayerInfo[i][pTimeCraft] -= 1;
+		if(PlayerInfo[i][pTimeMedkit] > 0) PlayerInfo[i][pTimeMedkit] -= 1;
+
 		if(IsPlayerInAnyVehicle(i)) {
 			if(GetPlayerState(i) == PLAYER_STATE_DRIVER) SetPlayerArmedWeapon(i, 0);
 			else if(PlayerInfo[i][pGuns][4] == 0) SetPlayerArmedWeapon(i, 0);
 			else SetPlayerArmedWeapon(i, 29);
         }
+        if(--PlayerInfo[i][pTimeCraft] < 0) PlayerInfo[i][pTimeCraft] = 0;
+		if(--PlayerInfo[i][pTimeMedkit] < 0) PlayerInfo[i][pTimeMedkit] = 0;
         new Float:armor;
         GetPlayerArmour(i, armor);
 		if((armor > CurrentArmor[i]) && PlayerInfo[i][pAdmin] < 2)

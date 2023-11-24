@@ -74,7 +74,7 @@ Dialog:FARMER_MENU(playerid, response, listitem, inputtext[]){
                 Dialog_Show(playerid, BUYER_FARM_DIALOG, DIALOG_STYLE_LIST, "Mua gia suc", "Bo", ">>", "<<");
             }
 			case 4:{
-                Dialog_Show(playerid, SELL_FARM_DIALOG, DIALOG_STYLE_LIST, "Ban hang", "Lua\nThao Duoc\nThit", ">>", "<<");
+                Dialog_Show(playerid, SELL_FARM_DIALOG, DIALOG_STYLE_LIST, "Ban hang", "Lua\nThao Duoc\nTrai Cay\nThit", ">>", "<<");
             }
 			case 5:{
 				Dialog_Show(playerid, CONVERT_FLOUR_DIALOG, DIALOG_STYLE_INPUT, "Doi bot mi (2 lua = 1 bot mi)", "Nhap so luong", ">>", "<<");
@@ -88,7 +88,7 @@ Dialog:SELL_FARM_DIALOG(playerid, response, listitem, inputtext[]){
 	if(response){
 		new str[128];
 		SetPVarInt(playerid, #FarmSellProduct, listitem);
-		if(listitem == 2)
+		if(listitem == 3)
 		{
 			format(str, sizeof(str), "Ban %s(%d$/1)", AnimalArr[0][AnimalProduct], AnimalArr[0][AnimalSell]);
 			Dialog_Show(playerid, SELL_PRODUCT_DIALOG, DIALOG_STYLE_INPUT, str, "Vui long nhap so luong can ban", ">", "<");
@@ -215,7 +215,8 @@ Dialog:FARM_MENU_PLANTFEED(playerid, response, listitem, inputtext[]) {
 						if(PlantTreeInfo[playerid][plantId][plantAmount] >= 20)
 						{
 							PlantTreeInfo[playerid][plantId][plantLevel]++;
-							PlantTreeInfo[playerid][plantId][plantStatus] = sizeof(PlantStatusArr);
+							PlantTreeInfo[playerid][plantId][plantStatus] = 3;
+							PlantTreeInfo[playerid][plantId][plantTimer] = 0;
 						}
 					}
 					GivePlayerCash(playerid, -5);
@@ -240,7 +241,8 @@ Dialog:FARM_MENU_PLANTFEED(playerid, response, listitem, inputtext[]) {
 						if(PlantTreeInfo[playerid][plantId][plantAmount] >= 20)
 						{
 							PlantTreeInfo[playerid][plantId][plantLevel]++;
-							PlantTreeInfo[playerid][plantId][plantStatus] = 0;
+							PlantTreeInfo[playerid][plantId][plantStatus] = 3;
+							PlantTreeInfo[playerid][plantId][plantTimer] = 0;
 						}
 					}
 					GivePlayerCash(playerid, -5);

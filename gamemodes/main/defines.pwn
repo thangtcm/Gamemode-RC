@@ -247,7 +247,7 @@
 #define 		BUSINESS_TYPE_STORE 				8
 #define 		BUSINESS_TYPE_BAR					9
 #define 		BUSINESS_TYPE_CLUB 					10
-#define 		BUSINESS_TYPE_SEXSHOP 				11
+#define 		BUSINESS_TYPE_CASINO 				11
 #define 		BUSINESS_TYPE_GYM 					12
 #define 		BUSINESS_ITEMS_COST 				1500
 #define 		ITEM_CELLPHONE 						1
@@ -270,7 +270,8 @@
 #define 		ITEM_ALOCK                      	18
 #define 		ITEM_MASK                        	19
 #define 		ITEM_BASEBALL                      	20
-#define 		MAX_ITEM                        	21
+#define 		ITEM_SAWDER                      	21
+#define 		MAX_ITEM                        	22
 #define 		FUEL_PUMP_RATE 						0.1 // Gallons per second
 #define 		BIZ_PENALTY 						0.2
 
