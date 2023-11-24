@@ -23,15 +23,15 @@ system/new_job/Farmer/cmd.pwn(109) : íåïðàâèëüíàÿ òàáóëÿöèÿ
 system/new_job/Farmer/cmd.pwn(235) : èäåíòèôèêàòîðó ïðèñâîåíî çíà÷åíèå, íî îí íå èñïîëüçóåòñÿ: "query"
 system/new_job/Farmer/cmd.pwn(246) : íåïðàâèëüíàÿ òàáóëÿöèÿ
 ./system/new_job/miner/mn_callbacks.pwn(416) : èäåíòèôèêàòîðó ïðèñâîåíî çíà÷åíèå, íî îí íå èñïîëüçóåòñÿ: "string"
-./main/variables.pwn(3825) : èäåíòèôèêàòîð íå èñïîëüçóåòñÿ: "ChangeSkin"
-./main/variables.pwn(1477) : èäåíòèôèêàòîð íå èñïîëüçóåòñÿ: "ChatGoActor"
+./main/variables.pwn(3827) : èäåíòèôèêàòîð íå èñïîëüçóåòñÿ: "ChangeSkin"
+./main/variables.pwn(1479) : èäåíòèôèêàòîð íå èñïîëüçóåòñÿ: "ChatGoActor"
 lsrpvn.pwn(72) : èäåíòèôèêàòîð íå èñïîëüçóåòñÿ: "CountDamages"
 lsrpvn.pwn(33) : èäåíòèôèêàòîð íå èñïîëüçóåòñÿ: "DisplayDamages"
-./main/variables.pwn(2391) : èäåíòèôèêàòîð íå èñïîëüçóåòñÿ: "DownEDS"
+./main/variables.pwn(2393) : èäåíòèôèêàòîð íå èñïîëüçóåòñÿ: "DownEDS"
 ./system/drug/drug.pwn(12) : èäåíòèôèêàòîð íå èñïîëüçóåòñÿ: "DrugTypeName"
 system/new_job/Farmer/setting.pwn(105) : èäåíòèôèêàòîð íå èñïîëüçóåòñÿ: "FarmPlayer"
 lsrpvn.pwn(88) : èäåíòèôèêàòîð íå èñïîëüçóåòñÿ: "GetBodyPartName"
-./main/variables.pwn(2387) : èäåíòèôèêàòîð íå èñïîëüçóåòñÿ: "HospitalSpawnXYZ"
+./main/variables.pwn(2389) : èäåíòèôèêàòîð íå èñïîëüçóåòñÿ: "HospitalSpawnXYZ"
 lsrpvn.pwn(1676) : èäåíòèôèêàòîð íå èñïîëüçóåòñÿ: "IsPlayerInRangeOfDynamicObject"
 lsrpvn.pwn(1685) : èäåíòèôèêàòîð íå èñïîëüçóåòñÿ: "IsPlayerInRangeOfObject"
 lsrpvn.pwn(1089) : èäåíòèôèêàòîð íå èñïîëüçóåòñÿ: "PlacePlant"
@@ -40,16 +40,16 @@ lsrpvn.pwn(1089) : èäåíòèôèêàòîð íå èñïîëüçóåòñÿ: "Pl
 ./system/new_job/Trucking/setting.pwn(34) : èäåíòèôèêàòîð íå èñïîëüçóåòñÿ: "UnitType"
 ./main/functions.pwn(6952) : èäåíòèôèêàòîð íå èñïîëüçóåòñÿ: "codehash"
 ./system/inventory/inventory.pwn(79) : èäåíòèôèêàòîð íå èñïîëüçóåòñÿ: "g_facInventory"
-./main/variables.pwn(1750) : èäåíòèôèêàòîð íå èñïîëüçóåòñÿ: "passLength"
+./main/variables.pwn(1752) : èäåíòèôèêàòîð íå èñïîëüçóåòñÿ: "passLength"
 lsrpvn.pwn(21693) : èäåíòèôèêàòîðó ïðèñâîåíî çíà÷åíèå, íî îí íå èñïîëüçóåòñÿ: "pointpinglimit"
 lsrpvn.pwn(16723) : èäåíòèôèêàòîðó ïðèñâîåíî çíà÷åíèå, íî îí íå èñïîëüçóåòñÿ: "tRewardText"
 lsrpvn.pwn(247) : èäåíòèôèêàòîðó ïðèñâîåíî çíà÷åíèå, íî îí íå èñïîëüçóåòñÿ: "timerd"
 Pawn compiler 3.2.3664	 	 	Copyright (c) 1997-2016, ITB CompuPhase
 
 Ðàçìåð çàãîëîâêà:	   51028 áàéò
-Ðàçìåð êîäà:		 7210600 áàéò
-Ðàçìåð äàííûõ:		177805156 áàéò
+Ðàçìåð êîäà:		 7211484 áàéò
+Ðàçìåð äàííûõ:		177805968 áàéò
 Ðàçìåð ñòýêà\êó÷è:	18000000 áàéò; Ïðèìåðíîå ìàêñ. èñïîëüçîâàíèå: Íåèçâåñòíî, èç-çà ðåêóðñèé
-Âñåãî òðåáóåòñÿ:	203066784 áàéò
+Âñåãî òðåáóåòñÿ:	203068480 áàéò
 
 Ïðåäóïðåæäåíèé:5.

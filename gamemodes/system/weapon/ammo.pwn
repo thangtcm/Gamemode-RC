@@ -787,18 +787,18 @@ Dialog:CRAFT_MAIN(playerid, response, listitem, inputtext[]) {
     }
 }
 stock ShowDealCraft(playerid) {
-	if(CraftWeaponDeal[playerid] == 0) {
+	if(PlayerInfo[playerid][pCraftWD] == 0) {
 		Dialog_Show(playerid, MY_DEALCRAFT, DIALOG_STYLE_MSGBOX, "Che tao vu khi", "Ban khong co don hang nao","> Chon","Thoat");
 	}
-	else if(CraftWeaponDeal[playerid] != 0) {
+	else if(PlayerInfo[playerid][pCraftWD] != 0) {
 		new string[129],button[30];
-		if(gettime() >= CraftWeaponDealTime[playerid]) {
+		if(gettime() >= PlayerInfo[playerid][pCraftWDTime]) {
 			button = "Nhan hang";
-			format(string,sizeof(string),"Don hang cua ban la: %s\nDon hang da hoan tat, bam 'nhan hang' de lay vu khi da dat",GetOderName(CraftWeaponDeal[playerid]));
+			format(string,sizeof(string),"Don hang cua ban la: %s\nDon hang da hoan tat, bam 'nhan hang' de lay vu khi da dat",GetOderName(PlayerInfo[playerid][pCraftWD]));
 		}
 		else {
-			format(string,sizeof(string),"Don hang cua ban la: %s\nThoi gian hoan tat don hang: %d giay",GetOderName(CraftWeaponDeal[playerid]), CraftWeaponDealTime[playerid]-gettime() );
-			format(button,sizeof(button),"> %d giay", CraftWeaponDealTime[playerid]-gettime());
+			format(string,sizeof(string),"Don hang cua ban la: %s\nThoi gian hoan tat don hang: %d giay",GetOderName(PlayerInfo[playerid][pCraftWD]), PlayerInfo[playerid][pCraftWDTime]-gettime() );
+			format(button,sizeof(button),"> %d giay", PlayerInfo[playerid][pCraftWDTime]-gettime());
 		}
 		
 		Dialog_Show(playerid, MY_DEALCRAFT, DIALOG_STYLE_MSGBOX, "Che tao vu khi", string,button,"Thoat");
@@ -830,17 +830,17 @@ stock ShowCraftAmmo(playerid) {
 Dialog:MY_DEALCRAFT(playerid, response, listitem, inputtext[]) {
     if(response) {
     	new string[129];
-    	if(CraftWeaponDeal[playerid] != 0) {
-    		if(gettime() < CraftWeaponDealTime[playerid]) {
-    			format(string,sizeof(string),"Thoi gian hoan tat don hang: %d giay, vui long doi",CraftWeaponDealTime[playerid]-gettime() );
+    	if(PlayerInfo[playerid][pCraftWD] != 0) {
+    		if(gettime() < PlayerInfo[playerid][pCraftWDTime]) {
+    			format(string,sizeof(string),"Thoi gian hoan tat don hang: %d giay, vui long doi",PlayerInfo[playerid][pCraftWDTime]-gettime() );
     			SendClientMessage(playerid, -1, string);
     			return 1;
     		}
-    		else if(gettime() > CraftWeaponDealTime[playerid]) {
-    		    format(string,sizeof(string),"Ban da lay don hang %s thanh cong",GetOderName(CraftWeaponDeal[playerid])  );
+    		else if(gettime() > PlayerInfo[playerid][pCraftWDTime]) {
+    		    format(string,sizeof(string),"Ban da lay don hang %s thanh cong",GetOderName(PlayerInfo[playerid][pCraftWD])  );
     		    SendClientMessage(playerid, -1, string);
     		    new pitem_add[30];
-    		    switch(CraftWeaponDeal[playerid]) {
+    		    switch(PlayerInfo[playerid][pCraftWD]) {
     		    	case 0: pitem_add = "";
 		            case 1: pitem_add = "9mm";
 		            case 2: pitem_add = "Deagle";
@@ -853,7 +853,7 @@ Dialog:MY_DEALCRAFT(playerid, response, listitem, inputtext[]) {
 		            case 9: pitem_add = "Tec-9";
     		    }
 		        Inventory_Add(playerid,pitem_add, 1);
-		        CraftWeaponDeal[playerid] = 0;
+		        PlayerInfo[playerid][pCraftWD] = 0;
     		}
     	}
     }
@@ -925,7 +925,7 @@ Dialog:CRAFT_AMMO(playerid, response, listitem, inputtext[]) {
 }
 Dialog:CRAFT_WEAPON(playerid, response, listitem, inputtext[]) {
     if(response) {
-    	if(CraftWeaponDeal[playerid] != 0) return SendClientMessage(playerid, -1, "Vui long doi don hang truoc hoan tat.");
+    	if(PlayerInfo[playerid][pCraftWD] != 0) return SendClientMessage(playerid, -1, "Vui long doi don hang truoc hoan tat.");
     	if(listitem == 0 ) {
     		if(Inventory_Count(playerid, "Sat") < 0) return SendClientMessage(playerid, -1, "Ban khong du so luong sat (60) (/inv de kiem tra).");
     		if(Inventory_Count(playerid, "Go") < 0) return SendClientMessage(playerid, -1, "Ban khong du so luong go (60) (/inv de kiem tra).");
@@ -941,8 +941,8 @@ Dialog:CRAFT_WEAPON(playerid, response, listitem, inputtext[]) {
 		    Inventory_Remove(playerid, pItemId, 10); //ID cua InventoryData
 		    SendClientMessage(playerid, COLOR_YELLOW, "Ban da oder thanh cong Colt-45 , don hang se hoan tat trong 15p.");
 		    SendClientMessage(playerid, COLOR_YELLOW, " > Sau khi don hang hoan tat hay quay lai NPC va nhan hang.");
-		    CraftWeaponDeal[playerid] = 1;
-		    CraftWeaponDealTime[playerid] = gettime() + ( 60 * 15 ) ; // 15p
+		    PlayerInfo[playerid][pCraftWD] = 1;
+		    PlayerInfo[playerid][pCraftWDTime] = gettime() + ( 60 * 15 ) ; // 15p
     	}
         if(listitem == 1 ) {
         	if(Inventory_Count(playerid, "Sat") < 0) return SendClientMessage(playerid, -1, "Ban khong du so luong sat (60) (/inv de kiem tra).");
@@ -962,8 +962,8 @@ Dialog:CRAFT_WEAPON(playerid, response, listitem, inputtext[]) {
 		    Inventory_Remove(playerid, pItemId, 10); //ID cua InventoryData
 		    SendClientMessage(playerid, COLOR_YELLOW, "Ban da oder thanh cong Deagle , don hang se hoan tat trong 15p.");
 		    SendClientMessage(playerid, COLOR_YELLOW, " > Sau khi don hang hoan tat hay quay lai NPC va nhan hang.");
-		    CraftWeaponDeal[playerid] = 2;
-		    CraftWeaponDealTime[playerid] = gettime() + ( 60 * 15 ) ; // 15p
+		    PlayerInfo[playerid][pCraftWD] = 2;
+		    PlayerInfo[playerid][pCraftWDTime] = gettime() + ( 60 * 15 ) ; // 15p
     	}
     	if(listitem == 2 ) {
     		if(Inventory_Count(playerid, "Sat") < 0) return SendClientMessage(playerid, -1, "Ban khong du so luong sat (60) (/inv de kiem tra).");
@@ -983,8 +983,8 @@ Dialog:CRAFT_WEAPON(playerid, response, listitem, inputtext[]) {
 		    Inventory_Remove(playerid, pItemId, 25); //ID cua InventoryData
 		    SendClientMessage(playerid, COLOR_YELLOW, "Ban da oder thanh cong Shotgun , don hang se hoan tat trong 30p.");
 		    SendClientMessage(playerid, COLOR_YELLOW, " > Sau khi don hang hoan tat hay quay lai NPC va nhan hang.");
-		    CraftWeaponDeal[playerid] = 3;
-		    CraftWeaponDealTime[playerid] = gettime() + ( 60 * 30 ) ; // 15p
+		    PlayerInfo[playerid][pCraftWD] = 3;
+		    PlayerInfo[playerid][pCraftWDTime] = gettime() + ( 60 * 30 ) ; // 15p
     	}
     	if(listitem == 3 ) {
     		if(Inventory_Count(playerid, "Sat") < 0) return SendClientMessage(playerid, -1, "Ban khong du so luong sat (60) (/inv de kiem tra).");
@@ -1004,8 +1004,8 @@ Dialog:CRAFT_WEAPON(playerid, response, listitem, inputtext[]) {
 		    Inventory_Remove(playerid, pItemId, 80); //ID cua InventoryData
 		    SendClientMessage(playerid, COLOR_YELLOW, "Ban da oder thanh cong Spas-12 , don hang se hoan tat trong 30p.");
 		    SendClientMessage(playerid, COLOR_YELLOW, " > Sau khi don hang hoan tat hay quay lai NPC va nhan hang.");
-		    CraftWeaponDeal[playerid] = 4;
-		    CraftWeaponDealTime[playerid] = gettime() + ( 60 * 30 ) ; // 15p
+		    PlayerInfo[playerid][pCraftWD] = 4;
+		    PlayerInfo[playerid][pCraftWDTime] = gettime() + ( 60 * 30 ) ; // 15p
     	}
     	if(listitem == 4 ) {
     		if(Inventory_Count(playerid, "Sat") < 0) return SendClientMessage(playerid, -1, "Ban khong du so luong sat (60) (/inv de kiem tra).");
@@ -1022,8 +1022,8 @@ Dialog:CRAFT_WEAPON(playerid, response, listitem, inputtext[]) {
 		    Inventory_Remove(playerid, pItemId, 60); //ID cua InventoryData
 		    SendClientMessage(playerid, COLOR_YELLOW, "Ban da oder thanh cong MP5 , don hang se hoan tat trong 40p.");
 		    SendClientMessage(playerid, COLOR_YELLOW, " > Sau khi don hang hoan tat hay quay lai NPC va nhan hang.");
-		    CraftWeaponDeal[playerid] = 5;
-		    CraftWeaponDealTime[playerid] = gettime() + ( 60 * 40 ) ; // 15p
+		    PlayerInfo[playerid][pCraftWD] = 5;
+		    PlayerInfo[playerid][pCraftWDTime] = gettime() + ( 60 * 40 ) ; // 15p
     	}
     	if(listitem == 5 ) {
     		// craft Shotgun 30 sat 20 go 25 vl , 15phut
@@ -1042,8 +1042,8 @@ Dialog:CRAFT_WEAPON(playerid, response, listitem, inputtext[]) {
 		    Inventory_Remove(playerid, pItemId, 60); //ID cua InventoryData
 		    SendClientMessage(playerid, COLOR_YELLOW, "Ban da oder thanh cong AK-47 , don hang se hoan tat trong 60p.");
 		    SendClientMessage(playerid, COLOR_YELLOW, " > Sau khi don hang hoan tat hay quay lai NPC va nhan hang.");
-		    CraftWeaponDeal[playerid] = 6;
-		    CraftWeaponDealTime[playerid] = gettime() + ( 60 * 60 ) ; // 
+		    PlayerInfo[playerid][pCraftWD] = 6;
+		    PlayerInfo[playerid][pCraftWDTime] = gettime() + ( 60 * 60 ) ; // 
     	}
     	if(listitem == 6 ) {
     		// craft Shotgun 30 sat 20 go 25 vl , 15phut
@@ -1058,8 +1058,8 @@ Dialog:CRAFT_WEAPON(playerid, response, listitem, inputtext[]) {
 		    Inventory_Remove(playerid, pItemId, 40); //ID cua InventoryData
 		    SendClientMessage(playerid, COLOR_YELLOW, "Ban da oder thanh cong Sniper , don hang se hoan tat trong 60p.");
 		    SendClientMessage(playerid, COLOR_YELLOW, " > Sau khi don hang hoan tat hay quay lai NPC va nhan hang.");
-		    CraftWeaponDeal[playerid] = 7;
-		    CraftWeaponDealTime[playerid] = gettime() + ( 60 * 60 ) ; // 15p
+		    PlayerInfo[playerid][pCraftWD] = 7;
+		    PlayerInfo[playerid][pCraftWDTime] = gettime() + ( 60 * 60 ) ; // 15p
     	}
     	if(listitem == 7 ) {
     		// craft Shotgun 30 sat 20 go 25 vl , 15phut
@@ -1074,8 +1074,8 @@ Dialog:CRAFT_WEAPON(playerid, response, listitem, inputtext[]) {
 		    Inventory_Remove(playerid, pItemId, 25); //ID cua InventoryData
 		    SendClientMessage(playerid, COLOR_YELLOW, "Ban da oder thanh cong Uzi , don hang se hoan tat trong 15p.");
 		    SendClientMessage(playerid, COLOR_YELLOW, " > Sau khi don hang hoan tat hay quay lai NPC va nhan hang.");
-		    CraftWeaponDeal[playerid] = 8;
-		    CraftWeaponDealTime[playerid] = gettime() + ( 15 * 60 ) ; // 15p
+		    PlayerInfo[playerid][pCraftWD] = 8;
+		    PlayerInfo[playerid][pCraftWDTime] = gettime() + ( 15 * 60 ) ; // 15p
     	}
     	if(listitem == 8 ) {
     		// craft Shotgun 30 sat 20 go 25 vl , 15phut
@@ -1090,8 +1090,8 @@ Dialog:CRAFT_WEAPON(playerid, response, listitem, inputtext[]) {
 		    Inventory_Remove(playerid, pItemId, 30); //ID cua InventoryData
 		    SendClientMessage(playerid, COLOR_YELLOW, "Ban da oder thanh cong Tec-9 , don hang se hoan tat trong 15p.");
 		    SendClientMessage(playerid, COLOR_YELLOW, " > Sau khi don hang hoan tat hay quay lai NPC va nhan hang.");
-		    CraftWeaponDeal[playerid] = 9;
-		    CraftWeaponDealTime[playerid] = gettime() + ( 15 * 60 ) ; // 15p
+		    PlayerInfo[playerid][pCraftWD] = 9;
+		    PlayerInfo[playerid][pCraftWDTime] = gettime() + ( 15 * 60 ) ; // 15p
     	}
     }  
     return 1; 
@@ -1102,7 +1102,7 @@ hook OnGameModeInit() {
 	 
 }
 hook OnPlayerConnect(playerid) {
-	CraftWeaponDeal[playerid]= 0;
+	PlayerInfo[playerid][pCraftWD]= 0;
 }
 CMD:catsung(playerid, params[])
 {

@@ -738,6 +738,8 @@ new Chatting[MAX_PLAYERS];
 new TruckerVehicles[20];
 enum pInfo
 {
+	pCraftWD,
+    pCraftWDTime,
 	pChatStyle,
 	pNai,
 	pBo,
