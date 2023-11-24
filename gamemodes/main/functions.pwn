@@ -2001,8 +2001,6 @@ public OnPlayerWeaponShot(playerid, weaponid, hittype, hitid, Float:fX, Float:fY
             }
         }
     }
-<<<<<<< HEAD
-=======
 	if(!IsValidPlayerWeapon(playerid, weaponid) && PlayerInfo[playerid][pAdmin] < 2 && GetPVarInt(playerid, "AC_Weapon") < gettime())
 	{
 		new string[128], weaponName[32];
@@ -2014,7 +2012,6 @@ public OnPlayerWeaponShot(playerid, weaponid, hittype, hitid, Float:fX, Float:fY
 		SendClientMessageToAllEx(COLOR_LIGHTRED, string);
 		SetTimerEx("KickEx", 1000, 0, "i", playerid);
 	}
->>>>>>> main
     for(new Sz; Sz < MAX_SZ; Sz++)
  	{
   		if(IsPlayerInRangeOfPoint(playerid, SafeZoneInfo[Sz][szKhoangcach], SafeZoneInfo[Sz][szExteriorX], SafeZoneInfo[Sz][szExteriorY], SafeZoneInfo[Sz][szExteriorZ]))
@@ -16123,11 +16120,7 @@ stock LoadPlayerVehicles(playerid) {
 					Vehicle_ResetData(carcreated);
 					PlayerVehicleInfo[playerid][v][pvId] = carcreated;
 					VehicleFuel[carcreated] = PlayerVehicleInfo[playerid][v][pvFuel];
-<<<<<<< HEAD
 					if(VehicleFuel[carcreated] > VehicleCapacity[carcreated]) VehicleFuel[carcreated] = VehicleCapacity[carcreated];
-=======
-					if(VehicleFuel[carcreated] >  VehicleCapacity[carcreated]) VehicleFuel[carcreated] =  VehicleCapacity[carcreated];
->>>>>>> main
 
 					if(PlayerVehicleInfo[playerid][v][pvLocked]) {
 						LockPlayerVehicle(playerid, carcreated, PlayerVehicleInfo[playerid][v][pvLock]);
@@ -16913,10 +16906,7 @@ stock CreatePlayerVehicle(playerid, playervehicleid, modelid, Float: x, Float: y
 		PlayerVehicleInfo[playerid][playervehicleid][pvId] = carcreated;
 		PlayerVehicleInfo[playerid][playervehicleid][pvSpawned] = 1;
 		PlayerVehicleInfo[playerid][playervehicleid][pvFuel] = PlayerVehicleInfo[playerid][playervehicleid][pvCapacity];
-<<<<<<< HEAD
-=======
 		VehicleFuel[carcreated] = PlayerVehicleInfo[playerid][playervehicleid][pvFuel];
->>>>>>> main
 		VehicleCapacity[carcreated] = 50.0;
 		//SetVehicleNumberPlate(carcreated, PlayerVehicleInfo[playerid][playervehicleid][pvNumberPlate]);
 
@@ -23386,19 +23376,6 @@ public todtime()
     SetWorldTime(0);
     GioFix = SetTimerEx("todtime1", 10000, 0, "d", 1);
 }
-<<<<<<< HEAD
-=======
-forward TimeCraftMed(playerid);
-public TimeCraftMed(playerid)
-{
-	if(PlayerInfo[playerid][pTimeCraft] > 1)
-	{
-    	PlayerInfo[playerid][pTimeCraft] -= 1;
-    	SetTimerEx("TimeCraftMed", 60000, 0, "d", playerid);
-    }
-    return 1;
-}
->>>>>>> main
 
 forward todtime1();
 public todtime1()
@@ -23406,6 +23383,16 @@ public todtime1()
     SetWorldTime(0);
     GioFix1 = SetTimerEx("todtime", 1000, 0, "d", 1);
 }
+
+stock IsValidPlayerWeapon(playerid, weaponid)
+{
+	if(PlayerInfo[playerid][pGuns][GetWeaponSlot(weaponid)] != weaponid && PlayerInfo[playerid][pASGuns][GetWeaponSlot(weaponid)] != weaponid)
+	{
+		return 0;
+	}
+	return 1;
+}
+
 stock GetPlayerWeaponDataCx(playerid,weaponid) {
 	new weapon,ammo;
 	for(new i = 0; i < 12 ; i++ ) {

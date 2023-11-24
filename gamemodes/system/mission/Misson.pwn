@@ -110,8 +110,9 @@ public M_OnQueryFinish(extraid, handleid)
 			if(PlayerInfo[extraid][pDaily] != datetimenow)
 			{
 				PlayerInfo[extraid][pDaily] = datetimenow;
-				SendServerMessage(extraid, "Hom nay la lan dang nhap dau tien cua ban.");
+				
 			}
+			SendServerMessage(extraid, "Su dung /trogiup de tim hieu ro hon ve cac cong viec va cac lenh can dung trong may chu");
 			cache_get_field_content(row,  "M_get_1", szResult, MainPipeline); PMisson[extraid][m_get][1] = strval(szResult);
 			cache_get_field_content(row,  "M_get_2", szResult, MainPipeline); PMisson[extraid][m_get][2] = strval(szResult);
 			
@@ -124,7 +125,11 @@ public M_OnQueryFinish(extraid, handleid)
 			cache_get_field_content(row,  "M_count_3", szResult, MainPipeline); PMisson[extraid][m_check_count][3] = strval(szResult);
 			cache_get_field_content(row,  "M_count_4", szResult, MainPipeline); PMisson[extraid][m_check_count][4] = strval(szResult);
 			cache_get_field_content(row,  "M_count_5", szResult, MainPipeline); PMisson[extraid][m_check_count][5] = strval(szResult);
-			cache_get_field_content(row,  "DriveReward", szResult, MainPipeline); pDriveReward[playerid] = strval(szResult);
+			cache_get_field_content(row,  "DriveReward", szResult, MainPipeline); pDriveReward[extraid] = strval(szResult);
+			if(PMisson[extraid][m_get][1] == 0)
+			{
+				SendServerMessage(extraid, "Ban lam nhiem vu ngay hom nay, hay tim NPC tại CityHall de lam nhiem vu ngay nhe");
+			}
 		}
 	}
 	return 1;

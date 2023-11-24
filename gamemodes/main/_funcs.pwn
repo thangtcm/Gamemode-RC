@@ -1427,11 +1427,7 @@ public OnPlayerConnect(playerid) {
 		case 1: InterpolateCameraPos(playerid, 2433.3809,-66.7512,76.6627, 2167.8020,96.4188,42.4985, 50000, CAMERA_CUT);
 	}
 	DownS[playerid] = false;
-<<<<<<< HEAD
-	TogglePlayerSpectating(playerid, true);
-=======
 	ActTogglePlayerSpectating(playerid, true);
->>>>>>> main
 	// SetTimerEx("LoadLogin", 500, 0, "i", playerid);
 	DownS[playerid] = 0;
 	SetPVarString(playerid, "PassAuth", "abc");
@@ -3031,7 +3027,6 @@ public OnVehicleDeath(vehicleid, killerid) {
 	    if(GetPVarInt(i, "NGPassengerVeh") == vehicleid)
 	    {
 	        TogglePlayerSpectating(i, 0);
-<<<<<<< HEAD
 		}
 
 		new v;
@@ -3039,8 +3034,6 @@ public OnVehicleDeath(vehicleid, killerid) {
 		{
 			GetVehicleHealth(vehicleid, PlayerVehicleInfo[i][v][pvHealth]);
 			GetVehicleDamageStatus(vehicleid, PlayerVehicleInfo[i][v][pvPanels], PlayerVehicleInfo[i][v][pvDoors], PlayerVehicleInfo[i][v][pvLights], PlayerVehicleInfo[i][v][pvTires]);
-=======
->>>>>>> main
 		}
 
 		for(new d; d < MAX_PLAYERVEHICLES; d++)
@@ -14979,20 +14972,9 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 				VehicleSpawned[playerid]++;
 				PlayerVehicleInfo[playerid][listitem][pvSpawned] = 1;
 				PlayerVehicleInfo[playerid][listitem][pvId] = iVeh;
-<<<<<<< HEAD
-<<<<<<< Updated upstream
-				if(PlayerVehicleInfo[playerid][listitem][pvLocked] == 1) LockPlayerVehicle(playerid, iVeh, PlayerVehicleInfo[playerid][listitem][pvLock]);
-=======
-				VehicleFuel[iVeh] = PlayerVehicleInfo[playerid][listitem][pvFuel];
-				if (PlayerVehicleInfo[playerid][listitem][pvTiresDays] == 0) PlayerVehicleInfo[playerid][listitem][pvTiresDays] = gettime() + (86400 * 10);
-				if (VehicleFuel[iVeh] > GetVehicleFuelCapacity(iVeh)) VehicleFuel[iVeh] = GetVehicleFuelCapacity(iVeh);
-				if (PlayerVehicleInfo[playerid][listitem][pvLocked] == 1) LockPlayerVehicle(playerid, iVeh, PlayerVehicleInfo[playerid][listitem][pvLock]);
->>>>>>> main
-				LoadPlayerVehicleMods(playerid, listitem);
-				g_mysql_SaveVehicle(playerid, listitem);
-				sendMessage(playerid, -1, "pvFuel %0.1f | Fuel %0.1f", PlayerVehicleInfo[playerid][listitem][pvFuel], VehicleFuel[iVeh]);
 
-=======
+				if(PlayerVehicleInfo[playerid][listitem][pvLocked] == 1) LockPlayerVehicle(playerid, iVeh, PlayerVehicleInfo[playerid][listitem][pvLock]);
+
 				VehicleFuel[iVeh] = PlayerVehicleInfo[playerid][listitem][pvFuel];
 				if (PlayerVehicleInfo[playerid][listitem][pvMaxHealth] == 0.0) PlayerVehicleInfo[playerid][listitem][pvMaxHealth] = 900.0;
 				if (PlayerVehicleInfo[playerid][listitem][pvTiresDays] == 0) PlayerVehicleInfo[playerid][listitem][pvTiresDays] = gettime() + (86400 * 10);
@@ -15001,7 +14983,6 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 				LoadPlayerVehicleMods(playerid, listitem);
 				g_mysql_SaveVehicle(playerid, listitem);
 				
->>>>>>> Stashed changes
 				new vstring[64];
 				format(vstring, sizeof(vstring), "Ban da lay %s cua ban ra khoi kho.", VehicleName[PlayerVehicleInfo[playerid][listitem][pvModelId] - 400]);
 				SendClientMessageEx(playerid, COLOR_WHITE, vstring);

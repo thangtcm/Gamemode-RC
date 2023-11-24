@@ -1590,15 +1590,10 @@ stock g_mysql_SaveVehicle(playerid, slotid)
 	format(query, sizeof(query), "%s `pvWeapon2` = %d,", query, PlayerVehicleInfo[playerid][slotid][pvWeapons][2]);
 	format(query, sizeof(query), "%s `pvLock` = %d,", query, PlayerVehicleInfo[playerid][slotid][pvLock]);
 	format(query, sizeof(query), "%s `pvWepUpgrade` = %d,", query, PlayerVehicleInfo[playerid][slotid][pvWepUpgrade]);
-<<<<<<< HEAD
-	format(query, sizeof(query), "%s `pvFuel` = %0.5f,", query, VehicleFuel[PlayerVehicleInfo[playerid][slotid][pvId]]);
-	format(query, sizeof(query), "%s `pvCapacity` = %0.5f,", query, VehicleCapacity[PlayerVehicleInfo[playerid][slotid][pvId]]);
-=======
 	format(query, sizeof(query), "%s `pvFuel` = %0.5f,", query, PlayerVehicleInfo[playerid][slotid][pvFuel]);
     VehicleFuel[PlayerVehicleInfo[playerid][slotid][pvId]] = PlayerVehicleInfo[playerid][slotid][pvId];
 	format(query, sizeof(query), "%s `pvCapacity` = %0.5f,", query, PlayerVehicleInfo[playerid][slotid][pvCapacity]);
     VehicleCapacity[PlayerVehicleInfo[playerid][slotid][pvId]] = PlayerVehicleInfo[playerid][slotid][pvCapacity];
->>>>>>> main
 	format(query, sizeof(query), "%s `pvImpound` = %d,", query, PlayerVehicleInfo[playerid][slotid][pvImpounded]);
 	format(query, sizeof(query), "%s `pvDisabled` = %d,", query, PlayerVehicleInfo[playerid][slotid][pvDisabled]);
 	format(query, sizeof(query), "%s `pvPlate` = '%s',", query, g_mysql_ReturnEscaped(PlayerVehicleInfo[playerid][slotid][pvPlate], MainPipeline));
@@ -8611,15 +8606,9 @@ public OnVehicleSpawn(vehicleid) {
 
             SetVehicleVirtualWorld(iVehicleID, PlayerVehicleInfo[i][v][pvVW]);
             LinkVehicleToInterior(iVehicleID, PlayerVehicleInfo[i][v][pvInt]);
-<<<<<<< HEAD
 			SetVehicleHealth(iVehicleID, PlayerVehicleInfo[i][v][pvHealth]);
 			UpdateVehicleDamageStatus(iVehicleID, PlayerVehicleInfo[i][v][pvPanels], PlayerVehicleInfo[i][v][pvDoors], PlayerVehicleInfo[i][v][pvLights], PlayerVehicleInfo[i][v][pvTires]);
 
-=======
-            SetVehicleHealth(iVehicleID, PlayerVehicleInfo[i][v][pvHealth]);
-			UpdateVehicleDamageStatus(iVehicleID, PlayerVehicleInfo[i][v][pvPanels], PlayerVehicleInfo[i][v][pvDoors], PlayerVehicleInfo[i][v][pvLights], PlayerVehicleInfo[i][v][pvTires]);
-			
->>>>>>> main
 			PlayerVehicleInfo[i][v][pvId] = iVehicleID;
 
 			Vehicle_ResetData(iVehicleID);

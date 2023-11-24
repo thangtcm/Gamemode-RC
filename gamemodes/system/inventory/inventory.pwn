@@ -76,10 +76,7 @@ new const g_facInventory[][] = {
 	"Mat na",
 	"Vat lieu",
 	"Thuoc Sung",
-<<<<<<< HEAD
-=======
 	"May Cua"
->>>>>>> main
 };
 
 new const g_aInventoryItems[][e_InventoryItems] =
@@ -1145,16 +1142,13 @@ CMD:inv(playerid, params[])
 CMD:checkinv(playerid, params[])
 {
 	new
-		giveplayerid;
+		giveplayerid, str[128];
 	if(PlayerInfo[playerid][pAdmin] < 4)
 		return SendClientMessageEx(playerid, COLOR_LIGHTRED, "Ban khong duoc phep su dung lenh nay.");
 	if(sscanf(params, "u", giveplayerid))
 		return SendClientMessageEx(playerid, COLOR_GRAD1, "/checkinv [playerid/name]");
 	if(!IsPlayerConnected(giveplayerid)) 
 		return SendErrorMessage(playerid, "Nguoi choi khong hop le.");
-<<<<<<< HEAD
-	SetPVarInt(playerid, "GivePlayerid_Inventory", giveplayerid);
-=======
 	if(PlayerInfo[playerid][pAdmin] >= 4)
 	{
 		SetPVarInt(playerid, "GivePlayerid_Inventory", giveplayerid);
@@ -1183,9 +1177,7 @@ CMD:checkinv(playerid, params[])
 			SendErrorMessage(playerid, " Nguoi choi do can dau hang de ban luc soat.");
 		}
 	}
->>>>>>> main
 	OpenInventory(playerid, true);
-	new str[128];
 	format(str, sizeof(str), "Ban dang xem tui do cua %s", GetPlayerNameEx(giveplayerid));
 	SendClientMessageEx(playerid, COLOR_LIGHTRED, str);
 	return 1;
