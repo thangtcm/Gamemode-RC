@@ -247,7 +247,7 @@
 #define 		BUSINESS_TYPE_STORE 				8
 #define 		BUSINESS_TYPE_BAR					9
 #define 		BUSINESS_TYPE_CLUB 					10
-#define 		BUSINESS_TYPE_SEXSHOP 				11
+#define 		BUSINESS_TYPE_CASINO 				11
 #define 		BUSINESS_TYPE_GYM 					12
 #define 		BUSINESS_ITEMS_COST 				1500
 #define 		ITEM_CELLPHONE 						1

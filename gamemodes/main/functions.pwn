@@ -15389,7 +15389,7 @@ stock GetBusinessDefaultPickup(business)
 		case BUSINESS_TYPE_GASSTATION: return 1650;
 		case BUSINESS_TYPE_CLOTHING: return 1275;
 		case BUSINESS_TYPE_RESTAURANT: return 19094;
-		case BUSINESS_TYPE_SEXSHOP: return 321;
+		case BUSINESS_TYPE_CASINO: return 1314;
 		case BUSINESS_TYPE_BAR:
 		{
 		    new rnd = random(4);
@@ -19484,14 +19484,14 @@ stock DisplayItemPricesDialog(businessid, playerid)
 
 	new szDialog[612], pvar[25], iListIndex, i;
 	if (Businesses[businessid][bType] == BUSINESS_TYPE_STORE || Businesses[businessid][bType] == BUSINESS_TYPE_GASSTATION) i = sizeof(StoreItems);
-	if (Businesses[businessid][bType] == BUSINESS_TYPE_SEXSHOP) i = sizeof(SexItems);
+	//if (Businesses[businessid][bType] == BUSINESS_TYPE_SEXSHOP) i = sizeof(SexItems);
 	if (Businesses[businessid][bType] == BUSINESS_TYPE_RESTAURANT) i = sizeof(RestaurantItems);
 	for(new item; item < i; item++)
 	{
 	    if(Businesses[businessid][bItemPrices][item] == 0) continue;
 		new cost = (PlayerInfo[playerid][pDonateRank] >= 1) ? (floatround(Businesses[businessid][bItemPrices][item] * 0.8)) : (Businesses[businessid][bItemPrices][item]);
 	    if(Businesses[businessid][bType] == BUSINESS_TYPE_STORE || Businesses[businessid][bType] == BUSINESS_TYPE_GASSTATION) format(szDialog, sizeof(szDialog), "%s%s  ($%s)\n", szDialog, StoreItems[item], number_format(cost));
-	    else if(Businesses[businessid][bType] == BUSINESS_TYPE_SEXSHOP) format(szDialog, sizeof(szDialog), "%s%s  ($%s)\n", szDialog, SexItems[item], number_format(cost));
+	    //else if(Businesses[businessid][bType] == BUSINESS_TYPE_SEXSHOP) format(szDialog, sizeof(szDialog), "%s%s  ($%s)\n", szDialog, SexItems[item], number_format(cost));
 	    else if(Businesses[businessid][bType] == BUSINESS_TYPE_RESTAURANT) format(szDialog, sizeof(szDialog), "%s%s  ($%s)\n", szDialog, RestaurantItems[item], number_format(cost));
 		format(pvar, sizeof(pvar), "Business_MenuItem%d", iListIndex);
 		SetPVarInt(playerid, pvar, item + 1);
@@ -19502,12 +19502,12 @@ stock DisplayItemPricesDialog(businessid, playerid)
    	if(strlen(szDialog) == 0) {
         SendClientMessageEx(playerid, COLOR_GRAD2, "   Cua hang khong con ban mat hang nay!");
     }
-    else {
+    else {/*
         if (Businesses[businessid][bType] == BUSINESS_TYPE_SEXSHOP)
         {
 			ShowPlayerDialog(playerid, SHOPMENU, DIALOG_STYLE_LIST, GetBusinessTypeName(Businesses[businessid][bType]), szDialog, "Mua", "Huy bo");
-        }
-		else if (Businesses[businessid][bType] == BUSINESS_TYPE_RESTAURANT)
+        }*/
+		if (Businesses[businessid][bType] == BUSINESS_TYPE_RESTAURANT)
 		{
 			ShowPlayerDialog(playerid, RESTAURANTMENU2, DIALOG_STYLE_LIST, GetBusinessTypeName(Businesses[businessid][bType]), szDialog, "Mua", "Huy bo");
 		}

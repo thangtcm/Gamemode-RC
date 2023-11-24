@@ -63,6 +63,7 @@
 
 #include "./main/functions.pwn"
 
+#include "./system/casino/casino.pwn"
 
 #include "./system/gangwar.pwn"
 #include "./system/speedo.pwn"

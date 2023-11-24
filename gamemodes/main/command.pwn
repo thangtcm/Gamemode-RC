@@ -48045,14 +48045,14 @@ CMD:editprices(playerid, params[])
 				for (new i; i < sizeof(Drinks); i++) format(szDialog, sizeof(szDialog), "%s%s  ($%s)\n", szDialog, Drinks[i], number_format(Businesses[iBusiness][bItemPrices][i]));
 				ShowPlayerDialog(playerid, DIALOG_BARPRICE, DIALOG_STYLE_LIST, "Chinh sua gia cua hang", szDialog, "Chinh sua", "Huy bo");
 				SetPVarInt(playerid, "EditingBusiness", iBusiness);
-			}
-			else if(Businesses[iBusiness][bType] == BUSINESS_TYPE_SEXSHOP)
+			}/*
+			else if(Businesses[iBusiness][bType] == BUSINESS_TYPE_CASINO)
 			{
 			    new szDialog[512];
 				for (new i = 0; i < sizeof(SexItems); i++) format(szDialog, sizeof(szDialog), "%s%s  ($%s)\n", szDialog, SexItems[i], number_format(Businesses[iBusiness][bItemPrices][i]));
 				ShowPlayerDialog(playerid, DIALOG_SEXSHOP, DIALOG_STYLE_LIST, "Chinh sua gia cua hang", szDialog, "Chinh sua", "Huy bo");
 				SetPVarInt(playerid, "EditingBusiness", iBusiness);
-			}
+			}*/
 			else if (Businesses[iBusiness][bType] == BUSINESS_TYPE_RESTAURANT)
 			{
 				new buf[512];
