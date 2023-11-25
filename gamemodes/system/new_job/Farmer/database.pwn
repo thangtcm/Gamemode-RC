@@ -26,6 +26,7 @@ public OnLoadFarms()
 		cache_get_field_content(i, "ExteriorZ", tmp, MainPipeline); FarmInfo[i][ExteriorZ] = floatstr(tmp);
 		cache_get_field_content(i, "FarmType", tmp, MainPipeline); FarmInfo[i][FarmType] = strval(tmp);
 		cache_get_field_content(i, "FarmPrice", tmp, MainPipeline); FarmInfo[i][FarmPrice] = strval(tmp);
+		cache_get_field_content(i, "FarmLock", tmp, MainPipeline); FarmInfo[i][FarmLock] = strval(tmp);
 		cache_get_field_content(i, "RentFee", tmp, MainPipeline); FarmInfo[i][RentFee] = strval(tmp);
 		cache_get_field_content(i, "RentTimer", tmp, MainPipeline); FarmInfo[i][RentTimer] = strval(tmp);
         FarmInfo[i][Exsits] = true;
@@ -47,6 +48,7 @@ stock FARM_UPDATE(farmid)
 		`FarmType`=%d, \
 		`RentFee`=%d, \
 		`FarmPrice`=%d, \
+		`FarmLock`=%d, \
 		`RentTimer`=%d WHERE `Id`=%d",
 		FarmInfo[farmid][OwnerPlayerId],
 		FarmInfo[farmid][VirtualWorld],
@@ -56,6 +58,7 @@ stock FARM_UPDATE(farmid)
         FarmInfo[farmid][FarmType],
         FarmInfo[farmid][RentFee],
         FarmInfo[farmid][FarmPrice],
+        FarmInfo[farmid][FarmLock],
         FarmInfo[farmid][RentTimer],
         FarmInfo[farmid][Id]
 	);
@@ -76,8 +79,9 @@ stock FARM_ADD(farmid)
 		`FarmType`, \
 		`RentFee`, \
         `FarmPrice`,\
+        `FarmLock`,\
         `RentTimer`) \
-		VALUES ('%d', '%d', '%f', '%f', '%f', '%d', '%d', '%d', '%d')", 
+		VALUES ('%d', '%d', '%f', '%f', '%f', '%d', '%d', '%d', '%d', '%d')", 
 		FarmInfo[farmid][OwnerPlayerId],
 		FarmInfo[farmid][VirtualWorld],
         FarmInfo[farmid][ExteriorX],
@@ -86,6 +90,7 @@ stock FARM_ADD(farmid)
         FarmInfo[farmid][FarmType],
         FarmInfo[farmid][RentFee],
         FarmInfo[farmid][FarmPrice],
+        FarmInfo[farmid][FarmLock],
         FarmInfo[farmid][RentTimer]
 	);
 	mysql_function_query(MainPipeline, string, false, "OnCreateFarmFinish", "iii", -1, farmid, SENDDATA_FARM);

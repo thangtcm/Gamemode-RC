@@ -9,10 +9,37 @@ CMD:exitfarm(playerid, params[])
 {
 	if(IsPlayerInDynamicArea(playerid, PlayerFarmArea))
 	{
-		LeaveAreaFarm(playerid, PlayerFarmArea);
+		LeaveAreaFarm(playerid);
 	}
 	return 1;
 }
+
+CMD:lockfarm(playerid, params[])
+{
+	new farmid = PlayerNearFarm(playerid, GetPlayerSQLId(playerid)), szMessage[128];
+	if(IsPlayerInDynamicArea(playerid, PlayerFarmArea) || farmid != -1)
+	{
+		if(FarmInfo[farmid][OwnerPlayerId] == GetPlayerSQLId(playerid))
+		{
+			FarmInfo[farmid][FarmLock] = !FarmInfo[farmid][FarmLock];
+			if(FarmInfo[farmid][FarmLock])
+			{
+				format(szMessage, sizeof(szMessage), "* %s da mo khoa nong trai cua ho.", GetPlayerNameEx(playerid));
+				return ProxDetector(30.0, playerid, szMessage, COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE);
+			}
+			else{
+				format(szMessage, sizeof(szMessage), "* %s da dong nong trai cua ho.", GetPlayerNameEx(playerid));
+				return ProxDetector(30.0, playerid, szMessage, COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE);
+			}
+		}
+	}
+	else
+	{
+		SendErrorMessage(playerid, "Ban khong dung gan nong trai cua ban.");
+	}
+	return 1;
+}
+
 
 CMD:asellfarm(playerid, params[])
 {

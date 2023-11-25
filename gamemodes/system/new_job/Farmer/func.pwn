@@ -133,6 +133,7 @@ stock Farm_AddDefault(playerid)
     FarmInfo[farmid][RentFee] = 0;
     FarmInfo[farmid][FarmPrice] = 0;
     FarmInfo[farmid][RentTimer]  = 0;
+    FarmInfo[farmid][FarmLock] = 0;
     Farm_Reload(farmid);
     return farmid;
 }
@@ -158,6 +159,18 @@ stock PlayerNearFarm(playerid, IsOwner = -1)
         }
     }
     return -1;
+}
+
+stock EnterFarm(playerid, farmid)
+{
+    if(FarmInfo[farmid][FarmLock] == 1) return SendErrorMessage(playerid, "Nong trai nay dang bi khoa.");
+    SetPVarInt(playerid, "IsPlayer_StreamPrep", gettime() + 30); // 30 giay
+    SetPlayerFacingAngle(playerid, 90);
+    SetPlayerVirtualWorld(playerid, FarmInfo[farmid][VirtualWorld]);
+    SetPlayerPos(playerid, -1424.9208,-1472.0114,101.6843);
+    Player_StreamPrep(playerid, -1424.9208,-1472.0114,101.6843, FREEZE_TIME);
+    FarmEnter[playerid] = farmid;
+    return 1;
 }
 
 stock Rent_Farm(playerid, farmid)
@@ -479,18 +492,21 @@ stock PlantTree_Remove(playerid, plantId)
     return 1;
 }
 
-
-stock LeaveAreaFarm(playerid, areaid)
+stock LeaveAreaFarm(playerid)
 {
-    if(areaid == PlayerFarmArea && GetPlayerVirtualWorld(playerid) == GetPlayerSQLId(playerid) && GetPVarInt(playerid, "IsPlayer_StreamPrep") < gettime())
-	{
-        new farmid = PlayerInfo[playerid][pFarmerKey];
+    new farmid = FarmEnter[playerid];
+    if(GetPlayerVirtualWorld(playerid) == FarmInfo[farmid][VirtualWorld] && GetPVarInt(playerid, "IsPlayer_StreamPrep") < gettime())
+    {
         ActSetPlayerPos(playerid, FarmInfo[farmid][ExteriorX], FarmInfo[farmid][ExteriorY], FarmInfo[farmid][ExteriorZ]);
-        SendServerMessage(playerid, "Ban da roi khoi nong trai cua minh.");
+        new str[128];
+        format(str, sizeof(str), "Ban da roi khoi nong trai cua %s", FarmInfo[farmid][OwnerName]);
+        SendClientMessageEx(playerid, COLOR_WHITE, str);
         Player_StreamPrep(playerid, FarmInfo[farmid][ExteriorX], FarmInfo[farmid][ExteriorY], FarmInfo[farmid][ExteriorZ], FREEZE_TIME);
         SetPlayerInterior(playerid, 0);
-	    SetPlayerVirtualWorld(playerid, 0);
+        SetPlayerVirtualWorld(playerid, 0);
     }
+    return 1;
+    
 }
 
 

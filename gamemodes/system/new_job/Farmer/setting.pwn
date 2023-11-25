@@ -29,6 +29,7 @@ enum fmInfo
     Float:ExteriorZ,
     FarmType,
     FarmPrice,
+    FarmLock,
     RentFee,
     RentTimer,
     Exsits,

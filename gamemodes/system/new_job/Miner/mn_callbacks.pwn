@@ -208,8 +208,16 @@ public OnPlayerPickUpRock(playerid, rockIndex)
 		KeyPressed[playerid] = true;
 		SetPVarInt(playerid, "MinerWorking", 1);
 		MinerTimer[playerid] = SetTimerEx("StartCountTime", 1000, true, "i", playerid);
-    	DestroyDynamicObject(RockObj[rockIndex]);
-    	DestroyDynamic3DTextLabel(RockText[rockIndex]);
+    	if(IsValidDynamic3DTextLabel(RockText[rockIndex]))
+		{
+			DestroyDynamic3DTextLabel(RockText[rockIndex]);
+			RockText[rockIndex] = Text3D: INVALID_3DTEXT_ID;
+		}
+		if(IsValidDynamicObject(RockObj[rockIndex]))
+		{
+			DestroyDynamicObject(RockObj[rockIndex]);
+			RockObj[rockIndex] = INVALID_OBJECT_ID;
+		}
    		ApplyAnimation(playerid,"BASEBALL","Bat_4",1.0,1,1,1,1,1);
 		SetPVarInt(playerid, #dangdaoda, 1);
 		TogglePlayerControllable(playerid, 0);

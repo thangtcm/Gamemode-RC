@@ -1677,6 +1677,7 @@ new BoatDropoffs[][CargoArrayData] =
 	{1188.8872,654.2936,-0.3999} // boat dropoff
 };
 new FarmPlantArea, PlayerFarmArea, FarmPlantOrangeArea;
+new FarmEnter[MAX_PLAYERS];
 new Float:farm_area_v1[] = {
 	-1449.4784,-1505.7494,
 	-1466.2009,-1507.0875,

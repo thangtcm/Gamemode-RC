@@ -38,7 +38,10 @@ public OnPlayerLeaveDynamicArea(playerid, areaid)
 			}
 		}
 	}
-	LeaveAreaFarm(playerid, areaid);
+	if(areaid == PlayerFarmArea)
+	{
+		LeaveAreaFarm(playerid);
+    }
 	if(areaid == audiourlid)
 	{
 		StopAudioStreamForPlayerEx(playerid);
