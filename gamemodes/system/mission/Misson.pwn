@@ -226,6 +226,8 @@ stock Main_ResetCountMisson(playerid)
     PMisson[playerid][m_get][1] = 0;
    // PMisson[playerid][m_get][2] = 0;
     PMisson[playerid][a_m_done] = 0;
+    M_check[playerid][1] = 0;
+    M_check[playerid][2] = 0;
 }
 
 stock ResetCountMisson(playerid)
