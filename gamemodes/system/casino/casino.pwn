@@ -37,6 +37,7 @@ new
     CasinoTable[MAX_CASINO_TABLE][eCasinoTable],
     CasinoType[2][12] = {"Tai/Xiu", "Chan/Le"},
     PlayerBet[MAX_PLAYERS],
+    BetTable[MAX_PLAYERS],
     BetAmount[MAX_PLAYERS];
 
 // Timer Name: Casino_Timer
@@ -45,7 +46,7 @@ task Casino_Timer[1000]()
 {
     for(new i; i < MAX_CASINO_TABLE; i++)
     {
-        if (CasinoTable[i][cActorX] != 0.0)
+        if (CasinoTable[i][cActorX] != 0.0 && CasinoTable[i][cPrices][0] != 0 && CasinoTable[i][cPrices][1] != 0)
         {
             if (CasinoTable[i][cPause] == 0)
             {
@@ -98,6 +99,9 @@ public OnLoadCasinoTable()
         CasinoTable[i][cActorA] = cache_get_field_content_float(i, "ActorA", MainPipeline);
 		
 		CreateCasinoTable(i);
+        CasinoTable[i][cSession] = 0;
+        CasinoTable[i][cTimeLeft] = 5 * 60;
+        CasinoTable[i][cPause] = 5;
 		i++;
 	}
 
@@ -128,7 +132,6 @@ stock CreateCasinoTable(id)
     if (IsValidDynamicActor(CasinoTable[id][cActor]))       DestroyDynamicActor(CasinoTable[id][cActor]);
     if (IsValidDynamicObject(CasinoTable[id][cObject]))     DestroyDynamicObject(CasinoTable[id][cObject]);
 
-    CasinoTable[id][cObject] = CreateDynamicObject(2188, CasinoTable[id][cPosX], CasinoTable[id][cPosY], CasinoTable[id][cPosZ], CasinoTable[id][cRotX], CasinoTable[id][cRotY], CasinoTable[id][cRotZ], CasinoTable[id][cVW], CasinoTable[id][cInt]);
     if(CasinoTable[id][cActorX] != 0.0)
     {
         CasinoTable[id][cActor] = CreateDynamicActor(172,  
@@ -137,10 +140,12 @@ stock CreateCasinoTable(id)
                                                     );
         
         new szText[128];
-        format(szText, sizeof(szText), "[Casino Table #%i]\n{725B37}Loai: %s\n{FFFFFF}Nhan 'Y' de xem chi tiet", CasinoType[CasinoTable[id][cType]-1], id);
+        format(szText, sizeof(szText), "[Casino Table #%i]\n{725B37}Loai: %s\n{FFFFFF}Nhan 'Y' de xem chi tiet", id, CasinoType[CasinoTable[id][cType]-1]);
     
         CasinoTable[id][cText] = CreateDynamic3DTextLabel(szText, 0xC71A1AFF, CasinoTable[id][cActorX], CasinoTable[id][cActorY], CasinoTable[id][cActorZ]+0.4, 10.0, .worldid = CasinoTable[id][cVW], .interiorid = CasinoTable[id][cInt]);
     }
+
+    CasinoTable[id][cObject] = CreateDynamicObject(2188, CasinoTable[id][cPosX], CasinoTable[id][cPosY], CasinoTable[id][cPosZ], CasinoTable[id][cRotX], CasinoTable[id][cRotY], CasinoTable[id][cRotZ], CasinoTable[id][cVW], CasinoTable[id][cInt]);
     return 1;
 }
 
@@ -150,7 +155,7 @@ stock SaveCasinoTable(id)
     new szQuery[448];
     format(szQuery, sizeof(szQuery), "UPDATE `casino_table` SET \
     `BizID` = '%d', `Type` = '%d', `BetMin` = '%d', `BetMax` = '%d', `VW` = '%d', `Interior` = '%d', \
-    `PosX` = '%f', `PosY` = '%d', `PosZ` = '%f', `RotX` = '%f', `RotY` = '%f', `RotZ` ='%f', \
+    `PosX` = '%f', `PosY` = '%f', `PosZ` = '%f', `RotX` = '%f', `RotY` = '%f', `RotZ` ='%f', \
     `ActorX` = '%f', `ActorY` = '%f', `ActorZ` = '%f', `ActorA` = '%f' WHERE `id` = '%d'", 
     CasinoTable[id][cBizID], CasinoTable[id][cType], CasinoTable[id][cPrices][0], CasinoTable[id][cPrices][1],
     CasinoTable[id][cVW], CasinoTable[id][cInt], CasinoTable[id][cPosX], CasinoTable[id][cPosY], CasinoTable[id][cPosZ],
@@ -177,8 +182,8 @@ stock GetTableNearest(playerid)
     for(new i; i < MAX_CASINO_TABLE; i++)
     {
         if (CasinoTable[i][cActorX] != 0.0 && 
-        IsPlayerInRangeOfPoint(playerid, 5.0, CasinoTable[i][cActorX], CasinoTable[i][cActorY], CasinoTable[i][cActorZ]) &&
-        IsPlayerInRangeOfPoint(playerid, 4.0, CasinoTable[i][cPosX], CasinoTable[i][cPosY], CasinoTable[i][cPosZ])) return i;
+        IsPlayerInRangeOfPoint(playerid, 4.0, CasinoTable[i][cActorX], CasinoTable[i][cActorY], CasinoTable[i][cActorZ]) &&
+        IsPlayerInRangeOfPoint(playerid, 3.0, CasinoTable[i][cPosX], CasinoTable[i][cPosY], CasinoTable[i][cPosZ])) return i;
     }
     return -1;
 }
@@ -188,11 +193,12 @@ stock SendResultToPlayer(id, type)
 {
     foreach (new i: Player)
     {
-        if (IsPlayerInRangeOfPoint(i, 5.0, CasinoTable[id][cActorX], CasinoTable[id][cActorY], CasinoTable[id][cActorZ]))
+        if (IsPlayerInRangeOfPoint(i, 4.0, CasinoTable[id][cActorX], CasinoTable[id][cActorY], CasinoTable[id][cActorZ]) && BetTable[i] == id)
         {
             new bizid = CasinoTable[id][cBizID];
             if (type == 1) {
-                sendMessage(i, 0xFF0F3FFF, "CASINO:{FFFFFF} Tai/Xiu phien {00A326}#%03d{FFFFFF} ket qua la: {006BB8}%s{FFFFFF}.", CasinoTable[id][cSession], (CasinoTable[id][cResult] == 1) ? ("Tai") : ("Xiu"));
+                new result[2][6] = {"Tai", "Xiu"};
+                sendMessage(i, 0xFF0F3FFF, "CASINO:{FFFFFF} Tai/Xiu phien {00A326}#%03d{FFFFFF} ket qua la: {006BB8}%s{FFFFFF}.", CasinoTable[id][cSession], result[CasinoTable[id][cResult]-1]);
                 if (PlayerBet[i] == CasinoTable[id][cResult]) {
                     new receive_cash = BetAmount[i] + ((BetAmount[i] * 90) / 100); // tiền đặt cược + 90% số tiền
                     sendMessage(i, 0xFF0F3FFF, "CASINO:{FFFFFF} Ban da thang Tai/Xiu trong phien {00A326}#%03d{FFFFFF}, tra ve cho ban {29AE2F}$%s{FFFFFF}.", CasinoTable[id][cSession], number_format(receive_cash));
@@ -201,25 +207,19 @@ stock SendResultToPlayer(id, type)
                     
                     PlayerBet[i] = 0;
                     BetAmount[i] = 0;
-                    CasinoTable[id][cTotalBet] = 0;
-                    CasinoTable[id][cTotalPlayer] = 0;
-                    CasinoTable[id][cResult] = 0;
-                    CasinoTable[id][cPause] = 5;
-                    CasinoTable[i][cTimeLeft] = 5 * 60;
-                    return 1;
+                    BetTable[i] = -1;
                 }
-
-                PlayerBet[i] = 0;
-                BetAmount[i] = 0;
-                CasinoTable[id][cTotalBet] = 0;
-                CasinoTable[id][cTotalPlayer] = 0;
-                CasinoTable[id][cResult] = 0;
-                CasinoTable[id][cPause] = 5;
-                CasinoTable[i][cTimeLeft] = 5 * 60;
-                sendMessage(i, 0xFF0F3FFF, "CASINO:{FFFFFF} Ban da thua Tai/Xiu trong phien {00A326}#%03d{FFFFFF}, chuc ban may man lan sau.", CasinoTable[id][cSession]);
+                else {
+                    Businesses[bizid][bSafeBalance] += BetAmount[i];
+                    PlayerBet[i] = 0;
+                    BetAmount[i] = 0;
+                    BetTable[i] = -1;
+                    sendMessage(i, 0xFF0F3FFF, "CASINO:{FFFFFF} Ban da thua Tai/Xiu trong phien {00A326}#%03d{FFFFFF}, chuc ban may man lan sau.", CasinoTable[id][cSession]);
+                }
             }
             else {
-                sendMessage(i, 0xFF0F3FFF, "CASINO:{FFFFFF} Chan/Le phien {00A326}#%03d{FFFFFF} ket qua la: {006BB8}%s{FFFFFF}.", CasinoTable[id][cSession], (CasinoTable[id][cResult] == 1) ? ("Chan") : ("Le"));
+                new result[2][6] = {"Chan", "Le"};
+                sendMessage(i, 0xFF0F3FFF, "CASINO:{FFFFFF} Chan/Le phien {00A326}#%03d{FFFFFF} ket qua la: {006BB8}%s{FFFFFF}.", CasinoTable[id][cSession], result[CasinoTable[id][cResult]-1]);
                 if (PlayerBet[i] == CasinoTable[id][cResult]) {
                     new receive_cash = BetAmount[i] + ((BetAmount[i] * 90) / 100); // tiền đặt cược + 90% số tiền
                     sendMessage(i, 0xFF0F3FFF, "CASINO:{FFFFFF} Ban da thang Chan/Le trong phien {00A326}#%03d{FFFFFF}, tra ve cho ban {29AE2F}$%s{FFFFFF}.", CasinoTable[id][cSession], number_format(receive_cash));
@@ -228,26 +228,26 @@ stock SendResultToPlayer(id, type)
 
                     PlayerBet[i] = 0;
                     BetAmount[i] = 0;
-                    CasinoTable[id][cTotalBet] = 0;
-                    CasinoTable[id][cTotalPlayer] = 0;
-                    CasinoTable[id][cResult] = 0;
-                    CasinoTable[id][cPause] = 5;
-                    CasinoTable[i][cTimeLeft] = 5 * 60;
-                    return 1;
+                    BetTable[i] = -1;
                 }
-
-                PlayerBet[i] = 0;
-                BetAmount[i] = 0;
-                CasinoTable[id][cTotalBet] = 0;
-                CasinoTable[id][cTotalPlayer] = 0;
-                CasinoTable[id][cResult] = 0;
-                CasinoTable[id][cPause] = 5;
-                CasinoTable[i][cTimeLeft] = 5 * 60;
-                CasinoTable[i][cSession]++;
-                sendMessage(i, 0xFF0F3FFF, "CASINO:{FFFFFF} Ban da thua Chan/Le trong phien {00A326}#%03d{FFFFFF}, chuc ban may man lan sau.", CasinoTable[id][cSession]);
+                else {
+                    Businesses[bizid][bSafeBalance] += BetAmount[i];
+                    PlayerBet[i] = 0;
+                    BetAmount[i] = 0;
+                    BetTable[i] = -1;
+                    sendMessage(i, 0xFF0F3FFF, "CASINO:{FFFFFF} Ban da thua Chan/Le trong phien {00A326}#%03d{FFFFFF}, chuc ban may man lan sau.", CasinoTable[id][cSession]);
+                }
             }
+
+            if (BetTable[i] == id) BetTable[i] = -1;
         }
     }
+
+    CasinoTable[id][cTotalBet] = 0;
+    CasinoTable[id][cTotalPlayer] = 0;
+    CasinoTable[id][cResult] = 0;
+    CasinoTable[id][cPause] = 8;
+    CasinoTable[id][cTimeLeft] = 5 * 60;
     return 1;
 }
 
@@ -273,7 +273,7 @@ CMD:acasino(playerid, params[])
 	if (sscanf(params, "s[16]S()[128]", option, secoption))
 	{
 		SendUsageMessage(playerid, " /acasino [option]");
-		SendClientMessage(playerid, -1, "Option: create / actor / biz / object / type / delete");
+		SendClientMessage(playerid, -1, "Option: create / actor / bizid / object / type / delete");
 		return 1;
 	}
 
@@ -284,7 +284,7 @@ CMD:acasino(playerid, params[])
     {
         if (sscanf(secoption, "ii", bizid, type)) 	return SendUsageMessage(playerid, " /acasino create [biz id] [type (1. tai xiu 2. chan le)]");
 		if (!IsValidBusinessID(bizid)) 		        return SendErrorMessage(playerid, "Doanh nghiep nay khong ton tai.");
-		if (type != 1 || type != 2)                 return SendErrorMessage(playerid, "Loai hinh khong hop le.");
+		if (type != 1 && type != 2)                 return SendErrorMessage(playerid, "Loai hinh khong hop le.");
         if (Businesses[bizid][bType] != BUSINESS_TYPE_CASINO) return SendErrorMessage(playerid, "Loai hinh doanh nghiep nay khong phai la Casino.");
         if ((i = GetTable_FreeID()) == -1) return SendErrorMessage(playerid, "The limit has been reached [ERROR]");
 
@@ -296,14 +296,15 @@ CMD:acasino(playerid, params[])
         CasinoTable[i][cInt] = GetPlayerInterior(playerid);
         CasinoTable[i][cBizID] = bizid;
         CasinoTable[i][cType] = type;
-        CasinoTable[i][cSession] = 1;
+        CasinoTable[i][cTimeLeft] = 5 * 60;
+        CasinoTable[i][cPause] = 8;
 
-        new query[128];
-        mysql_format(MainPipeline, query, sizeof(query), "INSERT INTO `casino_table` \
-                                                        (`PosX`, `PosY`, `PosZ`, `VW`, `Interior`, `BizID`, `Type`) \
-                                                        VALUES ('%f', '%f', '%f', '%d', '%d', '%d', '%d')", 
+        new query[448];
+        format(query, sizeof(query), "INSERT INTO `casino_table` (`PosX`, `PosY`, `PosZ`, `VW`, `Interior`, `BizID`, `Type`) \
+                                        VALUES ('%f', '%f', '%f', '%d', '%d', '%d', '%d')", 
                                                         pX, pY, pZ, GetPlayerVirtualWorld(playerid), GetPlayerInterior(playerid), bizid, type);
         mysql_tquery(MainPipeline, query, "OnTableCreated", "d", i);
+
         sendMessage(playerid, -1, "Ban da tao ra Casino Table #%i (Loai: {725B37}%s{FFFFFF})", i, CasinoType[type-1]);
 
         CreateCasinoTable(i);
@@ -340,7 +341,7 @@ CMD:acasino(playerid, params[])
                                                     );
         
         new szText[128];
-        format(szText, sizeof(szText), "[Casino Table #%i]\n{725B37}Loai: %s\n{FFFFFF}Nhan 'Y' de xem chi tiet", CasinoType[CasinoTable[i][cType]-1], i);
+        format(szText, sizeof(szText), "[Casino Table #%i]\n{725B37}Loai: %s\n{FFFFFF}Nhan 'Y' de xem chi tiet", i, CasinoType[CasinoTable[i][cType]-1]);
     
         CasinoTable[i][cText] = CreateDynamic3DTextLabel(szText, 0xC71A1AFF, CasinoTable[i][cActorX], CasinoTable[i][cActorY], CasinoTable[i][cActorZ]+0.4, 10.0, .worldid = CasinoTable[i][cVW], .interiorid = CasinoTable[i][cInt]);
         SaveCasinoTable(i);
@@ -366,7 +367,7 @@ CMD:acasino(playerid, params[])
         if (IsValidDynamic3DTextLabel(CasinoTable[i][cText]))  DestroyDynamic3DTextLabel(CasinoTable[i][cText]);
 
         new szText[128];
-        format(szText, sizeof(szText), "[Casino Table #%i]\n{725B37}Loai: %s\n{FFFFFF}Nhan 'Y' de xem chi tiet", CasinoType[CasinoTable[i][cType]-1], i);
+        format(szText, sizeof(szText), "[Casino Table #%i]\n{725B37}Loai: %s\n{FFFFFF}Nhan 'Y' de xem chi tiet", i, CasinoType[CasinoTable[i][cType]-1]);
         CasinoTable[i][cText] = CreateDynamic3DTextLabel(szText, 0xC71A1AFF, CasinoTable[i][cActorX], CasinoTable[i][cActorY], CasinoTable[i][cActorZ]+0.4, 10.0, .worldid = CasinoTable[i][cVW], .interiorid = CasinoTable[i][cInt]);
         
         SaveCasinoTable(i);
@@ -375,7 +376,7 @@ CMD:acasino(playerid, params[])
     {
         if (sscanf(secoption, "d", i)) 	        return SendUsageMessage(playerid, " /acasino type [table id]");
         if (CasinoTable[i][cPosX] == 0.0)       return SendErrorMessage(playerid, "Casino Table khong ton tai.");
-        if (!CasinoTable[i][cPause])            return SendErrorMessage(playerid, "Phien dang bat dau, khong the xoa bo Table nay.");
+        if (CasinoTable[i][cPause] == 0 && CasinoTable[i][cTimeLeft] < 300) return SendErrorMessage(playerid, "Phien dang bat dau, khong the xoa bo Table nay.");
 
         new szQuery[128];
         mysql_format(MainPipeline, szQuery, sizeof(szQuery), "DELETE FROM `casino_table` WHERE `id` = %d", CasinoTable[i][cId]);
@@ -414,15 +415,17 @@ CMD:editcasino(playerid, params[])
     if (PlayerInfo[playerid][pBusiness] == INVALID_BUSINESS_ID) return SendErrorMessage(playerid, "Ban khong so huu doanh nghiep.");
     if (PlayerInfo[playerid][pBusinessRank] < 5 && Businesses[PlayerInfo[playerid][pBusiness]][bOwner] != GetPlayerSQLId(playerid)) return SendErrorMessage(playerid, "Ban khong phai chu doanh nghiep.");
 
-    new id, szDialog[128];
+    new id, info[64], szDialog[128];
     if (sscanf(params, "d", id)) return SendUsageMessage(playerid, " /editcasino [table id]");
     if (CasinoTable[id][cBizID] != PlayerInfo[playerid][pBusiness]) return SendErrorMessage(playerid, "Casino Table nay khong thuoc ve ban.");
     if (!IsPlayerInRangeOfPoint(playerid, 10.0, CasinoTable[id][cPosX], CasinoTable[id][cPosY], CasinoTable[id][cPosZ])) return SendErrorMessage(playerid, "Ban khong o gan Casino Table nay.");
     if (PlayerInfo[playerid][pBusinessRank] < 5 && Businesses[PlayerInfo[playerid][pBusiness]][bOwner] != GetPlayerSQLId(playerid)) return SendErrorMessage(playerid, "Ban khong phai chu doanh nghiep nay.");
-    
+    if (CasinoTable[id][cPause] == 0) return SendErrorMessage(playerid, "Vui long doi het phien.");
+
     if (CasinoTable[id][cType] == 1 || CasinoTable[id][cType] == 2) {
+        format(info, sizeof(info), "Casino Table {2DBE7F}#%d{FFFFFF} (%s)", id, CasinoType[CasinoTable[id][cType]-1]);
         format(szDialog, sizeof(szDialog), "Dat cuoc toi thieu: \t{29AE2F}$%d{FFFFFF}\nDat cuoc toi da: \t{29AE2F}$%d", CasinoTable[id][cPrices][0], CasinoTable[id][cPrices][1]);
-        Dialog_Show(playerid, CASINO_EDIT, DIALOG_STYLE_TABLIST, "Casino Table {2DBE7F}#%d{FFFFFF} (%s)", szDialog, "Chinh sua", "Dong", id, CasinoType[CasinoTable[id][cType]-1]);
+        Dialog_Show(playerid, CASINO_EDIT, DIALOG_STYLE_TABLIST, info, szDialog, "Chinh sua", "Dong");
     }
     else return SendErrorMessage(playerid, "Casino Table nay khong co loai hinh phu hop.");
 
@@ -475,30 +478,30 @@ hook OnPlayerKeyStateChange(playerid, newkeys, oldkeys)
 {
     if(PRESSED(KEY_YES))
     {
-        new i, szDialog[448];
+        new i, szDialog[448], info[64];
         if ((i = GetTableNearest(playerid)) != -1)
         {
             if (CasinoTable[i][cType] == 1) {
-            
+                format(info, sizeof(info), "Casino Table {2DBE7F}#%d{FFFFFF} (%s)", i, CasinoType[CasinoTable[i][cType]-1]);
                 format(szDialog, sizeof(szDialog), "{00A326}\
                 Phien Tai/Xiu: \t#%03d\n{FFFFFF}Thoi gian con lai: \t{706572}%02d giay{FFFFFF}\n\
                 Dat toi thieu: \t{00B803}$%d{FFFFFF}\nDat toi da: \t{00B803}$%d{FFFFFF}\nTong tien da cuoc: \t{00B803}$%s{FFFFFF}\n \n\
-                -> Dat cuoc:\n{006BB8}[#] Tai\n[#] Xiu", 
+                -> Dat cuoc:\n{006BB8}[#] Tai\n{006BB8}[#] Xiu", 
                 CasinoTable[i][cSession], CasinoTable[i][cTimeLeft], CasinoTable[i][cPrices][0], CasinoTable[i][cPrices][1],
                 number_format(CasinoTable[i][cTotalBet]));
-                Dialog_Show(playerid, CASINO_BET, DIALOG_STYLE_TABLIST, "Casino Table {2DBE7F}#%d{FFFFFF} (%s)", szDialog, "Chon", "Dong", i, CasinoType[CasinoTable[i][cType]-1]);
+                Dialog_Show(playerid, CASINO_BET, DIALOG_STYLE_TABLIST, info, szDialog, "Chon", "Dong");
             
                 SetPVarInt(playerid, #interactTable, i);
             }
             else if (CasinoTable[i][cType] == 2) {
-
+                format(info, sizeof(info), "Casino Table {2DBE7F}#%d{FFFFFF} (%s)", i, CasinoType[CasinoTable[i][cType]-1]);
                 format(szDialog, sizeof(szDialog), "{00A326}\
                 Phien Chan/Le: \t#%03d\n{FFFFFF}Thoi gian con lai: \t{706572}%02d giay{FFFFFF}\n\
                 Dat toi thieu: \t{00B803}$%d{FFFFFF}\nDat toi da: \t{00B803}$%d{FFFFFF}\nTong tien da cuoc: \t{00B803}$%s{FFFFFF}\n \n\
-                -> Dat cuoc:\n{006BB8}[#] Chan\n[#] Le", 
+                -> Dat cuoc:\n{006BB8}[#] Chan\n{006BB8}[#] Le", 
                 CasinoTable[i][cSession], CasinoTable[i][cTimeLeft], CasinoTable[i][cPrices][0], CasinoTable[i][cPrices][1],
                 number_format(CasinoTable[i][cTotalBet]));
-                Dialog_Show(playerid, CASINO_BET, DIALOG_STYLE_TABLIST, "Casino Table {2DBE7F}#%d{FFFFFF} (%s)", szDialog, "Chon", "Dong", i, CasinoType[CasinoTable[i][cType]-1]);
+                Dialog_Show(playerid, CASINO_BET, DIALOG_STYLE_TABLIST, info, szDialog, "Chon", "Dong");
             
                 SetPVarInt(playerid, #interactTable, i);
             }
@@ -507,10 +510,11 @@ hook OnPlayerKeyStateChange(playerid, newkeys, oldkeys)
     return 1;
 }
 
-hook OnPlayerDisconnect(playerid, reason)
+hook OnPlayerConnect(playerid)
 {
     PlayerBet[playerid] = 0;
     BetAmount[playerid] = 0;
+    BetTable[playerid] = -1;
     return 1;
 }
 

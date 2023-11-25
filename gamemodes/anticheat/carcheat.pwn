@@ -1,6 +1,6 @@
 #include <YSI_Coding\y_hooks>
 
-#define MAX_VEHICLE_HEATH 999.0
+#define MAX_VEHICLE_HEATH 990.0
 
 static Checkvehicle[MAX_PLAYERS];
 static bool:PlayerInModShop[MAX_PLAYERS];
