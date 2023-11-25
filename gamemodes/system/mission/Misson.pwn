@@ -321,7 +321,7 @@ hook OnDialogResponse(playerid, dialogid, response, listitem, inputtext[]) {
 	    case MISSON: {
         	switch(listitem) {        		
             	case 0: { // nv hang ngay
-                    if(M_check[playerid][2]) return SendMissonMessage(playerid, "Ban da nhan nhien vu tan thu hay hoan thanh truoc.");
+                    if(M_check[playerid][2]) return SendMissonMessage(playerid, "Ban da nhan nhiem vu tan thu hay hoan thanh truoc.");
                     if(PMisson[playerid][a_m_done]) return SendMissonMessage(playerid, "Hom nay ban da hoan thanh nhiem vu hang ngay roi.");
 			        if(M_check[playerid][1] == 0)
 			        {
@@ -437,7 +437,24 @@ CMD:nhiemvu(playerid, params[])
 	else return SendMissonMessage(playerid, "Ban khong dung gan NPC nhan nhiem vu."); 
 }
 
-
+CMD:huynhiemvu(playerid, params[])
+{
+    if(M_check[playerid][2] == 1 && PMisson[playerid][m_get][2] == 1)
+    {
+	    PMisson[playerid][m_check_count][1] = 0;
+	    PMisson[playerid][m_check_count][0] = 0;
+	    PMisson[playerid][m_check_count][2] = 0;
+	    PMisson[playerid][m_check_count][3] = 0;
+	    PMisson[playerid][m_check_count][4] = 0;
+	    PMisson[playerid][m_check_count][5] = 0;
+	    PMisson[playerid][m_get][1] = 0;
+	    PMisson[playerid][m_get][2] = 0;
+	    M_check[playerid][1] = 0;
+	    M_check[playerid][2] = 0;
+        SendMissonMessage(playerid, "Ban da huy nhiem vu tan thu thanh cong."); 
+    }
+    return 1;
+}
 
 //CMD TEST 
 CMD:mtest1(playerid, params[])
