@@ -2731,6 +2731,7 @@ public InitiateGamemode()
 	LoadPayNSprays();
 	LoadRepairPoint();
 	LoadArrestPoints();
+	LoadCasinoTable();
 	LoadImpoundPoints();
  	g_mysql_LoadSales();
  	g_mysql_LoadPrices();
@@ -15430,7 +15431,7 @@ stock GetBusinessTypeName(type)
 		case 8: string = "24/7";
 		case 9: string = "Bar";
 		case 10: string = "Club";
-		case 11: string = "Shop nguoi lon";
+		case 11: string = "Casino";
 		case 12: string = "Gym";
 		default: string = "Khong xac dinh";
 	}
