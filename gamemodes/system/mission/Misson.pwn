@@ -130,7 +130,7 @@ public M_OnQueryFinish(extraid, handleid)
 			cache_get_field_content(row,  "M_check_1", szResult, MainPipeline); M_check[extraid][1] = strval(szResult);
 			cache_get_field_content(row,  "M_check_2", szResult, MainPipeline); M_check[extraid][2] = strval(szResult);
 			cache_get_field_content(row,  "DriveReward", szResult, MainPipeline); pDriveReward[extraid] = strval(szResult);
-			if(PMisson[extraid][m_get][1] == 0)
+			if(PMisson[extraid][a_m_done] == 0)
 			{
 				SendServerMessage(extraid, "Ban lam nhiem vu ngay hom nay, hay tim NPC tại CityHall de lam nhiem vu ngay nhe");
 			}
