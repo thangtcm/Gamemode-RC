@@ -128,7 +128,7 @@ public M_OnQueryFinish(extraid, handleid)
 			cache_get_field_content(row,  "DriveReward", szResult, MainPipeline); pDriveReward[extraid] = strval(szResult);
 			if(PMisson[extraid][m_get][1] == 0)
 			{
-				SendServerMessage(extraid, "Ban lam nhiem vu ngay hom nay, hay tim NPC tại CityHall de lam nhiem vu ngay nhe");
+				SendServerMessage(extraid, "Ban chua lam nhiem vu ngay hom nay, hay tim NPC tai CityHall de lam nhiem vu ngay nhe");
 			}
 		}
 	}
