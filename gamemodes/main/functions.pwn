@@ -13330,6 +13330,7 @@ stock DynVeh_Spawn(iDvSlotID)
     SetVehicleVirtualWorld(DynVehicleInfo[iDvSlotID][gv_iSpawnedID], DynVehicleInfo[iDvSlotID][gv_iVW]);
     LinkVehicleToInterior(DynVehicleInfo[iDvSlotID][gv_iSpawnedID], DynVehicleInfo[iDvSlotID][gv_iInt]);
     VehicleFuel[DynVehicleInfo[iDvSlotID][gv_iSpawnedID]] = DynVehicleInfo[iDvSlotID][gv_fFuel];
+	if (VehicleFuel[DynVehicleInfo[iDvSlotID][gv_iSpawnedID]] == 0.0) VehicleFuel[DynVehicleInfo[iDvSlotID][gv_iSpawnedID]] = 50.0;
     DynVeh[DynVehicleInfo[iDvSlotID][gv_iSpawnedID]] = iDvSlotID;
 	for(new i = 0; i != MAX_DV_OBJECTS; i++)
 	{
