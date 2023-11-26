@@ -13,7 +13,7 @@ forward M_OnQueryFinish(extraid, handleid);
 SendMissonMessage(playerid, const msg_job[])
 {
 	new format_job[1280];
-	format(format_job, sizeof(format_job), "{FFCB00}[MISSON]:{FFFFFF}: %s", msg_job);
+	format(format_job, sizeof(format_job), "{FFCB00}[MISSON]{FFFFFF}: %s", msg_job);
 	SendClientMessage(playerid, COLOR_WHITE, format_job);
 	return 1;
 }
@@ -112,7 +112,7 @@ public M_OnQueryFinish(extraid, handleid)
 			if(PlayerInfo[extraid][pDaily] != datetimenow)
 			{
 				PlayerInfo[extraid][pDaily] = datetimenow;
-				
+				Main_ResetCountMisson(playerid);
 			}
 			SendServerMessage(extraid, "Su dung /trogiup de tim hieu ro hon ve cac cong viec va cac lenh can dung trong may chu");
 			cache_get_field_content(row,  "M_get_1", szResult, MainPipeline); PMisson[extraid][m_get][1] = strval(szResult);
