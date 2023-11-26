@@ -24,11 +24,11 @@ CMD:lockfarm(playerid, params[])
 			FarmInfo[farmid][FarmLock] = !FarmInfo[farmid][FarmLock];
 			if(FarmInfo[farmid][FarmLock])
 			{
-				format(szMessage, sizeof(szMessage), "* %s da mo khoa nong trai cua ho.", GetPlayerNameEx(playerid));
+				format(szMessage, sizeof(szMessage), "* %s da dong nong trai cua ho.", GetPlayerNameEx(playerid));
 				return ProxDetector(30.0, playerid, szMessage, COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE);
 			}
 			else{
-				format(szMessage, sizeof(szMessage), "* %s da dong nong trai cua ho.", GetPlayerNameEx(playerid));
+				format(szMessage, sizeof(szMessage), "* %s da mo khoa nong trai cua ho.", GetPlayerNameEx(playerid));
 				return ProxDetector(30.0, playerid, szMessage, COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE);
 			}
 		}

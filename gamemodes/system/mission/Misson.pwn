@@ -132,7 +132,7 @@ public M_OnQueryFinish(extraid, handleid)
 			cache_get_field_content(row,  "DriveReward", szResult, MainPipeline); pDriveReward[extraid] = strval(szResult);
 			if(PMisson[extraid][a_m_done] == 0)
 			{
-				SendServerMessage(extraid, "Ban lam nhiem vu ngay hom nay, hay tim NPC tại CityHall de lam nhiem vu ngay nhe");
+				SendServerMessage(extraid, "Ban chua lam nhiem vu ngay hom nay, hay tim NPC tai CityHall de lam nhiem vu ngay nhe");
 			}
 		}
 	}
@@ -228,8 +228,13 @@ stock Main_ResetCountMisson(playerid)
     PMisson[playerid][m_check_count][1] = 0;
     PMisson[playerid][m_check_count][0] = 0;
     PMisson[playerid][m_get][1] = 0;
+   // PMisson[playerid][m_get][2] = 0;
     PMisson[playerid][a_m_done] = 0;
     M_check[playerid][1] = 0;
+<<<<<<< HEAD
+=======
+    M_check[playerid][2] = 0;
+>>>>>>> main
 }
 
 stock ResetCountMisson(playerid)
