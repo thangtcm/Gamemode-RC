@@ -13,7 +13,7 @@ forward M_OnQueryFinish(extraid, handleid);
 SendMissonMessage(playerid, const msg_job[])
 {
 	new format_job[1280];
-	format(format_job, sizeof(format_job), "{FFCB00}[MISSON]:{FFFFFF}: %s", msg_job);
+	format(format_job, sizeof(format_job), "{FFCB00}[MISSON]{FFFFFF}: %s", msg_job);
 	SendClientMessage(playerid, COLOR_WHITE, format_job);
 	return 1;
 }
@@ -85,6 +85,8 @@ stock g_mysql_SaveMisson(playerid)
     SavePlayerInteger(query, GetPlayerSQLId(playerid), "M_count_3", PMisson[playerid][m_check_count][3]);
     SavePlayerInteger(query, GetPlayerSQLId(playerid), "M_count_4", PMisson[playerid][m_check_count][4]); 
     SavePlayerInteger(query, GetPlayerSQLId(playerid), "M_count_5", PMisson[playerid][m_check_count][5]);
+    SavePlayerInteger(query, GetPlayerSQLId(playerid), "M_check_1", M_check[playerid][1]); 
+    SavePlayerInteger(query, GetPlayerSQLId(playerid), "M_check_2", M_check[playerid][2]);
 	SavePlayerInteger(query, GetPlayerSQLId(playerid), "DriveReward", pDriveReward[playerid]);
 	MySQLUpdateFinish(query, GetPlayerSQLId(playerid));
     return 1;
@@ -110,7 +112,7 @@ public M_OnQueryFinish(extraid, handleid)
 			if(PlayerInfo[extraid][pDaily] != datetimenow)
 			{
 				PlayerInfo[extraid][pDaily] = datetimenow;
-				
+				Main_ResetCountMisson(playerid);
 			}
 			SendServerMessage(extraid, "Su dung /trogiup de tim hieu ro hon ve cac cong viec va cac lenh can dung trong may chu");
 			cache_get_field_content(row,  "M_get_1", szResult, MainPipeline); PMisson[extraid][m_get][1] = strval(szResult);
@@ -125,8 +127,10 @@ public M_OnQueryFinish(extraid, handleid)
 			cache_get_field_content(row,  "M_count_3", szResult, MainPipeline); PMisson[extraid][m_check_count][3] = strval(szResult);
 			cache_get_field_content(row,  "M_count_4", szResult, MainPipeline); PMisson[extraid][m_check_count][4] = strval(szResult);
 			cache_get_field_content(row,  "M_count_5", szResult, MainPipeline); PMisson[extraid][m_check_count][5] = strval(szResult);
+			cache_get_field_content(row,  "M_check_1", szResult, MainPipeline); M_check[extraid][1] = strval(szResult);
+			cache_get_field_content(row,  "M_check_2", szResult, MainPipeline); M_check[extraid][2] = strval(szResult);
 			cache_get_field_content(row,  "DriveReward", szResult, MainPipeline); pDriveReward[extraid] = strval(szResult);
-			if(PMisson[extraid][m_get][1] == 0)
+			if(PMisson[extraid][a_m_done] == 0)
 			{
 				SendServerMessage(extraid, "Ban chua lam nhiem vu ngay hom nay, hay tim NPC tai CityHall de lam nhiem vu ngay nhe");
 			}
@@ -227,7 +231,10 @@ stock Main_ResetCountMisson(playerid)
    // PMisson[playerid][m_get][2] = 0;
     PMisson[playerid][a_m_done] = 0;
     M_check[playerid][1] = 0;
+<<<<<<< HEAD
+=======
     M_check[playerid][2] = 0;
+>>>>>>> main
 }
 
 stock ResetCountMisson(playerid)
@@ -324,7 +331,7 @@ hook OnDialogResponse(playerid, dialogid, response, listitem, inputtext[]) {
 	    case MISSON: {
         	switch(listitem) {        		
             	case 0: { // nv hang ngay
-                    if(M_check[playerid][2]) return SendMissonMessage(playerid, "Ban da nhan nhien vu tan thu hay hoan thanh truoc.");
+                    if(M_check[playerid][2]) return SendMissonMessage(playerid, "Ban da nhan nhiem vu tan thu hay hoan thanh truoc.");
                     if(PMisson[playerid][a_m_done]) return SendMissonMessage(playerid, "Hom nay ban da hoan thanh nhiem vu hang ngay roi.");
 			        if(M_check[playerid][1] == 0)
 			        {
@@ -440,7 +447,24 @@ CMD:nhiemvu(playerid, params[])
 	else return SendMissonMessage(playerid, "Ban khong dung gan NPC nhan nhiem vu."); 
 }
 
-
+CMD:huynhiemvu(playerid, params[])
+{
+    if(M_check[playerid][2] == 1 && PMisson[playerid][m_get][2] == 1)
+    {
+	    PMisson[playerid][m_check_count][1] = 0;
+	    PMisson[playerid][m_check_count][0] = 0;
+	    PMisson[playerid][m_check_count][2] = 0;
+	    PMisson[playerid][m_check_count][3] = 0;
+	    PMisson[playerid][m_check_count][4] = 0;
+	    PMisson[playerid][m_check_count][5] = 0;
+	    PMisson[playerid][m_get][1] = 0;
+	    PMisson[playerid][m_get][2] = 0;
+	    M_check[playerid][1] = 0;
+	    M_check[playerid][2] = 0;
+        SendMissonMessage(playerid, "Ban da huy nhiem vu tan thu thanh cong."); 
+    }
+    return 1;
+}
 
 //CMD TEST 
 CMD:mtest1(playerid, params[])
