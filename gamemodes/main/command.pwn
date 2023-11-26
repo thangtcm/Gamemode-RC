@@ -1888,7 +1888,7 @@ CMD:fix(playerid, params[])
 					}
 				}
   				PlayerInfo[playerid][pMechTime] = gettime()+60;
-   				SetVehicleHealth(closestcar, 1000.0);
+   				SetVehicleHealth(closestcar, 900.0);
 				Vehicle_Armor(closestcar);
     			format(string, sizeof(string), "* %s da sua chua chiec xe.", GetPlayerNameEx(playerid));
     			ProxDetector(30.0, playerid, string, COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE);
@@ -13441,7 +13441,8 @@ CMD:fixveh(playerid, params[])
             new Float:vrot;
             GetVehicleZAngle(GetPlayerVehicleID(playerid), vrot);
             SetVehicleZAngle(GetPlayerVehicleID(playerid), vrot);
-            RepairVehicle(GetPlayerVehicleID(playerid));
+            SetVehicleHealth(GetPlayerVehicleID(playerid), GetVehicleMaxHealth(GetPlayerVehicleID(playerid)));
+			UpdateVehicleDamageStatus(GetPlayerVehicleID(playerid), 0, 0, 0, 0);
 			Vehicle_Armor(GetPlayerVehicleID(playerid));
             SendErrorMessage(playerid, "    Xe da duoc sua!");
         }
@@ -13460,7 +13461,8 @@ CMD:fixvehall(playerid, params[])
             return 1;
         }
         for(new v = 0; v < MAX_VEHICLES; v++) {
-            RepairVehicle(v);
+            SetVehicleHealth(v, GetVehicleMaxHealth(v));
+			UpdateVehicleDamageStatus(v, 0, 0, 0, 0);
 			Vehicle_Armor(v);
         }
         SendClientMessageToAllEx(COLOR_LIGHTBLUE, "(-) Tat Ca Xe Da Sua Chua Fixvehall By Admin");
@@ -19190,6 +19192,7 @@ CMD:veh(playerid, params[]) {
 			CreatedCars[iIterator] = CreateVehicle(iVehicle, fVehPos[0], fVehPos[1], fVehPos[2], fVehPos[3], iColors[0], iColors[1], -1);
 			VehicleFuel[CreatedCars[iIterator]] = GetVehicleFuelCapacity(CreatedCars[iIterator]);
 			Vehicle_ResetData(CreatedCars[iIterator]);
+			SetVehicleHealth(CreatedCars[iIterator], 900.0);
 			LinkVehicleToInterior(CreatedCars[iIterator], GetPlayerInterior(playerid));
 			SetVehicleVirtualWorld(CreatedCars[iIterator], fVW);
 			ActPutPlayerInVehicle(playerid, CreatedCars[iIterator], 0);
@@ -46848,14 +46851,14 @@ CMD:bsafe(playerid, params[])
 		else if(!strcmp(choice, "rut", true))
 		{
 		    if(Businesses[PlayerInfo[playerid][pBusiness]][bSafeBalance] >= Amount) {
-		    	format(string, sizeof(string), "Ban da rut $%s ngan quy kinh doanh cua hang ban.", number_format(Amount));
+		    	format(string, sizeof(string), "Ban da rut $%s ngan quy kinh doanh cua hang ban (Thue: 5%%).", number_format(Amount));
 		    	SendClientMessageEx(playerid, COLOR_WHITE, string);
 		    	Businesses[PlayerInfo[playerid][pBusiness]][bSafeBalance] -= Amount;
 		    	format(string, sizeof(string), "Cua hang(%d) Ngan quy: $%s", PlayerInfo[playerid][pBusiness], number_format(Businesses[PlayerInfo[playerid][pBusiness]][bSafeBalance]));
 		    	SendClientMessageEx(playerid, COLOR_WHITE, string);
 		    	format(string,sizeof(string),"%s (IP: %s) da rut $%s tu ngan quy cua hang (Cua hang ID - %d)",GetPlayerNameEx(playerid), GetPlayerIpEx(playerid), number_format(Amount), PlayerInfo[playerid][pBusiness]);
 				Log("logs/business.log", string);
-		   		GivePlayerCash(playerid, Amount);
+		   		GivePlayerCash(playerid, (Amount * 95) / 100);
 		   		SaveBusiness(PlayerInfo[playerid][pBusiness]);
 			}
 			else {

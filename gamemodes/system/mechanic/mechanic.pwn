@@ -819,11 +819,24 @@ CMD:setvehhp(playerid, params[])
 		return SendUsageMessage(playerid, " /setvehcap [vehid] [health]");
 	}
 	
-	if(vehid == INVALID_VEHICLE_ID) return SendErrorMessage(playerid, "ID khong hop le.");
+    if(!IsValidVehicle(vehid)) return SendErrorMessage(playerid, "ID khong hop le.");
 
-	SetVehicleHealth(vehid, hp);
-	new mes[128];
-	format(mes, sizeof(mes), "Ban da dieu chinh HP xe ID %i thanh %0.1f.", vehid, hp);
-	SendClientMessage(playerid, -1, mes);
+    foreach (new i: Player) {
+        for (new d; d < MAX_PLAYERVEHICLES; d++)
+        {
+            if (PlayerVehicleInfo[i][d][pvId] == vehid)
+            {
+                PlayerVehicleInfo[i][d][pvMaxHealth] = hp;
+                SetVehicleHealth(vehid, hp);
+
+                new mes[128];
+                format(mes, sizeof(mes), "Ban da dieu chinh dong co toi da xe ID %i thanh %0.1f.", vehid, hp);
+                SendClientMessage(playerid, -1, mes);
+                return 1;
+            }
+        }
+    }
+
+    SendErrorMessage(playerid, "Phuong tien khong kha dung.");
 	return 1;
 }

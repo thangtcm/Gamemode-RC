@@ -134,7 +134,7 @@ hook OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 						VehicleFuel[PizzaCar[playerid]] = GetVehicleFuelCapacity(PizzaCar[playerid]);
 						PlayerOnVehicle[playerid] = PizzaCar[playerid] ;
 						new fVW = GetPlayerVirtualWorld(playerid);
-						SetVehicleHealth(PizzaCar[playerid], 1000);
+						SetVehicleHealth(PizzaCar[playerid], 900.0);
 						Vehicle_ResetData(PizzaCar[playerid]);
 						LinkVehicleToInterior(PizzaCar[playerid], GetPlayerInterior(playerid));
 						SetVehicleVirtualWorld(PizzaCar[playerid], fVW);
