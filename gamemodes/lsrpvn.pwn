@@ -71,6 +71,7 @@
 #include "./system/gps_system.pwn"
 
 #include "./system/newfaction/handcuff.pwn"
+#include "./system/newfaction/factionkick.pwn"
 #include "./system/animation.pwn"
 #include "./system/charactertd.pwn"
 //#include "./system/hunger.pwn"
