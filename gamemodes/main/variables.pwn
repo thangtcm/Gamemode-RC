@@ -1842,7 +1842,7 @@ new File:logfile; // global variable for buffer overflow protection
 
 new
 	iRewardPlay,
-	Text3D: tRewardText,
+	// Text3D: tRewardText,
 	iRewardObj,
 	iRewardBox;
 
@@ -2215,7 +2215,7 @@ new gBike[MAX_PLAYERS];
 new gBikeRenting[MAX_PLAYERS];
 new ReportCount[MAX_PLAYERS];
 new ReportHourCount[MAX_PLAYERS];
-new pointpinglimit = 800;
+// new pointpinglimit = 800;
 new noooc = 1;
 new GlobalMOTD[128];
 new AdminMOTD[128];

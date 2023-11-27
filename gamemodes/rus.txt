@@ -1,4 +1,2 @@
-C:\Users\acer\Documents\GitHub\Gamemode-RC\gamemodes\lsrpvn.pwn(21708) : èäåíòèôèêàòîðó ïðèñâîåíî çíà÷åíèå, íî îí íå èñïîëüçóåòñÿ: "pointpinglimit"
-C:\Users\acer\Documents\GitHub\Gamemode-RC\gamemodes\lsrpvn.pwn(16748) : èäåíòèôèêàòîðó ïðèñâîåíî çíà÷åíèå, íî îí íå èñïîëüçóåòñÿ: "tRewardText"
 Pawn compiler 3.2.3664	 	 	Copyright (c) 1997-2016, ITB CompuPhase
 

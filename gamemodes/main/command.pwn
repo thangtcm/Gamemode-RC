@@ -21687,7 +21687,7 @@ CMD:ipwhitelist(playerid, params[])
 	return 1;
 }
 
-CMD:setcapping(playerid, params[]) {
+/* CMD:setcapping(playerid, params[]) {
 	if(PlayerInfo[playerid][pAdmin] >= 4) {
 		if(isnull(params)) {
 			return SendUsageMessage(playerid, " /setcapping [ping]");
@@ -21708,7 +21708,7 @@ CMD:setcapping(playerid, params[]) {
 		pointpinglimit = iPingas;
 	}
 	return 1;
-}
+} */
 
 CMD:hosp(playerid, params[]) {
 	return cmd_hospital(playerid, params);
@@ -42450,10 +42450,28 @@ CMD:tazer(playerid, params[])
 		}
 		if(pTazer{playerid} == 0)
 		{
-			new wep, amo;
-		    GetPlayerWeaponData(playerid, 2, wep, amo);
-		    pTazerAmmoReplace{playerid} = amo;
-			pTazerReplace{playerid} = PlayerInfo[playerid][pGuns][2];
+			new myweapons[13][2], weaponname[50];
+			for (new i = 0; i < 13; i++)
+			{
+				GetPlayerWeaponData(playerid, i, myweapons[i][0], myweapons[i][1]);
+				GetWeaponName(myweapons[i][0], weaponname, sizeof(weaponname));
+				if(strcmp(weaponname, "Desert Eagle", true) == 0) 
+				{
+					SendClientMessage(playerid,COLOR_LIGHTBLUE,"> Da cat vu khi Deagle vao tui do khi su dung tazer.");
+					RemovePlayerWeapon(playerid, 24);
+					Inventory_Add(playerid,"Deagle", 1);
+					if(myweapons[i][1] > 1) Inventory_Add(playerid,"Dan sung luc", myweapons[i][1]-1);
+				}
+				if(strcmp(weaponname, "Desert Eagle-AS", true) == 0) 
+				{
+					SendClientMessage(playerid,COLOR_LIGHTBLUE,"> Da cat vu khi Deagle vao tui do khi su dung tazer.");
+					RemovePlayerWeapon(playerid, 24);
+					Inventory_Add(playerid,"Deagle-AS", 1);
+					if(myweapons[i][1] > 1) Inventory_Add(playerid,"Dan sung luc SAAS", myweapons[i][1]-1);
+				}
+			}	
+		    // pTazerAmmoReplace{playerid} = amo;
+			// pTazerReplace{playerid} = PlayerInfo[playerid][pGuns][2];
 			format(string, sizeof(string), "* %s lay khau sung dien ra.", GetPlayerNameEx(playerid));
 			ProxDetector(4.0, playerid, string, COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE);
    			GivePlayerValidWeapon(playerid, 23, 2);
@@ -42462,7 +42480,7 @@ CMD:tazer(playerid, params[])
 		else
 		{
 			RemovePlayerWeapon(playerid, 23);
-			GivePlayerValidWeapon(playerid, pTazerReplace{playerid}, pTazerAmmoReplace{playerid});
+			// GivePlayerValidWeapon(playerid, pTazerReplace{playerid}, pTazerAmmoReplace{playerid});
 			format(string, sizeof(string), "* %s cat khau sung dien vao.", GetPlayerNameEx(playerid));
 			ProxDetector(4.0, playerid, string, COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE);
 			pTazer{playerid} = 0;
