@@ -9864,6 +9864,14 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 					}
 					else
 					{
+						if(IsACop(playerid))
+						{
+							if(iGunID == 27 || iGunID == 31 || iGunID == 34)
+							{
+								if(PlayerInfo[playerid][pRank] < 8)
+									return ShowPlayerDialog(playerid, DIALOG_NOTHING, DIALOG_STYLE_MSGBOX, "Locker System", "{00bfff}>{FFFFFF} Quyen han cua ban khong du de lay vu khi nay {00bfff}<", "DONG", "");
+							}
+						}
 						new wepget[20], szEmployer[GROUP_MAX_NAME_LEN], szRank[GROUP_MAX_RANK_LEN], szDivision[GROUP_MAX_DIV_LEN];
 						GetPlayerGroupInfo(playerid, szRank, szDivision, szEmployer);
 					    GivePlayerCash(playerid, -arrGroupData[iGroupID][g_iLockerCost][listitem]);
