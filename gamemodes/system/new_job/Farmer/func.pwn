@@ -257,7 +257,7 @@ stock PlantTree_Reload(playerid, plantid)
             // if(PlantTreeInfo[playerid][plantid][plantType] == 2)
             //     plantObject = 894;
             // else
-                plantObject = 19473;
+            plantObject = 19473;
             if(PlantTreeInfo[playerid][plantid][plantTimer] > 0)
             {
                 PlantTreeInfo[playerid][plantid][plantTimer] = PlantTreeInfo[playerid][plantid][plantTimer];
@@ -275,8 +275,8 @@ stock PlantTree_Reload(playerid, plantid)
             // }
             // else
             // {
-                plantObject = 804;
-                PlantTreeInfo[playerid][plantid][plantPos][2] = Plant_ZDefault + 1.0;
+            plantObject = 804;
+            PlantTreeInfo[playerid][plantid][plantPos][2] = Plant_ZDefault + 1.0;
 
             // }
             if(PlantTreeInfo[playerid][plantid][plantTimer] > 0)

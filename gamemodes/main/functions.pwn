@@ -6962,7 +6962,7 @@ stock SafeLogin(playerid, type)
                 }
         }
 }
-new codehash[BCRYPT_HASH_LENGTH];
+// new codehash[BCRYPT_HASH_LENGTH];
 
 public OnPasswordHashed(playerid, timeNow[])
 {

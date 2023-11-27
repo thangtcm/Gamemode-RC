@@ -3833,7 +3833,7 @@ new const gMainZones[][MAIN_ZONES] = {  // Majority of names and area coordinate
 	{"San Andreas",                 {-10000.00,-10000.00,-242.90,10000.00,10000.00,900.00}}
 };
 
-new ChangeSkin[MAX_PLAYERS];
+// new ChangeSkin[MAX_PLAYERS];
 
 new PlayerText: Tutorial_Truck[MAX_PLAYERS][6],
 	TutorialTruck_Timer[MAX_PLAYERS];

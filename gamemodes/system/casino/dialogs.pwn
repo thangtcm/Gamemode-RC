@@ -151,8 +151,7 @@ Dialog:CASINO_BET_AMOUNT(playerid, response, listitem, inputtext[])
     }
 
     new 
-        i = GetPVarInt(playerid, #interactTable), 
-        szDialog[448], info[64], result_name[2][6];
+        i = GetPVarInt(playerid, #interactTable), info[64], result_name[2][6];
 
     if (CasinoTable[i][cType] == 1) result_name[0] = "Tai", result_name[1] = "Xiu";
     else if (CasinoTable[i][cType] == 2) result_name[0] = "Chan", result_name[1] = "Le";

@@ -148,7 +148,7 @@ CMD:g(playerid, params[]) {
 					//format(string, sizeof(string), "(radio) %s", params);
 					//SetPlayerChatBubble(playerid, string, COLOR_WHITE, 15.0, 5000);
 					GetPlayerGroupInfo(playerid, rank, division, employer);
-					format(string, sizeof(string), "(( (%d) %s: %s ))",PlayerInfo[playerid][pRank], GetPlayerNameEx(playerid), params);
+					format(string, sizeof(string), "(( (%d) %s: %s ))",rank, GetPlayerNameEx(playerid), params);
 					foreach(new i: Player)
 					{
 						if(GetPVarInt(i, "togGroup") == 0)

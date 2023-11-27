@@ -25400,7 +25400,7 @@ CMD:showbadge(playerid, params[])
 				GetPlayerGroupInfo(playerid, infoArrays[0], infoArrays[1], infoArrays[2]);
 
 				SendClientMessageEx(giveplayerid, COLOR_GRAD2, "----------------------------------------------------------------------------------------------------");
-				format(string, sizeof(string), "%s %s is a duly sworn member of the %s.", rank, GetPlayerNameEx(playerid), infoArrays[2]);
+				format(string, sizeof(string), "%s %s is a duly sworn member of the %s.", infoArrays[0], GetPlayerNameEx(playerid), infoArrays[2]);
 				SendClientMessageEx(giveplayerid, COLOR_WHITE, string);
 				format(string, sizeof(string), "Current Assignment: %s.", infoArrays[1]);
 				SendClientMessageEx(giveplayerid, COLOR_WHITE, string);
@@ -25510,9 +25510,9 @@ CMD:r(playerid, params[]) {
 					SetPlayerChatBubble(playerid, string, COLOR_WHITE, 15.0, 5000);
 					GetPlayerGroupInfo(playerid, rank, division, employer);
 					if(PlayerInfo[playerid][pDivision] > 0)
-						format(string, sizeof(string), "**[CH: 911, DIV: %s] [%d] %s %s: %s **", arrGroupDivisions[iGroupID][PlayerInfo[playerid][pDivision]], PlayerInfo[playerid][pMaHieu1],arrGroupRanks[iGroupID][PlayerInfo[playerid][pRank]], GetPlayerNameEx(playerid), params);
+						format(string, sizeof(string), "**[CH: 911, DIV: %s] [%d] %s %s: %s **", arrGroupDivisions[iGroupID][PlayerInfo[playerid][pDivision]], PlayerInfo[playerid][pMaHieu1],rank, GetPlayerNameEx(playerid), params);
 					else
-						format(string, sizeof(string), "**[CH: 911, DIV: None] [%d] %s %s: %s **", PlayerInfo[playerid][pMaHieu1],arrGroupRanks[iGroupID][PlayerInfo[playerid][pRank]], GetPlayerNameEx(playerid), params);
+						format(string, sizeof(string), "**[CH: 911, DIV: None] [%d] %s %s: %s **", PlayerInfo[playerid][pMaHieu1],rank, GetPlayerNameEx(playerid), params);
 					foreach(new i: Player)
 					{
 						if(GetPVarInt(i, "togRadio") == 0)
@@ -42575,7 +42575,7 @@ CMD:radargun(playerid, params[])
 	}
 	else
 	{
-		SendErrorMessage(playerid, "    Ban khong phai la nhan vien chinh phu!");
+		SendErrorMessage(playerid, "Ban khong phai la nhan vien chinh phu!");
 		return 1;
 	}
 	return 1;

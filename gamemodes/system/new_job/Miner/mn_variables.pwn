@@ -39,6 +39,6 @@ new Float:rockPositions[MAX_ROCKS][3] = {
 new RockStatus[MAX_ROCKS];
 new Text3D: RockText[MAX_ROCKS];
 new RockObj[MAX_ROCKS];
-new timerd, timerdc[MAX_PLAYERS];
+new timerdc[MAX_PLAYERS];
 
 new RandomMoney[5];

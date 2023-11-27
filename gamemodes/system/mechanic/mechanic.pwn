@@ -110,11 +110,11 @@ CMD:repair(playerid, params[])
 	if (PlayerInfo[playerid][pJob] != 7 && PlayerInfo[playerid][pJob2] != 7) return SendErrorMessage(playerid, "Ban khong phai la tho sua xe!");
 
 	new 
-		i, bid, vid, title[128], info[448], Float:vhp,
+		i, bid = PlayerInfo[playerid][pBusiness], vid, title[128], info[448], Float:vhp,
 		panels, doors, lights, tires, status[3][64], timeleft[128];
 
-	if ((i = GetRepairPointNearest(playerid)) == -1) 						return SendErrorMessage(playerid, "Ban khong o gan diem sua xe.");
-	if ((bid = PlayerInfo[playerid][pBusiness]) != RepairPoint[i][rpBizID]) return SendErrorMessage(playerid, "Diem sua xe nay khong thuoc doanh nghiep cua ban.");
+	if ((i = GetRepairPointNearest(playerid)) == -1) return SendErrorMessage(playerid, "Ban khong o gan diem sua xe.");
+	if (bid != RepairPoint[i][rpBizID]) return SendErrorMessage(playerid, "Diem sua xe nay khong thuoc doanh nghiep cua ban.");
 	if (!IsPlayerInAnyVehicle(playerid)) 	return SendErrorMessage(playerid, "Ban khong o trong phuong tien de sua chua.");
 
 	vid = GetPlayerVehicleID(playerid);
