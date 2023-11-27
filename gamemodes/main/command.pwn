@@ -1,3 +1,4 @@
+#define MAX_VEHICLE_HEATH 900.0
 
 CMD:clearbugs(playerid, params[])
 {
@@ -13429,6 +13430,22 @@ CMD:suachuaxe(playerid, params[])
 	else SendServerMessage(playerid, " Ban khong o trong xe!");
 	return 1;
 }
+
+stock Float: GetVehicleMaxHealth(vehicleid)
+{
+    foreach(new i: Player)
+    {
+        for(new d; d < MAX_PLAYERVEHICLES; d++)
+        {
+            if(PlayerVehicleInfo[i][d][pvId] == vehicleid)
+            {
+                return (PlayerVehicleInfo[i][d][pvMaxHealth]);
+            }
+        }
+    }
+    return MAX_VEHICLE_HEATH;
+}
+
 
 CMD:fixveh(playerid, params[])
 {
