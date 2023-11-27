@@ -4,9 +4,9 @@ new PlayerAmmo[MAX_PLAYERS][10];
 new CraftWeaponDeal[MAX_PLAYERS];
 new CraftWeaponDealTime[MAX_PLAYERS];
 
-new PlayerText:RadioInfo[MAX_PLAYERS];
+// new PlayerText:RadioInfo[MAX_PLAYERS];
 new PlayerText:ChannelInfo[MAX_PLAYERS];
-new PlayerText:SlotInfo[MAX_PLAYERS];
+// new PlayerText:SlotInfo[MAX_PLAYERS];
 new BlockChat[MAX_PLAYERS];
 // ENUMS
 enum dlInfo
@@ -1756,7 +1756,7 @@ new Text:PriorityReport[MAX_PLAYERS];
 new Text3D:veicolo_callsign_testo[MAX_VEHICLES];
 new veicolo_callsign_status[MAX_VEHICLES];
 new LamViec[MAX_PLAYERS];
-new passLength[256];
+// new passLength[256];
 // Sobeit Check Variable
 new sobeitCheckvar[MAX_PLAYERS];
 new sobeitCheckIsDone[MAX_PLAYERS];
@@ -2387,7 +2387,7 @@ new Float:LSPDJailSpawns[5][3] = {
 	{1365.7126,1575.4314,1468.7877},
 	{1366.6805,1571.6501,1468.7877}
 };
-new Float:HospitalSpawnXYZ[7][3] = {
+/* new Float:HospitalSpawnXYZ[7][3] = {
 	{1251.1318,-1305.1705,1061.8671},
 	{1248.3254,-1305.2551,1061.8671},
 	{1248.3925,-1299.0492,1061.8671},
@@ -2395,11 +2395,11 @@ new Float:HospitalSpawnXYZ[7][3] = {
 	{1253.6729,-1299.8623,1061.8671},
 	{1256.2766,-1298.8246,1061.8671},
 	{1258.8730,-1299.6099,1061.8671}
-};
+}; */
 
 new Titel[pBoxingStats];
 
-new DownEDS[MAX_PLAYERS];
+// new DownEDS[MAX_PLAYERS];
 new DownS[MAX_PLAYERS];
 new EventKernel[EventKernelEnum];
 

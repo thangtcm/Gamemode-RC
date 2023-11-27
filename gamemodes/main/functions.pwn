@@ -1086,7 +1086,7 @@ TimeConvert(time) {
     return string;
 }
 
-PlacePlant(id, ownerid, planttype, objectid, drugskill, Float:x, Float:y, Float:z, virtualworld, interior)
+stock PlacePlant(id, ownerid, planttype, objectid, drugskill, Float:x, Float:y, Float:z, virtualworld, interior)
 {
     Plants[id][pObjectSpawned] = 0;
 	Plants[id][pOwner] = ownerid;
@@ -1673,7 +1673,7 @@ GetPlayerPriority(Player)
 	else return 4;
 }
 
-IsPlayerInRangeOfDynamicObject(iPlayerID, iObjectID, Float: fRadius) {
+stock IsPlayerInRangeOfDynamicObject(iPlayerID, iObjectID, Float: fRadius) {
 
 	new
 		Float: fPos[3];

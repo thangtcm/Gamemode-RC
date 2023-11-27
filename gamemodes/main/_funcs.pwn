@@ -1103,7 +1103,7 @@ public OnPlayerClickPlayerTextDraw(playerid, PlayerText:playertextid)
             }
         }
         if(playertextid == character_preview[playerid][3]) {
-            new i = GetPVarInt(playerid, #select_character),string[128];
+            new i = GetPVarInt(playerid, #select_character);
          //   ShowNoticeGUIFrame(playerid, 3);
             SetPlayerName(playerid,TempCharacter[playerid][i][Name]);
             // format(string, sizeof(string), "SELECT * FROM `accounts` WHERE `Username` = '%s'",  TempCharacter[playerid][i][Name]);
@@ -17656,7 +17656,7 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 			{
 			    GetPlayerGroupInfo(i, rank, division, employer);
 				giveplayer = GetPlayerNameEx(i);
-				format(string, sizeof(string), "* %s (%s) %s Ph: %d\n", PlayerInfo[playerid][pRankText], division,  giveplayer, PlayerInfo[i][pPnumber]);
+				format(string, sizeof(string), "* %s (%s) %s Ph: %d\n", rank, division,  giveplayer, PlayerInfo[i][pPnumber]);
 				strcat(MemberString, string, sizeof(MemberString));
 			}
 		}
@@ -17793,7 +17793,7 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 					}
 					format(string, sizeof(string), "(-) ban da gui %s den trai giam (Arrest)", GetPlayerNameEx(suspect));
 					SendClientMessageEx(playerid, COLOR_LIGHTBLUE, string);
-					GivePlayerCash(suspect, -500);
+					GivePlayerCash(suspect, -moneys);
 					new money = floatround(moneys / 3), iGroupID = PlayerInfo[playerid][pMember];
 					arrGroupData[iGroupID][g_iBudget] += money;
 					new str[128], file[32];
@@ -17875,7 +17875,7 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 					SendClientMessageEx(suspect, COLOR_RED, string);
 					format(string, sizeof(string), "(-) da dua %s vao tu", GetPlayerNameEx(suspect));
 					SendClientMessageEx(playerid, COLOR_LIGHTBLUE, string);
-					GivePlayerCash(suspect, -500);
+					GivePlayerCash(suspect, -moneys);
 					new money = floatround(moneys / 3), iGroupID = PlayerInfo[playerid][pMember];
 					arrGroupData[iGroupID][g_iBudget] += money;
 					new str[128], file[32];
@@ -24803,7 +24803,7 @@ Dialog:WeaponCop(playerid, response, listitem, inputtext[])
 		{
 			case 0:
 			{
-				format(string, sizeof(string), "[MDC-Police] {ffffff}%s %s (%s) da lay mot khau sung Deagle.",PlayerInfo[playerid][pRankText], GetPlayerNameEx(playerid), szDivision);
+				format(string, sizeof(string), "[MDC-Police] {ffffff}%s %s (%s) da lay mot khau sung Deagle.",szRank, GetPlayerNameEx(playerid), szDivision);
 				format(wepget, sizeof(wepget), "Deagle");
 				Inventory_Add(playerid, "Deagle-AS");
 				SendClientTextDraw(playerid, "Ban da lay mot khau sung Deagle.~n~~r~Neu lay nham, bat buoc phai tra lai cho leader.");
@@ -24889,8 +24889,8 @@ Dialog:AmmoCop(playerid, response, listitem, inputtext[])
 				SendClientTextDraw(playerid, "Ban da lay mot bang dan Sung Sniper.~n~~r~Neu lay nham, bat buoc phai tra lai cho leader.");
 			}
 		}
-		SendLogToDiscordRoom("[MDC-Police] Ammo log" ,"1157912890410541167", "Name", GetPlayerNameEx(playerid, false), "Rank", PlayerInfo[playerid][pRankText], "Ammo", wepget, 0x227f99);
-		SendLogToDiscordRoom("[MDC-Police] Ammo log" , "1157957903874007111", "Name", GetPlayerNameEx(playerid, false), "Rank", PlayerInfo[playerid][pRankText], "Ammo", wepget, 0x227f99);
+		SendLogToDiscordRoom("[MDC-Police] Ammo log" ,"1157912890410541167", "Name", GetPlayerNameEx(playerid, false), "Rank", szRank, "Ammo", wepget, 0x227f99);
+		SendLogToDiscordRoom("[MDC-Police] Ammo log" , "1157957903874007111", "Name", GetPlayerNameEx(playerid, false), "Rank", szRank, "Ammo", wepget, 0x227f99);
 	}
 	return 1;
 }

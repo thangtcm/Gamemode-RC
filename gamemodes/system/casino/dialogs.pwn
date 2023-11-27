@@ -7,7 +7,7 @@ Dialog:CASINO_EDIT(playerid, response, listitem, inputtext[])
         return 1;
     }
     
-    new i = GetPVarInt(playerid, #TableID), amount, info[64], szDialog[128];
+    new i = GetPVarInt(playerid, #TableID), info[64], szDialog[128];
     format(info, sizeof(info), "Casino Table {2DBE7F}#%d{FFFFFF} (%s)", i, CasinoType[CasinoTable[i][cType]-1]);
 
     switch (listitem)

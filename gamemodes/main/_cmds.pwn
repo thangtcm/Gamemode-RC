@@ -614,7 +614,6 @@ CMD:capmaphuhieu(playerid, params[])
 	    else
 	    {
             new string[128];
-            PlayerInfo[giveplayerid][pMaHieu1] = 0;
             PlayerInfo[giveplayerid][pMaHieu1] = mahieu;
             format(string, sizeof(string), "{9999FF} %s cap ma hieu cho ban ( Ma hieu: %d )", GetPlayerNameEx(playerid), mahieu);
             SendClientMessageEx(giveplayerid, COLOR_GRAD2, string);

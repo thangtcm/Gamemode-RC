@@ -1,0 +1,30 @@
+./include/textclient.pwn(22) : èäåíòèôèêàòîð íå èñïîëüçóåòñÿ: "time"
+./system/casino/dialogs.pwn(155) : èäåíòèôèêàòîðó ïðèñâîåíî çíà÷åíèå, íî îí íå èñïîëüçóåòñÿ: "szDialog"
+./main/command.pwn(25403) : îøèáêà 017: íåîáúÿâëåííûé ñèìâîë "rank"
+system/new_job/Farmer/map.pwn(75) : íåïðàâèëüíàÿ òàáóëÿöèÿ
+system/new_job/Farmer/func.pwn(261) : íåïðàâèëüíàÿ òàáóëÿöèÿ
+system/new_job/Farmer/func.pwn(282) : íåïðàâèëüíàÿ òàáóëÿöèÿ
+system/new_job/Farmer/dialog.pwn(199) : èäåíòèôèêàòîðó ïðèñâîåíî çíà÷åíèå, íî îí íå èñïîëüçóåòñÿ: "str"
+system/new_job/Farmer/cmd.pwn(135) : íåïðàâèëüíàÿ òàáóëÿöèÿ
+system/new_job/Farmer/cmd.pwn(136) : íåïðàâèëüíàÿ òàáóëÿöèÿ
+system/new_job/Farmer/cmd.pwn(262) : èäåíòèôèêàòîðó ïðèñâîåíî çíà÷åíèå, íî îí íå èñïîëüçóåòñÿ: "query"
+system/new_job/Farmer/cmd.pwn(273) : íåïðàâèëüíàÿ òàáóëÿöèÿ
+./system/new_job/miner/mn_callbacks.pwn(385) : èäåíòèôèêàòîðó ïðèñâîåíî çíà÷åíèå, íî îí íå èñïîëüçóåòñÿ: "string"
+./system/mission/Misson.pwn(115) : îøèáêà 017: íåîáúÿâëåííûé ñèìâîë "playerid"
+./system/mission/Misson.pwn(234) : íåïðàâèëüíàÿ òàáóëÿöèÿ
+./system/mission/Misson.pwn(234) : îøèáêà 029: íåïðàâèëüíîå âûðàæåíèå, ïðèíÿò íîëü
+./system/mission/Misson.pwn(236) : íåïðàâèëüíàÿ òàáóëÿöèÿ
+./system/mission/Misson.pwn(237) : íåïðàâèëüíàÿ òàáóëÿöèÿ
+./system/mission/Misson.pwn(237) : îøèáêà 029: íåïðàâèëüíîå âûðàæåíèå, ïðèíÿò íîëü
+./system/mission/Misson.pwn(237) -- (238) : îøèáêà 076: ñèíòàêñè÷åñêàÿ îøèáêà â âûðàæåíèè èëè íåïðàâèëüíûé âûçîâ ôóíêöèè
+./system/mechanic/mechanic.pwn(117) : èäåíòèôèêàòîðó ïðèñâîåíî çíà÷åíèå, íî îí íå èñïîëüçóåòñÿ: "bid"
+./main/variables.pwn(3836) : èäåíòèôèêàòîð íå èñïîëüçóåòñÿ: "ChangeSkin"
+./system/new_job/Trucking/setting.pwn(34) : èäåíòèôèêàòîð íå èñïîëüçóåòñÿ: "UnitType"
+./main/functions.pwn(6965) : èäåíòèôèêàòîð íå èñïîëüçóåòñÿ: "codehash"
+C:\Users\acer\Documents\GitHub\Gamemode-RC\gamemodes\lsrpvn.pwn(21708) : èäåíòèôèêàòîðó ïðèñâîåíî çíà÷åíèå, íî îí íå èñïîëüçóåòñÿ: "pointpinglimit"
+C:\Users\acer\Documents\GitHub\Gamemode-RC\gamemodes\lsrpvn.pwn(16748) : èäåíòèôèêàòîðó ïðèñâîåíî çíà÷åíèå, íî îí íå èñïîëüçóåòñÿ: "tRewardText"
+C:\Users\acer\Documents\GitHub\Gamemode-RC\gamemodes\lsrpvn.pwn(207) : èäåíòèôèêàòîðó ïðèñâîåíî çíà÷åíèå, íî îí íå èñïîëüçóåòñÿ: "timerd"
+Pawn compiler 3.2.3664	 	 	Copyright (c) 1997-2016, ITB CompuPhase
+
+
+Îøèáîê:5.
