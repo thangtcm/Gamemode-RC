@@ -54,7 +54,7 @@ CMD:pizza(playerid,params[]) {
 
 CMD:giaobanh(playerid, params[])
 {
-	if(!IsPlayerInAnyVehicle(playerid) || GetPlayerVehicleID(playerid) != PizzaCar[playerid]) return SendErrorMessage(playerid, " Ban khong o tren xe [Pizza].");
+	if(LamViec[playerid] != 1 || LamViec[playerid] == 0 && LamViec[playerid] != 1) return 1;
 	if(PlayerInfo[playerid][pStrong] <= 1) return SendErrorMessage(playerid, " Ban da qua met moi khong the lam viec."); 
 	if(GetPVarInt(playerid, "giaobanh_Pizza") == 1) return SendErrorMessage(playerid, " Ban dang giao banh, hay giao xong roi hay tiep tuc.");
 	if(BanhPizzaInCar[playerid] <= 0) return SendErrorMessage(playerid, "Ban chua co chiec banh nao tren xe de di giao hang.");
@@ -88,7 +88,8 @@ stock GetNameDeliverPizza(iddeliver) {
 
 hook OnPlayerConnect(playerid)
 {
-	PizzaCar[playerid] = INVALID_VEHICLE_ID;
+	PizzaCar[playerid][1] = INVALID_VEHICLE_ID;
+	PizzaCar[playerid][2] = INVALID_VEHICLE_ID;
 	TimeExitsPizzaCar[playerid] = 10*60; // 5 phut
 	return 1;
 }
@@ -96,12 +97,15 @@ hook OnPlayerConnect(playerid)
 hook OnPlayerDisconnect(playerid, reason)
 {
 	DestroyVehiclePizza(playerid);
+	BanhPizzaInFoot[playerid] = 0;
+	RemovePlayerAttachedObject(playerid,PIZZA_INDEX);
+	SetPlayerSpecialAction(playerid, SPECIAL_ACTION_NONE);
 	return 1;
 }
 
 hook OnPlayerEnterVehicle(playerid, vehicleid, ispassenger)
 {
-	if(PizzaCar[playerid] == vehicleid)
+	if(PizzaCar[playerid][1] == vehicleid || PizzaCar[playerid][2] == vehicleid)
 	{
 		KillTimer(MonitorPizzaCar[playerid]);
 		TimeExitsPizzaCar[playerid] = 10*60; // 10 phut
@@ -111,7 +115,7 @@ hook OnPlayerEnterVehicle(playerid, vehicleid, ispassenger)
 
 hook OnPlayerExitVehicle(playerid, vehicleid)
 {
-	if(PizzaCar[playerid] == vehicleid)
+	if(PizzaCar[playerid][1] == vehicleid || PizzaCar[playerid][2] == vehicleid)
 	{
 		MonitorPizzaCar[playerid] = SetTimerEx("MonitorPizzaCarPlayer", 1000, true, "d", playerid);
 	}
@@ -127,46 +131,91 @@ hook OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
         		case 0: {
         			if(!IsPlayerInRangeOfPoint(playerid, 5, 1362.9523,253.9632,19.5669)) return SendErrorMessage(playerid, " Ban khong dung gan noi lam viec Pizza."); 
         			if(PlayerInfo[playerid][pStrong] <= 1) return SendErrorMessage(playerid, " Ban da qua met moi khong the lam viec."); 
-        			if(LamViec[playerid] == 0) {
-						if(PizzaCar[playerid] == - 1) DestroyVehiclePizza(PizzaCar[playerid]);
-	    				ActSetPlayerPos(playerid, 1380.8643,270.4954,21.9751);
-		    			PizzaCar[playerid] = CreateVehicle(448, 1367.3431,270.6667,19.5669, 0 , random(255), random(255), -1);
-						VehicleFuel[PizzaCar[playerid]] = GetVehicleFuelCapacity(PizzaCar[playerid]);
-						PlayerOnVehicle[playerid] = PizzaCar[playerid] ;
-						new fVW = GetPlayerVirtualWorld(playerid);
-						SetVehicleHealth(PizzaCar[playerid], 1000);
-						Vehicle_ResetData(PizzaCar[playerid]);
-						LinkVehicleToInterior(PizzaCar[playerid], GetPlayerInterior(playerid));
-						SetVehicleVirtualWorld(PizzaCar[playerid], fVW);
-	        			ActPutPlayerInVehicle(playerid, PizzaCar[playerid] ,0);
-	       				SetPVarInt(playerid, "IsDaThue", 1);
-	       				LamViec[playerid] =1;
-	        			BanhPizzaInCar[playerid] = 0;
-	        			format(zzstr, sizeof zzstr, "Xe Pizza cua: {2791FF}%s{ffffff}\nBanh trong xe: {2791FF}%d/5{ffffff}", GetPlayerNameEx(playerid),BanhPizzaInCar[playerid]);
-	        			PizzaTextInfo[playerid] = Create3DTextLabel(zzstr, COLOR_WHITE, 0.0, 0.0, 0.0, 50.0, 0, 1);
-           				Attach3DTextLabelToVehicle(PizzaTextInfo[playerid], PizzaCar[playerid], 0.0, 0.0, 2.0); // Attaching Text Label To Vehicle.
-           				SendClientMessageEx(playerid,COLOR_VANG,"Ban da bat dau lam viec 'Pizza Boy' hay di den pickup lay banh va chat len xe (Press 'H' de lay banh/Press 'N' de cat banh vao xe)");
-	    				SendClientMessageEx(playerid,COLOR_VANG,"Bam '2' chon giao banh de bat dau di giao");
-	    				SetPVarInt(playerid, #danglamviec, 1);
-	        			return 1;
-	    			}
-	    			else if(LamViec[playerid] == 1) {
-	        			new str[129];
-	    				format(str, sizeof str,"Ban da ngung lam viec thanh cong, so tien luong ban nhan duoc la $%d", TienLuongPizza[playerid]*2);
-	    				PlayerInfo[playerid][pCash] += TienLuongPizza[playerid]*2;
-	    				TienLuongPizza[playerid] = 0;
-	    				SendClientMessageEx(playerid,COLOR_VANG,str);
-	        			LamViec[playerid] =0;
-	        			DeletePVar(playerid, "IsDaThue");
-	        			DestroyVehiclePizza(playerid);
-	        			BanhPizzaInCar[playerid] = 0;
-	        			DeletePVar(playerid, "giaobanh_Pizza");
-             			DeletePVar(playerid, "postion_Pizza");
-             			DisablePlayerCheckpoint(playerid);
-             			Delete3DTextLabel(PizzaTextInfo[playerid]);
-             			SetPVarInt(playerid, #danglamviec, 0);
-             			return 1;
-	    			}
+                    if(PlayerInfo[playerid][pLevel] <= 1)
+                    {
+	        			if(LamViec[playerid] == 0) {
+							if(PizzaCar[playerid][1] == - 1) DestroyVehiclePizza(PizzaCar[playerid][1]);
+		    				ActSetPlayerPos(playerid, 1380.8643,270.4954,21.9751);
+			    			PizzaCar[playerid][1] = CreateVehicle(448, 1367.3431,270.6667,19.5669, 0 , 3, 3, -1);
+							VehicleFuel[PizzaCar[playerid][1]] = GetVehicleFuelCapacity(PizzaCar[playerid][1]);
+							PlayerOnVehicle[playerid] = PizzaCar[playerid][1] ;
+							new fVW = GetPlayerVirtualWorld(playerid);
+							SetVehicleHealth(PizzaCar[playerid][1], 900.0);
+							Vehicle_ResetData(PizzaCar[playerid][1]);
+							LinkVehicleToInterior(PizzaCar[playerid][1], GetPlayerInterior(playerid));
+							SetVehicleVirtualWorld(PizzaCar[playerid][1], fVW);
+		        			ActPutPlayerInVehicle(playerid, PizzaCar[playerid][1] ,0);
+		       				SetPVarInt(playerid, "IsDaThue", 1);
+		       				LamViec[playerid] =1;
+		        			BanhPizzaInCar[playerid] = 0;
+		        			format(zzstr, sizeof zzstr, "Xe Pizza (xe nho) cua: {2791FF}%s{ffffff}\nBanh trong xe: {2791FF}%d{ffffff}", GetPlayerNameEx(playerid),BanhPizzaInCar[playerid]);
+		        			PizzaTextInfo[playerid] = Create3DTextLabel(zzstr, COLOR_WHITE, 0.0, 0.0, 0.0, 50.0, 0, 1);
+	           				Attach3DTextLabelToVehicle(PizzaTextInfo[playerid], PizzaCar[playerid][1], 0.0, 0.0, 2.0); // Attaching Text Label To Vehicle.
+	           				SendClientMessageEx(playerid,COLOR_VANG,"Ban da bat dau lam viec 'Pizza Boy' hay di den pickup lay banh va chat len xe (Press 'H' de lay banh/Press 'N' de cat banh vao xe)");
+		    				SendClientMessageEx(playerid,COLOR_VANG,"Bam '2' chon giao banh de bat dau di giao");
+		    				SetPVarInt(playerid, #danglamviec, 1);
+		        			return 1;
+		    			}
+		    			else if(LamViec[playerid] == 1) {
+		        			new str[129];
+		    				format(str, sizeof str,"Ban da ngung lam viec thanh cong, so tien luong ban nhan duoc la $%d", TienLuongPizza[playerid]*2);
+		    				PlayerInfo[playerid][pCash] += TienLuongPizza[playerid]*2;
+		    				TienLuongPizza[playerid] = 0;
+		    				SendClientMessageEx(playerid,COLOR_VANG,str);
+		        			LamViec[playerid] =0;
+		        			DeletePVar(playerid, "IsDaThue");
+		        			DestroyVehiclePizza(playerid);
+		        			BanhPizzaInCar[playerid] = 0;
+		        			DeletePVar(playerid, "giaobanh_Pizza");
+	             			DeletePVar(playerid, "postion_Pizza");
+	             			DisablePlayerCheckpoint(playerid);
+	             			Delete3DTextLabel(PizzaTextInfo[playerid]);
+	             			SetPVarInt(playerid, #danglamviec, 0);
+	             			return 1;
+		    			}
+		            }
+		            else {
+		                if(LamViec[playerid] == 0) {
+							if(PizzaCar[playerid][2] == - 1) DestroyVehiclePizza(PizzaCar[playerid][2]);
+		    				ActSetPlayerPos(playerid, 1380.8643,270.4954,21.9751);
+			    			PizzaCar[playerid][2] = CreateVehicle(561, 1367.3431,270.6667,19.5669, 0 , 3, 3, -1);
+							VehicleFuel[PizzaCar[playerid][2]] = GetVehicleFuelCapacity(PizzaCar[playerid][2]);
+							PlayerOnVehicle[playerid] = PizzaCar[playerid][2] ;
+							new fVW = GetPlayerVirtualWorld(playerid);
+							SetVehicleHealth(PizzaCar[playerid][2], 900.0);
+							Vehicle_ResetData(PizzaCar[playerid][2]);
+							LinkVehicleToInterior(PizzaCar[playerid][2], GetPlayerInterior(playerid));
+							SetVehicleVirtualWorld(PizzaCar[playerid][2], fVW);
+		        			ActPutPlayerInVehicle(playerid, PizzaCar[playerid][2] ,0);
+		       				SetPVarInt(playerid, "IsDaThue", 1);
+		       				LamViec[playerid] =1;
+		        			BanhPizzaInCar[playerid] = 0;
+		        			format(zzstr, sizeof zzstr, "Xe Pizza (xe lon) cua: {2791FF}%s{ffffff}\nBanh trong xe: {2791FF}%d{ffffff}", GetPlayerNameEx(playerid),BanhPizzaInCar[playerid]);
+		        			PizzaTextInfo[playerid] = Create3DTextLabel(zzstr, COLOR_WHITE, 0.0, 0.0, 0.0, 50.0, 0, 1);
+	           				Attach3DTextLabelToVehicle(PizzaTextInfo[playerid], PizzaCar[playerid][2], 0.0, 0.0, 2.0); // Attaching Text Label To Vehicle.
+	           				SendClientMessageEx(playerid,COLOR_VANG,"Ban da bat dau lam viec 'Pizza Boy' hay di den pickup lay banh va chat len xe (Press 'H' de lay banh/Press 'N' de cat banh vao xe)");
+		    				SendClientMessageEx(playerid,COLOR_VANG,"Bam '2' chon giao banh de bat dau di giao");
+		    				SetPVarInt(playerid, #danglamviec, 1);
+		        			return 1;
+		    			}
+		    			else if(LamViec[playerid] == 1) {
+		        			new str[129];
+		    				format(str, sizeof str,"Ban da ngung lam viec thanh cong, so tien luong ban nhan duoc la $%d", TienLuongPizza[playerid]*2);
+		    				PlayerInfo[playerid][pCash] += TienLuongPizza[playerid]*2;
+		    				TienLuongPizza[playerid] = 0;
+		    				SendClientMessageEx(playerid,COLOR_VANG,str);
+		        			LamViec[playerid] =0;
+		        			DeletePVar(playerid, "IsDaThue");
+		        			DestroyVehiclePizza(playerid);
+		        			BanhPizzaInCar[playerid] = 0;
+		        			DeletePVar(playerid, "giaobanh_Pizza");
+	             			DeletePVar(playerid, "postion_Pizza");
+	             			DisablePlayerCheckpoint(playerid);
+	             			Delete3DTextLabel(PizzaTextInfo[playerid]);
+	             			SetPVarInt(playerid, #danglamviec, 0);
+	             			return 1;
+		    			}
+		            }
         		}
         		case 1: {
     		       return cmd_laybanh(playerid, "\1");
@@ -223,38 +272,73 @@ hook OnPlayerKeyStateChange(playerid, newkeys, oldkeys) {
 		}
     	if(newkeys & KEY_NO)
 	    { 
-	    	if(!IsPlayerInRangeOfVehicle(playerid, PizzaCar[playerid], 3)) return 1;
-			if(IsPlayerInAnyVehicle(playerid)) return 1;
-            if(BanhPizzaInFoot[playerid] == 1) {
-            	if(BanhPizzaInCar[playerid] >= 5)  return SendErrorMessage(playerid, " Banh Pizza tren xe da dat den gioi han (5/5).");
-             	BanhPizzaInFoot[playerid] = 0;
-             	BanhPizzaInCar[playerid] ++;
-            	RemovePlayerAttachedObject(playerid,PIZZA_INDEX);
-           	    SetPlayerSpecialAction(playerid, SPECIAL_ACTION_NONE);
-           	    format(zzstr, sizeof zzstr, "Ban da bo 1 Pizza vao xe, so banh ({2791FF}%d/5{ffffff})",BanhPizzaInCar[playerid]);
-           	    SendClientMessageEx(playerid,-1,zzstr);
-            	format(zzstr, sizeof zzstr, "Xe Pizza cua: {2791FF}%s{ffffff}\nBanh trong xe: {2791FF}%d/5{ffffff}", GetPlayerNameEx(playerid),BanhPizzaInCar[playerid]);
-            	Update3DTextLabelText(PizzaTextInfo[playerid], COLOR_WHITE, zzstr);
-            	return 1;
-            }
-            else if(BanhPizzaInFoot[playerid] == 0) { 
-            	if(BanhPizzaInCar[playerid] <= 0)  return SendErrorMessage(playerid, " Banh Pizza tren xe da het (0/5).");
-            	if(PlayerInfo[playerid][pStrong] > 1) // The luc
-            	{
-	             	BanhPizzaInFoot[playerid] = 1;
-	             	BanhPizzaInCar[playerid] --;
-	            	SetPlayerAttachedObject( playerid, PIZZA_INDEX, 1582, 1, 0.002953, 0.469660, -0.009797, 269.851104, 88.443557, 0.000000, 0.804894, 1.000000, 0.822361 );                      
-	            	SetPlayerSpecialAction(playerid, SPECIAL_ACTION_CARRY);
-	            	format(zzstr, sizeof zzstr, "Ban da lay 1 Pizza tu xe, so banh ({2791FF}%d/5{ffffff})",BanhPizzaInCar[playerid]);
+	        if(PlayerInfo[playerid][pLevel] <= 1)
+	        {
+		    	if(!IsPlayerInRangeOfVehicle(playerid, PizzaCar[playerid][1], 3))return 1;
+				if(IsPlayerInAnyVehicle(playerid)) return 1;
+	            if(BanhPizzaInFoot[playerid] == 1) {
+	            	if(PlayerInfo[playerid][pLevel] <= 1 && BanhPizzaInCar[playerid] >= 5)  return SendErrorMessage(playerid, " Banh Pizza tren xe da dat den gioi han (5/5).");
+	             	BanhPizzaInFoot[playerid] = 0;
+	             	BanhPizzaInCar[playerid] ++;
+	            	RemovePlayerAttachedObject(playerid,PIZZA_INDEX);
+	           	    SetPlayerSpecialAction(playerid, SPECIAL_ACTION_NONE);
+	           	    format(zzstr, sizeof zzstr, "Ban da bo 1 Pizza vao xe, so banh ({2791FF}%d/5{ffffff})",BanhPizzaInCar[playerid]);
 	           	    SendClientMessageEx(playerid,-1,zzstr);
-	            	format(zzstr, sizeof zzstr, "Xe Pizza cua: {2791FF}%s{ffffff}\nBanh trong xe: {2791FF}%d/5{ffffff}", GetPlayerNameEx(playerid),BanhPizzaInCar[playerid]);
+	            	format(zzstr, sizeof zzstr, "Xe Pizza (xe nho) cua: {2791FF}%s{ffffff}\nBanh trong xe: {2791FF}%d/5{ffffff}", GetPlayerNameEx(playerid),BanhPizzaInCar[playerid]);
 	            	Update3DTextLabelText(PizzaTextInfo[playerid], COLOR_WHITE, zzstr);
-					new postrandom = GetPVarInt(playerid, "postion_Pizza");
-					SetPlayerCheckPointEx(playerid, pizza_postion[postrandom][0],pizza_postion[postrandom][1],pizza_postion[postrandom][2], 3);
+	            	return 1;
 	            }
-	            else return SendErrorMessage(playerid, " Ban da qua met moi va khong the lam viec, hay an uong de tang the luc.");
-
-            }
+	            else if(BanhPizzaInFoot[playerid] == 0) { 
+	            	if(BanhPizzaInCar[playerid] <= 0)  return SendErrorMessage(playerid, " Banh Pizza tren xe da het .");
+	            	if(PlayerInfo[playerid][pStrong] > 1) // The luc
+	            	{
+		             	BanhPizzaInFoot[playerid] = 1;
+		             	BanhPizzaInCar[playerid] --;
+		            	SetPlayerAttachedObject( playerid, PIZZA_INDEX, 1582, 1, 0.002953, 0.469660, -0.009797, 269.851104, 88.443557, 0.000000, 0.804894, 1.000000, 0.822361 );                      
+		            	SetPlayerSpecialAction(playerid, SPECIAL_ACTION_CARRY);
+		            	format(zzstr, sizeof zzstr, "Ban da lay 1 Pizza tu xe, so banh ({2791FF}%d/5{ffffff})",BanhPizzaInCar[playerid]);
+		           	    SendClientMessageEx(playerid,-1,zzstr);
+		            	format(zzstr, sizeof zzstr, "Xe Pizza (xe nho) cua: {2791FF}%s{ffffff}\nBanh trong xe: {2791FF}%d/5{ffffff}", GetPlayerNameEx(playerid),BanhPizzaInCar[playerid]);
+		            	Update3DTextLabelText(PizzaTextInfo[playerid], COLOR_WHITE, zzstr);
+						new postrandom = GetPVarInt(playerid, "postion_Pizza");
+						SetPlayerCheckPointEx(playerid, pizza_postion[postrandom][0],pizza_postion[postrandom][1],pizza_postion[postrandom][2], 3);
+		            }
+		            else return SendErrorMessage(playerid, " Ban da qua met moi va khong the lam viec, hay an uong de tang the luc.");	
+	            }
+	        }
+	        else {
+	            if(!IsPlayerInRangeOfVehicle(playerid, PizzaCar[playerid][2], 3)) return 1;
+				if(IsPlayerInAnyVehicle(playerid)) return 1;
+	            if(BanhPizzaInFoot[playerid] == 1) {
+	            	if(PlayerInfo[playerid][pLevel] > 1 && BanhPizzaInCar[playerid] >= 10)  return SendErrorMessage(playerid, " Banh Pizza tren xe da dat den gioi han (10/10).");
+	             	BanhPizzaInFoot[playerid] = 0;
+	             	BanhPizzaInCar[playerid] ++;
+	            	RemovePlayerAttachedObject(playerid,PIZZA_INDEX);
+	           	    SetPlayerSpecialAction(playerid, SPECIAL_ACTION_NONE);
+	           	    format(zzstr, sizeof zzstr, "Ban da bo 1 Pizza vao xe, so banh ({2791FF}%d/10{ffffff})",BanhPizzaInCar[playerid]);
+	           	    SendClientMessageEx(playerid,-1,zzstr);
+	            	format(zzstr, sizeof zzstr, "Xe Pizza (xe lon) cua: {2791FF}%s{ffffff}\nBanh trong xe: {2791FF}%d/10{ffffff}", GetPlayerNameEx(playerid),BanhPizzaInCar[playerid]);
+	            	Update3DTextLabelText(PizzaTextInfo[playerid], COLOR_WHITE, zzstr);
+	            	return 1;
+	            }
+	            else if(BanhPizzaInFoot[playerid] == 0) { 
+	            	if(BanhPizzaInCar[playerid] <= 0)  return SendErrorMessage(playerid, " Banh Pizza tren xe da het .");
+	            	if(PlayerInfo[playerid][pStrong] > 1) // The luc
+	            	{
+		             	BanhPizzaInFoot[playerid] = 1;
+		             	BanhPizzaInCar[playerid] --;
+		            	SetPlayerAttachedObject( playerid, PIZZA_INDEX, 1582, 1, 0.002953, 0.469660, -0.009797, 269.851104, 88.443557, 0.000000, 0.804894, 1.000000, 0.822361 );                      
+		            	SetPlayerSpecialAction(playerid, SPECIAL_ACTION_CARRY);
+		            	format(zzstr, sizeof zzstr, "Ban da lay 1 Pizza tu xe, so banh ({2791FF}%d/10{ffffff})",BanhPizzaInCar[playerid]);
+		           	    SendClientMessageEx(playerid,-1,zzstr);
+		            	format(zzstr, sizeof zzstr, "Xe Pizza cua: {2791FF}%s{ffffff}\nBanh trong xe: {2791FF}%d/10{ffffff}", GetPlayerNameEx(playerid),BanhPizzaInCar[playerid]);
+		            	Update3DTextLabelText(PizzaTextInfo[playerid], COLOR_WHITE, zzstr);
+						new postrandom = GetPVarInt(playerid, "postion_Pizza");
+						SetPlayerCheckPointEx(playerid, pizza_postion[postrandom][0],pizza_postion[postrandom][1],pizza_postion[postrandom][2], 3);
+		            }
+		            else return SendErrorMessage(playerid, " Ban da qua met moi va khong the lam viec, hay an uong de tang the luc.");	
+	            }
+	        }
         }
     }
     return 1;
@@ -262,15 +346,23 @@ hook OnPlayerKeyStateChange(playerid, newkeys, oldkeys) {
 
 stock DestroyVehiclePizza(playerid)
 {
-	Delete3DTextLabel(PizzaTextInfo[playerid]);
-	DestroyVehicle(PizzaCar[playerid]);
-	PizzaCar[playerid] = INVALID_VEHICLE_ID;
+    if(PlayerInfo[playerid][pLevel] <= 1)
+    {
+		Delete3DTextLabel(PizzaTextInfo[playerid]);
+		DestroyVehicle(PizzaCar[playerid][1]);
+		PizzaCar[playerid][1] = INVALID_VEHICLE_ID;
+	}
+	else {
+	    Delete3DTextLabel(PizzaTextInfo[playerid]);
+		DestroyVehicle(PizzaCar[playerid][2]);
+		PizzaCar[playerid][2] = INVALID_VEHICLE_ID;
+	}
 	return 1;
 }
 
 public MonitorPizzaCarPlayer(playerid)
 {
-	if(PizzaCar[playerid] == INVALID_VEHICLE_ID) return 1;
+	if(PizzaCar[playerid][1] == INVALID_VEHICLE_ID || PizzaCar[playerid][1] == INVALID_VEHICLE_ID) return 1;
 	--TimeExitsPizzaCar[playerid];
 	if(TimeExitsPizzaCar[playerid] <= 0)
 	{
