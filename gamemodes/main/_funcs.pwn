@@ -14870,16 +14870,12 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 	    }
 	}
 	if(dialogid == VEHICLESTORAGE && response) {
-
-		//if(!(400 <= PlayerVehicleInfo[playerid][listitem][pvModelId] <= 611))
-		//printf("DEBUG: listitem: %d, Vehicle Slots: %d", listitem, GetPlayerVehicleSlots(playerid));
 		if(listitem == GetPlayerVehicleSlots(playerid)) {
 			new szstring[128];
 			SetPVarInt(playerid, "MiscShop", 7);
 			format(szstring, sizeof(szstring), "Them sot xe\nGcoin cua ban: %s\nChi phi: 500 Gcoin", number_format(PlayerInfo[playerid][pGcoin]));
 			return ShowPlayerDialog(playerid, DIALOG_MISCSHOP2, DIALOG_STYLE_MSGBOX, "Mua them mot slot xe", szstring, "Mua", "Huy bo");
 		}
-        // if(vehicleslot_selling[playerid][listitem] != 0) return SendClientMessageEx(playerid,-1,"Phuong tien dang duoc rao ban vui long khong chinh ra.");  
 		if(PlayerVehicleInfo[playerid][listitem][pvSpawned]) {
 
 			new
@@ -14982,7 +14978,9 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 				if (PlayerVehicleInfo[playerid][listitem][pvLocked] == 1) LockPlayerVehicle(playerid, iVeh, PlayerVehicleInfo[playerid][listitem][pvLock]);
 				LoadPlayerVehicleMods(playerid, listitem);
 				g_mysql_SaveVehicle(playerid, listitem);
-				
+
+				new vs_sqlid = FindVehSign(PlayerVehicleInfo[playerid][listitem][pvSlotId]);
+				CreateVehSign(playerid, iVeh, VehSignInfo[vs_sqlid][vs_VehSign]);
 				new vstring[64];
 				format(vstring, sizeof(vstring), "Ban da lay %s cua ban ra khoi kho.", VehicleName[PlayerVehicleInfo[playerid][listitem][pvModelId] - 400]);
 				SendClientMessageEx(playerid, COLOR_WHITE, vstring);
