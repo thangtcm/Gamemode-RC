@@ -84,6 +84,7 @@ DrivingTestFinish(playerid)
 	KillTimer(pDriveTimerCheck[playerid]);
 	DisablePlayerRaceCheckpoint(playerid);
 	PlayerInfo[playerid][pCarLic] = 1;
+        CheckDoneMisson(playerid, 3);
 	SendTestMessage(playerid, "CHUC MUNG! Ban da hoan thanh khoa hoc lai xe va lay duoc bang lai!");
 	if(pDriveReward[playerid] == 0) // qua lan dau thi
 	{
