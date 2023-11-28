@@ -1086,7 +1086,7 @@ TimeConvert(time) {
     return string;
 }
 
-PlacePlant(id, ownerid, planttype, objectid, drugskill, Float:x, Float:y, Float:z, virtualworld, interior)
+stock PlacePlant(id, ownerid, planttype, objectid, drugskill, Float:x, Float:y, Float:z, virtualworld, interior)
 {
     Plants[id][pObjectSpawned] = 0;
 	Plants[id][pOwner] = ownerid;
@@ -1673,7 +1673,7 @@ GetPlayerPriority(Player)
 	else return 4;
 }
 
-IsPlayerInRangeOfDynamicObject(iPlayerID, iObjectID, Float: fRadius) {
+stock IsPlayerInRangeOfDynamicObject(iPlayerID, iObjectID, Float: fRadius) {
 
 	new
 		Float: fPos[3];
@@ -6962,7 +6962,7 @@ stock SafeLogin(playerid, type)
                 }
         }
 }
-new codehash[BCRYPT_HASH_LENGTH];
+// new codehash[BCRYPT_HASH_LENGTH];
 
 public OnPasswordHashed(playerid, timeNow[])
 {
@@ -16743,10 +16743,10 @@ stock Misc_Load() {
 		else if(ini_GetValue(szFileStr, "DoubleXP", szResult, sizeof(szResult)))											DoubleXP = strval(szResult);
 
 	}
-	if(iRewardBox) {
+	/* if(iRewardBox) {
 		iRewardObj = CreateDynamicObject(19055, fObjectPos[0], fObjectPos[1], fObjectPos[2], 0.0, 0.0, 0.0, .streamdistance = 100.0);
 		tRewardText = CreateDynamic3DTextLabel("Gold Reward Gift Box\n{FFFFFF}/getrewardgift{F3FF02} de nhan qua cua ban!", COLOR_YELLOW, fObjectPos[0], fObjectPos[1], fObjectPos[2], 10.0, .testlos = 1, .streamdistance = 50.0);
-	}
+	} */
 	fclose(iFileHandle);
 	printf("[MiscLoad] Misc Loaded");
 }

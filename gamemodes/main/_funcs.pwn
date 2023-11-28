@@ -1103,7 +1103,7 @@ public OnPlayerClickPlayerTextDraw(playerid, PlayerText:playertextid)
             }
         }
         if(playertextid == character_preview[playerid][3]) {
-            new i = GetPVarInt(playerid, #select_character),string[128];
+            new i = GetPVarInt(playerid, #select_character);
          //   ShowNoticeGUIFrame(playerid, 3);
             SetPlayerName(playerid,TempCharacter[playerid][i][Name]);
             // format(string, sizeof(string), "SELECT * FROM `accounts` WHERE `Username` = '%s'",  TempCharacter[playerid][i][Name]);
@@ -9654,7 +9654,20 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 				}
 			    case 1:
 			    {
-			    	SendErrorMessage(playerid, " Tinh nang bi vo hieu hoa");
+			    	new
+						szDialog[(32 + 8) * (MAX_GROUP_WEAPONS+1)];
+
+					for(new i = 0; i != MAX_GROUP_WEAPONS; ++i) {
+						if(arrGroupData[iGroupID][g_iLockerGuns][i]) {
+							format(szDialog, sizeof szDialog, "%s\n(%i) %s", szDialog, arrGroupData[iGroupID][g_iLockerGuns][i], Weapon_ReturnName(arrGroupData[iGroupID][g_iLockerGuns][i]));
+							if (arrGroupData[iGroupID][g_iLockerCostType] == 2) format(szDialog, sizeof szDialog, "%s    $%d", szDialog, arrGroupData[iGroupID][g_iLockerCost][i]);
+						}
+						else strcat(szDialog, "\n(empty)");
+					}
+					strcat(szDialog, "\nAccessories");
+					if(PlayerInfo[playerid][pDuty] != 1) return SendClientMessage(playerid, COLOR_GREY, "Ban chua Onduty, ban khong the lam dieu nay!");
+			        format(string, sizeof(string), "%s Weapon Locker", arrGroupData[iGroupID][g_szGroupName]);
+			    	ShowPlayerDialog(playerid, G_LOCKER_EQUIPMENT, DIALOG_STYLE_LIST, string, szDialog, "Chon", "Huy bo");
 			    }	   
 			    case 2:
 			    {
@@ -9784,14 +9797,14 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 					}
 					else return SendServerMessage(playerid, " You're already carrying a tazer and pair of cuffs");
 				}
-				case 7: //New Weapon
+				/* case 7: //New Weapon
 				{
 					Dialog_Show(playerid, WeaponCop, DIALOG_STYLE_LIST, "{ff0000}LAY DUNG VU KHI, LAY SAI TRA LAI{ffffff}", "Deagle\nShotgun\nSpas-12\nMP5\nAK47\nM4\nSniper", "Lua chon", "Huy bo");
 				}
 				case 8: //New Ammo
 				{
 					Dialog_Show(playerid, AmmoCop, DIALOG_STYLE_LIST, "{ff0000}LAY VUA DU BANG DAN, DU THI TRA LAI{ffffff}", "Dan sung luc\nDan Shotgun\nDan tieu lien\nDan sung truong\nDan Sniper", "Lua chon", "Huy bo");
-				}
+				} */
 			}
 		}
 		case G_LOCKER_EQUIPMENT: if(response)
@@ -9846,15 +9859,31 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 				{
 					if (GetPlayerCash(playerid) < arrGroupData[iGroupID][g_iLockerCost][listitem])
 					{
-						SendServerMessage(playerid, " Ban khong the co vu khi!");
+						SendServerMessage(playerid, "Ban khong du tien de lay vu khi!");
 						return 1;
 					}
 					else
 					{
+						if(IsACop(playerid))
+						{
+							if(iGunID == 27 || iGunID == 31 || iGunID == 34)
+							{
+								if(PlayerInfo[playerid][pRank] < 8)
+									return ShowPlayerDialog(playerid, DIALOG_NOTHING, DIALOG_STYLE_MSGBOX, "Locker System", "{00bfff}>{FFFFFF} Quyen han cua ban khong du de lay vu khi nay {00bfff}<", "DONG", "");
+							}
+						}
+						new wepget[20], szEmployer[GROUP_MAX_NAME_LEN], szRank[GROUP_MAX_RANK_LEN], szDivision[GROUP_MAX_DIV_LEN];
+						GetPlayerGroupInfo(playerid, szRank, szDivision, szEmployer);
 					    GivePlayerCash(playerid, -arrGroupData[iGroupID][g_iLockerCost][listitem]);
+						format(string, sizeof(string), "[MDC-Police] {ffffff}%s %s (%s) da lay mot khau sung %s.",szRank, GetPlayerNameEx(playerid), szDivision, GetWeaponNameEx(iGunID));
+						format(wepget, sizeof(wepget), "%s", GetWeaponNameEx(iGunID));
+						GivePlayerValidWeapon(playerid, iGunID, 30);
+						// Inventory_Add(playerid, "Sniper-AS");
+						SendClientTextDraw(playerid, "Ban da lay mot khau sung .~n~~r~Neu lay nham, bat buoc phai tra lai cho leader.");
+						SendLogToDiscordRoom("[MDC-Police] Wep log" ,"1157912890410541167", "Name", GetPlayerNameEx(playerid, false), "Rank", szRank, "Wep", wepget, 0x226199);
+						SendLogToDiscordRoom("[MDC-Police] Wep log" , "1157957903874007111", "Name", GetPlayerNameEx(playerid, false), "Rank", szRank, "Wep", wepget, 0x226199);
 					}
 				}
-			//	GivePlayerValidWeapon(playerid, iGunID, 1) ;
 			}
 		}
 		case G_LOCKER_UNIFORM: if(response)	{
@@ -17656,7 +17685,7 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 			{
 			    GetPlayerGroupInfo(i, rank, division, employer);
 				giveplayer = GetPlayerNameEx(i);
-				format(string, sizeof(string), "* %s (%s) %s Ph: %d\n", PlayerInfo[playerid][pRankText], division,  giveplayer, PlayerInfo[i][pPnumber]);
+				format(string, sizeof(string), "* %s (%s) %s Ph: %d\n", rank, division,  giveplayer, PlayerInfo[i][pPnumber]);
 				strcat(MemberString, string, sizeof(MemberString));
 			}
 		}
@@ -17793,7 +17822,7 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 					}
 					format(string, sizeof(string), "(-) ban da gui %s den trai giam (Arrest)", GetPlayerNameEx(suspect));
 					SendClientMessageEx(playerid, COLOR_LIGHTBLUE, string);
-					GivePlayerCash(suspect, -500);
+					GivePlayerCash(suspect, -moneys);
 					new money = floatround(moneys / 3), iGroupID = PlayerInfo[playerid][pMember];
 					arrGroupData[iGroupID][g_iBudget] += money;
 					new str[128], file[32];
@@ -17875,7 +17904,7 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 					SendClientMessageEx(suspect, COLOR_RED, string);
 					format(string, sizeof(string), "(-) da dua %s vao tu", GetPlayerNameEx(suspect));
 					SendClientMessageEx(playerid, COLOR_LIGHTBLUE, string);
-					GivePlayerCash(suspect, -500);
+					GivePlayerCash(suspect, -moneys);
 					new money = floatround(moneys / 3), iGroupID = PlayerInfo[playerid][pMember];
 					arrGroupData[iGroupID][g_iBudget] += money;
 					new str[128], file[32];
@@ -24803,7 +24832,7 @@ Dialog:WeaponCop(playerid, response, listitem, inputtext[])
 		{
 			case 0:
 			{
-				format(string, sizeof(string), "[MDC-Police] {ffffff}%s %s (%s) da lay mot khau sung Deagle.",PlayerInfo[playerid][pRankText], GetPlayerNameEx(playerid), szDivision);
+				format(string, sizeof(string), "[MDC-Police] {ffffff}%s %s (%s) da lay mot khau sung Deagle.",szRank, GetPlayerNameEx(playerid), szDivision);
 				format(wepget, sizeof(wepget), "Deagle");
 				Inventory_Add(playerid, "Deagle-AS");
 				SendClientTextDraw(playerid, "Ban da lay mot khau sung Deagle.~n~~r~Neu lay nham, bat buoc phai tra lai cho leader.");
@@ -24889,8 +24918,8 @@ Dialog:AmmoCop(playerid, response, listitem, inputtext[])
 				SendClientTextDraw(playerid, "Ban da lay mot bang dan Sung Sniper.~n~~r~Neu lay nham, bat buoc phai tra lai cho leader.");
 			}
 		}
-		SendLogToDiscordRoom("[MDC-Police] Ammo log" ,"1157912890410541167", "Name", GetPlayerNameEx(playerid, false), "Rank", PlayerInfo[playerid][pRankText], "Ammo", wepget, 0x227f99);
-		SendLogToDiscordRoom("[MDC-Police] Ammo log" , "1157957903874007111", "Name", GetPlayerNameEx(playerid, false), "Rank", PlayerInfo[playerid][pRankText], "Ammo", wepget, 0x227f99);
+		SendLogToDiscordRoom("[MDC-Police] Ammo log" ,"1157912890410541167", "Name", GetPlayerNameEx(playerid, false), "Rank", szRank, "Ammo", wepget, 0x227f99);
+		SendLogToDiscordRoom("[MDC-Police] Ammo log" , "1157957903874007111", "Name", GetPlayerNameEx(playerid, false), "Rank", szRank, "Ammo", wepget, 0x227f99);
 	}
 	return 1;
 }

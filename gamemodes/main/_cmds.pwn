@@ -148,7 +148,7 @@ CMD:g(playerid, params[]) {
 					//format(string, sizeof(string), "(radio) %s", params);
 					//SetPlayerChatBubble(playerid, string, COLOR_WHITE, 15.0, 5000);
 					GetPlayerGroupInfo(playerid, rank, division, employer);
-					format(string, sizeof(string), "(( (%d) %s: %s ))",PlayerInfo[playerid][pRank], GetPlayerNameEx(playerid), params);
+					format(string, sizeof(string), "(( (%d) %s: %s ))",rank, GetPlayerNameEx(playerid), params);
 					foreach(new i: Player)
 					{
 						if(GetPVarInt(i, "togGroup") == 0)
@@ -614,7 +614,6 @@ CMD:capmaphuhieu(playerid, params[])
 	    else
 	    {
             new string[128];
-            PlayerInfo[giveplayerid][pMaHieu1] = 0;
             PlayerInfo[giveplayerid][pMaHieu1] = mahieu;
             format(string, sizeof(string), "{9999FF} %s cap ma hieu cho ban ( Ma hieu: %d )", GetPlayerNameEx(playerid), mahieu);
             SendClientMessageEx(giveplayerid, COLOR_GRAD2, string);

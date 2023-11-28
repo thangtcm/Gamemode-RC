@@ -85,7 +85,7 @@ hook OnPlayerGiveDamage(playerid, damagedid, Float:amount, weaponid, bodypart)
 }
 
 
-GetBodyPartName(bodypart)
+stock GetBodyPartName(bodypart)
 {
 	new part[32];
 	switch(bodypart)

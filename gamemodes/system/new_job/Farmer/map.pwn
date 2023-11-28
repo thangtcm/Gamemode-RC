@@ -72,7 +72,7 @@ RemoveBuildingFarmMap(playerid)
 	RemoveBuildingForPlayer(playerid, 3276, -1429.531, -1441.820, 101.039, 0.250);
 	RemoveBuildingForPlayer(playerid, 3425, -1439.790, -1520.939, 112.125, 0.250);
 	RemoveBuildingForPlayer(playerid, 17060, -1457.689, -1485.760, 100.633, 0.250);
-		return 1;
+	return 1;
 }
 
 CreateFarmMap()

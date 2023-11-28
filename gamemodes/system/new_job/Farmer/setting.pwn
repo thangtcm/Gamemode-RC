@@ -103,7 +103,7 @@ new PlantStatusArr[][45] = {
 new FarmInfo[MAX_FARM][fmInfo];
 new PlantTreeInfo[MAX_PLAYERS][MAX_PLAYER_PLANT][PLANT_INFO];
 new RaiseCattleInfo[MAX_PLAYERS][MAX_CATTLES][CATTLE_INFO];
-new FarmPlayer[MAX_PLAYERS];
+// new FarmPlayer[MAX_PLAYERS];
 forward OnCreateFarmFinish(playerid, index, type);
 forward OnLoadFarms();
 forward OnLoadPlants(playerid);

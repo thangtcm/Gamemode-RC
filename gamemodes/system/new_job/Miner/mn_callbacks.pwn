@@ -204,7 +204,6 @@ public OnPlayerPickUpRock(playerid, rockIndex)
 			timerdc[playerid] -= 10;
 		}
 		TimerRandomPress[playerid] = random(timerdc[playerid]-10);
-		timerd = timerdc[playerid]*1000;
 		KeyPressed[playerid] = true;
 		SetPVarInt(playerid, "MinerWorking", 1);
 		MinerTimer[playerid] = SetTimerEx("StartCountTime", 1000, true, "i", playerid);
@@ -382,7 +381,7 @@ public StartCountTime(playerid)
 
 stock MinerGetKeys(playerid)
 {
-    new randomselect = random(3), string[128];
+    new randomselect = random(3);
 	KeyPressed[playerid] = false;
 	TimerPressKey[playerid] = 7 + random(5);
 	KeyPressesType[playerid] = randomselect;

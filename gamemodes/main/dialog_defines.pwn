@@ -69,3 +69,5 @@ enum
 #define      LOAD_TUOINUOC            11
 #define      LOAD_BATSAU             12
 #define       LOAD_BONPHAN          13
+#define			DIALOG_THANHVIEN_FACTION		(1211)
+#define			DIALOG_FACTION_KICK				(1212)

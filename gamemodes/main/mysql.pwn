@@ -400,6 +400,7 @@ public OnQueryFinish(resultid, extraid, handleid)
 					cache_get_field_content(row,  "Respect", szResult, MainPipeline); PlayerInfo[extraid][pExp] = strval(szResult);
 					cache_get_field_content(row,  "XP", szResult, MainPipeline); PlayerInfo[extraid][pXP] = strval(szResult);
 					cache_get_field_content(row,  "TruyDuoi", szResult, MainPipeline); PlayerInfo[extraid][pTruyDuoi] = strval(szResult);
+					cache_get_field_content(row,  "MaHieu1", szResult, MainPipeline); PlayerInfo[extraid][pMaHieu1] = strval(szResult);
                     cache_get_field_content(row,  "BanTime", szResult, MainPipeline); PlayerInfo[extraid][pBanTime] = strval(szResult);
 					cache_get_field_content(row,  "TimeBanned", szResult, MainPipeline); PlayerInfo[extraid][pTimeBanned] = strval(szResult);
 					cache_get_field_content(row,  "BannedBy", PlayerInfo[extraid][pBannedBy], MainPipeline, 128);
