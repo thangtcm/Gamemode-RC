@@ -17491,6 +17491,7 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 	        }
 	        case 3: ShowPlayerDialog(playerid, MDC_MESSAGE, DIALOG_STYLE_INPUT, "SA-MDC - Logged In | MDC Message", "Nhap ten nguoi choi hoac ID", "Dong y", "Huy bo");
 		    case 4: ShowPlayerDialog(playerid, MDC_SMS, DIALOG_STYLE_INPUT, "SA-MDC - Logged In | SMS", "Nhap so dien thoai nguoi nhan.", "Dong y", "Huy bo");
+		    case 5: ShowPlayerDialog(playerid, 10050, DIALOG_STYLE_INPUT, "SA-MDC - Logged In | Find Vehicle Sign", "Nhap bien so xe can tra cuu \nVD: 'SF-12345' -> Nhap '12345'", "Dong y", "Huy bo");
 		}
 	}
 	if(dialogid == MDC_FIND && response)

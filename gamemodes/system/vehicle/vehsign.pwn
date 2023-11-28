@@ -121,6 +121,36 @@ stock MenuRegisterVehSign(playerid)
 }
 hook OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 {
+	if(dialogid == 10050 && response == 1)
+	{
+		new result_vs = -1, owner = -1, vslotid = -1;
+		for(new i = 0; i < MAX_VEHICLES; i++) {
+			if(VehSignInfo[i][vs_VehSign] == strval(inputtext)) {
+				result_vs = i; break;
+			}
+		}
+		if(result_vs == -1) return SendErrorMessage(playerid, "Bien so xe nay khong ton tai !");
+		foreach(new i: Player){
+			if(GetPlayerSQLId(i) == VehSignInfo[result_vs][vs_OwnerID]){
+				owner = i; break;
+			}
+		}
+		if(owner == -1) return SendErrorMessage(playerid, "Chu xe nay khong online");
+		for(new i = 0; i < MAX_VEHICLES; i++) {
+			if(VehSignInfo[result_vs][vs_VehicleID] == PlayerVehicleInfo[owner][i][pvSlotId]) {
+				vslotid = i; break;
+			}
+		}
+		new statez[50];
+		switch(PlayerVehicleInfo[owner][vslotid][pvImpounded])
+		{
+			case 1: statez = "{c54640}Co{FFFFFF}";
+			case 0: statez = "{36e198}Khong{FFFFFF}";
+		}
+		new format_vs[1280];
+		format(format_vs, sizeof(format_vs), "{affc14}Tra cuu bien so xe{FFFFFF}\nTen chu xe: %s\tBien so xe: SF-%d\nVe phat: $%d\nTam giu xe: %s",GetPlayerNameEx(owner), VehSignInfo[result_vs][vs_VehSign], PlayerVehicleInfo[owner][vslotid][pvTicket], statez);
+		ShowPlayerDialog(playerid, DIALOG_NOTHING, DIALOG_STYLE_MSGBOX, "Tra cuu bien so", format_vs, ">>", "<<");
+	}
 	if(dialogid == VEHSIGN_DLG && response == 1)
 	{
 		if(PlayerVehicleInfo[playerid][listitem][pvSpawned]) {

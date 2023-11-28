@@ -3292,7 +3292,7 @@ CMD:mdc(playerid, params[])
 	{
         if(IsPlayerInAnyVehicle(playerid))
 		{
-            ShowPlayerDialog(playerid, MDC_MAIN, DIALOG_STYLE_LIST, "SA-MDC - Logged in", "*Civilian Information\n*Find LEO\n*Law Enforcement Agencies\n*MDC Message\n*SMS", "Dong y", "CancelHuy bo");
+            ShowPlayerDialog(playerid, MDC_MAIN, DIALOG_STYLE_LIST, "SA-MDC - Logged in", "*Civilian Information\n*Find LEO\n*Law Enforcement Agencies\n*MDC Message\n*SMS\nTra cuu bien so xe", "Dong y", "CancelHuy bo");
             ConnectedToPC[playerid] = 1337;
         }
         else SendErrorMessage(playerid, " Ban khong the lam dieu nay tren xe.");
