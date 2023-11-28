@@ -1531,6 +1531,7 @@ CMD:dangkycmnd(playerid,params[]) {
         PlayerInfo[playerid][pCMND] = cmnd;
         format(string,sizeof(string),"Ban da dang ky CMND thanh cong, so CMND la: {edee67}%d{FFFFFF} (/my 'cmnd' de xem)",cmnd);
         SendClientMessageEx(playerid,-1,string);
+        CheckDoneMisson(playerid, 2);
     }
     return 1;
 }

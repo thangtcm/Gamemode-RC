@@ -495,15 +495,19 @@ stock PlantTree_Remove(playerid, plantId)
 stock LeaveAreaFarm(playerid)
 {
     new farmid = FarmEnter[playerid];
-    if(GetPlayerVirtualWorld(playerid) == FarmInfo[farmid][VirtualWorld] && GetPVarInt(playerid, "IsPlayer_StreamPrep") < gettime())
+    if(farmid != -1)
     {
-        ActSetPlayerPos(playerid, FarmInfo[farmid][ExteriorX], FarmInfo[farmid][ExteriorY], FarmInfo[farmid][ExteriorZ]);
-        new str[128];
-        format(str, sizeof(str), "Ban da roi khoi nong trai cua %s", FarmInfo[farmid][OwnerName]);
-        SendClientMessageEx(playerid, COLOR_WHITE, str);
-        Player_StreamPrep(playerid, FarmInfo[farmid][ExteriorX], FarmInfo[farmid][ExteriorY], FarmInfo[farmid][ExteriorZ], FREEZE_TIME);
-        SetPlayerInterior(playerid, 0);
-        SetPlayerVirtualWorld(playerid, 0);
+        if(GetPlayerVirtualWorld(playerid) == FarmInfo[farmid][VirtualWorld] && GetPVarInt(playerid, "IsPlayer_StreamPrep") < gettime())
+        {
+            ActSetPlayerPos(playerid, FarmInfo[farmid][ExteriorX], FarmInfo[farmid][ExteriorY], FarmInfo[farmid][ExteriorZ]);
+            new str[128];
+            format(str, sizeof(str), "Ban da roi khoi nong trai cua %s", FarmInfo[farmid][OwnerName]);
+            SendClientMessageEx(playerid, COLOR_WHITE, str);
+            Player_StreamPrep(playerid, FarmInfo[farmid][ExteriorX], FarmInfo[farmid][ExteriorY], FarmInfo[farmid][ExteriorZ], FREEZE_TIME);
+            SetPlayerInterior(playerid, 0);
+            SetPlayerVirtualWorld(playerid, 0);
+            FarmEnter[playerid] = -1;
+        }
     }
     return 1;
     

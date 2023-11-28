@@ -88,6 +88,7 @@ stock g_mysql_SaveMisson(playerid)
     SavePlayerInteger(query, GetPlayerSQLId(playerid), "M_check_1", M_check[playerid][1]); 
     SavePlayerInteger(query, GetPlayerSQLId(playerid), "M_check_2", M_check[playerid][2]);
 	SavePlayerInteger(query, GetPlayerSQLId(playerid), "DriveReward", pDriveReward[playerid]);
+	SavePlayerInteger(query, GetPlayerSQLId(playerid), "FarmEntered", FarmEnter[playerid]);
 	MySQLUpdateFinish(query, GetPlayerSQLId(playerid));
     return 1;
 }
@@ -130,6 +131,7 @@ public M_OnQueryFinish(extraid, handleid)
 			cache_get_field_content(row,  "M_check_1", szResult, MainPipeline); M_check[extraid][1] = strval(szResult);
 			cache_get_field_content(row,  "M_check_2", szResult, MainPipeline); M_check[extraid][2] = strval(szResult);
 			cache_get_field_content(row,  "DriveReward", szResult, MainPipeline); pDriveReward[extraid] = strval(szResult);
+			cache_get_field_content(row,  "FarmEntered", szResult, MainPipeline); FarmEnter[extraid] = strval(szResult);
 			if(PMisson[extraid][a_m_done] == 0)
 			{
 				SendServerMessage(extraid, "Ban chua lam nhiem vu ngay hom nay, hay tim NPC tai CityHall de lam nhiem vu ngay nhe");
