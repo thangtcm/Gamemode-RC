@@ -3293,7 +3293,7 @@ CMD:mdc(playerid, params[])
 	{
         if(IsPlayerInAnyVehicle(playerid))
 		{
-            ShowPlayerDialog(playerid, MDC_MAIN, DIALOG_STYLE_LIST, "SA-MDC - Logged in", "*Civilian Information\n*Find LEO\n*Law Enforcement Agencies\n*MDC Message\n*SMS\nTra cuu bien so xe", "Dong y", "CancelHuy bo");
+            ShowPlayerDialog(playerid, MDC_MAIN, DIALOG_STYLE_LIST, "SA-MDC - Logged in", "*Civilian Information\n*Find LEO\n*Law Enforcement Agencies\n*MDC Message\n*SMS", "Dong y", "CancelHuy bo");
             ConnectedToPC[playerid] = 1337;
         }
         else SendErrorMessage(playerid, " Ban khong the lam dieu nay tren xe.");
@@ -11233,7 +11233,7 @@ CMD:join(playerid, params[])
                   return 1;
                }
 		} */
-		else if (IsPlayerInRangeOfPoint(playerid,5.0, 58.5952, -292.2914, 1.5781)) {
+		else if (IsPlayerInRangeOfPoint(playerid,5.0, 2447.0867,-2100.8335,13.5469)) {
 			if(PlayerInfo[playerid][pJob] == 0)
 			{
 				ShowPlayerDialog(playerid,DIALOG_XINVIEC,0,"He thong cong viec","Day la cong viec Tai Xe,cong viec nay la ban se cho nhung chiec hang hoa de kiem tien\nCMD:/truckergo car va /truckergo buy/sell\nCong viec nay ban can co phuong tien theo yeu cau moi co the lam va viec nay kiem duoc kha nhieu tien!", "Hieu", ""); //TRUCKERJOB
@@ -18528,30 +18528,26 @@ CMD:chinhxe(playerid, params[])
 	{
 		new vstring[4096], icount = GetPlayerVehicleSlots(playerid);
 		new statez[30];
-		vstring = "Phuong tien\tTinh trang\tGiay to xe\tBien So Xe";
+		vstring = "Phuong tien\tTinh trang\tGiay to xe";
 		for(new i, iModelID; i < icount; i++)
 		{
 			if((iModelID = PlayerVehicleInfo[playerid][i][pvModelId] - 400) >= 0)
 			{
-				new VehSignstr[1280], VehSignID = FindVehSign(PlayerVehicleInfo[playerid][i][pvSlotId]);
-				if(VehSignID != -1){
-					format(VehSignstr, sizeof(VehSignstr), "SF-%d", VehSignInfo[VehSignID][vs_VehSign]);
-				} else VehSignstr = "{c54640}Chua dang ky{FFFFFF}";
 				switch(PlayerVehicleInfo[playerid][i][pvGiayToXe]) 
 				{
 					case 0: statez = "{c54640}Chua dang ky{FFFFFF}";
 					case 1: statez = "{36e198}Da dang ky{FFFFFF}";
 				}
 				if(PlayerVehicleInfo[playerid][i][pvImpounded]) {
-					format(vstring, sizeof(vstring), "%s\n[%d]%s\t{f0635c}Tich thu{ffffff}\t%s\t%s", vstring,PlayerVehicleInfo[playerid][i][pvSlotId], VehicleName[iModelID],statez,VehSignstr);
+					format(vstring, sizeof(vstring), "%s\n[%d]%s\t{f0635c}Tich thu{ffffff}\t%s", vstring,PlayerVehicleInfo[playerid][i][pvSlotId], VehicleName[iModelID],statez);
 				}
 				else if(PlayerVehicleInfo[playerid][i][pvDisabled]) {
-					format(vstring, sizeof(vstring), "%s\n[%d]%s\t{f0635c}Khong dung duoc{ffffff}\t%s\t%s", vstring,PlayerVehicleInfo[playerid][i][pvSlotId], VehicleName[iModelID],statez,VehSignstr);
+					format(vstring, sizeof(vstring), "%s\n[%d]%s\t{f0635c}Khong dung duoc{ffffff}\t%s", vstring,PlayerVehicleInfo[playerid][i][pvSlotId], VehicleName[iModelID],statez);
 				}
 				else if(!PlayerVehicleInfo[playerid][i][pvSpawned]) {
-					format(vstring, sizeof(vstring), "%s\n[%d]%s\t{eedf4f}Trong Garage{ffffff}\t%s\t%s", vstring,PlayerVehicleInfo[playerid][i][pvSlotId], VehicleName[iModelID],statez,VehSignstr);
+					format(vstring, sizeof(vstring), "%s\n[%d]%s\t{eedf4f}Trong Garage{ffffff}\t%s", vstring,PlayerVehicleInfo[playerid][i][pvSlotId], VehicleName[iModelID],statez);
 				}
-				else format(vstring, sizeof(vstring), "%s\n[%d]%s\t{7fe39a}Dang su dung{ffffff}\t%s\t%s", vstring,PlayerVehicleInfo[playerid][i][pvSlotId], VehicleName[iModelID],statez,VehSignstr);
+				else format(vstring, sizeof(vstring), "%s\n[%d]%s\t{7fe39a}Dang su dung{ffffff}\t%s", vstring,PlayerVehicleInfo[playerid][i][pvSlotId], VehicleName[iModelID],statez);
 			}
 			else strcat(vstring, "\nTrong");
 		}
