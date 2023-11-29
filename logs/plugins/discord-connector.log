@@ -14,3 +14,20 @@
 [11/29/23 19:55:52] [WARNING] Unknown gateway event 'CHANNEL_TOPIC_UPDATE'
 [11/29/23 19:55:52] [WARNING] Unknown gateway event 'VOICE_CHANNEL_STATUS_UPDATE'
 [11/29/23 19:59:04] [WARNING] Unknown gateway event 'GUILD_MEMBERS_CHUNK'
+[11/29/23 20:04:03] [WARNING] Unknown gateway event 'GUILD_MEMBERS_CHUNK'
+[11/29/23 20:08:00] [ERROR] Can't read from Discord websocket gateway: End of file (2)
+[11/29/23 20:08:00] [ERROR] Can't write to Discord websocket gateway: The I/O operation has been aborted because of either a thread exit or an application request (995)
+[11/29/23 20:11:32] [WARNING] Unknown gateway event 'CHANNEL_TOPIC_UPDATE'
+[11/29/23 20:11:32] [WARNING] Unknown gateway event 'VOICE_CHANNEL_STATUS_UPDATE'
+[11/29/23 20:17:26] [WARNING] Unknown gateway event 'GUILD_MEMBERS_CHUNK'
+[11/29/23 20:38:54] [ERROR] Error while retrieving HTTP POST response from '/api/v10/channels/1158001303033757716/messages': stream truncated
+[11/29/23 20:49:55] [ERROR] Can't write to Discord websocket gateway: The I/O operation has been aborted because of either a thread exit or an application request (995)
+[11/29/23 20:49:56] [ERROR] Error while retrieving HTTP GET response from '/api/oauth2/applications/@me': stream truncated
+[11/29/23 21:23:43] [ERROR] Error while retrieving HTTP POST response from '/api/v10/channels/1157993235776557156/messages': stream truncated
+[11/29/23 21:31:32] [WARNING] Unknown gateway event 'GUILD_MEMBERS_CHUNK'
+[11/29/23 21:33:34] [WARNING] Unknown gateway event 'GUILD_MEMBERS_CHUNK'
+[11/29/23 21:35:34] [WARNING] Unknown gateway event 'CHANNEL_TOPIC_UPDATE'
+[11/29/23 21:35:34] [WARNING] Unknown gateway event 'VOICE_CHANNEL_STATUS_UPDATE'
+[11/29/23 21:48:55] [WARNING] Unknown gateway event 'GUILD_MEMBERS_CHUNK'
+[11/29/23 21:56:18] [ERROR] can't update guild member presence: user id "958502509725507634" not cached
+[11/29/23 21:58:51] [ERROR] can't update guild member presence: user id "958502509725507634" not cached
