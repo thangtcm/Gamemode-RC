@@ -1,0 +1,3 @@
+[08:53:17] [ERROR] "mysql_tquery" - invalid connection handle (ID = 0)
+[08:56:20] [ERROR] "mysql_tquery" - invalid connection handle (ID = 0)
+[09:01:14] [ERROR] "mysql_tquery" - invalid connection handle (ID = 0)

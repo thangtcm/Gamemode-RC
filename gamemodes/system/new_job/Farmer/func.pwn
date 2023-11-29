@@ -14,10 +14,16 @@ stock SetPlayerFarmer(playerid)
 		{
             if(FarmInfo[i][FarmType] == FARM_RENT)
             {
-                new month, day, year, farmtimer;
+                new month, day, year, getdt = FarmInfo[i][RentTimer];
                 getdate(year,month,day);
-                farmtimer = day*1000000 + month*10000 + year;
-                if(farmtimer > FarmInfo[i][RentTimer])
+                new dayold, monthold, yearold;
+                yearold = getdt%10000;
+                getdt /= 10000;
+                monthold = getdt%100;
+                getdt /= 100;
+                dayold = getdt;
+                printf("DATA %d %d %d", dayold, monthold, yearold);
+                if((year > yearold || (year == yearold && (month > monthold || (month == monthold && day > dayold)))) && FarmInfo[i][FarmType] == FARM_RENT )
                 {
                     SendServerMessage(playerid, "Nong trai (ID: %d) da het thoi han thue, he thong tu dong tich thu tai san nong trai cua ban.");
                     SendServerMessage(playerid, "Cac du lieu cay trong va gia suc cua ban se duoc he thong luu tru va tai su dung cho lan so huu nong trai tiep theo cua ban.");
@@ -90,11 +96,12 @@ stock Farm_Reload(farmid)
     new month, day, year, getdt = FarmInfo[farmid][RentTimer];
     getdate(year,month,day);
     new dayold, monthold, yearold;
-    dayold = getdt%10000;
+    yearold = getdt%10000;
     getdt /= 10000;
     monthold = getdt%100;
     getdt /= 100;
     dayold = getdt;
+    printf("DATA %d %d %d", dayold, monthold, yearold);
     if((year > yearold || (year == yearold && (month > monthold || (month == monthold && day > dayold)))) && FarmInfo[farmid][FarmType] == FARM_RENT )
     {
         FarmInfo[farmid][FarmType] = 0;

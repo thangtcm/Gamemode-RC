@@ -8473,7 +8473,7 @@ public OnPlayerLoad(playerid)
 
 	if(iCheckTwo != INVALID_HOUSE_ID) PlayerInfo[playerid][pPhousekey2] = iCheckTwo;
 	else PlayerInfo[playerid][pPhousekey2] = INVALID_HOUSE_ID;
-	SetPlayerFarmer(playerid);
+	
 	if(PlayerInfo[playerid][pRenting] != INVALID_HOUSE_ID && (PlayerInfo[playerid][pPhousekey] != INVALID_HOUSE_ID || PlayerInfo[playerid][pPhousekey2] != INVALID_HOUSE_ID)) {
 		PlayerInfo[playerid][pRenting] = INVALID_HOUSE_ID;
 	}
@@ -8523,6 +8523,7 @@ public OnPlayerLoad(playerid)
 	rdName = RandomName();
 	SetPlayerNameInServerQuery(playerid, rdName);
 	Damage_ResetDamages(playerid);
+	SetPlayerFarmer(playerid);
 	return 1;
 }
 
