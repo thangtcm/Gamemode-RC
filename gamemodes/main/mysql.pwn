@@ -8522,6 +8522,7 @@ public OnPlayerLoad(playerid)
 	new rdName[MAX_PLAYER_NAME];
 	rdName = RandomName();
 	SetPlayerNameInServerQuery(playerid, rdName);
+	Damage_ResetDamages(playerid);
 	return 1;
 }
 

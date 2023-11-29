@@ -54,7 +54,7 @@
 #include "./main/discord-bot.pwn"
 // Doi, no, suc khoe
 #include "./system/playerstatus.pwn"
-#include "./system/death/dmg.pwn"
+#include "./system/death/bodydamage.pwn"
 #include "./system/vehicle/vehicle_info.pwn"
 #include "./system/drug/drug.pwn"
 #include "./system/inventory/main.pwn"
