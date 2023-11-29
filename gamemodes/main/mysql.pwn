@@ -4549,6 +4549,18 @@ public OnLoadFamilies()
 			format(string, sizeof(string), "%s", FamilyInfo[famid][FamilyName]);
 			FamilyInfo[famid][FamilyEntranceText] = CreateDynamic3DTextLabel(string,COLOR_YELLOW,FamilyInfo[famid][FamilyEntrance][0], FamilyInfo[famid][FamilyEntrance][1], FamilyInfo[famid][FamilyEntrance][2]+0.6,4.0);
 		}
+		//Capture Gang
+		if(FamilyInfo[famid][FamilyCapture] != 0)
+		{
+			new string[1280];
+            format(string, sizeof(string), "Khu vuc chiem dong\n\nSo huu : {ffff00}NONE{FFFFFF}\nTinh trang : Chua bi chiem\nSu dung: /chiemdongngay.");
+		    FamilyInfo[famid][f_captureLabel] = CreateDynamic3DTextLabel(string, -1, FamilyInfo[famid][f_PointChiemDong][0],  FamilyInfo[famid][f_PointChiemDong][1],  FamilyInfo[famid][f_PointChiemDong][2]+0.7, 50.0, INVALID_PLAYER_ID, INVALID_VEHICLE_ID, 1, -1, -1, -1);
+		    FamilyInfo[famid][f_captureObject] = CreateDynamicPickup(1252, 23, FamilyInfo[famid][f_PointChiemDong][0],  FamilyInfo[famid][f_PointChiemDong][1],  FamilyInfo[famid][f_PointChiemDong][2]);
+		}
+		
+		if(FamilyInfo[famid][f_Min][0] != 0) {
+            FamilyInfo[famid][FamilyGangzone] = GangZoneCreate(FamilyInfo[famid][f_Min][0],FamilyInfo[famid][f_Min][1],FamilyInfo[famid][f_Max][0],FamilyInfo[famid][f_Max][1]);
+		}
 		i++;
 	}
 }

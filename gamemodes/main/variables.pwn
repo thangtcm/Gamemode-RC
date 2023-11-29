@@ -563,7 +563,21 @@ enum fInfo
 	gt_Bold,
 	gt_FontColor,
 	gt_BackColor,
-	gt_SPUsed
+	gt_SPUsed,
+	FamilyCapture,
+	Float: f_PointChiemDong[3],
+	f_chiemdong,
+	f_PlayerID[32],
+	f_FamilyID,
+	f_HealthCD,
+	f_TimeResetCD,
+	f_captureObject,
+    Text3D: f_captureLabel,
+	// gang-zone family
+	FamilyGangzone,
+	Float: f_Max[2],
+	Float: f_Min[2],
+	f_CaptureType
 };
 
 enum fPoint

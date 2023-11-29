@@ -1,3 +1,15 @@
+/*
+    ,============================================,
+    |     Body Damage (He thong sat thuong)     |
+    |               29.11.2023                  |
+    |         Script: Nicks / Nickzky           |
+    *============================================*
+
+    Contact :
+    > FB : https://www.facebook.com/Nick.2208/
+    > Discord : nicks6723
+*/
+
 /* -------------------------------- INCLUDE -------------------------------- */
 #include <YSI_Coding\y_hooks>
 

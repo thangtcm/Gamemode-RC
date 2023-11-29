@@ -65,7 +65,7 @@
 
 #include "./system/casino/casino.pwn"
 
-#include "./system/gangwar.pwn"
+#include "./system/chiemdong.pwn"
 #include "./system/speedo.pwn"
 #include "./system/help.pwn"
 #include "./system/gps_system.pwn"
