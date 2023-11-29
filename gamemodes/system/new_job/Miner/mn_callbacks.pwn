@@ -23,14 +23,14 @@ hook OnPlayerConnect(playerid)
 hook OnPlayerKeyStateChange(playerid, newkeys, oldkeys)
 {
 	if(newkeys == 0) return 1;
-	if(IsPlayerInRangeOfPoint(playerid, 2.5, 588.1791,866.1268,-42.4973))
+	if(IsPlayerInRangeOfPoint(playerid, 2.5, 960.1240,-2142.9419,13.0938))
 	{
 	    if(PRESSED(KEY_YES))
 	    {
 	    	Dialog_Show(playerid, minerdialog, DIALOG_STYLE_LIST, "Quan ly khu mo", "Nhan / tra dong phuc lam viec\nMua Pickaxe (dung cu de dao)", "Lua chon", "Huy bo");
 	    }
 	}
-	if(IsPlayerInRangeOfPoint(playerid, 2.5, 2126.8018,-76.6521,2.4721))
+	if(IsPlayerInRangeOfPoint(playerid, 2.5, 2124.2324,-1738.6648,13.5645))
 	{
 	    if(PRESSED(KEY_YES))
 	    {
@@ -39,7 +39,7 @@ hook OnPlayerKeyStateChange(playerid, newkeys, oldkeys)
 	    	Dialog_Show(playerid, thuksdialog, DIALOG_STYLE_LIST, "Thu mua khoang san", format_job, "Lua chon", "Huy bo");
 	    }
 	}
-	if(IsPlayerInRangeOfPoint(playerid, 300.0, 588.1791,866.1268,-42.4973))
+	if(IsPlayerInRangeOfPoint(playerid, 400.0, 1004.2589,-2152.0701,13.0938))
 	{
 		if(PRESSED(KEY_YES))
 		{
