@@ -87,9 +87,15 @@ stock GetFarmFree()
 stock Farm_Reload(farmid)
 {
     new string[256];
-    new month, day, year;
+    new month, day, year, getdt = FarmInfo[farmid][RentTimer];
     getdate(year,month,day);
-    if(FarmInfo[farmid][RentTimer] < (day*1000000 + month*10000 + year) && FarmInfo[farmid][FarmType] == FARM_RENT )
+    new dayold, monthold, yearold;
+    dayold = getdt%10000;
+    getdt /= 10000;
+    monthold = getdt%100;
+    getdt /= 100;
+    dayold = getdt;
+    if((year > yearold || (year == yearold && (month > monthold || (month == monthold && day > dayold)))) && FarmInfo[farmid][FarmType] == FARM_RENT )
     {
         FarmInfo[farmid][FarmType] = 0;
         FarmInfo[farmid][RentTimer] = 0;
