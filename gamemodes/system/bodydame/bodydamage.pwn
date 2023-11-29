@@ -30,7 +30,7 @@ public BiBanChan(playerid)
 }
 
 
-DisplayDamages(toplayer, playerid)
+/* DisplayDamages(toplayer, playerid)
 {
         new playername[MAX_PLAYER_NAME], title[45];
         GetPlayerName(playerid, playername, sizeof(playername));
@@ -56,7 +56,7 @@ DisplayDamages(toplayer, playerid)
         }
         ShowPlayerDialog(toplayer, D_DAMAGES, DIALOG_STYLE_LIST, title, gText, "Dong", "");
         return 1;
-}
+} */
 
 
 //      FUNCTIONS
@@ -69,7 +69,7 @@ ResetDamages(playerid)
         return 1;
 }
 
-CountDamages(playerid)
+stock CountDamages(playerid)
 {
         new count = 0;
         for(new i = 0; i < MAX_BODY_PARTS; i++)

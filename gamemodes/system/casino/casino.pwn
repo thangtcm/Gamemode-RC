@@ -100,7 +100,7 @@ public OnLoadCasinoTable()
 		
 		CreateCasinoTable(i);
         CasinoTable[i][cSession] = 0;
-        CasinoTable[i][cTimeLeft] = 5 * 60;
+        CasinoTable[i][cTimeLeft] = 90;
         CasinoTable[i][cPause] = 5;
 		i++;
 	}
@@ -247,7 +247,7 @@ stock SendResultToPlayer(id, type)
     CasinoTable[id][cTotalPlayer] = 0;
     CasinoTable[id][cResult] = 0;
     CasinoTable[id][cPause] = 8;
-    CasinoTable[id][cTimeLeft] = 5 * 60;
+    CasinoTable[id][cTimeLeft] = 90;
     return 1;
 }
 
@@ -296,7 +296,7 @@ CMD:acasino(playerid, params[])
         CasinoTable[i][cInt] = GetPlayerInterior(playerid);
         CasinoTable[i][cBizID] = bizid;
         CasinoTable[i][cType] = type;
-        CasinoTable[i][cTimeLeft] = 5 * 60;
+        CasinoTable[i][cTimeLeft] = 90;
         CasinoTable[i][cPause] = 8;
 
         new query[448];

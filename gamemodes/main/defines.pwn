@@ -926,3 +926,4 @@
 forward OnPasswordHashed(playerid, timeNow[]);
 forward OnPasswordChecked(playerid);
 forward Float: GetVehicleFuelCapacity(vehicleid);
+forward Float: GetVehicleMaxHealth(vehicleid);

@@ -39,7 +39,7 @@ forward OnInventoryAdd(playerid, pItemId, timer);
 forward OnInventoryAddCH(playerid, pItemId, timer);
 forward OnLoadInventoryCH(playerid);
 
-new const g_facInventory[][] = {
+/* new const g_facInventory[][] = {
 	"9mm",
 	"Dong",
 	"Sat",
@@ -77,7 +77,7 @@ new const g_facInventory[][] = {
 	"Vat lieu",
 	"Thuoc Sung",
 	"May Cua"
-};
+}; */
 
 new const g_aInventoryItems[][e_InventoryItems] =
 {
