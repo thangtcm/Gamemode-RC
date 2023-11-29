@@ -73,8 +73,10 @@ Dialog:JOB_PIZZA(playerid, response, listitem, inputtext[])
             	Pizza_Holding[playerid] = 0;
             	CPPizza[playerid] = 0;
             	new str[1280];
+                PlayerInfo[playerid][pCash] += Pizza_Reward[playerid];
             	format(str,sizeof(str),"(JOB PIZZA) Ban da ngung lam viec, ban duoc thuong {FFC600}%d${FFFFFF}",Pizza_Reward[playerid]);
 				SendClientTextDraw(playerid, str);
+                Pizza_Reward[playerid];
             }
             case 2:
             {
