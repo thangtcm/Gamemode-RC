@@ -5,11 +5,10 @@
 stock GetJobFind(z) {
 	new jobnamez[80];
 	switch(z) {
-		case 0:	jobnamez = "Pizza RC";
-		case 1:	jobnamez = "Pizza Bluberry";
-		case 2:	jobnamez = "Trucker";
-		case 3:	jobnamez = "Miner";
-		case 4:	jobnamez = "Farm";
+		case 0:	jobnamez = "Pizza";
+		case 1:	jobnamez = "Trucker";
+		case 2:	jobnamez = "Miner";
+		case 3:	jobnamez = "Farm";
 	}
 	return jobnamez;
 }  
@@ -77,10 +76,9 @@ new Float:diadiemkhac_postion[3][3] = {
 {447.7277,238.8819,19.4063}
 };
 new Float:timvieclam_postion[5][3] = {
-{1363.0930,253.7802,19.5669},
-{206.2160,-202.2273,1.5781},
-{58.6224,-291.5815,1.5781},
-{588.0701,865.1739,-43.5557},
+{2099.0378,-1801.4995,13.3889},
+{2447.0867,-2100.8335,13.5469},
+{960.1240,-2142.9419,13.0938},
 {-100.2749, -57.9010, 3.1172}
 };
 CMD:gps(playerid, params[])
