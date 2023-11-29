@@ -60,6 +60,7 @@
 #include "./system/inventory/main.pwn"
 #include "./system/bussiness/inventorybiz.pwn"
 #include "./system/weapon/ammo.pwn"
+#include "./system/LevelJob.pwn"
 
 #include "./main/functions.pwn"
 
