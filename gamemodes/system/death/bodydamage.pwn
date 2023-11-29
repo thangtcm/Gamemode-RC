@@ -39,7 +39,7 @@ const
 
 new DamageInfo[MAX_PLAYERS][MAX_DAMAGES][e_dmg];
 /* -------------------------------- FUNCTION -------------------------------- */
-Damage_GetBodypart(bodypart)
+static stock Damage_GetBodypart(bodypart)
 {
     new bodyname[20];
     switch(bodypart)
@@ -54,7 +54,7 @@ Damage_GetBodypart(bodypart)
     }
     return bodyname;
 }
-Damage_ResetDamages(playerid)
+stock Damage_ResetDamages(playerid)
 {
     for(new i = 0; i < MAX_DAMAGES; i++)
     {
@@ -102,4 +102,5 @@ hook OnPlayerGiveDamage(playerid, damagedid, Float:amount, weaponid, bodypart)
         format(string, sizeof(string), "[RC-DMG] {33AA33}+%.2f HP{FFFFFF} {E28221}[%s]{FFFFFF} bang {FFFF00}%s{FFFFFF} vao {33CCFF}%s{FFFFFF} {708090}(%.1fm)", DamageInfo[damagedid][i][dmg_Amount], GetPlayerNameEx(damagedid), GetWeaponNameEx(weaponid), Damage_GetBodypart(bodypart), Distance);
         SendClientMessage(playerid, -1, string);// nguoi ban
     }
+    return 1;
 }
