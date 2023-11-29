@@ -50,8 +50,8 @@ new Misson[6][minfo] = {
 
 hook OnGameModeInit()
 {
-    NPC_Misson = CreateActor(2,1223.2640,246.9477,19.5469,61.2911);
-    CreateDynamic3DTextLabel("Jhon Song\n(( Su dung [/nhiemvu] de nhan nhiem vu ))", -1, 1223.2640,246.9477,19.5469 , 10);           
+    NPC_Misson = CreateActor(2,1494.3783, -1766.2585, 18.7891, 84.8438);
+    CreateDynamic3DTextLabel("Jhon Song\n(( Su dung [/nhiemvu] de nhan nhiem vu ))", -1, 1494.3783, -1766.2585, 18.7891 , 10);           
 }
 
 hook OnPlayerDisconnect(playerid, reason)
