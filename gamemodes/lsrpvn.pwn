@@ -43,6 +43,7 @@
 #include "./main/variables.pwn"
 #include "./include/loading.pwn"
 #include "./system/new_job/pickup.pwn"
+#include "./system/new_job/newtrashman.pwn"
 // #include "./system/new_job/Farmer/raise.pwn"
 #include "./system/noithat.pwn"
 #include "./system/haha.pwn"
