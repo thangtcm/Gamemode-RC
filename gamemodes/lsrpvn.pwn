@@ -102,6 +102,7 @@
 // #include "./system/farmer.pwn"
 #include "./system/bodydame/bodydamage.pwn"
 #include "./system/vehicle/vehicle_info.pwn"
+#include "./system/vehicle/vehsign.pwn"
 #include "./system/nametag.pwn"
 #include "./system/mission/Misson.pwn"
 #include "./system/mission/ThiBanglai.pwn"
