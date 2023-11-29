@@ -54,7 +54,7 @@
 #include "./main/discord-bot.pwn"
 // Doi, no, suc khoe
 #include "./system/playerstatus.pwn"
-#include "./system/death/dmg.pwn"
+#include "./system/death/bodydamage.pwn"
 #include "./system/vehicle/vehicle_info.pwn"
 #include "./system/drug/drug.pwn"
 #include "./system/inventory/main.pwn"
@@ -71,6 +71,7 @@
 #include "./system/gps_system.pwn"
 
 #include "./system/newfaction/handcuff.pwn"
+#include "./system/newfaction/factionkick.pwn"
 #include "./system/animation.pwn"
 #include "./system/charactertd.pwn"
 //#include "./system/hunger.pwn"
@@ -101,6 +102,7 @@
 // #include "./system/farmer.pwn"
 #include "./system/bodydame/bodydamage.pwn"
 #include "./system/vehicle/vehicle_info.pwn"
+#include "./system/vehicle/vehsign.pwn"
 #include "./system/nametag.pwn"
 #include "./system/mission/Misson.pwn"
 #include "./system/mission/ThiBanglai.pwn"
@@ -109,10 +111,7 @@
 #include "./system/gps/gps.pwn"
 // ============= ANTI ============= //
 #include "./anticheat/anti_airbreak.pwn"
-// #include "./anticheat/anti_troll_car.pwn"
 #include "./anticheat/cartroll.pwn"
-#include "./anticheat/carcheat.pwn"
-// #include "./anticheat/fakedamager.pwn"
 
 #include "./include/onplayerfishnishloading.pwn"
 

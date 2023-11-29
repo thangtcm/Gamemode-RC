@@ -88,6 +88,7 @@ stock g_mysql_SaveMisson(playerid)
     SavePlayerInteger(query, GetPlayerSQLId(playerid), "M_check_1", M_check[playerid][1]); 
     SavePlayerInteger(query, GetPlayerSQLId(playerid), "M_check_2", M_check[playerid][2]);
 	SavePlayerInteger(query, GetPlayerSQLId(playerid), "DriveReward", pDriveReward[playerid]);
+	SavePlayerInteger(query, GetPlayerSQLId(playerid), "FarmEntered", FarmEnter[playerid]);
 	MySQLUpdateFinish(query, GetPlayerSQLId(playerid));
     return 1;
 }
@@ -112,7 +113,7 @@ public M_OnQueryFinish(extraid, handleid)
 			if(PlayerInfo[extraid][pDaily] != datetimenow)
 			{
 				PlayerInfo[extraid][pDaily] = datetimenow;
-				Main_ResetCountMisson(playerid);
+				Main_ResetCountMisson(extraid);
 			}
 			SendServerMessage(extraid, "Su dung /trogiup de tim hieu ro hon ve cac cong viec va cac lenh can dung trong may chu");
 			cache_get_field_content(row,  "M_get_1", szResult, MainPipeline); PMisson[extraid][m_get][1] = strval(szResult);
@@ -130,6 +131,7 @@ public M_OnQueryFinish(extraid, handleid)
 			cache_get_field_content(row,  "M_check_1", szResult, MainPipeline); M_check[extraid][1] = strval(szResult);
 			cache_get_field_content(row,  "M_check_2", szResult, MainPipeline); M_check[extraid][2] = strval(szResult);
 			cache_get_field_content(row,  "DriveReward", szResult, MainPipeline); pDriveReward[extraid] = strval(szResult);
+			cache_get_field_content(row,  "FarmEntered", szResult, MainPipeline); FarmEnter[extraid] = strval(szResult);
 			if(PMisson[extraid][a_m_done] == 0)
 			{
 				SendServerMessage(extraid, "Ban chua lam nhiem vu ngay hom nay, hay tim NPC tai CityHall de lam nhiem vu ngay nhe");
@@ -144,11 +146,11 @@ stock CheckDoneMisson(playerid, type)
 	new str[128];
     switch(type)
     {
-         // nhiem vu hang ngay
-         case 0: // pizza
-         {
-            if(PMisson[playerid][m_get][1] == 1) // hang ngay
-            {
+		// nhiem vu hang ngay
+		case 0: // pizza
+		{
+			if(PMisson[playerid][m_get][1] == 1) // hang ngay
+			{
 					if(!PMisson[playerid][m_danglamnv][1]) return 1;
 					PMisson[playerid][m_check_count][0] += 1;
 					format(str, sizeof(str),  "Tien do nhiem vu giao pizza hien tai cua ban la {FFCB00}%d/%d{FFFFFF} (/nhiemvu de xem chi tiet).", PMisson[playerid][m_check_count][0], Misson[0][m_count]);
@@ -157,9 +159,9 @@ stock CheckDoneMisson(playerid, type)
 					{
 						GiveRewardMisson(playerid);
 					}
-		    }
+			}
 			else if(PMisson[playerid][m_get][2] == 1) // tan thu
-            {
+			{
 				PMisson[playerid][m_check_count][4] += 1;
 				format(str, sizeof(str),  "Tien do nhiem vu tan thu giao pizza hien tai cua ban la {FFCB00}%d/%d{FFFFFF} (/nhiemvu de xem chi tiet).", PMisson[playerid][m_check_count][4], Misson[4][m_count]);
 				SendMissonMessage(playerid, str);
@@ -167,12 +169,12 @@ stock CheckDoneMisson(playerid, type)
 				{
 					GiveRewardMisson(playerid);
 				}
-		    }
-         }
-         case 1: // miner
-         {
-		    if(PMisson[playerid][m_get][1] == 2) // nv hang ngay
-            {
+			}
+		}
+		case 1: // miner
+		{
+			if(PMisson[playerid][m_get][1] == 2) // nv hang ngay
+			{
 				if(!PMisson[playerid][m_danglamnv][2]) return 1;
 				PMisson[playerid][m_check_count][1] += 1;
 				format(str, sizeof(str),  "Tien do nhiem vu dao duoc da(MINER) hien tai cua ban la {FFCB00}%d/%d{FFFFFF} (/nhiemvu de xem chi tiet).", PMisson[playerid][m_check_count][1], Misson[1][m_count]);
@@ -181,9 +183,9 @@ stock CheckDoneMisson(playerid, type)
 				{
 					GiveRewardMisson(playerid);
 				}
-		    }
+			}
 			else if(PMisson[playerid][m_get][2] == 1) // nv tan thu
-            {
+			{
 				PMisson[playerid][m_check_count][5] += 1;
 				format(str, sizeof(str),  "Tien do nhiem vu tan thu dao duoc da(MINER) hien tai cua ban la {FFCB00}%d/%d{FFFFFF} (/nhiemvu de xem chi tiet).", PMisson[playerid][m_check_count][5], Misson[5][m_count]);
 				SendMissonMessage(playerid, str);
@@ -191,34 +193,34 @@ stock CheckDoneMisson(playerid, type)
 				{
 					GiveRewardMisson(playerid);
 				}
-		    }
-         }
-         case 2: //  CMND (mv tan thu)
-         {
-		      if(PMisson[playerid][m_get][2] == 1) // nv tan thu
-		      {
-	              if(PMisson[playerid][m_check_count][2]) return 1;
-	              PMisson[playerid][m_check_count][2] += 1;
-		          SendMissonMessage(playerid, "Nhiem vu tan thu dang ky CMND da hoan thanh (/nhiemvu de xem chi tiet).");
-		          if(PMisson[playerid][m_check_count][5] >= Misson[5][m_count] && PMisson[playerid][m_check_count][4] >= Misson[4][m_count] && PMisson[playerid][m_check_count][2] && PMisson[playerid][m_check_count][3])
-				  {
-				      GiveRewardMisson(playerid);
-				  }
-		      }
-         }
-         case 3: //  Thi bang lai (mv tan thu)
-         {
-		      if(PMisson[playerid][m_get][2] == 1) // nv tan thu
-		      {
-		          if(PMisson[playerid][m_check_count][3]) return 1;
-		          PMisson[playerid][m_check_count][3] += 1;
-		          SendMissonMessage(playerid, "Nhiem vu tan thu thi bang lai da hoan thanh (/nhiemvu de xem chi tiet).");
-		          if(PMisson[playerid][m_check_count][5] >= Misson[5][m_count] && PMisson[playerid][m_check_count][4] >= Misson[4][m_count] && PMisson[playerid][m_check_count][2] && PMisson[playerid][m_check_count][3])
-				  {
-				      GiveRewardMisson(playerid);
-				  }
-		      }
-         }
+			}
+		}
+		case 2: //  CMND (mv tan thu)
+		{
+			if(PMisson[playerid][m_get][2] == 1) // nv tan thu
+			{
+				if(PMisson[playerid][m_check_count][2]) return 1;
+				PMisson[playerid][m_check_count][2] += 1;
+				SendMissonMessage(playerid, "Nhiem vu tan thu dang ky CMND da hoan thanh (/nhiemvu de xem chi tiet).");
+				if(PMisson[playerid][m_check_count][5] >= Misson[5][m_count] && PMisson[playerid][m_check_count][4] >= Misson[4][m_count] && PMisson[playerid][m_check_count][2] && PMisson[playerid][m_check_count][3])
+				{
+					GiveRewardMisson(playerid);
+				}
+			}
+		}
+		case 3: //  Thi bang lai (mv tan thu)
+		{
+			if(PMisson[playerid][m_get][2] == 1) // nv tan thu
+			{
+				if(PMisson[playerid][m_check_count][3]) return 1;
+				PMisson[playerid][m_check_count][3] += 1;
+				SendMissonMessage(playerid, "Nhiem vu tan thu thi bang lai da hoan thanh (/nhiemvu de xem chi tiet).");
+				if(PMisson[playerid][m_check_count][5] >= Misson[5][m_count] && PMisson[playerid][m_check_count][4] >= Misson[4][m_count] && PMisson[playerid][m_check_count][2] && PMisson[playerid][m_check_count][3])
+				{
+					GiveRewardMisson(playerid);
+				}
+			}
+		}
     }
     return 1;
 }
@@ -231,10 +233,7 @@ stock Main_ResetCountMisson(playerid)
    // PMisson[playerid][m_get][2] = 0;
     PMisson[playerid][a_m_done] = 0;
     M_check[playerid][1] = 0;
-<<<<<<< HEAD
-=======
     M_check[playerid][2] = 0;
->>>>>>> main
 }
 
 stock ResetCountMisson(playerid)

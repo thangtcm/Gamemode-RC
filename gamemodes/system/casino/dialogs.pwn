@@ -7,7 +7,7 @@ Dialog:CASINO_EDIT(playerid, response, listitem, inputtext[])
         return 1;
     }
     
-    new i = GetPVarInt(playerid, #TableID), amount, info[64], szDialog[128];
+    new i = GetPVarInt(playerid, #TableID), info[64], szDialog[128];
     format(info, sizeof(info), "Casino Table {2DBE7F}#%d{FFFFFF} (%s)", i, CasinoType[CasinoTable[i][cType]-1]);
 
     switch (listitem)
@@ -151,8 +151,7 @@ Dialog:CASINO_BET_AMOUNT(playerid, response, listitem, inputtext[])
     }
 
     new 
-        i = GetPVarInt(playerid, #interactTable), 
-        szDialog[448], info[64], result_name[2][6];
+        i = GetPVarInt(playerid, #interactTable), info[64], result_name[2][6];
 
     if (CasinoTable[i][cType] == 1) result_name[0] = "Tai", result_name[1] = "Xiu";
     else if (CasinoTable[i][cType] == 2) result_name[0] = "Chan", result_name[1] = "Le";

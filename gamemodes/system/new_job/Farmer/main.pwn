@@ -46,6 +46,5 @@ hook OnPlayerDisconnect(playerid, reason)
 			Cattle_Remove(playerid, i);
 		}
     }
-	LeaveAreaFarm(playerid);
 	return 1;
 }

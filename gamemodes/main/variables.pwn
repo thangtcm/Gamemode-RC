@@ -1,4 +1,15 @@
 
+#define VEHSIGN_DLG 11000
+enum VEHSIGN_DATA
+{
+	vs_ID,
+	vs_VehSign,
+	vs_OwnerID,
+	vs_VehicleID
+}
+
+new VehSignInfo[MAX_VEHICLES][VEHSIGN_DATA];
+new Text3D:VehSignText[MAX_VEHICLES];
 
 new PlayerAmmo[MAX_PLAYERS][10];
 new CraftWeaponDeal[MAX_PLAYERS];
