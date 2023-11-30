@@ -31,3 +31,33 @@
 [11/29/23 21:48:55] [WARNING] Unknown gateway event 'GUILD_MEMBERS_CHUNK'
 [11/29/23 21:56:18] [ERROR] can't update guild member presence: user id "958502509725507634" not cached
 [11/29/23 21:58:51] [ERROR] can't update guild member presence: user id "958502509725507634" not cached
+[11/30/23 14:37:14] [WARNING] Unknown gateway event 'GUILD_MEMBERS_CHUNK'
+[11/30/23 14:38:28] [WARNING] Unknown gateway event 'GUILD_MEMBERS_CHUNK'
+[11/30/23 14:43:13] [WARNING] Unknown gateway event 'GUILD_MEMBERS_CHUNK'
+[11/30/23 14:50:58] [ERROR] Discord terminated websocket connection; reason:  (0)
+[11/30/23 14:50:58] [ERROR] Can't write to Discord websocket gateway: The I/O operation has been aborted because of either a thread exit or an application request (995)
+[11/30/23 15:11:49] [WARNING] Unknown gateway event 'GUILD_MEMBERS_CHUNK'
+[11/30/23 15:23:15] [WARNING] Unknown gateway event 'GUILD_MEMBERS_CHUNK'
+[11/30/23 15:29:58] [WARNING] Unknown gateway event 'CHANNEL_TOPIC_UPDATE'
+[11/30/23 15:29:58] [WARNING] Unknown gateway event 'VOICE_CHANNEL_STATUS_UPDATE'
+[11/30/23 15:30:34] [WARNING] Unknown gateway event 'GUILD_MEMBERS_CHUNK'
+[11/30/23 15:54:33] [WARNING] Unknown gateway event 'GUILD_MEMBERS_CHUNK'
+[11/30/23 16:23:41] [ERROR] Error while retrieving HTTP POST response from '/api/v10/channels/1158001303033757716/messages': stream truncated
+[11/30/23 16:31:21] [ERROR] Error while retrieving HTTP POST response from '/api/v10/channels/1158001303033757716/messages': stream truncated
+[11/30/23 17:35:48] [WARNING] Unknown gateway event 'GUILD_MEMBERS_CHUNK'
+[11/30/23 17:48:35] [ERROR] Can't read from Discord websocket gateway: End of file (2)
+[11/30/23 17:48:35] [ERROR] Can't write to Discord websocket gateway: The I/O operation has been aborted because of either a thread exit or an application request (995)
+[11/30/23 17:58:36] [WARNING] Unknown gateway event 'GUILD_MEMBERS_CHUNK'
+[11/30/23 18:07:23] [WARNING] Unknown gateway event 'GUILD_MEMBERS_CHUNK'
+[11/30/23 18:10:52] [WARNING] Unknown gateway event 'GUILD_MEMBERS_CHUNK'
+[11/30/23 18:18:26] [WARNING] Unknown gateway event 'GUILD_MEMBERS_CHUNK'
+[11/30/23 18:23:37] [WARNING] Unknown gateway event 'GUILD_MEMBERS_CHUNK'
+[11/30/23 18:43:10] [WARNING] Unknown gateway event 'GUILD_MEMBERS_CHUNK'
+[11/30/23 18:58:17] [WARNING] Unknown gateway event 'GUILD_MEMBERS_CHUNK'
+[11/30/23 19:11:46] [WARNING] Unknown gateway event 'GUILD_MEMBERS_CHUNK'
+[11/30/23 19:33:59] [WARNING] Unknown gateway event 'GUILD_MEMBERS_CHUNK'
+[11/30/23 19:39:22] [WARNING] Unknown gateway event 'GUILD_MEMBERS_CHUNK'
+[11/30/23 19:42:23] [WARNING] Unknown gateway event 'GUILD_MEMBERS_CHUNK'
+[11/30/23 19:45:10] [WARNING] Unknown gateway event 'GUILD_MEMBERS_CHUNK'
+[11/30/23 19:51:11] [WARNING] Unknown gateway event 'GUILD_MEMBERS_CHUNK'
+[11/30/23 19:55:08] [WARNING] Unknown gateway event 'GUILD_MEMBERS_CHUNK'
