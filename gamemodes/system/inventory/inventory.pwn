@@ -103,6 +103,11 @@ new const g_aInventoryItems[][e_InventoryItems] =
 	{"Cocain", "Cocain"},
 	{"Ecstacy", "Ecstacy"},
 	{"LSD", "LSD"},
+	
+	//fish
+	{"Can cau", "item_cancau"},
+	{"Moi cau", "item_moicau"},
+	{"Ca", "item_fish"},
 
 	// ammo & weapon item
 	{"9mm", "9mm"}, // ammo type = 1
