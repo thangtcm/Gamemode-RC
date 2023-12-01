@@ -1,4 +1,15 @@
 
+#define VEHSIGN_DLG 11000
+enum VEHSIGN_DATA
+{
+	vs_ID,
+	vs_VehSign,
+	vs_OwnerID,
+	vs_VehicleID
+}
+
+new VehSignInfo[MAX_VEHICLES][VEHSIGN_DATA];
+new Text3D:VehSignText[MAX_VEHICLES];
 
 new PlayerAmmo[MAX_PLAYERS][10];
 new CraftWeaponDeal[MAX_PLAYERS];
@@ -1496,6 +1507,7 @@ new Loaded[MAX_PLAYERS];
 new ChatGoActor;
 new TruckActor;
 new MinerActor[2];
+new TrashActor;
 new PizzaActor;
 
 new ActorFarmer[MAX_PLAYERS];
@@ -2454,7 +2466,7 @@ new PlayerText:ShopNotice[MAX_PLAYERS];
 new ShopReminder = 1;
 
 new PlayerHoldingObject[MAX_PLAYERS][11];
-new PizzaCar[MAX_PLAYERS];
+new PizzaCar[MAX_PLAYERS][3];
 // Dynamic Gift Box Stuff
 // Note: dgGVIP = 7 Days | dgGVIPEx = 1 Month
 // Example: dgMoney[0] = Is it enabled? || dgMoney[1] = Quantity of gift available || dgMoney[2] = Quantity of money the player will receive || dgMoney[3] = Rarity Category of Item (Common, Less Common, Rare, Super Rare)

@@ -1,4 +1,8 @@
-C:\Users\PHATBENTRE\Desktop\Gamemode-RC\Gamemode-RC\gamemodes\system\new_job\pickup.pwn(27) : îøèáêà 013: îòñóòñòâóåò òî÷êà âõîäà (íåò public-ôóíêöèé)
+C:\Users\PHATBENTRE\Desktop\Gamemode\pawno\include\YSI_Coding\y_hooks\..\y_cgen\..\..\YSI_Core\y_core\y_thirdpartyinclude.inc(324) : ôàòàëüíàÿ îøèáêà 111: ïîëüçîâàòåëüñêàÿ îøèáêà: Could not include "https://github.com/Zeex/amx_assembly" - ensure its files are in "include\amx_assembly\"
+
+
+Êîìïèëÿöèÿ îñòàíîâëåíà.
+
 Pawn compiler 3.2.3664	 	 	Copyright (c) 1997-2016, ITB CompuPhase
 
 
