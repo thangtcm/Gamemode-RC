@@ -271,7 +271,9 @@
 #define 		ITEM_MASK                        	19
 #define 		ITEM_BASEBALL                      	20
 #define 		ITEM_SAWDER                      	21
-#define 		MAX_ITEM                        	22
+#define 		ITEM_MOICAU                      	22
+#define 		ITEM_CANCAU                      	23
+#define 		MAX_ITEM                        	24
 #define 		FUEL_PUMP_RATE 						0.1 // Gallons per second
 #define 		BIZ_PENALTY 						0.2
 

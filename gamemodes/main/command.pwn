@@ -11233,7 +11233,7 @@ CMD:join(playerid, params[])
                   return 1;
                }
 		} */
-		else if (IsPlayerInRangeOfPoint(playerid,5.0, 58.5952, -292.2914, 1.5781)) {
+		else if (IsPlayerInRangeOfPoint(playerid,5.0, 2447.0867,-2100.8335,13.5469)) {
 			if(PlayerInfo[playerid][pJob] == 0)
 			{
 				ShowPlayerDialog(playerid,DIALOG_XINVIEC,0,"He thong cong viec","Day la cong viec Tai Xe,cong viec nay la ban se cho nhung chiec hang hoa de kiem tien\nCMD:/truckergo car va /truckergo buy/sell\nCong viec nay ban can co phuong tien theo yeu cau moi co the lam va viec nay kiem duoc kha nhieu tien!", "Hieu", ""); //TRUCKERJOB

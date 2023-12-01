@@ -1678,7 +1678,9 @@ new const StoreItems[][] =
 	"Khoa bao dong",
 	"Mat na",
 	"Gay bong chay",
-	"May Cua"
+	"May Cua",
+	"Moi cau",
+	"Can cau"
 };
 
 new TruckerDropoffs[][CargoArrayData] =

@@ -13400,6 +13400,19 @@ stock GivePlayerStoreItem(playerid, type, business, item, price)
 			}
 			else return SendClientMessageEx(playerid, COLOR_WHITE, "Ban da so huu Mat na");
 		}
+		case ITEM_CANCAU:
+		{
+			if(!Inventory_HasItem(playerid, "Can cau")) {
+				if(!Inventory_Add(playerid, "Can cau", .timer = 60*24*6)) return 1;
+				SendClientMessageEx(playerid, COLOR_WHITE, "Ban da mua Can cau (Do ben: 1 tuan) thanh cong");
+			}
+			else return SendClientMessageEx(playerid, COLOR_WHITE, "Ban da so huu Can cau");
+		}
+		case ITEM_MOICAU:
+		{
+			if(!Inventory_Add(playerid, "Can cau", .timer = 2*24)) return 1;
+			SendClientMessageEx(playerid, COLOR_WHITE, "Ban da mua Can cau (Do ben: 2 tieng) thanh cong");
+		}
 		case ITEM_BASEBALL:{
 			GivePlayerValidWeapon(playerid,5,2);
 			SendClientMessageEx(playerid, COLOR_WHITE, "Ban da mua gay bong chay");
