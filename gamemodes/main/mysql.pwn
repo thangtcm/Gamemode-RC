@@ -419,6 +419,9 @@ public OnQueryFinish(resultid, extraid, handleid)
 					cache_get_field_content(row,  "TimeMedkit", szResult, MainPipeline); PlayerInfo[extraid][pTimeMedkit] = strval(szResult);
 
 
+					//chiem dong
+					cache_get_field_content(row,  "AwardTypeCD", szResult, MainPipeline); PlayerInfo[extraid][pAwardTypeCD] = strval(szResult);
+
 
 					cache_get_field_content(row,  "Hambuger", szResult, MainPipeline); PlayerInfo[extraid][pHambuger] = strval(szResult);
 					cache_get_field_content(row,  "Banhmi", szResult, MainPipeline); PlayerInfo[extraid][pBanhmi] = strval(szResult);
@@ -2943,6 +2946,7 @@ stock g_mysql_SaveAccount(playerid)
     SavePlayerFloat(query, GetPlayerSQLId(playerid), "BonusHealth", BonusHealth[playerid]); 
     SavePlayerFloat(query, GetPlayerSQLId(playerid), "BonusArmour", BonusArmour[playerid]); 
     
+    SavePlayerInteger(query, GetPlayerSQLId(playerid), "AwardTypeCD", PlayerInfo[playerid][pAwardTypeCD]); 
 
 
 

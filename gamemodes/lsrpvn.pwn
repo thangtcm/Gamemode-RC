@@ -55,7 +55,6 @@
 #include "./main/discord-bot.pwn"
 // Doi, no, suc khoe
 #include "./system/playerstatus.pwn"
-#include "./system/death/bodydamage.pwn"
 #include "./system/vehicle/vehicle_info.pwn"
 #include "./system/drug/drug.pwn"
 #include "./system/inventory/main.pwn"
@@ -101,7 +100,7 @@
 #include "./system/new_job/wood.pwn"
 #include "./system/new_job/caucanew.pwn"
 // #include "./system/farmer.pwn"
-#include "./system/bodydame/bodydamage.pwn"
+//#include "./system/bodydame/bodydamage.pwn"
 #include "./system/vehicle/vehicle_info.pwn"
 #include "./system/vehicle/vehsign.pwn"
 #include "./system/nametag.pwn"
@@ -113,6 +112,8 @@
 // ============= ANTI ============= //
 #include "./anticheat/anti_airbreak.pwn"
 #include "./anticheat/cartroll.pwn"
+
+#include "./system/death/bodydamage.pwn"
 
 #include "./include/onplayerfishnishloading.pwn"
 

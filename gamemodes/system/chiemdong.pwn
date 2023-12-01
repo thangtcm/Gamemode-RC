@@ -234,49 +234,57 @@ hook OnPlayerEnterCheckpoint(playerid)
 {
 	if(IsPlayerInRangeOfPoint(playerid, 1.5, GetPVarFloat(playerid, "CD_pX"), GetPVarFloat(playerid, "CD_pY"), GetPVarFloat(playerid, "CD_pZ")))
 	{
-		//type weapon
-		if(GetPVarInt(playerid, "AwardTypeCD") == 1)
+		if(PlayerInfo[playerid][pAwardTypeCD] != 0)
 		{
-			//add them o day
-			SendClientMessage(playerid, COLOR_LIGHTBLUE, "> Test nhan phan thuong type weapon");
-			DeletePVar(playerid, "AwardTypeCD");
-			DeletePVar(playerid, "CD_pX");
-			DeletePVar(playerid, "CD_pY");
-			DeletePVar(playerid, "CD_pZ");
-			DisableCheckPoint(playerid);
-		}
-		//type drug
-		if(GetPVarInt(playerid, "AwardTypeCD") == 2)
-		{
-			//add them o day
-			SendClientMessage(playerid, COLOR_LIGHTBLUE, "> Test nhan phan thuong type drug");
-			DeletePVar(playerid, "AwardTypeCD");
-			DeletePVar(playerid, "CD_pX");
-			DeletePVar(playerid, "CD_pY");
-			DeletePVar(playerid, "CD_pZ");
-			DisableCheckPoint(playerid);
-		}
-		//type money
-		if(GetPVarInt(playerid, "AwardTypeCD") == 3)
-		{
-			//add them o day
-			SendClientMessage(playerid, COLOR_LIGHTBLUE, "> Test nhan phan thuong type money");
-			DeletePVar(playerid, "AwardTypeCD");
-			DeletePVar(playerid, "CD_pX");
-			DeletePVar(playerid, "CD_pY");
-			DeletePVar(playerid, "CD_pZ");
-			DisableCheckPoint(playerid);
-		}
-		//type ammo
-		if(GetPVarInt(playerid, "AwardTypeCD") == 4)
-		{
-			//add them o day
-			SendClientMessage(playerid, COLOR_LIGHTBLUE, "> Test nhan phan thuong type ammo");
-			DeletePVar(playerid, "AwardTypeCD");
-			DeletePVar(playerid, "CD_pX");
-			DeletePVar(playerid, "CD_pY");
-			DeletePVar(playerid, "CD_pZ");
-			DisableCheckPoint(playerid);
+
+			//type weapon
+			if(GetPVarInt(playerid, "AwardTypeCD") == 1)
+			{
+				//add them o day
+				SendClientMessage(playerid, COLOR_LIGHTBLUE, "> Test nhan phan thuong type weapon");
+				DeletePVar(playerid, "AwardTypeCD");
+				DeletePVar(playerid, "CD_pX");
+				DeletePVar(playerid, "CD_pY");
+				DeletePVar(playerid, "CD_pZ");
+				PlayerInfo[playerid][pAwardTypeCD] = 0;
+				DisableCheckPoint(playerid);
+			}
+			//type drug
+			if(GetPVarInt(playerid, "AwardTypeCD") == 2)
+			{
+				//add them o day
+				SendClientMessage(playerid, COLOR_LIGHTBLUE, "> Test nhan phan thuong type drug");
+				DeletePVar(playerid, "AwardTypeCD");
+				DeletePVar(playerid, "CD_pX");
+				DeletePVar(playerid, "CD_pY");
+				DeletePVar(playerid, "CD_pZ");
+				PlayerInfo[playerid][pAwardTypeCD] = 0;
+				DisableCheckPoint(playerid);
+			}
+			//type money
+			if(GetPVarInt(playerid, "AwardTypeCD") == 3)
+			{
+				//add them o day
+				SendClientMessage(playerid, COLOR_LIGHTBLUE, "> Test nhan phan thuong type money");
+				DeletePVar(playerid, "AwardTypeCD");
+				DeletePVar(playerid, "CD_pX");
+				DeletePVar(playerid, "CD_pY");
+				DeletePVar(playerid, "CD_pZ");
+				PlayerInfo[playerid][pAwardTypeCD] = 0;
+				DisableCheckPoint(playerid);
+			}
+			//type ammo
+			if(GetPVarInt(playerid, "AwardTypeCD") == 4)
+			{
+				//add them o day
+				SendClientMessage(playerid, COLOR_LIGHTBLUE, "> Test nhan phan thuong type ammo");
+				DeletePVar(playerid, "AwardTypeCD");
+				DeletePVar(playerid, "CD_pX");
+				DeletePVar(playerid, "CD_pY");
+				DeletePVar(playerid, "CD_pZ");
+				PlayerInfo[playerid][pAwardTypeCD] = 0;
+				DisableCheckPoint(playerid);
+			}
 		}
 	}
 	return 1;
@@ -637,8 +645,10 @@ task UpdateCapture[6000] ()
 					}
 					PlayerPlaySound(player, 1056, 0.0, 0.0, 0.0);
 					SetPVarInt(player, "AwardTypeCD", FamilyCD[i][f_CaptureType]);
+					PlayerInfo[player][pAwardTypeCD] = FamilyCD[i][f_CaptureType];
 					// SendClientMessage(player, -1, sprintf("> type award : %d", GetPVarInt(player, "AwardTypeCD")));
 					SendClientMessage(player, COLOR_GREEN, "> Ban da chiem dong thanh cong cho FAM/GANG cua minh . Hay den checkpoint de nhan thuong");
+					SendClientMessage(player, COLOR_RED, "* Luu y : Neu ban bi thoat game khi chua nhan phan thuong [/glayhang] de dung khi vao lai game *");
                 	
 					
 					//update label
@@ -892,7 +902,10 @@ CMD:settimeturf(playerid, params[])
 }
 stock AutoOpenChiemDong()
 {
-	AutoLockChiemDong();
+	for(new cap = 0; cap < MAX_CAPTURE; cap++) {
+		if(FamilyCD[cap][f_PointChiemDong][0] != 0.0)
+			FamilyCD[cap][f_CaptureActivity] = 0;
+	}
 	ChiemDong_Lock = false;
 	foreach(new iz: Player)
 	{
@@ -978,5 +991,48 @@ CMD:khoachiemdong(playerid, params[])
 			ChiemDong_Lock = false;
 		}
 	}
+	return 1;
+}
+CMD:glayhang(playerid)
+{
+	if(PlayerInfo[playerid][pAwardTypeCD] != 0)
+	{
+		switch(random(4))
+		{
+			case 0:
+			{
+				SetPVarFloat(playerid, "CD_pX", 1274.2429);
+				SetPVarFloat(playerid, "CD_pY", 294.1344);
+				SetPVarFloat(playerid, "CD_pZ", 1274.2429);
+				SetPlayerCheckpoint(playerid, GetPVarFloat(playerid, "CD_pX"), GetPVarFloat(playerid, "CD_pY"), GetPVarFloat(playerid, "CD_pZ"), 4.0);
+			}	
+			case 1: 
+			{
+				SetPVarFloat(playerid, "CD_pX",  2351.2170);
+				SetPVarFloat(playerid, "CD_pY", -647.6680);
+				SetPVarFloat(playerid, "CD_pZ", 128.0547);
+				SetPlayerCheckpoint(playerid, GetPVarFloat(playerid, "CD_pX"), GetPVarFloat(playerid, "CD_pY"), GetPVarFloat(playerid, "CD_pZ"), 4.0);
+			}	
+			case 2: 
+			{
+				SetPVarFloat(playerid, "CD_pX",  313.7180);
+				SetPVarFloat(playerid, "CD_pY",	1146.4028);
+				SetPVarFloat(playerid, "CD_pZ", 8.5859);
+				SetPlayerCheckpoint(playerid, GetPVarFloat(playerid, "CD_pX"), GetPVarFloat(playerid, "CD_pY"), GetPVarFloat(playerid, "CD_pZ"), 4.0);
+			}	
+			case 3: 
+			{
+				SetPVarFloat(playerid, "CD_pX",  -2088.1040);
+				SetPVarFloat(playerid, "CD_pY", -2342.5239);
+				SetPVarFloat(playerid, "CD_pZ", 30.6250);
+				SetPlayerCheckpoint(playerid, GetPVarFloat(playerid, "CD_pX"), GetPVarFloat(playerid, "CD_pY"), GetPVarFloat(playerid, "CD_pZ"), 4.0);
+			}	
+		}
+		PlayerPlaySound(playerid, 1056, 0.0, 0.0, 0.0);
+		SetPVarInt(playerid, "AwardTypeCD", PlayerInfo[playerid][pAwardTypeCD]);
+		// SendClientMessage(player, -1, sprintf("> type award : %d", GetPVarInt(player, "AwardTypeCD")));
+		SendClientMessage(playerid, COLOR_GREEN, "> Hay den dia diem checkpoint de nhan phan thuong cho FAM/GANG cua minh .");
+	}
+	else SendClientMessage(playerid, COLOR_RED, "> Ban khong chiem dong thanh cong dia ban nao de nhan phan thuong cho FAM/GANG cua minh");
 	return 1;
 }

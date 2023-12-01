@@ -20,12 +20,12 @@
 enum
 {
     BODY_PART_TORSO = 3,
-    BODY_PART_GROIN,
-    BODY_PART_LEFT_ARM,
-    BODY_PART_RIGHT_ARM,
-    BODY_PART_LEFT_LEG,
-    BODY_PART_RIGHT_LEG,
-    BODY_PART_HEAD
+	BODY_PART_GROIN = 4,
+	BODY_PART_RIGHT_ARM = 6,
+	BODY_PART_LEFT_ARM = 5,
+	BODY_PART_RIGHT_LEG = 8,
+	BODY_PART_LEFT_LEG = 7,
+	BODY_PART_HEAD = 9
 }
 enum e_dmg
 {
@@ -39,9 +39,10 @@ const
 
 new DamageInfo[MAX_PLAYERS][MAX_DAMAGES][e_dmg];
 /* -------------------------------- FUNCTION -------------------------------- */
-static stock Damage_GetBodypart(bodypart)
+stock Damage_GetBodypart(bodypart)
 {
     new bodyname[20];
+
     switch(bodypart)
     {
         case BODY_PART_TORSO: bodyname = "Nguc";
@@ -69,6 +70,9 @@ stock Damage_ResetDamages(playerid)
 /* -------------------------------- CALLBACKS -------------------------------- */
 hook OnPlayerGiveDamage(playerid, damagedid, Float:amount, weaponid, bodypart)
 {
+    // new stringz[50];
+    // format(stringz, sizeof(stringz), "body part = %d", bodypart);
+    // SendClientMessage(playerid, -1, stringz);
     if(gPlayerLogged{damagedid})
     {
         new

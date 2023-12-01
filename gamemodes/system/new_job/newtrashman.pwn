@@ -294,7 +294,7 @@ hook OnPlayerKeyStateChange(playerid, newkeys, oldkeys)
 								SendClientMessage(i, COLOR_LIGHTBLUE, "Neu muon vut rac tren tay hay /droptrash.");
 						        TMGInfo[TMInfo[playerid][GroupIDTM]][TMZoneOld] = TMGInfo[TMInfo[playerid][GroupIDTM]][TMZone];
 							}
-						SendClientTextDraw(i, format_job);
+							SendClientTextDraw(i, format_job);
 						}
 					}
 				}
