@@ -161,7 +161,7 @@ hook OnPlayerDisconnect(playerid, reason)
 forward F_ResetPrice();
 public F_ResetPrice()
 {
-    F_RandomPrice = 200 + random(100);
+    F_RandomPrice = 50 + random(90);
 	
 	SetTimer("F_ResetPrice", 3600000, false);
 	SendClientMessageToAll(COLOR_REALRED, "[THU MUA CA'] {ffffff}Gia ca thi truong ban' ca' thay doi, hay den nguoi thu mua tai Market de xem gia ca.");
@@ -171,7 +171,7 @@ public F_ResetPrice()
 forward StartFishing(playerid);
 public StartFishing(playerid)
 {
-		F_timerdc[playerid] = 35+(random(40));
+		F_timerdc[playerid] = 35+(random(25));
 		if(F_DownCountJobTime[playerid] >= gettime()) {
 			F_timerdc[playerid] -= 10;
 		}
@@ -212,8 +212,9 @@ public F_StartCountTime(playerid)
 					ClearAnimations(playerid);				
 					JobSkill[playerid][Fish] += 1;
 					StopLoopingAnim(playerid);
-					RemovePlayerAttachedObject(playerid, 9);
+					RemovePlayerAttachedObject(playerid, 0);
 					KillTimer(FishTimer[playerid]);
+					TogglePlayerControllable(playerid, 1);				
 					DeletePVar(playerid, "FishWorking");
 					if(JobSkill[playerid][Fish] < 250)
 					{
