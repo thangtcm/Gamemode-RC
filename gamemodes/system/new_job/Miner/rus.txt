@@ -1,12 +1,9 @@
-C:\Users\PHATBENTRE\Desktop\Gamemode-RC\Gamemode-RC\pawno\include\YSI_Coding\y_hooks\..\..\YSI_Core\y_core\y_scriptinit_impl.inc(414) : îøèáêà 017: íåîáúÿâëåííûé ñèìâîë "numargs"
-C:\Users\PHATBENTRE\Desktop\Gamemode-RC\Gamemode-RC\pawno\include\YSI_Coding\y_hooks\..\..\YSI_Core\y_core\y_scriptinit_impl.inc(414) : ïðåäóïðåæäåíèå 215: âûðàæåíèå íå èìååò ýôôåêòà
-C:\Users\PHATBENTRE\Desktop\Gamemode-RC\Gamemode-RC\pawno\include\YSI_Coding\y_hooks\..\..\YSI_Core\y_core\y_scriptinit_impl.inc(414) : îøèáêà 001: îæèäàëñÿ òîêåí ")", íî íàéäåí ";"
-C:\Users\PHATBENTRE\Desktop\Gamemode-RC\Gamemode-RC\pawno\include\YSI_Coding\y_hooks\..\..\YSI_Core\y_core\y_scriptinit_impl.inc(414) : îøèáêà 036: ïóñòîå äåéñòâèå
-C:\Users\PHATBENTRE\Desktop\Gamemode-RC\Gamemode-RC\pawno\include\YSI_Coding\y_hooks\..\..\YSI_Core\y_core\y_scriptinit_impl.inc(414) : ôàòàëüíàÿ îøèáêà 107: ñëèøêîì ìíîãî îøèáîê íà îäíîé ñòðîêå
+C:\Users\PHATBENTRE\Desktop\Gamemode\pawno\include\YSI_Coding\y_hooks\..\y_cgen\..\..\YSI_Core\y_core\y_thirdpartyinclude.inc(324) : ôàòàëüíàÿ îøèáêà 111: ïîëüçîâàòåëüñêàÿ îøèáêà: Could not include "https://github.com/Zeex/amx_assembly" - ensure its files are in "include\amx_assembly\"
+
 
 Êîìïèëÿöèÿ îñòàíîâëåíà.
 
 Pawn compiler 3.2.3664	 	 	Copyright (c) 1997-2016, ITB CompuPhase
 
 
-Îøèáîê:4.
+Îøèáîê:1.

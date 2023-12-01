@@ -1493,6 +1493,7 @@ new Loaded[MAX_PLAYERS];
 new ChatGoActor;
 new TruckActor;
 new MinerActor[2];
+new TrashActor;
 new PizzaActor;
 
 new ActorFarmer[MAX_PLAYERS];
