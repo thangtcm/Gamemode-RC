@@ -762,7 +762,7 @@ CMD:xemsorac(playerid, params[])
 CMD:nhomcuatoi(playerid, params[]) {
 	if(TMInfo[playerid][GroupIDTM] == 0) return SendErrorMessage(playerid, " Ban khong o trong bat ki nhom nao!");
 	new string[555], string2[555];
-	format(string, sizeof(string), "{ff4747}>{ffffff} Thanh vien\n{1E88E5}> {ffffff}Tim xe cua nhom\n{ff4747}>{ffffff} Moi vao nhom\n{ff4747}>{ffffff} Moi ra khoi nhom\n{1E88E5}> {ffffff}Tro giup nhom\n{1E88E5}> ROI KHOI NHOM", "Lua chon", "Huy bo");
+	format(string, sizeof(string), "{ff4747}>{ffffff} Thanh vien\n{1E88E5}> {ffffff}Tim xe cua nhom\n{ff4747}>{ffffff} Moi vao nhom\n{ff4747}>{ffffff} Moi ra khoi nhom\n{1E88E5}> {ffffff}Tro giup nhom\n{ff4747}> ROI KHOI NHOM", "Lua chon", "Huy bo");
 	format(string2, sizeof(string2), "{1E88E5}NHOM LAM VIEC {ffffff}So rac trong xe [{ff4747}%d{ffffff}]", TMGInfo[TMInfo[playerid][GroupIDTM]][TMVehicleTrash]);
 	Dialog_Show(playerid, trashmanager, DIALOG_STYLE_LIST,  string2,string, "Lua chon", "Huy bo");
 	return 1;
