@@ -181,6 +181,9 @@ Dialog:trashmanager(playerid, response, listitem, inputtext[])
 {
 	if(response)
 	{
+		new string[555], string2[555];
+		format(string, sizeof(string), "{ff4747}>{ffffff} Thanh vien\n{1E88E5}> {ffffff}Tim xe cua nhom\n{ff4747}>{ffffff} Moi vao nhom\n{ff4747}>{ffffff} Moi ra khoi nhom\n{1E88E5}> {ffffff}Tro giup nhom\n{ff4747}> ROI KHOI NHOM", "Lua chon", "Huy bo");
+		format(string2, sizeof(string2), "{1E88E5}NHOM LAM VIEC {ffffff}So rac trong xe [{ff4747}%d{ffffff}]", TMGInfo[TMInfo[playerid][GroupIDTM]][TMVehicleTrash]);
 		switch(listitem)
 		{
 			case 0:
@@ -210,11 +213,13 @@ Dialog:trashmanager(playerid, response, listitem, inputtext[])
 			}
 			case 2:
 			{
-				Dialog_Show(playerid, invitemembertm, DIALOG_STYLE_INPUT, "{ff4747}>{ffffff} MOI VAO NHOM", "Nhap vao day ID nguoi ban muon moi vao nhom!", "Xac nhan", "Thoat");
+				if(TMInfo[playerid][LeaderTM] == 1) return Dialog_Show(playerid, invitemembertm, DIALOG_STYLE_INPUT, "{ff4747}>{ffffff} MOI VAO NHOM", "Nhap vao day ID nguoi ban muon moi vao nhom!", "Xac nhan", "Thoat");
+				else return Dialog_Show(playerid, trashmanager, DIALOG_STYLE_LIST,  string2,string, "Lua chon", "Huy bo"), SendClientTextDraw(playerid, "~r~Chi co truong nhom moi co the lam viec nay!");
 			}
 			case 3:
 			{
-				Dialog_Show(playerid, kickmembertm, DIALOG_STYLE_INPUT, "{ff4747}>{ffffff} MOI RA KHOI NHOM", "Nhap vao day ID nguoi ban muon kick ra khoi nhom!\n ID co the lay trong phan thanh vien", "Kick", "Thoat");
+				if(TMInfo[playerid][LeaderTM] == 1) return Dialog_Show(playerid, kickmembertm, DIALOG_STYLE_INPUT, "{ff4747}>{ffffff} MOI RA KHOI NHOM", "Nhap vao day ID nguoi ban muon kick ra khoi nhom!\n ID co the lay trong phan thanh vien", "Kick", "Thoat");
+				else return Dialog_Show(playerid, trashmanager, DIALOG_STYLE_LIST,  string2,string, "Lua chon", "Huy bo"), SendClientTextDraw(playerid, "~r~Chi co truong nhom moi co the lam viec nay!");
 			}
 			case 4: cmd_trogiuptrashman(playerid, "abc");
 			case 5: cmd_roinhomzxcabc(playerid, "abc");
