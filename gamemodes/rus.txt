@@ -15,7 +15,7 @@ system/new_job/Farmer/cmd.pwn(136) : íåïđàâèëüíàÿ ̣àáóëÿöèÿ
 system/new_job/Farmer/cmd.pwn(262) : èäåị́èôèêạ̀îđó ïđèñâîåíî çíà÷åíèå, íî îí íå èñïîëüçóạ̊ñÿ: "query"
 system/new_job/Farmer/cmd.pwn(273) : íåïđàâèëüíàÿ ̣àáóëÿöèÿ
 ./system/new_job/miner/mn_callbacks.pwn(385) : èäåị́èôèêạ̀îđó ïđèñâîåíî çíà÷åíèå, íî îí íå èñïîëüçóạ̊ñÿ: "string"
-./system/vehicle/vehsign.pwn(42) : èäåị́èôèêạ̀îđ íå èñïîëüçóạ̊ñÿ: "playerid"
+./system/vehicle/vehsign.pwn(258) : èäåị́èôèêạ̀îđó ïđèñâîåíî çíà÷åíèå, íî îí íå èñïîëüçóạ̊ñÿ: "vehsqlid"
 ./system/mechanic/mechanic.pwn(117) : èäåị́èôèêạ̀îđó ïđèñâîåíî çíà÷åíèå, íî îí íå èñïîëüçóạ̊ñÿ: "bid"
 ./main/variables.pwn(3847) : èäåị́èôèêạ̀îđ íå èñïîëüçóạ̊ñÿ: "ChangeSkin"
 C:\Users\Admin\Desktop\Gamemode-RC\gamemodes\lsrpvn.pwn(72) : èäåị́èôèêạ̀îđ íå èñïîëüçóạ̊ñÿ: "CountDamages"
