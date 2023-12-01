@@ -87,3 +87,6 @@
 [12/01/23 17:12:57] [plugins/discord-connector] Can't write to Discord websocket gateway: The I/O operation has been aborted because of either a thread exit or an application request (995)
 [12/01/23 17:12:59] [plugins/discord-connector] Error while retrieving HTTP GET response from '/api/oauth2/applications/@me': end of stream
 [12/01/23 17:27:30] [plugins/discord-connector] Error while retrieving HTTP POST response from '/api/v10/channels/1157993235776557156/messages': end of stream
+[12/01/23 23:20:52] [plugins/discord-connector] Can't write to Discord websocket gateway: The I/O operation has been aborted because of either a thread exit or an application request (995)
+[12/01/23 23:20:53] [plugins/discord-connector] Error while retrieving HTTP GET response from '/api/oauth2/applications/@me': end of stream
+[12/01/23 23:50:11] [plugins/discord-connector] Error while retrieving HTTP POST response from '/api/v10/channels/1158001303033757716/messages': end of stream

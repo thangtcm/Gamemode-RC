@@ -94,3 +94,13 @@
 [12/01/23 18:51:20] [WARNING] Unknown gateway event 'GUILD_MEMBERS_CHUNK'
 [12/01/23 18:55:17] [WARNING] Unknown gateway event 'CHANNEL_TOPIC_UPDATE'
 [12/01/23 18:55:17] [WARNING] Unknown gateway event 'VOICE_CHANNEL_STATUS_UPDATE'
+[12/01/23 22:58:55] [WARNING] Unknown gateway event 'GUILD_MEMBERS_CHUNK'
+[12/01/23 23:20:52] [ERROR] Can't write to Discord websocket gateway: The I/O operation has been aborted because of either a thread exit or an application request (995)
+[12/01/23 23:20:53] [ERROR] Error while retrieving HTTP GET response from '/api/oauth2/applications/@me': end of stream
+[12/01/23 23:33:59] [WARNING] Unknown gateway event 'GUILD_MEMBERS_CHUNK'
+[12/01/23 23:39:16] [WARNING] Unknown gateway event 'GUILD_MEMBERS_CHUNK'
+[12/01/23 23:50:11] [ERROR] Error while retrieving HTTP POST response from '/api/v10/channels/1158001303033757716/messages': end of stream
+[12/02/23 00:44:02] [WARNING] Unknown gateway event 'GUILD_MEMBERS_CHUNK'
+[12/02/23 00:44:44] [WARNING] Unknown gateway event 'GUILD_MEMBERS_CHUNK'
+[12/02/23 00:46:51] [WARNING] Unknown gateway event 'GUILD_MEMBERS_CHUNK'
+[12/02/23 00:49:06] [WARNING] Unknown gateway event 'GUILD_MEMBERS_CHUNK'
