@@ -2772,6 +2772,7 @@ public InitiateGamemode()
 	SetTimer("MailDeliveryTimer", 60000, 1);
     SetTimer("AntiSpeed", 3000, true);
     LoadDrugLab();
+	LoadCapture();
 	SkinList = LoadModelSelectionMenu("SkinList.txt");
 	//Island for crate system
     MAXCRATES = 10; // Sets Default Max Crates
@@ -13695,6 +13696,14 @@ public SyncTime()
 	tmphour = shifthour;
 	if ((tmphour > ghour) || (tmphour == 0 && ghour == 23))
 	{
+		if(tmphour == 20)
+		{
+			AutoOpenChiemDong();
+		}	
+		if(tmphour == 22)
+		{
+		   AutoLockChiemDong();
+		}
 	    SavePlants();
 		for(new iGroupID; iGroupID < MAX_GROUPS; iGroupID++)
 		{
