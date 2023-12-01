@@ -71,6 +71,8 @@
 #include "./system/help.pwn"
 #include "./system/gps_system.pwn"
 
+#include "./system/LevelJob.pwn"
+
 #include "./system/newfaction/handcuff.pwn"
 #include "./system/newfaction/factionkick.pwn"
 #include "./system/animation.pwn"
@@ -99,7 +101,8 @@
 #include "./system/new_job/miner/mn_callbacks.pwn"
 #include "./system/new_job/miner/mn_funcs.pwn"
 #include "./system/new_job/wood.pwn"
-#include "./system/new_job/caucanew.pwn"
+#include "./system/new_job/fishing.pwn"
+
 // #include "./system/farmer.pwn"
 #include "./system/bodydame/bodydamage.pwn"
 #include "./system/vehicle/vehicle_info.pwn"
