@@ -10818,7 +10818,7 @@ stock HospitalSpawn(playerid)
 {
 	PlayerInfo[playerid][pDoiBung] = 100;
 	PlayerInfo[playerid][pKhatNuoc] = 100;
-	ResetDamages(playerid);
+	// ResetDamages(playerid);
 	if(GetPVarInt(playerid, "MedicBill") == 1 && PlayerInfo[playerid][pJailTime] == 0)
 	{
         switch(PlayerInfo[playerid][pHospital])
@@ -11240,7 +11240,7 @@ stock HospitalSpawn(playerid)
 	            PlayerInfodl[playerid][dlish] = 50;
 	            SetPlayerHealth(playerid, 50);
 		        PlayerInfo[playerid][pHydration] = 100;
-		        ResetDamages(playerid);
+		        // ResetDamages(playerid);
 			}
 	    }
 	}

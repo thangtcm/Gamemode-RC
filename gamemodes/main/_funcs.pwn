@@ -1433,7 +1433,7 @@ public OnPlayerConnect(playerid) {
 	SetPVarString(playerid, "PassAuth", "abc");
 	CreateLoading(playerid);
 	BlockChat[playerid] = 0;
-	ResetDamages(playerid);
+	// ResetDamages(playerid);
 	LoadCharacterTD(playerid);
 	HandCuff[playerid] = 0;
 	pLoopAnim[playerid] = 0;
@@ -9877,8 +9877,24 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 					    GivePlayerCash(playerid, -arrGroupData[iGroupID][g_iLockerCost][listitem]);
 						format(string, sizeof(string), "[MDC-Police] {ffffff}%s %s (%s) da lay mot khau sung %s.",szRank, GetPlayerNameEx(playerid), szDivision, GetWeaponNameEx(iGunID));
 						format(wepget, sizeof(wepget), "%s", GetWeaponNameEx(iGunID));
-						GivePlayerValidWeapon(playerid, iGunID, 30);
+						// GivePlayerValidWeapon(playerid, iGunID, 30);
 						// Inventory_Add(playerid, "Sniper-AS");
+						if(iGunID == 34)
+							Inventory_Add(playerid, "Sniper-AS");
+						else if(iGunID == 31)
+							Inventory_Add(playerid, "M4-AS");
+						else if(iGunID == 29)
+							Inventory_Add(playerid, "MP5-AS");
+						else if(iGunID == 33)
+							Inventory_Add(playerid, "Relse ifle-AS");
+						else if(iGunID == 25)
+							Inventory_Add(playerid, "Shotgun-AS");
+						else if(iGunID == 27)
+							Inventory_Add(playerid, "Spas-AS");
+						else if(iGunID == 24)
+							Inventory_Add(playerid, "Deagle-AS");
+						else 
+							GivePlayerValidWeapon(playerid, iGunID, 30);
 						SendClientTextDraw(playerid, "Ban da lay mot khau sung .~n~~r~Neu lay nham, bat buoc phai tra lai cho leader.");
 						SendLogToDiscordRoom("[MDC-Police] Wep log" ,"1157912890410541167", "Name", GetPlayerNameEx(playerid, false), "Rank", szRank, "Wep", wepget, 0x226199);
 						SendLogToDiscordRoom("[MDC-Police] Wep log" , "1157957903874007111", "Name", GetPlayerNameEx(playerid, false), "Rank", szRank, "Wep", wepget, 0x226199);
