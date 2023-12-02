@@ -7440,14 +7440,14 @@ public LoadStreamerDynamic3DTextLabels()
     CreateDynamic3DTextLabel("Su dung /layvatlieu de lay vat lieu",COLOR_YELLOW,-1522.7351, 2587.2612, 55.8359+0.6, 5.0);
 	/* Job's 3D Text */
 	CreateDynamic3DTextLabel("Su dung '/ghepxe' de ghep",COLOR_WHITE,-2026.7479,124.5131,29.1175+0.6,12.0);
-	CreateDynamic3DTextLabel("{FF0000}Su dung '/datbom' de dat bom",COLOR_WHITE,2144.1357,1626.2155,993.6882+0.6,12.0);
-	CreateDynamic3DTextLabel("{FF0000}Su dung '/phacua' de dat bom pha cua",COLOR_WHITE,2315.4365,-0.2264,26.7422+0.6,12.0);
-	CreateDynamic3DTextLabel("{FF0000}Su dung '/laytien' de lay tien",COLOR_WHITE,2146.2715,1639.5883,993.5761+0.6,12.0);
-	CreateDynamic3DTextLabel("{FF0000}Su dung '/laytien' de lay tien",COLOR_WHITE,2142.0049,1639.6624,993.5761+0.6,12.0);
-	CreateDynamic3DTextLabel("{FF0000}Su dung '/laytien' de lay tien",COLOR_WHITE,2141.9819,1634.5464,993.5761+0.6,12.0);
-	CreateDynamic3DTextLabel("{FF0000}Su dung '/laytien' de lay tien",COLOR_WHITE,2146.5266,1634.7869,993.5761+0.6,12.0);
-	CreateDynamic3DTextLabel("{FF0000}Su dung '/laytien' de lay tien",COLOR_WHITE,2145.9739,1630.2422,993.5761+0.6,12.0);
-	CreateDynamic3DTextLabel("{FF0000}Su dung '/laytien' de lay tien",COLOR_WHITE,2142.2341,1630.0837,993.5761+0.6,12.0);
+	// CreateDynamic3DTextLabel("{FF0000}Su dung '/datbom' de dat bom",COLOR_WHITE,2144.1357,1626.2155,993.6882+0.6,12.0);
+	// CreateDynamic3DTextLabel("{FF0000}Su dung '/phacua' de dat bom pha cua",COLOR_WHITE,2315.4365,-0.2264,26.7422+0.6,12.0);
+	// CreateDynamic3DTextLabel("{FF0000}Su dung '/laytien' de lay tien",COLOR_WHITE,2146.2715,1639.5883,993.5761+0.6,12.0);
+	// CreateDynamic3DTextLabel("{FF0000}Su dung '/laytien' de lay tien",COLOR_WHITE,2142.0049,1639.6624,993.5761+0.6,12.0);
+	// CreateDynamic3DTextLabel("{FF0000}Su dung '/laytien' de lay tien",COLOR_WHITE,2141.9819,1634.5464,993.5761+0.6,12.0);
+	// CreateDynamic3DTextLabel("{FF0000}Su dung '/laytien' de lay tien",COLOR_WHITE,2146.5266,1634.7869,993.5761+0.6,12.0);
+	// CreateDynamic3DTextLabel("{FF0000}Su dung '/laytien' de lay tien",COLOR_WHITE,2145.9739,1630.2422,993.5761+0.6,12.0);
+	// CreateDynamic3DTextLabel("{FF0000}Su dung '/laytien' de lay tien",COLOR_WHITE,2142.2341,1630.0837,993.5761+0.6,12.0);
 	CreateDynamic3DTextLabel("(1) Nhiem vu - 'Y' chuot phai voi NPC de xem thong tin",COLOR_WHITE,-2415.4856,477.7157,29.8328+0.5,10.0);// Gun Job Acctor
 /*	CreateDynamic3DTextLabel("Cong viec Chat Go\nSu dung /xinviec de lua chon cong viec.",COLOR_YELLOW, -491.5122, -193.9313, 78.3587+0.6, 5.0);
 	CreateDynamic3DTextLabel("Cong viec Tham tu \nSu dung /xinviec de lua chon cong viec",COLOR_RED,1478.8123,-1755.5397,3285.2859+0.5,4.0);// Cong viec Detective (LS)
@@ -15025,7 +15025,7 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 				g_mysql_SaveVehicle(playerid, listitem);
 
 				new vs_sqlid = FindVehSign(PlayerVehicleInfo[playerid][listitem][pvSlotId]);
-				CreateVehSign(playerid, iVeh, VehSignInfo[vs_sqlid][vs_VehSign]);
+				CreateVehSign(iVeh, VehSignInfo[vs_sqlid][vs_VehSign]);
 				new vstring[64];
 				format(vstring, sizeof(vstring), "Ban da lay %s cua ban ra khoi kho.", VehicleName[PlayerVehicleInfo[playerid][listitem][pvModelId] - 400]);
 				SendClientMessageEx(playerid, COLOR_WHITE, vstring);
