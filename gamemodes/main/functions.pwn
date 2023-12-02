@@ -3273,7 +3273,9 @@ public DisableVehicleAlarm(vehicleid)
     SetVehicleParamsEx(vehicleid,engine,lights,VEHICLE_PARAMS_OFF,doors,bonnet,boot,objective);
 	return 1;
 }
-
+stock Float:GetDistanceBetweenPoints(Float:x1, Float:y1, Float:z1, Float:x2, Float:y2, Float:z2) {
+    return floatsqroot(floatpower(x1 - x2, 2) + floatpower(y1 - y2, 2) + floatpower(z1 - z2, 2));
+}
 forward ReleasePlayer(playerid);
 public ReleasePlayer(playerid)
 {
@@ -5401,7 +5403,11 @@ public OnPlayerPickUpDynamicPickup(playerid, pickupid)
 				// TODO: This should be more specific to the vehicle
 				// TODO: Bike tires should be checked differently
 
-				
+				if(GetDistanceBetweenPoints(pos[0], pos[1], pos[2], SpikeStrips[x][sX], SpikeStrips[x][sY], SpikeStrips[x][sZ]) <= 4)
+				{
+						// Pop Front
+					SetVehicleTireState(vehicleid, 0, 0, 0, 0);
+				}
 			}
 		}
 	}
@@ -6545,7 +6551,10 @@ stock IsRefuelableVehicle(vehicleid)
 	}
 	return 1;
 }
-
+encode_tires(tire1, tire2, tire3, tire4)
+{
+	return tire1 | (tire2 << 1) | (tire3 << 2) | (tire4 << 3);
+}
 stock SetVehicleTireState(vehicleid, tire1, tire2, tire3, tire4)
 {
     new panels, doors, Lights, tires;

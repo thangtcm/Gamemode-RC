@@ -173,7 +173,7 @@
 /*  ---------------- DYNAMIC GROUP ----------------- */
 // First-dimension array sizes - CRITICAL.
 #define 		MAX_GROUPS 					20
-#define 		MAX_GROUP_RANKS 			10
+#define 		MAX_GROUP_RANKS 			19
 #define 		MAX_GROUP_DIVS 				10
 #define 		MAX_GROUP_WEAPONS			16
 #define			MAX_DYNAMIC_VEHICLES        1500
