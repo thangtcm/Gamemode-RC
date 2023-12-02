@@ -84,3 +84,6 @@
 [12/02/23 19:39:34] [plugins/discord-connector] Unknown gateway event 'GUILD_MEMBERS_CHUNK'
 [12/02/23 19:51:17] [plugins/discord-connector] Unknown gateway event 'GUILD_MEMBERS_CHUNK'
 [12/02/23 20:09:58] [plugins/discord-connector] Unknown gateway event 'GUILD_MEMBERS_CHUNK'
+[12/02/23 20:21:54] [plugins/discord-connector] Unknown gateway event 'GUILD_MEMBERS_CHUNK'
+[12/02/23 20:27:04] [plugins/discord-connector] Unknown gateway event 'GUILD_MEMBERS_CHUNK'
+[12/02/23 20:30:58] [plugins/discord-connector] Unknown gateway event 'GUILD_MEMBERS_CHUNK'
