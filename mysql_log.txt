@@ -49,3 +49,5 @@
 [00:49:08] [ERROR] "mysql_tquery" - invalid connection handle (ID = 0)
 [01:02:33] [ERROR] "mysql_tquery" - invalid connection handle (ID = 0)
 [01:03:57] [ERROR] "mysql_tquery" - invalid connection handle (ID = 0)
+[19:17:28] [ERROR] "mysql_tquery" - invalid connection handle (ID = 0)
+[19:33:06] [ERROR] "mysql_tquery" - invalid connection handle (ID = 0)

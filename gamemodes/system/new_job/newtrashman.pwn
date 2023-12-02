@@ -14,6 +14,7 @@ enum TrashmanInfoGr {
 	TMVehicle,
 	TMTrashcan[MAX_TRASHCAN],
 	TMVehicleTrash,
+	TMVehicleObj,
 	TMZone,
 	TMZoneOld,
 	TMStep
@@ -122,12 +123,14 @@ Dialog:trashmandialog(playerid, response, listitem, inputtext[])
 			{
 				if(TMInfo[playerid][GroupIDTM] == 0) return SendErrorMessage(playerid, " Ban chua tao team, hay su dung /createteam de tao team va moi nguoi khac vao lam cung..."), SendClientMessage(playerid, -1, ".../trogiuptrashman de biet them chi tiet nua nhe!");
 				if(TMInfo[playerid][LeaderTM] != 1) return SendErrorMessage(playerid, " Ban khong phai la truong nhom nen khong the lay xe.");
-				if(TMGInfo[TMInfo[playerid][GroupIDTM]][TMVehicle] == INVALID_VEHICLE_ID)
+				if(TMGInfo[TMInfo[playerid][GroupIDTM]][TMVehicle] != INVALID_VEHICLE_ID) return SendErrorMessage(playerid, " Nhom cua ban da lay xe roi.");
                 if(!IsPlayerInRangeOfPoint(playerid, 4,2208.2852,-2025.0245,13.5469)) return SendErrorMessage(playerid," Ban khong o gan noi lam viec.");
                 if(LamViec[playerid] != 0 && LamViec[playerid] != 3) return  SendClientMessage(playerid, COLOR_GREY, "Ban dang lam cong viec khac khong the lam Trashman.");  
                 SendClientMessage(playerid, COLOR_VANG, "Ban da bat dau lam viec Trashman hay di den checkpoint, su dung /trogiuptrashman de biet them chi tiet.");
                 ActSetPlayerPos(playerid, 2202.8777,-2047.4569,15.2173);
+                TMGInfo[TMInfo[playerid][GroupIDTM]][TMVehicleObj] = CreateObject(19848, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0);
 	            TMGInfo[TMInfo[playerid][GroupIDTM]][TMVehicle] = CreateVehicle(408, 2202.8777,-2047.4569,15.2173 , 45.5 , 0, 0, 1000, 0);
+	            AttachObjectToVehicle(TMGInfo[TMInfo[playerid][GroupIDTM]][TMVehicleObj], TMGInfo[TMInfo[playerid][GroupIDTM]][TMVehicle], -1.5, 0.0, -1.1, 0.0, 0.0, 0.0);
 	            ActPutPlayerInVehicle(playerid, TMGInfo[TMInfo[playerid][GroupIDTM]][TMVehicle] ,0);
 	            foreach(new i: Player)
 	            {
@@ -324,7 +327,9 @@ hook OnPlayerEnterCheckpoint(playerid)
 		new string[555];
 		SetPVarInt(playerid, #CPNhanTien, 0);
 		DestroyVehicle(TMGInfo[TMInfo[playerid][GroupIDTM]][TMVehicle]);
+		DestroyObject(TMGInfo[TMInfo[playerid][GroupIDTM]][TMVehicleObj]);
 		TMGInfo[TMInfo[playerid][GroupIDTM]][TMVehicle] = INVALID_VEHICLE_ID;
+		TMGInfo[TMInfo[playerid][GroupIDTM]][TMVehicleObj] = INVALID_OBJECT_ID;
 		for(new i = 0; i < MAX_TRASHCAN; i++)
 		{
 			TMGInfo[TMInfo[playerid][GroupIDTM]][TMTrashcan][i] = 0;
@@ -423,7 +428,7 @@ hook OnPlayerKeyStateChange(playerid, newkeys, oldkeys)
 							    {
 							    	TMGInfo[TMInfo[playerid][GroupIDTM]][TMZone] = randzone[playerid];
 							    	break;
-							    } 
+							    }
 							}
 							foreach(new i: Player)
 							{
@@ -500,6 +505,8 @@ hook OnPlayerDisconnect(playerid, reason)
 		TMGInfo[TMInfo[playerid][GroupIDTM]][TMMembers] = 0;
 		TMGInfo[TMInfo[playerid][GroupIDTM]][TMLeader] = 0;
 		DestroyVehicle(TMGInfo[TMInfo[playerid][GroupIDTM]][TMVehicle]);
+		DestroyObject(TMGInfo[TMInfo[playerid][GroupIDTM]][TMVehicleObj]);
+		TMGInfo[TMInfo[playerid][GroupIDTM]][TMVehicleObj] = INVALID_OBJECT_ID;
 		TMGInfo[TMInfo[playerid][GroupIDTM]][TMVehicle] = INVALID_VEHICLE_ID;
 		TMInfo[playerid][LeaderTM] = 0;
 		TMInfo[playerid][GroupIDTM] = 0;
@@ -580,6 +587,7 @@ CMD:taonhomabcxyz(playerid, params[])
 			TMGInfo[i][TMMembers]++;
 			format(string, sizeof(string), "[TRASHMAN]: {ffffff}Ban da tao thanh cong nhom lam viec, ID nhom ban la: {ff4747}%d{ffffff}.", i);
 			TMGInfo[TMInfo[playerid][GroupIDTM]][TMVehicle] = INVALID_VEHICLE_ID;
+			TMGInfo[TMInfo[playerid][GroupIDTM]][TMVehicleObj] = INVALID_OBJECT_ID;
 			SendClientMessage(playerid, COLOR_LIGHTRED, string);
 			return 1;
 		}
@@ -595,7 +603,9 @@ CMD:roinhomzxcabc(playerid, params[])
 		TMGInfo[TMInfo[playerid][GroupIDTM]][TMMembers] = 0;
 		TMGInfo[TMInfo[playerid][GroupIDTM]][TMLeader] = 0;
 		DestroyVehicle(TMGInfo[TMInfo[playerid][GroupIDTM]][TMVehicle]);
+		DestroyObject(TMGInfo[TMInfo[playerid][GroupIDTM]][TMVehicleObj]);
 		TMGInfo[TMInfo[playerid][GroupIDTM]][TMVehicle] = INVALID_VEHICLE_ID;
+		TMGInfo[TMInfo[playerid][GroupIDTM]][TMVehicleObj] = INVALID_OBJECT_ID;
 		TMInfo[playerid][LeaderTM] = 0;
 		TMInfo[playerid][GroupIDTM] = 0;
 		TMInfo[playerid][TrashPicked] = 0;
