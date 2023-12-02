@@ -1,10 +1,10 @@
 
 stock LoadTextUpJob() {
 	CreateDynamic3DTextLabel("<Quan ly khu mo> {2791FF}Miner{ffffff}\n(Den gan va bam phim 'Y' de bat dau lam viec)", -1, 960.1240,-2142.9419,13.0938+1.15, 2.5);
-	CreateDynamic3DTextLabel("<Thu mua khoang san/go> {2791FF}Miner{ffffff}\n(Den gan va bam phim 'Y' de ban khoang san)", -1, 2124.2324,-1738.6648,13.5645+1.15, 2.5);
+	CreateDynamic3DTextLabel("<Thu mua khoang san/go> {2791FF}Miner{ffffff}\n(Den gan va bam phim 'Y' de ban khoang san)", -1, 1136.7050,-1439.3700,15.7969+1.15, 2.5);
 	CreateDynamic3DTextLabel("Khu vuc {2791FF}Farmer{ffffff}\n{2791FF}/farmer{ffffff} de bat dau lam viec", -1, -1420.0443, -1474.9486, 101.6293, 30);
 	CreateDynamic3DTextLabel("<Quan ly Pizza Stack> {2791FF}Pizza{ffffff}\n(Den gan va bam '/pizza' de lam viec)", -1, 2099.0378,-1801.4995,13.3889+1.15, 5);
-	CreateDynamic3DTextLabel("Khu vuc {2791FF}Chat go{ffffff}\n{2791FF}/chatgo{ffffff} de bat dau xin viec/lam viec", -1, -544.0293,-196.8639,78.4063, 30);
+	CreateDynamic3DTextLabel("Khu vuc {2791FF}Chat go{ffffff}\n{2791FF}/wood{ffffff} de bat dau xin viec/lam viec", -1, 2357.2139, -651.3280, 128.0547, 30);
 	CreateDynamic3DTextLabel("Khu vuc {2791FF}Trucker{ffffff}\n{2791FF}/xinviec{ffffff} de bat dau xin viec/lam viec", -1, 2447.0867,-2100.8335,13.5469, 30);
 	CreateDynamic3DTextLabel("Khu vuc {2791FF}dang ky CMND{ffffff}\n{2791FF}/dangkycmnd{ffffff} de dang ky CMND", -1, 359.7139,173.6452,1008.3893, 30);
 	//CreateDynamic3DTextLabel("Khu vuc {2791FF}Thi bang lai{ffffff}\n{2791FF}/thibanglai{ffffff} de thi bang lai xe", -1, 1222.5018,243.8309,19.5469, 30);

@@ -25,8 +25,8 @@ hook OnPlayerConnect(playerid)
 
 hook OnGameModeInit()
 {
-    NPC_Fish = CreateActor(1, 367.4351, -2071.1079, 8.0156, 185.0499);
-    CreateDynamic3DTextLabel("< THU MUA CA >\n(( Su dung [/sellfish] de tuong tac ))", -1, 367.4351, -2071.1079, 8.0156,10);           
+    NPC_Fish = CreateActor(1, 1136.7452,-1450.6530,15.7969,90.0503);
+    CreateDynamic3DTextLabel("< THU MUA CA >\n(( Su dung [/sellfish] de tuong tac ))", -1, 1136.7452,-1450.6530,15.7969,10);           
     SetTimer("F_ResetPrice", 20000, false);
 }
 Dialog:BANCA(playerid, response, listitem, inputtext[])
@@ -88,7 +88,7 @@ CMD:cauca(playerid, params[])
 				{
 				    cmd_me(playerid,"dang cau ca.");
 					StartFishing(playerid);
-					ApplyAnimation(playerid, "SAMP", "FishingIdle", 3.0,1,1,0,0,0);
+					ApplyAnimation(playerid,"SWORD","sword_block",50.0,0,1,0,1,1);
 					TogglePlayerControllable(playerid, 0);					
 				    SetPlayerAttachedObject(playerid, 0, 18632, 1, -0.194, 0.354999, 0.018, 96.1001, -45.6, -177.4, 1.000000, 1.000000, 1.000000, 0xFF0000AA);
 				}
@@ -118,7 +118,7 @@ hook OnPlayerKeyStateChange(playerid, newkeys, oldkeys)
 				new string[128];
 				format(string, sizeof(string), "{AA3333}AdmWarning{FFFF00}: %s (ID: %d) Da thuc hien nhan phim capcha voi toc do ban tho %d lan.", GetPlayerNameEx(playerid), playerid, CountPress[playerid]);
 				ABroadCast(COLOR_YELLOW, string, 2);
-				format(string, sizeof(string), "{AA3333}AdmWarning{FFFF00}: %s (ID: %d) co the dang su dung cleo auto farm nhan phim capcha trong %d giay.", GetPlayerNameEx(playerid), playerid, F_GetTimeNow - GetPVarInt(playerid, "TimeCountNotyHack"));
+				format(string, sizeof(string), "{AA3333}AdmWarning{FFFF00}: %s (ID: %d) co the dang su dung cleo auto farm nhan phim capcha trong %d giay.", GetPlayerNameEx(playerid), playerid, F_GetTimeNow - GetPVarInt(playerid, "F_TimeCountNotyHack"));
 				ABroadCast(COLOR_YELLOW, string, 2);
 			}
 			else
@@ -161,7 +161,7 @@ hook OnPlayerDisconnect(playerid, reason)
 forward F_ResetPrice();
 public F_ResetPrice()
 {
-    F_RandomPrice = 50 + random(90);
+    F_RandomPrice = 5 + random(10);
 	
 	SetTimer("F_ResetPrice", 3600000, false);
 	SendClientMessageToAll(COLOR_REALRED, "[THU MUA CA'] {ffffff}Gia ca thi truong ban' ca' thay doi, hay den nguoi thu mua tai Market de xem gia ca.");
@@ -171,13 +171,14 @@ public F_ResetPrice()
 forward StartFishing(playerid);
 public StartFishing(playerid)
 {
-		F_timerdc[playerid] = 35+(random(25));
+		F_timerdc[playerid] = 30+(random(10));
 		if(F_DownCountJobTime[playerid] >= gettime()) {
 			F_timerdc[playerid] -= 10;
 		}
 		F_TimerRandomPress[playerid] = random(F_timerdc[playerid]-10);
 		F_KeyPressed[playerid] = true;
 		SetPVarInt(playerid, "FishWorking", 1);
+		ApplyAnimation(playerid,"SWORD","sword_block",50.0,0,1,0,1,1);
 		FishTimer[playerid] = SetTimerEx("F_StartCountTime", 1000, true, "i", playerid);
 }
 forward F_StartCountTime(playerid);
@@ -219,8 +220,8 @@ public F_StartCountTime(playerid)
 					if(JobSkill[playerid][Fish] < 250)
 					{
 					    new rd = 5 + random(5);
-					    format(string, sizeof(string), "Ban da cau thanh cong ~p~%d KG~w~ ca.", rd);
-				 	   SendClientTextDraw(playerid, string);
+					    format(string, sizeof(string), "Ban da cau thanh cong {FF8E00}%d KG {FFFFFF} ca.", rd);
+				 	   SendClientMessage(playerid,COLOR_WHITE, string);
 			        	Inventory_Add(playerid, "Ca", rd);
 			            new pItemId = Inventory_GetItemID(playerid, "Moi cau", 1);
 		            	Inventory_Remove(playerid, pItemId, 1);
@@ -228,8 +229,8 @@ public F_StartCountTime(playerid)
 					else if(JobSkill[playerid][Fish] >= 250)
 					{
 					    new rd = 10 + random(8);
-					    format(string, sizeof(string), "Ban da cau thanh cong ~p~%d KG~w~ ca.", rd);
-					    SendClientTextDraw(playerid, string);
+					    format(string, sizeof(string), "Ban da cau thanh cong {FF8E00}%d KG {FFFFFF} ca.", rd);
+					    SendClientMessage(playerid,COLOR_WHITE, string);
 				 	   Inventory_Add(playerid, "Ca", rd);
 				        new pItemId = Inventory_GetItemID(playerid, "Moi cau", 1);
 		            	Inventory_Remove(playerid, pItemId, 1);

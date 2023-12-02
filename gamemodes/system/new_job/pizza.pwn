@@ -23,7 +23,7 @@ GetRandomHouse(playerid) // check
 	{
 	    if(HouseInfo[i][hOwned])
 	    {
-	        if(GetPlayerDistanceFromPoint(playerid, HouseInfo[i][hExteriorX], HouseInfo[i][hExteriorY], HouseInfo[i][hExteriorZ]) <= 2000.0)
+	        if(GetPlayerDistanceFromPoint(playerid, 2099.0378,-1801.4995,13.3889) <= 1800.0)
 	        {
 	        	houseIDs[index++] = i;
 			}
@@ -46,6 +46,7 @@ hook OnPlayerDisconnect(playerid, reason)
 	    DestroyVehicle(PizzaJob[playerid][Vehicle]);
 		Pizza_Quantity[PizzaJob[playerid][Vehicle]] = 0;
 		Delete3DTextLabel(PizzaTextInfo[playerid]);
+		PizzaJob[playerid][Vehicle] = INVALID_VEHICLE_ID;
 	}
 	Pizza_Holding[playerid] = 0;
 	CPPizza[playerid] = 0;
@@ -70,6 +71,7 @@ Dialog:JOB_PIZZA(playerid, response, listitem, inputtext[])
             	    DestroyVehicle(PizzaJob[playerid][Vehicle]);
             		Pizza_Quantity[PizzaJob[playerid][Vehicle]] = 0;
             		Delete3DTextLabel(PizzaTextInfo[playerid]);
+                    PizzaJob[playerid][Vehicle] = INVALID_VEHICLE_ID;
             	}
             	Pizza_Holding[playerid] = 0;
             	CPPizza[playerid] = 0;
@@ -220,9 +222,8 @@ hook OnPlayerEnterCheckpoint(playerid)
 			
 		}
 		else SendClientMessage(playerid,-1,"Ban chua co banh tren tay");
-		return 0;
 	}
-	return 1;
+	return 0;
 }
 
 CMD:pizza(playerid, params[])

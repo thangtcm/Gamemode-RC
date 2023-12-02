@@ -108,7 +108,7 @@ stock ClearCutting(playerid)
 	return 1;
 }
 
-CMD:chatgo(playerid, params[])
+CMD:wood(playerid, params[])
 {
 	new Float:PosXACtor, Float:PosYACtor, Float:PosZACtor;
 	GetActorPos(ChatGoActor, PosXACtor, PosYACtor, PosZACtor);
