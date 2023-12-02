@@ -23940,3 +23940,35 @@ TDEditor Plugin loaded, thank you for using.
 [01:04:01] [Drug lab database] 7 Druglab loaded.
 [01:04:01] [Drug lab database] 8 Druglab loaded.
 [01:04:01] [Drug lab database] 9 Druglab loaded.
+[01:04:20] [connection] incoming connection: 127.0.0.1:57925 id: 0
+[01:04:20] [join] Jaevontee_Perodila has joined the server (0:127.0.0.1)
+[01:04:24] 1
+[01:04:24] 548
+[01:04:24] [He Thong] Da luu lai thong tin tai khoan thanh cong.
+[01:04:36] Phat_Bentree
+[01:04:36] Phat Bentree has logged in.
+[01:04:36] [LOAD PLANT] Loading data from database...
+[01:04:36] [LOAD CATTLE] Loading data from database...
+[01:04:36] 0
+[01:04:36] [VEHICLE TRUCKER LOAD] Loading data from database...
+[01:04:36] [He Thong] Da luu lai thong tin tai khoan thanh cong.
+[01:04:36] [LOAD INVENTORY] 5 du lieu inventory cua Phat Bentree (ID: 0) da duoc tai.
+[01:04:36] [LOAD PLANTS] 3 du lieu cay trong da duoc tai.
+[01:04:37] [Load Vehicle Trucker] Khong co du lieu de tai
+[01:04:45] [zcmd] [Phat Bentree]: /nhomcuatoi
+[01:04:52] [zcmd] [Phat Bentree]: /nhomcuatoi
+[01:04:58] [Player Chat] [Phat Bentree-722]: nhomcuatoi
+[01:04:59] [zcmd] [Phat Bentree]: /nhomcuatoi
+[01:05:04] [zcmd] [Phat Bentree]: /nhomcuatoi
+[01:05:34] [zcmd] [Phat Bentree]: /nhomcuatoi
+[01:05:38] [zcmd] [Phat Bentree]: /nhomcuatoi
+[01:05:41] [zcmd] [Phat Bentree]: /nhomcuatoi
+[01:05:42] [zcmd] [Phat Bentree]: /nhomcuatoi
+[01:05:43] [zcmd] [Phat Bentree]: /nhomcuatoi
+[01:09:50]  -------------------------------------------
+[01:09:50]            SampVoice unloading...           
+[01:09:50]  -------------------------------------------
+[01:09:50] [dbg:raknet:free] : module releasing...
+[01:09:50] [dbg:raknet:free] : module released
+[01:09:50] [sv:dbg:network:free] : module releasing...
+[01:09:50] [sv:dbg:network:free] : module released
