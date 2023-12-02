@@ -69,3 +69,14 @@ enum
 #define      LOAD_TUOINUOC            11
 #define      LOAD_BATSAU             12
 #define       LOAD_BONPHAN          13
+#define			DIALOG_THANHVIEN_FACTION		(1211)
+#define			DIALOG_FACTION_KICK				(1212)
+//chiemdong
+#define				DIALOG_CAPTURE_MAIN			(1213)
+#define				DIALOG_CREATECAPTURE		(1214)
+#define				DIALOG_DELETECAPTURE		(1215)
+#define				DIALOG_DELGANGZONE			(1216)
+#define				DIALOG_MAPCAPTURE			(1217)
+#define				DIALOG_IDGANGZONE			(1218)
+#define				DIALOG_TYPECAPTURE			(1219)
+#define				DIALOG_ACTIVITY_CAPTURE		(1220)

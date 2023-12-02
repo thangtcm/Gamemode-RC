@@ -15,9 +15,9 @@ new PlayerAmmo[MAX_PLAYERS][10];
 new CraftWeaponDeal[MAX_PLAYERS];
 new CraftWeaponDealTime[MAX_PLAYERS];
 
-new PlayerText:RadioInfo[MAX_PLAYERS];
+// new PlayerText:RadioInfo[MAX_PLAYERS];
 new PlayerText:ChannelInfo[MAX_PLAYERS];
-new PlayerText:SlotInfo[MAX_PLAYERS];
+// new PlayerText:SlotInfo[MAX_PLAYERS];
 new BlockChat[MAX_PLAYERS];
 // ENUMS
 enum dlInfo
@@ -574,7 +574,21 @@ enum fInfo
 	gt_Bold,
 	gt_FontColor,
 	gt_BackColor,
-	gt_SPUsed
+	gt_SPUsed,
+	FamilyCapture,
+	Float: f_PointChiemDong[3],
+	f_chiemdong,
+	f_PlayerID[32],
+	f_FamilyID,
+	f_HealthCD,
+	f_TimeResetCD,
+	f_captureObject,
+    Text3D: f_captureLabel,
+	// gang-zone family
+	FamilyGangzone,
+	Float: f_Max[2],
+	Float: f_Min[2],
+	f_CaptureType
 };
 
 enum fPoint
@@ -1493,6 +1507,7 @@ new Loaded[MAX_PLAYERS];
 new ChatGoActor;
 new TruckActor;
 new MinerActor[2];
+new TrashActor;
 new PizzaActor;
 
 new ActorFarmer[MAX_PLAYERS];
@@ -1767,7 +1782,7 @@ new Text:PriorityReport[MAX_PLAYERS];
 new Text3D:veicolo_callsign_testo[MAX_VEHICLES];
 new veicolo_callsign_status[MAX_VEHICLES];
 new LamViec[MAX_PLAYERS];
-new passLength[256];
+// new passLength[256];
 // Sobeit Check Variable
 new sobeitCheckvar[MAX_PLAYERS];
 new sobeitCheckIsDone[MAX_PLAYERS];
@@ -1853,7 +1868,7 @@ new File:logfile; // global variable for buffer overflow protection
 
 new
 	iRewardPlay,
-	Text3D: tRewardText,
+	// Text3D: tRewardText,
 	iRewardObj,
 	iRewardBox;
 
@@ -2226,7 +2241,7 @@ new gBike[MAX_PLAYERS];
 new gBikeRenting[MAX_PLAYERS];
 new ReportCount[MAX_PLAYERS];
 new ReportHourCount[MAX_PLAYERS];
-new pointpinglimit = 800;
+// new pointpinglimit = 800;
 new noooc = 1;
 new GlobalMOTD[128];
 new AdminMOTD[128];
@@ -2398,7 +2413,7 @@ new Float:LSPDJailSpawns[5][3] = {
 	{1365.7126,1575.4314,1468.7877},
 	{1366.6805,1571.6501,1468.7877}
 };
-new Float:HospitalSpawnXYZ[7][3] = {
+/* new Float:HospitalSpawnXYZ[7][3] = {
 	{1251.1318,-1305.1705,1061.8671},
 	{1248.3254,-1305.2551,1061.8671},
 	{1248.3925,-1299.0492,1061.8671},
@@ -2406,11 +2421,11 @@ new Float:HospitalSpawnXYZ[7][3] = {
 	{1253.6729,-1299.8623,1061.8671},
 	{1256.2766,-1298.8246,1061.8671},
 	{1258.8730,-1299.6099,1061.8671}
-};
+}; */
 
 new Titel[pBoxingStats];
 
-new DownEDS[MAX_PLAYERS];
+// new DownEDS[MAX_PLAYERS];
 new DownS[MAX_PLAYERS];
 new EventKernel[EventKernelEnum];
 
@@ -2451,7 +2466,7 @@ new PlayerText:ShopNotice[MAX_PLAYERS];
 new ShopReminder = 1;
 
 new PlayerHoldingObject[MAX_PLAYERS][11];
-new PizzaCar[MAX_PLAYERS];
+new PizzaCar[MAX_PLAYERS][3];
 // Dynamic Gift Box Stuff
 // Note: dgGVIP = 7 Days | dgGVIPEx = 1 Month
 // Example: dgMoney[0] = Is it enabled? || dgMoney[1] = Quantity of gift available || dgMoney[2] = Quantity of money the player will receive || dgMoney[3] = Rarity Category of Item (Common, Less Common, Rare, Super Rare)
@@ -3844,7 +3859,7 @@ new const gMainZones[][MAIN_ZONES] = {  // Majority of names and area coordinate
 	{"San Andreas",                 {-10000.00,-10000.00,-242.90,10000.00,10000.00,900.00}}
 };
 
-new ChangeSkin[MAX_PLAYERS];
+// new ChangeSkin[MAX_PLAYERS];
 
 new PlayerText: Tutorial_Truck[MAX_PLAYERS][6],
 	TutorialTruck_Timer[MAX_PLAYERS];

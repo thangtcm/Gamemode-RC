@@ -110,11 +110,11 @@ CMD:repair(playerid, params[])
 	if (PlayerInfo[playerid][pJob] != 7 && PlayerInfo[playerid][pJob2] != 7) return SendErrorMessage(playerid, "Ban khong phai la tho sua xe!");
 
 	new 
-		i, bid, vid, title[128], info[448], Float:vhp,
+		i, bid = PlayerInfo[playerid][pBusiness], vid, title[128], info[448], Float:vhp,
 		panels, doors, lights, tires, status[3][64], timeleft[128];
 
-	if ((i = GetRepairPointNearest(playerid)) == -1) 						return SendErrorMessage(playerid, "Ban khong o gan diem sua xe.");
-	if ((bid = PlayerInfo[playerid][pBusiness]) != RepairPoint[i][rpBizID]) return SendErrorMessage(playerid, "Diem sua xe nay khong thuoc doanh nghiep cua ban.");
+	if ((i = GetRepairPointNearest(playerid)) == -1) return SendErrorMessage(playerid, "Ban khong o gan diem sua xe.");
+	if (bid != RepairPoint[i][rpBizID]) return SendErrorMessage(playerid, "Diem sua xe nay khong thuoc doanh nghiep cua ban.");
 	if (!IsPlayerInAnyVehicle(playerid)) 	return SendErrorMessage(playerid, "Ban khong o trong phuong tien de sua chua.");
 
 	vid = GetPlayerVehicleID(playerid);
@@ -819,11 +819,24 @@ CMD:setvehhp(playerid, params[])
 		return SendUsageMessage(playerid, " /setvehcap [vehid] [health]");
 	}
 	
-	if(vehid == INVALID_VEHICLE_ID) return SendErrorMessage(playerid, "ID khong hop le.");
+    if(!IsValidVehicle(vehid)) return SendErrorMessage(playerid, "ID khong hop le.");
 
-	SetVehicleHealth(vehid, hp);
-	new mes[128];
-	format(mes, sizeof(mes), "Ban da dieu chinh HP xe ID %i thanh %0.1f.", vehid, hp);
-	SendClientMessage(playerid, -1, mes);
+    foreach (new i: Player) {
+        for (new d; d < MAX_PLAYERVEHICLES; d++)
+        {
+            if (PlayerVehicleInfo[i][d][pvId] == vehid)
+            {
+                PlayerVehicleInfo[i][d][pvMaxHealth] = hp;
+                SetVehicleHealth(vehid, hp);
+
+                new mes[128];
+                format(mes, sizeof(mes), "Ban da dieu chinh dong co toi da xe ID %i thanh %0.1f.", vehid, hp);
+                SendClientMessage(playerid, -1, mes);
+                return 1;
+            }
+        }
+    }
+
+    SendErrorMessage(playerid, "Phuong tien khong kha dung.");
 	return 1;
 }

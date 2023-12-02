@@ -8,7 +8,8 @@ stock LoadTextUpJob() {
 	CreateDynamic3DTextLabel("Khu vuc {2791FF}Chat go{ffffff}\n{2791FF}/chatgo{ffffff} de bat dau xin viec/lamviec", -1, -544.0293,-196.8639,78.4063, 30);
 	CreateDynamic3DTextLabel("Khu vuc {2791FF}Trucker{ffffff}\n{2791FF}/truck{ffffff} de bat dau xin viec/lamviec", -1, 2507.7554,-2120.0732,13.546, 30);
 	CreateDynamic3DTextLabel("Khu vuc {2791FF}dang ky CMND{ffffff}\n{2791FF}/dangkycmnd{ffffff} de dang ky CMND", -1, 359.7139,173.6452,1008.3893, 30);
-	CreateDynamic3DTextLabel("Khu vuc {2791FF}Thi bang lai{ffffff}\n{2791FF}/thibanglai{ffffff} de thi bang lai xe", -1, 1222.5018,243.8309,19.5469, 30);
+	CreateDynamic3DTextLabel("<Quan ly bai rac> {2791FF}Trashman{ffffff}\n(Den gan va bam phim 'Y' de tuong tac)", -1, 2208.2852,-2025.0245,13.5469+1.15, 5);
+	//CreateDynamic3DTextLabel("Khu vuc {2791FF}Thi bang lai{ffffff}\n{2791FF}/thibanglai{ffffff} de thi bang lai xe", -1, 1222.5018,243.8309,19.5469, 30);
 	CreateDynamic3DTextLabel("Khu vuc {FF0000}dang ky CMND{ffffff}\n{FF0000}/dangkycmnd{ffffff} de dang ky CMND", -1, 359.7139,173.6452,1008.3893, 15);
 	Create3DTextLabel("Cua hang do tien dung\nChuyen buon ban cac vat pham", COLOR_VANG, 1103.4659,-1433.9872,15.7969, 20, 0, 0);
 	Create3DTextLabel("Cua hang quan ao nam\nBan trang phuc danh cho nam", COLOR_VANG, 1102.7621,-1445.4734,15.7969, 20, 0, 0);
@@ -19,10 +20,12 @@ stock LoadTextUpJob() {
 
 	MinerActor[0] = CreateDynamicActor(111, 588.1791,866.1268,-42.4973,182.9709, true, 100.0, 0, 0, -1);
 	MinerActor[1] = CreateDynamicActor(6, 2126.8018,-76.6521,2.4721,275.2467, true, 100.0, 0, 0, -1);
+	TrashActor = CreateDynamicActor(2, 2208.2852,-2025.0245,13.5469,36.9486, true, 100.0, 0, 0, -1);
 	PizzaActor = CreateDynamicActor(155, 1362.9523,253.9632,19.5669,63.6866, true, 100.0, 0, 0, -1);
 	TruckActor = CreateDynamicActor(133, 58.5952, -292.2914, 1.5781, 6.3205, true, 100.0, 0, 0, -1);
 	// ActorFarmer = CreateDynamicActor(158, -1420.0443, -1474.9486, 101.6293, true, 100.0, 0, 0, -1);
 	// ApplyActorAnimation(ActorFarmer, "PED", "IDLE_CHAT", 4.0, 1, 0, 0, 0, 0);
+	ApplyActorAnimation(TrashActor, "PED", "IDLE_CHAT", 4.0, 1, 0, 0, 0, 0);
 	ApplyActorAnimation(MinerActor[0], "PED", "IDLE_CHAT", 4.0, 1, 0, 0, 0, 0);
 	ApplyActorAnimation(MinerActor[1], "PED", "IDLE_CHAT", 4.0, 1, 0, 0, 0, 0);
 	ApplyActorAnimation(PizzaActor, "PED", "IDLE_CHAT", 4.0, 1, 0, 0, 0, 0);

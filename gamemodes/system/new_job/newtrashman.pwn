@@ -1,0 +1,522 @@
+#include <YSI_Coding\y_hooks>
+
+// VARIABLES
+#define 		MAX_GROUPS_TRASHMAN 		100
+#define 		MAX_TRASHCAN 				80
+enum TrashmanInfo {
+	LeaderTM,
+	GroupIDTM
+}
+enum TrashmanInfoGr {
+	TMLeader,
+	TMMembers,
+	TMVehicle,
+	TMTrashcan[MAX_TRASHCAN],
+	TMVehicleTrash,
+	TMZone,
+	TMZoneOld
+}
+new TrashTimer[MAX_PLAYERS] = {-1, ...};
+new TrashOnFoot[MAX_PLAYERS];
+new TimeTrash[MAX_PLAYERS];
+new Float: TrashcanPos[MAX_TRASHCAN][4] = {
+{2275.8467,-1077.8477,47.7021,336.9437},// Las Colinas 1
+{2183.0293,-1016.8803,62.8450,354.6798},
+{2287.7627,-1049.0544,49.5156,152.0767},
+{2377.3035,-1055.1786,54.1087,207.7883},
+{2362.2817,-1034.6593,54.2288,196.6337},
+{2357.7793,-1046.3573,54.1555,110.8653},
+{2360.4863,-1055.0533,54.1239,24.6975},
+{2323.2817,-1051.6172,52.3516,281.1143},
+{2281.9685,-1082.9996,47.6604,65.2826},
+{2260.6465,-1093.7245,41.6016,60.5486},
+{2259.1211,-1099.7042,37.9766,244.8009},
+{2256.7209,-1105.8827,37.9766,241.6675},
+{2261.9224,-1110.0769,37.9766,337.1725},
+{2274.2705,-1116.2561,37.9766,330.8432},
+{2284.9048,-1119.4648,37.9766,359.1062},
+{2285.9380,-1103.4965,37.9766,170.9402},
+{2291.4309,-1104.2676,37.9766,170.9402},
+{2433.7671,-1015.6914,54.3559,203.2967},
+{2502.3677,-1063.0134,70.1568,355.2269},
+{2528.6428,-1066.7122,69.5662,270.8769},
+{2241.4802,-1723.3478,13.5469,188.3619}, // GANTON 2
+{2294.8940,-1646.0161,14.8311,267.8516},
+{2279.3826,-1722.3700,13.5469,176.9007},
+{2294.6946,-1720.8730,13.5545,273.9034},
+{2305.8604,-1723.2382,13.5469,181.2249},
+{2329.8928,-1723.0457,13.5424,181.1622},
+{2373.3223,-1720.9087,13.5562,88.4474},
+{2422.4797,-1754.0786,13.5469,93.1147},
+{2426.1563,-1778.6846,13.5469,357.2040},
+{2433.0505,-1778.7937,13.5469,356.7654},
+{2440.3875,-1778.7388,13.5469,359.6480},
+{2447.9858,-1778.7678,13.5469,354.3212},
+{2441.7148,-1767.0835,13.5615,268.9290},
+{2449.5266,-1759.3271,13.5910,178.1242},
+{2230.3201,-1762.7899,13.5625,84.5856},
+{2258.4788,-1668.9948,15.4589,358.3549},
+{2243.8914,-1645.6993,15.4790,166.4679},
+{2253.7539,-1648.6653,15.4766,163.8361},
+{2278.3269,-1649.7083,15.2686,173.5496}	,
+{2323.2112,-1645.4258,14.8270,177.0597},
+{1744.7003,-2054.8977,13.5755,181.7594},  // EL CORONA 3
+{1759.9685,-2054.2751,13.5771,179.6486},
+{1765.0258,-2040.6160,13.5265,273.0456},
+{1765.1082,-2023.4513,14.1514,273.7151},
+{1689.7308,-2008.6395,14.1212,180.1297},
+{1695.3821,-2028.3254,14.1387,87.0067},
+{1684.6230,-2043.2061,14.1413,269.4079},
+{1695.3593,-2060.3792,14.1387,90.0153},
+{1680.0240,-2063.9050,14.1424,175.9948},
+{1800.6287,-2124.0251,13.5469,0.7772},
+{1784.6914,-2102.6470,13.5469,181.4237},
+{1766.5914,-2102.3640,13.5469,180.7342},
+{1743.3401,-2125.5081,13.5469,269.1576},
+{1738.3135,-2098.4592,13.5469,178.3528},
+{1718.5359,-2124.9333,13.5543,359.3356},
+{1672.2158,-2107.6255,13.5469,181.6112},
+{1852.9443,-2042.4158,13.5469,180.2333},
+{1912.3958,-2042.6107,13.5391,170.6456},
+{1948.6897,-2043.6702,13.5469,179.1059},
+{1952.6290,-2006.6353,13.5469,267.9680},
+{129.4314,-1489.5990,18.7289,328.8809},  // RICHMAN 4
+{140.7793,-1467.9410,25.2109,321.1730},
+{152.5607,-1448.9695,32.8450,52.7695},
+{219.0339,-1389.0498,51.5696,152.7860},
+{225.2357,-1403.4584,51.6094,325.9125},
+{206.0809,-1355.7302,50.5143,224.9556},
+{252.7996,-1364.2253,53.1094,308.9457},
+{259.9373,-1383.7024,53.1094,211.2477},
+{238.3146,-1365.7012,53.1094,127.6498},
+{282.3802,-1328.6488,53.5713,305.7894},
+{293.0405,-1347.7633,53.4390,125.1433},
+{309.7186,-1336.1858,53.4467,300.9018},
+{342.6665,-1283.4674,54.1230,24.8291},
+{358.2231,-1279.0461,53.7036,24.3278},
+{423.5943,-1247.2794,51.0646,18.8753},
+{405.2920,-1228.5668,51.6993,108.3643},
+{363.1485,-1215.3246,56.8553,217.2567},
+{288.6575,-1261.6725,73.6171,44.5691},
+{270.2656,-1226.6445,74.5996,212.2039},
+{188.7294,-1403.3257,46.5537,142.6663}
+};
+new TrashcanObject[MAX_TRASHCAN];
+new Text3D: TrashcanText[MAX_TRASHCAN];
+new TMGInfo[MAX_GROUPS_TRASHMAN][TrashmanInfoGr];
+new TMInfo[MAX_PLAYERS][TrashmanInfo];
+// DIALOG
+Dialog:trashmandialog(playerid, response, listitem, inputtext[])
+{
+	if(response)
+	{
+		switch(listitem)
+		{
+			case 0:
+			{
+				if(TMInfo[playerid][GroupIDTM] == 0) return SendErrorMessage(playerid, " Ban chua tao team, hay su dung /createteam de tao team va moi nguoi khac vao lam cung..."), SendClientMessage(playerid, -1, ".../trogiuptrashman de biet them chi tiet nua nhe!");
+				if(TMInfo[playerid][LeaderTM] != 1) return SendErrorMessage(playerid, " Ban khong phai la truong nhom nen khong the lay xe.");
+				if(TMGInfo[TMInfo[playerid][GroupIDTM]][TMVehicle] == INVALID_VEHICLE_ID)
+                if(!IsPlayerInRangeOfPoint(playerid, 4,2208.2852,-2025.0245,13.5469)) return SendErrorMessage(playerid," Ban khong o gan noi lam viec.");
+                if(LamViec[playerid] != 0 && LamViec[playerid] != 3) return  SendClientMessage(playerid, COLOR_GREY, "Ban dang lam cong viec khac khong the lam Trashman.");  
+                SendClientMessage(playerid, COLOR_VANG, "Ban da bat dau lam viec Trashman hay di den checkpoint, su dung /trogiuptrashman de biet them chi tiet.");
+                ActSetPlayerPos(playerid, 2202.8777,-2047.4569,15.2173);
+	            TMGInfo[TMInfo[playerid][GroupIDTM]][TMVehicle] = CreateVehicle(408, 2202.8777,-2047.4569,15.2173 , 45.5 , 0, 0, 1000, 0);
+	            ActPutPlayerInVehicle(playerid, TMGInfo[TMInfo[playerid][GroupIDTM]][TMVehicle] ,0);
+	            foreach(new i: Player)
+	            {
+	               	if(TMInfo[playerid][GroupIDTM] == TMInfo[i][GroupIDTM])
+	               	{
+	               		LamViec[i] = 3;
+	              	}
+	            }
+	            LamViec[playerid] = 3;
+	            switch(random(4))
+	            {
+	               	case 0:
+	               	{
+	               		TMGInfo[TMInfo[playerid][GroupIDTM]][TMZone] = 1;
+	               		SendClientMessage(playerid, COLOR_LIGHTBLUE, "[TRASHMAN] {ffffff}Hay di chuyen den khu vuc {ff4747}LAS COLINAS{ffffff} va tim cac thung rac o xung quanh do");
+	               		SetPlayerCheckpoint(playerid, 2169.0344,-1005.0826,62.8047, 50.0);
+	               		SetPVarInt(playerid, #GPSTM, 1);
+	               	}
+	               	case 1:
+	               	{
+	               		TMGInfo[TMInfo[playerid][GroupIDTM]][TMZone] = 2;
+	               		SendClientMessage(playerid, COLOR_LIGHTBLUE, "[TRASHMAN] {ffffff}Hay di chuyen den khu vuc {ff4747}GANTON{ffffff} va tim cac thung rac o xung quanh do");
+	               		SetPlayerCheckpoint(playerid, 2239.0088,-1653.2634,15.2969, 50.0);
+	               		SetPVarInt(playerid, #GPSTM, 2);
+	               	}
+	               	case 2:
+	               	{
+	               		TMGInfo[TMInfo[playerid][GroupIDTM]][TMZone] = 3;
+	               		SendClientMessage(playerid, COLOR_LIGHTBLUE, "[TRASHMAN] {ffffff}Hay di chuyen den khu vuc {ff4747}EL CORONA{ffffff} va tim cac thung rac o xung quanh do");
+	               		SetPlayerCheckpoint(playerid, 1961.1755,-2005.4413,13.3906, 50.0);
+	               		SetPVarInt(playerid, #GPSTM, 3);
+	               	}
+	               	case 3:
+	               	{
+	               		TMGInfo[TMInfo[playerid][GroupIDTM]][TMZone] = 4;
+	               		SendClientMessage(playerid, COLOR_LIGHTBLUE, "[TRASHMAN] {ffffff}Hay di chuyen den khu vuc {ff4747}RICHMAN{ffffff} va tim cac thung rac o xung quanh do");
+	               		SetPlayerCheckpoint(playerid, 109.2051,-1486.4408,14.5084, 50.0);
+	               		SetPVarInt(playerid, #GPSTM, 4);
+	              	}
+	            }
+			}
+			case 1:
+			{
+				return 1;
+			}
+		}
+	}
+	return 1;
+}
+// FUNCS
+stock CreateTrashcan(trashcanid)
+{
+	new string[555];
+	TrashcanObject[trashcanid] = CreateDynamicObject(1334, TrashcanPos[trashcanid][0], TrashcanPos[trashcanid][1], TrashcanPos[trashcanid][2], 0.0, 0.0, TrashcanPos[trashcanid][3], -1, -1, -1);
+	format(string, sizeof(string), "#%d\n{ff4747}<THUNG RAC>{ffffff}\n\n Bam phim 'Y' de lay rac.", trashcanid);
+	TrashcanText[trashcanid] = CreateDynamic3DTextLabel(string, -1, TrashcanPos[trashcanid][0], TrashcanPos[trashcanid][1], TrashcanPos[trashcanid][2]+0.6, 1.8);
+	return 1;
+}
+forward OnPlayerPickUpTrash(playerid, trashcanid);
+public OnPlayerPickUpTrash(playerid, trashcanid)
+{
+	if(TMGInfo[TMInfo[playerid][GroupIDTM]][TMTrashcan][trashcanid] != 0) return SendErrorMessage(playerid, " Thung rac nay khong con gi de lay.");
+	TMGInfo[TMInfo[playerid][GroupIDTM]][TMTrashcan][trashcanid] = 1;
+	TimeTrash[playerid] = 6+random(4);
+	TrashTimer[playerid] = SetTimerEx("TrashPicking", 1000, true, "i", playerid);
+   	ApplyAnimation(playerid,"PED","BIKE_elbowL",4.0,1,1,1,1,1);
+   	TogglePlayerControllable(playerid, 0);
+	return 1;
+}
+forward TrashPicking(playerid);
+public TrashPicking(playerid)
+{
+    if(TimeTrash[playerid] > 0)
+    {
+    	new format_job[555];
+    	TimeTrash[playerid]--;
+    	format(format_job, sizeof(format_job), "Ban dang nhat rac, vui long doi~p~ %d~w~ de nhat xong.", TimeTrash[playerid]);
+    	SendClientTextDraw(playerid, format_job);
+    	ApplyAnimation(playerid,"PED","BIKE_elbowL",4.0,1,1,1,1,1);
+    }
+    else
+    {
+		ClearAnimations(playerid);
+   		StopLoopingAnim(playerid);
+   		SetPlayerSpecialAction(playerid, SPECIAL_ACTION_NONE);
+    	SendClientTextDraw(playerid, "~w~Ban da nhat rac xong, hay mang den xe va bam ~r~'N' ~w~de bo rac vao xe.");
+    	KillTimer(TrashTimer[playerid]);
+		SetPlayerAttachedObject(playerid, PIZZA_INDEX, 2968, 1, 0.102953, 0.469660, -0.009797, 269.851104, 88.443557, 0.000000, 0.804894, 1.000000, 0.822361 );                      
+		SetPlayerSpecialAction(playerid, SPECIAL_ACTION_CARRY);
+		TogglePlayerControllable(playerid, 1);
+		TrashOnFoot[playerid] = 1;
+    }
+    return 1;
+}
+
+// HOOKS
+hook OnPlayerEnterCheckpoint(playerid)
+{
+	if(GetPVarInt(playerid, #GPSTM) != 0)
+	{
+		SendClientMessage(playerid, COLOR_LIGHTBLUE, "[TRASHMAN] {ffffff}Ban da den diem duoc chi dinh, hay tim rac xung quanh khu vuc nay");
+		SetPVarInt(playerid, #GPSTM, 0);
+		DisablePlayerCheckpoint(playerid);
+	}
+	return 1;
+}
+hook OnGameModeInit()
+{
+	for(new i = 0; i < MAX_TRASHCAN; i++)
+	{
+		CreateTrashcan(i);
+		printf("[TRASHMAN] Da tao thanh cong trashcan#%d", i);
+	}
+	return 1;
+}
+hook OnPlayerKeyStateChange(playerid, newkeys, oldkeys)
+{
+	if(newkeys == 0) return 1;
+	if(IsPlayerInRangeOfPoint(playerid, 2.5, 2208.2852,-2025.0245,13.5469))
+	{
+	    if(PRESSED(KEY_YES))
+	    {
+	    	Dialog_Show(playerid, trashmandialog, DIALOG_STYLE_LIST, "Quan ly bai rac", "Lay xe lam viec \n /trogiuptrashman", "Lua chon", "Huy bo");
+	    }
+	}
+	if(LamViec[playerid] == 3)
+	{
+		if(PRESSED(KEY_YES))
+		{
+			for(new i = 0; i < MAX_TRASHCAN; i++)
+			{
+				if(IsPlayerInRangeOfPoint(playerid, 1.8, TrashcanPos[i][0], TrashcanPos[i][1], TrashcanPos[i][2]))
+				{
+					if(i >= 0 && i <= 19 && TMGInfo[TMInfo[playerid][GroupIDTM]][TMZone] != 1) return SendErrorMessage(playerid, " Co ve nhu nhom cua ban da den sai khu vuc duoc chi dinh.");
+					if(i >= 20 && i <= 39 && TMGInfo[TMInfo[playerid][GroupIDTM]][TMZone] != 2) return SendErrorMessage(playerid, " Co ve nhu nhom cua ban da den sai khu vuc duoc chi dinh.");
+					if(i >= 40 && i <= 59 && TMGInfo[TMInfo[playerid][GroupIDTM]][TMZone] != 3) return SendErrorMessage(playerid, " Co ve nhu nhom cua ban da den sai khu vuc duoc chi dinh.");
+					if(i >= 60 && i <= 79 && TMGInfo[TMInfo[playerid][GroupIDTM]][TMZone] != 4) return SendErrorMessage(playerid, " Co ve nhu nhom cua ban da den sai khu vuc duoc chi dinh.");
+					if(TMGInfo[TMInfo[playerid][GroupIDTM]][TMTrashcan][i] != 0) return SendErrorMessage(playerid, " Thung rac nay da duoc nhom cua ban lay roi.");
+					if(TMInfo[playerid][GroupIDTM] == 0) return SendErrorMessage(playerid, " Ban chua duoc vao nhom lam viec trashman.");
+					if(IsPlayerInAnyVehicle(playerid)) return SendErrorMessage(playerid, " Ban khong the lam dieu nay khi o tren xe.");
+					if(TrashOnFoot[playerid] == 1) return SendErrorMessage(playerid, " Ban da cam rac tren tay khong the lay them.");
+					if(PlayerInfo[playerid][pStrong] <= 1) return SendErrorMessage(playerid, " Ban da qua met moi khong the lam viec."); 
+					if(TimeTrash[playerid] > 0) return 1;
+					OnPlayerPickUpTrash(playerid, i);
+				}
+			}
+		}
+		if(PRESSED(KEY_NO))
+		{
+			if(IsPlayerInRangeOfVehicle(playerid, TMGInfo[TMInfo[playerid][GroupIDTM]][TMVehicle], 5))
+			{
+				if(TrashOnFoot[playerid] == 1)
+				{
+					RemovePlayerAttachedObject(playerid,PIZZA_INDEX);
+					SetPlayerSpecialAction(playerid, SPECIAL_ACTION_NONE);
+					TMGInfo[TMInfo[playerid][GroupIDTM]][TMVehicleTrash]++;
+					TrashOnFoot[playerid] = 0;
+					foreach(new i: Player)
+					{
+						if(TMInfo[i][GroupIDTM] == TMInfo[playerid][GroupIDTM])
+						{
+							new format_job[555];
+							if(TMGInfo[TMInfo[playerid][GroupIDTM]][TMVehicleTrash] <= 14)
+							{
+							    format(format_job, sizeof(format_job), "~w~Da bo rac vao xe, so rac hien tai ~y~%d/15~w~.", TMGInfo[TMInfo[playerid][GroupIDTM]][TMVehicleTrash]);
+							}
+							else
+							{
+								format(format_job, sizeof(format_job), "~r~Hay di chuyen den dia diem tiep theo~w~Da bo rac vao xe, so rac hien tai ~r~%d/15~w~.~n~Neu muon vut rac hay /droptrash.", TMGInfo[TMInfo[playerid][GroupIDTM]][TMVehicleTrash]);
+								SendClientMessage(i, COLOR_LIGHTBLUE, "Neu muon vut rac tren tay hay /droptrash.");
+						        TMGInfo[TMInfo[playerid][GroupIDTM]][TMZoneOld] = TMGInfo[TMInfo[playerid][GroupIDTM]][TMZone];
+							}
+						SendClientTextDraw(i, format_job);
+						}
+					}
+				}
+			}
+		}
+	}
+	return 1;
+}
+
+hook OnPlayerDisconnect(playerid, reason)
+{
+	new string[555];
+	if(TMInfo[playerid][LeaderTM] == 1)
+	{
+		TMGInfo[TMInfo[playerid][GroupIDTM]][TMMembers] = 0;
+		TMGInfo[TMInfo[playerid][GroupIDTM]][TMLeader] = 0;
+		DestroyVehicle(TMGInfo[TMInfo[playerid][GroupIDTM]][TMVehicle]);
+		TMGInfo[TMInfo[playerid][GroupIDTM]][TMVehicle] = INVALID_VEHICLE_ID;
+		TMInfo[playerid][LeaderTM] = 0;
+		TMInfo[playerid][GroupIDTM] = 0;
+		TMGInfo[TMInfo[playerid][GroupIDTM]][TMVehicleTrash] = 0;
+		foreach(new i: Player)
+		{
+			if(playerid != i)
+			{
+				if(TMInfo[i][GroupIDTM] == TMInfo[playerid][GroupIDTM])
+				{
+					SendClientMessage(i, COLOR_VANG, "[TM GROUP]: Nhom cua ban da bi giai tan! {ff4747}[LEADER DISCONNECTED]");
+					TMInfo[playerid][GroupIDTM] = 0;
+					return 1;
+				}
+			}
+		}
+	}
+	else
+	{
+		foreach(new i: Player)
+		{
+			if(playerid != i)
+			{
+				format(string, sizeof(string), "[TM GROUP]: Nguoi choi %s da thoat khoi nhom. {ff4747}[DISCONNECTED]", GetPlayerNameEx(playerid));
+				SendClientMessage(i, COLOR_VANG, string);
+			}
+		}
+		TMGInfo[TMInfo[playerid][GroupIDTM]][TMMembers]--; 
+		TMInfo[playerid][GroupIDTM] = 0;
+	}
+	LamViec[playerid] = 0;
+	KillTimer(TrashTimer[playerid]);
+	TrashTimer[playerid] = -1;
+	return 1;
+}
+// COMMANDS
+CMD:createteam(playerid, params[])
+{
+	if(PlayerInfo[playerid][pStrong] <= 1) return SendErrorMessage(playerid, " Ban da qua met moi khong the lam viec.");
+	if(TMInfo[playerid][GroupIDTM] != 0) return SendErrorMessage(playerid, " Ban da o trong mot nhom nao do roi!");
+	for(new i = 1; i < MAX_GROUPS_TRASHMAN; i++)
+	{
+		if(TMGInfo[i][TMMembers] == 0)
+		{
+			new string[555];
+			TMInfo[playerid][LeaderTM] = 1;
+			TMInfo[playerid][GroupIDTM] = i;
+			TMGInfo[i][TMLeader] = playerid;
+			TMGInfo[i][TMMembers]++;
+			format(string, sizeof(string), "[TRASHMAN]: {ffffff}Ban da tao thanh cong nhom lam viec, ID nhom ban la: {ff4747}%d{ffffff}.", i);
+			TMGInfo[TMInfo[playerid][GroupIDTM]][TMVehicle] = INVALID_VEHICLE_ID;
+			SendClientMessage(playerid, COLOR_LIGHTRED, string);
+		}
+		return 1;
+	}
+	return 1;
+}
+CMD:leaveteam(playerid, params[])
+{
+	if(TMInfo[playerid][GroupIDTM] == 0) return SendErrorMessage(playerid, " Ban dang khong o trong mot nhom nao het!");
+	new string[555];
+	if(TMInfo[playerid][LeaderTM] == 1)
+	{
+		TMGInfo[TMInfo[playerid][GroupIDTM]][TMMembers] = 0;
+		TMGInfo[TMInfo[playerid][GroupIDTM]][TMLeader] = 0;
+		DestroyVehicle(TMGInfo[TMInfo[playerid][GroupIDTM]][TMVehicle]);
+		TMGInfo[TMInfo[playerid][GroupIDTM]][TMVehicle] = INVALID_VEHICLE_ID;
+		TMInfo[playerid][LeaderTM] = 0;
+		TMInfo[playerid][GroupIDTM] = 0;
+		TMGInfo[TMInfo[playerid][GroupIDTM]][TMVehicleTrash] = 0;
+		for(new i = 0; i < MAX_TRASHCAN; i++)
+		{
+			TMGInfo[TMInfo[playerid][GroupIDTM]][TMTrashcan][i] = 0;
+		}
+		foreach(new i: Player)
+		{
+			if(playerid != i)
+			{
+				if(TMInfo[i][GroupIDTM] == TMInfo[playerid][GroupIDTM])
+				{
+					SendClientMessage(i, COLOR_VANG, "[TM GROUP]: Nhom cua ban da bi giai tan!");
+					TMInfo[playerid][GroupIDTM] = 0;
+					return 1;
+				}
+			}
+		}
+		SendClientMessage(playerid, COLOR_VANG, "[TM GROUP]: Ban da giai tan nhom thanh cong!");
+	}
+	else
+	{
+		foreach(new i: Player)
+		{
+			if(playerid != i && TMInfo[i][GroupIDTM] == TMInfo[playerid][GroupIDTM])
+			{
+				format(string, sizeof(string), "[TM GROUP]: Nguoi choi %s da thoat khoi nhom.", GetPlayerNameEx(playerid));
+				SendClientMessage(i, COLOR_VANG, string);
+			}
+		}
+		TMGInfo[TMInfo[playerid][GroupIDTM]][TMMembers]--; 
+		TMInfo[playerid][GroupIDTM] = 0;
+		SendClientMessage(playerid, COLOR_VANG, "Ban da roi khoi nhom lam viec trashman thanh cong!");
+	}
+	return 1;
+}
+CMD:kickteam(playerid, params[])
+{
+	if(TMInfo[playerid][LeaderTM] == 0) return SendErrorMessage(playerid, " Ban khong co quyen su dung lenh nay.");
+	new
+		iTargetID,
+		string[555];
+
+	if(sscanf(params, "u", iTargetID)) {
+		SendUsageMessage(playerid, " /kickteam [id player]");
+	}
+	else if(IsPlayerConnected(iTargetID))
+	{
+		if(iTargetID == playerid) return SendErrorMessage(playerid, " Ban khong the kick chinh minh.");
+		if(TMInfo[iTargetID][GroupIDTM] != TMInfo[playerid][GroupIDTM]) return SendErrorMessage(playerid, " Nguoi do khong o trong nhom cua ban");
+		foreach(new i: Player)
+		{
+			if(i != playerid)
+			{
+				if(i != iTargetID && TMInfo[i][GroupIDTM] == TMInfo[playerid][GroupIDTM])
+				{
+					format(string, sizeof(string), "[TM GROUP]: %s da bi kick ra khoi nhom boi %s.", GetPlayerNameEx(iTargetID), GetPlayerNameEx(playerid));
+					SendClientMessage(i, COLOR_VANG, string);
+				}
+			}
+		}
+		SendClientMessage(playerid, COLOR_VANG, "[TM GROUP]: Ban da kick thanh cong!");
+		TMGInfo[TMInfo[iTargetID][GroupIDTM]][TMMembers]--; 
+		TMInfo[iTargetID][GroupIDTM] = 0;
+		SendClientMessage(iTargetID, COLOR_VANG, "Ban da moi bi truong nhom kick!");
+	}
+	else return SendErrorMessage(playerid, " ID nguoi choi khong hop le.");
+	return 1;
+}
+
+CMD:inviteteam(playerid, params[])
+{
+	if(PlayerInfo[playerid][pStrong] <= 1) return SendErrorMessage(playerid, " Ban da qua met moi khong the lam viec.");
+	if(TMInfo[playerid][LeaderTM] == 0) return SendErrorMessage(playerid, " Ban khong co quyen su dung lenh nay.");
+	new
+		iTargetID,
+		string[555];
+
+	if(sscanf(params, "u", iTargetID)) {
+		SendUsageMessage(playerid, " /inviteteam [id player]");
+	}
+	else if(IsPlayerConnected(iTargetID))
+	{
+		if(iTargetID == playerid) return SendErrorMessage(playerid, " Ban khong the moi chinh minh.");
+		if(TMInfo[iTargetID][GroupIDTM] != 0) return SendErrorMessage(playerid, " Nguoi choi ma ban moi da o trong mot nhom khac.");
+		format(string, sizeof(string), "[TRASHMAN]: {ffffff}Nguoi choi {ff4747}%s(%d){ffffff} muon moi ban vao nhom lam viec TRASHMAN (don rac) cua ho.", GetPlayerNameEx(playerid), playerid);
+		SendClientMessage(iTargetID, COLOR_LIGHTRED, string);
+		SendClientMessage(iTargetID, COLOR_LIGHTRED, "[TRASHMAN]: {ffffff}su dung {ff4747}/acceptteam{ffffff} de chap nhan vao nhom.");
+		SendClientMessage(iTargetID, COLOR_LIGHTRED, "[TRASHMAN]: {ffffff}hoac su dung {ff4040}/declineteam{ffffff} de {ff3030}tu choi {ffffff}vao nhom.");
+		format(string, sizeof(string), "[TRASHMAN]: {ffffff}Ban da moi nguoi choi {ff4747}%s(%d){ffffff} vao nhom, hay doi ho chap nhan.", GetPlayerNameEx(iTargetID), playerid);
+		SendClientMessage(playerid, COLOR_LIGHTRED, string);
+		SetPVarInt(playerid, #invitedgroup, TMInfo[playerid][GroupIDTM]);
+	}
+	else return SendErrorMessage(playerid, " ID nguoi choi khong hop le.");
+	return 1;
+}
+CMD:acceptteam(playerid, params[])
+{
+	if(PlayerInfo[playerid][pStrong] <= 1) return SendErrorMessage(playerid, " Ban da qua met moi khong the lam viec.");
+	if(GetPVarInt(playerid, #invitedgroup) == 0) return SendErrorMessage(playerid, " Ban khong nhan duoc loi moi tu bat ki ai.");
+	if(TMGInfo[GetPVarInt(playerid, #invitedgroup)][TMMembers] > 3) return SendErrorMessage(playerid, " Nhom da day, vui long tham gia nhom khac."), SetPVarInt(playerid, #invitedgroup, 0);
+	if(TMInfo[playerid][GroupIDTM] != 0) return SendErrorMessage(playerid, " Ban dang o trong mot nhom nao do roi."), SetPVarInt(playerid, #invitedgroup, 0);
+
+	TMInfo[playerid][GroupIDTM] = GetPVarInt(playerid, #invitedgroup);
+	TMGInfo[GetPVarInt(playerid, #invitedgroup)][TMMembers]++;
+	SetPVarInt(playerid, #invitedgroup, 0);
+	return 1;
+}
+CMD:declineteam(playerid, params[])
+{
+	if(PlayerInfo[playerid][pStrong] <= 1) return SendErrorMessage(playerid, " Ban da qua met moi khong the lam viec.");
+	if(GetPVarInt(playerid, #invitedgroup) == 0) return SendErrorMessage(playerid, " Ban khong nhan duoc loi moi tu bat ki ai.");
+	SetPVarInt(playerid, #invitedgroup, 0);
+	SendClientMessage(playerid, COLOR_LIGHTRED, "[TRASHMAN]: {ffffff}Ban da tu choi loi moi tham gia nhom lam viec trashman thanh cong.");
+	return 1;
+}
+CMD:radioteam(playerid, params[])
+{
+	if(PlayerInfo[playerid][pStrong] <= 1) return SendErrorMessage(playerid, " Ban da qua met moi khong the lam viec.");
+	if(TMInfo[playerid][GroupIDTM] == 0) return SendErrorMessage(playerid, " Ban khong o trong bat ki nhom nao!");
+	new string[555];
+	if(!isnull(params))
+	{
+		foreach(new i: Player)
+		{
+			if(TMInfo[i][GroupIDTM] == TMInfo[playerid][GroupIDTM])
+			{
+					format(string, sizeof(string), "[TM GROUP] {EA906C}%s(%d): %s", GetPlayerNameEx(playerid), i, params);
+					SendClientMessage(i, COLOR_LIGHTRED, string);
+					format(string, sizeof(string), "(radio) %s", params);
+					SetPlayerChatBubble(playerid, string, COLOR_WHITE, 15.0, 5000);
+			}
+		}
+	}
+	else return SendUsageMessage(playerid, " /radioteam [text] hoac /rd [text]");
+	return 1;
+}
+CMD:rd(playerid, params[]) {
+	return cmd_radioteam(playerid, params);
+}

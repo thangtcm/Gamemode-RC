@@ -1,5 +1,15 @@
-d:\Gamemode Samp\UP GM\Gamemode-RC\gamemodes\main\defines.pwn(924) : îøèáêà 013: îòñóòñòâóåò òî÷êà âõîäà (íåò public-ôóíêöèé)
+C:\Users\PHATBENTRE\Desktop\Gamemode\gamemodes\main\command.pwn(26831) : ïðåäóïðåæäåíèå 208: ôóíêöèÿ ñ òèïîâûì ðåçóëüòàòîì èñïîëüçóåòñÿ ïåðåä îáúÿâëåíèåì, èíèöèèðîâàíà ïåðåîáðàáîòêà
+C:\Users\PHATBENTRE\Desktop\Gamemode\gamemodes\main\command.pwn(26955) : ïðåäóïðåæäåíèå 208: ôóíêöèÿ ñ òèïîâûì ðåçóëüòàòîì èñïîëüçóåòñÿ ïåðåä îáúÿâëåíèåì, èíèöèèðîâàíà ïåðåîáðàáîòêà
+C:\Users\PHATBENTRE\Desktop\Gamemode\gamemodes\main\command.pwn(25) : îøèáêà 010: íåâåðíàÿ ôóíêöèÿ èëè îáúÿâëåíèå
+C:\Users\PHATBENTRE\Desktop\Gamemode\gamemodes\main\command.pwn(1402) : îøèáêà 010: íåâåðíàÿ ôóíêöèÿ èëè îáúÿâëåíèå
+C:\Users\PHATBENTRE\Desktop\Gamemode\gamemodes\main\command.pwn(4315) : îøèáêà 010: íåâåðíàÿ ôóíêöèÿ èëè îáúÿâëåíèå
+C:\Users\PHATBENTRE\Desktop\Gamemode\gamemodes\main\command.pwn(4315) -- (4327) : îøèáêà 054: íåñîîòâåòñòâóþùàÿ çàêðûâàþùàÿ ñêîáêà ("}")
+C:\Users\PHATBENTRE\Desktop\Gamemode\gamemodes\main\command.pwn(4315) -- (4329) : îøèáêà 010: íåâåðíàÿ ôóíêöèÿ èëè îáúÿâëåíèå
+C:\Users\PHATBENTRE\Desktop\Gamemode\gamemodes\main\command.pwn(4315) -- (4329) : ôàòàëüíàÿ îøèáêà 107: ñëèøêîì ìíîãî îøèáîê íà îäíîé ñòðîêå
+
+Êîìïèëÿöèÿ îñòàíîâëåíà.
+
 Pawn compiler 3.2.3664	 	 	Copyright (c) 1997-2016, ITB CompuPhase
 
 
-Îøèáîê:1.
+Îøèáîê:6.
