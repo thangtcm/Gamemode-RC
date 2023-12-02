@@ -260,11 +260,17 @@ public StartCountTime(playerid)
 					{
 						switch(random(100))
 						{
-							case 0..60:
+							case 0..54:
 							{
 								format(format_job, sizeof(format_job), "~g~Ban da dao thanh cong va nhan duoc ~y~1 Da~g~.");
 								Inventory_Add(playerid, "Da", 1);
 								SendLogToDiscordRoom("MINERAL LOG" ,"1157988317548265523", "Name", GetPlayerNameEx(playerid, false), "ADDED", "Đá", "Số lượng", "1", 0x226199);
+							}
+							case 55..60:
+							{
+								format(format_job, sizeof(format_job), "~y~ OH MY GOD~n~ Ban da rat may man khi dao duoc ~r~1x Santa Hat~y~.");
+								SendLogToDiscordRoom("SANTA HAT" ,"1180540668632899688", "Name", GetPlayerNameEx(playerid, false), "JOB", "Mineral", "Số lượng", "1 SANTA HAT", 0xFF4747);
+								Inventory_Add(playerid, "Santa Hat", 1);
 							}
 							case 84..94:
 							{

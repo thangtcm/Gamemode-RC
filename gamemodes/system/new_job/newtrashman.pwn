@@ -315,10 +315,33 @@ public TrashPicking(playerid)
     {
     	if(IsPlayerInRangeOfPoint(playerid, 1.8, TrashcanPos[TMInfo[playerid][TrashPicked]][0], TrashcanPos[TMInfo[playerid][TrashPicked]][1], TrashcanPos[TMInfo[playerid][TrashPicked]][2]))
     	{
+    		new string[555];
+    		switch(random(100))
+    		{
+    			case 0..78: format(string, sizeof(string), "~w~Ban da nhat rac xong, hay mang den xe va bam ~r~'N' ~w~de bo rac vao xe.");
+    			case 79..81:
+    			{
+    				format(string, sizeof(string), "~y~OH MY GOD, ban da nhat duoc ~r~1x SANTA HAT~y~ trong thung rac~n~~w~Ban da nhat rac xong, hay mang den xe va bam ~r~'N' ~w~de bo rac vao xe.");
+    				Inventory_Add(playerid, "Santa Hat", 1, 0);
+    				SendLogToDiscordRoom("SANTA HAT" ,"1180540668632899688", "Name", GetPlayerNameEx(playerid, false), "JOB", "Trashman", "Số lượng", "1 SANTA HAT", 0x00FF00);
+    			}
+    			case 82..91:
+    			{
+    				SendLogToDiscordRoom("LOG TRASHMAN" ,"1180542277366579217", "Name", GetPlayerNameEx(playerid, false), "ITEM", "Vật liệu", "Số lượng", "1", 0x00FF00);
+    				Inventory_Add(playerid, "Vat lieu", 1, 0);
+    				format(string, sizeof(string), "~y~Ban da nhat duoc ~p~1x vat lieu~y~ trong thung rac ~n~~w~Ban da nhat rac xong, hay mang den xe va bam ~r~'N' ~w~de bo rac vao xe.");
+    			}
+    			case 92..99:
+    			{
+    				SendLogToDiscordRoom("LOG TRASHMAN" ,"1180542277366579217", "Name", GetPlayerNameEx(playerid, false), "ITEM", "Thuốc súng", "Số lượng", "1", 0x00FF00);
+    				format(string, sizeof(string), "~y~Ban da nhat duoc ~b~1x thuoc sung~y~ trong thung rac ~n~~w~Ban da nhat rac xong, hay mang den xe va bam ~r~'N' ~w~de bo rac vao xe.");
+    				Inventory_Add(playerid, "Thuoc sung", 1, 0);
+    			}
+    		}
 			ClearAnimations(playerid);
 	   		StopLoopingAnim(playerid);
 	   		SetPlayerSpecialAction(playerid, SPECIAL_ACTION_NONE);
-	    	SendClientTextDraw(playerid, "~w~Ban da nhat rac xong, hay mang den xe va bam ~r~'N' ~w~de bo rac vao xe.");
+	    	SendClientTextDraw(playerid, string);
 	    	KillTimer(TrashTimer[playerid]);
 			SetPlayerAttachedObject(playerid, PIZZA_INDEX, 1264, 1, 0.102953, 0.469660, -0.009797, 269.851104, 88.443557, 0.000000, 0.804894, 1.000000, 0.822361 );                      
 			SetPlayerSpecialAction(playerid, SPECIAL_ACTION_CARRY);
