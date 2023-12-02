@@ -23,7 +23,7 @@ GetRandomHouse(playerid) // check
 	{
 	    if(HouseInfo[i][hOwned])
 	    {
-	        if(200.0 <= GetPlayerDistanceFromPoint(playerid, HouseInfo[i][hExteriorX], HouseInfo[i][hExteriorY], HouseInfo[i][hExteriorZ]) <= 1200.0)
+	        if(GetPlayerDistanceFromPoint(playerid, HouseInfo[i][hExteriorX], HouseInfo[i][hExteriorY], HouseInfo[i][hExteriorZ]) <= 2000.0)
 	        {
 	        	houseIDs[index++] = i;
 			}
@@ -303,7 +303,7 @@ CMD:giaobanh(playerid, params[])
 	    return SendErrorMessage(playerid, "Khong co ngoi nha nao yeu cau ban giao banh Pizza. Hay yeu cau Ban Quan Tri thiet lap.");
 	}
 	new str[120];
-	format(str, sizeof str, "(JOB PIZZA) Hay giao pizza den nha cua ~y~%s~ư~{", HouseInfo[houseid][hOwnerName]);
+	format(str, sizeof str, "(JOB PIZZA) Hay giao pizza den nha cua ~y~%s~w~", HouseInfo[houseid][hOwnerName]);
     CPPizza[playerid] = 1;
     SendClientTextDraw(playerid, str);
     SetPlayerCheckPointEx(playerid, HouseInfo[houseid][hExteriorX], HouseInfo[houseid][hExteriorY], HouseInfo[houseid][hExteriorZ], 3);
