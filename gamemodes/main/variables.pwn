@@ -1653,6 +1653,8 @@ new StoreItemCost[][StoreItemCostEnum] =
 	{1},
 	{1},
 	{1},
+	{1},
+	{1},
 	{1}
 };
 

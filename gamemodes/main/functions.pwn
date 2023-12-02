@@ -13403,15 +13403,15 @@ stock GivePlayerStoreItem(playerid, type, business, item, price)
 		case ITEM_CANCAU:
 		{
 			if(!Inventory_HasItem(playerid, "Can cau")) {
-				if(!Inventory_Add(playerid, "Can cau", .timer = 60*24*6)) return 1;
-				SendClientMessageEx(playerid, COLOR_WHITE, "Ban da mua Can cau (Do ben: 1 tuan) thanh cong");
+				if(!Inventory_Add(playerid, "Can cau", .timer = 60*24*3)) return 1;
+				SendClientMessageEx(playerid, COLOR_WHITE, "Ban da mua Can cau (Do ben: 3 ngay ) thanh cong");
 			}
 			else return SendClientMessageEx(playerid, COLOR_WHITE, "Ban da so huu Can cau");
 		}
 		case ITEM_MOICAU:
 		{
-			if(!Inventory_Add(playerid, "Can cau", .timer = 2*24)) return 1;
-			SendClientMessageEx(playerid, COLOR_WHITE, "Ban da mua Can cau (Do ben: 2 tieng) thanh cong");
+			if(!Inventory_Add(playerid, "Moi cau", .timer = 60*24)) return 1;
+			SendClientMessageEx(playerid, COLOR_WHITE, "Ban da mua Moi cau (Do ben: 1 ngay) thanh cong");
 		}
 		case ITEM_BASEBALL:{
 			GivePlayerValidWeapon(playerid,5,2);
