@@ -21,9 +21,9 @@ GetRandomHouse(playerid) // check
 
 	for(new i = 0; i < MAX_HOUSES; i ++)
 	{
-	    if(HouseInfo[i][hOwned])
+	    if(HouseInfo[i][hOwnerID])
 	    {
-	        if(40 <= GetPlayerDistanceFromPoint(playerid, HouseInfo[i][hExteriorX], HouseInfo[i][hExteriorY], HouseInfo[i][hExteriorZ]) <= 1300.0)
+	        if(40 <= GetPlayerDistanceFromPoint(playerid, HouseInfo[i][hExteriorX], HouseInfo[i][hExteriorY], HouseInfo[i][hExteriorZ]) <= 2000.0)
 	        {
 	        	houseIDs[index++] = i;
 			}
@@ -226,7 +226,7 @@ hook OnPlayerEnterCheckpoint(playerid)
 		else SendClientMessage(playerid,-1,"Ban chua co banh tren tay");
 		return 0;
 	}
-	return 0;
+	return 1;
 }
 
 CMD:pizza(playerid, params[])
@@ -247,7 +247,7 @@ CMD:jhonsongrentpizza(playerid, params[])
     	PizzaJob[playerid][Vehicle] = CreateVehicle(448, 2112.9497, -1771.9745, 12.9538, 0 , 3, 3, -1);
     	VehicleFuel[PizzaJob[playerid][Vehicle]] = GetVehicleFuelCapacity(PizzaJob[playerid][Vehicle]);
     	PlayerOnVehicle[playerid] = PizzaJob[playerid][Vehicle] ;
-    	new fVW = GetPlayerVirtualWorld(playerid);
+    
     	SetVehicleHealth(PizzaJob[playerid][Vehicle], 900.0);
     	Vehicle_ResetData(PizzaJob[playerid][Vehicle]);
     	ActPutPlayerInVehicle(playerid, PizzaJob[playerid][Vehicle] ,0);
@@ -264,7 +264,7 @@ CMD:jhonsongrentpizza(playerid, params[])
     	PizzaJob[playerid][Vehicle] = CreateVehicle(561, 2112.9497, -1771.9745, 12.9538, 0 , 3, 3, -1);
     	VehicleFuel[PizzaJob[playerid][Vehicle]] = GetVehicleFuelCapacity(PizzaJob[playerid][Vehicle]);
     	PlayerOnVehicle[playerid] = PizzaJob[playerid][Vehicle] ;
-    	new fVW = GetPlayerVirtualWorld(playerid);
+    	
     	SetVehicleHealth(PizzaJob[playerid][Vehicle], 900.0);
     	Vehicle_ResetData(PizzaJob[playerid][Vehicle]);
     	ActPutPlayerInVehicle(playerid, PizzaJob[playerid][Vehicle] ,0);
