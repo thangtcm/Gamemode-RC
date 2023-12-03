@@ -156,7 +156,8 @@ new const g_aInventoryItems[][e_InventoryItems] =
 	{"Giong Nai", "ticket_deer"},
 	{"Bot Mi", "flour"},
 	{"Trai Cay", "fruit"},
-	{"May Cua", "sawder"}
+	{"May Cua", "sawder"},
+	{"Santa Hat", "santahat"}
 };
 
 hook OnPlayerDisconnect(playerid, reason)
