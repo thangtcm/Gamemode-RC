@@ -23,14 +23,14 @@ hook OnPlayerConnect(playerid)
 hook OnPlayerKeyStateChange(playerid, newkeys, oldkeys)
 {
 	if(newkeys == 0) return 1;
-	if(IsPlayerInRangeOfPoint(playerid, 2.5, 960.1240,-2142.9419,13.0938))
+	if(IsPlayerInRangeOfPoint(playerid, 5, 960.1240,-2142.9419,13.0938))
 	{
 	    if(PRESSED(KEY_YES))
 	    {
 	    	Dialog_Show(playerid, minerdialog, DIALOG_STYLE_LIST, "Quan ly khu mo", "Nhan / tra dong phuc lam viec\nMua Pickaxe (dung cu de dao)", "Lua chon", "Huy bo");
 	    }
 	}
-	if(IsPlayerInRangeOfPoint(playerid, 2.5, 2124.2324,-1738.6648,13.5645))
+	if(IsPlayerInRangeOfPoint(playerid, 5, 1136.7050,-1439.3700,15.7969))
 	{
 	    if(PRESSED(KEY_YES))
 	    {
