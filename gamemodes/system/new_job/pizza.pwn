@@ -23,7 +23,7 @@ GetRandomHouse(playerid) // check
 	{
 	    if(HouseInfo[i][hOwnerID])
 	    {
-	        if(40 <= GetPlayerDistanceFromPoint(playerid, HouseInfo[i][hExteriorX], HouseInfo[i][hExteriorY], HouseInfo[i][hExteriorZ]) <= 2000.0)
+	        if(60 <= GetPlayerDistanceFromPoint(playerid, HouseInfo[i][hExteriorX], HouseInfo[i][hExteriorY], HouseInfo[i][hExteriorZ]) <= 1800.0)
 	        {
 	        	houseIDs[index++] = i;
 			}
@@ -118,7 +118,7 @@ hook OnPlayerKeyStateChange(playerid, newkeys, oldkeys)
 				        Update3DTextLabelText(PizzaTextInfo[playerid], COLOR_WHITE, strr);
 				        format(str,sizeof(str),"Ban da bo banh vao cop xe so banh hien tai tren xe cua ban la: [~y~%d/5~w~] (Su dung N de lay banh ra).",Pizza_Quantity[PizzaJob[playerid][Vehicle]]);
 					    SendClientTextDraw(playerid, str);
-					    SendClientMessage(playerid, COLOR_WHITE,"(JOB PIZZA) Su dung [/giaobanh] de bat dau giao.");
+					    SendClientMessage(playerid, COLOR_WHITE,"(JOB PIZZA) Ban co the [/giaobanh] de bat dau giao banh.");
 				    }
 				    else 
 				    if(level >= 200)
@@ -127,7 +127,7 @@ hook OnPlayerKeyStateChange(playerid, newkeys, oldkeys)
 				        Update3DTextLabelText(PizzaTextInfo[playerid], COLOR_WHITE, strr);
 				        format(str,sizeof(str),"Ban da bo banh vao cop xe so banh hien tai tren xe cua ban la: [~y~%d/10~w~] (Su dung N de lay banh ra).",Pizza_Quantity[PizzaJob[playerid][Vehicle]]);
 					    SendClientTextDraw(playerid, str);
-					    SendClientMessage(playerid, COLOR_WHITE,"(JOB PIZZA) Su dung [/giaobanh] de bat dau giao.");
+					    SendClientMessage(playerid, COLOR_WHITE,"(JOB PIZZA) Ban co the [/giaobanh] de bat dau giao banh.");
 				    }
 				}
 			}
@@ -308,10 +308,18 @@ CMD:giaobanh(playerid, params[])
 	{
 	    return SendErrorMessage(playerid, "Khong co ngoi nha nao yeu cau ban giao banh Pizza. Hay yeu cau Ban Quan Tri thiet lap.");
 	}
-	new str[120];
+    SendClientTextDraw(playerid, "Dang nhan cuoc goi...");
+    SetTimerEx("cp_pizza", 2000, false, "i", playerid);
+    SetPlayerCheckPointEx(playerid, HouseInfo[houseid][hExteriorX], HouseInfo[houseid][hExteriorY], HouseInfo[houseid][hExteriorZ], 3);
+    return 1;
+}
+
+
+forward cp_pizza(playerid);
+public cp_pizza(playerid)
+{
+    new str[120];
 	format(str, sizeof str, "(JOB PIZZA) Hay giao pizza den nha cua ~y~%s~w~", HouseInfo[houseid][hOwnerName]);
     CPPizza[playerid] = 1;
     SendClientTextDraw(playerid, str);
-    SetPlayerCheckpoint(playerid, HouseInfo[houseid][hExteriorX], HouseInfo[houseid][hExteriorY], HouseInfo[houseid][hExteriorZ], 3);
-    return 1;
 }
