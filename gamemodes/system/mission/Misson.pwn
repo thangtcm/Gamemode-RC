@@ -116,7 +116,7 @@ public M_OnQueryFinish(extraid, handleid)
 				PlayerInfo[extraid][pDaily] = datetimenow;
 				Main_ResetCountMisson(extraid);
 			}
-			SendServerMessage(extraid, "Su dung /trogiup de tim hieu ro hon ve cac cong viec va cac lenh can dung trong may chu");
+			
 			cache_get_field_content(row,  "M_get_1", szResult, MainPipeline); PMisson[extraid][m_get][1] = strval(szResult);
 			cache_get_field_content(row,  "M_get_2", szResult, MainPipeline); PMisson[extraid][m_get][2] = strval(szResult);
 			
@@ -135,10 +135,14 @@ public M_OnQueryFinish(extraid, handleid)
 			cache_get_field_content(row,  "FarmEntered", szResult, MainPipeline); FarmEnter[extraid] = strval(szResult);
 			cache_get_field_content(row,  "skill_fish", szResult, MainPipeline); JobSkill[extraid][Fish] = strval(szResult);
 			cache_get_field_content(row,  "skill_pizza", szResult, MainPipeline); JobSkill[extraid][Pizza] = strval(szResult);
+			SendClientMessageEx(extraid, COLOR_VANG, "Chao mung ban da den voi may chu Red Community Roleplay Viet Nam.");
+			SendClientMessageEx(extraid, COLOR_WHITE, "{6D92C3}> {FFFFFF}Su dung /trogiup de tim hieu ro hon ve cac cong viec va cac lenh can dung trong may chu");
+			SendClientMessageEx(extraid, COLOR_WHITE, "{6D92C3}> {FFFFFF}Su Kien Giang Sinh suu tap Santa Hat, hay truy tim nhung chiec mu Santa Hat tai cac cong viec trong may chu (Chi tiet tai discord.gg/rcrpvn)");
 			if(PMisson[extraid][a_m_done] == 0)
 			{
 				SendServerMessage(extraid, "Ban chua lam nhiem vu ngay hom nay, hay tim NPC tai CityHall de lam nhiem vu ngay nhe");
 			}
+			
 		}
 	}
 	return 1;
