@@ -1682,12 +1682,14 @@ IsPlayerInRangeOfDynamicObject(iPlayerID, iObjectID, Float: fRadius) {
 	return IsPlayerInRangeOfPoint(iPlayerID, fRadius, fPos[0], fPos[1], fPos[2]);
 }
 
-IsPlayerInRangeOfObject(iPlayerID, iObjectID, Float: fRadius) {
+IsPlayerInRangeOfObject(iPlayerID, iObjectID, Float: fRadius, dynamic = 1) {
 
 	new
 		Float: fPos[3];
+		
+	if (dynamic == 0) GetObjectPos(iObjectID, fPos[0], fPos[1], fPos[2]);
+	else GetDynamicObjectPos(iObjectID, fPos[0], fPos[1], fPos[2]);
 
-	GetObjectPos(iObjectID, fPos[0], fPos[1], fPos[2]);
 	return IsPlayerInRangeOfPoint(iPlayerID, fRadius, fPos[0], fPos[1], fPos[2]);
 }
 
@@ -2809,7 +2811,6 @@ public InitiateGamemode()
 	NationSel_InitTextDraws();
 	CountCitizens();
 	SetNameTagDrawDistance(40.0);
-	Streamer_SetVisibleItems(STREAMER_TYPE_OBJECT, 1000);
 	Streamer_SetTickRate(60);
 	AllowInteriorWeapons(1);
  	AddPlayerClass(0, 1958.3783, 1343.1572, 15.3746, 269.1425, 0, 0, 0, 0, 0, 0);
