@@ -488,45 +488,48 @@ hook OnPlayerKeyStateChange(playerid, newkeys, oldkeys)
 							}
 							foreach(new i: Player)
 							{
-								format(format_job, sizeof(format_job), "~r~Hay di chuyen den dia diem tiep theo~w~So rac hien tai ~r~%d/15~w~.~n~~p~Neu muon vut rac hay /vutrac.", TMGInfo[TMInfo[playerid][GroupIDTM]][TMVehicleTrash]);
-								SendClientTextDraw(i, format_job);
-								TrashOnFoot[i] = 0;
-								RemovePlayerAttachedObject(i,PIZZA_INDEX);
-								SetPlayerSpecialAction(i, SPECIAL_ACTION_NONE);
-								ClearAnimations(i);
-						   		StopLoopingAnim(i);
-								TogglePlayerControllable(i, 1);
-								KillTimer(TrashTimer[i]);
-							    TMGInfo[TMInfo[playerid][GroupIDTM]][TMZoneOld] = TMGInfo[TMInfo[playerid][GroupIDTM]][TMZone];
-							    TMGInfo[TMInfo[playerid][GroupIDTM]][TMVehicleTrash] = 0;
-							    TMGInfo[TMInfo[playerid][GroupIDTM]][TMStep] = 2;
-								switch(TMGInfo[TMInfo[playerid][GroupIDTM]][TMZone])
+								if(TMInfo[playerid][GroupIDTM] == TMInfo[i][GroupIDTM])
 								{
-									case 1:
-					               	{
-					               		SendClientMessage(i, COLOR_LIGHTBLUE, "[TRASHMAN] {ffffff}Hay di chuyen den khu vuc {ff4747}LAS COLINAS{ffffff} va tim cac thung rac o xung quanh do");
-					               		SetPlayerCheckpoint(i, 2169.0344,-1005.0826,62.8047, 10.0);
-					               		SetPVarInt(i, #GPSTM, 1);
-					               	}
-					               	case 2:
-					               	{
-					               		SendClientMessage(i, COLOR_LIGHTBLUE, "[TRASHMAN] {ffffff}Hay di chuyen den khu vuc {ff4747}GANTON{ffffff} va tim cac thung rac o xung quanh do");
-					               		SetPlayerCheckpoint(i, 2239.0088,-1653.2634,15.2969, 10.0);
-					               		SetPVarInt(i, #GPSTM, 2);
-					               	}
-					               	case 3:
-					               	{
-					               		SendClientMessage(i, COLOR_LIGHTBLUE, "[TRASHMAN] {ffffff}Hay di chuyen den khu vuc {ff4747}EL CORONA{ffffff} va tim cac thung rac o xung quanh do");
-					               		SetPlayerCheckpoint(i, 1961.1755,-2005.4413,13.3906, 10.0);
-					               		SetPVarInt(i, #GPSTM, 3);
-					               	}
-					               	case 4:
-					               	{
-					               		SendClientMessage(i, COLOR_LIGHTBLUE, "[TRASHMAN] {ffffff}Hay di chuyen den khu vuc {ff4747}RICHMAN{ffffff} va tim cac thung rac o xung quanh do");
-					               		SetPlayerCheckpoint(i, 109.2051,-1486.4408,14.5084, 10.0);
-					               		SetPVarInt(i, #GPSTM, 4);
-					              	}
-					            }
+									format(format_job, sizeof(format_job), "~r~Hay di chuyen den dia diem tiep theo~w~So rac hien tai ~r~%d/15~w~.~n~~p~Neu muon vut rac hay /vutrac.", TMGInfo[TMInfo[playerid][GroupIDTM]][TMVehicleTrash]);
+									SendClientTextDraw(i, format_job);
+									TrashOnFoot[i] = 0;
+									RemovePlayerAttachedObject(i,PIZZA_INDEX);
+									SetPlayerSpecialAction(i, SPECIAL_ACTION_NONE);
+									ClearAnimations(i);
+							   		StopLoopingAnim(i);
+									TogglePlayerControllable(i, 1);
+									KillTimer(TrashTimer[i]);
+								    TMGInfo[TMInfo[playerid][GroupIDTM]][TMZoneOld] = TMGInfo[TMInfo[playerid][GroupIDTM]][TMZone];
+								    TMGInfo[TMInfo[playerid][GroupIDTM]][TMVehicleTrash] = 0;
+								    TMGInfo[TMInfo[playerid][GroupIDTM]][TMStep] = 2;
+									switch(TMGInfo[TMInfo[playerid][GroupIDTM]][TMZone])
+									{
+										case 1:
+						               	{
+						               		SendClientMessage(i, COLOR_LIGHTBLUE, "[TRASHMAN] {ffffff}Hay di chuyen den khu vuc {ff4747}LAS COLINAS{ffffff} va tim cac thung rac o xung quanh do");
+						               		SetPlayerCheckpoint(i, 2169.0344,-1005.0826,62.8047, 10.0);
+						               		SetPVarInt(i, #GPSTM, 1);
+						               	}
+						               	case 2:
+						               	{
+						               		SendClientMessage(i, COLOR_LIGHTBLUE, "[TRASHMAN] {ffffff}Hay di chuyen den khu vuc {ff4747}GANTON{ffffff} va tim cac thung rac o xung quanh do");
+						               		SetPlayerCheckpoint(i, 2239.0088,-1653.2634,15.2969, 10.0);
+						               		SetPVarInt(i, #GPSTM, 2);
+						               	}
+						               	case 3:
+						               	{
+						               		SendClientMessage(i, COLOR_LIGHTBLUE, "[TRASHMAN] {ffffff}Hay di chuyen den khu vuc {ff4747}EL CORONA{ffffff} va tim cac thung rac o xung quanh do");
+						               		SetPlayerCheckpoint(i, 1961.1755,-2005.4413,13.3906, 10.0);
+						               		SetPVarInt(i, #GPSTM, 3);
+						               	}
+						               	case 4:
+						               	{
+						               		SendClientMessage(i, COLOR_LIGHTBLUE, "[TRASHMAN] {ffffff}Hay di chuyen den khu vuc {ff4747}RICHMAN{ffffff} va tim cac thung rac o xung quanh do");
+						               		SetPlayerCheckpoint(i, 109.2051,-1486.4408,14.5084, 10.0);
+						               		SetPVarInt(i, #GPSTM, 4);
+						              	}
+						            }
+						         }
 							}
 						}
 						else
