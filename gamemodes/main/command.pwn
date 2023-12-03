@@ -48061,7 +48061,7 @@ CMD:editprices(playerid, params[])
 	    if(PlayerInfo[playerid][pBusinessRank] >= 5)
 		{
 			if(Businesses[iBusiness][bType] == BUSINESS_TYPE_STORE || Businesses[iBusiness][bType] == BUSINESS_TYPE_GASSTATION) {
-	    		new szDialog[912];
+	    		new szDialog[1300];
 				for (new i = 0; i < sizeof(StoreItems); i++) format(szDialog, sizeof(szDialog), "%s%s  ($%s) (Cost of Good: $%s)\n", szDialog, StoreItems[i], number_format(Businesses[iBusiness][bItemPrices][i]), number_format(floatround(StoreItemCost[i][ItemValue] * BUSINESS_ITEMS_COST)) );
 				ShowPlayerDialog(playerid, DIALOG_STOREPRICES, DIALOG_STYLE_LIST, "Chinh gia 24/7", szDialog, "Chinh sua", "Huy bo");
 				SetPVarInt(playerid, "EditingBusiness", iBusiness);
