@@ -398,8 +398,8 @@ public OnQueryFinish(resultid, extraid, handleid)
 					cache_get_field_content(row,  "RankText", PlayerInfo[extraid][pRankText], MainPipeline, 64);
 					cache_get_field_content(row,  "QuocTich", PlayerInfo[extraid][pQuocTich], MainPipeline, 30);
 					cache_get_field_content(row,  "Flag", PlayerInfo[extraid][pFlag]);
-					cache_get_field_content(row,  "CraftWeaponDeal", CraftWeaponDeal[extraid]);
-					cache_get_field_content(row,  "CraftWeaponDealTime", CraftWeaponDealTime[extraid]);
+					cache_get_field_content(row,  "CraftWeaponDeal", PlayerInfo[extraid][pCraftWD]);
+					cache_get_field_content(row,  "CraftWeaponDealTime", PlayerInfo[extraid][pCraftWDTime]);
 					cache_get_field_content(row,  "Eat", szResult, MainPipeline); PlayerInfo[extraid][pEat] = strval(szResult);
 					cache_get_field_content(row,  "Drink", szResult, MainPipeline); PlayerInfo[extraid][pDrink] = strval(szResult);
 					cache_get_field_content(row,  "Strong", szResult, MainPipeline); PlayerInfo[extraid][pStrong] = strval(szResult);
