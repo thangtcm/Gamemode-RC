@@ -3,3 +3,5 @@ AddSimpleModel(-1,19379, -2018, "object.dff", "speedo.txd");
 AddSimpleModel(-1,19379, -3000, "object.dff", "login.txd");
 AddSimpleModel(-1,19379, -3001, "object.dff", "character.txd");
 AddSimpleModel(-1,19379, -2023, "object.dff", "inventory.txd");
+
+AddSimpleModel(-1, 19379, -12000, "pld_object.dff", "pld.txd");

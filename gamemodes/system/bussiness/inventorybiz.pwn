@@ -215,7 +215,7 @@ CMD:bgiveinventory(playerid, params[])
 	if(Inventory_Count(playerid, productName) < capacity)
 		return SendErrorMessage(playerid, "Ban khong co du so luong vat pham nay de cung cap.");
 	new pItemId = Inventory_GetItemID(playerid,productName);
-		Inventory_Remove(playerid, pItemId, capacity);
+	Inventory_Remove(playerid, pItemId, capacity);
 	INVBUSINESS_ADD(iBusiness, productName, capacity);
 	new string[128];
 	format(string, sizeof(string), "Ban da dua vat pham %s voi so luong la %d vao cua hang cua minh (%s).", productName, capacity, Businesses[iBusiness][bName]);

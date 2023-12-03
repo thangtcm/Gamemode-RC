@@ -1086,7 +1086,7 @@ TimeConvert(time) {
     return string;
 }
 
-PlacePlant(id, ownerid, planttype, objectid, drugskill, Float:x, Float:y, Float:z, virtualworld, interior)
+stock PlacePlant(id, ownerid, planttype, objectid, drugskill, Float:x, Float:y, Float:z, virtualworld, interior)
 {
     Plants[id][pObjectSpawned] = 0;
 	Plants[id][pOwner] = ownerid;
@@ -1673,7 +1673,7 @@ GetPlayerPriority(Player)
 	else return 4;
 }
 
-IsPlayerInRangeOfDynamicObject(iPlayerID, iObjectID, Float: fRadius) {
+stock IsPlayerInRangeOfDynamicObject(iPlayerID, iObjectID, Float: fRadius) {
 
 	new
 		Float: fPos[3];
@@ -2772,6 +2772,7 @@ public InitiateGamemode()
 	SetTimer("MailDeliveryTimer", 60000, 1);
     SetTimer("AntiSpeed", 3000, true);
     LoadDrugLab();
+	LoadCapture();
 	SkinList = LoadModelSelectionMenu("SkinList.txt");
 	//Island for crate system
     MAXCRATES = 10; // Sets Default Max Crates
@@ -3272,7 +3273,9 @@ public DisableVehicleAlarm(vehicleid)
     SetVehicleParamsEx(vehicleid,engine,lights,VEHICLE_PARAMS_OFF,doors,bonnet,boot,objective);
 	return 1;
 }
-
+stock Float:GetDistanceBetweenPoints(Float:x1, Float:y1, Float:z1, Float:x2, Float:y2, Float:z2) {
+    return floatsqroot(floatpower(x1 - x2, 2) + floatpower(y1 - y2, 2) + floatpower(z1 - z2, 2));
+}
 forward ReleasePlayer(playerid);
 public ReleasePlayer(playerid)
 {
@@ -5400,7 +5403,11 @@ public OnPlayerPickUpDynamicPickup(playerid, pickupid)
 				// TODO: This should be more specific to the vehicle
 				// TODO: Bike tires should be checked differently
 
-				
+				if(GetDistanceBetweenPoints(pos[0], pos[1], pos[2], SpikeStrips[x][sX], SpikeStrips[x][sY], SpikeStrips[x][sZ]) <= 4)
+				{
+						// Pop Front
+					SetVehicleTireState(vehicleid, 0, 0, 0, 0);
+				}
 			}
 		}
 	}
@@ -6544,7 +6551,10 @@ stock IsRefuelableVehicle(vehicleid)
 	}
 	return 1;
 }
-
+encode_tires(tire1, tire2, tire3, tire4)
+{
+	return tire1 | (tire2 << 1) | (tire3 << 2) | (tire4 << 3);
+}
 stock SetVehicleTireState(vehicleid, tire1, tire2, tire3, tire4)
 {
     new panels, doors, Lights, tires;
@@ -6962,7 +6972,7 @@ stock SafeLogin(playerid, type)
                 }
         }
 }
-new codehash[BCRYPT_HASH_LENGTH];
+// new codehash[BCRYPT_HASH_LENGTH];
 
 public OnPasswordHashed(playerid, timeNow[])
 {
@@ -10817,7 +10827,7 @@ stock HospitalSpawn(playerid)
 {
 	PlayerInfo[playerid][pDoiBung] = 100;
 	PlayerInfo[playerid][pKhatNuoc] = 100;
-	ResetDamages(playerid);
+	// ResetDamages(playerid);
 	if(GetPVarInt(playerid, "MedicBill") == 1 && PlayerInfo[playerid][pJailTime] == 0)
 	{
         switch(PlayerInfo[playerid][pHospital])
@@ -10850,7 +10860,7 @@ stock HospitalSpawn(playerid)
 				Misc_Save();
 				SendClientMessageEx(playerid, TEAM_CYAN_COLOR, "None , benh vien nay xoa roi thi phai muabaohiem khac di");
 				PlayerInfo[playerid][pVW] = 0;
-				ActSetPlayerPos(playerid, 1153.7006, -1330.3177, -41.9554);
+				ActSetPlayerPos(playerid, 2030.2251,-1408.5302,16.9922);
 				Streamer_UpdateEx(playerid, 1153.7006, -1330.3177, -41.9554);
 				Player_StreamPrep(playerid, 1153.7006, -1330.3177, -41.9554,FREEZE_TIME);
 				SetPlayerFacingAngle(playerid, 179.4258);
@@ -10884,7 +10894,7 @@ stock HospitalSpawn(playerid)
 				Misc_Save();
 				SendClientMessageEx(playerid, 0xb4b486FF, "[HOSPITAL] Ban ton $1500 cho tien vien phi");
 				PlayerInfo[playerid][pVW] = 0;
-				ActSetPlayerPos(playerid, 1245.2665,334.1407,19.5547);
+				ActSetPlayerPos(playerid, 2030.2251,-1408.5302,16.9922);
 				Streamer_UpdateEx(playerid, 1245.2665,334.1407,19.5547);
 				Player_StreamPrep(playerid, 1245.2665,334.1407,19.5547,FREEZE_TIME);
 				SetPlayerFacingAngle(playerid, 179.4258);
@@ -10918,7 +10928,7 @@ stock HospitalSpawn(playerid)
 				Misc_Save();//SF , Old Red county
 				SendClientMessageEx(playerid, 0xb4b486FF, "Hoa don benh vien $25. Chuc mot ngay tot lanh!");
 				PlayerInfo[playerid][pVW] = 0;
-				ActSetPlayerPos(playerid, 1153.7006, -1330.3177, -41.9554);
+				ActSetPlayerPos(playerid, 2030.2251,-1408.5302,16.9922);
 				Streamer_UpdateEx(playerid, 1153.7006, -1330.3177, -41.9554);
 				Player_StreamPrep(playerid, 1153.7006, -1330.3177, -41.9554,FREEZE_TIME);
 				SetPlayerFacingAngle(playerid, 179.4258);
@@ -11239,7 +11249,7 @@ stock HospitalSpawn(playerid)
 	            PlayerInfodl[playerid][dlish] = 50;
 	            SetPlayerHealth(playerid, 50);
 		        PlayerInfo[playerid][pHydration] = 100;
-		        ResetDamages(playerid);
+		        // ResetDamages(playerid);
 			}
 	    }
 	}
@@ -13330,6 +13340,7 @@ stock DynVeh_Spawn(iDvSlotID)
     SetVehicleVirtualWorld(DynVehicleInfo[iDvSlotID][gv_iSpawnedID], DynVehicleInfo[iDvSlotID][gv_iVW]);
     LinkVehicleToInterior(DynVehicleInfo[iDvSlotID][gv_iSpawnedID], DynVehicleInfo[iDvSlotID][gv_iInt]);
     VehicleFuel[DynVehicleInfo[iDvSlotID][gv_iSpawnedID]] = DynVehicleInfo[iDvSlotID][gv_fFuel];
+	if (VehicleFuel[DynVehicleInfo[iDvSlotID][gv_iSpawnedID]] == 0.0) VehicleFuel[DynVehicleInfo[iDvSlotID][gv_iSpawnedID]] = 50.0;
     DynVeh[DynVehicleInfo[iDvSlotID][gv_iSpawnedID]] = iDvSlotID;
 	for(new i = 0; i != MAX_DV_OBJECTS; i++)
 	{
@@ -13397,6 +13408,19 @@ stock GivePlayerStoreItem(playerid, type, business, item, price)
 				SendClientMessageEx(playerid, COLOR_WHITE, "Ban da mua Mat na (Do ben: 1 tuan) thanh cong, su dung /inv > Mat na");
 			}
 			else return SendClientMessageEx(playerid, COLOR_WHITE, "Ban da so huu Mat na");
+		}
+		case ITEM_CANCAU:
+		{
+			if(!Inventory_HasItem(playerid, "Can cau")) {
+				if(!Inventory_Add(playerid, "Can cau", .timer = 60*24*3)) return 1;
+				SendClientMessageEx(playerid, COLOR_WHITE, "Ban da mua Can cau (Do ben: 3 ngay ) thanh cong");
+			}
+			else return SendClientMessageEx(playerid, COLOR_WHITE, "Ban da so huu Can cau");
+		}
+		case ITEM_MOICAU:
+		{
+			if(!Inventory_Add(playerid, "Moi cau", .timer = 60*24)) return 1;
+			SendClientMessageEx(playerid, COLOR_WHITE, "Ban da mua Moi cau (Do ben: 1 ngay) thanh cong");
 		}
 		case ITEM_BASEBALL:{
 			GivePlayerValidWeapon(playerid,5,2);
@@ -13694,6 +13718,14 @@ public SyncTime()
 	tmphour = shifthour;
 	if ((tmphour > ghour) || (tmphour == 0 && ghour == 23))
 	{
+		if(tmphour == 20)
+		{
+			AutoOpenChiemDong();
+		}	
+		if(tmphour == 22)
+		{
+		   AutoLockChiemDong();
+		}
 	    SavePlants();
 		for(new iGroupID; iGroupID < MAX_GROUPS; iGroupID++)
 		{
@@ -16742,10 +16774,10 @@ stock Misc_Load() {
 		else if(ini_GetValue(szFileStr, "DoubleXP", szResult, sizeof(szResult)))											DoubleXP = strval(szResult);
 
 	}
-	if(iRewardBox) {
+	/* if(iRewardBox) {
 		iRewardObj = CreateDynamicObject(19055, fObjectPos[0], fObjectPos[1], fObjectPos[2], 0.0, 0.0, 0.0, .streamdistance = 100.0);
 		tRewardText = CreateDynamic3DTextLabel("Gold Reward Gift Box\n{FFFFFF}/getrewardgift{F3FF02} de nhan qua cua ban!", COLOR_YELLOW, fObjectPos[0], fObjectPos[1], fObjectPos[2], 10.0, .testlos = 1, .streamdistance = 50.0);
-	}
+	} */
 	fclose(iFileHandle);
 	printf("[MiscLoad] Misc Loaded");
 }

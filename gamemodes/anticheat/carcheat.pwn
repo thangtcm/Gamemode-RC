@@ -1,6 +1,6 @@
 #include <YSI_Coding\y_hooks>
 
-#define MAX_VEHICLE_HEATH 990.0
+#define MAX_VEHICLE_HEATH 900.0
 
 static Checkvehicle[MAX_PLAYERS];
 static bool:PlayerInModShop[MAX_PLAYERS];
@@ -22,21 +22,6 @@ static const Float:PAYNSPRAY[][] =
 forward CheckVehicleHealth(playerid);
 
 /* Functions */
-stock Float: GetVehicleMaxHealth(vehicleid)
-{
-    foreach(new i: Player)
-    {
-        for(new d; d < MAX_PLAYERVEHICLES; d++)
-        {
-            if(PlayerVehicleInfo[i][d][pvId] == vehicleid)
-            {
-                return (PlayerVehicleInfo[i][d][pvMaxHealth]);
-            }
-        }
-    }
-
-    return MAX_VEHICLE_HEATH;
-}
 
 hook OnPlayerDisconnect(playerid, reason)
 {
@@ -106,9 +91,35 @@ public CheckVehicleHealth(playerid)
 
     if(Vehiclehealth > GetVehicleMaxHealth(GetPlayerVehicleID(playerid)) && GetPlayerState(playerid) == PLAYER_STATE_DRIVER && PlayerInModShop[playerid] == false)
     {
+        new string[128];
         SetVehicleToRespawn(GetPlayerVehicleID(playerid));
-        SendClientMessage(playerid, COLOR_LIGHTRED, "SYSTEM:{FFFFFF} Ban da bi kick boi he thong vi su dung Car Cheat.");
-        SetTimerEx("KickEx", 1000, false, "i", playerid);
+        SetPlayerArmedWeapon(playerid, 0);
+        if(GetPVarInt(playerid, "Injured") == 1)
+        {
+            KillEMSQueue(playerid);
+            ClearAnimations(playerid);
+        }
+        if(GetPVarInt(playerid, "IsInArena") >= 0) LeavePaintballArena(playerid, GetPVarInt(playerid, "IsInArena"));
+        GameTextForPlayer(playerid, "~w~Welcome to ~n~~r~Fort DeMorgan", 5000, 3);
+        ResetPlayerWeaponsEx(playerid);
+        format(string, sizeof(string), "AdmCmd: %s da bi phat tu boi System, ly do: Car Cheat (Health)", GetPlayerNameEx(playerid));
+        Log("logs/admin.log", string);
+        format(string, sizeof(string), "AdmCmd: %s da bi phat tu boi System, ly do: Car Cheat (Health)", GetPlayerNameEx(playerid));
+        SendClientMessageToAllEx(COLOR_LIGHTRED, string);
+        PlayerInfo[playerid][pWantedLevel] = 0;
+        SetPlayerWantedLevel(playerid, 0);
+        SetPlayerHealth(playerid, 0x7FB00000);
+        PlayerInfo[playerid][pJailTime] = 10*60;
+        SetPVarInt(playerid, "_rAppeal", gettime()+60);			format(PlayerInfo[playerid][pPrisonReason], 128, "[OOC][PRISON] Car Cheat");
+        PhoneOnline[playerid] = 1;
+        SetPlayerInterior(playerid, 1);
+        PlayerInfo[playerid][pInt] = 1;
+        new rand = random(sizeof(OOCPrisonSpawns));
+        Streamer_UpdateEx(playerid, OOCPrisonSpawns[rand][0], OOCPrisonSpawns[rand][1], OOCPrisonSpawns[rand][2]);
+        ActSetPlayerPos(playerid, OOCPrisonSpawns[rand][0], OOCPrisonSpawns[rand][1], OOCPrisonSpawns[rand][2]);
+        SetPlayerSkin(playerid, 50);
+        SetPlayerColor(playerid, TEAM_APRISON_COLOR);
+        Player_StreamPrep(playerid, OOCPrisonSpawns[rand][0], OOCPrisonSpawns[rand][1], OOCPrisonSpawns[rand][2], FREEZE_TIME);
         return 1;
     }
 

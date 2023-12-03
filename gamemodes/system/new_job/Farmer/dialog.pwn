@@ -196,7 +196,6 @@ Dialog:FARM_MENU_PLANTFEED(playerid, response, listitem, inputtext[]) {
 	if(response)
 	{
 		new plantId = GetPVarInt(playerid, #Plant_Nearing);
-		new str[128];
 		switch(listitem)
 		{
 			case 0:{

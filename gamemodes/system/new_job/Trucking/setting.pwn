@@ -19,7 +19,7 @@ enum VehicleTruckerInfo{
 
 new VehicleTruckerData[MAX_PLAYERS][MAX_OBJECTTRUCKER][VehicleTruckerInfo];
 
-new const UnitType[][] = 
+/* new const UnitType[][] = 
 {
     {"Thung Hang"},//0
     {"Tan"}, //1
@@ -31,7 +31,7 @@ new const UnitType[][] =
     {"Transformer"},//7
     {"Phuong Tien"},//8,
     {"Not Working"}//9
-};
+}; */
 
 enum ProductInfo{
     ProductName[32],
@@ -89,7 +89,7 @@ new CarTruckWorking[][CarTruckInfo] = {
     { 440, "Rumpo", { 0, -1, -1, -1, -1, -1, -1 }, 12 },
     { 499, "Benson", { 0, 6, -1, -1, -1, -1, -1 }, 18 },
     { 414, "Mule", { 0, 6, -1, -1, -1, -1, -1 }, 18 },
-    { 456, "Yankee", { 0, 6, -1, -1, -1, -1, -1 }, 18 }
+    { 456, "Yankee", { 0, 6, -1, -1, -1, -1, -1 }, 24 }
 };
 
 enum FactoryInfo{ //Xuất khẩu

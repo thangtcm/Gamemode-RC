@@ -14,10 +14,16 @@ stock SetPlayerFarmer(playerid)
 		{
             if(FarmInfo[i][FarmType] == FARM_RENT)
             {
-                new month, day, year, farmtimer;
+                new month, day, year, getdt = FarmInfo[i][RentTimer];
                 getdate(year,month,day);
-                farmtimer = day*1000000 + month*10000 + year;
-                if(farmtimer > FarmInfo[i][RentTimer])
+                new dayold, monthold, yearold;
+                yearold = getdt%10000;
+                getdt /= 10000;
+                monthold = getdt%100;
+                getdt /= 100;
+                dayold = getdt;
+                printf("DATA %d %d %d", dayold, monthold, yearold);
+                if((year > yearold || (year == yearold && (month > monthold || (month == monthold && day > dayold)))) && FarmInfo[i][FarmType] == FARM_RENT )
                 {
                     SendServerMessage(playerid, "Nong trai (ID: %d) da het thoi han thue, he thong tu dong tich thu tai san nong trai cua ban.");
                     SendServerMessage(playerid, "Cac du lieu cay trong va gia suc cua ban se duoc he thong luu tru va tai su dung cho lan so huu nong trai tiep theo cua ban.");
@@ -87,9 +93,16 @@ stock GetFarmFree()
 stock Farm_Reload(farmid)
 {
     new string[256];
-    new month, day, year;
+    new month, day, year, getdt = FarmInfo[farmid][RentTimer];
     getdate(year,month,day);
-    if(FarmInfo[farmid][RentTimer] < (day*1000000 + month*10000 + year) && FarmInfo[farmid][FarmType] == FARM_RENT )
+    new dayold, monthold, yearold;
+    yearold = getdt%10000;
+    getdt /= 10000;
+    monthold = getdt%100;
+    getdt /= 100;
+    dayold = getdt;
+    printf("DATA %d %d %d", dayold, monthold, yearold);
+    if((year > yearold || (year == yearold && (month > monthold || (month == monthold && day > dayold)))) && FarmInfo[farmid][FarmType] == FARM_RENT )
     {
         FarmInfo[farmid][FarmType] = 0;
         FarmInfo[farmid][RentTimer] = 0;
@@ -257,7 +270,7 @@ stock PlantTree_Reload(playerid, plantid)
             // if(PlantTreeInfo[playerid][plantid][plantType] == 2)
             //     plantObject = 894;
             // else
-                plantObject = 19473;
+            plantObject = 19473;
             if(PlantTreeInfo[playerid][plantid][plantTimer] > 0)
             {
                 PlantTreeInfo[playerid][plantid][plantTimer] = PlantTreeInfo[playerid][plantid][plantTimer];
@@ -275,8 +288,8 @@ stock PlantTree_Reload(playerid, plantid)
             // }
             // else
             // {
-                plantObject = 804;
-                PlantTreeInfo[playerid][plantid][plantPos][2] = Plant_ZDefault + 1.0;
+            plantObject = 804;
+            PlantTreeInfo[playerid][plantid][plantPos][2] = Plant_ZDefault + 1.0;
 
             // }
             if(PlantTreeInfo[playerid][plantid][plantTimer] > 0)
@@ -495,15 +508,19 @@ stock PlantTree_Remove(playerid, plantId)
 stock LeaveAreaFarm(playerid)
 {
     new farmid = FarmEnter[playerid];
-    if(GetPlayerVirtualWorld(playerid) == FarmInfo[farmid][VirtualWorld] && GetPVarInt(playerid, "IsPlayer_StreamPrep") < gettime())
+    if(farmid != -1)
     {
-        ActSetPlayerPos(playerid, FarmInfo[farmid][ExteriorX], FarmInfo[farmid][ExteriorY], FarmInfo[farmid][ExteriorZ]);
-        new str[128];
-        format(str, sizeof(str), "Ban da roi khoi nong trai cua %s", FarmInfo[farmid][OwnerName]);
-        SendClientMessageEx(playerid, COLOR_WHITE, str);
-        Player_StreamPrep(playerid, FarmInfo[farmid][ExteriorX], FarmInfo[farmid][ExteriorY], FarmInfo[farmid][ExteriorZ], FREEZE_TIME);
-        SetPlayerInterior(playerid, 0);
-        SetPlayerVirtualWorld(playerid, 0);
+        if(GetPlayerVirtualWorld(playerid) == FarmInfo[farmid][VirtualWorld] && GetPVarInt(playerid, "IsPlayer_StreamPrep") < gettime())
+        {
+            ActSetPlayerPos(playerid, FarmInfo[farmid][ExteriorX], FarmInfo[farmid][ExteriorY], FarmInfo[farmid][ExteriorZ]);
+            new str[128];
+            format(str, sizeof(str), "Ban da roi khoi nong trai cua %s", FarmInfo[farmid][OwnerName]);
+            SendClientMessageEx(playerid, COLOR_WHITE, str);
+            Player_StreamPrep(playerid, FarmInfo[farmid][ExteriorX], FarmInfo[farmid][ExteriorY], FarmInfo[farmid][ExteriorZ], FREEZE_TIME);
+            SetPlayerInterior(playerid, 0);
+            SetPlayerVirtualWorld(playerid, 0);
+            FarmEnter[playerid] = -1;
+        }
     }
     return 1;
     
