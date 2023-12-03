@@ -120,6 +120,8 @@ public OnPlayerRuaTien(playerid)
 		new rt_msg[1280];
 		format(rt_msg, sizeof(rt_msg), "Ban dang rua tien , thoi gian con %d giay", GetPVarInt(playerid, #RuaTien_Time));
 		SendClientTextDraw(playerid, rt_msg, 1);
+		
+		SetPVarInt(playerid, #RuaTien_Time, GetPVarInt(playerid, #RuaTien_Time)-1);
 
 		new rt_type = GetPVarInt(playerid, #RuaTien_Type);
 
@@ -168,6 +170,7 @@ public OnPlayerRuaTien(playerid)
 		else{
 			Inventory_RemoveTimer(playerid, "Dirty", Inventory_Count(playerid, "Dirty"));
 			SendErrorMessage(playerid, "Ban da rua tien that bai");
+			KillTimer(RuaTien_Timer[playerid]);
 		}
 	}
 	return 1;
