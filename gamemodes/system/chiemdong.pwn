@@ -185,7 +185,7 @@ hook OnPlayerDeath(playerid, killerid, reason) {
         format(string, sizeof(string), "Khu vuc chiem dong : %s (%s)\n\nSo huu : {ffff00}NONE{FFFFFF}\nTinh trang : {fffacd}Chua bi chiem dong\n{FFFFFF}Su dung: /chiemdong.", zone, TPointEdit[typecap-1][TPoint_Name]);
 		UpdateDynamic3DTextLabelText(FamilyCD[fam][f_captureLabel], -1, string);
 
-		GangZoneStopFlashForAll(FamilyCD[fam][FamilyGangzone]);
+		// GangZoneStopFlashForAll(FamilyCD[fam][FamilyGangzone]);
 
         DeletePVar(playerid, "chiemdong");
         DeletePVar(playerid, "TimeChiemDong");
@@ -214,7 +214,7 @@ stock ChiemDong_OnplayerDisconnect(playerid)
         format(string, sizeof(string), "Khu vuc chiem dong : %s (%s)\n\nSo huu : {ffff00}NONE{FFFFFF}\nTinh trang : {fffacd}Chua bi chiem dong\n{FFFFFF}Su dung: /chiemdong.", zone, TPointEdit[typecap-1][TPoint_Name]);
 		UpdateDynamic3DTextLabelText(FamilyCD[fam][f_captureLabel], -1, string);
 
-		GangZoneStopFlashForAll(FamilyCD[fam][FamilyGangzone]);
+		// GangZoneStopFlashForAll(FamilyCD[fam][FamilyGangzone]);
 
         DeletePVar(playerid, "chiemdong");
         DeletePVar(playerid, "TimeChiemDong");
@@ -322,7 +322,7 @@ public TimeChiemDong(playerid) {
 
 			FamilyCD[fam][f_FamilyID] = PlayerInfo[playerid][pFMember];
 
-			GangZoneStopFlashForAll(FamilyCD[fam][FamilyGangzone]);
+			// GangZoneStopFlashForAll(FamilyCD[fam][FamilyGangzone]);
 
 			format(gangzone, sizeof(gangzone), "Khu vuc chiem dong : %s (%s)\n\nSo huu : {FFFF00}(F%d) %s{FFFFFF}\nTinh trang : %s {FFFFFF}(Health : {AA3333}%s%%{FFFFFF})\nNguoi chiem : {f0e68c}%s{FFFFFF}", 
 				zone, TPointEdit[typecap-1][TPoint_Name], family, FamilyInfo[family][FamilyName], statusCapture(FamilyCD[fam][f_chiemdong]), number_format(FamilyCD[fam][f_HealthCD]), FamilyCD[fam][f_PlayerName]);
@@ -350,7 +350,7 @@ public TimeChiemDong(playerid) {
 		format(string, sizeof(string), "Khu vuc chiem dong : %s (%s)\n\nSo huu : {ffff00}None{FFFFFF}\nTinh trang : {fffacd}Chua bi chiem dong\n{FFFFFF}Su dung: /chiemdong.", zone, TPointEdit[typecap-1][TPoint_Name]);
         UpdateDynamic3DTextLabelText(FamilyCD[fam][f_captureLabel], -1, string);
 
-		GangZoneStopFlashForAll(FamilyCD[fam][FamilyGangzone]);
+		// GangZoneStopFlashForAll(FamilyCD[fam][FamilyGangzone]);
 
         SendClientMessage(playerid, -1, "{AA3333}[!]{FFFFFF} Ban da chiem dong that bai do chay ra xa khoi khu vuc chiem dong (70m).");
 
@@ -395,7 +395,14 @@ stock ShowGangZone(playerid)
 {
     if(PlayerInfo[playerid][pFMember] != INVALID_FAMILY_ID) {
         for(new fam = 0; fam < MAX_CAPTURE; fam++) 
-            GangZoneShowForPlayer(playerid, FamilyCD[fam][FamilyGangzone], COLOR_GREEN);
+            GangZoneShowForPlayer(playerid, FamilyCD[fam][FamilyGangzone], COLOR_YELLOW);
+    }
+}
+stock HideGangZone(playerid) 
+{
+    if(PlayerInfo[playerid][pFMember] != INVALID_FAMILY_ID) {
+        for(new fam = 0; fam < MAX_CAPTURE; fam++) 
+            GangZoneHideForPlayer(playerid, FamilyCD[fam][FamilyGangzone]);
     }
 }
 
@@ -549,6 +556,8 @@ stock LoadCapture()
 		FamilyCD[iIndex][f_CaptureActivity]);
   		++iIndex;
 	}
+	myChiemDong();
+	printf("> Load thanh cong chiem dong");
  	return fclose(iFileHandle);
 }
 task UpdateCapture[6000] ()
@@ -767,7 +776,7 @@ CMD:savezone(playerid, params[])
 					FamilyCD[fam][FamilyGangzone] = GangZoneCreate(FamilyCD[fam][f_Min][0],FamilyCD[fam][f_Min][1],FamilyCD[fam][f_Max][0],FamilyCD[fam][f_Max][1]);
 
                     foreach(new i: Player) {
-    					GangZoneShowForPlayer(i, FamilyCD[fam][FamilyGangzone], COLOR_GREEN);
+    					GangZoneShowForPlayer(i, FamilyCD[fam][FamilyGangzone], COLOR_YELLOW);
 					}
 
 					SaveCapture();
@@ -857,7 +866,7 @@ CMD:chiemdong(playerid, params[])
 	
 	UpdateDynamic3DTextLabelText(FamilyCD[fam][f_captureLabel], -1, string);
 
-	GangZoneFlashForAll(FamilyCD[fam][FamilyGangzone], COLOR_YELLOW);
+	// GangZoneFlashForAll(FamilyCD[fam][FamilyGangzone], COLOR_RED);
 	foreach(new i: Player)
 	{
 	    if(PlayerInfo[i][pFMember] != INVALID_FAMILY_ID) {
@@ -882,6 +891,11 @@ CMD:chiemdong(playerid, params[])
 CMD:showzone(playerid) {
     ShowGangZone(playerid);
     return 1;
+}
+CMD:hidezone(playerid)
+{
+	HideGangZone(playerid);
+	return 1;
 }
 CMD:settimeturf(playerid, params[])
 {
@@ -915,6 +929,7 @@ stock AutoOpenChiemDong()
 			SendClientMessage(iz, -1, "");
 			SendClientMessage(iz, -1, "");
 			SendClientMessage(iz, -1, "{FFFFFF}-------------------------- {FFFF00}[CAPTURE GANG - OPEN]{FFFFFF} ---------------------------");
+			ShowGangZone(iz);
 		}
 	}
 	new i = 0;
@@ -927,6 +942,7 @@ stock AutoOpenChiemDong()
 			FamilyCD[cap][f_CaptureActivity] = 1;
 			new zone[MAX_ZONE_NAME];
 			Get3DZone(FamilyCD[cap][f_PointChiemDong][0],  FamilyCD[cap][f_PointChiemDong][1],  FamilyCD[cap][f_PointChiemDong][2], zone, sizeof(zone));
+			GangZoneFlashForAll(FamilyCD[cap][FamilyGangzone], COLOR_RED);
 			foreach(new iz: Player)
 			{
 				if(PlayerInfo[iz][pFMember] != INVALID_FAMILY_ID)
@@ -945,7 +961,10 @@ stock AutoLockChiemDong()
 	ChiemDong_Lock = true;
 	for(new cap = 0; cap < MAX_CAPTURE; cap++) {
 		if(FamilyCD[cap][f_PointChiemDong][0] != 0.0)
+		{
 			FamilyCD[cap][f_CaptureActivity] = 0;
+			GangZoneStopFlashForAll(FamilyCD[cap][FamilyGangzone]);
+		}
 	}
 	foreach(new iz: Player)
 	{
@@ -955,6 +974,7 @@ stock AutoLockChiemDong()
 			SendClientMessage(iz, -1, "{FFFFFF}-------------------------- {AA3333}[CAPTURE GANG - CLOSED]{FFFFFF} ---------------------------");
 			SendClientMessage(iz, -1, "[CHIEM DONG] Cac dia ban da dong lai theo khung gio quy dinh chiem dong cua may chu.");
 			SendClientMessage(iz, -1, "");
+			HideGangZone(iz);
 		}
 	}
 	return 1;

@@ -898,6 +898,7 @@ enum pInfo
 	pLawSkill,
 	pMechSkill,
 	pTruckSkill,
+	pPizzaSkill,
 	pWantedLevel,
 	pPot,
 	pCrack,
