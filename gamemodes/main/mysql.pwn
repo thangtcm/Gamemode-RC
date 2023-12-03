@@ -8542,6 +8542,7 @@ public OnPlayerLoad(playerid)
 	SetPlayerNameInServerQuery(playerid, rdName);
 	Damage_ResetDamages(playerid);
 	SetPlayerFarmer(playerid);
+	ShowGangZone(playerid);
 	return 1;
 }
 

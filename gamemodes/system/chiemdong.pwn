@@ -241,7 +241,13 @@ hook OnPlayerEnterCheckpoint(playerid)
 			if(GetPVarInt(playerid, "AwardTypeCD") == 1)
 			{
 				//add them o day
-				SendClientMessage(playerid, COLOR_LIGHTBLUE, "> Test nhan phan thuong type weapon");
+				Inventory_Add(playerid, "AK47");
+				Inventory_Add(playerid, "Vat_lieu", 100);
+				Inventory_Add(playerid, "Go", 100);
+				Inventory_Add(playerid, "item_iron", 100); // sat
+				SendNewFamilyMessage(playerid, -1, "-------------------------------- {FFFF00}[AWARD CAPTURE GANG]{FFFFFF} -------------------------------------");
+				SendNewFamilyMessage(playerid, COLOR_YELLOW, "> Ban da nhan thuong cho FAM/Gang thanh cong (Type Weapon) nhan nhung phan qua sau :");
+				SendNewFamilyMessage(playerid, COLOR_YELLOW, "+ Weapon : AK47, 100 vat lieu, 200 go, 200 sat");
 				DeletePVar(playerid, "AwardTypeCD");
 				DeletePVar(playerid, "CD_pX");
 				DeletePVar(playerid, "CD_pY");
@@ -253,7 +259,13 @@ hook OnPlayerEnterCheckpoint(playerid)
 			if(GetPVarInt(playerid, "AwardTypeCD") == 2)
 			{
 				//add them o day
-				SendClientMessage(playerid, COLOR_LIGHTBLUE, "> Test nhan phan thuong type drug");
+				Inventory_Add(playerid, "chh_1", 100);
+				Inventory_Add(playerid, "chh_1", 50);
+				Inventory_Add(playerid, "Ecstacy", 20); // sat
+				Inventory_Add(playerid, "LSD", 10); // sat
+				SendNewFamilyMessage(playerid, -1, "-------------------------------- {FFFF00}[AWARD CAPTURE GANG]{FFFFFF} -------------------------------------");
+				SendNewFamilyMessage(playerid, COLOR_YELLOW, "> Ban da nhan thuong cho FAM/Gang thanh cong (Type Drug) nhan nhung phan qua sau :");
+				SendNewFamilyMessage(playerid, COLOR_YELLOW, "+ 100 chat hoa hoc 1, 50 chat hoa hoc 2, 20 Ecstasy , 10 LSD");
 				DeletePVar(playerid, "AwardTypeCD");
 				DeletePVar(playerid, "CD_pX");
 				DeletePVar(playerid, "CD_pY");
@@ -265,7 +277,12 @@ hook OnPlayerEnterCheckpoint(playerid)
 			if(GetPVarInt(playerid, "AwardTypeCD") == 3)
 			{
 				//add them o day
-				SendClientMessage(playerid, COLOR_LIGHTBLUE, "> Test nhan phan thuong type money");
+				
+				new money = Random(100000, 300000);
+				SendNewFamilyMessage(playerid, -1, "-------------------------------- {FFFF00}[AWARD CAPTURE GANG]{FFFFFF} -------------------------------------");
+				SendNewFamilyMessage(playerid, COLOR_YELLOW, "> Ban da nhan thuong cho FAM/Gang thanh cong (Type Dirty Money) nhan nhung phan qua sau :");
+				format(string, sizeof(string) "+ %s$ tien ban (Them vao tui do)", number_format(money));
+				SendNewFamilyMessage(playerid, COLOR_YELLOW, string);
 				DeletePVar(playerid, "AwardTypeCD");
 				DeletePVar(playerid, "CD_pX");
 				DeletePVar(playerid, "CD_pY");
@@ -393,7 +410,7 @@ stock pointFamilyCD(playerid) {
 
 stock ShowGangZone(playerid) 
 {
-    if(PlayerInfo[playerid][pFMember] != INVALID_FAMILY_ID) {
+    if(PlayerInfo[playerid][pFMember] != INVALID_FAMILY_ID && ChiemDong_Lock == false) {
         for(new fam = 0; fam < MAX_CAPTURE; fam++) 
             GangZoneShowForPlayer(playerid, FamilyCD[fam][FamilyGangzone], COLOR_YELLOW);
     }
@@ -874,7 +891,7 @@ CMD:chiemdong(playerid, params[])
 			SendClientMessage(i, -1, "");
 			SendClientMessage(i, -1, "-------------------------------- {FFFF00}[CAPTURE GANG]{FFFFFF} -------------------------------------");
 	        new stringz[5000];
-			format(stringz, sizeof(stringz), "{FFFF00}%s{FFFFFF} thuoc {f0e68c}(F%d) %s{FFFFFF} dang co gang de chiem dong khu vuc %s thuoc type (%s) ", GetPlayerNameEx(playerid),  PlayerInfo[playerid][pFMember], FamilyInfo[ PlayerInfo[playerid][pFMember]][FamilyName], zone, TPointEdit[typecap-1][TPoint_Name]);
+			format(stringz, sizeof(stringz), "{FFFF00}%s{FFFFFF} thuoc {f0e68c}(F%d) %s{FFFFFF} dang co gang de chiem dong khu vuc %s ", GetPlayerNameEx(playerid),  PlayerInfo[playerid][pFMember], FamilyInfo[ PlayerInfo[playerid][pFMember]][FamilyName], zone);
 			SendClientMessage(i, -1, stringz);
 			SendClientMessage(i, -1, "-------------------------------------------------------------------------------------------------");
 			format(stringz, sizeof(stringz), "{f4a460}>{FFFFFF} Khu vuc nay se thuoc so huu cua ho trong vong %d giay {f4a460}<{FFFFFF}", ChiemDongTime);
@@ -889,7 +906,7 @@ CMD:chiemdong(playerid, params[])
     return 1;
 }
 CMD:showzone(playerid) {
-    ShowGangZone(playerid);
+	ShowGangZone(playerid);
     return 1;
 }
 CMD:hidezone(playerid)
@@ -1015,7 +1032,7 @@ CMD:khoachiemdong(playerid, params[])
 }
 CMD:glayhang(playerid)
 {
-	if(PlayerInfo[playerid][pAwardTypeCD] != 0)
+	if(PlayerInfo[playerid][pAwardTypeCD] != 0 && GetPVarInt(playerid, "AwardTypeCD") == 0)
 	{
 		switch(random(4))
 		{
