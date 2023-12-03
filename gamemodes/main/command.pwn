@@ -6106,6 +6106,10 @@ CMD:badge(playerid, params[])
 			{
 				Medics -= 1;
 			}
+			if(IsACop(playerid))
+			{
+				Cops -= 1;
+			}
 		}
 		else
 		{
@@ -6116,6 +6120,10 @@ CMD:badge(playerid, params[])
 			if(IsAMedic(playerid))
 			{
 				Medics += 1;
+			}
+			if(IsACop(playerid))
+			{
+				Cops += 1;
 			}
 		}
 	}

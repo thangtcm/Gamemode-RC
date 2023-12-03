@@ -115,6 +115,8 @@
 #include "./anticheat/carcheat.pwn"
 // #include "./anticheat/fakedamager.pwn"
 
+#include "./system/rob/bank.pwn"
+
 #include "./include/onplayerfishnishloading.pwn"
 
 main() {

@@ -81,6 +81,7 @@ new const g_facInventory[][] = {
 
 new const g_aInventoryItems[][e_InventoryItems] =
 {
+	{"Dirty", "img dirty"},
 	{"Pickaxe", "item_Pickaxe"},
 	{"Dien thoai", "item_Phone"},
 	{"GPS", "item_GPS"},

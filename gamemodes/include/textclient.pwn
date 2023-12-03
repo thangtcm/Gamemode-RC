@@ -24,7 +24,7 @@ stock SendClientTextDraw(playerid, text[],time=0)
     if(GetPVarInt(playerid, "IsShowText") == 1) KillTimer(SendClientText[playerid]);
     PlayerTextDrawSetString(playerid,  ClientText[playerid][0], text);
     PlayerTextDrawShow(playerid, ClientText[playerid][0]);
-    SendClientText[playerid] = SetTimerEx("ClosedClientText", 3000, 0, "d", playerid);
+    SendClientText[playerid] = SetTimerEx("ClosedClientText", time*1000, 0, "d", playerid);
     SetPVarInt(playerid, "IsShowText", 1);
     return 1;
 }

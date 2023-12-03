@@ -1890,6 +1890,8 @@ new backlift;
 new sidelift;
 new backhatch;
 
+new Cops;
+
 new Carrier[17];
 new CarrierS[6];
 new CrateLoad;

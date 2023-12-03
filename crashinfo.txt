@@ -730,3 +730,102 @@ MSVCP120.dll	A: 0x6DCF0000 - 0x6DD61000	(C:\Windows\SYSTEM32\MSVCP120.dll)
 MSVCR120.dll	A: 0x6D9E0000 - 0x6DACE000	(C:\Windows\SYSTEM32\MSVCR120.dll)
 GPS.DLL	A: 0x6DE70000 - 0x6DE86000	(C:\Users\Admin\Desktop\Gamemode-RC\plugins\GPS.DLL)
 pawnraknet.DLL	A: 0x6D930000 - 0x6D9AB000	(C:\Users\Admin\Desktop\Gamemode-RC\plugins\pawnraknet.DLL)
+
+--------------------------
+SA-MP Server: 0.3.DL-R1
+
+Exception At Address: 0x0045A67C Module: (samp-server.exe)
+
+Registers:
+EAX: 0x0688EF70	EBX: 0x04ED6A24	ECX: 0x00000000	EDX: 0x6AC384D8
+ESI: 0x0688EF70	EDI: 0x0019FB2C	EBP: 0x00000000	ESP: 0x0019FB88
+EFLAGS: 0x00210206
+
+Stack:
++0000: 0x6C6BC385   0x04E4F8E7   0x0000003F   0x0019FC14
++0010: 0x00000000   0x00000009   0x06790048   0x0100007F
++0020: 0x00000002   0x005B0000   0x00000325   0x0000029E
++0030: 0x00493C8E   0x004B696C   0x0019FC14   0x00000001
++0040: 0x00000009   0x00000002   0x0100007F   0x0049DF97
++0050: 0x00000000   0x00000000   0x00000003   0x00000003
++0060: 0x00000003   0x00636770   0x007F0003   0xDF970100
++0070: 0x00465B5F   0x004B696C   0x0019FC14   0x00000000
++0080: 0x00000002   0x06CDC548   0x00000003   0x00000020
++0090: 0x00000800   0x00000000   0x0019FC25   0x00000301
++00A0: 0x00000000   0x00000020   0x000F0002   0x0019FCD0
++00B0: 0x05AF9024   0x0019FCC8   0x7752626F   0x00000029
++00C0: 0x00000020   0x6AC44808   0x005B0000   0x00000000
++00D0: 0x00000000   0x005B00C0   0x60000363   0x000002A0
++00E0: 0x059F2010   0x00000108   0x000207D0   0x77567924
++00F0: 0x005DC088   0x005B0000   0x05AF9FB0   0x04F6CB00
++0100: 0x05AF9010   0x00000000   0x00000000   0x00020000
++0110: 0x00000064   0x00000000   0x005B9778   0x77567924
++0120: 0x06191118   0x005B0000   0x0658DC40   0x77567924
++0130: 0x0658DD18   0x005B0000   0x0658DD18   0x00021C10
+
+--------------------------
+
+Loaded Modules:
+samp-server.exe	A: 0x00400000 - 0x0051F000	(C:\Users\Admin\Desktop\Gamemode-RC\samp-server.exe)
+ntdll.dll	A: 0x774E0000 - 0x77683000	(C:\Windows\SYSTEM32\ntdll.dll)
+KERNEL32.DLL	A: 0x75540000 - 0x75630000	(C:\Windows\System32\KERNEL32.DLL)
+KERNELBASE.dll	A: 0x76650000 - 0x76864000	(C:\Windows\System32\KERNELBASE.dll)
+SHELL32.dll	A: 0x75C80000 - 0x76235000	(C:\Windows\System32\SHELL32.dll)
+msvcp_win.dll	A: 0x76A90000 - 0x76B0B000	(C:\Windows\System32\msvcp_win.dll)
+ucrtbase.dll	A: 0x77240000 - 0x77360000	(C:\Windows\System32\ucrtbase.dll)
+USER32.dll	A: 0x76250000 - 0x763EB000	(C:\Windows\System32\USER32.dll)
+win32u.dll	A: 0x773C0000 - 0x773D8000	(C:\Windows\System32\win32u.dll)
+GDI32.dll	A: 0x76910000 - 0x76933000	(C:\Windows\System32\GDI32.dll)
+gdi32full.dll	A: 0x75450000 - 0x7552C000	(C:\Windows\System32\gdi32full.dll)
+WSOCK32.dll	A: 0x73490000 - 0x73498000	(C:\Windows\SYSTEM32\WSOCK32.dll)
+WINMM.dll	A: 0x73FC0000 - 0x73FE8000	(C:\Windows\SYSTEM32\WINMM.dll)
+msvcrt.dll	A: 0x76940000 - 0x769FF000	(C:\Windows\System32\msvcrt.dll)
+ws2_32.DLL	A: 0x76B10000 - 0x76B73000	(C:\Windows\System32\ws2_32.DLL)
+RPCRT4.dll	A: 0x75B50000 - 0x75C0E000	(C:\Windows\System32\RPCRT4.dll)
+IMM32.DLL	A: 0x76A60000 - 0x76A85000	(C:\Windows\System32\IMM32.DLL)
+mysql.DLL	A: 0x6BEA0000 - 0x6BF74000	(C:\Users\Admin\Desktop\Gamemode-RC\plugins\mysql.DLL)
+MSVCR110.dll	A: 0x6BDC0000 - 0x6BE96000	(C:\Users\Admin\Desktop\Gamemode-RC\MSVCR110.dll)
+LIBMYSQL.dll	A: 0x10000000 - 0x1023E000	(C:\Users\Admin\Desktop\Gamemode-RC\LIBMYSQL.dll)
+MSVCP110.dll	A: 0x6ADF0000 - 0x6AE75000	(C:\Windows\SYSTEM32\MSVCP110.dll)
+ADVAPI32.dll	A: 0x76890000 - 0x7690B000	(C:\Windows\System32\ADVAPI32.dll)
+sechost.dll	A: 0x75AD0000 - 0x75B46000	(C:\Windows\System32\sechost.dll)
+napinsp.dll	A: 0x733D0000 - 0x733E1000	(C:\Windows\system32\napinsp.dll)
+pnrpnsp.dll	A: 0x733B0000 - 0x733C6000	(C:\Windows\system32\pnrpnsp.dll)
+wshbth.dll	A: 0x733A0000 - 0x733B0000	(C:\Windows\system32\wshbth.dll)
+NLAapi.dll	A: 0x73380000 - 0x73396000	(C:\Windows\system32\NLAapi.dll)
+IPHLPAPI.DLL	A: 0x74820000 - 0x74852000	(C:\Windows\SYSTEM32\IPHLPAPI.DLL)
+mswsock.dll	A: 0x74400000 - 0x74452000	(C:\Windows\System32\mswsock.dll)
+DNSAPI.dll	A: 0x74320000 - 0x743B1000	(C:\Windows\SYSTEM32\DNSAPI.dll)
+NSI.dll	A: 0x76E80000 - 0x76E87000	(C:\Windows\System32\NSI.dll)
+winrnr.dll	A: 0x73370000 - 0x7337E000	(C:\Windows\System32\winrnr.dll)
+rasadhlp.dll	A: 0x74310000 - 0x74318000	(C:\Windows\System32\rasadhlp.dll)
+sscanf.DLL	A: 0x02780000 - 0x0278D000	(C:\Users\Admin\Desktop\Gamemode-RC\plugins\sscanf.DLL)
+MSVCR100.dll	A: 0x6AD30000 - 0x6ADEF000	(C:\Windows\SYSTEM32\MSVCR100.dll)
+whirlpool.DLL	A: 0x029C0000 - 0x029CC000	(C:\Users\Admin\Desktop\Gamemode-RC\plugins\whirlpool.DLL)
+MSVCR80.dll	A: 0x733F0000 - 0x7348B000	(C:\Windows\WinSxS\x86_microsoft.vc80.crt_1fc8b3b9a1e18e3b_8.0.50727.9672_none_d08f9da24428a513\MSVCR80.dll)
+MSVCP100.dll	A: 0x6ACC0000 - 0x6AD29000	(C:\Users\Admin\Desktop\Gamemode-RC\MSVCP100.dll)
+sampvoice.DLL	A: 0x6BD90000 - 0x6BDBB000	(C:\Users\Admin\Desktop\Gamemode-RC\plugins\sampvoice.DLL)
+MSVCP140.dll	A: 0x6AC50000 - 0x6ACBD000	(C:\Windows\SYSTEM32\MSVCP140.dll)
+VCRUNTIME140.dll	A: 0x74D50000 - 0x74D65000	(C:\Windows\SYSTEM32\VCRUNTIME140.dll)
+kernel.appcore.dll	A: 0x748B0000 - 0x748BF000	(C:\Windows\SYSTEM32\kernel.appcore.dll)
+samp-compat.dll	A: 0x74B80000 - 0x74B8A000	(C:\Users\Admin\Desktop\Gamemode-RC\plugins\samp-compat.dll)
+streamer.DLL	A: 0x6ABE0000 - 0x6AC4D000	(C:\Users\Admin\Desktop\Gamemode-RC\plugins\streamer.DLL)
+server.DLL	A: 0x635C0000 - 0x63871000	(C:\Users\Admin\Desktop\Gamemode-RC\plugins\server.DLL)
+bcrypt.dll	A: 0x76870000 - 0x76889000	(C:\Windows\System32\bcrypt.dll)
+CRYPT32.dll	A: 0x76F70000 - 0x7706A000	(C:\Windows\System32\CRYPT32.dll)
+CRYPTBASE.DLL	A: 0x74300000 - 0x7430A000	(C:\Windows\SYSTEM32\CRYPTBASE.DLL)
+bcryptPrimitives.dll	A: 0x77360000 - 0x773BF000	(C:\Windows\System32\bcryptPrimitives.dll)
+MSASN1.dll	A: 0x73F30000 - 0x73F3E000	(C:\Windows\SYSTEM32\MSASN1.dll)
+TDE.DLL	A: 0x718E0000 - 0x718FB000	(C:\Users\Admin\Desktop\Gamemode-RC\plugins\TDE.DLL)
+MSVCR100D.dll	A: 0x6AA60000 - 0x6ABD2000	(C:\Users\Admin\Desktop\Gamemode-RC\MSVCR100D.dll)
+YSF_DL.DLL	A: 0x04E40000 - 0x04EEA000	(C:\Users\Admin\Desktop\Gamemode-RC\plugins\YSF_DL.DLL)
+combase.dll	A: 0x76C00000 - 0x76E80000	(C:\Windows\System32\combase.dll)
+OLEAUT32.dll	A: 0x753B0000 - 0x75446000	(C:\Windows\System32\OLEAUT32.dll)
+discord-connector.DLL	A: 0x615F0000 - 0x61ABD000	(C:\Users\Admin\Desktop\Gamemode-RC\plugins\discord-connector.DLL)
+log-core2.dll	A: 0x6AA00000 - 0x6AA55000	(C:\Users\Admin\Desktop\Gamemode-RC\log-core2.dll)
+CRYPTSP.dll	A: 0x748E0000 - 0x748F3000	(C:\Windows\SYSTEM32\CRYPTSP.dll)
+bcrypt-samp.DLL	A: 0x63550000 - 0x635B7000	(C:\Users\Admin\Desktop\Gamemode-RC\plugins\bcrypt-samp.DLL)
+MSVCP120.dll	A: 0x634D0000 - 0x63541000	(C:\Windows\SYSTEM32\MSVCP120.dll)
+MSVCR120.dll	A: 0x61500000 - 0x615EE000	(C:\Windows\SYSTEM32\MSVCR120.dll)
+GPS.DLL	A: 0x6A9E0000 - 0x6A9F6000	(C:\Users\Admin\Desktop\Gamemode-RC\plugins\GPS.DLL)
+pawnraknet.DLL	A: 0x61480000 - 0x614FB000	(C:\Users\Admin\Desktop\Gamemode-RC\plugins\pawnraknet.DLL)
