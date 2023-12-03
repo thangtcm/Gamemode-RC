@@ -132,7 +132,7 @@ Dialog:trashmandialog(playerid, response, listitem, inputtext[])
                 TMGInfo[TMInfo[playerid][GroupIDTM]][TMVehicleObj] = CreateObject(19848, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0);
 	            TMGInfo[TMInfo[playerid][GroupIDTM]][TMVehicle] = CreateVehicle(408, 2202.8777,-2047.4569,15.2173 , 45.5 , 0, 0, 1000, 0);
 	            TMGInfo[TMInfo[playerid][GroupIDTM]][TMDangLamViec] = 1;
-	            AttachObjectToVehicle(TMGInfo[TMInfo[playerid][GroupIDTM]][TMVehicleObj], TMGInfo[TMInfo[playerid][GroupIDTM]][TMVehicle], -1.5, 0.0, -1.1, 0.0, 0.0, 0.0);
+	            AttachObjectToVehicle(TMGInfo[TMInfo[playerid][GroupIDTM]][TMVehicleObj], TMGInfo[TMInfo[playerid][GroupIDTM]][TMVehicle], -1.5, 0.0, -1.0, 0.0, 0.0, 0.0);
 	            ActPutPlayerInVehicle(playerid, TMGInfo[TMInfo[playerid][GroupIDTM]][TMVehicle] ,0);
 	            foreach(new i: Player)
 	            {
