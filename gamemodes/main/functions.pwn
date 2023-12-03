@@ -2772,6 +2772,7 @@ public InitiateGamemode()
 	SetTimer("MailDeliveryTimer", 60000, 1);
     SetTimer("AntiSpeed", 3000, true);
     LoadDrugLab();
+	LoadCapture();
 	SkinList = LoadModelSelectionMenu("SkinList.txt");
 	//Island for crate system
     MAXCRATES = 10; // Sets Default Max Crates
@@ -3272,7 +3273,9 @@ public DisableVehicleAlarm(vehicleid)
     SetVehicleParamsEx(vehicleid,engine,lights,VEHICLE_PARAMS_OFF,doors,bonnet,boot,objective);
 	return 1;
 }
-
+stock Float:GetDistanceBetweenPoints(Float:x1, Float:y1, Float:z1, Float:x2, Float:y2, Float:z2) {
+    return floatsqroot(floatpower(x1 - x2, 2) + floatpower(y1 - y2, 2) + floatpower(z1 - z2, 2));
+}
 forward ReleasePlayer(playerid);
 public ReleasePlayer(playerid)
 {
@@ -5400,7 +5403,11 @@ public OnPlayerPickUpDynamicPickup(playerid, pickupid)
 				// TODO: This should be more specific to the vehicle
 				// TODO: Bike tires should be checked differently
 
-				
+				if(GetDistanceBetweenPoints(pos[0], pos[1], pos[2], SpikeStrips[x][sX], SpikeStrips[x][sY], SpikeStrips[x][sZ]) <= 4)
+				{
+						// Pop Front
+					SetVehicleTireState(vehicleid, 0, 0, 0, 0);
+				}
 			}
 		}
 	}
@@ -6544,7 +6551,10 @@ stock IsRefuelableVehicle(vehicleid)
 	}
 	return 1;
 }
-
+encode_tires(tire1, tire2, tire3, tire4)
+{
+	return tire1 | (tire2 << 1) | (tire3 << 2) | (tire4 << 3);
+}
 stock SetVehicleTireState(vehicleid, tire1, tire2, tire3, tire4)
 {
     new panels, doors, Lights, tires;
@@ -10817,7 +10827,7 @@ stock HospitalSpawn(playerid)
 {
 	PlayerInfo[playerid][pDoiBung] = 100;
 	PlayerInfo[playerid][pKhatNuoc] = 100;
-	ResetDamages(playerid);
+	// ResetDamages(playerid);
 	if(GetPVarInt(playerid, "MedicBill") == 1 && PlayerInfo[playerid][pJailTime] == 0)
 	{
         switch(PlayerInfo[playerid][pHospital])
@@ -11239,7 +11249,7 @@ stock HospitalSpawn(playerid)
 	            PlayerInfodl[playerid][dlish] = 50;
 	            SetPlayerHealth(playerid, 50);
 		        PlayerInfo[playerid][pHydration] = 100;
-		        ResetDamages(playerid);
+		        // ResetDamages(playerid);
 			}
 	    }
 	}
@@ -13399,6 +13409,19 @@ stock GivePlayerStoreItem(playerid, type, business, item, price)
 			}
 			else return SendClientMessageEx(playerid, COLOR_WHITE, "Ban da so huu Mat na");
 		}
+		case ITEM_CANCAU:
+		{
+			if(!Inventory_HasItem(playerid, "Can cau")) {
+				if(!Inventory_Add(playerid, "Can cau", .timer = 60*24*3)) return 1;
+				SendClientMessageEx(playerid, COLOR_WHITE, "Ban da mua Can cau (Do ben: 3 ngay ) thanh cong");
+			}
+			else return SendClientMessageEx(playerid, COLOR_WHITE, "Ban da so huu Can cau");
+		}
+		case ITEM_MOICAU:
+		{
+			if(!Inventory_Add(playerid, "Moi cau", .timer = 60*24)) return 1;
+			SendClientMessageEx(playerid, COLOR_WHITE, "Ban da mua Moi cau (Do ben: 1 ngay) thanh cong");
+		}
 		case ITEM_BASEBALL:{
 			GivePlayerValidWeapon(playerid,5,2);
 			SendClientMessageEx(playerid, COLOR_WHITE, "Ban da mua gay bong chay");
@@ -13695,6 +13718,14 @@ public SyncTime()
 	tmphour = shifthour;
 	if ((tmphour > ghour) || (tmphour == 0 && ghour == 23))
 	{
+		if(tmphour == 20)
+		{
+			AutoOpenChiemDong();
+		}	
+		if(tmphour == 22)
+		{
+		   AutoLockChiemDong();
+		}
 	    SavePlants();
 		for(new iGroupID; iGroupID < MAX_GROUPS; iGroupID++)
 		{

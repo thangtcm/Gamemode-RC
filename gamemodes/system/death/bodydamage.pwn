@@ -1,3 +1,15 @@
+/*
+    ,============================================,
+    |     Body Damage (He thong sat thuong)     |
+    |               29.11.2023                  |
+    |         Script: Nicks / Nickzky           |
+    *============================================*
+
+    Contact :
+    > FB : https://www.facebook.com/Nick.2208/
+    > Discord : nicks6723
+*/
+
 /* -------------------------------- INCLUDE -------------------------------- */
 #include <YSI_Coding\y_hooks>
 
@@ -8,12 +20,12 @@
 enum
 {
     BODY_PART_TORSO = 3,
-    BODY_PART_GROIN,
-    BODY_PART_LEFT_ARM,
-    BODY_PART_RIGHT_ARM,
-    BODY_PART_LEFT_LEG,
-    BODY_PART_RIGHT_LEG,
-    BODY_PART_HEAD
+	BODY_PART_GROIN = 4,
+	BODY_PART_RIGHT_ARM = 6,
+	BODY_PART_LEFT_ARM = 5,
+	BODY_PART_RIGHT_LEG = 8,
+	BODY_PART_LEFT_LEG = 7,
+	BODY_PART_HEAD = 9
 }
 enum e_dmg
 {
@@ -27,9 +39,10 @@ const
 
 new DamageInfo[MAX_PLAYERS][MAX_DAMAGES][e_dmg];
 /* -------------------------------- FUNCTION -------------------------------- */
-Damage_GetBodypart(bodypart)
+stock Damage_GetBodypart(bodypart)
 {
     new bodyname[20];
+
     switch(bodypart)
     {
         case BODY_PART_TORSO: bodyname = "Nguc";
@@ -42,7 +55,7 @@ Damage_GetBodypart(bodypart)
     }
     return bodyname;
 }
-Damage_ResetDamages(playerid)
+stock Damage_ResetDamages(playerid)
 {
     for(new i = 0; i < MAX_DAMAGES; i++)
     {
@@ -57,6 +70,9 @@ Damage_ResetDamages(playerid)
 /* -------------------------------- CALLBACKS -------------------------------- */
 hook OnPlayerGiveDamage(playerid, damagedid, Float:amount, weaponid, bodypart)
 {
+    // new stringz[50];
+    // format(stringz, sizeof(stringz), "body part = %d", bodypart);
+    // SendClientMessage(playerid, -1, stringz);
     if(gPlayerLogged{damagedid})
     {
         new
@@ -90,4 +106,5 @@ hook OnPlayerGiveDamage(playerid, damagedid, Float:amount, weaponid, bodypart)
         format(string, sizeof(string), "[RC-DMG] {33AA33}+%.2f HP{FFFFFF} {E28221}[%s]{FFFFFF} bang {FFFF00}%s{FFFFFF} vao {33CCFF}%s{FFFFFF} {708090}(%.1fm)", DamageInfo[damagedid][i][dmg_Amount], GetPlayerNameEx(damagedid), GetWeaponNameEx(weaponid), Damage_GetBodypart(bodypart), Distance);
         SendClientMessage(playerid, -1, string);// nguoi ban
     }
+    return 1;
 }

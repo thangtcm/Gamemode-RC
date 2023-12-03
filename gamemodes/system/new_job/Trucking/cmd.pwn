@@ -98,7 +98,7 @@ CMD:truckergo(playerid, params[])
     new string[560], ProductId;
     if(!strcmp(type, "car", true))
     {
-        if(IsPlayerInRangeOfPoint(playerid, 10.0, 90.3602,-303.6159,1.5823))
+        if(IsPlayerInRangeOfPoint(playerid, 10.0, 2431.9810,-2118.9050,13.5469))
         {
             if(!IsValidCarTrucker(playerid)) return SendErrorMessage(playerid, "Ban can phai lai chiec xe duoc phep van chuyen de dang ky!!");
             new vehicleid = GetPlayerVehicleID(playerid);
@@ -106,7 +106,7 @@ CMD:truckergo(playerid, params[])
         }
         else 
         { 
-            SetPlayerCheckPointEx(playerid,  90.3602, -303.6159, 1.5823, 7.0);
+            SetPlayerCheckPointEx(playerid,  2431.9810,-2118.9050,13.5469, 5);
             return SendErrorMessage(playerid, "Ban can den vi tri tren cham do de dang ky xe van chuyen hang hoa.");
         }
     }

@@ -574,7 +574,21 @@ enum fInfo
 	gt_Bold,
 	gt_FontColor,
 	gt_BackColor,
-	gt_SPUsed
+	gt_SPUsed,
+	FamilyCapture,
+	Float: f_PointChiemDong[3],
+	f_chiemdong,
+	f_PlayerID[32],
+	f_FamilyID,
+	f_HealthCD,
+	f_TimeResetCD,
+	f_captureObject,
+    Text3D: f_captureLabel,
+	// gang-zone family
+	FamilyGangzone,
+	Float: f_Max[2],
+	Float: f_Min[2],
+	f_CaptureType
 };
 
 enum fPoint
@@ -749,6 +763,9 @@ new Chatting[MAX_PLAYERS];
 new TruckerVehicles[20];
 enum pInfo
 {
+	//chiem dong
+	pAwardTypeCD,
+	//
 	pCraftWD,
     pCraftWDTime,
 	pChatStyle,
@@ -881,6 +898,7 @@ enum pInfo
 	pLawSkill,
 	pMechSkill,
 	pTruckSkill,
+	pPizzaSkill,
 	pWantedLevel,
 	pPot,
 	pCrack,
@@ -1639,6 +1657,8 @@ new StoreItemCost[][StoreItemCostEnum] =
 	{1},
 	{1},
 	{1},
+	{1},
+	{1},
 	{1}
 };
 
@@ -1664,7 +1684,9 @@ new const StoreItems[][] =
 	"Khoa bao dong",
 	"Mat na",
 	"Gay bong chay",
-	"May Cua"
+	"May Cua",
+	"Moi cau",
+	"Can cau"
 };
 
 new TruckerDropoffs[][CargoArrayData] =
