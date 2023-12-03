@@ -8,6 +8,10 @@ hook OnGameModeInit()
 {
 	CreateObject(2332, 2305.73047, -0.39158, 26.16562,   0.00000, 0.00000, 90);
 	CreateDynamic3DTextLabel("{FF0000}Su dung '/robbank' de cuop", -1, 2305.73047, -0.39158, 26.16562+0.6,12.0);
+
+	CreateDynamic3DTextLabel("{FF0000}Dia diem rua tien 1", -1,1207.8416,144.8207,20.4785+0.6,12.0);
+	CreateDynamic3DTextLabel("{FF0000}Dia diem rua tien 2", -1,1493.1688,-666.8275,95.6013+0.6,12.0);
+	CreateDynamic3DTextLabel("{FF0000}Dia diem rua tien 3", -1,1891.7700,-1070.3519,23.9375+0.6,12.0);
 	return 1;
 }
 CMD:resetrobbank(playerid, params[])
@@ -27,6 +31,10 @@ CMD:robbank(playerid, params[])
 	if(Robbingbank != -1) return SendErrorMessage(playerid, "Ngan hang da bi cuop , ban khong the thuc hien !");
 	Robbingbank = playerid;
 	Robber_Timer = SetTimerEx("OnPlayerRobbing", 1000, 1, "i", playerid);
+
+	new rob_msg[1280];
+	format(rob_msg, sizeof(rob_msg), "{FF0000}[CANH BAO]{FFFFFF} %s dang cuop ngan hang !", GetPlayerNameEx(playerid));
+	SendGroupMessage(1, -1, rob_msg);
 	return 1;
 }
 
@@ -34,8 +42,12 @@ forward OnPlayerRobbing(playerid);
 public OnPlayerRobbing(playerid)
 {
 	if(IsPlayerInRangeOfPoint(playerid, 20.0, 2305.73047, -0.39158, 26.16562) && Robbingbank == playerid) {
-		// Inventory_Add(playerid, "Dirty", 1, 60*24*2);
-		SendClientMessage(playerid, -1, "Ban da cuop duoc 1 cuc tien");
+		Inventory_Add(playerid, "Dirty", 1, 60*24*2);
+		// SendClientMessage(playerid, -1, "Ban da cuop duoc 1 cuc tien");
+
+		new rob_msg[1280];
+		format(rob_msg, sizeof(rob_msg), "Ban da cuop %d cuc tien", Inventory_Count(playerid, "Dirty"));
+		SendClientTextDraw(playerid, rob_msg, 1);
 	}
 	else{
 		SendClientMessage(playerid, -1, "Ban da roi khoi khu vuc cuop tien , hanh dong se bi dung lai !");
