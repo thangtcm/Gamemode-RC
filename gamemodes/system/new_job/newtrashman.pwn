@@ -844,7 +844,7 @@ CMD:nhomcuatoi(playerid, params[]) {
 }
 CMD:trogiuptrashman(playerid, params[])
 {
-	SendClientMessage(playerid, COLOR_LIGHTRED, "[TRASHMAN HELP]{ffffff} /quanlynhom, /vutrac, /chapnhantm, /tuchoitm, /radioteam (/rd).");
+	SendClientMessage(playerid, COLOR_LIGHTRED, "[TRASHMAN HELP]{ffffff} /nhomcuatoi, /vutrac, /chapnhantm, /tuchoitm, /radioteam (/rd).");
 	return 1;
 }
 CMD:vutrac(playerid, params[])
