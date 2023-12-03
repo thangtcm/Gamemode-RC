@@ -18,13 +18,13 @@ stock GetJobFind(z) {
 stock _GetJobLevel(z) {
 	new jobnamez[80];
 	switch(z) {
-		case 0:	jobnamez = "{0BFF00}De{FFFFFF}";
-		case 1:	jobnamez = "{0BFF00}De{FFFFFF}";
-		case 2:	jobnamez = "{0BFF00}De{FFFFFF}";
-		case 3:	jobnamez = "{0BFF00}De{FFFFFF}";
-		case 4:	jobnamez = "{FFC800}Trung binh{FFFFFF}";
-		case 5:	jobnamez = "{FF0A00}Kho{FFFFFF}";
-		case 6:	jobnamez = "{FF0A00}Kho{FFFFFF}";
+		case 0:	jobnamez = "{74C36D}De{FFFFFF}";
+		case 1:	jobnamez = "{74C36D}De{FFFFFF}";
+		case 2:	jobnamez = "{74C36D}De{FFFFFF}";
+		case 3:	jobnamez = "{74C36D}De{FFFFFF}";
+		case 4:	jobnamez = "{C3AE6D}Trung binh{FFFFFF}";
+		case 5:	jobnamez = "{C36D6F}Kho{FFFFFF}";
+		case 6:	jobnamez = "{C36D6F}Kho{FFFFFF}";
 	}
 	return jobnamez;
 }  
@@ -140,7 +140,7 @@ hook OnDialogResponse(playerid, dialogid, response, listitem, inputtext[]) {
 			
 			if(listitem == 0)
 			{
-				Dialog_Show(playerid, GPSPosition, DIALOG_STYLE_LIST, "GPS SYSTEM", "Cong viec\nDia diem", "Lua chon", "Huy bo");
+				Dialog_Show(playerid, GPSPosition, DIALOG_STYLE_LIST, "GPS SYSTEM", "Tim duong\nCong viec", "Lua chon", "Huy bo");
 			}
 	
         }
