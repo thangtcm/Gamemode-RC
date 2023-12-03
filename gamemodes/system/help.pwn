@@ -68,7 +68,7 @@ hook OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 			if(listitem == 3) // Job
 			{
 				
-				ShowPlayerDialog(playerid, HELP_JOB, DIALOG_STYLE_LIST, "Help - Job", "Pizza\nMiner\nTrucker\nFarmer", ">>", "<<");
+				ShowPlayerDialog(playerid, HELP_JOB, DIALOG_STYLE_LIST, "Help - Job", "Pizza\nMiner\nTrucker\nFarmer\nChat go\nTrashman", ">>", "<<");
 				return 1;
 			}
 		}
@@ -137,6 +137,34 @@ hook OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 				format(hstr, sizeof(hstr), "%s\n{007BD0}Buoc 8:{B4B5B7} Khi Bo bi doi, su dung /feed de cho an ((Mat 1 lua)) và cho uong nuoc (Mat 5$).", hstr);
 				format(hstr, sizeof(hstr), "%s\n{007BD0}Buoc 9:{B4B5B7} Khi Bo tren 100KG hoac nang nhat 500KG, /feed de thu hoach lay thit.", hstr);
 				format(hstr, sizeof(hstr), "%s\n{007BD0}Thit, lua va Duoc lieu co the ban cho NPC trong nong trai hoach doi ra Bot mi va ban cho Pizza Stacked..", hstr);
+				ShowPlayerDialog(playerid, HELP_MAIN, DIALOG_STYLE_MSGBOX, "Help - Job", hstr, ">>", "<<");
+				return 1;
+			}
+			if(listitem == 4) // chat go
+			{
+				new hstr[5000];
+				format(hstr, sizeof(hstr), "{007BD0}Tro Giup Chat Go:{B4B5B7}\n", hstr);
+				format(hstr, sizeof(hstr), "%sDay la cach lam cong viec Chat go:\n", hstr);
+				format(hstr, sizeof(hstr), "%s\n{007BD0}Buoc 1:{B4B5B7} Su dung [/gps] -> Cong viec -> Chat go, roi di den diem mau do tren ban do.", hstr);
+				format(hstr, sizeof(hstr), "%s\n{007BD0}Buoc 2:{B4B5B7} Den gan NPC su dung /wood de nhan viec.", hstr);
+				format(hstr, sizeof(hstr), "%s\n{007BD0}Buoc 3:{B4B5B7} Sua khi nhan viec, neu ban khong co CUA hay mua o 24/7 - Den gan cay su dung [Y] de chat.", hstr);
+				format(hstr, sizeof(hstr), "%s\n{007BD0}Buoc 4:{B4B5B7} Ban co the ban go o NPC thu mua khoang san.", hstr);		    	
+	
+				ShowPlayerDialog(playerid, HELP_MAIN, DIALOG_STYLE_MSGBOX, "Help - Job", hstr, ">>", "<<");
+				return 1;
+			}
+			if(listitem == 5) // trashman
+			{
+				new hstr[5000];
+				format(hstr, sizeof(hstr), "{007BD0}Tro Giup Trashman:{B4B5B7}\n", hstr);
+				format(hstr, sizeof(hstr), "%sDay la cach lam cong viec Trashman:\n", hstr);
+				format(hstr, sizeof(hstr), "%s\n{007BD0}Buoc 1:{B4B5B7} Su dung [/gps] -> Cong viec -> Trashman, roi di den diem mau do tren ban do.", hstr);
+				format(hstr, sizeof(hstr), "%s\n{007BD0}Buoc 2:{B4B5B7} Tuong tac voi NPC de lam viec.", hstr);
+				format(hstr, sizeof(hstr), "%s\n{007BD0}Buoc 3:{B4B5B7} Tao GROUP/TEAM (toi da 4 thanh vien) de lam viec. (/createteam, /radioteam)", hstr);
+				format(hstr, sizeof(hstr), "%s\n{007BD0}Buoc 4:{B4B5B7} Sau khi hoan thanh, hay thue va di tim thung rac.", hstr);
+				format(hstr, sizeof(hstr), "%s\n{007BD0}Buoc 5:{B4B5B7} Su dung [Y] de nhat rac, [N] de chat rac len xe (toi da 30, sau khi du di dem diem tai che tra rac va nhan tien).", hstr);
+				
+
 				ShowPlayerDialog(playerid, HELP_MAIN, DIALOG_STYLE_MSGBOX, "Help - Job", hstr, ">>", "<<");
 				return 1;
 			}
