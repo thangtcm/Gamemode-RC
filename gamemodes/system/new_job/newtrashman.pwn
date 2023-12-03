@@ -396,9 +396,9 @@ hook OnPlayerEnterCheckpoint(playerid)
 			{
 				PlayerInfo[i][pCash] += RandomMoneyTM[TMInfo[playerid][GroupIDTM]];
 				format(string, sizeof(string), "~g~FINISH~n~Ban da hoan thanh cong viec va nhan duoc mot it tien.");
-				SendClientTextDraw(playerid, string);
+				SendClientTextDraw(i, string);
 				format(string, sizeof(string), "[TRASHMAN]: {ffffff}Ban da hoan thanh cong viec va nhan duoc {ff4747}%d${ffffff}.", RandomMoneyTM[TMInfo[playerid][GroupIDTM]]);
-				SendClientMessage(playerid, COLOR_LIGHTBLUE, string);
+				SendClientMessage(i, COLOR_LIGHTBLUE, string);
 			}
 		}
 	}
@@ -538,14 +538,21 @@ hook OnPlayerKeyStateChange(playerid, newkeys, oldkeys)
 							TMGInfo[TMInfo[playerid][GroupIDTM]][TMVehicleTrash] = 0;
 							TMGInfo[TMInfo[playerid][GroupIDTM]][TMZoneOld] = 0;
 							TMGInfo[TMInfo[playerid][GroupIDTM]][TMZone] = 0;
-							SetPlayerCheckpoint(playerid, 2202.8777,-2047.4569,15.2173, 15.0);
-							SetPVarInt(playerid, #CPNhanTien, 1);
 							foreach(new i: Player)
 							{
 								if(TMInfo[playerid][GroupIDTM] == TMInfo[i][GroupIDTM])
 								{
 									SendClientMessage(i, COLOR_LIGHTBLUE, "[TRASHMAN]: {ffffff}Nhom cua ban da hoan thanh, leader team da nhan duoc checkpoint hay quay tro ve.");
 								}
+							}
+							foreach(new i: Player)
+							{
+								if(i == TMGInfo[TMInfo[playerid][GroupIDTM]][TMLeader])
+								{
+									SetPlayerCheckpoint(playerid, 2202.8777,-2047.4569,15.2173, 15.0);
+									SetPVarInt(playerid, #CPNhanTien, 1);
+								}
+								return 1;
 							}
 						}
 					}
