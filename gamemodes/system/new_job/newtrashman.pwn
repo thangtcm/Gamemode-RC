@@ -544,10 +544,6 @@ hook OnPlayerKeyStateChange(playerid, newkeys, oldkeys)
 									SendClientMessage(i, COLOR_LIGHTBLUE, "[TRASHMAN]: {ffffff}Nhom cua ban da hoan thanh, leader team da nhan duoc checkpoint hay quay tro ve.");
 								}
 							}
-<<<<<<< HEAD
-=======
-							SendClientTextDraw(i, format_job);
->>>>>>> main
 						}
 					}
 				}
