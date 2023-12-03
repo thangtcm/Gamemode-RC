@@ -555,77 +555,80 @@ hook OnPlayerKeyStateChange(playerid, newkeys, oldkeys)
 
 hook OnPlayerDisconnect(playerid, reason)
 {
-	new string[555];
-	if(TMInfo[playerid][LeaderTM] == 1)
+	if(TMInfo[playerid][GroupIDTM] != 0)
 	{
-		for(new i = 0; i < MAX_TRASHCAN; i++)
+		new string[555];
+		if(TMInfo[playerid][LeaderTM] == 1)
 		{
-			TMGInfo[TMInfo[playerid][GroupIDTM]][TMTrashcan][i] = 0;
-		}
-		foreach(new i: Player)
-		{
-			if(playerid != i)
+			for(new i = 0; i < MAX_TRASHCAN; i++)
 			{
-				if(TMInfo[i][GroupIDTM] == TMInfo[playerid][GroupIDTM])
+				TMGInfo[TMInfo[playerid][GroupIDTM]][TMTrashcan][i] = 0;
+			}
+			foreach(new i: Player)
+			{
+				if(playerid != i)
 				{
-					SendClientMessage(i, COLOR_VANG, "[TM GROUP]: Nhom cua ban da bi giai tan! {ff4747}[LEADER DISCONNECTED]");
-					TMInfo[i][GroupIDTM] = 0;
-					TMInfo[i][TrashPicked] = 0;
-					TrashOnFoot[i] = 0;
-					RemovePlayerAttachedObject(i,PIZZA_INDEX);
-					SetPlayerSpecialAction(i, SPECIAL_ACTION_NONE);
-					ClearAnimations(i);
-					StopLoopingAnim(i);
-					TogglePlayerControllable(i, 1);
-					KillTimer(TrashTimer[i]);
-					LamViec[i] = 0;
+					if(TMInfo[i][GroupIDTM] == TMInfo[playerid][GroupIDTM])
+					{
+						SendClientMessage(i, COLOR_VANG, "[TM GROUP]: Nhom cua ban da bi giai tan! {ff4747}[LEADER DISCONNECTED]");
+						TMInfo[i][GroupIDTM] = 0;
+						TMInfo[i][TrashPicked] = 0;
+						TrashOnFoot[i] = 0;
+						RemovePlayerAttachedObject(i,PIZZA_INDEX);
+						SetPlayerSpecialAction(i, SPECIAL_ACTION_NONE);
+						ClearAnimations(i);
+						StopLoopingAnim(i);
+						TogglePlayerControllable(i, 1);
+						KillTimer(TrashTimer[i]);
+						LamViec[i] = 0;
+					}
 				}
 			}
-		}
-		TMGInfo[TMInfo[playerid][GroupIDTM]][TMMembers] = 0;
-		TMGInfo[TMInfo[playerid][GroupIDTM]][TMLeader] = 0;
-		DestroyVehicle(TMGInfo[TMInfo[playerid][GroupIDTM]][TMVehicle]);
-		DestroyObject(TMGInfo[TMInfo[playerid][GroupIDTM]][TMVehicleObj]);
-		TMGInfo[TMInfo[playerid][GroupIDTM]][TMVehicleObj] = INVALID_OBJECT_ID;
-		TMGInfo[TMInfo[playerid][GroupIDTM]][TMVehicle] = INVALID_VEHICLE_ID;
-		TMInfo[playerid][LeaderTM] = 0;
-		TMInfo[playerid][GroupIDTM] = 0;
-		TMInfo[playerid][TrashPicked] = 0;
-		TMGInfo[TMInfo[playerid][GroupIDTM]][TMVehicleTrash] = 0;
-		TMGInfo[TMInfo[playerid][GroupIDTM]][TMStep] = 0;
-		TMGInfo[TMInfo[playerid][GroupIDTM]][TMZoneOld] = 0;
-		TMGInfo[TMInfo[playerid][GroupIDTM]][TMZone] = 0;
-		TMGInfo[TMInfo[playerid][GroupIDTM]][TMDangLamViec] = 0;
+			TMGInfo[TMInfo[playerid][GroupIDTM]][TMMembers] = 0;
+			TMGInfo[TMInfo[playerid][GroupIDTM]][TMLeader] = 0;
+			DestroyVehicle(TMGInfo[TMInfo[playerid][GroupIDTM]][TMVehicle]);
+			DestroyObject(TMGInfo[TMInfo[playerid][GroupIDTM]][TMVehicleObj]);
+			TMGInfo[TMInfo[playerid][GroupIDTM]][TMVehicleObj] = INVALID_OBJECT_ID;
+			TMGInfo[TMInfo[playerid][GroupIDTM]][TMVehicle] = INVALID_VEHICLE_ID;
+			TMInfo[playerid][LeaderTM] = 0;
+			TMInfo[playerid][GroupIDTM] = 0;
+			TMInfo[playerid][TrashPicked] = 0;
+			TMGInfo[TMInfo[playerid][GroupIDTM]][TMVehicleTrash] = 0;
+			TMGInfo[TMInfo[playerid][GroupIDTM]][TMStep] = 0;
+			TMGInfo[TMInfo[playerid][GroupIDTM]][TMZoneOld] = 0;
+			TMGInfo[TMInfo[playerid][GroupIDTM]][TMZone] = 0;
+			TMGInfo[TMInfo[playerid][GroupIDTM]][TMDangLamViec] = 0;
 
-	}
-	else
-	{
-		foreach(new i: Player)
+		}
+		else
 		{
-			if(playerid != i)
+			foreach(new i: Player)
 			{
-				if(TMInfo[i][GroupIDTM] == TMInfo[playerid][GroupIDTM])
+				if(playerid != i)
 				{
-					format(string, sizeof(string), "[TM GROUP]: Nguoi choi %s da thoat khoi nhom. {ff4747}[DISCONNECTED]", GetPlayerNameEx(playerid));
-					SendClientMessage(i, COLOR_VANG, string);
+					if(TMInfo[i][GroupIDTM] == TMInfo[playerid][GroupIDTM])
+					{
+						format(string, sizeof(string), "[TM GROUP]: Nguoi choi %s da thoat khoi nhom. {ff4747}[DISCONNECTED]", GetPlayerNameEx(playerid));
+						SendClientMessage(i, COLOR_VANG, string);
+					}
 				}
 			}
+			TMGInfo[TMInfo[playerid][GroupIDTM]][TMMembers]--; 
+			TMInfo[playerid][GroupIDTM] = 0;
+			TMInfo[playerid][TrashPicked] = 0;
 		}
-		TMGInfo[TMInfo[playerid][GroupIDTM]][TMMembers]--; 
 		TMInfo[playerid][GroupIDTM] = 0;
 		TMInfo[playerid][TrashPicked] = 0;
+		TrashOnFoot[playerid] = 0;
+		RemovePlayerAttachedObject(playerid,PIZZA_INDEX);
+		SetPlayerSpecialAction(playerid, SPECIAL_ACTION_NONE);
+		ClearAnimations(playerid);
+		StopLoopingAnim(playerid);
+		TogglePlayerControllable(playerid, 1);
+		LamViec[playerid] = 0;
+		KillTimer(TrashTimer[playerid]);
+		TrashTimer[playerid] = -1;
 	}
-	TMInfo[playerid][GroupIDTM] = 0;
-	TMInfo[playerid][TrashPicked] = 0;
-	TrashOnFoot[playerid] = 0;
-	RemovePlayerAttachedObject(playerid,PIZZA_INDEX);
-	SetPlayerSpecialAction(playerid, SPECIAL_ACTION_NONE);
-	ClearAnimations(playerid);
-	StopLoopingAnim(playerid);
-	TogglePlayerControllable(playerid, 1);
-	LamViec[playerid] = 0;
-	KillTimer(TrashTimer[playerid]);
-	TrashTimer[playerid] = -1;
 	return 1;
 }
 // COMMANDS
