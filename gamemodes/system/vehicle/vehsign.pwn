@@ -45,7 +45,7 @@ stock FindVehSign(vehsqlid)
 }
 stock CreateVehSign(vehid, vehsign_number){
 	new format_vs[128];
-	format(format_vs, sizeof(format_vs), "SF-%d", vehsign_number);
+	format(format_vs, sizeof(format_vs), "LS-%d", vehsign_number);
 	SetVehicleNumberPlate(vehid, format_vs);
 	return 1;
 }
