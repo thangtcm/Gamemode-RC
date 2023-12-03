@@ -65,7 +65,7 @@ CMD:sellfish(playerid, params[])
 {
     new Float:PosXACtor, Float:PosYACtor, Float:PosZACtor;
 	GetActorPos(NPC_Fish, PosXACtor, PosYACtor, PosZACtor);
-	if(IsPlayerInRangeOfPoint(playerid, 2.0, PosXACtor, PosYACtor, PosZACtor))
+	if(IsPlayerInRangeOfPoint(playerid, 5.0, PosXACtor, PosYACtor, PosZACtor))
 	{
 	    new str[158];
 	    format(str, sizeof(str), "GIA: {FFBE00}1KG/%d{FFFFFF}\nHay nhap so luong muon ban:", F_RandomPrice);

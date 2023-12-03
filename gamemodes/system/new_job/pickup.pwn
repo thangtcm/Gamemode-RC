@@ -1,7 +1,7 @@
 
 stock LoadTextUpJob() {
-	CreateDynamic3DTextLabel("<Quan ly khu mo> {2791FF}Miner{ffffff}\n(Den gan va bam phim 'Y' de bat dau lam viec)", -1, 960.1240,-2142.9419,13.0938+1.15, 2.5);
-	CreateDynamic3DTextLabel("<Thu mua khoang san/go> {2791FF}Miner{ffffff}\n(Den gan va bam phim 'Y' de ban khoang san)", -1, 1136.7050,-1439.3700,15.7969+1.15, 2.5);
+	CreateDynamic3DTextLabel("<Quan ly khu mo> {2791FF}Miner{ffffff}\n(Den gan va bam phim 'Y' de bat dau lam viec)", -1, 960.1240,-2142.9419,13.0938+1.15, 5.0);
+	CreateDynamic3DTextLabel("<Thu mua khoang san/go> {2791FF}Miner{ffffff}\n(Den gan va bam phim 'Y' de ban khoang san)", -1, 1136.7050,-1439.3700,15.7969+1.15, 5.0);
 	CreateDynamic3DTextLabel("Khu vuc {2791FF}Farmer{ffffff}\n{2791FF}/farmer{ffffff} de bat dau lam viec", -1, -1420.0443, -1474.9486, 101.6293, 30);
 	CreateDynamic3DTextLabel("<Quan ly Pizza Stack> {2791FF}Pizza{ffffff}\n(Den gan va bam '/pizza' de lam viec)", -1, 2099.0378,-1801.4995,13.3889+1.15, 5);
 	CreateDynamic3DTextLabel("Khu vuc {2791FF}Chat go{ffffff}\n{2791FF}/wood{ffffff} de bat dau xin viec/lam viec", -1, 2357.2139, -651.3280, 128.0547, 30);
@@ -17,7 +17,7 @@ stock LoadTextUpJob() {
 	Create3DTextLabel("Cua hang vu khi\nBuon ban vu khi", COLOR_VANG,  1154.3931,-1445.0968,15.7969, 20, 0, 0);
 
 	MinerActor[0] = CreateDynamicActor(111, 960.1240,-2142.9419,13.0938,261.8049, true, 100.0, 0, 0, -1);
-	MinerActor[1] = CreateDynamicActor(6, 2124.2324,-1738.6648,13.5645,268.9953, true, 100.0, 0, 0, -1);
+	MinerActor[1] = CreateDynamicActor(6, 1136.7050,-1439.3700,15.7969,91.3638, true, 100.0, 0, 0, -1);
 	PizzaActor = CreateDynamicActor(155, 2099.0378,-1801.4995,13.3889,88.5935, true, 100.0, 0, 0, -1);
 	TruckActor = CreateDynamicActor(133, 2447.0867,-2100.8335,13.5469,95.5176, true, 100.0, 0, 0, -1);
 	// ActorFarmer = CreateDynamicActor(158, -1420.0443, -1474.9486, 101.6293, true, 100.0, 0, 0, -1);
