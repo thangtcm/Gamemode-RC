@@ -21752,10 +21752,11 @@ CMD:hospital(playerid, params[])
 	return 1;
 }
 
-CMD:revive(playerid, parmas[])
+CMD:revive(playerid, params[])
 {
-	return cmd_hoisinh(playerid, parmas);
+	return cmd_hoisinh(playerid, params);
 }
+
 
 CMD:hoisinh(playerid, params[])
 {
@@ -46086,6 +46087,7 @@ CMD:locker(playerid, params[]) {
 	SendErrorMessage(playerid, " Ban khong o gan tu lay do!");
 	return 1;
 }
+
 CMD:chetaomedkit(playerid, params[]) {
 
 	new iGroupID = PlayerInfo[playerid][pMember];
@@ -46105,19 +46107,47 @@ CMD:chetaomedkit(playerid, params[]) {
 						{
 							if(PlayerInfo[playerid][pTimeCraft] == 0)
 							{
-								if(Inventory_HasItem(playerid, "Thao Duoc", 20))
+								new choice, format_job[256];
+								if(sscanf(params, "d", choice))
 								{
-									new format_job[1280];
-									format(format_job, sizeof(format_job), "[SERVER] {ffffff}Ban da che tao thanh cong {6e69ff}1 {5c5c5c}Medkit{ffffff}.");
-									SendClientMessage(playerid, COLOR_LIGHTRED, format_job);
-									new pItemId = Inventory_GetItemID(playerid, "Thao Duoc", 20);
-									Inventory_Remove(playerid, pItemId, 20);
-									Inventory_Add(playerid, "Medkit", 1);
-									PlayerInfo[playerid][pTimeCraft] = 600;
+									SendUsageMessage(playerid, " /chetaomedkit [loai]");
+									SendClientMessage(playerid, -1, "1. Medkit / 2. Bo so cuu");
+									return 1;
 								}
-								else return SendErrorMessage(playerid, " Ban khong co du 20 Thao Duoc de che tao.");
+
+								if (choice == 1)
+								{
+									if(Inventory_HasItem(playerid, "Thao Duoc", 20))
+									{
+										format(format_job, sizeof(format_job), "[SERVER] {ffffff}Ban da che tao thanh cong {6e69ff}1 {5c5c5c}Medkit{ffffff}.");
+										SendClientMessage(playerid, COLOR_LIGHTRED, format_job);
+										new pItemId = Inventory_GetItemID(playerid, "Thao Duoc", 20);
+										Inventory_Remove(playerid, pItemId, 20);
+										Inventory_Add(playerid, "Medkit", 1);
+										PlayerInfo[playerid][pTimeCraft] = 600;
+									}
+									else return SendErrorMessage(playerid, " Ban khong co du 20 Thao Duoc de che tao.");
+								}
+								else if (choice == 2)
+								{
+									if(Inventory_HasItem(playerid, "Thao Duoc", 30))
+									{
+										format(format_job, sizeof(format_job), "[SERVER] {ffffff}Ban da che tao thanh cong {6e69ff}1 {5c5c5c}Bo so cuu{ffffff}.");
+										SendClientMessage(playerid, COLOR_LIGHTRED, format_job);
+										new pItemId = Inventory_GetItemID(playerid, "Thao Duoc", 30);
+										Inventory_Remove(playerid, pItemId, 30);
+										Inventory_Add(playerid, "Bo so cuu", 1);
+										PlayerInfo[playerid][pTimeCraft] = 600;
+									}
+									else return SendErrorMessage(playerid, " Ban khong co du 30 Thao Duoc de che tao.");
+								}
+								else {
+									SendUsageMessage(playerid, " /chetaomedkit [loai]");
+									SendClientMessage(playerid, -1, "1. Medkit / 2. Bo so cuu");
+									return 1;
+								}
 							}
-							else return SendErrorMessage(playerid, " Ban vua che medkit trong vong 10 phut tro lai roi, vui long doi.");
+							else return SendErrorMessage(playerid, " Ban vua che tao trong vong 10 phut tro lai roi, vui long doi.");
 						}
 						else return SendErrorMessage(playerid, " Ban khong the su dung lenh nay.");
 						return 1;
@@ -50992,5 +51022,25 @@ CMD:myfuel(playerid, params[])
 	
 	format(str, sizeof str, "Capacity: %0.1fL | Fuel: %0.1fL ", GetVehicleFuelCapacity(vid), VehicleFuel[vid]);
 	SendClientMessage(playerid, -1, str);
+	return 1;
+}
+
+CMD:socuu(playerid, params[])
+{
+	new targetid;
+	if (sscanf(params, "u", targetid)) 				return SendUsageMessage(playerid, " /socuu [player]");
+	if (!Inventory_HasItem(playerid, "Bo so cuu")) 	return SendErrorMessage(playerid, "Ban khong co bo so cuu.");
+    if (!ProxDetectorS(3.0, playerid, targetid))	return SendClientMessage(playerid, COLOR_GRAD2, "Nguoi choi nay khong o gan ban.");
+    if (GetPVarInt(targetid, "Injured") == 0)		return SendClientMessage(playerid, COLOR_GRAD2, "Nguoi choi nay khong bi thuong.");
+	if (GetPVarInt(playerid, "Injured"))			return SendClientMessage(playerid, COLOR_GRAD2, "Ban khong the lam dieu nay khi bi thuong.");
+	if (GetPVarInt(playerid, "Treatment"))			return SendClientMessage(playerid, COLOR_GRAD2, "Ban dang trong qua trinh so cuu.");
+	if (GetPVarInt(targetid, "IsReviving"))			return SendClientMessage(playerid, COLOR_GRAD2, "Nguoi nay dang duoc so cuu.");	
+	
+	SetPVarInt(playerid, "Treatment", 1);
+	SetPVarInt(targetid, "IsReviving", 1);
+	SetTimerEx("Do_Treatment", 7000, 0, "dd", playerid, targetid);
+	ApplyAnimation(playerid, "MEDIC", "CPR", 4.1, 1, 0, 0, 0, 0);
+	TogglePlayerControllable(playerid, 0);	
+	SendClientTextDraw(playerid, "Ban dang trong qua trinh so cuu...", 7000);
 	return 1;
 }

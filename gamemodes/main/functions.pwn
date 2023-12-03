@@ -1949,6 +1949,57 @@ public LoadPlayer()
 	}
 }
 
+forward Do_Treatment(playerid, targetid);
+public Do_Treatment(playerid, targetid)
+{
+	if(!IsPlayerConnected(targetid) || !ProxDetectorS(3.0, playerid, targetid))
+		return SendErrorMessage(playerid, "That bai trong viec so cuu.");
+	if(!GetPVarInt(targetid, "Injured"))
+		return SendErrorMessage(playerid, "That bai trong viec so cuu.");
+
+
+	sendMessage(playerid, -1, "Ban da so cuu thanh cong %s voi 1 bo so cuu.", GetPlayerNameEx(targetid));
+	sendMessage(playerid, -1, "%s da so cuu thanh cong cho ban.", GetPlayerNameEx(playerid));
+	Inventory_Remove(playerid, Inventory_GetItemID(playerid, "Bo so cuu"));
+	SetPlayerHealth(targetid, 10);
+	PlayerInfo[targetid][pDoiBung] = 20;
+	PlayerInfo[targetid][pKhatNuoc] = 20;
+	KillEMSQueue(targetid);
+	DeletePVar(playerid, "Treatment");
+	DeletePVar(targetid, "IsReviving");
+	ClearAnimations(playerid);
+	ClearAnimations(targetid);
+	TogglePlayerControllable(playerid, 1);
+	TogglePlayerControllable(targetid, 1);
+
+	if (PlayerCuffed[targetid] > 1) // CMD:handcuff
+	{
+		new Float:health, Float:armor;
+		TogglePlayerControllable(targetid, 0);
+		GetPlayerHealth(targetid, health);
+		GetPlayerArmour(targetid, armor);
+		SetPVarFloat(targetid, "cuffhealth", health);
+		SetPVarFloat(targetid, "cuffarmor", armor);
+		SetPlayerSpecialAction(targetid, SPECIAL_ACTION_CUFFED);
+		ApplyAnimation(targetid,"ped","cower",1,1,0,0,0,0,1);
+		PlayerCuffed[targetid] = 2;
+		SetPVarInt(targetid, "PlayerCuffed", 2);
+		SetPVarInt(targetid, "IsFrozen", 1);
+		//Frozen[giveplayerid] = 1;
+		PlayerCuffedTime[targetid] = 300;
+	}
+	else if (HandCuff[targetid] > 1) // CMD:handcuff1 - CMD:handcuff2
+	{
+		DangBiTazer[targetid] = 0;
+		SetPlayerSpecialAction(targetid, SPECIAL_ACTION_CUFFED);
+		SetPlayerAttachedObject(targetid, 7, 19418, 6, -0.011, 0.028, -0.022, -15.600012, -33.699977, -81.700035, 1.0, 1.0, 1.0);
+		HandCuff[targetid] = 2;
+		DeletePVar(targetid, "IsFrozen");
+		ApplyAnimationEx(targetid, "ped", "FLOOR_hit_f", 4.0, 0, 1, 1, 1, 0, 1);
+	}
+	return 1;
+}
+
 forward OnPlayerWeaponShot(playerid, weaponid, hittype, hitid, Float:fX, Float:fY, Float:fZ);
 public OnPlayerWeaponShot(playerid, weaponid, hittype, hitid, Float:fX, Float:fY, Float:fZ)
 {
@@ -3948,6 +3999,8 @@ public KillEMSQueue(playerid)
 	SetPVarInt(playerid, "ThoiGianChet", 0);
 	DeletePVar(playerid, "MedicCall");
 	DeletePVar(playerid, "EMSWarns");
+	ResetDamagedPlayer(playerid);
+	if(IsValidDynamic3DTextLabel(DeathText[playerid])) DestroyDynamic3DTextLabel(DeathText[playerid]);
 	return 1;
 }
 
@@ -3983,6 +4036,9 @@ public SendEMSQueue(playerid,type)
             if(GetPlayerInterior(playerid) > 0) Player_StreamPrep(playerid, GetPVarFloat(playerid,"MedicX"), GetPVarFloat(playerid,"MedicY"), GetPVarFloat(playerid,"MedicZ"), FREEZE_TIME);
 			//GameTextForPlayer(playerid, "~r~BI THUONG~n~~w~/chapnhan chet hoac /dichvu capcuu", 5000, 3);
 			SendClientTextDraw(playerid,"Ban da bi thuong ~r~/chapnhan chet~w~ de ve vien hoac ~r~/dichvu capcuu");
+			new string[64];
+			format(string, sizeof(string), "(( /damages %d de xem thong tin sat thuong ))", playerid);
+			if(!IsValidDynamic3DTextLabel(DeathText[playerid])) DeathText[playerid] = CreateDynamic3DTextLabel(string, -1, 0.0, 0.0, 0.0, 10.0, playerid, .worldid = GetPlayerVirtualWorld(playerid), .interiorid = GetPlayerInterior(playerid));
 			ClearAnimations(playerid);
 			TogglePlayerControllable(playerid, 0);
 			ApplyAnimation(playerid, "WUZI", "CS_Dead_Guy", 4.1, 1, 1, 1, 1, 0, 1);

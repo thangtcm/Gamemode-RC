@@ -1902,6 +1902,7 @@ public OnPlayerDisconnect(playerid, reason)
 	    format(string, sizeof(string), "unbanip %s", unbanip[playerid]);
 	    SendRconCommand(string);
 	}
+	if(IsValidDynamic3DTextLabel(DeathText[playerid])) DestroyDynamic3DTextLabel(DeathText[playerid]);
 	printf("1");
 	if(PlayerInfo[playerid][pTruyDuoi] >= 1)
     {
