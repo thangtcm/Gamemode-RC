@@ -23,7 +23,7 @@ GetRandomHouse(playerid) // check
 	{
 	    if(HouseInfo[i][hOwned])
 	    {
-	        if(40 <= GetPlayerDistanceFromPoint(playerid, HouseInfo[houseid][hExteriorX], HouseInfo[houseid][hExteriorY], HouseInfo[houseid][hExteriorZ]) <= 1300.0)
+	        if(40 <= GetPlayerDistanceFromPoint(playerid, HouseInfo[i][hExteriorX], HouseInfo[i][hExteriorY], HouseInfo[i][hExteriorZ]) <= 1300.0)
 	        {
 	        	houseIDs[index++] = i;
 			}
@@ -72,7 +72,7 @@ Dialog:JOB_PIZZA(playerid, response, listitem, inputtext[])
             	    DestroyVehicle(PizzaJob[playerid][Vehicle]);
             		Pizza_Quantity[PizzaJob[playerid][Vehicle]] = 0;
             		Delete3DTextLabel(PizzaTextInfo[playerid]);
-                    Pizza_RentOn[playerid] = 0
+                    Pizza_RentOn[playerid] = 0;
                     PizzaJob[playerid][Vehicle] = INVALID_VEHICLE_ID;
             	}
             	Pizza_Holding[playerid] = 0;
@@ -312,6 +312,6 @@ CMD:giaobanh(playerid, params[])
 	format(str, sizeof str, "(JOB PIZZA) Hay giao pizza den nha cua ~y~%s~w~", HouseInfo[houseid][hOwnerName]);
     CPPizza[playerid] = 1;
     SendClientTextDraw(playerid, str);
-    SetPlayerCheckPoint(playerid, HouseInfo[houseid][hExteriorX], HouseInfo[houseid][hExteriorY], HouseInfo[houseid][hExteriorZ], 3);
+    SetPlayerCheckpoint(playerid, HouseInfo[houseid][hExteriorX], HouseInfo[houseid][hExteriorY], HouseInfo[houseid][hExteriorZ], 3);
     return 1;
 }
