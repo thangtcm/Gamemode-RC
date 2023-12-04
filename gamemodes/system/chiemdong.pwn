@@ -185,7 +185,7 @@ hook OnPlayerDeath(playerid, killerid, reason) {
         format(string, sizeof(string), "Khu vuc chiem dong : %s (%s)\n\nSo huu : {ffff00}NONE{FFFFFF}\nTinh trang : {fffacd}Chua bi chiem dong\n{FFFFFF}Su dung: /chiemdong.", zone, TPointEdit[typecap-1][TPoint_Name]);
 		UpdateDynamic3DTextLabelText(FamilyCD[fam][f_captureLabel], -1, string);
 
-		GangZoneStopFlashForAll(FamilyCD[fam][FamilyGangzone]);
+		// GangZoneStopFlashForAll(FamilyCD[fam][FamilyGangzone]);
 
         DeletePVar(playerid, "chiemdong");
         DeletePVar(playerid, "TimeChiemDong");
@@ -214,7 +214,7 @@ stock ChiemDong_OnplayerDisconnect(playerid)
         format(string, sizeof(string), "Khu vuc chiem dong : %s (%s)\n\nSo huu : {ffff00}NONE{FFFFFF}\nTinh trang : {fffacd}Chua bi chiem dong\n{FFFFFF}Su dung: /chiemdong.", zone, TPointEdit[typecap-1][TPoint_Name]);
 		UpdateDynamic3DTextLabelText(FamilyCD[fam][f_captureLabel], -1, string);
 
-		GangZoneStopFlashForAll(FamilyCD[fam][FamilyGangzone]);
+		// GangZoneStopFlashForAll(FamilyCD[fam][FamilyGangzone]);
 
         DeletePVar(playerid, "chiemdong");
         DeletePVar(playerid, "TimeChiemDong");
@@ -234,54 +234,98 @@ hook OnPlayerEnterCheckpoint(playerid)
 {
 	if(IsPlayerInRangeOfPoint(playerid, 1.5, GetPVarFloat(playerid, "CD_pX"), GetPVarFloat(playerid, "CD_pY"), GetPVarFloat(playerid, "CD_pZ")))
 	{
-		//type weapon
-		if(GetPVarInt(playerid, "AwardTypeCD") == 1)
+		if(PlayerInfo[playerid][pAwardTypeCD] != 0)
 		{
-			//add them o day
-			SendClientMessage(playerid, COLOR_LIGHTBLUE, "> Test nhan phan thuong type weapon");
-			DeletePVar(playerid, "AwardTypeCD");
-			DeletePVar(playerid, "CD_pX");
-			DeletePVar(playerid, "CD_pY");
-			DeletePVar(playerid, "CD_pZ");
-			DisableCheckPoint(playerid);
-		}
-		//type drug
-		if(GetPVarInt(playerid, "AwardTypeCD") == 2)
-		{
-			//add them o day
-			SendClientMessage(playerid, COLOR_LIGHTBLUE, "> Test nhan phan thuong type drug");
-			DeletePVar(playerid, "AwardTypeCD");
-			DeletePVar(playerid, "CD_pX");
-			DeletePVar(playerid, "CD_pY");
-			DeletePVar(playerid, "CD_pZ");
-			DisableCheckPoint(playerid);
-		}
-		//type money
-		if(GetPVarInt(playerid, "AwardTypeCD") == 3)
-		{
-			//add them o day
-			SendClientMessage(playerid, COLOR_LIGHTBLUE, "> Test nhan phan thuong type money");
-			DeletePVar(playerid, "AwardTypeCD");
-			DeletePVar(playerid, "CD_pX");
-			DeletePVar(playerid, "CD_pY");
-			DeletePVar(playerid, "CD_pZ");
-			DisableCheckPoint(playerid);
-		}
-		//type ammo
-		if(GetPVarInt(playerid, "AwardTypeCD") == 4)
-		{
-			//add them o day
-			SendClientMessage(playerid, COLOR_LIGHTBLUE, "> Test nhan phan thuong type ammo");
-			DeletePVar(playerid, "AwardTypeCD");
-			DeletePVar(playerid, "CD_pX");
-			DeletePVar(playerid, "CD_pY");
-			DeletePVar(playerid, "CD_pZ");
-			DisableCheckPoint(playerid);
+			SendClientMessage(playerid, COLOR_RED, "> Dang lay phan thuong vui long cho doi...");
+			SetTimerEx("AwardCD", 30000, false, "d", playerid);
+			TogglePlayerControllable(playerid, 0);
+			ApplyAnimation(playerid, "BD_FIRE", "wash_up", 4.0, 1, 0, 0, 0, 0, 1);
+			
 		}
 	}
 	return 1;
 }
 /* -------------------------------- FUNCTION -------------------------------- */
+forward AwardCD(playerid);
+public AwardCD(playerid) {
+
+	//type weapon
+	if(GetPVarInt(playerid, "AwardTypeCD") == 1)
+	{
+		//add them o day
+		Inventory_Add(playerid, "AK47");
+		Inventory_Add(playerid, "Vat_lieu", 100);
+		Inventory_Add(playerid, "Go", 100);
+		Inventory_Add(playerid, "item_iron", 100); // sat
+		SendNewFamilyMessage(playerid, -1, "-------------------------------- {FFFF00}[AWARD CAPTURE GANG]{FFFFFF} -------------------------------------");
+		SendNewFamilyMessage(playerid, COLOR_YELLOW, "> Ban da nhan thuong cho FAM/Gang thanh cong (Type Weapon) nhan nhung phan qua sau :");
+		SendNewFamilyMessage(playerid, COLOR_YELLOW, "+ Weapon : AK47, 100 vat lieu, 200 go, 200 sat");
+		DeletePVar(playerid, "AwardTypeCD");
+		DeletePVar(playerid, "CD_pX");
+		DeletePVar(playerid, "CD_pY");
+		DeletePVar(playerid, "CD_pZ");
+		PlayerInfo[playerid][pAwardTypeCD] = 0;
+		DisableCheckPoint(playerid);
+	}
+	//type drug
+	if(GetPVarInt(playerid, "AwardTypeCD") == 2)
+	{
+		//add them o day
+		Inventory_Add(playerid, "chh_1", 100);
+		Inventory_Add(playerid, "chh_1", 50);
+		Inventory_Add(playerid, "Ecstacy", 20); // sat
+		Inventory_Add(playerid, "LSD", 10); // sat
+		SendNewFamilyMessage(playerid, -1, "-------------------------------- {FFFF00}[AWARD CAPTURE GANG]{FFFFFF} -------------------------------------");
+		SendNewFamilyMessage(playerid, COLOR_YELLOW, "> Ban da nhan thuong cho FAM/Gang thanh cong (Type Drug) nhan nhung phan qua sau :");
+		SendNewFamilyMessage(playerid, COLOR_YELLOW, "+ 100 chat hoa hoc 1, 50 chat hoa hoc 2, 20 Ecstasy , 10 LSD");
+		DeletePVar(playerid, "AwardTypeCD");
+		DeletePVar(playerid, "CD_pX");
+		DeletePVar(playerid, "CD_pY");
+		DeletePVar(playerid, "CD_pZ");
+		PlayerInfo[playerid][pAwardTypeCD] = 0;
+		DisableCheckPoint(playerid);
+	}
+	//type money
+	if(GetPVarInt(playerid, "AwardTypeCD") == 3)
+	{
+		//add them o day
+		
+		new money = Random(100000, 300000);
+		new string[70];
+		Inventory_Add(playerid, "img dirty", money);
+		SendNewFamilyMessage(playerid, -1, "-------------------------------- {FFFF00}[AWARD CAPTURE GANG]{FFFFFF} -------------------------------------");
+		SendNewFamilyMessage(playerid, COLOR_YELLOW, "> Ban da nhan thuong cho FAM/Gang thanh cong (Type Dirty Money) nhan nhung phan qua sau :");
+		format(string, sizeof(string), "+ %s$ tien ban (Them vao tui do)", number_format(money));
+		SendNewFamilyMessage(playerid, COLOR_YELLOW, string);
+		DeletePVar(playerid, "AwardTypeCD");
+		DeletePVar(playerid, "CD_pX");
+		DeletePVar(playerid, "CD_pY");
+		DeletePVar(playerid, "CD_pZ");
+		PlayerInfo[playerid][pAwardTypeCD] = 0;
+		DisableCheckPoint(playerid);
+	}
+	//type ammo
+	if(GetPVarInt(playerid, "AwardTypeCD") == 4)
+	{
+		//add them o day
+		Inventory_Add(playerid, "Ammo1", 50); // Dan sung luc
+		Inventory_Add(playerid, "Ammo2", 50); // Dan sung shotgun
+		Inventory_Add(playerid, "Ammo3", 200); // Dan sung tieu lien
+		Inventory_Add(playerid, "Ammo4", 100); // Dan sung truong
+		SendNewFamilyMessage(playerid, -1, "-------------------------------- {FFFF00}[AWARD CAPTURE GANG]{FFFFFF} -------------------------------------");
+		SendNewFamilyMessage(playerid, COLOR_YELLOW, "> Ban da nhan thuong cho FAM/Gang thanh cong (Type Ammo) nhan nhung phan qua sau :");
+		SendNewFamilyMessage(playerid, COLOR_YELLOW, "+ 100 dan sung truong, 200 dan sung tieu lien, 50 dan Shotgun và 50 sung luc");
+		DeletePVar(playerid, "AwardTypeCD");
+		DeletePVar(playerid, "CD_pX");
+		DeletePVar(playerid, "CD_pY");
+		DeletePVar(playerid, "CD_pZ");
+		PlayerInfo[playerid][pAwardTypeCD] = 0;
+		DisableCheckPoint(playerid);
+	}
+	ClearAnimations(playerid);
+	TogglePlayerControllable(playerid, 0);
+	return 1;
+}
 forward TimeChiemDong(playerid);
 public TimeChiemDong(playerid) {
 	new fam = GetPVarInt(playerid, "IDCapture");
@@ -314,7 +358,7 @@ public TimeChiemDong(playerid) {
 
 			FamilyCD[fam][f_FamilyID] = PlayerInfo[playerid][pFMember];
 
-			GangZoneStopFlashForAll(FamilyCD[fam][FamilyGangzone]);
+			// GangZoneStopFlashForAll(FamilyCD[fam][FamilyGangzone]);
 
 			format(gangzone, sizeof(gangzone), "Khu vuc chiem dong : %s (%s)\n\nSo huu : {FFFF00}(F%d) %s{FFFFFF}\nTinh trang : %s {FFFFFF}(Health : {AA3333}%s%%{FFFFFF})\nNguoi chiem : {f0e68c}%s{FFFFFF}", 
 				zone, TPointEdit[typecap-1][TPoint_Name], family, FamilyInfo[family][FamilyName], statusCapture(FamilyCD[fam][f_chiemdong]), number_format(FamilyCD[fam][f_HealthCD]), FamilyCD[fam][f_PlayerName]);
@@ -342,7 +386,7 @@ public TimeChiemDong(playerid) {
 		format(string, sizeof(string), "Khu vuc chiem dong : %s (%s)\n\nSo huu : {ffff00}None{FFFFFF}\nTinh trang : {fffacd}Chua bi chiem dong\n{FFFFFF}Su dung: /chiemdong.", zone, TPointEdit[typecap-1][TPoint_Name]);
         UpdateDynamic3DTextLabelText(FamilyCD[fam][f_captureLabel], -1, string);
 
-		GangZoneStopFlashForAll(FamilyCD[fam][FamilyGangzone]);
+		// GangZoneStopFlashForAll(FamilyCD[fam][FamilyGangzone]);
 
         SendClientMessage(playerid, -1, "{AA3333}[!]{FFFFFF} Ban da chiem dong that bai do chay ra xa khoi khu vuc chiem dong (70m).");
 
@@ -385,9 +429,16 @@ stock pointFamilyCD(playerid) {
 
 stock ShowGangZone(playerid) 
 {
+    if(PlayerInfo[playerid][pFMember] != INVALID_FAMILY_ID && ChiemDong_Lock == false) {
+        for(new fam = 0; fam < MAX_CAPTURE; fam++) 
+            GangZoneShowForPlayer(playerid, FamilyCD[fam][FamilyGangzone], COLOR_YELLOW);
+    }
+}
+stock HideGangZone(playerid) 
+{
     if(PlayerInfo[playerid][pFMember] != INVALID_FAMILY_ID) {
         for(new fam = 0; fam < MAX_CAPTURE; fam++) 
-            GangZoneShowForPlayer(playerid, FamilyCD[fam][FamilyGangzone], COLOR_GREEN);
+            GangZoneHideForPlayer(playerid, FamilyCD[fam][FamilyGangzone]);
     }
 }
 
@@ -541,6 +592,8 @@ stock LoadCapture()
 		FamilyCD[iIndex][f_CaptureActivity]);
   		++iIndex;
 	}
+	myChiemDong();
+	printf("> Load thanh cong chiem dong");
  	return fclose(iFileHandle);
 }
 task UpdateCapture[6000] ()
@@ -637,8 +690,10 @@ task UpdateCapture[6000] ()
 					}
 					PlayerPlaySound(player, 1056, 0.0, 0.0, 0.0);
 					SetPVarInt(player, "AwardTypeCD", FamilyCD[i][f_CaptureType]);
+					PlayerInfo[player][pAwardTypeCD] = FamilyCD[i][f_CaptureType];
 					// SendClientMessage(player, -1, sprintf("> type award : %d", GetPVarInt(player, "AwardTypeCD")));
 					SendClientMessage(player, COLOR_GREEN, "> Ban da chiem dong thanh cong cho FAM/GANG cua minh . Hay den checkpoint de nhan thuong");
+					SendClientMessage(player, COLOR_RED, "* Luu y : Neu ban bi thoat game khi chua nhan phan thuong [/glayhang] de dung khi vao lai game *");
                 	
 					
 					//update label
@@ -757,7 +812,7 @@ CMD:savezone(playerid, params[])
 					FamilyCD[fam][FamilyGangzone] = GangZoneCreate(FamilyCD[fam][f_Min][0],FamilyCD[fam][f_Min][1],FamilyCD[fam][f_Max][0],FamilyCD[fam][f_Max][1]);
 
                     foreach(new i: Player) {
-    					GangZoneShowForPlayer(i, FamilyCD[fam][FamilyGangzone], COLOR_GREEN);
+    					GangZoneShowForPlayer(i, FamilyCD[fam][FamilyGangzone], COLOR_YELLOW);
 					}
 
 					SaveCapture();
@@ -847,7 +902,7 @@ CMD:chiemdong(playerid, params[])
 	
 	UpdateDynamic3DTextLabelText(FamilyCD[fam][f_captureLabel], -1, string);
 
-	GangZoneFlashForAll(FamilyCD[fam][FamilyGangzone], COLOR_YELLOW);
+	// GangZoneFlashForAll(FamilyCD[fam][FamilyGangzone], COLOR_RED);
 	foreach(new i: Player)
 	{
 	    if(PlayerInfo[i][pFMember] != INVALID_FAMILY_ID) {
@@ -855,7 +910,7 @@ CMD:chiemdong(playerid, params[])
 			SendClientMessage(i, -1, "");
 			SendClientMessage(i, -1, "-------------------------------- {FFFF00}[CAPTURE GANG]{FFFFFF} -------------------------------------");
 	        new stringz[5000];
-			format(stringz, sizeof(stringz), "{FFFF00}%s{FFFFFF} thuoc {f0e68c}(F%d) %s{FFFFFF} dang co gang de chiem dong khu vuc %s thuoc type (%s) ", GetPlayerNameEx(playerid),  PlayerInfo[playerid][pFMember], FamilyInfo[ PlayerInfo[playerid][pFMember]][FamilyName], zone, TPointEdit[typecap-1][TPoint_Name]);
+			format(stringz, sizeof(stringz), "{FFFF00}%s{FFFFFF} thuoc {f0e68c}(F%d) %s{FFFFFF} dang co gang de chiem dong khu vuc %s ", GetPlayerNameEx(playerid),  PlayerInfo[playerid][pFMember], FamilyInfo[ PlayerInfo[playerid][pFMember]][FamilyName], zone);
 			SendClientMessage(i, -1, stringz);
 			SendClientMessage(i, -1, "-------------------------------------------------------------------------------------------------");
 			format(stringz, sizeof(stringz), "{f4a460}>{FFFFFF} Khu vuc nay se thuoc so huu cua ho trong vong %d giay {f4a460}<{FFFFFF}", ChiemDongTime);
@@ -870,8 +925,13 @@ CMD:chiemdong(playerid, params[])
     return 1;
 }
 CMD:showzone(playerid) {
-    ShowGangZone(playerid);
+	ShowGangZone(playerid);
     return 1;
+}
+CMD:hidezone(playerid)
+{
+	HideGangZone(playerid);
+	return 1;
 }
 CMD:settimeturf(playerid, params[])
 {
@@ -892,7 +952,10 @@ CMD:settimeturf(playerid, params[])
 }
 stock AutoOpenChiemDong()
 {
-	AutoLockChiemDong();
+	for(new cap = 0; cap < MAX_CAPTURE; cap++) {
+		if(FamilyCD[cap][f_PointChiemDong][0] != 0.0)
+			FamilyCD[cap][f_CaptureActivity] = 0;
+	}
 	ChiemDong_Lock = false;
 	foreach(new iz: Player)
 	{
@@ -902,6 +965,7 @@ stock AutoOpenChiemDong()
 			SendClientMessage(iz, -1, "");
 			SendClientMessage(iz, -1, "");
 			SendClientMessage(iz, -1, "{FFFFFF}-------------------------- {FFFF00}[CAPTURE GANG - OPEN]{FFFFFF} ---------------------------");
+			ShowGangZone(iz);
 		}
 	}
 	new i = 0;
@@ -914,6 +978,7 @@ stock AutoOpenChiemDong()
 			FamilyCD[cap][f_CaptureActivity] = 1;
 			new zone[MAX_ZONE_NAME];
 			Get3DZone(FamilyCD[cap][f_PointChiemDong][0],  FamilyCD[cap][f_PointChiemDong][1],  FamilyCD[cap][f_PointChiemDong][2], zone, sizeof(zone));
+			GangZoneFlashForAll(FamilyCD[cap][FamilyGangzone], COLOR_RED);
 			foreach(new iz: Player)
 			{
 				if(PlayerInfo[iz][pFMember] != INVALID_FAMILY_ID)
@@ -932,7 +997,10 @@ stock AutoLockChiemDong()
 	ChiemDong_Lock = true;
 	for(new cap = 0; cap < MAX_CAPTURE; cap++) {
 		if(FamilyCD[cap][f_PointChiemDong][0] != 0.0)
+		{
 			FamilyCD[cap][f_CaptureActivity] = 0;
+			GangZoneStopFlashForAll(FamilyCD[cap][FamilyGangzone]);
+		}
 	}
 	foreach(new iz: Player)
 	{
@@ -942,6 +1010,7 @@ stock AutoLockChiemDong()
 			SendClientMessage(iz, -1, "{FFFFFF}-------------------------- {AA3333}[CAPTURE GANG - CLOSED]{FFFFFF} ---------------------------");
 			SendClientMessage(iz, -1, "[CHIEM DONG] Cac dia ban da dong lai theo khung gio quy dinh chiem dong cua may chu.");
 			SendClientMessage(iz, -1, "");
+			HideGangZone(iz);
 		}
 	}
 	return 1;
@@ -978,5 +1047,48 @@ CMD:khoachiemdong(playerid, params[])
 			ChiemDong_Lock = false;
 		}
 	}
+	return 1;
+}
+CMD:glayhang(playerid)
+{
+	if(PlayerInfo[playerid][pAwardTypeCD] != 0 && GetPVarInt(playerid, "AwardTypeCD") == 0)
+	{
+		switch(random(4))
+		{
+			case 0:
+			{
+				SetPVarFloat(playerid, "CD_pX", 1274.2429);
+				SetPVarFloat(playerid, "CD_pY", 294.1344);
+				SetPVarFloat(playerid, "CD_pZ", 1274.2429);
+				SetPlayerCheckpoint(playerid, GetPVarFloat(playerid, "CD_pX"), GetPVarFloat(playerid, "CD_pY"), GetPVarFloat(playerid, "CD_pZ"), 4.0);
+			}	
+			case 1: 
+			{
+				SetPVarFloat(playerid, "CD_pX",  2351.2170);
+				SetPVarFloat(playerid, "CD_pY", -647.6680);
+				SetPVarFloat(playerid, "CD_pZ", 128.0547);
+				SetPlayerCheckpoint(playerid, GetPVarFloat(playerid, "CD_pX"), GetPVarFloat(playerid, "CD_pY"), GetPVarFloat(playerid, "CD_pZ"), 4.0);
+			}	
+			case 2: 
+			{
+				SetPVarFloat(playerid, "CD_pX",  313.7180);
+				SetPVarFloat(playerid, "CD_pY",	1146.4028);
+				SetPVarFloat(playerid, "CD_pZ", 8.5859);
+				SetPlayerCheckpoint(playerid, GetPVarFloat(playerid, "CD_pX"), GetPVarFloat(playerid, "CD_pY"), GetPVarFloat(playerid, "CD_pZ"), 4.0);
+			}	
+			case 3: 
+			{
+				SetPVarFloat(playerid, "CD_pX",  -2088.1040);
+				SetPVarFloat(playerid, "CD_pY", -2342.5239);
+				SetPVarFloat(playerid, "CD_pZ", 30.6250);
+				SetPlayerCheckpoint(playerid, GetPVarFloat(playerid, "CD_pX"), GetPVarFloat(playerid, "CD_pY"), GetPVarFloat(playerid, "CD_pZ"), 4.0);
+			}	
+		}
+		PlayerPlaySound(playerid, 1056, 0.0, 0.0, 0.0);
+		SetPVarInt(playerid, "AwardTypeCD", PlayerInfo[playerid][pAwardTypeCD]);
+		// SendClientMessage(player, -1, sprintf("> type award : %d", GetPVarInt(player, "AwardTypeCD")));
+		SendClientMessage(playerid, COLOR_GREEN, "> Hay den dia diem checkpoint de nhan phan thuong cho FAM/GANG cua minh .");
+	}
+	else SendClientMessage(playerid, COLOR_RED, "> Ban khong chiem dong thanh cong dia ban nao de nhan phan thuong cho FAM/GANG cua minh");
 	return 1;
 }

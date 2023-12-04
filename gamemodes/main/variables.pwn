@@ -763,6 +763,9 @@ new Chatting[MAX_PLAYERS];
 new TruckerVehicles[20];
 enum pInfo
 {
+	//chiem dong
+	pAwardTypeCD,
+	//
 	pCraftWD,
     pCraftWDTime,
 	pChatStyle,
@@ -895,6 +898,7 @@ enum pInfo
 	pLawSkill,
 	pMechSkill,
 	pTruckSkill,
+	pPizzaSkill,
 	pWantedLevel,
 	pPot,
 	pCrack,
@@ -1908,6 +1912,8 @@ new Float:audiourlparams[4];
 new backlift;
 new sidelift;
 new backhatch;
+
+new Cops;
 
 new Carrier[17];
 new CarrierS[6];

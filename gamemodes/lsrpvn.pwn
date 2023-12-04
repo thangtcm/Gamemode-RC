@@ -55,7 +55,6 @@
 #include "./main/discord-bot.pwn"
 // Doi, no, suc khoe
 #include "./system/playerstatus.pwn"
-#include "./system/death/bodydamage.pwn"
 #include "./system/vehicle/vehicle_info.pwn"
 #include "./system/drug/drug.pwn"
 #include "./system/inventory/main.pwn"
@@ -89,7 +88,7 @@
 #include "./main/_cmds.pwn"
 
 #include "./main/mysql.pwn"
-//#include "./system/login.pwn"
+//#include "./system/login.pwn"`
 //#include "./system/register.pwn"
 
 #include "./system/new_job/Trucking/textdrawanim.pwn"
@@ -104,7 +103,7 @@
 #include "./system/new_job/fishing.pwn"
 
 // #include "./system/farmer.pwn"
-#include "./system/bodydame/bodydamage.pwn"
+//#include "./system/bodydame/bodydamage.pwn"
 #include "./system/vehicle/vehicle_info.pwn"
 #include "./system/vehicle/vehsign.pwn"
 #include "./system/nametag.pwn"
@@ -116,6 +115,10 @@
 // ============= ANTI ============= //
 #include "./anticheat/anti_airbreak.pwn"
 #include "./anticheat/cartroll.pwn"
+
+#include "./system/death/bodydamage.pwn"
+
+#include "./system/rob/bank.pwn"
 
 #include "./include/onplayerfishnishloading.pwn"
 

@@ -81,6 +81,7 @@ forward OnLoadInventoryCH(playerid);
 
 new const g_aInventoryItems[][e_InventoryItems] =
 {
+	{"Dirty", "img dirty"},
 	{"Pickaxe", "item_Pickaxe"},
 	{"Dien thoai", "item_Phone"},
 	{"GPS", "item_GPS"},
@@ -156,7 +157,8 @@ new const g_aInventoryItems[][e_InventoryItems] =
 	{"Giong Nai", "ticket_deer"},
 	{"Bot Mi", "flour"},
 	{"Trai Cay", "fruit"},
-	{"May Cua", "sawder"}
+	{"May Cua", "sawder"},
+	{"Santa Hat", "santahat"}
 };
 
 hook OnPlayerDisconnect(playerid, reason)

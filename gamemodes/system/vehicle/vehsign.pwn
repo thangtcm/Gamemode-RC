@@ -39,7 +39,7 @@ stock FindVehSign(vehsqlid)
 	}
 	return vsid;
 }
-stock CreateVehSign(playerid, vehid, vehsign_number){
+stock CreateVehSign(vehid, vehsign_number){
 	new format_vs[128];
 	format(format_vs, sizeof(format_vs), "SF-%d", vehsign_number);
 	SetVehicleNumberPlate(vehid, format_vs);
@@ -47,7 +47,7 @@ stock CreateVehSign(playerid, vehid, vehsign_number){
 }
 
 
-stock RegisterVehSign(playerid, vehslotid)
+stock RegisterVehSign(playerid, vehslotid, vs_number = 0)
 {
 
 	new vehsign_id;
@@ -60,8 +60,9 @@ stock RegisterVehSign(playerid, vehslotid)
 			return 0;
 		}
 	}
-	new rand_vs = Random(10000,99999);
-
+	new rand_vs;
+	if(vs_number == 0) rand_vs = Random(10000,99999);
+	else rand_vs = vs_number;
 
 	VehSignInfo[vehsign_id][vs_ID] = vehsign_id;
 	VehSignInfo[vehsign_id][vs_VehSign] = rand_vs;
@@ -81,7 +82,67 @@ stock RegisterVehSign(playerid, vehslotid)
 	new vs_msg[1280];
 	format(vs_msg, sizeof(vs_msg), "Chiec xe ban vua dang ki co bien so: {c54640}SF-%d{ffffff}", VehSignInfo[vehsign_id][vs_VehSign]);
 	SendClientMessage(playerid, -1, vs_msg);
-	SendClientMessage(playerid, -1, "Ban hay tien hanh cat xe va lay ra 1 lan nua de co bien so xe nhe !");
+	return 1;
+}
+stock DeleteVehSign(playerid, vehslotid)
+{
+	new freg_vs[1280];
+	format(freg_vs, sizeof(freg_vs), "DELETE FROM `vehsign` WHERE `VehicleID` = '%d'", PlayerVehicleInfo[playerid][vehslotid][pvSlotId]);
+	mysql_function_query(MainPipeline, freg_vs, true, "VEHSIGN_DEL", ""); 
+	return 1;
+}
+stock VehSignExits(vs_number)
+{
+	new result_vs = -1;
+	for(new i = 0; i < MAX_VEHICLES; i++) {
+		if(VehSignInfo[i][vs_VehSign] == vs_number) {
+			result_vs = i; break;
+		}
+	}
+	if(result_vs == -1) return 0;
+	return 1;
+}
+stock VehSignOwnerCheck(playerid, vs_numberz)
+{
+	if(!VehSignExits(playerid, vs_numberz)) return 0;
+	new owner = -1;
+	foreach(new i: Player){
+		if(GetPlayerSQLId(i) == VehSignInfo[result_vs][vs_OwnerID] && IsPlayerConnected(i)){
+			owner = i; break;
+		}
+	}
+	if(owner == -1) return 0;
+	return 1;
+}
+
+stock SaveVehSign(){
+	printf("[Vehicle Sign database] Vehicle Sign Save Database");
+	for(new i = 0 ; i < MAX_VEHICLES ; i++)
+	{
+		if(VehSignInfo[i][vs_ID] != -1 && VehSignInfo[i][vs_OwnerID] != -1 && VehSignInfo[i][vs_VehicleID] != -1)
+		{
+			new queryzzz[1280], check_qur[1280], Cache:checkr;
+			format(check_qur, sizeof(check_qur), "SELECT * FROM `vehsign` WHERE `id` = '%d'",VehSignInfo[i][vs_ID]);
+			checkr = mysql_query(MainPipeline, check_qur);
+			if(cache_num_rows() > 0){
+				format(queryzzz, sizeof(queryzzz), "UPDATE `vehsign` SET \
+				`VehSign` = '%d', `OwnerID` = '%d', `VehicleID` = '%d' WHERE `id` = '%d'", VehSignInfo[i][vs_VehSign],VehSignInfo[i][vs_OwnerID],VehSignInfo[i][vs_VehicleID],VehSignInfo[i][vs_ID]);
+
+				mysql_function_query(MainPipeline, queryzzz, true, "VEHSIGN_SAVE", ""); 
+			}
+			else {
+				format(queryzzz, sizeof(queryzzz), "INSERT INTO `vehsign` SET \
+				`VehSign` = '%d', \
+				`OwnerID` = '%d', \
+				`VehicleID` = '%d'",
+				VehSignInfo[i][vs_VehSign],
+				VehSignInfo[i][vs_OwnerID],
+				VehSignInfo[i][vs_VehicleID]);
+				mysql_function_query(MainPipeline, queryzzz, true, "VEHSIGN_REG", "");
+			}
+			cache_delete(checkr);
+		}
+	}
 	return 1;
 }
 
@@ -178,5 +239,47 @@ hook OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 CMD:dangkibienso(playerid, params[])
 {
 	MenuRegisterVehSign(playerid);
+	return 1;
+}
+
+CMD:vehsign(playerid, params[])
+{
+	if(PlayerInfo[playerid][pAdmin] < 4) return SendErrorMessage(playerid, "Ban khong co quyen su dung lenh nay");
+
+	new vehid, targetid,vsign;
+
+	if(sscanf(params, "iii", vehid, targetid,vsign)) return SendUsageMessage(playerid, "/vehsign [Vehicle ID] [Player ID] [Vehicle Sign (xxxxx)]");
+
+	if(!IsPlayerConnected(targetid)) return SendErrorMessage(playerid, "Nguoi choi nay khong truc tuyen !");
+	if(VehSignExits(vsign)) return SendErrorMessage(playerid, "So nay da ton tai !");
+	// if(vehid != INVALID_VEHICLE_ID) return SendErrorMessage(playerid, "Xe nay khong ton tai");
+
+	new vehsqlid = -1, vs_id = -1, sql_id = -1;
+	for(new i = 0 ; i < MAX_VEHICLES; i++){
+		if(PlayerVehicleInfo[targetid][i][pvId] == vehid) {
+			vehsqlid = PlayerVehicleInfo[targetid][i][pvSlotId];
+			sql_id = i;
+			break;
+		}
+	}
+	for(new i = 0 ; i < MAX_VEHICLES; i++)
+	{
+		if(PlayerVehicleInfo[targetid][sql_id][pvSlotId] == VehSignInfo[i][vs_VehicleID]) {
+			vs_id = i;
+			break;
+		}
+	}
+	if(vs_id == -1) return SendErrorMessage(playerid, "Xe nay chua dang ki bien so de co the chinh sua !");
+	VehSignInfo[vs_id][vs_VehSign] = vsign; 
+	VehSignInfo[vs_id][vs_VehSign] = vsign; 
+	VehSignInfo[vs_id][vs_OwnerID] = targetid;
+	CreateVehSign(vehid, vsign);
+	SendClientMessage(playerid, -1, "Da cai dat bien so cho nguoi choi thanh cong !");
+	return 1;
+}
+
+hook OnPlayerDisconnect(playerid, reason)
+{
+	SaveVehSign();
 	return 1;
 }
