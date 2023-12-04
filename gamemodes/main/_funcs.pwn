@@ -1226,7 +1226,7 @@ public OnPlayerEnterVehicle(playerid, vehicleid, ispassenger)
 		{
 			ActSetPlayerPos(playerid, GetPVarFloat(playerid,"MedicX"), GetPVarFloat(playerid,"MedicY"), GetPVarFloat(playerid,"MedicZ"));
 			ClearAnimations(playerid);
-			ApplyAnimation(playerid, "WUZI", "CS_Dead_Guy", 4.1, 1, 1, 1, 1, 0, 1);
+			ApplyAnimation(playerid, "ped", "FLOOR_hit_f", 4.0, 0, 1, 1, 1, 0, 1);
 		}
 	}
 	
