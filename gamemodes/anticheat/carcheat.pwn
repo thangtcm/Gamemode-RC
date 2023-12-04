@@ -22,21 +22,6 @@ static const Float:PAYNSPRAY[][] =
 forward CheckVehicleHealth(playerid);
 
 /* Functions */
-stock Float: GetVehicleMaxHealth(vehicleid)
-{
-    foreach(new i: Player)
-    {
-        for(new d; d < MAX_PLAYERVEHICLES; d++)
-        {
-            if(PlayerVehicleInfo[i][d][pvId] == vehicleid)
-            {
-                return (PlayerVehicleInfo[i][d][pvMaxHealth]);
-            }
-        }
-    }
-
-    return MAX_VEHICLE_HEATH;
-}
 
 hook OnPlayerDisconnect(playerid, reason)
 {

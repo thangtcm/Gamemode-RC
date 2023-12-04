@@ -33,6 +33,7 @@ CMD:handcuff1(playerid, params[])
 					SetPlayerSpecialAction(giveplayerid, SPECIAL_ACTION_CUFFED);
                     SetPlayerAttachedObject(giveplayerid, 7, 19418, 6, -0.011, 0.028, -0.022, -15.600012, -33.699977, -81.700035, 1.0, 1.0, 1.0);
 					HandCuff[giveplayerid] = 2;
+					SetPVarInt(giveplayerid, "PlayerCuffed", 2);
 					DeletePVar(giveplayerid, "IsFrozen");
 					TogglePlayerControllable(giveplayerid, 1);
 				}
@@ -108,6 +109,7 @@ CMD:handcuff2(playerid, params[])
 					SetPlayerSpecialAction(giveplayerid, SPECIAL_ACTION_CUFFED);
                     SetPlayerAttachedObject(giveplayerid, 7, 19418, 6, -0.011, 0.028, -0.022, -15.600012, -33.699977, -81.700035, 1.0, 1.0, 1.0);
 					HandCuff[giveplayerid] = 2;
+					SetPVarInt(giveplayerid, "PlayerCuffed", 2);
 					DeletePVar(giveplayerid, "IsFrozen");
 					ApplyAnimationEx(giveplayerid, "ped", "FLOOR_hit_f", 4.0, 0, 1, 1, 1, 0, 1);
 				//TogglePlayerControllable(giveplayerid, 1);
@@ -150,6 +152,7 @@ CMD:unhandcuff(playerid, params[])
 					SetPlayerSpecialAction(giveplayerid, SPECIAL_ACTION_NONE);
 					ClearAnimations(giveplayerid);
 					HandCuff[giveplayerid] = 0;
+					DeletePVar(playerid, "PlayerCuffed");
 				}
 			}
 			else

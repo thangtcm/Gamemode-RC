@@ -39,7 +39,7 @@ forward OnInventoryAdd(playerid, pItemId, timer);
 forward OnInventoryAddCH(playerid, pItemId, timer);
 forward OnLoadInventoryCH(playerid);
 
-new const g_facInventory[][] = {
+/* new const g_facInventory[][] = {
 	"9mm",
 	"Dong",
 	"Sat",
@@ -77,10 +77,11 @@ new const g_facInventory[][] = {
 	"Vat lieu",
 	"Thuoc Sung",
 	"May Cua"
-};
+}; */
 
 new const g_aInventoryItems[][e_InventoryItems] =
 {
+	{"Dirty", "img dirty"},
 	{"Pickaxe", "item_Pickaxe"},
 	{"Dien thoai", "item_Phone"},
 	{"GPS", "item_GPS"},
@@ -103,6 +104,11 @@ new const g_aInventoryItems[][e_InventoryItems] =
 	{"Cocain", "Cocain"},
 	{"Ecstacy", "Ecstacy"},
 	{"LSD", "LSD"},
+
+        //fish
+	{"Can cau", "item_cancau"},
+	{"Moi cau", "item_moicau"},
+	{"Ca", "item_fish"},
 
 	// ammo & weapon item
 	{"9mm", "9mm"}, // ammo type = 1
@@ -152,7 +158,11 @@ new const g_aInventoryItems[][e_InventoryItems] =
 	{"Bot Mi", "flour"},
 	{"Trai Cay", "fruit"},
 	{"May Cua", "sawder"},
+<<<<<<< HEAD
 	{"Bo so cuu", "firstaidkit"}
+=======
+	{"Santa Hat", "santahat"}
+>>>>>>> main
 };
 
 hook OnPlayerDisconnect(playerid, reason)

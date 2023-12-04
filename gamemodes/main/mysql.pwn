@@ -391,6 +391,7 @@ public OnQueryFinish(resultid, extraid, handleid)
 					cache_get_field_content(row,  "Respect", szResult, MainPipeline); PlayerInfo[extraid][pExp] = strval(szResult);
 					cache_get_field_content(row,  "XP", szResult, MainPipeline); PlayerInfo[extraid][pXP] = strval(szResult);
 					cache_get_field_content(row,  "TruyDuoi", szResult, MainPipeline); PlayerInfo[extraid][pTruyDuoi] = strval(szResult);
+					cache_get_field_content(row,  "MaHieu1", szResult, MainPipeline); PlayerInfo[extraid][pMaHieu1] = strval(szResult);
                     cache_get_field_content(row,  "BanTime", szResult, MainPipeline); PlayerInfo[extraid][pBanTime] = strval(szResult);
 					cache_get_field_content(row,  "TimeBanned", szResult, MainPipeline); PlayerInfo[extraid][pTimeBanned] = strval(szResult);
 					cache_get_field_content(row,  "BannedBy", PlayerInfo[extraid][pBannedBy], MainPipeline, 128);
@@ -408,6 +409,9 @@ public OnQueryFinish(resultid, extraid, handleid)
 					cache_get_field_content(row,  "TimeCraft", szResult, MainPipeline); PlayerInfo[extraid][pTimeCraft] = strval(szResult);
 					cache_get_field_content(row,  "TimeMedkit", szResult, MainPipeline); PlayerInfo[extraid][pTimeMedkit] = strval(szResult);
 
+
+					//chiem dong
+					cache_get_field_content(row,  "AwardTypeCD", szResult, MainPipeline); PlayerInfo[extraid][pAwardTypeCD] = strval(szResult);
 
 
 					cache_get_field_content(row,  "Hambuger", szResult, MainPipeline); PlayerInfo[extraid][pHambuger] = strval(szResult);
@@ -479,6 +483,7 @@ public OnQueryFinish(resultid, extraid, handleid)
 					cache_get_field_content(row,  "LawSkill", szResult, MainPipeline); PlayerInfo[extraid][pLawSkill] = strval(szResult);
 					cache_get_field_content(row,  "MechSkill", szResult, MainPipeline); PlayerInfo[extraid][pMechSkill] = strval(szResult);
 					cache_get_field_content(row,  "TruckSkill", szResult, MainPipeline); PlayerInfo[extraid][pTruckSkill] = strval(szResult);
+					cache_get_field_content(row,  "PizzaSkill", szResult, MainPipeline); PlayerInfo[extraid][pPizzaSkill] = strval(szResult);
 					cache_get_field_content(row,  "DrugsSkill", szResult, MainPipeline); PlayerInfo[extraid][pDrugsSkill] = strval(szResult);
 					cache_get_field_content(row,  "ArmsSkill", szResult, MainPipeline); PlayerInfo[extraid][pArmsSkill] = strval(szResult);
 					cache_get_field_content(row,  "SmugglerSkill", szResult, MainPipeline); PlayerInfo[extraid][pSmugSkill] = strval(szResult);
@@ -2933,6 +2938,7 @@ stock g_mysql_SaveAccount(playerid)
     SavePlayerFloat(query, GetPlayerSQLId(playerid), "BonusHealth", BonusHealth[playerid]); 
     SavePlayerFloat(query, GetPlayerSQLId(playerid), "BonusArmour", BonusArmour[playerid]); 
     
+    SavePlayerInteger(query, GetPlayerSQLId(playerid), "AwardTypeCD", PlayerInfo[playerid][pAwardTypeCD]); 
 
 
 
@@ -3026,6 +3032,7 @@ stock g_mysql_SaveAccount(playerid)
     SavePlayerInteger(query, GetPlayerSQLId(playerid), "BoxSkill", PlayerInfo[playerid][pBoxSkill]);
     SavePlayerInteger(query, GetPlayerSQLId(playerid), "LawSkill", PlayerInfo[playerid][pLawSkill]);
     SavePlayerInteger(query, GetPlayerSQLId(playerid), "MechSkill", PlayerInfo[playerid][pMechSkill]);
+    SavePlayerInteger(query, GetPlayerSQLId(playerid), "PizzaSkill", PlayerInfo[playerid][pPizzaSkill]);
     SavePlayerInteger(query, GetPlayerSQLId(playerid), "TruckSkill", PlayerInfo[playerid][pTruckSkill]);
     SavePlayerInteger(query, GetPlayerSQLId(playerid), "DrugsSkill", PlayerInfo[playerid][pDrugsSkill]);
     SavePlayerInteger(query, GetPlayerSQLId(playerid), "ArmsSkill", PlayerInfo[playerid][pArmsSkill]);
@@ -4538,6 +4545,18 @@ public OnLoadFamilies()
 		    FamilyInfo[famid][FamilyEntrancePickup] = CreateDynamicPickup(1318, 23, FamilyInfo[famid][FamilyEntrance][0], FamilyInfo[famid][FamilyEntrance][1], FamilyInfo[famid][FamilyEntrance][2]);
 			format(string, sizeof(string), "%s", FamilyInfo[famid][FamilyName]);
 			FamilyInfo[famid][FamilyEntranceText] = CreateDynamic3DTextLabel(string,COLOR_YELLOW,FamilyInfo[famid][FamilyEntrance][0], FamilyInfo[famid][FamilyEntrance][1], FamilyInfo[famid][FamilyEntrance][2]+0.6,4.0);
+		}
+		//Capture Gang
+		if(FamilyInfo[famid][FamilyCapture] != 0)
+		{
+			new string[1280];
+            format(string, sizeof(string), "Khu vuc chiem dong\n\nSo huu : {ffff00}NONE{FFFFFF}\nTinh trang : Chua bi chiem\nSu dung: /chiemdongngay.");
+		    FamilyInfo[famid][f_captureLabel] = CreateDynamic3DTextLabel(string, -1, FamilyInfo[famid][f_PointChiemDong][0],  FamilyInfo[famid][f_PointChiemDong][1],  FamilyInfo[famid][f_PointChiemDong][2]+0.7, 50.0, INVALID_PLAYER_ID, INVALID_VEHICLE_ID, 1, -1, -1, -1);
+		    FamilyInfo[famid][f_captureObject] = CreateDynamicPickup(1252, 23, FamilyInfo[famid][f_PointChiemDong][0],  FamilyInfo[famid][f_PointChiemDong][1],  FamilyInfo[famid][f_PointChiemDong][2]);
+		}
+		
+		if(FamilyInfo[famid][f_Min][0] != 0) {
+            FamilyInfo[famid][FamilyGangzone] = GangZoneCreate(FamilyInfo[famid][f_Min][0],FamilyInfo[famid][f_Min][1],FamilyInfo[famid][f_Max][0],FamilyInfo[famid][f_Max][1]);
 		}
 		i++;
 	}
@@ -8463,7 +8482,7 @@ public OnPlayerLoad(playerid)
 
 	if(iCheckTwo != INVALID_HOUSE_ID) PlayerInfo[playerid][pPhousekey2] = iCheckTwo;
 	else PlayerInfo[playerid][pPhousekey2] = INVALID_HOUSE_ID;
-	SetPlayerFarmer(playerid);
+	
 	if(PlayerInfo[playerid][pRenting] != INVALID_HOUSE_ID && (PlayerInfo[playerid][pPhousekey] != INVALID_HOUSE_ID || PlayerInfo[playerid][pPhousekey2] != INVALID_HOUSE_ID)) {
 		PlayerInfo[playerid][pRenting] = INVALID_HOUSE_ID;
 	}
@@ -8512,6 +8531,9 @@ public OnPlayerLoad(playerid)
 	new rdName[MAX_PLAYER_NAME];
 	rdName = RandomName();
 	SetPlayerNameInServerQuery(playerid, rdName);
+	Damage_ResetDamages(playerid);
+	SetPlayerFarmer(playerid);
+	ShowGangZone(playerid);
 	return 1;
 }
 

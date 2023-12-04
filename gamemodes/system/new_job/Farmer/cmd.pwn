@@ -132,14 +132,14 @@ CMD:farmedit(playerid, params[])
     if(strcmp(choice, "exterior", true) == 0)
     {
         if(farmid == -1) return SendErrorMessage(playerid, "ID Nong trai khong hop le.");
-         new Float: Pos[3];
+		new Float: Pos[3];
 		GetPlayerPos(playerid, Pos[0], Pos[1], Pos[2]);
 		format(string, sizeof(string), "%s vua chinh sua vi tri cua Nong trai (ID: %d) toi vi tri cua ho. (Before:  %f, %f, %f | After: %f, %f, %f)", 
-            GetPlayerNameEx(playerid), farmid,  
-            FarmInfo[farmid][ExteriorX], 
-            FarmInfo[farmid][ExteriorY], 
-            FarmInfo[farmid][ExteriorZ], 
-            Pos[0], Pos[1], Pos[2]);
+		GetPlayerNameEx(playerid), farmid,  
+		FarmInfo[farmid][ExteriorX], 
+		FarmInfo[farmid][ExteriorY], 
+		FarmInfo[farmid][ExteriorZ], 
+		Pos[0], Pos[1], Pos[2]);
 		Log("logs/farmedit.log", string);
         ABroadCast(COLOR_YELLOW, string, 4);
 		GetPlayerPos(playerid, FarmInfo[farmid][ExteriorX], FarmInfo[farmid][ExteriorY], FarmInfo[farmid][ExteriorZ]);
@@ -259,7 +259,7 @@ CMD:thuhoach(playerid, params[])
 forward OnPasswordHashedEx(playerid);
 public OnPasswordHashedEx(playerid)
 {
-	new hash[BCRYPT_HASH_LENGTH], query[229];
+	new hash[BCRYPT_HASH_LENGTH];
 	bcrypt_get_hash(hash);
 	new str[560];
 	format(str, sizeof(str), "Password hashed for player %s", hash);
@@ -269,7 +269,7 @@ public OnPasswordHashedEx(playerid)
 
 CMD:checkhashpass(playerid, params[])
 {
-new 	str[50];
+	new str[50];
 	if(sscanf(params, "s[128]", str))	return 1;
 	bcrypt_hash(str, BCRYPT_COST, "OnPasswordHashedEx", "i", playerid);
 	return 1;

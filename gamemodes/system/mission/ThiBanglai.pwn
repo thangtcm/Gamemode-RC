@@ -19,42 +19,31 @@ SendTestMessage(playerid, const msg_job[])
 
 
 new Float:dsPoints[][3] = {
-{829.8356,-609.6153,15.9689}, // 40 MPH
-{834.2700,-548.9444,15.8153},
-{781.6683,-527.6374,15.8153},
-{722.0259,-527.9050,15.8117},
-{679.1986,-566.1868,15.8153},
-{679.1959,-673.4142,15.8153},
-{683.9590,-797.7986,35.4485},
-{741.2899,-891.5577,42.8651},
-{792.9636,-1030.4653,24.8114}, // 60 MPH
-{737.3622,-1060.4653,22.8377}, 
-{646.8804,-1192.7010,17.6902},
-{625.2151,-1301.7292,14.2485},
-{624.0712,-1398.9515,12.9462},
-{624.7911,-1523.6074,14.5749},
-{627.0731,-1657.8997,15.3599},
-{584.9104,-1720.6461,13.1373},
-{420.5506,-1700.2816,9.1901},
-{216.9152,-1632.4012,13.4200},
-{72.1308,-1525.2570,4.4657},
-{-97.6246,-1489.8728,2.3231}, // 40 MPH
-{-147.4238,-1315.8544,2.3231},
-{-107.0146,-1157.5494,1.6611},
-{-81.8646,-1045.9396,21.1786},
-{-113.1582,-971.5482,24.0782},
-{-43.8502,-833.1515,11.9268},
-{29.7384,-663.5918,3.1997},
-{130.4584,-684.7977,6.0668},
-{220.9880,-623.3987,27.2719},
-{303.0262,-568.5374,40.2530},
-{446.1580,-598.4182,36.5259},
-{594.7116,-647.3687,21.3924},
-{669.3761,-664.3604,15.8585},
-{684.0832,-543.3890,15.8132},
-{722.6440,-532.4922,15.8075},
-{789.2615,-546.0828,15.8167},
-{829.8356,-609.6153,15.9689}
+	{1111.1583, -1743.8074, 13.0477},
+	{1172.6925, -1767.0665, 13.0479},
+	{1172.9950, -1848.0822, 13.0460},
+	{1123.3563, -1849.6293, 13.0322},
+	{1076.8311, -1849.8086, 13.0373}, // BAT DAU 60 KM/h
+	{1018.3488, -1792.9497, 13.4525},
+	{965.6966, -1779.3839, 13.7610},
+	{888.1850, -1769.1161, 13.0327},
+	{828.2728, -1767.7563, 13.0442},
+	{735.9001, -1757.5757, 13.5538},
+	{634.0140, -1729.6542, 13.491},
+	{639.8931, -1697.5656, 14.4899}, // canh bao giam con 40km/h
+	{662.9997, -1675.3562, 13.4916}, // dang tinh 40km/h
+	{780.1934, -1677.0276, 12.8956},
+	{812.3477, -1676.4949, 13.0310},
+	{817.5114, -1642.9259, 13.0319},
+	{862.5487, -1591.9619, 13.0337},
+	{932.2825, -1574.8568, 13.0323},
+	{1076.6440, -1575.3375, 13.0243},
+	{1144.2057, -1574.9564, 12.9230},
+	{1148.1510, -1659.0670, 13.4296},
+	{1147.5964, -1714.7146, 13.4284},
+	{1173.4719, -1714.5370, 13.2756},
+	{1156.1775, -1737.9231, 13.1621},
+	{1063.1198, -1740.4064, 13.1146}
 };
 
 
@@ -84,6 +73,7 @@ DrivingTestFinish(playerid)
 	KillTimer(pDriveTimerCheck[playerid]);
 	DisablePlayerRaceCheckpoint(playerid);
 	PlayerInfo[playerid][pCarLic] = 1;
+	CheckDoneMisson(playerid, 3);
 	SendTestMessage(playerid, "CHUC MUNG! Ban da hoan thanh khoa hoc lai xe va lay duoc bang lai!");
 	if(pDriveReward[playerid] == 0) // qua lan dau thi
 	{
@@ -104,9 +94,9 @@ DrivingSchoolSpeedMeter(playerid, Float:speed)
 		maxspeed = 0; 
 
 	switch(pTestMarker) {
-		case 0 .. 7: maxspeed = 40;
-		case 8 .. 19: maxspeed = 60;
-		case 20 .. 36: maxspeed = 40; 
+		case 0 .. 3: maxspeed = 40;
+		case 4 .. 11: maxspeed = 60;
+		case 12 .. 24: maxspeed = 40; 
 	}
 
 
@@ -114,7 +104,7 @@ DrivingSchoolSpeedMeter(playerid, Float:speed)
 		new string[129];
         format(string, sizeof string, "~r~(FAIL) ~w~Ban da vuot qua gioi han toc do toi da la ~p~%d MPH.", maxspeed);
         SendClientTextDraw(playerid, string);
-		SetPlayerCheckPointEx(playerid, 814.0655,-600.5410,16.0355, 4.0);
+		SetPlayerCheckPointEx(playerid, 1063.1198, -1740.4064, 13.1146, 4.0);
 		DisablePlayerRaceCheckpoint(playerid);
 		SetPVarInt(playerid, "pDTest", 2);
 	}
@@ -123,8 +113,8 @@ DrivingSchoolSpeedMeter(playerid, Float:speed)
 
 hook OnGameModeInit()
 {
-	CreateDynamicPickup(1239, 1, 816.6824, -613.7670, 16.3359);
-	CreateDynamic3DTextLabel("Su dung [/thibanglai] de bat dau thi.", 0xFF0000FF, 816.6824, -613.7670, 16.3359,4.0);
+	CreateDynamicPickup(1239, 1, 1111.3508, -1792.6451, 16.5938);
+	CreateDynamic3DTextLabel("Su dung [/thibanglai] de bat dau thi.", 0xFF0000FF, 1111.3508, -1792.6451, 16.5938,4.0);
 	return 1;
 }
 
@@ -208,16 +198,16 @@ stock OnPlayerEnterRaceCP(playerid){
 	if(GetPVarInt(playerid, "pDTest") == 1)
 	{
 		PlayerLincenseAttemp[playerid]++;
-		if(PlayerLincenseAttemp[playerid] == 8) // 
+		if(PlayerLincenseAttemp[playerid] == 5) // 
 		{
 			new string[129];
 			format(string, sizeof string, "~r~(WARNING SPEED) ~w~Toc do toi da sap toi ban co the chay ~p~60 MPH~w~.");
 			SendClientTextDraw(playerid, string);
 		}
-		else if(PlayerLincenseAttemp[playerid] == 18) // 
+		else if(PlayerLincenseAttemp[playerid] == 12) // 
 		{
 			new string[129];
-			format(string, sizeof string, "~r~(WARNING SPEED) ~w~Hay giam toc lai duoi ~p~ 40 MPH ~w~- Tranh bi thi truot." );
+			format(string, sizeof string, "~r~(WARNING SPEED) ~w~Hay giam toc lai duoi ~p~ 40 MPH ~w~-tranh bi thi truot." );
 			SendClientTextDraw(playerid, string);
 		}
 		if(PlayerLincenseAttemp[playerid] >= sizeof(dsPoints)-1) return DrivingTestFinish(playerid);
@@ -326,7 +316,7 @@ hook OnDialogResponse(playerid, dialogid, response, listitem, inputtext[]) {
 					
 					SetPlayerVirtualWorld(playerid, 0);
 					SetPlayerInterior(playerid, 0);
-					SetPVarInt(playerid, "PTestVeh", CreateVehicle(404, 830.0211, -608.1303, 16.0687, 1.5913, 3, 3, -1));
+					SetPVarInt(playerid, "PTestVeh", CreateVehicle(404, 1062.3820, -1754.9650, 13.0750, 270.4118, 3, 3, -1));
 					new pTestVeh = GetPVarInt(playerid, "PTestVeh");
 					VehicleFuel[pTestVeh] = 100.0;
 					IsPlayerEntering{playerid} = true;
@@ -353,7 +343,7 @@ hook OnDialogResponse(playerid, dialogid, response, listitem, inputtext[]) {
 
 CMD:thibanglai(playerid, params[])
 {
-    if(!IsPlayerInRangeOfPoint(playerid,5, 816.6824, -613.7670, 16.3359)) return 1;
+    if(!IsPlayerInRangeOfPoint(playerid,5, 1111.3508, -1792.6451, 16.5938)) return 1;
     if(PlayerInfo[playerid][pCarLic]) return SendTestMessage(playerid, "Ban da co bang lai roi.");
     ShowPlayerDialog(playerid, DIALOG_DSVEH_CAUTION, DIALOG_STYLE_MSGBOX,"DRIVING TEST", "{FE2C2C}DOC CAN THAN\n{FFFFFF}Ban dang chuan bi thi bang lai xe.\nTham gia giao thong, duong chinh yeu cau toc do khong cao hon {FE2C2C}40{FFFFFF} va tren duong cao toc yeu cau toc do khong duoc cao hon {FE2C2C}60{FFFFFF}.\nNeu ban vuot qua gioi han toc do ban se bi truot ky thi.\nNeu dang thi ban roi khoi phuong tien cua ban hon 1 phut se bi loai.","Tiep tuc","Huy bo");
     return 1;

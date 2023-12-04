@@ -15,7 +15,7 @@
 #define CATTLE_DEFAULT_STATUS       0
 #define WEIGHT_DEFAULT				10
 #define Plant_ZDefault              100.75
-#define CATTLE_TIME					600 //5 phut
+#define CATTLE_TIME					300 //5 phut
 #define MAX_ORDERPRODUCT			10
 
 enum fmInfo
@@ -103,7 +103,7 @@ new PlantStatusArr[][45] = {
 new FarmInfo[MAX_FARM][fmInfo];
 new PlantTreeInfo[MAX_PLAYERS][MAX_PLAYER_PLANT][PLANT_INFO];
 new RaiseCattleInfo[MAX_PLAYERS][MAX_CATTLES][CATTLE_INFO];
-new FarmPlayer[MAX_PLAYERS];
+// new FarmPlayer[MAX_PLAYERS];
 forward OnCreateFarmFinish(playerid, index, type);
 forward OnLoadFarms();
 forward OnLoadPlants(playerid);

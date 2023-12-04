@@ -23,14 +23,14 @@ hook OnPlayerConnect(playerid)
 hook OnPlayerKeyStateChange(playerid, newkeys, oldkeys)
 {
 	if(newkeys == 0) return 1;
-	if(IsPlayerInRangeOfPoint(playerid, 2.5, 588.1791,866.1268,-42.4973))
+	if(IsPlayerInRangeOfPoint(playerid, 5, 960.1240,-2142.9419,13.0938))
 	{
 	    if(PRESSED(KEY_YES))
 	    {
 	    	Dialog_Show(playerid, minerdialog, DIALOG_STYLE_LIST, "Quan ly khu mo", "Nhan / tra dong phuc lam viec\nMua Pickaxe (dung cu de dao)", "Lua chon", "Huy bo");
 	    }
 	}
-	if(IsPlayerInRangeOfPoint(playerid, 2.5, 2126.8018,-76.6521,2.4721))
+	if(IsPlayerInRangeOfPoint(playerid, 5, 1136.7050,-1439.3700,15.7969))
 	{
 	    if(PRESSED(KEY_YES))
 	    {
@@ -39,7 +39,7 @@ hook OnPlayerKeyStateChange(playerid, newkeys, oldkeys)
 	    	Dialog_Show(playerid, thuksdialog, DIALOG_STYLE_LIST, "Thu mua khoang san", format_job, "Lua chon", "Huy bo");
 	    }
 	}
-	if(IsPlayerInRangeOfPoint(playerid, 300.0, 588.1791,866.1268,-42.4973))
+	if(IsPlayerInRangeOfPoint(playerid, 400.0, 1004.2589,-2152.0701,13.0938))
 	{
 		if(PRESSED(KEY_YES))
 		{
@@ -204,7 +204,6 @@ public OnPlayerPickUpRock(playerid, rockIndex)
 			timerdc[playerid] -= 10;
 		}
 		TimerRandomPress[playerid] = random(timerdc[playerid]-10);
-		timerd = timerdc[playerid]*1000;
 		KeyPressed[playerid] = true;
 		SetPVarInt(playerid, "MinerWorking", 1);
 		MinerTimer[playerid] = SetTimerEx("StartCountTime", 1000, true, "i", playerid);
@@ -261,11 +260,17 @@ public StartCountTime(playerid)
 					{
 						switch(random(100))
 						{
-							case 0..60:
+							case 0..54:
 							{
 								format(format_job, sizeof(format_job), "~g~Ban da dao thanh cong va nhan duoc ~y~1 Da~g~.");
 								Inventory_Add(playerid, "Da", 1);
 								SendLogToDiscordRoom("MINERAL LOG" ,"1157988317548265523", "Name", GetPlayerNameEx(playerid, false), "ADDED", "Đá", "Số lượng", "1", 0x226199);
+							}
+							case 55..60:
+							{
+								format(format_job, sizeof(format_job), "~y~ OH MY GOD~n~ Ban da rat may man khi dao duoc ~r~1x Santa Hat~y~.");
+								SendLogToDiscordRoom("SANTA HAT" ,"1180540668632899688", "Name", GetPlayerNameEx(playerid, false), "JOB", "Mineral", "Số lượng", "1 SANTA HAT", 0xFF4747);
+								Inventory_Add(playerid, "Santa Hat", 1);
 							}
 							case 84..94:
 							{
@@ -382,7 +387,7 @@ public StartCountTime(playerid)
 
 stock MinerGetKeys(playerid)
 {
-    new randomselect = random(3), string[128];
+    new randomselect = random(3);
 	KeyPressed[playerid] = false;
 	TimerPressKey[playerid] = 7 + random(5);
 	KeyPressesType[playerid] = randomselect;

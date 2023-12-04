@@ -14,24 +14,24 @@ enum eWood {
 new WoodInfo[MAX_WOOD][eWood];
 new Float:WoodPostion[MAX_WOOD][3] = // Position có sẵn của bản cũ
 {
-	{-639.308898, -61.537700, 63.663585},
-	{-652.744812, -86.882598, 61.776596},
-	{-683.059997, -90.640296, 65.067100},
-	{-694.632690, -74.367401, 68.170616},
-	{-596.119812, -55.054405, 62.655719},
-	{-633.334472, -73.497398, 64.133110},
-	{-662.643798, -124.977203, 59.338436},
-	{-647.344726, -145.831695, 62.012748},
-	{-636.991271, -138.265197, 64.358955},
-	{-586.455932, -72.081352, 64.091049},
-	{-602.226013, -98.415702, 64.275665},
-	{-599.704345, -113.975410, 66.417808},
-	{-608.638244, -132.362823, 69.410560},
-	{-623.587402, -151.391662, 68.463569},
-	{-591.516906, -149.363723, 76.047988},
-	{-574.566040, -152.103195, 76.461341},
-	{-650.633056, -182.740081, 62.525093},
-	{-680.540344, -175.798797, 60.878055},
+	{2335.5977, -668.5015, 130.7016},
+	{2330.4456, -659.3566, 129.9227},
+	{2336.8455, -641.0065, 130.1403},
+	{2329.9133, -624.2472, 130.3419},
+	{2341.4902, -623.6232, 129.0536},
+	{2309.6648, -621.8474, 131.5609},
+	{2291.6758, -629.4958, 134.1639},
+	{2296.5176, -646.1287, 132.8668},
+	{2307.9695, -657.5830, 131.0593},
+	{2297.8538, -671.0771, 130.5975},
+	{2298.9238, -686.5168, 130.2329},
+	{2299.0354, -704.7725, 129.8714},
+	{2325.8459, -710.2009, 131.1172},
+	{2330.8247, -701.1703, 131.8430},
+	{2343.0732, -693.4159, 132.6132},
+	{2358.7197, -695.5845, 131.4068},
+	{2360.5745, -709.9018, 131.2718},
+	{2354.8420, -723.4679, 131.6167},
 	{-683.731018, -146.484481, 59.855533},
 	{-610.268005, -37.102207, 61.575477}
 };
@@ -108,7 +108,7 @@ stock ClearCutting(playerid)
 	return 1;
 }
 
-CMD:chatgo(playerid, params[])
+CMD:wood(playerid, params[])
 {
 	new Float:PosXACtor, Float:PosYACtor, Float:PosZACtor;
 	GetActorPos(ChatGoActor, PosXACtor, PosYACtor, PosZACtor);
@@ -158,7 +158,7 @@ hook OnDialogResponse(playerid, dialogid, response, listitem, inputtext[]) {
 			if(PlayerInfo[playerid][pCMND] < 1) return SendErrorMessage(playerid,"Ban khong co CMND.");
         	switch(listitem) {
         		case 0: {
-        			if (IsPlayerInRangeOfPoint(playerid,5.0,-543.2013,-197.4136,78.4063)) {
+        			if (IsPlayerInRangeOfPoint(playerid,5.0,2357.2139, -651.3280, 128.0547)) {
         				if(PlayerInfo[playerid][pJob] == JOB_WOOD || PlayerInfo[playerid][pJob2] == JOB_WOOD) return 1;
             			if(PlayerInfo[playerid][pJob] == 0)
                         {
@@ -231,10 +231,14 @@ hook OnGameModeInit()
 	{
 
     	WoodInfo[i][WoodText] = CreateDynamic3DTextLabel("Cay Go\nNhan 'Y' de chat go", -1,  WoodPostion[i][0],WoodPostion[i][1],WoodPostion[i][2]+1.2, 13.0);
+<<<<<<< HEAD
     	WoodInfo[i][WoodObject] = CreateDynamicObject(655, WoodPostion[i][0], WoodPostion[i][1], WoodPostion[i][2], 0,0,0);
+=======
+    	WoodInfo[i][WoodObject] = CreateObject(655, WoodPostion[i][0], WoodPostion[i][1], WoodPostion[i][2]-1.2, 0,0,0);
+>>>>>>> main
     	WoodInfo[i][WoodStatus]  = 0;
     }
 
-	ChatGoActor = CreateActor(16,-544.4698, -196.8952, 78.4063, 276.5303);
+	ChatGoActor = CreateActor(16,2357.2139, -651.3280, 128.0547, 173.9230);
 	return 1;
 }
