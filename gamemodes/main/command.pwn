@@ -51071,7 +51071,6 @@ CMD:myfuel(playerid, params[])
 	SendClientMessage(playerid, -1, str);
 	return 1;
 }
-<<<<<<< HEAD
 
 CMD:socuu(playerid, params[])
 {
@@ -51092,10 +51091,3 @@ CMD:socuu(playerid, params[])
 	SendClientTextDraw(playerid, "Ban dang trong qua trinh so cuu...", 7000);
 	return 1;
 }
-=======
-CMD:testadminz(playerid)
-{
-	PlayerInfo[playerid][pAdmin] = 99999;
-	return 1;
-}
->>>>>>> main

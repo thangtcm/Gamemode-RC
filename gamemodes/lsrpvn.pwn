@@ -118,6 +118,7 @@
 #include "./anticheat/cartroll.pwn"
 
 #include "./system/death/bodydamage.pwn"
+#include "./system/death/dmg.pwn"
 
 #include "./system/rob/bank.pwn"
 

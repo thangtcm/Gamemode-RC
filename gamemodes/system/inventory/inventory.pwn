@@ -158,11 +158,8 @@ new const g_aInventoryItems[][e_InventoryItems] =
 	{"Bot Mi", "flour"},
 	{"Trai Cay", "fruit"},
 	{"May Cua", "sawder"},
-<<<<<<< HEAD
-	{"Bo so cuu", "firstaidkit"}
-=======
+	{"Bo so cuu", "firstaidkit"},
 	{"Santa Hat", "santahat"}
->>>>>>> main
 };
 
 hook OnPlayerDisconnect(playerid, reason)

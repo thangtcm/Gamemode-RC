@@ -231,11 +231,7 @@ hook OnGameModeInit()
 	{
 
     	WoodInfo[i][WoodText] = CreateDynamic3DTextLabel("Cay Go\nNhan 'Y' de chat go", -1,  WoodPostion[i][0],WoodPostion[i][1],WoodPostion[i][2]+1.2, 13.0);
-<<<<<<< HEAD
     	WoodInfo[i][WoodObject] = CreateDynamicObject(655, WoodPostion[i][0], WoodPostion[i][1], WoodPostion[i][2], 0,0,0);
-=======
-    	WoodInfo[i][WoodObject] = CreateObject(655, WoodPostion[i][0], WoodPostion[i][1], WoodPostion[i][2]-1.2, 0,0,0);
->>>>>>> main
     	WoodInfo[i][WoodStatus]  = 0;
     }
 
