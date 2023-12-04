@@ -15,17 +15,8 @@ public DRL_Load(d)
 		cache_get_field_content(index, "DLab_Postion0", result, MainPipeline); DrugLabInfo[index][DLab_Postion][0] = floatstr(result);
 		cache_get_field_content(index, "DLab_Postion1", result, MainPipeline); DrugLabInfo[index][DLab_Postion][1] = floatstr(result);
 		cache_get_field_content(index, "DLab_Postion2", result, MainPipeline); DrugLabInfo[index][DLab_Postion][2] = floatstr(result);
-		
-		new Float:Pos_drl[6];
-		Pos_drl[0] = DrugLabInfo[index][DLab_Postion][0];
-		Pos_drl[1] = DrugLabInfo[index][DLab_Postion][1];
-		Pos_drl[2] = DrugLabInfo[index][DLab_Postion][2];
 
-		new string[129];
-		new family = DrugLabInfo[index][DLab_Family] ;
-		format(string,sizeof string,"Drub Lab %d\nFamily: %s\n(Bam Y de thao tac)",index,FamilyInfo[family][FamilyName]);
-		DrugLabInfo[index][DLab_Label] = CreateDynamic3DTextLabel(string, -1,  Pos_drl[0], Pos_drl[1], Pos_drl[2], 30.0, INVALID_PLAYER_ID,  INVALID_VEHICLE_ID,   0, DrugLabInfo[index][DLab_Vw], DrugLabInfo[index][DLab_Int]);
-		DrugLabInfo[index][DLab_PickUP] = CreateDynamicPickup(1577, 10,  Pos_drl[0], Pos_drl[1], Pos_drl[2],DrugLabInfo[index][DLab_Vw], DrugLabInfo[index][DLab_Int]);
+		RefreshDrugLab(index);
 		printf("[Drug lab database] %d Druglab loaded.", index);
 
     }
@@ -408,8 +399,8 @@ public OnQueryFinish(resultid, extraid, handleid)
 					cache_get_field_content(row,  "RankText", PlayerInfo[extraid][pRankText], MainPipeline, 64);
 					cache_get_field_content(row,  "QuocTich", PlayerInfo[extraid][pQuocTich], MainPipeline, 30);
 					cache_get_field_content(row,  "Flag", PlayerInfo[extraid][pFlag]);
-					cache_get_field_content(row,  "CraftWeaponDeal", CraftWeaponDeal[extraid]);
-					cache_get_field_content(row,  "CraftWeaponDealTime", CraftWeaponDealTime[extraid]);
+					cache_get_field_content(row,  "CraftWeaponDeal", PlayerInfo[extraid][pCraftWD]);
+					cache_get_field_content(row,  "CraftWeaponDealTime", PlayerInfo[extraid][pCraftWDTime]);
 					cache_get_field_content(row,  "Eat", szResult, MainPipeline); PlayerInfo[extraid][pEat] = strval(szResult);
 					cache_get_field_content(row,  "Drink", szResult, MainPipeline); PlayerInfo[extraid][pDrink] = strval(szResult);
 					cache_get_field_content(row,  "Strong", szResult, MainPipeline); PlayerInfo[extraid][pStrong] = strval(szResult);

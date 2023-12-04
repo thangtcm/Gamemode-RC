@@ -1,6 +1,4 @@
 
-new HandCuff[MAX_PLAYERS];
-new DangBiTazer[MAX_PLAYERS];
 CMD:handcuff1(playerid, params[])
 {
 	if(IsACop(playerid))

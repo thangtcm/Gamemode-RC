@@ -158,6 +158,7 @@ new const g_aInventoryItems[][e_InventoryItems] =
 	{"Bot Mi", "flour"},
 	{"Trai Cay", "fruit"},
 	{"May Cua", "sawder"},
+	{"Bo so cuu", "firstaidkit"},
 	{"Santa Hat", "santahat"}
 };
 
