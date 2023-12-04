@@ -6,8 +6,8 @@ new RuaTien_Status[MAX_PLAYERS];
 #define DIALOG_RUATIEN 10090
 hook OnGameModeInit()
 {
-	CreateObject(2332, 2305.73047, -0.39158, 26.16562,   0.00000, 0.00000, 90);
-	CreateDynamic3DTextLabel("{FF0000}Su dung '/robbank' de cuop", -1, 2305.73047, -0.39158, 26.16562+0.6,12.0);
+	CreateObject(2332, 1436.2850,-999.7745,1639.8025,   0.00000, 0.00000, 90);
+	CreateDynamic3DTextLabel("{FF0000}Su dung '/robbank' de cuop", -1, 1436.2850,-999.7745,1639.8025 +0.6,12.0);
 
 	CreateDynamic3DTextLabel("{FF0000}Dia diem rua tien 1", -1,1207.8416,144.8207,20.4785+0.6,12.0);
 	CreateDynamic3DTextLabel("{FF0000}Dia diem rua tien 2", -1,1493.1688,-666.8275,95.6013+0.6,12.0);
@@ -41,7 +41,7 @@ CMD:robbank(playerid, params[])
 forward OnPlayerRobbing(playerid);
 public OnPlayerRobbing(playerid)
 {
-	if(IsPlayerInRangeOfPoint(playerid, 20.0, 2305.73047, -0.39158, 26.16562) && Robbingbank == playerid) {
+	if(IsPlayerInRangeOfPoint(playerid, 20.0, 1436.2850,-999.7745,1639.8025) && Robbingbank == playerid) {
 		Inventory_Add(playerid, "Dirty", 1, 60*24*2);
 		// SendClientMessage(playerid, -1, "Ban da cuop duoc 1 cuc tien");
 
@@ -158,6 +158,7 @@ public OnPlayerRuaTien(playerid)
 				case 3: percent=90;
 				default: percent=60;
 			}
+
 			new rt_amount = Inventory_Count(playerid, "Dirty");
 			new rt_msg[1280];
 			format(rt_msg, sizeof(rt_msg), "Ban da rua thanh cong %d cuc tien ban !", rt_amount);
