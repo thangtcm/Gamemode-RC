@@ -220,22 +220,22 @@ public F_StartCountTime(playerid)
 					if(JobSkill[playerid][Fish] < 250)
 					{   
 					    new rdd = random(100);
-					    swtich(rdd)
+					    switch(rdd)
 					    {
-					         case 0..5:
-					         {
-					            format(format_job, sizeof(format_job), "~y~ OH MY GOD~n~ Ban da rat may man khi dao duoc ~r~1x Santa Hat~y~.");					
-		                        SendClientMessage(playerid,COLOR_WHITE, string);			
-		                        SendLogToDiscordRoom("SANTA HAT" ,"1180540668632899688", "Name", GetPlayerNameEx(playerid, false), "JOB", "Mineral", "Số lượng", "1 SANTA HAT", 0xFF4747);							
-		                    	Inventory_Add(playerid, "Santa Hat", 1);	
-					         }
-					         case 6..100:
-					         {
-					            new rd = 5 + random(5);
-							    format(string, sizeof(string), "Ban da cau thanh cong {FF8E00}%d KG {FFFFFF} ca.", rd);
-						 	   SendClientMessage(playerid,COLOR_WHITE, string);
-					        	Inventory_Add(playerid, "Ca", rd);
-	   			          }
+							case 0..5:
+							{
+								format(format_job, sizeof(format_job), "~y~ OH MY GOD~n~ Ban da rat may man khi dao duoc ~r~1x Santa Hat~y~.");					
+								SendClientMessage(playerid,COLOR_WHITE, string);			
+								SendLogToDiscordRoom("SANTA HAT" ,"1180540668632899688", "Name", GetPlayerNameEx(playerid, false), "JOB", "Mineral", "Số lượng", "1 SANTA HAT", 0xFF4747);							
+								Inventory_Add(playerid, "Santa Hat", 1);	
+							}
+							case 6..100:
+							{
+								new rd = 5 + random(5);
+								format(string, sizeof(string), "Ban da cau thanh cong {FF8E00}%d KG {FFFFFF} ca.", rd);
+								SendClientMessage(playerid,COLOR_WHITE, string);
+								Inventory_Add(playerid, "Ca", rd);
+	   			          	}
 					    }				    							    
 			            new pItemId = Inventory_GetItemID(playerid, "Moi cau", 1);
 		            	Inventory_Remove(playerid, pItemId, 1);
@@ -243,22 +243,22 @@ public F_StartCountTime(playerid)
 					else if(JobSkill[playerid][Fish] >= 250)
 					{
 					    new rdd = random(100);
-					    swtich(rdd)
+					    switch(rdd)
 					    {
-					         case 0..5:
-					         {
+							case 0..5:
+							{
 					            format(format_job, sizeof(format_job), "~y~ OH MY GOD~n~ Ban da rat may man khi dao duoc ~r~1x Santa Hat~y~.");					
 		                        SendClientMessage(playerid,COLOR_WHITE, string);			
 		                        SendLogToDiscordRoom("SANTA HAT" ,"1180540668632899688", "Name", GetPlayerNameEx(playerid, false), "JOB", "Mineral", "Số lượng", "1 SANTA HAT", 0xFF4747);							
 		                    	Inventory_Add(playerid, "Santa Hat", 1);	
-					         }
-					         case 6..100:
-					         {
+							}
+							case 6..100:
+							{
 					            new rd = 10 + random(8);
 							    format(string, sizeof(string), "Ban da cau thanh cong {FF8E00}%d KG {FFFFFF} ca.", rd);
 							    SendClientMessage(playerid,COLOR_WHITE, string);
-						 	   Inventory_Add(playerid, "Ca", rd);
-	   			          }
+						 	   	Inventory_Add(playerid, "Ca", rd);
+	   			          	}
 					    }				    					
 				        new pItemId = Inventory_GetItemID(playerid, "Moi cau", 1);
 		            	Inventory_Remove(playerid, pItemId, 1);

@@ -23,7 +23,7 @@ GetRandomHouse(playerid) // check
 	{
 	    if(HouseInfo[i][hOwned])
 	    {
-	        if(250 <= GetPlayerDistanceFromPoint(playerid, HouseInfo[houseid][hExteriorX], HouseInfo[houseid][hExteriorY], HouseInfo[houseid][hExteriorZ]) <= 1300.0)
+	        if(250 <= GetPlayerDistanceFromPoint(playerid, HouseInfo[i][hExteriorX], HouseInfo[i][hExteriorY], HouseInfo[i][hExteriorZ]) <= 1300.0)
 	        {
 	        	houseIDs[index++] = i;
 			}
