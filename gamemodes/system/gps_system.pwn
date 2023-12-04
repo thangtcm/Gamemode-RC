@@ -47,10 +47,10 @@ stock GetZoneFind(zxc) {
 stock s_GetZoneFind(zxc) {
 	new storename[70];
 	switch(zxc) {
-		case 0:	gagaz = "Pizza Stack";
-		case 1:	gagaz = "Cua hang 24/7";
-		case 2:	gagaz = "Mechanic";
-		case 3:	gagaz = "Shop xe";
+		case 0:	storename = "Pizza Stack";
+		case 1:	storename = "Cua hang 247";
+		case 2:	storename = "Mechanic";
+		case 3:	storename = "Shop xe";
 	}
 	return storename;
 }  
@@ -77,7 +77,7 @@ new Float:timvieclam_postion[7][3] = {
 {2446.3665,-2100.4600,13.546}
 };
 
-new Float:store_postion[7][3] = {
+new Float:store_postion[4][3] = {
 {2103.9978,-1806.3495,13.5547},
 {1929.1167,-1776.2267,13.5469},
 {2156.7241,-1736.7158,13.5572},
