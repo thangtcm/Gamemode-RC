@@ -142,9 +142,9 @@ public M_OnQueryFinish(extraid, handleid)
 			{
 				SendServerMessage(extraid, "Ban chua lam nhiem vu ngay hom nay, hay tim NPC tai CityHall de lam nhiem vu ngay nhe");
 			}
-			if(PlayerInfo[playerid][pCMND]) // check dang ky cmnd trc get
+			if(PlayerInfo[extraid][pCMND]) // check dang ky cmnd trc get
 			{
-			    CheckDoneMisson(playerid, 2);
+			    CheckDoneMisson(extraid, 2);
 			}
 			
 		}
