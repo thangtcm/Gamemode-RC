@@ -146,14 +146,14 @@ Dialog:GPSPosition(playerid, response, listitem, inputtext[])
 			case 2:
 			{
 				string = "Dia diem\tKhu vuc\tKhoang cach";
-				for(new z =0 ; z < 9 ; z++ ) 
+				for(new z =0 ; z < 4 ; z++ ) 
 				{
 					new zone[MAX_ZONE_NAME],Float:Distance;
 					Distance = GetPlayerDistanceFromPoint(playerid, store_postion[z][0], store_postion[z][1], store_postion[z][2]);
 				    Get3DZone(store_postion[z][0], store_postion[z][1], store_postion[z][2], zone, sizeof(zone));
 				    format(string, sizeof string, "%s\n\%s\t{6db4c3}%s\t{3cab4e}%0.2f met", string,s_GetZoneFind(z),zone,Distance);
 				}
-				ShowPlayerDialog(playerid, TIMDUONG, DIALOG_STYLE_TABLIST_HEADERS, "Store",string,"Chon", "Huy");
+				ShowPlayerDialog(playerid, TIMSTORE, DIALOG_STYLE_TABLIST_HEADERS, "Store",string,"Chon", "Huy");
 			}
 		
 		}
@@ -178,6 +178,14 @@ hook OnDialogResponse(playerid, dialogid, response, listitem, inputtext[]) {
 	    if(response)
 	    {
 	       	SetPlayerCheckPointEx(playerid,timduong_postion[listitem][0], timduong_postion[listitem][1], timduong_postion[listitem][2],3);
+	       	CP[playerid] = 252000;
+		}
+	}
+	if(dialogid == TIMSTORE)
+	{
+	    if(response)
+	    {
+	       	SetPlayerCheckPointEx(playerid,store_postion[listitem][0], store_postion[listitem][1], store_postion[listitem][2],3);
 	       	CP[playerid] = 252000;
 		}
 	}
