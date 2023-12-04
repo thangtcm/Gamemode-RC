@@ -23,11 +23,7 @@ GetRandomHouse(playerid) // check
 	{
 	    if(HouseInfo[i][hOwnerID])
 	    {
-<<<<<<< HEAD
-	        if(60 <= GetPlayerDistanceFromPoint(playerid, HouseInfo[i][hExteriorX], HouseInfo[i][hExteriorY], HouseInfo[i][hExteriorZ]) <= 1800.0)
-=======
 	        if(250 <= GetPlayerDistanceFromPoint(playerid, HouseInfo[i][hExteriorX], HouseInfo[i][hExteriorY], HouseInfo[i][hExteriorZ]) <= 1300.0)
->>>>>>> main
 	        {
 	        	houseIDs[index++] = i;
 			}
@@ -250,10 +246,6 @@ CMD:jhonsongrentpizza(playerid, params[])
     	PizzaJob[playerid][Vehicle] = CreateVehicle(448, 2112.9497, -1771.9745, 12.9538, 0 , 3, 3, -1);
     	VehicleFuel[PizzaJob[playerid][Vehicle]] = GetVehicleFuelCapacity(PizzaJob[playerid][Vehicle]);
     	PlayerOnVehicle[playerid] = PizzaJob[playerid][Vehicle] ;
-<<<<<<< HEAD
-    
-=======
->>>>>>> main
     	SetVehicleHealth(PizzaJob[playerid][Vehicle], 900.0);
     	Vehicle_ResetData(PizzaJob[playerid][Vehicle]);
     	ActPutPlayerInVehicle(playerid, PizzaJob[playerid][Vehicle] ,0);
@@ -270,10 +262,6 @@ CMD:jhonsongrentpizza(playerid, params[])
     	PizzaJob[playerid][Vehicle] = CreateVehicle(561, 2112.9497, -1771.9745, 12.9538, 0 , 3, 3, -1);
     	VehicleFuel[PizzaJob[playerid][Vehicle]] = GetVehicleFuelCapacity(PizzaJob[playerid][Vehicle]);
     	PlayerOnVehicle[playerid] = PizzaJob[playerid][Vehicle] ;
-<<<<<<< HEAD
-    	
-=======
->>>>>>> main
     	SetVehicleHealth(PizzaJob[playerid][Vehicle], 900.0);
     	Vehicle_ResetData(PizzaJob[playerid][Vehicle]);
     	ActPutPlayerInVehicle(playerid, PizzaJob[playerid][Vehicle] ,0);
