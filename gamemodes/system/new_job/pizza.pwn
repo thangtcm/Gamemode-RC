@@ -309,13 +309,13 @@ CMD:giaobanh(playerid, params[])
 	    return SendErrorMessage(playerid, "Khong co ngoi nha nao yeu cau ban giao banh Pizza. Hay yeu cau Ban Quan Tri thiet lap.");
 	}
     SendClientTextDraw(playerid, "Dang nhan cuoc goi...");
-    SetTimerEx("cp_pizza", 2000, false, "i", playerid);
+    SetTimerEx("cp_pizza", 2000, false, "ii", playerid, houseid);
     return 1;
 }
 
 
-forward cp_pizza(playerid);
-public cp_pizza(playerid)
+forward cp_pizza(playerid, houseid);
+public cp_pizza(playerid, houseid)
 {
     new str[120];
 	format(str, sizeof str, "Hay giao pizza den nha cua ~y~%s~w~", HouseInfo[houseid][hOwnerName]);
