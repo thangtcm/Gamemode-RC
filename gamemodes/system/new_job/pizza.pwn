@@ -22,6 +22,7 @@ new Float:pizza_postion[9][3] = {
 {1394.6504,400.6509,19.7578}
 };
 
+<<<<<<< HEAD
 forward MonitorPizzaCarPlayer(playerid);
  
 CMD:laybanh(playerid,params[]) {
@@ -34,6 +35,21 @@ CMD:laybanh(playerid,params[]) {
         SetPlayerSpecialAction(playerid, SPECIAL_ACTION_CARRY);
         BanhPizzaInFoot[playerid] = 1;
        	return SendServerMessage(playerid, "Ban da cam banh tren tay, hay nhan nut 'N' de dua len xe.");
+=======
+GetRandomHouse(playerid) // check
+{
+	new index, houseIDs[MAX_HOUSES] = {-1, ...};
+
+	for(new i = 0; i < MAX_HOUSES; i ++)
+	{
+	    if(HouseInfo[i][hOwned])
+	    {
+	        if(250 <= GetPlayerDistanceFromPoint(playerid, HouseInfo[i][hExteriorX], HouseInfo[i][hExteriorY], HouseInfo[i][hExteriorZ]) <= 1300.0)
+	        {
+	        	houseIDs[index++] = i;
+			}
+		}
+>>>>>>> main
 	}
 	else {
 	   SendErrorMessage(playerid, " Ban khong o noi lay banh khong the lay banh.");

@@ -8521,6 +8521,12 @@ public OnPlayerLoad(playerid)
 	new rdName[MAX_PLAYER_NAME];
 	rdName = RandomName();
 	SetPlayerNameInServerQuery(playerid, rdName);
+<<<<<<< HEAD
+=======
+	Damage_ResetDamages(playerid);
+	SetPlayerFarmer(playerid);
+	ShowGangZone(playerid);
+>>>>>>> main
 	return 1;
 }
 
