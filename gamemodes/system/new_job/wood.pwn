@@ -41,7 +41,7 @@ forward RespawnWood(i);
 public RespawnWood(i)
 {
 	WoodInfo[i][WoodText] = CreateDynamic3DTextLabel("Cay Go\nNhan 'Y' de chat go", -1,  WoodPostion[i][0], WoodPostion[i][1], WoodPostion[i][2]+1.2, 13.0);
-	WoodInfo[i][WoodObject] = CreateObject(655, WoodPostion[i][0], WoodPostion[i][1], WoodPostion[i][2], 0,0,0);
+	WoodInfo[i][WoodObject] = CreateDynamicObject(655, WoodPostion[i][0], WoodPostion[i][1], WoodPostion[i][2], 0,0,0);
 	WoodInfo[i][WoodStatus] = 0;
 	printf("Wood %d respawn", i);
 	return 1;
@@ -62,7 +62,7 @@ public CuttingWood(playerid)
 	Inventory_Add(playerid, "Go", rand);
 	sendMessage(playerid, 0xECA727FF, "LUMBER:{FFFFFF} Ban nhan duoc %d go tu viec chat cai cay nay.", rand);
 
-	DestroyObject(WoodInfo[GetPVarInt(playerid, #woodID)][WoodObject]);
+	DestroyDynamicObject(WoodInfo[GetPVarInt(playerid, #woodID)][WoodObject]);
 	DestroyDynamic3DTextLabel(WoodInfo[GetPVarInt(playerid, #woodID)][WoodText]);
 	SetTimerEx("RespawnWood", 60000 * 10, false, "d", GetPVarInt(playerid, #woodID)); // 20 min
 	return 1;
@@ -127,7 +127,7 @@ hook OnPlayerKeyStateChange(playerid, newkeys, oldkeys) {
 		{
 			if (WoodInfo[i][WoodStatus] == 0)
 			{
-				if (!IsValidObject(WoodInfo[i][WoodObject])) return SendClientMessage(playerid, 0xECA727FF, "LUMBER:{FFFFFF} Cay nay chua phat trien.");
+				if (!IsValidDynamicObject(WoodInfo[i][WoodObject])) return SendClientMessage(playerid, 0xECA727FF, "LUMBER:{FFFFFF} Cay nay chua phat trien.");
 				if (PlayerInfo[playerid][pJob] != JOB_WOOD && PlayerInfo[playerid][pJob2] != JOB_WOOD) return 1;
 				if (GetPVarInt(playerid, #cuttingWood)) return 1;
 				if (Inventory_Count(playerid, "May Cua") < 1) return SendClientMessage(playerid, 0xECA727FF, "LUMBER:{FFFFFF} Ban khong co may cua de chat go.");
@@ -231,7 +231,7 @@ hook OnGameModeInit()
 	{
 
     	WoodInfo[i][WoodText] = CreateDynamic3DTextLabel("Cay Go\nNhan 'Y' de chat go", -1,  WoodPostion[i][0],WoodPostion[i][1],WoodPostion[i][2]+1.2, 13.0);
-    	WoodInfo[i][WoodObject] = CreateObject(655, WoodPostion[i][0], WoodPostion[i][1], WoodPostion[i][2]-1.2, 0,0,0);
+    	WoodInfo[i][WoodObject] = CreateDynamicObject(655, WoodPostion[i][0], WoodPostion[i][1], WoodPostion[i][2], 0,0,0);
     	WoodInfo[i][WoodStatus]  = 0;
     }
 

@@ -994,6 +994,11 @@ task ServerHeartbeat[1000]() {
 			}
 		}
 
+		if (!GetPVarInt(i, "Injured")) {
+			if (DamagedReset[i] > 0) DamagedReset[i]--;
+			else if (DamagedReset[i] == 0) ResetDamagedPlayer(i);
+			
+		}
 		if (GetPVarInt(i, "MailTime") > 0)
 			SetPVarInt(i, "MailTime", GetPVarInt(i, "MailTime") - 1);
 		else

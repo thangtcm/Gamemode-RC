@@ -776,13 +776,27 @@ CMD:crafttest(playerid,params[]) {
 	ShowMainCraft(playerid);
 	return 1;
 }
-ShowMainCraft(playerid) {
-	Dialog_Show(playerid, CRAFT_MAIN, DIALOG_STYLE_LIST, "Che tao vu khi", "Xem don hang\nDat hang vu khi\nche tao dan","> Chon","Thoat");
+ShowMainCraft(playerid, type = 1) {
+	if (type == 1)
+	{
+		return Dialog_Show(playerid, CRAFT_MAIN, DIALOG_STYLE_LIST, "Che tao vu khi", "Xem don hang\nDat hang vu khi\nche tao dan","> Chon","Thoat");
+	}
+	else {
+		return Dialog_Show(playerid, CRAFT_MAIN2, DIALOG_STYLE_LIST, "Che tao vu khi", "Xem don hang\nDat hang vu khi\nche tao dan","> Chon","Thoat");
+	}
 }
+
 Dialog:CRAFT_MAIN(playerid, response, listitem, inputtext[]) {
     if(response) {
     	if(listitem == 0 ) ShowDealCraft(playerid);
     	if(listitem == 1 ) ShowCraftWeapon(playerid);
+    	if(listitem == 2 ) ShowCraftAmmo(playerid);
+    }
+}
+Dialog:CRAFT_MAIN2(playerid, response, listitem, inputtext[]) {
+    if(response) {
+    	if(listitem == 0 ) ShowDealCraft(playerid);
+    	if(listitem == 1 ) ShowCraftWeapon(playerid, 2);
     	if(listitem == 2 ) ShowCraftAmmo(playerid);
     }
 }
@@ -805,8 +819,10 @@ stock ShowDealCraft(playerid) {
 	}
 	return 1;
 }
-stock ShowCraftWeapon(playerid) {
-	Dialog_Show(playerid, CRAFT_WEAPON, DIALOG_STYLE_TABLIST_HEADERS, "Che tao vu khi", "Vu khi\tYeu cau\tThoi gian\n\
+stock ShowCraftWeapon(playerid, type = 1) {
+	if (type == 1)
+	{
+		return Dialog_Show(playerid, CRAFT_WEAPON, DIALOG_STYLE_TABLIST_HEADERS, "Che tao vu khi", "Vu khi\tYeu cau\tThoi gian\n\
 		        	                                                    #Colt 45\t15 Sat & 10 vat lieu\t15p\n\
 		        		                                                #Deagle\t35 Sat & 10 go & 30 vat lieu\t15p\n\
 		        		                                                #Shotgun\t30 Sat & 20 go & 25 vat lieu\t30p\n\
@@ -816,6 +832,13 @@ stock ShowCraftWeapon(playerid) {
 													                    #Sniper\t150 Sat & 40 go & 280 vat lieu\t120p\n\
 													                    #Uzi\t150 Sat & 40 go & 280 vat lieu\t15p\n\
 														                #Tec-9\t30 Sat & 10 go & 25 vat lieu\t15p", "Che tao", "Huy bo");
+	}
+	else {
+		return Dialog_Show(playerid, CRAFT_WEAPON, DIALOG_STYLE_TABLIST_HEADERS, "Che tao vu khi", "Vu khi\tYeu cau\tThoi gian\n\
+		        	                                                    #Colt 45\t15 Sat & 10 vat lieu\t15p\n\
+		        		                                                #Deagle\t35 Sat & 10 go & 30 vat lieu\t15p\n\
+		        		                                                #Shotgun\t30 Sat & 20 go & 25 vat lieu\t30p", "Che tao", "Huy bo");
+	}
 }
 stock ShowCraftAmmo(playerid) {
 	Dialog_Show(playerid, CRAFT_AMMO, DIALOG_STYLE_TABLIST_HEADERS, "Che tao dan", "Loai dan\tYeu cau\t#So vien\n\
@@ -926,173 +949,173 @@ Dialog:CRAFT_AMMO(playerid, response, listitem, inputtext[]) {
 Dialog:CRAFT_WEAPON(playerid, response, listitem, inputtext[]) {
     if(response) {
     	if(PlayerInfo[playerid][pCraftWD] != 0) return SendClientMessage(playerid, -1, "Vui long doi don hang truoc hoan tat.");
-    	if(listitem == 0 ) {
-    		if(Inventory_Count(playerid, "Sat") < 0) return SendClientMessage(playerid, -1, "Ban khong du so luong sat (60) (/inv de kiem tra).");
-    		if(Inventory_Count(playerid, "Go") < 0) return SendClientMessage(playerid, -1, "Ban khong du so luong go (60) (/inv de kiem tra).");
-    		if(Inventory_Count(playerid, "Vat lieu") < 0) return SendClientMessage(playerid, -1, "Ban khong du so luong vat lieu (150) (/inv de kiem tra).");
+		if(listitem == 0 ) {
+			if(Inventory_Count(playerid, "Sat") < 0) return SendClientMessage(playerid, -1, "Ban khong du so luong sat (60) (/inv de kiem tra).");
+			if(Inventory_Count(playerid, "Go") < 0) return SendClientMessage(playerid, -1, "Ban khong du so luong go (60) (/inv de kiem tra).");
+			if(Inventory_Count(playerid, "Vat lieu") < 0) return SendClientMessage(playerid, -1, "Ban khong du so luong vat lieu (150) (/inv de kiem tra).");
 
 
-    		// craft colt 45 15 sat 10 vl , 15phut
-    		if(Inventory_Count(playerid, "Sat") < 15) return SendClientMessage(playerid, -1, "Ban khong du so luong sat (15) (/inv de kiem tra).");
-    		if(Inventory_Count(playerid, "Vat lieu") < 10) return SendClientMessage(playerid, -1, "Ban khong du so luong vat lieu (10) (/inv de kiem tra).");
-    	    new pItemId = Inventory_GetItemID(playerid,"Sat");
-		    Inventory_Remove(playerid, pItemId, 15); //ID cua InventoryData
-		    pItemId = Inventory_GetItemID(playerid,"Vat lieu");
-		    Inventory_Remove(playerid, pItemId, 10); //ID cua InventoryData
-		    SendClientMessage(playerid, COLOR_YELLOW, "Ban da oder thanh cong Colt-45 , don hang se hoan tat trong 15p.");
-		    SendClientMessage(playerid, COLOR_YELLOW, " > Sau khi don hang hoan tat hay quay lai NPC va nhan hang.");
-		    PlayerInfo[playerid][pCraftWD] = 1;
-		    PlayerInfo[playerid][pCraftWDTime] = gettime() + ( 60 * 15 ) ; // 15p
-    	}
-        if(listitem == 1 ) {
-        	if(Inventory_Count(playerid, "Sat") < 0) return SendClientMessage(playerid, -1, "Ban khong du so luong sat (60) (/inv de kiem tra).");
-    		if(Inventory_Count(playerid, "Go") < 0) return SendClientMessage(playerid, -1, "Ban khong du so luong go (60) (/inv de kiem tra).");
-    		if(Inventory_Count(playerid, "Vat lieu") < 0) return SendClientMessage(playerid, -1, "Ban khong du so luong vat lieu (150) (/inv de kiem tra).");
+			// craft colt 45 15 sat 10 vl , 15phut
+			if(Inventory_Count(playerid, "Sat") < 15) return SendClientMessage(playerid, -1, "Ban khong du so luong sat (15) (/inv de kiem tra).");
+			if(Inventory_Count(playerid, "Vat lieu") < 10) return SendClientMessage(playerid, -1, "Ban khong du so luong vat lieu (10) (/inv de kiem tra).");
+			new pItemId = Inventory_GetItemID(playerid,"Sat");
+			Inventory_Remove(playerid, pItemId, 15); //ID cua InventoryData
+			pItemId = Inventory_GetItemID(playerid,"Vat lieu");
+			Inventory_Remove(playerid, pItemId, 10); //ID cua InventoryData
+			SendClientMessage(playerid, COLOR_YELLOW, "Ban da oder thanh cong Colt-45 , don hang se hoan tat trong 15p.");
+			SendClientMessage(playerid, COLOR_YELLOW, " > Sau khi don hang hoan tat hay quay lai NPC va nhan hang.");
+			PlayerInfo[playerid][pCraftWD] = 1;
+			PlayerInfo[playerid][pCraftWDTime] = gettime() + ( 60 * 15 ) ; // 15p
+		}
+		if(listitem == 1 ) {
+			if(Inventory_Count(playerid, "Sat") < 0) return SendClientMessage(playerid, -1, "Ban khong du so luong sat (60) (/inv de kiem tra).");
+			if(Inventory_Count(playerid, "Go") < 0) return SendClientMessage(playerid, -1, "Ban khong du so luong go (60) (/inv de kiem tra).");
+			if(Inventory_Count(playerid, "Vat lieu") < 0) return SendClientMessage(playerid, -1, "Ban khong du so luong vat lieu (150) (/inv de kiem tra).");
 
 
-    		// craft Deagle 35 sat 10 go 30 vl , 15phut
-    		if(Inventory_Count(playerid, "Sat") < 35) return SendClientMessage(playerid, -1, "Ban khong du so luong sat (35) (/inv de kiem tra).");
-    		if(Inventory_Count(playerid, "Go") < 10) return SendClientMessage(playerid, -1, "Ban khong du so luong go (10) (/inv de kiem tra).");
-    		if(Inventory_Count(playerid, "Vat lieu") < 30) return SendClientMessage(playerid, -1, "Ban khong du so luong vat lieu (30) (/inv de kiem tra).");
-    	    new pItemId = Inventory_GetItemID(playerid,"Sat");
-		    Inventory_Remove(playerid, pItemId, 35); //ID cua InventoryData
-		    pItemId = Inventory_GetItemID(playerid,"Vat lieu");
-		    Inventory_Remove(playerid, pItemId, 30); //ID cua InventoryData
-		    pItemId = Inventory_GetItemID(playerid,"Go");
-		    Inventory_Remove(playerid, pItemId, 10); //ID cua InventoryData
-		    SendClientMessage(playerid, COLOR_YELLOW, "Ban da oder thanh cong Deagle , don hang se hoan tat trong 15p.");
-		    SendClientMessage(playerid, COLOR_YELLOW, " > Sau khi don hang hoan tat hay quay lai NPC va nhan hang.");
-		    PlayerInfo[playerid][pCraftWD] = 2;
-		    PlayerInfo[playerid][pCraftWDTime] = gettime() + ( 60 * 15 ) ; // 15p
-    	}
-    	if(listitem == 2 ) {
-    		if(Inventory_Count(playerid, "Sat") < 0) return SendClientMessage(playerid, -1, "Ban khong du so luong sat (60) (/inv de kiem tra).");
-    		if(Inventory_Count(playerid, "Go") < 0) return SendClientMessage(playerid, -1, "Ban khong du so luong go (60) (/inv de kiem tra).");
-    		if(Inventory_Count(playerid, "Vat lieu") < 0) return SendClientMessage(playerid, -1, "Ban khong du so luong vat lieu (150) (/inv de kiem tra).");
+			// craft Deagle 35 sat 10 go 30 vl , 15phut
+			if(Inventory_Count(playerid, "Sat") < 35) return SendClientMessage(playerid, -1, "Ban khong du so luong sat (35) (/inv de kiem tra).");
+			if(Inventory_Count(playerid, "Go") < 10) return SendClientMessage(playerid, -1, "Ban khong du so luong go (10) (/inv de kiem tra).");
+			if(Inventory_Count(playerid, "Vat lieu") < 30) return SendClientMessage(playerid, -1, "Ban khong du so luong vat lieu (30) (/inv de kiem tra).");
+			new pItemId = Inventory_GetItemID(playerid,"Sat");
+			Inventory_Remove(playerid, pItemId, 35); //ID cua InventoryData
+			pItemId = Inventory_GetItemID(playerid,"Vat lieu");
+			Inventory_Remove(playerid, pItemId, 30); //ID cua InventoryData
+			pItemId = Inventory_GetItemID(playerid,"Go");
+			Inventory_Remove(playerid, pItemId, 10); //ID cua InventoryData
+			SendClientMessage(playerid, COLOR_YELLOW, "Ban da oder thanh cong Deagle , don hang se hoan tat trong 15p.");
+			SendClientMessage(playerid, COLOR_YELLOW, " > Sau khi don hang hoan tat hay quay lai NPC va nhan hang.");
+			PlayerInfo[playerid][pCraftWD] = 2;
+			PlayerInfo[playerid][pCraftWDTime] = gettime() + ( 60 * 15 ) ; // 15p
+		}
+		if(listitem == 2 ) {
+			if(Inventory_Count(playerid, "Sat") < 0) return SendClientMessage(playerid, -1, "Ban khong du so luong sat (60) (/inv de kiem tra).");
+			if(Inventory_Count(playerid, "Go") < 0) return SendClientMessage(playerid, -1, "Ban khong du so luong go (60) (/inv de kiem tra).");
+			if(Inventory_Count(playerid, "Vat lieu") < 0) return SendClientMessage(playerid, -1, "Ban khong du so luong vat lieu (150) (/inv de kiem tra).");
 
 
-    		// craft Shotgun 30 sat 20 go 25 vl , 15phut
-    		if(Inventory_Count(playerid, "Sat") < 30) return SendClientMessage(playerid, -1, "Ban khong du so luong sat (30) (/inv de kiem tra).");
-    		if(Inventory_Count(playerid, "Go") < 20) return SendClientMessage(playerid, -1, "Ban khong du so luong go (20) (/inv de kiem tra).");
-    		if(Inventory_Count(playerid, "Vat lieu") < 25) return SendClientMessage(playerid, -1, "Ban khong du so luong vat lieu (25) (/inv de kiem tra).");
-    	    new pItemId = Inventory_GetItemID(playerid,"Sat");
-		    Inventory_Remove(playerid, pItemId, 30); //ID cua InventoryData
-		    pItemId = Inventory_GetItemID(playerid,"Vat lieu");
-		    Inventory_Remove(playerid, pItemId, 20); //ID cua InventoryData
-		    pItemId = Inventory_GetItemID(playerid,"Go");
-		    Inventory_Remove(playerid, pItemId, 25); //ID cua InventoryData
-		    SendClientMessage(playerid, COLOR_YELLOW, "Ban da oder thanh cong Shotgun , don hang se hoan tat trong 30p.");
-		    SendClientMessage(playerid, COLOR_YELLOW, " > Sau khi don hang hoan tat hay quay lai NPC va nhan hang.");
-		    PlayerInfo[playerid][pCraftWD] = 3;
-		    PlayerInfo[playerid][pCraftWDTime] = gettime() + ( 60 * 30 ) ; // 15p
-    	}
-    	if(listitem == 3 ) {
-    		if(Inventory_Count(playerid, "Sat") < 0) return SendClientMessage(playerid, -1, "Ban khong du so luong sat (60) (/inv de kiem tra).");
-    		if(Inventory_Count(playerid, "Go") < 0) return SendClientMessage(playerid, -1, "Ban khong du so luong go (60) (/inv de kiem tra).");
-    		if(Inventory_Count(playerid, "Vat lieu") < 0) return SendClientMessage(playerid, -1, "Ban khong du so luong vat lieu (150) (/inv de kiem tra).");
+			// craft Shotgun 30 sat 20 go 25 vl , 15phut
+			if(Inventory_Count(playerid, "Sat") < 30) return SendClientMessage(playerid, -1, "Ban khong du so luong sat (30) (/inv de kiem tra).");
+			if(Inventory_Count(playerid, "Go") < 20) return SendClientMessage(playerid, -1, "Ban khong du so luong go (20) (/inv de kiem tra).");
+			if(Inventory_Count(playerid, "Vat lieu") < 25) return SendClientMessage(playerid, -1, "Ban khong du so luong vat lieu (25) (/inv de kiem tra).");
+			new pItemId = Inventory_GetItemID(playerid,"Sat");
+			Inventory_Remove(playerid, pItemId, 30); //ID cua InventoryData
+			pItemId = Inventory_GetItemID(playerid,"Vat lieu");
+			Inventory_Remove(playerid, pItemId, 20); //ID cua InventoryData
+			pItemId = Inventory_GetItemID(playerid,"Go");
+			Inventory_Remove(playerid, pItemId, 25); //ID cua InventoryData
+			SendClientMessage(playerid, COLOR_YELLOW, "Ban da oder thanh cong Shotgun , don hang se hoan tat trong 30p.");
+			SendClientMessage(playerid, COLOR_YELLOW, " > Sau khi don hang hoan tat hay quay lai NPC va nhan hang.");
+			PlayerInfo[playerid][pCraftWD] = 3;
+			PlayerInfo[playerid][pCraftWDTime] = gettime() + ( 60 * 30 ) ; // 15p
+		}
+		if(listitem == 3 ) {
+			if(Inventory_Count(playerid, "Sat") < 0) return SendClientMessage(playerid, -1, "Ban khong du so luong sat (60) (/inv de kiem tra).");
+			if(Inventory_Count(playerid, "Go") < 0) return SendClientMessage(playerid, -1, "Ban khong du so luong go (60) (/inv de kiem tra).");
+			if(Inventory_Count(playerid, "Vat lieu") < 0) return SendClientMessage(playerid, -1, "Ban khong du so luong vat lieu (150) (/inv de kiem tra).");
 
 
-    		// craft Shotgun 30 sat 20 go 25 vl , 15phut
-    		if(Inventory_Count(playerid, "Sat") < 60) return SendClientMessage(playerid, -1, "Ban khong du so luong sat (60) (/inv de kiem tra).");
-    		if(Inventory_Count(playerid, "Go") < 10) return SendClientMessage(playerid, -1, "Ban khong du so luong go (10) (/inv de kiem tra).");
-    		if(Inventory_Count(playerid, "Vat lieu") < 80) return SendClientMessage(playerid, -1, "Ban khong du so luong vat lieu (80) (/inv de kiem tra).");
-    	    new pItemId = Inventory_GetItemID(playerid,"Sat");
-		    Inventory_Remove(playerid, pItemId, 60); //ID cua InventoryData
-		    pItemId = Inventory_GetItemID(playerid,"Vat lieu");
-		    Inventory_Remove(playerid, pItemId, 10); //ID cua InventoryData
-		    pItemId = Inventory_GetItemID(playerid,"Go");
-		    Inventory_Remove(playerid, pItemId, 80); //ID cua InventoryData
-		    SendClientMessage(playerid, COLOR_YELLOW, "Ban da oder thanh cong Spas-12 , don hang se hoan tat trong 30p.");
-		    SendClientMessage(playerid, COLOR_YELLOW, " > Sau khi don hang hoan tat hay quay lai NPC va nhan hang.");
-		    PlayerInfo[playerid][pCraftWD] = 4;
-		    PlayerInfo[playerid][pCraftWDTime] = gettime() + ( 60 * 30 ) ; // 15p
-    	}
-    	if(listitem == 4 ) {
-    		if(Inventory_Count(playerid, "Sat") < 0) return SendClientMessage(playerid, -1, "Ban khong du so luong sat (60) (/inv de kiem tra).");
-    		if(Inventory_Count(playerid, "Go") < 0) return SendClientMessage(playerid, -1, "Ban khong du so luong go (60) (/inv de kiem tra).");
-    		if(Inventory_Count(playerid, "Vat lieu") < 0) return SendClientMessage(playerid, -1, "Ban khong du so luong vat lieu (150) (/inv de kiem tra).");
+			// craft Shotgun 30 sat 20 go 25 vl , 15phut
+			if(Inventory_Count(playerid, "Sat") < 60) return SendClientMessage(playerid, -1, "Ban khong du so luong sat (60) (/inv de kiem tra).");
+			if(Inventory_Count(playerid, "Go") < 10) return SendClientMessage(playerid, -1, "Ban khong du so luong go (10) (/inv de kiem tra).");
+			if(Inventory_Count(playerid, "Vat lieu") < 80) return SendClientMessage(playerid, -1, "Ban khong du so luong vat lieu (80) (/inv de kiem tra).");
+			new pItemId = Inventory_GetItemID(playerid,"Sat");
+			Inventory_Remove(playerid, pItemId, 60); //ID cua InventoryData
+			pItemId = Inventory_GetItemID(playerid,"Vat lieu");
+			Inventory_Remove(playerid, pItemId, 10); //ID cua InventoryData
+			pItemId = Inventory_GetItemID(playerid,"Go");
+			Inventory_Remove(playerid, pItemId, 80); //ID cua InventoryData
+			SendClientMessage(playerid, COLOR_YELLOW, "Ban da oder thanh cong Spas-12 , don hang se hoan tat trong 30p.");
+			SendClientMessage(playerid, COLOR_YELLOW, " > Sau khi don hang hoan tat hay quay lai NPC va nhan hang.");
+			PlayerInfo[playerid][pCraftWD] = 4;
+			PlayerInfo[playerid][pCraftWDTime] = gettime() + ( 60 * 30 ) ; // 15p
+		}
+		if(listitem == 4 ) {
+			if(Inventory_Count(playerid, "Sat") < 0) return SendClientMessage(playerid, -1, "Ban khong du so luong sat (60) (/inv de kiem tra).");
+			if(Inventory_Count(playerid, "Go") < 0) return SendClientMessage(playerid, -1, "Ban khong du so luong go (60) (/inv de kiem tra).");
+			if(Inventory_Count(playerid, "Vat lieu") < 0) return SendClientMessage(playerid, -1, "Ban khong du so luong vat lieu (150) (/inv de kiem tra).");
 
 
-    		// craft Shotgun 30 sat 20 go 25 vl , 15phut
-    		if(Inventory_Count(playerid, "Sat") < 50) return SendClientMessage(playerid, -1, "Ban khong du so luong sat (50) (/inv de kiem tra).");
-    		if(Inventory_Count(playerid, "Vat lieu") < 60) return SendClientMessage(playerid, -1, "Ban khong du so luong vat lieu (60) (/inv de kiem tra).");
-    	    new pItemId = Inventory_GetItemID(playerid,"Sat");
-		    Inventory_Remove(playerid, pItemId, 50); //ID cua InventoryData
-		    pItemId = Inventory_GetItemID(playerid,"Vat lieu");
-		    Inventory_Remove(playerid, pItemId, 60); //ID cua InventoryData
-		    SendClientMessage(playerid, COLOR_YELLOW, "Ban da oder thanh cong MP5 , don hang se hoan tat trong 40p.");
-		    SendClientMessage(playerid, COLOR_YELLOW, " > Sau khi don hang hoan tat hay quay lai NPC va nhan hang.");
-		    PlayerInfo[playerid][pCraftWD] = 5;
-		    PlayerInfo[playerid][pCraftWDTime] = gettime() + ( 60 * 40 ) ; // 15p
-    	}
-    	if(listitem == 5 ) {
-    		// craft Shotgun 30 sat 20 go 25 vl , 15phut
-    		if(Inventory_Count(playerid, "Sat") < 0) return SendClientMessage(playerid, -1, "Ban khong du so luong sat (60) (/inv de kiem tra).");
-    		if(Inventory_Count(playerid, "Go") < 0) return SendClientMessage(playerid, -1, "Ban khong du so luong go (60) (/inv de kiem tra).");
-    		if(Inventory_Count(playerid, "Vat lieu") < 0) return SendClientMessage(playerid, -1, "Ban khong du so luong vat lieu (150) (/inv de kiem tra).");
+			// craft Shotgun 30 sat 20 go 25 vl , 15phut
+			if(Inventory_Count(playerid, "Sat") < 50) return SendClientMessage(playerid, -1, "Ban khong du so luong sat (50) (/inv de kiem tra).");
+			if(Inventory_Count(playerid, "Vat lieu") < 60) return SendClientMessage(playerid, -1, "Ban khong du so luong vat lieu (60) (/inv de kiem tra).");
+			new pItemId = Inventory_GetItemID(playerid,"Sat");
+			Inventory_Remove(playerid, pItemId, 50); //ID cua InventoryData
+			pItemId = Inventory_GetItemID(playerid,"Vat lieu");
+			Inventory_Remove(playerid, pItemId, 60); //ID cua InventoryData
+			SendClientMessage(playerid, COLOR_YELLOW, "Ban da oder thanh cong MP5 , don hang se hoan tat trong 40p.");
+			SendClientMessage(playerid, COLOR_YELLOW, " > Sau khi don hang hoan tat hay quay lai NPC va nhan hang.");
+			PlayerInfo[playerid][pCraftWD] = 5;
+			PlayerInfo[playerid][pCraftWDTime] = gettime() + ( 60 * 40 ) ; // 15p
+		}
+		if(listitem == 5 ) {
+			// craft Shotgun 30 sat 20 go 25 vl , 15phut
+			if(Inventory_Count(playerid, "Sat") < 0) return SendClientMessage(playerid, -1, "Ban khong du so luong sat (60) (/inv de kiem tra).");
+			if(Inventory_Count(playerid, "Go") < 0) return SendClientMessage(playerid, -1, "Ban khong du so luong go (60) (/inv de kiem tra).");
+			if(Inventory_Count(playerid, "Vat lieu") < 0) return SendClientMessage(playerid, -1, "Ban khong du so luong vat lieu (150) (/inv de kiem tra).");
 
-    		if(Inventory_Count(playerid, "Sat") < 60) return SendClientMessage(playerid, -1, "Ban khong du so luong sat (60) (/inv de kiem tra).");
-    		if(Inventory_Count(playerid, "Go") < 60) return SendClientMessage(playerid, -1, "Ban khong du so luong go (60) (/inv de kiem tra).");
-    		if(Inventory_Count(playerid, "Vat lieu") < 150) return SendClientMessage(playerid, -1, "Ban khong du so luong vat lieu (150) (/inv de kiem tra).");
-    	    new pItemId = Inventory_GetItemID(playerid,"Sat");
-		    Inventory_Remove(playerid, pItemId, 60); //ID cua InventoryData
-		    pItemId = Inventory_GetItemID(playerid,"Vat lieu");
-		    Inventory_Remove(playerid, pItemId, 150); //ID cua InventoryData
-		    pItemId = Inventory_GetItemID(playerid,"Go");
-		    Inventory_Remove(playerid, pItemId, 60); //ID cua InventoryData
-		    SendClientMessage(playerid, COLOR_YELLOW, "Ban da oder thanh cong AK-47 , don hang se hoan tat trong 60p.");
-		    SendClientMessage(playerid, COLOR_YELLOW, " > Sau khi don hang hoan tat hay quay lai NPC va nhan hang.");
-		    PlayerInfo[playerid][pCraftWD] = 6;
-		    PlayerInfo[playerid][pCraftWDTime] = gettime() + ( 60 * 60 ) ; // 
-    	}
-    	if(listitem == 6 ) {
-    		// craft Shotgun 30 sat 20 go 25 vl , 15phut
-    		if(Inventory_Count(playerid, "Sat") < 150) return SendClientMessage(playerid, -1, "Ban khong du so luong sat (60) (/inv de kiem tra).");
-    		if(Inventory_Count(playerid, "Go") < 40) return SendClientMessage(playerid, -1, "Ban khong du so luong go (60) (/inv de kiem tra).");
-    		if(Inventory_Count(playerid, "Vat lieu") < 280) return SendClientMessage(playerid, -1, "Ban khong du so luong vat lieu (150) (/inv de kiem tra).");
-    	    new pItemId = Inventory_GetItemID(playerid,"Sat");
-		    Inventory_Remove(playerid, pItemId, 150); //ID cua InventoryData
-		    pItemId = Inventory_GetItemID(playerid,"Vat lieu");
-		    Inventory_Remove(playerid, pItemId, 280); //ID cua InventoryData
-		    pItemId = Inventory_GetItemID(playerid,"Go");
-		    Inventory_Remove(playerid, pItemId, 40); //ID cua InventoryData
-		    SendClientMessage(playerid, COLOR_YELLOW, "Ban da oder thanh cong Sniper , don hang se hoan tat trong 60p.");
-		    SendClientMessage(playerid, COLOR_YELLOW, " > Sau khi don hang hoan tat hay quay lai NPC va nhan hang.");
-		    PlayerInfo[playerid][pCraftWD] = 7;
-		    PlayerInfo[playerid][pCraftWDTime] = gettime() + ( 60 * 60 ) ; // 15p
-    	}
-    	if(listitem == 7 ) {
-    		// craft Shotgun 30 sat 20 go 25 vl , 15phut
-    		if(Inventory_Count(playerid, "Sat") < 30) return SendClientMessage(playerid, -1, "Ban khong du so luong sat (30) (/inv de kiem tra).");
-    		if(Inventory_Count(playerid, "Go") < 10) return SendClientMessage(playerid, -1, "Ban khong du so luong go (10) (/inv de kiem tra).");
-    		if(Inventory_Count(playerid, "Vat lieu") < 25) return SendClientMessage(playerid, -1, "Ban khong du so luong vat lieu (25) (/inv de kiem tra).");
-    	    new pItemId = Inventory_GetItemID(playerid,"Sat");
-		    Inventory_Remove(playerid, pItemId, 30); //ID cua InventoryData
-		    pItemId = Inventory_GetItemID(playerid,"Vat lieu");
-		    Inventory_Remove(playerid, pItemId, 10); //ID cua InventoryData
-		    pItemId = Inventory_GetItemID(playerid,"Go");
-		    Inventory_Remove(playerid, pItemId, 25); //ID cua InventoryData
-		    SendClientMessage(playerid, COLOR_YELLOW, "Ban da oder thanh cong Uzi , don hang se hoan tat trong 15p.");
-		    SendClientMessage(playerid, COLOR_YELLOW, " > Sau khi don hang hoan tat hay quay lai NPC va nhan hang.");
-		    PlayerInfo[playerid][pCraftWD] = 8;
-		    PlayerInfo[playerid][pCraftWDTime] = gettime() + ( 15 * 60 ) ; // 15p
-    	}
-    	if(listitem == 8 ) {
-    		// craft Shotgun 30 sat 20 go 25 vl , 15phut
-    		if(Inventory_Count(playerid, "Sat") < 30) return SendClientMessage(playerid, -1, "Ban khong du so luong sat (30) (/inv de kiem tra).");
-    		if(Inventory_Count(playerid, "Go") < 5) return SendClientMessage(playerid, -1, "Ban khong du so luong go (5) (/inv de kiem tra).");
-    		if(Inventory_Count(playerid, "Vat lieu") < 30) return SendClientMessage(playerid, -1, "Ban khong du so luong vat lieu (30) (/inv de kiem tra).");
-    	    new pItemId = Inventory_GetItemID(playerid,"Sat");
-		    Inventory_Remove(playerid, pItemId, 30); //ID cua InventoryData
-		    pItemId = Inventory_GetItemID(playerid,"Vat lieu");
-		    Inventory_Remove(playerid, pItemId, 5); //ID cua InventoryData
-		    pItemId = Inventory_GetItemID(playerid,"Go");
-		    Inventory_Remove(playerid, pItemId, 30); //ID cua InventoryData
-		    SendClientMessage(playerid, COLOR_YELLOW, "Ban da oder thanh cong Tec-9 , don hang se hoan tat trong 15p.");
-		    SendClientMessage(playerid, COLOR_YELLOW, " > Sau khi don hang hoan tat hay quay lai NPC va nhan hang.");
-		    PlayerInfo[playerid][pCraftWD] = 9;
-		    PlayerInfo[playerid][pCraftWDTime] = gettime() + ( 15 * 60 ) ; // 15p
-    	}
+			if(Inventory_Count(playerid, "Sat") < 60) return SendClientMessage(playerid, -1, "Ban khong du so luong sat (60) (/inv de kiem tra).");
+			if(Inventory_Count(playerid, "Go") < 60) return SendClientMessage(playerid, -1, "Ban khong du so luong go (60) (/inv de kiem tra).");
+			if(Inventory_Count(playerid, "Vat lieu") < 150) return SendClientMessage(playerid, -1, "Ban khong du so luong vat lieu (150) (/inv de kiem tra).");
+			new pItemId = Inventory_GetItemID(playerid,"Sat");
+			Inventory_Remove(playerid, pItemId, 60); //ID cua InventoryData
+			pItemId = Inventory_GetItemID(playerid,"Vat lieu");
+			Inventory_Remove(playerid, pItemId, 150); //ID cua InventoryData
+			pItemId = Inventory_GetItemID(playerid,"Go");
+			Inventory_Remove(playerid, pItemId, 60); //ID cua InventoryData
+			SendClientMessage(playerid, COLOR_YELLOW, "Ban da oder thanh cong AK-47 , don hang se hoan tat trong 60p.");
+			SendClientMessage(playerid, COLOR_YELLOW, " > Sau khi don hang hoan tat hay quay lai NPC va nhan hang.");
+			PlayerInfo[playerid][pCraftWD] = 6;
+			PlayerInfo[playerid][pCraftWDTime] = gettime() + ( 60 * 60 ) ; // 
+		}
+		if(listitem == 6 ) {
+			// craft Shotgun 30 sat 20 go 25 vl , 15phut
+			if(Inventory_Count(playerid, "Sat") < 150) return SendClientMessage(playerid, -1, "Ban khong du so luong sat (60) (/inv de kiem tra).");
+			if(Inventory_Count(playerid, "Go") < 40) return SendClientMessage(playerid, -1, "Ban khong du so luong go (60) (/inv de kiem tra).");
+			if(Inventory_Count(playerid, "Vat lieu") < 280) return SendClientMessage(playerid, -1, "Ban khong du so luong vat lieu (150) (/inv de kiem tra).");
+			new pItemId = Inventory_GetItemID(playerid,"Sat");
+			Inventory_Remove(playerid, pItemId, 150); //ID cua InventoryData
+			pItemId = Inventory_GetItemID(playerid,"Vat lieu");
+			Inventory_Remove(playerid, pItemId, 280); //ID cua InventoryData
+			pItemId = Inventory_GetItemID(playerid,"Go");
+			Inventory_Remove(playerid, pItemId, 40); //ID cua InventoryData
+			SendClientMessage(playerid, COLOR_YELLOW, "Ban da oder thanh cong Sniper , don hang se hoan tat trong 60p.");
+			SendClientMessage(playerid, COLOR_YELLOW, " > Sau khi don hang hoan tat hay quay lai NPC va nhan hang.");
+			PlayerInfo[playerid][pCraftWD] = 7;
+			PlayerInfo[playerid][pCraftWDTime] = gettime() + ( 60 * 60 ) ; // 15p
+		}
+		if(listitem == 7 ) {
+			// craft Shotgun 30 sat 20 go 25 vl , 15phut
+			if(Inventory_Count(playerid, "Sat") < 30) return SendClientMessage(playerid, -1, "Ban khong du so luong sat (30) (/inv de kiem tra).");
+			if(Inventory_Count(playerid, "Go") < 10) return SendClientMessage(playerid, -1, "Ban khong du so luong go (10) (/inv de kiem tra).");
+			if(Inventory_Count(playerid, "Vat lieu") < 25) return SendClientMessage(playerid, -1, "Ban khong du so luong vat lieu (25) (/inv de kiem tra).");
+			new pItemId = Inventory_GetItemID(playerid,"Sat");
+			Inventory_Remove(playerid, pItemId, 30); //ID cua InventoryData
+			pItemId = Inventory_GetItemID(playerid,"Vat lieu");
+			Inventory_Remove(playerid, pItemId, 10); //ID cua InventoryData
+			pItemId = Inventory_GetItemID(playerid,"Go");
+			Inventory_Remove(playerid, pItemId, 25); //ID cua InventoryData
+			SendClientMessage(playerid, COLOR_YELLOW, "Ban da oder thanh cong Uzi , don hang se hoan tat trong 15p.");
+			SendClientMessage(playerid, COLOR_YELLOW, " > Sau khi don hang hoan tat hay quay lai NPC va nhan hang.");
+			PlayerInfo[playerid][pCraftWD] = 8;
+			PlayerInfo[playerid][pCraftWDTime] = gettime() + ( 15 * 60 ) ; // 15p
+		}
+		if(listitem == 8 ) {
+			// craft Shotgun 30 sat 20 go 25 vl , 15phut
+			if(Inventory_Count(playerid, "Sat") < 30) return SendClientMessage(playerid, -1, "Ban khong du so luong sat (30) (/inv de kiem tra).");
+			if(Inventory_Count(playerid, "Go") < 5) return SendClientMessage(playerid, -1, "Ban khong du so luong go (5) (/inv de kiem tra).");
+			if(Inventory_Count(playerid, "Vat lieu") < 30) return SendClientMessage(playerid, -1, "Ban khong du so luong vat lieu (30) (/inv de kiem tra).");
+			new pItemId = Inventory_GetItemID(playerid,"Sat");
+			Inventory_Remove(playerid, pItemId, 30); //ID cua InventoryData
+			pItemId = Inventory_GetItemID(playerid,"Vat lieu");
+			Inventory_Remove(playerid, pItemId, 5); //ID cua InventoryData
+			pItemId = Inventory_GetItemID(playerid,"Go");
+			Inventory_Remove(playerid, pItemId, 30); //ID cua InventoryData
+			SendClientMessage(playerid, COLOR_YELLOW, "Ban da oder thanh cong Tec-9 , don hang se hoan tat trong 15p.");
+			SendClientMessage(playerid, COLOR_YELLOW, " > Sau khi don hang hoan tat hay quay lai NPC va nhan hang.");
+			PlayerInfo[playerid][pCraftWD] = 9;
+			PlayerInfo[playerid][pCraftWDTime] = gettime() + ( 15 * 60 ) ; // 15p
+		}
     }  
     return 1; 
 }
