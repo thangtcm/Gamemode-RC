@@ -22,20 +22,6 @@ new Float:pizza_postion[9][3] = {
 {1394.6504,400.6509,19.7578}
 };
 
-<<<<<<< HEAD
-forward MonitorPizzaCarPlayer(playerid);
- 
-CMD:laybanh(playerid,params[]) {
-	if(LamViec[playerid] != 1 || LamViec[playerid] == 0 && LamViec[playerid] != 1) return SendErrorMessage(playerid, " Ban chua lam cong viec Pizza.");
-	if(IsPlayerInAnyVehicle(playerid)) return SendErrorMessage(playerid, " Ban khong the lam dieu nay khi o tren xe.");
-	if(BanhPizzaInFoot[playerid] == 1) return SendErrorMessage(playerid, " Ban da cam banh tren tay khong the lay them.");
-	if(PlayerInfo[playerid][pStrong] <= 1) return SendErrorMessage(playerid, " Ban da qua met moi khong the lam viec."); 
-	if(IsPlayerInRangeOfPoint(playerid, 5, 1362.9523,253.9632,19.5669)) {
-        SetPlayerAttachedObject( playerid, PIZZA_INDEX, 1582, 1, 0.002953, 0.469660, -0.009797, 269.851104, 88.443557, 0.000000, 0.804894, 1.000000, 0.822361 );                      
-        SetPlayerSpecialAction(playerid, SPECIAL_ACTION_CARRY);
-        BanhPizzaInFoot[playerid] = 1;
-       	return SendServerMessage(playerid, "Ban da cam banh tren tay, hay nhan nut 'N' de dua len xe.");
-=======
 GetRandomHouse(playerid) // check
 {
 	new index, houseIDs[MAX_HOUSES] = {-1, ...};
@@ -49,7 +35,6 @@ GetRandomHouse(playerid) // check
 	        	houseIDs[index++] = i;
 			}
 		}
->>>>>>> main
 	}
 	else {
 	   SendErrorMessage(playerid, " Ban khong o noi lay banh khong the lay banh.");
