@@ -119,27 +119,29 @@ stock SaveVehSign(){
 	printf("[Vehicle Sign database] Vehicle Sign Save Database");
 	for(new i = 0 ; i < MAX_VEHICLES ; i++)
 	{
-		// if(VehSignInfo[i][vs_ID] != -1 && VehSignInfo[i][vs_OwnerID] != -1 && VehSignInfo[i][vs_VehicleID] != -1)
-		new query[1280], check_qur[1280], Cache:checkr;
-		format(check_qur, sizeof(check_qur), "SELECT * FROM `vehsign` WHERE `id` = '%d'",VehSignInfo[i][vs_ID]);
-		checkr = mysql_query(MainPipeline, check_qur);
-		if(cache_num_rows() > 0){
-			format(query, sizeof(query), "UPDATE `vehsign` SET \
-			`VehSign` = '%d', `OwnerID` = '%d', `VehicleID` = '%d' WHERE `id` = '%d'", VehSignInfo[i][vs_VehSign],VehSignInfo[i][vs_OwnerID],VehSignInfo[i][vs_VehicleID],VehSignInfo[i][vs_ID]);
+		if(VehSignInfo[i][vs_ID] != -1 && VehSignInfo[i][vs_OwnerID] != -1 && VehSignInfo[i][vs_VehicleID] != -1)
+		{
+			new queryzzz[1280], check_qur[1280], Cache:checkr;
+			format(check_qur, sizeof(check_qur), "SELECT * FROM `vehsign` WHERE `id` = '%d'",VehSignInfo[i][vs_ID]);
+			checkr = mysql_query(MainPipeline, check_qur);
+			if(cache_num_rows() > 0){
+				format(queryzzz, sizeof(queryzzz), "UPDATE `vehsign` SET \
+				`VehSign` = '%d', `OwnerID` = '%d', `VehicleID` = '%d' WHERE `id` = '%d'", VehSignInfo[i][vs_VehSign],VehSignInfo[i][vs_OwnerID],VehSignInfo[i][vs_VehicleID],VehSignInfo[i][vs_ID]);
 
-			mysql_function_query(MainPipeline, query, true, "VEHSIGN_SAVE", ""); 
+				mysql_function_query(MainPipeline, queryzzz, true, "VEHSIGN_SAVE", ""); 
+			}
+			else {
+				format(queryzzz, sizeof(queryzzz), "INSERT INTO `vehsign` SET \
+				`VehSign` = '%d', \
+				`OwnerID` = '%d', \
+				`VehicleID` = '%d'",
+				VehSignInfo[i][vs_VehSign],
+				VehSignInfo[i][vs_OwnerID],
+				VehSignInfo[i][vs_VehicleID]);
+				mysql_function_query(MainPipeline, queryzzz, true, "VEHSIGN_REG", "");
+			}
+			cache_delete(checkr);
 		}
-		else {
-			format(query, sizeof(query), "INSERT INTO `vehsign` SET \
-			`VehSign` = '%d', \
-			`OwnerID` = '%d', \
-			`VehicleID` = '%d'",
-			VehSignInfo[i][vs_VehSign],
-			VehSignInfo[i][vs_OwnerID],
-			VehSignInfo[i][vs_VehicleID]);
-			mysql_function_query(MainPipeline, query, true, "VEHSIGN_REG", "");
-		}
-		cache_delete(checkr);
 	}
 	return 1;
 }

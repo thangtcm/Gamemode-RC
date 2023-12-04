@@ -118,6 +118,8 @@
 
 #include "./system/death/bodydamage.pwn"
 
+#include "./system/rob/bank.pwn"
+
 #include "./include/onplayerfishnishloading.pwn"
 
 main() {

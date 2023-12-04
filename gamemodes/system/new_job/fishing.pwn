@@ -65,7 +65,7 @@ CMD:sellfish(playerid, params[])
 {
     new Float:PosXACtor, Float:PosYACtor, Float:PosZACtor;
 	GetActorPos(NPC_Fish, PosXACtor, PosYACtor, PosZACtor);
-	if(IsPlayerInRangeOfPoint(playerid, 2.0, PosXACtor, PosYACtor, PosZACtor))
+	if(IsPlayerInRangeOfPoint(playerid, 5.0, PosXACtor, PosYACtor, PosZACtor))
 	{
 	    new str[158];
 	    format(str, sizeof(str), "GIA: {FFBE00}1KG/%d{FFFFFF}\nHay nhap so luong muon ban:", F_RandomPrice);
@@ -209,7 +209,7 @@ public F_StartCountTime(playerid)
 				}
 				else
 				{
-				    new string[158];
+				    new string[158], format_job[555];
 					ClearAnimations(playerid);				
 					JobSkill[playerid][Fish] += 1;
 					StopLoopingAnim(playerid);
@@ -218,20 +218,48 @@ public F_StartCountTime(playerid)
 					TogglePlayerControllable(playerid, 1);				
 					DeletePVar(playerid, "FishWorking");
 					if(JobSkill[playerid][Fish] < 250)
-					{
-					    new rd = 5 + random(5);
-					    format(string, sizeof(string), "Ban da cau thanh cong {FF8E00}%d KG {FFFFFF} ca.", rd);
-				 	   SendClientMessage(playerid,COLOR_WHITE, string);
-			        	Inventory_Add(playerid, "Ca", rd);
+					{   
+					    new rdd = random(100);
+					    switch(rdd)
+					    {
+							case 0..5:
+							{
+								format(format_job, sizeof(format_job), "~y~ OH MY GOD~n~ Ban da rat may man khi dao duoc ~r~1x Santa Hat~y~.");					
+								SendClientMessage(playerid,COLOR_WHITE, string);			
+								SendLogToDiscordRoom("SANTA HAT" ,"1180540668632899688", "Name", GetPlayerNameEx(playerid, false), "JOB", "Mineral", "Số lượng", "1 SANTA HAT", 0xFF4747);							
+								Inventory_Add(playerid, "Santa Hat", 1);	
+							}
+							case 6..100:
+							{
+								new rd = 5 + random(5);
+								format(string, sizeof(string), "Ban da cau thanh cong {FF8E00}%d KG {FFFFFF} ca.", rd);
+								SendClientMessage(playerid,COLOR_WHITE, string);
+								Inventory_Add(playerid, "Ca", rd);
+	   			          	}
+					    }				    							    
 			            new pItemId = Inventory_GetItemID(playerid, "Moi cau", 1);
 		            	Inventory_Remove(playerid, pItemId, 1);
 					}
 					else if(JobSkill[playerid][Fish] >= 250)
 					{
-					    new rd = 10 + random(8);
-					    format(string, sizeof(string), "Ban da cau thanh cong {FF8E00}%d KG {FFFFFF} ca.", rd);
-					    SendClientMessage(playerid,COLOR_WHITE, string);
-				 	   Inventory_Add(playerid, "Ca", rd);
+					    new rdd = random(100);
+					    switch(rdd)
+					    {
+							case 0..5:
+							{
+					            format(format_job, sizeof(format_job), "~y~ OH MY GOD~n~ Ban da rat may man khi dao duoc ~r~1x Santa Hat~y~.");					
+		                        SendClientMessage(playerid,COLOR_WHITE, string);			
+		                        SendLogToDiscordRoom("SANTA HAT" ,"1180540668632899688", "Name", GetPlayerNameEx(playerid, false), "JOB", "Mineral", "Số lượng", "1 SANTA HAT", 0xFF4747);							
+		                    	Inventory_Add(playerid, "Santa Hat", 1);	
+							}
+							case 6..100:
+							{
+					            new rd = 10 + random(8);
+							    format(string, sizeof(string), "Ban da cau thanh cong {FF8E00}%d KG {FFFFFF} ca.", rd);
+							    SendClientMessage(playerid,COLOR_WHITE, string);
+						 	   	Inventory_Add(playerid, "Ca", rd);
+	   			          	}
+					    }				    					
 				        new pItemId = Inventory_GetItemID(playerid, "Moi cau", 1);
 		            	Inventory_Remove(playerid, pItemId, 1);
 					}
