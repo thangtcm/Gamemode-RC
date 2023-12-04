@@ -2,7 +2,7 @@
 
 #define MAX_DOTS           (3000)
 #define GPS_ERROR_NODE      (0)
-#define COLOR_GPS 0xC33764FF
+#define COLOR_GPS 0x6c07b0FF
 
 // Variables
 
@@ -133,7 +133,7 @@ stock ForcePlayerEndLastRoute(playerid)
 	GPS_DATA[playerid][gpsEnabled] = false;
 	DestroyRoutes(playerid);
     SendServerMessage(playerid, "Ban da den vi tri can den.");
-	DisablePlayerCheckpoint(playerid);
+//	DisablePlayerCheckpoint(playerid);
 }
 
 stock SetPlayerPath(playerid, Float:X2, Float:Y2, Float:Z2)

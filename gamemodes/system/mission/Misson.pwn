@@ -116,7 +116,7 @@ public M_OnQueryFinish(extraid, handleid)
 				PlayerInfo[extraid][pDaily] = datetimenow;
 				Main_ResetCountMisson(extraid);
 			}
-			SendServerMessage(extraid, "Su dung /trogiup de tim hieu ro hon ve cac cong viec va cac lenh can dung trong may chu");
+			
 			cache_get_field_content(row,  "M_get_1", szResult, MainPipeline); PMisson[extraid][m_get][1] = strval(szResult);
 			cache_get_field_content(row,  "M_get_2", szResult, MainPipeline); PMisson[extraid][m_get][2] = strval(szResult);
 			
@@ -135,10 +135,18 @@ public M_OnQueryFinish(extraid, handleid)
 			cache_get_field_content(row,  "FarmEntered", szResult, MainPipeline); FarmEnter[extraid] = strval(szResult);
 			cache_get_field_content(row,  "skill_fish", szResult, MainPipeline); JobSkill[extraid][Fish] = strval(szResult);
 			cache_get_field_content(row,  "skill_pizza", szResult, MainPipeline); JobSkill[extraid][Pizza] = strval(szResult);
+			SendClientMessageEx(extraid, COLOR_VANG, "Chao mung ban da den voi may chu Red Community Roleplay Viet Nam.");
+			SendClientMessageEx(extraid, COLOR_WHITE, "{6D92C3}> {FFFFFF}Su dung /trogiup de tim hieu ro hon ve cac cong viec va cac lenh can dung trong may chu");
+			SendClientMessageEx(extraid, COLOR_WHITE, "{6D92C3}> {FFFFFF}Su Kien Giang Sinh suu tap Santa Hat, hay truy tim nhung chiec mu Santa Hat tai cac cong viec trong may chu (Chi tiet tai discord.gg/rcrpvn)");
 			if(PMisson[extraid][a_m_done] == 0)
 			{
 				SendServerMessage(extraid, "Ban chua lam nhiem vu ngay hom nay, hay tim NPC tai CityHall de lam nhiem vu ngay nhe");
 			}
+			if(PlayerInfo[playerid][pCMND]) // check dang ky cmnd trc get
+			{
+			    CheckDoneMisson(playerid, 2);
+			}
+			
 		}
 	}
 	return 1;
@@ -358,12 +366,19 @@ hook OnDialogResponse(playerid, dialogid, response, listitem, inputtext[]) {
         case A_MISSON: { // nv hang ngay
         	switch(listitem) {        		
         		case 0: {                   // nhan nv
-                    new value = 1 + random(1);
-                    if(M_check[playerid][1]) return SendMissonMessage(playerid, "Ban da nhan nhiem vu roi.");
-					PMisson[playerid][m_get][1] = value; // 0 = pizza, 1= dao da
-					M_check[playerid][1] = 1; // ham main check dang lam nhiem vu
-					PMisson[playerid][m_danglamnv][value] = 1;
-				    SendMissonMessage(playerid, "Ban da nhan nhiem vu hang ngay thanh cong, su dung [/nhiemvu -> Nhiem vu hang ngay] de xem thong tin.");
+                    new Float:PosXACtor, Float:PosYACtor, Float:PosZACtor;
+					GetActorPos(NPC_Misson, PosXACtor, PosYACtor, PosZACtor);
+					if(IsPlayerInRangeOfPoint(playerid, 2.0, PosXACtor, PosYACtor, PosZACtor))
+					{
+					    new value = 1 + random(1);
+	                    if(M_check[playerid][1]) return SendMissonMessage(playerid, "Ban da nhan nhiem vu roi.");
+						PMisson[playerid][m_get][1] = value; // 0 = pizza, 1= dao da
+						M_check[playerid][1] = 1; // ham main check dang lam nhiem vu
+						PMisson[playerid][m_danglamnv][value] = 1;
+					    SendMissonMessage(playerid, "Ban da nhan nhiem vu hang ngay thanh cong, su dung [/nhiemvu -> Nhiem vu hang ngay] de xem thong tin.");
+					}
+					else return SendMissonMessage(playerid, "Ban khong dung gan NPC nhan nhiem vu."); 
+                    
 				}
 				case 1: {    // thong tin
 				    if(PMisson[playerid][m_get][1] == 1)
@@ -394,12 +409,18 @@ hook OnDialogResponse(playerid, dialogid, response, listitem, inputtext[]) {
         case B_MISSON: { // nv tan thu 
         	switch(listitem) {        		
         		case 0: {                   // nhan nv
+                    new Float:PosXACtor, Float:PosYACtor, Float:PosZACtor;
+					GetActorPos(NPC_Misson, PosXACtor, PosYACtor, PosZACtor);
+					if(IsPlayerInRangeOfPoint(playerid, 2.0, PosXACtor, PosYACtor, PosZACtor))
+					{
+					    if(M_check[playerid][1]) return SendMissonMessage(playerid, "Ban da nhan nhien vu hang ngay hay hoan thanh truoc.");
+	                    if(M_check[playerid][2]) return SendMissonMessage(playerid, "Ban da nhan nhiem vu roi.");
+						PMisson[playerid][m_get][2] = 1; // get nv tan thu
+						M_check[playerid][2] = 1; // ham main check dang lam nhiem vu
+					    SendMissonMessage(playerid, "Ban da nhan nhiem vu tan thu thanh cong, su dung [/nhiemvu -> Nhiem vu tan thu] de xem thong tin.");
+					}
+					else return SendMissonMessage(playerid, "Ban khong dung gan NPC nhan nhiem vu."); 
                     
-                    if(M_check[playerid][1]) return SendMissonMessage(playerid, "Ban da nhan nhien vu hang ngay hay hoan thanh truoc.");
-                    if(M_check[playerid][2]) return SendMissonMessage(playerid, "Ban da nhan nhiem vu roi.");
-					PMisson[playerid][m_get][2] = 1; // get nv tan thu
-					M_check[playerid][2] = 1; // ham main check dang lam nhiem vu
-				    SendMissonMessage(playerid, "Ban da nhan nhiem vu tan thu thanh cong, su dung [/nhiemvu -> Nhiem vu tan thu] de xem thong tin.");
 				}
 				case 1: {    // thong tin
 				    if(PMisson[playerid][m_get][2] == 1)
@@ -439,14 +460,8 @@ hook OnDialogResponse(playerid, dialogid, response, listitem, inputtext[]) {
 
 CMD:nhiemvu(playerid, params[])
 {
-    new Float:PosXACtor, Float:PosYACtor, Float:PosZACtor;
-	GetActorPos(NPC_Misson, PosXACtor, PosYACtor, PosZACtor);
-	if(IsPlayerInRangeOfPoint(playerid, 2.0, PosXACtor, PosYACtor, PosZACtor))
-	{
-	    ShowPlayerDialog(playerid, MISSON, DIALOG_STYLE_LIST, "Misson - RCRP.VN ", "{FF9800}[ - ]{FFFFFF}   Nhiem vu hang ngay\n{FF9800}[ - ]{FFFFFF}   Nhiem vu tan thu\n{FF9800}[ - ]{FFFFFF}   Huong dan lam nhiem vu", "Chon","Thoat");
-	    return 1;
-	}
-	else return SendMissonMessage(playerid, "Ban khong dung gan NPC nhan nhiem vu."); 
+	ShowPlayerDialog(playerid, MISSON, DIALOG_STYLE_LIST, "Misson - RCRP.VN ", "{FF9800}[ - ]{FFFFFF}   Nhiem vu hang ngay\n{FF9800}[ - ]{FFFFFF}   Nhiem vu tan thu\n{FF9800}[ - ]{FFFFFF}   Huong dan lam nhiem vu", "Chon","Thoat");
+	return 1;
 }
 
 CMD:huynhiemvu(playerid, params[])
