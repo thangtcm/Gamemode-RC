@@ -320,5 +320,6 @@ public cp_pizza(playerid, houseid)
     new str[120];
 	format(str, sizeof str, "Hay giao pizza den nha cua ~y~%s~w~", HouseInfo[houseid][hOwnerName]);
     CPPizza[playerid] = 1;
+    SetPlayerCheckPointEx(playerid, HouseInfo[houseid][hExteriorX], HouseInfo[houseid][hExteriorY], HouseInfo[houseid][hExteriorZ], 3);
     SendClientTextDraw(playerid, str);
 }
