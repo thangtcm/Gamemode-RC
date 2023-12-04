@@ -1,0 +1,7 @@
+./system/vehicle/vehsign.pwn(268) : èäåị́èôèêạ̀îđó ïđèñâîåíî çíà÷åíèå, íî îí íå èñïîëüçóạ̊ñÿ: "vehsqlid"
+./main/variables.pwn(15) : èäåị́èôèêạ̀îđ íå èñïîëüçóạ̊ñÿ: "CraftWeaponDeal"
+./main/variables.pwn(16) : èäåị́èôèêạ̀îđ íå èñïîëüçóạ̊ñÿ: "CraftWeaponDealTime"
+./main/variables.pwn(2481) : èäåị́èôèêạ̀îđ íå èñïîëüçóạ̊ñÿ: "PizzaCar"
+./main/variables.pwn(12) : èäåị́èôèêạ̀îđ íå èñïîëüçóạ̊ñÿ: "VehSignText"
+Pawn compiler 3.2.3664	 	 	Copyright (c) 1997-2016, ITB CompuPhase
+

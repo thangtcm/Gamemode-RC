@@ -1324,7 +1324,7 @@ CMD:atm(playerid, params[]) {
 	return 1;
 }
 CMD:bank(playerid, params[]) {
-	if(!IsPlayerInRangeOfPoint(playerid, 15.0, 2308.7346, -11.0134, 26.7422))
+	if(!IsPlayerInRangeOfPoint(playerid, 25.0, 1436.2850,-999.7745,1639.8025))
 	{
 		SendErrorMessage(playerid," Ban khong o trong ngan hang!");
 		return 1;

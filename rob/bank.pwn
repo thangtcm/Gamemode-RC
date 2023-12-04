@@ -42,11 +42,11 @@ forward OnPlayerRobbing(playerid);
 public OnPlayerRobbing(playerid)
 {
 	if(IsPlayerInRangeOfPoint(playerid, 20.0, 1436.2850,-999.7745,1639.8025) && Robbingbank == playerid) {
-		Inventory_Add(playerid, "Dirty", 1, 60*24*2);
+		Inventory_Add(playerid, "Tien Ban", 1, 60*24*2);
 		// SendClientMessage(playerid, -1, "Ban da cuop duoc 1 cuc tien");
 
 		new rob_msg[1280];
-		format(rob_msg, sizeof(rob_msg), "Ban da cuop %d cuc tien", Inventory_Count(playerid, "Dirty"));
+		format(rob_msg, sizeof(rob_msg), "Ban da cuop %d cuc tien", Inventory_Count(playerid, "Tien Ban"));
 		SendClientTextDraw(playerid, rob_msg, 1);
 	}
 	else{
@@ -90,7 +90,7 @@ stock PlayerRuaTien(playerid)
 {
 	new rt_type = GetPVarInt(playerid, #RuaTien_Type);
 
-	if(!Inventory_HasItem(playerid, "Dirty")) return SendErrorMessage(playerid, "Ban khong co tien ban de rua !");
+	if(!Inventory_HasItem(playerid, "Tien Ban")) return SendErrorMessage(playerid, "Ban khong co tien ban de rua !");
 	
 	if(rt_type == 1)
 		SetPVarInt(playerid, #RuaTien_Time, 60*5);
@@ -159,17 +159,17 @@ public OnPlayerRuaTien(playerid)
 				default: percent=60;
 			}
 
-			new rt_amount = Inventory_Count(playerid, "Dirty");
+			new rt_amount = Inventory_Count(playerid, "Tien Ban");
 			new rt_msg[1280];
 			format(rt_msg, sizeof(rt_msg), "Ban da rua thanh cong %d cuc tien ban !", rt_amount);
 			SendClientMessage(playerid, -1, rt_msg);
 
-			Inventory_RemoveTimer(playerid, "Dirty", rt_amount);
+			Inventory_RemoveTimer(playerid, "Tien Ban", rt_amount);
 
 			PlayerInfo[playerid][pCash] += rt_amount*(percent/100*500000);
 		}
 		else{
-			Inventory_RemoveTimer(playerid, "Dirty", Inventory_Count(playerid, "Dirty"));
+			Inventory_RemoveTimer(playerid, "Tien Ban", Inventory_Count(playerid, "Tien Ban"));
 			SendErrorMessage(playerid, "Ban da rua tien that bai");
 			KillTimer(RuaTien_Timer[playerid]);
 		}
