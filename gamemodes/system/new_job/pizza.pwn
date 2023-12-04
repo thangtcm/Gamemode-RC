@@ -23,7 +23,7 @@ GetRandomHouse(playerid) // check
 	{
 	    if(HouseInfo[i][hOwnerID])
 	    {
-	        if(250 <= GetPlayerDistanceFromPoint(playerid, HouseInfo[i][hExteriorX], HouseInfo[i][hExteriorY], HouseInfo[i][hExteriorZ]) <= 1300.0)
+	        if(60 <= GetPlayerDistanceFromPoint(playerid, HouseInfo[i][hExteriorX], HouseInfo[i][hExteriorY], HouseInfo[i][hExteriorZ]) <= 1800.0)
 	        {
 	        	houseIDs[index++] = i;
 			}
@@ -104,7 +104,7 @@ hook OnPlayerKeyStateChange(playerid, newkeys, oldkeys)
 			{
 				if(!IsPlayerInAnyVehicle(playerid))
 				{
-				    new level = PlayerInfo[playerid][pPizzaSkill];
+				    new level = JobSkill[playerid][Pizza];
 				    new str[230], strr[230];
 					Pizza_Quantity[PizzaJob[playerid][Vehicle]] ++;
 					ClearAnimations(playerid);
@@ -120,7 +120,8 @@ hook OnPlayerKeyStateChange(playerid, newkeys, oldkeys)
 					    SendClientTextDraw(playerid, str);
 					    SendClientMessage(playerid, COLOR_WHITE,"(JOB PIZZA) Ban co the [/giaobanh] de bat dau giao banh.");
 				    }
-				    else if(level >= 200)
+				    else 
+				    if(level >= 200)
 				    {
 				        format(strr, sizeof strr, "(XE PIZZA - LEVEL 2)\nChu so huu: {FFCB00}%s{ffffff}\nBanh trong xe: {FFCB00}%d/10{ffffff}", GetPlayerNameEx(playerid),Pizza_Quantity[PizzaJob[playerid][Vehicle]]);
 				        Update3DTextLabelText(PizzaTextInfo[playerid], COLOR_WHITE, strr);
@@ -150,7 +151,7 @@ hook OnPlayerKeyStateChange(playerid, newkeys, oldkeys)
 								new string[1240], strr[1240];
 								Pizza_Quantity[PizzaJob[playerid][Vehicle]] --;
 								
-								new level = PlayerInfo[playerid][pPizzaSkill];
+								new level = JobSkill[playerid][Pizza];
 								if(level < 200)
             				    {
             				        format(strr, sizeof strr, "(XE PIZZA - LEVEL 1)\nChu so huu: {FFCB00}%s{ffffff}\nBanh trong xe: {FFCB00}%d/5{ffffff}", GetPlayerNameEx(playerid),Pizza_Quantity[PizzaJob[playerid][Vehicle]]);
@@ -187,13 +188,13 @@ hook OnPlayerEnterCheckpoint(playerid)
 			RemovePlayerAttachedObject(playerid,9);
 			ClearAnimations(playerid);
 			CheckDoneMisson(playerid, 0);
-			PlayerInfo[playerid][pPizzaSkill] += 1;
+			JobSkill[playerid][Pizza] += 1;
 			SetPlayerSpecialAction(playerid,SPECIAL_ACTION_NONE);
 			new str[1080];
 		    new Float:doxa = GetPlayerDistanceFromPoint(playerid,2099.0378,-1801.4995,13.3889);
-		    if(doxa <= 750)
+		    if(doxa <= 400)
 			{
-			    new randomm = 30 + random(20);
+			    new randomm = 30 + random(25);
 			    Pizza_Reward[playerid] += randomm;
 			    format(str, sizeof str,"(JOB PIZZA) Ban da giao thanh cong va nhan duoc %d$ tien thuong (vi tri gan) - Tien thuong hien tai %d$", randomm, Pizza_Reward[playerid]);
 			    SendClientMessage(playerid, COLOR_WHITE, str);
@@ -208,7 +209,7 @@ hook OnPlayerEnterCheckpoint(playerid)
 			}
 			else
 			{
-			    new randomm = 40 + random(20);
+			    new randomm = 40 + random(25);
 			    Pizza_Reward[playerid] += randomm;
 			    format(str, sizeof str,"(JOB PIZZA) Ban da giao thanh cong va nhan duoc %d$ tien thuong (vi tri xa) - Tien thuong hien tai %d$", randomm, Pizza_Reward[playerid]);
 			    SendClientMessage(playerid, COLOR_WHITE, str);
@@ -240,12 +241,13 @@ CMD:jhonsongrentpizza(playerid, params[])
     //if(!IsPlayerInRangeOfPoint(playerid, 5, 2109.3142, -1780.5560, 13.3864)) return SendErrorMessage(playerid,"(JOB PIZZA) Ban khong o noi thue xe.");
     if(Pizza_RentOn[playerid]) return SendErrorMessage(playerid,"(JOB PIZZA) Ban da thue xe roi.");
     
-    if(PlayerInfo[playerid][pPizzaSkill] < 200)
+    if(JobSkill[playerid][Pizza] < 200)
     {
         ActSetPlayerPos(playerid, 2112.9497, -1771.9745, 12.9538);
     	PizzaJob[playerid][Vehicle] = CreateVehicle(448, 2112.9497, -1771.9745, 12.9538, 0 , 3, 3, -1);
     	VehicleFuel[PizzaJob[playerid][Vehicle]] = GetVehicleFuelCapacity(PizzaJob[playerid][Vehicle]);
     	PlayerOnVehicle[playerid] = PizzaJob[playerid][Vehicle] ;
+    
     	SetVehicleHealth(PizzaJob[playerid][Vehicle], 900.0);
     	Vehicle_ResetData(PizzaJob[playerid][Vehicle]);
     	ActPutPlayerInVehicle(playerid, PizzaJob[playerid][Vehicle] ,0);
@@ -253,15 +255,16 @@ CMD:jhonsongrentpizza(playerid, params[])
     	new zzstr[150];
         Pizza_RentOn[playerid] = 1;
     	format(zzstr, sizeof zzstr, "(XE PIZZA - LEVEL 1)\nChu so huu: {FFCB00}%s{ffffff}\nBanh trong xe: {FFCB00}%d/5{ffffff}", GetPlayerNameEx(playerid),Pizza_Quantity[PizzaJob[playerid][Vehicle]]);
-        PizzaTextInfo[playerid] = Create3DTextLabel(zzstr, COLOR_WHITE, 0.0, 0.0, 0.0, 50.0, 0, 1);
+        PizzaTextInfo[playerid] = Create3DTextLabel(zzstr, COLOR_WHITE, 0.0, 0.0, 0.0, 20.0, 0, 1);
         Attach3DTextLabelToVehicle(PizzaTextInfo[playerid], PizzaJob[playerid][Vehicle], 0.0, 0.0, 2.0); // Attaching Text Label To Vehicle.
     }
-    else if(PlayerInfo[playerid][pPizzaSkill] >= 200)
+    else if(JobSkill[playerid][Pizza] >= 200)
     {
         ActSetPlayerPos(playerid, 2112.9497, -1771.9745, 12.9538);
     	PizzaJob[playerid][Vehicle] = CreateVehicle(561, 2112.9497, -1771.9745, 12.9538, 0 , 3, 3, -1);
     	VehicleFuel[PizzaJob[playerid][Vehicle]] = GetVehicleFuelCapacity(PizzaJob[playerid][Vehicle]);
     	PlayerOnVehicle[playerid] = PizzaJob[playerid][Vehicle] ;
+    	
     	SetVehicleHealth(PizzaJob[playerid][Vehicle], 900.0);
     	Vehicle_ResetData(PizzaJob[playerid][Vehicle]);
     	ActPutPlayerInVehicle(playerid, PizzaJob[playerid][Vehicle] ,0);
@@ -269,7 +272,7 @@ CMD:jhonsongrentpizza(playerid, params[])
     	new zzstr[150];
         Pizza_RentOn[playerid] = 1;
     	format(zzstr, sizeof zzstr, "(XE PIZZA - LEVEL 2)\nChu so huu: {FFCB00}%s{ffffff}\nBanh trong xe: {FFCB00}%d/10{ffffff}", GetPlayerNameEx(playerid),Pizza_Quantity[PizzaJob[playerid][Vehicle]]);
-        PizzaTextInfo[playerid] = Create3DTextLabel(zzstr, COLOR_WHITE, 0.0, 0.0, 0.0, 50.0, 0, 1);
+        PizzaTextInfo[playerid] = Create3DTextLabel(zzstr, COLOR_WHITE, 0.0, 0.0, 0.0, 20.0, 0, 1);
         Attach3DTextLabelToVehicle(PizzaTextInfo[playerid], PizzaJob[playerid][Vehicle], 0.0, 0.0, 2.0); // Attaching Text Label To Vehicle.
     }
 	return 1;
@@ -277,7 +280,7 @@ CMD:jhonsongrentpizza(playerid, params[])
 CMD:jhonsonglaybanh(playerid, params[])
 {
     new
-            level = PlayerInfo[playerid][pPizzaSkill],
+            level = JobSkill[playerid][Pizza],
 			carid = GetPlayerVehicleID(playerid);
 
 	if(carid)
@@ -307,7 +310,6 @@ CMD:giaobanh(playerid, params[])
 	}
     SendClientTextDraw(playerid, "Dang nhan cuoc goi...");
     SetTimerEx("cp_pizza", 2000, false, "i", playerid);
-    SetPlayerCheckPointEx(playerid, HouseInfo[houseid][hExteriorX], HouseInfo[houseid][hExteriorY], HouseInfo[houseid][hExteriorZ], 3);
     return 1;
 }
 
@@ -316,7 +318,7 @@ forward cp_pizza(playerid);
 public cp_pizza(playerid)
 {
     new str[120];
-	format(str, sizeof str, "(JOB PIZZA) Hay giao pizza den nha cua ~y~%s~w~", HouseInfo[houseid][hOwnerName]);
+	format(str, sizeof str, "Hay giao pizza den nha cua ~y~%s~w~", HouseInfo[houseid][hOwnerName]);
     CPPizza[playerid] = 1;
     SendClientTextDraw(playerid, str);
 }
