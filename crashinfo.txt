@@ -1,0 +1,392 @@
+
+--------------------------
+SA-MP Server: 0.3.DL-R1
+
+Exception At Address: 0x00404F14 Module: (samp-server.exe)
+
+Registers:
+EAX: 0x00000024	EBX: 0x000000A0	ECX: 0x00000020	EDX: 0x002EF000
+ESI: 0x1F418B78	EDI: 0x1F418B9C	EBP: 0x00000000	ESP: 0x0019E024
+EFLAGS: 0x00210202
+
+Stack:
++0000: 0x00000000   0x0019E040   0x1F418B78   0x000000A0
++0010: 0x0019E108   0x2E676966   0x00696E69   0x06BFF1F0
++0020: 0x06BE87C8   0x00405802   0x00000000   0x000000A0
++0030: 0x00000001   0x0000001A   0x0019E108   0x702DD867
++0040: 0x06BE87D0   0x06BE8814   0x06BE87D0   0x6F4C6E4F
++0050: 0x6F506461   0x73746E69   0x702DD500   0x454C4553
++0060: 0x2A205443   0x4F524620   0x7060204D   0x746E696F
++0070: 0x07006073   0x0019E0B4   0x702DD4D8   0x9BE2154D
++0080: 0x0734EF68   0x0734EF68   0x702DD887   0x0000000C
++0090: 0x00000016   0x00000000   0x1D3CEA8C   0x1D3CE9FC
++00A0: 0x1D3CEA58   0x1F418E88   0x0019E070   0x06BFFCA0
++00B0: 0x0734EF68   0x00000001   0x0019E108   0x70E45C7A
++00C0: 0x70E8A784   0x004057A0   0x0734EF68   0x0EC2D460
++00D0: 0x004057B0   0x0734EF68   0x0734EF68   0x02E0C480
++00E0: 0x00000000   0x0019E240   0x004010B6   0x0734EF68
++00F0: 0x1F418B9C   0x00000040   0x70E592DC   0x0734EF68
++0100: 0x00000040   0x0019E2B4   0x1F418B78   0x3CC2F858
++0110: 0x1036BD3C   0x0734EF68   0x00000000   0x00000000
++0120: 0x0734EF68   0x00000000   0x0EC2D760   0x001198F8
++0130: 0x00000040   0x024857D8   0x00000000   0x024857D8
+
+--------------------------
+
+Loaded Modules:
+samp-server.exe	A: 0x00400000 - 0x0051F000	(C:\Users\acer\Documents\GitHub\Gamemode-RC\samp-server.exe)
+ntdll.dll	A: 0x77E20000 - 0x77FD1000	(C:\WINDOWS\SYSTEM32\ntdll.dll)
+KERNEL32.DLL	A: 0x76520000 - 0x76610000	(C:\WINDOWS\System32\KERNEL32.DLL)
+KERNELBASE.dll	A: 0x77B80000 - 0x77DF4000	(C:\WINDOWS\System32\KERNELBASE.dll)
+SHELL32.dll	A: 0x768C0000 - 0x76F55000	(C:\WINDOWS\System32\SHELL32.dll)
+msvcp_win.dll	A: 0x75B10000 - 0x75B89000	(C:\WINDOWS\System32\msvcp_win.dll)
+ucrtbase.dll	A: 0x77420000 - 0x77532000	(C:\WINDOWS\System32\ucrtbase.dll)
+USER32.dll	A: 0x77660000 - 0x77808000	(C:\WINDOWS\System32\USER32.dll)
+win32u.dll	A: 0x768A0000 - 0x768BA000	(C:\WINDOWS\System32\win32u.dll)
+GDI32.dll	A: 0x77880000 - 0x778A3000	(C:\WINDOWS\System32\GDI32.dll)
+gdi32full.dll	A: 0x75F00000 - 0x75FE2000	(C:\WINDOWS\System32\gdi32full.dll)
+WINMM.dll	A: 0x757D0000 - 0x75801000	(C:\WINDOWS\SYSTEM32\WINMM.dll)
+WSOCK32.dll	A: 0x75A80000 - 0x75A88000	(C:\WINDOWS\SYSTEM32\WSOCK32.dll)
+msvcrt.dll	A: 0x75B90000 - 0x75C54000	(C:\WINDOWS\System32\msvcrt.dll)
+ws2_32.DLL	A: 0x75AB0000 - 0x75B0F000	(C:\WINDOWS\System32\ws2_32.DLL)
+RPCRT4.dll	A: 0x76670000 - 0x7672A000	(C:\WINDOWS\System32\RPCRT4.dll)
+IMM32.DLL	A: 0x779F0000 - 0x77A15000	(C:\WINDOWS\System32\IMM32.DLL)
+mysql.DLL	A: 0x702C0000 - 0x70394000	(C:\Users\acer\Documents\GitHub\Gamemode-RC\plugins\mysql.DLL)
+LIBMYSQL.dll	A: 0x10000000 - 0x1023E000	(C:\Users\acer\Documents\GitHub\Gamemode-RC\LIBMYSQL.dll)
+MSVCR110.dll	A: 0x701E0000 - 0x702B6000	(C:\Users\acer\Documents\GitHub\Gamemode-RC\MSVCR110.dll)
+ADVAPI32.dll	A: 0x77920000 - 0x7799D000	(C:\WINDOWS\System32\ADVAPI32.dll)
+MSVCP110.dll	A: 0x70BF0000 - 0x70C75000	(C:\WINDOWS\SYSTEM32\MSVCP110.dll)
+sechost.dll	A: 0x762E0000 - 0x76364000	(C:\WINDOWS\System32\sechost.dll)
+napinsp.dll	A: 0x72DA0000 - 0x72DB2000	(C:\WINDOWS\system32\napinsp.dll)
+pnrpnsp.dll	A: 0x72D80000 - 0x72D96000	(C:\WINDOWS\system32\pnrpnsp.dll)
+mswsock.dll	A: 0x73F30000 - 0x73F81000	(C:\WINDOWS\System32\mswsock.dll)
+DNSAPI.dll	A: 0x72CC0000 - 0x72D7C000	(C:\WINDOWS\SYSTEM32\DNSAPI.dll)
+IPHLPAPI.DLL	A: 0x746D0000 - 0x746F4000	(C:\WINDOWS\SYSTEM32\IPHLPAPI.DLL)
+NSI.dll	A: 0x773B0000 - 0x773B7000	(C:\WINDOWS\System32\NSI.dll)
+winrnr.dll	A: 0x72CB0000 - 0x72CBE000	(C:\WINDOWS\System32\winrnr.dll)
+wshbth.dll	A: 0x72C80000 - 0x72C91000	(C:\WINDOWS\system32\wshbth.dll)
+rasadhlp.dll	A: 0x72CA0000 - 0x72CA8000	(C:\Windows\System32\rasadhlp.dll)
+sscanf.DLL	A: 0x02490000 - 0x0249D000	(C:\Users\acer\Documents\GitHub\Gamemode-RC\plugins\sscanf.DLL)
+MSVCR100.dll	A: 0x70950000 - 0x70A0F000	(C:\WINDOWS\SYSTEM32\MSVCR100.dll)
+whirlpool.DLL	A: 0x02900000 - 0x0290C000	(C:\Users\acer\Documents\GitHub\Gamemode-RC\plugins\whirlpool.DLL)
+MSVCR80.dll	A: 0x70580000 - 0x7061B000	(C:\WINDOWS\WinSxS\x86_microsoft.vc80.crt_1fc8b3b9a1e18e3b_8.0.50727.9680_none_d090cb7c44278b28\MSVCR80.dll)
+MSVCP100.dll	A: 0x70170000 - 0x701D9000	(C:\Users\acer\Documents\GitHub\Gamemode-RC\MSVCP100.dll)
+sampvoice.DLL	A: 0x71D20000 - 0x71D4B000	(C:\Users\acer\Documents\GitHub\Gamemode-RC\plugins\sampvoice.DLL)
+VCRUNTIME140.dll	A: 0x72560000 - 0x72575000	(C:\WINDOWS\SYSTEM32\VCRUNTIME140.dll)
+MSVCP140.dll	A: 0x70100000 - 0x7016D000	(C:\WINDOWS\SYSTEM32\MSVCP140.dll)
+combase.dll	A: 0x75C80000 - 0x75EFC000	(C:\WINDOWS\System32\combase.dll)
+kernel.appcore.dll	A: 0x756A0000 - 0x756B3000	(C:\WINDOWS\SYSTEM32\kernel.appcore.dll)
+samp-compat.dll	A: 0x74D00000 - 0x74D0A000	(C:\Users\acer\Documents\GitHub\Gamemode-RC\plugins\samp-compat.dll)
+streamer.DLL	A: 0x70090000 - 0x700FD000	(C:\Users\acer\Documents\GitHub\Gamemode-RC\plugins\streamer.DLL)
+server.DLL	A: 0x6FDD0000 - 0x70081000	(C:\Users\acer\Documents\GitHub\Gamemode-RC\plugins\server.DLL)
+CRYPT32.dll	A: 0x76410000 - 0x76513000	(C:\WINDOWS\System32\CRYPT32.dll)
+bcrypt.dll	A: 0x70D70000 - 0x70D8A000	(C:\WINDOWS\SYSTEM32\bcrypt.dll)
+CRYPTBASE.DLL	A: 0x73DA0000 - 0x73DAB000	(C:\WINDOWS\SYSTEM32\CRYPTBASE.DLL)
+bcryptPrimitives.dll	A: 0x778B0000 - 0x77912000	(C:\WINDOWS\System32\bcryptPrimitives.dll)
+MSASN1.dll	A: 0x74E60000 - 0x74E6E000	(C:\WINDOWS\SYSTEM32\MSASN1.dll)
+TDE.DLL	A: 0x70E20000 - 0x70E3B000	(C:\Users\acer\Documents\GitHub\Gamemode-RC\plugins\TDE.DLL)
+MSVCR100D.dll	A: 0x6FBC0000 - 0x6FD32000	(C:\Users\acer\Documents\GitHub\Gamemode-RC\MSVCR100D.dll)
+YSF_DL.DLL	A: 0x05860000 - 0x0590A000	(C:\Users\acer\Documents\GitHub\Gamemode-RC\plugins\YSF_DL.DLL)
+OLEAUT32.dll	A: 0x76370000 - 0x7640C000	(C:\WINDOWS\System32\OLEAUT32.dll)
+discord-connector.DLL	A: 0x6F6F0000 - 0x6FBBD000	(C:\Users\acer\Documents\GitHub\Gamemode-RC\plugins\discord-connector.DLL)
+log-core2.dll	A: 0x6F390000 - 0x6F3E5000	(C:\Users\acer\Documents\GitHub\Gamemode-RC\log-core2.dll)
+CRYPTSP.dll	A: 0x70DE0000 - 0x70DF5000	(C:\WINDOWS\SYSTEM32\CRYPTSP.dll)
+bcrypt-samp.DLL	A: 0x6F320000 - 0x6F387000	(C:\Users\acer\Documents\GitHub\Gamemode-RC\plugins\bcrypt-samp.DLL)
+MSVCP120.dll	A: 0x6F2A0000 - 0x6F311000	(C:\WINDOWS\SYSTEM32\MSVCP120.dll)
+MSVCR120.dll	A: 0x6F1B0000 - 0x6F29E000	(C:\WINDOWS\SYSTEM32\MSVCR120.dll)
+GPS.DLL	A: 0x70DC0000 - 0x70DD6000	(C:\Users\acer\Documents\GitHub\Gamemode-RC\plugins\GPS.DLL)
+pawnraknet.DLL	A: 0x6F130000 - 0x6F1AB000	(C:\Users\acer\Documents\GitHub\Gamemode-RC\plugins\pawnraknet.DLL)
+
+--------------------------
+SA-MP Server: 0.3.DL-R1
+
+Exception At Address: 0x00404F14 Module: (samp-server.exe)
+
+Registers:
+EAX: 0x00000024	EBX: 0x000000A0	ECX: 0x00000020	EDX: 0x00392000
+ESI: 0x1F41EB78	EDI: 0x1F41EB9C	EBP: 0x00000000	ESP: 0x0019E024
+EFLAGS: 0x00210202
+
+Stack:
++0000: 0x00000000   0x0019E040   0x1F41EB78   0x000000A0
++0010: 0x0019E108   0x2E676966   0x00696E69   0x05A51650
++0020: 0x06BDBC98   0x00405802   0x00000000   0x000000A0
++0030: 0x00000001   0x0000001A   0x0019E108   0x702DD867
++0040: 0x06BDBCA0   0x06BDBCE4   0x06BDBCA0   0x6F4C6E4F
++0050: 0x6F506461   0x73746E69   0x702DD500   0x454C4553
++0060: 0x2A205443   0x4F524620   0x7060204D   0x746E696F
++0070: 0x07006073   0x0019E0B4   0x702DD4D8   0xAE276077
++0080: 0x0734EF68   0x0734EF68   0x702DD887   0x0000000C
++0090: 0x00000016   0x00000000   0x1D3D4A8C   0x1D3D49FC
++00A0: 0x1D3D4A58   0x1F41EE88   0x0019E070   0x0658F610
++00B0: 0x0734EF68   0x00000001   0x0019E108   0x70E45C7A
++00C0: 0x70E8A784   0x004057A0   0x0734EF68   0x0EC2D460
++00D0: 0x004057B0   0x0734EF68   0x0734EF68   0x0262C480
++00E0: 0x00000000   0x0019E240   0x004010B6   0x0734EF68
++00F0: 0x1F41EB9C   0x00000040   0x70E592DC   0x0734EF68
++0100: 0x00000040   0x0019E2B4   0x1F41EB78   0xF8745A96
++0110: 0x10371D3C   0x0734EF68   0x00000000   0x00000000
++0120: 0x0734EF68   0x00000000   0x0EC2D760   0x001198F8
++0130: 0x00000040   0x026F57D8   0x00000000   0x026F57D8
+
+--------------------------
+
+Loaded Modules:
+samp-server.exe	A: 0x00400000 - 0x0051F000	(C:\Users\acer\Documents\GitHub\Gamemode-RC\samp-server.exe)
+ntdll.dll	A: 0x77E20000 - 0x77FD1000	(C:\WINDOWS\SYSTEM32\ntdll.dll)
+KERNEL32.DLL	A: 0x76520000 - 0x76610000	(C:\WINDOWS\System32\KERNEL32.DLL)
+KERNELBASE.dll	A: 0x77B80000 - 0x77DF4000	(C:\WINDOWS\System32\KERNELBASE.dll)
+SHELL32.dll	A: 0x768C0000 - 0x76F55000	(C:\WINDOWS\System32\SHELL32.dll)
+msvcp_win.dll	A: 0x75B10000 - 0x75B89000	(C:\WINDOWS\System32\msvcp_win.dll)
+ucrtbase.dll	A: 0x77420000 - 0x77532000	(C:\WINDOWS\System32\ucrtbase.dll)
+USER32.dll	A: 0x77660000 - 0x77808000	(C:\WINDOWS\System32\USER32.dll)
+win32u.dll	A: 0x768A0000 - 0x768BA000	(C:\WINDOWS\System32\win32u.dll)
+GDI32.dll	A: 0x77880000 - 0x778A3000	(C:\WINDOWS\System32\GDI32.dll)
+gdi32full.dll	A: 0x75F00000 - 0x75FE2000	(C:\WINDOWS\System32\gdi32full.dll)
+WINMM.dll	A: 0x757D0000 - 0x75801000	(C:\WINDOWS\SYSTEM32\WINMM.dll)
+WSOCK32.dll	A: 0x75A80000 - 0x75A88000	(C:\WINDOWS\SYSTEM32\WSOCK32.dll)
+msvcrt.dll	A: 0x75B90000 - 0x75C54000	(C:\WINDOWS\System32\msvcrt.dll)
+ws2_32.DLL	A: 0x75AB0000 - 0x75B0F000	(C:\WINDOWS\System32\ws2_32.DLL)
+RPCRT4.dll	A: 0x76670000 - 0x7672A000	(C:\WINDOWS\System32\RPCRT4.dll)
+IMM32.DLL	A: 0x779F0000 - 0x77A15000	(C:\WINDOWS\System32\IMM32.DLL)
+mysql.DLL	A: 0x702C0000 - 0x70394000	(C:\Users\acer\Documents\GitHub\Gamemode-RC\plugins\mysql.DLL)
+LIBMYSQL.dll	A: 0x10000000 - 0x1023E000	(C:\Users\acer\Documents\GitHub\Gamemode-RC\LIBMYSQL.dll)
+MSVCR110.dll	A: 0x701E0000 - 0x702B6000	(C:\Users\acer\Documents\GitHub\Gamemode-RC\MSVCR110.dll)
+MSVCP110.dll	A: 0x70BF0000 - 0x70C75000	(C:\WINDOWS\SYSTEM32\MSVCP110.dll)
+ADVAPI32.dll	A: 0x77920000 - 0x7799D000	(C:\WINDOWS\System32\ADVAPI32.dll)
+sechost.dll	A: 0x762E0000 - 0x76364000	(C:\WINDOWS\System32\sechost.dll)
+napinsp.dll	A: 0x72DA0000 - 0x72DB2000	(C:\WINDOWS\system32\napinsp.dll)
+pnrpnsp.dll	A: 0x72D80000 - 0x72D96000	(C:\WINDOWS\system32\pnrpnsp.dll)
+mswsock.dll	A: 0x73F30000 - 0x73F81000	(C:\WINDOWS\System32\mswsock.dll)
+DNSAPI.dll	A: 0x72CC0000 - 0x72D7C000	(C:\WINDOWS\SYSTEM32\DNSAPI.dll)
+IPHLPAPI.DLL	A: 0x746D0000 - 0x746F4000	(C:\WINDOWS\SYSTEM32\IPHLPAPI.DLL)
+NSI.dll	A: 0x773B0000 - 0x773B7000	(C:\WINDOWS\System32\NSI.dll)
+winrnr.dll	A: 0x72CB0000 - 0x72CBE000	(C:\WINDOWS\System32\winrnr.dll)
+wshbth.dll	A: 0x72C80000 - 0x72C91000	(C:\WINDOWS\system32\wshbth.dll)
+rasadhlp.dll	A: 0x72CA0000 - 0x72CA8000	(C:\Windows\System32\rasadhlp.dll)
+sscanf.DLL	A: 0x02590000 - 0x0259D000	(C:\Users\acer\Documents\GitHub\Gamemode-RC\plugins\sscanf.DLL)
+MSVCR100.dll	A: 0x70950000 - 0x70A0F000	(C:\WINDOWS\SYSTEM32\MSVCR100.dll)
+whirlpool.DLL	A: 0x025B0000 - 0x025BC000	(C:\Users\acer\Documents\GitHub\Gamemode-RC\plugins\whirlpool.DLL)
+MSVCR80.dll	A: 0x70580000 - 0x7061B000	(C:\WINDOWS\WinSxS\x86_microsoft.vc80.crt_1fc8b3b9a1e18e3b_8.0.50727.9680_none_d090cb7c44278b28\MSVCR80.dll)
+MSVCP100.dll	A: 0x70170000 - 0x701D9000	(C:\Users\acer\Documents\GitHub\Gamemode-RC\MSVCP100.dll)
+sampvoice.DLL	A: 0x71D20000 - 0x71D4B000	(C:\Users\acer\Documents\GitHub\Gamemode-RC\plugins\sampvoice.DLL)
+VCRUNTIME140.dll	A: 0x72560000 - 0x72575000	(C:\WINDOWS\SYSTEM32\VCRUNTIME140.dll)
+MSVCP140.dll	A: 0x70100000 - 0x7016D000	(C:\WINDOWS\SYSTEM32\MSVCP140.dll)
+combase.dll	A: 0x75C80000 - 0x75EFC000	(C:\WINDOWS\System32\combase.dll)
+kernel.appcore.dll	A: 0x756A0000 - 0x756B3000	(C:\WINDOWS\SYSTEM32\kernel.appcore.dll)
+samp-compat.dll	A: 0x74D00000 - 0x74D0A000	(C:\Users\acer\Documents\GitHub\Gamemode-RC\plugins\samp-compat.dll)
+streamer.DLL	A: 0x70090000 - 0x700FD000	(C:\Users\acer\Documents\GitHub\Gamemode-RC\plugins\streamer.DLL)
+server.DLL	A: 0x6FDD0000 - 0x70081000	(C:\Users\acer\Documents\GitHub\Gamemode-RC\plugins\server.DLL)
+CRYPT32.dll	A: 0x76410000 - 0x76513000	(C:\WINDOWS\System32\CRYPT32.dll)
+bcrypt.dll	A: 0x70D70000 - 0x70D8A000	(C:\WINDOWS\SYSTEM32\bcrypt.dll)
+CRYPTBASE.DLL	A: 0x73DA0000 - 0x73DAB000	(C:\WINDOWS\SYSTEM32\CRYPTBASE.DLL)
+bcryptPrimitives.dll	A: 0x778B0000 - 0x77912000	(C:\WINDOWS\System32\bcryptPrimitives.dll)
+MSASN1.dll	A: 0x74E60000 - 0x74E6E000	(C:\WINDOWS\SYSTEM32\MSASN1.dll)
+TDE.DLL	A: 0x70E20000 - 0x70E3B000	(C:\Users\acer\Documents\GitHub\Gamemode-RC\plugins\TDE.DLL)
+MSVCR100D.dll	A: 0x6FBC0000 - 0x6FD32000	(C:\Users\acer\Documents\GitHub\Gamemode-RC\MSVCR100D.dll)
+YSF_DL.DLL	A: 0x05850000 - 0x058FA000	(C:\Users\acer\Documents\GitHub\Gamemode-RC\plugins\YSF_DL.DLL)
+OLEAUT32.dll	A: 0x76370000 - 0x7640C000	(C:\WINDOWS\System32\OLEAUT32.dll)
+discord-connector.DLL	A: 0x6F6F0000 - 0x6FBBD000	(C:\Users\acer\Documents\GitHub\Gamemode-RC\plugins\discord-connector.DLL)
+log-core2.dll	A: 0x6F390000 - 0x6F3E5000	(C:\Users\acer\Documents\GitHub\Gamemode-RC\log-core2.dll)
+CRYPTSP.dll	A: 0x70DE0000 - 0x70DF5000	(C:\WINDOWS\SYSTEM32\CRYPTSP.dll)
+bcrypt-samp.DLL	A: 0x6F320000 - 0x6F387000	(C:\Users\acer\Documents\GitHub\Gamemode-RC\plugins\bcrypt-samp.DLL)
+MSVCP120.dll	A: 0x6F2A0000 - 0x6F311000	(C:\WINDOWS\SYSTEM32\MSVCP120.dll)
+MSVCR120.dll	A: 0x6F1B0000 - 0x6F29E000	(C:\WINDOWS\SYSTEM32\MSVCR120.dll)
+GPS.DLL	A: 0x70DC0000 - 0x70DD6000	(C:\Users\acer\Documents\GitHub\Gamemode-RC\plugins\GPS.DLL)
+pawnraknet.DLL	A: 0x6F130000 - 0x6F1AB000	(C:\Users\acer\Documents\GitHub\Gamemode-RC\plugins\pawnraknet.DLL)
+
+--------------------------
+SA-MP Server: 0.3.DL-R1
+
+Exception At Address: 0x00404F14 Module: (samp-server.exe)
+
+Registers:
+EAX: 0x00000024	EBX: 0x000000A0	ECX: 0x00000020	EDX: 0x002CC000
+ESI: 0x1F422B78	EDI: 0x1F422B9C	EBP: 0x00000000	ESP: 0x0019E024
+EFLAGS: 0x00210202
+
+Stack:
++0000: 0x00000000   0x0019E040   0x1F422B78   0x000000A0
++0010: 0x0019E108   0x2E676966   0x00696E69   0x0656F1E8
++0020: 0x06BC2028   0x00405802   0x00000000   0x000000A0
++0030: 0x00000001   0x0000001A   0x0019E108   0x702DD867
++0040: 0x06BC2030   0x06BC2074   0x06BC2030   0x6F4C6E4F
++0050: 0x6F506461   0x73746E69   0x702DD500   0x454C4553
++0060: 0x2A205443   0x4F524620   0x7060204D   0x746E696F
++0070: 0x07006073   0x0019E0B4   0x702DD4D8   0x8B0F0FA4
++0080: 0x0734EF68   0x0734EF68   0x702DD887   0x0000000C
++0090: 0x00000016   0x00000000   0x1D3D8A8C   0x1D3D89FC
++00A0: 0x1D3D8A58   0x1F422E88   0x0019E070   0x065C1DF0
++00B0: 0x0734EF68   0x00000001   0x0019E108   0x70E45C7A
++00C0: 0x70E8A784   0x004057A0   0x0734EF68   0x0EC2D460
++00D0: 0x004057B0   0x0734EF68   0x0734EF68   0x02C9C480
++00E0: 0x00000000   0x0019E240   0x004010B6   0x0734EF68
++00F0: 0x1F422B9C   0x00000040   0x70E592DC   0x0734EF68
++0100: 0x00000040   0x0019E2B4   0x1F422B78   0xB8A047BB
++0110: 0x10375D3C   0x0734EF68   0x00000000   0x00000000
++0120: 0x0734EF68   0x00000000   0x0EC2D760   0x001198F8
++0130: 0x00000040   0x024957D8   0x00000000   0x024957D8
+
+--------------------------
+
+Loaded Modules:
+samp-server.exe	A: 0x00400000 - 0x0051F000	(C:\Users\acer\Documents\GitHub\Gamemode-RC\samp-server.exe)
+ntdll.dll	A: 0x77E20000 - 0x77FD1000	(C:\WINDOWS\SYSTEM32\ntdll.dll)
+KERNEL32.DLL	A: 0x76520000 - 0x76610000	(C:\WINDOWS\System32\KERNEL32.DLL)
+KERNELBASE.dll	A: 0x77B80000 - 0x77DF4000	(C:\WINDOWS\System32\KERNELBASE.dll)
+SHELL32.dll	A: 0x768C0000 - 0x76F55000	(C:\WINDOWS\System32\SHELL32.dll)
+msvcp_win.dll	A: 0x75B10000 - 0x75B89000	(C:\WINDOWS\System32\msvcp_win.dll)
+ucrtbase.dll	A: 0x77420000 - 0x77532000	(C:\WINDOWS\System32\ucrtbase.dll)
+USER32.dll	A: 0x77660000 - 0x77808000	(C:\WINDOWS\System32\USER32.dll)
+win32u.dll	A: 0x768A0000 - 0x768BA000	(C:\WINDOWS\System32\win32u.dll)
+GDI32.dll	A: 0x77880000 - 0x778A3000	(C:\WINDOWS\System32\GDI32.dll)
+gdi32full.dll	A: 0x75F00000 - 0x75FE2000	(C:\WINDOWS\System32\gdi32full.dll)
+WINMM.dll	A: 0x757D0000 - 0x75801000	(C:\WINDOWS\SYSTEM32\WINMM.dll)
+WSOCK32.dll	A: 0x75A80000 - 0x75A88000	(C:\WINDOWS\SYSTEM32\WSOCK32.dll)
+msvcrt.dll	A: 0x75B90000 - 0x75C54000	(C:\WINDOWS\System32\msvcrt.dll)
+ws2_32.DLL	A: 0x75AB0000 - 0x75B0F000	(C:\WINDOWS\System32\ws2_32.DLL)
+RPCRT4.dll	A: 0x76670000 - 0x7672A000	(C:\WINDOWS\System32\RPCRT4.dll)
+IMM32.DLL	A: 0x779F0000 - 0x77A15000	(C:\WINDOWS\System32\IMM32.DLL)
+mysql.DLL	A: 0x702C0000 - 0x70394000	(C:\Users\acer\Documents\GitHub\Gamemode-RC\plugins\mysql.DLL)
+LIBMYSQL.dll	A: 0x10000000 - 0x1023E000	(C:\Users\acer\Documents\GitHub\Gamemode-RC\LIBMYSQL.dll)
+MSVCR110.dll	A: 0x701E0000 - 0x702B6000	(C:\Users\acer\Documents\GitHub\Gamemode-RC\MSVCR110.dll)
+MSVCP110.dll	A: 0x70BF0000 - 0x70C75000	(C:\WINDOWS\SYSTEM32\MSVCP110.dll)
+ADVAPI32.dll	A: 0x77920000 - 0x7799D000	(C:\WINDOWS\System32\ADVAPI32.dll)
+sechost.dll	A: 0x762E0000 - 0x76364000	(C:\WINDOWS\System32\sechost.dll)
+napinsp.dll	A: 0x72DA0000 - 0x72DB2000	(C:\WINDOWS\system32\napinsp.dll)
+pnrpnsp.dll	A: 0x72D80000 - 0x72D96000	(C:\WINDOWS\system32\pnrpnsp.dll)
+mswsock.dll	A: 0x73F30000 - 0x73F81000	(C:\WINDOWS\System32\mswsock.dll)
+DNSAPI.dll	A: 0x72CC0000 - 0x72D7C000	(C:\WINDOWS\SYSTEM32\DNSAPI.dll)
+IPHLPAPI.DLL	A: 0x746D0000 - 0x746F4000	(C:\WINDOWS\SYSTEM32\IPHLPAPI.DLL)
+NSI.dll	A: 0x773B0000 - 0x773B7000	(C:\WINDOWS\System32\NSI.dll)
+winrnr.dll	A: 0x72CB0000 - 0x72CBE000	(C:\WINDOWS\System32\winrnr.dll)
+wshbth.dll	A: 0x72C80000 - 0x72C91000	(C:\WINDOWS\system32\wshbth.dll)
+rasadhlp.dll	A: 0x72CA0000 - 0x72CA8000	(C:\Windows\System32\rasadhlp.dll)
+sscanf.DLL	A: 0x02480000 - 0x0248D000	(C:\Users\acer\Documents\GitHub\Gamemode-RC\plugins\sscanf.DLL)
+MSVCR100.dll	A: 0x70950000 - 0x70A0F000	(C:\WINDOWS\SYSTEM32\MSVCR100.dll)
+whirlpool.DLL	A: 0x024B0000 - 0x024BC000	(C:\Users\acer\Documents\GitHub\Gamemode-RC\plugins\whirlpool.DLL)
+MSVCR80.dll	A: 0x70580000 - 0x7061B000	(C:\WINDOWS\WinSxS\x86_microsoft.vc80.crt_1fc8b3b9a1e18e3b_8.0.50727.9680_none_d090cb7c44278b28\MSVCR80.dll)
+MSVCP100.dll	A: 0x70170000 - 0x701D9000	(C:\Users\acer\Documents\GitHub\Gamemode-RC\MSVCP100.dll)
+sampvoice.DLL	A: 0x71D20000 - 0x71D4B000	(C:\Users\acer\Documents\GitHub\Gamemode-RC\plugins\sampvoice.DLL)
+VCRUNTIME140.dll	A: 0x72560000 - 0x72575000	(C:\WINDOWS\SYSTEM32\VCRUNTIME140.dll)
+MSVCP140.dll	A: 0x70100000 - 0x7016D000	(C:\WINDOWS\SYSTEM32\MSVCP140.dll)
+combase.dll	A: 0x75C80000 - 0x75EFC000	(C:\WINDOWS\System32\combase.dll)
+kernel.appcore.dll	A: 0x756A0000 - 0x756B3000	(C:\WINDOWS\SYSTEM32\kernel.appcore.dll)
+samp-compat.dll	A: 0x74D00000 - 0x74D0A000	(C:\Users\acer\Documents\GitHub\Gamemode-RC\plugins\samp-compat.dll)
+streamer.DLL	A: 0x70090000 - 0x700FD000	(C:\Users\acer\Documents\GitHub\Gamemode-RC\plugins\streamer.DLL)
+server.DLL	A: 0x6FDD0000 - 0x70081000	(C:\Users\acer\Documents\GitHub\Gamemode-RC\plugins\server.DLL)
+CRYPT32.dll	A: 0x76410000 - 0x76513000	(C:\WINDOWS\System32\CRYPT32.dll)
+bcrypt.dll	A: 0x70D70000 - 0x70D8A000	(C:\WINDOWS\SYSTEM32\bcrypt.dll)
+CRYPTBASE.DLL	A: 0x73DA0000 - 0x73DAB000	(C:\WINDOWS\SYSTEM32\CRYPTBASE.DLL)
+bcryptPrimitives.dll	A: 0x778B0000 - 0x77912000	(C:\WINDOWS\System32\bcryptPrimitives.dll)
+MSASN1.dll	A: 0x74E60000 - 0x74E6E000	(C:\WINDOWS\SYSTEM32\MSASN1.dll)
+TDE.DLL	A: 0x70E20000 - 0x70E3B000	(C:\Users\acer\Documents\GitHub\Gamemode-RC\plugins\TDE.DLL)
+MSVCR100D.dll	A: 0x6FBC0000 - 0x6FD32000	(C:\Users\acer\Documents\GitHub\Gamemode-RC\MSVCR100D.dll)
+YSF_DL.DLL	A: 0x05850000 - 0x058FA000	(C:\Users\acer\Documents\GitHub\Gamemode-RC\plugins\YSF_DL.DLL)
+OLEAUT32.dll	A: 0x76370000 - 0x7640C000	(C:\WINDOWS\System32\OLEAUT32.dll)
+discord-connector.DLL	A: 0x6F6F0000 - 0x6FBBD000	(C:\Users\acer\Documents\GitHub\Gamemode-RC\plugins\discord-connector.DLL)
+log-core2.dll	A: 0x6F390000 - 0x6F3E5000	(C:\Users\acer\Documents\GitHub\Gamemode-RC\log-core2.dll)
+CRYPTSP.dll	A: 0x70DE0000 - 0x70DF5000	(C:\WINDOWS\SYSTEM32\CRYPTSP.dll)
+bcrypt-samp.DLL	A: 0x6F320000 - 0x6F387000	(C:\Users\acer\Documents\GitHub\Gamemode-RC\plugins\bcrypt-samp.DLL)
+MSVCP120.dll	A: 0x6F1B0000 - 0x6F221000	(C:\WINDOWS\SYSTEM32\MSVCP120.dll)
+MSVCR120.dll	A: 0x6F230000 - 0x6F31E000	(C:\WINDOWS\SYSTEM32\MSVCR120.dll)
+GPS.DLL	A: 0x70DC0000 - 0x70DD6000	(C:\Users\acer\Documents\GitHub\Gamemode-RC\plugins\GPS.DLL)
+pawnraknet.DLL	A: 0x6F130000 - 0x6F1AB000	(C:\Users\acer\Documents\GitHub\Gamemode-RC\plugins\pawnraknet.DLL)
+
+--------------------------
+SA-MP Server: 0.3.DL-R1
+
+Exception At Address: 0x00404F14 Module: (samp-server.exe)
+
+Registers:
+EAX: 0x00000024	EBX: 0x000000A0	ECX: 0x00000020	EDX: 0x003BD000
+ESI: 0x1F418B78	EDI: 0x1F418B9C	EBP: 0x00000000	ESP: 0x0019E024
+EFLAGS: 0x00210202
+
+Stack:
++0000: 0x00000000   0x0019E040   0x1F418B78   0x000000A0
++0010: 0x0019E108   0x2E676966   0x00696E69   0x06B9D670
++0020: 0x06B86CE8   0x00405802   0x00000000   0x000000A0
++0030: 0x00000001   0x0000001A   0x0019E108   0x702DD867
++0040: 0x06B86CF0   0x06B86D34   0x06B86CF0   0x6F4C6E4F
++0050: 0x6F506461   0x73746E69   0x702DD500   0x454C4553
++0060: 0x2A205443   0x4F524620   0x7060204D   0x746E696F
++0070: 0x07006073   0x0019E0B4   0x702DD4D8   0xC3AE27E7
++0080: 0x0733EF68   0x0733EF68   0x702DD887   0x0000000C
++0090: 0x00000016   0x00000000   0x1D3CEA8C   0x1D3CE9FC
++00A0: 0x1D3CEA58   0x1F418E88   0x0019E070   0x064AB4E8
++00B0: 0x0733EF68   0x00000001   0x0019E108   0x70E45C7A
++00C0: 0x70E8A784   0x004057A0   0x0733EF68   0x0EC2D460
++00D0: 0x004057B0   0x0733EF68   0x0733EF68   0x0255C480
++00E0: 0x00000000   0x0019E240   0x004010B6   0x0733EF68
++00F0: 0x1F418B9C   0x00000040   0x70E592DC   0x0733EF68
++0100: 0x00000040   0x0019E2B4   0x1F418B78   0x09F17877
++0110: 0x1036BD3C   0x0733EF68   0x00000000   0x77F4E7B8
++0120: 0x0733EF68   0x00000000   0x0EC2D760   0x001198F8
++0130: 0x00000040   0x07247010   0x0000000F   0x0019E17C
+
+--------------------------
+
+Loaded Modules:
+samp-server.exe	A: 0x00400000 - 0x0051F000	(C:\Users\acer\Documents\GitHub\Gamemode-RC\samp-server.exe)
+ntdll.dll	A: 0x77E20000 - 0x77FD1000	(C:\WINDOWS\SYSTEM32\ntdll.dll)
+KERNEL32.DLL	A: 0x76520000 - 0x76610000	(C:\WINDOWS\System32\KERNEL32.DLL)
+KERNELBASE.dll	A: 0x77B80000 - 0x77DF4000	(C:\WINDOWS\System32\KERNELBASE.dll)
+SHELL32.dll	A: 0x768C0000 - 0x76F55000	(C:\WINDOWS\System32\SHELL32.dll)
+msvcp_win.dll	A: 0x75B10000 - 0x75B89000	(C:\WINDOWS\System32\msvcp_win.dll)
+ucrtbase.dll	A: 0x77420000 - 0x77532000	(C:\WINDOWS\System32\ucrtbase.dll)
+USER32.dll	A: 0x77660000 - 0x77808000	(C:\WINDOWS\System32\USER32.dll)
+win32u.dll	A: 0x768A0000 - 0x768BA000	(C:\WINDOWS\System32\win32u.dll)
+GDI32.dll	A: 0x77880000 - 0x778A3000	(C:\WINDOWS\System32\GDI32.dll)
+gdi32full.dll	A: 0x75F00000 - 0x75FE2000	(C:\WINDOWS\System32\gdi32full.dll)
+WINMM.dll	A: 0x757D0000 - 0x75801000	(C:\WINDOWS\SYSTEM32\WINMM.dll)
+WSOCK32.dll	A: 0x75A80000 - 0x75A88000	(C:\WINDOWS\SYSTEM32\WSOCK32.dll)
+msvcrt.dll	A: 0x75B90000 - 0x75C54000	(C:\WINDOWS\System32\msvcrt.dll)
+ws2_32.DLL	A: 0x75AB0000 - 0x75B0F000	(C:\WINDOWS\System32\ws2_32.DLL)
+RPCRT4.dll	A: 0x76670000 - 0x7672A000	(C:\WINDOWS\System32\RPCRT4.dll)
+IMM32.DLL	A: 0x779F0000 - 0x77A15000	(C:\WINDOWS\System32\IMM32.DLL)
+mysql.DLL	A: 0x702C0000 - 0x70394000	(C:\Users\acer\Documents\GitHub\Gamemode-RC\plugins\mysql.DLL)
+LIBMYSQL.dll	A: 0x10000000 - 0x1023E000	(C:\Users\acer\Documents\GitHub\Gamemode-RC\LIBMYSQL.dll)
+MSVCR110.dll	A: 0x701E0000 - 0x702B6000	(C:\Users\acer\Documents\GitHub\Gamemode-RC\MSVCR110.dll)
+MSVCP110.dll	A: 0x70BF0000 - 0x70C75000	(C:\WINDOWS\SYSTEM32\MSVCP110.dll)
+ADVAPI32.dll	A: 0x77920000 - 0x7799D000	(C:\WINDOWS\System32\ADVAPI32.dll)
+sechost.dll	A: 0x762E0000 - 0x76364000	(C:\WINDOWS\System32\sechost.dll)
+napinsp.dll	A: 0x72DA0000 - 0x72DB2000	(C:\WINDOWS\system32\napinsp.dll)
+pnrpnsp.dll	A: 0x72D80000 - 0x72D96000	(C:\WINDOWS\system32\pnrpnsp.dll)
+mswsock.dll	A: 0x73F30000 - 0x73F81000	(C:\WINDOWS\System32\mswsock.dll)
+DNSAPI.dll	A: 0x72CC0000 - 0x72D7C000	(C:\WINDOWS\SYSTEM32\DNSAPI.dll)
+IPHLPAPI.DLL	A: 0x746D0000 - 0x746F4000	(C:\WINDOWS\SYSTEM32\IPHLPAPI.DLL)
+NSI.dll	A: 0x773B0000 - 0x773B7000	(C:\WINDOWS\System32\NSI.dll)
+winrnr.dll	A: 0x72CB0000 - 0x72CBE000	(C:\WINDOWS\System32\winrnr.dll)
+wshbth.dll	A: 0x72C80000 - 0x72C91000	(C:\WINDOWS\system32\wshbth.dll)
+rasadhlp.dll	A: 0x72CA0000 - 0x72CA8000	(C:\Windows\System32\rasadhlp.dll)
+sscanf.DLL	A: 0x02490000 - 0x0249D000	(C:\Users\acer\Documents\GitHub\Gamemode-RC\plugins\sscanf.DLL)
+MSVCR100.dll	A: 0x70950000 - 0x70A0F000	(C:\WINDOWS\SYSTEM32\MSVCR100.dll)
+whirlpool.DLL	A: 0x024B0000 - 0x024BC000	(C:\Users\acer\Documents\GitHub\Gamemode-RC\plugins\whirlpool.DLL)
+MSVCR80.dll	A: 0x70580000 - 0x7061B000	(C:\WINDOWS\WinSxS\x86_microsoft.vc80.crt_1fc8b3b9a1e18e3b_8.0.50727.9680_none_d090cb7c44278b28\MSVCR80.dll)
+MSVCP100.dll	A: 0x70170000 - 0x701D9000	(C:\Users\acer\Documents\GitHub\Gamemode-RC\MSVCP100.dll)
+sampvoice.DLL	A: 0x71D20000 - 0x71D4B000	(C:\Users\acer\Documents\GitHub\Gamemode-RC\plugins\sampvoice.DLL)
+MSVCP140.dll	A: 0x70100000 - 0x7016D000	(C:\WINDOWS\SYSTEM32\MSVCP140.dll)
+VCRUNTIME140.dll	A: 0x72560000 - 0x72575000	(C:\WINDOWS\SYSTEM32\VCRUNTIME140.dll)
+combase.dll	A: 0x75C80000 - 0x75EFC000	(C:\WINDOWS\System32\combase.dll)
+kernel.appcore.dll	A: 0x756A0000 - 0x756B3000	(C:\WINDOWS\SYSTEM32\kernel.appcore.dll)
+samp-compat.dll	A: 0x74D00000 - 0x74D0A000	(C:\Users\acer\Documents\GitHub\Gamemode-RC\plugins\samp-compat.dll)
+streamer.DLL	A: 0x70090000 - 0x700FD000	(C:\Users\acer\Documents\GitHub\Gamemode-RC\plugins\streamer.DLL)
+server.DLL	A: 0x6FDD0000 - 0x70081000	(C:\Users\acer\Documents\GitHub\Gamemode-RC\plugins\server.DLL)
+CRYPT32.dll	A: 0x76410000 - 0x76513000	(C:\WINDOWS\System32\CRYPT32.dll)
+bcrypt.dll	A: 0x70D70000 - 0x70D8A000	(C:\WINDOWS\SYSTEM32\bcrypt.dll)
+CRYPTBASE.DLL	A: 0x73DA0000 - 0x73DAB000	(C:\WINDOWS\SYSTEM32\CRYPTBASE.DLL)
+bcryptPrimitives.dll	A: 0x778B0000 - 0x77912000	(C:\WINDOWS\System32\bcryptPrimitives.dll)
+MSASN1.dll	A: 0x74E60000 - 0x74E6E000	(C:\WINDOWS\SYSTEM32\MSASN1.dll)
+TDE.DLL	A: 0x70E20000 - 0x70E3B000	(C:\Users\acer\Documents\GitHub\Gamemode-RC\plugins\TDE.DLL)
+MSVCR100D.dll	A: 0x6FBC0000 - 0x6FD32000	(C:\Users\acer\Documents\GitHub\Gamemode-RC\MSVCR100D.dll)
+YSF_DL.DLL	A: 0x05840000 - 0x058EA000	(C:\Users\acer\Documents\GitHub\Gamemode-RC\plugins\YSF_DL.DLL)
+OLEAUT32.dll	A: 0x76370000 - 0x7640C000	(C:\WINDOWS\System32\OLEAUT32.dll)
+discord-connector.DLL	A: 0x6F6F0000 - 0x6FBBD000	(C:\Users\acer\Documents\GitHub\Gamemode-RC\plugins\discord-connector.DLL)
+log-core2.dll	A: 0x6F390000 - 0x6F3E5000	(C:\Users\acer\Documents\GitHub\Gamemode-RC\log-core2.dll)
+CRYPTSP.dll	A: 0x70DE0000 - 0x70DF5000	(C:\WINDOWS\SYSTEM32\CRYPTSP.dll)
+bcrypt-samp.DLL	A: 0x6F320000 - 0x6F387000	(C:\Users\acer\Documents\GitHub\Gamemode-RC\plugins\bcrypt-samp.DLL)
+MSVCR120.dll	A: 0x6F230000 - 0x6F31E000	(C:\WINDOWS\SYSTEM32\MSVCR120.dll)
+MSVCP120.dll	A: 0x6F1B0000 - 0x6F221000	(C:\WINDOWS\SYSTEM32\MSVCP120.dll)
+GPS.DLL	A: 0x70DC0000 - 0x70DD6000	(C:\Users\acer\Documents\GitHub\Gamemode-RC\plugins\GPS.DLL)
+pawnraknet.DLL	A: 0x6F130000 - 0x6F1AB000	(C:\Users\acer\Documents\GitHub\Gamemode-RC\plugins\pawnraknet.DLL)

@@ -232,9 +232,9 @@ stock ChiemDong_OnplayerDisconnect(playerid)
 //nhan thuong khi vao checkpoint
 hook OnPlayerEnterCheckpoint(playerid)
 {
-	if(IsPlayerInRangeOfPoint(playerid, 1.5, GetPVarFloat(playerid, "CD_pX"), GetPVarFloat(playerid, "CD_pY"), GetPVarFloat(playerid, "CD_pZ")))
+	if(IsPlayerInRangeOfPoint(playerid, 4.0, GetPVarFloat(playerid, "CD_pX"), GetPVarFloat(playerid, "CD_pY"), GetPVarFloat(playerid, "CD_pZ")))
 	{
-		if(PlayerInfo[playerid][pAwardTypeCD] != 0)
+		if(PlayerInfo[playerid][pAwardTypeCD] != 0 && GetPVarInt(playerid, "AwardTypeCD") != 0)
 		{
 			SendClientMessage(playerid, COLOR_RED, "> Dang lay phan thuong vui long cho doi...");
 			SetTimerEx("AwardCD", 30000, false, "d", playerid);
