@@ -543,16 +543,12 @@ hook OnPlayerKeyStateChange(playerid, newkeys, oldkeys)
 								if(TMInfo[playerid][GroupIDTM] == TMInfo[i][GroupIDTM])
 								{
 									SendClientMessage(i, COLOR_LIGHTBLUE, "[TRASHMAN]: {ffffff}Nhom cua ban da hoan thanh, leader team da nhan duoc checkpoint hay quay tro ve.");
+									if(i == TMGInfo[TMInfo[playerid][GroupIDTM]][TMLeader])
+									{
+										SetPlayerCheckpoint(playerid, 2202.8777,-2047.4569,15.2173, 15.0);
+										SetPVarInt(playerid, #CPNhanTien, 1);
+									}
 								}
-							}
-							foreach(new i: Player)
-							{
-								if(i == TMGInfo[TMInfo[playerid][GroupIDTM]][TMLeader])
-								{
-									SetPlayerCheckpoint(playerid, 2202.8777,-2047.4569,15.2173, 15.0);
-									SetPVarInt(playerid, #CPNhanTien, 1);
-								}
-								return 1;
 							}
 						}
 					}
