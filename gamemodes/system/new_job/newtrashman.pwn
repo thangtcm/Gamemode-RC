@@ -548,6 +548,10 @@ hook OnPlayerKeyStateChange(playerid, newkeys, oldkeys)
 										SetPlayerCheckpoint(playerid, 2202.8777,-2047.4569,15.2173, 15.0);
 										SetPVarInt(playerid, #CPNhanTien, 1);
 									}
+									for(new i = 0; i < MAX_TRASHCAN; i++)
+									{
+										TMGInfo[TMInfo[playerid][GroupIDTM]][TMTrashcan][i] = 0;
+									}
 								}
 							}
 						}
