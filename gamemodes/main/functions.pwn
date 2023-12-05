@@ -10918,8 +10918,8 @@ stock HospitalSpawn(playerid)
 				SendClientMessageEx(playerid, TEAM_CYAN_COLOR, "None , benh vien nay xoa roi thi phai muabaohiem khac di");
 				PlayerInfo[playerid][pVW] = 0;
 				ActSetPlayerPos(playerid, 2030.2251,-1408.5302,16.9922);
-				Streamer_UpdateEx(playerid, 1153.7006, -1330.3177, -41.9554);
-				Player_StreamPrep(playerid, 1153.7006, -1330.3177, -41.9554,FREEZE_TIME);
+				Streamer_UpdateEx(playerid, 2030.2251,-1408.5302,16.9922);
+				Player_StreamPrep(playerid, 2030.2251,-1408.5302,16.9922,FREEZE_TIME);
 				SetPlayerFacingAngle(playerid, 179.4258);
 				PlayerInfo[playerid][pHospital] = 0;
 			}
@@ -10952,8 +10952,8 @@ stock HospitalSpawn(playerid)
 				SendClientMessageEx(playerid, 0xb4b486FF, "[HOSPITAL] Ban ton $1500 cho tien vien phi");
 				PlayerInfo[playerid][pVW] = 0;
 				ActSetPlayerPos(playerid, 2030.2251,-1408.5302,16.9922);
-				Streamer_UpdateEx(playerid, 1245.2665,334.1407,19.5547);
-				Player_StreamPrep(playerid, 1245.2665,334.1407,19.5547,FREEZE_TIME);
+				Streamer_UpdateEx(playerid, 2030.2251,-1408.5302,16.9922);
+				Player_StreamPrep(playerid, 2030.2251,-1408.5302,16.9922,FREEZE_TIME);
 				SetPlayerFacingAngle(playerid, 179.4258);
 				PlayerInfo[playerid][pHospital] = 0;
 				SetCameraBehindPlayer(playerid);
@@ -10986,8 +10986,8 @@ stock HospitalSpawn(playerid)
 				SendClientMessageEx(playerid, 0xb4b486FF, "Hoa don benh vien $25. Chuc mot ngay tot lanh!");
 				PlayerInfo[playerid][pVW] = 0;
 				ActSetPlayerPos(playerid, 2030.2251,-1408.5302,16.9922);
-				Streamer_UpdateEx(playerid, 1153.7006, -1330.3177, -41.9554);
-				Player_StreamPrep(playerid, 1153.7006, -1330.3177, -41.9554,FREEZE_TIME);
+				Streamer_UpdateEx(playerid, 2030.2251,-1408.5302,16.9922);
+				Player_StreamPrep(playerid, 2030.2251,-1408.5302,16.9922,FREEZE_TIME);
 				SetPlayerFacingAngle(playerid, 179.4258);
 				PlayerInfo[playerid][pHospital] = 0;
 			}
@@ -11018,9 +11018,9 @@ stock HospitalSpawn(playerid)
 				Misc_Save();
 				SendClientMessageEx(playerid, TEAM_CYAN_COLOR, "Hoa don benh vien $250. Chuc mot ngay tot lanh!");
 				PlayerInfo[playerid][pVW] = 0;
-				ActSetPlayerPos(playerid, 1153.7006, -1330.3177, -41.9554);
-				Streamer_UpdateEx(playerid, 1153.7006, -1330.3177, -41.9554);
-				Player_StreamPrep(playerid, 1153.7006, -1330.3177, -41.9554,FREEZE_TIME);
+				ActSetPlayerPos(playerid, 2030.2251,-1408.5302,16.9922);
+				Streamer_UpdateEx(playerid, 2030.2251,-1408.5302,16.9922);
+				Player_StreamPrep(playerid, 2030.2251,-1408.5302,16.9922,FREEZE_TIME);
 				SetPlayerFacingAngle(playerid, 179.4258);
 				PlayerInfo[playerid][pHospital] = 0;
 			}
@@ -11051,10 +11051,11 @@ stock HospitalSpawn(playerid)
 				}
 				Misc_Save();//SF
 				PlayerInfo[playerid][pVW] = 0;
-				ActSetPlayerPos(playerid, 1153.7006, -1330.3177, -41.9554);
-				Streamer_UpdateEx(playerid, 1153.7006, -1330.3177, -41.9554);
-				Player_StreamPrep(playerid, 1153.7006, -1330.3177, -41.9554,FREEZE_TIME);
+				ActSetPlayerPos(playerid, 2030.2251,-1408.5302,16.9922);
+				Streamer_UpdateEx(playerid, 2030.2251,-1408.5302,16.9922);
+				Player_StreamPrep(playerid, 2030.2251,-1408.5302,16.9922,FREEZE_TIME);
 				SetPlayerFacingAngle(playerid, 179.4258);
+				
 				PlayerInfo[playerid][pHospital] = 0;
 			}
 			case 6: {
@@ -11082,9 +11083,9 @@ stock HospitalSpawn(playerid)
 				}
 				Misc_Save();
 				PlayerInfo[playerid][pVW] = 0;
-				ActSetPlayerPos(playerid, 1153.7006, -1330.3177, -41.9554);
-				Streamer_UpdateEx(playerid, 1153.7006, -1330.3177, -41.9554);
-				Player_StreamPrep(playerid, 1153.7006, -1330.3177, -41.9554,FREEZE_TIME);
+				ActSetPlayerPos(playerid, 2030.2251,-1408.5302,16.9922);
+				Streamer_UpdateEx(playerid, 2030.2251,-1408.5302,16.9922);
+				Player_StreamPrep(playerid, 2030.2251,-1408.5302,16.9922,FREEZE_TIME);
 				SetPlayerFacingAngle(playerid, 179.4258);
 				PlayerInfo[playerid][pHospital] = 0;
 			}
@@ -11115,9 +11116,9 @@ stock HospitalSpawn(playerid)
 				Misc_Save();
 				SendClientMessageEx(playerid, TEAM_CYAN_COLOR, "Hoa don benh vien $250. Chuc mot ngay tot lanh!!");
 				PlayerInfo[playerid][pVW] = 0;
-				ActSetPlayerPos(playerid, 1153.7006, -1330.3177, -41.9554);
-				Streamer_UpdateEx(playerid, 1153.7006, -1330.3177, -41.9554);
-				Player_StreamPrep(playerid, 1153.7006, -1330.3177, -41.9554,FREEZE_TIME);
+				ActSetPlayerPos(playerid, 2030.2251,-1408.5302,16.9922);
+				Streamer_UpdateEx(playerid, 2030.2251,-1408.5302,16.9922);
+				Player_StreamPrep(playerid, 2030.2251,-1408.5302,16.9922,FREEZE_TIME);
 				SetPlayerFacingAngle(playerid, 179.4258);
 				PlayerInfo[playerid][pHospital] = 0;
 			}
@@ -13476,8 +13477,8 @@ stock GivePlayerStoreItem(playerid, type, business, item, price)
 		}
 		case ITEM_MOICAU:
 		{
-			if(!Inventory_Add(playerid, "Moi cau", .timer = 60*24)) return 1;
-			SendClientMessageEx(playerid, COLOR_WHITE, "Ban da mua Moi cau (Do ben: 1 ngay) thanh cong");
+			if(!Inventory_Add(playerid, "Moi cau", 40, 60*24)) return 1;
+			SendClientMessageEx(playerid, COLOR_WHITE, "Ban da mua 40 Moi cau (Do ben: 1 ngay) thanh cong");
 		}
 		case ITEM_BASEBALL:{
 			GivePlayerValidWeapon(playerid,5,2);

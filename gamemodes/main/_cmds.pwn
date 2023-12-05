@@ -1246,7 +1246,7 @@ stock JoinGame(playerid) {
     SetPlayerVirtualWorld(playerid, PlayerInfo[playerid][pVW]);
     SetPlayerInterior(playerid,0);
     Streamer_UpdateEx(playerid,1481.8472, -1767.4912, 18.7891);
-    SetSpawnInfo(playerid, 0, PlayerInfo[playerid][pModel], 1355.6627, 259.0992, 19.5547, 1.0, -1, -1, -1, -1, -1, -1);
+    SetSpawnInfo(playerid, 0, PlayerInfo[playerid][pModel], 1481.8472, -1767.4912, 18.789, 1.0, -1, -1, -1, -1, -1, -1);
     ActSetPlayerPos(playerid, 1481.8472, -1767.4912, 18.7891);
     Player_StreamPrep(playerid, 1481.8472, -1767.4912, 18.7891, FREEZE_TIME);
     SetPlayerFacingAngle(playerid, 21.0704);

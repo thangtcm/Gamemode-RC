@@ -8525,7 +8525,7 @@ public OnPlayerLoad(playerid)
  	SetPlayerWeapons(playerid);
 // 	DestroyLog@_Reg(playerid);
  	printf("%d",PlayerInfo[playerid][pCraftWD]);
- 	SendClientMessageEx(playerid, COLOR_VANG, "Chao mung ban da tro lai may chu Red County Roleplay.");
+ //	SendClientMessageEx(playerid, COLOR_VANG, "Chao mung ban da tro lai may chu Red County Roleplay.");
 	DeletePVar(playerid, "TextDrawCharacter");
  	GetHomeCount(playerid);
 	new rdName[MAX_PLAYER_NAME];
