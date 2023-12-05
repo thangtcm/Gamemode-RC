@@ -2800,7 +2800,7 @@ public InitiateGamemode()
 	LoadElevatorStuff();
 	LoadFamilies();
 	LoadPoints();
-	Misc_Load();
+	// Misc_Load();
 	ResetElevatorQueue();
 	Elevator_Initialize();
 	AntiDeAMX();

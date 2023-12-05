@@ -1,7 +1,7 @@
 #include <YSI_Coding\y_hooks>
 hook OnGameModeInit()
 {
-	CreateDynamic3DTextLabel("{FF0000}Su dung '/dangkibienso' de cuop", -1, 248.3361,118.1592,1003.2188+0.6,12.0);
+	CreateDynamic3DTextLabel("{FF0000}Su dung '/dangkibienso' de dang ki bien so", -1, 248.3361,118.1592,1003.2188+0.6,12.0);
 	// 248.3361,118.1592,1003.2188,182.3316
 }
 stock LoadVehicleSign()
@@ -29,6 +29,7 @@ public OnVehicleSign()
 	}
 	if(!rows) return printf("[Vehicle Sign database] 0 Vehicle Sign loaded.", rows);
 	printf("[Vehicle Sign database] %d Vehicle Sign loaded.", rows);
+
 	return 1;
 }
 stock FindVehSign(vehsqlid)
