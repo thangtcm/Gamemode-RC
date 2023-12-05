@@ -60,6 +60,15 @@ new TPointEdit[][DataTypePoint] = {
 /* -------------------------------- CALLBACK -------------------------------- */
 hook OnDialogResponse(playerid, dialogid, response, listitem, inputtext[]) 
 {
+	if(dialogid == DIALOG_CAPTURE_CP && response == 1)
+	{
+		new stringz[100], zone[MAX_ZONE_NAME];
+		new typecap = FamilyCD[listitem][f_CaptureType];
+		Get3DZone(FamilyCD[listitem][f_PointChiemDong][0],  FamilyCD[listitem][f_PointChiemDong][1],  FamilyCD[listitem][f_PointChiemDong][2], zone, sizeof(zone));
+        format(stringz, sizeof(stringz), "> Dia ban chiem dong nay dang o khu vuc {ffa500}%s{FFFFFF} (type : %s)", zone, TPointEdit[typecap-1][TPoint_Name]);
+		SendClientMessage(playerid, -1, stringz);
+		SetPlayerCheckpoint(playerid, FamilyCD[listitem][f_PointChiemDong][0],  FamilyCD[listitem][f_PointChiemDong][1],  FamilyCD[listitem][f_PointChiemDong][2], 5.0);
+	}
 	if(dialogid == DIALOG_CAPTURE_MAIN && response == 1) {
 		if(listitem == 0) return ShowPlayerDialog(playerid, DIALOG_CREATECAPTURE, DIALOG_STYLE_MSGBOX, "CAPTURE EDIT", "{ff0000}>{FFFFFF} Ban co muon dat vi tri chiem dong tai noi nay khong??", "Dong y", "Huy Bo");
 		if(listitem == 1) {
@@ -239,7 +248,7 @@ hook OnPlayerEnterCheckpoint(playerid)
 			SendClientMessage(playerid, COLOR_RED, "> Dang lay phan thuong vui long cho doi...");
 			SetTimerEx("AwardCD", 30000, false, "d", playerid);
 			TogglePlayerControllable(playerid, 0);
-			ApplyAnimation(playerid, "BD_FIRE", "wash_up", 4.0, 1, 0, 0, 0, 0, 1);
+			ApplyAnimation(playerid, "BD_FIRE", "wash_up", 4.0, 1, 1, 1, 1, 1, 1);
 			
 		}
 	}
@@ -323,7 +332,7 @@ public AwardCD(playerid) {
 		DisableCheckPoint(playerid);
 	}
 	ClearAnimations(playerid);
-	TogglePlayerControllable(playerid, 0);
+	TogglePlayerControllable(playerid, 1);
 	return 1;
 }
 forward TimeChiemDong(playerid);
@@ -851,7 +860,7 @@ CMD:diaban(playerid, params[]) {
         }
         new str_capture[15000];
         format(str_capture, sizeof(str_capture), "Dia ban\tVi tri\tTinh trang\tLock\n%s", string);
-        ShowPlayerDialog(playerid, DIALOG_MAPCAPTURE, DIALOG_STYLE_TABLIST_HEADERS, "Dia ban", str_capture, "Dong y", "Huy bo");
+        ShowPlayerDialog(playerid, DIALOG_CAPTURE_CP, DIALOG_STYLE_TABLIST_HEADERS, "Dia ban", str_capture, "Dong y", "Huy bo");
         return 1;
     }else SendClientMessage(playerid, -1, "> Ban khong o trong mot Family nao de co the xem dia ban het.");
     return 1;

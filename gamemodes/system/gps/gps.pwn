@@ -133,7 +133,7 @@ stock ForcePlayerEndLastRoute(playerid)
 	GPS_DATA[playerid][gpsEnabled] = false;
 	DestroyRoutes(playerid);
     SendServerMessage(playerid, "Ban da den vi tri can den.");
-//	DisablePlayerCheckpoint(playerid);
+	// DisablePlayerCheckpoint(playerid);
 }
 
 stock SetPlayerPath(playerid, Float:X2, Float:Y2, Float:Z2)
