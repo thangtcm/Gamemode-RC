@@ -13477,8 +13477,8 @@ stock GivePlayerStoreItem(playerid, type, business, item, price)
 		}
 		case ITEM_MOICAU:
 		{
-			if(!Inventory_Add(playerid, "Moi cau", .timer = 60*24)) return 1;
-			SendClientMessageEx(playerid, COLOR_WHITE, "Ban da mua Moi cau (Do ben: 1 ngay) thanh cong");
+			if(!Inventory_Add(playerid, "Moi cau", 40, 60*24)) return 1;
+			SendClientMessageEx(playerid, COLOR_WHITE, "Ban da mua 40 Moi cau (Do ben: 1 ngay) thanh cong");
 		}
 		case ITEM_BASEBALL:{
 			GivePlayerValidWeapon(playerid,5,2);
