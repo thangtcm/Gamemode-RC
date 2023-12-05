@@ -287,8 +287,8 @@ hook OnPlayerKeyStateChange(playerid, newkeys, oldkeys) {
 	if(newkeys & KEY_YES) {
 		if(IsPlayerInRangeOfPoint(playerid, 5.0, 2306.409179 ,-1569.672607, 1051.562988)) {
 			Dialog_Show(playerid, DIALOG_BUY_CHH, DIALOG_STYLE_TABLIST_HEADERS, "Mua chat hoa hoc", "#Loai\tGia ban\tso luong\n\
-		        	                                                                                 Chat hoa hoc I\t$1\t1\n\
-		        		                                                                             Chat hoa hoc II\t$2\t1", "Mua", "Huy bo");
+		        	                                                                                 Chat hoa hoc I\t$2000\t1\n\
+		        		                                                                             Chat hoa hoc II\t$4000\t1", "Mua", "Huy bo");
 		}
 	}
 	return 1;
@@ -298,12 +298,12 @@ Dialog:DIALOG_BUY_CHHI(playerid, response, listitem, inputtext[])
 {
 	if(response) {
 		if(strval(inputtext) < 0 || strval(inputtext) > 100) return Dialog_Show(playerid, DIALOG_BUY_CHHI, DIALOG_STYLE_INPUT, "Mua chat hoa hoc I", "So luong phai tu 0-100\nVui long nhap so luong ban muon mua ( gia $1/ 1CHH)", "Mua", "Huy bo");
-		if(PlayerInfo[playerid][pCash] < 1 * strval(inputtext)) return SendClientMessage(playerid, -1, "Ban khong du tien de mua chat hoa hoc I .");
+		if(PlayerInfo[playerid][pCash] < 2000 * strval(inputtext)) return SendClientMessage(playerid, -1, "Ban khong du tien de mua chat hoa hoc I .");
 		Inventory_Add(playerid, "Chat hoa hoc I", strval(inputtext));
 		new string[129];
-		format(string, sizeof string, "Ban da mua thanh cong %d chat hoa hoc I voi gia $%s .", strval(inputtext) , number_format( 1 * strval(inputtext) ));
+		format(string, sizeof string, "Ban da mua thanh cong %d chat hoa hoc I voi gia $%s .", strval(inputtext) , number_format( 2000 * strval(inputtext) ));
 		SendClientMessage(playerid, -1, string);
-		PlayerInfo[playerid][pCash] -=  strval(inputtext) * 2;
+		PlayerInfo[playerid][pCash] -=  strval(inputtext) * 2000;
 	}
 	return 1;
 }
@@ -311,12 +311,12 @@ Dialog:DIALOG_BUY_CHHII(playerid, response, listitem, inputtext[])
 {
 	if(response) {
 		if(strval(inputtext) < 0 || strval(inputtext) > 100) return Dialog_Show(playerid, DIALOG_BUY_CHHI, DIALOG_STYLE_INPUT, "Mua chat hoa hoc II", "So luong phai tu 0-100\nVui long nhap so luong ban muon mua ( gia $1/ 1CHH)", "Mua", "Huy bo");
-		if(PlayerInfo[playerid][pCash] < 2 * strval(inputtext)) return SendClientMessage(playerid, -1, "Ban khong du tien de mua chat hoa hoc II .");
+		if(PlayerInfo[playerid][pCash] < 4000 * strval(inputtext)) return SendClientMessage(playerid, -1, "Ban khong du tien de mua chat hoa hoc II .");
 		Inventory_Add(playerid, "Chat hoa hoc II", strval(inputtext));
 		new string[129];
-		format(string, sizeof string, "Ban da mua thanh cong %d chat hoa hoc II voi gia $%s .", strval(inputtext) , number_format( 2 * strval(inputtext) ));
+		format(string, sizeof string, "Ban da mua thanh cong %d chat hoa hoc II voi gia $%s .", strval(inputtext) , number_format( 4000 * strval(inputtext) ));
 		SendClientMessage(playerid, -1, string);
-		PlayerInfo[playerid][pCash] -=  strval(inputtext) * 2;
+		PlayerInfo[playerid][pCash] -=  strval(inputtext) * 4000;
 	}
 	return 1;
 }
