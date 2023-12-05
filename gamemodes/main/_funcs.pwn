@@ -8017,7 +8017,7 @@ public LoadStreamerDynamicObjects()
     /* (ongamemodeinit) - LSPD stuff */
 
     LoadWeaponFactory();
-    LoadObjectCityHall();
+    LoadAllMap();
     LoadTextUpJob();
 /*    for(new i = 0; i< MAX_NOITHAT; i++) {
     	LoadNoiThat(i);
