@@ -46118,7 +46118,7 @@ CMD:locker(playerid, params[]) {
 							    format(szTitle, sizeof(szTitle), "%s - {AA3333}Locker Stock: %d", szTitle, arrGroupData[iGroupID][g_iLockerStock]);
 							}
 					    }
-					    format(szDialog, sizeof(szDialog), "Duty\nVu khi\nDong phuc%s", (arrGroupData[iGroupID][g_iGroupType] == 1) ? ("\nClear Suspect\nFirstAid & Kevlar\nMedkit & Vest Trunk Kit\nTazer & Cuffs\nWEAPON (NEW)\n AMMO (NEW)") : (""));
+					    format(szDialog, sizeof(szDialog), "Duty\nVu khi\nDong phuc%s", (arrGroupData[iGroupID][g_iGroupType] == 1) ? ("\nClear Suspect\nFirstAid & Kevlar\nMedkit & Vest Trunk Kit\nTazer & Cuffs\nAMMO (NEW)") : (""));
 						ShowPlayerDialog(playerid, G_LOCKER_MAIN, DIALOG_STYLE_LIST, szTitle, szDialog, "Lua chon", "Huy bo");
 						return 1;
 					}
