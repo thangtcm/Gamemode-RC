@@ -1,5 +1,9 @@
 #include <YSI_Coding\y_hooks>
-
+hook OnGameModeInit()
+{
+	CreateDynamic3DTextLabel("{FF0000}Su dung '/dangkibienso' de dang ki bien so", -1, 248.3361,118.1592,1003.2188+0.6,12.0);
+	// 248.3361,118.1592,1003.2188,182.3316
+}
 stock LoadVehicleSign()
 {
 	for(new i = 0 ; i < MAX_VEHICLES; i++) {
@@ -25,6 +29,7 @@ public OnVehicleSign()
 	}
 	if(!rows) return printf("[Vehicle Sign database] 0 Vehicle Sign loaded.", rows);
 	printf("[Vehicle Sign database] %d Vehicle Sign loaded.", rows);
+
 	return 1;
 }
 stock FindVehSign(vehsqlid)
@@ -41,7 +46,7 @@ stock FindVehSign(vehsqlid)
 }
 stock CreateVehSign(vehid, vehsign_number){
 	new format_vs[128];
-	format(format_vs, sizeof(format_vs), "SF-%d", vehsign_number);
+	format(format_vs, sizeof(format_vs), "LS-%d", vehsign_number);
 	SetVehicleNumberPlate(vehid, format_vs);
 	return 1;
 }
@@ -82,6 +87,8 @@ stock RegisterVehSign(playerid, vehslotid, vs_number = 0)
 	new vs_msg[1280];
 	format(vs_msg, sizeof(vs_msg), "Chiec xe ban vua dang ki co bien so: {c54640}SF-%d{ffffff}", VehSignInfo[vehsign_id][vs_VehSign]);
 	SendClientMessage(playerid, -1, vs_msg);
+
+	PlayerInfo[playerid][pCash] -= 10000;
 	return 1;
 }
 stock DeleteVehSign(playerid, vehslotid)
@@ -122,11 +129,11 @@ stock SaveVehSign(){
 		if(VehSignInfo[i][vs_ID] != -1 && VehSignInfo[i][vs_OwnerID] != -1 && VehSignInfo[i][vs_VehicleID] != -1)
 		{
 			new queryzzz[1280], check_qur[1280], Cache:checkr;
-			format(check_qur, sizeof(check_qur), "SELECT * FROM `vehsign` WHERE `id` = '%d'",VehSignInfo[i][vs_ID]);
+			format(check_qur, sizeof(check_qur), "SELECT * FROM `vehsign` WHERE `VehSign` = '%d'",VehSignInfo[i][vs_VehSign]);
 			checkr = mysql_query(MainPipeline, check_qur);
 			if(cache_num_rows() > 0){
 				format(queryzzz, sizeof(queryzzz), "UPDATE `vehsign` SET \
-				`VehSign` = '%d', `OwnerID` = '%d', `VehicleID` = '%d' WHERE `id` = '%d'", VehSignInfo[i][vs_VehSign],VehSignInfo[i][vs_OwnerID],VehSignInfo[i][vs_VehicleID],VehSignInfo[i][vs_ID]);
+				`VehSign` = '%d', `OwnerID` = '%d', `VehicleID` = '%d' WHERE `VehSign` = '%d'", VehSignInfo[i][vs_VehSign],VehSignInfo[i][vs_OwnerID],VehSignInfo[i][vs_VehicleID],VehSignInfo[i][vs_VehSign]);
 
 				mysql_function_query(MainPipeline, queryzzz, true, "VEHSIGN_SAVE", ""); 
 			}
@@ -238,6 +245,7 @@ hook OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 
 CMD:dangkibienso(playerid, params[])
 {
+	if(!IsPlayerInRangeOfPoint(playerid, 5.0, 248.3361,118.1592,1003.2188)) return SendErrorMessage(playerid, "Ban khong o dia diem dang ki bien so !");
 	MenuRegisterVehSign(playerid);
 	return 1;
 }

@@ -17,7 +17,6 @@ timer DisableEfftects[30000](playerid)
 	DeletePVar(playerid, "EffectsDrugs");
 }
 
-
 stock SaveDrug(uid)
 {
     new szQuery[2048];
@@ -57,78 +56,30 @@ stock InsertDRL(uid) {
     mysql_tquery(MainPipeline, szQuery, "OnInsertDRL", "d", uid);
     return 1;
 }
-CMD:druglabnext(playerid, params[])
+
+stock RefreshDrugLab(id)
 {
-	new string[128],drl_id = -1;
-	for(new i = 0 ; i < MAX_DRUG_POINT; i++) {
-		if(DrugLabInfo[i][DLab_Postion][0] == 0 || DrugLabInfo[i][DLab_Postion][1] == 0.0) {
-			drl_id = i;
-			break ;
-		}
+	if (IsValidDynamic3DTextLabel(DrugLabInfo[id][DLab_Label])) DestroyDynamic3DTextLabel(DrugLabInfo[id][DLab_Label]);
+	if (IsValidDynamicPickup(DrugLabInfo[id][DLab_PickUP])) 	DestroyDynamicPickup(DrugLabInfo[id][DLab_PickUP]);
+
+	new string[129], type_namez[26];
+
+	switch(DrugLabInfo[id][DLab_Type]) {
+		case 0: type_namez = "Drug Lab";
+		case 1: type_namez = "Weapon Lab";
 	}
-	if(drl_id == -1) return SendClientMessageEx(playerid, COLOR_WHITE, "Khong co druglab con trong.");
-	format(string, sizeof string, "ID Drug lab dang trong la: %d", drl_id);
-	SendClientMessageEx(playerid, COLOR_WHITE, string);
+	if (DrugLabInfo[id][DLab_Family] == 99) {
+		format(string, sizeof(string), "%s #%d\n(Bam Y de thao tac)", type_namez, id);
+	}
+	else {
+		format(string, sizeof(string), "%s #%d\nFamily: %s\n(Bam Y de thao tac)", type_namez, id, FamilyInfo[DrugLabInfo[id][DLab_Family]][FamilyName]);
+	}
+
+	DrugLabInfo[id][DLab_Label] = CreateDynamic3DTextLabel(string, -1, DrugLabInfo[id][DLab_Postion][0], DrugLabInfo[id][DLab_Postion][1], DrugLabInfo[id][DLab_Postion][2], 15.0, INVALID_PLAYER_ID,  INVALID_VEHICLE_ID, 0, DrugLabInfo[id][DLab_Vw], DrugLabInfo[id][DLab_Int]);
+	DrugLabInfo[id][DLab_PickUP] = CreateDynamicPickup(1577, 10, DrugLabInfo[id][DLab_Postion][0], DrugLabInfo[id][DLab_Postion][1], DrugLabInfo[id][DLab_Postion][2],DrugLabInfo[id][DLab_Vw], DrugLabInfo[id][DLab_Int]);
 	return 1;
 }
 
-CMD:editdruglab(playerid, params[])
-{
-	new string[128], drl_id,choose, choice[32];
-	if(sscanf(params, "s[32]ddd",  choice,drl_id,choose))
-	{
-		SendUsageMessage(playerid, " /editdruglab [option] [id] [choose]");
-		SendSelectMessage(playerid, " Delete , Vitri, FamilyID, Type ( 0 = Drug, 1 = Weapon )");
-		return 1;
-	}
-	if (strcmp(choice, "Delete", true) == 0)
-	{
-		SendClientMessageEx(playerid, COLOR_WHITE, "Ban da xoa thanh cong drug lab.");
-		DestroyDynamicPickup( DrugLabInfo[drl_id][DLab_PickUP]);
-	    DestroyDynamic3DTextLabel( DrugLabInfo[drl_id][DLab_Label]);
-		DrugLabInfo[drl_id][DLab_Postion][0] = 0.0;
-        DrugLabInfo[drl_id][DLab_Postion][1] = 0.0;
-        DrugLabInfo[drl_id][DLab_Postion][2] = 0.0;
-        SaveDrug(drl_id);
-	}
-	if (strcmp(choice, "Type", true) == 0)
-	{
-		SendClientMessageEx(playerid, COLOR_WHITE, "Ban da chinh sua type thanh cong.");
-		DrugLabInfo[drl_id][DLab_Type] = choose;
-		new family = DrugLabInfo[drl_id][DLab_Family] ;
-		new type_namez[32];
-		switch(DrugLabInfo[drl_id][DLab_Type]) {
-			case 0: type_namez = "Drug Lab";
-			case 1: type_namez = "Weapon Lab";
-		}
-        format(string,sizeof string,"%s %d\nFamily: %s\n(Bam Y de thao tac)",type_namez,drl_id,FamilyInfo[family][FamilyName]);
-        UpdateDynamic3DTextLabelText(DrugLabInfo[drl_id][DLab_Label] , -1,string);
-        SaveDrug(drl_id);
-	}
-	if (strcmp(choice, "Vitri", true) == 0)
-	{
-		SendClientMessageEx(playerid, COLOR_WHITE, "Ban da chinh sua vi tri thanh cong.");
-		MoveDrugLab(playerid,drl_id);
-		SaveDrug(drl_id);
-	}
-	if (strcmp(choice, "FamilyID", true) == 0)
-	{
-
-		format(string,sizeof string,"Ban da chinh sua FAMILY ID %d cho Drub lab %d",choose,drl_id);
-		SendClientMessageEx(playerid, COLOR_WHITE, string);
-		DrugLabInfo[drl_id][DLab_Family] = choose;
-		new family = DrugLabInfo[drl_id][DLab_Family] ;
-		new type_namez[32];
-		switch(DrugLabInfo[drl_id][DLab_Type]) {
-			case 0: type_namez = "Drug Lab";
-			case 1: type_namez = "Weapon Lab";
-		}
-        format(string,sizeof string,"%s %d\nFamily: %s\n(Bam Y de thao tac)",type_namez,drl_id,FamilyInfo[family][FamilyName]);
-        UpdateDynamic3DTextLabelText(DrugLabInfo[drl_id][DLab_Label] , -1,string);
-        SaveDrug(drl_id);
-	}
-	return 1;
-}
 stock MoveDrugLab(playerid,drl_id) {
 	DestroyDynamicPickup( DrugLabInfo[drl_id][DLab_PickUP]);
 	DestroyDynamic3DTextLabel( DrugLabInfo[drl_id][DLab_Label]);
@@ -232,24 +183,104 @@ stock UseDrug(playerid,drug_id,pItemId) {
 	}
     return 1;
 }
+
+CMD:druglabnext(playerid, params[])
+{
+	new string[128],drl_id = -1;
+	for(new i = 0 ; i < MAX_DRUG_POINT; i++) {
+		if(DrugLabInfo[i][DLab_Postion][0] == 0 || DrugLabInfo[i][DLab_Postion][1] == 0.0) {
+			drl_id = i;
+			break ;
+		}
+	}
+	if(drl_id == -1) return SendClientMessageEx(playerid, COLOR_WHITE, "Khong co druglab con trong.");
+	format(string, sizeof string, "ID Drug lab dang trong la: %d", drl_id);
+	SendClientMessageEx(playerid, COLOR_WHITE, string);
+	return 1;
+}
+
+CMD:editdruglab(playerid, params[])
+{
+	new string[128], drl_id,choose, choice[32];
+	if(sscanf(params, "s[32]ddd",  choice,drl_id,choose))
+	{
+		SendUsageMessage(playerid, " /editdruglab [option] [id] [choose]");
+		SendSelectMessage(playerid, " Delete , Vitri, FamilyID (99 = player), Type ( 0 = Drug, 1 = Weapon )");
+		return 1;
+	}
+	if (strcmp(choice, "Delete", true) == 0)
+	{
+		SendClientMessageEx(playerid, COLOR_WHITE, "Ban da xoa thanh cong drug lab.");
+		DestroyDynamicPickup( DrugLabInfo[drl_id][DLab_PickUP]);
+	    DestroyDynamic3DTextLabel( DrugLabInfo[drl_id][DLab_Label]);
+		DrugLabInfo[drl_id][DLab_Postion][0] = 0.0;
+        DrugLabInfo[drl_id][DLab_Postion][1] = 0.0;
+        DrugLabInfo[drl_id][DLab_Postion][2] = 0.0;
+        SaveDrug(drl_id);
+	}
+	if (strcmp(choice, "Type", true) == 0)
+	{
+		SendClientMessageEx(playerid, COLOR_WHITE, "Ban da chinh sua type thanh cong.");
+		DrugLabInfo[drl_id][DLab_Type] = choose;
+		RefreshDrugLab(drl_id);
+        SaveDrug(drl_id);
+	}
+	if (strcmp(choice, "Vitri", true) == 0)
+	{
+		SendClientMessageEx(playerid, COLOR_WHITE, "Ban da chinh sua vi tri thanh cong.");
+		MoveDrugLab(playerid,drl_id);
+		SaveDrug(drl_id);
+	}
+	if (strcmp(choice, "FamilyID", true) == 0)
+	{
+		if (choose == 99)
+		{
+			DrugLabInfo[drl_id][DLab_Family] = 99;
+			sendMessage(playerid, -1, "Ban da chinh sua Drug Lab %d cho phep moi nguoi su dung.", drl_id);
+			RefreshDrugLab(drl_id);
+        	SaveDrug(drl_id);
+			return 1;
+		}
+
+		format(string,sizeof string,"Ban da chinh sua FAMILY ID %d cho Drub lab %d",choose,drl_id);
+		SendClientMessageEx(playerid, COLOR_WHITE, string);
+		DrugLabInfo[drl_id][DLab_Family] = choose;
+		RefreshDrugLab(drl_id);
+        SaveDrug(drl_id);
+	}
+	return 1;
+}
+
 hook OnPlayerKeyStateChange(playerid, newkeys, oldkeys) {
 	if(newkeys & KEY_YES) {
 		//new drl_id = -1;
 		for(new i = 0 ; i < MAX_DRUG_POINT; i++) {
 			if(IsPlayerInRangeOfPoint(playerid, 5 , DrugLabInfo[i][DLab_Postion][0], DrugLabInfo[i][DLab_Postion][1], DrugLabInfo[i][DLab_Postion][2])) {
-				if(DrugLabInfo[i][DLab_Family] != PlayerInfo[playerid][pFMember]) return SendErrorMessage(playerid,"Drug Lab khong phai cua Family ban.");
-		        if(DrugLabInfo[i][DLab_Type] == 0 ) {
-		        	Dialog_Show(playerid, DIALOG_DRUGS_G, DIALOG_STYLE_TABLIST_HEADERS, "Che tao Drug", "Drug Name\tY/C Chat Hoa hoc I\tY/C Chat Hoa hoc II\n\
-		        	                                                                                 #Codeine\t2\t0\n\
-		        		                                                                             #Cocain\t4\t0\n\
-		        		                                                                             #Ecstasy\t4\t4\n\
-		        		                                                                             #LSD\t8\t6", "Che tao", "Huy bo");
-		        }
-		        else if(DrugLabInfo[i][DLab_Type] == 1 ) { 
-		        	ShowMainCraft(playerid);
+				if(DrugLabInfo[i][DLab_Family] == 99) {
+					if(DrugLabInfo[i][DLab_Type] == 0 ) {
+						Dialog_Show(playerid, DIALOG_DRUGS_G, DIALOG_STYLE_TABLIST_HEADERS, "Che tao Drug", "Drug Name\tY/C Chat Hoa hoc I\tY/C Chat Hoa hoc II\n\
+																										#Codeine\t2\t0\n\
+																										#Cocain\t4\t0", "Che tao", "Huy bo");
+					}
+					else if(DrugLabInfo[i][DLab_Type] == 1 ) { 
+						ShowMainCraft(playerid, 2);
 
-		        }
-		       
+					}
+				}
+				else {
+					if(DrugLabInfo[i][DLab_Family] != PlayerInfo[playerid][pFMember]) return SendErrorMessage(playerid,"Drug Lab khong phai cua Family ban.");
+					if(DrugLabInfo[i][DLab_Type] == 0 ) {
+						Dialog_Show(playerid, DIALOG_DRUGS_G, DIALOG_STYLE_TABLIST_HEADERS, "Che tao Drug", "Drug Name\tY/C Chat Hoa hoc I\tY/C Chat Hoa hoc II\n\
+																										#Codeine\t2\t0\n\
+																										#Cocain\t4\t0\n\
+																										#Ecstasy\t4\t4\n\
+																										#LSD\t8\t6", "Che tao", "Huy bo");
+					}
+					else if(DrugLabInfo[i][DLab_Type] == 1 ) { 
+						ShowMainCraft(playerid);
+
+					}
+				}
 			}
 		} 
 	}

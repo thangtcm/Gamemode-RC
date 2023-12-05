@@ -96,6 +96,15 @@ timer UpdateNameTagTimer[500](playerid)
 			}
 			if(gettime() < GetPVarInt(playerid, "TakeNameTagDMG") ) 
 			{
+				if(PlayerInfo[playerid][pMaskOn])
+				{
+					format(nametag, sizeof(nametag), "{F50000}Mask %d%d{FFFFFF} (%d)", PlayerInfo[playerid][pMaskID][0], playerid, playerid);
+				}
+				else
+				{
+					format(nametag, sizeof(nametag), "{F50000}%s{FFFFFF} (%d)", GetPlayerNameEx(playerid), playerid);
+				}
+
 				if(armour > 1.0)
 				{
 					format(nametag, sizeof(nametag), "%s\n{FFFFFF}%s\n{FF0000}%s", nametag, GetArmorDots(playerid), GetHealthDots(playerid));

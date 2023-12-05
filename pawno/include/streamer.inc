@@ -93,7 +93,7 @@
 	#define STREAMER_OBJECT_SD 300.0
 #endif
 #if !defined STREAMER_OBJECT_DD
-	#define STREAMER_OBJECT_DD 0.0
+	#define STREAMER_OBJECT_DD 300.0
 #endif
 #if !defined STREAMER_PICKUP_SD
 	#define STREAMER_PICKUP_SD 200.0

@@ -1795,6 +1795,8 @@ new LamViec[MAX_PLAYERS];
 new sobeitCheckvar[MAX_PLAYERS];
 new sobeitCheckIsDone[MAX_PLAYERS];
 new IsPlayerFrozen[MAX_PLAYERS];
+new Text3D:DeathText[MAX_PLAYERS];
+new DamagedReset[MAX_PLAYERS] = {-1, ...};
 // Admin Fly
 forward UrinateTimer(playerid);
 forward AdminFly(playerid);
@@ -3874,3 +3876,5 @@ new const gMainZones[][MAIN_ZONES] = {  // Majority of names and area coordinate
 new PlayerText: Tutorial_Truck[MAX_PLAYERS][6],
 	TutorialTruck_Timer[MAX_PLAYERS];
 new pDriveReward[MAX_PLAYERS];
+new HandCuff[MAX_PLAYERS];
+new DangBiTazer[MAX_PLAYERS];

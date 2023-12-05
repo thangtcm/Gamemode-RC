@@ -81,7 +81,7 @@ forward OnLoadInventoryCH(playerid);
 
 new const g_aInventoryItems[][e_InventoryItems] =
 {
-	{"Dirty", "img dirty"},
+	{"Tien Ban", "img dirty"},
 	{"Pickaxe", "item_Pickaxe"},
 	{"Dien thoai", "item_Phone"},
 	{"GPS", "item_GPS"},
@@ -158,6 +158,7 @@ new const g_aInventoryItems[][e_InventoryItems] =
 	{"Bot Mi", "flour"},
 	{"Trai Cay", "fruit"},
 	{"May Cua", "sawder"},
+	{"Bo so cuu", "firstaidkit"},
 	{"Santa Hat", "santahat"}
 };
 

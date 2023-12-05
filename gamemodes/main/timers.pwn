@@ -878,7 +878,7 @@ task EMSUpdate[5000]()
 				SetPlayerHealth(i, health-1);
 				if(GetPVarInt(i, "EMSAttempt") == -1)
 				{
-					if(GetPlayerAnimationIndex(i) != 746) ClearAnimations(i), ApplyAnimation(i, "WUZI", "CS_Dead_Guy", 4.1, 1, 1, 1, 1, 0, 1);
+					if(GetPlayerAnimationIndex(i) != 746) ClearAnimations(i), ApplyAnimation(i, "ped", "FLOOR_hit_f", 4.0, 0, 1, 1, 1, 0, 1);
     				if(!GetPVarType(i, "StreamPrep") && !IsPlayerInRangeOfPoint(i, 3.0, GetPVarFloat(i,"MedicX"), GetPVarFloat(i,"MedicY"), GetPVarFloat(i,"MedicZ")) && !GetPVarInt(i, "OnStretcher"))
 	    			{
       			        SendClientMessageEx(i, COLOR_WHITE, "Ban da bi bat tinh, ban se duoc dua ve benh vien de dieu tri.");
@@ -890,7 +890,7 @@ task EMSUpdate[5000]()
 				}
 				if(GetPVarInt(i, "EMSAttempt") == 1)
 				{
-					if(GetPlayerAnimationIndex(i) != 746) ClearAnimations(i), ApplyAnimation(i, "WUZI", "CS_Dead_Guy", 4.1, 1, 1, 1, 1, 0, 1);
+					if(GetPlayerAnimationIndex(i) != 746) ClearAnimations(i), ApplyAnimation(i, "ped", "FLOOR_hit_f", 4.0, 0, 1, 1, 1, 0, 1);
 	    			if(!GetPVarType(i, "StreamPrep") && !IsPlayerInRangeOfPoint(i, 3.0, GetPVarFloat(i,"MedicX"), GetPVarFloat(i,"MedicY"), GetPVarFloat(i,"MedicZ")) && !GetPVarInt(i, "OnStretcher"))
 	    			{
 	        			SendClientMessageEx(i, COLOR_WHITE, "Ban lan ra bat tinh, ban duoc dua den benh vien da dieu tri.");
@@ -994,6 +994,11 @@ task ServerHeartbeat[1000]() {
 			}
 		}
 
+		if (!GetPVarInt(i, "Injured")) {
+			if (DamagedReset[i] > 0) DamagedReset[i]--;
+			else if (DamagedReset[i] == 0) ResetDamagedPlayer(i);
+			
+		}
 		if (GetPVarInt(i, "MailTime") > 0)
 			SetPVarInt(i, "MailTime", GetPVarInt(i, "MailTime") - 1);
 		else

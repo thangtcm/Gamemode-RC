@@ -1245,11 +1245,11 @@ stock JoinGame(playerid) {
     TextDrawHideForPlayer(playerid, BannerServer[1]);
     SetPlayerVirtualWorld(playerid, PlayerInfo[playerid][pVW]);
     SetPlayerInterior(playerid,0);
-    Streamer_UpdateEx(playerid,1355.6627, 259.0992, 19.5547);
+    Streamer_UpdateEx(playerid,1481.8472, -1767.4912, 18.7891);
     SetSpawnInfo(playerid, 0, PlayerInfo[playerid][pModel], 1355.6627, 259.0992, 19.5547, 1.0, -1, -1, -1, -1, -1, -1);
-    ActSetPlayerPos(playerid, 1355.6627,259.0992, 19.5547);
-    Player_StreamPrep(playerid, 1355.6627, 259.0992, 19.5547, FREEZE_TIME);
-    SetPlayerFacingAngle(playerid, 247.5060);
+    ActSetPlayerPos(playerid, 1481.8472, -1767.4912, 18.7891);
+    Player_StreamPrep(playerid, 1481.8472, -1767.4912, 18.7891, FREEZE_TIME);
+    SetPlayerFacingAngle(playerid, 21.0704);
     
     ClearChatbox(playerid);
     SendClientMessageEx(playerid,COLOR_VANG,"Chao mung ban da den voi may chu RC-RP.");
@@ -1324,7 +1324,7 @@ CMD:atm(playerid, params[]) {
 	return 1;
 }
 CMD:bank(playerid, params[]) {
-	if(!IsPlayerInRangeOfPoint(playerid, 15.0, 2308.7346, -11.0134, 26.7422))
+	if(!IsPlayerInRangeOfPoint(playerid, 25.0, 1436.2850,-999.7745,1639.8025))
 	{
 		SendErrorMessage(playerid," Ban khong o trong ngan hang!");
 		return 1;

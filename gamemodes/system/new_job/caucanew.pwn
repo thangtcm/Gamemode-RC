@@ -257,13 +257,13 @@ stock LoadThung_Fix()
 
     if(PlayerVehicleInfo[playerid][vehicleid][VehicleThungID] != 0)
     {
-        DestroyObject(ThungCa[PlayerVehicleInfo[playerid][vehicleid][VehicleThungID]][pThungObject]);
+        DestroyDynamicObject(ThungCa[PlayerVehicleInfo[playerid][vehicleid][VehicleThungID]][pThungObject]);
     }*/
 
 forward AttachThungCa(playerid , j);
 public AttachThungCa(playerid , j)
 {
-    DestroyObject(ThungCa[PlayerVehicleInfo[playerid][j][VehicleThungID]][pThungObject]);
+    DestroyDynamicObject(ThungCa[PlayerVehicleInfo[playerid][j][VehicleThungID]][pThungObject]);
 //  ApplyAnimation(playerid,"CARRY","crry_prtial",4.1,1,1,1,1,1,1);
     SendClientMessage(playerid, COLOR_GREY, "Ban khong the boi khi cam thung ca");
 
@@ -761,8 +761,8 @@ stock DatThungCa(playerid, i)
                                     ThungCa[j][pThungType] = 1; // nho~
                                     ThungCa[j][pThungAttachVeh] = i;
                                     PlayerInfo[playerid][pThungCa] = 0;
-                                    ThungCa[j][pThungObject] = CreateObject(2040,0,0,-1000,0,0,0,100);
-                                    AttachObjectToVehicle(ThungCa[j][pThungObject],i,-0.059999,-0.009999,0.105000,0.000000,5.500000,91.000000);
+                                    ThungCa[j][pThungObject] = CreateDynamicObject(2040,0,0,-1000,0,0,0,100);
+                                    AttachDynamicObjectToVehicle(ThungCa[j][pThungObject],i,-0.059999,-0.009999,0.105000,0.000000,5.500000,91.000000);
                                     SetPlayerSpecialAction(playerid,SPECIAL_ACTION_NONE);
                                     RemovePlayerAttachedObject(playerid,PIZZA_INDEX);
                                     DeletePVar(playerid, "ThungCaObj");    
@@ -776,11 +776,11 @@ stock DatThungCa(playerid, i)
                                     SendClientMessage(playerid, COLOR_WHITE, "Ban da dat thung ca vao trong thuyen ");
                                     cmd_me(playerid, "da dat thung ca xuong."); // cai nay lay 
                                     ThungCa[j][pThungType] = 2; // nho~
-                                    ThungCa[j][pThungObject] = CreateObject(2969,0,0,-1000,0,0,0,100);
+                                    ThungCa[j][pThungObject] = CreateDynamicObject(2969,0,0,-1000,0,0,0,100);
                                     ThungCa[j][pThungAttachVeh] = i;
                                     PlayerInfo[playerid][pThungCa] = 0;
                                     SetPlayerSpecialAction(playerid,SPECIAL_ACTION_NONE);
-                                    AttachObjectToVehicle(ThungCa[j][pThungObject], i,0.059999,-0.724999,0.330000,-3.000000,1.500000,-179.000000);
+                                    AttachDynamicObjectToVehicle(ThungCa[j][pThungObject], i,0.059999,-0.724999,0.330000,-3.000000,1.500000,-179.000000);
                                     SetPlayerSpecialAction(playerid,SPECIAL_ACTION_NONE);
                                     RemovePlayerAttachedObject(playerid,PIZZA_INDEX);
                                     DeletePVar(playerid, "ThungCaObj");    
@@ -820,24 +820,24 @@ stock DatThungCa(playerid, i)
                                     ThungCa[j][pThungType] = 1; // nho~
                                     ThungCa[j][pThungAttachVeh] = i;
                                     PlayerInfo[playerid][pThungCa] = 0;
-                                    ThungCa[j][pThungObject] = CreateObject(2040,0,0,-1000,0,0,0,100);              
-                                    AttachObjectToVehicle(ThungCa[j][pThungObject],i,-0.059999,-0.009999,0.305000,0.000000,5.500000,91.000000);
+                                    ThungCa[j][pThungObject] = CreateDynamicObject(2040,0,0,-1000,0,0,0,100);              
+                                    AttachDynamicObjectToVehicle(ThungCa[j][pThungObject],i,-0.059999,-0.009999,0.305000,0.000000,5.500000,91.000000);
                                 }
                                 case 2:
                                 {
                                     PlayerVehicleInfo[playerid][i][VehicleThungID] = j;
                                     ThungCa[j][pThungType] = 2;
-                                    ThungCa[j][pThungObject] = CreateObject(2969,0,0,-1000,0,0,0,100);
+                                    ThungCa[j][pThungObject] = CreateDynamicObject(2969,0,0,-1000,0,0,0,100);
                                     PlayerInfo[playerid][pThungCa] = 0;
-                                    AttachObjectToVehicle(ThungCa[j][pThungObject] , i,-0.005000,-2.019998,0.294999,-3.000000,1.000000,-180.500000);
+                                    AttachDynamicObjectToVehicle(ThungCa[j][pThungObject] , i,-0.005000,-2.019998,0.294999,-3.000000,1.000000,-180.500000);
                                 }
                                 case 3:
                                 {
                                     PlayerVehicleInfo[playerid][i][VehicleThungID] = j;
                                     ThungCa[j][pThungType] = 3;
                                     PlayerInfo[playerid][pThungCa] = 0;
-                                    ThungCa[j][pThungObject] = CreateObject(3800,0,0,-1000,0,0,0,100);
-                                    AttachObjectToVehicle(ThungCa[j][pThungObject], i,-0.005000,-2.019998,0.959999,-3.000000,1.000000,-180.500000);
+                                    ThungCa[j][pThungObject] = CreateDynamicObject(3800,0,0,-1000,0,0,0,100);
+                                    AttachDynamicObjectToVehicle(ThungCa[j][pThungObject], i,-0.005000,-2.019998,0.959999,-3.000000,1.000000,-180.500000);
                                 }
                             }
                             return 1;
@@ -872,24 +872,24 @@ stock DatThungCa(playerid, i)
                                     ThungCa[j][pThungType] = 1; // nho~
                                     ThungCa[j][pThungAttachVeh] = i;
                                     PlayerInfo[playerid][pThungCa] = 0;
-                                    ThungCa[j][pThungObject] = CreateObject(2040,0,0,-1000,0,0,0,100);
-                                    AttachObjectToVehicle(ThungCa[j][pThungObject],i,-0.059999,-0.009999,0.305000,0.000000,5.500000,91.000000);
+                                    ThungCa[j][pThungObject] = CreateDynamicObject(2040,0,0,-1000,0,0,0,100);
+                                    AttachDynamicObjectToVehicle(ThungCa[j][pThungObject],i,-0.059999,-0.009999,0.305000,0.000000,5.500000,91.000000);
                                 }
                                 case 2:
                                 {
                                     PlayerVehicleInfo[playerid][i][VehicleThungID] = j;
                                     ThungCa[j][pThungType] = 2;
                                     PlayerInfo[playerid][pThungCa] = 0;
-                                    ThungCa[j][pThungObject] = CreateObject(2969,0,0,-1000,0,0,0,100);
-                                    AttachObjectToVehicle(ThungCa[j][pThungObject], i ,-0.080000,-3.220026,0.854999,-3.000000,1.500000,-176.000000);  
+                                    ThungCa[j][pThungObject] = CreateDynamicObject(2969,0,0,-1000,0,0,0,100);
+                                    AttachDynamicObjectToVehicle(ThungCa[j][pThungObject], i ,-0.080000,-3.220026,0.854999,-3.000000,1.500000,-176.000000);  
                                 }
                                 case 3:
                                 {
                                     PlayerVehicleInfo[playerid][i][VehicleThungID] = j;
                                     ThungCa[j][pThungType] = 3;
                                     PlayerInfo[playerid][pThungCa] = 0;
-                                    ThungCa[j][pThungObject] = CreateObject(3800,0,0,-1000,0,0,0,100);
-                                    AttachObjectToVehicle(ThungCa[j][pThungObject], i ,0.059999,-2.450008,1.009999,-3.000000,1.000000,-180.500000);
+                                    ThungCa[j][pThungObject] = CreateDynamicObject(3800,0,0,-1000,0,0,0,100);
+                                    AttachDynamicObjectToVehicle(ThungCa[j][pThungObject], i ,0.059999,-2.450008,1.009999,-3.000000,1.000000,-180.500000);
         
                                 }
                                 case 4:
@@ -897,8 +897,8 @@ stock DatThungCa(playerid, i)
                                     PlayerVehicleInfo[playerid][i][VehicleThungID] = j;
                                     ThungCa[j][pThungType] = 4;
                                     PlayerInfo[playerid][pThungCa] = 0;
-                                    ThungCa[j][pThungObject] = CreateObject(1224,0,0,-1000,0,0,0,100);
-                                    AttachObjectToVehicle(ThungCa[j][pThungObject], i,-0.005000,-2.735015,1.254999,-3.000000,1.000000,-180.500000);
+                                    ThungCa[j][pThungObject] = CreateDynamicObject(1224,0,0,-1000,0,0,0,100);
+                                    AttachDynamicObjectToVehicle(ThungCa[j][pThungObject], i,-0.005000,-2.735015,1.254999,-3.000000,1.000000,-180.500000);
         
                                 }
                             }
@@ -937,9 +937,9 @@ CMD:datthungca(playerid, params[])
                             ThungCa[j][pThungCaSet] = 1;
                             ThungCa[j][pThungCaID] = i;
                             ThungCa[j][pThungType] = 1; // nho~
-                            ThungCa[j][pThungObject] = CreateObject(2969,0,0,-1000,0,0,0,100);
+                            ThungCa[j][pThungObject] = CreateDynamicObject(2969,0,0,-1000,0,0,0,100);
                             ThungCa[j][pThungAttachVeh] = i;
-                            AttachObjectToVehicle(ThungCa[j][pThungObject], GetPlayerVehicleID(playerid),-0.020000,0.064999,0.125000,-3.000000,1.000000,-180.500000);
+                            AttachDynamicObjectToVehicle(ThungCa[j][pThungObject], GetPlayerVehicleID(playerid),-0.020000,0.064999,0.125000,-3.000000,1.000000,-180.500000);
                             return 1;
                         }
                     }
@@ -972,13 +972,13 @@ CMD:datthungca(playerid, params[])
                                 }
                                 case 1:
                                 {
-                                    ThungCa[j][pThungObject] = CreateObject(2969,0,0,-1000,0,0,0,100);
-                                    AttachObjectToVehicle(ThungCa[j][pThungObject] , i,-0.005000,-2.019998,0.294999,-3.000000,1.000000,-180.500000);
+                                    ThungCa[j][pThungObject] = CreateDynamicObject(2969,0,0,-1000,0,0,0,100);
+                                    AttachDynamicObjectToVehicle(ThungCa[j][pThungObject] , i,-0.005000,-2.019998,0.294999,-3.000000,1.000000,-180.500000);
                                 }
                                 case 2:
                                 {
-                                    ThungCa[j][pThungObject] = CreateObject(3800,0,0,-1000,0,0,0,100);
-                                    AttachObjectToVehicle(ThungCa[j][pThungObject], i,-0.005000,-2.019998,0.959999,-3.000000,1.000000,-180.500000);
+                                    ThungCa[j][pThungObject] = CreateDynamicObject(3800,0,0,-1000,0,0,0,100);
+                                    AttachDynamicObjectToVehicle(ThungCa[j][pThungObject], i,-0.005000,-2.019998,0.959999,-3.000000,1.000000,-180.500000);
                                 }
                             }
                             return 1;
@@ -1014,13 +1014,13 @@ CMD:datthungca(playerid, params[])
                                 }
                                 case 2:
                                 {
-                                    ThungCa[j][pThungObject] = CreateObject(1224,0,0,-1000,0,0,0,100);
-                                    AttachObjectToVehicle(ThungCa[j][pThungObject], i,-0.005000,-2.735015,1.254999,-3.000000,1.000000,-180.500000);
+                                    ThungCa[j][pThungObject] = CreateDynamicObject(1224,0,0,-1000,0,0,0,100);
+                                    AttachDynamicObjectToVehicle(ThungCa[j][pThungObject], i,-0.005000,-2.735015,1.254999,-3.000000,1.000000,-180.500000);
                                 }
                                 case 3:
                                 {
-                                    ThungCa[j][pThungObject] = CreateObject(3800,0,0,-1000,0,0,0,100);
-                                    AttachObjectToVehicle(ThungCa[j][pThungObject], i ,0.059999,-2.450008,1.009999,-3.000000,1.000000,-180.500000);
+                                    ThungCa[j][pThungObject] = CreateDynamicObject(3800,0,0,-1000,0,0,0,100);
+                                    AttachDynamicObjectToVehicle(ThungCa[j][pThungObject], i ,0.059999,-2.450008,1.009999,-3.000000,1.000000,-180.500000);
                                 }
                             }
                             return 1;
