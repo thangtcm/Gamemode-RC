@@ -860,7 +860,7 @@ Dialog:MY_DEALCRAFT(playerid, response, listitem, inputtext[]) {
     			return 1;
     		}
     		else if(gettime() > PlayerInfo[playerid][pCraftWDTime]) {
-    		    format(string,sizeof(string),"Ban da lay don hang %s thanh cong",GetOderName(PlayerInfo[playerid][pCraftWD])  );
+    		    format(string, sizeof(string),"Ban da lay don hang %s thanh cong.", GetOderName(PlayerInfo[playerid][pCraftWD]) );
     		    SendClientMessage(playerid, -1, string);
     		    new pitem_add[30];
     		    switch(PlayerInfo[playerid][pCraftWD]) {
