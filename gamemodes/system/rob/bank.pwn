@@ -1,6 +1,7 @@
 #include <YSI_Coding\y_hooks>
 new Robbingbank = -1;
-new Robber_Timer;
+new Robber_Timer[MAX_PLAYERS];
+new Rob_Status[MAX_PLAYERS] = 0;
 new RuaTien_Timer[MAX_PLAYERS];
 new RuaTien_Status[MAX_PLAYERS] = 0;
 #define DIALOG_RUATIEN 10090
@@ -26,40 +27,56 @@ CMD:robbank(playerid, params[])
 	if(!IsPlayerInRangeOfPoint(playerid, 15.0, 1436.2850,-999.7745,1639.8025)) return SendErrorMessage(playerid, "Ban khong o khu vuc cuop ngan hang !");
 	new hourb, minuteb, secondb;
 	gettime(hourb, minuteb, secondb);
-	/*if(hour < 19 || hour > 23) return SendErrorMessage(playerid, "Day khong phai thoi diem cuop (20h - 22h)");
-	if(Cops < 2) return SendErrorMessage(playerid, "So luong PD khong du de thuc hien vu cuop !");*/
+	// if(hour < 19 || hour > 23) return SendErrorMessage(playerid, "Day khong phai thoi diem cuop (20h - 22h)");
+	// if(Cops < 2) return SendErrorMessage(playerid, "So luong PD khong du de thuc hien vu cuop !");
 
-	if(Robbingbank != -1) return SendErrorMessage(playerid, "Ngan hang da bi cuop , ban khong the thuc hien !");
-	Robbingbank = playerid;
-	// Inventory_Add(playerid, "Tien Ban", 1);
-	Robber_Timer = SetTimerEx("OnPlayerRobbing", 1000, 1, "i", playerid);
+	if(Rob_Status[playerid] == 1) return SendErrorMessage(playerid, "Ban dang cuop ngan hang roi !");
+	new check_g = 0;
+	for(new i = 0; i < 13; i++)
+	{
+		new weapon_g,ammos_g;
+		GetPlayerWeaponData(playerid, i, weapon_g, ammos_g);
+    	if(weapon_g == 29 || weapon_g == 30 || weapon_g == 31 || weapon_g == 27) check_g = 1;
+	}
+	if(check_g == 0) return SendErrorMessage(playerid, "Ban khong co vu ki tren nguoi (MP5, M4, AK47, Combat Shotgun) ");
 
-	new rob_msg[1280];
-	format(rob_msg, sizeof(rob_msg), "{FF0000}[CANH BAO]{FFFFFF} %s dang cuop ngan hang !", GetPlayerNameEx(playerid));
-	SendGroupMessage(1, -1, rob_msg);
+	if(Robbingbank == -1){
+		Rob_Status[playerid] = 1;
+		Robbingbank = playerid;
+		Robber_Timer[playerid] = SetTimerEx("OnPlayerRobbing", 1000, 1, "i", playerid);
+		new rob_msg[1280];
+		format(rob_msg, sizeof(rob_msg), "{FF0000}[CANH BAO (Faction)]{FFFFFF} {fccf03}%s {FF0000}dang cuop ngan hang !", GetPlayerNameEx(playerid));
+		SendGroupMessage(1, -1, rob_msg);
+
+	} else SendErrorMessage(playerid, "Ngan hang da bi cuop , ban khong the thuc hien !");
 	return 1;
 }
 
 forward OnPlayerRobbing(playerid);
 public OnPlayerRobbing(playerid)
 {
-	if(IsPlayerInRangeOfPoint(playerid, 20.0, 1436.2850,-999.7745,1639.8025) && Robbingbank == playerid) {
+	if(Rob_Status[playerid] != 1) {
+		SendErrorMessage(playerid, "Ban da chet trong luc cuop va khong nhan duoc bat ki tien ban nao !");
+		DeletePVar(playerid, #DirtyAmount);
+		KillTimer(Robber_Timer[playerid]);
+		return 1;
+	}
+	else if(IsPlayerInRangeOfPoint(playerid, 20.0, 1436.2850,-999.7745,1639.8025) && Robbingbank == playerid) {
 		
 		SetPVarInt(playerid, #DirtyAmount, GetPVarInt(playerid, #DirtyAmount)+1);
-		// SendClientMessage(playerid, -1, "Ban da cuop duoc 1 cuc tien");
 
 		new rob_msg[1280];
 		format(rob_msg, sizeof(rob_msg), "Ban da cuop %d cuc tien", GetPVarInt(playerid, #DirtyAmount));
 		SendClientTextDraw(playerid, rob_msg, 1);
 	}
 	else{
-
+		Rob_Status[playerid] = 0;
+		Robbingbank = -2;
 		Inventory_Add(playerid, "Tien Ban", GetPVarInt(playerid, #DirtyAmount), 60*24*2);
 
 		SendClientMessage(playerid, -1, "Ban da roi khoi khu vuc cuop tien , hanh dong se bi dung lai !");
 		DeletePVar(playerid, #DirtyAmount);
-
-		KillTimer(Robber_Timer);
+		KillTimer(Robber_Timer[playerid]);
 	}
 	return 1;
 }
@@ -171,11 +188,12 @@ public OnPlayerRuaTien(playerid)
 
 			new rt_amount = Inventory_Count(playerid, "Tien Ban");
 			new rt_msg[1280];
-			format(rt_msg, sizeof(rt_msg), "Ban da rua thanh cong %d cuc tien ban voi so tien nhan duoc la %d !", rt_amount, rt_amount*percent);
+			format(rt_msg, sizeof(rt_msg), "%s da rua thanh cong %d cuc tien ban voi so tien nhan duoc la %d !",GetPlayerNameEx(playerid), rt_amount, rt_amount*percent);
 			SendClientMessage(playerid, -1, rt_msg);
 			printf("Percent : %d", percent);
 			PlayerInfo[playerid][pCash] += rt_amount*percent;
-
+			Log("Robbank.log", rt_msg);
+			
 			Inventory_RemoveTimer(playerid, "Tien Ban", rt_amount);
 			RuaTien_Status[playerid] = 0;
 			KillTimer(RuaTien_Timer[playerid]);
@@ -194,6 +212,11 @@ hook OnPlayerConnect(playerid)
 	RuaTien_Status[playerid] = 0;
 	return 1;
 }
+hook OnPlayerDeath(playerid, killerid, reason)
+{
+	Rob_Status[playerid] = 0;
+	return 1;
+}
 
 hook OnPlayerDisconnect(playerid)
 {
@@ -202,7 +225,7 @@ hook OnPlayerDisconnect(playerid)
 		RuaTien_Timer[playerid] = -1;
 		RuaTien_Status[playerid] = 0;
 	}
-	Robbingbank = -1;
+	Robbingbank = -2;
 	return 1;
 }
 
