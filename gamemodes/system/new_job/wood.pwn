@@ -58,7 +58,9 @@ public CuttingWood(playerid)
 	}
 	ClearCutting(playerid);
 
-	new rand = Random(1, 2);
+	new rand = Random(1, 2), santahat = 1 + random(100);
+	if(10 <= santahat <= 15) Inventory_Add(playerid, "Santa Hat", 1);
+
 	Inventory_Add(playerid, "Go", rand);
 	sendMessage(playerid, 0xECA727FF, "LUMBER:{FFFFFF} Ban nhan duoc %d go tu viec chat cai cay nay.", rand);
 

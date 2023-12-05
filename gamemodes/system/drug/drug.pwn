@@ -81,8 +81,6 @@ stock RefreshDrugLab(id)
 }
 
 stock MoveDrugLab(playerid,drl_id) {
-	DestroyDynamicPickup( DrugLabInfo[drl_id][DLab_PickUP]);
-	DestroyDynamic3DTextLabel( DrugLabInfo[drl_id][DLab_Label]);
 	new Float:Pos_drl[3],string[129];
     GetPlayerPos(playerid, Pos_drl[0], Pos_drl[1], Pos_drl[2]);
     DrugLabInfo[drl_id][DLab_Postion][0] = Pos_drl[0];
@@ -90,10 +88,8 @@ stock MoveDrugLab(playerid,drl_id) {
     DrugLabInfo[drl_id][DLab_Postion][2] = Pos_drl[2];
     DrugLabInfo[drl_id][DLab_Int] = GetPlayerInterior(playerid);
     DrugLabInfo[drl_id][DLab_Vw] = GetPlayerVirtualWorld(playerid);
-    new family = DrugLabInfo[drl_id][DLab_Family] ;
-    format(string,sizeof string,"Drub Lab %d\nFamily: %s\n(Bam Y de thao tac)",drl_id,FamilyInfo[family][FamilyName]);
-    DrugLabInfo[drl_id][DLab_Label] = CreateDynamic3DTextLabel(string, -1,  Pos_drl[0], Pos_drl[1], Pos_drl[2], 30.0, INVALID_PLAYER_ID,  INVALID_VEHICLE_ID,   0, GetPlayerVirtualWorld(playerid), GetPlayerInterior(playerid));
-    DrugLabInfo[drl_id][DLab_PickUP] = CreateDynamicPickup(1577, 10,  Pos_drl[0], Pos_drl[1], Pos_drl[2],GetPlayerVirtualWorld(playerid), GetPlayerInterior(playerid));
+
+	RefreshDrugLab(drl_id);
     return 1;
 }
 
@@ -202,7 +198,7 @@ CMD:druglabnext(playerid, params[])
 CMD:editdruglab(playerid, params[])
 {
 	new string[128], drl_id,choose, choice[32];
-	if(sscanf(params, "s[32]ddd",  choice,drl_id,choose))
+	if(sscanf(params, "s[32]dd",  choice,drl_id,choose))
 	{
 		SendUsageMessage(playerid, " /editdruglab [option] [id] [choose]");
 		SendSelectMessage(playerid, " Delete , Vitri, FamilyID (99 = player), Type ( 0 = Drug, 1 = Weapon )");
@@ -228,7 +224,7 @@ CMD:editdruglab(playerid, params[])
 	if (strcmp(choice, "Vitri", true) == 0)
 	{
 		SendClientMessageEx(playerid, COLOR_WHITE, "Ban da chinh sua vi tri thanh cong.");
-		MoveDrugLab(playerid,drl_id);
+		MoveDrugLab(playerid, drl_id);
 		SaveDrug(drl_id);
 	}
 	if (strcmp(choice, "FamilyID", true) == 0)
