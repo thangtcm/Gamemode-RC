@@ -243,7 +243,7 @@ public F_StartCountTime(playerid)
 					}
 					else if(JobSkill[playerid][Fish] >= 250)
 					{
-					    new rdd = random(q0);
+					    new rdd = random(10);
 					    switch(rdd)
 					    {
 					         case 0..3:
