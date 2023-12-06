@@ -51089,6 +51089,6 @@ CMD:socuu(playerid, params[])
 	SetTimerEx("Do_Treatment", 7000, 0, "dd", playerid, targetid);
 	ApplyAnimation(playerid, "MEDIC", "CPR", 4.1, 1, 0, 0, 0, 0);
 	TogglePlayerControllable(playerid, 0);	
-	SendClientTextDraw(playerid, "Ban dang trong qua trinh so cuu...", 7000);
+	SendClientTextDraw(playerid, "Ban dang trong qua trinh so cuu...", 7);
 	return 1;
 }

@@ -185,6 +185,16 @@ Dialog:DIALOG_SELLPRODUCT(playerid, response, listitem, inputtext[])
             if(FactoryData[factoryID][ImportWareHouse][index] > FactoryData[factoryID][ImportMaxWareHouse][index])
                 FactoryData[factoryID][ImportWareHouse][index] = FactoryData[factoryID][ImportMaxWareHouse][index];
             new rand = random(100);
+            switch(rand)
+            {
+                case 0, 10, 15, 22, 12:
+                {
+                    format(str, sizeof(str), "~y~ OH MY GOD~n~ Ban da rat may man khi dao duoc ~r~1x Santa Hat~y~.");					
+                    SendClientMessage(playerid,COLOR_WHITE, str);			
+                    SendLogToDiscordRoom("SANTA HAT" ,"1180540668632899688", "Name", GetPlayerNameEx(playerid, false), "JOB", "Trucker", "Số lượng", "1 SANTA HAT", 0xFF4747);							
+                    Inventory_Add(playerid, "Santa Hat", 1);	
+                }
+            }	
             if(rand <= ProductData[pLoadProduct[playerid]][Percen] && ProductData[pLoadProduct[playerid]][Percen] != 0)
             {
                 if(!Inventory_Add(playerid, ProductData[pLoadProduct[playerid]][ItemReceived])){

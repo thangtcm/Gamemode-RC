@@ -156,8 +156,7 @@ stock SaveVehSign(){
 stock MenuRegisterVehSign(playerid)
 {
 	new vstring[4096], icount = GetPlayerVehicleSlots(playerid);
-	new statez[30];
-	vstring = "Phuong tien\tTinh trang\tGiay to xe";
+	vstring = "Phuong tien\tTinh trang\tBien so xe";
 	for(new i, iModelID; i < icount; i++)
 	{
 		if((iModelID = PlayerVehicleInfo[playerid][i][pvModelId] - 400) >= 0)
@@ -166,21 +165,16 @@ stock MenuRegisterVehSign(playerid)
 			if(VehSignID != -1){
 				format(VehSignstr, sizeof(VehSignstr), "SF-%d", VehSignInfo[VehSignID][vs_VehSign]);
 			} else VehSignstr = "{c54640}Chua dang ky{FFFFFF}";
-			switch(PlayerVehicleInfo[playerid][i][pvGiayToXe]) 
-			{
-				case 0: statez = "{c54640}Chua dang ky{FFFFFF}";
-				case 1: statez = "{36e198}Da dang ky{FFFFFF}";
-			}
 			if(PlayerVehicleInfo[playerid][i][pvImpounded]) {
-				format(vstring, sizeof(vstring), "%s\n[%d]%s\t{f0635c}Tich thu{ffffff}\t%s", vstring,PlayerVehicleInfo[playerid][i][pvSlotId], VehicleName[iModelID],statez);
+				format(vstring, sizeof(vstring), "%s\n[%d]%s\t{f0635c}Tich thu{ffffff}\t%s", vstring,PlayerVehicleInfo[playerid][i][pvSlotId], VehicleName[iModelID],VehSignstr);
 			}
 			else if(PlayerVehicleInfo[playerid][i][pvDisabled]) {
-				format(vstring, sizeof(vstring), "%s\n[%d]%s\t{f0635c}Khong dung duoc{ffffff}\t%s", vstring,PlayerVehicleInfo[playerid][i][pvSlotId], VehicleName[iModelID],statez);
+				format(vstring, sizeof(vstring), "%s\n[%d]%s\t{f0635c}Khong dung duoc{ffffff}\t%s", vstring,PlayerVehicleInfo[playerid][i][pvSlotId], VehicleName[iModelID],VehSignstr);
 			}
 			else if(!PlayerVehicleInfo[playerid][i][pvSpawned]) {
-				format(vstring, sizeof(vstring), "%s\n[%d]%s\t{eedf4f}Trong Garage{ffffff}\t%s", vstring,PlayerVehicleInfo[playerid][i][pvSlotId], VehicleName[iModelID],statez);
+				format(vstring, sizeof(vstring), "%s\n[%d]%s\t{eedf4f}Trong Garage{ffffff}\t%s", vstring,PlayerVehicleInfo[playerid][i][pvSlotId], VehicleName[iModelID],VehSignstr);
 			}
-			else format(vstring, sizeof(vstring), "%s\n[%d]%s\t{7fe39a}Dang su dung{ffffff}\t%s", vstring,PlayerVehicleInfo[playerid][i][pvSlotId], VehicleName[iModelID],statez);
+			else format(vstring, sizeof(vstring), "%s\n[%d]%s\t{7fe39a}Dang su dung{ffffff}\t%s", vstring,PlayerVehicleInfo[playerid][i][pvSlotId], VehicleName[iModelID],VehSignstr);
 		}
 	}
 	format(vstring, sizeof(vstring), "%s", vstring);
