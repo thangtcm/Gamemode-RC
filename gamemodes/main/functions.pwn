@@ -1259,7 +1259,7 @@ PayDay(i) {
 				iGroupID = PlayerInfo[i][pMember],
 				iRank = PlayerInfo[i][pRank];
 
-			if((0 <= iGroupID < MAX_GROUPS) && 0 <= iRank <= 9 && arrGroupData[iGroupID][g_iPaycheck][iRank] > 0) {
+			if((0 <= iGroupID < MAX_GROUPS) && 0 <= iRank <= 18 && arrGroupData[iGroupID][g_iPaycheck][iRank] > 0) {
 				if(arrGroupData[iGroupID][g_iAllegiance] == 1)
 				{
 					if(Tax > 0) {
