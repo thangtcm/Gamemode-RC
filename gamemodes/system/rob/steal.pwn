@@ -5,7 +5,8 @@ const
 
 static 
     Float:checkPos[MAX_PLAYERS][3],
-    vSteal[MAX_PLAYERS];
+    vSteal[MAX_PLAYERS],
+    decayCP[MAX_PLAYERS];
 
 stock Stealing_Cancel(playerid)
 {
@@ -23,16 +24,11 @@ public Tires_Decay(playerid, amount)
 {
     if (Inventory_Count(playerid, "Lop Xe") < amount) return SendErrorMessage(playerid, " Loi trong qua trinh phan ra.");
 
-    new tien_ban;
-    for (new i; i < amount; i ++) tien_ban += Random(3000, 5000);
-
     Inventory_Remove(playerid, Inventory_GetItemID(playerid, "Lop Xe", amount), amount);
-    Inventory_Add(playerid, "Vat lieu", amount);
-    Inventory_Add(playerid, "Tien Ban", tien_ban);
-    TogglePlayerControllable(playerid, 1);
 
-    sendMessage(playerid, -1, "Ban da phan ra thanh cong %d lop xe va nhan duoc:", amount);
-    sendMessage(playerid, 0x878787FF, "Vat lieu: {1A7DFF}%d cai{878787} - Tien ban: {FF1A1A}$%s{878787}.", amount, number_format(tien_ban));
+    sendMessage(playerid, -1, "Ban da phan ra thanh cong %d lop xe, hay di den diem danh dau de nhan thanh pham.", amount);
+    SetPlayerCheckpoint(playerid, -1880.6027, -1658.2773, 21.7500, 2.0);
+    decayCP[playerid] = amount;
     return 1;
 }
 
@@ -135,6 +131,25 @@ hook OnPlayerConnect(playerid)
 {
     checkPos[playerid][0] = EOS;
     vSteal[playerid] = INVALID_VEHICLE_ID;
+    decayCP[playerid] = 0;
+    return 1;
+}
+
+hook OnPlayerEnterCheckpoint(playerid)
+{
+    if (decayCP[playerid] && IsPlayerInRangeOfPoint(playerid, 2.0, -1880.6027, -1658.2773, 21.7500))
+    {
+        new tien_ban;
+        for (new i; i < decayCP[playerid]; i ++) tien_ban += Random(3000, 5000);
+
+        Inventory_Add(playerid, "Vat lieu", decayCP[playerid]);
+        Inventory_Add(playerid, "Tien Ban", tien_ban);
+        sendMessage(playerid, -1, "Ban nhan duoc:");
+        sendMessage(playerid, 0x878787FF, "Vat lieu: {1A7DFF}%d cai{878787} - Tien ban: {FF1A1A}$%s{878787}.", decayCP[playerid], number_format(tien_ban));
+
+        DisableCheckPoint(playerid);
+        decayCP[playerid] = 0;
+    }
     return 1;
 }
 
@@ -229,9 +244,8 @@ Dialog:DIALOG_DECAY(playerid, response, listitem, inputtext[])
                 {088FE2}[#]{FFFFFF} Thu duoc: Vat lieu, Tien ban.\n\n\
                 {088FE2}-> Nhap so luong lop ban muon phan ra:", "Xong", "Dong");
 
-    TogglePlayerControllable(playerid, 0);
-    SetTimerEx("Tires_Decay", amount * 5000, 0, "dd", playerid, amount); /* 2 giây / 1 lốp */
-    sendMessage(playerid, -1, "Dang bat dau phan ra, vui long doi %d giay de hoan tat.", amount * 5);
-    SendClientTextDraw(playerid, "Dang phan ra lop xe...", amount * 5);
+    SetTimerEx("Tires_Decay", amount * 7000, 0, "dd", playerid, amount); /* 2 giây / 1 lốp */
+    sendMessage(playerid, -1, "Dang bat dau phan ra, vui long doi %d giay de hoan tat.", amount * 7);
+    sendMessage(playerid, 0xE7B40DFF, "LUU Y: KHONG ROI KHOI KHU VUC KHI CHUA HOAN THANH PHAN RA.");
     return 1;
 }

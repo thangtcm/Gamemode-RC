@@ -34,7 +34,7 @@ public OnVehicleSign()
 }
 stock FindVehSign(vehsqlid)
 {
-	new vsid = -1;
+	new vsid = INVALID_PLAYER_VEHICLE_ID;
 	for(new i = 0; i < MAX_VEHICLES; i++)
 	{
 		if(VehSignInfo[i][vs_VehicleID] == vehsqlid)
