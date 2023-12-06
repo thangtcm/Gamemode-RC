@@ -804,7 +804,7 @@ stock ShowDealCraft(playerid) {
 	if(PlayerInfo[playerid][pCraftWD] == 0) {
 		Dialog_Show(playerid, MY_DEALCRAFT, DIALOG_STYLE_MSGBOX, "Che tao vu khi", "Ban khong co don hang nao","> Chon","Thoat");
 	}
-	else if(PlayerInfo[playerid][pCraftWD] != 0) {
+	else {
 		new string[129],button[30];
 		if(gettime() >= PlayerInfo[playerid][pCraftWDTime]) {
 			button = "Nhan hang";
@@ -877,6 +877,7 @@ Dialog:MY_DEALCRAFT(playerid, response, listitem, inputtext[]) {
     		    }
 		        Inventory_Add(playerid,pitem_add, 1);
 		        PlayerInfo[playerid][pCraftWD] = 0;
+				PlayerInfo[playerid][pCraftWDTime] = 0;
     		}
     	}
     }
@@ -1120,12 +1121,10 @@ Dialog:CRAFT_WEAPON(playerid, response, listitem, inputtext[]) {
     return 1; 
 }
 
-hook OnGameModeInit() {
-
-	 
-}
-hook OnPlayerConnect(playerid) {
-	PlayerInfo[playerid][pCraftWD]= 0;
+hook OnPlayerConnect(playerid) 
+{
+	PlayerInfo[playerid][pCraftWD] = 0;
+	return 1;
 }
 CMD:catsung(playerid, params[])
 {

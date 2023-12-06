@@ -1,6 +1,7 @@
 #include <a_samp>
 #include <YSI_Coding\y_hooks>
 
+const TIMSTORE = 5552;
 
 stock GetJobFind(z) {
 	new jobnamez[80];
