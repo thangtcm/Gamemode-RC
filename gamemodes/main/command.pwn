@@ -25539,10 +25539,11 @@ CMD:r(playerid, params[]) {
 					format(string, sizeof(string), "(radio) %s", params);
 					SetPlayerChatBubble(playerid, string, COLOR_WHITE, 15.0, 5000);
 					GetPlayerGroupInfo(playerid, rank, division, employer);
-					if(PlayerInfo[playerid][pDivision] > 0)
-						format(string, sizeof(string), "**[CH: 911, DIV: %s] [%d] %s %s: %s **", arrGroupDivisions[iGroupID][PlayerInfo[playerid][pDivision]], PlayerInfo[playerid][pMaHieu1],rank, GetPlayerNameEx(playerid), params);
-					else
-						format(string, sizeof(string), "**[CH: 911, DIV: None] [%d] %s %s: %s **", PlayerInfo[playerid][pMaHieu1],rank, GetPlayerNameEx(playerid), params);
+					// if(PlayerInfo[playerid][pDivision] > 0)
+					// 	format(string, sizeof(string), "**[CH: 911, DIV: %s] [%d] %s %s: %s **", arrGroupDivisions[iGroupID][PlayerInfo[playerid][pDivision]], PlayerInfo[playerid][pMaHieu1],rank, GetPlayerNameEx(playerid), params);
+					// else
+					// 	format(string, sizeof(string), "**[CH: 911, DIV: None] [%d] %s %s: %s **", PlayerInfo[playerid][pMaHieu1],rank, GetPlayerNameEx(playerid), params);
+					format(string, sizeof(string), "{EEE8AA}** [CH: 911, S:1] %s: %s",  GetPlayerNameEx(playerid), params);
 					foreach(new i: Player)
 					{
 						if(GetPVarInt(i, "togRadio") == 0)
