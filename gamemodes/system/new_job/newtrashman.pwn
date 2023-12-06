@@ -478,6 +478,10 @@ hook OnPlayerKeyStateChange(playerid, newkeys, oldkeys)
 					{
 						if(TMGInfo[TMInfo[playerid][GroupIDTM]][TMStep] != 2)
 						{
+							for(new j = 0; j < MAX_TRASHCAN; j++)
+							{
+								TMGInfo[TMInfo[playerid][GroupIDTM]][TMTrashcan][j] = 0;
+							}
 							for(new i = 0; i < i+1; i++)
 							{
 							    switch(random(4))
