@@ -89,7 +89,7 @@ CMD:cauca(playerid, params[])
 				    TogglePlayerControllable(playerid, 0);				
 				    cmd_me(playerid,"dang cau ca.");
 					StartFishing(playerid);
-					ApplyAnimation(playerid,"SWORD","sword_block",50.0,0,1,0,1,1);		
+				
 				    SetPlayerAttachedObject(playerid, 0, 18632, 1, -0.194, 0.354999, 0.018, 96.1001, -45.6, -177.4, 1.000000, 1.000000, 1.000000, 0xFF0000AA);
 				}
 				else return SendErrorMessage(playerid, " Ban dang cau ca roi.");
@@ -116,7 +116,7 @@ hook OnPlayerKeyStateChange(playerid, newkeys, oldkeys)
 			{
 				F_CountPress[playerid] ++;
 				new string[128];
-				format(string, sizeof(string), "{AA3333}AdmWarning{FFFF00}: %s (ID: %d) Da thuc hien nhan phim capcha voi toc do ban tho %d lan.", GetPlayerNameEx(playerid), playerid, CountPress[playerid]);
+				format(string, sizeof(string), "{AA3333}AdmWarning{FFFF00}: %s (ID: %d) Da thuc hien nhan phim capcha voi toc do ban tho %d lan.", GetPlayerNameEx(playerid), playerid, F_CountPress[playerid]);
 				ABroadCast(COLOR_YELLOW, string, 2);
 				format(string, sizeof(string), "{AA3333}AdmWarning{FFFF00}: %s (ID: %d) co the dang su dung cleo auto farm nhan phim capcha trong %d giay.", GetPlayerNameEx(playerid), playerid, F_GetTimeNow - GetPVarInt(playerid, "F_TimeCountNotyHack"));
 				ABroadCast(COLOR_YELLOW, string, 2);
@@ -178,6 +178,7 @@ public StartFishing(playerid)
 		F_TimerRandomPress[playerid] = random(F_timerdc[playerid]-10);
 		F_KeyPressed[playerid] = true;
 		SetPVarInt(playerid, "FishWorking", 1);
+		ApplyAnimation(playerid,"SWORD","sword_block",50.0,0,1,0,1,1);		
 		ApplyAnimation(playerid,"SWORD","sword_block",50.0,0,1,0,1,1);
 		FishTimer[playerid] = SetTimerEx("F_StartCountTime", 1000, true, "i", playerid);
 }
@@ -219,17 +220,17 @@ public F_StartCountTime(playerid)
 					DeletePVar(playerid, "FishWorking");
 					if(JobSkill[playerid][Fish] < 250)
 					{   
-					    new rdd = random(100);
+					    new rdd = random(10);
 					    switch(rdd)
 					    {
-					         case 0..5:
+					         case 0..3:
 					         {
 					            format(format_job, sizeof(format_job), "~y~ OH MY GOD~n~ Ban da rat may man khi dao duoc ~r~1x Santa Hat~y~.");					
 		                        SendClientMessage(playerid,COLOR_WHITE, string);			
 		                        SendLogToDiscordRoom("SANTA HAT" ,"1180540668632899688", "Name", GetPlayerNameEx(playerid, false), "JOB", "Mineral", "Số lượng", "1 SANTA HAT", 0xFF4747);							
 		                    	Inventory_Add(playerid, "Santa Hat", 1);	
 					         }
-					         case 6..100:
+					         case 4..10:
 					         {
 					            new rd = 5 + random(5);
 							    format(string, sizeof(string), "[FISHING] Ban da cau thanh cong {FF8E00}%d KG {FFFFFF} ca.", rd);
@@ -242,17 +243,17 @@ public F_StartCountTime(playerid)
 					}
 					else if(JobSkill[playerid][Fish] >= 250)
 					{
-					    new rdd = random(100);
+					    new rdd = random(10);
 					    switch(rdd)
 					    {
-					         case 0..5:
+					         case 0..3:
 					         {
 					            format(format_job, sizeof(format_job), "~y~ OH MY GOD~n~ Ban da rat may man khi dao duoc ~r~1x Santa Hat~y~.");					
 		                        SendClientMessage(playerid,COLOR_WHITE, string);			
 		                        SendLogToDiscordRoom("SANTA HAT" ,"1180540668632899688", "Name", GetPlayerNameEx(playerid, false), "JOB", "Mineral", "Số lượng", "1 SANTA HAT", 0xFF4747);							
 		                    	Inventory_Add(playerid, "Santa Hat", 1);	
 					         }
-					         case 6..100:
+					         case 4..10:
 					         {
 					            new rd = 10 + random(8);
 							    format(string, sizeof(string), "Ban da cau thanh cong {FF8E00}%d KG {FFFFFF} ca.", rd);
@@ -322,6 +323,6 @@ stock F_ShowMessageKeyPressed(playerid)
 		}
 	}
 	SetPVarInt(playerid, "F_TimeCountNotyHack", gettime());
-	SendClientTextDraw(playerid, str);
+	SendClientTextDraw(playerid, str, 2);
 	return 1;
 }
