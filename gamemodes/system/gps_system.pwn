@@ -1,6 +1,7 @@
 #include <a_samp>
 #include <YSI_Coding\y_hooks>
 
+const TIMSTORE = 5552;
 
 stock GetJobFind(z) {
 	new jobnamez[80];
@@ -88,7 +89,7 @@ CMD:gps(playerid, params[])
 {
 	if(Inventory_HasItem(playerid, "GPS"))
 	{
-	    Dialog_Show(playerid, GPSPosition, DIALOG_STYLE_LIST, "GPS SYSTEM", "Map\nJob\nStore", "Lua chon", "Huy bo");
+	    Dialog_Show(playerid, GPSPosition, DIALOG_STYLE_LIST, "GPS SYSTEM", "Map\nJob\nStore\nMy house", "Lua chon", "Huy bo");
 	    return 1;
     }
     else
@@ -154,6 +155,10 @@ Dialog:GPSPosition(playerid, response, listitem, inputtext[])
 				    format(string, sizeof string, "%s\n\%s\t{6db4c3}%s\t{3cab4e}%0.2f met", string,s_GetZoneFind(z),zone,Distance);
 				}
 				ShowPlayerDialog(playerid, TIMSTORE, DIALOG_STYLE_TABLIST_HEADERS, "Store",string,"Chon", "Huy");
+			}
+			case 3:
+			{
+			    cmd_home(playerid,"");
 			}
 		
 		}
