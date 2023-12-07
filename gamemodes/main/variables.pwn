@@ -12,8 +12,6 @@ new VehSignInfo[MAX_VEHICLES][VEHSIGN_DATA];
 new Text3D:VehSignText[MAX_VEHICLES];
 
 new PlayerAmmo[MAX_PLAYERS][10];
-new CraftWeaponDeal[MAX_PLAYERS];
-new CraftWeaponDealTime[MAX_PLAYERS];
 
 // new PlayerText:RadioInfo[MAX_PLAYERS];
 new PlayerText:ChannelInfo[MAX_PLAYERS];
