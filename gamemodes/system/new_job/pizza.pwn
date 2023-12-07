@@ -21,12 +21,10 @@ GetRandomHouse(playerid) // check
 
 	for(new i = 0; i < MAX_HOUSES; i ++)
 	{
-	    if(HouseInfo[i][hOwnerID])
-	    {
-	        if(60 <= GetPlayerDistanceFromPoint(playerid, HouseInfo[i][hExteriorX], HouseInfo[i][hExteriorY], HouseInfo[i][hExteriorZ]) <= 1800.0)
-	        {
-	        	houseIDs[index++] = i;
-			}
+	    
+        if(60 <= GetPlayerDistanceFromPoint(playerid, HouseInfo[i][hExteriorX], HouseInfo[i][hExteriorY], HouseInfo[i][hExteriorZ]) <= 1200.0 && HouseInfo[i][hExteriorX] != 0.0)
+        {
+        	houseIDs[index++] = i;
 		}
 	}
 
@@ -114,7 +112,7 @@ hook OnPlayerKeyStateChange(playerid, newkeys, oldkeys)
 					
 					if(level < 200)
 				    {
-				        format(strr, sizeof strr, "(XE PIZZA - LEVEL 1)\nChu so huu: {FFCB00}%s{ffffff}\nBanh trong xe: {FFCB00}%d/5{ffffff}", GetPlayerNameEx(playerid),Pizza_Quantity[PizzaJob[playerid][Vehicle]]);
+				        format(strr, sizeof strr, "{FFCB00}Pizza Delivery - Level 1{FFFFFF}\nPhuong tien cua: {FFCB00}%s{ffffff}\nBanh trong xe: {FFCB00}%d/5{ffffff}", GetPlayerNameEx(playerid),Pizza_Quantity[PizzaJob[playerid][Vehicle]]);
 				        Update3DTextLabelText(PizzaTextInfo[playerid], COLOR_WHITE, strr);
 				        format(str,sizeof(str),"Ban da bo banh vao cop xe so banh hien tai tren xe cua ban la: [~y~%d/5~w~] (Su dung N de lay banh ra).",Pizza_Quantity[PizzaJob[playerid][Vehicle]]);
 					    SendClientTextDraw(playerid, str);
@@ -123,7 +121,7 @@ hook OnPlayerKeyStateChange(playerid, newkeys, oldkeys)
 				    else 
 				    if(level >= 200)
 				    {
-				        format(strr, sizeof strr, "(XE PIZZA - LEVEL 2)\nChu so huu: {FFCB00}%s{ffffff}\nBanh trong xe: {FFCB00}%d/10{ffffff}", GetPlayerNameEx(playerid),Pizza_Quantity[PizzaJob[playerid][Vehicle]]);
+				        format(strr, sizeof strr, "{FFCB00}Pizza Delivery - Level 2{FFFFFF}\nPhuong tien cua: {FFCB00}%s{ffffff}\nBanh trong xe: {FFCB00}%d/10{ffffff}", GetPlayerNameEx(playerid),Pizza_Quantity[PizzaJob[playerid][Vehicle]]);
 				        Update3DTextLabelText(PizzaTextInfo[playerid], COLOR_WHITE, strr);
 				        format(str,sizeof(str),"Ban da bo banh vao cop xe so banh hien tai tren xe cua ban la: [~y~%d/10~w~] (Su dung N de lay banh ra).",Pizza_Quantity[PizzaJob[playerid][Vehicle]]);
 					    SendClientTextDraw(playerid, str);
@@ -154,7 +152,7 @@ hook OnPlayerKeyStateChange(playerid, newkeys, oldkeys)
 								new level = JobSkill[playerid][Pizza];
 								if(level < 200)
             				    {
-            				        format(strr, sizeof strr, "(XE PIZZA - LEVEL 1)\nChu so huu: {FFCB00}%s{ffffff}\nBanh trong xe: {FFCB00}%d/5{ffffff}", GetPlayerNameEx(playerid),Pizza_Quantity[PizzaJob[playerid][Vehicle]]);
+            				        format(strr, sizeof strr, "{FFCB00}Pizza Delivery - Level 1{FFFFFF}\nPhuong tien cua: {FFCB00}%s{ffffff}\nBanh trong xe: {FFCB00}%d/5{ffffff}", GetPlayerNameEx(playerid),Pizza_Quantity[PizzaJob[playerid][Vehicle]]);
             				        Update3DTextLabelText(PizzaTextInfo[playerid], COLOR_WHITE, strr);
             				        format(string, sizeof(string), "Ban da lay banh tu trong xe ra (So luong con: [~y~%d/5]~w~)", Pizza_Quantity[PizzaJob[playerid][Vehicle]]);
 								    SendClientTextDraw(playerid, string);
@@ -162,7 +160,7 @@ hook OnPlayerKeyStateChange(playerid, newkeys, oldkeys)
             				    else 
             				    if(level >= 200)
             				    {
-            				        format(strr, sizeof strr, "(XE PIZZA - LEVEL 2)\nChu so huu: {FFCB00}%s{ffffff}\nBanh trong xe: {FFCB00}%d/10{ffffff}", GetPlayerNameEx(playerid),Pizza_Quantity[PizzaJob[playerid][Vehicle]]);
+            				        format(strr, sizeof strr, "{FFCB00}Pizza Delivery - Level 2{FFFFFF}\nPhuong tien cua: {FFCB00}%s{ffffff}\nBanh trong xe: {FFCB00}%d/10{ffffff}", GetPlayerNameEx(playerid),Pizza_Quantity[PizzaJob[playerid][Vehicle]]);
             				        Update3DTextLabelText(PizzaTextInfo[playerid], COLOR_WHITE, strr);
             				        format(string, sizeof(string), "Ban da lay banh tu trong xe ra (So luong con: [~y~%d/10]~w~)", Pizza_Quantity[PizzaJob[playerid][Vehicle]]);
 						      		SendClientTextDraw(playerid, string);
@@ -209,7 +207,7 @@ hook OnPlayerEnterCheckpoint(playerid)
 			}
 			else
 			{
-			    new randomm = 40 + random(25);
+			    new randomm = 45 + random(25);
 			    Pizza_Reward[playerid] += randomm;
 			    format(str, sizeof str,"(JOB PIZZA) Ban da giao thanh cong va nhan duoc %d$ tien thuong (vi tri xa) - Tien thuong hien tai %d$", randomm, Pizza_Reward[playerid]);
 			    SendClientMessage(playerid, COLOR_WHITE, str);
@@ -254,7 +252,7 @@ CMD:jhonsongrentpizza(playerid, params[])
     	SendServerMessage(playerid, "(JOB PIZZA) Ban da lay xe tu cua hang, hay chay can than nhe!");
     	new zzstr[150];
         Pizza_RentOn[playerid] = 1;
-    	format(zzstr, sizeof zzstr, "(XE PIZZA - LEVEL 1)\nChu so huu: {FFCB00}%s{ffffff}\nBanh trong xe: {FFCB00}%d/5{ffffff}", GetPlayerNameEx(playerid),Pizza_Quantity[PizzaJob[playerid][Vehicle]]);
+    	format(zzstr, sizeof zzstr, "{FFCB00}Pizza Delivery - Level 1{FFFFFF}\nPhuong tien cua: {FFCB00}%s{ffffff}\nBanh trong xe: {FFCB00}%d/5{ffffff}", GetPlayerNameEx(playerid),Pizza_Quantity[PizzaJob[playerid][Vehicle]]);
         PizzaTextInfo[playerid] = Create3DTextLabel(zzstr, COLOR_WHITE, 0.0, 0.0, 0.0, 20.0, 0, 1);
         Attach3DTextLabelToVehicle(PizzaTextInfo[playerid], PizzaJob[playerid][Vehicle], 0.0, 0.0, 2.0); // Attaching Text Label To Vehicle.
     }
@@ -271,7 +269,7 @@ CMD:jhonsongrentpizza(playerid, params[])
     	SendServerMessage(playerid, "(JOB PIZZA) Ban da lay xe tu cua hang, hay chay can than nhe!");
     	new zzstr[150];
         Pizza_RentOn[playerid] = 1;
-    	format(zzstr, sizeof zzstr, "(XE PIZZA - LEVEL 2)\nChu so huu: {FFCB00}%s{ffffff}\nBanh trong xe: {FFCB00}%d/10{ffffff}", GetPlayerNameEx(playerid),Pizza_Quantity[PizzaJob[playerid][Vehicle]]);
+    	format(zzstr, sizeof zzstr, "{FFCB00}Pizza Delivery - Level 2{FFFFFF}\nPhuong tien cua: {FFCB00}%s{ffffff}\nBanh trong xe: {FFCB00}%d/10{ffffff}", GetPlayerNameEx(playerid),Pizza_Quantity[PizzaJob[playerid][Vehicle]]);
         PizzaTextInfo[playerid] = Create3DTextLabel(zzstr, COLOR_WHITE, 0.0, 0.0, 0.0, 20.0, 0, 1);
         Attach3DTextLabelToVehicle(PizzaTextInfo[playerid], PizzaJob[playerid][Vehicle], 0.0, 0.0, 2.0); // Attaching Text Label To Vehicle.
     }
