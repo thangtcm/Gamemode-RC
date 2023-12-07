@@ -299,7 +299,7 @@ public AwardCD(playerid) {
 	{
 		//add them o day
 		
-		new money = Random(100000, 300000);
+		new money = Random(100, 500);
 		new string[70];
 		Inventory_Add(playerid, "img dirty", money);
 		SendNewFamilyMessage(playerid, -1, "-------------------------------- {FFFF00}[AWARD CAPTURE GANG]{FFFFFF} -------------------------------------");
