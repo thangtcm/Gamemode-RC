@@ -93,6 +93,7 @@ public Stealing_Tires(playerid)
     SetPlayerSpecialAction(playerid, SPECIAL_ACTION_CARRY);
     SetPlayerAttachedObject(playerid, 9, 1096, 5, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 1.0, 1.0);
 
+    Inventory_RemoveTimer(playerid, "Co Le", 1);
     return 1;
 }
 
@@ -176,19 +177,23 @@ CMD:steal(playerid, params[])
     {
         v = GetPlayerVehicle(i, closestcar);
         if (v != -1) {
+            
+            if (playerid == i) return SendErrorMessage(playerid, " Ban khong trom duoc chiec xe cua minh.");
             /* Kiểm tra xem lốp xe người chơi còn hạn không */
-            if (PlayerVehicleInfo[i][v][pvTiresDays] < gettime()) return SendErrorMessage(playerid, "Lop cua chiec xe nay da het han su dung.");
+            if (PlayerVehicleInfo[i][v][pvTiresDays] < gettime()) return SendErrorMessage(playerid, " Lop cua chiec xe nay da het han su dung.");
+        
+            vSteal[playerid] = closestcar;
+            ApplyAnimation(playerid, "BOMBER", "BOM_Plant_Loop", 4.0, 1, 0, 0, 1, 0, 1);
+            SendClientTextDraw(playerid, "Ban dang trom lop xe...", 60);
+            SetTimerEx("Stealing_Tires", 1000, false, "d", playerid);
+            SetPVarInt(playerid, #Stealing_timer, 60);
+            SetPVarInt(playerid, #Stealing, 1);
+            SendClientMessage(playerid, -1, "Go '/steal' mot lan nua de huy bo hanh dong.");
+            GetPlayerPos(playerid, checkPos[playerid][0], checkPos[playerid][1], checkPos[playerid][2]);
         }
     }
 
-    vSteal[playerid] = closestcar;
-    ApplyAnimation(playerid, "BOMBER", "BOM_Plant_Loop", 4.0, 1, 0, 0, 1, 0, 1);
-    SendClientTextDraw(playerid, "Ban dang trom lop xe...", 60);
-    SetTimerEx("Stealing_Tires", 1000, false, "d", playerid);
-    SetPVarInt(playerid, #Stealing_timer, 60);
-    SetPVarInt(playerid, #Stealing, 1);
-    SendClientMessage(playerid, -1, "Go '/steal' mot lan nua de huy bo hanh dong.");
-    GetPlayerPos(playerid, checkPos[playerid][0], checkPos[playerid][1], checkPos[playerid][2]);
+    SendErrorMessage(playerid, " Phuong tien khong kha dung.");
     return 1;
 }
 
