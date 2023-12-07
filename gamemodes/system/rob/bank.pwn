@@ -27,8 +27,8 @@ CMD:robbank(playerid, params[])
 	if(!IsPlayerInRangeOfPoint(playerid, 15.0, 1436.2850,-999.7745,1639.8025)) return SendErrorMessage(playerid, "Ban khong o khu vuc cuop ngan hang !");
 	new hourb, minuteb, secondb;
 	gettime(hourb, minuteb, secondb);
-	// if(hour < 19 || hour > 23) return SendErrorMessage(playerid, "Day khong phai thoi diem cuop (20h - 22h)");
-	// if(Cops < 2) return SendErrorMessage(playerid, "So luong PD khong du de thuc hien vu cuop !");
+	if(hour < 19 || hour > 23) return SendErrorMessage(playerid, "Day khong phai thoi diem cuop (20h - 22h)");
+	if(Cops < 2) return SendErrorMessage(playerid, "So luong PD khong du de thuc hien vu cuop !");
 
 	if(Rob_Status[playerid] == 1) return SendErrorMessage(playerid, "Ban dang cuop ngan hang roi !");
 	new check_g = 0;
