@@ -13,6 +13,9 @@ new FishTimer[MAX_PLAYERS];
 new F_TimerRandomPress[MAX_PLAYERS];
 new F_DownCountJobTime[MAX_PLAYERS];
 
+static 
+    Float:f_checkPos[MAX_PLAYERS][3],
+
 hook OnPlayerConnect(playerid)
 {
 	F_CountPress[playerid] = 0;
@@ -86,10 +89,10 @@ CMD:cauca(playerid, params[])
 	    	{
 				if(F_timerdc[playerid] == 0)
 				{
-				    TogglePlayerControllable(playerid, 0);				
 				    cmd_me(playerid,"dang cau ca.");
 					StartFishing(playerid);
-				
+				    GetPlayerPos(playerid, f_checkPos[playerid][0], f_checkPos[playerid][1], f_checkPos[playerid][2]);
+				    SendClientMessage(playerid, COLOR_YELLOW, "Neu ban di chuyen se that bai");
 				    SetPlayerAttachedObject(playerid, 0, 18632, 1, -0.194, 0.354999, 0.018, 96.1001, -45.6, -177.4, 1.000000, 1.000000, 1.000000, 0xFF0000AA);
 				}
 				else return SendErrorMessage(playerid, " Ban dang cau ca roi.");
@@ -116,9 +119,7 @@ hook OnPlayerKeyStateChange(playerid, newkeys, oldkeys)
 			{
 				F_CountPress[playerid] ++;
 				new string[128];
-				format(string, sizeof(string), "{AA3333}AdmWarning{FFFF00}: %s (ID: %d) Da thuc hien nhan phim capcha voi toc do ban tho %d lan.", GetPlayerNameEx(playerid), playerid, F_CountPress[playerid]);
-				ABroadCast(COLOR_YELLOW, string, 2);
-				format(string, sizeof(string), "{AA3333}AdmWarning{FFFF00}: %s (ID: %d) co the dang su dung cleo auto farm nhan phim capcha trong %d giay.", GetPlayerNameEx(playerid), playerid, F_GetTimeNow - GetPVarInt(playerid, "F_TimeCountNotyHack"));
+				format(string, sizeof(string), "{AA3333}AdmWarning{FFFF00}: [JOB FISHING] %s (ID: %d) co the dang su dung cleo auto farm nhan phim capcha trong %d giay (TONG: %d lan).", GetPlayerNameEx(playerid), playerid, F_GetTimeNow - GetPVarInt(playerid, "F_TimeCountNotyHack"), F_CountPress[playerid]);
 				ABroadCast(COLOR_YELLOW, string, 2);
 			}
 			else
@@ -158,6 +159,12 @@ hook OnPlayerDisconnect(playerid, reason)
 	return 1;
 }
 
+hook OnPlayerConnect(playerid)
+{
+    f_checkPos[playerid][0] = EOS;
+    return 1;
+}
+
 forward F_ResetPrice();
 public F_ResetPrice()
 {
@@ -171,16 +178,15 @@ public F_ResetPrice()
 forward StartFishing(playerid);
 public StartFishing(playerid)
 {
-		F_timerdc[playerid] = 35+(random(10));
+		F_timerdc[playerid] = 35+(random(8));
 		if(F_DownCountJobTime[playerid] >= gettime()) {
 			F_timerdc[playerid] -= 10;
 		}
 		F_TimerRandomPress[playerid] = random(F_timerdc[playerid]-10);
 		F_KeyPressed[playerid] = true;
 		SetPVarInt(playerid, "FishWorking", 1);
-		ApplyAnimation(playerid,"SWORD","sword_block",50.0,0,1,0,1,1);		
-		ApplyAnimation(playerid,"SWORD","sword_block",50.0,0,1,0,1,1);
 		FishTimer[playerid] = SetTimerEx("F_StartCountTime", 1000, true, "i", playerid);
+		ApplyAnimation(playerid,"SWORD","sword_block",50.0,0,1,0,1,1);
 }
 forward F_StartCountTime(playerid);
 public F_StartCountTime(playerid)
@@ -193,14 +199,19 @@ public F_StartCountTime(playerid)
 			{
 				if(F_timerdc[playerid] > 0)
 				{
-					
+			 	   new Float:pcPos[3];
+					GetPlayerPos(playerid, pcPos[0], pcPos[1], pcPos[2]);
+					if (f_checkPos[playerid][0] != pcPos[0]) {
+			            SendErrorMessage(playerid, "CAU CA THAT BAI! Vui long khong di chuyen khi dang cau.");
+			            return FaildFish(playerid);
+			        }
 					F_timerdc[playerid]--;
 					new format_job[1280];
 					if(F_DownCountJobTime[playerid] >= gettime()) {
-						format(format_job, sizeof(format_job), "Vui long doi~p~ %d~w~s.)", F_timerdc[playerid]);
+						format(format_job, sizeof(format_job), "~y~Ban dang cau ca...\n~w~Vui long doi ~p~%d~w~ giay.", F_timerdc[playerid]);
 					}
 					else {
-						format(format_job, sizeof(format_job), "Vui long doi~p~ %d~w~s.", F_timerdc[playerid]);
+						format(format_job, sizeof(format_job), "~y~Ban dang cau ca...\n~w~Vui long doi ~p~%d~w~ giay.", F_timerdc[playerid]);
 					}
 					SendClientTextDraw(playerid, format_job, 1);
 					if(F_timerdc[playerid] == F_TimerRandomPress[playerid])
@@ -223,14 +234,14 @@ public F_StartCountTime(playerid)
 					    new rdd = random(10);
 					    switch(rdd)
 					    {
-					         case 0..3:
+					         case 0..1:
 					         {
 					            format(format_job, sizeof(format_job), "~y~ OH MY GOD~n~ Ban da rat may man khi dao duoc ~r~1x Santa Hat~y~.");					
-		                        SendClientMessage(playerid,COLOR_WHITE, string);			
-		                        SendLogToDiscordRoom("SANTA HAT" ,"1180540668632899688", "Name", GetPlayerNameEx(playerid, false), "JOB", "Mineral", "Số lượng", "1 SANTA HAT", 0xFF4747);							
+		                        SendClientTextDraw(playerid, format_job, 1);
+		                        SendLogToDiscordRoom("SANTA HAT" ,"1180540668632899688", "Name", GetPlayerNameEx(playerid, false), "JOB", "FISHING", "Số lượng", "1 SANTA HAT", 0xFF4747);							
 		                    	Inventory_Add(playerid, "Santa Hat", 1);	
 					         }
-					         case 4..10:
+					         case 2..10:
 					         {
 					            new rd = 5 + random(5);
 							    format(string, sizeof(string), "[FISHING] Ban da cau thanh cong {FF8E00}%d KG {FFFFFF} ca.", rd);
@@ -246,19 +257,19 @@ public F_StartCountTime(playerid)
 					    new rdd = random(10);
 					    switch(rdd)
 					    {
-					         case 0..3:
+					         case 0..1:
 					         {
 					            format(format_job, sizeof(format_job), "~y~ OH MY GOD~n~ Ban da rat may man khi dao duoc ~r~1x Santa Hat~y~.");					
-		                        SendClientMessage(playerid,COLOR_WHITE, string);			
-		                        SendLogToDiscordRoom("SANTA HAT" ,"1180540668632899688", "Name", GetPlayerNameEx(playerid, false), "JOB", "Mineral", "Số lượng", "1 SANTA HAT", 0xFF4747);							
+		                        SendClientTextDraw(playerid, format_job, 1);
+		                        SendLogToDiscordRoom("SANTA HAT" ,"1180540668632899688", "Name", GetPlayerNameEx(playerid, false), "JOB", "FISHING", "Số lượng", "1 SANTA HAT", 0xFF4747);							
 		                    	Inventory_Add(playerid, "Santa Hat", 1);	
 					         }
-					         case 4..10:
+					         case 2..10:
 					         {
-					            new rd = 10 + random(8);
-							    format(string, sizeof(string), "Ban da cau thanh cong {FF8E00}%d KG {FFFFFF} ca.", rd);
-							    SendClientMessage(playerid,COLOR_WHITE, string);
-						 	   Inventory_Add(playerid, "Ca", rd);
+					            new rd = 5 + random(5);
+							    format(string, sizeof(string), "[FISHING] Ban da cau thanh cong {FF8E00}%d KG {FFFFFF} ca.", rd);
+						 	   SendClientMessage(playerid, COLOR_WHITE, string);
+					        	Inventory_Add(playerid, "Ca", rd);
 	   			          }
 					    }				    					
 				        new pItemId = Inventory_GetItemID(playerid, "Moi cau", 1);
