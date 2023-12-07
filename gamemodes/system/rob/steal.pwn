@@ -141,7 +141,7 @@ hook OnPlayerEnterCheckpoint(playerid)
     if (decayCP[playerid] && IsPlayerInRangeOfPoint(playerid, 2.0, -1880.6027, -1658.2773, 21.7500))
     {
         new tien_ban;
-        for (new i; i < decayCP[playerid]; i ++) tien_ban += Random(3000, 5000);
+        for (new i; i < decayCP[playerid]; i ++) tien_ban += Random(3, 5);
 
         Inventory_Add(playerid, "Vat lieu", decayCP[playerid]);
         Inventory_Add(playerid, "Tien Ban", tien_ban);
