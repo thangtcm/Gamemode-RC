@@ -1,7 +1,7 @@
 #include <YSI_Coding\y_hooks>
 hook OnGameModeInit()
 {
-	CreateDynamic3DTextLabel("{FF0000}Su dung '/dangkibienso' de cuop", -1, 248.3361,118.1592,1003.2188+0.6,12.0);
+	CreateDynamic3DTextLabel("{FF0000}Su dung '/dangkibienso' de dang ki bien so", -1, 248.3361,118.1592,1003.2188+0.6,12.0);
 	// 248.3361,118.1592,1003.2188,182.3316
 }
 stock LoadVehicleSign()
@@ -29,11 +29,12 @@ public OnVehicleSign()
 	}
 	if(!rows) return printf("[Vehicle Sign database] 0 Vehicle Sign loaded.", rows);
 	printf("[Vehicle Sign database] %d Vehicle Sign loaded.", rows);
+
 	return 1;
 }
 stock FindVehSign(vehsqlid)
 {
-	new vsid = -1;
+	new vsid = INVALID_PLAYER_VEHICLE_ID;
 	for(new i = 0; i < MAX_VEHICLES; i++)
 	{
 		if(VehSignInfo[i][vs_VehicleID] == vehsqlid)
@@ -155,8 +156,7 @@ stock SaveVehSign(){
 stock MenuRegisterVehSign(playerid)
 {
 	new vstring[4096], icount = GetPlayerVehicleSlots(playerid);
-	new statez[30];
-	vstring = "Phuong tien\tTinh trang\tGiay to xe";
+	vstring = "Phuong tien\tTinh trang\tBien so xe";
 	for(new i, iModelID; i < icount; i++)
 	{
 		if((iModelID = PlayerVehicleInfo[playerid][i][pvModelId] - 400) >= 0)
@@ -165,21 +165,16 @@ stock MenuRegisterVehSign(playerid)
 			if(VehSignID != -1){
 				format(VehSignstr, sizeof(VehSignstr), "SF-%d", VehSignInfo[VehSignID][vs_VehSign]);
 			} else VehSignstr = "{c54640}Chua dang ky{FFFFFF}";
-			switch(PlayerVehicleInfo[playerid][i][pvGiayToXe]) 
-			{
-				case 0: statez = "{c54640}Chua dang ky{FFFFFF}";
-				case 1: statez = "{36e198}Da dang ky{FFFFFF}";
-			}
 			if(PlayerVehicleInfo[playerid][i][pvImpounded]) {
-				format(vstring, sizeof(vstring), "%s\n[%d]%s\t{f0635c}Tich thu{ffffff}\t%s", vstring,PlayerVehicleInfo[playerid][i][pvSlotId], VehicleName[iModelID],statez);
+				format(vstring, sizeof(vstring), "%s\n[%d]%s\t{f0635c}Tich thu{ffffff}\t%s", vstring,PlayerVehicleInfo[playerid][i][pvSlotId], VehicleName[iModelID],VehSignstr);
 			}
 			else if(PlayerVehicleInfo[playerid][i][pvDisabled]) {
-				format(vstring, sizeof(vstring), "%s\n[%d]%s\t{f0635c}Khong dung duoc{ffffff}\t%s", vstring,PlayerVehicleInfo[playerid][i][pvSlotId], VehicleName[iModelID],statez);
+				format(vstring, sizeof(vstring), "%s\n[%d]%s\t{f0635c}Khong dung duoc{ffffff}\t%s", vstring,PlayerVehicleInfo[playerid][i][pvSlotId], VehicleName[iModelID],VehSignstr);
 			}
 			else if(!PlayerVehicleInfo[playerid][i][pvSpawned]) {
-				format(vstring, sizeof(vstring), "%s\n[%d]%s\t{eedf4f}Trong Garage{ffffff}\t%s", vstring,PlayerVehicleInfo[playerid][i][pvSlotId], VehicleName[iModelID],statez);
+				format(vstring, sizeof(vstring), "%s\n[%d]%s\t{eedf4f}Trong Garage{ffffff}\t%s", vstring,PlayerVehicleInfo[playerid][i][pvSlotId], VehicleName[iModelID],VehSignstr);
 			}
-			else format(vstring, sizeof(vstring), "%s\n[%d]%s\t{7fe39a}Dang su dung{ffffff}\t%s", vstring,PlayerVehicleInfo[playerid][i][pvSlotId], VehicleName[iModelID],statez);
+			else format(vstring, sizeof(vstring), "%s\n[%d]%s\t{7fe39a}Dang su dung{ffffff}\t%s", vstring,PlayerVehicleInfo[playerid][i][pvSlotId], VehicleName[iModelID],VehSignstr);
 		}
 	}
 	format(vstring, sizeof(vstring), "%s", vstring);

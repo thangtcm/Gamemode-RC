@@ -25539,10 +25539,11 @@ CMD:r(playerid, params[]) {
 					format(string, sizeof(string), "(radio) %s", params);
 					SetPlayerChatBubble(playerid, string, COLOR_WHITE, 15.0, 5000);
 					GetPlayerGroupInfo(playerid, rank, division, employer);
-					if(PlayerInfo[playerid][pDivision] > 0)
-						format(string, sizeof(string), "**[CH: 911, DIV: %s] [%d] %s %s: %s **", arrGroupDivisions[iGroupID][PlayerInfo[playerid][pDivision]], PlayerInfo[playerid][pMaHieu1],rank, GetPlayerNameEx(playerid), params);
-					else
-						format(string, sizeof(string), "**[CH: 911, DIV: None] [%d] %s %s: %s **", PlayerInfo[playerid][pMaHieu1],rank, GetPlayerNameEx(playerid), params);
+					// if(PlayerInfo[playerid][pDivision] > 0)
+					// 	format(string, sizeof(string), "**[CH: 911, DIV: %s] [%d] %s %s: %s **", arrGroupDivisions[iGroupID][PlayerInfo[playerid][pDivision]], PlayerInfo[playerid][pMaHieu1],rank, GetPlayerNameEx(playerid), params);
+					// else
+					// 	format(string, sizeof(string), "**[CH: 911, DIV: None] [%d] %s %s: %s **", PlayerInfo[playerid][pMaHieu1],rank, GetPlayerNameEx(playerid), params);
+					format(string, sizeof(string), "{EEE8AA}** [CH: 911, S:1] %s: %s",  GetPlayerNameEx(playerid), params);
 					foreach(new i: Player)
 					{
 						if(GetPVarInt(i, "togRadio") == 0)
@@ -46118,7 +46119,7 @@ CMD:locker(playerid, params[]) {
 							    format(szTitle, sizeof(szTitle), "%s - {AA3333}Locker Stock: %d", szTitle, arrGroupData[iGroupID][g_iLockerStock]);
 							}
 					    }
-					    format(szDialog, sizeof(szDialog), "Duty\nVu khi\nDong phuc%s", (arrGroupData[iGroupID][g_iGroupType] == 1) ? ("\nClear Suspect\nFirstAid & Kevlar\nMedkit & Vest Trunk Kit\nTazer & Cuffs\nWEAPON (NEW)\n AMMO (NEW)") : (""));
+					    format(szDialog, sizeof(szDialog), "Duty\nVu khi\nDong phuc%s", (arrGroupData[iGroupID][g_iGroupType] == 1) ? ("\nClear Suspect\nFirstAid & Kevlar\nMedkit & Vest Trunk Kit\nTazer & Cuffs\nAMMO (NEW)") : (""));
 						ShowPlayerDialog(playerid, G_LOCKER_MAIN, DIALOG_STYLE_LIST, szTitle, szDialog, "Lua chon", "Huy bo");
 						return 1;
 					}
@@ -51088,6 +51089,6 @@ CMD:socuu(playerid, params[])
 	SetTimerEx("Do_Treatment", 7000, 0, "dd", playerid, targetid);
 	ApplyAnimation(playerid, "MEDIC", "CPR", 4.1, 1, 0, 0, 0, 0);
 	TogglePlayerControllable(playerid, 0);	
-	SendClientTextDraw(playerid, "Ban dang trong qua trinh so cuu...", 7000);
+	SendClientTextDraw(playerid, "Ban dang trong qua trinh so cuu...", 7);
 	return 1;
 }

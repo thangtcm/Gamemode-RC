@@ -1259,7 +1259,7 @@ PayDay(i) {
 				iGroupID = PlayerInfo[i][pMember],
 				iRank = PlayerInfo[i][pRank];
 
-			if((0 <= iGroupID < MAX_GROUPS) && 0 <= iRank <= 9 && arrGroupData[iGroupID][g_iPaycheck][iRank] > 0) {
+			if((0 <= iGroupID < MAX_GROUPS) && 0 <= iRank <= 18 && arrGroupData[iGroupID][g_iPaycheck][iRank] > 0) {
 				if(arrGroupData[iGroupID][g_iAllegiance] == 1)
 				{
 					if(Tax > 0) {
@@ -1961,7 +1961,7 @@ public Do_Treatment(playerid, targetid)
 
 
 	sendMessage(playerid, -1, "Ban da so cuu thanh cong %s voi 1 bo so cuu.", GetPlayerNameEx(targetid));
-	sendMessage(playerid, -1, "%s da so cuu thanh cong cho ban.", GetPlayerNameEx(playerid));
+	sendMessage(targetid, -1, "%s da so cuu thanh cong cho ban.", GetPlayerNameEx(playerid));
 	Inventory_Remove(playerid, Inventory_GetItemID(playerid, "Bo so cuu"));
 	SetPlayerHealth(targetid, 10);
 	PlayerInfo[targetid][pDoiBung] = 20;
@@ -2800,7 +2800,7 @@ public InitiateGamemode()
 	LoadElevatorStuff();
 	LoadFamilies();
 	LoadPoints();
-	Misc_Load();
+	// Misc_Load();
 	ResetElevatorQueue();
 	Elevator_Initialize();
 	AntiDeAMX();
@@ -4041,11 +4041,11 @@ public SendEMSQueue(playerid,type)
 			//GameTextForPlayer(playerid, "~r~BI THUONG~n~~w~/chapnhan chet hoac /dichvu capcuu", 5000, 3);
 			SendClientTextDraw(playerid,"Ban da bi thuong ~r~/chapnhan chet~w~ de ve vien hoac ~r~/dichvu capcuu");
 			new string[64];
-			format(string, sizeof(string), "(( /damages %d de xem thong tin sat thuong ))", playerid);
+			format(string, sizeof(string), "(( /damages %d de xem thong tin sat thuong ))\n(( /socuu %d de so cuu nguoi choi ))", playerid, playerid);
 			if(!IsValidDynamic3DTextLabel(DeathText[playerid])) DeathText[playerid] = CreateDynamic3DTextLabel(string, -1, 0.0, 0.0, 0.0, 10.0, playerid, .worldid = GetPlayerVirtualWorld(playerid), .interiorid = GetPlayerInterior(playerid));
 			ClearAnimations(playerid);
 			TogglePlayerControllable(playerid, 0);
-			ApplyAnimation(playerid, "WUZI", "CS_Dead_Guy", 4.1, 1, 1, 1, 1, 0, 1);
+			ApplyAnimation(playerid, "ped", "FLOOR_hit_f", 4.0, 0, 1, 1, 1, 0, 1);
 			SetPlayerHealth(playerid, 100);
 			RemoveArmor(playerid);
 			if(GetPVarInt(playerid, "usingfirstaid") == 1)
@@ -16946,6 +16946,7 @@ stock CreatePlayerVehicle(playerid, playervehicleid, modelid, Float: x, Float: y
 		PlayerVehicleInfo[playerid][playervehicleid][pvPark] = 1;
 		PlayerVehicleInfo[playerid][playervehicleid][pvPrice] = price;
 		PlayerVehicleInfo[playerid][playervehicleid][pvCapacity] = 50.0;
+		PlayerVehicleInfo[playerid][playervehicleid][pvTiresDays] = gettime() + (86400 * 10);
 		switch(modelid)
 		{
 			case 403, 406, 414, 423, 427, 428, 433, 443, 455, 456, 470, 499, 514, 515:

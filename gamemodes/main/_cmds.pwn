@@ -148,7 +148,7 @@ CMD:g(playerid, params[]) {
 					//format(string, sizeof(string), "(radio) %s", params);
 					//SetPlayerChatBubble(playerid, string, COLOR_WHITE, 15.0, 5000);
 					GetPlayerGroupInfo(playerid, rank, division, employer);
-					format(string, sizeof(string), "(( (%d) %s: %s ))",rank, GetPlayerNameEx(playerid), params);
+					format(string, sizeof(string), "(( (%d - %s) %s: %s ))",PlayerInfo[playerid][pRank], rank, GetPlayerNameEx(playerid), params);
 					foreach(new i: Player)
 					{
 						if(GetPVarInt(i, "togGroup") == 0)
@@ -1324,7 +1324,7 @@ CMD:atm(playerid, params[]) {
 	return 1;
 }
 CMD:bank(playerid, params[]) {
-	if(!IsPlayerInRangeOfPoint(playerid, 15.0, 2308.7346, -11.0134, 26.7422))
+	if(!IsPlayerInRangeOfPoint(playerid, 25.0, 1436.2850,-999.7745,1639.8025))
 	{
 		SendErrorMessage(playerid," Ban khong o trong ngan hang!");
 		return 1;

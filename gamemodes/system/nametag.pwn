@@ -1,6 +1,7 @@
 #include <a_samp>
 #include <YSI_Coding\y_hooks>
 new Timer:myNameTagTimer[MAX_PLAYERS] = {Timer:-1, ...};
+new TakeNameTagDMG[MAX_PLAYERS];
 stock GetHealthDots(playerid)
 {
     new dots[64];
@@ -68,7 +69,8 @@ stock GetArmorDots(playerid)
 
 hook OnPlayerTakeDamage(playerid, issuerid, Float:amount, weaponid, bodypart)
 {
-    SetPVarInt(playerid,"TakeNameTagDMG",gettime() + 8);
+	TakeNameTagDMG[playerid] = gettime() + 8;
+	return 1;
 }
 
 timer UpdateNameTagTimer[500](playerid)
@@ -94,8 +96,18 @@ timer UpdateNameTagTimer[500](playerid)
 					format(nametag, sizeof(nametag), "{%06x}%s{FFFFFF} (%d)", GetPlayerColor(playerid) >>> 8, GetPlayerNameEx(playerid), playerid);
 				}
 			}
-			if(gettime() < GetPVarInt(playerid, "TakeNameTagDMG") ) 
+			if(gettime() < TakeNameTagDMG[playerid]) 
 			{
+				nametag[0] = EOS;
+				if(PlayerInfo[playerid][pMaskOn])
+				{
+					format(nametag, sizeof(nametag), "{F50000}Mask %d%d{FFFFFF} (%d)", PlayerInfo[playerid][pMaskID][0], playerid, playerid);
+				}
+				else
+				{
+					format(nametag, sizeof(nametag), "{F50000}%s{FFFFFF} (%d)", GetPlayerNameEx(playerid), playerid);
+				}
+
 				if(armour > 1.0)
 				{
 					format(nametag, sizeof(nametag), "%s\n{FFFFFF}%s\n{FF0000}%s", nametag, GetArmorDots(playerid), GetHealthDots(playerid));
@@ -123,6 +135,7 @@ hook OnPlayerConnect(playerid) {
     PlayerInfo[playerid][pNameTag] = CreateDynamic3DTextLabel("Loading nametag...", 0x008080FF, 0.0, 0.0, 0.1, NT_DISTANCE, .attachedplayer = playerid, .testlos = 1);
 	myNameTagTimer[playerid] = repeat UpdateNameTagTimer(playerid);
 	PlayerInfo[playerid][pMaskOn] = 0;
+	TakeNameTagDMG[playerid] = 0;
 	return 1;
 }
 hook OnPlayerDisconnect(playerid, reason) {

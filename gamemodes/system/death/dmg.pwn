@@ -74,17 +74,17 @@ CMD:damages(playerid, const params[])
 
 /*=====================================*/
 #include <YSI_Coding\y_hooks>
-hook OnPlayerTakeDamage(playerid, issuerid, Float:amount, weaponid, bodypart)
+hook OnPlayerGiveDamage(playerid, damagedid, Float:amount, weaponid, bodypart)
 {
     for(new i; i < MAX_SHOW_DMG; i++)
     {
-        if(DamagedInfo[playerid][i][dmgBody] == 0)
+        if(DamagedInfo[damagedid][i][dmgBody] == 0)
         {
-            DamagedInfo[playerid][i][dmgBody] = bodypart;
-            DamagedInfo[playerid][i][dmgHit] = amount;
-            DamagedInfo[playerid][i][dmgReason] = weaponid;
+            DamagedInfo[damagedid][i][dmgBody] = bodypart;
+            DamagedInfo[damagedid][i][dmgHit] = amount;
+            DamagedInfo[damagedid][i][dmgReason] = weaponid;
             
-            DamagedReset[playerid] = 45;
+            DamagedReset[damagedid] = 45;
             break;
         }
     }
