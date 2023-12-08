@@ -8522,7 +8522,7 @@ public OnPlayerLoad(playerid)
  		SetPlayerAttachedObject(playerid, 0, 1271, 4, 0.141,-0.427999,	0.084,	0.299999,	86.4,	12.4,	0.620999,	0.543,	0.76, 0,0);
     	SetPlayerSpecialAction(playerid, SPECIAL_ACTION_CARRY);
  	}  
-	if(PlayerInfo[playerid][pRank] == -1) PlayerInfo[playerid][pRank] = 0;
+	if(PlayerInfo[playerid][pRank] == -1 || PlayerInfo[playerid][pRank] > 18) PlayerInfo[playerid][pRank] = 0;
  	SetPlayerWeapons(playerid);
 // 	DestroyLog@_Reg(playerid);
  	printf("%d",PlayerInfo[playerid][pCraftWD]);
