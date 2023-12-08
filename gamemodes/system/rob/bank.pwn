@@ -28,7 +28,13 @@ CMD:robbank(playerid, params[])
 	new hourb, minuteb, secondb;
 	gettime(hourb, minuteb, secondb);
 	if(hour < 19 || hour > 23) return SendErrorMessage(playerid, "Day khong phai thoi diem cuop (20h - 22h)");
-	if(Cops < 2) return SendErrorMessage(playerid, "So luong PD khong du de thuc hien vu cuop !");
+
+	new CopsDuty;
+	foreach(new i:Player)
+	{
+		if(IsACop(i) && PlayerInfo[i][pDuty] == 1) CopsDuty++;
+	}
+	if(CopsDuty < 2) return SendErrorMessage(playerid, "So luong PD khong du de thuc hien vu cuop !");
 
 	if(Rob_Status[playerid] == 1) return SendErrorMessage(playerid, "Ban dang cuop ngan hang roi !");
 	new check_g = 0;
@@ -194,12 +200,14 @@ public OnPlayerRuaTien(playerid)
 			PlayerInfo[playerid][pCash] += rt_amount*percent;
 			Log("Robbank.log", rt_msg);
 			
-			Inventory_RemoveTimer(playerid, "Tien Ban", rt_amount);
+			Inventory_RemoveTimer(playerid, "Tien Ban", Inventory_Count(playerid, "Tien Ban"));
+			// Inventory_Remove(playerid, Inventory_GetItemID(playerid,"Tien Ban"), rt_amount);
 			RuaTien_Status[playerid] = 0;
 			KillTimer(RuaTien_Timer[playerid]);
 		}
 		else if(RuaTien_Status[playerid] == -1){
 			Inventory_RemoveTimer(playerid, "Tien Ban", Inventory_Count(playerid, "Tien Ban"));
+			// Inventory_Remove(playerid, Inventory_GetItemID(playerid,"Tien Ban"), Inventory_Count(playerid, "Tien Ban"));
 			SendErrorMessage(playerid, "Ban da rua tien that bai");
 			KillTimer(RuaTien_Timer[playerid]);
 		}
@@ -237,7 +245,7 @@ CMD:rbtime(playerid, params[])
 
 CMD:rbtest(playerid, params[])
 {
-	Inventory_Add(playerid, "Tien Ban", 10);
+	if(Inventory_Add(playerid, "Tien Ban", 10, 60*24*2)) return SendClientMessage(playerid, -1, "Set item thanh cong");
 	return 1;
 }
 
