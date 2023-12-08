@@ -55,6 +55,10 @@ public Stealing_Tires(playerid)
             SendErrorMessage(playerid, " Hanh dong bi huy bo do ban da di chuyen.");
             return Stealing_Cancel(playerid);
         }
+        if (vSteal[playerid] != GetClosestCar(playerid)) {
+            SendErrorMessage(playerid, " Hanh dong bi huy bo do chiec xe khong ton tai.");
+            return Stealing_Cancel(playerid);
+        }
 
         SetPVarInt(playerid, #Stealing_timer, GetPVarInt(playerid, #Stealing_timer) - 1);
         if (GetPVarInt(playerid, #Stealing_timer) == 20 || GetPVarInt(playerid, #Stealing_timer) == 40)
