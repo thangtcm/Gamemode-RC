@@ -28,13 +28,7 @@ CMD:robbank(playerid, params[])
 	new hourb, minuteb, secondb;
 	gettime(hourb, minuteb, secondb);
 	if(hour < 19 || hour > 23) return SendErrorMessage(playerid, "Day khong phai thoi diem cuop (20h - 22h)");
-
-	new CopsDuty;
-	foreach(new i:Player)
-	{
-		if(IsACop(i) && PlayerInfo[i][pDuty] == 1) CopsDuty++;
-	}
-	if(CopsDuty < 2) return SendErrorMessage(playerid, "So luong PD khong du de thuc hien vu cuop !");
+	//if(Cops < 2) return SendErrorMessage(playerid, "So luong PD khong du de thuc hien vu cuop !");
 
 	if(Rob_Status[playerid] == 1) return SendErrorMessage(playerid, "Ban dang cuop ngan hang roi !");
 	new check_g = 0;
