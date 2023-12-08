@@ -118,7 +118,7 @@ hook OnPlayerKeyStateChange(playerid, newkeys, oldkeys)
 			if(F_GetTimeNow - GetPVarInt(playerid, "F_TimeCountNotyHack") <= 1 && GetPVarInt(playerid, "F_TimeCountNotyHack") < F_GetTimeNow)
 			{
 				F_CountPress[playerid] ++;
-				new string[128];
+				new string[1280];
 				format(string, sizeof(string), "{AA3333}AdmWarning{FFFF00}: [JOB FISHING] %s (ID: %d) co the dang su dung cleo auto farm nhan phim capcha trong %d giay (TONG: %d lan).", GetPlayerNameEx(playerid), playerid, F_GetTimeNow - GetPVarInt(playerid, "F_TimeCountNotyHack"), F_CountPress[playerid]);
 				ABroadCast(COLOR_YELLOW, string, 2);
 			}
