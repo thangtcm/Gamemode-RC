@@ -107,6 +107,7 @@ CMD:truckergo(playerid, params[])
         else 
         { 
             SetPlayerCheckPointEx(playerid,  2431.9810,-2118.9050,13.5469, 5);
+            CP[playerid] = 252000;
             return SendErrorMessage(playerid, "Ban can den vi tri tren cham do de dang ky xe van chuyen hang hoa.");
         }
     }
@@ -117,10 +118,16 @@ CMD:truckergo(playerid, params[])
             ShowMissionTrucker(playerid);
             return SendErrorMessage(playerid, "Ban da nhan nhiem vu giao hang trucker, hay xem lai thong tin.");
         } 
-        else if(IsPlayerInRangeOfPoint(playerid, 5.0, 58.5952,-292.2914,1.5781))
+        else if(IsPlayerInRangeOfPoint(playerid, 5.0, 2455.2256, -2114.8999, 13.5469))
         {
             Dialog_Show(playerid, DIALOG_STARTTRUCKER, DIALOG_STYLE_LIST, "Cong viec Trucker", "Nhan nhiem vu\nXem Huong Dan", "Lua chon", "Huy bo");
-       }
+        }
+        else 
+        { 
+            SetPlayerCheckPointEx(playerid,  2455.2256, -2114.8999, 13.5469, 5);
+            CP[playerid] = 252000;
+            return SendErrorMessage(playerid, "Ban can den vi tri tren cham do de nhan nhiem vu.");
+        }
     }
     else if(!strcmp(type, "buy", true))
 	{

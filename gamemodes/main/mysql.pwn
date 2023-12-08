@@ -7907,7 +7907,7 @@ public OnPlayerLoad(playerid)
 		PlayerInfo[playerid][pSecureIP][0] = 0;
 		PlayerInfo[playerid][pCrates] = 0;
 		PlayerInfo[playerid][pPos_x] = 1481.8472;
-		PlayerInfo[playerid][pPos_y] = 1767.4912;
+		PlayerInfo[playerid][pPos_y] = -1767.4912;
 		PlayerInfo[playerid][pPos_z] = 18.7891;
 		strcpy(PlayerInfo[playerid][pBirthDate], "0000-00-00", 64);
 		PlayerInfo[playerid][pOrder] = 0;
