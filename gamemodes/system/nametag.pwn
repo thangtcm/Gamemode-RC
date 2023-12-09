@@ -2,6 +2,7 @@
 #include <YSI_Coding\y_hooks>
 new Timer:myNameTagTimer[MAX_PLAYERS] = {Timer:-1, ...};
 new TakeNameTagDMG[MAX_PLAYERS];
+/*
 stock GetHealthDots(playerid)
 {
     new dots[64];
@@ -65,6 +66,11 @@ stock GetArmorDots(playerid)
 		dots = "{666666}----------";
 
     return dots;
+}*/
+
+IsPlayerAFK(playerid)
+{
+	return (PlayerInfo[playerid][pDarkAFK] > 5)?(1):(0);
 }
 
 hook OnPlayerTakeDamage(playerid, issuerid, Float:amount, weaponid, bodypart)
@@ -73,27 +79,39 @@ hook OnPlayerTakeDamage(playerid, issuerid, Float:amount, weaponid, bodypart)
 	return 1;
 }
 
-timer UpdateNameTagTimer[500](playerid)
+timer UpdateNameTagTimer[1000](playerid)
 {
 	if(IsPlayerConnected(playerid))
 	{
+	    if (PlayerInfo[playerid][pDarkAFK]++ >= 600)
+    	{
+      	SendServerMessage(playerid, "Ban da bi kick vi AFK tren may chu. ");
+          KickEx(playerid);
+    	}
 		if(IsValidDynamic3DTextLabel(PlayerInfo[playerid][pNameTag]))
 		{
 			new nametag[388], Float:armour;
 			GetPlayerArmour(playerid, armour);
-			if(playerAFK[playerid] != 0 && playerAFKTimer[playerid] > 60)
+			if(IsPlayerAFK(playerid))
 			{
-				format(nametag, sizeof(nametag), "{F81414}[AFK]{FFFFFF} %s (%d)", GetPlayerNameEx(playerid), playerid);
+			    if(PlayerInfo[playerid][pMaskOn])
+				{
+					format(nametag, sizeof(nametag), "{f53636}[AFK]{FFFFFF} Mask %d%d{FFFFFF} (%d)",  PlayerInfo[playerid][pMaskID][0], playerid, playerid);
+				}
+				else
+				{
+					format(nametag, sizeof(nametag), "{f53636}[AFK]{FFFFFF} %s{FFFFFF} (%d)", GetPlayerNameEx(playerid), playerid);
+				}
 			}
 			else
 			{
 				if(PlayerInfo[playerid][pMaskOn])
 				{
-					format(nametag, sizeof(nametag), "{%06x}Mask %d%d{FFFFFF} (%d)", GetPlayerColor(playerid) >>> 8, PlayerInfo[playerid][pMaskID][0], playerid, playerid);
+					format(nametag, sizeof(nametag), "Mask %d%d{FFFFFF} (%d)", PlayerInfo[playerid][pMaskID][0], playerid, playerid);
 				}
 				else
 				{
-					format(nametag, sizeof(nametag), "{%06x}%s{FFFFFF} (%d)", GetPlayerColor(playerid) >>> 8, GetPlayerNameEx(playerid), playerid);
+					format(nametag, sizeof(nametag), "%s{FFFFFF} (%d)", GetPlayerNameEx(playerid), playerid);
 				}
 			}
 			if(gettime() < TakeNameTagDMG[playerid]) 
@@ -101,21 +119,13 @@ timer UpdateNameTagTimer[500](playerid)
 				nametag[0] = EOS;
 				if(PlayerInfo[playerid][pMaskOn])
 				{
-					format(nametag, sizeof(nametag), "{F50000}Mask %d%d{FFFFFF} (%d)", PlayerInfo[playerid][pMaskID][0], playerid, playerid);
+					format(nametag, sizeof(nametag), "{C32C37}Mask %d%d (%d)", PlayerInfo[playerid][pMaskID][0], playerid, playerid);
 				}
 				else
 				{
-					format(nametag, sizeof(nametag), "{F50000}%s{FFFFFF} (%d)", GetPlayerNameEx(playerid), playerid);
+					format(nametag, sizeof(nametag), "{C32C37}%s (%d)", GetPlayerNameEx(playerid), playerid);
 				}
 
-				if(armour > 1.0)
-				{
-					format(nametag, sizeof(nametag), "%s\n{FFFFFF}%s\n{FF0000}%s", nametag, GetArmorDots(playerid), GetHealthDots(playerid));
-				}
-				else
-				{
-					format(nametag, sizeof(nametag), "%s\n{FF0000}%s", nametag, GetHealthDots(playerid));
-				}
 			}
 			UpdateDynamic3DTextLabelText(PlayerInfo[playerid][pNameTag], COLOR_WHITE, nametag);
 		}
