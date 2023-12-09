@@ -122,32 +122,17 @@ stock VehSignOwnerCheck(playerid, vs_numberz)
 	return 1;
 }
 
-stock SaveVehSign(){
+stock SaveVehSign(playerid){
 	printf("[Vehicle Sign database] Vehicle Sign Save Database");
 	for(new i = 0 ; i < MAX_VEHICLES ; i++)
 	{
-		if(VehSignInfo[i][vs_ID] != -1 && VehSignInfo[i][vs_OwnerID] != -1 && VehSignInfo[i][vs_VehicleID] != -1)
+		if(VehSignInfo[i][vs_ID] != -1 && VehSignInfo[i][vs_OwnerID] == GetPlayerSQLId(playerid) && VehSignInfo[i][vs_VehicleID] != -1)
 		{
-			new queryzzz[1280], check_qur[1280], Cache:checkr;
-			format(check_qur, sizeof(check_qur), "SELECT * FROM `vehsign` WHERE `VehSign` = '%d'",VehSignInfo[i][vs_VehSign]);
-			checkr = mysql_query(MainPipeline, check_qur);
-			if(cache_num_rows() > 0){
+			new queryzzz[1280];
 				format(queryzzz, sizeof(queryzzz), "UPDATE `vehsign` SET \
 				`VehSign` = '%d', `OwnerID` = '%d', `VehicleID` = '%d' WHERE `VehSign` = '%d'", VehSignInfo[i][vs_VehSign],VehSignInfo[i][vs_OwnerID],VehSignInfo[i][vs_VehicleID],VehSignInfo[i][vs_VehSign]);
 
 				mysql_function_query(MainPipeline, queryzzz, true, "VEHSIGN_SAVE", ""); 
-			}
-			else {
-				format(queryzzz, sizeof(queryzzz), "INSERT INTO `vehsign` SET \
-				`VehSign` = '%d', \
-				`OwnerID` = '%d', \
-				`VehicleID` = '%d'",
-				VehSignInfo[i][vs_VehSign],
-				VehSignInfo[i][vs_OwnerID],
-				VehSignInfo[i][vs_VehicleID]);
-				mysql_function_query(MainPipeline, queryzzz, true, "VEHSIGN_REG", "");
-			}
-			cache_delete(checkr);
 		}
 	}
 	return 1;
@@ -230,7 +215,7 @@ hook OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
         }
 		else if(!PlayerVehicleInfo[playerid][listitem][pvSpawned]) 
 		{
-			RegisterVehSign(playerid, listitem);
+			SendErrorMessage(playerid, " Ban can lay phuong tien cua ban ra khoi kho.");
 		}
 		else SendServerMessage(playerid, " Ban khong the dang ki mot chiec xe khong ton tai.");
 	}
@@ -282,6 +267,6 @@ CMD:vehsign(playerid, params[])
 
 hook OnPlayerDisconnect(playerid, reason)
 {
-	SaveVehSign();
+	SaveVehSign(playerid);
 	return 1;
 }
