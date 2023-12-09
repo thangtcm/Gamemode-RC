@@ -26811,7 +26811,7 @@ CMD:czzhaibmcall(playerid, params[])
 					}
 					if (Mobile[giveplayerid] == INVALID_PLAYER_ID)
 					{
-						format(string, sizeof(string), "Dien thoai di dong cua ban dang vang len - su dung /p de tra loi. [Nguoi goi ID: %s]", GetPlayerNameEx(playerid));
+						format(string, sizeof(string), "Dien thoai di dong cua ban dang vang len - su dung /p de tra loi. [SDT: %d]", GetPlayerNameEx(playerid), PlayerInfo[playerid][pPnumber]);
 						SendClientMessageEx(giveplayerid, COLOR_YELLOW, string);
 						RingTone[giveplayerid] = 10;
 						format(string, sizeof(string), "* %s's dien thoai dang do chuong.", GetPlayerNameEx(i));
