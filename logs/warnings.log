@@ -1,3 +1,22 @@
 [12/06/23 00:20:56] [plugins/discord-connector] Unknown gateway event 'GUILD_MEMBERS_CHUNK'
 [12/06/23 00:21:11] [plugins/discord-connector] Unknown gateway event 'GUILD_MEMBERS_CHUNK'
 [12/06/23 00:26:45] [plugins/discord-connector] Unknown gateway event 'GUILD_MEMBERS_CHUNK'
+<<<<<<< Updated upstream
+=======
+[12/09/23 18:22:37] [plugins/discord-connector] Unknown gateway event 'GUILD_MEMBERS_CHUNK'
+[12/09/23 18:22:37] [plugins/discord-connector] Unknown gateway event 'GUILD_MEMBERS_CHUNK'
+[12/09/23 18:22:52] [plugins/discord-connector] Unknown gateway event 'CHANNEL_TOPIC_UPDATE'
+[12/09/23 18:22:52] [plugins/discord-connector] Unknown gateway event 'VOICE_CHANNEL_STATUS_UPDATE'
+[12/09/23 18:53:51] [plugins/discord-connector] Unknown gateway event 'GUILD_MEMBERS_CHUNK'
+[12/09/23 18:53:52] [plugins/discord-connector] Unknown gateway event 'GUILD_MEMBERS_CHUNK'
+[12/09/23 19:06:16] [plugins/discord-connector] Unknown gateway event 'GUILD_MEMBERS_CHUNK'
+[12/09/23 19:06:16] [plugins/discord-connector] Unknown gateway event 'GUILD_MEMBERS_CHUNK'
+[12/10/23 00:37:09] [plugins/discord-connector] Unknown gateway event 'GUILD_MEMBERS_CHUNK'
+[12/10/23 00:37:09] [plugins/discord-connector] Unknown gateway event 'GUILD_MEMBERS_CHUNK'
+[12/10/23 00:46:54] [plugins/discord-connector] Unknown gateway event 'GUILD_MEMBERS_CHUNK'
+[12/10/23 00:46:55] [plugins/discord-connector] Unknown gateway event 'GUILD_MEMBERS_CHUNK'
+[12/10/23 00:54:17] [plugins/discord-connector] Unknown gateway event 'GUILD_MEMBERS_CHUNK'
+[12/10/23 00:54:17] [plugins/discord-connector] Unknown gateway event 'GUILD_MEMBERS_CHUNK'
+[12/10/23 00:55:02] [plugins/discord-connector] Unknown gateway event 'GUILD_MEMBERS_CHUNK'
+[12/10/23 00:55:02] [plugins/discord-connector] Unknown gateway event 'GUILD_MEMBERS_CHUNK'
+>>>>>>> Stashed changes
