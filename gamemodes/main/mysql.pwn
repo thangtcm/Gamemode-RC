@@ -127,7 +127,7 @@ SaveGroup(iGroupID) {
 		return 0;
 
 	new
-		szQuery[2048],
+		szQuery[3500],
 		i = 0;
 
 	format(szQuery, sizeof szQuery, "UPDATE `groups` SET \
