@@ -6101,7 +6101,7 @@ CMD:badge(playerid, params[])
 		if(PlayerInfo[playerid][pDuty])
 		{
 			PlayerInfo[playerid][pDuty] = 0;
-			SetPlayerToTeamColor(playerid);
+		//	SetPlayerToTeamColor(playerid);
 			SendServerMessage(playerid, " Ban da an huy hieu cua ban, va bay gio ban da off-duty.");
 			if(IsAMedic(playerid))
 			{
