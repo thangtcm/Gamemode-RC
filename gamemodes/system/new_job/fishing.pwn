@@ -14,15 +14,16 @@ new F_TimerRandomPress[MAX_PLAYERS];
 new F_DownCountJobTime[MAX_PLAYERS];
 
 static 
-    Float:f_checkPos[MAX_PLAYERS][3],
+    Float:f_checkPos[MAX_PLAYERS][3];
 
-hook OnPlayerConnect(playerid)
+hook OnPlayerConnect( playerid )
 {
 	F_CountPress[playerid] = 0;
 	F_TimerPressKey[playerid] = 0;
 	F_KeyPressed[playerid] = true;
 	KillTimer(FishTimer[playerid]);
 	DeletePVar(playerid, "FishWorking");
+    f_checkPos[playerid][0] = EOS;
 	return 1;
 }
 
@@ -157,12 +158,6 @@ hook OnPlayerDisconnect(playerid, reason)
 {
 	FaildFish(playerid);
 	return 1;
-}
-
-hook OnPlayerConnect(playerid)
-{
-    f_checkPos[playerid][0] = EOS;
-    return 1;
 }
 
 forward F_ResetPrice();
