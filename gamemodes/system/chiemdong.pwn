@@ -712,6 +712,7 @@ task UpdateCapture[6000] ()
 					strcpy(FamilyCD[i][f_PlayerName], "None", MAX_PLAYER_NAME);
 					FamilyCD[i][f_PlayerID] = INVALID_PLAYER_ID;
 					FamilyCD[i][f_TimeResetCD] = 10;
+					FamilyCD[i][f_CaptureActivity] = 0;
     			}
     		}
     	}
