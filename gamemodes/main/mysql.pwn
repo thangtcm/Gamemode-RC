@@ -127,7 +127,7 @@ SaveGroup(iGroupID) {
 		return 0;
 
 	new
-		szQuery[2048],
+		szQuery[6500],
 		i = 0;
 
 	format(szQuery, sizeof szQuery, "UPDATE `groups` SET \
@@ -7906,9 +7906,9 @@ public OnPlayerLoad(playerid)
 		PlayerInfo[playerid][pTokens] = 0;
 		PlayerInfo[playerid][pSecureIP][0] = 0;
 		PlayerInfo[playerid][pCrates] = 0;
-		PlayerInfo[playerid][pPos_x] = 1355.6627;
-		PlayerInfo[playerid][pPos_y] = 259.0992;
-		PlayerInfo[playerid][pPos_z] = 20;
+		PlayerInfo[playerid][pPos_x] = 1481.8472;
+		PlayerInfo[playerid][pPos_y] = -1767.4912;
+		PlayerInfo[playerid][pPos_z] = 18.7891;
 		strcpy(PlayerInfo[playerid][pBirthDate], "0000-00-00", 64);
 		PlayerInfo[playerid][pOrder] = 0;
 		PlayerInfo[playerid][pOrderConfirmed] = 0;
@@ -8409,6 +8409,9 @@ public OnPlayerLoad(playerid)
 	SetPlayerToTeamColor(playerid);
 
 	Inventory_Load(playerid);
+
+	LoadVehicleSign(playerid);
+
 	InventoryCH_Load(playerid);
 	FarmPlants_LOAD(playerid);
 	CATTLE_LOAD(playerid);
@@ -8522,10 +8525,11 @@ public OnPlayerLoad(playerid)
  		SetPlayerAttachedObject(playerid, 0, 1271, 4, 0.141,-0.427999,	0.084,	0.299999,	86.4,	12.4,	0.620999,	0.543,	0.76, 0,0);
     	SetPlayerSpecialAction(playerid, SPECIAL_ACTION_CARRY);
  	}  
+	if(PlayerInfo[playerid][pRank] == -1 || PlayerInfo[playerid][pRank] > 18) PlayerInfo[playerid][pRank] = 0;
  	SetPlayerWeapons(playerid);
 // 	DestroyLog@_Reg(playerid);
  	printf("%d",PlayerInfo[playerid][pCraftWD]);
- 	SendClientMessageEx(playerid, COLOR_VANG, "Chao mung ban da tro lai may chu Red County Roleplay.");
+ //	SendClientMessageEx(playerid, COLOR_VANG, "Chao mung ban da tro lai may chu Red County Roleplay.");
 	DeletePVar(playerid, "TextDrawCharacter");
  	GetHomeCount(playerid);
 	new rdName[MAX_PLAYER_NAME];

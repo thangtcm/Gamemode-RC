@@ -4,31 +4,45 @@ hook OnGameModeInit()
 	CreateDynamic3DTextLabel("{FF0000}Su dung '/dangkibienso' de dang ki bien so", -1, 248.3361,118.1592,1003.2188+0.6,12.0);
 	// 248.3361,118.1592,1003.2188,182.3316
 }
-stock LoadVehicleSign()
+stock LoadVehicleSign(playerid)
 {
 	for(new i = 0 ; i < MAX_VEHICLES; i++) {
 		VehSignInfo[i][vs_ID] = -1;
 		VehSignInfo[i][vs_OwnerID] = -1;
 		VehSignInfo[i][vs_VehicleID] = -1;
 	}
-	mysql_tquery(MainPipeline, "SELECT * FROM `vehsign`","OnVehicleSign", "");
+	new vs_query[1280];
+	format(vs_query, sizeof(vs_query), "SELECT * FROM `vehsign` WHERE `id` = '%d'", GetPlayerSQLId(playerid));
+
+	mysql_tquery(MainPipeline, vs_query,"OnVehicleSign", "i", playerid);
 	return 1;
 }
-
-forward OnVehicleSign();
-public OnVehicleSign()
+stock GetFreeVehSignID()
+{
+	new vsid = -1;
+	for(new i = 0; i < MAX_VEHICLES; i++)
+	{
+		if(VehSignInfo[i][vs_ID] == -1 && VehSignInfo[i][vs_VehSign] == -1 && VehSignInfo[i][vs_OwnerID] == -1)
+		{
+			vsid = i; break;
+		}
+	}
+	return vsid;
+}
+forward OnVehicleSign(playerid);
+public OnVehicleSign(playerid)
 {
     new fields, rows, result[128];
     cache_get_data(rows, fields, MainPipeline);
-
+    new vs_freeid = GetFreeVehSignID();
     for( new index; index < rows; index++) {
-		cache_get_field_content(index, "id", result, MainPipeline); VehSignInfo[index][vs_ID] = strval(result);
-		cache_get_field_content(index, "VehSign", result, MainPipeline); VehSignInfo[index][vs_VehSign] = strval(result);
-		cache_get_field_content(index, "OwnerID", result, MainPipeline); VehSignInfo[index][vs_OwnerID] = strval(result);
-		cache_get_field_content(index, "VehicleID", result, MainPipeline); VehSignInfo[index][vs_VehicleID] = strval(result);
+		cache_get_field_content(index, "id", result, MainPipeline); VehSignInfo[vs_freeid][vs_ID] = strval(result);
+		cache_get_field_content(index, "VehSign", result, MainPipeline); VehSignInfo[vs_freeid][vs_VehSign] = strval(result);
+		cache_get_field_content(index, "OwnerID", result, MainPipeline); VehSignInfo[vs_freeid][vs_OwnerID] = strval(result);
+		cache_get_field_content(index, "VehicleID", result, MainPipeline); VehSignInfo[vs_freeid][vs_VehicleID] = strval(result);
 	}
-	if(!rows) return printf("[Vehicle Sign database] 0 Vehicle Sign loaded.", rows);
-	printf("[Vehicle Sign database] %d Vehicle Sign loaded.", rows);
+	if(!rows) return printf("[Vehicle Sign database] 0 Vehicle Sign loaded for %s.", GetPlayerNameEx(playerid));
+	printf("[Vehicle Sign database] %d Vehicle Sign loaded for %s.",rows, GetPlayerNameEx(playerid));
 
 	return 1;
 }
@@ -122,8 +136,13 @@ stock VehSignOwnerCheck(playerid, vs_numberz)
 	return 1;
 }
 
+<<<<<<< Updated upstream
 stock SaveVehSign(){
 	printf("[Vehicle Sign database] Vehicle Sign Save Database");
+=======
+stock SaveVehSign(playerid){
+	printf("[Vehicle Sign database] Vehicle Sign Save Database for %s", GetPlayerNameEx(playerid));
+>>>>>>> Stashed changes
 	for(new i = 0 ; i < MAX_VEHICLES ; i++)
 	{
 		if(VehSignInfo[i][vs_ID] != -1 && VehSignInfo[i][vs_OwnerID] != -1 && VehSignInfo[i][vs_VehicleID] != -1)
