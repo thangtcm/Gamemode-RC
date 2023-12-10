@@ -5947,7 +5947,7 @@ public OnPlayerText(playerid, text[])
 	}
 	if(Mobile[playerid] != INVALID_PLAYER_ID)
 	{
-		format(string, sizeof(string), "(Dien Thoai) %s noi: %s", GetPlayerNameEx(playerid), text);
+		format(string, sizeof(string), "(Dien Thoai - Loa ngoai) %d noi: %s", PlayerInfo[playerid][pPnumber], text);
 		ProxDetector(20.0, playerid, string,COLOR_FADE1,COLOR_FADE2,COLOR_FADE3,COLOR_FADE4,COLOR_FADE5);
 		if(IsPlayerConnected(Mobile[playerid]))
 		{
@@ -5955,7 +5955,7 @@ public OnPlayerText(playerid, text[])
 			{
 				if(PlayerInfo[Mobile[playerid]][pSpeakerPhone] != 0)
 				{
-				    format(string, sizeof(string), "(Dien Thoai) %s noi: %s", GetPlayerNameEx(playerid), text);
+				    format(string, sizeof(string), "(Dien Thoai - Loa trong) %d noi: %s", PlayerInfo[playerid][pPnumber], text);
 					ProxDetector(20.0, Mobile[playerid], string,COLOR_FADE1,COLOR_FADE2,COLOR_FADE3,COLOR_FADE4,COLOR_FADE5);
 				}
 				else
@@ -8751,6 +8751,7 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
         		    case 2: cmd_smslog(playerid,"");
         		    case 3: ShowPlayerDialog(playerid, MAIN_PHONEBOOK, DIALOG_STYLE_TABLIST, "Danh ba", "Xem danh ba\nThem danh ba\nXoa danh ba", "Chon", "Thoat");
         		    case 4: ShowPlayerDialog(playerid, DIALOG_CHUYENTIEN, DIALOG_STYLE_INPUT, "Chuyen tien", "Vui long nhap so tai khoan de tiep tuc giao dich", "Tuy chon", "Thoat");
+                    case 5: cmd_speakerphone(playerid,"");
         		}
         	}
         }

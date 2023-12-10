@@ -764,6 +764,8 @@ enum pInfo
 	//chiem dong
 	pAwardTypeCD,
 	//
+	
+	pDarkAFK,
 	pCraftWD,
     pCraftWDTime,
 	pChatStyle,
