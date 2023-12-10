@@ -205,7 +205,7 @@ hook OnPlayerDeath(playerid, killerid, reason) {
     }
     return 1;
 }
-stock ChiemDong_OnplayerDisconnect(playerid)
+hook ChiemDong_OnplayerDisconnect(playerid)
 {
 	if(GetPVarInt(playerid, "chiemdong") != 0) 
     {
@@ -247,8 +247,8 @@ hook OnPlayerEnterCheckpoint(playerid)
 		{
 			SendClientMessage(playerid, COLOR_RED, "> Dang lay phan thuong vui long cho doi...");
 			SetTimerEx("AwardCD", 30000, false, "d", playerid);
-			TogglePlayerControllable(playerid, 0);
-			ApplyAnimation(playerid, "BD_FIRE", "wash_up", 4.0, 1, 1, 1, 1, 1, 1);
+			// TogglePlayerControllable(playerid, 0);
+			ApplyAnimation(playerid, "BD_FIRE", "wash_up", 4.0, 1, 0, 0, 0, 0, 1);
 			
 		}
 	}
@@ -263,12 +263,12 @@ public AwardCD(playerid) {
 	{
 		//add them o day
 		Inventory_Add(playerid, "AK47");
-		Inventory_Add(playerid, "Vat_lieu", 100);
+		Inventory_Add(playerid, "Vat lieu", 100);
 		Inventory_Add(playerid, "Go", 100);
-		Inventory_Add(playerid, "item_iron", 100); // sat
-		SendNewFamilyMessage(playerid, -1, "-------------------------------- {FFFF00}[AWARD CAPTURE GANG]{FFFFFF} -------------------------------------");
-		SendNewFamilyMessage(playerid, COLOR_YELLOW, "> Ban da nhan thuong cho FAM/Gang thanh cong (Type Weapon) nhan nhung phan qua sau :");
-		SendNewFamilyMessage(playerid, COLOR_YELLOW, "+ Weapon : AK47, 100 vat lieu, 200 go, 200 sat");
+		Inventory_Add(playerid, "Sat", 100); // sat
+		SendNewFamilyMessage(PlayerInfo[playerid][pFMember], -1, "-------------------------------- {FFFF00}[AWARD CAPTURE GANG]{FFFFFF} -------------------------------------");
+		SendNewFamilyMessage(PlayerInfo[playerid][pFMember], COLOR_YELLOW, "> Ban da nhan thuong cho FAM/Gang thanh cong (Type Weapon) nhan nhung phan qua sau :");
+		SendNewFamilyMessage(PlayerInfo[playerid][pFMember], COLOR_YELLOW, "+ Weapon : AK47, 100 vat lieu, 200 go, 200 sat");
 		DeletePVar(playerid, "AwardTypeCD");
 		DeletePVar(playerid, "CD_pX");
 		DeletePVar(playerid, "CD_pY");
@@ -280,13 +280,13 @@ public AwardCD(playerid) {
 	if(GetPVarInt(playerid, "AwardTypeCD") == 2)
 	{
 		//add them o day
-		Inventory_Add(playerid, "chh_1", 100);
-		Inventory_Add(playerid, "chh_1", 50);
+		Inventory_Add(playerid, "Chat hoa hoc I", 100);
+		Inventory_Add(playerid, "Chat hoa hoc II", 50);
 		Inventory_Add(playerid, "Ecstacy", 20); // sat
 		Inventory_Add(playerid, "LSD", 10); // sat
-		SendNewFamilyMessage(playerid, -1, "-------------------------------- {FFFF00}[AWARD CAPTURE GANG]{FFFFFF} -------------------------------------");
-		SendNewFamilyMessage(playerid, COLOR_YELLOW, "> Ban da nhan thuong cho FAM/Gang thanh cong (Type Drug) nhan nhung phan qua sau :");
-		SendNewFamilyMessage(playerid, COLOR_YELLOW, "+ 100 chat hoa hoc 1, 50 chat hoa hoc 2, 20 Ecstasy , 10 LSD");
+		SendNewFamilyMessage(PlayerInfo[playerid][pFMember], -1, "-------------------------------- {FFFF00}[AWARD CAPTURE GANG]{FFFFFF} -------------------------------------");
+		SendNewFamilyMessage(PlayerInfo[playerid][pFMember], COLOR_YELLOW, "> Ban da nhan thuong cho FAM/Gang thanh cong (Type Drug) nhan nhung phan qua sau :");
+		SendNewFamilyMessage(PlayerInfo[playerid][pFMember], COLOR_YELLOW, "+ 100 chat hoa hoc 1, 50 chat hoa hoc 2, 20 Ecstasy , 10 LSD");
 		DeletePVar(playerid, "AwardTypeCD");
 		DeletePVar(playerid, "CD_pX");
 		DeletePVar(playerid, "CD_pY");
@@ -301,11 +301,11 @@ public AwardCD(playerid) {
 		
 		new money = Random(100, 500);
 		new string[70];
-		Inventory_Add(playerid, "img dirty", money);
-		SendNewFamilyMessage(playerid, -1, "-------------------------------- {FFFF00}[AWARD CAPTURE GANG]{FFFFFF} -------------------------------------");
-		SendNewFamilyMessage(playerid, COLOR_YELLOW, "> Ban da nhan thuong cho FAM/Gang thanh cong (Type Dirty Money) nhan nhung phan qua sau :");
+		Inventory_Add(playerid, "Tien Ban", money);
+		SendNewFamilyMessage(PlayerInfo[playerid][pFMember], -1, "-------------------------------- {FFFF00}[AWARD CAPTURE GANG]{FFFFFF} -------------------------------------");
+		SendNewFamilyMessage(PlayerInfo[playerid][pFMember], COLOR_YELLOW, "> Ban da nhan thuong cho FAM/Gang thanh cong (Type Dirty Money) nhan nhung phan qua sau :");
 		format(string, sizeof(string), "+ %s$ tien ban (Them vao tui do)", number_format(money));
-		SendNewFamilyMessage(playerid, COLOR_YELLOW, string);
+		SendNewFamilyMessage(PlayerInfo[playerid][pFMember], COLOR_YELLOW, string);
 		DeletePVar(playerid, "AwardTypeCD");
 		DeletePVar(playerid, "CD_pX");
 		DeletePVar(playerid, "CD_pY");
@@ -317,13 +317,13 @@ public AwardCD(playerid) {
 	if(GetPVarInt(playerid, "AwardTypeCD") == 4)
 	{
 		//add them o day
-		Inventory_Add(playerid, "Ammo1", 50); // Dan sung luc
-		Inventory_Add(playerid, "Ammo2", 50); // Dan sung shotgun
-		Inventory_Add(playerid, "Ammo3", 200); // Dan sung tieu lien
-		Inventory_Add(playerid, "Ammo4", 100); // Dan sung truong
-		SendNewFamilyMessage(playerid, -1, "-------------------------------- {FFFF00}[AWARD CAPTURE GANG]{FFFFFF} -------------------------------------");
-		SendNewFamilyMessage(playerid, COLOR_YELLOW, "> Ban da nhan thuong cho FAM/Gang thanh cong (Type Ammo) nhan nhung phan qua sau :");
-		SendNewFamilyMessage(playerid, COLOR_YELLOW, "+ 100 dan sung truong, 200 dan sung tieu lien, 50 dan Shotgun và 50 sung luc");
+		Inventory_Add(playerid, "Dan sung luc", 50); // Dan sung luc
+		Inventory_Add(playerid, "Dan shotgun", 50); // Dan sung shotgun
+		Inventory_Add(playerid, "Dan tieu lien", 200); // Dan sung tieu lien
+		Inventory_Add(playerid, "Dan sung truong", 100); // Dan sung truong
+		SendNewFamilyMessage(PlayerInfo[playerid][pFMember], -1, "-------------------------------- {FFFF00}[AWARD CAPTURE GANG]{FFFFFF} -------------------------------------");
+		SendNewFamilyMessage(PlayerInfo[playerid][pFMember], COLOR_YELLOW, "> Ban da nhan thuong cho FAM/Gang thanh cong (Type Ammo) nhan nhung phan qua sau :");
+		SendNewFamilyMessage(PlayerInfo[playerid][pFMember], COLOR_YELLOW, "+ 100 dan sung truong, 200 dan sung tieu lien, 50 dan Shotgun và 50 sung luc");
 		DeletePVar(playerid, "AwardTypeCD");
 		DeletePVar(playerid, "CD_pX");
 		DeletePVar(playerid, "CD_pY");
@@ -666,30 +666,23 @@ task UpdateCapture[6000] ()
 						}
 					} */
 					new player = FamilyCD[i][f_PlayerID];
-					switch(random(4))
+					switch(random(3))
 					{
-						case 0:
-						{
-							SetPVarFloat(player, "CD_pX", 1274.2429);
-							SetPVarFloat(player, "CD_pY", 294.1344);
-							SetPVarFloat(player, "CD_pZ", 1274.2429);
-							SetPlayerCheckpoint(player, GetPVarFloat(player, "CD_pX"), GetPVarFloat(player, "CD_pY"), GetPVarFloat(player, "CD_pZ"), 4.0);
-						}	
-						case 1: 
+						case 0: 
 						{
 							SetPVarFloat(player, "CD_pX",  2351.2170);
 							SetPVarFloat(player, "CD_pY", -647.6680);
 							SetPVarFloat(player, "CD_pZ", 128.0547);
 							SetPlayerCheckpoint(player, GetPVarFloat(player, "CD_pX"), GetPVarFloat(player, "CD_pY"), GetPVarFloat(player, "CD_pZ"), 4.0);
 						}	
-						case 2: 
+						case 1: 
 						{
 							SetPVarFloat(player, "CD_pX",  313.7180);
 							SetPVarFloat(player, "CD_pY",	1146.4028);
 							SetPVarFloat(player, "CD_pZ", 8.5859);
 							SetPlayerCheckpoint(player, GetPVarFloat(player, "CD_pX"), GetPVarFloat(player, "CD_pY"), GetPVarFloat(player, "CD_pZ"), 4.0);
 						}	
-						case 3: 
+						case 2: 
 						{
 							SetPVarFloat(player, "CD_pX",  -2088.1040);
 							SetPVarFloat(player, "CD_pY", -2342.5239);
@@ -700,7 +693,10 @@ task UpdateCapture[6000] ()
 					PlayerPlaySound(player, 1056, 0.0, 0.0, 0.0);
 					SetPVarInt(player, "AwardTypeCD", FamilyCD[i][f_CaptureType]);
 					PlayerInfo[player][pAwardTypeCD] = FamilyCD[i][f_CaptureType];
-					// SendClientMessage(player, -1, sprintf("> type award : %d", GetPVarInt(player, "AwardTypeCD")));
+					// format(string, sizeof(string), "> type award : %d", GetPVarInt(player, "AwardTypeCD"));
+					// SendClientMessage(player, -1, string);
+					// format(string, sizeof(string), "> X = %.2f | Y = %.2f | Z = %.2f", GetPVarFloat(player, "CD_pX"), GetPVarFloat(player, "CD_pY"), GetPVarFloat(player, "CD_pZ"));
+					// SendClientMessage(player, -1, string);
 					SendClientMessage(player, COLOR_GREEN, "> Ban da chiem dong thanh cong cho FAM/GANG cua minh . Hay den checkpoint de nhan thuong");
 					SendClientMessage(player, COLOR_RED, "* Luu y : Neu ban bi thoat game khi chua nhan phan thuong [/glayhang] de dung khi vao lai game *");
                 	
@@ -716,6 +712,7 @@ task UpdateCapture[6000] ()
 					strcpy(FamilyCD[i][f_PlayerName], "None", MAX_PLAYER_NAME);
 					FamilyCD[i][f_PlayerID] = INVALID_PLAYER_ID;
 					FamilyCD[i][f_TimeResetCD] = 10;
+					FamilyCD[i][f_CaptureActivity] = 0;
     			}
     		}
     	}
