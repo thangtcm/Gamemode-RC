@@ -8409,6 +8409,9 @@ public OnPlayerLoad(playerid)
 	SetPlayerToTeamColor(playerid);
 
 	Inventory_Load(playerid);
+
+	LoadVehicleSign(playerid);
+
 	InventoryCH_Load(playerid);
 	FarmPlants_LOAD(playerid);
 	CATTLE_LOAD(playerid);
