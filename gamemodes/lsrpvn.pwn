@@ -120,6 +120,7 @@
 #include "./system/death/bodydamage.pwn"
 #include "./system/death/dmg.pwn"
 
+#include "./system/rob/steal.pwn"
 #include "./system/rob/bank.pwn"
 
 #include "./include/onplayerfishnishloading.pwn"

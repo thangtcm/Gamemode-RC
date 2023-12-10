@@ -16946,6 +16946,7 @@ stock CreatePlayerVehicle(playerid, playervehicleid, modelid, Float: x, Float: y
 		PlayerVehicleInfo[playerid][playervehicleid][pvPark] = 1;
 		PlayerVehicleInfo[playerid][playervehicleid][pvPrice] = price;
 		PlayerVehicleInfo[playerid][playervehicleid][pvCapacity] = 50.0;
+		PlayerVehicleInfo[playerid][playervehicleid][pvTiresDays] = gettime() + (86400 * 10);
 		switch(modelid)
 		{
 			case 403, 406, 414, 423, 427, 428, 433, 443, 455, 456, 470, 499, 514, 515:

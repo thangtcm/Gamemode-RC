@@ -35,7 +35,6 @@ enum
 	VUKHI_MENU = 1180,
    	GPS_SYSTEM  = 1181,   
 	TIMDUONG = 1182,
-	TIMSTORE = 1183,
 };
 #define           DIALOG_TEST (1183)
 #define           DIALOG_INVENTORYCAR (1184)
@@ -81,4 +80,3 @@ enum
 #define				DIALOG_IDGANGZONE			(1218)
 #define				DIALOG_TYPECAPTURE			(1219)
 #define				DIALOG_ACTIVITY_CAPTURE		(1220)
-#define				TIMSTORE					(1222)

@@ -288,6 +288,13 @@ stock CreateTrashcan(trashcanid)
 	TrashcanText[trashcanid] = CreateDynamic3DTextLabel(string, -1, TrashcanPos[trashcanid][0], TrashcanPos[trashcanid][1], TrashcanPos[trashcanid][2]+0.6, 1.8);
 	return 1;
 }
+forward SetCheckpointTM(playerid);
+public SetCheckpointTM(playerid)
+{
+	SetPlayerCheckpoint(playerid, 2202.8777,-2047.4569,15.2173, 15.0);
+	SetPVarInt(playerid, #CPNhanTien, 1);
+	return 1;
+}
 forward OnPlayerPickUpTrash(playerid, trashcanid);
 public OnPlayerPickUpTrash(playerid, trashcanid)
 {
@@ -390,6 +397,7 @@ hook OnPlayerEnterCheckpoint(playerid)
 		{
 			TMGInfo[TMInfo[playerid][GroupIDTM]][TMTrashcan][i] = 0;
 		}
+		TMGInfo[TMInfo[playerid][GroupIDTM]][TMStep] = 0;
 		foreach(new i: Player)
 		{
 			if(TMInfo[playerid][GroupIDTM] == TMInfo[i][GroupIDTM])
@@ -471,6 +479,10 @@ hook OnPlayerKeyStateChange(playerid, newkeys, oldkeys)
 					{
 						if(TMGInfo[TMInfo[playerid][GroupIDTM]][TMStep] != 2)
 						{
+							for(new j = 0; j < MAX_TRASHCAN; j++)
+							{
+								TMGInfo[TMInfo[playerid][GroupIDTM]][TMTrashcan][j] = 0;
+							}
 							for(new i = 0; i < i+1; i++)
 							{
 							    switch(random(4))
@@ -534,7 +546,6 @@ hook OnPlayerKeyStateChange(playerid, newkeys, oldkeys)
 						}
 						else
 						{
-							TMGInfo[TMInfo[playerid][GroupIDTM]][TMStep] = 0;
 							TMGInfo[TMInfo[playerid][GroupIDTM]][TMVehicleTrash] = 0;
 							TMGInfo[TMInfo[playerid][GroupIDTM]][TMZoneOld] = 0;
 							TMGInfo[TMInfo[playerid][GroupIDTM]][TMZone] = 0;
@@ -542,15 +553,11 @@ hook OnPlayerKeyStateChange(playerid, newkeys, oldkeys)
 							{
 								if(TMInfo[playerid][GroupIDTM] == TMInfo[i][GroupIDTM])
 								{
-									SendClientMessage(i, COLOR_LIGHTBLUE, "[TRASHMAN]: {ffffff}Nhom cua ban da hoan thanh, leader team da nhan duoc checkpoint hay quay tro ve.");
+									SendClientMessage(i, COLOR_LIGHTBLUE, "[TRASHMAN]: {ffffff}Nhom cua ban da hoan thanh hay doi 2 giay, leader team da nhan duoc checkpoint hay quay tro ve.");
+									SendClientMessage(i, COLOR_LIGHTBLUE, "[TRASHMAN]: Neu khong co checkpoint hay su dung lenh {ff4747}/fixbugcp");
 									if(i == TMGInfo[TMInfo[playerid][GroupIDTM]][TMLeader])
 									{
-										SetPlayerCheckpoint(playerid, 2202.8777,-2047.4569,15.2173, 15.0);
-										SetPVarInt(playerid, #CPNhanTien, 1);
-									}
-									for(new j = 0; j < MAX_TRASHCAN; j++)
-									{
-										TMGInfo[TMInfo[playerid][GroupIDTM]][TMTrashcan][j] = 0;
+										SetTimerEx("SetCheckpointTM", 2000, false, "i", i);
 									}
 								}
 							}
@@ -870,5 +877,17 @@ CMD:vutrac(playerid, params[])
 	StopLoopingAnim(playerid);
 	TogglePlayerControllable(playerid, 1);
 	KillTimer(TrashTimer[playerid]);
+	return 1;
+}
+CMD:fixbugcp(playerid, params[])
+{
+	if(TMGInfo[TMInfo[playerid][GroupIDTM]][TMStep] == 2)
+	{
+		if(TMGInfo[TMInfo[playerid][GroupIDTM]][TMLeader] == playerid)
+		{
+			SetPlayerCheckpoint(playerid, 2202.8777,-2047.4569,15.2173, 15.0);
+			SetPVarInt(playerid, #CPNhanTien, 1);
+		} else return SendErrorMessage(playerid, " Ban khong phai Leader cua nhom.");
+	} else return SendErrorMessage(playerid, " Nhom cua ban chua nhat rac xong.");
 	return 1;
 }
