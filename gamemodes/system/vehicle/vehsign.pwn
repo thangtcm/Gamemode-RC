@@ -3,6 +3,7 @@ hook OnGameModeInit()
 {
 	CreateDynamic3DTextLabel("{FF0000}Su dung '/dangkibienso' de dang ki bien so", -1, 248.3361,118.1592,1003.2188+0.6,12.0);
 	// 248.3361,118.1592,1003.2188,182.3316
+	return 1;
 }
 stock LoadVehicleSign(playerid)
 {
@@ -136,13 +137,11 @@ stock VehSignOwnerCheck(playerid, vs_numberz)
 	return 1;
 }
 
-<<<<<<< Updated upstream
 stock SaveVehSign(){
 	printf("[Vehicle Sign database] Vehicle Sign Save Database");
-=======
+
 stock SaveVehSign(playerid){
 	printf("[Vehicle Sign database] Vehicle Sign Save Database for %s", GetPlayerNameEx(playerid));
->>>>>>> Stashed changes
 	for(new i = 0 ; i < MAX_VEHICLES ; i++)
 	{
 		if(VehSignInfo[i][vs_ID] != -1 && VehSignInfo[i][vs_OwnerID] != -1 && VehSignInfo[i][vs_VehicleID] != -1)
