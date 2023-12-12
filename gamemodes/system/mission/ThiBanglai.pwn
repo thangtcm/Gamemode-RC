@@ -210,7 +210,7 @@ stock OnPlayerEnterRaceCP(playerid){
 			format(string, sizeof string, "~r~(WARNING SPEED) ~w~Hay giam toc lai duoi ~p~ 40 MPH ~w~-tranh bi thi truot." );
 			SendClientTextDraw(playerid, string);
 		}
-		if(PlayerLincenseAttemp[playerid] >= sizeof(dsPoints)-1) return DrivingTestFinish(playerid);
+		if(PlayerLincenseAttemp[playerid] >= sizeof(dsPoints)) return DrivingTestFinish(playerid);
 		else
 		{
 			SetPlayerRaceCheckpoint(playerid, 0, 

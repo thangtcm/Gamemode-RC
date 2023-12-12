@@ -1,15 +1,4 @@
-./main/command.pwn(18545) : îøèáêà 017: íåîáúÿâëåííûé ñè́âîë "VehSignID"
-./main/command.pwn(18546) : îøèáêà 017: íåîáúÿâëåííûé ñè́âîë "VehSignstr"
-./main/command.pwn(18546) : îøèáêà 072: îïåđạ̀îđ "sizeof" íå äîëæåí ïđè́åíỵ̈üñÿ íà ñè́âîëàơ "function"
-./main/command.pwn(18547) : îøèáêà 017: íåîáúÿâëåííûé ñè́âîë "VehSignstr"
-./main/command.pwn(18547) : ïđåäóïđåæäåíèå 215: âûđàæåíèå íå è́åạ̊ ưôôåệà
-./system/new_job/pizza.pwn(319) : îøèáêà 017: íåîáúÿâëåííûé ñè́âîë "houseid"
-./system/mission/Misson.pwn(145) : îøèáêà 017: íåîáúÿâëåííûé ñè́âîë "playerid"
-./system/mission/Misson.pwn(147) : îøèáêà 017: íåîáúÿâëåííûé ñè́âîë "playerid"
-./main/variables.pwn(15) : èäåị́èôèêạ̀îđ íå èñïîëüçóạ̊ñÿ: "CraftWeaponDeal"
-./main/variables.pwn(16) : èäåị́èôèêạ̀îđ íå èñïîëüçóạ̊ñÿ: "CraftWeaponDealTime"
-./main/variables.pwn(2481) : èäåị́èôèêạ̀îđ íå èñïîëüçóạ̊ñÿ: "PizzaCar"
-./main/variables.pwn(12) : èäåị́èôèêạ̀îđ íå èñïîëüçóạ̊ñÿ: "VehSignText"
+
 Pawn compiler 3.2.3664	 	 	Copyright (c) 1997-2016, ITB CompuPhase
 
 

@@ -1226,7 +1226,7 @@ public OnPlayerEnterVehicle(playerid, vehicleid, ispassenger)
 		{
 			ActSetPlayerPos(playerid, GetPVarFloat(playerid,"MedicX"), GetPVarFloat(playerid,"MedicY"), GetPVarFloat(playerid,"MedicZ"));
 			ClearAnimations(playerid);
-			ApplyAnimation(playerid, "WUZI", "CS_Dead_Guy", 4.1, 1, 1, 1, 1, 0, 1);
+			ApplyAnimation(playerid, "ped", "FLOOR_hit_f", 4.0, 0, 1, 1, 1, 0, 1);
 		}
 	}
 	
@@ -5947,7 +5947,7 @@ public OnPlayerText(playerid, text[])
 	}
 	if(Mobile[playerid] != INVALID_PLAYER_ID)
 	{
-		format(string, sizeof(string), "(Dien Thoai) %s noi: %s", GetPlayerNameEx(playerid), text);
+		format(string, sizeof(string), "(Dien Thoai - Loa ngoai) %d noi: %s", PlayerInfo[playerid][pPnumber], text);
 		ProxDetector(20.0, playerid, string,COLOR_FADE1,COLOR_FADE2,COLOR_FADE3,COLOR_FADE4,COLOR_FADE5);
 		if(IsPlayerConnected(Mobile[playerid]))
 		{
@@ -5955,7 +5955,7 @@ public OnPlayerText(playerid, text[])
 			{
 				if(PlayerInfo[Mobile[playerid]][pSpeakerPhone] != 0)
 				{
-				    format(string, sizeof(string), "(Dien Thoai) %s noi: %s", GetPlayerNameEx(playerid), text);
+				    format(string, sizeof(string), "(Dien Thoai - Loa trong) %d noi: %s", PlayerInfo[playerid][pPnumber], text);
 					ProxDetector(20.0, Mobile[playerid], string,COLOR_FADE1,COLOR_FADE2,COLOR_FADE3,COLOR_FADE4,COLOR_FADE5);
 				}
 				else
@@ -8017,7 +8017,7 @@ public LoadStreamerDynamicObjects()
     /* (ongamemodeinit) - LSPD stuff */
 
     LoadWeaponFactory();
-    LoadObjectCityHall();
+    LoadAllMap();
     LoadTextUpJob();
 /*    for(new i = 0; i< MAX_NOITHAT; i++) {
     	LoadNoiThat(i);
@@ -8751,6 +8751,7 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
         		    case 2: cmd_smslog(playerid,"");
         		    case 3: ShowPlayerDialog(playerid, MAIN_PHONEBOOK, DIALOG_STYLE_TABLIST, "Danh ba", "Xem danh ba\nThem danh ba\nXoa danh ba", "Chon", "Thoat");
         		    case 4: ShowPlayerDialog(playerid, DIALOG_CHUYENTIEN, DIALOG_STYLE_INPUT, "Chuyen tien", "Vui long nhap so tai khoan de tiep tuc giao dich", "Tuy chon", "Thoat");
+                    case 5: cmd_speakerphone(playerid,"");
         		}
         	}
         }
@@ -9801,11 +9802,11 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 				/* case 7: //New Weapon
 				{
 					Dialog_Show(playerid, WeaponCop, DIALOG_STYLE_LIST, "{ff0000}LAY DUNG VU KHI, LAY SAI TRA LAI{ffffff}", "Deagle\nShotgun\nSpas-12\nMP5\nAK47\nM4\nSniper", "Lua chon", "Huy bo");
-				}
-				case 8: //New Ammo
+				} */
+				case 7: //New Ammo
 				{
 					Dialog_Show(playerid, AmmoCop, DIALOG_STYLE_LIST, "{ff0000}LAY VUA DU BANG DAN, DU THI TRA LAI{ffffff}", "Dan sung luc\nDan Shotgun\nDan tieu lien\nDan sung truong\nDan Sniper", "Lua chon", "Huy bo");
-				} */
+				}
 			}
 		}
 		case G_LOCKER_EQUIPMENT: if(response)
@@ -9863,44 +9864,41 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 						SendServerMessage(playerid, "Ban khong du tien de lay vu khi!");
 						return 1;
 					}
-					else
+				}
+				if(IsACop(playerid))
+				{
+					if(iGunID == 27 || iGunID == 31 || iGunID == 34)
 					{
-						if(IsACop(playerid))
-						{
-							if(iGunID == 27 || iGunID == 31 || iGunID == 34)
-							{
-								if(PlayerInfo[playerid][pRank] < 8)
-									return ShowPlayerDialog(playerid, DIALOG_NOTHING, DIALOG_STYLE_MSGBOX, "Locker System", "{00bfff}>{FFFFFF} Quyen han cua ban khong du de lay vu khi nay {00bfff}<", "DONG", "");
-							}
-						}
-						new wepget[20], szEmployer[GROUP_MAX_NAME_LEN], szRank[GROUP_MAX_RANK_LEN], szDivision[GROUP_MAX_DIV_LEN];
-						GetPlayerGroupInfo(playerid, szRank, szDivision, szEmployer);
-					    GivePlayerCash(playerid, -arrGroupData[iGroupID][g_iLockerCost][listitem]);
-						format(string, sizeof(string), "[MDC-Police] {ffffff}%s %s (%s) da lay mot khau sung %s.",szRank, GetPlayerNameEx(playerid), szDivision, GetWeaponNameEx(iGunID));
-						format(wepget, sizeof(wepget), "%s", GetWeaponNameEx(iGunID));
-						// GivePlayerValidWeapon(playerid, iGunID, 30);
-						// Inventory_Add(playerid, "Sniper-AS");
-						if(iGunID == 34)
-							Inventory_Add(playerid, "Sniper-AS");
-						else if(iGunID == 31)
-							Inventory_Add(playerid, "M4-AS");
-						else if(iGunID == 29)
-							Inventory_Add(playerid, "MP5-AS");
-						else if(iGunID == 33)
-							Inventory_Add(playerid, "Relse ifle-AS");
-						else if(iGunID == 25)
-							Inventory_Add(playerid, "Shotgun-AS");
-						else if(iGunID == 27)
-							Inventory_Add(playerid, "Spas-AS");
-						else if(iGunID == 24)
-							Inventory_Add(playerid, "Deagle-AS");
-						else 
-							GivePlayerValidWeapon(playerid, iGunID, 30);
-						SendClientTextDraw(playerid, "Ban da lay mot khau sung .~n~~r~Neu lay nham, bat buoc phai tra lai cho leader.");
-						SendLogToDiscordRoom("[MDC-Police] Wep log" ,"1157912890410541167", "Name", GetPlayerNameEx(playerid, false), "Rank", szRank, "Wep", wepget, 0x226199);
-						SendLogToDiscordRoom("[MDC-Police] Wep log" , "1157957903874007111", "Name", GetPlayerNameEx(playerid, false), "Rank", szRank, "Wep", wepget, 0x226199);
+						if(PlayerInfo[playerid][pRank] < 8)
+							return ShowPlayerDialog(playerid, DIALOG_NOTHING, DIALOG_STYLE_MSGBOX, "Locker System", "{00bfff}>{FFFFFF} Quyen han cua ban khong du de lay vu khi nay {00bfff}<", "DONG", "");
 					}
 				}
+				new wepget[20], szEmployer[GROUP_MAX_NAME_LEN], szRank[GROUP_MAX_RANK_LEN], szDivision[GROUP_MAX_DIV_LEN];
+				GetPlayerGroupInfo(playerid, szRank, szDivision, szEmployer);
+				GivePlayerCash(playerid, -arrGroupData[iGroupID][g_iLockerCost][listitem]);
+				format(string, sizeof(string), "[MDC-Police] {ffffff}%s %s (%s) da lay mot khau sung %s.",szRank, GetPlayerNameEx(playerid), szDivision, GetWeaponNameEx(iGunID));
+				format(wepget, sizeof(wepget), "%s", GetWeaponNameEx(iGunID));
+				// GivePlayerValidWeapon(playerid, iGunID, 30);
+				// Inventory_Add(playerid, "Sniper-AS");
+				if(iGunID == 34)
+					Inventory_Add(playerid, "Sniper-AS");
+				else if(iGunID == 31)
+					Inventory_Add(playerid, "M4-AS");
+				else if(iGunID == 29)
+					Inventory_Add(playerid, "MP5-AS");
+				else if(iGunID == 33)
+					Inventory_Add(playerid, "Relse ifle-AS");
+				else if(iGunID == 25)
+					Inventory_Add(playerid, "Shotgun-AS");
+				else if(iGunID == 27)
+					Inventory_Add(playerid, "Spas-AS");
+				else if(iGunID == 24)
+					Inventory_Add(playerid, "Deagle-AS");
+				else 
+					GivePlayerValidWeapon(playerid, iGunID, 30);
+				SendClientTextDraw(playerid, "Ban da lay mot khau sung .~n~~r~Neu lay nham, bat buoc phai tra lai cho leader.");
+				SendLogToDiscordRoom("[MDC-Police] Wep log" ,"1157912890410541167", "Name", GetPlayerNameEx(playerid, false), "Rank", szRank, "Wep", wepget, 0x226199);
+				SendLogToDiscordRoom("[MDC-Police] Wep log" , "1157957903874007111", "Name", GetPlayerNameEx(playerid, false), "Rank", szRank, "Wep", wepget, 0x226199);
 			}
 		}
 		case G_LOCKER_UNIFORM: if(response)	{

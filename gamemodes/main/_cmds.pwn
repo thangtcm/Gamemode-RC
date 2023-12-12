@@ -148,7 +148,7 @@ CMD:g(playerid, params[]) {
 					//format(string, sizeof(string), "(radio) %s", params);
 					//SetPlayerChatBubble(playerid, string, COLOR_WHITE, 15.0, 5000);
 					GetPlayerGroupInfo(playerid, rank, division, employer);
-					format(string, sizeof(string), "(( (%d) %s: %s ))",rank, GetPlayerNameEx(playerid), params);
+					format(string, sizeof(string), "(( (%d - %s) %s: %s ))",PlayerInfo[playerid][pRank], rank, GetPlayerNameEx(playerid), params);
 					foreach(new i: Player)
 					{
 						if(GetPVarInt(i, "togGroup") == 0)
@@ -1246,7 +1246,7 @@ stock JoinGame(playerid) {
     SetPlayerVirtualWorld(playerid, PlayerInfo[playerid][pVW]);
     SetPlayerInterior(playerid,0);
     Streamer_UpdateEx(playerid,1481.8472, -1767.4912, 18.7891);
-    SetSpawnInfo(playerid, 0, PlayerInfo[playerid][pModel], 1355.6627, 259.0992, 19.5547, 1.0, -1, -1, -1, -1, -1, -1);
+    SetSpawnInfo(playerid, 0, PlayerInfo[playerid][pModel], 1481.8472, -1767.4912, 18.789, 1.0, -1, -1, -1, -1, -1, -1);
     ActSetPlayerPos(playerid, 1481.8472, -1767.4912, 18.7891);
     Player_StreamPrep(playerid, 1481.8472, -1767.4912, 18.7891, FREEZE_TIME);
     SetPlayerFacingAngle(playerid, 21.0704);
@@ -1521,7 +1521,7 @@ CMD:xemthue(playerid, params[]) {
     return 1;
 }
 
-CMD:phone(playerid,params[]) return ShowPlayerDialog(playerid, DIALOG_PHONE, DIALOG_STYLE_LIST, "Phone - Main", "Goi dien\nNhan tin\nLog SMS\nDanh ba\nChuyen tien", "Chon", "Huy bo");
+CMD:phone(playerid,params[]) return ShowPlayerDialog(playerid, DIALOG_PHONE, DIALOG_STYLE_LIST, "Phone - Main", "Goi dien\nNhan tin\nLog SMS\nDanh ba\nChuyen tien\nTat/Bat loa ngoai", "Chon", "Huy bo");
 CMD:dangkycmnd(playerid,params[]) {
     new string[129];
     if(!IsPlayerInRangeOfPoint(playerid, 5, 359.7139,173.6452,1008.3893)) return SendErrorMessage(playerid," Ban khong o gan city hall khong the dang ky CMND.");
