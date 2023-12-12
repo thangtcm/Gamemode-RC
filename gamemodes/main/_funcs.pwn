@@ -15025,8 +15025,8 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 				LoadPlayerVehicleMods(playerid, listitem);
 				g_mysql_SaveVehicle(playerid, listitem);
 
-				new vs_sqlid = FindVehSign(PlayerVehicleInfo[playerid][listitem][pvSlotId]);
-				CreateVehSign(iVeh, VehSignInfo[vs_sqlid][vs_VehSign]);
+				// new vs_sqlid = FindVehSign(PlayerVehicleInfo[playerid][listitem][pvSlotId]);
+				// CreateVehSign(iVeh, VehSignInfo[vs_sqlid][vs_VehSign]);
 				new vstring[64];
 				format(vstring, sizeof(vstring), "Ban da lay %s cua ban ra khoi kho.", VehicleName[PlayerVehicleInfo[playerid][listitem][pvModelId] - 400]);
 				SendClientMessageEx(playerid, COLOR_WHITE, vstring);
