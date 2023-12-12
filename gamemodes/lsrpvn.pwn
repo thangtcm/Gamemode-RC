@@ -45,6 +45,7 @@
 #include "./include/loading.pwn"
 #include "./system/new_job/pickup.pwn"
 #include "./system/new_job/newtrashman.pwn"
+
 // #include "./system/new_job/Farmer/raise.pwn"
 #include "./system/noithat.pwn"
 #include "./system/haha.pwn"
@@ -91,7 +92,13 @@
 #include "./main/mysql.pwn"
 //#include "./system/login.pwn"`
 //#include "./system/register.pwn"
-
+#include "./system/gps/gps.pwn"
+#include "./system/vehicle/vehicle_info.pwn"
+#include "./system/vehicle/vehsign.pwn"
+#include "./system/nametag.pwn"
+#include "./system/mission/Misson.pwn"
+#include "./system/mission/ThiBanglai.pwn"
+#include "./system/mechanic/mechanic.pwn"
 #include "./system/new_job/Trucking/textdrawanim.pwn"
 #include "./system/new_job/Farmer/main.pwn"
 #include "./system/new_job/Trucking/main.pwn"
@@ -105,14 +112,8 @@
 
 // #include "./system/farmer.pwn"
 //#include "./system/bodydame/bodydamage.pwn"
-#include "./system/vehicle/vehicle_info.pwn"
-#include "./system/vehicle/vehsign.pwn"
-#include "./system/nametag.pwn"
-#include "./system/mission/Misson.pwn"
-#include "./system/mission/ThiBanglai.pwn"
-#include "./system/mechanic/mechanic.pwn"
+
 // ============= GPS ============= //
-#include "./system/gps/gps.pwn"
 // ============= ANTI ============= //
 #include "./anticheat/anti_airbreak.pwn"
 #include "./anticheat/cartroll.pwn"

@@ -138,9 +138,6 @@ stock VehSignOwnerCheck(playerid, vs_numberz)
 }
 
 stock SaveVehSign(playerid){
-	printf("[Vehicle Sign database] Vehicle Sign Save Database");
-
-stock SaveVehSign(playerid){
 	printf("[Vehicle Sign database] Vehicle Sign Save Database for %s", GetPlayerNameEx(playerid));
 	for(new i = 0 ; i < MAX_VEHICLES ; i++)
 	{

@@ -83,11 +83,6 @@ timer UpdateNameTagTimer[1000](playerid)
 {
 	if(IsPlayerConnected(playerid))
 	{
-	    if (PlayerInfo[playerid][pDarkAFK]++ >= 600)
-    	{
-      	SendServerMessage(playerid, "Ban da bi kick vi AFK tren may chu. ");
-          KickEx(playerid);
-    	}
 		if(IsValidDynamic3DTextLabel(PlayerInfo[playerid][pNameTag]))
 		{
 			new nametag[388], Float:armour;
@@ -146,6 +141,7 @@ hook OnPlayerConnect(playerid) {
 	myNameTagTimer[playerid] = repeat UpdateNameTagTimer(playerid);
 	PlayerInfo[playerid][pMaskOn] = 0;
 	TakeNameTagDMG[playerid] = 0;
+	PlayerInfo[playerid][pDarkAFK] = 0;
 	return 1;
 }
 hook OnPlayerDisconnect(playerid, reason) {

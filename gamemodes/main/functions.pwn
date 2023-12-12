@@ -2788,7 +2788,6 @@ public InitiateGamemode()
 	LoadImpoundPoints();
  	g_mysql_LoadSales();
  	g_mysql_LoadPrices();
- 	LoadVehicleSign();
  	LoadBusinessSales();
 
 	/*---[Miscs]---*/
