@@ -8410,7 +8410,7 @@ public OnPlayerLoad(playerid)
 
 	Inventory_Load(playerid);
 
-	LoadVehicleSign(playerid);
+	// LoadVehicleSign(playerid);
 
 	InventoryCH_Load(playerid);
 	FarmPlants_LOAD(playerid);

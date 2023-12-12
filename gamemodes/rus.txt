@@ -1,13 +1,5 @@
-system/map/bank.pwn(110) : èäåíòèôèêàòîðó ïðèñâîåíî çíà÷åíèå, íî îí íå èñïîëüçóåòñÿ: "tmpobjid"
-./system/drug/drug.pwn(84) : èäåíòèôèêàòîðó ïðèñâîåíî çíà÷åíèå, íî îí íå èñïîëüçóåòñÿ: "string"
-./system/vehicle/vehsign.pwn(148) : íåïðàâèëüíàÿ òàáóëÿöèÿ
-./system/vehicle/vehsign.pwn(262) : èäåíòèôèêàòîðó ïðèñâîåíî çíà÷åíèå, íî îí íå èñïîëüçóåòñÿ: "vehsqlid"
-./system/new_job/fishing.pwn(198) : íåïðàâèëüíàÿ òàáóëÿöèÿ
-./system/new_job/fishing.pwn(243) : íåïðàâèëüíàÿ òàáóëÿöèÿ
-./system/new_job/fishing.pwn(244) : íåïðàâèëüíàÿ òàáóëÿöèÿ
-./system/new_job/fishing.pwn(266) : íåïðàâèëüíàÿ òàáóëÿöèÿ
-./system/new_job/fishing.pwn(267) : íåïðàâèëüíàÿ òàáóëÿöèÿ
-./main/variables.pwn(2481) : èäåíòèôèêàòîð íå èñïîëüçóåòñÿ: "PizzaCar"
-./main/variables.pwn(12) : èäåíòèôèêàòîð íå èñïîëüçóåòñÿ: "VehSignText"
+
 Pawn compiler 3.2.3664	 	 	Copyright (c) 1997-2016, ITB CompuPhase
 
+
+Îøèáîê:7.
