@@ -92,7 +92,6 @@ timer UpdateNameTagTimer[1000](playerid)
 		PlayerPosii[playerid][4] = PlayerPosii[playerid][1];
 		PlayerPosii[playerid][5] = PlayerPosii[playerid][2];
 	
-		
 		if(IsValidDynamic3DTextLabel(PlayerInfo[playerid][pNameTag]))
 		{
 			new nametag[388];
@@ -150,6 +149,7 @@ hook OnPlayerConnect(playerid) {
 	myNameTagTimer[playerid] = repeat UpdateNameTagTimer(playerid);
 	PlayerInfo[playerid][pMaskOn] = 0;
 	TakeNameTagDMG[playerid] = 0;
+	PlayerInfo[playerid][pDarkAFK] = 0;
 	IsPlayerAFK[playerid] = 0;
 	return 1;
 }
