@@ -13,16 +13,19 @@ new FishTimer[MAX_PLAYERS];
 new F_TimerRandomPress[MAX_PLAYERS];
 new F_DownCountJobTime[MAX_PLAYERS];
 
+new CheckFishing[MAX_PLAYERS];
 static 
-    Float:f_checkPos[MAX_PLAYERS][3],
+    Float:f_checkPos[MAX_PLAYERS][3];
 
-hook OnPlayerConnect(playerid)
+hook OnPlayerConnect( playerid )
 {
 	F_CountPress[playerid] = 0;
 	F_TimerPressKey[playerid] = 0;
 	F_KeyPressed[playerid] = true;
 	KillTimer(FishTimer[playerid]);
 	DeletePVar(playerid, "FishWorking");
+    f_checkPos[playerid][0] = EOS;
+    CheckFishing[playerid] = 0;
 	return 1;
 }
 
@@ -87,10 +90,11 @@ CMD:cauca(playerid, params[])
 		{
 		    if(Inventory_Count(playerid, "Moi cau") >= 1)
 	    	{
-				if(F_timerdc[playerid] == 0)
+				if(CheckFishing[playerid] == 0)
 				{
 				    cmd_me(playerid,"dang cau ca.");
 					StartFishing(playerid);
+					CheckFishing[playerid] = 1;
 				    GetPlayerPos(playerid, f_checkPos[playerid][0], f_checkPos[playerid][1], f_checkPos[playerid][2]);
 				    SendClientMessage(playerid, COLOR_YELLOW, "Neu ban di chuyen se that bai");
 				    SetPlayerAttachedObject(playerid, 0, 18632, 1, -0.194, 0.354999, 0.018, 96.1001, -45.6, -177.4, 1.000000, 1.000000, 1.000000, 0xFF0000AA);
@@ -142,6 +146,7 @@ stock FaildFish(playerid)
 	F_KeyPressed[playerid] = true;
 	StopLoopingAnim(playerid);
 	ClearAnimations(playerid);
+	CheckFishing[playerid] = 0;
 	TogglePlayerControllable(playerid, 1);
 	RemovePlayerAttachedObject(playerid, 0);
 	SetPlayerSpecialAction(playerid, SPECIAL_ACTION_NONE);
@@ -157,12 +162,6 @@ hook OnPlayerDisconnect(playerid, reason)
 {
 	FaildFish(playerid);
 	return 1;
-}
-
-hook OnPlayerConnect(playerid)
-{
-    f_checkPos[playerid][0] = EOS;
-    return 1;
 }
 
 forward F_ResetPrice();
@@ -227,6 +226,7 @@ public F_StartCountTime(playerid)
 					StopLoopingAnim(playerid);
 					RemovePlayerAttachedObject(playerid, 0);
 					KillTimer(FishTimer[playerid]);
+					CheckFishing[playerid] = 0;
 					TogglePlayerControllable(playerid, 1);				
 					DeletePVar(playerid, "FishWorking");
 					if(JobSkill[playerid][Fish] < 250)
